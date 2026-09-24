@@ -1,6 +1,6 @@
 # Khảo sát: các ứng dụng xử lý ghi chép chi tiêu đa tiền tệ như thế nào
 
-> Ngày khảo sát: 24/09/2026 · Phục vụ: `de-tai-1-brainstorm.md` (mục 5, đặc biệt 5.3 và 5.7)
+> Ngày khảo sát: 24/09/2026 · Phục vụ: [de-tai-1-brainstorm.md](../01-y-tuong/de-tai-1-brainstorm.md) (mục 5, đặc biệt 5.3 và 5.7)
 > Phương pháp: đọc tài liệu chính thức, help center, issue trên GitHub của từng ứng dụng. **Chưa dùng thử trực tiếp.** Những điểm lấy từ nguồn thứ ba hoặc chưa đọc được trang gốc được đánh dấu *(chưa kiểm chứng)*.
 
 ---

@@ -1,11 +1,11 @@
 """Làm sạch và ẩn danh bộ dữ liệu chi tiêu cá nhân (export từ Notion).
 
-Chạy:  python data/clean_data.py
-Đầu vào: file CSV gốc ở thư mục gốc dự án (không bị sửa).
+Chạy:  python ml/preprocessing/clean_data.py
+Đầu vào: data/raw/notion-export.csv (bản xuất Notion, không bị sửa).
 Đầu ra:
   data/processed/transactions_clean.csv  bản đầy đủ, CHƯA ẩn danh, chỉ dùng riêng
   data/processed/transactions_anon.csv   bản đã ẩn danh tên người, dùng để gửi GVHD
-Danh sách tên cần ẩn danh nằm ở data/anonymize_names.txt, sửa file đó rồi chạy lại.
+Danh sách tên cần ẩn danh nằm ở data/raw/anonymize_names.txt, sửa file đó rồi chạy lại.
 """
 import re
 import unicodedata
@@ -13,10 +13,10 @@ from pathlib import Path
 
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parent.parent
-RAW = ROOT / "Database 152486d98ebc8052baf1f01fddf199e9.csv"
+ROOT = Path(__file__).resolve().parents[2]
+RAW = ROOT / "data" / "raw" / "notion-export.csv"
 OUT = ROOT / "data" / "processed"
-NAMES = ROOT / "data" / "anonymize_names.txt"
+NAMES = ROOT / "data" / "raw" / "anonymize_names.txt"
 
 BULK_IMPORT_DAYS = {"2024-12-05", "2024-12-06", "2026-06-01"}
 ADJUSTMENT_PAT = r"cân bằng số liệu|điều chỉnh chênh lệch"
@@ -36,8 +36,8 @@ def load_names() -> tuple[list[str], list[str]]:
             protected.append(line[1:].strip())
         elif line:
             names.append(line)
-    # tên dài thay trước để "a thành" không bị "thành" thay mất một nửa
-    return sorted(set(names), key=len, reverse=True), protected
+    # tên dài thay trước để "a thành" không bị "thành" thay mất một nửa; cùng độ dài thì theo ABC để mã [Pxx] cố định
+    return sorted(set(names), key=lambda n: (-len(n), n)), protected
 
 
 def word(s: str) -> str:

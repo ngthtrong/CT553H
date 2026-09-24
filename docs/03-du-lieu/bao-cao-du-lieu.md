@@ -100,7 +100,7 @@ Family 294 GD (227,9 triệu) · Salary 67 (38,7 triệu) · Anh em 28 · Clan 2
 
 ## 5. Xử lý đã thực hiện
 
-Script `data/clean_data.py` (file gốc giữ nguyên, có thể chạy lại):
+Script `ml/preprocessing/clean_data.py` (file gốc giữ nguyên, có thể chạy lại):
 
 1. Chuyển số tiền sang số nguyên, ngày sang kiểu ngày, chuẩn hóa văn bản.
 2. Tách cột `Special` thành các cờ `is_monthly`, `is_bigm`, `is_bigy`, `is_vay`, `is_annual`, `is_regular`.

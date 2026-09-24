@@ -64,7 +64,7 @@
 
 ## 3. Liên hệ với chuyên môn của GVHD
 
-Theo danh sách công bố trong `draft.md`, GVHD mạnh về **BERT/transformer, CNN, word embedding, SHAP, RAG**, và thường trình bày nghiên cứu theo **quy tắc 5 bước của Chou**. Có thể trình bày phần nghiên cứu theo đúng khung này để GVHD dễ hướng dẫn:
+Theo danh sách công bố trong [cong-bo-gvhd.md](../02-khao-sat/cong-bo-gvhd.md), GVHD mạnh về **BERT/transformer, CNN, word embedding, SHAP, RAG**, và thường trình bày nghiên cứu theo **quy tắc 5 bước của Chou**. Có thể trình bày phần nghiên cứu theo đúng khung này để GVHD dễ hướng dẫn:
 
 | Bước (Chou's 5-step rule) | Áp dụng vào đề tài |
 |---|---|
@@ -102,8 +102,8 @@ Thêm **SHAP** để giải thích vì sao mô hình phân loại một giao d�
 **Tổng quát:** xây dựng hệ thống web hoàn chỉnh quản lý tài chính cá nhân đa tiền tệ, tự động hóa khâu phân loại giao dịch và hỗ trợ ra quyết định bằng dự báo.
 
 **Cụ thể:**
-1. So sánh các phương pháp phân loại giao dịch tiếng Việt, từ cổ điển đến transformer và LLM.
-2. Khảo sát số mẫu gán nhãn tối thiểu cho người dùng mới, và hiệu quả của huấn luyện lại định kỳ khi dữ liệu thay đổi theo thời gian.
+1. So sánh các phương pháp phân loại giao dịch tiếng Việt, từ cổ điển đến transformer và LLM, có kiểm soát rò rỉ dữ liệu và so với mức nhất quán của chính người gán nhãn.
+2. Đánh giá các chiến lược huấn luyện lại khi dữ liệu thay đổi theo thời gian, và khảo sát số mẫu gán nhãn tối thiểu cho người dùng mới (trên dữ liệu của tình nguyện viên).
 3. So sánh các mô hình dự báo chi tiêu, đánh giá ảnh hưởng của biến động tỷ giá lên dự báo.
 4. Thiết kế mô hình dữ liệu và nghiệp vụ **đa tiền tệ đúng chuẩn**, dựa trên nguyên tắc của chuẩn mực kế toán VAS 10 / IAS 21.
 5. Xây dựng, kiểm thử, triển khai hệ thống theo quy trình Scrum và CI/CD.
@@ -112,8 +112,9 @@ Thêm **SHAP** để giải thích vì sao mô hình phân loại một giao d�
 
 | RQ | Câu hỏi | Bắt buộc? |
 |---|---|---|
-| RQ1 | Phương pháp nào phân loại giao dịch tiếng Việt tốt nhất khi cân bằng độ chính xác, tốc độ và chi phí? | Có |
-| RQ2 | Dữ liệu thay đổi theo thời gian làm độ chính xác giảm bao nhiêu? Huấn luyện lại định kỳ cải thiện bao nhiêu? Người dùng mới cần gán nhãn bao nhiêu giao dịch? | Có |
+| RQ1 | Phương pháp nào phân loại giao dịch tiếng Việt tốt nhất khi cân bằng độ chính xác, tốc độ và chi phí, **đặc biệt với người bán chưa từng gặp**? So với mức nhất quán của chính người gán nhãn thì mô hình đạt đến đâu? | Có |
+| RQ2a | Dữ liệu thay đổi theo thời gian làm độ chính xác giảm bao nhiêu, do thói quen chi tiêu hay do cách gán nhãn thay đổi? Chiến lược huấn luyện lại nào hiệu quả nhất? | Có |
+| RQ2b | Người dùng mới cần gán nhãn bao nhiêu giao dịch để mô hình dùng được? (Cần dữ liệu tình nguyện viên. Nếu không có thì lùi về "learning curve trên dữ liệu cá nhân", xem mục 6) | Có |
 | RQ3a | Mô hình nào dự báo chi tiêu tốt nhất? | Có |
 | RQ3b | Với người dùng có tiền tệ báo cáo khác tiền tệ chi tiêu, nên dự báo theo tiền gốc rồi quy đổi, hay dự báo trực tiếp trên chuỗi đã quy đổi? Mức ảnh hưởng thay đổi thế nào theo độ biến động của tỷ giá? | Có (phân tích phụ) |
 | RQ4 | Mô hình đa ngôn ngữ có phân loại tốt giao dịch có nội dung tiếng nước ngoài không? | Chỉ khi có dữ liệu (xem 5.6) |
@@ -383,27 +384,51 @@ Bộ 5.000 giao dịch **không có ngoại tệ**. Cách xử lý:
 ## 6. Thiết kế thí nghiệm
 
 ### Bước 0: Chuẩn bị dữ liệu
+- Xác định **nguồn dữ liệu** (app ghi chép tay hay sao kê ngân hàng) và dạng mô tả (có dấu không, độ dài, mã số).
 - Làm sạch, **ẩn danh hóa** (số tài khoản, tên người nhận), chuẩn hóa văn bản (có dấu/không dấu, viết tắt).
-- Chốt bộ danh mục **10–15 nhãn**, trong đó có nhãn **"Chuyển khoản nội bộ"**. Kiểm tra tính nhất quán của nhãn cũ.
-- EDA: phân bố nhãn, số tiền, tính mùa vụ (Tết, ngày nhận lương).
-- Thu thập tỷ giá lịch sử 2022 đến nay (VND, USD, JPY, EUR…).
+- **Chuẩn hóa mô tả thành nhóm người bán** (ví dụ "GRAB*1234", "GRAB 5678" → `grab`) để chia dữ liệu theo nhóm.
+- Chốt bộ danh mục **10–15 nhãn**, trong đó có nhãn **"Chuyển khoản nội bộ"**. **Viết quy tắc gán nhãn** thành văn bản.
+- **Đo độ nhất quán của nhãn:** lấy ngẫu nhiên 300–500 giao dịch, gán nhãn lại mà không nhìn nhãn cũ, tính **Cohen's kappa** giữa hai lần gán. Nếu nhờ được thêm một người gán theo cùng quy tắc thì đo thêm mức đồng thuận giữa hai người. Con số này là **giới hạn trên của con người** để so với mô hình.
+- EDA: phân bố nhãn, **số mẫu từng lớp** (lớp dưới 50 mẫu thì gộp hoặc báo cáo riêng), số tiền, tính mùa vụ (Tết, ngày nhận lương).
+- EDA về trùng lặp: **số mô tả khác nhau**, **số người bán khác nhau**, **tỷ lệ giao dịch 2025–2026 có mô tả đã xuất hiện trước 2025**.
+- Thu thập tỷ giá lịch sử 2022 đến nay (VND, USD, JPY, EUR, KRW, THB).
 
-### TN1: Phân loại giao dịch (RQ1, RQ2)
+### Kiểm tra nhanh trước khi cam kết (tuần 1)
+Chạy **TF-IDF + Logistic Regression với GroupKFold theo người bán**:
+- Nếu Macro-F1 **đã trên khoảng 95%**: bài toán trên toàn bộ dữ liệu quá dễ. **Định vị lại RQ1**: tập trung vào người bán chưa gặp, cold-start và dữ liệu tình nguyện viên, thay vì so mô hình trên toàn bộ dữ liệu.
+- Nếu thấp hơn: RQ1 giữ nguyên, còn chỗ để các mô hình mạnh hơn thể hiện.
+
+### TN1: Phân loại giao dịch (RQ1, RQ2a, RQ2b)
 
 | Nhóm | Mô hình |
 |---|---|
 | Baseline | Rule-based theo từ khóa |
-| Cổ điển | TF-IDF + Logistic Regression / Linear SVM, fastText |
-| Transformer | Fine-tune PhoBERT; (tùy chọn) PhoBERT embedding + CNN head |
-| LLM | Zero-shot / few-shot, model local (Qwen qua Ollama) so với API |
+| Cổ điển | TF-IDF (từ và **n-gram ký tự**) + Logistic Regression / Linear SVM, fastText |
+| Embedding + mô hình tuyến tính | Embedding đa ngôn ngữ (bge-m3, multilingual-e5) + Logistic Regression: rẻ, nhanh, thường mạnh khi dữ liệu nhỏ |
+| Transformer | Fine-tune PhoBERT (cần tách từ; thử cả văn bản có dấu và không dấu); (tùy chọn) PhoBERT embedding + CNN head |
+| LLM | Zero-shot / few-shot, model local (Qwen qua Ollama, bản lượng tử hóa vừa máy cá nhân) so với API |
 
 - **Đặc trưng:** nội dung giao dịch, số tiền (log), giờ, thứ trong tuần, loại tiền, loại ví.
-- **Cách chia dữ liệu:** (a) stratified 5-fold CV; (b) theo thời gian: huấn luyện trên 2022–2024, kiểm thử trên 2025–2026.
-- **Learning curve:** F1 theo số mẫu huấn luyện 50 / 100 / 200 / 500 / 1000 / toàn bộ.
-- **Mô phỏng vòng lặp phản hồi:** duyệt giao dịch theo thời gian, huấn luyện lại hằng tháng, so với không huấn luyện lại.
+- **Cách chia dữ liệu (tránh rò rỉ):**
+  - (a) **GroupKFold 5-fold theo nhóm người bán**: mọi giao dịch cùng người bán nằm cùng một fold. **Không** dùng stratified ngẫu nhiên, vì mô tả trùng lặp giữa train và test sẽ làm điểm số bị thổi phồng.
+  - (b) **Tập kiểm tra độc lập theo thời gian:** huấn luyện trên 2022–2024, kiểm tra trên 2025–2026.
+  - Báo cáo **tách 2 phần**: người bán *đã gặp* và người bán *chưa gặp*.
+- **Độ ổn định và ý nghĩa thống kê:** mô hình có yếu tố ngẫu nhiên (PhoBERT, fastText) chạy **5 seed**, báo cáo trung bình ± độ lệch chuẩn. So sánh cặp mô hình bằng **kiểm định McNemar** (trên tập kiểm tra độc lập) hoặc kiểm định cặp qua các fold.
+- **So với con người:** đặt kết quả cạnh Cohen's kappa ở Bước 0 (giới hạn trên của con người).
+- **RQ2a (dữ liệu thay đổi theo thời gian):** duyệt giao dịch theo thời gian, so sánh các chiến lược:
+  - không huấn luyện lại,
+  - huấn luyện lại toàn bộ hằng tháng,
+  - cửa sổ trượt (chỉ dùng N tháng gần nhất),
+  - ưu tiên dữ liệu mới (trọng số theo thời gian).
+
+  Độ đo hướng người dùng: **số lần người dùng phải sửa nhãn mỗi tháng**. Tách độ chính xác giảm trên người bán cũ (nghiêng về do cách gán nhãn đổi) và trên người bán mới (nghiêng về do thói quen chi tiêu đổi).
+- **RQ2b (người dùng mới):**
+  - **Hướng chính (có dữ liệu tình nguyện viên):** quy đổi danh mục của mọi người về một hệ chung; huấn luyện trên dữ liệu của mình, thêm k mẫu của người B (k = 0, 20, 50, 100, 200), đo trên phần còn lại của B.
+  - **Hướng lùi (không có dữ liệu):** đặt tên trung thực là *"learning curve trên dữ liệu cá nhân"* (F1 theo số mẫu 50 / 100 / 200 / 500 / 1000 / toàn bộ), bỏ chữ "người dùng mới".
 - **Giải thích:** SHAP cho mô hình tốt nhất.
-- **Độ đo:** Accuracy, **Macro-F1**, F1 từng lớp, confusion matrix, độ trễ suy luận (ms), kích thước mô hình.
-- **Góc nhìn bảo mật:** dữ liệu tài chính nhạy cảm, nên so sánh model chạy local với API bên ngoài.
+- **Độ đo:** Accuracy, **Macro-F1**, **MCC**, F1 từng lớp, confusion matrix, độ trễ suy luận (ms), kích thước mô hình.
+- **Tài nguyên:** fine-tune PhoBERT trên Colab / Kaggle; dữ liệu nhỏ nên mỗi lần chạy chỉ vài phút. 5 seed × 5 fold × vài biến thể vẫn nằm trong hạn mức GPU miễn phí (cần kiểm tra hạn mức hiện tại).
+- **Góc nhìn bảo mật:** dữ liệu tài chính nhạy cảm, nên so sánh model chạy local với API bên ngoài. Chỉ đưa dữ liệu **đã ẩn danh** lên Colab / Kaggle / API.
 
 ### TN2: Dự báo chi tiêu (RQ3a, RQ3b)
 - **Mục tiêu dự báo:** tổng chi theo tuần, và chi theo tháng cho các danh mục chính.
@@ -423,7 +448,8 @@ Bộ 5.000 giao dịch **không có ngoại tệ**. Cách xử lý:
 PhoBERT so với XLM-R / multilingual embedding và LLM, trên tập giao dịch tiếng nước ngoài của tình nguyện viên.
 
 ### Hạn chế cần nêu trước hội đồng
-- Dữ liệu chủ yếu của một người: bổ sung dữ liệu từ 3–5 tình nguyện viên để kiểm tra khả năng tổng quát hóa.
+- Dữ liệu chủ yếu của một người: bổ sung dữ liệu từ 3–5 tình nguyện viên để kiểm tra khả năng tổng quát hóa (đồng thời dùng cho RQ2b). **Liên hệ tình nguyện viên từ tuần 1**, không để đến cuối.
+- Nhãn do một người gán, có nhiễu: đã đo bằng Cohen's kappa, nêu rõ giới hạn trên.
 - Tỷ giá từ nguồn công khai là tỷ giá tham khảo, có thể khác tỷ giá thực tế của từng kênh đổi tiền.
 
 ---
@@ -444,10 +470,10 @@ PhoBERT so với XLM-R / multilingual embedding và LLM, trên tập giao dịch
 
 | Tuần | Công việc | Kết quả |
 |---|---|---|
-| 1 | Đọc tài liệu, EDA, làm sạch và ẩn danh dữ liệu, chốt danh mục, thu thập tỷ giá lịch sử | Đề cương, notebook EDA |
-| 2 | Phân tích yêu cầu, use case, **thiết kế CSDL đa tiền tệ**, kiến trúc; tạo repo, Docker, CI | Tài liệu thiết kế, skeleton project |
-| 3 | TN1: baseline, TF-IDF + LR/SVM, fastText | Bảng kết quả đợt 1 |
-| 4 | TN1: PhoBERT, LLM, learning curve, chia theo thời gian, SHAP | **Chốt mô hình phân loại** |
+| 1 | Đọc tài liệu, EDA (kể cả trùng lặp), làm sạch và ẩn danh dữ liệu, viết quy tắc gán nhãn, chốt danh mục, **kiểm tra nhanh TF-IDF + GroupKFold**, liên hệ tình nguyện viên, thu thập tỷ giá lịch sử | Đề cương, notebook EDA, quyết định có định vị lại RQ1 không |
+| 2 | Gán nhãn lại mù 300–500 mẫu (Cohen's kappa); phân tích yêu cầu, use case, **thiết kế CSDL đa tiền tệ**, kiến trúc; tạo repo, Docker, CI | Tài liệu thiết kế, skeleton project, kappa |
+| 3 | TN1: baseline, TF-IDF + LR/SVM, fastText, embedding đa ngôn ngữ + LR | Bảng kết quả đợt 1 |
+| 4 | TN1: PhoBERT (5 seed), LLM, RQ2a, RQ2b, kiểm định thống kê, SHAP | **Chốt mô hình phân loại** |
 | 5 | Backend: auth, ví, giao dịch, **module Money** (có unit test), import CSV | API core |
 | 6 | **Dịch vụ tỷ giá** (job, cache Redis, dự phòng), đổi tiền, phí ẩn, quy đổi; ML service `/categorize` | Luồng đa tiền tệ chạy được |
 | 7 | Frontend core, vòng lặp phản hồi | Nhập → phân loại → sửa nhãn trên UI |
@@ -468,11 +494,17 @@ PhoBERT so với XLM-R / multilingual embedding và LLM, trên tập giao dịch
 | Rủi ro | Mức | Cách giảm |
 |---|---|---|
 | Phạm vi phình to vì thêm đa tiền tệ | Cao | Phân tầng MVP / mở rộng (mục 4.5), cắt TN3 và anomaly trước |
-| Nhãn cũ không nhất quán | Trung bình | Tuần 1 rà soát, gộp nhãn, ghi lại quy tắc gán nhãn |
+| **Bài toán quá dễ / rò rỉ dữ liệu** do mô tả lặp lại (mọi mô hình đều đạt trên 95%, RQ1 mất ý nghĩa) | **Cao** | GroupKFold theo người bán, báo cáo tách người bán đã gặp / chưa gặp, kiểm tra nhanh ở tuần 1 để định vị lại RQ1 nếu cần |
+| Nhãn cũ không nhất quán | Trung bình | Viết quy tắc gán nhãn, gộp nhãn, gán lại mù và đo Cohen's kappa. Biến thành kết quả "giới hạn trên của con người" |
+| Số mẫu thực sự khác nhau ít hơn nhiều so với 5.000; lớp hiếm | Trung bình | Báo cáo cả hai con số, gộp lớp hiếm, F1 từng lớp, thêm embedding + LR làm mức giữa |
+| Kết quả fine-tune dao động theo seed, chênh lệch nhỏ là nhiễu | Trung bình | 5 seed, trung bình ± độ lệch chuẩn, kiểm định McNemar / kiểm định cặp |
 | Mô hình phức tạp không thắng baseline | Trung bình | Chấp nhận, phân tích nguyên nhân. Đây vẫn là kết quả khoa học |
+| Không xin được dữ liệu tình nguyện viên | Trung bình | Liên hệ từ tuần 1. Nếu không có: RQ2b lùi về learning curve trên dữ liệu cá nhân |
+| Hội đồng (thiên KTPM) đánh giá thấp nếu phần hệ thống yếu | Trung bình | Phần hệ thống, kiểm thử, CI/CD phải chắc chắn. Trình bày ML gắn với hệ thống: quản lý phiên bản mô hình, pipeline huấn luyện lại, kiểm thử ML service |
 | API tỷ giá ngừng hoạt động / giới hạn | Trung bình | Lưu lịch sử vào CSDL, có nguồn dự phòng, cho phép nhập tỷ giá thủ công |
 | Dữ liệu một người | Trung bình | Tình nguyện viên, nêu rõ trong phần hạn chế |
-| Fine-tune PhoBERT thiếu GPU | Thấp | Google Colab / Kaggle, dữ liệu 5.000 mẫu nhỏ |
+| Fine-tune PhoBERT thiếu GPU (không có lab) | Thấp | Google Colab / Kaggle, dữ liệu nhỏ. Chỉ đưa dữ liệu đã ẩn danh lên cloud |
+| Máy cá nhân không chạy nổi LLM local | Thấp | Dùng bản lượng tử hóa nhỏ (vài tỷ tham số), hoặc chạy trên Colab / Kaggle |
 
 ---
 
@@ -486,19 +518,30 @@ PhoBERT so với XLM-R / multilingual embedding và LLM, trên tập giao dịch
 6. Mô hình tốt nhất hơn baseline bao nhiêu? Có đáng với chi phí tính toán không?
 7. Dữ liệu tài chính nhạy cảm, hệ thống bảo mật thế nào? Có gửi dữ liệu cho LLM bên ngoài không?
 8. Hệ thống khác gì Money Lover, Misa, Wise?
+9. Giao dịch lặp lại nhiều, tập test có bị trùng với tập train không? Em tách trùng thế nào?
+10. Tại sao mô hình không đạt 100%? *(Trả lời bằng Cohen's kappa: chính người gán nhãn cũng chỉ nhất quán Y%.)*
+11. Chênh lệch giữa các mô hình có ý nghĩa thống kê không, hay chỉ do seed?
+12. Mô hình ML được tích hợp, quản lý phiên bản và kiểm thử trong hệ thống thế nào? *(Hội đồng thiên KTPM dễ hỏi câu này.)*
 
 ---
 
 ## 11. Việc cần làm tiếp
 
-- [ ] Xác nhận các cột trong bộ dữ liệu (ngày giờ, số tiền, nội dung, danh mục, ví)
+- [ ] Xác nhận các cột trong bộ dữ liệu (ngày giờ, số tiền, nội dung, danh mục, ví) và **nguồn dữ liệu** (app ghi chép tay hay sao kê ngân hàng)
+- [ ] EDA trùng lặp: số mô tả khác nhau, số người bán, tỷ lệ giao dịch 2025–2026 có mô tả đã gặp, số mẫu từng lớp
+- [ ] **Kiểm tra nhanh:** TF-IDF + LR với GroupKFold theo người bán (xem mục 6)
+- [ ] Viết quy tắc gán nhãn; gán lại mù 300–500 mẫu, tính Cohen's kappa
+- [ ] **Liên hệ 3–5 tình nguyện viên ngay** (dùng cho RQ2b và kiểm tra tổng quát hóa)
+- [ ] Kiểm tra cấu hình máy cá nhân có chạy được LLM local (Ollama) không; kiểm tra hạn mức GPU của Colab / Kaggle
+- [ ] Chuẩn bị buổi gặp GVHD: xem [buoi-01-chuan-bi.md](../meeting/buoi-01-chuan-bi.md)
 - [x] Dữ liệu có giao dịch ngoại tệ không? **Không**. Bài toán mới gặp gần đây, xem mục 5.8
 - [ ] **Bắt đầu ghi chép giao dịch ngoại tệ của bản thân ngay** (số tiền hai bên, kênh đổi, biên lai)
 - [x] Khảo sát hiện trạng đa tiền tệ, xem mục 5.7
 - [ ] Tự dùng thử Toshl, PocketSmith (bản dùng thử), Firefly III (bản demo) để kiểm chứng bảng 5.7 và chụp màn hình cho chương 2
 - [ ] Hỏi khoa mẫu đề cương / báo cáo của CT553H
 - [ ] Trao đổi với GVHD: hướng đề tài, khung 5 bước của Chou, phạm vi đa tiền tệ
-- [ ] Làm EDA trên dữ liệu thật
+- [ ] Làm EDA trên dữ liệu thật (phân bố nhãn, số tiền, mùa vụ)
+- [ ] Tìm tài liệu về Cohen's kappa, GroupKFold / rò rỉ dữ liệu, kiểm định McNemar
 - [ ] Tìm tài liệu liên quan: transaction categorization, personal finance ML, PhoBERT, forecasting cá nhân, VAS 10 / IAS 21
 - [ ] Kiểm tra nguồn tỷ giá có VND, điều khoản sử dụng, dữ liệu lịch sử (cần cả USD, EUR, JPY, KRW, THB cho RQ3b)
 - [ ] Đọc văn bản gốc World Bank *Remittance Prices Worldwide* (phương pháp tính) và Quy định EU 2019/518 để trích dẫn định nghĩa phí ẩn

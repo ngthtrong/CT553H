@@ -1,0 +1,26 @@
+# Dữ liệu cá nhân: không bao giờ đưa lên git. Sinh lại bằng ml/preprocessing/clean_data.py
+data/raw/
+data/interim/
+data/processed/
+
+# Mô hình đã huấn luyện, kết quả nặng
+ml/models/
+*.pkl
+*.joblib
+*.pt
+*.safetensors
+
+# Python
+__pycache__/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Node / Java
+node_modules/
+target/
+build/
+dist/
+
+# Bí mật
+.env
