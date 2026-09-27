@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Tóm tắt đề tài CT553H</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 12mm 14mm 12mm 14mm; }
+  :root {
+    --ink: #1b1f24;
+    --muted: #5b6470;
+    --line: #d7dce2;
+    --accent: #1f5f8b;
+    --accent-soft: #e8f0f6;
+    --warn-soft: #fbf3e4;
+    --warn: #8a5a12;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #fff; }
+  body {
+    font-family: "Be Vietnam Pro", "DejaVu Sans", sans-serif;
+    font-size: 8.9pt;
+    line-height: 1.42;
+    color: var(--ink);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .page { page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+
+  header { border-bottom: 2px solid var(--accent); padding-bottom: 6px; margin-bottom: 8px; }
+  .kicker { font-size: 7.8pt; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+  h1 { font-size: 13.6pt; line-height: 1.25; margin: 2px 0 2px; font-weight: 700; }
+  .en { font-style: italic; color: var(--muted); font-size: 8.6pt; }
+  .meta { display: flex; justify-content: space-between; margin-top: 4px; font-size: 7.8pt; color: var(--muted); }
+  .status { background: var(--warn-soft); color: var(--warn); padding: 1px 6px; border-radius: 3px; font-weight: 600; }
+
+  h2 {
+    font-size: 9.8pt; margin: 9px 0 4px; color: var(--accent);
+    display: flex; align-items: baseline; gap: 6px;
+  }
+  h2 .n {
+    display: inline-block; min-width: 16px; height: 16px; line-height: 16px; text-align: center;
+    background: var(--accent); color: #fff; border-radius: 3px; font-size: 8pt;
+  }
+  p { margin: 0 0 4px; }
+  ul { margin: 0 0 4px; padding-left: 14px; }
+  li { margin: 1px 0; }
+  strong { font-weight: 600; }
+
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin: 4px 0 5px; }
+  .stat { background: var(--accent-soft); border-radius: 4px; padding: 5px 6px; }
+  .stat b { display: block; font-size: 12pt; line-height: 1.1; color: var(--accent); font-weight: 700; }
+  .stat span { font-size: 7.4pt; color: var(--muted); line-height: 1.25; display: block; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 8.2pt; margin: 3px 0 4px; }
+  th, td { text-align: left; padding: 2.5px 5px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-weight: 600; background: #f3f5f7; border-bottom: 1px solid #c5ccd4; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr.best td { font-weight: 600; }
+  .rq td:first-child { font-weight: 700; color: var(--accent); white-space: nowrap; width: 38px; }
+  .note { font-size: 7.8pt; color: var(--muted); }
+
+  .callout { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 5px 8px; margin: 5px 0; }
+  .callout.warn { border-color: var(--warn); background: var(--warn-soft); }
+
+  /* Kiến trúc */
+  .arch { display: grid; grid-template-columns: 0.8fr 14px 1.35fr 14px 1.1fr; align-items: stretch; margin: 4px 0 3px; font-size: 7.7pt; }
+  .box { border: 1px solid #9fb3c4; border-radius: 4px; padding: 4px 6px; background: #fff; }
+  .box h4 { margin: 0 0 2px; font-size: 8pt; color: var(--accent); }
+  .box ul { padding-left: 11px; margin: 0; }
+  .arrow { display: flex; align-items: center; justify-content: center; color: #7d8b98; font-size: 10pt; }
+  .infra { display: flex; gap: 6px; margin-top: 4px; font-size: 7.6pt; }
+  .infra div { flex: 1; border: 1px dashed #9fb3c4; border-radius: 4px; padding: 3px 6px; color: var(--muted); }
+  .infra b { color: var(--ink); font-weight: 600; }
+
+  .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; margin: 4px 0; font-size: 7.8pt; }
+  .phase { border-top: 3px solid var(--accent); background: #f6f8fa; padding: 4px 6px; }
+  .phase b { display: block; font-size: 8pt; }
+  .phase .wk { color: var(--muted); font-size: 7.4pt; }
+
+  ol.ask { margin: 0; padding-left: 16px; }
+  ol.ask li { margin: 2px 0; }
+</style>
+</head>
+<body>
+
+<!-- ===================== TRANG 1 ===================== -->
+<section class="page">
+  <header>
+    <div class="kicker">Luận văn CT553H · Tóm tắt đề tài đang xem xét</div>
+    <h1>Xây dựng hệ thống quản lý tài chính cá nhân đa tiền tệ ứng dụng học máy trong phân loại giao dịch và dự báo chi tiêu</h1>
+    <div class="en">Building a Multi-Currency Personal Finance Management System Using Machine Learning for Transaction Categorization and Spending Forecasting</div>
+    <div class="meta">
+      <span>Ngành Kỹ thuật phần mềm · Làm một mình · 14 tuần</span>
+      <span><span class="status">Bản thảo, đề tài chưa chốt</span> · 25/09/2026</span>
+    </div>
+  </header>
+
+  <h2><span class="n">1</span>Vấn đề và động lực</h2>
+  <ul>
+    <li><strong>Ghi chép chi tiêu thủ công tốn công</strong>, người dùng dễ bỏ cuộc. Các ứng dụng phổ biến phân loại theo quy tắc, chưa hiểu tốt ghi chú tiếng Việt ngắn, viết tắt, không dấu.</li>
+    <li><strong>Khoảng trống nghiên cứu:</strong> phân loại giao dịch bằng học máy đã được nghiên cứu nhiều với tiếng Anh (Txn-Bert/QuickBooks 2025, TopoLedgerBERT 2024), nhưng <strong>chưa tìm thấy công trình cho tiếng Việt</strong> trong các nguồn đã khảo sát.</li>
+    <li><strong>Nhu cầu đa tiền tệ</strong> ngày càng phổ biến (du học sinh, người làm việc ở nước ngoài, freelancer nhận ngoại tệ). Nhiều ứng dụng đã hỗ trợ ví nhiều loại tiền, nhưng <strong>chưa thấy ứng dụng nào phân tích</strong>: mất bao nhiêu vì phí đổi tiền, tài sản thay đổi do chi tiêu hay do tỷ giá.</li>
+  </ul>
+
+  <h2><span class="n">2</span>Dữ liệu hiện có</h2>
+  <div class="stats">
+    <div class="stat"><b>5.465</b><span>giao dịch thật, tự ghi chép (5.029 chi, 436 thu)</span></div>
+    <div class="stat"><b>49 tháng</b><span>09/2022 → 09/2026, liên tục, không tháng trống</span></div>
+    <div class="stat"><b>25 nhãn</b><span>khoản chi, gán tay; 9 nhãn có dưới 20 mẫu</span></div>
+    <div class="stat"><b>1.973</b><span>nội dung khác nhau trên 5.028 khoản chi có nhãn</span></div>
+    <div class="stat"><b>2 từ</b><span>độ dài trung vị của ghi chú (“xăng”, “cơm sườn trứng”)</span></div>
+  </div>
+  <p>Dữ liệu đã được làm sạch và <strong>ẩn danh</strong> bằng script tái lập được (39 tên người thay bằng mã cố định). Đặc điểm cần lưu ý: văn bản rất ngắn, nhiều biến thể viết (“cafe / cf / cà phê”); nhãn mất cân bằng mạnh (nhãn lớn nhất 33,7%); một số nhãn phụ thuộc ngữ cảnh “đi cùng ai” chứ không chỉ “mua gì”; chỉ có VND, chỉ có ngày (không có giờ).</p>
+
+  <h2><span class="n">3</span>Kết quả thử nghiệm sơ bộ</h2>
+  <div class="cols">
+    <div>
+      <p><strong>Phân loại khoản chi</strong> (25 nhãn, chỉ dùng văn bản, TF-IDF n-gram từ + ký tự)</p>
+      <table>
+        <tr><th>Mô hình</th><th class="num">CV ngẫu nhiên<br>Acc / Macro-F1</th><th class="num">Theo thời gian*<br>Acc / Macro-F1</th></tr>
+        <tr><td>Nhãn phổ biến nhất</td><td class="num">33,7% / 0,02</td><td class="num">27,5% / 0,02</td></tr>
+        <tr><td>Tra cứu nội dung đã gặp</td><td class="num">74,0% / 0,44</td><td class="num">62,0% / 0,28</td></tr>
+        <tr><td>TF-IDF + Logistic Reg.</td><td class="num">85,7% / 0,66</td><td class="num">78,0% / 0,46</td></tr>
+        <tr class="best"><td>TF-IDF + Linear SVM</td><td class="num">86,7% / 0,66</td><td class="num">78,2% / 0,45</td></tr>
+      </table>
+      <div class="note">* Huấn luyện 2022–2024, kiểm tra 2025–2026.</div>
+    </div>
+    <div>
+      <p><strong>Nhận xét chính</strong></p>
+      <ul>
+        <li><strong>Dữ liệu thay đổi theo thời gian là vấn đề thật:</strong> chia theo thời gian làm accuracy giảm ~9 điểm, Macro-F1 giảm ~0,2. Tỷ lệ nội dung chưa gặp tăng từ 34% lên 53%, xuất hiện 5 nhãn mới.</li>
+        <li>Nội dung <strong>đã gặp</strong> đúng ~92%, nội dung <strong>mới</strong> chỉ 65–72%. Đây là chỗ mô hình ngữ nghĩa (PhoBERT, LLM) có thể tạo khác biệt.</li>
+        <li><strong>Dự báo chi tiêu tuần</strong> (211 tuần, bỏ khoản lớn đặc biệt): baseline “trung bình toàn lịch sử” đạt MAE 184 nghìn VND, sMAPE 24,5%, tốt hơn Naive (31,6%). Mô hình phức tạp phải vượt được mức này.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2><span class="n">4</span>Câu hỏi nghiên cứu</h2>
+  <table class="rq">
+    <tr><td>RQ1</td><td>Phương pháp nào phân loại ghi chú chi tiêu tiếng Việt tốt nhất khi cân bằng độ chính xác, tốc độ và chi phí, <strong>đặc biệt với nội dung chưa từng gặp</strong>? Mô hình đạt đến đâu so với mức nhất quán của chính người gán nhãn (Cohen’s kappa)?</td></tr>
+    <tr><td>RQ2a</td><td>Dữ liệu thay đổi theo thời gian làm độ chính xác giảm bao nhiêu, do thói quen chi tiêu hay do cách gán nhãn thay đổi? Chiến lược huấn luyện lại nào hiệu quả nhất (không huấn luyện lại, toàn bộ, cửa sổ trượt, trọng số theo thời gian)?</td></tr>
+    <tr><td>RQ2b</td><td>Người dùng mới cần gán nhãn bao nhiêu giao dịch để mô hình dùng được? (cần dữ liệu 3–5 tình nguyện viên; nếu không có thì lùi về learning curve trên dữ liệu cá nhân)</td></tr>
+    <tr><td>RQ3a</td><td>Mô hình nào dự báo chi tiêu tốt nhất (Seasonal Naive, SARIMA, Prophet, LightGBM), so sánh có kiểm định Diebold–Mariano?</td></tr>
+    <tr><td>RQ3b</td><td><em>(phân tích phụ)</em> Khi tiền tệ báo cáo khác tiền tệ chi tiêu, nên dự báo theo tiền gốc rồi quy đổi hay dự báo trực tiếp trên chuỗi đã quy đổi? Kết quả thay đổi thế nào theo độ biến động tỷ giá (USD, EUR, JPY)?</td></tr>
+  </table>
+</section>
+
+<!-- ===================== TRANG 2 ===================== -->
+<section class="page">
+  <h2 style="margin-top:0"><span class="n">5</span>Phương pháp nghiên cứu, trình bày theo quy tắc 5 bước của Chou</h2>
+  <table>
+    <tr><th style="width:22%">Bước</th><th>Áp dụng vào đề tài</th></tr>
+    <tr><td>1. Bộ dữ liệu chuẩn</td><td>Làm sạch, ẩn danh 5.465 giao dịch; chuẩn hóa nội dung thành nhóm để <strong>loại trùng lặp giữa train/test</strong> (tương tự CD-HIT); gộp bộ nhãn; gán nhãn lại mù 300–500 mẫu, đo <strong>Cohen’s kappa</strong> làm giới hạn trên của con người.</td></tr>
+    <tr><td>2. Biểu diễn mẫu</td><td>TF-IDF (n-gram từ và ký tự), fastText, embedding đa ngôn ngữ (bge-m3, multilingual-e5), embedding PhoBERT; đặc trưng số tiền, thứ trong tuần, ngày trong tháng.</td></tr>
+    <tr><td>3. Thuật toán</td><td>Rule-based (baseline) → Logistic Regression, Linear SVM → embedding + LR → fine-tune PhoBERT → LLM zero/few-shot (model local qua Ollama so với API).</td></tr>
+    <tr><td>4. Kiểm định</td><td>GroupKFold theo nhóm nội dung; <strong>tập kiểm tra độc lập theo thời gian</strong> (2025–2026) làm kết quả chính; 5 seed; kiểm định McNemar; độ đo <strong>Macro-F1, MCC</strong>, F1 từng lớp, độ trễ suy luận; giải thích bằng <strong>SHAP</strong>.</td></tr>
+    <tr><td>5. Web server</td><td>Chính là hệ thống quản lý tài chính hoàn chỉnh được triển khai (mục 6).</td></tr>
+  </table>
+
+  <h2><span class="n">6</span>Hệ thống phần mềm</h2>
+  <div class="arch">
+    <div class="box"><h4>React SPA</h4><ul><li>Dashboard, ngân sách</li><li>Nhập / sửa nhãn</li><li>Dự báo, cảnh báo</li></ul></div>
+    <div class="arrow">→</div>
+    <div class="box"><h4>Spring Boot (Java)</h4><ul><li>Auth (JWT), ví, giao dịch, import CSV</li><li><strong>Module Money/FX</strong>: BigDecimal, tỷ giá lịch sử, quy đổi</li><li>Ngân sách, cảnh báo, job tỷ giá hằng ngày</li></ul></div>
+    <div class="arrow">→</div>
+    <div class="box"><h4>ML service (FastAPI)</h4><ul><li><code>/categorize</code> + độ tin cậy + SHAP</li><li><code>/forecast</code></li><li><code>/retrain</code> từ phản hồi sửa nhãn</li></ul></div>
+  </div>
+  <div class="infra">
+    <div><b>PostgreSQL</b>: dữ liệu tài chính, kiểu NUMERIC chính xác</div>
+    <div><b>Redis</b>: cache tỷ giá, hàng đợi huấn luyện lại</div>
+    <div><b>Quy trình</b>: Scrum 1 tuần, Docker Compose, GitHub Actions CI/CD, JUnit, pytest, Testcontainers, Playwright</div>
+  </div>
+
+  <div class="callout">
+    <strong>Điểm khác biệt của hệ thống: từ “ghi chép” đa tiền tệ đến “phân tích” đa tiền tệ.</strong>
+    Các ứng dụng hiện có (Toshl, PocketSmith, Firefly III, Money Lover) trả lời “tôi có bao nhiêu tiền”. Hệ thống này trả lời thêm:
+    <ul style="margin-top:2px">
+      <li><strong>Mất bao nhiêu vì đổi tiền:</strong> tự tính phí ẩn so với tỷ giá mid-market cho từng lần đổi, thống kê theo kênh đổi.</li>
+      <li><strong>Tài sản thay đổi vì đâu:</strong> tách chính xác biến động tổng tài sản thành phần do dòng tiền và phần do tỷ giá.</li>
+      <li><strong>Tháng sau cần bao nhiêu tiền nào:</strong> dự báo chi tiêu theo từng loại tiền, gợi ý lượng cần đổi theo dự báo phân vị (P80). Không dự đoán tỷ giá.</li>
+    </ul>
+    <span class="note">Đa tiền tệ là điểm cộng của hệ thống, không gánh phần hàm lượng khoa học. Phần tính toán là xác định, được kiểm chứng bằng unit test với kịch bản tính tay.</span>
+  </div>
+
+  <h2><span class="n">7</span>Kế hoạch 14 tuần</h2>
+  <div class="timeline">
+    <div class="phase"><span class="wk">Tuần 1–4</span><b>Dữ liệu và TN1</b>Chốt nhãn, đo kappa, thiết kế CSDL và kiến trúc; chạy các mô hình phân loại, RQ2a/b, <strong>chốt mô hình</strong></div>
+    <div class="phase"><span class="wk">Tuần 5–8</span><b>Hệ thống lõi và TN2</b>Backend, module Money/FX, dịch vụ tỷ giá, frontend, vòng phản hồi; thí nghiệm dự báo; <strong>báo cáo giữa kỳ</strong></div>
+    <div class="phase"><span class="wk">Tuần 9–12</span><b>Hoàn thiện và kiểm thử</b>Dashboard, ngân sách, phân rã tài sản, huấn luyện lại; kiểm thử; deploy VPS; 5–10 người dùng thử (SUS)</div>
+    <div class="phase"><span class="wk">Tuần 13–14</span><b>Luận văn</b>Hoàn thiện báo cáo, biểu đồ, slide, demo; thời gian dự phòng</div>
+  </div>
+  <p class="note">Ngoài phạm vi: app mobile native, kết nối API ngân hàng, dự đoán tỷ giá, tư vấn đầu tư. Nếu kịp: phân loại đa ngôn ngữ, OCR hóa đơn, phát hiện giao dịch bất thường.</p>
+
+  <div class="cols" style="margin-top:2px">
+    <div>
+      <h2><span class="n">8</span>Rủi ro chính và cách giảm</h2>
+      <table>
+        <tr><th>Rủi ro</th><th>Cách giảm</th></tr>
+        <tr><td>Dữ liệu của một người</td><td>Xin dữ liệu 3–5 tình nguyện viên; nêu rõ trong hạn chế</td></tr>
+        <tr><td>Rò rỉ dữ liệu do nội dung lặp lại</td><td>Chia theo nhóm và theo thời gian; báo cáo tách nội dung đã gặp / chưa gặp</td></tr>
+        <tr><td>Nhãn nhiễu, phụ thuộc ngữ cảnh</td><td>Quy tắc gán nhãn, rà 154 nhãn thiểu số, đo kappa</td></tr>
+        <tr><td>Mô hình phức tạp không thắng baseline</td><td>Vẫn là kết quả; phân tích nguyên nhân, so chi phí và độ trễ</td></tr>
+        <tr><td>Phạm vi phình to</td><td>Tách MVP / mở rộng; cắt phần mở rộng trước</td></tr>
+      </table>
+    </div>
+    <div>
+      <h2><span class="n">9</span>Xin ý kiến thầy/cô</h2>
+      <ol class="ask">
+        <li>Hướng đề tài và tỷ lệ nghiên cứu / hệ thống như trên đã phù hợp với yêu cầu “hàm lượng khoa học tương đối” của CT553H chưa? Nếu cần cắt thì nên cắt phần nào?</li>
+        <li>Bộ nhãn: giữ 25 nhãn gốc hay gộp về 10–12 nhóm (hoặc báo cáo cả hai mức)?</li>
+        <li>Dùng cách chia theo thời gian làm kết quả chính, kiểm định chéo ngẫu nhiên làm tham khảo, có hợp lý không?</li>
+        <li>Nhãn phụ thuộc ngữ cảnh (đi cùng bạn bè): chấp nhận như giới hạn của bài toán, hay bổ sung đặc trưng ngữ cảnh?</li>
+        <li>Khung 5 bước của Chou có phù hợp, hay thầy/cô muốn khung trình bày khác?</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
