@@ -1,20 +1,33 @@
 # Brainstorm đề tài luận văn CT553H
 
-> Cập nhật: 24/09/2026 · Trạng thái: **đã chọn hướng đề tài #1, đang hoàn thiện đề cương**
+> Cập nhật: 27/09/2026 · Trạng thái: **đã chọn hướng đề tài #1, đã đổi trọng tâm nghiên cứu (xem 0.1), đang hoàn thiện đề cương, chưa gặp GVHD**
 
 ---
 
 ## 0. Tóm tắt quyết định
 
-- **Đề tài chọn:** Hệ thống quản lý tài chính cá nhân thông minh, **đa tiền tệ**, ứng dụng học máy để phân loại giao dịch và dự báo chi tiêu.
-- **Lý do chính:** có sẵn **hơn 5.000 giao dịch thật từ 2022 đến nay**, khả thi trong 3.5 tháng, dễ ghi điểm khi bảo vệ, hợp sở thích (tài chính cá nhân, khởi nghiệp, tự động hóa).
-- **Trọng tâm: học máy.** Đa tiền tệ là **điểm cộng của hệ thống**, không gánh phần hàm lượng khoa học.
-- **Đóng góp chính (hàm lượng khoa học):** so sánh phương pháp phân loại giao dịch tiếng Việt **trên người bán chưa gặp** (có loại trùng lặp để tránh rò rỉ dữ liệu), đo mức nhất quán của chính nhãn người dùng, đo ảnh hưởng của dữ liệu thay đổi theo thời gian, khảo sát bài toán người dùng mới (cold-start), so sánh mô hình dự báo chi tiêu (kèm phân tích phụ về ảnh hưởng của biến động tỷ giá).
-- **Hội đồng thiên về kỹ thuật phần mềm:** ML là trọng tâm khoa học, nhưng phần hệ thống và quy trình (kiến trúc, kiểm thử, CI/CD, tích hợp mô hình vào hệ thống) phải chắc chắn, vì đó là phần hội đồng chấm kỹ nhất.
-- **Điểm khác biệt của hệ thống:** không phải "hỗ trợ đa tiền tệ", vì nhiều ứng dụng đã có (xem mục 5.7). Điểm khác biệt là **phân tích chi phí và rủi ro đa tiền tệ**:
-  1. tự phát hiện **phí đổi tiền ẩn** (định nghĩa theo tỷ giá mid-market, xem 5.3-5),
-  2. **tách biến động tài sản** thành phần do chi tiêu và phần do tỷ giá,
-  3. **dự báo nhu cầu theo từng loại tiền** và gợi ý lượng cần đổi theo dự báo phân vị (xem 5.3-11).
+- **Đề tài chọn:** Hệ thống quản lý chi tiêu cá nhân, trong đó **mỗi người dùng tự đặt danh mục chi tiêu của mình**. Bộ phân loại giao dịch **dùng được ngay từ ngày đầu** (nhờ LLM zero-shot và dữ liệu tổng hợp sinh riêng cho danh mục của từng người), rồi **tự thích nghi theo phản hồi sửa nhãn**. Có thêm dự báo chi tiêu.
+- **Vai trò của bộ dữ liệu cá nhân (5.465 giao dịch thật, 25 nhãn tự đặt):** không dùng để huấn luyện mô hình ban đầu, mà dùng để **đánh giá hệ thống**. Bộ dữ liệu được **phát lại theo thời gian** như thể một người dùng mới dùng hệ thống từ 09/2022 với 25 danh mục tự tạo: hệ thống đoán nhãn trước, sau đó "người dùng" sửa theo nhãn thật, rồi hệ thống học tiếp (đánh giá kiểu *prequential*, kiểm tra trước, học sau).
+- **Trọng tâm khoa học:**
+  1. Khi người dùng vừa tạo danh mục riêng mà chưa có giao dịch nào, bộ phân loại đạt đến đâu (RQ1).
+  2. Chiến lược thích nghi nào giảm số lần người dùng phải sửa nhãn nhanh nhất, kể cả khi dữ liệu thay đổi theo thời gian và có danh mục mới xuất hiện (RQ2).
+  3. Dự báo chi tiêu (RQ3, phụ).
+  4. Kiểm tra lại trên dữ liệu tình nguyện viên (RQ4, có điều kiện).
+- **Kịch bản phụ:** 25 nhãn được gộp về 10–12 danh mục chuẩn, để so sánh ảnh hưởng của độ chi tiết danh mục.
+- **Hội đồng thiên về kỹ thuật phần mềm** (rubric CT553H: 40% phát triển ứng dụng, 40% viết khoa học, 20% trình bày và thái độ): phần hệ thống và quy trình phải chắc chắn. Hướng mới giúp chuyện này tự nhiên hơn, vì **vòng phản hồi, pipeline sinh dữ liệu theo người dùng và pipeline thích nghi chính là đối tượng nghiên cứu**. Công cụ phát lại dữ liệu chạy qua API thật của hệ thống.
+- **Đa tiền tệ:** hạ xuống **tính năng phụ của hệ thống**, bỏ khỏi tên đề tài, không còn RQ nào. MVP chỉ giữ mô hình dữ liệu đúng (ví theo loại tiền, tỷ giá lịch sử, đổi tiền) và tính phí đổi tiền ẩn. Người dùng nhiều loại tiền vẫn là **nhóm đối tượng phụ** (mục 4.2).
+
+### 0.1 Thay đổi ngày 27/09/2026 và lý do
+
+| Trước | Sau | Lý do |
+|---|---|---|
+| Huấn luyện và đánh giá trên cùng dữ liệu cá nhân (kiểm định chéo, chia theo thời gian) | Dữ liệu cá nhân chỉ để **đánh giá**, phát lại theo thời gian. Mô hình ban đầu là LLM zero-shot và mô hình học trên **dữ liệu tổng hợp** | Hệ thống nhiều người dùng phục vụ chủ yếu **người dùng mới chưa có dữ liệu**. Nghiên cứu trên một người có sẵn 4 năm dữ liệu thì không trả lời được bài toán đó |
+| Gộp nhãn về 10–12 nhóm chuẩn làm bài toán chính | **Danh mục do người dùng tự tạo** (25 nhãn gốc) là kịch bản chính; danh mục chuẩn là kịch bản phụ | Người dùng thật muốn danh mục của riêng mình. Nhãn của dữ liệu vốn là danh mục cá nhân (AC, RL, Mental…). Đây là chỗ mô hình chung không đủ và lớp cá nhân phải chứng minh giá trị |
+| Dữ liệu tổng hợp: không có | Dữ liệu tổng hợp **sinh theo danh mục của từng người dùng** (từ tên và mô tả danh mục) để huấn luyện mô hình riêng cho người đó | Là cách duy nhất để có dữ liệu huấn luyện cho danh mục tự tạo khi người dùng chưa có giao dịch nào |
+| RQ1 nhấn mạnh "người bán chưa gặp", GroupKFold theo người bán | Bỏ khái niệm người bán | Dữ liệu là **ghi chú tự viết** (trung vị 2 từ), không phải sao kê ngân hàng ([bao-cao-du-lieu.md](../03-du-lieu/bao-cao-du-lieu.md), mục 7) |
+| RQ2b "người dùng mới" phụ thuộc hoàn toàn vào tình nguyện viên | Bài toán người dùng mới được nghiên cứu ngay trên dữ liệu cá nhân (phát lại từ con số 0). Tình nguyện viên chỉ cần **100–200 ghi chú** gán theo danh mục của chính họ (RQ4) | Dữ liệu để đánh giá cần ít hơn nhiều so với dữ liệu để huấn luyện, và tình nguyện viên không phải học bộ danh mục của người khác |
+| Đa tiền tệ nằm trong tên đề tài, có RQ3b, có case study giao dịch ngoại tệ thật | Tính năng phụ, bỏ RQ3b, **bỏ case study ngoại tệ** | Không có dữ liệu ngoại tệ thật. RQ3b gượng ép, kết quả gần như biết trước. Phạm vi quá lớn cho 14 tuần |
+| Dự báo chi tiêu: RQ3a + RQ3b | RQ3 (phụ), chỉ dự báo, không có tỷ giá | Giữ theo quyết định của người làm đề tài; bỏ phần tỷ giá |
 
 ---
 
@@ -23,15 +36,15 @@
 | Mục | Nội dung |
 |---|---|
 | Ngành | Kỹ thuật phần mềm |
-| Yêu cầu học phần | Hệ thống phần mềm có hàm lượng khoa học tương đối |
+| Yêu cầu học phần | Hệ thống phần mềm có hàm lượng khoa học tương đối. Rubric: A. Phát triển ứng dụng 40% · B. Kiến thức, viết khoa học 40% · C. Thái độ, trình bày 20% ([CT553H.pdf](../CT553H.pdf)) |
 | Thời gian | 3.5 tháng (~14 tuần), làm một mình |
 | Kỹ năng | Java, C, C++, React, Redis, MongoDB, PostgreSQL, Web, AI/ML |
 | Sở thích | Thương mại điện tử, khởi nghiệp, hệ thống hoàn chỉnh, quy trình phát triển phần mềm, phần mềm quản lý thông minh, tự động hóa đời sống, tài chính cá nhân, chứng khoán |
 | Định hướng | Xây dựng hệ thống kèm hàm lượng nghiên cứu |
 | GVHD | Chuyên ngành tin sinh học, chấp nhận đề tài lĩnh vực khác |
 | Hội đồng | Thường thiên về kỹ thuật phần mềm |
-| Tài nguyên tính toán | Không có lab. Dùng máy cá nhân + Google Colab / Kaggle |
-| Dữ liệu tình nguyện viên | Không cần mẫu cam kết (vẫn ẩn danh hóa trước khi xử lý) |
+| Tài nguyên tính toán | Không có lab. Dùng máy cá nhân + Google Colab / Kaggle. API LLM thương mại để sinh dữ liệu tổng hợp |
+| Dữ liệu tình nguyện viên | Không cần mẫu cam kết (vẫn ẩn danh hóa trước khi xử lý). Khả năng xin được: **chưa chắc** |
 
 ---
 
@@ -39,7 +52,7 @@
 
 | # | Đề tài | Phần nghiên cứu | Ghi chú |
 |---|---|---|---|
-| 1 | **Tài chính cá nhân: phân loại giao dịch + dự báo chi tiêu** | So sánh TF-IDF, PhoBERT, LLM; dự báo chuỗi thời gian | **Đã chọn** |
+| 1 | **Tài chính cá nhân: phân loại giao dịch + dự báo chi tiêu** | Phân loại theo danh mục tự tạo bằng LLM và dữ liệu tổng hợp + thích nghi theo phản hồi; dự báo chuỗi thời gian | **Đã chọn** |
 | 2 | Trợ lý mua sắm RAG cho sàn thương mại điện tử | So sánh chiến lược truy xuất (BM25, dense, hybrid, rerank) | Dự phòng |
 | 3 | Gợi ý sản phẩm theo phiên | Item-KNN, GRU4Rec, SASRec trên RetailRocket/Olist | Khá phổ biến |
 | 4 | OCR hóa đơn, quản lý chi phí cửa hàng nhỏ | OCR + trích xuất thông tin trên MC-OCR 2021 | Có thể làm module mở rộng cho #1 |
@@ -53,9 +66,9 @@
 | Tiêu chí | #1 Tài chính cá nhân | #6 Chứng khoán | #7 AI quản lý dự án |
 |---|---|---|---|
 | Tính mới | ★★★★ | ★★ | ★★★ |
-| Khả thi 3.5 tháng | ★★★★★ | ★★★ | ★★★ |
+| Khả thi 3.5 tháng | ★★★★ | ★★★ | ★★★ |
 | Dữ liệu | ★★★★★ (có sẵn dữ liệu thật) | ★★★★ | ★★★★ |
-| Rủi ro chính | Dữ liệu một người | Kết quả dễ bị bác bỏ, backtest dễ sai | Mô hình khó thắng baseline |
+| Rủi ro chính | Dữ liệu đánh giá chủ yếu của một người | Kết quả dễ bị bác bỏ, backtest dễ sai | Mô hình khó thắng baseline |
 | Khả năng ghi điểm | ★★★★★ | ★★★ | ★★★★ |
 
 **Lấy điểm mạnh của #7:** báo cáo thể hiện rõ quy trình phát triển phần mềm (Scrum, CI/CD, kiểm thử tự động).
@@ -64,244 +77,206 @@
 
 ## 3. Liên hệ với chuyên môn của GVHD
 
-Theo danh sách công bố trong [cong-bo-gvhd.md](../02-khao-sat/cong-bo-gvhd.md), GVHD mạnh về **BERT/transformer, CNN, word embedding, SHAP, RAG**, và thường trình bày nghiên cứu theo **quy tắc 5 bước của Chou**. Có thể trình bày phần nghiên cứu theo đúng khung này để GVHD dễ hướng dẫn:
+Theo danh sách công bố trong [cong-bo-gvhd.md](../02-khao-sat/cong-bo-gvhd.md), GVHD mạnh về **BERT/transformer, CNN, word embedding, SHAP, RAG**, và thường trình bày nghiên cứu theo **quy tắc 5 bước của Chou**. Đề tài chạm tới các mảng này ở: embedding (bộ nhớ kNN, embedding zero-shot), **RAG** (LLM few-shot lấy ví dụ từ lịch sử sửa nhãn của người dùng), PhoBERT (kịch bản phụ danh mục chuẩn).
+
+Khung 5 bước chỉ là **cách trình bày gợi ý** để GVHD dễ hướng dẫn. Hội đồng thiên kỹ thuật phần mềm không đòi hỏi khung này, nên hỏi GVHD trước khi dùng.
 
 | Bước (Chou's 5-step rule) | Áp dụng vào đề tài |
 |---|---|
-| 1. Xây dựng bộ dữ liệu chuẩn (benchmark) | Làm sạch, ẩn danh hóa hơn 5.000 giao dịch. **Loại trùng lặp giữa train/test theo nhóm người bán** (tương tự dùng CD-HIT loại chuỗi quá giống nhau). **Gán nhãn lại mù một mẫu, đo Cohen's kappa** |
-| 2. Biểu diễn mẫu | TF-IDF (từ và n-gram ký tự), word embedding (fastText), embedding đa ngôn ngữ (bge-m3, multilingual-e5), embedding PhoBERT, đặc trưng số tiền/thời gian/tiền tệ |
-| 3. Thuật toán | Logistic Regression, SVM, fine-tune PhoBERT, (tùy chọn) PhoBERT + CNN head, LLM few-shot |
-| 4. Kiểm định chéo | GroupKFold theo người bán; **tập kiểm tra độc lập** = dữ liệu 2025–2026 (chia theo thời gian); nhiều seed; learning curve |
-| 5. Web server | Chính là hệ thống quản lý tài chính hoàn chỉnh đã triển khai |
+| 1. Xây dựng bộ dữ liệu chuẩn | (a) **Luồng đánh giá**: 5.028 khoản chi thật đã làm sạch, ẩn danh, sắp theo thời gian, nhãn là 25 danh mục tự đặt. (b) **Tập dev**: mẫu ngẫu nhiên ~10%, chỉ dùng để tinh chỉnh, không tính điểm. (c) **Tên và mô tả** của 25 danh mục, viết một lần trước thí nghiệm. (d) **Dữ liệu tổng hợp** sinh từ tên và mô tả danh mục. (e) Gán nhãn lại mù một mẫu, đo Cohen's kappa |
+| 2. Biểu diễn mẫu | TF-IDF (n-gram từ và ký tự), embedding đa ngôn ngữ (bge-m3, multilingual-e5), PhoBERT (kịch bản phụ) |
+| 3. Thuật toán | Mô hình ban đầu: LLM zero-shot, embedding zero-shot, mô hình nhẹ học trên dữ liệu tổng hợp của từng người. Chiến lược thích nghi: bộ nhớ tra cứu, kNN trực tuyến, huấn luyện lại định kỳ, LLM few-shot truy xuất (RAG) |
+| 4. Kiểm định | **Phát lại theo thời gian** (prequential), không tính điểm trên tập dev. Kiểm tra độc lập trên dữ liệu tình nguyện viên (nếu có). McNemar, bootstrap, nhiều seed |
+| 5. Web server | Chính là hệ thống hoàn chỉnh đã triển khai. Công cụ phát lại chạy qua API thật của hệ thống |
 
-Thêm **SHAP** để giải thích vì sao mô hình phân loại một giao dịch vào một danh mục. Tính năng này vừa hữu ích cho người dùng, vừa quen thuộc với GVHD. Báo cáo thêm **MCC**, độ đo GVHD hay dùng trong các bài báo.
+Giải thích dự đoán: với bộ nhớ kNN, lời giải thích có sẵn và dễ hiểu (*"giống giao dịch 'cf với [P03]' bạn đã xếp vào RL"*). SHAP chỉ là tùy chọn. Báo cáo thêm **MCC**, độ đo GVHD hay dùng.
 
 ---
 
 ## 4. Đề cương chi tiết
 
-### 4.1 Tên đề tài
+### 4.1 Tên đề tài (đề xuất, cần chốt với GVHD)
 
-**Tiếng Việt:** Xây dựng hệ thống quản lý tài chính cá nhân đa tiền tệ ứng dụng học máy trong phân loại giao dịch và dự báo chi tiêu
+**Phương án chính**
+- **Tiếng Việt:** Xây dựng hệ thống quản lý chi tiêu cá nhân với bộ phân loại giao dịch tự thích nghi theo phản hồi người dùng và dự báo chi tiêu
+- **Tiếng Anh:** Building a Personal Expense Management System with a Feedback-Adaptive Transaction Classifier and Spending Forecasting
 
-**Tiếng Anh:** Building a Multi-Currency Personal Finance Management System Using Machine Learning for Transaction Categorization and Spending Forecasting
+**Phương án khác**
+- Nhấn vào danh mục tự tạo: *Xây dựng hệ thống quản lý chi tiêu cá nhân với phân loại giao dịch theo danh mục do người dùng định nghĩa, ứng dụng LLM và dữ liệu tổng hợp*.
+- Ngắn gọn: *Hệ thống quản lý chi tiêu cá nhân thông minh: phân loại giao dịch thích nghi và dự báo chi tiêu*.
 
 ### 4.2 Lý do chọn đề tài và đối tượng người dùng
 
-- Ghi chép chi tiêu thủ công tốn thời gian, người dùng hay bỏ cuộc.
-- Các ứng dụng phổ biến phân loại dựa trên quy tắc, chưa hiểu tốt nội dung giao dịch tiếng Việt.
-- Ngày càng nhiều người Việt có **thu nhập và chi tiêu bằng nhiều loại tiền**:
-  - du học sinh (nhận tiền nhà bằng VND, làm thêm, trả học phí bằng ngoại tệ),
-  - người lao động ở nước ngoài gửi tiền về,
-  - freelancer/remote nhận lương USD, EUR,
-  - người thường xuyên đi lại giữa hai nước (digital nomad, công tác).
-- Nhóm này thường gặp các vấn đề: không biết tổng tài sản thật, không biết tiêu bao nhiêu ở mỗi nước, **mất tiền vì phí đổi tiền "ẩn"**, không phân biệt được tài sản giảm vì tiêu hay vì tỷ giá.
+- Ghi chép chi tiêu thủ công tốn thời gian, người dùng hay bỏ cuộc. Mỗi lần ghi phải gõ nội dung **và** chọn danh mục.
+- Ghi chú tiếng Việt do người dùng tự gõ rất ngắn, viết tắt, không dấu, sai chính tả ("cf", "cơm sờn", "xang").
+- **Mỗi người có bộ danh mục riêng.** Các app ghi chép phổ biến đều cho người dùng tự tạo danh mục, và người dùng có thói quen riêng: cùng "cafe" có người xếp vào Ăn uống, có người xếp vào Gặp bạn bè. Một mô hình học trên bộ danh mục cố định thì không dùng được cho danh mục tự tạo.
+- **Bài toán người dùng mới:** mô hình học máy thông thường cần hàng trăm giao dịch đã gán nhãn của chính người đó mới dùng được. Đúng lúc người dùng dễ bỏ cuộc nhất (những tuần đầu), hệ thống lại chưa giúp được gì.
+- **Đối tượng chính:** người Việt tự ghi chép chi tiêu hằng ngày (sinh viên, người đi làm).
+- **Đối tượng phụ:** người có thu nhập và chi tiêu bằng nhiều loại tiền (du học sinh, người làm việc ở nước ngoài, freelancer nhận ngoại tệ), được phục vụ bằng tính năng đa tiền tệ (mục 5).
 
 ### 4.3 Mục tiêu
 
-**Tổng quát:** xây dựng hệ thống web hoàn chỉnh quản lý tài chính cá nhân đa tiền tệ, tự động hóa khâu phân loại giao dịch và hỗ trợ ra quyết định bằng dự báo.
+**Tổng quát:** xây dựng hệ thống web hoàn chỉnh quản lý chi tiêu cá nhân, trong đó bộ phân loại giao dịch làm việc với danh mục do người dùng tự đặt, dùng được ngay từ ngày đầu và ngày càng chính xác hơn nhờ phản hồi của từng người.
 
 **Cụ thể:**
-1. So sánh các phương pháp phân loại giao dịch tiếng Việt, từ cổ điển đến transformer và LLM, có kiểm soát rò rỉ dữ liệu và so với mức nhất quán của chính người gán nhãn.
-2. Đánh giá các chiến lược huấn luyện lại khi dữ liệu thay đổi theo thời gian, và khảo sát số mẫu gán nhãn tối thiểu cho người dùng mới (trên dữ liệu của tình nguyện viên).
-3. So sánh các mô hình dự báo chi tiêu, đánh giá ảnh hưởng của biến động tỷ giá lên dự báo.
-4. Thiết kế mô hình dữ liệu và nghiệp vụ **đa tiền tệ đúng chuẩn**, dựa trên nguyên tắc của chuẩn mực kế toán VAS 10 / IAS 21.
-5. Xây dựng, kiểm thử, triển khai hệ thống theo quy trình Scrum và CI/CD.
+1. Xây dựng và đánh giá bộ phân loại ban đầu cho danh mục tự tạo, không cần giao dịch nào của người dùng: LLM zero-shot và mô hình học trên dữ liệu tổng hợp sinh từ tên và mô tả danh mục.
+2. Thiết kế và so sánh các chiến lược thích nghi theo phản hồi sửa nhãn, đánh giá bằng cách phát lại 4 năm dữ liệu thật theo thời gian.
+3. So sánh các mô hình dự báo chi tiêu tuần với baseline đơn giản.
+4. Xây dựng, kiểm thử, triển khai hệ thống theo quy trình Scrum và CI/CD. Tích hợp mô hình vào hệ thống có quản lý phiên bản và giám sát tỷ lệ sửa nhãn.
+5. (Phụ) Mô hình dữ liệu đa tiền tệ đúng chuẩn, theo tinh thần VAS 10 / IAS 21.
 
 ### 4.4 Câu hỏi nghiên cứu
 
 | RQ | Câu hỏi | Bắt buộc? |
 |---|---|---|
-| RQ1 | Phương pháp nào phân loại giao dịch tiếng Việt tốt nhất khi cân bằng độ chính xác, tốc độ và chi phí, **đặc biệt với người bán chưa từng gặp**? So với mức nhất quán của chính người gán nhãn thì mô hình đạt đến đâu? | Có |
-| RQ2a | Dữ liệu thay đổi theo thời gian làm độ chính xác giảm bao nhiêu, do thói quen chi tiêu hay do cách gán nhãn thay đổi? Chiến lược huấn luyện lại nào hiệu quả nhất? | Có |
-| RQ2b | Người dùng mới cần gán nhãn bao nhiêu giao dịch để mô hình dùng được? (Cần dữ liệu tình nguyện viên. Nếu không có thì lùi về "learning curve trên dữ liệu cá nhân", xem mục 6) | Có |
-| RQ3a | Mô hình nào dự báo chi tiêu tốt nhất? | Có |
-| RQ3b | Với người dùng có tiền tệ báo cáo khác tiền tệ chi tiêu, nên dự báo theo tiền gốc rồi quy đổi, hay dự báo trực tiếp trên chuỗi đã quy đổi? Mức ảnh hưởng thay đổi thế nào theo độ biến động của tỷ giá? | Có (phân tích phụ) |
-| RQ4 | Mô hình đa ngôn ngữ có phân loại tốt giao dịch có nội dung tiếng nước ngoài không? | Chỉ khi có dữ liệu (xem 5.6) |
+| RQ1 | Khi người dùng **vừa tạo danh mục riêng** mà chưa có giao dịch nào, bộ phân loại ban đầu đạt đến đâu trên ghi chú chi tiêu thật? So sánh LLM zero-shot (local và API), embedding zero-shot, và mô hình nhẹ học trên **dữ liệu tổng hợp sinh riêng cho danh mục của người dùng**. Mô tả danh mục giúp được bao nhiêu so với chỉ có tên? Cần bao nhiêu ví dụ tổng hợp mỗi danh mục? | Có |
+| RQ2 | Khi hệ thống học từ phản hồi sửa nhãn, **chiến lược thích nghi nào giảm số lần người dùng phải sửa nhanh nhất** với chi phí (độ trễ, tài nguyên) chấp nhận được? Sau bao nhiêu giao dịch thì vượt mô hình ban đầu? Khi dữ liệu thay đổi theo thời gian (**danh mục mới được tạo**, thói quen đổi), chiến lược nào chịu được tốt nhất? | Có |
+| RQ3 | Mô hình dự báo chi tiêu tuần nào vượt được baseline "trung bình lịch sử", và chênh lệch có ý nghĩa thống kê không? | Có (phụ) |
+| RQ4 | Kết luận của RQ1–RQ2 có lặp lại trên dữ liệu và danh mục của người dùng khác không? | Có điều kiện: cần tối thiểu 3 tình nguyện viên (mục 6, TN4) |
+
+Kịch bản phụ **danh mục chuẩn** (25 nhãn gộp về 10–12 nhóm) được chạy trong TN1 và TN2 để so sánh, không phải RQ riêng.
 
 ### 4.5 Phạm vi
 
 | MVP (bắt buộc) | Mở rộng (nếu kịp) | Ngoài phạm vi |
 |---|---|---|
-| Web responsive, nhiều người dùng | Kế hoạch đổi tiền, cảnh báo thiếu hụt ngoại tệ | App mobile native |
-| Ví theo từng loại tiền, tiền tệ báo cáo | Lãi/lỗ tỷ giá đã thực hiện | Kết nối API ngân hàng |
-| Tỷ giá lịch sử tự động cập nhật | So sánh chi tiêu giữa các nước theo PPP | **Dự đoán tỷ giá**, tư vấn đầu tư |
-| Đổi tiền/chuyển khoản giữa ví, ghi nhận phí đổi tiền | Phân loại đa ngôn ngữ (RQ4) | Thuế thu nhập nhiều quốc gia |
-| Phân loại tự động + vòng lặp phản hồi | Phát hiện giao dịch bất thường | Thanh toán, chuyển tiền thật |
-| Ngân sách, cảnh báo, dashboard, dự báo | OCR hóa đơn (đề tài #4) | |
-| Phân rã biến động tài sản (do tiêu hay do tỷ giá) | | |
+| Web responsive, nhiều người dùng | Phân rã biến động tài sản do chi tiêu / do tỷ giá (5.3-7) | App mobile native |
+| CRUD giao dịch, import CSV | Ngân sách theo quốc gia (5.3-8) | Kết nối API ngân hàng |
+| **Danh mục tự tạo** (tên + mô tả tùy chọn); bộ danh mục mặc định cho người không muốn tự tạo | Gợi ý lượng ngoại tệ cần đổi (5.3-11) | **Dự đoán tỷ giá**, tư vấn đầu tư |
+| **Sinh dữ liệu tổng hợp theo danh mục** khi người dùng tạo danh mục, huấn luyện mô hình riêng chạy nền | So sánh chi tiêu theo PPP | Thuế thu nhập nhiều quốc gia |
+| **Gợi ý danh mục khi nhập** + **vòng phản hồi** cập nhật lớp cá nhân | Phát hiện giao dịch bất thường, OCR hóa đơn | Thanh toán, chuyển tiền thật |
+| Quản lý phiên bản mô hình, giám sát tỷ lệ sửa nhãn | | Phân loại giao dịch tiếng nước ngoài |
+| Ngân sách, cảnh báo, dashboard, dự báo | | |
+| Ví theo từng loại tiền, tỷ giá lịch sử, đổi tiền, **phí đổi tiền ẩn** (phụ) | | |
 
 ### 4.6 Chức năng chính
 
 **Người dùng:**
-- Đăng ký, đăng nhập (JWT), chọn **tiền tệ báo cáo** và múi giờ mặc định.
-- Quản lý ví: mỗi ví có một loại tiền (ví tiền mặt VND, tài khoản ngân hàng JPY, thẻ Visa VND, ví Wise USD…).
-- CRUD giao dịch, import CSV/Excel, dán nội dung thông báo ngân hàng.
-- **Tự động phân loại** kèm độ tin cậy và giải thích (SHAP). Người dùng sửa nhãn thì hệ thống ghi nhận để huấn luyện lại.
-- **Đổi tiền / chuyển giữa ví**: nhập số tiền hai bên, hệ thống tự tính tỷ giá thực tế và phí so với tỷ giá thị trường.
-- Ngân sách theo danh mục, theo tiền tệ hoặc theo quốc gia; cảnh báo khi sắp vượt.
-- Dashboard: tổng tài sản quy đổi, cơ cấu theo tiền tệ, chi tiêu theo quốc gia, **phân rã biến động tài sản**.
-- Dự báo chi tiêu tuần/tháng tới.
+- Đăng ký, đăng nhập (JWT), chọn tiền tệ báo cáo và múi giờ.
+- **Quản lý danh mục:** dùng bộ mặc định hoặc tự tạo (tên, mô tả ngắn tùy chọn). Khi tạo, sửa hoặc xóa danh mục, hệ thống sinh lại dữ liệu tổng hợp và huấn luyện lại mô hình riêng ở chế độ nền.
+- Quản lý ví (mỗi ví một loại tiền).
+- CRUD giao dịch, import CSV/Excel.
+- **Gợi ý danh mục khi gõ ghi chú**, kèm độ tin cậy và lời giải thích ("giống giao dịch X bạn đã xếp vào Y"). Khi người dùng sửa, lớp cá nhân được cập nhật ngay.
+- Import hàng loạt: phân loại tự động cả file, người dùng duyệt các dòng có độ tin cậy thấp.
+- Đổi tiền giữa ví: nhập số tiền hai bên, hệ thống tính phí ẩn so với tỷ giá thị trường.
+- Ngân sách theo danh mục, cảnh báo khi sắp vượt.
+- Dashboard chi tiêu, dự báo chi tiêu tuần tới.
 - Xuất báo cáo PDF/Excel.
 
-**Quản trị viên:** quản lý danh mục chuẩn, danh sách tiền tệ, nguồn tỷ giá; theo dõi chỉ số mô hình; kích hoạt huấn luyện lại.
+**Quản trị viên:** quản lý bộ danh mục mặc định, cấu hình bộ sinh dữ liệu (model, prompt, số ví dụ mỗi danh mục), quản lý phiên bản mô hình, theo dõi **tỷ lệ sửa nhãn theo tuần** trên toàn hệ thống (cùng độ đo với thí nghiệm offline), theo dõi chi phí gọi API.
 
 ### 4.7 Kiến trúc
 
 ```
-┌─────────────┐      ┌──────────────────────────┐      ┌─────────────────────┐
-│  React SPA  │─────▶│   Spring Boot (Java)     │─────▶│  ML Service         │
-│  (Vite, TS) │ REST │  - Auth, Wallet, Txn     │ REST │  (Python FastAPI)   │
-└─────────────┘      │  - Money/FX module       │      │  - /categorize      │
-                     │  - Budget, Alert         │      │  - /forecast        │
-                     │  - Scheduler (tỷ giá)    │      │  - /retrain         │
-                     └───┬──────────┬─────┬─────┘      └─────────┬───────────┘
-                         │          │     │                      │
-                  ┌──────▼───┐ ┌────▼───┐ │ fetch hằng ngày ┌────▼───────────┐
-                  │PostgreSQL│ │ Redis  │ └───────────────▶ │ Nguồn tỷ giá   │
-                  │          │ │ cache, │                   │ (API ngoài)    │
-                  └──────────┘ │ queue  │                   └────────────────┘
-                               └────────┘
+┌─────────────┐      ┌──────────────────────────┐      ┌───────────────────────────────────┐
+│  React SPA  │─────▶│   Spring Boot (Java)     │─────▶│  ML Service (FastAPI)             │
+│  (Vite, TS) │ REST │  - Auth, Wallet, Txn     │ REST │  - /categories: sinh dữ liệu tổng │
+└─────────────┘      │  - Category (tự tạo)     │      │    hợp + huấn luyện mô hình riêng │
+                     │  - Budget, Alert         │      │  - /categorize: mô hình ban đầu   │
+                     │  - Money/FX (phụ)        │      │    + lớp cá nhân theo user        │
+                     │  - Scheduler (tỷ giá)    │      │  - /feedback: cập nhật ngay       │
+                     └───┬──────────┬───────────┘      │  - /retrain (định kỳ), /forecast  │
+                         │          │                  └──────┬─────────────────┬──────────┘
+                  ┌──────▼───────┐ ┌▼──────────┐              │                 │
+                  │ PostgreSQL   │ │ Redis     │◀─────────────┘          ┌──────▼────────┐
+                  │ + pgvector   │ │ cache,    │  hàng đợi sinh dữ liệu  │ LLM API       │
+                  │ (bộ nhớ kNN  │ │ hàng đợi  │  và huấn luyện nền      │ (chỉ nhận tên │
+                  │  theo user)  │ └───────────┘                         │ + mô tả danh  │
+                  └──────────────┘                                       │ mục)          │
+        Công cụ phát lại (replay): đọc CSV → gọi API thật → ghi kết quả  └───────────────┘
         Docker Compose · GitHub Actions CI/CD · Triển khai VPS
 ```
 
-- **PostgreSQL:** dữ liệu tài chính cần tính toàn vẹn (ACID), kiểu `NUMERIC` chính xác.
-- **Redis:** cache tỷ giá của ngày và dashboard, hàng đợi tác vụ huấn luyện lại.
-- **Module Money/FX** tách riêng trong backend, có unit test kỹ vì đây là nơi dễ sai nhất.
-- Không dùng MongoDB, vì không có lý do rõ ràng để dùng.
+- **PostgreSQL:** dữ liệu tài chính cần tính toàn vẹn (ACID), kiểu `NUMERIC` chính xác. **pgvector** lưu embedding của các giao dịch đã sửa nhãn theo từng người dùng, dùng cho kNN, nên không cần thêm vector DB riêng. *(Cần kiểm tra lại khi thiết kế.)*
+- **Redis:** cache tỷ giá và dashboard; **hàng đợi** cho tác vụ sinh dữ liệu tổng hợp và huấn luyện lại (chạy nền, vì gọi LLM mất vài giây đến vài chục giây).
+- **Sinh dữ liệu theo người dùng:** khi người dùng tạo danh mục, ML service gửi **tên và mô tả của toàn bộ danh mục** của người đó cho LLM (để ví dụ sinh ra phân biệt được các danh mục gần nhau như AC và AV), nhận về ví dụ tổng hợp, lưu lại, rồi huấn luyện mô hình nhẹ riêng cho người đó. **Không gửi ghi chú giao dịch** đi. Trong lúc chờ, hệ thống dùng LLM zero-shot hoặc embedding zero-shot.
+- **LLM dùng để phân loại trong hệ thống** (local hay API, hay chỉ dùng mô hình học trên dữ liệu tổng hợp): **chưa quyết định, chờ kết quả RQ1** (độ chính xác, độ trễ, chi phí, quyền riêng tư). Ghi chú chi tiêu là dữ liệu nhạy cảm, nên đây là tiêu chí phải cân nhắc khi chọn.
+- **ML service** chỉ nạp mô hình và mã đã xuất ra từ `ml/`. Lớp cá nhân (dữ liệu tổng hợp, mô hình riêng, bộ nhớ, kNN) được tạo trong lúc chạy và có số phiên bản.
+- **Công cụ phát lại** vừa là công cụ thí nghiệm vừa là **kiểm thử tích hợp**: chạy luồng dữ liệu thật qua API của hệ thống đã triển khai, kể cả sự kiện "người dùng tạo danh mục mới". Số liệu cuối cùng trong luận văn là số của **chính hệ thống**, không chỉ của notebook.
 
 ---
 
-## 5. Bài toán đa tiền tệ
+## 5. Bài toán đa tiền tệ (tính năng phụ)
 
-### 5.1 Tình huống minh họa (persona)
+> **Trạng thái từ 27/09/2026:** không còn gánh phần khoa học, không có dữ liệu thật, không có RQ. Chỉ giữ trong MVP: **(1)–(4)** mô hình dữ liệu và **(5)** phí ẩn. Các mục khác chuyển sang "nếu kịp". Toàn bộ phần này là tính toán xác định, được kiểm chứng bằng **unit test với kịch bản tính tay**. Khảo sát chi tiết: [khao-sat-xu-ly-da-tien-te.md](../02-khao-sat/khao-sat-xu-ly-da-tien-te.md). Giữ nguyên số mục để các liên kết từ tài liệu khảo sát không bị lệch.
 
-> **Minh, du học sinh ở Nhật.**
-> - Mỗi tháng gia đình chuyển 15 triệu VND vào tài khoản Vietcombank.
-> - Làm thêm ở Nhật, nhận lương bằng JPY vào tài khoản ngân hàng Nhật.
-> - Học phí, tiền nhà trả bằng JPY. Thỉnh thoảng quẹt thẻ Visa VND ở Nhật.
-> - Mỗi hè về Việt Nam 2 tháng, tiêu bằng VND.
-> - Đổi tiền qua ngân hàng hoặc dịch vụ chuyển tiền.
+### 5.1 Tình huống minh họa (persona của nhóm đối tượng phụ)
+
+> **Minh, du học sinh ở Nhật.** Gia đình chuyển VND hằng tháng, làm thêm nhận JPY, học phí và tiền nhà trả bằng JPY, thỉnh thoảng quẹt thẻ Visa VND ở Nhật, đổi tiền qua ngân hàng hoặc dịch vụ chuyển tiền.
 >
-> **Minh muốn biết:** tổng tài sản hiện tại? Mỗi tháng tiêu bao nhiêu ở Nhật, bao nhiêu ở Việt Nam? Mất bao nhiêu tiền cho phí đổi tiền? Tháng sau cần bao nhiêu JPY, có cần đổi thêm không?
+> **Minh muốn biết:** tổng tài sản hiện tại? Mất bao nhiêu tiền cho phí đổi tiền?
 
 ### 5.2 Các vấn đề cần giải quyết
 
-| # | Vấn đề | Nếu làm sai |
-|---|---|---|
-| 1 | Lưu số tiền của nhiều loại tiền | Sai số làm tròn (dùng `float`), sai số chữ số thập phân (JPY 0, USD 2, KWD 3) |
-| 2 | Quy đổi để báo cáo | Tổng hợp vô nghĩa khi cộng thẳng VND với JPY |
-| 3 | Chọn tỷ giá nào, ngày nào | Báo cáo tháng cũ thay đổi mỗi ngày vì dùng tỷ giá hiện tại |
-| 4 | Đổi tiền / chuyển giữa ví | Bị tính thành chi tiêu và thu nhập ảo, thống kê sai gấp đôi |
-| 5 | Phí đổi tiền ẩn trong tỷ giá | Người dùng không biết mình mất tiền |
-| 6 | Quẹt thẻ ở nước ngoài | Hai số tiền (tiền gốc và tiền bị trừ) + phí giao dịch nước ngoài |
-| 7 | Tài sản thay đổi do tỷ giá | Tưởng mình tiết kiệm được hoặc bị lỗ, thực ra là do tỷ giá |
-| 8 | Ngân sách khi chi bằng nhiều loại tiền | Không biết đã tiêu bao nhiêu so với hạn mức |
-| 9 | So sánh chi tiêu giữa các nước | 1 triệu VND ở Việt Nam và 1 triệu VND quy đổi ra ở Nhật có sức mua rất khác nhau |
-| 10 | Múi giờ | Giao dịch lúc 23h ở Nhật bị tính sang ngày khác, sai thống kê ngày |
-| 11 | Thiếu tiền ở một loại tiền | Tổng tài sản đủ nhưng không có JPY để trả tiền nhà |
+| # | Vấn đề | Nếu làm sai | Trạng thái |
+|---|---|---|---|
+| 1 | Lưu số tiền của nhiều loại tiền | Sai số làm tròn (dùng `float`), sai số chữ số thập phân (JPY 0, USD 2, KWD 3) | MVP |
+| 2 | Quy đổi để báo cáo | Tổng hợp vô nghĩa khi cộng thẳng VND với JPY | MVP |
+| 3 | Chọn tỷ giá nào, ngày nào | Báo cáo tháng cũ thay đổi mỗi ngày vì dùng tỷ giá hiện tại | MVP |
+| 4 | Đổi tiền / chuyển giữa ví | Bị tính thành chi tiêu và thu nhập ảo | MVP |
+| 5 | Phí đổi tiền ẩn trong tỷ giá | Người dùng không biết mình mất tiền | MVP |
+| 6 | Quẹt thẻ ở nước ngoài | Hai số tiền (tiền gốc và tiền bị trừ) + phí giao dịch nước ngoài | MVP (chỉ lưu 2 số tiền) |
+| 7 | Tài sản thay đổi do tỷ giá | Tưởng mình tiết kiệm được hoặc bị lỗ, thực ra là do tỷ giá | Nếu kịp |
+| 8 | Ngân sách khi chi bằng nhiều loại tiền | Không biết đã tiêu bao nhiêu so với hạn mức | Nếu kịp (MVP chỉ quy đổi về tiền của ngân sách) |
+| 9 | So sánh chi tiêu giữa các nước | Sức mua khác nhau | Nếu kịp |
+| 10 | Múi giờ | Giao dịch lúc 23h ở nước khác bị tính sang ngày khác | MVP (lưu `timestamptz` + múi giờ) |
+| 11 | Thiếu tiền ở một loại tiền | Tổng tài sản đủ nhưng không có JPY để trả tiền nhà | Nếu kịp |
 
 ### 5.3 Giải pháp
 
 #### (1) Lưu trữ tiền
-- **Luôn lưu số tiền gốc và loại tiền gốc** (mã ISO 4217: VND, JPY, USD…). Không bao giờ chỉ lưu số đã quy đổi.
-- Kiểu dữ liệu: PostgreSQL `NUMERIC(19,4)` hoặc `BIGINT` theo đơn vị nhỏ nhất. Java dùng `BigDecimal` hoặc **Java Money API (JSR 354, thư viện Moneta)**. **Tuyệt đối không dùng `double`/`float`.**
-- Bảng `currencies` lưu số chữ số thập phân (`minor_unit`) của từng loại tiền. Frontend hiển thị bằng `Intl.NumberFormat`.
+- **Luôn lưu số tiền gốc và loại tiền gốc** (mã ISO 4217). Không bao giờ chỉ lưu số đã quy đổi.
+- PostgreSQL `NUMERIC(19,4)` hoặc `BIGINT` theo đơn vị nhỏ nhất. Java dùng `BigDecimal` hoặc Java Money API (JSR 354, Moneta). **Không dùng `double`/`float`.**
+- Bảng `currencies` lưu `minor_unit`. Frontend hiển thị bằng `Intl.NumberFormat`.
 
 #### (2) Ví theo tiền tệ và tiền tệ báo cáo
 - Mỗi ví có **một** loại tiền cố định. Ví đa tiền tệ (Wise, Revolut) được mô hình hóa thành nhiều ví con.
-- Mỗi người dùng chọn một **tiền tệ báo cáo** (base currency), có thể đổi bất cứ lúc nào. Mọi thống kê tổng hợp đều quy về tiền tệ này.
+- Mỗi người dùng chọn một **tiền tệ báo cáo**. Mọi thống kê tổng hợp quy về tiền tệ này.
 
 #### (3) Tỷ giá: nguồn, loại, quy tắc tra cứu
-- **Bảng `exchange_rates` lưu lịch sử** tỷ giá theo ngày: `(rate_date, base, quote, rate, rate_type, source)`.
-- Job chạy hằng ngày lấy tỷ giá và cache vào Redis. Nếu nguồn chính lỗi thì chuyển sang nguồn dự phòng.
-- **Nguồn tham khảo** (cần kiểm tra lại tình trạng và điều khoản):
-  - Tỷ giá công bố của Vietcombank (có giá mua tiền mặt, mua chuyển khoản, bán),
-  - tỷ giá trung tâm của Ngân hàng Nhà nước,
-  - các API tỷ giá miễn phí (ví dụ open.er-api.com, exchangerate-api). **Lưu ý:** API dựa trên tỷ giá ECB như Frankfurter không có VND.
-- **Quy tắc quy đổi** (theo tinh thần VAS 10 / IAS 21):
-  - Giao dịch thu/chi quy đổi theo **tỷ giá ngày giao dịch**. Lưu lại tỷ giá đã dùng (`fx_rate_to_base`) để báo cáo cũ không thay đổi.
-  - **Số dư, tổng tài sản** quy đổi theo **tỷ giá tại thời điểm xem**.
-  - Ngày không có tỷ giá (cuối tuần, lễ) thì dùng tỷ giá gần nhất trước đó.
-  - Quy đổi chéo (JPY → VND khi nguồn chỉ có USD) đi qua đồng trung gian: `JPY→VND = (USD→VND) / (USD→JPY)`.
-- Khi người dùng đổi tiền tệ báo cáo, hệ thống tính lại `amount_base` từ bảng tỷ giá lịch sử (chạy nền).
+- Bảng `exchange_rates` lưu lịch sử theo ngày. Job hằng ngày lấy tỷ giá, cache Redis, có nguồn dự phòng, cho phép nhập tay.
+- Nguồn tham khảo (cần kiểm tra lại điều khoản): Vietcombank, tỷ giá trung tâm NHNN, open.er-api.com / exchangerate-api. **Frankfurter (ECB) không có VND.**
+- Quy tắc (theo tinh thần VAS 10 / IAS 21): thu/chi quy đổi theo **tỷ giá ngày giao dịch** và lưu lại `fx_rate_to_base`; số dư và tổng tài sản quy đổi theo **tỷ giá lúc xem**; ngày không có tỷ giá thì dùng tỷ giá gần nhất **trước đó**; quy đổi chéo đi qua USD.
 
 #### (4) Đổi tiền và chuyển giữa ví
-- Tách riêng loại giao dịch: `INCOME`, `EXPENSE`, `TRANSFER` (cùng tiền), `EXCHANGE` (khác tiền).
-- `TRANSFER` và `EXCHANGE` **không tính là thu nhập hay chi tiêu**. Hai vế được liên kết bằng `transfer_group_id`.
-- **Mô hình ML cần nhận diện giao dịch chuyển khoản nội bộ** để tự gợi ý ghép cặp. Đây là một nhãn quan trọng trong bài toán phân loại.
+- Loại giao dịch: `INCOME`, `EXPENSE`, `TRANSFER` (cùng tiền), `EXCHANGE` (khác tiền), `LOAN` (vay/cho vay, xem [bao-cao-du-lieu.md](../03-du-lieu/bao-cao-du-lieu.md) mục 4.4).
+- `TRANSFER`, `EXCHANGE`, `LOAN` **không tính là thu nhập hay chi tiêu**. Hai vế liên kết bằng `transfer_group_id`.
+- Dữ liệu cá nhân không có giao dịch chuyển khoản nội bộ, nên **không đưa nhãn này vào thí nghiệm phân loại**.
 
 #### (5) Phí đổi tiền ẩn
-Khi đổi tiền, người dùng nhập số tiền **hai bên**. Hệ thống tính:
+Người dùng nhập số tiền **hai bên**. Hệ thống tính:
 
 ```
-tỷ_giá_thực_tế  = số_tiền_nhận / số_tiền_gửi
-giá_trị_thị_trường = số_tiền_gửi × tỷ_giá_trung_bình_thị_trường(ngày đó)
-phí_ẩn          = giá_trị_thị_trường − số_tiền_nhận
-tỷ_lệ_phí       = phí_ẩn / giá_trị_thị_trường
+tỷ_giá_thực_tế     = số_tiền_nhận / số_tiền_gửi
+giá_trị_thị_trường = số_tiền_gửi × tỷ_giá_mid_market(ngày đó)
+phí_ẩn             = giá_trị_thị_trường − số_tiền_nhận
+tỷ_lệ_phí          = phí_ẩn / giá_trị_thị_trường
 ```
 
-*Ví dụ (số liệu giả định):* đổi 10.000.000 VND lấy 380 USD. Nếu tỷ giá thị trường hôm đó là 1 USD = 25.400 VND, thì 10 triệu VND tương đương 393,7 USD. Phí ẩn là 13,7 USD (~3,5%).
+*Ví dụ (giả định):* đổi 10.000.000 VND lấy 380 USD, tỷ giá thị trường 25.400 thì 10 triệu VND tương đương 393,7 USD, phí ẩn 13,7 USD (~3,5%).
 
-**Chọn tỷ giá nào làm chuẩn:**
-- **Chuẩn chính: tỷ giá mid-market** (trung bình mua–bán liên ngân hàng). Căn cứ: World Bank *Remittance Prices Worldwide* đo biên lợi nhuận tỷ giá so với tỷ giá liên ngân hàng; Quy định EU 2019/518 yêu cầu công bố phí quy đổi dưới dạng % chênh lệch so với tỷ giá tham chiếu của ECB. *(Cần kiểm tra văn bản gốc trước khi trích dẫn.)*
-- **Chuẩn phụ để hiển thị:** so với tỷ giá bán của Vietcombank hoặc tỷ giá trung tâm của Ngân hàng Nhà nước, để trả lời câu hỏi "đổi ở kênh này có rẻ hơn đổi ở ngân hàng không?".
-- **Ngưỡng sai số:** hệ thống chỉ có tỷ giá theo ngày, trong khi tỷ giá biến động trong ngày. Chênh lệch nhỏ (khoảng dưới 0,3–0,5%, cần hiệu chỉnh) hiển thị là "không đáng kể". Nêu điểm này trong phần hạn chế.
-- **Kiểm chứng:** đối chiếu với biên lai thật (mục 5.8) và với phí Wise công bố so với mid-market.
-
-Phí ẩn được ghi thành một khoản chi thuộc danh mục **"Phí đổi tiền"**. Dashboard thống kê tổng phí đổi tiền theo tháng, theo kênh đổi, giúp người dùng chọn kênh rẻ hơn. Đây là tính năng có giá trị thực tế cao, dễ gây ấn tượng khi demo.
+- Chuẩn chính: tỷ giá **mid-market** (World Bank *Remittance Prices Worldwide*; Quy định EU 2019/518). *(Cần đọc văn bản gốc trước khi trích dẫn.)*
+- Chỉ có tỷ giá theo ngày, nên chênh lệch nhỏ (khoảng dưới 0,3–0,5%) hiển thị là "không đáng kể". Nêu điểm này trong phần hạn chế.
+- Phí ẩn ghi thành khoản chi thuộc danh mục "Phí đổi tiền". Dashboard thống kê theo tháng và theo kênh đổi.
 
 #### (6) Quẹt thẻ ở nước ngoài
-- Lưu cả `original_amount` + `original_currency` (ví dụ 3.000 JPY) **và** số tiền thực bị trừ trên thẻ (ví dụ 540.000 VND).
-- Chênh lệch so với tỷ giá thị trường là phí giao dịch nước ngoài, ghi nhận như (5).
-- Thống kê "chi ở Nhật" dùng số tiền gốc JPY, thống kê "ví thẻ VND" dùng số tiền bị trừ.
+Lưu cả `original_amount` + `original_currency` và số tiền thực bị trừ trên thẻ. Chênh lệch so với tỷ giá thị trường là phí, ghi nhận như (5).
 
-#### (7) Phân rã biến động tài sản: do tiêu hay do tỷ giá
-Gọi `B(c,t)` là số dư loại tiền `c` tại thời điểm `t`, `r(c,t)` là tỷ giá quy về tiền tệ báo cáo. Tổng tài sản `W(t) = Σ_c B(c,t) · r(c,t)`. Biến động giữa hai kỳ được tách **chính xác** thành hai phần:
+#### (7) Phân rã biến động tài sản *(nếu kịp)*
+Tách biến động tổng tài sản thành phần do dòng tiền và phần do tỷ giá. **Lưu ý:** công thức cũ (định giá dòng tiền theo tỷ giá đầu kỳ) chưa khớp với cách lưu `amount_base` theo tỷ giá ngày giao dịch. Khi làm thì dùng cách 3 phần (thu − chi theo `amount_base`, phần còn lại là hiệu ứng tỷ giá), xem [khao-sat-xu-ly-da-tien-te.md](../02-khao-sat/khao-sat-xu-ly-da-tien-te.md) mục 7.2(b). Khái niệm này đã có trong kế toán kép (GnuCash trading accounts, hledger `--gain`), nên phải viết là "đưa vào giao diện cho người không biết kế toán", không viết là "mới".
 
-```
-W(t) − W(t−1) =  Σ_c [B(c,t) − B(c,t−1)] · r(c,t−1)     ← hiệu ứng dòng tiền (thu nhập, chi tiêu)
-               + Σ_c  B(c,t) · [r(c,t) − r(c,t−1)]       ← hiệu ứng tỷ giá
-```
+#### (8) Ngân sách đa tiền tệ *(MVP tối thiểu)*
+Mỗi ngân sách có một loại tiền. Khoản chi bằng loại tiền khác được quy đổi theo tỷ giá ngày giao dịch. Ngân sách theo quốc gia và tự nhận biết bối cảnh quốc gia là phần "nếu kịp".
 
-*Ví dụ:* giữ 1.000 USD, không tiêu gì, tỷ giá tăng từ 25.000 lên 26.000. Tài sản quy ra VND tăng 1.000.000, **toàn bộ là hiệu ứng tỷ giá**, không phải tiết kiệm.
-
-Dashboard hiển thị biểu đồ waterfall: tài sản đầu kỳ → + thu nhập → − chi tiêu → ± tỷ giá → tài sản cuối kỳ.
-
-#### (8) Ngân sách đa tiền tệ
-- Mỗi ngân sách có **loại tiền riêng** và có thể gắn **phạm vi quốc gia** (ví dụ: "Ăn uống ở Nhật: 40.000 JPY/tháng", "Ăn uống ở Việt Nam: 3 triệu VND/tháng").
-- Khoản chi bằng loại tiền khác được quy đổi sang tiền của ngân sách theo tỷ giá ngày giao dịch.
-- Hệ thống tự nhận biết **bối cảnh quốc gia** hiện tại từ loại tiền và ví của các giao dịch gần nhất, rồi gợi ý ngân sách phù hợp.
-
-#### (9) So sánh chi tiêu giữa các nước (mở rộng)
-- Quy đổi theo tỷ giá thị trường **không phản ánh sức mua**. Có thể thêm chế độ xem theo **PPP** (hệ số ngang giá sức mua của World Bank).
-- Ví dụ câu hỏi trả lời được: "Chi phí sinh hoạt thực tế của tôi ở Nhật cao gấp mấy lần ở Việt Nam?"
+#### (9) So sánh chi tiêu giữa các nước theo PPP *(nếu kịp)*
 
 #### (10) Múi giờ
-- Lưu thời điểm giao dịch bằng `timestamptz` (UTC) **kèm múi giờ địa phương** lúc giao dịch.
-- Thống kê theo ngày dùng **ngày địa phương**, tỷ giá tra theo ngày địa phương.
+Lưu `timestamptz` (UTC) kèm múi giờ địa phương. Thống kê theo ngày dùng ngày địa phương.
 
-#### (11) Kế hoạch thanh khoản ngoại tệ (mở rộng, dùng kết quả dự báo)
-Kết hợp 3 tầng:
+#### (11) Gợi ý lượng ngoại tệ cần đổi *(nếu kịp)*
+Dùng lại mô hình dự báo của RQ3 cho chuỗi chi tiêu từng loại tiền: `cần_đổi = max(0, dự_báo_P80 − số_dư_hiện_có)`. Không dự đoán thời điểm đổi. Không có dữ liệu để đánh giá nghiêm túc, nên nếu làm thì chỉ trình bày như một tính năng.
 
-| Tầng | Nội dung |
-|---|---|
-| **Tính năng** | Dùng lại mô hình dự báo thắng ở TN2 cho chuỗi chi tiêu của từng loại tiền, so với số dư hiện có của loại tiền đó |
-| **Phương pháp** | Gợi ý theo **dự báo phân vị** thay vì một con số: `cần_đổi = max(0, dự_báo_P80 − số_dư_hiện_có)`. Đổi dư một chút tốt hơn thiếu tiền trả tiền nhà |
-| **Đánh giá** | Trên dữ liệu bán mô phỏng, đặt trong **chương đánh giá hệ thống** (mục "Đánh giá tính năng gợi ý đổi tiền"), **không phải RQ** để giữ ML làm trọng tâm |
-
-- Cảnh báo sớm: "Tháng sau dự kiến chi 120.000 JPY (P80: 135.000), số dư JPY hiện có 80.000. Nên đổi thêm khoảng 55.000 JPY."
-- **Chỉ gợi ý số lượng cần đổi, không dự đoán thời điểm đổi tốt nhất.** Dự đoán tỷ giá thuộc loại bài toán như dự đoán giá cổ phiếu, kết quả khó thuyết phục hội đồng.
-
-**Cách đánh giá (bán mô phỏng):**
-- Lấy chuỗi chi tiêu VND thật, chọn các giai đoạn giả định "đang ở nước ngoài" (ví dụ: 10 tháng ở Nhật, 2 tháng hè về Việt Nam), quy đổi phần chi ở nước ngoài sang JPY theo tỷ giá lịch sử thật. Kết quả là các chuỗi chi tiêu **ngắt quãng** theo từng loại tiền, giống thực tế người đi lại giữa hai nước.
-- Mô phỏng theo thời gian: mỗi tháng, hệ thống gợi ý lượng cần đổi, rồi so với chi tiêu thực tế tháng đó.
-- **Độ đo:** tỷ lệ tháng bị thiếu tiền, số tiền đổi dư trung bình. Chạy với P50 / P80 / P90 để vẽ **đường đánh đổi** giữa thiếu tiền và đổi dư.
-- (Tùy chọn) Thử thêm phương pháp **Croston** cho chuỗi ngắt quãng (intermittent demand).
-- **Nghiên cứu tình huống:** chạy trên dữ liệu ngoại tệ tự ghi chép (mục 5.8), dù ngắn.
-- **Hạn chế cần nêu rõ:** đây là *kiểm chứng cơ chế gợi ý trên dữ liệu bán mô phỏng*, không phải hành vi chi tiêu thật ở nước ngoài (cơ cấu chi tiêu và giá cả khác nhau). Phần quy đổi tỷ giá trùng một phần với RQ3b; phần mới là chuỗi ngắt quãng và đánh giá quyết định đổi tiền.
-
-### 5.4 Thiết kế CSDL (phần liên quan đa tiền tệ)
+### 5.4 Thiết kế CSDL (phần liên quan)
 
 ```sql
 currencies      (code CHAR(3) PK, name, symbol, minor_unit SMALLINT)
@@ -309,160 +284,179 @@ users           (id, email, base_currency → currencies, default_timezone)
 wallets         (id, user_id, name, type, currency → currencies, archived)
 exchange_rates  (rate_date, base, quote, rate NUMERIC(20,10), rate_type, source,
                  PK(rate_date, base, quote, rate_type, source))
+categories      (id, user_id NULL,                  -- NULL = bộ danh mục mặc định
+                 name, description NULL,            -- đầu vào của LLM zero-shot và bộ sinh dữ liệu
+                 created_at, archived)
+synthetic_examples (id, category_id, text, generator_model, generator_version, created_at)
 transactions    (id, user_id, wallet_id,
-                 type            -- INCOME | EXPENSE | TRANSFER | EXCHANGE
-                 amount NUMERIC(19,4), currency,          -- số tiền theo tiền của ví
-                 original_amount, original_currency,      -- tiền gốc (quẹt thẻ nước ngoài)
+                 type            -- INCOME | EXPENSE | TRANSFER | EXCHANGE | LOAN
+                 amount NUMERIC(19,4), currency,
+                 original_amount, original_currency,
                  fx_rate_to_base NUMERIC(20,10), amount_base NUMERIC(19,4),
-                 occurred_at TIMESTAMPTZ, local_tz, country_code,
+                 occurred_at TIMESTAMPTZ, local_tz,
                  description, category_id,
                  category_source -- USER | MODEL
                  model_confidence, model_version,
                  transfer_group_id)
-budgets         (id, user_id, category_id, currency, amount, period, country_code NULL)
-category_feedback (id, transaction_id, predicted_category, corrected_category, created_at)
+category_feedback (id, user_id, transaction_id, predicted_category, corrected_category,
+                   model_version, created_at)       -- nguồn dữ liệu cho lớp cá nhân và giám sát
+user_models     (user_id, version, kind, artifact_path, trained_at, metrics_json)
+user_memory     (user_id, transaction_id, text_norm, embedding VECTOR(n), category_id)  -- pgvector
+budgets         (id, user_id, category_id, currency, amount, period)
 ```
 
 ### 5.5 Những điều không làm, và lý do
-- **Dự đoán tỷ giá / thời điểm đổi tiền tối ưu:** không đủ cơ sở khoa học trong phạm vi luận văn, dễ bị chất vấn.
-- **Thuế thu nhập nhiều quốc gia:** quy định phức tạp, ngoài chuyên môn.
-- **Kết nối trực tiếp ngân hàng nước ngoài:** mỗi nước một chuẩn, không khả thi trong 14 tuần.
+- **Dự đoán tỷ giá / thời điểm đổi tiền tối ưu:** không đủ cơ sở khoa học, dễ bị chất vấn.
+- **Thuế thu nhập nhiều quốc gia, kết nối ngân hàng nước ngoài:** ngoài phạm vi 14 tuần.
+- **Thí nghiệm dự báo có tỷ giá (RQ3b cũ):** bỏ, vì phải giả lập người dùng không có thật và kết quả gần như biết trước.
+- **Case study giao dịch ngoại tệ thật:** bỏ.
 
-### 5.6 Nếu dữ liệu hiện có chỉ có VND
-Phần đa tiền tệ vẫn làm được:
-- **Nghiệp vụ và hệ thống** (mục 5.3) không cần dữ liệu huấn luyện, chỉ cần tỷ giá lịch sử (công khai).
-- **RQ3b (dự báo có tỷ giá)** vẫn làm được: lấy chuỗi chi tiêu VND thật, kết hợp tỷ giá lịch sử VND/USD thật, mô phỏng người dùng có tiền tệ báo cáo là USD.
-- **RQ4 (đa ngôn ngữ)** chỉ làm nếu thu thập được dữ liệu thật từ tình nguyện viên ở nước ngoài (vài trăm giao dịch). Nếu không có thì đưa vào hướng phát triển. **Không nên dựa hoàn toàn vào dữ liệu do LLM sinh ra**, vì hội đồng sẽ nghi ngờ tính khách quan.
+### 5.6 Dữ liệu
+Bộ dữ liệu cá nhân chỉ có VND. Phần đa tiền tệ không cần dữ liệu huấn luyện, chỉ cần tỷ giá lịch sử công khai và unit test.
 
-### 5.7 Khảo sát hiện trạng: đã có ai làm chưa? (tìm ngày 24/09/2026)
+### 5.7 Khảo sát hiện trạng (tìm ngày 24/09/2026)
 
-**Kết luận ngắn:** hỗ trợ đa tiền tệ **cơ bản đã phổ biến**. Các tính năng **phân tích** đa tiền tệ thì **chưa thấy** hoặc chỉ có một phần trong các ứng dụng được khảo sát. Về học thuật, chưa tìm thấy công trình nào về quản lý tài chính cá nhân đa tiền tệ, và chưa thấy công trình phân loại giao dịch **tiếng Việt**.
+**Kết luận ngắn:** hỗ trợ đa tiền tệ cơ bản đã phổ biến. Tính phí đổi tiền ẩn cho từng giao dịch thì chưa thấy trong các app quản lý chi tiêu được khảo sát. Lãi/lỗ tỷ giá đã có trong phần mềm kế toán kép.
 
 | Tính năng | Hiện trạng | Ví dụ |
 |---|---|---|
-| Ví theo loại tiền, tiền tệ báo cáo, tỷ giá tự động | **Đã phổ biến** | Toshl, PocketSmith, Firefly III, Lunch Money, Spendee, Wallet (BudgetBakers), MoneyWiz, Money Lover |
-| Tỷ giá lịch sử theo ngày giao dịch, nhập tỷ giá tùy chỉnh | **Đã có** | Toshl (dữ liệu từ 1999, cho nhập tỷ giá thực trả), Firefly III (trường foreign amount), Lunch Money |
-| Ngân sách theo loại tiền | **Đã có** | PocketSmith (ngân sách theo tiền tệ của tài khoản), Toshl |
-| Dự báo dòng tiền đa tiền tệ | **Có, dạng lập lịch/quy tắc** | PocketSmith (dự báo số dư theo giao dịch định kỳ, không dùng ML) |
-| Thấy ảnh hưởng của tỷ giá | **Có một phần** | PocketSmith (xem thay đổi số dư do tỷ giá theo từng tài khoản), Wealthfolio (lãi/lỗ tỷ giá chưa thực hiện, cho **đầu tư**), Borderless Budget (quảng cáo "xem tỷ giá ảnh hưởng thế nào", không công bố phương pháp) |
-| **Phân rã biến động tổng tài sản: dòng tiền và tỷ giá** (công thức 5.3-7) | **Chưa thấy** công bố rõ cho chi tiêu cá nhân | |
-| **Tự tính phí đổi tiền ẩn** cho từng giao dịch, thống kê theo kênh | **Chưa thấy** trong app quản lý chi tiêu. Chỉ có công cụ **so sánh** nhà cung cấp chuyển tiền (Wise, Remitto) | |
-| **Dự báo nhu cầu từng loại tiền bằng ML** + gợi ý lượng cần đổi | **Chưa thấy** | |
-| Phân loại giao dịch bằng ML | **Nghiên cứu nhiều với tiếng Anh** (Txn-Bert của QuickBooks 2025, phân loại giao dịch SME 2025, TopoLedgerBERT 2024). **Chưa thấy công trình tiếng Việt** | |
+| Ví theo loại tiền, tiền tệ báo cáo, tỷ giá tự động | **Đã phổ biến** | Toshl, PocketSmith, Firefly III, Lunch Money, Spendee, Wallet, MoneyWiz, Money Lover |
+| Tỷ giá lịch sử theo ngày giao dịch | **Đã có** | Toshl, Firefly III, Lunch Money |
+| Ngân sách theo loại tiền | **Đã có** | PocketSmith, Toshl, Firefly III |
+| Dự báo dòng tiền | **Có, dạng lập lịch/quy tắc** | PocketSmith (không dùng ML) |
+| Tách biến động tài sản do tỷ giá | **Có trong kế toán kép**, chưa thấy trong app chi tiêu phổ thông | GnuCash trading accounts, hledger `--gain` |
+| **Tự tính phí đổi tiền ẩn** cho từng giao dịch | **Chưa thấy** trong app quản lý chi tiêu. Chỉ có công cụ so sánh nhà cung cấp chuyển tiền (Wise, Remitto) | |
 
-**Lưu ý khi viết vào luận văn:**
-- Khảo sát dựa trên tài liệu công khai và bài review. Ứng dụng thương mại có thể có tính năng không công bố.
-- Bài so sánh của Borderless Budget nói "không app nào có" các tính năng phân tích, nhưng đây là **bài của đối thủ cạnh tranh**, cần xem là nguồn thiên vị.
-- Nên viết: *"chưa tìm thấy trong các ứng dụng và công trình được khảo sát"*, **không** viết *"chưa ai làm"*.
-- Chương 2 của luận văn nên có một **bảng so sánh tính năng** giữa hệ thống của mình và Toshl, PocketSmith, Firefly III, Money Lover. Hội đồng gần như chắc chắn sẽ hỏi "khác gì app X".
+**Khảo sát liên quan đến trọng tâm ML (cần làm, xem mục 11):**
+- Phân loại giao dịch bằng ML đã được nghiên cứu nhiều với tiếng Anh: Txn-Bert (QuickBooks, arXiv 2506.09234), phân loại giao dịch SME **bằng dữ liệu tổng hợp** (arXiv 2508.05425, gần với hướng mới), TopoLedgerBERT (arXiv 2407.05175).
+- Cần tìm thêm về: LLM zero-shot cho phân loại văn bản ngắn; phân loại với **nhãn do người dùng định nghĩa** (open-set, label-name-only classification); huấn luyện trên dữ liệu do LLM sinh (sim-to-real gap); học trực tuyến / học liên tục với phản hồi người dùng; cold-start cá nhân hóa; đánh giá prequential.
+- Cần kiểm tra các app ghi chép (Money Lover, MISA, Spendee…) có gợi ý danh mục tự tạo bằng ML không, hay chỉ theo luật / lịch sử.
+- Nên viết *"chưa tìm thấy trong các ứng dụng và công trình được khảo sát"*, **không** viết *"chưa ai làm"*.
 
-**Định vị tính năng key:** *"Từ ghi chép đa tiền tệ đến phân tích đa tiền tệ"*. Các app hiện có trả lời câu hỏi "tôi có bao nhiêu tiền", hệ thống này trả lời thêm "tôi **mất bao nhiêu** vì đổi tiền", "tài sản thay đổi **vì đâu**", "tháng sau **cần bao nhiêu** tiền nào".
-
-**Nguồn:**
-- [Toshl: currencies](https://toshl.com/currencies/)
-- [Firefly III: exchange rates](https://docs.firefly-iii.org/explanation/financial-concepts/exchange-rates/)
-- [PocketSmith: multi-currency](https://www.pocketsmith.com/tour/multi-currency/), [PocketSmith: cash flow forecasts](https://www.pocketsmith.com/tour/cash-flow-forecasts/)
-- [Lunch Money: multicurrency](https://lunchmoney.app/features/multicurrency/)
-- [Borderless Budget: best multi-currency budgeting apps](https://borderlessbudget.com/blog/best-multi-currency-budgeting-apps)
-- [YNAB: using multiple currencies](https://support.ynab.com/en_us/using-multiple-currencies-in-ynab-a-guide-SyBF6PHno)
-- [Wealthfolio: market data & FX](https://wealthfolio.app/docs/concepts/market-data-and-fx/)
-- [Money Lover](https://moneylover.me/vi/)
-- [Transaction Categorization with Relational Deep Learning in QuickBooks (arXiv 2506.09234)](https://arxiv.org/abs/2506.09234)
-- [Categorising SME Bank Transactions with ML and Synthetic Data (arXiv 2508.05425)](https://arxiv.org/abs/2508.05425)
-- [TopoLedgerBERT (arXiv 2407.05175)](https://arxiv.org/abs/2407.05175)
-
-### 5.8 Vấn đề dữ liệu cho tính năng key
-Bộ 5.000 giao dịch **không có ngoại tệ**. Cách xử lý:
-- **Bắt đầu ghi chép ngay từ bây giờ** mọi giao dịch ngoại tệ của bản thân: số tiền hai bên khi đổi, tiền gốc và tiền bị trừ khi quẹt thẻ, kênh đổi, biên lai. Đến tuần 12 sẽ có khoảng 3 tháng dữ liệu thật để demo và kiểm chứng.
-- **Kiểm chứng phí ẩn:** đối chiếu phí hệ thống tính ra với biên lai/sao kê thật. Tỷ giá thị trường lấy từ nguồn công khai.
-- **Tình nguyện viên:** du học sinh, người đi làm ở nước ngoài, xin dữ liệu ẩn danh vài tháng.
-- **Thí nghiệm dự báo có tỷ giá** (TN2) chỉ cần chuỗi VND thật và tỷ giá lịch sử thật, không phụ thuộc dữ liệu ngoại tệ cá nhân.
-- **Phân rã tài sản và phí ẩn** là bài toán tính toán xác định: kiểm chứng bằng **unit test với các kịch bản tính tay**, không cần dữ liệu huấn luyện.
+**Nguồn:** [Toshl](https://toshl.com/currencies/) · [Firefly III](https://docs.firefly-iii.org/explanation/financial-concepts/exchange-rates/) · [PocketSmith multi-currency](https://www.pocketsmith.com/tour/multi-currency/) · [PocketSmith forecasts](https://www.pocketsmith.com/tour/cash-flow-forecasts/) · [Lunch Money](https://lunchmoney.app/features/multicurrency/) · [YNAB](https://support.ynab.com/en_us/using-multiple-currencies-in-ynab-a-guide-SyBF6PHno) · [Wealthfolio](https://wealthfolio.app/docs/concepts/market-data-and-fx/) · [Money Lover](https://moneylover.me/vi/) · [arXiv 2506.09234](https://arxiv.org/abs/2506.09234) · [arXiv 2508.05425](https://arxiv.org/abs/2508.05425) · [arXiv 2407.05175](https://arxiv.org/abs/2407.05175)
 
 ---
 
 ## 6. Thiết kế thí nghiệm
 
 ### Bước 0: Chuẩn bị dữ liệu
-- Xác định **nguồn dữ liệu** (app ghi chép tay hay sao kê ngân hàng) và dạng mô tả (có dấu không, độ dài, mã số).
-- Làm sạch, **ẩn danh hóa** (số tài khoản, tên người nhận), chuẩn hóa văn bản (có dấu/không dấu, viết tắt).
-- **Chuẩn hóa mô tả thành nhóm người bán** (ví dụ "GRAB*1234", "GRAB 5678" → `grab`) để chia dữ liệu theo nhóm.
-- Chốt bộ danh mục **10–15 nhãn**, trong đó có nhãn **"Chuyển khoản nội bộ"**. **Viết quy tắc gán nhãn** thành văn bản.
-- **Đo độ nhất quán của nhãn:** lấy ngẫu nhiên 300–500 giao dịch, gán nhãn lại mà không nhìn nhãn cũ, tính **Cohen's kappa** giữa hai lần gán. Nếu nhờ được thêm một người gán theo cùng quy tắc thì đo thêm mức đồng thuận giữa hai người. Con số này là **giới hạn trên của con người** để so với mô hình.
-- EDA: phân bố nhãn, **số mẫu từng lớp** (lớp dưới 50 mẫu thì gộp hoặc báo cáo riêng), số tiền, tính mùa vụ (Tết, ngày nhận lương).
-- EDA về trùng lặp: **số mô tả khác nhau**, **số người bán khác nhau**, **tỷ lệ giao dịch 2025–2026 có mô tả đã xuất hiện trước 2025**.
-- Thu thập tỷ giá lịch sử 2022 đến nay (VND, USD, JPY, EUR, KRW, THB).
 
-### Kiểm tra nhanh trước khi cam kết (tuần 1)
-Chạy **TF-IDF + Logistic Regression với GroupKFold theo người bán**:
-- Nếu Macro-F1 **đã trên khoảng 95%**: bài toán trên toàn bộ dữ liệu quá dễ. **Định vị lại RQ1**: tập trung vào người bán chưa gặp, cold-start và dữ liệu tình nguyện viên, thay vì so mô hình trên toàn bộ dữ liệu.
-- Nếu thấp hơn: RQ1 giữ nguyên, còn chỗ để các mô hình mạnh hơn thể hiện.
+**0.1 Danh mục của người dùng giả lập (kịch bản chính)**
+- 25 nhãn chi gốc được coi là **danh mục người dùng tự tạo**. Sửa lỗi chính tả tên nhãn (`Badmintion` → `Badminton`), nhưng không đổi nghĩa.
+- Viết **mô tả ngắn một câu** cho mỗi danh mục, như một người dùng bình thường sẽ viết khi tạo danh mục (ví dụ *AC: "bữa ăn chính trong ngày"*, *RL: "ăn uống, đi chơi cùng bạn bè"*). Viết **một lần, trước khi chạy thí nghiệm**, lưu vào config và không sửa theo kết quả trên luồng đánh giá.
+- Hai biến thể thông tin danh mục: **chỉ tên** và **tên + mô tả**. Với tên viết tắt như AC, DC, RL, biến thể chỉ tên sẽ rất thấp. Đó là một kết quả, không phải lỗi: nó trả lời câu hỏi "có nên khuyến khích người dùng viết mô tả không".
+- **Thời điểm tạo danh mục:** một danh mục được coi là "vừa được tạo" ngay trước giao dịch đầu tiên mang nhãn đó trong luồng (5 nhãn chỉ xuất hiện từ 2025). Như vậy, tại mỗi thời điểm hệ thống chỉ biết các danh mục đã tồn tại, đúng như ngoài đời.
+- `Cho vay` chuyển sang loại giao dịch `LOAN`, không nằm trong bài toán phân loại.
 
-### TN1: Phân loại giao dịch (RQ1, RQ2a, RQ2b)
+**0.2 Kịch bản phụ: danh mục chuẩn**
+- Viết **bảng ánh xạ** 25 nhãn về 10–12 danh mục chuẩn (phương án gộp ở [bao-cao-du-lieu.md](../03-du-lieu/bao-cao-du-lieu.md), mục 8), kèm mô tả mỗi danh mục chuẩn. Viết **trước khi chạy thí nghiệm**, căn cứ vào định nghĩa nhãn chứ không căn cứ vào kết quả.
+- Dùng chung khung phát lại và bộ sinh dữ liệu, chỉ khác danh sách danh mục đầu vào. Ở kịch bản này có thể sinh một tập tổng hợp lớn dùng chung (5.000–12.000 mẫu) và thử fine-tune PhoBERT.
 
-| Nhóm | Mô hình |
-|---|---|
-| Baseline | Rule-based theo từ khóa |
-| Cổ điển | TF-IDF (từ và **n-gram ký tự**) + Logistic Regression / Linear SVM, fastText |
-| Embedding + mô hình tuyến tính | Embedding đa ngôn ngữ (bge-m3, multilingual-e5) + Logistic Regression: rẻ, nhanh, thường mạnh khi dữ liệu nhỏ |
-| Transformer | Fine-tune PhoBERT (cần tách từ; thử cả văn bản có dấu và không dấu); (tùy chọn) PhoBERT embedding + CNN head |
-| LLM | Zero-shot / few-shot, model local (Qwen qua Ollama, bản lượng tử hóa vừa máy cá nhân) so với API |
+**0.3 Tập dev và luồng đánh giá**
+- **Tập dev** = mẫu ngẫu nhiên khoảng **10%** số khoản chi (~500 giao dịch, seed cố định). Mọi việc tinh chỉnh (prompt LLM, prompt sinh dữ liệu, số ví dụ mỗi danh mục, siêu tham số, ngưỡng tin cậy, cách kết hợp mô hình) chỉ được nhìn kết quả trên tập này.
+- **Luồng đánh giá** = toàn bộ luồng theo thời gian. **Đề xuất:** giao dịch thuộc tập dev vẫn đi qua luồng như bình thường (hệ thống vẫn nhận phản hồi và học từ chúng, vì ngoài đời người dùng vẫn nhập các giao dịch này), nhưng **không được tính điểm**. Nhờ vậy luồng không bị thủng. *(Cần xác nhận lại với GVHD.)*
+- **Khóa cấu hình** (ghi ra file config, commit) trước khi tính điểm trên luồng. Không quay lại sửa theo kết quả.
+- **Thành thật về giới hạn:** người làm đề tài đã xem toàn bộ dữ liệu khi làm EDA, và tự viết mô tả danh mục. Dev và luồng đánh giá là của cùng một người, và vì dev lấy ngẫu nhiên nên trùng nội dung với luồng (ví dụ "xăng"). Nêu rõ những điều này trong luận văn. Kiểm tra trên tình nguyện viên (TN4) là cách giảm nghi ngờ.
 
-- **Đặc trưng:** nội dung giao dịch, số tiền (log), giờ, thứ trong tuần, loại tiền, loại ví.
-- **Cách chia dữ liệu (tránh rò rỉ):**
-  - (a) **GroupKFold 5-fold theo nhóm người bán**: mọi giao dịch cùng người bán nằm cùng một fold. **Không** dùng stratified ngẫu nhiên, vì mô tả trùng lặp giữa train và test sẽ làm điểm số bị thổi phồng.
-  - (b) **Tập kiểm tra độc lập theo thời gian:** huấn luyện trên 2022–2024, kiểm tra trên 2025–2026.
-  - Báo cáo **tách 2 phần**: người bán *đã gặp* và người bán *chưa gặp*.
-- **Độ ổn định và ý nghĩa thống kê:** mô hình có yếu tố ngẫu nhiên (PhoBERT, fastText) chạy **5 seed**, báo cáo trung bình ± độ lệch chuẩn. So sánh cặp mô hình bằng **kiểm định McNemar** (trên tập kiểm tra độc lập) hoặc kiểm định cặp qua các fold.
-- **So với con người:** đặt kết quả cạnh Cohen's kappa ở Bước 0 (giới hạn trên của con người).
-- **RQ2a (dữ liệu thay đổi theo thời gian):** duyệt giao dịch theo thời gian, so sánh các chiến lược:
-  - không huấn luyện lại,
-  - huấn luyện lại toàn bộ hằng tháng,
-  - cửa sổ trượt (chỉ dùng N tháng gần nhất),
-  - ưu tiên dữ liệu mới (trọng số theo thời gian).
+**0.4 Làm sạch và chất lượng nhãn**
+- Rà soát 154 giao dịch có nhãn thiểu số và 164 giao dịch có ngày bất thường (báo cáo dữ liệu, mục 4).
+- **Đo độ nhất quán của nhãn:** lấy ngẫu nhiên 300 giao dịch, gán lại **theo 25 danh mục** mà không nhìn nhãn cũ, tính Cohen's kappa. Kappa của kịch bản danh mục chuẩn suy ra được qua bảng ánh xạ. Đây là **giới hạn trên của con người**.
 
-  Độ đo hướng người dùng: **số lần người dùng phải sửa nhãn mỗi tháng**. Tách độ chính xác giảm trên người bán cũ (nghiêng về do cách gán nhãn đổi) và trên người bán mới (nghiêng về do thói quen chi tiêu đổi).
-- **RQ2b (người dùng mới):**
-  - **Hướng chính (có dữ liệu tình nguyện viên):** quy đổi danh mục của mọi người về một hệ chung; huấn luyện trên dữ liệu của mình, thêm k mẫu của người B (k = 0, 20, 50, 100, 200), đo trên phần còn lại của B.
-  - **Hướng lùi (không có dữ liệu):** đặt tên trung thực là *"learning curve trên dữ liệu cá nhân"* (F1 theo số mẫu 50 / 100 / 200 / 500 / 1000 / toàn bộ), bỏ chữ "người dùng mới".
-- **Giải thích:** SHAP cho mô hình tốt nhất.
-- **Độ đo:** Accuracy, **Macro-F1**, **MCC**, F1 từng lớp, confusion matrix, độ trễ suy luận (ms), kích thước mô hình.
-- **Tài nguyên:** fine-tune PhoBERT trên Colab / Kaggle; dữ liệu nhỏ nên mỗi lần chạy chỉ vài phút. 5 seed × 5 fold × vài biến thể vẫn nằm trong hạn mức GPU miễn phí (cần kiểm tra hạn mức hiện tại).
-- **Góc nhìn bảo mật:** dữ liệu tài chính nhạy cảm, nên so sánh model chạy local với API bên ngoài. Chỉ đưa dữ liệu **đã ẩn danh** lên Colab / Kaggle / API.
+**0.5 Bộ sinh dữ liệu tổng hợp**
+- Sinh bằng **API LLM thương mại**. Đầu vào **chỉ gồm** tên và mô tả (nếu có) của **toàn bộ danh mục** của người dùng. Đưa cả danh sách vào một prompt để ví dụ sinh ra phân biệt được các danh mục gần nhau (AC và AV, Coffee và RL). **Không đưa ghi chú thật nào vào prompt**, kể cả làm ví dụ.
+- Yêu cầu đa dạng: có dấu / không dấu, viết tắt, lỗi gõ, có / không có tên quán hay thương hiệu, độ dài 1–6 từ.
+- Số ví dụ mỗi danh mục là một biến thí nghiệm: **10 / 30 / 100**. Khi có danh mục mới, sinh thêm cho danh mục đó (và có thể sinh lại cho các danh mục gần nó).
+- **Lưu toàn bộ prompt, tên và phiên bản model, tham số, đầu ra** vào file để tái lập. Không sinh lại mỗi lần chạy thí nghiệm. Ghi lại chi phí và thời gian sinh (đây cũng là chi phí của hệ thống thật mỗi khi người dùng tạo danh mục).
+- Báo cáo **tỷ lệ trùng** giữa dữ liệu tổng hợp và luồng đánh giá. Không xóa, chỉ báo cáo.
 
-### TN2: Dự báo chi tiêu (RQ3a, RQ3b)
-- **Mục tiêu dự báo:** tổng chi theo tuần, và chi theo tháng cho các danh mục chính.
-- **Mô hình:** Naive / Seasonal Naive (baseline bắt buộc), Moving Average, SARIMA, Prophet (khai báo ngày lễ Việt Nam), LightGBM (đặc trưng lag, rolling, lịch).
-- **Đánh giá:** rolling-origin backtest, dự báo trước 1 tuần và 4 tuần.
-- **Độ đo:** MAE, RMSE, sMAPE. Không dùng MAPE vì có những ngày chi tiêu bằng 0.
-- **So sánh có ý nghĩa thống kê:** dùng **kiểm định Diebold–Mariano** giữa các cặp phương pháp dự báo.
-- **Phân tích phụ về tỷ giá (RQ3b):** mô phỏng tiền tệ báo cáo khác VND, so sánh:
-  - (A) dự báo trực tiếp trên chuỗi đã quy đổi,
-  - (B) dự báo trên chuỗi VND gốc rồi quy đổi bằng tỷ giá gần nhất.
+### Kiểm tra nhanh trước khi cam kết (tuần 2)
+Trên **tập dev**, với 25 danh mục (tên + mô tả):
+- Chạy LLM zero-shot local; sinh 30 ví dụ mỗi danh mục rồi huấn luyện TF-IDF + LR.
+- Mục đích: kiểm tra toàn bộ đường ống và ước lượng mức khởi điểm.
+- Nếu mức khởi điểm **dưới khoảng 40%**: xem lại prompt sinh và prompt phân loại (vẫn chỉ trên dev) trước khi đi tiếp.
+- Nếu mức khởi điểm **đã trên khoảng 85%**: RQ2 còn ít chỗ để cải thiện. Khi đó trình bày biến thể "chỉ tên" và các giai đoạn có danh mục mới làm trọng tâm của RQ2.
 
-  Lặp lại với **nhiều cặp tiền có độ biến động khác nhau**: USD (ổn định), EUR (trung bình), JPY (mất giá mạnh 2022–2024), có thể thêm KRW, THB. Vẽ **chênh lệch sai số (A − B) theo độ biến động của tỷ giá** và kiểm định Diebold–Mariano cho từng cặp.
+### TN1: Bộ phân loại ban đầu, khi chưa có giao dịch nào (RQ1)
 
-  Kết luận mong đợi có dạng: *"với cặp tiền biến động dưới X%, hai cách tương đương; trên X%, nên dự báo theo tiền gốc"*. Kết quả "không khác biệt" ở cặp USD vẫn là một điểm dữ liệu có giá trị.
+| Nhóm | Mô hình | Dùng được cho danh mục tự tạo? |
+|---|---|---|
+| Baseline | Khớp tên danh mục trong ghi chú; đoán ngẫu nhiên theo số danh mục | Có |
+| LLM zero-shot | Model local (Qwen hoặc tương đương qua Ollama, bản lượng tử hóa) · model API. Prompt gồm tên (+ mô tả) danh mục; nhiệt độ 0 | Có |
+| Embedding zero-shot | Độ tương đồng giữa embedding ghi chú và embedding tên (+ mô tả) danh mục (bge-m3 / multilingual-e5) | Có |
+| Học trên dữ liệu tổng hợp theo người dùng | TF-IDF (n-gram từ + ký tự) + LR · embedding + LR, huấn luyện trên ví dụ sinh cho danh mục của người dùng | Có (mô hình nhẹ, huấn luyện trong vài giây) |
+| *Kịch bản phụ* | Các mô hình trên + fine-tune PhoBERT trên tập tổng hợp lớn của danh mục chuẩn | Chỉ danh mục chuẩn |
 
-### TN3 (tùy chọn): Phân loại đa ngôn ngữ (RQ4)
-PhoBERT so với XLM-R / multilingual embedding và LLM, trên tập giao dịch tiếng nước ngoài của tình nguyện viên.
+- Đánh giá **không thích nghi** (chưa học từ phản hồi) trên toàn bộ luồng, trừ tập dev. Các biến thể: chỉ tên / tên + mô tả; 10 / 30 / 100 ví dụ tổng hợp mỗi danh mục.
+- Báo cáo tách **ghi chú hay gặp / hiếm gặp**, và F1 từng danh mục (danh mục tên rõ nghĩa như Coffee so với tên viết tắt như AC).
+- **Lưu cache câu trả lời của LLM** ra file để thí nghiệm tái lập được và không tốn phí khi chạy lại.
+- Quyền riêng tư: chỉ gửi bản `*_anon.csv` lên API. Đọc chính sách lưu dữ liệu của nhà cung cấp trước khi gửi.
+
+### TN2: Chiến lược thích nghi, phát lại theo thời gian (RQ2)
+
+**Giao thức phát lại (prequential, kiểm tra trước, học sau):**
+1. Sắp các khoản chi theo ngày (trong cùng ngày giữ thứ tự của file gốc).
+2. Gặp nhãn lần đầu thì phát sự kiện "người dùng tạo danh mục": hệ thống sinh dữ liệu tổng hợp cho danh mục đó và cập nhật mô hình ban đầu.
+3. Với mỗi giao dịch: hệ thống đoán nhãn bằng trạng thái hiện tại, ghi lại đúng/sai (bỏ qua tính điểm nếu thuộc tập dev), **sau đó** mới nhận nhãn thật như thể người dùng vừa xác nhận hoặc sửa.
+4. Cập nhật lớp cá nhân: bộ nhớ và kNN cập nhật ngay; mô hình cá nhân huấn luyện lại theo lịch (tuần hoặc tháng).
+5. Giả định **phản hồi đầy đủ** (người dùng luôn sửa khi sai). (Tùy chọn) phân tích độ nhạy khi chỉ 50% lần sai được sửa.
+
+**Các chiến lược (đặt trên mô hình ban đầu tốt nhất của TN1):**
+
+| Mã | Chiến lược | Ghi chú |
+|---|---|---|
+| A0 | Không thích nghi | Mốc so sánh |
+| A1 | Bộ nhớ tra cứu: ghi chú đã chuẩn hóa → nhãn gần nhất; không có thì dùng mô hình ban đầu | Rẻ nhất; trên dữ liệu cũ đã đúng ~92% với ghi chú đã gặp |
+| A2 | kNN trực tuyến trên embedding các giao dịch đã sửa, kết hợp với mô hình ban đầu theo khoảng cách hoặc độ tin cậy | Cập nhật tức thì, có lời giải thích tự nhiên |
+| A3 | Huấn luyện lại định kỳ mô hình cá nhân (TF-IDF + LR) trên lịch sử phản hồi **trộn với dữ liệu tổng hợp** (tỷ lệ tổng hợp giảm dần khi có nhiều dữ liệu thật). Biến thể chống trôi: toàn bộ lịch sử · cửa sổ trượt N tháng · trọng số theo thời gian | Gần với kết quả sơ bộ 78% ở báo cáo dữ liệu |
+| A4 | LLM few-shot truy xuất (RAG): lấy k giao dịch đã sửa giống nhất đưa vào prompt | Gần chuyên môn GVHD; đắt và chậm nhất |
+
+**Độ đo:**
+- **Số lần người dùng phải sửa mỗi tháng** (độ đo chính, hướng người dùng) và accuracy / Macro-F1 theo từng tháng.
+- **Điểm hòa vốn:** số giao dịch phản hồi cần để chiến lược vượt A0, và để đạt ngưỡng 80%.
+- **Danh mục mới:** độ chính xác trong N giao dịch đầu tiên của mỗi danh mục vừa tạo.
+- Tách ghi chú **đã gặp / chưa gặp** tại thời điểm đoán.
+- MCC, confusion matrix, độ trễ (ms/giao dịch), bộ nhớ, chi phí API.
+- Mốc tham chiếu: Cohen's kappa (giới hạn trên của con người) và "mô hình học trên toàn bộ dữ liệu quá khứ" của thí nghiệm sơ bộ (78% khi chia theo thời gian, cùng 25 nhãn).
+
+**Kịch bản phụ:** chạy lại A0–A3 với danh mục chuẩn, so sánh để thấy ảnh hưởng của độ chi tiết danh mục.
+
+**So sánh thống kê:** các chiến lược cùng đoán trên một luồng nên dùng **kiểm định McNemar** theo cặp. Khoảng tin cậy bằng **bootstrap theo tháng**. Phần có yếu tố ngẫu nhiên (lấy mẫu dữ liệu tổng hợp, PhoBERT) chạy 3–5 seed.
+
+**Chạy qua hệ thống thật:** các chiến lược được so sánh trong `ml/experiments/` cho nhanh. **Cấu hình được chọn** thì chạy lại bằng công cụ phát lại qua API của hệ thống đã triển khai, kể cả sự kiện tạo danh mục, và hai kết quả phải khớp. Việc này đồng thời là một bài kiểm thử tích hợp.
+
+### TN3: Dự báo chi tiêu (RQ3, phụ)
+- **Chuỗi:** tổng chi **thường ngày** theo tuần (bỏ các khoản `Special`, học phí luân chuyển, vay), 211 tuần.
+- **Trước tiên xử lý vấn đề mật độ ghi chép giảm** (tỷ lệ ngày không có khoản chi tăng từ 7% năm 2022 lên 32% năm 2026, báo cáo dữ liệu mục 4.7). Nếu không, mô hình có thể đang dự báo *thói quen ghi chép* chứ không phải chi tiêu. Ít nhất phải nêu rõ, tốt nhất là tách được hai yếu tố.
+- **Mô hình:** Naive, Seasonal Naive, trung bình lịch sử và trung bình trượt (baseline, hiện đang thắng), ETS / SARIMA, Prophet (ngày lễ Việt Nam), LightGBM (lag, rolling, lịch).
+- **Đánh giá:** rolling-origin backtest, dự báo trước 1 tuần và 4 tuần. Cách đánh giá này cũng theo tinh thần "chỉ dùng quá khứ", thống nhất với TN2.
+- **Độ đo:** MAE, RMSE, sMAPE (không dùng MAPE vì có tuần chi bằng 0). **Kiểm định Diebold–Mariano** giữa các cặp.
+- Kết quả "không mô hình nào thắng trung bình lịch sử" vẫn là kết quả hợp lệ. Phân tích vì sao (chi tiêu thường ngày ổn định, hệ số biến thiên 0,40).
+
+### TN4: Kiểm tra trên người dùng khác (RQ4, có điều kiện)
+- Mỗi tình nguyện viên: tự đặt **danh mục của mình** (tên + mô tả ngắn), cung cấp **100–200 ghi chú chi tiêu thật có ngày** và gán nhãn theo danh mục đó. Khoảng 1–2 giờ mỗi người. Ẩn danh trước khi xử lý. Vì dùng danh mục của chính họ, tình nguyện viên không phải học bộ danh mục của người khác.
+- Chạy lại TN1 và TN2 (rút gọn vì luồng ngắn) với **cấu hình đã khóa**, không tinh chỉnh thêm.
+- **Ngưỡng:** đủ **3 người** trở lên thì báo cáo là RQ4. Có 1–2 người thì trình bày như nghiên cứu tình huống. Không có ai thì đưa vào hạn chế và hướng phát triển.
+- **Liên hệ tình nguyện viên từ tuần 1.** Họ cần vài tuần để ghi chép nếu chưa có sẵn.
 
 ### Hạn chế cần nêu trước hội đồng
-- Dữ liệu chủ yếu của một người: bổ sung dữ liệu từ 3–5 tình nguyện viên để kiểm tra khả năng tổng quát hóa (đồng thời dùng cho RQ2b). **Liên hệ tình nguyện viên từ tuần 1**, không để đến cuối.
-- Nhãn do một người gán, có nhiễu: đã đo bằng Cohen's kappa, nêu rõ giới hạn trên.
-- Tỷ giá từ nguồn công khai là tỷ giá tham khảo, có thể khác tỷ giá thực tế của từng kênh đổi tiền.
+- Luồng đánh giá chính là của một người; dev và luồng đánh giá cùng một người; người làm đề tài đã xem dữ liệu khi làm EDA và tự viết mô tả danh mục.
+- Giả định phản hồi đầy đủ (người dùng luôn sửa khi sai) lạc quan hơn thực tế.
+- Nhãn do một người gán, có nhiễu, đã đo bằng Cohen's kappa.
+- Dữ liệu tổng hợp phụ thuộc vào LLM dùng để sinh. Kết quả có thể khác nếu dùng LLM khác.
+- Ghi chú tự gõ khác với nội dung sao kê / SMS ngân hàng, nên kết quả không suy rộng sang bài toán phân loại sao kê.
 
 ---
 
 ## 7. Kiểm thử và quy trình
 - **Quy trình:** Scrum, sprint 1 tuần, backlog trên GitHub Projects.
 - **Kiểm thử:**
-  - unit test (JUnit, pytest). **Module Money/FX cần phủ test gần như 100%**: làm tròn, quy đổi chéo, ngày không có tỷ giá, đổi tiền tệ báo cáo, phân rã tài sản.
-  - integration test (Testcontainers cho PostgreSQL, Redis).
-  - E2E (Playwright), load test (k6).
-- **CI/CD:** GitHub Actions chạy build, test rồi deploy.
-- **Đánh giá tính năng gợi ý đổi tiền:** mô phỏng trên dữ liệu bán mô phỏng + nghiên cứu tình huống, xem 5.3-11.
-- **Đánh giá người dùng:** 5–10 người dùng thử, ưu tiên người có dùng nhiều loại tiền. Đo bằng thang **SUS**.
+  - unit test (JUnit, pytest). Module Money/FX phủ test cao: làm tròn, quy đổi chéo, ngày không có tỷ giá, phí ẩn.
+  - **kiểm thử ML service:** hợp đồng API; tính xác định (cùng đầu vào + cùng phiên bản mô hình thì cho cùng đầu ra); lớp cá nhân và danh mục của người A không ảnh hưởng người B; rollback phiên bản mô hình; xử lý khi API LLM lỗi hoặc chậm (dùng mô hình dự phòng); bộ sinh dữ liệu được kiểm thử với LLM giả lập (mock).
+  - integration test (Testcontainers cho PostgreSQL + pgvector, Redis). **Công cụ phát lại** chạy một đoạn luồng dữ liệu qua API như một bài kiểm thử hồi quy của chất lượng mô hình.
+  - E2E (Playwright), load test (k6) cho `/categorize`.
+- **CI/CD:** GitHub Actions chạy build, test (kể cả đoạn phát lại ngắn với dữ liệu tổng hợp đã lưu sẵn, không gọi API), rồi deploy.
+- **Giám sát:** tỷ lệ sửa nhãn theo tuần trên từng phiên bản mô hình (cùng độ đo với TN2), chi phí gọi API.
+- **Đánh giá người dùng:** 5–10 người dùng thử, thang **SUS**. Có thể gộp với tình nguyện viên của TN4.
 
 ---
 
@@ -470,22 +464,22 @@ PhoBERT so với XLM-R / multilingual embedding và LLM, trên tập giao dịch
 
 | Tuần | Công việc | Kết quả |
 |---|---|---|
-| 1 | Đọc tài liệu, EDA (kể cả trùng lặp), làm sạch và ẩn danh dữ liệu, viết quy tắc gán nhãn, chốt danh mục, **kiểm tra nhanh TF-IDF + GroupKFold**, liên hệ tình nguyện viên, thu thập tỷ giá lịch sử | Đề cương, notebook EDA, quyết định có định vị lại RQ1 không |
-| 2 | Gán nhãn lại mù 300–500 mẫu (Cohen's kappa); phân tích yêu cầu, use case, **thiết kế CSDL đa tiền tệ**, kiến trúc; tạo repo, Docker, CI | Tài liệu thiết kế, skeleton project, kappa |
-| 3 | TN1: baseline, TF-IDF + LR/SVM, fastText, embedding đa ngôn ngữ + LR | Bảng kết quả đợt 1 |
-| 4 | TN1: PhoBERT (5 seed), LLM, RQ2a, RQ2b, kiểm định thống kê, SHAP | **Chốt mô hình phân loại** |
-| 5 | Backend: auth, ví, giao dịch, **module Money** (có unit test), import CSV | API core |
-| 6 | **Dịch vụ tỷ giá** (job, cache Redis, dự phòng), đổi tiền, phí ẩn, quy đổi; ML service `/categorize` | Luồng đa tiền tệ chạy được |
-| 7 | Frontend core, vòng lặp phản hồi | Nhập → phân loại → sửa nhãn trên UI |
-| 8 | TN2: các mô hình dự báo, backtest, thí nghiệm tỷ giá | **Báo cáo giữa kỳ với GVHD** |
-| 9 | Tích hợp `/forecast`; ngân sách đa tiền tệ, cảnh báo, dashboard, **phân rã tài sản** | Đủ chức năng chính |
-| 10 | Pipeline huấn luyện lại; mở rộng: kế hoạch đổi tiền, TN3 nếu có dữ liệu | Tính năng mở rộng |
+| 1 | Viết tên + mô tả 25 danh mục; bảng ánh xạ về danh mục chuẩn; rà nhãn thiểu số và ngày bất thường; tách tập dev; **liên hệ tình nguyện viên**; đọc tài liệu | Đề cương, config danh mục, dữ liệu đã chia |
+| 2 | Gán nhãn lại mù 300 mẫu (kappa); viết bộ sinh dữ liệu và khung phát lại; **kiểm tra nhanh trên dev**; phân tích yêu cầu, thiết kế CSDL, kiến trúc; tạo repo, Docker, CI | Kappa, dữ liệu tổng hợp, skeleton project |
+| 3 | TN1: baseline, LLM zero-shot (local, API), embedding zero-shot, mô hình học trên dữ liệu tổng hợp; các biến thể chỉ tên / có mô tả, số ví dụ; kịch bản phụ | Bảng kết quả RQ1, chốt mô hình ban đầu |
+| 4 | TN2: chiến lược A0–A4, biến thể chống trôi, danh mục mới, kiểm định thống kê | **Chốt cấu hình thích nghi** |
+| 5 | Backend: auth, ví, giao dịch, **danh mục tự tạo**, module Money (có unit test), import CSV | API core |
+| 6 | ML service: `/categories` (sinh dữ liệu + huấn luyện nền qua hàng đợi), `/categorize`, `/feedback`, lớp cá nhân (pgvector), quản lý phiên bản; dịch vụ tỷ giá, phí ẩn | Luồng tạo danh mục → phân loại → phản hồi chạy được qua API |
+| 7 | Frontend core: quản lý danh mục, nhập nhanh với gợi ý danh mục, sửa nhãn, import hàng loạt | Tạo danh mục → nhập → gợi ý → sửa trên UI |
+| 8 | TN3: dự báo chi tiêu, backtest, Diebold–Mariano | **Báo cáo giữa kỳ với GVHD** |
+| 9 | `/forecast`; ngân sách, cảnh báo, dashboard; huấn luyện lại định kỳ; giám sát tỷ lệ sửa nhãn và chi phí API | Đủ chức năng chính |
+| 10 | Chạy **phát lại qua hệ thống thật**; TN4 nếu có dữ liệu tình nguyện viên; phần mở rộng nếu còn thời gian | Kết quả cuối khớp giữa notebook và hệ thống |
 | 11 | Kiểm thử unit, integration, E2E, load; sửa lỗi | Báo cáo kiểm thử |
-| 12 | Deploy VPS, hoàn thiện UI, người dùng thử, khảo sát SUS | Bản chạy online |
+| 12 | Deploy VPS, hoàn thiện UI, người dùng thử, SUS | Bản chạy online |
 | 13 | Hoàn thiện báo cáo, biểu đồ kết quả | Bản thảo luận văn |
 | 14 | Chỉnh sửa, slide, tập demo, **thời gian dự phòng** | Bản nộp cuối |
 
-> Viết báo cáo dần từng tuần. Phát hiện giao dịch bất thường và LSTM đã được **bỏ khỏi kế hoạch chính** để có thời gian cho phần đa tiền tệ. Nếu còn thời gian thì làm, không thì đưa vào hướng phát triển.
+> Viết báo cáo dần từng tuần. Thứ tự cắt khi trễ (đề xuất): phần mở rộng đa tiền tệ → A4 (RAG) → PhoBERT ở kịch bản phụ → kịch bản phụ danh mục chuẩn → TN4.
 
 ---
 
@@ -493,58 +487,67 @@ PhoBERT so với XLM-R / multilingual embedding và LLM, trên tập giao dịch
 
 | Rủi ro | Mức | Cách giảm |
 |---|---|---|
-| Phạm vi phình to vì thêm đa tiền tệ | Cao | Phân tầng MVP / mở rộng (mục 4.5), cắt TN3 và anomaly trước |
-| **Bài toán quá dễ / rò rỉ dữ liệu** do mô tả lặp lại (mọi mô hình đều đạt trên 95%, RQ1 mất ý nghĩa) | **Cao** | GroupKFold theo người bán, báo cáo tách người bán đã gặp / chưa gặp, kiểm tra nhanh ở tuần 1 để định vị lại RQ1 nếu cần |
-| Nhãn cũ không nhất quán | Trung bình | Viết quy tắc gán nhãn, gộp nhãn, gán lại mù và đo Cohen's kappa. Biến thành kết quả "giới hạn trên của con người" |
-| Số mẫu thực sự khác nhau ít hơn nhiều so với 5.000; lớp hiếm | Trung bình | Báo cáo cả hai con số, gộp lớp hiếm, F1 từng lớp, thêm embedding + LR làm mức giữa |
-| Kết quả fine-tune dao động theo seed, chênh lệch nhỏ là nhiễu | Trung bình | 5 seed, trung bình ± độ lệch chuẩn, kiểm định McNemar / kiểm định cặp |
-| Mô hình phức tạp không thắng baseline | Trung bình | Chấp nhận, phân tích nguyên nhân. Đây vẫn là kết quả khoa học |
-| Không xin được dữ liệu tình nguyện viên | Trung bình | Liên hệ từ tuần 1. Nếu không có: RQ2b lùi về learning curve trên dữ liệu cá nhân |
-| Hội đồng (thiên KTPM) đánh giá thấp nếu phần hệ thống yếu | Trung bình | Phần hệ thống, kiểm thử, CI/CD phải chắc chắn. Trình bày ML gắn với hệ thống: quản lý phiên bản mô hình, pipeline huấn luyện lại, kiểm thử ML service |
-| API tỷ giá ngừng hoạt động / giới hạn | Trung bình | Lưu lịch sử vào CSDL, có nguồn dự phòng, cho phép nhập tỷ giá thủ công |
-| Dữ liệu một người | Trung bình | Tình nguyện viên, nêu rõ trong phần hạn chế |
-| Fine-tune PhoBERT thiếu GPU (không có lab) | Thấp | Google Colab / Kaggle, dữ liệu nhỏ. Chỉ đưa dữ liệu đã ẩn danh lên cloud |
-| Máy cá nhân không chạy nổi LLM local | Thấp | Dùng bản lượng tử hóa nhỏ (vài tỷ tham số), hoặc chạy trên Colab / Kaggle |
+| **Rò rỉ khi tinh chỉnh**: nhìn kết quả trên luồng đánh giá rồi sửa prompt / mô tả danh mục | **Cao** | Chỉ tinh chỉnh trên dev; viết mô tả danh mục trước; khóa và commit config trước khi tính điểm; ghi nhật ký mọi lần chạy |
+| Phạm vi phình to | Cao | Phân tầng MVP / mở rộng (4.5), thứ tự cắt ở mục 8 |
+| Danh mục cá nhân khó hiểu (AC, RL, Mental, Ngu) khiến dữ liệu tổng hợp và LLM zero-shot rất yếu ở ngày đầu | Trung bình | Biến thể có mô tả; đây cũng là lý do cần lớp cá nhân. Báo cáo F1 từng danh mục để thấy rõ |
+| Dữ liệu tổng hợp khác xa ghi chú thật | Trung bình | Đa dạng hóa prompt (kiểm tra trên dev). Khoảng cách này tự nó là một kết quả của RQ1 |
+| Sinh dữ liệu khi tạo danh mục chậm hoặc tốn phí trong hệ thống thật | Trung bình | Chạy nền qua hàng đợi, dùng zero-shot trong lúc chờ, cache; đo chi phí thật trong TN1 |
+| LLM không tất định, API đổi phiên bản | Trung bình | Nhiệt độ 0, ghi tên và phiên bản model, cache toàn bộ câu trả lời và dữ liệu sinh ra |
+| Danh mục hiếm (English 4 mẫu) làm Macro-F1 nhiễu | Trung bình | Báo cáo F1 từng danh mục và số mẫu; báo cáo thêm accuracy và số lần sửa |
+| Không đủ tình nguyện viên | Trung bình | Liên hệ từ tuần 1; ngưỡng 3 người; có phương án lùi (TN4) |
+| Mật độ ghi chép giảm làm sai lệch dự báo | Trung bình | Phân tích trước khi dự báo (TN3), nêu rõ trong hạn chế |
+| Nhãn cũ không nhất quán | Trung bình | Rà soát, đo kappa |
+| Hội đồng (thiên KTPM) đánh giá thấp nếu phần hệ thống yếu | Trung bình | Kiểm thử ML service, quản lý phiên bản, phát lại qua hệ thống thật, CI/CD |
+| Máy cá nhân không chạy nổi LLM local | Thấp | Bản lượng tử hóa nhỏ, hoặc chạy trên Colab / Kaggle |
+| API tỷ giá ngừng hoạt động | Thấp | Lưu lịch sử vào CSDL, nguồn dự phòng, nhập tay |
 
 ---
 
 ## 10. Câu hỏi hội đồng có thể hỏi
 
-1. Dữ liệu chỉ của một người thì kết quả có tổng quát không?
-2. Tại sao không dùng `double` để lưu tiền?
-3. Quy đổi theo tỷ giá ngày giao dịch hay ngày hiện tại? Căn cứ vào đâu?
-4. Phí đổi tiền được tính thế nào, tỷ giá thị trường lấy từ đâu?
-5. Vì sao chọn Macro-F1 mà không chỉ dùng Accuracy?
-6. Mô hình tốt nhất hơn baseline bao nhiêu? Có đáng với chi phí tính toán không?
-7. Dữ liệu tài chính nhạy cảm, hệ thống bảo mật thế nào? Có gửi dữ liệu cho LLM bên ngoài không?
-8. Hệ thống khác gì Money Lover, Misa, Wise?
-9. Giao dịch lặp lại nhiều, tập test có bị trùng với tập train không? Em tách trùng thế nào?
-10. Tại sao mô hình không đạt 100%? *(Trả lời bằng Cohen's kappa: chính người gán nhãn cũng chỉ nhất quán Y%.)*
-11. Chênh lệch giữa các mô hình có ý nghĩa thống kê không, hay chỉ do seed?
-12. Mô hình ML được tích hợp, quản lý phiên bản và kiểm thử trong hệ thống thế nào? *(Hội đồng thiên KTPM dễ hỏi câu này.)*
+1. **Dữ liệu huấn luyện do LLM sinh thì có khách quan không?** *(Tập đánh giá là dữ liệu thật và không dùng khi sinh dữ liệu. Prompt sinh chỉ chứa tên và mô tả danh mục. Có báo cáo tỷ lệ trùng.)*
+2. **Sao không huấn luyện luôn trên dữ liệu của em cho cao?** *(Người dùng mới không có dữ liệu. Học từ dữ liệu người dùng là chiến lược A3 trong phát lại, và được đo đúng trình tự thời gian.)*
+3. **Sao không dùng một bộ danh mục cố định cho đơn giản?** *(Người dùng muốn danh mục riêng; có kịch bản phụ danh mục chuẩn để so sánh.)*
+4. Dữ liệu đánh giá chủ yếu của một người thì kết quả có tổng quát không? *(TN4 và phần hạn chế.)*
+5. Em có tinh chỉnh trên chính tập đánh giá không? Mô tả danh mục do em viết có thiên vị không? *(Tách dev, viết mô tả trước, khóa config.)*
+6. Tại sao mô hình không đạt 100%? *(Cohen's kappa; nhãn phụ thuộc ngữ cảnh.)*
+7. Người dùng thật có sửa hết các lần sai không? *(Giả định phản hồi đầy đủ, phân tích độ nhạy, nêu trong hạn chế.)*
+8. Ghi chú chi tiêu là dữ liệu nhạy cảm, có gửi ra LLM bên ngoài không? *(Bộ sinh dữ liệu chỉ gửi tên và mô tả danh mục. Việc dùng LLM nào để phân loại được quyết định dựa trên RQ1, có tính đến quyền riêng tư. Thí nghiệm chỉ gửi bản đã ẩn danh.)*
+9. Mô hình ML được tích hợp, quản lý phiên bản và kiểm thử trong hệ thống thế nào? Số liệu trong luận văn có phải của hệ thống thật không? *(Công cụ phát lại qua API.)*
+10. Chênh lệch giữa các chiến lược có ý nghĩa thống kê không?
+11. Hệ thống khác gì Money Lover, MISA, các app ghi chép khác?
+12. Tại sao không dùng `double` để lưu tiền? Phí đổi tiền tính thế nào?
 
 ---
 
 ## 11. Việc cần làm tiếp
 
-- [ ] Xác nhận các cột trong bộ dữ liệu (ngày giờ, số tiền, nội dung, danh mục, ví) và **nguồn dữ liệu** (app ghi chép tay hay sao kê ngân hàng)
-- [ ] EDA trùng lặp: số mô tả khác nhau, số người bán, tỷ lệ giao dịch 2025–2026 có mô tả đã gặp, số mẫu từng lớp
-- [ ] **Kiểm tra nhanh:** TF-IDF + LR với GroupKFold theo người bán (xem mục 6)
-- [ ] Viết quy tắc gán nhãn; gán lại mù 300–500 mẫu, tính Cohen's kappa
-- [ ] **Liên hệ 3–5 tình nguyện viên ngay** (dùng cho RQ2b và kiểm tra tổng quát hóa)
-- [ ] Kiểm tra cấu hình máy cá nhân có chạy được LLM local (Ollama) không; kiểm tra hạn mức GPU của Colab / Kaggle
-- [ ] Chuẩn bị buổi gặp GVHD: xem [buoi-01-chuan-bi.md](../meeting/buoi-01-chuan-bi.md)
-- [x] Dữ liệu có giao dịch ngoại tệ không? **Không**. Bài toán mới gặp gần đây, xem mục 5.8
-- [ ] **Bắt đầu ghi chép giao dịch ngoại tệ của bản thân ngay** (số tiền hai bên, kênh đổi, biên lai)
-- [x] Khảo sát hiện trạng đa tiền tệ, xem mục 5.7
-- [ ] Tự dùng thử Toshl, PocketSmith (bản dùng thử), Firefly III (bản demo) để kiểm chứng bảng 5.7 và chụp màn hình cho chương 2
+**Trước buổi gặp GVHD** (xem [buoi-01-chuan-bi.md](../meeting/buoi-01-chuan-bi.md))
+- [ ] In [tom-tat-de-tai.pdf](tom-tat-de-tai.pdf) hoặc chuẩn bị 5–6 slide theo hướng mới
 - [ ] Hỏi khoa mẫu đề cương / báo cáo của CT553H
-- [ ] Trao đổi với GVHD: hướng đề tài, khung 5 bước của Chou, phạm vi đa tiền tệ
-- [ ] Làm EDA trên dữ liệu thật (phân bố nhãn, số tiền, mùa vụ)
-- [ ] Tìm tài liệu về Cohen's kappa, GroupKFold / rò rỉ dữ liệu, kiểm định McNemar
-- [ ] Tìm tài liệu liên quan: transaction categorization, personal finance ML, PhoBERT, forecasting cá nhân, VAS 10 / IAS 21
-- [ ] Kiểm tra nguồn tỷ giá có VND, điều khoản sử dụng, dữ liệu lịch sử (cần cả USD, EUR, JPY, KRW, THB cho RQ3b)
-- [ ] Đọc văn bản gốc World Bank *Remittance Prices Worldwide* (phương pháp tính) và Quy định EU 2019/518 để trích dẫn định nghĩa phí ẩn
-- [ ] Tìm tài liệu về kiểm định Diebold–Mariano
-- [x] Chốt cách xử lý vấn đề "dự báo nhu cầu từng loại tiền khó kiểm chứng": kết hợp tính năng + dự báo phân vị + đánh giá bán mô phỏng trong chương hệ thống (5.3-11)
-- [ ] Tìm tài liệu về dự báo phân vị (quantile forecasting) và phương pháp Croston cho chuỗi ngắt quãng
+
+**Dữ liệu**
+- [x] Xác nhận các cột và nguồn dữ liệu: ghi chép tay trên Notion, xem báo cáo dữ liệu
+- [x] EDA cơ bản, thử nghiệm sơ bộ phân loại và dự báo
+- [ ] Viết tên + mô tả 25 danh mục; bảng ánh xạ về danh mục chuẩn (sau khi có ý kiến GVHD)
+- [ ] Rà soát nhãn thiểu số và ngày bất thường
+- [ ] Tách tập dev ngẫu nhiên ~10%; gán nhãn lại mù 300 mẫu, tính kappa
+- [ ] Phân tích mật độ ghi chép giảm (ảnh hưởng tới TN3)
+- [ ] **Liên hệ 3–5 tình nguyện viên ngay**
+
+**Thí nghiệm**
+- [ ] Chọn API LLM để sinh dữ liệu, đọc chính sách dữ liệu và ước tính chi phí
+- [ ] Kiểm tra máy cá nhân có chạy được LLM local (Ollama) không; kiểm tra hạn mức GPU Colab / Kaggle
+- [ ] Kiểm tra pgvector phù hợp cho bộ nhớ kNN theo người dùng
+
+**Tài liệu cần tìm**
+- [ ] LLM zero-shot cho phân loại văn bản ngắn; phân loại chỉ dựa vào tên nhãn (label-name-only); huấn luyện trên dữ liệu do LLM sinh
+- [ ] Học trực tuyến / học liên tục, concept drift, đánh giá prequential
+- [ ] Cá nhân hóa và cold-start trong phân loại
+- [ ] Phân loại giao dịch (Txn-Bert, arXiv 2508.05425, TopoLedgerBERT); PhoBERT
+- [ ] Cohen's kappa, McNemar, Diebold–Mariano
+- [ ] (Phụ) VAS 10 / IAS 21, World Bank *Remittance Prices Worldwide*, Quy định EU 2019/518
+
+**Khác**
+- [ ] Tự dùng thử Toshl, PocketSmith, Firefly III, Money Lover để chụp màn hình cho chương 2; xem các app gợi ý danh mục tự tạo thế nào
+- [x] ~~Ghi chép giao dịch ngoại tệ của bản thân~~ (đã bỏ, 27/09/2026)

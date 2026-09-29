@@ -1,6 +1,6 @@
 # Báo cáo phân tích bộ dữ liệu chi tiêu cá nhân
 
-> Đề tài: *Xây dựng hệ thống quản lý tài chính cá nhân đa tiền tệ ứng dụng học máy trong phân loại giao dịch và dự báo chi tiêu*
+> Đề tài: *Xây dựng hệ thống quản lý chi tiêu cá nhân với bộ phân loại giao dịch tự thích nghi theo phản hồi người dùng và dự báo chi tiêu* (tên dự kiến, xem [de-tai-1-brainstorm.md](../01-y-tuong/de-tai-1-brainstorm.md))
 > Ngày: 24/09/2026 · Mục đích: báo cáo hiện trạng dữ liệu, kết quả thử nghiệm sơ bộ và xin ý kiến GVHD về hướng xử lý.
 
 ---
@@ -10,6 +10,7 @@
 - Bộ dữ liệu gồm **5.465 giao dịch thật** (5.029 khoản chi, 436 khoản thu) do em tự ghi chép trên Notion từ **01/09/2022 đến 23/09/2026** (49 tháng, liên tục, không có tháng trống).
 - Toàn bộ giao dịch đã được **gán nhãn thủ công**: 25 nhãn chi, 8 nhãn thu. Dữ liệu sạch về định dạng: không có lỗi ngày, số tiền khớp hoàn toàn với cột kiểm tra.
 - Thử nghiệm sơ bộ với TF-IDF + Logistic Regression/SVM đạt **~86% accuracy** khi kiểm định chéo ngẫu nhiên nhưng giảm còn **~78%** khi huấn luyện trên dữ liệu cũ và kiểm thử trên dữ liệu mới. Như vậy, **dữ liệu có hiện tượng thay đổi theo thời gian rõ rệt**, đúng với câu hỏi nghiên cứu RQ2.
+- **Vai trò của bộ dữ liệu (cập nhật 27/09/2026):** không dùng để huấn luyện mô hình ban đầu, mà dùng để **đánh giá hệ thống** bằng cách phát lại theo thời gian như một người dùng mới với 25 nhãn được coi là danh mục người dùng tự tạo; tập dev là mẫu ngẫu nhiên ~10%, không tính điểm. Các thử nghiệm sơ bộ ở mục 6 học trên chính dữ liệu này, nên chỉ còn là **mốc tham chiếu**.
 - Có 5 khác biệt so với giả định ban đầu của đề cương cần điều chỉnh (mục 7), quan trọng nhất: nội dung giao dịch là **ghi chú tự viết rất ngắn** (trung vị 2 từ), không phải nội dung SMS ngân hàng.
 
 ---
@@ -90,7 +91,7 @@ Family 294 GD (227,9 triệu) · Salary 67 (38,7 triệu) · Anh em 28 · Clan 2
 | 4.3 | **Nghi trùng lặp**: trùng nội dung, số tiền, ngày, nhãn | 23 nhóm, 47 dòng | Chỉ đánh dấu, **không xóa tự động**, vì có thể là giao dịch thật (ví dụ mua 3 phần cơm cùng giá trong một ngày) |
 | 4.4 | **Tiền vay và cho vay ghi thành thu/chi** | 10 dòng; riêng vay vốn sinh viên 128 triệu | Tách thành loại giao dịch riêng (không phải thu nhập), đúng với thiết kế `TRANSFER` trong đề cương |
 | 4.5 | **Học phí luân chuyển**: gia đình gửi tiền (ghi là thu Family), sau đó đóng học phí (ghi là chi Study) | ~19 dòng, mỗi dòng 3–22 triệu | Loại khỏi chuỗi dự báo chi tiêu thường ngày |
-| 4.6 | **Chuyến đi nước ngoài ghi thành một khoản tổng** (Malaysia 12/2025: 4,1 triệu; Đài Loan 09–11/2026: 14,2 triệu) | 2 dòng | Đánh dấu. Đây là minh chứng thực tế cho nhu cầu quản lý đa tiền tệ (mục 7) |
+| 4.6 | **Chuyến đi nước ngoài ghi thành một khoản tổng** (Malaysia 12/2025: 4,1 triệu; Đài Loan 09–11/2026: 14,2 triệu) | 2 dòng | Đánh dấu. Loại khỏi thí nghiệm phân loại và chuỗi dự báo chi tiêu thường ngày |
 | 4.7 | **Mật độ ghi chép giảm dần** | Trung bình 120 GD/tháng (2022–2024) còn 81 GD/tháng (2025–2026). Tỷ lệ ngày không có khoản chi nào tăng từ 7% (2022) lên 32% (2026) | Cần xác định do chi ít đi, do gộp nhiều khoản, hay do bỏ sót. Ảnh hưởng trực tiếp đến dự báo |
 | 4.8 | **Ngày giao dịch sau ngày nhập liệu** | 164 dòng | Phần lớn là khoản ghi trước (kế hoạch) hoặc nhập nhầm năm. Cần rà soát |
 | 4.9 | Nội dung có xuống dòng, khoảng trắng đặc biệt | 5 dòng | Đã chuẩn hóa (Unicode NFC, gộp khoảng trắng) |
@@ -119,7 +120,7 @@ Script `ml/preprocessing/clean_data.py` (file gốc giữ nguyên, có thể ch�
 
 ## 6. Thử nghiệm sơ bộ
 
-### 6.1 Phân loại khoản chi (RQ1, RQ2)
+### 6.1 Phân loại khoản chi (mốc tham chiếu cho RQ2)
 
 Thiết lập: 5.028 khoản chi có nhãn, 25 nhãn, chỉ dùng nội dung văn bản. Đặc trưng TF-IDF kết hợp n-gram từ (1–2) và n-gram ký tự (2–5).
 
@@ -165,14 +166,14 @@ Backtest rolling-origin, dự báo trước 1 tuần, 52 tuần gần nhất:
 | Nội dung giao dịch giống SMS/sao kê ngân hàng | Ghi chú tự viết, trung vị 2 từ, nhiều viết tắt | Bài toán là *phân loại ghi chú chi tiêu ngắn tiếng Việt*. Nếu muốn giữ tính năng "dán thông báo ngân hàng" thì cần thu thập thêm dữ liệu SMS |
 | Có đặc trưng giờ giao dịch | Chỉ có ngày | Bỏ đặc trưng giờ. Dùng thứ trong tuần, ngày trong tháng, số tiền |
 | Có ví/tài khoản và nhãn "Chuyển khoản nội bộ" | Không có cột ví, không có giao dịch chuyển khoản nội bộ | Thiết kế ví vẫn giữ trong hệ thống, nhưng không có dữ liệu huấn luyện cho nhãn này |
-| Không có dữ liệu ngoại tệ | Có 2 chuyến đi nước ngoài, bị ghi thành một khoản tổng bằng VND | Minh chứng cho vấn đề đề tài giải quyết. Chuyến Đài Loan (21/9–25/11/2026) có thể dùng để **ghi chép chi tiết giao dịch TWD thật** |
+| Không có dữ liệu ngoại tệ | Có 2 chuyến đi nước ngoài, bị ghi thành một khoản tổng bằng VND | Đa tiền tệ đã hạ xuống tính năng phụ, không cần dữ liệu ngoại tệ (quyết định 27/09/2026) |
 | Bộ nhãn 10–15 nhãn | 25 nhãn, nhiều nhãn rất ít mẫu | Gộp nhãn (phương án ở mục 8) |
 
 ---
 
 ## 8. Nội dung xin ý kiến GVHD
 
-1. **Bộ nhãn:** giữ 25 nhãn gốc hay gộp về 10–12 nhóm? Một phương án gộp:
+1. **Bộ nhãn:** 25 nhãn gốc được coi là **danh mục do người dùng tự tạo** và là kịch bản chính. Kịch bản phụ gộp về 10–12 danh mục chuẩn để so sánh. Một phương án gộp (bảng ánh xạ chính thức sẽ viết trước khi chạy thí nghiệm):
 
    | Nhóm đề xuất | Nhãn gốc |
    |---|---|
@@ -188,18 +189,17 @@ Backtest rolling-origin, dự báo trước 1 tuần, 52 tuần gần nhất:
    | Chi phát sinh, khác | Accident, Ngu, Mental, Smoking |
    | *(không phải chi tiêu)* | Cho vay: chuyển sang loại giao dịch riêng |
 
-   Có thể báo cáo kết quả trên **cả hai mức** (25 nhãn chi tiết và nhóm gộp) để thấy ảnh hưởng của độ chi tiết nhãn.
-
-2. **Đánh giá chính:** dùng cách chia theo thời gian (sát thực tế triển khai) làm kết quả chính, kiểm định chéo ngẫu nhiên làm tham khảo?
-3. **Nhãn phụ thuộc ngữ cảnh** (RL, G): chấp nhận như giới hạn của bài toán, hay bổ sung đặc trưng ngữ cảnh (người đi cùng, số tiền, ngày)?
-4. **Mở rộng dữ liệu:** xin thêm dữ liệu từ 3–5 bạn tình nguyện để kiểm tra khả năng tổng quát, có cần thiết ở giai đoạn này không?
+2. **Cách đánh giá chính:** phát lại dữ liệu theo thời gian (đoán trước, học sau) thay cho kiểm định chéo. Tinh chỉnh chỉ trên tập dev (mẫu ngẫu nhiên ~10%, vẫn đi qua luồng để hệ thống học nhưng không tính điểm). Cách này có thuyết phục không?
+3. **Nhãn phụ thuộc ngữ cảnh** (RL, G): mô hình tổng quát gần như không đoán được nhóm này. Dự kiến để lớp cá nhân học (ví dụ từ mã người `[P03]`), và xem đây là chỗ chứng minh giá trị của thích nghi. Có hợp lý không?
+4. **Tình nguyện viên:** mỗi người tự đặt danh mục, cung cấp 100–200 ghi chú đã gán nhãn, chỉ để đánh giá. Cần tối thiểu bao nhiêu người?
 
 ---
 
 ## 9. Bước tiếp theo
 
 - [ ] Rà soát 154 giao dịch có nhãn không nhất quán và 164 giao dịch có ngày bất thường.
-- [ ] Chốt bộ nhãn theo ý kiến GVHD, viết tài liệu quy tắc gán nhãn.
-- [ ] Chạy PhoBERT, fastText, LLM trên cùng cách chia dữ liệu để so sánh.
-- [ ] Thiết kế lại thí nghiệm learning curve để tách ảnh hưởng của số mẫu và thay đổi theo thời gian.
-- [ ] Bắt đầu ghi chép chi tiết giao dịch ngoại tệ (số tiền gốc, số tiền bị trừ, kênh đổi tiền).
+- [ ] Viết mô tả một câu cho 25 danh mục (trước khi chạy thí nghiệm); viết bảng ánh xạ về danh mục chuẩn cho kịch bản phụ.
+- [ ] Tách tập dev ngẫu nhiên ~10% (seed cố định) trong script tiền xử lý.
+- [ ] Gán nhãn lại mù 300 mẫu theo 25 danh mục, tính Cohen's kappa.
+- [ ] Phân tích nguyên nhân mật độ ghi chép giảm (mục 4.7) trước khi làm thí nghiệm dự báo.
+- [x] ~~Ghi chép chi tiết giao dịch ngoại tệ~~ (đã bỏ, 27/09/2026).

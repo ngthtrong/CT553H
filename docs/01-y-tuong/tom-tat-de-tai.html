@@ -20,7 +20,7 @@
   html, body { margin: 0; padding: 0; background: #fff; }
   body {
     font-family: "Be Vietnam Pro", "DejaVu Sans", sans-serif;
-    font-size: 8.9pt;
+    font-size: 8.6pt;
     line-height: 1.42;
     color: var(--ink);
     -webkit-print-color-adjust: exact;
@@ -56,7 +56,7 @@
   .stat b { display: block; font-size: 12pt; line-height: 1.1; color: var(--accent); font-weight: 700; }
   .stat span { font-size: 7.4pt; color: var(--muted); line-height: 1.25; display: block; }
 
-  table { width: 100%; border-collapse: collapse; font-size: 8.2pt; margin: 3px 0 4px; }
+  table { width: 100%; border-collapse: collapse; font-size: 7.9pt; margin: 3px 0 4px; }
   th, td { text-align: left; padding: 2.5px 5px; border-bottom: 1px solid var(--line); vertical-align: top; }
   th { font-weight: 600; background: #f3f5f7; border-bottom: 1px solid #c5ccd4; }
   td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
@@ -92,19 +92,20 @@
 <section class="page">
   <header>
     <div class="kicker">Luận văn CT553H · Tóm tắt đề tài đang xem xét</div>
-    <h1>Xây dựng hệ thống quản lý tài chính cá nhân đa tiền tệ ứng dụng học máy trong phân loại giao dịch và dự báo chi tiêu</h1>
-    <div class="en">Building a Multi-Currency Personal Finance Management System Using Machine Learning for Transaction Categorization and Spending Forecasting</div>
+    <h1>Xây dựng hệ thống quản lý chi tiêu cá nhân với bộ phân loại giao dịch tự thích nghi theo phản hồi người dùng và dự báo chi tiêu</h1>
+    <div class="en">Building a Personal Expense Management System with a Feedback-Adaptive Transaction Classifier and Spending Forecasting</div>
     <div class="meta">
       <span>Ngành Kỹ thuật phần mềm · Làm một mình · 14 tuần</span>
-      <span><span class="status">Bản thảo, đề tài chưa chốt</span> · 25/09/2026</span>
+      <span><span class="status">Bản thảo, đề tài chưa chốt</span> · 27/09/2026</span>
     </div>
   </header>
 
   <h2><span class="n">1</span>Vấn đề và động lực</h2>
   <ul>
-    <li><strong>Ghi chép chi tiêu thủ công tốn công</strong>, người dùng dễ bỏ cuộc. Các ứng dụng phổ biến phân loại theo quy tắc, chưa hiểu tốt ghi chú tiếng Việt ngắn, viết tắt, không dấu.</li>
-    <li><strong>Khoảng trống nghiên cứu:</strong> phân loại giao dịch bằng học máy đã được nghiên cứu nhiều với tiếng Anh (Txn-Bert/QuickBooks 2025, TopoLedgerBERT 2024), nhưng <strong>chưa tìm thấy công trình cho tiếng Việt</strong> trong các nguồn đã khảo sát.</li>
-    <li><strong>Nhu cầu đa tiền tệ</strong> ngày càng phổ biến (du học sinh, người làm việc ở nước ngoài, freelancer nhận ngoại tệ). Nhiều ứng dụng đã hỗ trợ ví nhiều loại tiền, nhưng <strong>chưa thấy ứng dụng nào phân tích</strong>: mất bao nhiêu vì phí đổi tiền, tài sản thay đổi do chi tiêu hay do tỷ giá.</li>
+    <li><strong>Ghi chép chi tiêu thủ công tốn công</strong>: phải gõ nội dung và chọn danh mục. Ghi chú tự gõ rất ngắn, viết tắt, không dấu, sai chính tả (“cf”, “cơm sờn”).</li>
+    <li><strong>Bài toán người dùng mới:</strong> mô hình học máy thông thường cần hàng trăm giao dịch đã gán nhãn của chính người đó mới dùng được. Những tuần đầu, lúc người dùng dễ bỏ cuộc nhất, hệ thống lại chưa giúp được gì.</li>
+    <li><strong>Mỗi người tự đặt danh mục riêng</strong> và có thói quen riêng (cùng “cafe”, người xếp vào Ăn uống, người xếp vào Gặp bạn bè). Mô hình học trên bộ danh mục cố định không dùng được; hệ thống phải <strong>học từ những lần người dùng sửa nhãn</strong>.</li>
+    <li>Phân loại giao dịch đã được nghiên cứu nhiều với tiếng Anh (Txn-Bert 2025, TopoLedgerBERT 2024, dữ liệu tổng hợp: arXiv 2508.05425). <strong>Chưa tìm thấy công trình cho ghi chú chi tiêu tiếng Việt</strong> trong các nguồn đã khảo sát.</li>
   </ul>
 
   <h2><span class="n">2</span>Dữ liệu hiện có</h2>
@@ -115,12 +116,12 @@
     <div class="stat"><b>1.973</b><span>nội dung khác nhau trên 5.028 khoản chi có nhãn</span></div>
     <div class="stat"><b>2 từ</b><span>độ dài trung vị của ghi chú (“xăng”, “cơm sườn trứng”)</span></div>
   </div>
-  <p>Dữ liệu đã được làm sạch và <strong>ẩn danh</strong> bằng script tái lập được (39 tên người thay bằng mã cố định). Đặc điểm cần lưu ý: văn bản rất ngắn, nhiều biến thể viết (“cafe / cf / cà phê”); nhãn mất cân bằng mạnh (nhãn lớn nhất 33,7%); một số nhãn phụ thuộc ngữ cảnh “đi cùng ai” chứ không chỉ “mua gì”; chỉ có VND, chỉ có ngày (không có giờ).</p>
+  <p>Đã làm sạch và <strong>ẩn danh</strong> bằng script tái lập được. Nhãn mất cân bằng mạnh, một số nhãn phụ thuộc ngữ cảnh “đi cùng ai”. <strong>Vai trò: dùng để đánh giá hệ thống, không dùng để huấn luyện mô hình ban đầu</strong> (mục 4).</p>
 
   <h2><span class="n">3</span>Kết quả thử nghiệm sơ bộ</h2>
   <div class="cols">
     <div>
-      <p><strong>Phân loại khoản chi</strong> (25 nhãn, chỉ dùng văn bản, TF-IDF n-gram từ + ký tự)</p>
+      <p><strong>Phân loại khoản chi</strong> (25 nhãn, học trên chính dữ liệu cá nhân, TF-IDF n-gram từ + ký tự)</p>
       <table>
         <tr><th>Mô hình</th><th class="num">CV ngẫu nhiên<br>Acc / Macro-F1</th><th class="num">Theo thời gian*<br>Acc / Macro-F1</th></tr>
         <tr><td>Nhãn phổ biến nhất</td><td class="num">33,7% / 0,02</td><td class="num">27,5% / 0,02</td></tr>
@@ -128,93 +129,91 @@
         <tr><td>TF-IDF + Logistic Reg.</td><td class="num">85,7% / 0,66</td><td class="num">78,0% / 0,46</td></tr>
         <tr class="best"><td>TF-IDF + Linear SVM</td><td class="num">86,7% / 0,66</td><td class="num">78,2% / 0,45</td></tr>
       </table>
-      <div class="note">* Huấn luyện 2022–2024, kiểm tra 2025–2026.</div>
+      <div class="note">* Học 2022–2024, kiểm tra 2025–2026. Chỉ là mốc tham chiếu, sẽ chạy lại trên danh mục chuẩn.</div>
     </div>
     <div>
       <p><strong>Nhận xét chính</strong></p>
       <ul>
-        <li><strong>Dữ liệu thay đổi theo thời gian là vấn đề thật:</strong> chia theo thời gian làm accuracy giảm ~9 điểm, Macro-F1 giảm ~0,2. Tỷ lệ nội dung chưa gặp tăng từ 34% lên 53%, xuất hiện 5 nhãn mới.</li>
-        <li>Nội dung <strong>đã gặp</strong> đúng ~92%, nội dung <strong>mới</strong> chỉ 65–72%. Đây là chỗ mô hình ngữ nghĩa (PhoBERT, LLM) có thể tạo khác biệt.</li>
-        <li><strong>Dự báo chi tiêu tuần</strong> (211 tuần, bỏ khoản lớn đặc biệt): baseline “trung bình toàn lịch sử” đạt MAE 184 nghìn VND, sMAPE 24,5%, tốt hơn Naive (31,6%). Mô hình phức tạp phải vượt được mức này.</li>
+        <li><strong>Dữ liệu thay đổi theo thời gian là vấn đề thật:</strong> accuracy giảm ~9 điểm khi chia theo thời gian; nội dung chưa gặp tăng từ 34% lên 53%, có 5 nhãn mới. Cần <strong>thích nghi liên tục</strong>.</li>
+        <li>Nội dung <strong>đã gặp</strong> đúng ~92%, nội dung <strong>mới</strong> chỉ 65–72%: bộ nhớ cá nhân xử lý phần lặp lại, mô hình tổng quát xử lý phần mới.</li>
+        <li><strong>Dự báo chi tiêu tuần</strong> (211 tuần): “trung bình toàn lịch sử” đạt sMAPE 24,5%, tốt hơn Naive (31,6%). Mô hình phức tạp phải vượt được mức này.</li>
       </ul>
     </div>
   </div>
 
-  <h2><span class="n">4</span>Câu hỏi nghiên cứu</h2>
+  <h2><span class="n">4</span>Ý tưởng chính: đánh giá bằng phát lại theo thời gian</h2>
+  <div class="callout">
+    <strong>Mô hình ban đầu không học từ dữ liệu cá nhân.</strong> Khi người dùng tạo danh mục (tên + mô tả tùy chọn), hệ thống dùng <strong>LLM zero-shot</strong> và <strong>sinh dữ liệu tổng hợp cho riêng danh mục của người đó</strong> (chỉ gửi tên, mô tả; không gửi ghi chú) để huấn luyện mô hình nhẹ.
+    4 năm dữ liệu với <strong>25 danh mục tự đặt</strong> được <strong>phát lại theo thời gian</strong> như một người dùng mới: hệ thống <strong>đoán trước</strong>, nhận nhãn thật, rồi <strong>học tiếp</strong>. Độ đo chính: <strong>số lần phải sửa mỗi tháng</strong>. Tinh chỉnh trên tập dev ngẫu nhiên ~10% (không tính điểm).
+  </div>
+
+  <h2><span class="n">5</span>Câu hỏi nghiên cứu</h2>
   <table class="rq">
-    <tr><td>RQ1</td><td>Phương pháp nào phân loại ghi chú chi tiêu tiếng Việt tốt nhất khi cân bằng độ chính xác, tốc độ và chi phí, <strong>đặc biệt với nội dung chưa từng gặp</strong>? Mô hình đạt đến đâu so với mức nhất quán của chính người gán nhãn (Cohen’s kappa)?</td></tr>
-    <tr><td>RQ2a</td><td>Dữ liệu thay đổi theo thời gian làm độ chính xác giảm bao nhiêu, do thói quen chi tiêu hay do cách gán nhãn thay đổi? Chiến lược huấn luyện lại nào hiệu quả nhất (không huấn luyện lại, toàn bộ, cửa sổ trượt, trọng số theo thời gian)?</td></tr>
-    <tr><td>RQ2b</td><td>Người dùng mới cần gán nhãn bao nhiêu giao dịch để mô hình dùng được? (cần dữ liệu 3–5 tình nguyện viên; nếu không có thì lùi về learning curve trên dữ liệu cá nhân)</td></tr>
-    <tr><td>RQ3a</td><td>Mô hình nào dự báo chi tiêu tốt nhất (Seasonal Naive, SARIMA, Prophet, LightGBM), so sánh có kiểm định Diebold–Mariano?</td></tr>
-    <tr><td>RQ3b</td><td><em>(phân tích phụ)</em> Khi tiền tệ báo cáo khác tiền tệ chi tiêu, nên dự báo theo tiền gốc rồi quy đổi hay dự báo trực tiếp trên chuỗi đã quy đổi? Kết quả thay đổi thế nào theo độ biến động tỷ giá (USD, EUR, JPY)?</td></tr>
+    <tr><td>RQ1</td><td>Khi người dùng <strong>vừa tạo danh mục riêng</strong> mà chưa có giao dịch nào, bộ phân loại ban đầu đạt đến đâu? So sánh LLM zero-shot (local, API), embedding zero-shot, mô hình học trên dữ liệu tổng hợp theo người dùng; chỉ tên so với tên + mô tả; 10/30/100 ví dụ mỗi danh mục.</td></tr>
+    <tr><td>RQ2</td><td>Khi học từ phản hồi sửa nhãn, <strong>chiến lược thích nghi nào giảm số lần sửa nhanh nhất</strong>: bộ nhớ tra cứu, kNN trực tuyến, huấn luyện lại định kỳ (cửa sổ trượt, trọng số thời gian), LLM few-shot truy xuất (RAG)? Danh mục mới được xử lý thế nào?</td></tr>
+    <tr><td>RQ3</td><td><em>(phụ)</em> Mô hình dự báo chi tiêu tuần nào (Seasonal Naive, ETS/SARIMA, Prophet, LightGBM) vượt baseline trung bình lịch sử, có kiểm định Diebold–Mariano?</td></tr>
+    <tr><td>RQ4</td><td><em>(có điều kiện, cần ≥ 3 tình nguyện viên, mỗi người 100–200 ghi chú)</em> Kết luận RQ1–RQ2 có lặp lại với danh mục của người khác không? <em>Kịch bản phụ: gộp về 10–12 danh mục chuẩn để so sánh.</em></td></tr>
   </table>
 </section>
 
 <!-- ===================== TRANG 2 ===================== -->
 <section class="page">
-  <h2 style="margin-top:0"><span class="n">5</span>Phương pháp nghiên cứu, trình bày theo quy tắc 5 bước của Chou</h2>
+  <h2 style="margin-top:0"><span class="n">6</span>Phương pháp nghiên cứu, trình bày theo quy tắc 5 bước của Chou</h2>
   <table>
     <tr><th style="width:22%">Bước</th><th>Áp dụng vào đề tài</th></tr>
-    <tr><td>1. Bộ dữ liệu chuẩn</td><td>Làm sạch, ẩn danh 5.465 giao dịch; chuẩn hóa nội dung thành nhóm để <strong>loại trùng lặp giữa train/test</strong> (tương tự CD-HIT); gộp bộ nhãn; gán nhãn lại mù 300–500 mẫu, đo <strong>Cohen’s kappa</strong> làm giới hạn trên của con người.</td></tr>
-    <tr><td>2. Biểu diễn mẫu</td><td>TF-IDF (n-gram từ và ký tự), fastText, embedding đa ngôn ngữ (bge-m3, multilingual-e5), embedding PhoBERT; đặc trưng số tiền, thứ trong tuần, ngày trong tháng.</td></tr>
-    <tr><td>3. Thuật toán</td><td>Rule-based (baseline) → Logistic Regression, Linear SVM → embedding + LR → fine-tune PhoBERT → LLM zero/few-shot (model local qua Ollama so với API).</td></tr>
-    <tr><td>4. Kiểm định</td><td>GroupKFold theo nhóm nội dung; <strong>tập kiểm tra độc lập theo thời gian</strong> (2025–2026) làm kết quả chính; 5 seed; kiểm định McNemar; độ đo <strong>Macro-F1, MCC</strong>, F1 từng lớp, độ trễ suy luận; giải thích bằng <strong>SHAP</strong>.</td></tr>
-    <tr><td>5. Web server</td><td>Chính là hệ thống quản lý tài chính hoàn chỉnh được triển khai (mục 6).</td></tr>
+    <tr><td>1. Bộ dữ liệu chuẩn</td><td><strong>Luồng đánh giá</strong>: 5.028 khoản chi thật theo thời gian, 25 danh mục tự đặt; tên + mô tả danh mục viết trước. <strong>Tập dev</strong> ngẫu nhiên ~10%, không tính điểm. <strong>Dữ liệu tổng hợp</strong> sinh từ tên + mô tả danh mục. Gán nhãn lại mù 300 mẫu, đo <strong>Cohen’s kappa</strong> làm giới hạn trên của con người.</td></tr>
+    <tr><td>2. Biểu diễn mẫu</td><td>TF-IDF (n-gram từ và ký tự), embedding đa ngôn ngữ (bge-m3, multilingual-e5), PhoBERT.</td></tr>
+    <tr><td>3. Thuật toán</td><td>Mô hình ban đầu: LLM zero-shot, embedding zero-shot, TF-IDF / embedding + LR học trên dữ liệu tổng hợp (PhoBERT ở kịch bản phụ). Lớp cá nhân: bộ nhớ, kNN, huấn luyện lại định kỳ, LLM few-shot truy xuất.</td></tr>
+    <tr><td>4. Kiểm định</td><td><strong>Phát lại theo thời gian</strong> (prequential) trên luồng đánh giá; kiểm tra độc lập trên dữ liệu tình nguyện viên với cấu hình đã khóa; <strong>McNemar</strong>, bootstrap theo tháng, 3–5 seed; <strong>Macro-F1, MCC</strong>, số lần sửa/tháng, độ trễ, chi phí.</td></tr>
+    <tr><td>5. Web server</td><td>Chính là hệ thống hoàn chỉnh (mục 7). Cấu hình được chọn chạy lại qua <strong>API thật</strong> của hệ thống bằng công cụ phát lại.</td></tr>
   </table>
 
-  <h2><span class="n">6</span>Hệ thống phần mềm</h2>
+  <h2><span class="n">7</span>Hệ thống phần mềm</h2>
   <div class="arch">
-    <div class="box"><h4>React SPA</h4><ul><li>Dashboard, ngân sách</li><li>Nhập / sửa nhãn</li><li>Dự báo, cảnh báo</li></ul></div>
+    <div class="box"><h4>React SPA</h4><ul><li>Nhập nhanh, gợi ý danh mục</li><li>Sửa nhãn, import hàng loạt</li><li>Dashboard, ngân sách, dự báo</li></ul></div>
     <div class="arrow">→</div>
-    <div class="box"><h4>Spring Boot (Java)</h4><ul><li>Auth (JWT), ví, giao dịch, import CSV</li><li><strong>Module Money/FX</strong>: BigDecimal, tỷ giá lịch sử, quy đổi</li><li>Ngân sách, cảnh báo, job tỷ giá hằng ngày</li></ul></div>
+    <div class="box"><h4>Spring Boot (Java)</h4><ul><li>Auth (JWT), ví, giao dịch, <strong>danh mục tự tạo</strong>, import CSV</li><li>Ngân sách, cảnh báo</li><li>Module Money/FX (phụ): BigDecimal, tỷ giá lịch sử, phí đổi tiền ẩn</li></ul></div>
     <div class="arrow">→</div>
-    <div class="box"><h4>ML service (FastAPI)</h4><ul><li><code>/categorize</code> + độ tin cậy + SHAP</li><li><code>/forecast</code></li><li><code>/retrain</code> từ phản hồi sửa nhãn</li></ul></div>
+    <div class="box"><h4>ML service (FastAPI)</h4><ul><li><code>/categories</code>: sinh dữ liệu + huấn luyện nền</li><li><code>/categorize</code> + lớp cá nhân; <code>/feedback</code>, <code>/retrain</code></li><li><code>/forecast</code>; phiên bản mô hình</li></ul></div>
   </div>
   <div class="infra">
-    <div><b>PostgreSQL</b>: dữ liệu tài chính, kiểu NUMERIC chính xác</div>
-    <div><b>Redis</b>: cache tỷ giá, hàng đợi huấn luyện lại</div>
-    <div><b>Quy trình</b>: Scrum 1 tuần, Docker Compose, GitHub Actions CI/CD, JUnit, pytest, Testcontainers, Playwright</div>
+    <div><b>PostgreSQL + pgvector</b>: dữ liệu tài chính (NUMERIC), bộ nhớ kNN theo từng người dùng</div>
+    <div><b>Redis</b>: cache, hàng đợi huấn luyện lại</div>
+    <div><b>Quy trình</b>: Scrum 1 tuần, Docker Compose, GitHub Actions CI/CD, JUnit, pytest, Testcontainers, Playwright, k6</div>
   </div>
-
   <div class="callout">
-    <strong>Điểm khác biệt của hệ thống: từ “ghi chép” đa tiền tệ đến “phân tích” đa tiền tệ.</strong>
-    Các ứng dụng hiện có (Toshl, PocketSmith, Firefly III, Money Lover) trả lời “tôi có bao nhiêu tiền”. Hệ thống này trả lời thêm:
-    <ul style="margin-top:2px">
-      <li><strong>Mất bao nhiêu vì đổi tiền:</strong> tự tính phí ẩn so với tỷ giá mid-market cho từng lần đổi, thống kê theo kênh đổi.</li>
-      <li><strong>Tài sản thay đổi vì đâu:</strong> tách chính xác biến động tổng tài sản thành phần do dòng tiền và phần do tỷ giá.</li>
-      <li><strong>Tháng sau cần bao nhiêu tiền nào:</strong> dự báo chi tiêu theo từng loại tiền, gợi ý lượng cần đổi theo dự báo phân vị (P80). Không dự đoán tỷ giá.</li>
-    </ul>
-    <span class="note">Đa tiền tệ là điểm cộng của hệ thống, không gánh phần hàm lượng khoa học. Phần tính toán là xác định, được kiểm chứng bằng unit test với kịch bản tính tay.</span>
+    <strong>Gắn nghiên cứu với kỹ thuật phần mềm:</strong> vòng phản hồi và pipeline thích nghi <strong>chính là đối tượng nghiên cứu</strong>. Công cụ phát lại vừa là công cụ thí nghiệm vừa là kiểm thử hồi quy trong CI; hệ thống giám sát <strong>tỷ lệ sửa nhãn</strong>, cùng độ đo với thí nghiệm.
+    <span class="note">Đa tiền tệ là tính năng phụ (ví theo loại tiền, tỷ giá lịch sử, phí đổi tiền ẩn), kiểm chứng bằng unit test. LLM dùng để phân loại trong hệ thống sẽ chọn theo kết quả RQ1, có tính quyền riêng tư.</span>
   </div>
 
-  <h2><span class="n">7</span>Kế hoạch 14 tuần</h2>
+  <h2><span class="n">8</span>Kế hoạch 14 tuần</h2>
   <div class="timeline">
-    <div class="phase"><span class="wk">Tuần 1–4</span><b>Dữ liệu và TN1</b>Chốt nhãn, đo kappa, thiết kế CSDL và kiến trúc; chạy các mô hình phân loại, RQ2a/b, <strong>chốt mô hình</strong></div>
-    <div class="phase"><span class="wk">Tuần 5–8</span><b>Hệ thống lõi và TN2</b>Backend, module Money/FX, dịch vụ tỷ giá, frontend, vòng phản hồi; thí nghiệm dự báo; <strong>báo cáo giữa kỳ</strong></div>
-    <div class="phase"><span class="wk">Tuần 9–12</span><b>Hoàn thiện và kiểm thử</b>Dashboard, ngân sách, phân rã tài sản, huấn luyện lại; kiểm thử; deploy VPS; 5–10 người dùng thử (SUS)</div>
+    <div class="phase"><span class="wk">Tuần 1–4</span><b>Dữ liệu và thí nghiệm chính</b>Mô tả danh mục, tập dev, kappa, bộ sinh dữ liệu, khung phát lại, kiểm tra nhanh trên dev; RQ1, RQ2; <strong>chốt cấu hình</strong></div>
+    <div class="phase"><span class="wk">Tuần 5–8</span><b>Hệ thống lõi và RQ3</b>Backend, ML service với lớp cá nhân, frontend nhập nhanh và sửa nhãn; dự báo; <strong>báo cáo giữa kỳ</strong></div>
+    <div class="phase"><span class="wk">Tuần 9–12</span><b>Hoàn thiện và kiểm thử</b>Dashboard, ngân sách, huấn luyện lại, giám sát; phát lại qua hệ thống thật; RQ4; kiểm thử; deploy; SUS</div>
     <div class="phase"><span class="wk">Tuần 13–14</span><b>Luận văn</b>Hoàn thiện báo cáo, biểu đồ, slide, demo; thời gian dự phòng</div>
   </div>
-  <p class="note">Ngoài phạm vi: app mobile native, kết nối API ngân hàng, dự đoán tỷ giá, tư vấn đầu tư. Nếu kịp: phân loại đa ngôn ngữ, OCR hóa đơn, phát hiện giao dịch bất thường.</p>
+  <p class="note">Ngoài phạm vi: app mobile native, kết nối API ngân hàng, dự đoán tỷ giá, tư vấn đầu tư. Nếu kịp: phân rã biến động tài sản theo tỷ giá, gợi ý lượng ngoại tệ cần đổi, OCR hóa đơn.</p>
 
   <div class="cols" style="margin-top:2px">
     <div>
-      <h2><span class="n">8</span>Rủi ro chính và cách giảm</h2>
+      <h2><span class="n">9</span>Rủi ro chính và cách giảm</h2>
       <table>
         <tr><th>Rủi ro</th><th>Cách giảm</th></tr>
-        <tr><td>Dữ liệu của một người</td><td>Xin dữ liệu 3–5 tình nguyện viên; nêu rõ trong hạn chế</td></tr>
-        <tr><td>Rò rỉ dữ liệu do nội dung lặp lại</td><td>Chia theo nhóm và theo thời gian; báo cáo tách nội dung đã gặp / chưa gặp</td></tr>
-        <tr><td>Nhãn nhiễu, phụ thuộc ngữ cảnh</td><td>Quy tắc gán nhãn, rà 154 nhãn thiểu số, đo kappa</td></tr>
-        <tr><td>Mô hình phức tạp không thắng baseline</td><td>Vẫn là kết quả; phân tích nguyên nhân, so chi phí và độ trễ</td></tr>
-        <tr><td>Phạm vi phình to</td><td>Tách MVP / mở rộng; cắt phần mở rộng trước</td></tr>
+        <tr><td>Tinh chỉnh trên chính tập đánh giá</td><td>Chỉ tinh chỉnh trên dev; viết mô tả danh mục trước; khóa cấu hình trước khi tính điểm</td></tr>
+        <tr><td>Dữ liệu tổng hợp khác xa dữ liệu thật</td><td>Đa dạng hóa prompt; khoảng cách này tự nó là kết quả của RQ1</td></tr>
+        <tr><td>Danh mục viết tắt (AC, RL) khiến ngày đầu rất yếu</td><td>Biến thể có mô tả; đây cũng là lý do cần lớp cá nhân</td></tr>
+        <tr><td>Đánh giá chủ yếu trên một người</td><td>Tình nguyện viên (RQ4); nêu rõ trong hạn chế</td></tr>
+        <tr><td>Phạm vi phình to</td><td>Thứ tự cắt: mở rộng đa tiền tệ → RAG → PhoBERT → kịch bản danh mục chuẩn → RQ4</td></tr>
       </table>
     </div>
     <div>
-      <h2><span class="n">9</span>Xin ý kiến thầy/cô</h2>
+      <h2><span class="n">10</span>Xin ý kiến thầy/cô</h2>
       <ol class="ask">
-        <li>Hướng đề tài và tỷ lệ nghiên cứu / hệ thống như trên đã phù hợp với yêu cầu “hàm lượng khoa học tương đối” của CT553H chưa? Nếu cần cắt thì nên cắt phần nào?</li>
-        <li>Bộ nhãn: giữ 25 nhãn gốc hay gộp về 10–12 nhóm (hoặc báo cáo cả hai mức)?</li>
-        <li>Dùng cách chia theo thời gian làm kết quả chính, kiểm định chéo ngẫu nhiên làm tham khảo, có hợp lý không?</li>
-        <li>Nhãn phụ thuộc ngữ cảnh (đi cùng bạn bè): chấp nhận như giới hạn của bài toán, hay bổ sung đặc trưng ngữ cảnh?</li>
+        <li>Tỷ lệ nghiên cứu / hệ thống đã phù hợp yêu cầu của CT553H chưa? Nếu cần cắt thì cắt phần nào?</li>
+        <li>Dùng dữ liệu cá nhân chỉ để đánh giá (phát lại theo thời gian), huấn luyện bằng dữ liệu tổng hợp sinh theo danh mục của từng người: cách này có đủ thuyết phục không?</li>
+        <li>25 nhãn gốc làm “danh mục tự tạo” (kịch bản chính), gộp về danh mục chuẩn làm kịch bản phụ, có hợp lý không?</li>
+        <li>Cần tối thiểu bao nhiêu tình nguyện viên? Mỗi người tự đặt danh mục, 100–200 ghi chú có đủ không?</li>
         <li>Khung 5 bước của Chou có phù hợp, hay thầy/cô muốn khung trình bày khác?</li>
       </ol>
     </div>

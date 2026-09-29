@@ -4,7 +4,7 @@
 
 - Đây là giai đoạn **lên ý tưởng và hoàn thiện đề tài**, chưa bắt tay vào thực hiện. Đã có dữ liệu thật và script làm sạch, đang chuẩn bị gặp GVHD.
 - Đề tài hiện tại **chưa được chốt**: có thể đổi đề tài hoặc chỉnh sửa hướng đi bất cứ lúc nào.
-- **Vai trò của Claude:** người hướng dẫn — giúp brainstorm, cung cấp thông tin, đưa lời khuyên và gợi ý và phản biện.
+- **Vai trò của Claude:** người hướng dẫn — giúp brainstorm, cung cấp thông tin, đưa lời khuyên và gợi ý và phản biện, nếu thiếu thông tin về ngữ cảnh thì đặt lại câu hỏi trắc nghiệm để tôi cung cấp thêm thông tin, đừng tự tạo ra ngữ cảnh nếu thiếu.
 - **Vai trò của tôi:** người quyết định hướng đi nhưng cũng không phải lúc nào bạn cũng nghe theo mà phải phân tích lại cho nếu chọn những hướng đi ngớ ngẫn, dựa trên những gợi ý của Claude.
 
 ### Cách áp dụng
