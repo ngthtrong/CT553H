@@ -1,0 +1,354 @@
+% Đề cương luận văn CT553H (bản nháp 1, 29/09/2026)
+% Biên dịch từ thư mục này:  xelatex de-cuong && bibtex de-cuong && xelatex de-cuong && xelatex de-cuong
+% Các chỗ [..] trong \newcommand ở dưới cần điền trước khi nộp.
+
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{vietnamese}
+\setotherlanguage{english}
+\setmainfont{texgyretermes}[
+  Extension = .otf,
+  UprightFont = *-regular, BoldFont = *-bold,
+  ItalicFont = *-italic, BoldItalicFont = *-bolditalic]
+
+\usepackage[top=2.5cm,bottom=2.5cm,left=3cm,right=2cm]{geometry}
+\usepackage{setspace}
+\usepackage{booktabs,tabularx,longtable,array,multirow,makecell}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,fit}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+
+\onehalfspacing
+\setlist{itemsep=2pt,topsep=4pt}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\captionsetup{font=small,labelfont=bf}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+
+% --- Thông tin cần điền ---
+\newcommand{\sinhvien}{[Họ và tên sinh viên]}
+\newcommand{\mssv}{[MSSV]}
+\newcommand{\gvhd}{[Học hàm, học vị, họ tên GVHD]}
+\newcommand{\hocky}{[Học kỳ, năm học]}
+\newcommand{\donvi}{TRƯỜNG CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNG} % kiểm tra lại tên đơn vị
+\newcommand{\bomon}{BỘ MÔN KỸ THUẬT PHẦN MỀM}
+
+\newcommand{\todo}[1]{\textcolor{orange!80!black}{[#1]}}
+
+\begin{document}
+
+% ================= TRANG BÌA =================
+\begin{titlepage}
+\centering
+{\large TRƯỜNG ĐẠI HỌC CẦN THƠ\\ \donvi\\ \bomon\par}
+\vspace{3cm}
+{\Large\bfseries ĐỀ CƯƠNG LUẬN VĂN TỐT NGHIỆP\\[4pt] Học phần CT553H -- Luận văn tốt nghiệp Kỹ thuật phần mềm\par}
+\vspace{2cm}
+{\LARGE\bfseries XÂY DỰNG HỆ THỐNG QUẢN LÝ CHI TIÊU CÁ NHÂN VỚI BỘ PHÂN LOẠI GIAO DỊCH TỰ THÍCH NGHI THEO PHẢN HỒI NGƯỜI DÙNG VÀ DỰ BÁO CHI TIÊU\par}
+\vspace{0.8cm}
+{\large\itshape\foreignlanguage{english}{Building a Personal Expense Management System with a Feedback-Adaptive Transaction Classifier and Spending Forecasting}\par}
+\vfill
+\begin{tabular}{ll}
+Sinh viên thực hiện: & \sinhvien\ -- \mssv\\
+Giảng viên hướng dẫn: & \gvhd\\
+Học kỳ: & \hocky\\
+\end{tabular}
+\vspace{1.5cm}
+
+{\small Bản nháp 1 -- 29/09/2026. Tên đề tài và phạm vi chưa được GVHD duyệt.\par}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+% ================= 1 =================
+\section{Đặt vấn đề}
+
+\subsection{Bối cảnh}
+Ghi chép chi tiêu là bước đầu của quản lý tài chính cá nhân. Theo lý thuyết kế toán tâm lý, mỗi người tự gom các khoản chi vào những ``tài khoản'' do mình định nghĩa và theo dõi chi tiêu theo các nhóm đó \citep{thaler1999mental,heath1996mental}. Tuy nhiên, việc tự theo dõi thường gặp rào cản ở chính khâu thu thập dữ liệu, và người dùng hay quên ghi hoặc bỏ dở \citep{li2010stage,epstein2015lived}. Một hướng giảm gánh nặng là \emph{theo dõi bán tự động}: hệ thống đề xuất, người dùng chỉ xác nhận \citep{choe2017semi}. Trong bài toán tương tự là xếp email vào thư mục do người dùng tự tạo, việc gợi ý ba thư mục khả dĩ nhất đã giảm thao tác của người dùng xuống còn một cú nhấp khi gợi ý đúng \citep{segal1999mailcat}.
+
+Với ứng dụng ghi chép chi tiêu, mỗi lần ghi người dùng phải nhập nội dung, số tiền \emph{và} chọn danh mục. Đề tài tập trung vào việc tự động gợi ý danh mục, trong bối cảnh có ba đặc điểm gây khó:
+\begin{enumerate}
+  \item \textbf{Danh mục do từng người tự đặt.} Bộ danh mục phản ánh cách mỗi người tự phân nhóm chi tiêu (ví dụ ``AC'' là ăn chính, ``RL'' là chi tiêu khi đi cùng bạn bè). Một mô hình học trên bộ danh mục cố định không dùng được cho các danh mục này. Hệ thống kế toán QuickBooks cũng phải phân loại giao dịch theo danh mục do từng doanh nghiệp tự đặt tên \citep{dong2025quickbooks}.
+  \item \textbf{Người dùng mới chưa có dữ liệu} (cold start). Mô hình học có giám sát cần nhiều giao dịch đã gán nhãn của chính người đó. Trong những tuần đầu, lúc người dùng dễ bỏ cuộc nhất, hệ thống lại chưa giúp được gì \citep{dong2025quickbooks}.
+  \item \textbf{Ghi chú tiếng Việt tự gõ rất ngắn.} Trong dữ liệu của đề tài, ghi chú có trung vị 2 từ, nhiều viết tắt, lỗi gõ và thiếu dấu (``cf'', ``cơm sờn''). Nhãn còn phụ thuộc ngữ cảnh: cùng ``nước mía'' có lúc là ăn vặt, có lúc là đi cùng bạn bè.
+\end{enumerate}
+
+\subsection{Những điều chưa được chứng minh}
+Hai giả định về nhu cầu người dùng \textbf{chưa có nghiên cứu nào xác nhận cho người dùng Việt Nam}: (i) người dùng có tự tạo danh mục riêng hay không; (ii) việc chọn danh mục chiếm bao nhiêu phần công sức ghi chép. Các số liệu về tỷ lệ bỏ ứng dụng hiện có chủ yếu là tài liệu xám. Vì vậy đề tài sẽ \textbf{khảo sát người dùng} (mục~\ref{sec:khaosat}) trước khi xây dựng hệ thống. Nếu kết quả ngược với giả định, kịch bản ``danh mục chuẩn'' (mục~\ref{sec:rq1}) sẽ trở thành kịch bản chính.
+
+% ================= 2 =================
+\section{Lịch sử giải quyết vấn đề}
+
+\paragraph{Phân loại giao dịch.} QuickBooks kết hợp một transformer huấn luyện riêng cho văn bản giao dịch với mạng nơ-ron đồ thị trên cơ sở dữ liệu quan hệ, phân loại theo danh mục do doanh nghiệp đặt tên. Mô hình đạt top-1 68,67\% và top-5 88,04\%; cold start được xử lý bằng thông tin từ các doanh nghiệp khác, và đánh giá trên tập kiểm tra tĩnh \citep{dong2025quickbooks}. \citet{aluffi2025sme} sinh dữ liệu tổng hợp để \emph{bổ sung} dữ liệu có nhãn khi phân loại giao dịch của doanh nghiệp nhỏ theo bộ danh mục cố định. \citet{moraes2024taxonomy} dùng LLM zero-shot để xây và mở rộng cây chủ đề cho giao dịch ngân hàng.
+
+\paragraph{Danh mục do người dùng tạo và học tăng dần.} MailCat và SwiftFile học thói quen xếp email của từng người và gợi ý ba thư mục \citep{segal1999mailcat}. \citet{bekkerman2004email} chỉ ra rằng bài toán này phải được đánh giá theo trình tự thời gian: huấn luyện trên dữ liệu trước, kiểm tra trên dữ liệu sau. Đây là tiền lệ gần nhất về phương pháp, nhưng đều ra đời trước LLM và không giải quyết thời điểm chưa có nhãn nào.
+
+\paragraph{Phân loại khi không có dữ liệu gán nhãn.} Có thể phân loại chỉ dựa vào tên nhãn \citep{meng2020lotclass}, hoặc dùng mô hình ngôn ngữ lớn sinh dữ liệu huấn luyện rồi huấn luyện một mô hình nhỏ \citep{schick2021generating,ye2022zerogen}. Tuy nhiên, hiệu quả của dữ liệu tổng hợp giảm khi nhiệm vụ mang tính chủ quan \citep{li2023synthetic}. Đây là rủi ro trực tiếp với các danh mục cá nhân như ``RL'' hay ``Mental''. Với tiếng Việt, có các mô hình embedding đa ngữ \citep{chen2024bgem3,wang2024me5} và PhoBERT \citep{nguyen2020phobert}.
+
+\paragraph{Học trực tuyến và đánh giá.} Khi dữ liệu đến tuần tự và thay đổi theo thời gian \citep{gama2014survey,lu2019drift}, đánh giá \emph{prequential} (kiểm tra trước, học sau) là giao thức phù hợp \citep{dawid1984prequential,gama2013evaluating}. Học máy tương tác nhấn mạnh rằng người dùng là một phần của vòng học \citep{amershi2014power}. Tuy vậy, người dùng có xu hướng chấp nhận gợi ý của máy mà không kiểm tra \citep{parasuraman2010complacency}, và điều đó làm nhãn học được bị nhiễu \citep{song2022noisy}.
+
+\paragraph{Dự báo và lượng hóa.} Chuỗi giao dịch cá nhân ngắn và nhiều nhiễu \citep{brando2018uncertainty}, với nhiều kỳ bằng 0 \citep{croston1972,teunter2011tsb}. Khoảng dự báo conformal thích nghi giữ được độ phủ khi phân phối dữ liệu thay đổi \citep{gibbs2021aci,xu2021enbpi}. Khi tổng chi theo danh mục được tính từ nhãn do máy đoán, cách ``phân loại rồi đếm'' là một ước lượng chệch, và có các phương pháp hiệu chỉnh \citep{forman2008quantifying}.
+
+\begin{table}[H]
+\centering\small
+\caption{Các công trình gần nhất và khác biệt (\checkmark: có; --: không; ½: một phần)}
+\label{tab:related}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{4.2cm} *{6}{>{\centering\arraybackslash}X}}
+\toprule
+Công trình & Danh mục tự đặt & Chưa có nhãn nào & Học từ phản hồi, theo thời gian & Phản hồi thiếu & Ghi chú tiếng Việt & Ảnh hưởng lên dự báo \\
+\midrule
+MailCat / SwiftFile \citep{segal1999mailcat} & \checkmark & -- & \checkmark & -- & -- & -- \\
+\citet{bekkerman2004email} & \checkmark & -- & \checkmark & -- & -- & -- \\
+QuickBooks Rel-Cat \citep{dong2025quickbooks} & \checkmark & ½ & -- & -- & -- & -- \\
+\citet{aluffi2025sme} & -- & -- & -- & -- & -- & ½ \\
+ZeroGen, LOTClass \citep{ye2022zerogen,meng2020lotclass} & -- & \checkmark & -- & -- & -- & -- \\
+\textbf{Đề tài} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{Khoảng trống.} Trong phạm vi tìm kiếm ngày 29/09/2026 (arXiv, ACL Anthology, ACM DL, công cụ tìm kiếm web), chưa thấy công trình nào kết hợp cùng lúc sáu yếu tố ở Bảng~\ref{tab:related}. Mỗi yếu tố riêng lẻ đều đã có trong tài liệu, nên đóng góp của đề tài nằm ở \emph{tổ hợp và bối cảnh}, không ở một thuật toán mới. Việc tìm kiếm sẽ được lặp lại trên Google Scholar trước khi chốt đề cương.
+
+% ================= 3 =================
+\section{Mục tiêu}
+
+\noindent\textbf{Mục tiêu tổng quát.} Xây dựng hệ thống web quản lý chi tiêu cá nhân, trong đó bộ phân loại giao dịch làm việc với danh mục do người dùng tự đặt, dùng được ngay từ ngày đầu và ngày càng chính xác hơn nhờ phản hồi của từng người. Đồng thời định lượng ảnh hưởng của lỗi phân loại lên các chức năng phía sau như dự báo và cảnh báo ngân sách.
+
+\noindent\textbf{Mục tiêu cụ thể.}
+\begin{enumerate}
+  \item Xây dựng và đánh giá bộ phân loại ban đầu cho danh mục tự đặt khi chưa có giao dịch nào: LLM zero-shot, embedding zero-shot, và mô hình nhẹ học trên dữ liệu tổng hợp sinh từ tên và mô tả danh mục.
+  \item Đánh giá các chiến lược học từ phản hồi \emph{so với baseline nhớ lại}, bằng cách phát lại 4 năm dữ liệu thật theo đúng trình tự thời gian.
+  \item Dự báo khoảng chi tiêu theo danh mục, và đo cũng như hiệu chỉnh ảnh hưởng của lỗi phân loại lên dự báo và cảnh báo ngân sách.
+  \item Xây dựng, kiểm thử và triển khai hệ thống theo Scrum và CI/CD. Mô hình được tích hợp có quản lý phiên bản, và công cụ phát lại chạy qua API thật của hệ thống.
+\end{enumerate}
+
+% ================= 4 =================
+\section{Câu hỏi nghiên cứu}
+
+\begin{description}[style=nextline,leftmargin=1.2cm]
+  \item[RQ1] Khi người dùng vừa tạo danh mục riêng mà chưa có giao dịch nào, bộ phân loại ban đầu đạt đến đâu trên ghi chú chi tiêu thật? Mô tả danh mục giúp được bao nhiêu so với chỉ có tên? Hiệu quả có giảm ở các danh mục mang tính chủ quan như \citet{li2023synthetic} chỉ ra không?
+  \item[RQ2] Các chiến lược học từ phản hồi (kNN, huấn luyện lại định kỳ, LLM few-shot truy xuất, thêm đặc trưng ngữ cảnh) \textbf{cải thiện được bao nhiêu so với baseline nhớ lại B1}, đo trên \textbf{ghi chú chưa gặp} và trong 30 ngày đầu, với chi phí chấp nhận được? Lợi thế đó còn không khi có danh mục mới và thói quen thay đổi?
+  \item[RQ3] (a) Dự báo khoảng chi tiêu theo tuần cho tổng và từng nhóm danh mục có đạt độ phủ danh nghĩa và hẹp hơn baseline không? (b) Lỗi phân loại ở RQ1--RQ2 làm lệch tổng chi theo nhóm, dự báo và cảnh báo vượt ngân sách tới mức nào, và hiệu chỉnh bằng ma trận nhầm lẫn giảm được bao nhiêu phần lệch đó?
+  \item[RQ4] \emph{(Có điều kiện)} Kết luận của RQ1--RQ2 có lặp lại trên dữ liệu và danh mục của người dùng khác không? Tình nguyện viên sẽ được tìm sau khi đề tài được duyệt.
+  \item[TN5] \emph{(Thí nghiệm nhỏ)} Kết quả thay đổi ra sao khi người dùng không sửa hết các gợi ý sai?
+\end{description}
+
+% ================= 5 =================
+\section{Đối tượng và phạm vi}
+
+\begin{table}[H]
+\centering\small
+\caption{Phạm vi hệ thống}
+\begin{tabularx}{\linewidth}{L L L}
+\toprule
+Bắt buộc (MVP) & Mở rộng (nếu kịp) & Ngoài phạm vi \\
+\midrule
+Web responsive, nhiều người dùng; giao dịch, import CSV & Phát hiện giao dịch bất thường & Ứng dụng di động native \\
+Danh mục tự đặt (tên + mô tả tùy chọn); bộ danh mục mặc định & OCR hóa đơn & Kết nối API ngân hàng \\
+Sinh dữ liệu tổng hợp theo danh mục, huấn luyện mô hình riêng chạy nền & Mở rộng đa tiền tệ (phân rã tỷ giá, ngân sách theo quốc gia) & Tư vấn đầu tư, dự đoán tỷ giá \\
+Gợi ý danh mục khi nhập, vòng phản hồi, quản lý phiên bản mô hình & & Thanh toán thật \\
+Ngân sách, cảnh báo, dashboard, dự báo khoảng & & \\
+Ví theo loại tiền, tỷ giá lịch sử (tính năng phụ) & & \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Đối tượng người dùng chính: người Việt tự ghi chép chi tiêu hằng ngày (sinh viên, người đi làm). Đối tượng phụ: người chi tiêu bằng nhiều loại tiền.
+
+% ================= 6 =================
+\section{Dữ liệu}
+
+\begin{itemize}
+  \item \textbf{Dữ liệu chính:} 5.465 giao dịch thật (5.029 khoản chi) do người làm đề tài tự ghi chép từ 09/2022 đến 09/2026 (49 tháng liên tục). Mỗi giao dịch có ghi chú tự do, số tiền, ngày và nhãn gán tay theo 25 danh mục chi tự đặt. Danh mục lớn nhất chiếm 33,7\%, và 9 danh mục có dưới 20 mẫu.
+  \item \textbf{Vai trò:} dữ liệu \emph{không} dùng để huấn luyện mô hình ban đầu, mà dùng để \textbf{đánh giá} bằng cách phát lại theo thời gian như một người dùng mới. Tập dev là mẫu ngẫu nhiên 10\% (503 giao dịch, seed 42), dùng để tinh chỉnh và không tính điểm.
+  \item \textbf{Đạo đức và quyền riêng tư:} tên người trong ghi chú được thay bằng mã ([P01], [P02], \ldots) bằng script có thể chạy lại. Chỉ bản đã ẩn danh được gửi lên dịch vụ đám mây hoặc API. Bộ sinh dữ liệu tổng hợp chỉ nhận tên và mô tả danh mục, không nhận ghi chú thật.
+  \item \textbf{Chất lượng nhãn:} gán lại mù 300 mẫu và tính Cohen's kappa \citep{cohen1960kappa}, dùng làm giới hạn trên của con người.
+\end{itemize}
+
+% ================= 7 =================
+\section{Phương pháp nghiên cứu}
+
+\subsection{Giao thức phát lại (prequential)}\label{sec:replay}
+Các khoản chi được sắp theo ngày (trong cùng ngày giữ thứ tự của file gốc). Với mỗi giao dịch $x_t$:
+\begin{enumerate}
+  \item Nếu nhãn của $x_t$ chưa từng xuất hiện, phát sự kiện ``người dùng tạo danh mục''. Hệ thống sinh dữ liệu tổng hợp cho danh mục đó và cập nhật mô hình ban đầu. Từ đây, danh mục này mới có trong tập lựa chọn.
+  \item Hệ thống đoán $\hat y_t$ (và top-3) bằng trạng thái hiện tại. Ghi lại đúng hay sai; nếu $x_t$ thuộc tập dev thì không tính điểm.
+  \item Hệ thống \emph{sau đó} mới nhận nhãn thật $y_t$, như thể người dùng vừa xác nhận hoặc sửa, rồi cập nhật lớp cá nhân.
+\end{enumerate}
+Giao thức này không để thông tin tương lai lọt vào quá khứ \citep{gama2013evaluating}. Cấu hình (mô tả danh mục, prompt, siêu tham số) được \textbf{khóa và commit trước} khi tính điểm trên luồng.
+
+\subsection{RQ1: bộ phân loại ban đầu}\label{sec:rq1}
+\begin{itemize}
+  \item \textbf{Phương pháp:} khớp tên danh mục (baseline); embedding zero-shot (bge-m3, multilingual-e5); LLM zero-shot (mô hình chạy cục bộ và qua API, nhiệt độ 0); mô hình nhẹ (TF-IDF n-gram + hồi quy logistic, hoặc embedding + hồi quy logistic) học trên dữ liệu tổng hợp sinh riêng cho danh mục của người dùng.
+  \item \textbf{Biến thể:} chỉ tên hoặc tên + mô tả; 10 / 30 / 100 ví dụ tổng hợp mỗi danh mục.
+  \item \textbf{Kịch bản phụ:} gộp 25 danh mục về 10--12 danh mục chuẩn; thêm fine-tune PhoBERT trên tập tổng hợp lớn.
+  \item \textbf{Độ đo:} accuracy, Macro-F1, top-3 accuracy, F1 từng danh mục kèm mức độ chủ quan của danh mục.
+\end{itemize}
+
+\subsection{RQ2: thích nghi theo phản hồi, so với baseline nhớ lại}
+\begin{table}[H]
+\centering\small
+\caption{Các chiến lược của RQ2. B0 và B1 là mốc bắt buộc.}
+\begin{tabularx}{\linewidth}{l L}
+\toprule
+Mã & Chiến lược \\
+\midrule
+A0 & Chỉ mô hình ban đầu, không thích nghi (mốc dưới). \\
+\textbf{B0} & \textbf{Nhớ lại}: ghi chú đã chuẩn hóa $\to$ nhãn gần nhất; chưa gặp thì không gợi ý. \\
+\textbf{B1} & \textbf{Nhớ lại + mô hình ban đầu} cho ghi chú chưa gặp. Là đối thủ chính của RQ2. \\
+A2 & B0 + kNN trực tuyến trên embedding các giao dịch đã xác nhận, kết hợp với mô hình ban đầu theo độ tin cậy. \\
+A3 & B0 + huấn luyện lại định kỳ mô hình cá nhân trên phản hồi trộn với dữ liệu tổng hợp; có biến thể cửa sổ trượt và trọng số theo thời gian để chống trôi. \\
+A4 & B0 + LLM few-shot truy xuất: đưa $k$ giao dịch đã xác nhận giống nhất vào prompt. \\
++ctx & Biến thể của A2/A3 có thêm số tiền (log), thứ trong tuần, và nhãn của các giao dịch trước đó cùng ngày (đã được xác nhận nên không rò rỉ). \\
+\bottomrule
+\end{tabularx}
+\end{table}
+Mọi chiến lược A2--A4 đều giữ bộ nhớ của B0 cho ghi chú đã gặp, nên phần chênh lệch so với B1 nằm ở \textbf{ghi chú chưa gặp}. \textbf{Độ đo chính:} chênh lệch so với B1 về (i) số lần thao tác tay mỗi tháng (sửa gợi ý sai hoặc tự chọn khi không có gợi ý), (ii) accuracy và Macro-F1 trên ghi chú chưa gặp, (iii) accuracy trong 30 ngày đầu và trong $N$ giao dịch đầu của mỗi danh mục mới. Độ đo phụ: độ trễ, chi phí API. So sánh theo cặp bằng kiểm định McNemar \citep{dietterich1998tests}, khoảng tin cậy bằng bootstrap theo tháng.
+
+\subsection{RQ3: dự báo khoảng và lan truyền lỗi phân loại}
+\textbf{RQ3a.} Chuỗi tổng chi thường ngày theo tuần (bỏ khoản đặc biệt như học phí, tiền nhà, vay), và chuỗi theo 5--6 nhóm danh mục. Mô hình điểm gồm trung bình lịch sử, trung bình trượt, ETS, LightGBM, và Croston/TSB cho nhóm thưa \citep{croston1972,teunter2011tsb}. Khoảng dự báo: phân vị thực nghiệm (baseline) so với conformal thích nghi \citep{gibbs2021aci}. Đánh giá bằng backtest với gốc trượt; độ đo gồm độ phủ, độ rộng, pinball loss, MAE, sMAPE; kiểm định Diebold--Mariano \citep{diebold1995comparing}. Phải xử lý trước vấn đề mật độ ghi chép giảm dần (tỷ lệ ngày không ghi tăng từ 7\% lên 32\%), để mô hình dự báo \emph{chi tiêu} chứ không dự báo \emph{thói quen ghi chép}.
+
+\textbf{RQ3b.} Thay nhãn thật bằng nhãn do B1 và chiến lược tốt nhất của RQ2 đoán (lấy từ log phát lại), rồi tính lại tổng chi theo nhóm, dự báo và cảnh báo vượt ngân sách. Đo độ lệch tổng chi, độ lệch dự báo, và precision/recall của cảnh báo. Hiệu chỉnh bằng ma trận nhầm lẫn ước lượng trực tuyến từ phản hồi (adjusted classify-and-count, \citealp{forman2008quantifying}). Vì dữ liệu không có ngân sách thật, ngân sách được \emph{giả lập} bằng trung vị chi tháng trước đó nhân 1,1.
+
+\textbf{RQ3c} \emph{(tùy chọn)}: hòa giải dự báo phân cấp MinT giữa tổng và các nhóm \citep{wickramasuriya2019mint}.
+
+\subsection{TN5: độ nhạy với phản hồi thiếu}
+Khi gợi ý sai, người dùng sửa với xác suất $p \in \{1{,}0;\ 0{,}9;\ 0{,}7;\ 0{,}5\}$. Nếu không sửa, nhãn sai được lưu như nhãn thật. Chạy trên B1 và chiến lược tốt nhất của RQ2, mỗi mức 5 seed. Đo accuracy trên ghi chú đã gặp và chưa gặp, số lần thao tác tay, và tỷ lệ nhãn sai trong bộ nhớ.
+
+\subsection{RQ4: người dùng khác}
+Mỗi tình nguyện viên tự đặt danh mục của mình và cung cấp 100--200 ghi chú thật có ngày, gán nhãn theo danh mục đó. Dữ liệu được ẩn danh trước khi xử lý. Chạy lại RQ1--RQ2 với cấu hình đã khóa, không tinh chỉnh thêm. Có từ 3 người trở lên thì báo cáo như một RQ; có 1--2 người thì trình bày như nghiên cứu tình huống.
+
+\subsection{Khảo sát người dùng}\label{sec:khaosat}
+Khảo sát ẩn danh, mục tiêu 30--50 người, làm ở tuần 1--2, nhằm kiểm chứng các giả định ở mục 1.2. Nội dung: thói quen và công cụ ghi chép, lý do ngừng ghi, cách dùng danh mục (mặc định, sửa, hay tự tạo), phần tốn công nhất khi ghi, thái độ với gợi ý top-3, và cách mỗi người xếp 5 ghi chú mẫu vào danh mục.
+
+\subsection{Tái lập và chống rò rỉ}
+Seed cố định; toàn bộ prompt, tên và phiên bản mô hình, dữ liệu tổng hợp và câu trả lời của LLM đều được lưu lại; mọi con số đưa vào báo cáo trỏ tới file kết quả trong \texttt{ml/experiments/}. Chỉ tinh chỉnh trên tập dev. Mô tả danh mục do người làm đề tài viết một lần, trước khi chạy thí nghiệm chính thức.
+
+% ================= 8 =================
+\section{Kết quả sơ bộ}
+
+\begin{table}[H]
+\centering\small
+\caption{Kết quả sơ bộ (bản thô, 29/09/2026). Mô tả danh mục dùng ở đây là bản nháp, có nguy cơ rò rỉ; số liệu chỉ để định hướng.}
+\label{tab:prelim}
+\begin{tabularx}{\linewidth}{L r l}
+\toprule
+Thiết lập & Accuracy & Ghi chú \\
+\midrule
+TF-IDF + SVM, học trên chính dữ liệu, chia ngẫu nhiên & 86,7\% & hướng cũ, tham chiếu \\
+TF-IDF + SVM, học trên chính dữ liệu, chia theo thời gian & 78,2\% & hướng cũ, tham chiếu \\
+\midrule
+RQ1: embedding zero-shot (bge-m3), chỉ tên danh mục, dev & 17,9\% & top-3: 24,3\% \\
+RQ1: embedding zero-shot (bge-m3), tên + mô tả, dev & 50,1\% & top-3: 64,0\% \\
+\midrule
+B0 nhớ lại, phát lại toàn luồng & 56,9\% & 93,8\% trên ghi chú đã gặp \\
+B1 nhớ lại + zero-shot, phát lại toàn luồng & 71,5\% & 37,0\% trên ghi chú chưa gặp \\
+B1, 30 ngày đầu & 49,1\% & \\
+TN5: B1 với $p=0{,}5$ & 68,7\% & đã gặp: 89,2\% \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{Nhận xét.} (1) Ghi chú đã gặp chiếm 61\% luồng và được nhớ lại đúng 93,8\%. Với B1, 87\% số lần phải thao tác tay (22,9 trên 26,3 lần mỗi tháng) nằm ở ghi chú chưa gặp. Đây là căn cứ để đặt RQ2 trên ghi chú chưa gặp. (2) Chỉ có tên danh mục viết tắt thì zero-shot gần như vô dụng; thêm một câu mô tả thì accuracy tăng khoảng 2,5 lần. (3) Danh mục phụ thuộc ngữ cảnh (RL, G, Mental) đạt F1 gần 0 khi chỉ dùng văn bản, đúng với rủi ro mà \citet{li2023synthetic} nêu. Nguồn số liệu: \texttt{ml/experiments/rq1-kiem-tra-nhanh/} và \texttt{ml/experiments/rq2-baseline-nho-lai/}; hai dòng đầu lấy từ báo cáo dữ liệu \texttt{docs/03-du-lieu/}.
+
+% ================= 9 =================
+\section{Giải pháp hệ thống}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  box/.style={draw,rounded corners,align=center,minimum height=1.1cm,font=\small,fill=gray!8},
+  >={Stealth[length=2mm]}, node distance=0.9cm and 1.1cm]
+\node[box,minimum width=2.6cm] (fe) {React SPA};
+\node[box,right=of fe,minimum width=3.6cm] (be) {Spring Boot\\giao dịch, danh mục,\\ngân sách, cảnh báo};
+\node[box,right=of be,minimum width=3.6cm] (ml) {ML service (FastAPI)\\/categories, /categorize\\/feedback, /forecast};
+\node[box,below=of be,minimum width=3.6cm] (db) {PostgreSQL + pgvector\\bộ nhớ kNN theo người dùng};
+\node[box,below=of ml,minimum width=3.6cm] (rd) {Redis\\cache, hàng đợi nền};
+\node[box,right=0.8cm of ml,minimum width=2.2cm] (llm) {LLM API\\(chỉ tên, mô tả\\danh mục)};
+\node[box,below=of fe,minimum width=2.6cm,fill=orange!10] (rp) {Công cụ\\phát lại};
+\draw[->] (fe) -- node[above,font=\scriptsize]{REST} (be);
+\draw[->] (be) -- node[above,font=\scriptsize]{REST} (ml);
+\draw[->] (be) -- (db);
+\draw[->] (ml) -- (rd);
+\draw[->] (ml) -- (llm);
+\draw[->] (ml.south west) -- (db.north east);
+\draw[->,dashed] (rp.north east) -- node[sloped,above,font=\scriptsize]{API thật} (be.south west);
+\end{tikzpicture}
+\caption{Kiến trúc dự kiến. Công cụ phát lại gọi API thật, nên số liệu cuối cùng là của chính hệ thống.}
+\end{figure}
+
+\begin{itemize}
+  \item \textbf{Chức năng chính:} quản lý danh mục tự đặt; nhập nhanh kèm gợi ý top-3, độ tin cậy và lời giải thích (``giống giao dịch X bạn đã xếp vào Y''); sửa nhãn và cập nhật tức thì; import hàng loạt, trong đó người dùng duyệt các dòng có độ tin cậy thấp; ngân sách, cảnh báo, dashboard, dự báo khoảng; quản trị phiên bản mô hình, theo dõi tỷ lệ sửa nhãn và chi phí API.
+  \item \textbf{Tách huấn luyện và phục vụ:} \texttt{ml/} dành cho nghiên cứu; ML service chỉ nạp mô hình đã xuất. Lớp cá nhân (dữ liệu tổng hợp, mô hình riêng, bộ nhớ) có số phiên bản.
+  \item \textbf{Quy trình:} Scrum, sprint 1 tuần, GitHub Projects, GitHub Actions, Docker Compose, triển khai trên VPS.
+  \item \textbf{Kiểm thử:} unit test (JUnit, pytest); kiểm thử ML service gồm hợp đồng API, tính xác định, cô lập dữ liệu giữa các người dùng, rollback phiên bản, dự phòng khi LLM lỗi, và bộ sinh dữ liệu với LLM giả lập; integration test (Testcontainers); E2E (Playwright); load test (k6); đánh giá khả dụng bằng thang SUS \citep{brooke1996sus}. Một đoạn phát lại ngắn chạy trong CI như kiểm thử hồi quy cho chất lượng mô hình.
+\end{itemize}
+
+% ================= 10 =================
+\section{Đóng góp dự kiến}
+\begin{enumerate}
+  \item Một giao thức đánh giá phát lại cho bài toán phân loại giao dịch theo danh mục tự đặt, có baseline nhớ lại bắt buộc và tách ghi chú đã gặp với chưa gặp.
+  \item Số liệu thực nghiệm về cold start trên ghi chú chi tiêu tiếng Việt tự gõ: LLM, embedding và dữ liệu tổng hợp, kèm phân tích theo mức chủ quan của danh mục.
+  \item Định lượng ảnh hưởng của lỗi phân loại và của phản hồi thiếu lên dự báo và cảnh báo ngân sách, cùng một cách hiệu chỉnh.
+  \item Một hệ thống hoàn chỉnh, kiểm thử được, trong đó vòng phản hồi và công cụ phát lại là một phần của hệ thống.
+\end{enumerate}
+
+% ================= 11 =================
+\section{Kế hoạch thực hiện (14 tuần)}
+\begin{longtable}{@{}p{1.2cm}>{\raggedright\arraybackslash}p{9.4cm}>{\raggedright\arraybackslash}p{4.2cm}@{}}
+\toprule
+Tuần & Công việc & Kết quả \\
+\midrule
+\endhead
+1 & Viết mô tả 25 danh mục; bảng ánh xạ nhóm; tách tập dev; phát khảo sát người dùng; liên hệ tình nguyện viên; tìm lại tài liệu & Đề cương chốt, config khóa \\
+2 & Kappa trên 300 mẫu; bộ sinh dữ liệu và khung phát lại; kiểm tra nhanh trên dev; thiết kế CSDL, kiến trúc; repo, Docker, CI & Kappa, skeleton project \\
+3 & TN1 (RQ1) đầy đủ, kể cả kịch bản danh mục chuẩn; tổng hợp khảo sát & Chốt mô hình ban đầu \\
+4 & TN2 (RQ2): B0, B1, A2--A4, +ctx, chống trôi, danh mục mới; TN5 & Chốt cấu hình thích nghi \\
+5 & Backend: xác thực, ví, giao dịch, danh mục tự đặt, import CSV & API lõi \\
+6 & ML service: sinh dữ liệu nền, /categorize, /feedback, pgvector, phiên bản & Luồng phân loại qua API \\
+7 & Frontend: danh mục, nhập nhanh có gợi ý, sửa nhãn, import & Luồng trên giao diện \\
+8 & TN3a: dự báo điểm và khoảng & Báo cáo giữa kỳ \\
+9 & TN3b: lan truyền lỗi và hiệu chỉnh; /forecast, ngân sách, cảnh báo, dashboard & Đủ chức năng chính \\
+10 & Phát lại qua hệ thống thật; RQ4 nếu có dữ liệu & Kết quả khớp giữa notebook và hệ thống \\
+11 & Kiểm thử unit, integration, E2E, load & Báo cáo kiểm thử \\
+12 & Triển khai, người dùng thử, SUS & Bản chạy trực tuyến \\
+13 & Hoàn thiện luận văn, biểu đồ & Bản thảo \\
+14 & Chỉnh sửa, slide, demo, dự phòng & Bản nộp \\
+\bottomrule
+\end{longtable}
+Thứ tự cắt khi trễ: mở rộng đa tiền tệ $\to$ A4 $\to$ RQ3c $\to$ PhoBERT $\to$ kịch bản danh mục chuẩn (giữ bảng ánh xạ nhóm cho RQ3) $\to$ RQ4. Không cắt: B0/B1, RQ3a, RQ3b, TN5.
+
+% ================= 12 =================
+\section{Rủi ro và hạn chế}
+\begin{table}[H]
+\centering\small
+\begin{tabularx}{\linewidth}{L l L}
+\toprule
+Rủi ro & Mức & Cách giảm \\
+\midrule
+Tinh chỉnh theo kết quả trên luồng đánh giá (rò rỉ) & Cao & Chỉ tinh chỉnh trên dev; khóa config trước khi tính điểm \\
+Phạm vi phình to (RQ3 mở rộng) & Cao & Phân tầng bắt buộc / tùy chọn; thứ tự cắt rõ ràng \\
+Dữ liệu tổng hợp yếu với danh mục chủ quan & Trung bình & Biến thành giả thuyết kiểm tra; lớp cá nhân bù lại \\
+Khảo sát ngược với giả định & Trung bình & Làm sớm; chuyển sang kịch bản danh mục chuẩn \\
+Không đủ tình nguyện viên & Trung bình & Liên hệ ngay khi đề tài được duyệt; ngưỡng 3 người \\
+Mật độ ghi chép giảm làm sai lệch dự báo & Trung bình & Phân tích và tách trước khi dự báo \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{Hạn chế nêu trước:} luồng đánh giá chính là của một người, và người đó vừa gán nhãn vừa viết mô tả danh mục; mô hình phản hồi thiếu còn đơn giản; ngân sách trong RQ3b là giả lập; ghi chú tự gõ khác với nội dung sao kê ngân hàng, nên kết quả không suy rộng sang bài toán phân loại sao kê.
+
+\bibliographystyle{unsrtnat}
+\bibliography{refs}
+
+\end{document}

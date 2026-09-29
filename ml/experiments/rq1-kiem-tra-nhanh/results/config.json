@@ -1,0 +1,13 @@
+{
+  "seed": 42,
+  "dev_frac": 0.1,
+  "n_dev": 503,
+  "frequent_min": 5,
+  "n_frequent": 288,
+  "models": {
+    "e5-small": "intfloat/multilingual-e5-small",
+    "e5-base": "intfloat/multilingual-e5-base",
+    "bge-m3": "BAAI/bge-m3"
+  },
+  "categories_file": "categories.json (bản nháp của Claude, chưa được người làm đề tài duyệt)"
+}

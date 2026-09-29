@@ -24,3 +24,15 @@ dist/
 
 # Bí mật
 .env
+
+# LaTeX (chỉ giữ .tex, .bib và .pdf)
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.xdv
+*.fls
+*.fdb_latexmk
+*.synctex.gz

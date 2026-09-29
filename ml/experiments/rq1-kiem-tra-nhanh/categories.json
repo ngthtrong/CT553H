@@ -1,0 +1,30 @@
+{
+  "_note": "BẢN NHÁP do Claude viết ngày 29/09/2026 sau khi đã xem dữ liệu (có nguy cơ rò rỉ). Người làm đề tài cần sửa lại, đặc biệt các mục có 'uncertain': true, rồi khóa và commit trước khi chạy thí nghiệm chính thức.",
+  "categories": [
+    {"name": "AC", "description": "Ăn chính: các bữa ăn chính trong ngày như sáng, trưa, tối"},
+    {"name": "AV", "description": "Ăn vặt và đồ uống lặt vặt ngoài bữa chính, như nước giải khát, trái cây, bánh kẹo"},
+    {"name": "DC", "description": "Di chuyển: xăng xe, sửa xe, vé xe, đi lại"},
+    {"name": "Bida", "description": "Chơi bida"},
+    {"name": "Badmintion", "description": "Chơi cầu lông: tiền sân, quả cầu, dụng cụ cầu lông"},
+    {"name": "Utility", "description": "Tiện ích và chi phí lặt vặt hằng ngày: phí ngân hàng, cước điện thoại, 4G, dịch vụ trực tuyến, đồ dùng tiêu hao"},
+    {"name": "Study", "description": "Học tập: học phí, gửi xe ở trường, photo tài liệu, văn phòng phẩm"},
+    {"name": "Coffee", "description": "Cà phê uống một mình hoặc mua cà phê về pha"},
+    {"name": "RL", "description": "Quan hệ xã hội: ăn uống, vui chơi cùng bạn bè hoặc tập thể", "uncertain": true},
+    {"name": "Home", "description": "Nhà ở: tiền phòng ký túc xá hoặc nhà trọ, điện nước, đồ gia dụng"},
+    {"name": "Body", "description": "Chăm sóc cơ thể và vệ sinh cá nhân: cắt tóc, dầu gội, kem đánh răng, thuốc men"},
+    {"name": "G", "description": "Chi tiêu cho người yêu hoặc khi đi hẹn hò", "uncertain": true},
+    {"name": "CL", "description": "Quần áo, giày dép, phụ kiện thời trang"},
+    {"name": "Accident", "description": "Mất mát, sự cố bất ngờ ngoài ý muốn"},
+    {"name": "Entertainment", "description": "Giải trí: xem phim, du lịch, trò chơi, đồ công nghệ phục vụ giải trí"},
+    {"name": "Mental", "description": "Chăm sóc tinh thần: nghe nhạc, đọc sách, thư giãn một mình", "uncertain": true},
+    {"name": "Smoking", "description": "Thuốc lá"},
+    {"name": "Ngu", "description": "Tiền mất do quyết định dại dột hoặc sai lầm cá nhân, như vé số, thua lỗ", "uncertain": true},
+    {"name": "Swimming", "description": "Đi bơi: vé hồ bơi, đồ bơi"},
+    {"name": "Family", "description": "Chi tiêu cho gia đình, mua đồ hoặc gửi tiền cho cha mẹ, anh chị em"},
+    {"name": "Gym", "description": "Tập gym: phí phòng tập hằng tháng"},
+    {"name": "Sport", "description": "Thể thao khác: đá bóng, dụng cụ tập thể dục"},
+    {"name": "NET", "description": "Chơi game ở quán net"},
+    {"name": "English", "description": "Học và thi tiếng Anh: khóa học, lệ phí thi chứng chỉ"},
+    {"name": "Cho vay", "description": "Cho người khác vay tiền hoặc ứng tiền trước"}
+  ]
+}

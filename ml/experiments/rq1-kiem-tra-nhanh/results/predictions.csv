@@ -1,0 +1,504 @@
+id,true,baseline|random-uniform,baseline|majority(AC)*,baseline|name-match,embedding:e5-small|name,embedding:e5-small|name+desc,embedding:e5-base|name,embedding:e5-base|name+desc,embedding:bge-m3|name,embedding:bge-m3|name+desc
+10,AC,DC,AC,AC,Cho vay,Smoking,Cho vay,Smoking,Cho vay,Bida
+14,Utility,Family,AC,G,Cho vay,G,Ngu,G,Cho vay,G
+25,Utility,Smoking,AC,G,Utility,Gym,NET,Gym,Mental,Utility
+28,Utility,Body,AC,G,G,G,Cho vay,G,Utility,G
+31,Utility,Body,AC,G,G,G,Cho vay,Family,Utility,Utility
+38,CL,Sport,AC,G,Cho vay,CL,Cho vay,AV,Swimming,AV
+83,G,DC,AC,AC,Cho vay,AV,Ngu,AV,Swimming,AV
+87,AC,Ngu,AC,G,Cho vay,AC,Cho vay,AC,Coffee,AC
+97,AC,Utility,AC,G,Cho vay,AC,Cho vay,AC,Coffee,AC
+98,AC,DC,AC,G,Cho vay,AC,Ngu,AV,Coffee,AC
+102,AC,Accident,AC,G,Cho vay,AC,Cho vay,AC,Coffee,AC
+108,AC,Cho vay,AC,G,Cho vay,AC,Ngu,AV,Coffee,AC
+111,AC,Swimming,AC,G,Cho vay,AC,Ngu,AV,Coffee,AC
+118,AC,Family,AC,G,Cho vay,AC,Cho vay,AC,Coffee,AC
+124,AC,Ngu,AC,G,Cho vay,AC,Ngu,AV,Bida,AV
+127,AC,Family,AC,G,Cho vay,AC,Ngu,AC,Swimming,AC
+152,Utility,CL,AC,AC,Cho vay,CL,Cho vay,CL,Swimming,Accident
+172,Utility,Bida,AC,AC,Home,Study,Study,Study,Study,Study
+178,AV,Gym,AC,AC,Ngu,AV,Cho vay,AV,Home,AV
+180,AV,G,AC,AC,Ngu,AV,Cho vay,AV,Home,AV
+186,AC,CL,AC,AC,Cho vay,AV,Cho vay,AV,AC,AV
+197,Utility,Home,AC,AC,Cho vay,AV,Cho vay,AV,Cho vay,AV
+206,G,Badmintion,AC,AC,Cho vay,Smoking,Ngu,AV,Accident,AV
+208,AC,English,AC,AC,Home,AV,Cho vay,AV,Home,AV
+228,AV,Family,AC,AC,Cho vay,AV,Ngu,AV,Coffee,AV
+250,AC,Smoking,AC,AC,Cho vay,AV,Ngu,AV,Coffee,AV
+256,AV,Body,AC,AC,Cho vay,AV,Ngu,AV,Coffee,AV
+257,AC,Gym,AC,AC,Cho vay,AV,Ngu,AV,Coffee,AV
+259,AC,Accident,AC,AC,Cho vay,AV,Ngu,AV,Coffee,AV
+268,AC,G,AC,AC,Cho vay,AV,Ngu,AV,Coffee,AV
+269,AC,G,AC,AC,Cho vay,AV,Ngu,AV,Coffee,AV
+277,AC,Utility,AC,AC,Cho vay,AV,Ngu,AV,Coffee,AV
+281,AC,DC,AC,AC,Cho vay,AV,Ngu,AV,Coffee,AV
+283,AC,Accident,AC,AC,Cho vay,AV,Ngu,AV,Coffee,AV
+308,AC,NET,AC,AC,Cho vay,AV,Ngu,AV,Coffee,AV
+316,AC,AV,AC,AC,Cho vay,AV,Ngu,AV,Coffee,AV
+319,AC,Sport,AC,AC,Cho vay,AV,Ngu,AV,Coffee,AV
+325,AC,Gym,AC,AC,Cho vay,AV,Ngu,AV,English,Bida
+326,AC,Study,AC,AC,Cho vay,AV,Cho vay,AV,Coffee,AC
+344,AC,Mental,AC,AC,Cho vay,AV,Cho vay,AV,Coffee,AV
+362,AC,Badmintion,AC,G,Cho vay,AC,Ngu,AC,Coffee,AV
+379,AC,Swimming,AC,AC,Cho vay,AV,Cho vay,AV,Coffee,Bida
+402,AV,Ngu,AC,AC,Home,AV,Ngu,AV,Coffee,AV
+416,AC,RL,AC,AC,Home,AV,Ngu,AV,Coffee,AV
+422,AC,AV,AC,AC,Cho vay,AV,Ngu,AV,Home,AV
+439,AC,Cho vay,AC,AC,Cho vay,AC,Cho vay,AV,Ngu,AV
+443,AC,G,AC,AC,Cho vay,AC,Cho vay,AV,Ngu,AV
+445,AC,NET,AC,AC,Cho vay,AC,Cho vay,AV,Ngu,AV
+451,AC,Smoking,AC,G,Ngu,AC,Ngu,AV,Study,AV
+455,AC,Family,AC,AC,Cho vay,AC,Cho vay,AV,Coffee,AV
+458,AC,Swimming,AC,G,Cho vay,AC,Ngu,AV,Cho vay,AV
+494,Utility,Badmintion,AC,AC,NET,Ngu,Cho vay,Family,Cho vay,G
+497,Utility,Home,AC,AC,NET,Ngu,Cho vay,Family,Cho vay,G
+500,Entertainment,G,AC,AC,Home,Smoking,Home,Bida,Bida,Bida
+503,RL,CL,AC,AC,Cho vay,Cho vay,Cho vay,Family,Cho vay,Cho vay
+516,Bida,AV,AC,AC,Bida,Bida,Ngu,Bida,Bida,Bida
+517,Bida,Accident,AC,AC,Bida,Bida,Ngu,Bida,Bida,Bida
+522,AV,Bida,AC,AC,Bida,Bida,Bida,Bida,Bida,Bida
+528,Bida,Swimming,AC,AC,Cho vay,Bida,Ngu,Smoking,Study,Bida
+532,AC,Ngu,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+536,Bida,English,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+561,Bida,Swimming,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+569,Bida,Home,AC,Bida,Bida,Bida,Bida,Coffee,Bida,Bida
+575,Bida,Cho vay,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+584,Bida,Body,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+586,Bida,RL,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+592,Bida,NET,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+608,Bida,Home,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+615,Bida,AV,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+617,Bida,G,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+620,Bida,Family,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+630,Bida,Badmintion,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+655,Bida,G,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+657,Bida,Bida,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+673,Bida,Ngu,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+684,Bida,G,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+686,Bida,RL,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+688,Bida,Utility,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+701,Bida,Entertainment,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+707,Bida,Smoking,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+708,Bida,English,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+714,Bida,Body,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+722,Bida,Badmintion,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+736,Bida,Gym,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+742,Bida,Mental,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+752,Bida,Ngu,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+755,Bida,DC,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+762,Bida,Coffee,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+764,Bida,Family,AC,Bida,Bida,Bida,Bida,Sport,Bida,Bida
+777,Bida,Gym,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+782,Bida,Body,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+795,Bida,Gym,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+807,Bida,Sport,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+829,Bida,Home,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+831,Bida,NET,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+836,Bida,Coffee,AC,Bida,Bida,Bida,Bida,Sport,Bida,Bida
+841,Bida,Utility,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+842,Bida,Ngu,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+843,Bida,Mental,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+860,Bida,Bida,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+869,Bida,Gym,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+872,Bida,Badmintion,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+879,AV,Gym,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+887,Bida,AC,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+920,Bida,Family,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+924,Bida,Family,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+927,Bida,Family,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+938,Bida,Smoking,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+942,Bida,G,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+960,Swimming,Ngu,AC,AC,Body,Swimming,Swimming,Swimming,Swimming,Swimming
+965,Swimming,Study,AC,AC,Body,Swimming,Swimming,Swimming,Swimming,Swimming
+978,AC,Family,AC,G,Cho vay,AV,Ngu,Body,Gym,Smoking
+983,RL,Accident,AC,AC,Cho vay,Ngu,Cho vay,Family,Cho vay,G
+986,AC,G,AC,AC,Ngu,Ngu,Ngu,Badmintion,Bida,Bida
+1011,AC,CL,AC,AC,Ngu,AV,Cho vay,AV,Bida,AV
+1028,AC,Entertainment,AC,AC,Cho vay,AV,Ngu,AV,Cho vay,AV
+1036,AC,AC,AC,AC,Ngu,Smoking,Ngu,AV,Study,AV
+1052,AC,Bida,AC,AC,Ngu,AV,Ngu,Swimming,Bida,Bida
+1054,AC,Study,AC,G,Ngu,AV,Cho vay,AV,Accident,NET
+1072,G,DC,AC,AC,Cho vay,Coffee,Cho vay,Coffee,Coffee,Coffee
+1075,AC,Body,AC,AC,Home,Smoking,Cho vay,AV,Accident,Bida
+1083,AC,Smoking,AC,AC,Home,Smoking,Cho vay,AV,Accident,Bida
+1086,AC,Smoking,AC,AC,Home,Smoking,Cho vay,AV,Accident,Bida
+1089,AC,G,AC,AC,Home,Smoking,Cho vay,AV,Accident,Bida
+1124,Coffee,Sport,AC,AC,Coffee,Coffee,Coffee,Coffee,Coffee,Coffee
+1128,Coffee,Entertainment,AC,AC,Coffee,Coffee,Coffee,Coffee,Coffee,Coffee
+1129,Coffee,AV,AC,AC,Coffee,Coffee,Coffee,Coffee,Coffee,Coffee
+1135,Coffee,Family,AC,AC,Coffee,Coffee,Coffee,Coffee,Coffee,Coffee
+1151,Coffee,Entertainment,AC,AC,Coffee,Coffee,Coffee,Coffee,Coffee,Coffee
+1163,Coffee,Mental,AC,AC,Coffee,Coffee,Coffee,Coffee,Coffee,Coffee
+1178,Coffee,Entertainment,AC,AC,Coffee,Coffee,Coffee,Coffee,Coffee,Coffee
+1204,Coffee,Accident,AC,AC,Coffee,Coffee,Coffee,Coffee,Coffee,Coffee
+1207,Coffee,DC,AC,AC,Coffee,Coffee,Coffee,Coffee,Coffee,Coffee
+1208,Coffee,Accident,AC,AC,Coffee,Coffee,Coffee,Coffee,Coffee,Coffee
+1209,Coffee,Family,AC,AC,Coffee,Coffee,Coffee,Coffee,Coffee,Coffee
+1215,Coffee,Coffee,AC,AC,Coffee,Coffee,Coffee,AC,Coffee,Coffee
+1231,Coffee,Mental,AC,G,Cho vay,Coffee,Cho vay,AV,Coffee,Coffee
+1234,RL,AC,AC,AC,Coffee,Coffee,Coffee,Coffee,Coffee,NET
+1243,Coffee,RL,AC,AC,Coffee,Coffee,Coffee,Coffee,Coffee,Coffee
+1244,Coffee,Body,AC,AC,Coffee,Coffee,Coffee,Coffee,Coffee,Coffee
+1249,Coffee,Cho vay,AC,AC,Home,Coffee,Coffee,Coffee,Coffee,Coffee
+1289,RL,Utility,AC,G,Coffee,Coffee,Coffee,Coffee,Coffee,Coffee
+1302,Coffee,Study,AC,G,Coffee,Coffee,Coffee,AC,Coffee,Coffee
+1304,Coffee,Body,AC,G,Coffee,Coffee,Coffee,Coffee,Coffee,Coffee
+1306,Coffee,Cho vay,AC,AC,Coffee,Coffee,Cho vay,Coffee,Coffee,Coffee
+1315,Coffee,Sport,AC,G,Coffee,Coffee,Coffee,Coffee,Coffee,Coffee
+1327,Coffee,AC,AC,AC,Coffee,Coffee,Coffee,Coffee,Coffee,Coffee
+1339,AV,Utility,AC,AC,AV,NET,AV,CL,Coffee,AC
+1365,Utility,Gym,AC,AC,NET,Family,Cho vay,Utility,Coffee,Utility
+1370,Utility,AV,AC,AC,NET,DC,Cho vay,Family,Cho vay,G
+1397,Badmintion,Sport,AC,G,RL,Badmintion,Sport,Badmintion,Sport,Badmintion
+1405,Badmintion,Coffee,AC,G,RL,Badmintion,Ngu,Badmintion,Sport,Badmintion
+1406,Badmintion,NET,AC,G,RL,Badmintion,Ngu,Badmintion,Sport,Badmintion
+1409,Badmintion,Coffee,AC,G,RL,Badmintion,Ngu,Badmintion,Sport,Badmintion
+1440,Badmintion,Body,AC,G,RL,Badmintion,Ngu,Badmintion,Sport,Badmintion
+1441,Badmintion,Smoking,AC,G,RL,Badmintion,Ngu,Badmintion,Sport,Badmintion
+1447,Badmintion,Bida,AC,G,RL,Badmintion,Ngu,Badmintion,Sport,Badmintion
+1455,Badmintion,Accident,AC,G,RL,Badmintion,Ngu,Badmintion,Sport,Badmintion
+1456,Badmintion,CL,AC,G,RL,Badmintion,Ngu,Badmintion,Sport,Badmintion
+1462,Badmintion,Family,AC,G,RL,Badmintion,Ngu,Badmintion,Sport,Badmintion
+1472,Badmintion,Cho vay,AC,G,RL,Badmintion,Ngu,Badmintion,Sport,Badmintion
+1486,Badmintion,Smoking,AC,G,RL,Badmintion,Ngu,Badmintion,Sport,Badmintion
+1491,Badmintion,Body,AC,G,RL,Badmintion,Ngu,Badmintion,Sport,Badmintion
+1503,Badmintion,Body,AC,G,RL,Badmintion,Ngu,Badmintion,Sport,Badmintion
+1506,Badmintion,Body,AC,G,RL,Badmintion,Ngu,Badmintion,Sport,Badmintion
+1518,Badmintion,Gym,AC,G,RL,Badmintion,Ngu,Badmintion,Sport,Badmintion
+1538,Badmintion,RL,AC,G,RL,Badmintion,Ngu,Badmintion,Sport,Badmintion
+1549,Badmintion,Badmintion,AC,G,RL,Badmintion,Ngu,Badmintion,Sport,Badmintion
+1568,Badmintion,RL,AC,G,RL,Badmintion,Ngu,Badmintion,Sport,Badmintion
+1569,Badmintion,AC,AC,G,RL,Badmintion,Ngu,Badmintion,Sport,Badmintion
+1574,Badmintion,DC,AC,G,RL,Badmintion,Ngu,Badmintion,Sport,Badmintion
+1580,Badmintion,DC,AC,G,RL,Badmintion,Ngu,Badmintion,Sport,Badmintion
+1613,Badmintion,Family,AC,G,Cho vay,Badmintion,Ngu,Badmintion,Swimming,Badmintion
+1635,Coffee,Swimming,AC,AC,AC,Family,CL,CL,CL,CL
+1641,Badmintion,Ngu,AC,G,Cho vay,Badmintion,CL,Badmintion,CL,Badmintion
+1651,Coffee,G,AC,AC,AC,Smoking,CL,Coffee,AC,CL
+1652,Coffee,Ngu,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+1653,Coffee,Badmintion,AC,AC,Home,G,CL,CL,CL,CL
+1664,Coffee,NET,AC,NET,NET,NET,NET,CL,NET,NET
+1665,Coffee,CL,AC,G,Cho vay,Study,CL,Study,CL,Study
+1667,AC,English,AC,G,Cho vay,AC,Cho vay,AC,Coffee,AC
+1688,AC,Bida,AC,AC,Cho vay,Smoking,Cho vay,Coffee,Coffee,Coffee
+1694,AC,CL,AC,AC,Cho vay,Coffee,Cho vay,AV,Coffee,Coffee
+1701,AC,Ngu,AC,AC,Home,AV,CL,Sport,Home,Smoking
+1706,AC,CL,AC,AC,Cho vay,Family,Cho vay,AV,Cho vay,Smoking
+1711,AC,G,AC,AC,Cho vay,Family,Cho vay,AV,Cho vay,Smoking
+1720,AC,Badmintion,AC,AC,Cho vay,Family,Cho vay,AV,Cho vay,Smoking
+1730,AC,Home,AC,AC,Cho vay,Smoking,Cho vay,AV,Cho vay,AV
+1735,AC,Utility,AC,AC,Cho vay,Smoking,Cho vay,AV,Cho vay,AV
+1738,AV,Coffee,AC,AC,Cho vay,Smoking,Cho vay,AV,Cho vay,AV
+1753,Utility,Ngu,AC,AC,CL,CL,Ngu,CL,Accident,Bida
+1755,Accident,Mental,AC,AC,Cho vay,Bida,Cho vay,Ngu,Accident,Bida
+1758,Coffee,Mental,AC,G,Cho vay,Coffee,Ngu,Coffee,Coffee,Coffee
+1765,Coffee,Home,AC,Coffee,Coffee,Coffee,Coffee,Coffee,Coffee,Coffee
+1769,Coffee,English,AC,Coffee,Coffee,Coffee,Coffee,Coffee,Coffee,Coffee
+1793,AC,DC,AC,AC,Cho vay,Family,Cho vay,Family,Coffee,AC
+1807,AC,RL,AC,AC,Cho vay,Family,Cho vay,Family,Coffee,AC
+1823,AC,DC,AC,AC,Cho vay,AV,Cho vay,AV,Coffee,AV
+1869,AC,RL,AC,AC,Smoking,Family,Ngu,Swimming,Cho vay,Home
+1872,AC,Cho vay,AC,AC,Cho vay,Smoking,Cho vay,AC,Coffee,AC
+1874,AC,Home,AC,AC,Cho vay,Smoking,Cho vay,AC,Coffee,AC
+1881,AC,NET,AC,AC,Cho vay,Smoking,Cho vay,AC,Coffee,AC
+1896,AC,CL,AC,G,Cho vay,Smoking,Cho vay,CL,CL,CL
+1901,AC,Ngu,AC,AC,Cho vay,Smoking,Cho vay,AC,Coffee,AC
+1909,AC,G,AC,AC,Cho vay,Smoking,Cho vay,AC,Coffee,AC
+1929,AC,Study,AC,AC,Cho vay,AV,Cho vay,AV,Coffee,AV
+1955,AC,Family,AC,G,G,G,G,G,G,G
+1974,AC,Cho vay,AC,G,Cho vay,Smoking,Ngu,AV,Coffee,Home
+1980,AC,Study,AC,G,Cho vay,Smoking,Ngu,AV,Coffee,Home
+1989,AC,Family,AC,G,Cho vay,AC,Ngu,AC,Coffee,AC
+2010,AC,Study,AC,G,G,Smoking,Cho vay,CL,Gym,CL
+2025,AC,Ngu,AC,G,Cho vay,Family,Ngu,Body,Coffee,Home
+2029,AC,Family,AC,AC,Cho vay,Smoking,Cho vay,AV,Coffee,AC
+2032,AC,G,AC,G,Cho vay,Smoking,CL,AC,Coffee,Home
+2052,AC,Swimming,AC,AC,Cho vay,AV,Cho vay,AC,Coffee,AC
+2066,AC,Study,AC,AC,Cho vay,Smoking,Cho vay,AC,Coffee,Home
+2071,AC,AV,AC,AC,Cho vay,Smoking,Cho vay,AC,Coffee,Home
+2094,AC,DC,AC,AC,Cho vay,Smoking,Cho vay,AC,Coffee,Home
+2109,AC,G,AC,AC,Cho vay,Smoking,Cho vay,AC,Coffee,Home
+2110,AC,NET,AC,AC,Cho vay,Smoking,Cho vay,AC,Coffee,Home
+2125,AC,Bida,AC,AC,Cho vay,AV,Cho vay,AC,Coffee,AC
+2131,AC,G,AC,AC,Cho vay,AV,Cho vay,AC,Coffee,AV
+2138,AC,Ngu,AC,AC,Cho vay,Smoking,Cho vay,AC,CL,AC
+2140,AC,Utility,AC,G,Home,AV,Cho vay,Home,Gym,NET
+2141,AC,Swimming,AC,G,Home,AV,Home,Home,Home,Home
+2160,AC,Coffee,AC,G,Cho vay,AV,Ngu,AC,Gym,Home
+2161,AC,Gym,AC,G,Cho vay,AV,Ngu,AC,Gym,Home
+2170,AC,Entertainment,AC,AC,Cho vay,Smoking,Cho vay,AC,Coffee,Home
+2183,AC,Accident,AC,AC,Cho vay,Smoking,Cho vay,Body,Swimming,Body
+2194,AC,Badmintion,AC,AC,Cho vay,Smoking,Cho vay,Body,Swimming,Body
+2209,AC,G,AC,AC,Cho vay,AV,Cho vay,Family,Coffee,Home
+2218,AC,Sport,AC,AC,Cho vay,G,Cho vay,Family,Coffee,AC
+2270,AC,AC,AC,AC,Cho vay,Smoking,Cho vay,AV,Coffee,AC
+2273,AC,Swimming,AC,AC,Cho vay,Smoking,Cho vay,AV,Coffee,AC
+2288,AV,CL,AC,AC,Ngu,NET,Ngu,CL,Ngu,Ngu
+2289,Accident,Ngu,AC,AC,Home,Smoking,Cho vay,Family,Accident,NET
+2291,AC,Smoking,AC,G,Home,AV,Ngu,Sport,Swimming,NET
+2303,Badmintion,Body,AC,AC,Cho vay,Sport,Ngu,AV,Study,Bida
+2339,Utility,Coffee,AC,G,Cho vay,AC,Cho vay,Body,Mental,Smoking
+2346,Study,Mental,AC,AC,AV,CL,Cho vay,CL,Cho vay,G
+2349,Study,Bida,AC,AC,Cho vay,Smoking,Cho vay,Family,Cho vay,Swimming
+2350,Utility,Entertainment,AC,AC,Home,Study,Cho vay,Study,Gym,Study
+2353,CL,DC,AC,AC,Mental,CL,Ngu,Sport,DC,CL
+2379,Home,Smoking,AC,G,Cho vay,Home,Cho vay,Home,Utility,Home
+2383,Home,Mental,AC,G,Home,Home,Cho vay,Home,Utility,Home
+2386,Home,DC,AC,G,Cho vay,Home,Cho vay,Home,Utility,Home
+2413,AC,Swimming,AC,G,Cho vay,AV,Ngu,AV,Coffee,AC
+2439,Utility,Body,AC,AC,Cho vay,DC,NET,Utility,Cho vay,Ngu
+2447,RL,Family,AC,AC,Cho vay,Smoking,Cho vay,Smoking,Study,Bida
+2449,AC,AV,AC,AC,Ngu,Smoking,Cho vay,CL,Bida,Bida
+2458,AC,Badmintion,AC,AC,Ngu,Smoking,Cho vay,CL,Bida,Bida
+2490,AV,CL,AC,AC,Cho vay,Accident,Cho vay,AV,Swimming,Swimming
+2507,AC,Badmintion,AC,G,Cho vay,Smoking,Ngu,CL,Gym,CL
+2521,Utility,RL,AC,G,Cho vay,CL,Cho vay,G,Cho vay,Home
+2535,CL,Smoking,AC,G,Bida,CL,Cho vay,CL,Bida,Bida
+2539,Badmintion,Bida,AC,G,RL,CL,Cho vay,Badmintion,Sport,Badmintion
+2550,Utility,Smoking,AC,G,Cho vay,NET,Cho vay,Utility,Coffee,Utility
+2560,Study,DC,AC,G,Home,DC,Cho vay,Study,Accident,Study
+2576,Study,Badmintion,AC,G,Home,DC,Cho vay,Study,Accident,Study
+2579,Study,Entertainment,AC,G,Home,DC,Cho vay,Study,Accident,Study
+2594,Study,Family,AC,G,Home,DC,Cho vay,Study,Accident,Study
+2610,Study,Badmintion,AC,G,Home,DC,Cho vay,Study,Accident,Study
+2618,Study,Coffee,AC,G,Home,DC,Cho vay,Study,Accident,Study
+2626,Study,English,AC,G,Home,DC,Cho vay,Study,Accident,Study
+2674,Study,Cho vay,AC,G,Home,DC,Cho vay,Study,Accident,Study
+2679,Study,Entertainment,AC,G,Home,DC,Cho vay,Study,Accident,Study
+2689,Study,G,AC,G,Home,DC,Cho vay,Study,Accident,Study
+2698,Study,RL,AC,G,Home,DC,Cho vay,Study,Accident,Study
+2700,Study,Mental,AC,G,Home,DC,Cho vay,Study,Accident,Study
+2722,Study,Entertainment,AC,G,Cho vay,DC,Cho vay,Study,Accident,Study
+2723,Study,Coffee,AC,G,Cho vay,DC,Cho vay,Study,Accident,Study
+2743,Study,AC,AC,G,Cho vay,DC,Cho vay,Study,Accident,Study
+2749,RL,Bida,AC,G,Home,DC,Cho vay,Study,Cho vay,Study
+2758,Badmintion,English,AC,G,Home,Badmintion,Cho vay,Badmintion,Accident,Badmintion
+2773,Study,Body,AC,G,Home,DC,Cho vay,Study,Accident,DC
+2802,RL,CL,AC,G,Cho vay,Study,Cho vay,Study,Accident,Study
+2818,Study,G,AC,G,Home,Study,Cho vay,Study,Accident,Study
+2821,Study,Family,AC,G,Home,Study,Cho vay,Study,Accident,Study
+2835,Gym,AV,AC,G,Gym,Gym,Gym,Gym,Gym,Gym
+2847,Study,DC,AC,AC,Cho vay,Accident,Cho vay,Family,Accident,G
+2851,Study,Study,AC,AC,Cho vay,Study,Cho vay,Study,Study,English
+2886,Body,CL,AC,AC,Home,Body,Cho vay,Body,Smoking,Body
+2887,Body,Smoking,AC,AC,Home,Body,Cho vay,Body,Smoking,Body
+2895,Body,CL,AC,AC,Home,Body,Cho vay,Body,Smoking,Body
+2903,AV,G,AC,AC,RL,CL,Cho vay,AV,Home,AV
+2906,AC,English,AC,AC,Ngu,Family,Cho vay,AV,Home,AV
+2907,AC,Badmintion,AC,AC,Ngu,Family,Cho vay,AV,Home,AV
+2921,AC,Entertainment,AC,AC,Ngu,Family,Cho vay,AV,Home,AV
+2928,AC,Accident,AC,AC,Ngu,Family,Cho vay,AV,Home,AV
+2942,AC,G,AC,AC,Ngu,Family,Cho vay,AV,Home,AV
+2947,AC,Gym,AC,AC,Ngu,Family,Cho vay,AV,Home,AV
+2948,AC,Study,AC,AC,Ngu,Family,Cho vay,AV,Home,AV
+2983,Home,English,AC,G,Home,DC,Cho vay,Study,Accident,Study
+2993,Utility,RL,AC,CL,Home,CL,NET,Swimming,Coffee,CL
+3018,Utility,Accident,AC,CL,Utility,Sport,NET,Gym,Coffee,Accident
+3038,Home,Accident,AC,G,Home,Home,Home,Home,Gym,Home
+3050,AV,Sport,AC,AC,Ngu,Bida,Ngu,Smoking,Ngu,Bida
+3071,Utility,Body,AC,G,Home,CL,Cho vay,CL,Coffee,Home
+3077,Utility,Coffee,AC,G,Home,CL,Cho vay,CL,Coffee,Home
+3100,AC,AC,AC,AC,Cho vay,Coffee,Cho vay,AV,Coffee,AV
+3111,AV,Home,AC,G,Cho vay,AV,Ngu,AV,Smoking,NET
+3126,Home,Gym,AC,AC,AV,Accident,Home,Sport,Accident,Accident
+3144,Home,AC,AC,AC,G,Smoking,Home,Sport,Home,CL
+3159,Utility,NET,AC,AC,RL,CL,Cho vay,Smoking,Cho vay,Smoking
+3199,Badmintion,Accident,AC,G,RL,Sport,Ngu,Sport,Gym,NET
+3203,Badmintion,Bida,AC,AC,Ngu,Smoking,Ngu,Sport,NET,NET
+3343,AC,Coffee,AC,AC,Mental,Body,Ngu,Sport,Ngu,Bida
+3344,AC,Accident,AC,AC,Mental,Body,Ngu,Sport,Ngu,Bida
+3346,AC,Coffee,AC,AC,Cho vay,Bida,Ngu,Smoking,Accident,Bida
+3351,AC,DC,AC,AC,Cho vay,AV,Cho vay,AV,Cho vay,AV
+3366,AC,Smoking,AC,G,Badmintion,G,Ngu,AV,Gym,AV
+3377,AC,Smoking,AC,CL,Mental,Bida,Ngu,Family,Ngu,Bida
+3378,AC,DC,AC,AC,Cho vay,Body,Cho vay,AV,Cho vay,Bida
+3380,AC,Coffee,AC,AC,Cho vay,AC,Cho vay,Body,Cho vay,AV
+3385,AC,Study,AC,AC,Cho vay,Body,Cho vay,AV,Mental,AV
+3413,AC,Smoking,AC,AC,Badmintion,Family,Cho vay,AV,Accident,AV
+3419,AC,Swimming,AC,G,Cho vay,AV,Ngu,AV,Coffee,Home
+3436,AC,Swimming,AC,G,Cho vay,G,Ngu,Smoking,Cho vay,G
+3441,AC,English,AC,AC,Cho vay,Sport,Ngu,Sport,Cho vay,CL
+3451,AC,Family,AC,AC,Cho vay,AV,Ngu,CL,Cho vay,Home
+3463,AC,RL,AC,G,Ngu,Smoking,Ngu,Badmintion,Gym,G
+3474,Utility,DC,AC,G,Home,Home,Cho vay,Home,Cho vay,Home
+3481,Entertainment,Mental,AC,AC,Cho vay,G,Cho vay,G,Study,Swimming
+3485,AC,NET,AC,AC,Cho vay,Sport,Ngu,AV,Cho vay,Accident
+3488,Utility,Cho vay,AC,AC,NET,NET,Cho vay,Family,Cho vay,Utility
+3496,G,Utility,AC,AC,NET,Ngu,Cho vay,Family,Cho vay,G
+3509,AC,Utility,AC,AC,Ngu,Sport,Ngu,Sport,DC,CL
+3516,AV,AC,AC,AC,Ngu,AV,Ngu,CL,CL,NET
+3591,RL,Bida,AC,AC,Cho vay,AV,Cho vay,AV,Coffee,Coffee
+3610,AC,Accident,AC,AC,Cho vay,Sport,Cho vay,Sport,Swimming,Swimming
+3615,AC,Accident,AC,AC,Cho vay,Sport,Cho vay,Sport,Swimming,Swimming
+3653,AV,Home,AC,AC,Cho vay,AV,Cho vay,AV,Swimming,AV
+3659,RL,Coffee,AC,G,G,AV,G,Body,Swimming,Home
+3667,Home,Gym,AC,AC,Ngu,AV,Cho vay,Body,Swimming,Home
+3694,AV,G,AC,AC,Ngu,AV,Cho vay,AV,Swimming,Swimming
+3699,AV,Gym,AC,AC,Ngu,AV,Cho vay,AV,Swimming,Swimming
+3706,AV,Cho vay,AC,AC,Ngu,AV,Cho vay,AV,Swimming,Swimming
+3726,AV,Coffee,AC,AC,Ngu,AV,Cho vay,AV,Swimming,Swimming
+3745,AV,Utility,AC,G,Ngu,AV,Cho vay,AV,Swimming,AV
+3747,Body,English,AC,AC,Ngu,Accident,Cho vay,Accident,Swimming,Home
+3762,AC,Mental,AC,AC,Ngu,AV,Cho vay,AV,Swimming,Swimming
+3766,AC,Coffee,AC,AC,Ngu,AV,Cho vay,AV,Swimming,Swimming
+3774,Utility,Mental,AC,AC,Ngu,AV,Cho vay,AV,Swimming,Swimming
+3778,AV,CL,AC,AC,Ngu,AV,Cho vay,AV,Swimming,Swimming
+3789,Utility,NET,AC,AC,Ngu,AV,Cho vay,AV,Swimming,Swimming
+3795,Utility,Study,AC,AC,Cho vay,AV,Cho vay,AV,Swimming,Swimming
+3816,AC,Cho vay,AC,AC,Ngu,Family,Cho vay,Family,Cho vay,Bida
+3832,Utility,English,AC,AC,Cho vay,Body,Cho vay,Gym,Cho vay,Gym
+3835,Utility,Badmintion,AC,AC,Cho vay,Body,Cho vay,Gym,Cho vay,Gym
+3857,Utility,Badmintion,AC,AC,Cho vay,Ngu,Cho vay,Ngu,Cho vay,Utility
+3858,Utility,Accident,AC,AC,Cho vay,Ngu,Cho vay,Ngu,Cho vay,Utility
+3860,Utility,AV,AC,AC,Cho vay,Ngu,Cho vay,Ngu,Cho vay,Utility
+3864,Utility,Coffee,AC,AC,Cho vay,Ngu,Cho vay,Ngu,Cho vay,Utility
+3873,Utility,Body,AC,AC,Cho vay,Ngu,Cho vay,Ngu,Cho vay,Utility
+3875,Utility,Cho vay,AC,AC,Cho vay,Ngu,Cho vay,Ngu,Cho vay,Utility
+3886,Utility,Cho vay,AC,AC,Cho vay,Ngu,Cho vay,Ngu,Cho vay,Utility
+3891,Utility,Bida,AC,AC,Cho vay,Ngu,Cho vay,Ngu,Cho vay,Utility
+3896,Study,NET,AC,AC,Cho vay,Study,Cho vay,Study,Study,English
+3897,Study,DC,AC,G,Cho vay,Family,Cho vay,Family,Cho vay,G
+3902,Utility,Swimming,AC,G,Cho vay,Cho vay,Cho vay,Gym,Cho vay,Gym
+3917,AC,Sport,AC,AC,Cho vay,Coffee,Cho vay,Coffee,Coffee,AV
+3932,AC,NET,AC,AC,Cho vay,Smoking,Cho vay,Coffee,Coffee,AV
+3939,Study,Utility,AC,AC,Home,Bida,Home,Bida,Accident,Bida
+3942,Study,NET,AC,G,Home,Smoking,Cho vay,Study,Body,Study
+3946,Utility,DC,AC,AC,Home,Study,Ngu,Coffee,Body,Study
+3947,Study,CL,AC,G,Cho vay,Study,Cho vay,Study,Study,Study
+3950,Study,G,AC,AC,Cho vay,Study,Study,Study,Body,Study
+3954,Study,Coffee,AC,G,Home,Smoking,Cho vay,Study,Body,Bida
+3961,Body,AC,AC,AC,Home,Smoking,Ngu,Coffee,Accident,Accident
+3965,G,Family,AC,AC,AV,Smoking,Home,Sport,Study,Smoking
+3966,G,RL,AC,AC,AV,Smoking,Home,Sport,Study,Smoking
+3993,Badmintion,Smoking,AC,AC,Cho vay,NET,Cho vay,NET,Coffee,NET
+4009,AC,Body,AC,AC,Ngu,AV,Ngu,Swimming,Swimming,Swimming
+4020,AV,Home,AC,AC,Cho vay,Smoking,Ngu,AV,Cho vay,AV
+4032,Utility,NET,AC,AC,Cho vay,Ngu,Cho vay,Family,Cho vay,G
+4038,Utility,DC,AC,G,Home,Home,Cho vay,Home,Accident,Accident
+4048,Badmintion,Swimming,AC,AC,Home,Badmintion,Ngu,Badmintion,Sport,Badmintion
+4049,Badmintion,Swimming,AC,AC,Home,Badmintion,Ngu,Badmintion,Sport,Badmintion
+4059,Badmintion,Home,AC,AC,Home,Badmintion,Ngu,Badmintion,Sport,Badmintion
+4072,Badmintion,Study,AC,AC,Cho vay,Badmintion,Ngu,Badmintion,Accident,Badmintion
+4120,AV,AC,AC,AC,Body,Smoking,Cho vay,Body,Mental,AV
+4124,AV,English,AC,AC,Body,Smoking,Cho vay,Body,Mental,AV
+4129,AV,English,AC,AC,Ngu,Smoking,Cho vay,AV,Swimming,AV
+4131,AC,Study,AC,AC,Ngu,Smoking,Cho vay,AV,Swimming,AV
+4138,AV,AC,AC,AC,Ngu,Coffee,Cho vay,AV,Swimming,AV
+4145,AV,Bida,AC,G,Ngu,AV,Ngu,AV,Mental,AV
+4162,AC,AV,AC,AC,Body,RL,Ngu,Sport,Study,Swimming
+4178,G,Gym,AC,AC,Study,Smoking,Study,Bida,Study,Bida
+4203,AC,NET,AC,AC,Home,Smoking,Cho vay,AV,Swimming,AV
+4208,AC,Bida,AC,AC,Cho vay,Smoking,Cho vay,AV,Swimming,CL
+4214,Bida,Swimming,AC,AC,Cho vay,AV,Ngu,AV,Study,AV
+4215,Utility,Badmintion,AC,AC,Home,Accident,Cho vay,Accident,Accident,Accident
+4222,AC,Home,AC,AC,Home,AV,Cho vay,AV,Swimming,AV
+4223,AC,Entertainment,AC,AC,Home,AV,Cho vay,AV,Swimming,AV
+4231,AC,Ngu,AC,AC,Home,AV,Cho vay,AV,Swimming,AV
+4232,AC,Sport,AC,AC,Home,AV,Cho vay,AV,Swimming,AV
+4237,AC,AV,AC,AC,Home,AV,Cho vay,AV,Swimming,AV
+4241,AC,Badmintion,AC,AC,Home,AV,Cho vay,AV,Swimming,AV
+4260,AC,Coffee,AC,AC,Home,AV,Cho vay,AV,Swimming,AV
+4265,AC,Coffee,AC,AC,Cho vay,AV,Cho vay,AV,Swimming,AV
+4267,AC,Cho vay,AC,AC,Cho vay,AV,Cho vay,AV,Swimming,AV
+4274,Coffee,Family,AC,AC,Coffee,Coffee,Coffee,Coffee,Coffee,Coffee
+4298,AC,RL,AC,AC,Ngu,Smoking,Cho vay,Sport,Ngu,Bida
+4317,AV,Cho vay,AC,AC,Cho vay,Accident,Cho vay,Smoking,Accident,Swimming
+4321,AV,CL,AC,AC,Cho vay,Accident,Cho vay,Smoking,Accident,Swimming
+4341,Home,CL,AC,G,Home,Smoking,Cho vay,Accident,Gym,Smoking
+4352,Home,Body,AC,AC,Home,DC,Cho vay,Study,Accident,DC
+4374,AC,Bida,AC,G,Cho vay,AV,Ngu,AV,Gym,AV
+4397,AC,English,AC,G,Cho vay,AV,Cho vay,AV,Body,AV
+4400,RL,AC,AC,AC,Cho vay,Smoking,Cho vay,Ngu,Accident,Ngu
+4401,Accident,Badmintion,AC,AC,Cho vay,Smoking,Cho vay,Ngu,Accident,Ngu
+4403,RL,Utility,AC,AC,Cho vay,Smoking,Cho vay,Ngu,Accident,Ngu
+4436,Smoking,Study,AC,AC,Smoking,Smoking,Smoking,Smoking,Smoking,Smoking
+4441,Body,Bida,AC,AC,Home,Smoking,Cho vay,Body,Study,Smoking
+4465,AC,AC,AC,AC,Cho vay,Family,Cho vay,Family,Cho vay,Family
+4467,AC,Smoking,AC,AC,Cho vay,Family,Cho vay,Family,Cho vay,Family
+4489,Home,Cho vay,AC,G,Home,Home,Cho vay,Home,Utility,Home
+4491,Home,Bida,AC,G,Home,Home,Cho vay,Home,Utility,Home
+4496,Badmintion,Coffee,AC,G,RL,Badmintion,Cho vay,Badmintion,Sport,Badmintion
+4517,Home,CL,AC,G,Home,Ngu,Home,Home,Home,Home
+4524,AC,English,AC,AC,Ngu,Home,Cho vay,Home,Swimming,Home
+4540,Badmintion,Ngu,AC,AC,Cho vay,Badmintion,Ngu,Badmintion,Sport,Badmintion
+4543,Badmintion,Family,AC,G,RL,Badmintion,Cho vay,Badmintion,Sport,Badmintion
+4599,DC,Entertainment,AC,G,Cho vay,DC,G,G,Cho vay,G
+4601,DC,Body,AC,G,Cho vay,DC,Ngu,G,Accident,G
+4602,Home,Badmintion,AC,AC,Cho vay,DC,Cho vay,Family,Accident,G
+4606,AC,Sport,AC,G,Cho vay,AV,Cho vay,AV,Coffee,AV
+4611,RL,Gym,AC,AC,Home,Smoking,Cho vay,Mental,Coffee,Smoking
+4623,AC,AC,AC,AC,Cho vay,Coffee,Cho vay,Coffee,Coffee,Coffee
+4630,RL,Ngu,AC,AC,Cho vay,Smoking,Cho vay,Coffee,Coffee,Coffee
+4633,AV,DC,AC,AC,Cho vay,Smoking,Cho vay,AV,Coffee,AV
+4635,AV,Swimming,AC,AC,Cho vay,Smoking,Ngu,AV,Coffee,AV
+4649,AV,Gym,AC,AC,Coffee,Coffee,Cho vay,Coffee,Coffee,Coffee
+4661,AV,Bida,AC,G,Cho vay,AV,Ngu,AV,Coffee,Coffee
+4666,RL,Body,AC,AC,Cho vay,Smoking,Cho vay,AV,Accident,Accident
+4670,RL,Bida,AC,AC,Cho vay,Cho vay,Cho vay,Cho vay,Cho vay,G
+4672,AV,Entertainment,AC,AC,Cho vay,Smoking,Cho vay,AV,Coffee,Coffee
+4679,Home,English,AC,G,Cho vay,Home,Cho vay,Home,Cho vay,Home
+4680,AC,DC,AC,G,Ngu,Family,Ngu,Sport,Family,Smoking
+4692,AC,Home,AC,G,Cho vay,AC,Ngu,AV,Coffee,AC
+4720,Body,Cho vay,AC,AC,Cho vay,CL,Cho vay,Sport,Gym,Swimming
+4728,RL,Coffee,AC,Bida,Bida,Bida,Bida,Bida,Bida,Bida
+4730,AC,Bida,AC,G,Mental,Smoking,Ngu,Accident,Body,Smoking
+4733,AC,CL,AC,G,Mental,Smoking,Ngu,Accident,Body,Smoking
+4734,AC,CL,AC,G,Mental,Smoking,Ngu,Accident,Body,Smoking
+4754,Ngu,Smoking,AC,AC,Cho vay,Ngu,Cho vay,Ngu,Cho vay,Swimming
+4767,DC,Coffee,AC,G,Cho vay,DC,G,DC,Accident,DC
+4772,Utility,English,AC,G,Cho vay,AV,Ngu,AV,Cho vay,NET
+4791,Badmintion,Accident,AC,AC,AV,Family,Cho vay,Cho vay,Cho vay,Swimming
+4803,AC,Coffee,AC,AC,Cho vay,Smoking,Cho vay,RL,Cho vay,Bida
+4809,DC,Cho vay,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+4821,DC,English,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+4830,DC,CL,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+4869,DC,AC,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+4899,DC,Entertainment,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+4904,DC,Accident,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+4909,DC,Bida,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+4910,DC,Mental,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+4920,DC,Sport,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+4922,DC,DC,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+4930,DC,Swimming,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+4942,DC,Bida,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+4944,DC,Swimming,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+4953,DC,Body,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+4957,DC,AC,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+4958,DC,Cho vay,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+4982,DC,Badmintion,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+4994,DC,Entertainment,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+4996,DC,Badmintion,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5001,DC,English,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5013,DC,Swimming,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5024,DC,Gym,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5026,DC,Body,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5048,DC,G,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5050,DC,Mental,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5058,DC,Family,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5072,DC,Sport,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5074,DC,AC,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5089,DC,Smoking,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5090,DC,DC,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5097,DC,Coffee,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5117,DC,Gym,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5126,DC,Study,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5130,DC,Family,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5180,DC,G,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5189,DC,Utility,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5201,DC,RL,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5217,DC,Accident,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5224,DC,Family,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5226,DC,Mental,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5229,DC,English,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5236,DC,Sport,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5246,DC,Swimming,AC,G,Cho vay,DC,Cho vay,Smoking,Accident,DC
+5254,DC,Mental,AC,G,Cho vay,DC,G,Smoking,Accident,G
+5256,DC,Coffee,AC,G,Cho vay,Smoking,Cho vay,Smoking,Accident,DC
+5263,DC,Body,AC,G,Cho vay,DC,Cho vay,DC,Accident,DC
+5287,DC,DC,AC,G,Cho vay,Smoking,Cho vay,Smoking,Accident,DC
+5294,DC,Home,AC,G,Home,Smoking,G,Smoking,Accident,DC
+5420,AC,English,AC,AC,Cho vay,RL,Ngu,Swimming,Cho vay,Bida
+5447,AC,Body,AC,AC,Cho vay,Sport,Ngu,Sport,Cho vay,CL
+5449,AC,DC,AC,AC,Cho vay,Sport,Ngu,Sport,Cho vay,CL
+5454,AV,Smoking,AC,G,Cho vay,Accident,Ngu,AV,Cho vay,Bida
+5462,AC,Cho vay,AC,AC,Cho vay,G,Cho vay,AV,Accident,Smoking

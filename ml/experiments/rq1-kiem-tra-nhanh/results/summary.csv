@@ -1,0 +1,10 @@
+method,variant,accuracy,macro_f1,top3_accuracy,accuracy_frequent,accuracy_rare
+baseline,random-uniform,0.0258,0.0155,,0.0243,0.0279
+baseline,majority(AC)*,0.328,0.026,,0.3438,0.307
+baseline,name-match,0.34,0.0849,,0.4062,0.2512
+embedding:e5-small,name,0.169,0.1949,0.2326,0.1667,0.1721
+embedding:e5-small,name+desc,0.4294,0.3824,0.6421,0.4826,0.3581
+embedding:e5-base,name,0.159,0.2718,0.2107,0.1771,0.1349
+embedding:e5-base,name+desc,0.3996,0.3171,0.6382,0.4271,0.3628
+embedding:bge-m3,name,0.1789,0.1149,0.2425,0.1736,0.186
+embedding:bge-m3,name+desc,0.501,0.3602,0.6402,0.5799,0.3953

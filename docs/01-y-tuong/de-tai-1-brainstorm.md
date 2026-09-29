@@ -1,6 +1,6 @@
 # Brainstorm đề tài luận văn CT553H
 
-> Cập nhật: 27/09/2026 · Trạng thái: **đã chọn hướng đề tài #1, đã đổi trọng tâm nghiên cứu (xem 0.1), đang hoàn thiện đề cương, chưa gặp GVHD**
+> Cập nhật: 29/09/2026 · Trạng thái: **đã chọn hướng đề tài #1, đã chỉnh RQ2 và mở rộng RQ3 (xem 0.2), đã có đề cương bản nháp ([de-cuong.tex](../04-de-cuong/de-cuong.tex)), chưa gặp GVHD**
 
 ---
 
@@ -10,9 +10,10 @@
 - **Vai trò của bộ dữ liệu cá nhân (5.465 giao dịch thật, 25 nhãn tự đặt):** không dùng để huấn luyện mô hình ban đầu, mà dùng để **đánh giá hệ thống**. Bộ dữ liệu được **phát lại theo thời gian** như thể một người dùng mới dùng hệ thống từ 09/2022 với 25 danh mục tự tạo: hệ thống đoán nhãn trước, sau đó "người dùng" sửa theo nhãn thật, rồi hệ thống học tiếp (đánh giá kiểu *prequential*, kiểm tra trước, học sau).
 - **Trọng tâm khoa học:**
   1. Khi người dùng vừa tạo danh mục riêng mà chưa có giao dịch nào, bộ phân loại đạt đến đâu (RQ1).
-  2. Chiến lược thích nghi nào giảm số lần người dùng phải sửa nhãn nhanh nhất, kể cả khi dữ liệu thay đổi theo thời gian và có danh mục mới xuất hiện (RQ2).
-  3. Dự báo chi tiêu (RQ3, phụ).
-  4. Kiểm tra lại trên dữ liệu tình nguyện viên (RQ4, có điều kiện).
+  2. Các chiến lược thích nghi cải thiện được bao nhiêu **so với baseline "nhớ lại"**, đo chủ yếu trên **ghi chú chưa gặp** và giai đoạn đầu (RQ2).
+  3. Dự báo khoảng chi tiêu theo danh mục, và **lỗi phân loại làm lệch dự báo và cảnh báo ngân sách tới mức nào** (RQ3, mở rộng ngày 29/09).
+  4. Kiểm tra lại trên dữ liệu tình nguyện viên (RQ4, có điều kiện; tìm tình nguyện viên **sau buổi gặp GVHD đầu tiên**, nếu đề tài được chốt).
+  5. Thí nghiệm nhỏ TN5: độ nhạy khi người dùng không sửa hết các gợi ý sai.
 - **Kịch bản phụ:** 25 nhãn được gộp về 10–12 danh mục chuẩn, để so sánh ảnh hưởng của độ chi tiết danh mục.
 - **Hội đồng thiên về kỹ thuật phần mềm** (rubric CT553H: 40% phát triển ứng dụng, 40% viết khoa học, 20% trình bày và thái độ): phần hệ thống và quy trình phải chắc chắn. Hướng mới giúp chuyện này tự nhiên hơn, vì **vòng phản hồi, pipeline sinh dữ liệu theo người dùng và pipeline thích nghi chính là đối tượng nghiên cứu**. Công cụ phát lại dữ liệu chạy qua API thật của hệ thống.
 - **Đa tiền tệ:** hạ xuống **tính năng phụ của hệ thống**, bỏ khỏi tên đề tài, không còn RQ nào. MVP chỉ giữ mô hình dữ liệu đúng (ví theo loại tiền, tỷ giá lịch sử, đổi tiền) và tính phí đổi tiền ẩn. Người dùng nhiều loại tiền vẫn là **nhóm đối tượng phụ** (mục 4.2).
@@ -28,6 +29,17 @@
 | RQ2b "người dùng mới" phụ thuộc hoàn toàn vào tình nguyện viên | Bài toán người dùng mới được nghiên cứu ngay trên dữ liệu cá nhân (phát lại từ con số 0). Tình nguyện viên chỉ cần **100–200 ghi chú** gán theo danh mục của chính họ (RQ4) | Dữ liệu để đánh giá cần ít hơn nhiều so với dữ liệu để huấn luyện, và tình nguyện viên không phải học bộ danh mục của người khác |
 | Đa tiền tệ nằm trong tên đề tài, có RQ3b, có case study giao dịch ngoại tệ thật | Tính năng phụ, bỏ RQ3b, **bỏ case study ngoại tệ** | Không có dữ liệu ngoại tệ thật. RQ3b gượng ép, kết quả gần như biết trước. Phạm vi quá lớn cho 14 tuần |
 | Dự báo chi tiêu: RQ3a + RQ3b | RQ3 (phụ), chỉ dự báo, không có tỷ giá | Giữ theo quyết định của người làm đề tài; bỏ phần tỷ giá |
+
+### 0.2 Thay đổi ngày 29/09/2026 và lý do
+
+| Trước | Sau | Lý do |
+|---|---|---|
+| RQ2: "chiến lược nào giảm số lần sửa nhanh nhất" | RQ2: "cải thiện được bao nhiêu **so với nhớ lại (B1)**, trên **ghi chú chưa gặp** và 30 ngày đầu". B0 (nhớ lại) và B1 (nhớ lại + mô hình ban đầu) là **mốc bắt buộc** | Chỉ nhớ lại đã đúng 93,8% trên ghi chú đã gặp (61% luồng). Với B1, 87% số lần phải thao tác tay nằm ở ghi chú chưa gặp ([rq2-baseline-nho-lai](../../ml/experiments/rq2-baseline-nho-lai/README.md)) |
+| Chỉ dùng văn bản ghi chú | Thêm biến thể **văn bản + số tiền + thứ trong tuần + nhãn các giao dịch trước đó cùng ngày** | Các nhãn theo ngữ cảnh (RL, G, Mental) đạt F1 0 khi chỉ dùng văn bản |
+| RQ3 phụ: dự báo tổng chi thường ngày theo tuần | RQ3 mở rộng: (a) dự báo **khoảng** theo tuần cho tổng và nhóm danh mục, dùng conformal thích nghi; (b) **lan truyền lỗi phân loại** sang tổng chi theo danh mục, dự báo và cảnh báo ngân sách, kèm hiệu chỉnh kiểu quantification | Người làm đề tài muốn mở rộng thay vì bỏ. Nối RQ3 với RQ1–RQ2 thành một chuỗi thống nhất (Forman, 2008) |
+| Phân tích phản hồi thiếu là "tùy chọn" | **TN5 chốt**: p ∈ {1,0; 0,9; 0,7; 0,5}, 5 seed, chạy trên B1 và chiến lược tốt nhất của RQ2 | Thiên kiến tự động hóa (Parasuraman & Manzey, 2010). Chạy thử: p = 0,5 làm accuracy trên ghi chú đã gặp giảm 4,6 điểm |
+| Các khẳng định về nhu cầu người dùng chưa có nguồn | Mỗi khẳng định có bằng chứng hoặc được đánh dấu chưa có; thêm **khảo sát người dùng** ở tuần 1–2 | Xem [khao-sat-tai-lieu.md](../02-khao-sat/khao-sat-tai-lieu.md) |
+| Tình nguyện viên: liên hệ từ tuần 1 | Liên hệ **sau buổi gặp GVHD đầu tiên**, nếu đề tài được chốt | Quyết định của người làm đề tài |
 
 ---
 
@@ -130,8 +142,8 @@ Giải thích dự đoán: với bộ nhớ kNN, lời giải thích có sẵn v
 | RQ | Câu hỏi | Bắt buộc? |
 |---|---|---|
 | RQ1 | Khi người dùng **vừa tạo danh mục riêng** mà chưa có giao dịch nào, bộ phân loại ban đầu đạt đến đâu trên ghi chú chi tiêu thật? So sánh LLM zero-shot (local và API), embedding zero-shot, và mô hình nhẹ học trên **dữ liệu tổng hợp sinh riêng cho danh mục của người dùng**. Mô tả danh mục giúp được bao nhiêu so với chỉ có tên? Cần bao nhiêu ví dụ tổng hợp mỗi danh mục? | Có |
-| RQ2 | Khi hệ thống học từ phản hồi sửa nhãn, **chiến lược thích nghi nào giảm số lần người dùng phải sửa nhanh nhất** với chi phí (độ trễ, tài nguyên) chấp nhận được? Sau bao nhiêu giao dịch thì vượt mô hình ban đầu? Khi dữ liệu thay đổi theo thời gian (**danh mục mới được tạo**, thói quen đổi), chiến lược nào chịu được tốt nhất? | Có |
-| RQ3 | Mô hình dự báo chi tiêu tuần nào vượt được baseline "trung bình lịch sử", và chênh lệch có ý nghĩa thống kê không? | Có (phụ) |
+| RQ2 | Các chiến lược học từ phản hồi (kNN, huấn luyện lại, LLM few-shot truy xuất, thêm đặc trưng ngữ cảnh) **cải thiện được bao nhiêu so với baseline nhớ lại B1**, đo trên **ghi chú chưa gặp** và trong 30 ngày đầu, với chi phí chấp nhận được? Khi có danh mục mới và thói quen thay đổi, lợi thế đó còn không? | Có |
+| RQ3 | (a) Dự báo khoảng chi tiêu theo tuần cho tổng và từng nhóm danh mục có đạt độ phủ danh nghĩa và hẹp hơn baseline không? (b) Lỗi phân loại ở RQ1–RQ2 làm lệch tổng chi theo danh mục, dự báo và cảnh báo vượt ngân sách tới mức nào, và hiệu chỉnh bằng ma trận nhầm lẫn giảm được bao nhiêu phần lệch đó? | Có |
 | RQ4 | Kết luận của RQ1–RQ2 có lặp lại trên dữ liệu và danh mục của người dùng khác không? | Có điều kiện: cần tối thiểu 3 tình nguyện viên (mục 6, TN4) |
 
 Kịch bản phụ **danh mục chuẩn** (25 nhãn gộp về 10–12 nhóm) được chạy trong TN1 và TN2 để so sánh, không phải RQ riêng.
@@ -398,20 +410,25 @@ Trên **tập dev**, với 25 danh mục (tên + mô tả):
 2. Gặp nhãn lần đầu thì phát sự kiện "người dùng tạo danh mục": hệ thống sinh dữ liệu tổng hợp cho danh mục đó và cập nhật mô hình ban đầu.
 3. Với mỗi giao dịch: hệ thống đoán nhãn bằng trạng thái hiện tại, ghi lại đúng/sai (bỏ qua tính điểm nếu thuộc tập dev), **sau đó** mới nhận nhãn thật như thể người dùng vừa xác nhận hoặc sửa.
 4. Cập nhật lớp cá nhân: bộ nhớ và kNN cập nhật ngay; mô hình cá nhân huấn luyện lại theo lịch (tuần hoặc tháng).
-5. Giả định **phản hồi đầy đủ** (người dùng luôn sửa khi sai). (Tùy chọn) phân tích độ nhạy khi chỉ 50% lần sai được sửa.
+5. Giả định **phản hồi đầy đủ** (người dùng luôn sửa khi sai). Độ nhạy khi phản hồi thiếu được đo riêng ở TN5.
 
 **Các chiến lược (đặt trên mô hình ban đầu tốt nhất của TN1):**
 
 | Mã | Chiến lược | Ghi chú |
 |---|---|---|
-| A0 | Không thích nghi | Mốc so sánh |
-| A1 | Bộ nhớ tra cứu: ghi chú đã chuẩn hóa → nhãn gần nhất; không có thì dùng mô hình ban đầu | Rẻ nhất; trên dữ liệu cũ đã đúng ~92% với ghi chú đã gặp |
+| A0 | Không thích nghi | Mốc dưới |
+| **B0** | **Nhớ lại**: ghi chú đã chuẩn hóa → nhãn gần nhất; chưa gặp thì không gợi ý | **Mốc bắt buộc.** Bản thô: 56,9% toàn luồng, 93,8% trên ghi chú đã gặp |
+| **B1** | **Nhớ lại + mô hình ban đầu** cho ghi chú chưa gặp (trước đây gọi là A1) | **Mốc bắt buộc, là đối thủ chính của RQ2.** Bản thô với embedding zero-shot: 71,5% toàn luồng, 37,0% trên ghi chú chưa gặp |
 | A2 | kNN trực tuyến trên embedding các giao dịch đã sửa, kết hợp với mô hình ban đầu theo khoảng cách hoặc độ tin cậy | Cập nhật tức thì, có lời giải thích tự nhiên |
 | A3 | Huấn luyện lại định kỳ mô hình cá nhân (TF-IDF + LR) trên lịch sử phản hồi **trộn với dữ liệu tổng hợp** (tỷ lệ tổng hợp giảm dần khi có nhiều dữ liệu thật). Biến thể chống trôi: toàn bộ lịch sử · cửa sổ trượt N tháng · trọng số theo thời gian | Gần với kết quả sơ bộ 78% ở báo cáo dữ liệu |
 | A4 | LLM few-shot truy xuất (RAG): lấy k giao dịch đã sửa giống nhất đưa vào prompt | Gần chuyên môn GVHD; đắt và chậm nhất |
+| +ctx | Biến thể áp lên A2/A3: thêm **số tiền** (log), **thứ trong tuần**, **nhãn các giao dịch trước đó cùng ngày** (đã được xác nhận nên không rò rỉ) | Nhắm vào nhãn theo ngữ cảnh (RL, G, Mental). Dữ liệu chỉ có ngày, không có giờ |
+
+Mọi chiến lược A2–A4 đều giữ bộ nhớ của B0 cho ghi chú đã gặp, và chỉ khác nhau ở cách xử lý **ghi chú chưa gặp**. Nhờ vậy, phần chênh lệch so với B1 nằm đúng ở chỗ RQ2 cần đo.
 
 **Độ đo:**
-- **Số lần người dùng phải sửa mỗi tháng** (độ đo chính, hướng người dùng) và accuracy / Macro-F1 theo từng tháng.
+- **Độ đo chính:** chênh lệch so với B1 về số lần phải thao tác tay mỗi tháng (sửa gợi ý sai hoặc tự chọn khi không có gợi ý), accuracy và Macro-F1 **trên ghi chú chưa gặp**.
+- Accuracy / Macro-F1 toàn luồng theo từng tháng, và trong 30 ngày đầu.
 - **Điểm hòa vốn:** số giao dịch phản hồi cần để chiến lược vượt A0, và để đạt ngưỡng 80%.
 - **Danh mục mới:** độ chính xác trong N giao dịch đầu tiên của mỗi danh mục vừa tạo.
 - Tách ghi chú **đã gặp / chưa gặp** tại thời điểm đoán.
@@ -424,8 +441,24 @@ Trên **tập dev**, với 25 danh mục (tên + mô tả):
 
 **Chạy qua hệ thống thật:** các chiến lược được so sánh trong `ml/experiments/` cho nhanh. **Cấu hình được chọn** thì chạy lại bằng công cụ phát lại qua API của hệ thống đã triển khai, kể cả sự kiện tạo danh mục, và hai kết quả phải khớp. Việc này đồng thời là một bài kiểm thử tích hợp.
 
-### TN3: Dự báo chi tiêu (RQ3, phụ)
-- **Chuỗi:** tổng chi **thường ngày** theo tuần (bỏ các khoản `Special`, học phí luân chuyển, vay), 211 tuần.
+### TN3: Dự báo khoảng và lan truyền lỗi phân loại (RQ3, mở rộng 29/09)
+
+**TN3a, dự báo khoảng (bắt buộc)**
+- Chuỗi: tổng chi thường ngày theo tuần, và theo **5–6 nhóm danh mục lớn** (dùng bảng ánh xạ danh mục chuẩn, vì chuỗi theo 25 danh mục quá thưa).
+- Mô hình điểm: trung bình lịch sử, trung bình trượt, ETS, LightGBM; Croston / TSB cho nhóm thưa.
+- Khoảng dự báo: phân vị thực nghiệm (baseline) so với **conformal thích nghi** (ACI, Gibbs & Candès 2021) bọc quanh mô hình điểm tốt nhất.
+- Độ đo: độ phủ thực tế so với danh nghĩa (80%, 95%), độ rộng trung bình, pinball loss; với dự báo điểm dùng MAE, sMAPE và Diebold–Mariano.
+
+**TN3b, lan truyền lỗi phân loại (bắt buộc)**
+- Thay nhãn thật bằng nhãn do B1 và chiến lược tốt nhất của RQ2 đoán (lấy từ log phát lại), rồi tính lại tổng chi theo nhóm theo tuần và theo tháng.
+- Đo độ lệch của tổng chi theo nhóm, độ lệch của dự báo, và **precision / recall của cảnh báo vượt ngân sách**. Ngân sách giả lập bằng trung vị chi tháng trước đó × 1,1, vì dữ liệu không có ngân sách thật; đây là giả định cần nêu rõ.
+- **Hiệu chỉnh:** dùng ma trận nhầm lẫn ước lượng trực tuyến từ phản hồi để hiệu chỉnh tổng chi theo nhóm (adjusted classify-and-count, Forman 2008). Đo xem hiệu chỉnh giảm được bao nhiêu phần lệch.
+- Ý nghĩa: trả lời câu hỏi "RQ2 cần đạt mức nào thì dashboard và cảnh báo ngân sách mới đáng tin".
+
+**TN3c, tùy chọn (cắt nếu trễ):** hòa giải dự báo phân cấp MinT giữa tổng và các nhóm.
+
+**Chung cho TN3:**
+- **Chuỗi gốc:** tổng chi **thường ngày** theo tuần (bỏ các khoản `Special`, học phí luân chuyển, vay), 211 tuần.
 - **Trước tiên xử lý vấn đề mật độ ghi chép giảm** (tỷ lệ ngày không có khoản chi tăng từ 7% năm 2022 lên 32% năm 2026, báo cáo dữ liệu mục 4.7). Nếu không, mô hình có thể đang dự báo *thói quen ghi chép* chứ không phải chi tiêu. Ít nhất phải nêu rõ, tốt nhất là tách được hai yếu tố.
 - **Mô hình:** Naive, Seasonal Naive, trung bình lịch sử và trung bình trượt (baseline, hiện đang thắng), ETS / SARIMA, Prophet (ngày lễ Việt Nam), LightGBM (lag, rolling, lịch).
 - **Đánh giá:** rolling-origin backtest, dự báo trước 1 tuần và 4 tuần. Cách đánh giá này cũng theo tinh thần "chỉ dùng quá khứ", thống nhất với TN2.
@@ -436,11 +469,19 @@ Trên **tập dev**, với 25 danh mục (tên + mô tả):
 - Mỗi tình nguyện viên: tự đặt **danh mục của mình** (tên + mô tả ngắn), cung cấp **100–200 ghi chú chi tiêu thật có ngày** và gán nhãn theo danh mục đó. Khoảng 1–2 giờ mỗi người. Ẩn danh trước khi xử lý. Vì dùng danh mục của chính họ, tình nguyện viên không phải học bộ danh mục của người khác.
 - Chạy lại TN1 và TN2 (rút gọn vì luồng ngắn) với **cấu hình đã khóa**, không tinh chỉnh thêm.
 - **Ngưỡng:** đủ **3 người** trở lên thì báo cáo là RQ4. Có 1–2 người thì trình bày như nghiên cứu tình huống. Không có ai thì đưa vào hạn chế và hướng phát triển.
-- **Liên hệ tình nguyện viên từ tuần 1.** Họ cần vài tuần để ghi chép nếu chưa có sẵn.
+- **Liên hệ tình nguyện viên sau buổi gặp GVHD đầu tiên**, nếu đề tài được chốt (quyết định 29/09/2026). Họ cần vài tuần để ghi chép nếu chưa có sẵn, nên nên liên hệ càng sớm càng tốt sau khi chốt.
+
+### TN5: Độ nhạy khi phản hồi thiếu (thí nghiệm nhỏ, đã chốt 29/09)
+- Khi gợi ý sai, người dùng sửa với xác suất p ∈ {1,0; 0,9; 0,7; 0,5}; nếu không sửa, nhãn sai được lưu như nhãn thật. Không có gợi ý thì người dùng tự chọn đúng.
+- Chạy trên B1 và chiến lược tốt nhất của RQ2, mỗi mức p 5 seed.
+- Độ đo: accuracy toàn luồng, trên ghi chú đã gặp và chưa gặp; số lần thao tác tay mỗi tháng; tỷ lệ nhãn sai trong bộ nhớ.
+- Bản thô đã chạy cho B1 ([rq2-baseline-nho-lai](../../ml/experiments/rq2-baseline-nho-lai/README.md)): khi p = 0,5, accuracy toàn luồng giảm từ 71,5% xuống 68,7%.
+- Chi phí thấp vì dùng lại khung phát lại, không cần dữ liệu mới.
 
 ### Hạn chế cần nêu trước hội đồng
 - Luồng đánh giá chính là của một người; dev và luồng đánh giá cùng một người; người làm đề tài đã xem dữ liệu khi làm EDA và tự viết mô tả danh mục.
-- Giả định phản hồi đầy đủ (người dùng luôn sửa khi sai) lạc quan hơn thực tế.
+- Giả định phản hồi đầy đủ lạc quan hơn thực tế; TN5 đo độ nhạy, nhưng mô hình phản hồi thiếu (sửa độc lập với cùng xác suất) vẫn đơn giản.
+- Ngân sách trong TN3b là giả lập.
 - Nhãn do một người gán, có nhiễu, đã đo bằng Cohen's kappa.
 - Dữ liệu tổng hợp phụ thuộc vào LLM dùng để sinh. Kết quả có thể khác nếu dùng LLM khác.
 - Ghi chú tự gõ khác với nội dung sao kê / SMS ngân hàng, nên kết quả không suy rộng sang bài toán phân loại sao kê.
@@ -464,22 +505,22 @@ Trên **tập dev**, với 25 danh mục (tên + mô tả):
 
 | Tuần | Công việc | Kết quả |
 |---|---|---|
-| 1 | Viết tên + mô tả 25 danh mục; bảng ánh xạ về danh mục chuẩn; rà nhãn thiểu số và ngày bất thường; tách tập dev; **liên hệ tình nguyện viên**; đọc tài liệu | Đề cương, config danh mục, dữ liệu đã chia |
+| 1 | Viết tên + mô tả 25 danh mục; bảng ánh xạ về danh mục chuẩn; rà nhãn thiểu số và ngày bất thường; tách tập dev; **phát khảo sát người dùng**; **liên hệ tình nguyện viên nếu đề tài đã chốt**; tìm lại tài liệu trên Google Scholar | Đề cương, config danh mục, dữ liệu đã chia |
 | 2 | Gán nhãn lại mù 300 mẫu (kappa); viết bộ sinh dữ liệu và khung phát lại; **kiểm tra nhanh trên dev**; phân tích yêu cầu, thiết kế CSDL, kiến trúc; tạo repo, Docker, CI | Kappa, dữ liệu tổng hợp, skeleton project |
 | 3 | TN1: baseline, LLM zero-shot (local, API), embedding zero-shot, mô hình học trên dữ liệu tổng hợp; các biến thể chỉ tên / có mô tả, số ví dụ; kịch bản phụ | Bảng kết quả RQ1, chốt mô hình ban đầu |
-| 4 | TN2: chiến lược A0–A4, biến thể chống trôi, danh mục mới, kiểm định thống kê | **Chốt cấu hình thích nghi** |
+| 4 | TN2: B0, B1, A2–A4, biến thể +ctx, chống trôi, danh mục mới, kiểm định thống kê; **TN5** | **Chốt cấu hình thích nghi** |
 | 5 | Backend: auth, ví, giao dịch, **danh mục tự tạo**, module Money (có unit test), import CSV | API core |
 | 6 | ML service: `/categories` (sinh dữ liệu + huấn luyện nền qua hàng đợi), `/categorize`, `/feedback`, lớp cá nhân (pgvector), quản lý phiên bản; dịch vụ tỷ giá, phí ẩn | Luồng tạo danh mục → phân loại → phản hồi chạy được qua API |
 | 7 | Frontend core: quản lý danh mục, nhập nhanh với gợi ý danh mục, sửa nhãn, import hàng loạt | Tạo danh mục → nhập → gợi ý → sửa trên UI |
-| 8 | TN3: dự báo chi tiêu, backtest, Diebold–Mariano | **Báo cáo giữa kỳ với GVHD** |
-| 9 | `/forecast`; ngân sách, cảnh báo, dashboard; huấn luyện lại định kỳ; giám sát tỷ lệ sửa nhãn và chi phí API | Đủ chức năng chính |
+| 8 | TN3a: dự báo điểm và khoảng (conformal), backtest, Diebold–Mariano | **Báo cáo giữa kỳ với GVHD** |
+| 9 | TN3b: lan truyền lỗi phân loại, hiệu chỉnh; `/forecast`; ngân sách, cảnh báo, dashboard; huấn luyện lại định kỳ; giám sát | Đủ chức năng chính, kết quả RQ3 |
 | 10 | Chạy **phát lại qua hệ thống thật**; TN4 nếu có dữ liệu tình nguyện viên; phần mở rộng nếu còn thời gian | Kết quả cuối khớp giữa notebook và hệ thống |
 | 11 | Kiểm thử unit, integration, E2E, load; sửa lỗi | Báo cáo kiểm thử |
 | 12 | Deploy VPS, hoàn thiện UI, người dùng thử, SUS | Bản chạy online |
 | 13 | Hoàn thiện báo cáo, biểu đồ kết quả | Bản thảo luận văn |
 | 14 | Chỉnh sửa, slide, tập demo, **thời gian dự phòng** | Bản nộp cuối |
 
-> Viết báo cáo dần từng tuần. Thứ tự cắt khi trễ (đề xuất): phần mở rộng đa tiền tệ → A4 (RAG) → PhoBERT ở kịch bản phụ → kịch bản phụ danh mục chuẩn → TN4.
+> Viết báo cáo dần từng tuần. Thứ tự cắt khi trễ (đề xuất): phần mở rộng đa tiền tệ → A4 (RAG) → TN3c (MinT) → PhoBERT ở kịch bản phụ → kịch bản phụ danh mục chuẩn (TN3 vẫn cần bảng ánh xạ nhóm) → TN4. **Không cắt:** B0/B1, TN3a, TN3b, TN5.
 
 ---
 
@@ -494,7 +535,10 @@ Trên **tập dev**, với 25 danh mục (tên + mô tả):
 | Sinh dữ liệu khi tạo danh mục chậm hoặc tốn phí trong hệ thống thật | Trung bình | Chạy nền qua hàng đợi, dùng zero-shot trong lúc chờ, cache; đo chi phí thật trong TN1 |
 | LLM không tất định, API đổi phiên bản | Trung bình | Nhiệt độ 0, ghi tên và phiên bản model, cache toàn bộ câu trả lời và dữ liệu sinh ra |
 | Danh mục hiếm (English 4 mẫu) làm Macro-F1 nhiễu | Trung bình | Báo cáo F1 từng danh mục và số mẫu; báo cáo thêm accuracy và số lần sửa |
-| Không đủ tình nguyện viên | Trung bình | Liên hệ từ tuần 1; ngưỡng 3 người; có phương án lùi (TN4) |
+| Không đủ tình nguyện viên | Trung bình | Liên hệ ngay sau khi đề tài được chốt; ngưỡng 3 người; có phương án lùi (TN4) |
+| Dữ liệu tổng hợp yếu với danh mục chủ quan (RL, Mental, Ngu) | Trung bình | Đã có trong tài liệu (Li và cộng sự, 2023). Biến thành giả thuyết kiểm tra: báo cáo F1 theo mức chủ quan của danh mục |
+| Khảo sát người dùng ngược với giả định (ví dụ ít người tự tạo danh mục) | Trung bình | Làm khảo sát ở tuần 1–2, trước khi xây hệ thống. Nếu ngược: chuyển kịch bản danh mục chuẩn thành kịch bản chính |
+| RQ3 mở rộng làm phình phạm vi | Trung bình | TN3a, TN3b bắt buộc; TN3c tùy chọn; dùng lại log phát lại của TN2 nên không cần chạy thêm phân loại |
 | Mật độ ghi chép giảm làm sai lệch dự báo | Trung bình | Phân tích trước khi dự báo (TN3), nêu rõ trong hạn chế |
 | Nhãn cũ không nhất quán | Trung bình | Rà soát, đo kappa |
 | Hội đồng (thiên KTPM) đánh giá thấp nếu phần hệ thống yếu | Trung bình | Kiểm thử ML service, quản lý phiên bản, phát lại qua hệ thống thật, CI/CD |
@@ -533,19 +577,20 @@ Trên **tập dev**, với 25 danh mục (tên + mô tả):
 - [ ] Rà soát nhãn thiểu số và ngày bất thường
 - [ ] Tách tập dev ngẫu nhiên ~10%; gán nhãn lại mù 300 mẫu, tính kappa
 - [ ] Phân tích mật độ ghi chép giảm (ảnh hưởng tới TN3)
-- [ ] **Liên hệ 3–5 tình nguyện viên ngay**
+- [ ] Liên hệ 3–5 tình nguyện viên **sau buổi gặp GVHD, nếu đề tài được chốt**
+- [ ] Soạn và phát khảo sát người dùng (câu hỏi dự kiến ở [khao-sat-tai-lieu.md](../02-khao-sat/khao-sat-tai-lieu.md), mục 6)
 
 **Thí nghiệm**
+- [x] Kiểm tra nhanh bản thô bằng embedding zero-shot trên dev (29/09/2026): chỉ tên 16–18%, tên + mô tả 40–50%, top-3 ~64%. Mô tả danh mục là bản nháp của Claude, cần viết lại ([README](../../ml/experiments/rq1-kiem-tra-nhanh/README.md))
+- [x] Baseline nhớ lại B0/B1 và bản thô TN5 (29/09/2026): B1 71,5%, ghi chú chưa gặp 37,0% ([README](../../ml/experiments/rq2-baseline-nho-lai/README.md))
 - [ ] Chọn API LLM để sinh dữ liệu, đọc chính sách dữ liệu và ước tính chi phí
 - [ ] Kiểm tra máy cá nhân có chạy được LLM local (Ollama) không; kiểm tra hạn mức GPU Colab / Kaggle
 - [ ] Kiểm tra pgvector phù hợp cho bộ nhớ kNN theo người dùng
 
-**Tài liệu cần tìm**
-- [ ] LLM zero-shot cho phân loại văn bản ngắn; phân loại chỉ dựa vào tên nhãn (label-name-only); huấn luyện trên dữ liệu do LLM sinh
-- [ ] Học trực tuyến / học liên tục, concept drift, đánh giá prequential
-- [ ] Cá nhân hóa và cold-start trong phân loại
-- [ ] Phân loại giao dịch (Txn-Bert, arXiv 2508.05425, TopoLedgerBERT); PhoBERT
-- [ ] Cohen's kappa, McNemar, Diebold–Mariano
+**Tài liệu** (đã tìm lần 1 ngày 29/09, xem [khao-sat-tai-lieu.md](../02-khao-sat/khao-sat-tai-lieu.md))
+- [x] Zero-shot, label-name-only, dữ liệu do LLM sinh; học trực tuyến, concept drift, prequential; cold start; phân loại giao dịch; McNemar, Diebold–Mariano; quantification; conformal
+- [ ] Tự đọc toàn văn các bài gần nhất (QuickBooks Rel-Cat, SME synthetic, MailCat, Bekkerman, Li 2023, Forman 2008)
+- [ ] Tìm lại trên Google Scholar, lần theo trích dẫn; tìm công bố tiếng Việt
 - [ ] (Phụ) VAS 10 / IAS 21, World Bank *Remittance Prices Worldwide*, Quy định EU 2019/518
 
 **Khác**
