@@ -1,6 +1,6 @@
 # Khảo sát: các ứng dụng xử lý ghi chép chi tiêu đa tiền tệ như thế nào
 
-> Ngày khảo sát: 24/09/2026 · Phục vụ: [de-tai-1-brainstorm.md](../01-y-tuong/de-tai-1-brainstorm.md) (mục 5, đặc biệt 5.3 và 5.7)
+> Ngày khảo sát: 24/09/2026 · Phục vụ: [brainstorm.md](../01-y-tuong/brainstorm.md) (mục 5, đặc biệt 5.3 và 5.7)
 > **Cập nhật 27/09/2026:** đa tiền tệ đã được hạ xuống **tính năng phụ** của hệ thống, không còn câu hỏi nghiên cứu, bỏ case study ngoại tệ (xem brainstorm mục 0.1 và 5). Khảo sát này vẫn dùng cho thiết kế module Money/FX và bảng so sánh ở chương 2. Các mục trong brainstorm được nhắc tới dưới đây giữ nguyên số mục.
 > Phương pháp: đọc tài liệu chính thức, help center, issue trên GitHub của từng ứng dụng. **Chưa dùng thử trực tiếp.** Những điểm lấy từ nguồn thứ ba hoặc chưa đọc được trang gốc được đánh dấu *(chưa kiểm chứng)*.
 

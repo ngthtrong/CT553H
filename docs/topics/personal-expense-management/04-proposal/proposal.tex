@@ -232,7 +232,7 @@ Mỗi tình nguyện viên tự đặt danh mục của mình và cung cấp 100
 Khảo sát ẩn danh, mục tiêu 30--50 người, làm ở tuần 1--2, nhằm kiểm chứng các giả định ở mục 1.2. Nội dung: thói quen và công cụ ghi chép, lý do ngừng ghi, cách dùng danh mục (mặc định, sửa, hay tự tạo), phần tốn công nhất khi ghi, thái độ với gợi ý top-3, và cách mỗi người xếp 5 ghi chú mẫu vào danh mục.
 
 \subsection{Tái lập và chống rò rỉ}
-Seed cố định; toàn bộ prompt, tên và phiên bản mô hình, dữ liệu tổng hợp và câu trả lời của LLM đều được lưu lại; mọi con số đưa vào báo cáo trỏ tới file kết quả trong \texttt{ml/experiments/}. Chỉ tinh chỉnh trên tập dev. Mô tả danh mục do người làm đề tài viết một lần, trước khi chạy thí nghiệm chính thức.
+Seed cố định; toàn bộ prompt, tên và phiên bản mô hình, dữ liệu tổng hợp và câu trả lời của LLM đều được lưu lại; mọi con số đưa vào báo cáo trỏ tới file kết quả trong \texttt{ml/quan-ly-chi-tieu-ca-nhan/experiments/}. Chỉ tinh chỉnh trên tập dev. Mô tả danh mục do người làm đề tài viết một lần, trước khi chạy thí nghiệm chính thức.
 
 % ================= 8 =================
 \section{Kết quả sơ bộ}
@@ -259,7 +259,7 @@ TN5: B1 với $p=0{,}5$ & 68,7\% & đã gặp: 89,2\% \\
 \end{tabularx}
 \end{table}
 
-\textbf{Nhận xét.} (1) Ghi chú đã gặp chiếm 61\% luồng và được nhớ lại đúng 93,8\%. Với B1, 87\% số lần phải thao tác tay (22,9 trên 26,3 lần mỗi tháng) nằm ở ghi chú chưa gặp. Đây là căn cứ để đặt RQ2 trên ghi chú chưa gặp. (2) Chỉ có tên danh mục viết tắt thì zero-shot gần như vô dụng; thêm một câu mô tả thì accuracy tăng khoảng 2,5 lần. (3) Danh mục phụ thuộc ngữ cảnh (RL, G, Mental) đạt F1 gần 0 khi chỉ dùng văn bản, đúng với rủi ro mà \citet{li2023synthetic} nêu. Nguồn số liệu: \texttt{ml/experiments/rq1-kiem-tra-nhanh/} và \texttt{ml/experiments/rq2-baseline-nho-lai/}; hai dòng đầu lấy từ báo cáo dữ liệu \texttt{docs/03-du-lieu/}.
+\textbf{Nhận xét.} (1) Ghi chú đã gặp chiếm 61\% luồng và được nhớ lại đúng 93,8\%. Với B1, 87\% số lần phải thao tác tay (22,9 trên 26,3 lần mỗi tháng) nằm ở ghi chú chưa gặp. Đây là căn cứ để đặt RQ2 trên ghi chú chưa gặp. (2) Chỉ có tên danh mục viết tắt thì zero-shot gần như vô dụng; thêm một câu mô tả thì accuracy tăng khoảng 2,5 lần. (3) Danh mục phụ thuộc ngữ cảnh (RL, G, Mental) đạt F1 gần 0 khi chỉ dùng văn bản, đúng với rủi ro mà \citet{li2023synthetic} nêu. Nguồn số liệu: \texttt{ml/quan-ly-chi-tieu-ca-nhan/experiments/rq1-kiem-tra-nhanh/} và \texttt{ml/quan-ly-chi-tieu-ca-nhan/experiments/rq2-baseline-nho-lai/}; hai dòng đầu lấy từ báo cáo dữ liệu \texttt{docs/de-tai/quan-ly-chi-tieu-ca-nhan/03-du-lieu/}.
 
 % ================= 9 =================
 \section{Giải pháp hệ thống}

@@ -34,7 +34,7 @@
 
 | Trước | Sau | Lý do |
 |---|---|---|
-| RQ2: "chiến lược nào giảm số lần sửa nhanh nhất" | RQ2: "cải thiện được bao nhiêu **so với nhớ lại (B1)**, trên **ghi chú chưa gặp** và 30 ngày đầu". B0 (nhớ lại) và B1 (nhớ lại + mô hình ban đầu) là **mốc bắt buộc** | Chỉ nhớ lại đã đúng 93,8% trên ghi chú đã gặp (61% luồng). Với B1, 87% số lần phải thao tác tay nằm ở ghi chú chưa gặp ([rq2-baseline-nho-lai](../../ml/experiments/rq2-baseline-nho-lai/README.md)) |
+| RQ2: "chiến lược nào giảm số lần sửa nhanh nhất" | RQ2: "cải thiện được bao nhiêu **so với nhớ lại (B1)**, trên **ghi chú chưa gặp** và 30 ngày đầu". B0 (nhớ lại) và B1 (nhớ lại + mô hình ban đầu) là **mốc bắt buộc** | Chỉ nhớ lại đã đúng 93,8% trên ghi chú đã gặp (61% luồng). Với B1, 87% số lần phải thao tác tay nằm ở ghi chú chưa gặp ([rq2-baseline-nho-lai](../../../../ml/quan-ly-chi-tieu-ca-nhan/experiments/rq2-baseline-nho-lai/README.md)) |
 | Chỉ dùng văn bản ghi chú | Thêm biến thể **văn bản + số tiền + thứ trong tuần + nhãn các giao dịch trước đó cùng ngày** | Các nhãn theo ngữ cảnh (RL, G, Mental) đạt F1 0 khi chỉ dùng văn bản |
 | RQ3 phụ: dự báo tổng chi thường ngày theo tuần | RQ3 mở rộng: (a) dự báo **khoảng** theo tuần cho tổng và nhóm danh mục, dùng conformal thích nghi; (b) **lan truyền lỗi phân loại** sang tổng chi theo danh mục, dự báo và cảnh báo ngân sách, kèm hiệu chỉnh kiểu quantification | Người làm đề tài muốn mở rộng thay vì bỏ. Nối RQ3 với RQ1–RQ2 thành một chuỗi thống nhất (Forman, 2008) |
 | Phân tích phản hồi thiếu là "tùy chọn" | **TN5 chốt**: p ∈ {1,0; 0,9; 0,7; 0,5}, 5 seed, chạy trên B1 và chiến lược tốt nhất của RQ2 | Thiên kiến tự động hóa (Parasuraman & Manzey, 2010). Chạy thử: p = 0,5 làm accuracy trên ghi chú đã gặp giảm 4,6 điểm |
@@ -48,7 +48,7 @@
 | Mục | Nội dung |
 |---|---|
 | Ngành | Kỹ thuật phần mềm |
-| Yêu cầu học phần | Hệ thống phần mềm có hàm lượng khoa học tương đối. Rubric: A. Phát triển ứng dụng 40% · B. Kiến thức, viết khoa học 40% · C. Thái độ, trình bày 20% ([CT553H.pdf](../CT553H.pdf)) |
+| Yêu cầu học phần | Hệ thống phần mềm có hàm lượng khoa học tương đối. Rubric: A. Phát triển ứng dụng 40% · B. Kiến thức, viết khoa học 40% · C. Thái độ, trình bày 20% ([CT553H.pdf](../../../chung/CT553H.pdf)) |
 | Thời gian | 3.5 tháng (~14 tuần), làm một mình |
 | Kỹ năng | Java, C, C++, React, Redis, MongoDB, PostgreSQL, Web, AI/ML |
 | Sở thích | Thương mại điện tử, khởi nghiệp, hệ thống hoàn chỉnh, quy trình phát triển phần mềm, phần mềm quản lý thông minh, tự động hóa đời sống, tài chính cá nhân, chứng khoán |
@@ -89,7 +89,7 @@
 
 ## 3. Liên hệ với chuyên môn của GVHD
 
-Theo danh sách công bố trong [cong-bo-gvhd.md](../02-khao-sat/cong-bo-gvhd.md), GVHD mạnh về **BERT/transformer, CNN, word embedding, SHAP, RAG**, và thường trình bày nghiên cứu theo **quy tắc 5 bước của Chou**. Đề tài chạm tới các mảng này ở: embedding (bộ nhớ kNN, embedding zero-shot), **RAG** (LLM few-shot lấy ví dụ từ lịch sử sửa nhãn của người dùng), PhoBERT (kịch bản phụ danh mục chuẩn).
+Theo danh sách công bố trong [cong-bo-gvhd.md](../../../chung/gvhd/cong-bo-gvhd.md), GVHD mạnh về **BERT/transformer, CNN, word embedding, SHAP, RAG**, và thường trình bày nghiên cứu theo **quy tắc 5 bước của Chou**. Đề tài chạm tới các mảng này ở: embedding (bộ nhớ kNN, embedding zero-shot), **RAG** (LLM few-shot lấy ví dụ từ lịch sử sửa nhãn của người dùng), PhoBERT (kịch bản phụ danh mục chuẩn).
 
 Khung 5 bước chỉ là **cách trình bày gợi ý** để GVHD dễ hướng dẫn. Hội đồng thiên kỹ thuật phần mềm không đòi hỏi khung này, nên hỏi GVHD trước khi dùng.
 
@@ -439,7 +439,7 @@ Mọi chiến lược A2–A4 đều giữ bộ nhớ của B0 cho ghi chú đã
 
 **So sánh thống kê:** các chiến lược cùng đoán trên một luồng nên dùng **kiểm định McNemar** theo cặp. Khoảng tin cậy bằng **bootstrap theo tháng**. Phần có yếu tố ngẫu nhiên (lấy mẫu dữ liệu tổng hợp, PhoBERT) chạy 3–5 seed.
 
-**Chạy qua hệ thống thật:** các chiến lược được so sánh trong `ml/experiments/` cho nhanh. **Cấu hình được chọn** thì chạy lại bằng công cụ phát lại qua API của hệ thống đã triển khai, kể cả sự kiện tạo danh mục, và hai kết quả phải khớp. Việc này đồng thời là một bài kiểm thử tích hợp.
+**Chạy qua hệ thống thật:** các chiến lược được so sánh trong `ml/quan-ly-chi-tieu-ca-nhan/experiments/` cho nhanh. **Cấu hình được chọn** thì chạy lại bằng công cụ phát lại qua API của hệ thống đã triển khai, kể cả sự kiện tạo danh mục, và hai kết quả phải khớp. Việc này đồng thời là một bài kiểm thử tích hợp.
 
 ### TN3: Dự báo khoảng và lan truyền lỗi phân loại (RQ3, mở rộng 29/09)
 
@@ -475,7 +475,7 @@ Mọi chiến lược A2–A4 đều giữ bộ nhớ của B0 cho ghi chú đã
 - Khi gợi ý sai, người dùng sửa với xác suất p ∈ {1,0; 0,9; 0,7; 0,5}; nếu không sửa, nhãn sai được lưu như nhãn thật. Không có gợi ý thì người dùng tự chọn đúng.
 - Chạy trên B1 và chiến lược tốt nhất của RQ2, mỗi mức p 5 seed.
 - Độ đo: accuracy toàn luồng, trên ghi chú đã gặp và chưa gặp; số lần thao tác tay mỗi tháng; tỷ lệ nhãn sai trong bộ nhớ.
-- Bản thô đã chạy cho B1 ([rq2-baseline-nho-lai](../../ml/experiments/rq2-baseline-nho-lai/README.md)): khi p = 0,5, accuracy toàn luồng giảm từ 71,5% xuống 68,7%.
+- Bản thô đã chạy cho B1 ([rq2-baseline-nho-lai](../../../../ml/quan-ly-chi-tieu-ca-nhan/experiments/rq2-baseline-nho-lai/README.md)): khi p = 0,5, accuracy toàn luồng giảm từ 71,5% xuống 68,7%.
 - Chi phí thấp vì dùng lại khung phát lại, không cần dữ liệu mới.
 
 ### Hạn chế cần nêu trước hội đồng
@@ -566,7 +566,7 @@ Mọi chiến lược A2–A4 đều giữ bộ nhớ của B0 cho ghi chú đã
 
 ## 11. Việc cần làm tiếp
 
-**Trước buổi gặp GVHD** (xem [buoi-01-chuan-bi.md](../meeting/buoi-01-chuan-bi.md))
+**Trước buổi gặp GVHD** (xem [buoi-01-chuan-bi.md](../../../meeting/buoi-01-chuan-bi.md))
 - [ ] In [tom-tat-de-tai.pdf](tom-tat-de-tai.pdf) hoặc chuẩn bị 5–6 slide theo hướng mới
 - [ ] Hỏi khoa mẫu đề cương / báo cáo của CT553H
 
@@ -581,8 +581,8 @@ Mọi chiến lược A2–A4 đều giữ bộ nhớ của B0 cho ghi chú đã
 - [ ] Soạn và phát khảo sát người dùng (câu hỏi dự kiến ở [khao-sat-tai-lieu.md](../02-khao-sat/khao-sat-tai-lieu.md), mục 6)
 
 **Thí nghiệm**
-- [x] Kiểm tra nhanh bản thô bằng embedding zero-shot trên dev (29/09/2026): chỉ tên 16–18%, tên + mô tả 40–50%, top-3 ~64%. Mô tả danh mục là bản nháp của Claude, cần viết lại ([README](../../ml/experiments/rq1-kiem-tra-nhanh/README.md))
-- [x] Baseline nhớ lại B0/B1 và bản thô TN5 (29/09/2026): B1 71,5%, ghi chú chưa gặp 37,0% ([README](../../ml/experiments/rq2-baseline-nho-lai/README.md))
+- [x] Kiểm tra nhanh bản thô bằng embedding zero-shot trên dev (29/09/2026): chỉ tên 16–18%, tên + mô tả 40–50%, top-3 ~64%. Mô tả danh mục là bản nháp của Claude, cần viết lại ([README](../../../../ml/quan-ly-chi-tieu-ca-nhan/experiments/rq1-kiem-tra-nhanh/README.md))
+- [x] Baseline nhớ lại B0/B1 và bản thô TN5 (29/09/2026): B1 71,5%, ghi chú chưa gặp 37,0% ([README](../../../../ml/quan-ly-chi-tieu-ca-nhan/experiments/rq2-baseline-nho-lai/README.md))
 - [ ] Chọn API LLM để sinh dữ liệu, đọc chính sách dữ liệu và ước tính chi phí
 - [ ] Kiểm tra máy cá nhân có chạy được LLM local (Ollama) không; kiểm tra hạn mức GPU Colab / Kaggle
 - [ ] Kiểm tra pgvector phù hợp cho bộ nhớ kNN theo người dùng
