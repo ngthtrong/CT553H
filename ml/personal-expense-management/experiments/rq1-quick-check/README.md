@@ -14,7 +14,7 @@ Có một con số khởi điểm để mang tới buổi gặp GVHD: khi ngư�
 - Macro-F1 tính trên 19 danh mục có mặt trong dev, dù mô hình chọn trong cả 25.
 - "Hay gặp" là ghi chú xuất hiện ít nhất 5 lần trong toàn bộ khoản chi (288/503 mẫu dev).
 
-Chạy lại: `.venv/bin/python ml/experiments/rq1-kiem-tra-nhanh/run.py` (từ thư mục gốc, cần `pip install -r ml/requirements.txt`).
+Chạy lại: `.venv/bin/python ml/personal-expense-management/experiments/rq1-quick-check/run.py` (từ thư mục gốc, cần `pip install -r ml/requirements.txt`).
 
 ## Kết quả ([results/summary.csv](results/summary.csv))
 

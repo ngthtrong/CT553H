@@ -1,7 +1,7 @@
 # Khảo sát tài liệu và bằng chứng cho các khẳng định của đề tài
 
 > Ngày tìm: 29/09/2026 · Người thực hiện: Claude (tìm và tóm tắt), người làm đề tài cần **tự đọc lại bản gốc** trước khi trích dẫn trong đề cương hay luận văn.
-> Đi kèm: [brainstorm.md](../01-y-tuong/brainstorm.md), [de-cuong.tex](../04-de-cuong/de-cuong.tex).
+> Đi kèm: [brainstorm.md](../01-idea/brainstorm.md), [proposal.tex](../04-proposal/proposal.tex).
 
 ---
 
@@ -29,8 +29,8 @@ Mức độ: **A** = nghiên cứu có bình duyệt · **B** = dữ liệu ho�
 | K2 | Mỗi người tự đặt danh mục theo cách riêng | Lý thuyết kế toán tâm lý: người ta gom khoản chi vào các "tài khoản tâm lý" do mình tự định nghĩa (Thaler, 1999; Heath & Soll, 1996). QuickBooks cho doanh nghiệp tự đặt tên danh mục, và bài toán phân loại phải theo danh mục đó (Dong và cộng sự, 2025). Dữ liệu đề tài có 25 danh mục riêng như AC, RL, Ngu | A + B | Chưa có bằng chứng rằng **người dùng cá nhân Việt Nam** thực sự tạo danh mục riêng. → Khảo sát (mục 6) |
 | K3 | Chọn danh mục là một phần đáng kể của công ghi chép | Choe và cộng sự (2017) nói chung về gánh nặng nhập liệu. Chưa tìm thấy nghiên cứu tách riêng phần công chọn danh mục | ✗ | Khảo sát; đo trực tiếp trong đánh giá người dùng (thời gian nhập có và không có gợi ý) |
 | K4 | Gợi ý vài lựa chọn (top-k) giúp giảm công | MailCat gợi ý 3 thư mục cho mỗi email; khi gợi ý đúng, người dùng chỉ cần một cú nhấp (Segal & Kephart, 1999) | A (bài toán tương tự: xếp email) | Báo cáo top-3 trong thí nghiệm |
-| K5 | Ghi chú tiếng Việt rất ngắn, viết tắt, thiếu dấu | Dữ liệu đề tài: trung vị 2 từ, nhiều biến thể viết ([bao-cao-du-lieu.md](../03-du-lieu/bao-cao-du-lieu.md)). Tài liệu về khôi phục dấu tiếng Việt cho thấy văn bản thiếu dấu phổ biến trên mạng xã hội | B; phần "phổ biến" chỉ ở mức C | Không suy rộng từ một người. Thu ghi chú của tình nguyện viên (RQ4) |
-| K6 | Người dùng mới không có dữ liệu (cold start) | QuickBooks nêu cold start là thách thức chính của phân loại giao dịch (Dong và cộng sự, 2025). Thí nghiệm đề tài: chỉ nhớ lại thì 30 ngày đầu đạt 17,2% ([rq2-baseline-nho-lai](../../../../ml/quan-ly-chi-tieu-ca-nhan/experiments/rq2-baseline-nho-lai/README.md)) | A + B | — |
+| K5 | Ghi chú tiếng Việt rất ngắn, viết tắt, thiếu dấu | Dữ liệu đề tài: trung vị 2 từ, nhiều biến thể viết ([data-report.md](../03-data/data-report.md)). Tài liệu về khôi phục dấu tiếng Việt cho thấy văn bản thiếu dấu phổ biến trên mạng xã hội | B; phần "phổ biến" chỉ ở mức C | Không suy rộng từ một người. Thu ghi chú của tình nguyện viên (RQ4) |
+| K6 | Người dùng mới không có dữ liệu (cold start) | QuickBooks nêu cold start là thách thức chính của phân loại giao dịch (Dong và cộng sự, 2025). Thí nghiệm đề tài: chỉ nhớ lại thì 30 ngày đầu đạt 17,2% ([rq2-baseline-recall](../../../../ml/personal-expense-management/experiments/rq2-baseline-recall/README.md)) | A + B | — |
 | K7 | LLM sinh dữ liệu huấn luyện được khi chưa có nhãn | ZeroGen (Ye và cộng sự, 2022); Schick & Schütze (2021); phân loại chỉ dùng tên nhãn (Meng và cộng sự, 2020). Dữ liệu tổng hợp cho giao dịch SME (Aluffi và cộng sự, 2025) | A | — |
 | K8 | … nhưng dữ liệu tổng hợp yếu với danh mục mang tính chủ quan | Tính chủ quan của nhiệm vụ và của từng mẫu tương quan nghịch với hiệu quả của dữ liệu tổng hợp (Li và cộng sự, 2023) | A | **Rủi ro trực tiếp**: RL, Mental, Ngu mang tính chủ quan. Biến thành giả thuyết kiểm tra trong RQ1 |
 | K9 | Dữ liệu thay đổi theo thời gian | Dữ liệu đề tài: 86,7% khi chia ngẫu nhiên, còn 78,2% khi chia theo thời gian; accuracy theo tháng giảm năm 2026. Tổng quan concept drift (Gama và cộng sự, 2014; Lu và cộng sự, 2019). Bài toán xếp email cũng phải đánh giá theo thời gian (Bekkerman và cộng sự, 2004) | A + B | — |

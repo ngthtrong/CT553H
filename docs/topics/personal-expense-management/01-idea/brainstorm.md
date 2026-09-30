@@ -1,6 +1,6 @@
 # Brainstorm đề tài luận văn CT553H
 
-> Cập nhật: 29/09/2026 · Trạng thái: **đã chọn hướng đề tài #1, đã chỉnh RQ2 và mở rộng RQ3 (xem 0.2), đã có đề cương bản nháp ([de-cuong.tex](../04-de-cuong/de-cuong.tex)), chưa gặp GVHD**
+> Cập nhật: 29/09/2026 · Trạng thái: **đã chọn hướng đề tài #1, đã chỉnh RQ2 và mở rộng RQ3 (xem 0.2), đã có đề cương bản nháp ([proposal.tex](../04-proposal/proposal.tex)), chưa gặp GVHD**
 
 ---
 
@@ -25,7 +25,7 @@
 | Huấn luyện và đánh giá trên cùng dữ liệu cá nhân (kiểm định chéo, chia theo thời gian) | Dữ liệu cá nhân chỉ để **đánh giá**, phát lại theo thời gian. Mô hình ban đầu là LLM zero-shot và mô hình học trên **dữ liệu tổng hợp** | Hệ thống nhiều người dùng phục vụ chủ yếu **người dùng mới chưa có dữ liệu**. Nghiên cứu trên một người có sẵn 4 năm dữ liệu thì không trả lời được bài toán đó |
 | Gộp nhãn về 10–12 nhóm chuẩn làm bài toán chính | **Danh mục do người dùng tự tạo** (25 nhãn gốc) là kịch bản chính; danh mục chuẩn là kịch bản phụ | Người dùng thật muốn danh mục của riêng mình. Nhãn của dữ liệu vốn là danh mục cá nhân (AC, RL, Mental…). Đây là chỗ mô hình chung không đủ và lớp cá nhân phải chứng minh giá trị |
 | Dữ liệu tổng hợp: không có | Dữ liệu tổng hợp **sinh theo danh mục của từng người dùng** (từ tên và mô tả danh mục) để huấn luyện mô hình riêng cho người đó | Là cách duy nhất để có dữ liệu huấn luyện cho danh mục tự tạo khi người dùng chưa có giao dịch nào |
-| RQ1 nhấn mạnh "người bán chưa gặp", GroupKFold theo người bán | Bỏ khái niệm người bán | Dữ liệu là **ghi chú tự viết** (trung vị 2 từ), không phải sao kê ngân hàng ([bao-cao-du-lieu.md](../03-du-lieu/bao-cao-du-lieu.md), mục 7) |
+| RQ1 nhấn mạnh "người bán chưa gặp", GroupKFold theo người bán | Bỏ khái niệm người bán | Dữ liệu là **ghi chú tự viết** (trung vị 2 từ), không phải sao kê ngân hàng ([data-report.md](../03-data/data-report.md), mục 7) |
 | RQ2b "người dùng mới" phụ thuộc hoàn toàn vào tình nguyện viên | Bài toán người dùng mới được nghiên cứu ngay trên dữ liệu cá nhân (phát lại từ con số 0). Tình nguyện viên chỉ cần **100–200 ghi chú** gán theo danh mục của chính họ (RQ4) | Dữ liệu để đánh giá cần ít hơn nhiều so với dữ liệu để huấn luyện, và tình nguyện viên không phải học bộ danh mục của người khác |
 | Đa tiền tệ nằm trong tên đề tài, có RQ3b, có case study giao dịch ngoại tệ thật | Tính năng phụ, bỏ RQ3b, **bỏ case study ngoại tệ** | Không có dữ liệu ngoại tệ thật. RQ3b gượng ép, kết quả gần như biết trước. Phạm vi quá lớn cho 14 tuần |
 | Dự báo chi tiêu: RQ3a + RQ3b | RQ3 (phụ), chỉ dự báo, không có tỷ giá | Giữ theo quyết định của người làm đề tài; bỏ phần tỷ giá |
@@ -34,11 +34,11 @@
 
 | Trước | Sau | Lý do |
 |---|---|---|
-| RQ2: "chiến lược nào giảm số lần sửa nhanh nhất" | RQ2: "cải thiện được bao nhiêu **so với nhớ lại (B1)**, trên **ghi chú chưa gặp** và 30 ngày đầu". B0 (nhớ lại) và B1 (nhớ lại + mô hình ban đầu) là **mốc bắt buộc** | Chỉ nhớ lại đã đúng 93,8% trên ghi chú đã gặp (61% luồng). Với B1, 87% số lần phải thao tác tay nằm ở ghi chú chưa gặp ([rq2-baseline-nho-lai](../../../../ml/quan-ly-chi-tieu-ca-nhan/experiments/rq2-baseline-nho-lai/README.md)) |
+| RQ2: "chiến lược nào giảm số lần sửa nhanh nhất" | RQ2: "cải thiện được bao nhiêu **so với nhớ lại (B1)**, trên **ghi chú chưa gặp** và 30 ngày đầu". B0 (nhớ lại) và B1 (nhớ lại + mô hình ban đầu) là **mốc bắt buộc** | Chỉ nhớ lại đã đúng 93,8% trên ghi chú đã gặp (61% luồng). Với B1, 87% số lần phải thao tác tay nằm ở ghi chú chưa gặp ([rq2-baseline-recall](../../../../ml/personal-expense-management/experiments/rq2-baseline-recall/README.md)) |
 | Chỉ dùng văn bản ghi chú | Thêm biến thể **văn bản + số tiền + thứ trong tuần + nhãn các giao dịch trước đó cùng ngày** | Các nhãn theo ngữ cảnh (RL, G, Mental) đạt F1 0 khi chỉ dùng văn bản |
 | RQ3 phụ: dự báo tổng chi thường ngày theo tuần | RQ3 mở rộng: (a) dự báo **khoảng** theo tuần cho tổng và nhóm danh mục, dùng conformal thích nghi; (b) **lan truyền lỗi phân loại** sang tổng chi theo danh mục, dự báo và cảnh báo ngân sách, kèm hiệu chỉnh kiểu quantification | Người làm đề tài muốn mở rộng thay vì bỏ. Nối RQ3 với RQ1–RQ2 thành một chuỗi thống nhất (Forman, 2008) |
 | Phân tích phản hồi thiếu là "tùy chọn" | **TN5 chốt**: p ∈ {1,0; 0,9; 0,7; 0,5}, 5 seed, chạy trên B1 và chiến lược tốt nhất của RQ2 | Thiên kiến tự động hóa (Parasuraman & Manzey, 2010). Chạy thử: p = 0,5 làm accuracy trên ghi chú đã gặp giảm 4,6 điểm |
-| Các khẳng định về nhu cầu người dùng chưa có nguồn | Mỗi khẳng định có bằng chứng hoặc được đánh dấu chưa có; thêm **khảo sát người dùng** ở tuần 1–2 | Xem [khao-sat-tai-lieu.md](../02-khao-sat/khao-sat-tai-lieu.md) |
+| Các khẳng định về nhu cầu người dùng chưa có nguồn | Mỗi khẳng định có bằng chứng hoặc được đánh dấu chưa có; thêm **khảo sát người dùng** ở tuần 1–2 | Xem [literature-survey.md](../02-survey/literature-survey.md) |
 | Tình nguyện viên: liên hệ từ tuần 1 | Liên hệ **sau buổi gặp GVHD đầu tiên**, nếu đề tài được chốt | Quyết định của người làm đề tài |
 
 ---
@@ -89,7 +89,7 @@
 
 ## 3. Liên hệ với chuyên môn của GVHD
 
-Theo danh sách công bố trong [cong-bo-gvhd.md](../../../chung/gvhd/cong-bo-gvhd.md), GVHD mạnh về **BERT/transformer, CNN, word embedding, SHAP, RAG**, và thường trình bày nghiên cứu theo **quy tắc 5 bước của Chou**. Đề tài chạm tới các mảng này ở: embedding (bộ nhớ kNN, embedding zero-shot), **RAG** (LLM few-shot lấy ví dụ từ lịch sử sửa nhãn của người dùng), PhoBERT (kịch bản phụ danh mục chuẩn).
+Theo danh sách công bố trong [advisor-publications.md](../../../common/advisor/advisor-publications.md), GVHD mạnh về **BERT/transformer, CNN, word embedding, SHAP, RAG**, và thường trình bày nghiên cứu theo **quy tắc 5 bước của Chou**. Đề tài chạm tới các mảng này ở: embedding (bộ nhớ kNN, embedding zero-shot), **RAG** (LLM few-shot lấy ví dụ từ lịch sử sửa nhãn của người dùng), PhoBERT (kịch bản phụ danh mục chuẩn).
 
 Khung 5 bước chỉ là **cách trình bày gợi ý** để GVHD dễ hướng dẫn. Hội đồng thiên kỹ thuật phần mềm không đòi hỏi khung này, nên hỏi GVHD trước khi dùng.
 
@@ -210,7 +210,7 @@ Kịch bản phụ **danh mục chuẩn** (25 nhãn gộp về 10–12 nhóm) đ
 
 ## 5. Bài toán đa tiền tệ (tính năng phụ)
 
-> **Trạng thái từ 27/09/2026:** không còn gánh phần khoa học, không có dữ liệu thật, không có RQ. Chỉ giữ trong MVP: **(1)–(4)** mô hình dữ liệu và **(5)** phí ẩn. Các mục khác chuyển sang "nếu kịp". Toàn bộ phần này là tính toán xác định, được kiểm chứng bằng **unit test với kịch bản tính tay**. Khảo sát chi tiết: [khao-sat-xu-ly-da-tien-te.md](../02-khao-sat/khao-sat-xu-ly-da-tien-te.md). Giữ nguyên số mục để các liên kết từ tài liệu khảo sát không bị lệch.
+> **Trạng thái từ 27/09/2026:** không còn gánh phần khoa học, không có dữ liệu thật, không có RQ. Chỉ giữ trong MVP: **(1)–(4)** mô hình dữ liệu và **(5)** phí ẩn. Các mục khác chuyển sang "nếu kịp". Toàn bộ phần này là tính toán xác định, được kiểm chứng bằng **unit test với kịch bản tính tay**. Khảo sát chi tiết: [multi-currency-handling-survey.md](../02-survey/multi-currency-handling-survey.md). Giữ nguyên số mục để các liên kết từ tài liệu khảo sát không bị lệch.
 
 ### 5.1 Tình huống minh họa (persona của nhóm đối tượng phụ)
 
@@ -251,7 +251,7 @@ Kịch bản phụ **danh mục chuẩn** (25 nhãn gộp về 10–12 nhóm) đ
 - Quy tắc (theo tinh thần VAS 10 / IAS 21): thu/chi quy đổi theo **tỷ giá ngày giao dịch** và lưu lại `fx_rate_to_base`; số dư và tổng tài sản quy đổi theo **tỷ giá lúc xem**; ngày không có tỷ giá thì dùng tỷ giá gần nhất **trước đó**; quy đổi chéo đi qua USD.
 
 #### (4) Đổi tiền và chuyển giữa ví
-- Loại giao dịch: `INCOME`, `EXPENSE`, `TRANSFER` (cùng tiền), `EXCHANGE` (khác tiền), `LOAN` (vay/cho vay, xem [bao-cao-du-lieu.md](../03-du-lieu/bao-cao-du-lieu.md) mục 4.4).
+- Loại giao dịch: `INCOME`, `EXPENSE`, `TRANSFER` (cùng tiền), `EXCHANGE` (khác tiền), `LOAN` (vay/cho vay, xem [data-report.md](../03-data/data-report.md) mục 4.4).
 - `TRANSFER`, `EXCHANGE`, `LOAN` **không tính là thu nhập hay chi tiêu**. Hai vế liên kết bằng `transfer_group_id`.
 - Dữ liệu cá nhân không có giao dịch chuyển khoản nội bộ, nên **không đưa nhãn này vào thí nghiệm phân loại**.
 
@@ -275,7 +275,7 @@ tỷ_lệ_phí          = phí_ẩn / giá_trị_thị_trường
 Lưu cả `original_amount` + `original_currency` và số tiền thực bị trừ trên thẻ. Chênh lệch so với tỷ giá thị trường là phí, ghi nhận như (5).
 
 #### (7) Phân rã biến động tài sản *(nếu kịp)*
-Tách biến động tổng tài sản thành phần do dòng tiền và phần do tỷ giá. **Lưu ý:** công thức cũ (định giá dòng tiền theo tỷ giá đầu kỳ) chưa khớp với cách lưu `amount_base` theo tỷ giá ngày giao dịch. Khi làm thì dùng cách 3 phần (thu − chi theo `amount_base`, phần còn lại là hiệu ứng tỷ giá), xem [khao-sat-xu-ly-da-tien-te.md](../02-khao-sat/khao-sat-xu-ly-da-tien-te.md) mục 7.2(b). Khái niệm này đã có trong kế toán kép (GnuCash trading accounts, hledger `--gain`), nên phải viết là "đưa vào giao diện cho người không biết kế toán", không viết là "mới".
+Tách biến động tổng tài sản thành phần do dòng tiền và phần do tỷ giá. **Lưu ý:** công thức cũ (định giá dòng tiền theo tỷ giá đầu kỳ) chưa khớp với cách lưu `amount_base` theo tỷ giá ngày giao dịch. Khi làm thì dùng cách 3 phần (thu − chi theo `amount_base`, phần còn lại là hiệu ứng tỷ giá), xem [multi-currency-handling-survey.md](../02-survey/multi-currency-handling-survey.md) mục 7.2(b). Khái niệm này đã có trong kế toán kép (GnuCash trading accounts, hledger `--gain`), nên phải viết là "đưa vào giao diện cho người không biết kế toán", không viết là "mới".
 
 #### (8) Ngân sách đa tiền tệ *(MVP tối thiểu)*
 Mỗi ngân sách có một loại tiền. Khoản chi bằng loại tiền khác được quy đổi theo tỷ giá ngày giao dịch. Ngân sách theo quốc gia và tự nhận biết bối cảnh quốc gia là phần "nếu kịp".
@@ -361,7 +361,7 @@ Bộ dữ liệu cá nhân chỉ có VND. Phần đa tiền tệ không cần d�
 - `Cho vay` chuyển sang loại giao dịch `LOAN`, không nằm trong bài toán phân loại.
 
 **0.2 Kịch bản phụ: danh mục chuẩn**
-- Viết **bảng ánh xạ** 25 nhãn về 10–12 danh mục chuẩn (phương án gộp ở [bao-cao-du-lieu.md](../03-du-lieu/bao-cao-du-lieu.md), mục 8), kèm mô tả mỗi danh mục chuẩn. Viết **trước khi chạy thí nghiệm**, căn cứ vào định nghĩa nhãn chứ không căn cứ vào kết quả.
+- Viết **bảng ánh xạ** 25 nhãn về 10–12 danh mục chuẩn (phương án gộp ở [data-report.md](../03-data/data-report.md), mục 8), kèm mô tả mỗi danh mục chuẩn. Viết **trước khi chạy thí nghiệm**, căn cứ vào định nghĩa nhãn chứ không căn cứ vào kết quả.
 - Dùng chung khung phát lại và bộ sinh dữ liệu, chỉ khác danh sách danh mục đầu vào. Ở kịch bản này có thể sinh một tập tổng hợp lớn dùng chung (5.000–12.000 mẫu) và thử fine-tune PhoBERT.
 
 **0.3 Tập dev và luồng đánh giá**
@@ -439,7 +439,7 @@ Mọi chiến lược A2–A4 đều giữ bộ nhớ của B0 cho ghi chú đã
 
 **So sánh thống kê:** các chiến lược cùng đoán trên một luồng nên dùng **kiểm định McNemar** theo cặp. Khoảng tin cậy bằng **bootstrap theo tháng**. Phần có yếu tố ngẫu nhiên (lấy mẫu dữ liệu tổng hợp, PhoBERT) chạy 3–5 seed.
 
-**Chạy qua hệ thống thật:** các chiến lược được so sánh trong `ml/quan-ly-chi-tieu-ca-nhan/experiments/` cho nhanh. **Cấu hình được chọn** thì chạy lại bằng công cụ phát lại qua API của hệ thống đã triển khai, kể cả sự kiện tạo danh mục, và hai kết quả phải khớp. Việc này đồng thời là một bài kiểm thử tích hợp.
+**Chạy qua hệ thống thật:** các chiến lược được so sánh trong `ml/personal-expense-management/experiments/` cho nhanh. **Cấu hình được chọn** thì chạy lại bằng công cụ phát lại qua API của hệ thống đã triển khai, kể cả sự kiện tạo danh mục, và hai kết quả phải khớp. Việc này đồng thời là một bài kiểm thử tích hợp.
 
 ### TN3: Dự báo khoảng và lan truyền lỗi phân loại (RQ3, mở rộng 29/09)
 
@@ -475,7 +475,7 @@ Mọi chiến lược A2–A4 đều giữ bộ nhớ của B0 cho ghi chú đã
 - Khi gợi ý sai, người dùng sửa với xác suất p ∈ {1,0; 0,9; 0,7; 0,5}; nếu không sửa, nhãn sai được lưu như nhãn thật. Không có gợi ý thì người dùng tự chọn đúng.
 - Chạy trên B1 và chiến lược tốt nhất của RQ2, mỗi mức p 5 seed.
 - Độ đo: accuracy toàn luồng, trên ghi chú đã gặp và chưa gặp; số lần thao tác tay mỗi tháng; tỷ lệ nhãn sai trong bộ nhớ.
-- Bản thô đã chạy cho B1 ([rq2-baseline-nho-lai](../../../../ml/quan-ly-chi-tieu-ca-nhan/experiments/rq2-baseline-nho-lai/README.md)): khi p = 0,5, accuracy toàn luồng giảm từ 71,5% xuống 68,7%.
+- Bản thô đã chạy cho B1 ([rq2-baseline-recall](../../../../ml/personal-expense-management/experiments/rq2-baseline-recall/README.md)): khi p = 0,5, accuracy toàn luồng giảm từ 71,5% xuống 68,7%.
 - Chi phí thấp vì dùng lại khung phát lại, không cần dữ liệu mới.
 
 ### Hạn chế cần nêu trước hội đồng
@@ -566,8 +566,8 @@ Mọi chiến lược A2–A4 đều giữ bộ nhớ của B0 cho ghi chú đã
 
 ## 11. Việc cần làm tiếp
 
-**Trước buổi gặp GVHD** (xem [buoi-01-chuan-bi.md](../../../meeting/buoi-01-chuan-bi.md))
-- [ ] In [tom-tat-de-tai.pdf](tom-tat-de-tai.pdf) hoặc chuẩn bị 5–6 slide theo hướng mới
+**Trước buổi gặp GVHD** (xem [session-01-prep.md](../../../meeting/session-01-prep.md))
+- [ ] In [topic-summary.pdf](topic-summary.pdf) hoặc chuẩn bị 5–6 slide theo hướng mới
 - [ ] Hỏi khoa mẫu đề cương / báo cáo của CT553H
 
 **Dữ liệu**
@@ -578,16 +578,16 @@ Mọi chiến lược A2–A4 đều giữ bộ nhớ của B0 cho ghi chú đã
 - [ ] Tách tập dev ngẫu nhiên ~10%; gán nhãn lại mù 300 mẫu, tính kappa
 - [ ] Phân tích mật độ ghi chép giảm (ảnh hưởng tới TN3)
 - [ ] Liên hệ 3–5 tình nguyện viên **sau buổi gặp GVHD, nếu đề tài được chốt**
-- [ ] Soạn và phát khảo sát người dùng (câu hỏi dự kiến ở [khao-sat-tai-lieu.md](../02-khao-sat/khao-sat-tai-lieu.md), mục 6)
+- [ ] Soạn và phát khảo sát người dùng (câu hỏi dự kiến ở [literature-survey.md](../02-survey/literature-survey.md), mục 6)
 
 **Thí nghiệm**
-- [x] Kiểm tra nhanh bản thô bằng embedding zero-shot trên dev (29/09/2026): chỉ tên 16–18%, tên + mô tả 40–50%, top-3 ~64%. Mô tả danh mục là bản nháp của Claude, cần viết lại ([README](../../../../ml/quan-ly-chi-tieu-ca-nhan/experiments/rq1-kiem-tra-nhanh/README.md))
-- [x] Baseline nhớ lại B0/B1 và bản thô TN5 (29/09/2026): B1 71,5%, ghi chú chưa gặp 37,0% ([README](../../../../ml/quan-ly-chi-tieu-ca-nhan/experiments/rq2-baseline-nho-lai/README.md))
+- [x] Kiểm tra nhanh bản thô bằng embedding zero-shot trên dev (29/09/2026): chỉ tên 16–18%, tên + mô tả 40–50%, top-3 ~64%. Mô tả danh mục là bản nháp của Claude, cần viết lại ([README](../../../../ml/personal-expense-management/experiments/rq1-quick-check/README.md))
+- [x] Baseline nhớ lại B0/B1 và bản thô TN5 (29/09/2026): B1 71,5%, ghi chú chưa gặp 37,0% ([README](../../../../ml/personal-expense-management/experiments/rq2-baseline-recall/README.md))
 - [ ] Chọn API LLM để sinh dữ liệu, đọc chính sách dữ liệu và ước tính chi phí
 - [ ] Kiểm tra máy cá nhân có chạy được LLM local (Ollama) không; kiểm tra hạn mức GPU Colab / Kaggle
 - [ ] Kiểm tra pgvector phù hợp cho bộ nhớ kNN theo người dùng
 
-**Tài liệu** (đã tìm lần 1 ngày 29/09, xem [khao-sat-tai-lieu.md](../02-khao-sat/khao-sat-tai-lieu.md))
+**Tài liệu** (đã tìm lần 1 ngày 29/09, xem [literature-survey.md](../02-survey/literature-survey.md))
 - [x] Zero-shot, label-name-only, dữ liệu do LLM sinh; học trực tuyến, concept drift, prequential; cold start; phân loại giao dịch; McNemar, Diebold–Mariano; quantification; conformal
 - [ ] Tự đọc toàn văn các bài gần nhất (QuickBooks Rel-Cat, SME synthetic, MailCat, Bekkerman, Li 2023, Forman 2008)
 - [ ] Tìm lại trên Google Scholar, lần theo trích dẫn; tìm công bố tiếng Việt

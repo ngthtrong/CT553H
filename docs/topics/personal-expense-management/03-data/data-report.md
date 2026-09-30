@@ -1,6 +1,6 @@
 # Báo cáo phân tích bộ dữ liệu chi tiêu cá nhân
 
-> Đề tài: *Xây dựng hệ thống quản lý chi tiêu cá nhân với bộ phân loại giao dịch tự thích nghi theo phản hồi người dùng và dự báo chi tiêu* (tên dự kiến, xem [brainstorm.md](../01-y-tuong/brainstorm.md))
+> Đề tài: *Xây dựng hệ thống quản lý chi tiêu cá nhân với bộ phân loại giao dịch tự thích nghi theo phản hồi người dùng và dự báo chi tiêu* (tên dự kiến, xem [brainstorm.md](../01-idea/brainstorm.md))
 > Ngày: 24/09/2026 · Mục đích: báo cáo hiện trạng dữ liệu, kết quả thử nghiệm sơ bộ và xin ý kiến GVHD về hướng xử lý.
 
 ---
@@ -101,7 +101,7 @@ Family 294 GD (227,9 triệu) · Salary 67 (38,7 triệu) · Anh em 28 · Clan 2
 
 ## 5. Xử lý đã thực hiện
 
-Script `ml/quan-ly-chi-tieu-ca-nhan/preprocessing/clean_data.py` (file gốc giữ nguyên, có thể chạy lại):
+Script `ml/personal-expense-management/preprocessing/clean_data.py` (file gốc giữ nguyên, có thể chạy lại):
 
 1. Chuyển số tiền sang số nguyên, ngày sang kiểu ngày, chuẩn hóa văn bản.
 2. Tách cột `Special` thành các cờ `is_monthly`, `is_bigm`, `is_bigy`, `is_vay`, `is_annual`, `is_regular`.
@@ -111,8 +111,8 @@ Script `ml/quan-ly-chi-tieu-ca-nhan/preprocessing/clean_data.py` (file gốc gi�
 
 | File đầu ra | Nội dung | Phạm vi sử dụng |
 |---|---|---|
-| `data/quan-ly-chi-tieu-ca-nhan/processed/transactions_clean.csv` | Đầy đủ, chưa ẩn danh | Chỉ dùng cá nhân |
-| `data/quan-ly-chi-tieu-ca-nhan/processed/transactions_anon.csv` | Đã ẩn danh tên người | Gửi GVHD, đưa vào phụ lục |
+| `data/personal-expense-management/processed/transactions_clean.csv` | Đầy đủ, chưa ẩn danh | Chỉ dùng cá nhân |
+| `data/personal-expense-management/processed/transactions_anon.csv` | Đã ẩn danh tên người | Gửi GVHD, đưa vào phụ lục |
 
 > Bản ẩn danh vẫn còn tên địa điểm (trường, quán, đường). Nếu công bố dữ liệu công khai thì cần ẩn danh thêm mức này.
 

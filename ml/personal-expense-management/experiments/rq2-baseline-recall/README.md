@@ -1,6 +1,6 @@
 # RQ2: baseline "nhớ lại" và thí nghiệm nhỏ về phản hồi thiếu (bản thô)
 
-> Ngày chạy: 29/09/2026 · Trạng thái: **bản thô**, mô tả danh mục vẫn là bản nháp của Claude ([categories.json](../rq1-kiem-tra-nhanh/categories.json))
+> Ngày chạy: 29/09/2026 · Trạng thái: **bản thô**, mô tả danh mục vẫn là bản nháp của Claude ([categories.json](../rq1-quick-check/categories.json))
 
 ## Mục đích
 
@@ -17,7 +17,7 @@
 - **Phản hồi thiếu:** khi gợi ý sai, người dùng sửa với xác suất p ∈ {1,0; 0,9; 0,7; 0,5}. Nếu không sửa, nhãn sai được lưu vào bộ nhớ. Mỗi mức p chạy 5 seed.
 - "Số lần thao tác tay mỗi tháng" gồm số lần gợi ý sai cộng số lần không có gợi ý.
 
-Chạy lại: `.venv/bin/python ml/experiments/rq2-baseline-nho-lai/run.py`. Embedding được cache ở `data/interim/` (không lên git).
+Chạy lại: `.venv/bin/python ml/personal-expense-management/experiments/rq2-baseline-recall/run.py`. Embedding được cache ở `data/personal-expense-management/interim/` (không lên git).
 
 ## Kết quả, phản hồi đầy đủ ([results/summary.csv](results/summary.csv))
 

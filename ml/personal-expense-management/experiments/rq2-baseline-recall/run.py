@@ -1,6 +1,6 @@
 """Baseline bắt buộc cho RQ2 và thí nghiệm nhỏ về phản hồi thiếu (bản thô).
 
-Chạy từ thư mục gốc:  .venv/bin/python ml/experiments/rq2-baseline-nho-lai/run.py
+Chạy từ thư mục gốc:  .venv/bin/python ml/personal-expense-management/experiments/rq2-baseline-recall/run.py
 
 Phát lại toàn bộ khoản chi theo thứ tự thời gian (kiểm tra trước, học sau).
 Chiến lược:
@@ -21,12 +21,13 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parents[3]
+ROOT = Path(__file__).resolve().parents[4]
 HERE = Path(__file__).resolve().parent
 OUT = HERE / "results"
-CACHE = ROOT / "data" / "interim" / "emb_bge-m3_titles.npz"  # dẫn xuất từ dữ liệu cá nhân, không lên git
-CATEGORIES = ROOT / "ml" / "experiments" / "rq1-kiem-tra-nhanh" / "categories.json"
-DEV_IDS = ROOT / "ml" / "experiments" / "rq1-kiem-tra-nhanh" / "results" / "dev_ids.csv"
+DATA = ROOT / "data" / "personal-expense-management"
+CACHE = DATA / "interim" / "emb_bge-m3_titles.npz"  # dẫn xuất từ dữ liệu cá nhân, không lên git
+CATEGORIES = ROOT / "ml" / "personal-expense-management" / "experiments" / "rq1-quick-check" / "categories.json"
+DEV_IDS = ROOT / "ml" / "personal-expense-management" / "experiments" / "rq1-quick-check" / "results" / "dev_ids.csv"
 
 FEEDBACK_P = [1.0, 0.9, 0.7, 0.5]
 SEEDS = [0, 1, 2, 3, 4]
@@ -42,7 +43,7 @@ def normalize(text: str, strip_accents: bool = False) -> str:
 
 
 def load_stream() -> tuple[pd.DataFrame, pd.Series]:
-    df = pd.read_csv(ROOT / "data" / "processed" / "transactions_anon.csv")
+    df = pd.read_csv(DATA / "processed" / "transactions_anon.csv")
     exp = df[(df.direction == "EXPENSE") & df.expense_category.notna()].copy()
     exp["date"] = pd.to_datetime(exp.date)
     exp = exp.sort_values(["date", "id"], kind="stable").reset_index(drop=True)
@@ -149,7 +150,7 @@ def main() -> None:
     (OUT / "config.json").write_text(json.dumps({
         "feedback_p": FEEDBACK_P, "seeds": SEEDS, "early_days": EARLY_DAYS,
         "zero_shot": "BAAI/bge-m3, tên + mô tả, chỉ chọn trong danh mục đã tạo",
-        "categories_file": "ml/experiments/rq1-kiem-tra-nhanh/categories.json (bản nháp của Claude)",
+        "categories_file": "ml/personal-expense-management/experiments/rq1-quick-check/categories.json (bản nháp của Claude)",
         "category_created": "ngày đầu tiên danh mục được dùng",
         "scored": "mọi khoản chi có nhãn, trừ tập dev của RQ1",
     }, ensure_ascii=False, indent=2), encoding="utf-8")

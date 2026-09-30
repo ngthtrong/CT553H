@@ -1,6 +1,6 @@
 """Kiểm tra nhanh RQ1 (bản thô): embedding zero-shot trên tập dev ~10%.
 
-Chạy từ thư mục gốc:  .venv/bin/python ml/experiments/rq1-kiem-tra-nhanh/run.py
+Chạy từ thư mục gốc:  .venv/bin/python ml/personal-expense-management/experiments/rq1-quick-check/run.py
 
 Mỗi ghi chú chi tiêu được gán vào danh mục có embedding gần nhất (cosine) với
 embedding của tên (hoặc tên + mô tả) danh mục. Không học gì từ dữ liệu thật.
@@ -24,13 +24,14 @@ MODELS = {
     "bge-m3": ("BAAI/bge-m3", "", ""),
 }
 
-ROOT = Path(__file__).resolve().parents[3]
+ROOT = Path(__file__).resolve().parents[4]
 HERE = Path(__file__).resolve().parent
 OUT = HERE / "results"
+DATA = ROOT / "data" / "personal-expense-management"
 
 
 def load_dev() -> pd.DataFrame:
-    df = pd.read_csv(ROOT / "data" / "processed" / "transactions_anon.csv")
+    df = pd.read_csv(DATA / "processed" / "transactions_anon.csv")
     exp = df[(df.direction == "EXPENSE") & df.expense_category.notna()].copy()
     exp["key"] = exp.title.str.lower().str.strip()
     exp["frequent"] = exp.key.map(exp.key.value_counts()) >= FREQUENT_MIN

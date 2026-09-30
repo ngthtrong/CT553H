@@ -1,11 +1,11 @@
 """Làm sạch và ẩn danh bộ dữ liệu chi tiêu cá nhân (export từ Notion).
 
-Chạy:  python ml/preprocessing/clean_data.py
-Đầu vào: data/raw/notion-export.csv (bản xuất Notion, không bị sửa).
+Chạy:  python ml/personal-expense-management/preprocessing/clean_data.py
+Đầu vào: data/personal-expense-management/raw/notion-export.csv (bản xuất Notion, không bị sửa).
 Đầu ra:
-  data/processed/transactions_clean.csv  bản đầy đủ, CHƯA ẩn danh, chỉ dùng riêng
-  data/processed/transactions_anon.csv   bản đã ẩn danh tên người, dùng để gửi GVHD
-Danh sách tên cần ẩn danh nằm ở data/raw/anonymize_names.txt, sửa file đó rồi chạy lại.
+  data/personal-expense-management/processed/transactions_clean.csv  bản đầy đủ, CHƯA ẩn danh, chỉ dùng riêng
+  data/personal-expense-management/processed/transactions_anon.csv   bản đã ẩn danh tên người, dùng để gửi GVHD
+Danh sách tên cần ẩn danh nằm ở data/personal-expense-management/raw/anonymize_names.txt, sửa file đó rồi chạy lại.
 """
 import re
 import unicodedata
@@ -13,10 +13,11 @@ from pathlib import Path
 
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parents[2]
-RAW = ROOT / "data" / "raw" / "notion-export.csv"
-OUT = ROOT / "data" / "processed"
-NAMES = ROOT / "data" / "raw" / "anonymize_names.txt"
+ROOT = Path(__file__).resolve().parents[3]
+DATA = ROOT / "data" / "personal-expense-management"
+RAW = DATA / "raw" / "notion-export.csv"
+OUT = DATA / "processed"
+NAMES = DATA / "raw" / "anonymize_names.txt"
 
 BULK_IMPORT_DAYS = {"2024-12-05", "2024-12-06", "2026-06-01"}
 ADJUSTMENT_PAT = r"cân bằng số liệu|điều chỉnh chênh lệch"

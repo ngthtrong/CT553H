@@ -14,7 +14,7 @@
   ],
   "early_days": 30,
   "zero_shot": "BAAI/bge-m3, tên + mô tả, chỉ chọn trong danh mục đã tạo",
-  "categories_file": "ml/experiments/rq1-kiem-tra-nhanh/categories.json (bản nháp của Claude)",
+  "categories_file": "ml/personal-expense-management/experiments/rq1-quick-check/categories.json (bản nháp của Claude)",
   "category_created": "ngày đầu tiên danh mục được dùng",
   "scored": "mọi khoản chi có nhãn, trừ tập dev của RQ1"
 }
