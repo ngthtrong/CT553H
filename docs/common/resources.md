@@ -6,9 +6,10 @@
 
 | Tên | URL | Loại | Mã nguồn trong repo | Cập nhật gần nhất | Chia sẻ |
 |---|---|---|---|---|---|
-| Slide buổi gặp GVHD lần 1 | https://claude.ai/artifact/YRqpuZNbzNdsBQFRnx7bCn | Slides (8 trang) | [meeting/session-01-slides/](../meeting/session-01-slides/) | 29/09/2026, bản 4: chuyển mã nguồn vào repo (bản 3 sửa slide RQ theo RQ2/RQ3 mới) | Riêng tư. Muốn gửi GVHD thì chia sẻ qua menu Share |
+| **Slide buổi gặp GVHD lần 1 — tin sinh** | https://claude.ai/artifact/GGw1vJ2wpJKF63gmoBgLYT | Slides (9 trang) | [meeting/session-01-slides/](../meeting/session-01-slides/) | 01/10/2026, bản 3: deck đầy đủ cho đề xuất ATP + dự phòng efflux | Riêng tư. Muốn gửi GVHD thì chia sẻ qua menu Share |
+| Slide đề tài chi tiêu (lưu trữ) | https://claude.ai/artifact/YRqpuZNbzNdsBQFRnx7bCn | Slides (8 trang) | [personal-expense-management/01-idea/slides-draft/](../topics/personal-expense-management/01-idea/slides-draft/) | 29/09/2026, bản 4. **Không dùng nữa**: soạn cho đề tài chi tiêu, đã tạm dừng. Mã nguồn chuyển về thư mục đề tài ngày 01/10/2026 | Riêng tư |
 
-Artifact đang ở chế độ riêng tư: chỉ chủ tài khoản mở được link, nên để URL trong repo public không làm lộ nội dung.
+Artifact đang ở chế độ riêng tư: chỉ chủ tài khoản mở được link. Repo GitHub cũng đã chuyển sang private từ 01/10/2026.
 
 ### Cách sửa một artifact ở phiên mới
 1. Lấy URL từ bảng trên.
@@ -37,4 +38,14 @@ Artifact mới: đặt mã nguồn ngay trong repo (không để trong thư mụ
 | API LLM để sinh dữ liệu tổng hợp | Chưa chọn, chưa có key |
 | Ollama / LLM chạy cục bộ | Chưa cài; máy không có GPU |
 | Colab / Kaggle | Chưa dùng; chỉ đưa bản `*_anon.csv` lên |
-| Notion (đã kết nối với Claude từ 29/09/2026) | Trang tóm tắt đề tài quản lý chi tiêu cá nhân: https://app.notion.com/p/3ea486d98ebc8101ad92c0786e2797fc (bản nháp riêng tư, tạo 29/09/2026). Nội dung gốc: [topic-summary-notion.md](../topics/personal-expense-management/01-idea/topic-summary-notion.md). Sửa trên Notion thì file trong repo không tự cập nhật |
+| Notion (kết nối từ 29/09/2026; trong Claude Code cần bật server `plugin:design:notion`) | Trang gốc **Ý tưởng luận văn**: https://app.notion.com/p/3ec486d98ebc80fd9ecceaf626d5a3e6 — chứa 3 trang con: đề tài chi tiêu (cũ), `bioinformatics-topic-ideas-notion` (bản ba ý tưởng), và **Đề xuất chốt: vị trí gắn ATP + dự phòng efflux** (bản đang dùng). Sửa nội dung trên Notion thì file trong repo không tự cập nhật, và ngược lại |
+
+### Bản nội dung chờ nhập Notion
+
+### Trang Notion và bản nguồn tương ứng trong repo
+
+| Trang Notion | Bản nguồn trong repo | Trạng thái |
+|---|---|---|
+| [Đề xuất chốt: vị trí gắn ATP + dự phòng efflux](https://app.notion.com/p/3ec486d98ebc813bb56eface997a23a9) | [bioinformatics-proposal-notion.md](../meeting/bioinformatics-proposal-notion.md) | **Đã nhập 01/10/2026.** Bản đang dùng |
+| [bioinformatics-topic-ideas-notion](https://app.notion.com/p/3ec486d98ebc80a79ce1f6765bbf93ed) | [bioinformatics-topic-ideas-notion.md](../meeting/bioinformatics-topic-ideas-notion.md) | Đã nhập trước đó. **Đã bị thay thế** — giữ làm lịch sử bước so sánh ba hướng; hướng IL-6 bị loại 01/10/2026 |
+| [Đề tài quản lý chi tiêu cá nhân](https://app.notion.com/p/3ea486d98ebc8101ad92c0786e2797fc) | — | Lưu làm lịch sử, đề tài đã tạm dừng |

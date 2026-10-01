@@ -1,86 +1,164 @@
-# Chuẩn bị buổi gặp GVHD
+# Chuẩn bị buổi gặp GVHD lần 1 — hướng tin sinh học
 
-> Cập nhật: 29/09/2026. Chi tiết đề tài: [brainstorm.md](../topics/personal-expense-management/01-idea/brainstorm.md). Dữ liệu: [data-report.md](../topics/personal-expense-management/03-data/data-report.md). Tài liệu phát tay: [topic-summary.pdf](../topics/personal-expense-management/01-idea/topic-summary.pdf).
-> Đề tài **chưa chốt**: đi với tâm thế lắng nghe, mang theo đề tài dự phòng #2 (trợ lý mua sắm RAG).
+> **Lưu ý cập nhật sau:** người dùng đã xác nhận một người/14 tuần và muốn ưu tiên phát triển ứng dụng/hệ thống. Xem [bản trao đổi mới](bioinformatics-application-pitch.md) và [khảo sát mới](../common/deep-research/reports/bioinformatics-application-topics.md). Nội dung ATP bên dưới là phương án trước đó, chưa được chốt.
+
+> Cập nhật: 01/10/2026. Buổi gặp: **sáng 02/10/2026**. Đề tài **chưa chốt**.
+> Mang **hai** hướng: đề xuất chính (ATP + giao thức đánh giá) và dự phòng (efflux). Đi với tâm thế để thầy phản biện và chọn.
+> Nguồn: [khảo sát sâu](../common/deep-research/reports/bioinformatics-topic-survey.md) · [trang so sánh ba hướng](bioinformatics-topic-ideas-notion.md) · [kiểm chứng RAG-msCNN](../common/deep-research/reports/rag-mscnn-verification.md)
+>
+> **Không nêu trong buổi này:** phát hiện ở mục 3.1 của bản khảo sát (kịch bản RAG-msCNN bản 07/2025 chỉ áp truy hồi cho residue có nhãn dương). Hai lý do: bản thân chưa tự đọc hết bằng chứng, và buổi gặp đầu tiên không phải chỗ đặt vấn đề tái lập bài của thầy. Nếu sau này muốn nêu, làm theo mục 3.3 của bản khảo sát: nói riêng, dạng câu hỏi tái lập.
 
 ## Mục tiêu buổi gặp
 
-1. GVHD đồng ý hoặc điều chỉnh hướng đề tài, đặc biệt là cách dùng dữ liệu cá nhân **để đánh giá** thay vì để huấn luyện.
-2. Hiểu rõ GVHD kỳ vọng gì: tỷ lệ nghiên cứu so với hệ thống, mức độ chặt chẽ.
-3. Thống nhất cách làm việc: lịch gặp, kênh liên lạc, các mốc.
+1. Thầy chọn hoặc điều chỉnh giữa hai hướng; biết hướng nào gần chuyên môn và lịch của thầy hơn.
+2. Biết kỳ vọng của học phần: tỷ lệ nghiên cứu so với hệ thống, và **luận văn dạng “giao thức đánh giá + kết quả có thể âm” có được chấp nhận hay không**. Đây là câu hỏi quyết định của cả hai hướng.
+3. Mở ba nút chặn tài nguyên: mã dựng đặc trưng RAG của RTK_RAG, bộ dữ liệu GenEfflux, và nguồn GPU thực tế.
+4. Thống nhất cách làm việc: tần suất gặp, kênh liên lạc, mốc nộp.
 
-## Làm trước buổi gặp
+## Làm trước buổi gặp (tối nay, khoảng 45 phút)
 
-- [x] Xác định nguồn dữ liệu: tự ghi chép trên Notion, 5.465 giao dịch, 09/2022 → 09/2026
-- [x] EDA và thử nghiệm sơ bộ (số liệu ở mục Trình bày)
-- [x] Chép dòng mẫu **đã ẩn danh** từ `transactions_anon.csv` để minh họa (mục Dữ liệu mẫu)
-- [ ] In [topic-summary.pdf](../topics/personal-expense-management/01-idea/topic-summary.pdf) (2 trang A4), hoặc chuẩn bị 5–6 slide theo khung dưới
-- [ ] Duyệt và sửa mô tả 25 danh mục trong [categories.json](../../ml/personal-expense-management/experiments/rq1-quick-check/categories.json) (bản nháp, 4 mục đánh dấu `uncertain`)
+- [x] Trợ lý đã tải và đọc notebook RTK_RAG: xác nhận `model_test` chọn ngưỡng G-mean bằng nhãn của chính tập đang chấm. [Bằng chứng, vị trí mã và giới hạn](../common/deep-research/reports/rtk-rag-threshold-verification.md).
+- [ ] **Người trình bày tự mở lại** [notebook tại commit đã kiểm](https://github.com/B1607/RTK_RAG/blob/b7bd4c2347c7d44d24ae3d13e42082ba6cd62627/CODE/MCNN_npy.ipynb), tìm `def model_test` ở ô thứ 10 (`In [6]`), đọc `roc_curve(y_test...)` → `np.argmax(gmeans)` → `confusion_matrix(y_test...)`. Bằng chứng này hỗ trợ nhánh (a) của RQ2; chưa chứng minh cách tạo mọi số liệu trong bài báo.
+- [ ] Đọc README RTK_RAG, xác nhận lại các số sẽ nói: 549 protein train, 69 protein RTK test độc lập, 244 protein trong kho truy hồi, 711 residue dương / 73.270 âm (≈0,96%).
+- [ ] Xem banner quota trong tài khoản Kaggle (30 h/tuần hay khác) — để trả lời được khi thầy hỏi về GPU.
+- [ ] Thử tải bộ ATP-388/ATP-41/ATP-17 ([PMC13073818](https://pmc.ncbi.nlm.nih.gov/articles/PMC13073818/)). Nếu tải được, tập test ngoài nhóm là chắc chắn; nếu không, nói rõ đây là việc của tuần 1.
+- [ ] In một trang: bảng “Hai hướng mang ra trao đổi” + ba RQ của hướng chính.
 
-## Dữ liệu mẫu (đã ẩn danh)
+## Hai hướng mang ra trao đổi
 
-| id | Ngày | Ghi chú | Số tiền (VND) | Nhãn | Minh họa điều gì |
-|---:|---|---|---:|---|---|
-| 4807 | 2026-09-18 | xăng | 30.000 | DC | Lặp lại rất nhiều (443 lần) |
-| 1622 | 2026-09-16 | cf | 10.000 | Coffee | Viết tắt |
-| 2057 | 2024-02-28 | cơm sờn | 25.000 | AC | Sai chính tả ("cơm sườn") |
-| 573 | 2024-11-07 | bida với [P36] | 16.000 | Bida | Tên người đã được thay bằng mã |
-| 3680 | 2026-06-21 | nước mía | 10.000 | AV | Cùng ghi chú… |
-| 3690 | 2024-05-01 | nước mía | 10.000 | RL | …nhưng khác nhãn, vì nhãn phụ thuộc ngữ cảnh (đi cùng ai) |
+| | **Chính — ATP** | **Dự phòng — efflux** |
+|---|---|---|
+| Bài toán | Dự đoán residue gắn ATP ở protein kinase | Phân loại protein efflux theo siêu họ |
+| Đóng góp đề xuất | Giao thức đánh giá chống rò rỉ + quy tắc từ chối dự đoán theo độ tương đồng | So sánh có kiểm soát: tăng cường bằng chuỗi sinh so với các cách xử lý mất cân bằng rẻ |
+| Dữ liệu | Có sẵn và **có giấy phép** (RTK_RAG, AFL v3.0) + tập ATP ngoài nhóm | **Phụ thuộc thầy** chia sẻ bộ GenEfflux, hoặc phải dựng lại từ TCDB |
+| GPU | Thấp nhất (<2 giờ embedding, train vài phút/lần) | Trung bình–cao, chi phí fine-tune ProtGPT2 chưa đo |
+| Sản phẩm | Bản đồ residue + cờ tin cậy — trực quan nhất | FASTA → điểm theo họ + cảnh báo khi không phân biệt được |
+| Rủi ro chính | Repo không chứa mã dựng đặc trưng RAG | Lớp SMR chỉ 15–18 chuỗi, khoảng tin cậy rất rộng |
+| Mở ra bằng | Xin mã/trọng số RTK_RAG | **Đúng một câu hỏi**: thầy chia sẻ được bộ GenEfflux không |
+
+Hướng IL-6 peptide đã bỏ khỏi danh sách: dữ liệu công khai không có tập test độc lập, và [CONTRA-IL6 (2026)](https://pubmed.ncbi.nlm.nih.gov/42281397/) đã báo cáo kiểm tra trên bộ độc lập nên tính mới mỏng nhất trong ba hướng. Nếu thầy hỏi, trả lời đúng như vậy.
+
+## Đề xuất chính: ATP + giao thức đánh giá chống rò rỉ
+
+**Tên làm việc:** Truy hồi cho dự đoán residue gắn ATP dưới giao thức chống rò rỉ: ngưỡng chọn trên validation, AUPRC, và quy tắc từ chối dự đoán theo độ tương đồng láng giềng.
+
+### Vì sao còn chỗ cho đóng góp (ba điểm tự kiểm chứng được, không phải cáo buộc)
+
+1. **Hàm đánh giá công khai chọn ngưỡng trên chính tập đang chấm.** Đã đọc trực tiếp `model_test` trong notebook RTK_RAG: `roc_curve` dùng `y_test`, chọn `argmax(gmeans)`, rồi tính MCC/F1 trên cùng nhãn đó. Nhánh cross dùng fold giữ lại; nhánh independent có cùng lời gọi nhưng không lưu output. Mã/output có điểm không đồng bộ và thiếu module nạp dữ liệu, nên chưa kết luận đây là phiên bản tạo số liệu bài báo. Đề xuất chọn ngưỡng trên validation rồi khóa trước khi chấm test. [Vị trí mã, giới hạn và câu trả lời khi thầy hỏi](../common/deep-research/reports/rtk-rag-threshold-verification.md).
+2. **Chỉ số không phù hợp với dữ liệu mất cân bằng.** Tập test RTK chỉ có ≈0,96% residue dương. Ở mức đó, accuracy và specificity ≥0,98 đạt được gần như tầm thường, và AUC sát trần không còn phân biệt được các mô hình. [LMetalSite](https://academic.oup.com/bib/article/23/6/bbac444/6770088) chọn AUPR làm chỉ số chính đúng vì lý do này.
+3. **Lọc đồng dạng lỏng và kho truy hồi cùng họ.** CD-HIT 40% chạy chung một lần lỏng hơn chuẩn 25–30% thường dùng, và kho truy hồi gồm 244 protein cùng họ RTK. Câu hỏi “một RTK mới có luôn tìm được láng giềng đủ gần hay không” chưa được trả lời.
+
+### Ba câu hỏi nghiên cứu
+
+| | Nội dung | Cách đo |
+|---|---|---|
+| **RQ1** | Dưới giao thức sạch (kho truy hồi tách khỏi test ở ≤30% identity, ngưỡng chọn trên validation, test giữ tỉ lệ dương tự nhiên), truy hồi còn đóng góp bao nhiêu so với cùng PLM + mCNN không truy hồi? | ΔAUPRC và ΔMCC, khoảng tin cậy 95% **bootstrap theo protein** (không coi mỗi residue là một quan sát độc lập), ≥5 seed |
+| **RQ2** | Mỗi lựa chọn đánh giá đóng góp bao nhiêu điểm vào chỉ số: (a) chọn ngưỡng trên test thay vì validation, (b) CD-HIT 40% so với 30%, (c) kho truy hồi cùng họ RTK so với kho đa dạng hơn? | (a) Giữ nguyên điểm dự đoán, đo ΔMCC/ΔF1/G-mean; AUPRC và AUROC không đổi khi chỉ đổi ngưỡng. (b)/(c) Đo ΔAUPRC/ΔMCC với thiết kế so sánh riêng. Xáo nhãn kho chỉ là đối chứng có tác dụng nếu phương pháp thực sự dùng nhãn kho; với trộn embedding không nhãn, dùng kho ngẫu nhiên cùng kích thước để kiểm tra vai trò chọn láng giềng. |
+| **RQ3** | Quy tắc **từ chối dự đoán**: chỉ dự đoán khi identity của láng giềng gần nhất ≥ *t*. Quy tắc này có cải thiện độ tin cậy trên protein không có láng giềng gần không? | Đường coverage–AUPRC khi quét *t*; so với dự đoán toàn phần |
+
+RQ3 là phần thiết kế mới và cũng là phần sinh ra sản phẩm. Nếu phải cắt vì thời gian, cắt nhánh (b) của RQ2 trước, **không** cắt RQ3.
+
+### Dữ liệu, baseline, chỉ số
+
+- **Dữ liệu:** ATP-549 (train) + 69 protein RTK test độc lập + kho truy hồi 244 protein, từ [RTK_RAG](https://github.com/B1607/RTK_RAG) — repo duy nhất của nhóm có giấy phép (AFL v3.0). **Cộng thêm** ATP-388/ATP-41/ATP-17 làm tập ngoài nhóm. Phần cộng này chữa đúng điểm yếu lớn nhất của bộ gốc: chỉ 69 protein và 711 residue dương thì khoảng tin cậy sẽ rất rộng.
+- **Baseline:** (1) ProtTrans + mCNN không truy hồi; (2) truy hồi trộn trung bình α = 0,7 như bản của nhóm; (3) **bộ phân loại k-NN thuần trên embedding** — baseline này quan trọng nhất: nếu k-NN thuần gần bằng mô hình đầy đủ, nghĩa là phần lớn tín hiệu chỉ là tương đồng chuỗi; (4) số công bố của RTK_RAG làm mốc tham chiếu.
+- **Chỉ số:** AUPRC là chính; MCC và F1 tại ngưỡng chọn trên validation; AUROC để đối chiếu với bài gốc; trung bình ± độ lệch chuẩn qua seed.
+- **Tính toán:** embedding ProtTrans cho khoảng 900–1.300 protein dưới 2 giờ GPU; mỗi lần huấn luyện mCNN vài phút. Toàn bộ trong khoảng 30–60 giờ GPU. Nút thắt là dung lượng đĩa, nên lưu embedding theo residue một lần rồi cắt cửa sổ trong dataloader, không lưu sẵn tensor cửa sổ.
+
+### Sản phẩm (học phần bắt buộc có hệ thống)
+
+Trang web nhận một hoặc nhiều chuỗi FASTA, kiểm tra định dạng, rồi trả về:
+
+- chuỗi axit amin tô màu theo điểm dự đoán từng residue;
+- **identity của láng giềng gần nhất trong kho truy hồi, và cờ “ngoài vùng tin cậy”** khi identity dưới ngưỡng *t* của RQ3;
+- bảng kết quả tải xuống được, kèm vài chuỗi tham chiếu gần nhất.
+
+Điểm bán được của sản phẩm: cờ tin cậy là hiện thân trực tiếp của RQ3, không phải giao diện trang trí. Không công cụ nào trong dòng bài này hiện báo tín hiệu đó cho người dùng. Không dựng mô hình 3D. Kiến trúc tối thiểu là FastAPI phục vụ mô hình đã xuất + React; **cần hỏi thầy** lớp hệ thống phải dày tới đâu để hội đồng chấp nhận.
+
+### Lịch và cổng quyết định
+
+| Giai đoạn | Việc chính | Cổng quyết định |
+|---|---|---|
+| G1 (≈20% thời gian) | Kiểm tra dữ liệu/nhãn/giấy phép; đo thời gian embedding thật trên một phiên Kaggle; dựng baseline không truy hồi | **Tái lập được baseline trong ±0,05 MCC so với số của bài.** Không đạt thì dừng, chuyển sang efflux |
+| G2 (≈25%) | Khóa phép chia, dựng giao thức sạch, chạy RQ1 | ΔAUPRC có vượt dao động giữa các seed không |
+| G3 (≈25%) | RQ2 ablation + RQ3 quy tắc từ chối | Nếu RQ3 không có tín hiệu, thu hẹp thành benchmark + giao thức |
+| G4 (≈20%) | Xây công cụ web từ mô hình đã huấn luyện | Chạy được end-to-end trên chuỗi mới |
+| G5 (≈10%) | Viết báo cáo, slide, ghi giới hạn | |
+
+> **Cần điền số tuần thực tế.** Hai bản tài liệu hiện ghi khác nhau (14 tuần ở trang so sánh, 20 tuần ở bản khảo sát). Hỏi thầy mốc nộp rồi quy đổi các phần trăm trên thành tuần cụ thể.
+
+### Kết quả xấu nhất vẫn bảo vệ được
+
+Nếu truy hồi không còn giúp dưới giao thức sạch, luận văn vẫn có ba thứ: một giao thức đánh giá chống rò rỉ cho bài toán này, một kết quả âm **có kiểm soát** (kèm đối chứng âm và khoảng tin cậy), và một công cụ báo tín hiệu tin cậy. Nhưng điều này chỉ đúng **nếu thầy và hội đồng chấp nhận dạng luận văn đó** — nên đây là câu hỏi số 2 trong danh sách dưới.
+
+## Đề xuất dự phòng: efflux (nêu ngắn, 2 phút)
+
+Tăng cường dữ liệu bằng chuỗi ProtGPT2 so với các cách xử lý mất cân bằng rẻ (class weighting, focal loss, SMOTE trên embedding, mixup) cho phân loại siêu họ efflux, dưới phép chia theo cụm MMseqs2 30%. Đây là phần mở rộng đúng hai hạn chế mà [mCNN-GenEfflux](https://doi.org/10.1016/j.compbiolchem.2025.108595) tự nêu, nên là hướng an toàn nhất về quan hệ.
+
+Hai điểm phải nói thật: (1) chưa tìm được bảng công khai xác nhận số chuỗi mỗi họ — [DeepEfflux](https://academic.oup.com/bioinformatics/article/34/18/3111/4970514) ghi SMR chỉ 15 chuỗi, nên lớp hiếm có thể không đủ cụm để chia fold; (2) chi phí fine-tune ProtGPT2 chưa đo. Vì vậy hướng này **chỉ chốt được nếu thầy chia sẻ bộ dữ liệu và cách chia của GenEfflux**.
+
+Một đối chứng âm đáng nêu nếu thầy hỏi sâu: [Shen et al. 2021](https://www.biorxiv.org/content/10.1101/2021.02.18.431877v1.full) cho thấy ngay cả chuỗi bị xáo trộn đôi khi vẫn làm tăng chỉ số. Nên mức tăng từ chuỗi sinh tự nó chưa chứng minh chuỗi đó hợp lý về sinh học.
 
 ## Trình bày (khoảng 10 phút)
 
 | # | Nội dung | Thông điệp chính |
 |---|---|---|
-| 1 | Vấn đề | Ghi chép chi tiêu tay tốn công. Ghi chú tiếng Việt ngắn, viết tắt, không dấu. **Mỗi người tự đặt danh mục riêng**, nên mô hình học trên bộ danh mục cố định không dùng được. **Người dùng mới không có dữ liệu**, nên mô hình học máy thông thường chưa giúp được gì trong những tuần đầu, đúng lúc người dùng dễ bỏ cuộc nhất |
-| 2 | Dữ liệu | 5.465 giao dịch thật, 49 tháng liên tục, 25 nhãn gán tay, 1.973 nội dung khác nhau, ghi chú trung vị 2 từ. Nguồn: tự ghi chép trên Notion. Đã làm sạch và ẩn danh bằng script |
-| 3 | Kết quả sơ bộ | TF-IDF + SVM: 86,7% (kiểm định chéo ngẫu nhiên) nhưng chỉ 78,2% khi chia theo thời gian. Nội dung chưa gặp trong tập kiểm tra tăng từ 34% lên 53%, và có 5 nhãn mới. Dự báo: trung bình lịch sử (sMAPE 24,5%) thắng các baseline khác. **Kiểm tra nhanh hướng mới** (embedding zero-shot, dev 503 mẫu, không học gì từ dữ liệu thật): chỉ có tên danh mục đạt 16–18%; thêm một câu mô tả đạt 40–50%, top-3 khoảng 64% ([kết quả](../../ml/personal-expense-management/experiments/rq1-quick-check/README.md)) |
-| 4 | **Ý tưởng chính** | Không dùng dữ liệu cá nhân để huấn luyện. Khi người dùng tạo danh mục (tên + mô tả tùy chọn), hệ thống dùng **LLM zero-shot** và **sinh dữ liệu tổng hợp cho riêng danh mục của người đó** để huấn luyện mô hình nhẹ. Dữ liệu 4 năm với 25 danh mục tự đặt được **phát lại theo thời gian** như một người dùng mới: hệ thống đoán trước, người dùng sửa sau, hệ thống học tiếp |
-| 5 | Câu hỏi nghiên cứu | **RQ1** bộ phân loại ban đầu đạt đến đâu khi người dùng vừa tạo danh mục mà chưa có giao dịch nào · **RQ2** các chiến lược học từ phản hồi cải thiện được bao nhiêu **so với baseline nhớ lại**, trên **ghi chú chưa gặp** (nhớ lại + zero-shot đã đạt 71,5%, nhưng chỉ 37% trên ghi chú chưa gặp, nơi tập trung 87% số lần phải sửa) · **RQ3** dự báo khoảng theo danh mục và **ảnh hưởng của lỗi phân loại lên dự báo, cảnh báo ngân sách** · **RQ4** (nếu có tình nguyện viên) kiểm tra trên người khác · **TN5** độ nhạy khi người dùng không sửa hết |
-| 6 | Hệ thống, kế hoạch | React · Spring Boot · FastAPI ML service · PostgreSQL + pgvector · Redis. Công cụ phát lại chạy qua API thật nên số liệu là của chính hệ thống. Đa tiền tệ chỉ còn là tính năng phụ. 14 tuần, mốc giữa kỳ tuần 8 |
+| 1 | Bối cảnh | Em muốn làm trong hướng PLM + mCNN của nhóm thầy. Nền sinh học của em còn cơ bản, nên em chọn bài toán mà phần sinh học đã được mã hóa trong benchmark |
+| 2 | Đơn vị đóng góp | Em không đề xuất kiến trúc mới. Em đề xuất **chất lượng đánh giá** làm trục: tách tập theo đồng dạng, chọn ngưỡng trên validation, AUPRC thay AUC trên dữ liệu ≈1% dương |
+| 3 | Hướng chính | ATP ở RTK: ba điểm có thể cải thiện trong giao thức (mục “Vì sao còn chỗ”), dẫn tới ba RQ |
+| 4 | Điểm mới thật sự | RQ3: quy tắc từ chối dự đoán theo identity láng giềng, kèm đường coverage–AUPRC. Đây cũng là thứ sinh ra sản phẩm |
+| 5 | Sản phẩm | Bản đồ residue + cờ “ngoài vùng tin cậy”. Công cụ đầu tiên trong dòng này báo tín hiệu tin cậy cho người dùng |
+| 6 | Dự phòng | Efflux, mở ra nếu thầy chia sẻ được bộ GenEfflux |
+| 7 | Cần thầy hỗ trợ | Mã/trọng số RTK_RAG, GPU, và xác nhận dạng luận văn |
 
-**Không** trình bày chi tiết đa tiền tệ, CSDL, hay các biến thể của từng chiến lược. Giữ trọng tâm ở ý tưởng "đánh giá bằng phát lại".
+**Không** trình bày: chi tiết kiến trúc mCNN, so sánh PLM, hay danh sách xu hướng 2024–2026. Giữ trọng tâm ở “đánh giá trước, mô hình sau”.
 
 ## Câu hỏi cho GVHD
 
-**Phạm vi và kỳ vọng** *(quan trọng nhất, hỏi trước)*
-1. "Hàm lượng khoa học tương đối" của CT553H cụ thể là mức nào? Tỷ lệ nghiên cứu và hệ thống bao nhiêu là hợp lý?
-2. Phạm vi hiện tại đã vừa với 14 tuần làm một mình chưa? Nếu cần cắt thì nên cắt phần nào? (Em đang định cắt theo thứ tự: mở rộng đa tiền tệ → LLM few-shot truy xuất → PhoBERT → kịch bản danh mục chuẩn → tình nguyện viên.)
-3. Hội đồng thường thiên về kỹ thuật phần mềm. Thầy/cô khuyên phân bổ báo cáo giữa phần hệ thống và phần thí nghiệm thế nào?
+**Phạm vi và kỳ vọng** *(hỏi trước, quan trọng nhất)*
+
+1. Hai hướng trên, hướng nào gần chuyên môn và lịch hướng dẫn của thầy hơn?
+2. Nhóm thầy đổi mới chủ yếu bằng cách thêm một module mới vào pipeline. Nếu đóng góp của em là **giao thức đánh giá và một quy tắc từ chối dự đoán**, chứ không phải một kiến trúc mới, thầy thấy đủ cho luận văn chưa, hay hội đồng sẽ đòi thêm một thành phần mô hình mới?
+3. Nếu kết quả cuối là “truy hồi không giúp dưới giao thức chặt” — tức một kết quả âm có kiểm soát — thầy và hội đồng có chấp nhận không?
+4. Tỷ lệ nghiên cứu so với hệ thống của CT553H là bao nhiêu? Lớp hệ thống cần dày tới đâu (chỉ FastAPI phục vụ mô hình, hay cần backend đầy đủ, lưu lịch sử, tài khoản)?
+5. Mốc nộp và số tuần thực tế là bao nhiêu?
+
+**Dữ liệu và tài nguyên**
+
+6. Repo RTK_RAG không chứa mã dựng đặc trưng RAG (`rag_prottrans_GPU.py` nằm trong một tệp zip trên server không phản hồi). Thầy có bản đó, trọng số mô hình, hoặc embedding đã trích không ạ? *(Nút chặn số một của hướng chính.)*
+7. Thầy có thể chia sẻ bộ dữ liệu và cách chia tập của GenEfflux không? *(Nút chặn duy nhất của hướng dự phòng.)*
+8. Có benchmark ngoài hoặc tập test độc lập nào khác cho ATP mà nhóm đang dùng không? Em dùng thêm bộ ATP ngoài nhóm (ATP-388/41/17) để kiểm chứng được chứ ạ?
+9. Nguồn GPU thực tế em có thể dùng: máy phòng lab, hay chỉ Colab Pro + Kaggle? Em đang tính khoảng 30–60 giờ GPU cho hướng chính.
 
 **Phương pháp**
-4. Dùng dữ liệu cá nhân chỉ để đánh giá (phát lại theo thời gian), còn huấn luyện bằng dữ liệu tổng hợp do LLM sinh theo danh mục của từng người: thầy/cô thấy cách này có thuyết phục không? Hội đồng có dễ nghi ngờ dữ liệu tổng hợp không?
-5. Lấy 25 nhãn gốc làm "danh mục do người dùng tự tạo" (kịch bản chính), gộp về 10–12 danh mục chuẩn làm kịch bản phụ: có hợp lý không? Mô tả danh mục do chính em viết có bị xem là thiên vị không?
-6. Dữ liệu đánh giá chủ yếu của một người: cần tối thiểu bao nhiêu tình nguyện viên? Mỗi người tự đặt danh mục và cung cấp 100–200 ghi chú có đủ không? (Em dự định tìm tình nguyện viên ngay sau khi đề tài được chốt.)
-6b. Một số khẳng định về nhu cầu người dùng (người Việt có tự tạo danh mục không, chọn danh mục có tốn công không) chưa có nghiên cứu nào xác nhận. Em định làm khảo sát ngắn 30–50 người ở tuần 1–2: như vậy có đủ không? ([literature-survey.md](../topics/personal-expense-management/02-survey/literature-survey.md))
-6c. RQ3 được mở rộng thành dự báo khoảng và lan truyền lỗi phân loại sang cảnh báo ngân sách: thầy/cô thấy phạm vi này có quá nặng không?
-7. Ngoài Macro-F1 và số lần sửa mỗi tháng, có nên báo cáo MCC không? Thầy/cô yêu cầu kiểm định thống kê nào?
-8. Khung 5 bước của Chou có phù hợp, hay thầy/cô muốn khung trình bày khác?
-9. Hướng mới nghiêng về LLM (zero-shot, sinh dữ liệu tổng hợp), học trực tuyến và cold-start, ít dùng BERT/CNN hơn hướng cũ. Thầy/cô có thấy ổn khi hướng dẫn mảng này không, hay nên tăng phần embedding / PhoBERT cho gần chuyên môn của thầy/cô hơn?
 
-**Hành chính**
-10. Mẫu đề cương và báo cáo, lịch nộp, mốc giữa kỳ?
-11. Tần suất gặp, kênh liên lạc (email, Zalo, gặp trực tiếp)?
-12. Repo GitHub của em đang public. Em có được để tài liệu môn CS535 thầy/cô gửi trong repo không, hay nên để riêng tư?
+10. Phép chia theo đồng dạng: em nên dùng ngưỡng nào cho đúng chuẩn lĩnh vực — giữ CD-HIT 40% để so được với bài gốc, hay siết về 30% và chấp nhận số không so trực tiếp được?
+11. Thầy muốn phần trọng tâm nghiêng về phép truy hồi, kiểm soát rò rỉ/mất cân bằng, hay khả năng giải thích đầu ra?
 
-**Cơ hội**
-13. Nếu kết quả tốt, thầy/cô có muốn hướng tới một bài hội nghị không? (Bộ dữ liệu tổng hợp ghi chú chi tiêu tiếng Việt có thể công bố.)
+**Hành chính và cơ hội**
+
+12. Mẫu đề cương, lịch nộp đề cương, tần suất gặp và kênh liên lạc?
+13. Nếu kết quả tốt, thầy có muốn hướng tới một bài hội nghị không ạ?
 
 ## GVHD có thể hỏi lại
 
 | Câu hỏi | Trả lời ngắn |
 |---|---|
-| Phát lại theo thời gian là gì? | Duyệt giao dịch theo đúng thứ tự ngày. Mỗi giao dịch: hệ thống đoán trước bằng những gì đã biết, rồi mới nhận nhãn thật để học tiếp. Không có thông tin tương lai nào lọt vào |
-| Sao không huấn luyện trên dữ liệu của em luôn? | Người dùng mới không có dữ liệu. Học từ dữ liệu người dùng vẫn có, nhưng là một chiến lược trong phát lại, được đo đúng trình tự thời gian |
-| Dữ liệu tổng hợp có khách quan không? | Prompt chỉ gồm tên và mô tả danh mục, không có ghi chú thật. Tập đánh giá hoàn toàn là dữ liệu thật. Có báo cáo tỷ lệ trùng |
-| Có tinh chỉnh trên tập đánh giá không? | Tinh chỉnh trên tập dev (mẫu ngẫu nhiên ~10%, không tính điểm), viết mô tả danh mục trước, khóa cấu hình rồi mới tính điểm trên luồng |
-| Danh mục như AC, RL thì LLM hiểu sao được? | Có hai biến thể: chỉ tên và tên + mô tả một câu. Mức thấp ở ngày đầu chính là lý do cần lớp cá nhân học từ phản hồi |
-| Nhãn có đáng tin không? | Gán lại mù 300 mẫu, đo Cohen's kappa (dự kiến tuần 2) |
-| Nếu mô hình ban đầu đã rất cao? | Kiểm tra trên dev ở tuần 2. Nếu vậy, lấy biến thể "chỉ tên" và các giai đoạn có danh mục mới làm trọng tâm của RQ2 |
-| GPU ở đâu? | Colab / Kaggle, dữ liệu nhỏ; chỉ đưa bản đã ẩn danh lên cloud và API |
+| Em thêm gì so với RTK_RAG? | Ba thứ: giao thức sạch (ngưỡng trên validation, kho truy hồi tách khỏi test, AUPRC), một tập ATP ngoài nhóm, và quy tắc từ chối dự đoán theo identity láng giềng. Không thay kiến trúc |
+| Chỉ đo lại thì có đủ làm luận văn? | Phần đo lại là nền. Phần mới là RQ3 và công cụ báo tín hiệu tin cậy — chưa có công cụ nào trong dòng này làm |
+| Sao không dùng ESM-2, vốn cho MCC cao hơn? | Bài gốc chọn ProtTrans để tiết kiệm tính toán. Em giữ ProtTrans để so sánh công bằng với số đã công bố; ESM-2 là một nhánh nếu còn ngân sách GPU |
+| Tại sao AUPRC chứ không AUC? | Tập test chỉ ≈0,96% residue dương. Ở mức đó AUC sát trần và không phân biệt được mô hình |
+| Vì sao bootstrap theo protein? | 69 protein nhưng hơn 73.000 residue. Các residue trong cùng protein tương quan mạnh, nên coi mỗi residue là một quan sát độc lập sẽ cho khoảng tin cậy hẹp giả tạo |
+| Nếu truy hồi vẫn giúp rõ thì sao? | Vẫn là kết quả tốt: một khẳng định có kiểm soát, cộng đường coverage cho biết nó giúp ở đâu và hết tác dụng ở đâu |
+| k-NN thuần để làm gì? | Để biết phần nào của kết quả chỉ là tương đồng chuỗi. Nếu k-NN thuần gần bằng mô hình đầy đủ thì đó là phát hiện đáng báo cáo |
+| Nền sinh học của em có đủ không? | Nhãn residue gắn đã có trong benchmark. Phần sinh học cần đọc là motif Walker A / P-loop, trong tầm tự học |
+| GPU ở đâu? | Colab Pro + Kaggle. Embedding dưới 2 giờ, mỗi lần huấn luyện vài phút |
+| Tiêu chí dừng? | Cổng G1: không tái lập được baseline trong ±0,05 MCC thì chuyển hướng. Cổng G3: RQ3 không có tín hiệu thì thu hẹp phạm vi |
 
-## Sau buổi gặp
+## Những điểm chưa kiểm chứng — nói thẳng nếu bị hỏi
 
-- [ ] Ghi biên bản vào `session-01-minutes.md` ngay sau buổi gặp
-- [ ] Cập nhật [brainstorm.md](../topics/personal-expense-management/01-idea/brainstorm.md) theo góp ý
-- [ ] Nếu GVHD đề xuất đổi hướng: cùng Claude so sánh lại với đề tài dự phòng
+- Chưa tự mở bộ ATP-388/41/17; khả năng tải và tính tương thích nhãn là việc của tuần 1.
+- Chưa biết repo RTK_RAG có bản mã dựng đặc trưng RAG ở đâu khác không.
+- Quota Kaggle: tài liệu ghi khoảng 30 giờ/tuần, một nguồn thứ cấp ghi 50 giờ. Chưa xem banner trong tài khoản.
+- Số chuỗi mỗi họ efflux: hai nguồn ghi khác nhau (ABC 2394/SMR 18 so với ABC 1670/SMR 15).
+- Mọi ước lượng giờ GPU trong tài liệu này là suy luận từ mốc đo của người khác, chưa tự đo.

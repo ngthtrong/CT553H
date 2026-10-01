@@ -23,8 +23,8 @@ Thư mục/file đánh dấu *(chưa có)* chỉ tạo khi bắt đầu giai đo
 CT553H/
 ├── docs/
 │   ├── common/                   Dùng chung cho mọi đề tài
-│   │   ├── brainstorming-guide.md    Cách brainstorm với Claude
 │   │   ├── advisor/                  Công bố, chuyên môn, tài liệu khoá học của GVHD (dùng để đánh giá độ khớp mọi đề tài)
+│   │   ├── deep-research/            Khảo sát sâu nhiều nguồn: reports/ (báo cáo tổng hợp), research_notes/<chủ-đề>/ (ghi chú theo nhánh). Chuyển sang docs/topics/<slug>/02-survey/ khi đề tài có slug
 │   │   ├── resources.md              Artifact trên claude.ai, cache và môi trường cục bộ (không nằm trong git)
 │   │   ├── work-log.md               Nhật ký theo phiên: đã làm gì, quyết định gì, còn dở gì (mọi đề tài)
 │   │   └── CT553H.pdf                Yêu cầu học phần / rubric
@@ -60,7 +60,8 @@ CT553H/
 
 ## Quy ước
 
-- **Dữ liệu cá nhân:** repo GitHub đang **public**. Không bao giờ commit dữ liệu (`data/`), tên thật, hay file chưa ẩn danh. Chỉ bản `*_anon.csv` mới được gửi GVHD hoặc đưa lên cloud (Colab/Kaggle).
+- **Repo riêng tư:** repo GitHub đã chuyển sang **private** từ 01/10/2026. Nhờ vậy repo được phép chứa PDF bài báo, tài liệu khoá học của GVHD (`docs/common/advisor/`) và các phân tích kỹ thuật về bài của nhóm GVHD (`docs/common/deep-research/`). Nếu sau này đổi sang public hoặc chia sẻ repo cho người khác (kể cả GVHD), phải gỡ những phần này trước, kể cả khỏi lịch sử git.
+- **Dữ liệu cá nhân:** dù repo đã private, vẫn không bao giờ commit dữ liệu (`data/`), tên thật, hay file chưa ẩn danh. Chỉ bản `*_anon.csv` mới được gửi GVHD hoặc đưa lên cloud (Colab/Kaggle).
 - **Dữ liệu tái tạo được:** mọi file trong `data/<slug>/processed/` phải sinh lại được bằng script trong `ml/<slug>/preprocessing/`. Chạy từ thư mục gốc: `python ml/<slug>/preprocessing/clean_data.py`.
 - **Thí nghiệm tái lập được:** cố định seed, ghi config và kết quả ra file trong `ml/<slug>/experiments/`; số liệu đưa vào tài liệu phải trỏ tới file kết quả tương ứng.
 - **Tách huấn luyện và phục vụ:** `ml/` để nghiên cứu, `ml-service/` chỉ nạp mô hình đã xuất ra.
@@ -83,9 +84,20 @@ Mỗi phiên Claude bắt đầu không nhớ gì về phiên trước, và thư
 
 - Danh sách đề tài đang cân nhắc: [docs/topics/README.md](docs/topics/README.md)
 - Nhật ký làm việc (mọi đề tài): [docs/common/work-log.md](docs/common/work-log.md) · Tài nguyên ngoài repo: [docs/common/resources.md](docs/common/resources.md) · GVHD: [docs/common/advisor/](docs/common/advisor/)
-- Buổi gặp GVHD gần nhất: [docs/meeting/session-01-prep.md](docs/meeting/session-01-prep.md)
+- Buổi gặp GVHD gần nhất: [docs/meeting/session-01-prep.md](docs/meeting/session-01-prep.md) (đã soạn lại theo hướng tin sinh, buổi gặp 02/10/2026)
 
-### Đề tài: quản lý chi tiêu cá nhân (`docs/topics/personal-expense-management/`)
+### Hướng đang theo đuổi: tin sinh học thiên về ứng dụng/hệ thống (chưa có slug, chưa chốt)
+
+- Cập nhật mới nhất 01/10/2026: người dùng xác nhận **một người, 14 tuần**, RAG hoặc CNN/MCNN tùy bài toán; muốn ưu tiên hệ thống. ATP + giao thức đánh giá là phương án trước đó.
+- [Khảo sát hướng ứng dụng](docs/common/deep-research/reports/bioinformatics-application-topics.md) · [Bản trao đổi sáng 02/10](docs/meeting/bioinformatics-application-pitch.md). Ba hướng đang so sánh: hồ sơ bằng chứng protein/RAG, rà soát ATP/CNN-MCNN, sàng lọc dataset GEO/RAG.
+
+- Báo cáo khảo sát, 4 đề xuất xếp hạng: [deep-research/reports/bioinformatics-topic-survey.md](docs/common/deep-research/reports/bioinformatics-topic-survey.md)
+- Trang so sánh 3 hướng để chuẩn bị trao đổi và nhập Notion: [bioinformatics-topic-ideas-notion.md](docs/meeting/bioinformatics-topic-ideas-notion.md)
+- Ghi chú theo nhánh: [deep-research/research_notes/bioinformatics-topic-survey/](docs/common/deep-research/research_notes/bioinformatics-topic-survey/)
+- Kết quả tự kiểm chứng mục 3.1 của báo cáo (RAG-msCNN): [deep-research/reports/rag-mscnn-verification.md](docs/common/deep-research/reports/rag-mscnn-verification.md)
+- Khi chọn được một đề xuất: đặt slug, tạo `docs/topics/<slug>/01-idea/`, chuyển báo cáo liên quan vào `02-survey/`.
+
+### Đề tài: quản lý chi tiêu cá nhân (`docs/topics/personal-expense-management/`), **tạm dừng từ 01/10/2026**
 
 - Đề tài và các quyết định: [01-idea/brainstorm.md](docs/topics/personal-expense-management/01-idea/brainstorm.md)
 - Hiện trạng dữ liệu: [03-data/data-report.md](docs/topics/personal-expense-management/03-data/data-report.md)
