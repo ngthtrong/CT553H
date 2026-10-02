@@ -4,7 +4,15 @@
 
 | Slug | Tên đề tài | Lĩnh vực | Trạng thái | Tài liệu |
 |---|---|---|---|---|
+| `rtk-atp-applicability` | Xây dựng hệ thống dự đoán vị trí gắn ATP ở protein RTK có cảnh báo miền áp dụng, dùng PLM–MCNN và truy hồi, đánh giá bằng giao thức kiểm soát rò rỉ dữ liệu | Tin sinh ứng dụng, PLM + CNN đa cửa sổ, kỹ nghệ phần mềm | **Đã chốt hướng (02/10/2026)** — sinh viên quyết, chưa có phê duyệt GVHD. Dữ liệu đã tải và kiểm tra; chưa trích embedding, chưa huấn luyện | [04-proposal/topic-proposal.md](rtk-atp-applicability/04-proposal/topic-proposal.md) · [01-idea/topic-decision.md](rtk-atp-applicability/01-idea/topic-decision.md) · [02-survey/key-papers.md](rtk-atp-applicability/02-survey/key-papers.md) · [03-data/data-report.md](rtk-atp-applicability/03-data/data-report.md) |
 | `personal-expense-management` | Hệ thống quản lý chi tiêu cá nhân với bộ phân loại giao dịch tự thích nghi | Ứng dụng quản lý tài chính cá nhân, NLP/phân loại văn bản ngắn | **Tạm dừng** (01/10/2026) — đã có đề cương bản nháp và thí nghiệm thô; giữ nguyên để có thể quay lại | [01-idea/brainstorm.md](personal-expense-management/01-idea/brainstorm.md) |
-| *(chưa đặt slug)* | Hệ thống tin sinh: hồ sơ bằng chứng protein bằng RAG, rà soát vị trí gắn ATP bằng CNN/MCNN, hoặc sàng lọc dataset GEO | Tin sinh ứng dụng, kỹ nghệ phần mềm, RAG hoặc CNN/MCNN | **Đang khảo sát lại theo hướng hệ thống** — một người, 14 tuần; chuẩn bị trình bày 02/10/2026. Chưa chốt; ATP + giao thức đánh giá là phương án trước đó | [Bản trao đổi mới](../meeting/bioinformatics-application-pitch.md) · [Khảo sát hướng ứng dụng](../common/deep-research/reports/bioinformatics-application-topics.md) · [Khảo sát trước](../common/deep-research/reports/bioinformatics-topic-survey.md) |
+
+## Hướng đã loại khỏi phạm vi
+
+| Hướng | Lý do loại | Tài liệu giữ làm lịch sử |
+|---|---|---|
+| Peptide kích thích IL-6 | Dữ liệu công khai không có test độc lập; CONTRA-IL6 (2026) đã làm kiểm tra độc lập | [bioinformatics-topic-ideas-notion.md](../meeting/bioinformatics-topic-ideas-notion.md) |
+| Phân loại họ protein efflux (dự phòng) | Bỏ sau khi chốt hướng ATP ngày 02/10/2026; lớp SMR có thể quá ít chuỗi để chia fold | [bioinformatics-topic-survey.md](../common/deep-research/reports/bioinformatics-topic-survey.md) |
+| Hồ sơ bằng chứng protein bằng RAG · sàng lọc dataset GEO | Hai hướng đối chiếu trong bước khảo sát theo trọng tâm hệ thống; không chọn | [bioinformatics-application-topics.md](../common/deep-research/reports/bioinformatics-application-topics.md) · [bioinformatics-application-pitch.md](../meeting/bioinformatics-application-pitch.md) |
 
 Khi một ý tưởng đủ cụ thể để cần ghi chép riêng: tạo `docs/topics/<slug>/01-idea/`, thêm dòng vào bảng trên, và cập nhật sơ đồ cấu trúc trong CLAUDE.md nếu cần.

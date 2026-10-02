@@ -1,0 +1,29 @@
+<section id="protocol" data-transition="fade" style="background:#EAE6DE; color:#16222E; font-family:'IBM Plex Sans', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:32px">
+<div style="display:flex; flex-direction:column; gap:14px">
+<p style="font-size:26px; color:#1F5F6E; font-weight:600; letter-spacing:2px; text-transform:uppercase">6 · Cách đánh giá</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif; font-size:54px; font-weight:600; line-height:1.16">Khóa theo thứ tự, rồi báo kết quả theo vùng identity</h2>
+</div>
+<div style="display:flex; gap:32px">
+<div style="flex:1; display:flex; flex-direction:column; gap:14px; background:#FFFFFF; padding:32px; border:2px solid #2E7D8F; border-radius:14px">
+<h3 style="font-size:28px; font-weight:600; color:#1F5F6E">Năm chốt khóa, theo đúng thứ tự này</h3>
+<ol style="font-size:24px; line-height:1.45; color:#44505C">
+<li>Gom cụm protein theo độ tương đồng chuỗi (dự kiến 30%), chia tập <b>theo cụm protein</b> — không chia theo residue</li>
+<li>Chọn window, dropout, k và ngưỡng phân loại <b>trên train và validation</b>, rồi khóa toàn bộ cấu hình</li>
+<li>Đóng băng kho truy hồi, loại self-match, kho <b>không chứa nhãn test</b></li>
+<li>Mở test <b>đúng một lần</b> cho cấu hình đã khóa</li>
+<li>Bootstrap <b>theo protein</b>, vì hàng chục nghìn residue không phải các quan sát độc lập</li>
+</ol>
+</div>
+<div style="width:780px; display:flex; flex-direction:column; gap:14px">
+<h3 style="font-size:28px; font-weight:600; color:#1F5F6E">Và báo đường đánh đổi coverage–risk</h3>
+<div style="position:relative; width:780px; height:300px">
+<svg width="780" height="300" viewBox="0 0 780 300" aria-label="Đường đánh đổi giữa coverage và chất lượng: khi hệ thống chấp nhận càng nhiều protein, chất lượng trên phần được chấp nhận càng giảm"><rect x="70" y="30" width="3" height="220" fill="#C8C2B6"/><rect x="70" y="247" width="640" height="3" fill="#C8C2B6"/><line x1="73" y1="130" x2="400" y2="130" stroke="#C8C2B6" stroke-width="2" stroke-dasharray="7 6"/><line x1="400" y1="130" x2="400" y2="247" stroke="#C8C2B6" stroke-width="2" stroke-dasharray="7 6"/><polyline points="110,62 200,78 300,100 400,130 500,168 600,208 690,242" fill="none" stroke="#2E7D8F" stroke-width="5" stroke-linecap="round"/><circle cx="400" cy="130" r="11" fill="#C0631F"/></svg>
+<p style="position:absolute; left:0px; top:0px; width:560px; font-size:24px; color:#6A7480">Chất lượng trên phần được chấp nhận</p>
+<p style="position:absolute; left:424px; top:100px; width:340px; font-size:24px; color:#A4521A; font-weight:600">ngưỡng t, khóa trên validation</p>
+<p style="position:absolute; left:70px; top:258px; width:700px; font-size:24px; color:#6A7480">Coverage: tỷ lệ protein hệ thống chấp nhận</p>
+</div>
+</div>
+</div>
+<p style="position:absolute; left:128px; bottom:64px; width:1664px; font-size:24px; color:#6A7480">13 / 15 · Siết ngưỡng thì chất lượng trên phần còn lại phải tăng rõ — nếu không, identity chưa dùng được làm tín hiệu miền áp dụng và em báo đúng kết quả âm đó</p>
+<aside>Phần bên trái là xương sống của toàn đề tài: thứ tự khóa là bất biến. Phần bên phải là cách em chứng minh cảnh báo miền áp dụng có tác dụng thật: siết ngưỡng t thì coverage giảm nhưng chất lượng trên phần được chấp nhận phải tăng. Nếu đường này phẳng thì identity không phải tín hiệu tốt, và em sẽ báo đó là kết quả âm có kiểm soát thay vì im lặng đổi cách đo.</aside>
+</section>

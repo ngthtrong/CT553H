@@ -1,0 +1,55 @@
+<section id="evidence" data-transition="fade" style="background:#EAE6DE; color:#16222E; font-family:'IBM Plex Sans', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:28px">
+<div style="display:flex; flex-direction:column; gap:14px">
+<p style="font-size:26px; color:#1F5F6E; font-weight:600; letter-spacing:2px; text-transform:uppercase">2 · Vì sao vẫn cần làm</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif; font-size:50px; font-weight:600; line-height:1.16">Trong bài nền, lợi ích của truy hồi đang bị lẫn với lợi ích của dropout</h2>
+</div>
+<div style="display:flex; flex-direction:column; gap:12px; background:#FBEFE4; padding:28px; border-left:5px solid #C0631F; border-radius:12px">
+<h3 style="font-size:27px; font-weight:600; color:#A4521A">Và kho truy hồi có thể chứa họ hàng gần của mọi protein kiểm tra</h3>
+<p style="font-size:24px; line-height:1.45; color:#44505C">Phần Methods: 313 chuỗi RTK, chạy <b>một lần CD-HIT ở 40%</b>, còn 69 protein dùng để đánh giá, <b>244 chuỗi còn lại thành kho RAG</b>. Theo định nghĩa CD-HIT, chuỗi bị loại có identity từ ngưỡng trở lên với đại diện cụm của nó. Em <b>chưa xác nhận bằng alignment</b> — đây là câu hỏi kỹ thuật em xin thầy, không phải kết luận.</p>
+</div>
+<table style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:24px">
+<tr style="background:#16222E">
+<th style="width:36%; color:#F6F4EF; text-align:left">Nguồn trong bài</th>
+<th style="width:12.8%; color:#F6F4EF; text-align:left">Sens</th>
+<th style="width:12.8%; color:#F6F4EF; text-align:left">Spec</th>
+<th style="width:12.8%; color:#F6F4EF; text-align:left">Acc</th>
+<th style="width:12.8%; color:#F6F4EF; text-align:left">MCC</th>
+<th style="width:12.8%; color:#F6F4EF; text-align:left">AUC</th>
+</tr>
+<tr style="background:#FBFAF7">
+<td>Bảng 4 · dropout = 0,7</td>
+<td>0,9283</td>
+<td>0,9234</td>
+<td>0,9235</td>
+<td>0,2983</td>
+<td>0,9745</td>
+</tr>
+<tr style="background:#EAE6DE">
+<td>Bảng 4 · dropout = 0,9 <b>(dòng được chọn)</b></td>
+<td>0,9747</td>
+<td>0,9896</td>
+<td>0,9895</td>
+<td><b>0,6782</b></td>
+<td>0,9868</td>
+</tr>
+<tr style="background:#EAE6DE">
+<td>Bảng 5 · RAG_ProtTrans = <b>mô hình cuối</b></td>
+<td>0,9747</td>
+<td>0,9896</td>
+<td>0,9895</td>
+<td><b>0,6782</b></td>
+<td>0,9868</td>
+</tr>
+<tr style="background:#FBFAF7">
+<td>Bảng 5 · ProtTrans = baseline không RAG</td>
+<td>0,8498</td>
+<td>0,9433</td>
+<td>0,9434</td>
+<td>0,3181</td>
+<td>0,9497</td>
+</tr>
+</table>
+<p style="font-size:25px; line-height:1.4; color:#44505C">Hai dòng giữa <b>trùng từng chữ số</b>: mô hình cuối chính là dòng tốt nhất của một lượt quét dropout. Chỉ đổi dropout từ 0,7 sang 0,9 đã đưa MCC từ <b>0,2983 lên 0,6782</b>, trong khi baseline không RAG không được hưởng cùng lượt quét đó.</p>
+<p style="position:absolute; left:128px; bottom:64px; width:1664px; font-size:24px; color:#6A7480">7 / 15 · Đọc trực tiếp từ bài báo RTK_RAG (10.1021/acs.jcim.5c00766) · em dùng phần này để thiết kế giao thức của mình, không để kết luận về bài báo</p>
+<aside>Giữ giọng trung tính tuyệt đối ở slide này. Công thức nói: em không nói bài sai, em nói hai nguồn lợi ích đang bị trộn nên em muốn đo riêng từng nguồn. Chỉ vào hai dòng trùng nhau trước, rồi chỉ lên dòng dropout 0,7. Đó chính là lý do thiết kế thí nghiệm của em phải chạy ba nhánh trên cùng split, cùng encoder và cùng ngân sách tuning.</aside>
+</section>

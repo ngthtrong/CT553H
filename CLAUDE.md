@@ -82,20 +82,26 @@ Mỗi phiên Claude bắt đầu không nhớ gì về phiên trước, và thư
 
 ## Tài liệu chính
 
-- Danh sách đề tài đang cân nhắc: [docs/topics/README.md](docs/topics/README.md)
+- Danh sách đề tài: [docs/topics/README.md](docs/topics/README.md)
 - Nhật ký làm việc (mọi đề tài): [docs/common/work-log.md](docs/common/work-log.md) · Tài nguyên ngoài repo: [docs/common/resources.md](docs/common/resources.md) · GVHD: [docs/common/advisor/](docs/common/advisor/)
-- Buổi gặp GVHD gần nhất: [docs/meeting/session-01-prep.md](docs/meeting/session-01-prep.md) (đã soạn lại theo hướng tin sinh, buổi gặp 02/10/2026)
 
-### Hướng đang theo đuổi: tin sinh học thiên về ứng dụng/hệ thống (chưa có slug, chưa chốt)
+### Đề tài đã chốt: `rtk-atp-applicability` (02/10/2026)
 
-- Cập nhật mới nhất 01/10/2026: người dùng xác nhận **một người, 14 tuần**, RAG hoặc CNN/MCNN tùy bài toán; muốn ưu tiên hệ thống. ATP + giao thức đánh giá là phương án trước đó.
-- [Khảo sát hướng ứng dụng](docs/common/deep-research/reports/bioinformatics-application-topics.md) · [Bản trao đổi sáng 02/10](docs/meeting/bioinformatics-application-pitch.md). Ba hướng đang so sánh: hồ sơ bằng chứng protein/RAG, rà soát ATP/CNN-MCNN, sàng lọc dataset GEO/RAG.
+**Xây dựng hệ thống dự đoán vị trí gắn ATP ở protein RTK có cảnh báo miền áp dụng, dùng PLM–MCNN và truy hồi, đánh giá bằng giao thức kiểm soát rò rỉ dữ liệu.** Quyết định của sinh viên, **chưa có phê duyệt GVHD** — buổi gặp sáng 02/10/2026.
 
-- Báo cáo khảo sát, 4 đề xuất xếp hạng: [deep-research/reports/bioinformatics-topic-survey.md](docs/common/deep-research/reports/bioinformatics-topic-survey.md)
-- Trang so sánh 3 hướng để chuẩn bị trao đổi và nhập Notion: [bioinformatics-topic-ideas-notion.md](docs/meeting/bioinformatics-topic-ideas-notion.md)
-- Ghi chú theo nhánh: [deep-research/research_notes/bioinformatics-topic-survey/](docs/common/deep-research/research_notes/bioinformatics-topic-survey/)
-- Kết quả tự kiểm chứng mục 3.1 của báo cáo (RAG-msCNN): [deep-research/reports/rag-mscnn-verification.md](docs/common/deep-research/reports/rag-mscnn-verification.md)
-- Khi chọn được một đề xuất: đặt slug, tạo `docs/topics/<slug>/01-idea/`, chuyển báo cáo liên quan vào `02-survey/`.
+- **[Thuyết minh chi tiết](docs/topics/rtk-atp-applicability/04-proposal/topic-proposal.md)** — đọc file này trước, nó là bản chuẩn của đề tài
+- [Quyết định và phạm vi](docs/topics/rtk-atp-applicability/01-idea/topic-decision.md) · [Bài báo liên quan chính](docs/topics/rtk-atp-applicability/02-survey/key-papers.md) · [Dữ liệu đã tải và kiểm tra](docs/topics/rtk-atp-applicability/03-data/data-report.md)
+- Trình bày: [dàn ý và kịch bản nói](docs/meeting/2026-10-02-rtk-atp-slide-outline.md) · slide 13 trang: https://claude.ai/artifact/GGw1vJ2wpJKF63gmoBgLYT (mã nguồn [docs/meeting/session-01-slides/](docs/meeting/session-01-slides/))
+- Notion: [Đề tài chốt: Dự đoán vị trí gắn ATP ở RTK có cảnh báo miền áp dụng](https://app.notion.com/p/3ec486d98ebc8103aaa8fef200473880)
+- Dữ liệu tái tạo: `python3 ml/rtk-atp-applicability/preprocessing/prepare_data.py`
+- **Quy ước ngôn từ riêng của đề tài:** nói “kiểm soát rò rỉ”, không nói “chống rò rỉ”/“không rò rỉ”. Gọi identity là “tín hiệu miền áp dụng”, không gọi là “độ tin cậy”. Không tuyên bố “đầu tiên” hay “vượt SOTA”. Nhận xét mã nguồn RTK_RAG luôn kèm giới hạn “chưa kết luận đây là phiên bản tạo ra số liệu bài báo”.
+- Hai RQ: (1) truy hồi giúp bao nhiêu khi kiểm soát đồng dạng, có nhánh k-NN để tách nguồn lợi ích; (2) identity có dùng được làm tín hiệu miền áp dụng không. Việc kỹ thuật kế tiếp: **chạy alignment và gom cụm đồng dạng**, chưa làm.
+
+### Nền khảo sát dẫn tới quyết định (lịch sử, không phải bản đang dùng)
+
+- [Khảo sát 4 đề xuất tin sinh](docs/common/deep-research/reports/bioinformatics-topic-survey.md) · [khảo sát theo trọng tâm hệ thống](docs/common/deep-research/reports/bioinformatics-application-topics.md) · [ghi chú theo nhánh](docs/common/deep-research/research_notes/bioinformatics-topic-survey/)
+- Bằng chứng tự kiểm chứng: [chọn ngưỡng G-mean trong mã công khai](docs/common/deep-research/reports/rtk-rag-threshold-verification.md) · [RAG-msCNN](docs/common/deep-research/reports/rag-mscnn-verification.md)
+- Bản trao đổi và so sánh hướng trước khi chốt: [session-01-prep.md](docs/meeting/session-01-prep.md) · [bioinformatics-application-pitch.md](docs/meeting/bioinformatics-application-pitch.md) · [bioinformatics-topic-ideas-notion.md](docs/meeting/bioinformatics-topic-ideas-notion.md) · [bioinformatics-proposal-notion.md](docs/meeting/bioinformatics-proposal-notion.md)
 
 ### Đề tài: quản lý chi tiêu cá nhân (`docs/topics/personal-expense-management/`), **tạm dừng từ 01/10/2026**
 

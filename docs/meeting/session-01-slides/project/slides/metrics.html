@@ -1,0 +1,50 @@
+<section id="metrics" data-transition="fade" style="background:#EAE6DE; color:#16222E; font-family:'IBM Plex Sans', Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:40px">
+<div style="display:flex; flex-direction:column; gap:14px">
+<p style="font-size:26px; color:#1F5F6E; font-weight:600; letter-spacing:2px; text-transform:uppercase">Chỉ số đánh giá</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif; font-size:62px; font-weight:600; line-height:1.15">Dương chỉ 0,96%, nên AUPRC là chỉ số chính</h2>
+</div>
+<div style="display:flex; gap:32px">
+<table style="flex:1; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px">
+<tr style="background:#16222E">
+<th style="width:38%; color:#F6F4EF; text-align:left">Chỉ số</th>
+<th style="width:62%; color:#F6F4EF; text-align:left">Vai trò</th>
+</tr>
+<tr style="background:#FFFFFF">
+<td><b>AUPRC</b></td>
+<td><b>Chỉ số chính</b></td>
+</tr>
+<tr style="background:#FBFAF7">
+<td>MCC và F1</td>
+<td>Tính tại ngưỡng khóa từ validation</td>
+</tr>
+<tr style="background:#FFFFFF">
+<td>AUROC</td>
+<td>Chỉ báo phụ, để đối chiếu bài gốc</td>
+</tr>
+<tr style="background:#FBFAF7">
+<td>Sensitivity / specificity</td>
+<td>Giải thích mô hình bỏ sót hay báo nhầm</td>
+</tr>
+<tr style="background:#FFFFFF">
+<td>Khoảng tin cậy 95%</td>
+<td>Bootstrap theo protein</td>
+</tr>
+<tr style="background:#FBFAF7">
+<td>Micro và macro theo protein</td>
+<td>Báo cả hai nếu dữ liệu cho phép</td>
+</tr>
+</table>
+<div style="width:620px; display:flex; flex-direction:column; gap:28px">
+<div style="display:flex; flex-direction:column; gap:12px; background:#C0631F; padding:34px; border-radius:14px">
+<h3 style="font-size:28px; font-weight:600; color:#FFF3E8">Accuracy ở đây thấp hơn cả mô hình rỗng</h3>
+<p style="font-size:25px; line-height:1.4; color:#FFF3E8">Dự đoán "tất cả đều âm" đã cho accuracy <b>99,04%</b>. Trong Bảng 6 của bài nền, cả năm phương pháp đều thấp hơn mốc đó: 0,9851 · 0,9885 · 0,9814 · 0,9873 · 0,9895.</p>
+</div>
+<div style="display:flex; flex-direction:column; gap:12px; background:#F6F4EF; padding:34px; border-left:5px solid #2E7D8F; border-radius:14px">
+<h3 style="font-size:28px; font-weight:600; color:#1F5F6E">711 dương trên 73.270 âm</h3>
+<p style="font-size:26px; line-height:1.45; color:#44505C">Ở mức này, specificity trên 0,98 là tầm thường và AUROC gần như không phân biệt được các mô hình.</p>
+</div>
+</div>
+</div>
+<p style="position:absolute; left:128px; bottom:64px; width:1664px; font-size:24px; color:#6A7480">11 / 15 · Căn cứ chọn AUPRC: Saito và Rehmsmeier 2015, PLOS ONE · mốc 99,04% = 73.270/73.981 residue âm</p>
+<aside>Nếu thầy hỏi vì sao vẫn báo AUROC: để đối chiếu được với bảng số trong bài gốc, nhưng em không dùng nó làm kết luận. Nhắc lại bootstrap theo protein ở đây một lần nữa, vì nó là lý do khoảng tin cậy của em sẽ rộng hơn các bài chỉ bootstrap theo residue.</aside>
+</section>

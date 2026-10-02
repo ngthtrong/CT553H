@@ -1,0 +1,77 @@
+{
+  "source_commit": "b7bd4c2347c7d44d24ae3d13e42082ba6cd62627",
+  "datasets": {
+    "atp-549": {
+      "proteins": 549,
+      "unique_sequences": 549,
+      "residues": 213537,
+      "positive": 8502,
+      "negative": 205035,
+      "positive_fraction": 0.03981511400834516,
+      "min_length": 105,
+      "median_length": 356,
+      "max_length": 1164,
+      "over_1000_aa": 2,
+      "noncanonical_residues": {},
+      "zero_positive_proteins": 0
+    },
+    "rtk-69": {
+      "proteins": 69,
+      "unique_sequences": 69,
+      "residues": 73981,
+      "positive": 711,
+      "negative": 73270,
+      "positive_fraction": 0.009610575688352415,
+      "min_length": 488,
+      "median_length": 977,
+      "max_length": 2594,
+      "over_1000_aa": 30,
+      "noncanonical_residues": {},
+      "zero_positive_proteins": 0
+    },
+    "rag-244": {
+      "proteins": 244,
+      "unique_sequences": 243,
+      "residues": 263764,
+      "positive": null,
+      "negative": null,
+      "positive_fraction": null,
+      "min_length": 292,
+      "median_length": 993.0,
+      "max_length": 2554,
+      "over_1000_aa": 115,
+      "noncanonical_residues": {
+        "X": 36
+      },
+      "zero_positive_proteins": null
+    }
+  },
+  "unique_sequences_total": 861,
+  "exact_duplicate_groups": [
+    {
+      "sequence_sha256": "71504da4fa2a16ffcbb17fd7af6061e5838fd68d55d6f4e1b859cef64bc21cf5",
+      "members": [
+        "rag-244/A0M8S8",
+        "rag-244/Q07E37"
+      ]
+    }
+  ],
+  "conflicting_label_groups": [],
+  "cross_dataset_overlap": {
+    "atp-549 vs rtk-69": {
+      "exact_sequence_hashes": 0,
+      "shared_identifiers": []
+    },
+    "atp-549 vs rag-244": {
+      "exact_sequence_hashes": 0,
+      "shared_identifiers": []
+    },
+    "rtk-69 vs rag-244": {
+      "exact_sequence_hashes": 0,
+      "shared_identifiers": []
+    }
+  },
+  "validation_errors": [],
+  "homology_alignment_performed": false,
+  "train_validation_test_split_created": false
+}
