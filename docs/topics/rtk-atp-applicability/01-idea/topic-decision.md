@@ -1,5 +1,7 @@
 # Quyết định đề tài — 01/10/2026
 
+> **Cập nhật sau buổi gặp 02/10/2026:** RTK–ATP gần như chắc chắn sẽ được thay thế. Sinh viên đang **khảo sát song song hai hướng aging và cancer** để so sánh, chưa chọn hướng nào. Xem [biên bản lần 1](../../../meeting/session-01-minutes.md). Nội dung dưới đây lưu quyết định trước buổi gặp.
+
 Người thực hiện đã chốt hướng nghiên cứu và yêu cầu chuẩn bị trình bày ngày **02/10/2026**. Đây là quyết định của sinh viên; chưa ghi nhận phê duyệt của GVHD.
 
 **Tên đề tài:** Xây dựng hệ thống dự đoán vị trí gắn ATP ở protein RTK có cảnh báo miền áp dụng, sử dụng PLM–MCNN và truy hồi, được đánh giá bằng giao thức kiểm soát rò rỉ dữ liệu.

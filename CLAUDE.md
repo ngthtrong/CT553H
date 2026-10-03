@@ -83,19 +83,22 @@ Mỗi phiên Claude bắt đầu không nhớ gì về phiên trước, và thư
 ## Tài liệu chính
 
 - Danh sách đề tài: [docs/topics/README.md](docs/topics/README.md)
-- Nhật ký làm việc (mọi đề tài): [docs/common/work-log.md](docs/common/work-log.md) · Tài nguyên ngoài repo: [docs/common/resources.md](docs/common/resources.md) · GVHD: [docs/common/advisor/](docs/common/advisor/)
+- Nhật ký làm việc (mọi đề tài): [docs/common/work-log.md](docs/common/work-log.md) · Tài nguyên ngoài repo: [docs/common/resources.md](docs/common/resources.md)
+- **GVHD: Prof. QT Ho (Hồ Quốc Tuấn), ĐH Cần Thơ** — Prof. YY Ou **không phải** GVHD, chỉ là đồng tác giả thường xuyên. Xem [docs/common/advisor/README.md](docs/common/advisor/README.md) để biết các nhánh nghiên cứu của GVHD trước khi đánh giá tính mới của một hướng
 
-### Đề tài đã chốt: `rtk-atp-applicability` (02/10/2026)
+### Định hướng hiện tại: thay RTK–ATP, đang khảo sát song song aging và cancer (02/10/2026)
+
+**Trạng thái sau buổi gặp:** sinh viên **gần như chắc chắn sẽ đổi đề tài**; RTK–ATP coi như đã bỏ. Hai hướng GVHD gợi ý — **aging** và **cancer** — đang được **khảo sát song song để so sánh**, chưa chọn. **Mốc chặn: tuần 6 phải báo cáo lại đề tài với GVHD** (hiện tuần 4). Đọc [biên bản lần 1](docs/meeting/session-01-minutes.md) để nắm năm tiêu chí đóng góp và yêu cầu về cách trình bày, rồi [so sánh hai hướng aging và cancer](docs/common/deep-research/reports/aging-vs-cancer-topic-comparison.md) để biết khảo sát đã tới đâu. Các tài liệu RTK–ATP dưới đây giữ làm tham khảo cho hướng cũ.
 
 **Xây dựng hệ thống dự đoán vị trí gắn ATP ở protein RTK có cảnh báo miền áp dụng, dùng PLM–MCNN và truy hồi, đánh giá bằng giao thức kiểm soát rò rỉ dữ liệu.** Quyết định của sinh viên, **chưa có phê duyệt GVHD** — buổi gặp sáng 02/10/2026.
 
-- **[Thuyết minh chi tiết](docs/topics/rtk-atp-applicability/04-proposal/topic-proposal.md)** — đọc file này trước, nó là bản chuẩn của đề tài
+- **[Thuyết minh chi tiết](docs/topics/rtk-atp-applicability/04-proposal/topic-proposal.md)** — bản đề xuất RTK–ATP trước khi chuyển định hướng
 - [Quyết định và phạm vi](docs/topics/rtk-atp-applicability/01-idea/topic-decision.md) · [Bài báo liên quan chính](docs/topics/rtk-atp-applicability/02-survey/key-papers.md) · [Dữ liệu đã tải và kiểm tra](docs/topics/rtk-atp-applicability/03-data/data-report.md)
 - Trình bày: [dàn ý và kịch bản nói](docs/meeting/2026-10-02-rtk-atp-slide-outline.md) · slide 13 trang: https://claude.ai/artifact/GGw1vJ2wpJKF63gmoBgLYT (mã nguồn [docs/meeting/session-01-slides/](docs/meeting/session-01-slides/))
 - Notion: [Đề tài chốt: Dự đoán vị trí gắn ATP ở RTK có cảnh báo miền áp dụng](https://app.notion.com/p/3ec486d98ebc8103aaa8fef200473880)
 - Dữ liệu tái tạo: `python3 ml/rtk-atp-applicability/preprocessing/prepare_data.py`
 - **Quy ước ngôn từ riêng của đề tài:** nói “kiểm soát rò rỉ”, không nói “chống rò rỉ”/“không rò rỉ”. Gọi identity là “tín hiệu miền áp dụng”, không gọi là “độ tin cậy”. Không tuyên bố “đầu tiên” hay “vượt SOTA”. Nhận xét mã nguồn RTK_RAG luôn kèm giới hạn “chưa kết luận đây là phiên bản tạo ra số liệu bài báo”.
-- Hai RQ: (1) truy hồi giúp bao nhiêu khi kiểm soát đồng dạng, có nhánh k-NN để tách nguồn lợi ích; (2) identity có dùng được làm tín hiệu miền áp dụng không. Việc kỹ thuật kế tiếp: **chạy alignment và gom cụm đồng dạng**, chưa làm.
+- Hai RQ: (1) truy hồi giúp bao nhiêu khi kiểm soát đồng dạng, có nhánh k-NN để tách nguồn lợi ích; (2) identity có dùng được làm tín hiệu miền áp dụng không. Việc kỹ thuật từng dự kiến cho hướng cũ: **chạy alignment và gom cụm đồng dạng**, chưa làm; không phải ưu tiên hiện tại.
 
 ### Nền khảo sát dẫn tới quyết định (lịch sử, không phải bản đang dùng)
 

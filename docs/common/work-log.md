@@ -4,6 +4,64 @@
 
 ---
 
+## 02/10/2026 (làm rõ định hướng) — gần như chắc chắn đổi RTK–ATP, ưu tiên cancer
+
+- Sinh viên xác nhận: **đề tài hiện tại gần như chắc chắn sẽ bị đổi, hiện đang thiên về cancer**. Bài toán cụ thể chưa chốt; neoantigen mới là nhánh đã được nhắc tới để khảo sát.
+- Cập nhật biên bản lần 1, danh sách đề tài, ghi chú quyết định RTK–ATP và CLAUDE.md để phản ánh định hướng này. Cách diễn đạt “chưa quyết định đổi hay giữ” ở các mục cũ không còn phản ánh đúng mức độ ưu tiên hiện tại.
+- Bước tiếp theo: ưu tiên xác định bài toán cancer khả thi, dữ liệu và đóng góp để chuẩn bị báo cáo tuần 6.
+
+## 02/10/2026 (sau buổi gặp) — biên bản GVHD lần 1: không bị từ chối nhưng được khuyên tìm hướng khác; mốc tuần 6
+
+**Đã làm**
+- Ghi [biên bản buổi gặp lần 1](../meeting/session-01-minutes.md) từ ghi chép của sinh viên: nhận xét định hướng, yêu cầu về cách trình bày và động cơ nghiên cứu, yêu cầu phân tích history research theo ba bước, **năm tiêu chí đánh giá đóng góp**, mốc thời gian, hướng xử lý dự kiến, câu hỏi cho lần trao đổi tiếp.
+- Bổ sung vào biên bản phần thông tin người dùng cung cấp sau đó: **mốc tuần 4 / tuần 6 / tuần 14–15** (mục 5) và **hướng đang nghiêng về: cancer, nhánh neoantigen** (mục 6).
+- Cập nhật trạng thái `rtk-atp-applicability` trong [docs/topics/README.md](../topics/README.md): "đã chốt hướng" → "đang xem xét lại sau buổi gặp 1".
+- Tra danh mục công bố GVHD để hiểu hai hướng được gợi ý. Những gì tra được, **ghi ở đây như ghi chú khảo sát, không đưa vào biên bản vì là suy luận chưa hỏi lại thầy**:
+  - **Aging:** công trình mới nhất của Prof Ho là **SirtSAGE** (2026, *J. Comput. Biophys. Chem.*) — Graph Attention cho họ protein **sirtuin**, họ protein trung tâm của nghiên cứu lão hóa; cùng nhánh có **NAD_MCNN** (Prof Ou, 2025, vị trí gắn NAD⁺ của deacetylase). SirtSAGE dùng Graph Attention **chứ không phải mCNN** — tức nhóm đang tự đi ra khỏi PLM–mCNN. Không có từ "aging" nào khác trong hai danh mục; các lần grep khớp đều là "imaging"/"leveraging".
+  - **Cancer:** **NeoGen-BC** (Prof Ou, 2026, *BBRC*, neoantigen dùng chung cho ung thư vú) và **DeepNeoAG** (2024, *IJBM*, epitope neoantigen từ kháng nguyên melanoma).
+  - **Cho tiêu chí XAI:** **BERT-Promoter** (2022, *Comput. Biol. Chem.*, 124 trích dẫn) dùng SHAP — có mẫu tham chiếu ngay trong nhóm.
+
+**Nội dung GVHD nêu (theo ghi chép sinh viên)**
+- Đề tài **không bị từ chối**, nhưng nếu có thể thì nên tìm đề tài khác; **aging** hoặc **cancer** phù hợp hơn ATP.
+- Trình bày phải rõ bài toán và **đặc biệt là lý do vì sao cần nghiên cứu** — vấn đề tồn đọng nào cần giải quyết.
+- **History research phải phân tích theo ba bước**: phân nhóm theo phương pháp → đánh giá ưu/nhược từng nhóm và từng công trình → đối chiếu với đề tài đã chọn để chỉ rõ cải thiện ở điểm nào.
+- **Năm tiêu chí đóng góp**: (1) tính mới của đề tài/hướng đi; (2) đề xuất hoặc cải tiến phương pháp (CNN → mCNN, cải tiến mCNN); (3) sử dụng phương pháp mới — minh họa bằng chuyển dịch PSSM (ma trận, hạn chế về tính thứ tự chuỗi aa và thời gian so sánh) → PLM, kèm câu hỏi liệu có đi xa hơn PLM được không; (4) **XAI** — giải thích được vì sao mô hình đạt kết quả cao cũng là đóng góp; (5) **bắt buộc có ứng dụng/website** vì là luận văn khoa Kỹ thuật phần mềm.
+- **Mốc:** hiện tuần 4; **tuần 6 báo cáo lại đề tài rõ ràng**; tuần 14 hoặc 15 là tuần báo cáo.
+
+**Quyết định của sinh viên**
+- **Chưa chốt** đổi hay giữ đề tài. **Nghiêng về cancer (neoantigen)**; aging và RTK–ATP điều chỉnh phạm vi chưa bị loại nhưng tạm không khảo sát song song vì chỉ còn hai tuần tới mốc tuần 6.
+- **Năm câu hỏi còn lại ở §12 thuyết minh coi là đã lỗi thời** (đều gắn với phạm vi RTK–ATP); chỉ giữ lại câu về nguồn GPU. Ghi rõ trong biên bản là đã cân nhắc và gác lại, không phải bỏ sót.
+- **Claude đề xuất, người dùng chưa xác nhận:** tạm hoãn việc kỹ thuật của RTK–ATP (chạy alignment và gom cụm đồng dạng), và dừng đồng bộ `topic-proposal.md` với Notion cùng việc điền tên/MSSV vào slide RTK–ATP. Lý do đề xuất: không nên đổ thêm công vào hướng có thể bị bỏ khi chỉ còn hai tuần tới mốc tuần 6. **Chưa phải quyết định đã chốt của sinh viên.**
+- Trạng thái "đã chốt 02/10/2026" đọc lại là "sinh viên tự chốt trước buổi gặp"; **không có phê duyệt GVHD** cho RTK–ATP.
+
+**Lưu ý về chính biên bản này**
+- Bản đầu do Claude soạn có thêm một mục tự đối chiếu RTK–ATP với năm tiêu chí (kết luận "đạt 1/5") và một mục suy luận aging = sirtuin. **File đã được viết lại lúc 15:08 theo giọng dè dặt hơn**, bỏ hai mục đó và nêu rõ ghi chép không đủ căn cứ để kết luận "chỉ đạt 1/5" vì GVHD không chấm điểm từng tiêu chí. Bản 15:08 là bản đang dùng; phần đối chiếu và suy luận chỉ còn ở nhật ký này như ghi chú khảo sát.
+- Cùng lúc đó [danh sách đề tài](../topics/README.md) cũng được bỏ kết luận "chỉ đạt 1/5 tiêu chí". **Ba điểm sau là diễn giải của Claude, không được dùng như kết luận của buổi họp hay quyết định của sinh viên:** chấm đạt/không đạt theo năm tiêu chí · thu hẹp "aging/cancer" thành "sirtuin/neoantigen" · đề xuất tạm hoãn việc kỹ thuật. Biên bản là căn cứ cho nội dung buổi gặp; nhật ký này chỉ ghi lại quá trình khảo sát.
+- Điều người dùng nói rõ và đã ghi vào biên bản: **mốc tuần 4 / tuần 6 / tuần 14–15**, **hướng nghiêng về cancer (neoantigen)**, và **năm câu hỏi §12 không còn liên quan**. Những phần khác trong mục này là ghi chú, không phải lời GVHD.
+
+**Xác nhận lại với người dùng bằng câu hỏi trắc nghiệm (cuối phiên)**
+- **GVHD là Prof. QT Ho (Hồ Quốc Tuấn), ĐH Cần Thơ** — Prof. YY Ou **không phải** GVHD. Repo trước đó không chỗ nào nói rõ điều này. Đã ghi vào [advisor/README.md](advisor/README.md) và [CLAUDE.md](../../CLAUDE.md).
+- **Phát hiện ngược chiều với hướng đang ưu tiên:** trong **14 công trình** của GVHD **không có công trình nào về cancer/tumor/neoantigen**. NeoGen-BC và DeepNeoAG thuộc danh mục **Prof Ou**. Ngược lại, **aging có mặt ở công trình mới nhất của GVHD** — SirtSAGE (2026, Graph Attention cho họ sirtuin). GVHD cũng có tiền lệ XAI riêng: BERT-Promoter (2022, SHAP). Giới hạn: danh mục chỉ là bản scrape 14 bài, có thể chưa đầy đủ.
+- Thầy khuyên **thay hẳn** đề tài, không phải "tìm thêm để so sánh" — đã sửa cách ghi ở mục 1 biên bản.
+- Kỳ vọng về năm tiêu chí: **càng đạt nhiều càng tốt**, không phải chọn một trục. Đã bỏ cách diễn giải "tiêu chí 5 bắt buộc, 1–4 là lựa chọn" khỏi biên bản, thay bằng kỳ vọng thật, kèm lưu ý 8–9 tuần là rủi ro cao và việc cần làm là hỏi GVHD về **thứ tự ưu tiên**.
+- Mức chắc chắn: **gần như chắc chắn đổi sang cancer**. Ba file (CLAUDE.md, topic-decision.md, biên bản) giờ nói giống nhau; trước đó biên bản ghi "chưa phải quyết định" trong khi CLAUDE.md ghi "gần như chắc chắn".
+
+**Khảo sát bước đầu hai hướng (cuối phiên)**
+- Người dùng chọn **khảo sát cả hai hướng aging và cancer rồi so sánh**, không chọn sẵn một hướng. Đã sửa lại 4 file cho khớp (trước đó ghi "gần như chắc chắn cancer").
+- Viết [so sánh hai hướng](deep-research/reports/aging-vs-cancer-topic-comparison.md) trên 8 tiêu chí (5 tiêu chí GVHD + dữ liệu/khớp GVHD/khả thi 8–9 tuần). **Phát hiện aging có hai nhánh con khác nhau hẳn về rủi ro dữ liệu:**
+  - **A1 sirtuin:** DeepSIRT (2021, PSSM+1D-CNN, acc 76,69% / MCC 0,49) → **SirtSAGE** (2026, GVHD, **ESM-2 + GATv2 + pLDDT làm cổng tin cậy**). Khớp GVHD nhất nhưng **tính mới thấp** (thầy vừa công bố) và **dữ liệu DeepSIRT không truy cập được** — tự kiểm bằng curl, `http://140.138.155.216/deepsirt/` hết thời gian chờ. Trang SirtSAGE trả HTTP 403 nên chưa đọc được toàn văn.
+  - **A2 cellular senescence:** **SenSeqNet** (2026, *Aging Cell*, ESM-2 + LSTM–CNN, acc 86,43% test độc lập), dữ liệu từ **CellAge + UniProtKB**, housekeeping gene làm mẫu âm, **mã nguồn và benchmark công khai trên GitHub**.
+- **Giả thuyết đáng kiểm nhất:** SenSeqNet báo **238.634 dương / 217.696 âm** trong khi CellAge chỉ có cỡ vài trăm gene → có thể mở rộng mạnh qua isoform/ortholog → **nghi rò rỉ đồng dạng train/test**, con số 86,43% có thể lạc quan. Kiểm được trong 1–2 ngày bằng cách đếm protein gốc không trùng và chạy CD-HIT/MMseqs2 ở 30%/40%. **Chưa kiểm — là giả thuyết, không phải phát hiện.**
+- **Hướng B neoantigen:** đọc `[PDF]` NeoGen-BC trong repo — PLM + RAG + **MCNN-BiLSTM** + cửa sổ trượt + **ProtGPT2 có kiểm soát** + lọc hóa lý + xác nhận cấu trúc; **AUC 0,9053** test độc lập; bắt được neoantigen MHC-II dùng chung từ **ESR1 Y537S/D538G** và **PIK3CA H1047R** mà NetMHCIIpan 4.3 bỏ sót; đồng tác giả lâm sàng ở BV Cựu chiến binh Đài Bắc. **Dữ liệu là mặt mạnh nhất của hướng B:** NEPdb hơn 17.000 bản ghi, TumorAgDB2.0 187.223, **TESLA trên Synapse syn21048999**, bảng đặc trưng trên Figshare, mã NeoRanking trên GitHub, benchmark NCI-test/TESLA/HiTIDE (riêng HiTIDE thô nằm trong EGA kiểm soát truy cập). Nhưng **rất đông** (NeoTImmuML 2025, TransNRank 2026, dòng NetMHCpan) và bài *Immunity* 2023 **đã làm sẵn phần harmonize dữ liệu + so sánh ML** — tức trục "dọn giao thức đánh giá" ở nhánh này đã có người làm.
+- **Nhận định bước đầu (của sinh viên, chưa hỏi GVHD):** **A2 senescence** đáng đào sâu nhất vì dung hòa được khớp-GVHD và dữ liệu-sẵn, lại có khoảng trống kiểm được nhanh. Kèm hai cảnh báo: khoảng trống A2 còn là giả thuyết; và **đóng góp dạng "kiểm toán giao thức của bài trước" chính là trục đã làm RTK–ATP yếu**, nên nếu chọn A2 thì không được dừng ở kiểm toán.
+
+**Còn dở**
+- **Việc chặn mọi việc khác: chốt hướng trước mốc tuần 6** (còn khoảng hai tuần).
+- Chưa hỏi lại GVHD: "cancer" cụ thể là bài toán/dữ liệu nào; có đề tài đang mở trong nhóm để nhận không; **hình thức và mức chi tiết báo cáo tuần 6**; các tiêu chí 1–4 áp dụng thế nào cho phạm vi luận văn; phạm vi tối thiểu của ứng dụng/website; nguồn GPU.
+- Chưa khảo sát hướng neoantigen. Hai việc đầu tiên: **đọc NeoGen-BC và DeepNeoAG để biết nhóm đã làm gì**, và **kiểm tra dữ liệu công khai có sẵn hay không** — việc thứ hai có thể loại hướng đi sớm nhất (hướng IL-6 từng bị loại đúng vì lý do này).
+- Hai việc phải làm cho bất kỳ hướng nào: dựng **history research theo ba bước**, và viết lại **phần mở đầu theo động cơ nghiên cứu**.
+- Kế hoạch 14 tuần trong thuyết minh **không còn khớp mốc thực tế**: còn khoảng 10–11 tuần, phần thực hiện thật khoảng 8–9 tuần, phải chứa cả ứng dụng/website.
+
 ## 02/10/2026 (tiếp) — khảo sát tính cấp thiết và tình hình nghiên cứu, cập nhật Notion và slide (`rtk-atp-applicability`)
 
 **Đã làm**
