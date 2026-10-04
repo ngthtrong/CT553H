@@ -15,7 +15,7 @@
 
 ## Cấu trúc thư mục
 
-Dự án là một monorepo **nhiều đề tài song song**: đây vẫn là giai đoạn ý tưởng, nên có thể có nhiều ý tưởng đề tài (khác lĩnh vực, khác bộ dữ liệu) được phát triển đồng thời trước khi chốt một. Mỗi đề tài đi theo quy trình riêng: ý tưởng → khảo sát → dữ liệu → đề cương → thiết kế → thí nghiệm ML → hệ thống → luận văn. Tài liệu, dữ liệu và code dùng riêng cho một đề tài nằm trong thư mục con đặt theo **slug đề tài** (chữ thường, không dấu, gạch ngang, tiếng Anh, ví dụ `personal-expense-management`); tài liệu dùng chung cho mọi đề tài (nhật ký, tài nguyên, hướng dẫn, thông tin GVHD) nằm ở `docs/common/`.
+Dự án là một monorepo **nhiều đề tài song song**: đây vẫn là giai đoạn ý tưởng, nên có thể có nhiều ý tưởng đề tài (khác lĩnh vực, khác bộ dữ liệu) được phát triển đồng thời trước khi chốt một. Mỗi đề tài đi theo quy trình riêng: ý tưởng → khảo sát → dữ liệu → đề cương → thiết kế → thí nghiệm ML → hệ thống → luận văn. Tài liệu, dữ liệu và code dùng riêng cho một đề tài nằm trong thư mục con đặt theo **slug đề tài** (chữ thường, không dấu, gạch ngang, tiếng Anh, ví dụ `rtk-atp-applicability`); tài liệu dùng chung cho mọi đề tài (nhật ký, tài nguyên, hướng dẫn, thông tin GVHD) nằm ở `docs/common/`.
 
 Thư mục/file đánh dấu *(chưa có)* chỉ tạo khi bắt đầu giai đoạn đó hoặc khi đề tài đó thực sự cần, không tạo sẵn thư mục rỗng. Chỉ có **một** đề tài đi tới `backend/`, `frontend/`, `ml-service/`, `thesis/` — đề tài đã được chốt.
 
@@ -31,7 +31,7 @@ CT553H/
 │   ├── meeting/                  Biên bản gặp GVHD (dùng chung, một buổi có thể nói nhiều đề tài): session-NN-prep.md (trước), session-NN-minutes.md (sau), session-NN-slides/ (mã nguồn slide artifact)
 │   └── topics/                   Một thư mục con theo slug cho mỗi ý tưởng đề tài
 │       ├── README.md                 Danh sách đề tài đang cân nhắc và trạng thái
-│       └── <slug>/                   Ví dụ: personal-expense-management/
+│       └── <slug>/                   Ví dụ: rtk-atp-applicability/
 │           ├── 01-idea/                  Brainstorm, tóm tắt quyết định riêng đề tài này
 │           ├── 02-survey/                Khảo sát app/thị trường, tài liệu và bằng chứng (literature-survey.md)
 │           ├── 03-data/                  Báo cáo EDA, mô tả dữ liệu, chất lượng nhãn
@@ -65,7 +65,7 @@ CT553H/
 - **Dữ liệu tái tạo được:** mọi file trong `data/<slug>/processed/` phải sinh lại được bằng script trong `ml/<slug>/preprocessing/`. Chạy từ thư mục gốc: `python ml/<slug>/preprocessing/clean_data.py`.
 - **Thí nghiệm tái lập được:** cố định seed, ghi config và kết quả ra file trong `ml/<slug>/experiments/`; số liệu đưa vào tài liệu phải trỏ tới file kết quả tương ứng.
 - **Tách huấn luyện và phục vụ:** `ml/` để nghiên cứu, `ml-service/` chỉ nạp mô hình đã xuất ra.
-- **Tên file/thư mục:** chữ thường, không dấu, tiếng Anh, nối bằng gạch ngang (`data-report.md`, `personal-expense-management/`). Liên kết giữa các tài liệu dùng đường dẫn tương đối.
+- **Tên file/thư mục:** chữ thường, không dấu, tiếng Anh, nối bằng gạch ngang (`data-report.md`, `rtk-atp-applicability/`). Liên kết giữa các tài liệu dùng đường dẫn tương đối.
 - **Khi di chuyển hoặc đổi tên file:** cập nhật các liên kết trỏ tới nó và sơ đồ cấu trúc ở trên.
 - **Đề tài mới:** tạo `docs/topics/<slug>/01-idea/` khi ý tưởng đủ cụ thể để cần tài liệu riêng (không phải ngay khi vừa nảy ra ý); thêm một dòng vào `docs/topics/README.md`. Chỉ tạo `data/<slug>/` và `ml/<slug>/` khi thực sự có dữ liệu/code cho đề tài đó.
 
@@ -106,9 +106,8 @@ Mỗi phiên Claude bắt đầu không nhớ gì về phiên trước, và thư
 - Bằng chứng tự kiểm chứng: [chọn ngưỡng G-mean trong mã công khai](docs/common/deep-research/reports/rtk-rag-threshold-verification.md) · [RAG-msCNN](docs/common/deep-research/reports/rag-mscnn-verification.md)
 - Bản trao đổi và so sánh hướng trước khi chốt: [session-01-prep.md](docs/meeting/session-01-prep.md) · [bioinformatics-application-pitch.md](docs/meeting/bioinformatics-application-pitch.md) · [bioinformatics-topic-ideas-notion.md](docs/meeting/bioinformatics-topic-ideas-notion.md) · [bioinformatics-proposal-notion.md](docs/meeting/bioinformatics-proposal-notion.md)
 
-### Đề tài: quản lý chi tiêu cá nhân (`docs/topics/personal-expense-management/`), **tạm dừng từ 01/10/2026**
+### Đề tài: quản lý chi tiêu cá nhân (`personal-expense-management`) — **đã bỏ, tài liệu đã xóa 04/10/2026**
 
-- Đề tài và các quyết định: [01-idea/brainstorm.md](docs/topics/personal-expense-management/01-idea/brainstorm.md)
-- Hiện trạng dữ liệu: [03-data/data-report.md](docs/topics/personal-expense-management/03-data/data-report.md)
-- Tài liệu và bằng chứng cho từng khẳng định: [02-survey/literature-survey.md](docs/topics/personal-expense-management/02-survey/literature-survey.md)
-- Đề cương (bản nháp): [04-proposal/proposal.tex](docs/topics/personal-expense-management/04-proposal/proposal.tex)
+- Toàn bộ `docs/topics/personal-expense-management/` (brainstorm, khảo sát, báo cáo dữ liệu, đề cương LaTeX, slide) **đã bị xóa khỏi thư mục làm việc** ngày 04/10/2026. Muốn xem lại thì lấy từ lịch sử git (commit `3a0c6bf` trở về trước).
+- Còn sót lại trong repo: code Python ở `ml/personal-expense-management/` (`preprocessing/clean_data.py`, hai thí nghiệm `rq1-quick-check`, `rq2-baseline-recall`) và các lệnh chạy tương ứng trong [AGENTS.md](AGENTS.md). Chưa quyết định xóa hay giữ.
+- Dòng còn tham chiếu tới đề tài này: [docs/topics/README.md](docs/topics/README.md) (bảng đề tài), [docs/common/resources.md](docs/common/resources.md) (slide lưu trữ, cache embedding, dữ liệu, LaTeX, trang Notion).
