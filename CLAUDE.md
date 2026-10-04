@@ -24,6 +24,7 @@ CT553H/
 ├── docs/
 │   ├── common/                   Dùng chung cho mọi đề tài
 │   │   ├── advisor/                  Công bố, chuyên môn, tài liệu khoá học của GVHD (dùng để đánh giá độ khớp mọi đề tài)
+│   │   ├── biology-basics/           Lộ trình tự học sinh học nền (PTM, cancer, aging) cho sinh viên CNTT: learning-roadmap.md; papers/ (chưa có) chứa PDF tải về
 │   │   ├── deep-research/            Khảo sát sâu nhiều nguồn: reports/ (báo cáo tổng hợp), research_notes/<chủ-đề>/ (ghi chú theo nhánh). Chuyển sang docs/topics/<slug>/02-survey/ khi đề tài có slug
 │   │   ├── resources.md              Artifact trên claude.ai, cache và môi trường cục bộ (không nằm trong git)
 │   │   ├── work-log.md               Nhật ký theo phiên: đã làm gì, quyết định gì, còn dở gì (mọi đề tài)
@@ -88,7 +89,7 @@ Mỗi phiên Claude bắt đầu không nhớ gì về phiên trước, và thư
 
 ### Định hướng hiện tại: thay RTK–ATP, đang khảo sát song song aging và cancer (02/10/2026)
 
-**Trạng thái sau buổi gặp:** sinh viên **gần như chắc chắn sẽ đổi đề tài**; RTK–ATP coi như đã bỏ. Hai hướng GVHD gợi ý — **aging** và **cancer** — đang được **khảo sát song song để so sánh**, chưa chọn. **Mốc chặn: tuần 6 phải báo cáo lại đề tài với GVHD** (hiện tuần 4). Đọc [biên bản lần 1](docs/meeting/session-01-minutes.md) để nắm năm tiêu chí đóng góp và yêu cầu về cách trình bày, rồi **[khảo sát sâu aging và cancer](docs/common/deep-research/reports/aging-cancer-deep-dive.md)** (02/10/2026, bản đang dùng: các ứng viên A–F, sáu đính chính bắt buộc, câu hỏi cho GVHD tuần 6). [Bản so sánh lần 1](docs/common/deep-research/reports/aging-vs-cancer-topic-comparison.md) đã bị bản khảo sát sâu thay thế, chỉ giữ làm lịch sử.
+**Trạng thái sau buổi gặp:** sinh viên **gần như chắc chắn sẽ đổi đề tài**; RTK–ATP coi như đã bỏ. Hai hướng GVHD gợi ý — **aging** và **cancer** — đang được **khảo sát song song để so sánh**, chưa chọn. **Mốc chặn: tuần 6 phải báo cáo lại đề tài với GVHD** (hiện tuần 4). Đọc [biên bản lần 1](docs/meeting/session-01-minutes.md) để nắm năm tiêu chí đóng góp và yêu cầu về cách trình bày, rồi **[khảo sát sâu aging và cancer](docs/common/deep-research/reports/aging-cancer-deep-dive.md)** (02/10/2026, bản đang dùng: các ứng viên A–F, sáu đính chính bắt buộc, câu hỏi cho GVHD tuần 6). Kiến thức sinh học nền để đọc các tài liệu này: [lộ trình tự học](docs/common/biology-basics/learning-roadmap.md). [Bản so sánh lần 1](docs/common/deep-research/reports/aging-vs-cancer-topic-comparison.md) đã bị bản khảo sát sâu thay thế, chỉ giữ làm lịch sử.
 
 ### Hướng cũ RTK–ATP (`docs/topics/rtk-atp-applicability/`), **coi như đã bỏ từ 02/10/2026**
 

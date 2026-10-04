@@ -4,6 +4,12 @@
 
 ---
 
+## 04/10/2026 — lộ trình tự học sinh học nền cho hướng aging và cancer
+
+- Thêm [lộ trình tự học sinh học nền](biology-basics/learning-roadmap.md): lớp nền (central dogma, amino acid, enzyme, PTM), cancer (hallmarks, kinase), aging (hallmarks, sirtuin, acetyl hóa), thực hành UniProt/dbPTM, lịch khoảng 10 ngày trước báo cáo tuần 6, gắn với ứng viên A và B của [khảo sát sâu](deep-research/reports/aging-cancer-deep-dive.md).
+- **Còn dở:** chưa tải được PDF nào vì mạng của môi trường cloud chặn các host xuất bản; danh sách file cần tải nằm ở mục 8 của lộ trình. Link và DOI trong lộ trình chưa được mở lại để kiểm.
+- Chưa biết mức nền sinh học của sinh viên; đã hỏi để điều chỉnh độ sâu.
+
 ## 02/10/2026 (làm rõ định hướng) — gần như chắc chắn đổi RTK–ATP, ưu tiên cancer
 
 - Sinh viên xác nhận: **đề tài hiện tại gần như chắc chắn sẽ bị đổi, hiện đang thiên về cancer**. Bài toán cụ thể chưa chốt; neoantigen mới là nhánh đã được nhắc tới để khảo sát.
