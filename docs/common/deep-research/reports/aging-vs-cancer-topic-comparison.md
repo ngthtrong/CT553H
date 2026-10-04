@@ -1,5 +1,7 @@
 # So sánh hai hướng GVHD gợi ý: aging và cancer
 
+> **Đã bị thay thế** bởi [khảo sát sâu aging và cancer](aging-cancer-deep-dive.md) (02/10/2026). Một số khẳng định dưới đây đã bị đảo lại, xem mục 2 của bản khảo sát sâu. Giữ làm lịch sử.
+>
 > **Bản khảo sát lần 1, ngày 02/10/2026.** Phục vụ việc chọn đề tài mới sau [buổi gặp GVHD lần 1](../../../meeting/session-01-minutes.md), trước mốc **báo cáo lại đề tài ở tuần 6** (hiện tuần 4).
 >
 > **Trạng thái:** khảo sát bước đầu, **chưa đủ để chốt đề tài**. Mỗi khẳng định đều có cột nguồn và mức kiểm chứng. Chỗ nào chưa kiểm được thì ghi rõ là chưa kiểm, không suy đoán thành kết luận.
