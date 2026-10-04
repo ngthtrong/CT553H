@@ -88,7 +88,11 @@ Mỗi phiên Claude bắt đầu không nhớ gì về phiên trước, và thư
 
 ### Định hướng hiện tại: thay RTK–ATP, đang khảo sát song song aging và cancer (02/10/2026)
 
-**Trạng thái sau buổi gặp:** sinh viên **gần như chắc chắn sẽ đổi đề tài**; RTK–ATP coi như đã bỏ. Hai hướng GVHD gợi ý — **aging** và **cancer** — đang được **khảo sát song song để so sánh**, chưa chọn. **Mốc chặn: tuần 6 phải báo cáo lại đề tài với GVHD** (hiện tuần 4). Đọc [biên bản lần 1](docs/meeting/session-01-minutes.md) để nắm năm tiêu chí đóng góp và yêu cầu về cách trình bày, rồi [so sánh hai hướng aging và cancer](docs/common/deep-research/reports/aging-vs-cancer-topic-comparison.md) để biết khảo sát đã tới đâu. Các tài liệu RTK–ATP dưới đây giữ làm tham khảo cho hướng cũ.
+**Trạng thái sau buổi gặp:** sinh viên **gần như chắc chắn sẽ đổi đề tài**; RTK–ATP coi như đã bỏ. Hai hướng GVHD gợi ý — **aging** và **cancer** — đang được **khảo sát song song để so sánh**, chưa chọn. **Mốc chặn: tuần 6 phải báo cáo lại đề tài với GVHD** (hiện tuần 4). Đọc [biên bản lần 1](docs/meeting/session-01-minutes.md) để nắm năm tiêu chí đóng góp và yêu cầu về cách trình bày, rồi **[khảo sát sâu aging và cancer](docs/common/deep-research/reports/aging-cancer-deep-dive.md)** (02/10/2026, bản đang dùng: các ứng viên A–F, sáu đính chính bắt buộc, câu hỏi cho GVHD tuần 6). [Bản so sánh lần 1](docs/common/deep-research/reports/aging-vs-cancer-topic-comparison.md) đã bị bản khảo sát sâu thay thế, chỉ giữ làm lịch sử.
+
+### Hướng cũ RTK–ATP (`docs/topics/rtk-atp-applicability/`), **coi như đã bỏ từ 02/10/2026**
+
+Các tài liệu dưới đây chỉ giữ làm tham khảo.
 
 **Xây dựng hệ thống dự đoán vị trí gắn ATP ở protein RTK có cảnh báo miền áp dụng, dùng PLM–MCNN và truy hồi, đánh giá bằng giao thức kiểm soát rò rỉ dữ liệu.** Quyết định của sinh viên, **chưa có phê duyệt GVHD** — buổi gặp sáng 02/10/2026.
 
