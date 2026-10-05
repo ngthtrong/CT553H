@@ -4,6 +4,13 @@
 
 ---
 
+## 04/10/2026 — bộ bài giảng HTML tự học: chốt danh mục 15 bài, viết mẫu bài 02 và 09
+
+- Chốt danh mục 15 bài trong `docs/common/lectures/` (dùng chung cho cả hai hướng aging và cancer, chưa gắn slug): A. sinh học nền 01–06, B. khung bài toán và đánh giá 07–09, C. mô hình 10–15 (NN, CNN→MCNN, PLM, truy hồi, XAI, đọc bài báo). Sinh viên chọn: đủ 15 bài, **có bài XAI**, **tra web các chi tiết dễ sai**, viết mẫu 02 + 09 trước.
+- Đã viết [bài 02 — enzyme và PTM](lectures/02-enzymes-and-ptm.html) và [bài 09 — rò rỉ dữ liệu và chuỗi đồng dạng](lectures/09-leakage-and-homology.html). Mỗi bài là HTML độc lập, chạy offline, có chế độ tối, có phần tương tác nhỏ, gắn nhãn độ tin cậy cho từng khẳng định (đã kiểm / khảo sát sâu / chưa kiểm chứng / suy luận).
+- Đã kiểm trên web 04/10/2026: bảng word size và ngưỡng của CD-HIT, định nghĩa coverage của MMseqs2, thống kê PTM Khoury 2011, cơ chế carbonyl hóa (Nyström 2005), glycation (Ansari 2011), phân lớp HDAC/sirtuin, con số 518 kinase (Manning 2002, cho bài 03).
+- **Còn dở:** chờ sinh viên duyệt văn phong và mức chi tiết của hai bài mẫu rồi mới viết 13 bài còn lại và `index.html`. Liên kết bài trước/bài sau trong hai bài mẫu đang trỏ tới file chưa có. Chưa xác minh trực tiếp giá trị mặc định `-c 0.8` của MMseqs2 (đang dẫn theo khảo sát sâu).
+
 ## 04/10/2026 — lộ trình tự học sinh học nền cho hướng aging và cancer
 
 - Thêm [lộ trình tự học sinh học nền](biology-basics/learning-roadmap.md): lớp nền (central dogma, amino acid, enzyme, PTM), cancer (hallmarks, kinase), aging (hallmarks, sirtuin, acetyl hóa), thực hành UniProt/dbPTM, lịch khoảng 10 ngày trước báo cáo tuần 6, gắn với ứng viên A và B của [khảo sát sâu](deep-research/reports/aging-cancer-deep-dive.md).

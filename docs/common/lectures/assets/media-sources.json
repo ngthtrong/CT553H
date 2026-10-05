@@ -1,0 +1,35 @@
+[
+  {
+    "file": "protein-structure.png",
+    "source": "https://commons.wikimedia.org/wiki/File:Protein_structure_%28full%29.png",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Protein_structure_%28full%29.png",
+    "author": "Thomas Shafee",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Original bytes unchanged",
+    "sha256": "336a8c37e4d4636aeb38620deb6eed502b13fdaf62781b1d43e0f5ff44a75391",
+    "bytes": 2309881
+  },
+  {
+    "file": "get3-rotation.gif",
+    "source": "https://commons.wikimedia.org/wiki/File:GET3_protein.gif",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/GET3_protein.gif",
+    "author": "BQUB24-Mpiguillem",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Original bytes unchanged",
+    "sha256": "7c06ac980b02ee46e46b04d4764e7d46e37b93d2d391a315760d9781381a1d31",
+    "bytes": 1016128
+  },
+  {
+    "file": "senescence-microscopy.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:SABG_MEFs.jpg",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/SABG_MEFs.jpg",
+    "author": "Y tambe",
+    "license": "CC BY-SA 2.5",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.5/",
+    "changes": "Original bytes unchanged",
+    "sha256": "126e894bd963f39aba1e2dc3b906148162e667c145323fad93bf77ae182df249",
+    "bytes": 133315
+  }
+]

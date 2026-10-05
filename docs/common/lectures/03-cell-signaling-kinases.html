@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tín hiệu tế bào và kinase</title>
+<style>
+:root{
+  --bg:#faf9f6; --surface:#ffffff; --text:#1d2126; --muted:#5d6570; --border:#e2dfd7;
+  --accent:#2c6a8a; --accent-soft:#e7f0f5;
+  --ok:#2d7a4d; --ok-soft:#e6f3eb; --warn:#8f5600; --warn-soft:#fbf1df;
+  --bad:#a23838; --bad-soft:#f8e7e7; --code-bg:#f1efe9;
+  --r-st:#2c6a8a; --r-k:#b4532a; --r-r:#7a4fa0; --r-p:#3f7d3a; --r-hit:#fff1a8;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#15171b; --surface:#1d2026; --text:#e5e4df; --muted:#9aa1ab; --border:#33373f;
+    --accent:#7fb8d6; --accent-soft:#1f2f39;
+    --ok:#79c495; --ok-soft:#1b2c22; --warn:#e2b25c; --warn-soft:#2f2617;
+    --bad:#e38c8c; --bad-soft:#331e1f; --code-bg:#262a31;
+    --r-st:#7fb8d6; --r-k:#e59a72; --r-r:#bf9ae0; --r-p:#93c98c; --r-hit:#4a4318;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:17px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans","Helvetica Neue",Arial,sans-serif}
+main{max-width:46rem;margin:0 auto;padding:24px 16px 64px}
+a{color:var(--accent)}
+h1{font-size:1.85rem;line-height:1.25;margin:.3em 0 .4em}
+h2{font-size:1.3rem;margin:2.2em 0 .5em;padding-top:.6em;border-top:1px solid var(--border)}
+h3{font-size:1.08rem;margin:1.6em 0 .4em}
+p,li{overflow-wrap:break-word}
+code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;font-size:.9em}
+code{background:var(--code-bg);padding:.1em .35em;border-radius:4px}
+.crumb{color:var(--muted);font-size:.9rem}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:.4em 0 1.2em}
+.pill{font-size:.82rem;border:1px solid var(--border);background:var(--surface);border-radius:999px;padding:2px 10px;color:var(--muted)}
+.box{border:1px solid var(--border);background:var(--surface);border-radius:10px;padding:14px 18px;margin:1.2em 0}
+.box>:first-child{margin-top:0}.box>:last-child{margin-bottom:0}
+.box h3{margin-top:0}
+.goal{border-left:4px solid var(--accent)}
+.link{background:var(--accent-soft);border-color:transparent}
+.warn{background:var(--warn-soft);border-color:transparent}
+.label{display:block;font-size:.78rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:.3em}
+.tag{display:inline-block;font-size:.72rem;line-height:1.5;padding:0 6px;border-radius:4px;white-space:nowrap;vertical-align:1px;font-weight:600}
+.t-ok{background:var(--ok-soft);color:var(--ok)}
+.t-dd{background:var(--accent-soft);color:var(--accent)}
+.t-unv{background:var(--warn-soft);color:var(--warn)}
+.t-inf{background:var(--bad-soft);color:var(--bad)}
+.tablewrap{overflow-x:auto;margin:1em 0;border:1px solid var(--border);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--border)}
+th{background:var(--code-bg);font-weight:600}
+tr:last-child td{border-bottom:0}
+figure{margin:1.4em 0}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:.88rem;color:var(--muted);margin-top:.4em}
+details{border:1px solid var(--border);border-radius:8px;background:var(--surface);margin:.6em 0;padding:0 14px}
+summary{cursor:pointer;padding:10px 0;font-weight:600}
+details[open] summary{border-bottom:1px solid var(--border);margin-bottom:.6em}
+details>div{padding-bottom:10px}
+.btns{display:flex;flex-wrap:wrap;gap:6px;margin:.6em 0}
+button{font:inherit;font-size:.88rem;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:6px;padding:4px 10px;cursor:pointer}
+button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.seq{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:1rem;line-height:2;word-break:break-all;letter-spacing:.06em}
+.seq span{cursor:pointer;border-radius:3px;padding:1px 0}
+.seq span.hit{background:var(--r-hit);font-weight:700}
+.seq span.center{outline:2px solid var(--bad)}
+.out{font-size:.92rem;color:var(--muted);min-height:1.6em}
+.win{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:1rem;letter-spacing:.06em;background:var(--code-bg);padding:6px 10px;border-radius:6px;overflow-x:auto;white-space:nowrap}
+.win b{color:var(--bad)}
+nav.pn{display:flex;justify-content:space-between;gap:12px;margin-top:3em;padding-top:1em;border-top:1px solid var(--border);font-size:.95rem}
+.src li{margin:.35em 0;font-size:.93rem}
+svg text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans",Arial,sans-serif}
+.s-stroke{stroke:var(--text)} .s-muted{fill:var(--muted)} .s-text{fill:var(--text)}
+.s-acc{fill:var(--accent)} .s-accs{stroke:var(--accent)} .s-bad{fill:var(--bad)} .s-bads{stroke:var(--bad)}
+.s-ok{fill:var(--ok)} .s-oks{stroke:var(--ok)} .s-surf{fill:var(--surface)} .s-soft{fill:var(--accent-soft)}
+.s-warn{fill:var(--warn)} .s-warns{stroke:var(--warn)} .s-border{stroke:var(--border)}
+.seq span.ann{text-decoration:underline;text-decoration-color:var(--bad);text-decoration-thickness:2px;text-underline-offset:3px}
+.seq span.g10{margin-right:.45em}
+
+
+/* Quick navigation: native links and details work offline without JavaScript. */
+.lecture-nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:8px;padding:10px 0;margin:0 0 16px;background:var(--bg);border-bottom:1px solid var(--border)}
+.lecture-nav>a{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:6px 10px;border:1px solid var(--border);border-radius:8px;background:var(--surface);text-decoration:none;font-size:.88rem}
+.lecture-switch{position:relative;flex:1;min-width:0;margin:0;padding:0;border-radius:8px}
+.lecture-switch>summary{min-height:44px;padding:8px 12px;font-size:.88rem}
+.lecture-switch[open]>summary{margin:0;border-bottom:0}
+.lecture-switch>.lecture-menu{position:absolute;right:0;top:calc(100% + 8px);width:min(40rem,calc(100vw - 32px));max-height:65vh;overflow-y:auto;overscroll-behavior:contain;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:10px;box-shadow:0 6px 18px var(--border)}
+.lecture-menu .lecture-group{margin:8px 8px 4px;font-size:.8rem;font-weight:700;color:var(--muted)}
+.lecture-menu ol{list-style:none;padding:0;margin:0 0 12px}
+.lecture-menu li{margin:0}
+.lecture-menu a,.lecture-menu .lecture-unavailable{display:block;padding:10px 12px;border-radius:6px;line-height:1.45;font-size:.9rem;text-decoration:none}
+.lecture-menu a:hover{background:var(--accent-soft)}
+.lecture-menu a[aria-current="page"]{background:var(--accent-soft);font-weight:700;border-left:3px solid var(--accent)}
+.lecture-menu .lecture-unavailable{color:var(--muted)}
+.lecture-nav a:focus-visible,.lecture-switch>summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+@media print{.lecture-nav{display:none}}
+
+</style>
+</head>
+<body>
+<main>
+
+<nav class="lecture-nav" aria-label="Chuyển nhanh giữa các bài giảng">
+<a href="index.html">Mục lục</a>
+<details class="lecture-switch"><summary>Chuyển bài · Bài 03</summary><div class="lecture-menu"><p class="lecture-group">Phần A — Sinh học nền</p><ol><li><a href="01-gene-to-protein.html">Bài 01: Từ gene đến protein</a></li><li><a href="02-enzymes-and-ptm.html">Bài 02: Enzyme và biến đổi sau dịch mã (PTM)</a></li><li><a href="03-cell-signaling-kinases.html" aria-current="page">Bài 03: Tín hiệu tế bào và kinase</a></li><li><a href="04-cancer-hallmarks.html">Bài 04: Ung thư: hallmarks và kinase</a></li><li><a href="05-aging-sirtuins-senescence.html">Bài 05: Lão hóa: sirtuin và senescence</a></li><li><a href="06-biological-databases.html">Bài 06: Các cơ sở dữ liệu sinh học</a></li></ol><p class="lecture-group">Phần B — Khung bài toán và đánh giá</p><ol><li><a href="07-residue-level-framing.html">Bài 07: Đặt bài toán ở mức residue</a></li><li><a href="08-metrics-imbalanced.html">Bài 08: Chỉ số cho dữ liệu mất cân bằng</a></li><li><a href="09-leakage-and-homology.html">Bài 09: Rò rỉ dữ liệu và chuỗi đồng dạng</a></li></ol><p class="lecture-group">Phần C — Mô hình</p><ol><li><a href="10-neural-network-basics.html">Bài 10: Mạng nơ-ron cơ bản</a></li><li><a href="11-cnn-to-mcnn.html">Bài 11: Từ CNN đến MCNN</a></li><li><a href="12-protein-encodings-plm.html">Bài 12: Mã hóa protein: one-hot, PSSM, PLM</a></li><li><a href="13-retrieval-and-beyond.html">Bài 13: Truy hồi và các hướng sau PLM</a></li><li><a href="14-xai-basics.html">Bài 14: Giải thích mô hình (XAI)</a></li><li><span class="lecture-unavailable">Bài 15: Đọc hiểu một bài báo tin sinh — chưa có</span></li></ol></div></details>
+<a href="02-enzymes-and-ptm.html" aria-label="Bài trước: Enzyme và biến đổi sau dịch mã (PTM)" title="Bài 02: Enzyme và biến đổi sau dịch mã (PTM)">←</a>
+<a href="04-cancer-hallmarks.html" aria-label="Bài sau: Ung thư: hallmarks và kinase" title="Bài 04: Ung thư: hallmarks và kinase">→</a>
+</nav>
+
+
+<div class="crumb"><a href="index.html">Bài giảng nền</a> · Bài 03 / 15 · Phần A — Sinh học nền</div>
+<h1>Tín hiệu tế bào và kinase</h1>
+<div class="meta">
+  <span class="pill">≈ 30 phút</span>
+  <span class="pill">Dùng cho: chủ yếu cancer (B, F); phần tín hiệu là nền chung</span>
+  <span class="pill">Đọc trước: bài 02</span>
+</div>
+
+<div class="box goal">
+  <span class="label">Đọc xong bài này, bạn sẽ</span>
+  <ul>
+    <li>Hình dung tín hiệu tế bào như một hệ thống hướng sự kiện, với hai kiểu “công tắc”: phosphoryl hóa và trạng thái GTP/GDP.</li>
+    <li>Vẽ lại được hai con đường Ras–MAPK và PI3K–Akt, và chỉ ra chỗ của RTK (đề tài cũ), Ras (ứng viên F) và các nhóm kinase của ứng viên B.</li>
+    <li>Biết kinome là gì, kinase được chia nhóm ra sao, và phân biệt kinase serine/threonine với kinase tyrosine.</li>
+    <li>Đọc được ký hiệu vị trí −3, 0, +1, nhận ra các lớp motif chính, và thử chúng trên p53 thật.</li>
+    <li>Giải thích được vì sao ứng viên B gán nhãn theo <em>nhóm</em> kinase, và vì sao một cửa sổ ±10 có trần hiệu năng.</li>
+  </ul>
+</div>
+
+<p class="out" style="font-size:.85rem">Nhãn độ tin cậy trong bài:
+<span class="tag t-ok">đã kiểm</span> đã mở nguồn gốc hoặc bản tóm tắt chính thức trong phiên 04/10/2026 ·
+<span class="tag t-dd">khảo sát sâu</span> lấy từ báo cáo khảo sát sâu, giữ nguyên nhãn của báo cáo ·
+<span class="tag t-unv">chưa kiểm chứng</span> kiến thức nền, chưa mở lại nguồn ·
+<span class="tag t-inf">suy luận</span> lập luận của bài giảng, không có nguồn trực tiếp.</p>
+
+
+<h2>1. Tín hiệu tế bào: một hệ thống hướng sự kiện</h2>
+
+<p>Tế bào phải phản ứng với môi trường: có hormone, có <strong>yếu tố tăng trưởng</strong> (growth factor), DNA bị tổn thương… Thông điệp từ bên ngoài không đi thẳng vào nhân. Nó được một <strong>thụ thể</strong> (receptor) trên màng nhận, chuyền qua một chuỗi protein trung gian, rồi mới đổi hành vi của tế bào: bật một nhóm gene, phân chia, hay tự hủy. Chuỗi chuyền đó gọi là một <strong>con đường tín hiệu</strong> (signaling pathway).</p>
+
+<div class="box link">
+  <span class="label">Hình dung theo kiểu CNTT</span>
+  <p>Giống một kiến trúc hướng sự kiện (event-driven). Thụ thể là listener đăng ký một loại event. Mỗi protein trung gian là một handler: nhận event, đổi trạng thái của chính nó, rồi kích handler kế tiếp. Trạng thái được lưu <em>ngay trên phân tử protein</em>, giống một cờ boolean gắn vào object. Bài này nói về hai kiểu cờ phổ biến nhất.</p>
+</div>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Kiểu công tắc</th><th>Trạng thái “bật”</th><th>Ai bật</th><th>Ai tắt</th><th>Ví dụ</th></tr></thead>
+<tbody>
+<tr><td><strong>Phosphoryl hóa</strong></td><td>Residue S/T/Y mang phosphate (thường là bật, đôi khi là tắt)</td><td>Kinase</td><td>Phosphatase</td><td>Raf, MEK, ERK, AKT</td></tr>
+<tr><td><strong>GTP/GDP</strong></td><td>Protein đang gắn GTP</td><td>Protein trao đổi GDP lấy GTP (với Ras là SOS)</td><td>Protein trở về dạng gắn GDP</td><td>Ras</td></tr>
+</tbody></table></div>
+<p style="font-size:.9rem;color:var(--muted)">Ras có dạng gắn GTP hoạt động và dạng gắn GDP không hoạt động; SOS giúp Ras đổi GDP lấy GTP <span class="tag t-ok">đã kiểm</span> (Guo 2020). Cặp kinase/phosphatase: xem bài 02. Chi tiết “đôi khi phosphate là tắt” <span class="tag t-unv">chưa kiểm chứng</span>.</p>
+
+<p>Hai tính chất làm một con đường tín hiệu khác một lời gọi hàm đơn giản:</p>
+<ul>
+  <li><strong>Khuếch đại.</strong> Một kinase đã bật có thể phosphoryl hóa nhiều phân tử ở tầng sau, nên một tín hiệu nhỏ ở màng thành đáp ứng lớn trong tế bào <span class="tag t-unv">chưa kiểm chứng</span>.</li>
+  <li><strong>Tắt được.</strong> Phosphatase gỡ phosphate; Ras trở về dạng gắn GDP. Nếu bước “tắt” hỏng thì tín hiệu bị <em>kẹt ở trạng thái bật</em>. Đó chính là câu chuyện của bài 04 <span class="tag t-inf">suy luận</span>.</li>
+</ul>
+
+<h2>2. Hai con đường mẫu: Ras–MAPK và PI3K–Akt</h2>
+
+<p>Hai con đường này cùng xuất phát từ một loại thụ thể là RTK, và chứa gần như mọi cái tên bạn sẽ gặp trong ứng viên B và F. Không cần thuộc lòng; cần đọc được sơ đồ và biết mỗi tên là <em>loại phân tử gì</em>.</p>
+
+<figure>
+<svg viewBox="0 0 640 440" role="img" aria-labelledby="f1t">
+  <title id="f1t">Sơ đồ hai con đường Ras–MAPK và PI3K–Akt xuất phát từ thụ thể tyrosine kinase</title>
+  <defs>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="s-text"/></marker>
+  </defs>
+  <rect x="0" y="82" width="640" height="14" class="s-soft"/>
+  <text x="634" y="76" text-anchor="end" font-size="11" class="s-muted">màng tế bào</text>
+  <circle cx="200" cy="20" r="10" class="s-warn"/>
+  <text x="216" y="24" font-size="12" class="s-text">yếu tố tăng trưởng</text>
+  <rect x="189" y="36" width="9" height="84" rx="3" class="s-acc"/>
+  <rect x="202" y="36" width="9" height="84" rx="3" class="s-acc"/>
+  <text x="180" y="54" text-anchor="end" font-size="12.5" class="s-text" font-weight="700">RTK · đề tài cũ</text>
+  <text x="180" y="70" text-anchor="end" font-size="11" class="s-muted">thụ thể tyrosine kinase</text>
+  <g font-size="12.5" text-anchor="middle">
+    <path d="M200,121 L200,138" class="s-stroke" stroke-width="1.5" marker-end="url(#a3)"/>
+    <rect x="140" y="140" width="120" height="28" rx="6" class="s-surf s-stroke" stroke-width="1.2" stroke-dasharray="4 3"/>
+    <text x="200" y="159" class="s-text">Grb2 – SOS</text>
+    <path d="M200,169 L200,186" class="s-stroke" stroke-width="1.5" marker-end="url(#a3)"/>
+    <rect x="125" y="188" width="150" height="30" rx="6" class="s-surf s-stroke" stroke-width="1.2" stroke-dasharray="4 3"/>
+    <text x="200" y="208" class="s-text">Ras: GDP → GTP</text>
+    <path d="M200,219 L200,238" class="s-stroke" stroke-width="1.5" marker-end="url(#a3)"/>
+    <rect x="150" y="240" width="100" height="28" rx="6" class="s-soft s-accs" stroke-width="1.5"/>
+    <text x="200" y="259" class="s-text" font-weight="600">Raf</text>
+    <path d="M200,269 L200,286" class="s-stroke" stroke-width="1.5" marker-end="url(#a3)"/>
+    <rect x="150" y="288" width="100" height="28" rx="6" class="s-soft s-accs" stroke-width="1.5"/>
+    <text x="200" y="307" class="s-text" font-weight="600">MEK</text>
+    <path d="M200,317 L200,334" class="s-stroke" stroke-width="1.5" marker-end="url(#a3)"/>
+    <rect x="150" y="336" width="100" height="28" rx="6" class="s-soft s-accs" stroke-width="1.5"/>
+    <text x="200" y="355" class="s-text" font-weight="600">ERK</text>
+    <path d="M200,365 L200,384" class="s-stroke" stroke-width="1.5" marker-end="url(#a3)"/>
+    <ellipse cx="200" cy="410" rx="150" ry="22" class="s-surf s-border" stroke-width="1.5"/>
+    <text x="200" y="414" font-size="11.5" class="s-text">nhân: yếu tố phiên mã → gene tăng sinh</text>
+  </g>
+  <g font-size="11" class="s-muted">
+    <text x="140" y="259" text-anchor="end">MAPKKK</text>
+    <text x="140" y="307" text-anchor="end">MAPKK</text>
+    <text x="140" y="355" text-anchor="end">MAPK</text>
+  </g>
+  <g font-size="11.5" class="s-warn" font-weight="700">
+    <text x="208" y="282">+P</text><text x="208" y="330">+P (T và Y)</text>
+    <text x="282" y="208">◀ ứng viên F</text>
+    <text x="258" y="355">◀ B (nhóm MAPK)</text>
+  </g>
+  <path d="M212,112 C300,112 360,124 404,126" fill="none" class="s-stroke" stroke-width="1.5" marker-end="url(#a3)"/>
+  <g font-size="12.5" text-anchor="middle">
+    <rect x="406" y="112" width="130" height="28" rx="6" class="s-surf s-stroke" stroke-width="1.2" stroke-dasharray="4 3"/>
+    <text x="471" y="131" class="s-text">PI3K (kinase lipid)</text>
+    <path d="M471,141 L471,160" class="s-stroke" stroke-width="1.5" marker-end="url(#a3)"/>
+    <rect x="406" y="162" width="130" height="28" rx="6" class="s-surf s-stroke" stroke-width="1.2" stroke-dasharray="4 3"/>
+    <text x="471" y="181" class="s-text">PIP2 → PIP3</text>
+    <rect x="556" y="162" width="76" height="28" rx="6" class="s-surf s-bads" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <text x="594" y="181" class="s-bad" font-weight="700">PTEN</text>
+    <path d="M555,176 L538,176" class="s-bads" stroke-width="1.5" marker-end="url(#a3)"/>
+    <text x="594" y="206" font-size="11" class="s-bad">PIP3 → PIP2</text>
+    <path d="M471,191 L471,226" class="s-stroke" stroke-width="1.5" marker-end="url(#a3)"/>
+    <rect x="421" y="228" width="100" height="28" rx="6" class="s-soft s-accs" stroke-width="1.5"/>
+    <text x="471" y="247" class="s-text" font-weight="600">AKT</text>
+    <path d="M471,257 L471,280" class="s-stroke" stroke-width="1.5" marker-end="url(#a3)"/>
+    <rect x="391" y="282" width="160" height="44" rx="6" class="s-surf s-border" stroke-width="1.5"/>
+    <text x="471" y="300" font-size="11.5" class="s-text">sống sót, tăng trưởng,</text>
+    <text x="471" y="316" font-size="11.5" class="s-text">tăng sinh</text>
+  </g>
+  <g font-size="11" class="s-muted" text-anchor="end">
+    <text x="414" y="236">PDK1 → T308</text>
+    <text x="414" y="252">mTORC2 → S473</text>
+  </g>
+  <text x="527" y="247" font-size="11.5" class="s-warn" font-weight="700">◀ B (nhóm AKT)</text>
+  <g font-size="11.5">
+    <rect x="400" y="362" width="26" height="16" rx="4" class="s-soft s-accs" stroke-width="1.5"/>
+    <text x="434" y="375" class="s-text">protein kinase</text>
+    <rect x="400" y="388" width="26" height="16" rx="4" class="s-surf s-stroke" stroke-width="1.2" stroke-dasharray="4 3"/>
+    <text x="434" y="401" class="s-text">không phải protein kinase</text>
+  </g>
+</svg>
+<figcaption>Hình 1. Sơ đồ đơn giản hóa, chỉ giữ các bước nói trong bài. “+P” là một bước phosphoryl hóa. Khung nét liền là protein kinase; khung nét đứt là thứ khác (protein nối, GTPase, kinase lipid, phosphatase lipid). Các nhãn vàng chỉ chỗ gắn với đề tài.</figcaption>
+</figure>
+
+<h3>Ras–MAPK, từng bước</h3>
+<ol>
+  <li>Yếu tố tăng trưởng gắn vào <strong>thụ thể tyrosine kinase</strong> (receptor tyrosine kinase, RTK) và hoạt hóa nó. Thụ thể tự phosphoryl hóa trên tyrosine <span class="tag t-unv">chưa kiểm chứng</span>.</li>
+  <li>Protein nối Grb2 bám vào thụ thể đã hoạt hóa và kéo theo SOS. SOS giúp Ras nhả GDP, nhận GTP, tức là <strong>bật Ras</strong> <span class="tag t-ok">đã kiểm</span>.</li>
+  <li>Ras-GTP bám và kéo <strong>Raf</strong> ra màng để hoạt hóa nó <span class="tag t-ok">đã kiểm</span>.</li>
+  <li>Ba kinase nối tiếp: Raf (một MAPKKK) bật MEK (một MAPKK), MEK bật ERK (một MAPK). Tên gọi đúng nghĩa đen: “kinase của kinase của kinase” <span class="tag t-ok">đã kiểm</span>. MEK là kinase <strong>lưỡng đặc hiệu</strong> hiếm gặp: nó phosphoryl hóa ERK ở cả một threonine và một tyrosine <span class="tag t-ok">đã kiểm</span>.</li>
+  <li>ERK đã bật đi vào nhân, phosphoryl hóa các yếu tố phiên mã, từ đó điều khiển gene liên quan tăng sinh <span class="tag t-ok">đã kiểm</span>.</li>
+</ol>
+<p>Nhóm “MAPK” trong benchmark của ứng viên B chính là họ kinase mà ERK thuộc về.</p>
+
+<h3>PI3K–Akt, từng bước</h3>
+<ol>
+  <li>Thụ thể đã hoạt hóa bật <strong>PI3K</strong>. PI3K gắn phosphate vào PIP2 (ở vị trí 3 của vòng inositol) để tạo PIP3 <span class="tag t-ok">đã kiểm</span>. PIP2 và PIP3 là lipid của màng, không phải protein <span class="tag t-unv">chưa kiểm chứng</span>.</li>
+  <li>PIP3 kéo hai kinase là <strong>AKT</strong> và PDK1 ra màng. AKT bị mTORC2 phosphoryl hóa ở S473 và bị PDK1 phosphoryl hóa ở T308; cả hai site quyết định AKT có hoạt động hay không <span class="tag t-ok">đã kiểm</span>.</li>
+  <li>AKT đã bật phosphoryl hóa nhiều protein đích, thúc đẩy tế bào sống sót, tăng trưởng và tăng sinh <span class="tag t-ok">đã kiểm</span>.</li>
+  <li><strong>PTEN</strong> làm ngược bước 1: gỡ phosphate để PIP3 trở về PIP2, nên kìm AKT. PTEN là một gene ức chế khối u <span class="tag t-ok">đã kiểm</span>.</li>
+</ol>
+<p>Để ý cách gọi “S473”, “T308”: đúng kiểu đặt tên site ở bài 02, tức serine 473 và threonine 308 của chính AKT. Nghĩa là <strong>một kinase cũng là cơ chất của kinase khác</strong>; dữ liệu phospho-site luôn chứa cả site nằm trên kinase.</p>
+
+<div class="box warn">
+  <span class="label">Bẫy: không phải “kinase” nào cũng là protein kinase</span>
+  <p>PI3K gắn phosphate vào <em>lipid</em>; PTEN gỡ phosphate khỏi <em>lipid</em>. Ras không phải kinase mà là GTPase. Cả ba nằm trong con đường nhưng không phải đối tượng của bài toán phospho-site (ứng viên B), vì B chỉ hỏi về residue S/T/Y trên protein. Khi gặp một cái tên trong sơ đồ, hãy hỏi: <em>cơ chất của nó là gì?</em></p>
+</div>
+
+<div class="box link">
+  <span class="label">Gắn với các ứng viên</span>
+  <ul style="margin:0">
+    <li><strong>RTK</strong>: đề tài cũ RTK–ATP dự đoán vị trí gắn ATP trên RTK. Bài nền RTK_RAG thuộc nhóm Prof Ou, GVHD không phải tác giả <span class="tag t-dd">khảo sát sâu · toàn văn metadata</span>.</li>
+    <li><strong>Ras</strong>: ứng viên F gợi ý dự đoán vị trí gắn GTP/GDP trên họ Ras (KRAS/HRAS/NRAS), vì GVHD có hai bài (2019) về vị trí gắn GTP trên Rab GTPase, cùng siêu họ với Ras <span class="tag t-dd">khảo sát sâu · toàn văn metadata</span>. Khảo sát chưa tra được đã có công cụ dự đoán GTP/GDP nào cho siêu họ Ras hay chưa.</li>
+    <li><strong>ERK, AKT, CDK</strong>: tên các nhóm trong benchmark của ứng viên B. Khảo sát sâu gọi các nhóm này là “trục tín hiệu gây ung thư” <span class="tag t-dd">khảo sát sâu · toàn văn</span>. Bài 04 giải thích vì sao.</li>
+  </ul>
+</div>
+
+<h2>3. Kinase và kinome</h2>
+
+<p>Protein kinase lấy phosphate từ ATP gắn vào residue của protein cơ chất (bài 02). Theo loại residue nhận phosphate, có hai loại chính và một loại ít gặp: kinase <strong>serine/threonine</strong> (gắn vào nhóm –OH của S hoặc T), kinase <strong>tyrosine</strong> (gắn vào Y; RTK thuộc loại này), và kinase <strong>lưỡng đặc hiệu</strong> như MEK. Bài tổng kết thuốc của Roskoski (2026) cũng chia đích thuốc theo đúng ba loại này <span class="tag t-ok">đã kiểm</span>.</p>
+
+<p>Manning và cộng sự (2002) lập danh mục toàn bộ protein kinase trong bộ gen người và gọi nó là <strong>kinome</strong>: <strong>518</strong> gene protein kinase giả định, trong đó 71 gene chưa từng được mô tả là kinase; ngoài ra có 106 pseudogene; và 244 kinase nằm ở vị trí gene liên quan bệnh hoặc vùng DNA bị khuếch đại trong ung thư <span class="tag t-ok">đã kiểm</span>. Trong 518 kinase, 478 có miền kinase điển hình (ePK), 40 thuộc loại không điển hình (aPK) <span class="tag t-ok">đã kiểm</span> (qua tóm tắt).</p>
+
+<p>Kinase điển hình được xếp thành nhóm theo độ giống nhau của miền kinase. Bảy nhóm lớn hay được nhắc <span class="tag t-ok">đã kiểm</span> (qua trang Kinomer và kết quả tìm kiếm):</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Nhóm</th><th>Đặc điểm</th><th>Thành viên bạn sẽ gặp</th></tr></thead>
+<tbody>
+<tr><td><strong>AGC</strong></td><td>Gồm họ PKA/PKG, họ PKC, họ ribosomal S6 kinase và họ hàng gần</td><td>PKA, PKC; AKT (UniProt gọi AKT1 là “RAC-alpha serine/threonine-protein kinase”, và RAC nằm trong AGC)</td></tr>
+<tr><td><strong>CMGC</strong></td><td>Gồm CDK, MAPK, GSK3 và kinase giống CDK (CLK)</td><td>CDK, ERK, GSK3; CK2 là một thành viên “xa” của nhóm</td></tr>
+<tr><td><strong>CAMK</strong></td><td>Hoạt tính điều hòa bởi Ca<sup>2+</sup>/calmodulin</td><td>CAMK2, CAMKL <span class="tag t-unv">chưa kiểm chứng</span></td></tr>
+<tr><td><strong>CK1</strong></td><td>Casein kinase 1</td><td>CK1</td></tr>
+<tr><td><strong>STE</strong></td><td>Nhiều kinase trong các tầng MAPK</td><td>MEK <span class="tag t-unv">chưa kiểm chứng</span></td></tr>
+<tr><td><strong>TK</strong></td><td>Tyrosine kinase</td><td>Các RTK</td></tr>
+<tr><td><strong>TKL</strong></td><td>“Giống tyrosine kinase” về trình tự nhưng thật ra là kinase serine/threonine</td><td>Raf <span class="tag t-unv">chưa kiểm chứng</span></td></tr>
+</tbody></table></div>
+<p style="font-size:.9rem;color:var(--muted)">Ngoài bảy nhóm còn nhóm nhỏ RGC, nhóm “Other” và các kinase không điển hình như họ PIKK <span class="tag t-ok">đã kiểm</span> (qua trang Kinomer).</p>
+
+<div class="box warn">
+  <span class="label">Bẫy: “nhóm kinase” ở cấp nào?</span>
+  <p>Cây của Manning có nhiều tầng: nhóm, họ, phân họ <span class="tag t-unv">chưa kiểm chứng</span>. Các “nhóm” trong benchmark dbPTM (CDK, MAPK, PKA, PKC, CK2, CAMKL, GSK, AKT, CAMK2, CK1…) <span class="tag t-ok">đã kiểm</span> phần lớn là tên <em>họ</em>, không phải bảy nhóm lớn ở bảng trên: CDK, MAPK, GSK và CK2 cùng nằm trong CMGC; PKA, PKC và AKT cùng nằm trong AGC. Khi một bài báo nói “theo nhóm kinase”, hãy kiểm xem họ dùng tầng nào, vì độ khó của bài toán phụ thuộc vào đó <span class="tag t-inf">suy luận</span>.</p>
+</div>
+
+<h2>4. Kinase chọn site thế nào</h2>
+
+<p>Ubersax và Ferrell (2007) mở đầu bài tổng quan bằng một con số đáng nhớ: một kinase điển hình phải nhận ra từ <strong>một đến vài trăm</strong> site thật giữa khoảng <strong>700.000</strong> residue có thể bị phosphoryl hóa <span class="tag t-ok">đã kiểm</span>. Bài liệt kê nhiều cơ chế cùng góp vào tính đặc hiệu đó:</p>
+<ul>
+  <li>cấu trúc của vị trí xúc tác trên kinase;</li>
+  <li>tương tác <strong>cục bộ</strong> (các residue quanh site) và tương tác <strong>ở xa</strong> giữa kinase và cơ chất;</li>
+  <li>protein giàn giáo (scaffold) và protein nối (adaptor) giữ kinase ở đúng chỗ trong tế bào;</li>
+  <li>cạnh tranh giữa các cơ chất ở mức toàn hệ thống;</li>
+  <li>cơ chế sửa lỗi.</li>
+</ul>
+<p>Kết luận của tác giả: việc nhận diện cơ chất được “phân tán cho nhiều cơ chế độc lập, mỗi cơ chế đều không hoàn hảo” <span class="tag t-ok">đã kiểm</span>. Hai hệ quả trực tiếp cho máy học:</p>
+<ol>
+  <li><strong>Mất cân bằng cực nặng.</strong> Vài trăm site thật trên khoảng 700.000 ứng viên là cỡ 1 trên vài nghìn. Bài 08 nói cách đo trong tình huống này.</li>
+  <li><strong>Có trần hiệu năng.</strong> Một cửa sổ ±10 chỉ thấy phần “tương tác cục bộ”. Tương tác ở xa, vị trí trong tế bào, cạnh tranh giữa cơ chất đều nằm ngoài cửa sổ. Một mô hình chỉ đọc cửa sổ không thể đúng hoàn toàn, dù dữ liệu có hoàn hảo <span class="tag t-inf">suy luận</span>.</li>
+</ol>
+
+<p>Một kết quả lớn gần đây bổ sung hai điều. Johnson và cộng sự (2023) ghi rằng khối phổ đã tìm được khoảng <strong>90.000</strong> site phosphoryl hóa serine/threonine, nhưng với <strong>tuyệt đại đa số</strong> site, chưa biết kinase nào trong hơn 300 kinase serine/threonine của người chịu trách nhiệm <span class="tag t-ok">đã kiểm</span>. Nhóm này đo đặc hiệu chuỗi của 303 kinase bằng thư viện peptide tổng hợp, và thấy đặc hiệu của kinome đa dạng hơn dự kiến, được quyết định nhiều bởi <strong>chọn lọc âm</strong> (negative selectivity): những residue mà kinase “không chấp nhận” quan trọng không kém những residue nó ưa <span class="tag t-ok">đã kiểm</span>.</p>
+
+<div class="box link">
+  <span class="label">Gắn với ứng viên B</span>
+  <ul style="margin:0">
+    <li>Nhãn dương “do kinase nào” chỉ có cho một phần nhỏ site đã biết, nên dữ liệu theo từng kinase rất mỏng. Đây là lý do gom theo nhóm (mục 7).</li>
+    <li>Nhãn âm “không bị nhóm <em>g</em> phosphoryl hóa” càng đáng ngờ hơn nhãn âm ở bài 02: site đó có thể đã bị nhóm <em>g</em> phosphoryl hóa mà chưa ai gán kinase <span class="tag t-inf">suy luận</span>.</li>
+    <li>Bản đồ đặc hiệu của Johnson và cộng sự là tri thức motif độc lập, có thể dùng để đối chiếu kết quả XAI (tiêu chí 4) <span class="tag t-inf">suy luận</span>. Khảo sát sâu chưa xét nguồn này.</li>
+  </ul>
+</div>
+
+<h2>5. Motif và cách đọc vị trí −3, 0, +1</h2>
+
+<p>Quy ước: site đang xét là vị trí <strong>0</strong>. Đi về phía đầu N là −1, −2, −3…; về phía đầu C là +1, +2, +3… Cửa sổ ±10 là đoạn từ −10 đến +10. Khi viết motif, <code>x</code> là residue bất kỳ, <code>S/T</code> là S hoặc T, <code>pS</code> là serine đã mang phosphate.</p>
+
+<figure>
+<svg viewBox="0 0 640 244" role="img" aria-labelledby="f2t">
+  <title id="f2t">Vị trí đặc trưng của sáu kiểu motif quanh site phosphoryl hóa, từ −5 đến +5</title>
+  <g id="mgrid"></g>
+</svg>
+<figcaption>Hình 2. Các vị trí đặc trưng, chỉ vẽ từ −5 đến +5. Ô viền xanh là residue mà kinase ưa ở vị trí đó; dấu ngoặc là vị trí phụ. “x” là không có yêu cầu đáng kể trong dạng đơn giản hóa này.</figcaption>
+</figure>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Lớp</th><th>Kinase tiêu biểu</th><th>Motif đơn giản hóa</th></tr></thead>
+<tbody>
+<tr><td>Hướng proline (proline-directed)</td><td>CDK, MAPK (nhóm CMGC)</td><td><code>S/T-P</code>: proline ở +1, gần như bắt buộc</td></tr>
+<tr><td>Ưa base (basophilic)</td><td>PKA, PKC, AKT (nhóm AGC)</td><td><code>R-x-x-S/T</code>: arginine ở −3. AKT đòi thêm R ở −5: <code>R-x-R-x-x-S/T</code></td></tr>
+<tr><td>Ưa axit (acidophilic)</td><td>CK2</td><td><code>S/T-x-x-D/E</code>: D/E ở +3 là quan trọng nhất, thêm ở +1, +2; P, K, R ở +1 là bất lợi</td></tr>
+<tr><td>Cần “mồi” (primed)</td><td>CK1</td><td><code>pS/T-x-x-S/T</code>: cần một phosphoryl hóa có sẵn ở −3</td></tr>
+<tr><td>Kiểu ATM</td><td>ATM, kinase được bật khi DNA tổn thương</td><td><code>S/T-Q</code>: glutamine ở +1</td></tr>
+</tbody></table></div>
+<p style="font-size:.9rem;color:var(--muted)">Cả bảng: <span class="tag t-ok">đã kiểm</span> (qua kết quả tìm kiếm, nguồn ở cuối bài). Mô tả “ATM là kinase không điển hình” không đưa vào vì chưa kiểm.</p>
+
+<p>Chọn lọc âm thấy rõ khi so CDK với CK2: proline ở +1 là điều CDK cần nhưng lại bất lợi cho CK2. Một bài năm 1992 đặt tên thẳng là “trình tự đồng thuận của cdc2 kinase (một CDK) và của CK2 loại trừ nhau” <span class="tag t-ok">đã kiểm</span> (qua kết quả tìm kiếm).</p>
+
+<div class="box warn">
+  <span class="label">Motif là xác suất, không phải regex</span>
+  <p>Viết dạng regex cho dễ nhớ, nhưng motif thật là một phân bố xác suất trên từng vị trí, có cả vị trí “ưa” lẫn vị trí “cấm”. Một S/T khớp motif chưa chắc bị phosphoryl hóa (thiếu các cơ chế ở mục 4), và nhiều site thật không khớp motif đơn giản nào. Mục 6 cho bạn tự thấy điều này trên dữ liệu thật.</p>
+</div>
+
+<h2>6. Ví dụ thật: các site phosphoryl hóa của p53</h2>
+
+<p>p53 (UniProt P04637, bài 01) là protein ức chế khối u <span class="tag t-ok">đã kiểm</span>. Mục “Modified residue” của UniProt ghi <strong>13 site phosphoryl hóa</strong> có bằng chứng thực nghiệm, đều kèm tên kinase <span class="tag t-ok">đã kiểm</span> (tự đếm trên bản tải ngày 04/10/2026). Đây chỉ là các site được chú thích thủ công; cơ sở dữ liệu chuyên PTM có thể ghi nhiều site hơn <span class="tag t-unv">chưa kiểm chứng</span>. Một số site đáng học:</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Site</th><th>−3 … +3</th><th>Kinase theo UniProt</th><th>Nhận xét</th></tr></thead>
+<tbody>
+<tr><td>S15</td><td class="mono">PPL<b>S</b>QET</td><td>CDK5, PRPK, AMPK, NUAK1, ATM</td><td>Q ở +1: khớp kiểu ATM</td></tr>
+<tr><td>T18</td><td class="mono">SQE<b>T</b>FSD</td><td>CK1, VRK1, VRK2</td><td>S15 nằm đúng ở −3: kiểu “mồi” của CK1</td></tr>
+<tr><td>S33</td><td class="mono">NVL<b>S</b>PLP</td><td>CDK5, CDK7</td><td>P ở +1: hướng proline</td></tr>
+<tr><td>S46</td><td class="mono">LML<b>S</b>PDD</td><td>CDK5, DYRK2, HIPK2, PKC/PRKCG</td><td>Bốn kinase, thuộc ít nhất hai nhóm lớn (CDK5 ở CMGC, PKC ở AGC)</td></tr>
+<tr><td>S315</td><td class="mono">TSS<b>S</b>PQP</td><td>AURKA, CDK1, CDK2</td><td>P ở +1: hướng proline</td></tr>
+<tr><td>S392</td><td class="mono">GPD<b>S</b>D</td><td>CK2, CDK2, NUAK1</td><td>Residue cuối cùng là 393, nên không có +2, +3</td></tr>
+</tbody></table></div>
+
+<p><strong>T18 là một chuỗi phản ứng thật.</strong> Sakaguchi và cộng sự (2000) cho thấy CK1 chỉ phosphoryl hóa được T18 khi S15 <em>đã</em> được phosphoryl hóa trước. Khi DNA bị tổn thương, chuỗi “S15 rồi T18” xảy ra trong tế bào, và T18 mang phosphate làm p53 khó bám vào Mdm2, protein đánh dấu p53 để phân hủy. Nhờ vậy p53 được giữ ổn định <span class="tag t-ok">đã kiểm</span>. Bài học cho máy học: nhãn của T18 phụ thuộc <em>trạng thái</em> của một residue khác, trong khi cửa sổ chuỗi chỉ thấy chữ S ở −3 chứ không biết nó đã mang phosphate hay chưa <span class="tag t-inf">suy luận</span>.</p>
+
+<p><strong>S46 cho thấy nhãn theo nhóm không loại trừ nhau.</strong> Cùng một site, UniProt ghi cả CDK5 lẫn PKC. Nếu bài toán có một đầu ra cho nhóm CDK và một cho nhóm PKC thì S46 dương ở cả hai, giống trường hợp lysine dương với nhiều SIRT ở bài 02. Để ý thêm: S46 không có R ở −3, tức là không khớp motif ưa base, dù được ghi là site của PKC.</p>
+
+<h3>Thử tay: tô motif trên toàn bộ p53</h3>
+<p>Chọn một motif để tô các S/T khớp. Site phospho có chú thích UniProt luôn được gạch chân đỏ. Bấm vào một residue để xem cửa sổ ±10, kinase được ghi, và motif nào khớp.</p>
+<div class="btns" id="mBtns">
+  <button data-m="SP" aria-pressed="true">S/T-P (hướng proline)</button>
+  <button data-m="RS" aria-pressed="false">R-x-x-S/T (ưa base)</button>
+  <button data-m="SD" aria-pressed="false">S/T-x-x-D/E (ưa axit)</button>
+  <button data-m="SQ" aria-pressed="false">S/T-Q (kiểu ATM)</button>
+  <button data-m="AN" aria-pressed="false">Chỉ site UniProt</button>
+</div>
+<div class="seq" id="p53seq"></div>
+<p class="out" id="p53out"></p>
+<div class="win" id="p53win">Bấm vào một residue để xem cửa sổ ±10.</div>
+<p style="font-size:.9rem;color:var(--muted)">Trình tự và chú thích lấy từ UniProt P04637, tải ngày 04/10/2026 <span class="tag t-ok">đã kiểm</span>. Các con số trong ô kết quả do trang tự đếm.</p>
+
+<p>Những điều nên tự rút ra: mẫu <code>S/T-P</code> khớp 6 vị trí, 3 trong đó là site thật và cả ba đều được ghi là do CDK. Mẫu <code>S/T-x-x-D/E</code> khớp 4 site thật, nhưng <em>không site nào</em> được ghi là do CK2; còn site CK2 thật duy nhất là S392 thì lại không khớp, vì chuỗi kết thúc trước vị trí +3. Tức là regex vừa bắt nhầm vừa bỏ sót. Đó là lý do cần một mô hình học từ dữ liệu, và cũng là lý do mô hình đó phải được đánh giá cẩn thận <span class="tag t-inf">suy luận</span>.</p>
+
+<h2>7. Từ sinh học đến bài toán B</h2>
+
+<p>Vì sao ứng viên B gán nhãn theo <strong>nhóm</strong> kinase thay vì từng kinase?</p>
+<ul>
+  <li><strong>Dữ liệu.</strong> Chỉ một phần nhỏ site đã biết kinase (mục 4), nên từng kinase đơn lẻ có quá ít mẫu. Gom các kinase cùng họ, cùng motif (ví dụ CDK1, CDK2, CDK5, CDK7 cùng ưa <code>S/T-P</code>) cho đủ dữ liệu để học <span class="tag t-inf">suy luận</span>.</li>
+  <li><strong>Sinh học.</strong> Kinase cùng họ có miền kinase giống nhau nên thường có motif giống nhau <span class="tag t-unv">chưa kiểm chứng</span>.</li>
+  <li><strong>Benchmark có sẵn.</strong> dbPTM công bố bộ benchmark non-homologous tách theo nhóm kinase <span class="tag t-ok">đã kiểm</span>, và dữ liệu phát hành đã cắt sẵn cửa sổ ±10 <span class="tag t-dd">khảo sát sâu · toàn văn</span>.</li>
+</ul>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Sự thật sinh học</th><th>Hệ quả cho thiết kế mô hình</th></tr></thead>
+<tbody>
+<tr><td>Một site có thể bị nhiều nhóm phosphoryl hóa (S46)</td><td>Bài toán <strong>đa nhãn</strong>: mỗi nhóm một đầu ra độc lập, không ép chọn một nhóm</td></tr>
+<tr><td>Đa số site chưa biết kinase</td><td>Nhãn âm theo nhóm rất nhiễu; precision đo được có thể thấp hơn thật (bài 02, mục 6)</td></tr>
+<tr><td>Motif nằm trong vài residue quanh site, có cả vị trí “cấm”</td><td>Cửa sổ ngắn có tín hiệu thật; CNN với nhiều kích thước cửa sổ là lựa chọn hợp lý (bài 11)</td></tr>
+<tr><td>Phosphoryl hóa “mồi”, tương tác ở xa, vị trí trong tế bào</td><td>Nằm ngoài cửa sổ: trần hiệu năng. Embedding PLM toàn chuỗi có thể bù một phần (bài 12) <span class="tag t-inf">suy luận</span></td></tr>
+<tr><td>Motif đã biết rõ (P ở +1, R ở −3, D/E ở +3)</td><td>XAI <strong>kiểm chứng được</strong>: attribution có rơi đúng vào các vị trí đó không. Khảo sát sâu chấm B “cao” ở tiêu chí 4 vì lý do này <span class="tag t-dd">khảo sát sâu · suy luận</span></td></tr>
+</tbody></table></div>
+
+<p>Còn phía “xóa”? Dữ liệu của B ghi các site <em>đã từng</em> được phosphoryl hóa, không ghi site đang mang phosphate ở một thời điểm. Câu hỏi của mô hình vì vậy là “site này có thể bị nhóm <em>g</em> phosphoryl hóa không”, chứ không phải “site này đang bật hay tắt” <span class="tag t-inf">suy luận</span>. Phía phosphatase gần như không có nhãn: trang download của dbPTM ghi 133 site dephosphorylation, so với 1.615.054 site phosphorylation thực nghiệm <span class="tag t-dd">khảo sát sâu · toàn văn</span>.</p>
+
+<h2>Bảng thuật ngữ của bài</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>Thuật ngữ</th><th>Nghĩa ngắn</th></tr></thead>
+<tbody>
+<tr><td>Con đường tín hiệu (signaling pathway)</td><td>Chuỗi protein truyền thông điệp từ thụ thể tới đáp ứng của tế bào</td></tr>
+<tr><td>Thụ thể (receptor)</td><td>Protein nhận tín hiệu, thường nằm trên màng</td></tr>
+<tr><td>RTK (receptor tyrosine kinase)</td><td>Thụ thể trên màng có miền tyrosine kinase</td></tr>
+<tr><td>GTPase, Ras</td><td>Protein bật khi gắn GTP, tắt khi gắn GDP; Ras là ví dụ trung tâm</td></tr>
+<tr><td>MAPK / MAPKK / MAPKKK</td><td>Ba tầng kinase nối tiếp; ERK là một MAPK, MEK là MAPKK, Raf là MAPKKK</td></tr>
+<tr><td>PI3K, PIP2, PIP3</td><td>Kinase lipid và hai lipid màng mà nó biến đổi</td></tr>
+<tr><td>AKT, PTEN</td><td>Kinase thúc đẩy sống sót và tăng sinh; phosphatase lipid đối nghịch PI3K</td></tr>
+<tr><td>Kinome</td><td>Toàn bộ protein kinase trong bộ gen; ở người là 518 theo Manning 2002</td></tr>
+<tr><td>Kinase serine/threonine, tyrosine, lưỡng đặc hiệu</td><td>Phân loại theo residue nhận phosphate</td></tr>
+<tr><td>Nhóm / họ kinase</td><td>Các tầng của cây phân loại kinase theo độ giống nhau của miền kinase</td></tr>
+<tr><td>Motif hướng proline / ưa base / ưa axit</td><td>Ba lớp motif chính: P ở +1; R ở −3; D/E ở +3</td></tr>
+<tr><td>Phosphoryl hóa “mồi” (priming)</td><td>Một site phải được phosphoryl hóa trước thì site khác mới bị phosphoryl hóa</td></tr>
+<tr><td>Chọn lọc âm (negative selectivity)</td><td>Residue mà kinase không chấp nhận ở một vị trí; cũng là một phần của motif</td></tr>
+<tr><td>Scaffold / adaptor</td><td>Protein giàn giáo / protein nối, giữ các thành phần tín hiệu ở gần nhau</td></tr>
+</tbody></table></div>
+
+<h2>Câu hỏi tự kiểm</h2>
+
+<details><summary>1. Sắp xếp lại cho đúng: ERK, Ras, MEK, RTK, Raf. Trong năm cái tên này, cái nào không phải kinase?</summary>
+<div>RTK → (Grb2–SOS) → Ras → Raf → MEK → ERK. Ras không phải kinase mà là GTPase: nó bật khi gắn GTP. Bốn cái còn lại đều là protein kinase.</div></details>
+
+<details><summary>2. Một bạn muốn đưa site của PI3K vào tập dương của bài toán B, với lý do “PI3K là kinase”. Sai ở đâu?</summary>
+<div>PI3K là kinase lipid: nó phosphoryl hóa PIP2 chứ không phosphoryl hóa residue S/T/Y trên protein. Bài toán B hỏi về site trên protein do protein kinase gắn phosphate. (Bản thân protein PI3K có thể <em>bị</em> phosphoryl hóa bởi kinase khác, nhưng đó là chuyện khác hẳn.)</div></details>
+
+<details><summary>3. Một serine có proline ngay sau nó. Nhóm kinase nào có khả năng nhất? Có chắc nó bị phosphoryl hóa không?</summary>
+<div>Kinase hướng proline như CDK hoặc MAPK. Nhưng không chắc: motif chỉ là một trong nhiều cơ chế đặc hiệu (Ubersax &amp; Ferrell 2007). Trên p53, mẫu S/T-P khớp 6 vị trí nhưng chỉ 3 là site có chú thích.</div></details>
+
+<details><summary>4. Vì sao ví dụ T18 của p53 cho thấy giới hạn của một cửa sổ chuỗi tĩnh?</summary>
+<div>CK1 chỉ phosphoryl hóa T18 khi S15 đã mang phosphate. Cửa sổ chuỗi chỉ cho thấy chữ S ở −3, không cho biết S15 đang ở trạng thái nào. Thông tin quyết định nằm ở trạng thái tế bào, không nằm trong chuỗi.</div></details>
+
+<details><summary>5. Vì sao đầu ra của mô hình B nên là nhiều đầu ra độc lập (đa nhãn) thay vì chọn một trong các nhóm (đa lớp)?</summary>
+<div>Vì một site có thể bị kinase của nhiều nhóm phosphoryl hóa, ví dụ S46 của p53 được ghi cho cả CDK5 (CMGC) và PKC (AGC). Ép chọn một nhóm sẽ biến một nhãn đúng thành nhãn sai.</div></details>
+
+<h2>Nguồn</h2>
+<ul class="src">
+  <li>Guo YJ và cộng sự (2020). ERK/MAPK signalling pathway and tumorigenesis. <em>Exp Ther Med</em> 19(3):1997–2007. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7027163/">PMC7027163</a> <span class="tag t-ok">đã kiểm</span>: Grb2–SOS, Ras-GTP/GDP, Raf–MEK–ERK, MEK lưỡng đặc hiệu, ERK vào nhân.</li>
+  <li>Miricescu D và cộng sự (2020). PI3K/AKT/mTOR Signaling Pathway in Breast Cancer: From Molecular Landscape to Clinical Aspects. <em>Int J Mol Sci</em>. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7796017/">PMC7796017</a> <span class="tag t-ok">đã kiểm</span>: PIP2 → PIP3, AKT T308/S473, PTEN.</li>
+  <li>Manning G, Whyte DB, Martinez R, Hunter T, Sudarsanam S (2002). The protein kinase complement of the human genome. <em>Science</em> 298:1912–1934. doi:10.1126/science.1075762 <span class="tag t-ok">đã kiểm</span> (abstract PubMed: 518, 71, 106, 244; con số 478/40 qua tóm tắt).</li>
+  <li>Ubersax JA, Ferrell JE (2007). Mechanisms of specificity in protein phosphorylation. <em>Nat Rev Mol Cell Biol</em> 8(7):530–541. doi:10.1038/nrm2203 <span class="tag t-ok">đã kiểm</span> (abstract).</li>
+  <li>Johnson JL và cộng sự (2023). An atlas of substrate specificities for the human serine/threonine kinome. <em>Nature</em> 613:759–766. doi:10.1038/s41586-022-05575-3, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9876800/">PMC9876800</a> <span class="tag t-ok">đã kiểm</span> (abstract).</li>
+  <li>Sakaguchi K và cộng sự (2000). Damage-mediated phosphorylation of human p53 threonine 18 through a cascade mediated by a casein 1-like kinase. <em>J Biol Chem</em> 275(13):9278–9283. doi:10.1074/jbc.275.13.9278 <span class="tag t-ok">đã kiểm</span> (abstract).</li>
+  <li>Roskoski R (2026). Properties of FDA-approved small molecule protein kinase inhibitors: A 2026 update. <em>Pharmacol Res</em> 224:108107. doi:10.1016/j.phrs.2026.108107 <span class="tag t-ok">đã kiểm</span> (abstract).</li>
+  <li>Ba lớp motif và motif CK1: “The Expanding Landscape of Acidophilic Protein Kinases” (doi:10.3390/kinasesphosphatases4030026); “Protein Kinase Specificity”, <em>Cell Cycle</em> (doi:10.4161/cc.4.1.1353). Motif CK2 <code>S/T-x-x-D/E</code>: Meggio &amp; Pinna (2003), “One-thousand-and-one substrates of protein kinase CK2?”, <em>FASEB J</em>; Marin và cộng sự (1992), <em>FEBS Lett</em>. Motif AKT <code>R-x-R-x-x-S/T</code>: Manning &amp; Cantley (2007), “AKT/PKB signaling: navigating downstream”, <em>Cell</em>. Motif ATM <code>S/T-Q</code>: kết quả tìm kiếm gồm trang Nature của Johnson 2023. Tất cả <span class="tag t-ok">đã kiểm</span> (qua kết quả tìm kiếm, chưa mở toàn văn).</li>
+  <li>Nhóm kinase: trang Kinomer, <a href="https://www.compbio.dundee.ac.uk/kinomer/families.html">compbio.dundee.ac.uk/kinomer</a> (mô tả AGC, CMGC, CAMK, STE, TKL) <span class="tag t-ok">đã kiểm</span>; CK2 là thành viên xa của CMGC <span class="tag t-ok">đã kiểm</span> (qua kết quả tìm kiếm).</li>
+  <li>UniProt P04637 (p53) và P31749 (AKT1), tải ngày 04/10/2026 <span class="tag t-ok">đã kiểm</span>.</li>
+  <li>dbPTM 2025 update: Chung CR … Lee TY, <em>Nucleic Acids Res</em> 53(D1):D377–D386, doi:10.1093/nar/gkae1005; trang download liệt kê benchmark theo nhóm kinase <span class="tag t-ok">đã kiểm</span> (qua kết quả tìm kiếm).</li>
+  <li>Ứng viên B, F, RTK_RAG, số site dbPTM: <a href="../deep-research/reports/aging-cancer-deep-dive.md">khảo sát sâu aging và cancer</a>, mục 2.5, 4 và 8, giữ nguyên nhãn của báo cáo.</li>
+  <li>Đọc thêm: Cooper, <em>The Cell</em>, chương 15 (NCBI Bookshelf NBK9839), danh sách ở <a href="../biology-basics/learning-roadmap.md">lộ trình tự học</a>, mục 2. Trang Bookshelf bị chắn reCAPTCHA khi kiểm trong phiên này, nên các bước con đường được kiểm qua hai tổng quan PMC ở trên.</li>
+</ul>
+
+<nav class="pn">
+  <a href="02-enzymes-and-ptm.html">← Bài 02: Enzyme và PTM</a>
+  <a href="04-cancer-hallmarks.html">Bài 04: Ung thư: hallmarks và kinase →</a>
+</nav>
+
+</main>
+<script>
+(function(){
+  /* Hình 2: lưới motif −5..+5 */
+  var ns = "http://www.w3.org/2000/svg", g = document.getElementById("mgrid");
+  var ROWS = [
+    ["Hướng proline (CDK, MAPK)", {"1":"P"}],
+    ["Ưa base (PKA, PKC)", {"-3":"R"}],
+    ["AKT", {"-5":"R","-3":"R"}],
+    ["Ưa axit (CK2)", {"3":"D/E","1":"(D/E)","2":"(D/E)"}],
+    ["Cần mồi (CK1)", {"-3":"pS/T"}],
+    ["Kiểu ATM", {"1":"Q"}]
+  ];
+  var X0 = 200, W = 36, H = 28;
+  function el(tag, attrs, txt){
+    var e = document.createElementNS(ns, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (txt !== undefined) e.textContent = txt;
+    g.appendChild(e); return e;
+  }
+  for (var p = -5; p <= 5; p++){
+    el("text", {x: X0 + (p+5)*W + W/2, y: 22, "text-anchor": "middle", "font-size": 12, "font-weight": p === 0 ? 700 : 400, "class": p === 0 ? "s-text" : "s-muted"}, (p > 0 ? "+" : (p < 0 ? "−" : "")) + Math.abs(p));
+  }
+  ROWS.forEach(function(r, i){
+    var y = 34 + i*34;
+    el("text", {x: X0 - 10, y: y + 18, "text-anchor": "end", "font-size": 12, "class": "s-text"}, r[0]);
+    for (var p = -5; p <= 5; p++){
+      var x = X0 + (p+5)*W, v = r[1][String(p)];
+      if (p === 0){
+        el("rect", {x: x+1, y: y, width: W-2, height: H, rx: 4, "class": "s-soft s-accs", "stroke-width": 1.5});
+        el("text", {x: x + W/2, y: y + 18, "text-anchor": "middle", "font-size": 11.5, "font-weight": 700, "class": "s-acc"}, "S/T");
+      } else if (v){
+        var weak = v.charAt(0) === "(";
+        el("rect", {x: x+1, y: y, width: W-2, height: H, rx: 4, "class": "s-surf s-oks", "stroke-width": weak ? 1 : 2});
+        el("text", {x: x + W/2, y: y + 18, "text-anchor": "middle", "font-size": weak ? 9.5 : 11.5, "font-weight": weak ? 400 : 700, "class": "s-ok"}, v);
+      } else {
+        el("rect", {x: x+1, y: y, width: W-2, height: H, rx: 4, "class": "s-surf s-border", "stroke-width": 1});
+        el("text", {x: x + W/2, y: y + 18, "text-anchor": "middle", "font-size": 11, "class": "s-muted"}, "x");
+      }
+    }
+  });
+
+  /* Tô motif trên p53 (UniProt P04637) */
+  var P53 = "MEEPQSDPSVEPPLSQETFSDLWKLLPENNVLSPLPSQAMDDLMLSPDDIEQWFTEDPGPDEAPRMPEAAPPVAPAPAAPTPAAPAPAPSWPLSSSVPSQKTYQGSYGFRLGFLHSGTAKSVTCTYSPALNKMFCQLAKTCPVQLWVDSTPPPGTRVRAMAIYKQSQHMTEVVRRCPHHERCSDSDGLAPPQHLIRVEGNLRVEYLDDRNTFRHSVVVPYEPPEVGSDCTTIHYNYMCNSSCMGGMNRRPILTIITLEDSSGNLLGRNSFEVRVCACPGRDRRTEEENLRKKGEPHHELPPGSTKRALPNNTSSSPQPKKKPLDGEYFTLQIRGRERFEMFRELNEALELKDAQAGKEPGGSRAHSSHLKSKKGQSTSRHKKLMFKTEGPDSD";
+  var ANN = {9:"HIPK4", 15:"CDK5, PRPK, AMPK, NUAK1, ATM", 18:"CK1, VRK1, VRK2", 20:"CHEK2, CK1, PLK3", 33:"CDK5, CDK7", 37:"MAPKAPK5", 46:"CDK5, DYRK2, HIPK2, PKC/PRKCG", 55:"TAF1, GRK5", 183:"AURKB", 269:"AURKB", 284:"AURKB", 315:"AURKA, CDK1, CDK2", 392:"CK2, CDK2, NUAK1"};
+  var NAMES = {SP:"S/T-P", RS:"R-x-x-S/T", SD:"S/T-x-x-D/E", SQ:"S/T-Q"};
+  function isST(i){ return P53[i] === "S" || P53[i] === "T"; }
+  var RULE = {
+    SP: function(i){ return isST(i) && P53[i+1] === "P"; },
+    RS: function(i){ return isST(i) && P53[i-3] === "R"; },
+    SD: function(i){ return isST(i) && (P53[i+3] === "D" || P53[i+3] === "E"); },
+    SQ: function(i){ return isST(i) && P53[i+1] === "Q"; },
+    AN: function(i){ return !!ANN[i+1]; }
+  };
+  var seqEl = document.getElementById("p53seq"), out = document.getElementById("p53out"), win = document.getElementById("p53win");
+  var mode = "SP", center = -1, nST = 0, nAnn = 0;
+  for (var q = 0; q < P53.length; q++){ if (isST(q)) nST++; if (ANN[q+1]) nAnn++; }
+  function render(){
+    var html = "", n = 0, k = 0;
+    for (var i = 0; i < P53.length; i++){
+      var hit = RULE[mode](i), ann = !!ANN[i+1];
+      if (hit){ n++; if (ann) k++; }
+      var cls = (hit ? "hit " : "") + (ann ? "ann " : "") + (i === center ? "center " : "") + ((i+1) % 10 === 0 ? "g10" : "");
+      html += '<span data-i="' + i + '" class="' + cls.trim() + '" title="' + P53[i] + (i+1) + '">' + P53[i] + "</span>";
+    }
+    seqEl.innerHTML = html;
+    if (mode === "AN") out.textContent = "UniProt ghi " + nAnn + " site phospho có bằng chứng thực nghiệm, trên tổng " + nST + " S/T của p53.";
+    else out.textContent = "Mẫu " + NAMES[mode] + " khớp " + n + " / " + nST + " S/T; " + k + " trong số đó là site có chú thích UniProt. Mẫu này bỏ sót " + (nAnn - k) + " / " + nAnn + " site có chú thích.";
+  }
+  function show(i){
+    var s = "";
+    for (var j = i - 10; j <= i + 10; j++){
+      var c = (j < 0 || j >= P53.length) ? "-" : P53[j];
+      s += (j === i) ? "<b>" + c + "</b>" : c;
+    }
+    var m = [];
+    ["SP","RS","SD","SQ"].forEach(function(r){ if (RULE[r](i)) m.push(NAMES[r]); });
+    var a = ANN[i+1] ? "UniProt: phospho bởi " + ANN[i+1] : "không có chú thích phospho trên UniProt";
+    win.innerHTML = P53[i] + (i+1) + " &nbsp;→&nbsp; " + s + ' &nbsp;<span style="color:var(--muted)">' + a + " · khớp: " + (m.length ? m.join(", ") : "không mẫu nào") + "</span>";
+  }
+  document.getElementById("mBtns").addEventListener("click", function(e){
+    var b = e.target.closest("button"); if (!b) return;
+    mode = b.getAttribute("data-m");
+    this.querySelectorAll("button").forEach(function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+    render();
+  });
+  seqEl.addEventListener("click", function(e){
+    var s = e.target.closest("span[data-i]"); if (!s) return;
+    center = +s.getAttribute("data-i"); render(); show(center);
+  });
+  render();
+})();
+</script>
+</body>
+</html>

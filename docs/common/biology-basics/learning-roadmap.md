@@ -2,6 +2,8 @@
 
 *Soạn 04/10/2026 cho giai đoạn chuẩn bị báo cáo tuần 6. Gắn với các ứng viên trong [khảo sát sâu aging và cancer](../deep-research/reports/aging-cancer-deep-dive.md): **A** (vị trí lysine bị SIRT1–7 deacetyl hóa) và **B** (vị trí phosphoryl hóa theo nhóm kinase gây ung thư).*
 
+> **Bài giảng diễn giải đi kèm:** [docs/common/lectures/](../lectures/) — 15 bài HTML tự học, mở trực tiếp bằng trình duyệt. Lộ trình này vẫn là danh sách tài liệu gốc; bài giảng là phần giải thích và trỏ ngược về đây. Đang viết: mới có [bài 02 — enzyme và PTM](../lectures/02-enzymes-and-ptm.html) và [bài 09 — rò rỉ dữ liệu và chuỗi đồng dạng](../lectures/09-leakage-and-homology.html).
+
 ## 0. Nguyên tắc: học đủ để trả lời ba câu GVHD hỏi, không học cả ngành
 
 GVHD yêu cầu trình bày rõ **bài toán là gì, vì sao cần nghiên cứu, và đề tài giải quyết phần nào**. Với sinh viên Kỹ thuật phần mềm, mục tiêu sinh học trong hai tuần tới chỉ là:

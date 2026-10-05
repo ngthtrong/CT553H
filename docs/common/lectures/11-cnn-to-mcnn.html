@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Từ CNN đến MCNN</title>
+<style>
+:root{
+  --bg:#faf9f6; --surface:#ffffff; --text:#1d2126; --muted:#5d6570; --border:#e2dfd7;
+  --accent:#2c6a8a; --accent-soft:#e7f0f5;
+  --ok:#2d7a4d; --ok-soft:#e6f3eb; --warn:#8f5600; --warn-soft:#fbf1df;
+  --bad:#a23838; --bad-soft:#f8e7e7; --code-bg:#f1efe9;
+  --r-st:#2c6a8a; --r-k:#b4532a; --r-r:#7a4fa0; --r-p:#3f7d3a; --r-hit:#fff1a8;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#15171b; --surface:#1d2026; --text:#e5e4df; --muted:#9aa1ab; --border:#33373f;
+    --accent:#7fb8d6; --accent-soft:#1f2f39;
+    --ok:#79c495; --ok-soft:#1b2c22; --warn:#e2b25c; --warn-soft:#2f2617;
+    --bad:#e38c8c; --bad-soft:#331e1f; --code-bg:#262a31;
+    --r-st:#7fb8d6; --r-k:#e59a72; --r-r:#bf9ae0; --r-p:#93c98c; --r-hit:#4a4318;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:17px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans","Helvetica Neue",Arial,sans-serif}
+main{max-width:46rem;margin:0 auto;padding:24px 16px 64px}
+a{color:var(--accent)}
+h1{font-size:1.85rem;line-height:1.25;margin:.3em 0 .4em}
+h2{font-size:1.3rem;margin:2.2em 0 .5em;padding-top:.6em;border-top:1px solid var(--border)}
+h3{font-size:1.08rem;margin:1.6em 0 .4em}
+p,li{overflow-wrap:break-word}
+code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;font-size:.9em}
+code{background:var(--code-bg);padding:.1em .35em;border-radius:4px}
+.crumb{color:var(--muted);font-size:.9rem}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:.4em 0 1.2em}
+.pill{font-size:.82rem;border:1px solid var(--border);background:var(--surface);border-radius:999px;padding:2px 10px;color:var(--muted)}
+.box{border:1px solid var(--border);background:var(--surface);border-radius:10px;padding:14px 18px;margin:1.2em 0}
+.box>:first-child{margin-top:0}.box>:last-child{margin-bottom:0}
+.box h3{margin-top:0}
+.goal{border-left:4px solid var(--accent)}
+.link{background:var(--accent-soft);border-color:transparent}
+.warn{background:var(--warn-soft);border-color:transparent}
+.label{display:block;font-size:.78rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:.3em}
+.tag{display:inline-block;font-size:.72rem;line-height:1.5;padding:0 6px;border-radius:4px;white-space:nowrap;vertical-align:1px;font-weight:600}
+.t-ok{background:var(--ok-soft);color:var(--ok)}
+.t-dd{background:var(--accent-soft);color:var(--accent)}
+.t-unv{background:var(--warn-soft);color:var(--warn)}
+.t-inf{background:var(--bad-soft);color:var(--bad)}
+.tablewrap{overflow-x:auto;margin:1em 0;border:1px solid var(--border);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--border)}
+th{background:var(--code-bg);font-weight:600}
+tr:last-child td{border-bottom:0}
+figure{margin:1.4em 0}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:.88rem;color:var(--muted);margin-top:.4em}
+details{border:1px solid var(--border);border-radius:8px;background:var(--surface);margin:.6em 0;padding:0 14px}
+summary{cursor:pointer;padding:10px 0;font-weight:600}
+details[open] summary{border-bottom:1px solid var(--border);margin-bottom:.6em}
+details>div{padding-bottom:10px}
+.btns{display:flex;flex-wrap:wrap;gap:6px;margin:.6em 0}
+button{font:inherit;font-size:.88rem;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:6px;padding:4px 10px;cursor:pointer}
+button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.seq{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:1rem;line-height:2;word-break:break-all;letter-spacing:.06em}
+.seq span{cursor:pointer;border-radius:3px;padding:1px 0}
+.seq span.hit{background:var(--r-hit);font-weight:700}
+.seq span.center{outline:2px solid var(--bad)}
+.out{font-size:.92rem;color:var(--muted);min-height:1.6em}
+.win{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:1rem;letter-spacing:.06em;background:var(--code-bg);padding:6px 10px;border-radius:6px;overflow-x:auto;white-space:nowrap}
+.win b{color:var(--bad)}
+nav.pn{display:flex;justify-content:space-between;gap:12px;margin-top:3em;padding-top:1em;border-top:1px solid var(--border);font-size:.95rem}
+.src li{margin:.35em 0;font-size:.93rem}
+svg text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans",Arial,sans-serif}
+.s-stroke{stroke:var(--text)} .s-muted{fill:var(--muted)} .s-text{fill:var(--text)}
+.s-acc{fill:var(--accent)} .s-accs{stroke:var(--accent)} .s-bad{fill:var(--bad)} .s-bads{stroke:var(--bad)}
+.s-ok{fill:var(--ok)} .s-oks{stroke:var(--ok)} .s-surf{fill:var(--surface)} .s-soft{fill:var(--accent-soft)}
+.s-warn{fill:var(--warn)} .s-warns{stroke:var(--warn)} .s-border{stroke:var(--border)}
+
+/* Quick navigation: native links and details work offline without JavaScript. */
+.lecture-nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:8px;padding:10px 0;margin:0 0 16px;background:var(--bg);border-bottom:1px solid var(--border)}
+.lecture-nav>a{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:6px 10px;border:1px solid var(--border);border-radius:8px;background:var(--surface);text-decoration:none;font-size:.88rem}
+.lecture-switch{position:relative;flex:1;min-width:0;margin:0;padding:0;border-radius:8px}
+.lecture-switch>summary{min-height:44px;padding:8px 12px;font-size:.88rem}
+.lecture-switch[open]>summary{margin:0;border-bottom:0}
+.lecture-switch>.lecture-menu{position:absolute;right:0;top:calc(100% + 8px);width:min(40rem,calc(100vw - 32px));max-height:65vh;overflow-y:auto;overscroll-behavior:contain;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:10px;box-shadow:0 6px 18px var(--border)}
+.lecture-menu .lecture-group{margin:8px 8px 4px;font-size:.8rem;font-weight:700;color:var(--muted)}
+.lecture-menu ol{list-style:none;padding:0;margin:0 0 12px}
+.lecture-menu li{margin:0}
+.lecture-menu a,.lecture-menu .lecture-unavailable{display:block;padding:10px 12px;border-radius:6px;line-height:1.45;font-size:.9rem;text-decoration:none}
+.lecture-menu a:hover{background:var(--accent-soft)}
+.lecture-menu a[aria-current="page"]{background:var(--accent-soft);font-weight:700;border-left:3px solid var(--accent)}
+.lecture-menu .lecture-unavailable{color:var(--muted)}
+.lecture-nav a:focus-visible,.lecture-switch>summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+@media print{.lecture-nav{display:none}}
+
+</style>
+</head>
+<body>
+<main>
+
+<nav class="lecture-nav" aria-label="Chuyển nhanh giữa các bài giảng">
+<a href="index.html">Mục lục</a>
+<details class="lecture-switch"><summary>Chuyển bài · Bài 11</summary><div class="lecture-menu"><p class="lecture-group">Phần A — Sinh học nền</p><ol><li><a href="01-gene-to-protein.html">Bài 01: Từ gene đến protein</a></li><li><a href="02-enzymes-and-ptm.html">Bài 02: Enzyme và biến đổi sau dịch mã (PTM)</a></li><li><a href="03-cell-signaling-kinases.html">Bài 03: Tín hiệu tế bào và kinase</a></li><li><a href="04-cancer-hallmarks.html">Bài 04: Ung thư: hallmarks và kinase</a></li><li><a href="05-aging-sirtuins-senescence.html">Bài 05: Lão hóa: sirtuin và senescence</a></li><li><a href="06-biological-databases.html">Bài 06: Các cơ sở dữ liệu sinh học</a></li></ol><p class="lecture-group">Phần B — Khung bài toán và đánh giá</p><ol><li><a href="07-residue-level-framing.html">Bài 07: Đặt bài toán ở mức residue</a></li><li><a href="08-metrics-imbalanced.html">Bài 08: Chỉ số cho dữ liệu mất cân bằng</a></li><li><a href="09-leakage-and-homology.html">Bài 09: Rò rỉ dữ liệu và chuỗi đồng dạng</a></li></ol><p class="lecture-group">Phần C — Mô hình</p><ol><li><a href="10-neural-network-basics.html">Bài 10: Mạng nơ-ron cơ bản</a></li><li><a href="11-cnn-to-mcnn.html" aria-current="page">Bài 11: Từ CNN đến MCNN</a></li><li><a href="12-protein-encodings-plm.html">Bài 12: Mã hóa protein: one-hot, PSSM, PLM</a></li><li><a href="13-retrieval-and-beyond.html">Bài 13: Truy hồi và các hướng sau PLM</a></li><li><a href="14-xai-basics.html">Bài 14: Giải thích mô hình (XAI)</a></li><li><span class="lecture-unavailable">Bài 15: Đọc hiểu một bài báo tin sinh — chưa có</span></li></ol></div></details>
+<a href="10-neural-network-basics.html" aria-label="Bài trước: Mạng nơ-ron cơ bản" title="Bài 10: Mạng nơ-ron cơ bản">←</a>
+<a href="12-protein-encodings-plm.html" aria-label="Bài sau: Mã hóa protein: one-hot, PSSM, PLM" title="Bài 12: Mã hóa protein: one-hot, PSSM, PLM">→</a>
+</nav>
+
+<div class="crumb"><a href="index.html">Bài giảng nền</a> · Bài 11 / 15 · Phần C — Mô hình</div>
+<h1>Từ CNN đến MCNN</h1>
+<div class="meta"><span class="pill">≈ 30 phút</span><span class="pill">Dùng cho: cả hai hướng</span><span class="pill">Đọc trước: bài 10</span></div>
+<div class="box goal"><span class="label">Đọc xong bài này, bạn sẽ</span><ul><li>Tính chiều đầu ra và số tham số của một Conv1D đơn giản.</li><li>Giải thích những gì 1-max pooling giữ và làm mất.</li><li>Đọc kiến trúc nhiều nhánh mCNN-ETC và phân biệt với bài toán RTK_RAG.</li><li>Tách cửa sổ đầu vào khỏi độ rộng kernel, rồi đề xuất phép so sánh công bằng.</li></ul></div>
+<p class="out" style="font-size:.85rem">Nhãn độ tin cậy trong bài:
+<span class="tag t-ok">đã kiểm</span> đã mở nguồn gốc hoặc bản tóm tắt chính thức trong phiên 04/10/2026 ·
+<span class="tag t-dd">khảo sát sâu</span> lấy từ báo cáo khảo sát sâu, giữ nguyên nhãn của báo cáo ·
+<span class="tag t-unv">chưa kiểm chứng</span> kiến thức nền, chưa mở lại nguồn ·
+<span class="tag t-inf">suy luận</span> lập luận của bài giảng, không có nguồn trực tiếp.</p>
+
+
+<h2>1. Từ vector phẳng sang một bộ lọc dùng lại dọc chuỗi</h2>
+<p>Bài 10 đã giới thiệu neuron và mạng nhiều lớp. Với protein, mỗi vị trí có một vector biểu diễn. Xếp các vector lại ta có ma trận <code>L × d</code>: L là chiều dài chuỗi, d là số đặc trưng mỗi residue. Bài này tạm coi ma trận ấy đã có; bài 12 giải thích cách tạo bằng one-hot, PSSM và PLM.</p>
+<p>Nếu trải phẳng một ma trận có chiều cố định rồi đưa vào lớp dense, mỗi vị trí có một bộ trọng số riêng. Trong phép tích chập một chiều (Conv1D), cùng một bộ trọng số được áp dụng ở nhiều vị trí liên tiếp. Chia sẻ trọng số là thuộc tính của phép tính được định nghĩa dưới đây; không cần giả định mô hình đã biết sinh học.</p>
+<div class="box"><span class="label">So sánh với một hàm xử lý mảng</span><p>Hãy nghĩ tới một hàm nhận một đoạn con có độ dài cố định, tính điểm, rồi chạy lại ở từng vị trí. CNN học các hệ số trong hàm tính điểm ấy. So sánh với regex chỉ hữu ích ở trực giác “quét tìm mẫu”; filter học bằng số thực, không phải điều kiện đúng/sai cứng <span class="tag t-inf">suy luận</span>.</p></div>
+<p>Không nên nói MLP “không dùng được cho chuỗi”. Nó vẫn có thể nhận đặc trưng có chiều cố định. Điều Conv1D mang lại trong biểu diễn đang xét là cách tổ chức trọng số cho mẫu cục bộ và dùng lại cùng phép tính dọc chuỗi. Lợi ích trên dữ liệu cụ thể phải được kiểm bằng thí nghiệm <span class="tag t-inf">suy luận</span>.</p>
+<h2>2. Một filter tính gì?</h2>
+<p>Gọi <code>X[i,c]</code> là kênh c ở vị trí i. Một filter có độ rộng k, trọng số <code>W[j,c]</code> và bias b. Với stride = 1 và không thêm đệm, đầu ra ở vị trí bắt đầu i được định nghĩa:</p>
+<div class="box"><span class="label">Phép tính dùng trong bài</span><p class="mono">z[i] = b + Σ(j=0…k−1) Σ(c=1…d) W[j,c] × X[i+j,c]</p><p class="mono">h[i] = ReLU(z[i]) = max(0, z[i])</p><p>Một filter có k×d trọng số và một bias. Với F filter: số tham số = F(kd + 1). Chỉ đếm lớp này, chưa tính encoder hoặc lớp dự đoán.</p></div>
+<p>Với đầu vào dài L và k ≤ L, số vị trí bắt đầu hợp lệ là <code>L − k + 1</code>. Đây là phép đếm cửa sổ, không phải một siêu tham số thực nghiệm. Nếu stride khác 1 hoặc thêm padding, công thức chiều dài phải thay đổi; bài này chỉ minh họa trường hợp vừa nêu.</p>
+<p>Trong ngôn ngữ học máy, phép quét trên thường được gọi là convolution dù biểu thức không đảo thứ tự kernel như định nghĩa tích chập cổ điển. Chi tiết thuật ngữ sách giáo khoa này chưa mở lại nguồn trong phiên <span class="tag t-unv">chưa kiểm chứng</span> — xem chương CNN của <a href="https://www.deeplearningbook.org/">Deep Learning</a>. Bạn chỉ cần giữ nhất quán công thức với mã thực thi.</p>
+<h3>Một phép đếm tham số tự tính</h3>
+<p><strong>Ví dụ tự đặt:</strong> d = 20, k = 3, F = 4 cho <code>4×(3×20+1) = 244</code> tham số. Nếu d đổi thành 1.024 mà vẫn giữ k, F, kết quả thành <code>4×(3×1024+1) = 12.292</code>. Mô hình có thể tăng chi phí ngay ở lớp convolution khi đổi biểu diễn; chỉ thay encoder không có nghĩa phần đầu dự đoán giữ nguyên số tham số.</p>
+<h2>3. Tự trượt một filter trên chuỗi</h2>
+<p><strong>Chuỗi, trọng số và điểm sau đều là ví dụ GIẢ LẬP.</strong> Dùng bảng chữ cái minh họa và filter độ rộng 2, cho +1 nếu vị trí đầu là S, +1 nếu vị trí sau là P; các khớp khác cho 0. Đây là một phép tính xác định trên one-hot, không phải kinase thật, không phải trọng số đã huấn luyện.</p>
+<div class="box"><span class="label">Bộ lọc minh họa SP</span><p class="mono">Chuỗi: A S P A S A P S P</p><label for="position">Vị trí bắt đầu cửa sổ (đánh số từ 1): <output id="posValue">1</output></label><input id="position" type="range" min="1" max="8" step="1" value="1" style="width:100%"><div class="win" id="window">AS</div><p class="out" id="response" aria-live="polite"></p></div>
+<noscript><p>Không có JavaScript: dãy điểm lần lượt là 0, 2, 0, 0, 1, 1, 0, 2; 1-max pooling trả 2.</p></noscript>
+<figure><svg id="filterPlot" viewBox="0 0 620 200" role="img" aria-labelledby="filterTitle"><title id="filterTitle">Đáp ứng của filter giả lập tại từng cửa sổ</title></svg><figcaption>Hình 1. Điểm từng cửa sổ của filter do bài giảng tự đặt. Cột được chọn theo thanh trượt; không phải xác suất chức năng.</figcaption></figure>
+<p>Điểm 2 chỉ nói cửa sổ khớp cả hai điều kiện của filter giả lập. Nếu site sinh học thật phụ thuộc vào cấu trúc, vị trí trong tế bào hoặc một tương tác xa, đồ thị này không thể xác nhận điều đó. Ví dụ giúp học phép quét; bài 03 giải thích tính đặc hiệu sinh học phức tạp hơn.</p>
+<h2>4. Pooling giữ gì và mất gì?</h2>
+<p><strong>1-max pooling</strong> giữ một giá trị lớn nhất trên trục vị trí cho mỗi filter: <code>m[f] = maxᵢ h[i,f]</code>. Với F filter, đầu ra là F giá trị bất kể số cửa sổ hợp lệ. Trong ví dụ, pooling trả 2 dù mẫu SP xuất hiện nhiều lần. Nếu chỉ giữ max, ta không giữ được số lần xuất hiện hoặc toàn bộ vị trí xuất hiện.</p>
+<p>Điều này giải thích vì sao pooling thuận tiện cho phân loại cả protein: một chuỗi dài được tóm tắt thành vector cố định. Nhưng bài toán mức residue cần giữ câu hỏi “vị trí nào đang được chấm?”. Có thể tạo một cửa sổ đầu vào quanh residue đích, hoặc dùng một kiến trúc trả vector tại từng vị trí. Hai cách tổ chức đầu ra không được suy ra chỉ từ chữ CNN <span class="tag t-inf">suy luận</span>.</p>
+<div class="box warn"><span class="label">Mạnh nhất không đồng nghĩa quan trọng nhất về sinh học</span><p>Max là lựa chọn theo điểm filter. Một vị trí đạt max có thể là đặc trưng dự báo hữu ích, nhưng để gọi là motif chức năng cần đối chiếu bằng chứng sinh học. Phần giải thích mô hình và các phép kiểm nằm ở <a href="14-xai-basics.html">bài 14</a>.</p></div>
+<h2>5. MCNN: nhiều độ rộng quét song song</h2>
+<p>Một độ rộng k chỉ cho filter trực tiếp thấy một đoạn dài k trong lớp đang xét. Dùng các nhánh có độ rộng khác nhau cho phép tính các đặc trưng ở các phạm vi cục bộ khác nhau. Ta pooling từng nhánh rồi nối vector (concatenate). Đây là cách nhiều cửa sổ của mCNN-ETC; không phải xếp nhiều convolution nối tiếp rồi gọi là “nhiều cửa sổ” <span class="tag t-ok">đã kiểm · toàn văn</span> — <a href="../advisor/Prof%20Ho/bbab352.pdf">bài nguồn</a>.</p>
+<figure><svg viewBox="0 0 680 360" role="img" aria-labelledby="mcnnTitle"><title id="mcnnTitle">Nhiều nhánh tích chập song song và pooling</title>
+<rect x="15" y="130" width="130" height="75" rx="8" class="s-soft s-accs"/><g class="s-surf s-stroke"><rect x="200" y="25" width="150" height="65" rx="8"/><rect x="200" y="135" width="150" height="65" rx="8"/><rect x="200" y="245" width="150" height="65" rx="8"/><rect x="395" y="25" width="125" height="65" rx="8"/><rect x="395" y="135" width="125" height="65" rx="8"/><rect x="395" y="245" width="125" height="65" rx="8"/><rect x="555" y="120" width="110" height="95" rx="8"/></g>
+<g class="s-accs" fill="none"><path d="M145 165 H170 V57 H195 M170 165 H195 M170 165 V277 H195"/><path d="M350 57 H390 M350 167 H390 M350 277 H390"/><path d="M520 57 H540 V167 H550 M520 167 H550 M520 277 H540 V167"/></g>
+<g class="s-text" font-size="14" text-anchor="middle"><text x="80" y="159">Ma trận L × d</text><text x="80" y="184">một đầu vào</text><text x="275" y="53">Conv k₁ + ReLU</text><text x="275" y="75">nhánh 1</text><text x="275" y="163">Conv k₂ + ReLU</text><text x="275" y="185">nhánh 2</text><text x="275" y="273">Conv k₃ + ReLU</text><text x="275" y="295">nhánh 3</text><text x="457" y="63">1-max pooling</text><text x="457" y="173">1-max pooling</text><text x="457" y="283">1-max pooling</text><text x="610" y="151">Nối vector</text><text x="610" y="174">↓</text><text x="610" y="197">Dự đoán</text></g>
+<text x="340" y="344" text-anchor="middle" class="s-muted" font-size="13">Các nhánh đọc cùng đầu vào; độ rộng không biểu diễn số tầng.</text></svg><figcaption>Hình 2. Sơ đồ giảng giải cách nhiều cửa sổ của mCNN-ETC <span class="tag t-ok">đã kiểm · toàn văn</span>; ký hiệu và bố cục được vẽ lại, không thể hiện mọi lớp hay siêu tham số.</figcaption></figure>
+<p><strong>Ví dụ tự tính:</strong> nếu ba nhánh đều có F filter và giữ một max/filter, vector nối dài 3F. Điều này không phụ thuộc chiều dài protein, nhưng tham số của từng nhánh vẫn phụ thuộc độ rộng kernel và số kênh d. Khi so CNN với MCNN, nên kiểm xem cải thiện đến từ nhiều độ rộng hay đơn giản từ nhiều tham số hơn <span class="tag t-inf">suy luận</span>.</p>
+<h2>6. Đọc kiến trúc thật: mCNN-ETC của GVHD</h2>
+<p>mCNN-ETC của <strong>Ho QT, Le NQK và Ou YY</strong>, Briefings in Bioinformatics 23(1), bbab352, là công trình của GVHD, phân loại electron transporter và các họ chức năng ở <strong>mức cả protein</strong> <span class="tag t-ok">đã kiểm · toàn văn PDF</span> — <a href="https://doi.org/10.1093/bib/bbab352">DOI</a>. Không lấy kiến trúc này rồi mặc định nó đang xuất một nhãn cho mỗi residue.</p>
+<div class="tablewrap"><table><thead><tr><th>Thành phần</th><th>Mô tả trong bài</th><th>Cách đọc</th></tr></thead><tbody>
+<tr><td>Biểu diễn</td><td>PSSM, 20 giá trị/vị trí; PSI-BLAST 3 vòng trên nr</td><td>20 kênh mô tả thông tin tiến hóa</td></tr>
+<tr><td>Đệm và bố trí tensor</td><td>Zero-padding, ma trận L×20, biểu diễn dạng 1×L×20</td><td>L trong bước đệm là chiều dài tối đa được dùng để chuẩn hóa</td></tr>
+<tr><td>Nhánh quét</td><td>Nhiều cửa sổ song song, ReLU, 1-max pooling</td><td>Đầu ra quét valid dài L−Wₖ+1</td></tr>
+<tr><td>Hình kiến trúc</td><td>Hình 4 minh họa cửa sổ [16, 24, 32]</td><td>Phân biệt hình minh họa với toàn bộ dải cấu hình thử</td></tr>
+<tr><td>Siêu tham số báo cáo</td><td>256 filter; lớp fully connected 1.024 nút; dropout 30%; learning rate 0,001; λ = 0,0005</td><td>Thông số trong nghiên cứu đó, không phải mặc định cho mọi bài toán</td></tr>
+</tbody></table></div>
+<p><span class="tag t-ok">đã kiểm · toàn văn PDF trong repo</span> Nguồn: <a href="../advisor/Prof%20Ho/bbab352.pdf">mCNN-ETC</a>, các mục kiến trúc, triển khai và đánh giá. Việc zero-padding ma trận đầu vào không đồng nghĩa convolution dùng padding “same”; phải đọc riêng cách chuẩn hóa đầu vào và công thức đầu ra của lớp.</p>
+<p>Bài có phần trực quan hóa motif: lấy đầu ra 1-max pooling, dùng random forest xếp hạng filter rồi xem vị trí mà các filter nổi bật nhận ra <span class="tag t-ok">đã kiểm · toàn văn</span>. Đây là tiền lệ giải thích filter trong chính công trình của GVHD. Bài giảng chỉ mô tả phương pháp; không biến các filter ấy thành một bộ motif phổ quát.</p>
+<h2>7. RTK_RAG: giống ý tưởng quét, khác đơn vị đầu ra</h2>
+<p>RTK_RAG thuộc <strong>nhóm Prof Ou</strong>, không phải công trình có GVHD là tác giả. Bài mô tả embedding ProtTrans dạng <code>L × 1 × 1024</code>, các nhánh quét nhiều độ rộng, max-pooling từng nhánh, nối các vector và lớp fully connected để dự đoán vị trí gắn ATP <span class="tag t-ok">đã kiểm · toàn văn</span> — <a href="../advisor/Prof%20Ou/ci5c00766.pdf">Wei và cộng sự, 2025</a>.</p>
+<p>Mục <em>Multiple Window Scanning</em> báo tổ hợp kích thước <strong>10, 12 và 8</strong>. Một thí nghiệm khác, <em>Splitting Window Lengths</em> và Bảng 3, báo cấu hình <strong>window length = 9</strong> được chọn theo AUC <span class="tag t-ok">đã kiểm · toàn văn</span>. Không đánh đồng con số 9 này với ba kernel, cũng không tự diễn giải nó thành “9 residue mỗi bên” hay “tổng 9 residue”: đoạn mô tả đã đọc chưa đủ để xác nhận quy ước cắt, căn giữa và padding chính xác <span class="tag t-unv">chưa kiểm chứng · quy ước cắt cửa sổ</span>.</p>
+<div class="box warn"><span class="label">Một chữ window có thể chỉ hai thao tác</span><p><strong>Cửa sổ đầu vào</strong> chọn phần ngữ cảnh quanh residue cần chấm. <strong>Cửa sổ tích chập</strong> là độ rộng kernel quét trên đầu vào đó. Khi tái triển khai, phải ghi cả hai cùng shape tensor. Không suy ra kích thước đầu vào từ độ rộng kernel hoặc ngược lại.</p></div>
+<div class="tablewrap"><table><thead><tr><th></th><th>mCNN-ETC</th><th>RTK_RAG</th></tr></thead><tbody><tr><td>Tác giả/nhóm</td><td>Công trình của GVHD</td><td>Nhóm Prof Ou</td></tr><tr><td>Biểu diễn chính trong mô tả</td><td>PSSM, 20 kênh</td><td>ProtTrans, 1.024 chiều/residue</td></tr><tr><td>Đơn vị mục tiêu</td><td>Cả protein</td><td>Residue gắn ATP</td></tr><tr><td>Ý tưởng chung</td><td colspan="2">Nhiều độ rộng quét, pooling và kết hợp đặc trưng</td></tr><tr><td>Không được tự chuyển</td><td colspan="2">Quy tắc cắt đầu vào, vị trí pooling và shape đầu ra cần đọc cho từng bài</td></tr></tbody></table></div>
+<p><span class="tag t-ok">đã kiểm · hai PDF trong repo</span> Bảng chỉ đối chiếu mô tả bài báo; không đưa nhận xét về mã nguồn công khai. Retrieval được dành cho bài 13.</p>
+<h2>8. Từ “dùng MCNN” đến một câu hỏi nghiên cứu</h2>
+<p>Biên bản gặp GVHD ghi rằng chuyển CNN sang mCNN hoặc tiếp tục cải tiến mCNN có thể là hướng đóng góp <span class="tag t-ok">đã kiểm · biên bản repo</span> — <a href="../../meeting/session-01-minutes.md">mục 4</a>. Điều đó không có nghĩa chỉ đổi tên kiến trúc đã là cải tiến. Cần chỉ ra thành phần thay đổi, cơ chế dự kiến và phép so sánh công bằng.</p>
+<div class="box link"><span class="label">Gắn với ứng viên A, B và tiêu chí phương pháp</span><p>Một câu hỏi có thể kiểm: “Nhiều độ rộng quét có giúp hơn một độ rộng khi cùng biểu diễn, cùng split, cùng quy tắc chọn ngưỡng và ngân sách huấn luyện không?” Đây là đề xuất thí nghiệm <span class="tag t-inf">suy luận</span>. Nếu B chỉ có cửa sổ ngắn phát hành sẵn, phải bảo đảm kernel không vượt đầu vào và không coi đệm là ngữ cảnh sinh học thật.</p></div>
+<p>Thử một baseline một nhánh, một mô hình nhiều nhánh và một đối chứng có ngân sách tham số tương đương. Báo chỉ số bài 08 và giao thức bài 09. Với A, đầu ra phải phù hợp đa nhãn; thay encoder hoặc convolution không tự biến softmax thành lựa chọn đúng cho các nhãn đồng thời <span class="tag t-inf">suy luận</span>.</p>
+<p>Danh mục GVHD còn có tên như “multi-scale separable” trong RAG-msCNN và “multiple separable windows” trong msCNN-PLM-FAD <span class="tag t-ok">đã kiểm · danh mục</span> — <a href="../advisor/Prof%20Ho/research.md">research.md</a>. Bài này chỉ nêu đúng tên; chưa đọc kiến trúc các công trình ấy để khẳng định chúng dùng depthwise convolution hoặc một bố trí lớp cụ thể.</p>
+<h2>Bảng thuật ngữ của bài</h2><div class="tablewrap"><table><thead><tr><th>Thuật ngữ</th><th>Cách hiểu trong bài</th></tr></thead><tbody><tr><td>Kernel / filter</td><td>Bộ trọng số được quét trên nhiều vị trí.</td></tr><tr><td>Channel</td><td>Một thành phần đặc trưng ở mỗi residue; khác chiều dài chuỗi.</td></tr><tr><td>Stride</td><td>Bước dịch giữa hai lần áp dụng kernel.</td></tr><tr><td>Valid convolution</td><td>Quét ở các vị trí không cần đệm ngoài đầu vào.</td></tr><tr><td>1-max pooling</td><td>Giữ một giá trị lớn nhất theo vị trí cho mỗi filter.</td></tr><tr><td>Concatenate</td><td>Nối vector theo trục đặc trưng.</td></tr><tr><td>Input window</td><td>Đoạn ngữ cảnh đưa vào cho một residue đích.</td></tr><tr><td>Ablation</td><td>So sánh khi bỏ hoặc thay một thành phần để xem đóng góp của nó.</td></tr></tbody></table></div><h2>Câu hỏi tự kiểm</h2><details><summary>L = 12, k = 4, stride = 1, không đệm: có bao nhiêu vị trí quét?</summary><div>12 − 4 + 1 = 9; đây là số học của ví dụ tự đặt.</div></details><details><summary>Trong ví dụ, pooling trả 2. Có biết có bao nhiêu SP không?</summary><div>Không từ giá trị max đơn lẻ. Phải giữ hoặc xem dãy đáp ứng để đếm.</div></details><details><summary>mCNN-ETC có đầu ra là site gắn ATP không?</summary><div>Không. Bài đó phân loại electron transporter và họ chức năng ở mức protein.</div></details><details><summary>Có diễn giải window length 9 của RTK_RAG là kernel 9 không?</summary><div>Không. Bài báo có mục độ rộng quét và mục splitting window length riêng; quy ước cắt chính xác còn cần xác minh.</div></details><details><summary>Đổi one-hot sang PLM, giữ k và F: số tham số convolution có nhất thiết giữ nguyên không?</summary><div>Không. F(kd+1) phụ thuộc d; chiều embedding thay đổi có thể làm số tham số tăng.</div></details><h2>Nguồn</h2><ul class="src"><li><span class="tag t-ok">đã kiểm</span> <a href="../advisor/Prof%20Ho/bbab352.pdf">Ho QT, Le NQK, Ou YY — mCNN-ETC</a>, <a href="https://doi.org/10.1093/bib/bbab352">bbab352</a>: đọc lại toàn văn PDF, mục kiến trúc/triển khai, Hình 4 và trực quan hóa motif.</li><li><span class="tag t-ok">đã kiểm</span> <a href="../advisor/Prof%20Ou/ci5c00766.pdf">Wei và cộng sự — RTK_RAG</a>, <a href="https://doi.org/10.1021/acs.jcim.5c00766">2025</a>: đọc mục Multiple Window Scanning, Splitting Window Lengths và Bảng 3.</li><li><span class="tag t-ok">đã kiểm</span> <a href="../advisor/Prof%20Ho/research.md">Danh mục GVHD</a>; <a href="../../meeting/session-01-minutes.md">biên bản lần 1, mục 4</a>.</li><li><span class="tag t-unv">chưa kiểm chứng</span> <a href="https://www.deeplearningbook.org/">Goodfellow, Bengio, Courville — Deep Learning</a>: nguồn đọc thêm cho thuật ngữ convolution; chưa mở lại chương sách.</li><li><span class="tag t-inf">suy luận</span> Filter SP, phép đếm tham số và đề xuất ablation là ví dụ/lập luận của bài giảng; không phải mô hình sinh học đã huấn luyện.</li></ul><nav class="pn"><a href="10-neural-network-basics.html">← Bài 10: Mạng nơ-ron cơ bản</a><a href="12-protein-encodings-plm.html">Bài 12: Mã hóa protein: one-hot, PSSM, PLM →</a></nav></main>
+<script>
+(function(){
+"use strict";
+
+var seq='ASPASAPSP',scores=[];
+for(var i=0;i<seq.length-1;i++)scores.push((seq[i]==='S'?1:0)+(seq[i+1]==='P'?1:0));
+function render(){var start=Number(document.getElementById('position').value)-1;
+ document.getElementById('posValue').textContent=String(start+1);
+ document.getElementById('window').textContent=seq.slice(start,start+2);
+ document.getElementById('response').textContent='Điểm cửa sổ: '+scores[start]+' · Dãy điểm: '+scores.join(', ')+' · 1-max pooling: '+Math.max.apply(null,scores)+'.';
+ var svg=document.getElementById('filterPlot');svg.textContent='';
+ function add(tag,attrs,text){var e=document.createElementNS('http://www.w3.org/2000/svg',tag);Object.keys(attrs).forEach(function(k){e.setAttribute(k,attrs[k]);});if(text!==undefined)e.textContent=text;svg.appendChild(e);}
+ add('title',{id:'filterTitle'},'Điểm filter giả lập theo cửa sổ');
+ add('path',{d:'M35 25 V155 H600',fill:'none','class':'s-stroke'});
+ scores.forEach(function(v,i){var x=60+i*66;add('rect',{x:x,y:155-v*50,width:36,height:v*50,'class':i===start?'s-bad':'s-acc'});add('text',{x:x+18,y:145-v*50,'text-anchor':'middle','class':'s-text'},String(v));add('text',{x:x+18,y:179,'text-anchor':'middle','class':'s-muted','font-size':12},String(i+1));});
+}
+document.getElementById('position').addEventListener('input',render);render();
+
+}());
+</script>
+</body></html>

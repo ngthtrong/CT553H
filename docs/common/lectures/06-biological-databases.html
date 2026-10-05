@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Các cơ sở dữ liệu sinh học</title>
+<style>
+:root{
+  --bg:#faf9f6; --surface:#ffffff; --text:#1d2126; --muted:#5d6570; --border:#e2dfd7;
+  --accent:#2c6a8a; --accent-soft:#e7f0f5;
+  --ok:#2d7a4d; --ok-soft:#e6f3eb; --warn:#8f5600; --warn-soft:#fbf1df;
+  --bad:#a23838; --bad-soft:#f8e7e7; --code-bg:#f1efe9;
+  --r-st:#2c6a8a; --r-k:#b4532a; --r-r:#7a4fa0; --r-p:#3f7d3a; --r-hit:#fff1a8;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#15171b; --surface:#1d2026; --text:#e5e4df; --muted:#9aa1ab; --border:#33373f;
+    --accent:#7fb8d6; --accent-soft:#1f2f39;
+    --ok:#79c495; --ok-soft:#1b2c22; --warn:#e2b25c; --warn-soft:#2f2617;
+    --bad:#e38c8c; --bad-soft:#331e1f; --code-bg:#262a31;
+    --r-st:#7fb8d6; --r-k:#e59a72; --r-r:#bf9ae0; --r-p:#93c98c; --r-hit:#4a4318;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:17px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans","Helvetica Neue",Arial,sans-serif}
+main{max-width:46rem;margin:0 auto;padding:24px 16px 64px}
+a{color:var(--accent)}
+h1{font-size:1.85rem;line-height:1.25;margin:.3em 0 .4em}
+h2{font-size:1.3rem;margin:2.2em 0 .5em;padding-top:.6em;border-top:1px solid var(--border)}
+h3{font-size:1.08rem;margin:1.6em 0 .4em}
+p,li{overflow-wrap:break-word}
+code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;font-size:.9em}
+code{background:var(--code-bg);padding:.1em .35em;border-radius:4px}
+.crumb{color:var(--muted);font-size:.9rem}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:.4em 0 1.2em}
+.pill{font-size:.82rem;border:1px solid var(--border);background:var(--surface);border-radius:999px;padding:2px 10px;color:var(--muted)}
+.box{border:1px solid var(--border);background:var(--surface);border-radius:10px;padding:14px 18px;margin:1.2em 0}
+.box>:first-child{margin-top:0}.box>:last-child{margin-bottom:0}
+.box h3{margin-top:0}
+.goal{border-left:4px solid var(--accent)}
+.link{background:var(--accent-soft);border-color:transparent}
+.warn{background:var(--warn-soft);border-color:transparent}
+.label{display:block;font-size:.78rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:.3em}
+.tag{display:inline-block;font-size:.72rem;line-height:1.5;padding:0 6px;border-radius:4px;white-space:nowrap;vertical-align:1px;font-weight:600}
+.t-ok{background:var(--ok-soft);color:var(--ok)}
+.t-dd{background:var(--accent-soft);color:var(--accent)}
+.t-unv{background:var(--warn-soft);color:var(--warn)}
+.t-inf{background:var(--bad-soft);color:var(--bad)}
+.tablewrap{overflow-x:auto;margin:1em 0;border:1px solid var(--border);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--border)}
+th{background:var(--code-bg);font-weight:600}
+tr:last-child td{border-bottom:0}
+figure{margin:1.4em 0}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:.88rem;color:var(--muted);margin-top:.4em}
+details{border:1px solid var(--border);border-radius:8px;background:var(--surface);margin:.6em 0;padding:0 14px}
+summary{cursor:pointer;padding:10px 0;font-weight:600}
+details[open] summary{border-bottom:1px solid var(--border);margin-bottom:.6em}
+details>div{padding-bottom:10px}
+.btns{display:flex;flex-wrap:wrap;gap:6px;margin:.6em 0}
+button{font:inherit;font-size:.88rem;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:6px;padding:4px 10px;cursor:pointer}
+button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.seq{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:1rem;line-height:2;word-break:break-all;letter-spacing:.06em}
+.seq span{cursor:pointer;border-radius:3px;padding:1px 0}
+.seq span.hit{background:var(--r-hit);font-weight:700}
+.seq span.center{outline:2px solid var(--bad)}
+.out{font-size:.92rem;color:var(--muted);min-height:1.6em}
+.win{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:1rem;letter-spacing:.06em;background:var(--code-bg);padding:6px 10px;border-radius:6px;overflow-x:auto;white-space:nowrap}
+.win b{color:var(--bad)}
+nav.pn{display:flex;justify-content:space-between;gap:12px;margin-top:3em;padding-top:1em;border-top:1px solid var(--border);font-size:.95rem}
+.src li{margin:.35em 0;font-size:.93rem}
+svg text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans",Arial,sans-serif}
+.s-stroke{stroke:var(--text)} .s-muted{fill:var(--muted)} .s-text{fill:var(--text)}
+.s-acc{fill:var(--accent)} .s-accs{stroke:var(--accent)} .s-bad{fill:var(--bad)} .s-bads{stroke:var(--bad)}
+.s-ok{fill:var(--ok)} .s-oks{stroke:var(--ok)} .s-surf{fill:var(--surface)} .s-soft{fill:var(--accent-soft)}
+.s-warn{fill:var(--warn)} .s-warns{stroke:var(--warn)} .s-border{stroke:var(--border)}
+
+/* Quick navigation: native links and details work offline without JavaScript. */
+.lecture-nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:8px;padding:10px 0;margin:0 0 16px;background:var(--bg);border-bottom:1px solid var(--border)}
+.lecture-nav>a{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:6px 10px;border:1px solid var(--border);border-radius:8px;background:var(--surface);text-decoration:none;font-size:.88rem}
+.lecture-switch{position:relative;flex:1;min-width:0;margin:0;padding:0;border-radius:8px}
+.lecture-switch>summary{min-height:44px;padding:8px 12px;font-size:.88rem}
+.lecture-switch[open]>summary{margin:0;border-bottom:0}
+.lecture-switch>.lecture-menu{position:absolute;right:0;top:calc(100% + 8px);width:min(40rem,calc(100vw - 32px));max-height:65vh;overflow-y:auto;overscroll-behavior:contain;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:10px;box-shadow:0 6px 18px var(--border)}
+.lecture-menu .lecture-group{margin:8px 8px 4px;font-size:.8rem;font-weight:700;color:var(--muted)}
+.lecture-menu ol{list-style:none;padding:0;margin:0 0 12px}
+.lecture-menu li{margin:0}
+.lecture-menu a,.lecture-menu .lecture-unavailable{display:block;padding:10px 12px;border-radius:6px;line-height:1.45;font-size:.9rem;text-decoration:none}
+.lecture-menu a:hover{background:var(--accent-soft)}
+.lecture-menu a[aria-current="page"]{background:var(--accent-soft);font-weight:700;border-left:3px solid var(--accent)}
+.lecture-menu .lecture-unavailable{color:var(--muted)}
+.lecture-nav a:focus-visible,.lecture-switch>summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+@media print{.lecture-nav{display:none}}
+
+</style>
+</head>
+<body>
+<main>
+
+<nav class="lecture-nav" aria-label="Chuyển nhanh giữa các bài giảng">
+<a href="index.html">Mục lục</a>
+<details class="lecture-switch"><summary>Chuyển bài · Bài 06</summary><div class="lecture-menu"><p class="lecture-group">Phần A — Sinh học nền</p><ol><li><a href="01-gene-to-protein.html">Bài 01: Từ gene đến protein</a></li><li><a href="02-enzymes-and-ptm.html">Bài 02: Enzyme và biến đổi sau dịch mã (PTM)</a></li><li><a href="03-cell-signaling-kinases.html">Bài 03: Tín hiệu tế bào và kinase</a></li><li><a href="04-cancer-hallmarks.html">Bài 04: Ung thư: hallmarks và kinase</a></li><li><a href="05-aging-sirtuins-senescence.html">Bài 05: Lão hóa: sirtuin và senescence</a></li><li><a href="06-biological-databases.html" aria-current="page">Bài 06: Các cơ sở dữ liệu sinh học</a></li></ol><p class="lecture-group">Phần B — Khung bài toán và đánh giá</p><ol><li><a href="07-residue-level-framing.html">Bài 07: Đặt bài toán ở mức residue</a></li><li><a href="08-metrics-imbalanced.html">Bài 08: Chỉ số cho dữ liệu mất cân bằng</a></li><li><a href="09-leakage-and-homology.html">Bài 09: Rò rỉ dữ liệu và chuỗi đồng dạng</a></li></ol><p class="lecture-group">Phần C — Mô hình</p><ol><li><a href="10-neural-network-basics.html">Bài 10: Mạng nơ-ron cơ bản</a></li><li><a href="11-cnn-to-mcnn.html">Bài 11: Từ CNN đến MCNN</a></li><li><a href="12-protein-encodings-plm.html">Bài 12: Mã hóa protein: one-hot, PSSM, PLM</a></li><li><a href="13-retrieval-and-beyond.html">Bài 13: Truy hồi và các hướng sau PLM</a></li><li><a href="14-xai-basics.html">Bài 14: Giải thích mô hình (XAI)</a></li><li><span class="lecture-unavailable">Bài 15: Đọc hiểu một bài báo tin sinh — chưa có</span></li></ol></div></details>
+<a href="05-aging-sirtuins-senescence.html" aria-label="Bài trước: Lão hóa: sirtuin và senescence" title="Bài 05: Lão hóa: sirtuin và senescence">←</a>
+<a href="07-residue-level-framing.html" aria-label="Bài sau: Đặt bài toán ở mức residue" title="Bài 07: Đặt bài toán ở mức residue">→</a>
+</nav>
+
+<div class="crumb"><a href="index.html">Bài giảng nền</a> · Bài 06 / 15 · Phần A — Sinh học nền</div>
+<h1>Các cơ sở dữ liệu sinh học</h1>
+<div class="meta"><span class="pill">≈ 30 phút</span><span class="pill">Dùng cho: cả hai hướng</span><span class="pill">Đọc trước: bài 01, 02</span></div>
+<div class="box goal"><span class="label">Đọc xong bài này, bạn sẽ</span><ul><li>Chọn nguồn theo loại thông tin cần lấy, không chỉ theo tên cơ sở dữ liệu.</li><li>Đọc feature và evidence của một site trong UniProt.</li><li>Phân biệt số công bố, số tự đo và thông tin chưa có.</li><li>Giải thích quy trình ghim nguồn, kiểm hash và tạo manifest của repo.</li></ul></div>
+<p class="out" style="font-size:.85rem">Nhãn độ tin cậy trong bài:
+<span class="tag t-ok">đã kiểm</span> đã mở nguồn gốc hoặc bản tóm tắt chính thức trong phiên 04/10/2026 ·
+<span class="tag t-dd">khảo sát sâu</span> lấy từ báo cáo khảo sát sâu, giữ nguyên nhãn của báo cáo ·
+<span class="tag t-unv">chưa kiểm chứng</span> kiến thức nền, chưa mở lại nguồn ·
+<span class="tag t-inf">suy luận</span> lập luận của bài giảng, không có nguồn trực tiếp.</p>
+
+
+<h2>1. Một cơ sở dữ liệu không phải một tập train có sẵn</h2>
+<p>Bạn đã biết protein là chuỗi và PTM gắn với một vị trí. Để tạo bài toán máy học, vẫn còn các câu hỏi: chuỗi nào, phiên bản nào, vị trí theo isoform nào, bằng chứng gì, và “không có chú thích” có được tính là âm không? Cơ sở dữ liệu (database) lưu thông tin; <strong>benchmark</strong> còn phải quy định mẫu, nhãn và cách đánh giá. Hai thứ không tự đồng nhất.</p>
+<p>Hãy xem một bản ghi như một object có lịch sử, thay vì chỉ lấy <code>sequence</code> và <code>label</code>. Nếu bỏ accession, evidence và nguồn thí nghiệm quá sớm, lúc gặp xung đột bạn không còn đủ thông tin để giải thích. Đây là đề xuất thiết kế dữ liệu của bài giảng <span class="tag t-inf">suy luận</span>, dựa trên các ví dụ nguồn ở những mục tiếp theo.</p>
+<div class="box goal"><span class="label">Sản phẩm của buổi tự học</span><p>Sau bài này, hãy tự viết một bảng từ điển dữ liệu cho một site: accession, isoform, phiên bản chuỗi, vị trí, residue, loại PTM, enzyme nếu có, evidence, tài liệu nguồn và ngày tải. Bạn chưa cần tải toàn bộ một cơ sở dữ liệu.</p></div>
+<h2>2. Bản đồ tài nguyên: lấy gì ở đâu?</h2>
+<div class="tablewrap"><table><thead><tr><th>Tài nguyên</th><th>Thông tin dùng trong bài</th><th>Điều phải kiểm trước khi làm nhãn</th></tr></thead><tbody>
+<tr><td>UniProt</td><td>Chuỗi và các feature có bằng chứng</td><td>Accession, isoform, sequence version, vị trí và evidence</td></tr>
+<tr><td>dbPTM</td><td>PTM và benchmark theo nhóm kinase</td><td>Định nghĩa cột, cách dựng âm, cửa sổ và phiên bản</td></tr>
+<tr><td>CPLM</td><td>Các biến đổi lysine</td><td>Một lysine có thể có nhiều sự kiện hoặc loại PTM</td></tr>
+<tr><td>PhosphoSitePlus</td><td>PTM, quan hệ kinase–substrate và thông tin điều hòa</td><td>Điều kiện sử dụng và quyền tải bulk tại thời điểm dùng</td></tr>
+<tr><td>AlphaFold DB</td><td>Cấu trúc dự đoán và độ tin cậy theo residue</td><td>Độ phủ chuỗi, ánh xạ residue, độ tin cậy cấu trúc</td></tr>
+<tr><td>ActiveDriverDB</td><td>Biến thể bệnh/quần thể trong ngữ cảnh PTM</td><td>Phạm vi bệnh, loại biến thể và nguồn chứng cứ</td></tr>
+</tbody></table></div>
+<p><span class="tag t-ok">đã kiểm</span> Chức năng tài nguyên dựa trên <a href="#sources">nguồn cuối bài</a>; riêng PhosphoSitePlus mới được kiểm qua kết quả tìm kiếm trong hồ sơ Claude. Cột cuối là checklist suy ra cho việc chuẩn bị dữ liệu <span class="tag t-inf">suy luận</span>. Một tài nguyên phù hợp không có nghĩa mọi cột của nó đều là ground truth cho bài toán của bạn.</p>
+<h2>3. UniProt: đọc một site p53 có nguồn</h2>
+<p>Hai endpoint đã hoạt động trong lần kiểm 04/10/2026 là <a href="https://rest.uniprot.org/uniprotkb/P04637.fasta">P04637.fasta</a> và <a href="https://rest.uniprot.org/uniprotkb/P04637.json">P04637.json</a> <span class="tag t-ok">đã kiểm · bản ghi đã tải</span>. FASTA cho chuỗi; JSON có các feature và bằng chứng. Bài 01 đã giải thích header, nên ở đây tập trung vào câu hỏi: <em>vì sao ta tin một nhãn?</em></p>
+<pre class="win">Accession: P04637
+Feature: Modified residue
+Position: 15
+Description: Phosphoserine; by CDK5, PRPK, AMPK, NUAK1 and ATM
+Evidence: xem từng mục evidence của feature</pre>
+<p>Đây là diễn giải một feature thật, không phải bản JSON nguyên văn <span class="tag t-ok">đã kiểm</span> — <a href="https://rest.uniprot.org/uniprotkb/P04637.json">UniProt P04637</a>. Một vị trí có thể liên quan nhiều enzyme. Nếu bạn chỉ giữ từ “Phosphoserine”, thông tin “bởi kinase nào” sẽ mất; nếu sao chép mọi tên vào các lớp loại trừ nhau, bạn có thể định nghĩa sai bài toán.</p>
+<h3>Evidence code là kiểu bằng chứng, không phải phần trang trí</h3>
+<div class="tablewrap"><table><thead><tr><th>Mã</th><th>Nghĩa đã tra</th><th>Cách dùng trong bộ dữ liệu đề xuất</th></tr></thead><tbody>
+<tr><td>ECO:0000269</td><td>Experimental evidence used in manual assertion</td><td>Ứng viên cho lớp bằng chứng thực nghiệm; giữ tài liệu gốc đi kèm</td></tr>
+<tr><td>ECO:0000250</td><td>Sequence similarity evidence used in manual assertion</td><td>Tách khỏi nhãn thực nghiệm khi cần đánh giá độc lập với đồng dạng</td></tr>
+<tr><td>ECO:0007744</td><td>Combinatorial computational and experimental evidence used in manual assertion</td><td>Không ép thành “thuần thực nghiệm” chỉ vì có chữ experimental</td></tr>
+</tbody></table></div>
+<p><span class="tag t-ok">đã kiểm</span> Nghĩa mã theo <a href="https://www.ebi.ac.uk/ols4/ontologies/eco">EBI OLS — Evidence &amp; Conclusion Ontology</a>, đã tra trong hồ sơ nguồn. Cách dùng là lựa chọn giao thức <span class="tag t-inf">suy luận</span>. “Manual assertion” mô tả cách biên tập, không làm mọi loại bằng chứng trở thành cùng một phép đo.</p>
+<p>Trong bản JSON p53 đã kiểm, có <strong>30 feature Modified residue</strong>. Vị trí K120 có cả chú thích N6-acetyllysine và N6-lactoyllysine <span class="tag t-ok">đã kiểm · bản ghi 04/10/2026</span> — UniProt P04637. Vì vậy đếm số feature, số vị trí duy nhất và số protein sẽ cho các đơn vị khác nhau. Không gọi tất cả là “số mẫu” nếu chưa định nghĩa một hàng train tương ứng với cái gì.</p>
+<div class="box warn"><span class="label">Không gộp evidence ở cấp protein</span><p>Một protein có feature thực nghiệm không có nghĩa mọi feature của nó đều thực nghiệm. Gắn evidence vào đúng khẳng định hoặc feature. Đồng thời, nhiều trích dẫn cho cùng site không tự tạo thành nhiều mẫu độc lập <span class="tag t-inf">suy luận</span>.</p></div>
+<h2>4. dbPTM và CPLM: quy mô lớn không thay thế đúng ngữ nghĩa</h2>
+<p>Bản cập nhật dbPTM 2025 báo hơn <strong>2,79 triệu site PTM</strong>, khoảng <strong>2,243 triệu</strong> được xác minh thực nghiệm, tổng hợp từ <strong>48 cơ sở dữ liệu</strong> và hơn <strong>80.000 bài báo</strong> <span class="tag t-ok">đã kiểm</span> — <a href="https://doi.org/10.1093/nar/gkae1005">bài cập nhật</a>. Đó là số trong phiên bản công bố, không phải kết quả ta vừa đếm từ một file tải mới.</p>
+<p>Trang download có benchmark cho các nhóm như CDK, MAPK, PKA, PKC, CK2, CAMKL, GSK, AKT, CAMK2 và CK1 <span class="tag t-ok">đã kiểm · qua kết quả tìm kiếm</span> — <a href="https://biomics.lab.nycu.edu.tw/dbPTM/">dbPTM</a>. Với ứng viên B, báo cáo khảo sát cho biết dữ liệu đã cắt cửa sổ ±10 <span class="tag t-dd">khảo sát sâu · toàn văn</span> — <a href="../deep-research/reports/aging-cancer-deep-dive.md">mục 4</a>. Muốn đổi sang embedding toàn protein, phải kiểm xem accession và ánh xạ vị trí có còn đủ để khôi phục chuỗi.</p>
+<p>CPLM 4.0 phân biệt <strong>592.606 sự kiện biến đổi</strong> với <strong>463.156 lysine</strong> trên <strong>105.673 protein</strong>, bao phủ tới <strong>29 loại PTM lysine</strong> và <strong>219 loài</strong> <span class="tag t-ok">đã kiểm</span> — <a href="https://doi.org/10.1093/nar/gkab849">Zhang và cộng sự, 2022</a>. Đây là ví dụ rất rõ vì sao bảng tổng hợp có nhiều đơn vị đếm. Một site có thể được mô tả ở nhiều sự kiện; số sự kiện không phải số lysine duy nhất.</p>
+<div class="box link"><span class="label">Gắn với ứng viên A và B</span><p>A hỏi <strong>deacetyl hóa bởi isoform SIRT</strong>, nên tập các lysine được acetyl hóa nói chung chưa đủ làm nhãn dương A. B hỏi <strong>phosphoryl hóa theo nhóm kinase</strong>, nên tập phosphosite không có enzyme cũng chưa đủ. Tên PTM chỉ xác định loại biến đổi; nhãn theo enzyme cần bằng chứng quan hệ enzyme–site <span class="tag t-inf">suy luận</span>. Đối chiếu định nghĩa ứng viên trong <a href="../deep-research/reports/aging-cancer-deep-dive.md">mục 3–4</a>.</p></div>
+<h2>5. Cấu trúc dự đoán và dữ liệu biến thể bổ sung được gì?</h2>
+<p>AlphaFold DB cung cấp điểm <strong>pLDDT</strong> theo residue, trên thang <strong>0–100</strong>; trong file cấu trúc dự đoán của AlphaFold, trường B-factor được dùng để chứa điểm này <span class="tag t-ok">đã kiểm · qua kết quả tìm kiếm</span> — <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8728224/">Varadi và cộng sự, 2022</a>. Điểm cao là tự tin hơn về cấu trúc cục bộ. Không đọc nó như B-factor đo trong cấu trúc thực nghiệm.</p>
+<p>Độ tin cậy cấu trúc khác nhãn chức năng. Một residue có cấu trúc được dự đoán tự tin chưa tự động là vị trí gắn ATP, cơ chất SIRT hay site phospho. Nếu đưa pLDDT vào mô hình, hãy ghi nó là đặc trưng hoặc tín hiệu cảnh báo, không thay thế ground truth <span class="tag t-inf">suy luận</span>. Đồng thời phải giữ ánh xạ giữa residue trong file cấu trúc và chuỗi dùng làm nhãn.</p>
+<p>ActiveDriverDB đặt biến thể bệnh và quần thể vào ngữ cảnh PTM <span class="tag t-ok">đã kiểm · abstract</span> — <a href="https://doi.org/10.1093/nar/gkx973">bài nguồn</a>. Có thể dùng để tìm ví dụ diễn giải cho hướng cancer, nhưng phải giữ đúng loại biến thể và phạm vi bệnh. Bài 04 đã giải thích vì sao không chuyển một thống kê bệnh nói chung thành thống kê riêng ung thư.</p>
+<div class="box warn"><span class="label">Hai giới hạn khác nhau</span><p><strong>Không có cấu trúc</strong> là thiếu đặc trưng. <strong>Không có chú thích chức năng</strong> là thiếu nhãn. Hai trường hợp cần hai chính sách xử lý khác nhau. Không loại im lặng mọi protein thiếu cấu trúc rồi báo kết quả như thể mô hình dùng được cho mọi chuỗi <span class="tag t-inf">suy luận</span>.</p></div>
+<h2>6. Quy trình tái lập: học từ dữ liệu RTK trong repo</h2>
+<p>Ví dụ dưới dùng <a href="../../topics/rtk-atp-applicability/03-data/data-report.md">báo cáo dữ liệu RTK</a> và <a href="../../../ml/rtk-atp-applicability/preprocessing/prepare_data.py">prepare_data.py</a> đã đọc trực tiếp <span class="tag t-ok">đã kiểm · repo</span>. Đây là ví dụ kỹ thuật chuẩn bị dữ liệu của đề tài cũ, không phải quyết định quay lại đề tài RTK–ATP.</p>
+<figure><svg viewBox="0 0 680 260" role="img" aria-labelledby="dataflow"><title id="dataflow">Quy trình nhập dữ liệu có truy nguyên</title>
+<g class="s-surf s-stroke"><rect x="20" y="25" width="180" height="70" rx="8"/><rect x="250" y="25" width="180" height="70" rx="8"/><rect x="480" y="25" width="180" height="70" rx="8"/><rect x="250" y="165" width="180" height="70" rx="8"/></g>
+<g class="s-text" font-size="15" text-anchor="middle"><text x="110" y="53">URL + commit</text><text x="110" y="77">snapshot cố định</text><text x="225" y="66">→</text><text x="340" y="53">Kiểm SHA-256</text><text x="340" y="77">khớp mới nhập</text><text x="455" y="66">→</text><text x="570" y="53">Raw bảo toàn</text><text x="570" y="77">manifest từng file</text><text x="340" y="193">Processed + audit</text><text x="340" y="219">sinh bằng script</text></g><path d="M570,100 L570,200 L435,200" fill="none" class="s-accs" stroke-width="2"/><text x="445" y="189" class="s-text">←</text></svg><figcaption>Hình 1. Tóm tắt quy trình trong script RTK <span class="tag t-ok">đã kiểm · mã repo</span>. Hash kiểm tính nhất quán byte, không kiểm đúng sai sinh học.</figcaption></figure>
+<ol><li><strong>Chốt nguồn.</strong> Script ghim commit <code>b7bd4c2347c7d44d24ae3d13e42082ba6cd62627</code> của RTK_RAG; URL ZIP chứa commit đó, không trỏ vào HEAD thay đổi theo thời gian.</li><li><strong>Kiểm archive.</strong> SHA-256 kỳ vọng là <code>a82015b5b8a23ef0634decc22bd27f00392e34fd40f4f3e10a21365f686287d4</code>. Không khớp thì script dừng. Raw đã thay đổi cũng không bị ghi đè im lặng.</li><li><strong>Giữ provenance.</strong> Manifest lưu URL, commit, kích thước và hash từng file. Người đọc có thể kiểm mình đang nói về cùng snapshot.</li><li><strong>Kiểm cấu trúc dữ liệu.</strong> Ghép FASTA với label, so chiều dài, miền giá trị nhãn, ID và chuỗi trùng.</li><li><strong>Xuất lại được.</strong> File processed sinh từ script; báo cáo nhỏ và manifest được lưu để trích dẫn số liệu.</li></ol>
+<p><span class="tag t-ok">đã kiểm · repo</span> Các bước và hằng số trên có trong <a href="../../../ml/rtk-atp-applicability/preprocessing/prepare_data.py">script</a>. Hash giống nhau nghĩa là byte giống nhau theo phép kiểm này; không chứng minh nhãn được đo chính xác hoặc tập train/test đã độc lập.</p>
+<pre class="win"># Chạy từ thư mục gốc, khi thực sự chuẩn bị dữ liệu:
+python3 ml/rtk-atp-applicability/preprocessing/prepare_data.py
+# Dùng archive cục bộ đã có:
+python3 ml/rtk-atp-applicability/preprocessing/prepare_data.py --archive /path/to/archive.zip</pre>
+<p>Đây là lệnh trong tài liệu repo; đọc bài HTML không tự thực thi hay tải dữ liệu. Với tài nguyên khác, sao chép <em>nguyên tắc</em> ghim phiên bản và ghi hash, không sao chép hash của RTK.</p>
+<h2>7. Số công bố, số tự đếm và số chưa có</h2>
+<div class="tablewrap"><table><thead><tr><th>Tập trong snapshot repo</th><th>Protein/bản ghi</th><th>Nhãn dương</th><th>Nhãn âm</th></tr></thead><tbody>
+<tr><td>ATP-549</td><td>549</td><td>8.502</td><td>205.035</td></tr>
+<tr><td>RTK-69</td><td>69</td><td>711</td><td>73.270</td></tr>
+<tr><td>RAG-244</td><td>244 bản ghi, 243 chuỗi duy nhất</td><td>Không có file nhãn trong snapshot</td><td>Không có file nhãn trong snapshot</td></tr>
+</tbody></table></div>
+<p><span class="tag t-ok">đã kiểm · báo cáo tự đo trong repo</span> Nguồn: <a href="../../topics/rtk-atp-applicability/03-data/dataset-summary.csv">dataset-summary.csv</a> và <a href="../../topics/rtk-atp-applicability/03-data/data-report.md">data-report.md</a>. Bài báo RTK_RAG nêu số nhãn cho kho truy hồi, nhưng snapshot hiện có chỉ cung cấp FASTA của kho. Không điền số từ bài báo vào cột “tự đếm từ file label”.</p>
+<p>Báo cáo ghi <strong>618 protein có nhãn</strong> đều có chiều dài nhãn bằng chiều dài chuỗi; chưa phát hiện chuỗi trùng hoàn toàn giữa các tập. Riêng kho RAG có cặp trùng nội bộ <code>A0M8S8</code> và <code>Q07E37</code>; kho có <strong>36 ký tự X</strong> <span class="tag t-ok">đã kiểm · báo cáo repo</span>. X phải giữ vị trí để không làm dịch nhãn. “Không trùng hoàn toàn” chưa phải kết quả kiểm homolog; phần này nằm ở bài 09.</p>
+<div class="box"><span class="label">Một lỗi nhập dữ liệu đáng tập phát hiện</span><p>Bạn thấy chuỗi có ký tự không quen nên xóa ký tự đó; file nhãn vẫn giữ nguyên. Mọi vị trí phía sau đều lệch. Cách sửa không phải đổi nhãn bằng mắt: giữ raw, ghi chính sách tokenization và tái tạo đầu ra bằng script <span class="tag t-inf">suy luận</span>.</p></div>
+<h2>8. Trước khi bấm tải: một phiếu kiểm ngắn</h2>
+<p>Hãy trả lời bằng văn bản: tài nguyên phục vụ nhãn hay đặc trưng? Có accession và phiên bản không? Được phân phối lại phần nào? Một hàng là site, sự kiện hay protein? Nhãn âm được tạo thế nào? Những trường nào có thể thiếu? Ai cần tái tạo kết quả và bằng file nào? Đây là checklist đề xuất của bài giảng <span class="tag t-inf">suy luận</span>.</p>
+<p>Riêng PhosphoSitePlus, hồ sơ kiểm trước chỉ xác nhận qua kết quả tìm kiếm rằng tải bulk yêu cầu đồng ý điều khoản. Bài này không xác nhận giấy phép hiện hành; phải đọc điều khoản gốc ở thời điểm thực sự tải hoặc chia sẻ <span class="tag t-unv">chưa kiểm chứng · điều khoản hiện hành</span> — <a href="https://www.phosphosite.org/">PhosphoSitePlus</a>. Việc xem được một trang web không tự cấp quyền phân phối lại dữ liệu.</p>
+<p>Kết thúc buổi học, thử lấy đúng một bản ghi minh họa và điền bảng từ điển đã nêu ở mục 1. Nếu không truy ngược được một site về chuỗi và bằng chứng, chưa nên nhân quy trình lên toàn bộ dữ liệu. Đây là cổng kiểm chất lượng thực hành, không phải yêu cầu tải thêm bộ dữ liệu nào <span class="tag t-inf">suy luận</span>.</p>
+<h2>Bảng thuật ngữ của bài</h2><div class="tablewrap"><table><thead><tr><th>Thuật ngữ</th><th>Cách hiểu trong bài</th></tr></thead><tbody><tr><td>Accession</td><td>Mã định danh để tra bản ghi; không thay thế mọi thông tin phiên bản.</td></tr><tr><td>Feature</td><td>Chú thích gắn với vùng hoặc vị trí trên protein.</td></tr><tr><td>Evidence code</td><td>Mã mô tả loại bằng chứng của một khẳng định.</td></tr><tr><td>Snapshot</td><td>Bản chụp dữ liệu tại phiên bản được xác định.</td></tr><tr><td>SHA-256</td><td>Hàm băm dùng đối chiếu nội dung byte của file.</td></tr><tr><td>Manifest</td><td>Danh sách nguồn, phiên bản, kích thước và hash để truy nguyên.</td></tr><tr><td>pLDDT</td><td>Độ tin cậy dự đoán cấu trúc cục bộ, không phải nhãn chức năng.</td></tr><tr><td>Ground truth</td><td>Nhãn tham chiếu được giao thức đánh giá chấp nhận; vẫn cần hiểu giới hạn phép đo.</td></tr></tbody></table></div><h2>Câu hỏi tự kiểm</h2><details><summary>Một protein có một feature thực nghiệm. Có lấy mọi feature của protein làm nhãn thực nghiệm không?</summary><div>Không. Evidence gắn với khẳng định cụ thể; kiểm từng feature và nguồn.</div></details><details><summary>Vì sao số sự kiện CPLM lớn hơn số lysine không nhất thiết là lỗi?</summary><div>Cùng lysine có thể được ghi nhận trong nhiều sự kiện hoặc loại biến đổi. Hai phép đếm có đơn vị khác nhau.</div></details><details><summary>Hash đúng có chứng minh bộ dữ liệu không rò rỉ không?</summary><div>Không. Hash chỉ xác nhận nội dung byte; kiểm đúng nhãn, ánh xạ và split là những việc riêng. Xem bài 09 về kiểm soát rò rỉ.</div></details><details><summary>RAG-244 có số nhãn trong bài báo nhưng không có label trong archive. Ghi thế nào?</summary><div>Ghi rõ số công bố theo bài báo, đồng thời ghi không có file nhãn trong snapshot. Không gọi số công bố là số tự đo.</div></details><details><summary>Có nên xóa X trước khi cắt cửa sổ không?</summary><div>Không xóa làm dịch vị trí. Giữ raw, xác định quy tắc biểu diễn ký tự chưa biết và kiểm ánh xạ chuỗi–nhãn.</div></details><h2 id="sources">Nguồn</h2><ul class="src"><li><span class="tag t-ok">đã kiểm</span> <a href="https://rest.uniprot.org/uniprotkb/P04637.json">UniProt P04637 JSON</a>, <a href="https://rest.uniprot.org/uniprotkb/P04637.fasta">FASTA</a>; số feature theo bản tải 04/10/2026 trong hồ sơ kiểm Claude.</li><li><span class="tag t-ok">đã kiểm</span> <a href="https://www.ebi.ac.uk/ols4/ontologies/eco">EBI OLS — ECO</a>: nghĩa ba evidence code trong bài.</li><li><span class="tag t-ok">đã kiểm</span> <a href="https://doi.org/10.1093/nar/gkae1005">dbPTM 2025</a>; <a href="https://doi.org/10.1093/nar/gkab849">CPLM 4.0 (2022)</a>.</li><li><span class="tag t-ok">đã kiểm</span> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8728224/">AlphaFold DB, Varadi và cộng sự (2022)</a> — dữ kiện pLDDT kiểm qua kết quả tìm kiếm trong hồ sơ nguồn.</li><li><span class="tag t-ok">đã kiểm</span> <a href="https://doi.org/10.1093/nar/gkx973">ActiveDriverDB (2018)</a> — abstract.</li><li><span class="tag t-unv">chưa kiểm chứng</span> <a href="https://www.phosphosite.org/">PhosphoSitePlus</a>: chưa kiểm lại điều khoản hiện hành.</li><li><span class="tag t-ok">đã kiểm</span> Đọc trực tiếp: <a href="../../topics/rtk-atp-applicability/03-data/data-report.md">báo cáo RTK</a>, <a href="../../topics/rtk-atp-applicability/03-data/source-manifest.json">manifest</a>, <a href="../../../ml/rtk-atp-applicability/preprocessing/prepare_data.py">script</a>.</li><li><span class="tag t-dd">khảo sát sâu · toàn văn</span> <a href="../deep-research/reports/aging-cancer-deep-dive.md">Khảo sát sâu</a>, mục 3–4.</li></ul><nav class="pn"><a href="05-aging-sirtuins-senescence.html">← Bài 05: Lão hóa: sirtuin và senescence</a><a href="07-residue-level-framing.html">Bài 07: Đặt bài toán ở mức residue →</a></nav></main>
+</body></html>
