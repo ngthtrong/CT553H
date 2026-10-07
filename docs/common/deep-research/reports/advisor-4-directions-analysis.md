@@ -14,12 +14,12 @@ Xếp hạng, nói thẳng:
 
 | | Hướng | Phán quyết một dòng |
 |---|---|---|
-| **1** | **Hướng 2 — phát hiện tế bào lão hóa trong khối u** | **Khả thi nhất**, nhưng chỉ sau khi chọn **một** modality và thu hẹp thành một bài toán có tập test độc lập. **Sinh viên đã chốt 07/10: dùng scRNA-seq.** Rủi ro lớn nhất, sửa lại sau kiểm chứng 07/10: **senescence không có nhãn chuẩn vàng ở mức tế bào trong mô**, nên mọi mô hình có giám sát đều học lại một bộ chấm điểm đã có |
+| **1** | **Hướng 2 — phát hiện tế bào lão hóa trong khối u** | ~~Khả thi nhất~~ → **ĐÃ DỪNG ngày 07/10 sau khi chạy trên GSE103322**: không đạt ngưỡng đặt trước, và **điểm SenMayo chủ yếu theo loại tế bào chứ không theo senescence** (70% tế bào dương là fibroblast, tế bào T/B không có tế bào dương nào). Xem [mục 7.5](#75-kết-quả-trên-dữ-liệu-thật-và-phán-quyết-dừng-hướng-2-0710) |
 | **2** | **Hướng 4 — RAG giải thích cơ chế đa tầng** | Khả thi về **sản phẩm** (đạt tiêu chí 5 rất tốt), nhưng **phần "giải thích" gần như không đánh giá được định lượng** → tiêu chí 1–2 khó bảo vệ, dễ thành "một con chatbot có citation" |
 | **3** | **Hướng 1 — đồng hồ sinh học & nguy cơ ung thư** | **Đã bị loại to tiếng trong khảo sát 02/10 và lý do vẫn đứng:** đầu vào không phải chuỗi amino acid → toàn bộ lineage PLM → mCNN → RAG của GVHD **không áp dụng được**, nên tiêu chí 2 và 3 không đạt được. Thêm nữa, `tDamAge` **không tra được** (xem 1.1) |
 | **4** | **Hướng 3 — thiết kế tân kháng nguyên bằng generative PLM + RAG** | **Rủi ro cao nhất, khuyên không chọn.** Ba cổng rớt độc lập nhau: định vị (đúng lane Prof Ou), đánh giá (không có ground truth cho chuỗi sinh ra), và chỉ số (benchmark sạch cho AUC 0,52–0,60) |
 
-**Khuyến nghị:** nếu phải chọn trong đúng bốn hướng này thì chọn **hướng 2**, thu hẹp thành *"phân loại tế bào lão hóa trong TME từ scRNA-seq, với split gom nhóm theo bệnh nhân/dataset và một tập test độc lập nguồn"*. **Nhưng** khuyến nghị thật của tôi là mang bốn hướng này tới buổi tuần 6 **cùng với** ứng viên A hoặc B của khảo sát 02/10, và để GVHD chọn. **Đính chính 07/10:** trong hai ứng viên đó, **chỉ B qua được cổng tập test độc lập**; A thì chưa (xem gạch đầu dòng dưới). Dù vậy cả hai vẫn ở trên bốn hướng mới về mặt dữ liệu, vì nhãn của chúng là nhãn thực nghiệm đã có.
+**Khuyến nghị ban đầu (06/10), đã bị chính dữ liệu đảo lại ngày 07/10 — đọc [mục 7.5](#75-kết-quả-trên-dữ-liệu-thật-và-phán-quyết-dừng-hướng-2-0710) trước:** nếu phải chọn trong đúng bốn hướng này thì chọn **hướng 2**, thu hẹp thành *"phân loại tế bào lão hóa trong TME từ scRNA-seq, với split gom nhóm theo bệnh nhân/dataset và một tập test độc lập nguồn"*. **Nhưng** khuyến nghị thật của tôi là mang bốn hướng này tới buổi tuần 6 **cùng với** ứng viên A hoặc B của khảo sát 02/10, và để GVHD chọn. **Đính chính 07/10:** trong hai ứng viên đó, **chỉ B qua được cổng tập test độc lập**; A thì chưa (xem gạch đầu dòng dưới). Dù vậy cả hai vẫn ở trên bốn hướng mới về mặt dữ liệu, vì nhãn của chúng là nhãn thực nghiệm đã có.
 
 > **Cập nhật 07/10/2026 sau hai kiểm chứng ở [mục 7](#7-hai-kiểm-chứng-bổ-sung-0710) — xếp hạng không đổi, nhưng hai lý do đổi, và cả hai đều bất lợi cho hướng 2:**
 >
@@ -388,6 +388,44 @@ Mục này viết **trước khi chạy script trên dữ liệu thật**, và �
 **Cách gọi tên, bắt buộc:** gọi nhãn là **"nhãn đồng thuận SenMayo–DeepScence–marker"**, không gọi là "tế bào lão hóa". Và trong mọi tài liệu phải có một câu: *nhãn này là proxy tính toán, không phải xác nhận thực nghiệm; senescence chưa có chuẩn vàng ở mức tế bào trong mô*. Nói "phát hiện tế bào lão hóa" với nhãn dạng này là **đòn tấn công dễ nhất** mà GVHD hoặc hội đồng sẽ dùng.
 
 **Điều này đổi gì về đóng góp:** với nhãn đồng thuận, đóng góp **không còn là** "phát hiện tế bào lão hóa chính xác hơn". Nó là: *một bộ phân loại có cảnh báo miền áp dụng, huấn luyện trên nhãn đồng thuận nhiều nguồn, đánh giá bằng split gom nhóm theo bệnh nhân, cộng một phép đo xem nhãn của ba công cụ hiện có đồng thuận tới đâu trên mô khối u thật*. Phần in nghiêng cuối **là một kết quả có giá trị dù mô hình không thắng ai** — và theo mục 7.2, một kết quả âm được làm tử tế vẫn cần GVHD chấp nhận trước, nên đó là câu phải hỏi ở tuần 6.
+
+### 7.5. Kết quả trên dữ liệu thật và phán quyết: **DỪNG hướng 2** (07/10)
+
+Số từ GSE103322 (ung thư đầu cổ, **5.902 tế bào**, **17 bệnh nhân** suy ra được, GEO ghi 18), do thread chạy script trên môi trường có mạng; code và báo cáo ở PR #4 (nhánh `claude/project-thread-l271f1`). Dưới đây là **áp đúng bốn ngưỡng đã đặt trước ở mục 7.3**, không sửa ngưỡng.
+
+| # | Điều kiện | Ngưỡng đặt trước | Số thật | Kết quả |
+|---|---|---|---|---|
+| 1 | `n_patients` | ≥ 10 | **17** | **ĐẠT** |
+| 2 | `patients_with_ge20_positives` | ≥ 8 | **7** | **KHÔNG ĐẠT** |
+| 3 | `concentration_ratio` | ≤ 1,5 sạch · 1,5–3,0 đi kèm cân mẫu · > 3,0 dừng | **1,85** | Đi kèm cân mẫu theo bệnh nhân |
+| 4 | `signature_coverage` | ≥ 0,6 | **0,97** (113/117 gene) | **ĐẠT** |
+
+Mục 7.3 nói **phải đạt cả bốn**. Điều kiện 2 không đạt → **theo đúng cam kết, dừng hướng 2.**
+
+**Và 7 so với 8 là sát, nên phải nói rõ vì sao không nới ngưỡng:** vì có một phát hiện thứ hai, độc lập và nặng hơn nhiều.
+
+#### Phát hiện quyết định: điểm SenMayo chủ yếu đang theo **loại tế bào**, không theo senescence
+
+- **70% tế bào dương là fibroblast**, còn **tế bào T và B không có tế bào dương nào**.
+- Khi chấm ngưỡng **riêng theo từng loại tế bào** để bỏ ảnh hưởng đó: **fibroblast chỉ còn 1 bệnh nhân** có ≥ 20 tế bào dương; **tế bào ung thư có 3 bệnh nhân** nhưng `concentration_ratio = 3,35`, **vượt ngưỡng dừng 3,0**.
+
+Nói cách khác: hai lớp "dương" và "âm" khác nhau **theo loại tế bào**, không theo trạng thái senescence. **Đây đúng là lỗi mà khảo sát 02/10 đã tự đo được ở SenSeqNet**, chỉ là lặp lại ở một mức khác — ở đó hai lớp khác nhau theo **họ protein**, ở đây theo **loại tế bào**. Và nó cũng đúng là phiên bản mức tế bào của lỗi lệch độ dài mà T1 phát hiện giữa hai lớp AMP/non-AMP.
+
+Một dataset lớn hơn **không sửa được chuyện này** — GSE131907 vì vậy không được chạy, và đó là quyết định đúng: thêm tế bào không làm nhãn bớt gắn với loại tế bào.
+
+#### Ba điều phán quyết này **không** nói
+
+1. **Không nói "senescence trong khối u là hướng tồi".** Nó nói: *với nhãn dẫn từ chữ ký SenMayo, trên dataset này, trong 8–9 tuần*, bài toán không qua được cổng dữ liệu.
+2. **Không bác bỏ DeepScence hay SenePy.** Cả hai **không giám sát hoặc chấm điểm theo chữ ký** (mục 7.1), nên chúng không mắc đúng lỗi này; chính vì vậy chúng tránh học có giám sát.
+3. **Không nói nhãn đồng thuận ở mục 7.4 là vô ích.** Nhưng nó cho thấy nhãn đồng thuận **phải chấm theo từng loại tế bào** ngay từ đầu, và sau khi làm vậy thì **số bệnh nhân còn lại quá nhỏ** để chia fold — đó mới là lý do thật để dừng.
+
+#### Kết quả này **dùng được** ở buổi tuần 6
+
+Đây là một **kết quả âm tự đo được**, có số, trên dữ liệu công khai, và nó trả lời đúng câu GVHD quan tâm nhất ("vì sao cần nghiên cứu / vấn đề tồn đọng là gì"): *chữ ký senescence phổ biến nhất, áp lên mô khối u thật, phân tách loại tế bào chứ không phân tách trạng thái senescence*. Một slide về chuyện này mạnh hơn hẳn một slide hứa hẹn, và nó cho thấy sinh viên đã kiểm dữ liệu trước khi chọn đề tài. **Cách nói đúng:** đây là lý do em không chọn hướng 2, không phải một đóng góp đã hoàn thành.
+
+#### Khuyến nghị sau phán quyết
+
+**Chuyển sang ứng viên B** (vị trí phosphoryl hóa theo nhóm kinase gây ung thư) — đây là ứng viên duy nhất có **benchmark non-homologous do chính dbPTM công bố**, tức cổng dữ liệu đã đóng sẵn, và nó rơi đúng khuôn T1 về phương pháp (mục 7.2). **Ứng viên A** vẫn là lựa chọn thứ hai, nhưng nhớ cổng mở của nó (mục 0): phải tự dựng tập test độc lập, và câu hỏi số 1 cho GVHD quyết định chuyện đó.
 
 ---
 
