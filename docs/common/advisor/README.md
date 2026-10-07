@@ -1,15 +1,17 @@
 # Giảng viên hướng dẫn và công bố liên quan
 
-> Ghi nhận ngày 02/10/2026 theo xác nhận của sinh viên. Trước đó repo có hai thư mục `Prof Ho/` và `Prof Ou/` nhưng **không chỗ nào nói rõ ai là GVHD**, nên mọi nhận định dạng "công trình của nhóm thầy" trong các tài liệu cũ cần được đọc lại theo mục 1 dưới đây.
+> Cập nhật ngày 05/10/2026 theo xác nhận của sinh viên: **GVHD là TS. Hồ Quang Thái (Ho Quang Thai; QT Ho)**. Tên đầy đủ đã được sửa so với ghi chép ngày 02/10/2026. Hai thư mục `Prof Ho/` và `Prof Ou/` được phân biệt theo vai trò ở mục 1 dưới đây.
 
 ## 1. Ai là GVHD
 
 | Người | Vai trò | Thư mục |
 |---|---|---|
-| **Prof. QT Ho (Hồ Quốc Tuấn), Đại học Cần Thơ** | **GVHD của đề tài này** | [Prof Ho/](Prof%20Ho/) |
+| **TS. Hồ Quang Thái (Ho Quang Thai; QT Ho), Đại học Cần Thơ** | **GVHD của đề tài này** | [Prof Ho/](Prof%20Ho/) |
 | Prof. YY Ou (Yu-Yen Ou), Yuan Ze University | **Không phải GVHD.** Đồng tác giả thường xuyên với GVHD; tài liệu giữ để tham khảo bối cảnh nhóm | [Prof Ou/](Prof%20Ou/) |
 
 Hệ quả khi đánh giá **tiêu chí 1 (tính mới)** trong [năm tiêu chí ở biên bản lần 1](../../meeting/session-01-minutes.md): công trình của Prof Ou là bối cảnh gần, nhưng công trình của **Prof Ho** mới là thứ GVHD biết rõ nhất và dễ hỏi sâu nhất.
+
+Hai [luận văn tham khảo](../thesis/thesis-comparison.md) cũng ghi người hướng dẫn là **Ho Quang Thai**. Đây là các tiền lệ cùng GVHD để tham khảo về cách thực hiện và trình bày, chưa phải bảo đảm về phạm vi hoặc mức đánh giá cho đề tài hiện tại. Giữ nguyên tên thư mục `Prof Ho/` và tên tác giả viết tắt trong các trích dẫn công bố.
 
 ## 2. Các nhánh nghiên cứu trong danh mục của GVHD (Prof Ho)
 
