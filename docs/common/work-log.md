@@ -4,6 +4,16 @@
 
 ---
 
+## 07/10/2026 (tối) — thử tải scRNA-seq khối u để chấm SenMayo: bị chặn mạng, đã viết sẵn script
+
+- **Không tải được dataset nào.** Mạng của môi trường cloud chặn gần hết host dữ liệu, đã thử và ghi đúng mã trả về: `ftp.ncbi.nlm.nih.gov` (GEO), `zenodo.org`, `cellxgene`, `huggingface.co`, `figshare`, `cells.ucsc.edu`, `ha-dkfz.github.io` — **403 ở bước CONNECT**. Chỉ `raw.githubusercontent.com` và PyPI đi được. Đã ghi vào [resources.md](resources.md).
+- **Đã làm được phần không cần dataset:** cài scanpy 1.12.4; lấy danh sách gene SenMayo từ bộ chữ ký HA-DKFZ; viết [senmayo_score.py](../../ml/tme-senescence-scrnaseq/preprocessing/senmayo_score.py) đếm tế bào/bệnh nhân, chấm điểm SenMayo và báo **mức dồn tế bào dương theo bệnh nhân**; kiểm trên ma trận tổng hợp 3.000 tế bào (chạy đúng, `top1_patient_share_of_positives = 0,7667` khớp cấu trúc đã cấy). Đây là phép kiểm phần mềm, không phải kết quả sinh học.
+- **Cảnh báo phải mang theo:** danh sách lấy được có **117 gene, không phải 125** như bài gốc công bố; **chưa xác định được 8 gene chênh lệch** vì phụ lục là xlsx không lấy được. Không gọi file này là "SenMayo 125 gene" trong tài liệu gửi GVHD.
+- Đã thêm slug `tme-senescence-scrnaseq` vào [danh sách đề tài](../topics/README.md) ở trạng thái đang khảo sát, chỉ có code, chưa có tài liệu đề tài riêng.
+- **Còn dở:** chờ sinh viên chọn một trong hai đường — cho phép host GEO trong cài đặt môi trường cloud, hoặc tải trên máy của sinh viên. Script chạy được ngay khi có file.
+
+---
+
 ## 07/10/2026 (cuối ngày) — GVHD chấp nhận đầu vào ma trận biểu hiện
 
 - Sinh viên xác nhận: **GVHD chấp nhận đề tài có đầu vào là ma trận biểu hiện gene, không bắt buộc phải là chuỗi amino acid.** Đây là lời GVHD theo ghi nhận của sinh viên, không phải suy luận. Đã ghi vào [biên bản lần 1, mục 1](../meeting/session-01-minutes.md).
