@@ -1,0 +1,4 @@
+celltype,n_cells,n_patients,n_positive,patients_with_ge20_positives,patients_with_ge10_positives,top1_patient_of_positives,concentration_ratio,max_concentration_ratio
+Fibroblast,1417,16,71,1,2,HNSCC25,2.101,5.373
+cancer,2200,15,110,3,4,HNSCC25,3.349,3.571
+Macrophage,95,11,5,0,0,HNSCC16,4.75,5.429
