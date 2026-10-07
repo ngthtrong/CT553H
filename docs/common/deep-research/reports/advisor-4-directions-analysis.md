@@ -19,7 +19,7 @@ Xếp hạng, nói thẳng:
 | **3** | **Hướng 1 — đồng hồ sinh học & nguy cơ ung thư** | **Đã bị loại to tiếng trong khảo sát 02/10 và lý do vẫn đứng:** đầu vào không phải chuỗi amino acid → toàn bộ lineage PLM → mCNN → RAG của GVHD **không áp dụng được**, nên tiêu chí 2 và 3 không đạt được. Thêm nữa, `tDamAge` **không tra được** (xem 1.1) |
 | **4** | **Hướng 3 — thiết kế tân kháng nguyên bằng generative PLM + RAG** | **Rủi ro cao nhất, khuyên không chọn.** Ba cổng rớt độc lập nhau: định vị (đúng lane Prof Ou), đánh giá (không có ground truth cho chuỗi sinh ra), và chỉ số (benchmark sạch cho AUC 0,52–0,60) |
 
-**Khuyến nghị:** nếu phải chọn trong đúng bốn hướng này thì chọn **hướng 2**, thu hẹp thành *"phân loại tế bào lão hóa trong TME từ scRNA-seq, với split gom nhóm theo bệnh nhân/dataset và một tập test độc lập nguồn"*. **Nhưng** khuyến nghị thật của tôi là mang bốn hướng này tới buổi tuần 6 **cùng với** ứng viên A hoặc B của khảo sát 02/10, và để GVHD chọn — vì A và B đã qua cổng dữ liệu, bốn hướng này thì chưa.
+**Khuyến nghị:** nếu phải chọn trong đúng bốn hướng này thì chọn **hướng 2**, thu hẹp thành *"phân loại tế bào lão hóa trong TME từ scRNA-seq, với split gom nhóm theo bệnh nhân/dataset và một tập test độc lập nguồn"*. **Nhưng** khuyến nghị thật của tôi là mang bốn hướng này tới buổi tuần 6 **cùng với** ứng viên A hoặc B của khảo sát 02/10, và để GVHD chọn. **Đính chính 07/10:** trong hai ứng viên đó, **chỉ B qua được cổng tập test độc lập**; A thì chưa (xem gạch đầu dòng dưới). Dù vậy cả hai vẫn ở trên bốn hướng mới về mặt dữ liệu, vì nhãn của chúng là nhãn thực nghiệm đã có.
 
 > **Cập nhật 07/10/2026 sau hai kiểm chứng ở [mục 7](#7-hai-kiểm-chứng-bổ-sung-0710) — xếp hạng không đổi, nhưng hai lý do đổi, và cả hai đều bất lợi cho hướng 2:**
 >
@@ -155,7 +155,7 @@ Lập luận thật và dễ nói: tế bào senescent trong khối u **có hai 
 | 4. XAI | **Cao** | Gene đóng góp vào điểm senescence đối chiếu được với chữ ký đã biết (SenMayo) → **giải thích kiểm chứng được**, không trang trí |
 | 5. Web app | **Cao** | Upload một ma trận đếm → trả điểm senescence theo từng tế bào + cảnh báo miền áp dụng. Rõ ràng, có người dùng thật |
 
-**Tổng: đạt 4 và 5 mạnh, 1–3 ở mức trung bình.** Khá hơn hướng 1 và 3, kém hơn ứng viên A của khảo sát 02/10 (A đạt rõ cả năm).
+**Tổng: đạt 4 và 5 mạnh, 1–3 ở mức trung bình.** Khá hơn hướng 1 và 3, kém hơn ứng viên A của khảo sát 02/10 (A được đánh giá đạt cả năm tiêu chí trong khảo sát đó, **nhưng A chưa có tập test độc lập** — xem đính chính ở mục 0 và 7.2).
 
 ### 2.7. Rủi ro và cổng dừng
 
@@ -274,7 +274,11 @@ Phải nói trước với GVHD, vì đây là nhánh dễ bị trùng nhất tr
 
 ### So với sáu ứng viên A–F của khảo sát 02/10
 
-Nói thẳng, vì đây là điều quan trọng nhất trong tài liệu này: **ứng viên A (substrate SIRT theo isoform) và B (site phospho theo nhóm kinase) đều đạt rõ cả năm tiêu chí và đều đã qua cổng dữ liệu** — A có file nhãn 6.801 site đã tải về và đếm được `[tự đo]`, B có benchmark non-homologous do chính dbPTM công bố `[toàn văn]`. **Không hướng nào trong bốn hướng mới làm được cả hai việc đó.** Lý do rất hệ thống, và đã được nêu trong khảo sát 02/10: ba trong bốn hướng mới **không có trục chuỗi amino acid**, nên pipeline cửa sổ-residue + PLM mà sinh viên đã dựng và GVHD hiểu rõ **không dùng lại được**, và hai tiêu chí 2–3 mất theo.
+Nói thẳng, vì đây là điều quan trọng nhất trong tài liệu này: **ứng viên A (substrate SIRT theo isoform) và B (site phospho theo nhóm kinase) được khảo sát 02/10 đánh giá đạt cả năm tiêu chí, và nhãn của cả hai là nhãn thực nghiệm đã tồn tại** — A có file nhãn 6.801 site đã tải về và đếm được `[tự đo]` (nguồn: repo công khai của Ridgeway 2025, nhãn gốc từ microarray Rauh 2013), B có benchmark non-homologous do chính dbPTM công bố `[toàn văn]`.
+
+**Đính chính 07/10, bản 06/10 của tài liệu này nói sai:** bản đó viết A và B "đều đã qua cổng dữ liệu". **Không đúng với A.** Theo chính khảo sát 02/10 (bảng mục 9 và rủi ro 1 ở mục 3), **A KHÔNG có tập test độc lập** — split công bố chỉ là holdout 10% trên cùng một microarray, và khảo sát đặt sẵn một cổng dừng: *nếu đến hết tuần 7 không dựng được tập test độc lập nguồn với cả hai lớp thì chuyển sang ứng viên B*. Khảo sát cũng xếp **A và B ngang nhau**, không xếp A trên B; việc chọn giữa hai cái treo vào một câu hỏi cho GVHD (thầy có coi split tự dựng cộng tập MS độc lập nguồn là "test độc lập" đủ chuẩn hay không).
+
+**Vậy phát biểu đúng là:** **B là ứng viên duy nhất có benchmark cộng đồng đã tồn tại**; A mạnh hơn về mức khớp GVHD và dư địa đóng góp nhưng **còn một cổng mở**. Cả hai vẫn ở trên bốn hướng mới ở chỗ nhãn là nhãn thực nghiệm, không phải proxy tính toán. Lý do rất hệ thống, và đã được nêu trong khảo sát 02/10: ba trong bốn hướng mới **không có trục chuỗi amino acid**, nên pipeline cửa sổ-residue + PLM mà sinh viên đã dựng và GVHD hiểu rõ **không dùng lại được**, và hai tiêu chí 2–3 mất theo.
 
 ---
 
@@ -282,7 +286,7 @@ Nói thẳng, vì đây là điều quan trọng nhất trong tài liệu này: 
 
 **Khuyến nghị:** mang **cả hai nhóm** tới buổi tuần 6 và để GVHD chọn, trình bày theo đúng ba bước ở mục 3 biên bản:
 
-1. **Nhóm đã qua cổng dữ liệu:** ứng viên A hoặc B của [khảo sát 02/10](aging-cancer-deep-dive.md). Đây là nhóm tôi khuyên.
+1. **Nhóm có nhãn thực nghiệm đã tồn tại:** ứng viên A hoặc B của [khảo sát 02/10](aging-cancer-deep-dive.md). Đây là nhóm tôi khuyên. **Trong đó chỉ B có benchmark cộng đồng sẵn**; A còn cổng mở về tập test độc lập (đính chính 07/10, xem mục 0 và 7.2).
 2. **Trong bốn hướng GVHD gợi ý:** **hướng 2**, thu hẹp thành *"phân loại tế bào lão hóa trong vi môi trường khối u từ scRNA-seq, có cảnh báo miền áp dụng, đánh giá bằng split gom nhóm theo bệnh nhân và một tập test độc lập nguồn"*. Phương án hai: **hướng 4** đổi thành bài toán truy hồi bằng chứng có đáp án (4.5).
 
 **Cách nói ở buổi gặp, một câu:** "Em đã phân tích cả bốn hướng thầy gợi ý theo đúng khung thầy yêu cầu. Ba trong bốn hướng có đầu vào không phải chuỗi amino acid, nên không dùng lại được pipeline PLM–mCNN, và em e là tiêu chí 2 và 3 sẽ khó đạt. Hướng 2 thì khả thi, nhưng đã có 3–4 công cụ. Em xin thầy cho ý kiến giữa hướng 2 và hai ứng viên em đã kiểm được dữ liệu."
@@ -340,7 +344,7 @@ Nguồn: [phân tích hai luận văn](../../thesis/thesis-comparison.md) (05/10
 
 - Nó **củng cố** phản đối cấu trúc với hướng 1 và 4 — đã nêu ở mục 1.6 và 4.4.
 - **Sau xác nhận cuối ngày 07/10 (GVHD chấp nhận đầu vào ma trận biểu hiện), đây không còn là cổng loại** — nhưng nó vẫn áp lên hướng 2 nhánh scRNA-seq ở mức khác: chọn scRNA-seq nghĩa là **không có tiền lệ cùng GVHD**, và **thang đối chứng của T1 không chuyển sang được nguyên vẹn**: thang tương đương cho scRNA-seq sẽ là *điểm chữ ký marker → hồi quy logistic/SVM → autoencoder → foundation model đơn bào (scGPT/Geneformer)*. Thang đó hợp lý về mặt phương pháp, nhưng là **thang sinh viên tự dựng**, không phải thang GVHD đã nhìn thấy hoạt động.
-- Ngược lại, **ứng viên A và B của [khảo sát 02/10](aging-cancer-deep-dive.md) rơi đúng vào khuôn T1**: cùng đầu vào trình tự, cùng họ PLM + mCNN, cùng dạng cửa sổ quanh residue, cùng kiểu XAI occlusion trên cửa sổ. Với A hoặc B, **thang đối chứng của T1 dùng lại gần như nguyên vẹn** — tức tiêu chí 2 có đường đi đã được chính GVHD chấp nhận một lần.
+- Ngược lại, **ứng viên A và B của [khảo sát 02/10](aging-cancer-deep-dive.md) rơi đúng vào khuôn T1** (lưu ý cổng dữ liệu còn mở của A, đính chính ở trên): cùng đầu vào trình tự, cùng họ PLM + mCNN, cùng dạng cửa sổ quanh residue, cùng kiểu XAI occlusion trên cửa sổ. Với A hoặc B, **thang đối chứng của T1 dùng lại gần như nguyên vẹn** — tức tiêu chí 2 có đường đi đã được chính GVHD chấp nhận một lần.
 
 **Ba thứ nên lấy từ T1 bất kể chọn hướng nào:** (a) thang baseline → biểu diễn → head → ablation, mỗi bước một đối chứng; (b) kiểm xem mô hình có đang học tín hiệu ngoài mục tiêu hay không (T1 phát hiện lệch độ dài giữa hai lớp — tương đương ở hướng 2 là **lệch loại tế bào hoặc lệch bệnh nhân giữa hai lớp**); (c) XAI nối trực tiếp vào giao diện, không để rời thành một hình trong báo cáo. Từ T2 nên lấy: lưu mỗi lần chạy kèm phiên bản mô hình, hash đầu vào, cấu hình và log.
 
