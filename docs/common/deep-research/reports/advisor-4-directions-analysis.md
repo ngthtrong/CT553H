@@ -14,12 +14,18 @@ Xếp hạng, nói thẳng:
 
 | | Hướng | Phán quyết một dòng |
 |---|---|---|
-| **1** | **Hướng 2 — phát hiện tế bào lão hóa trong khối u** | **Khả thi nhất**, nhưng chỉ sau khi chọn **một** modality và thu hẹp thành một bài toán có tập test độc lập. Rủi ro lớn nhất: đã có 3–4 công cụ 2024–2026 làm đúng việc này |
+| **1** | **Hướng 2 — phát hiện tế bào lão hóa trong khối u** | **Khả thi nhất**, nhưng chỉ sau khi chọn **một** modality và thu hẹp thành một bài toán có tập test độc lập. **Sinh viên đã chốt 07/10: dùng scRNA-seq.** Rủi ro lớn nhất, sửa lại sau kiểm chứng 07/10: **senescence không có nhãn chuẩn vàng ở mức tế bào trong mô**, nên mọi mô hình có giám sát đều học lại một bộ chấm điểm đã có |
 | **2** | **Hướng 4 — RAG giải thích cơ chế đa tầng** | Khả thi về **sản phẩm** (đạt tiêu chí 5 rất tốt), nhưng **phần "giải thích" gần như không đánh giá được định lượng** → tiêu chí 1–2 khó bảo vệ, dễ thành "một con chatbot có citation" |
 | **3** | **Hướng 1 — đồng hồ sinh học & nguy cơ ung thư** | **Đã bị loại to tiếng trong khảo sát 02/10 và lý do vẫn đứng:** đầu vào không phải chuỗi amino acid → toàn bộ lineage PLM → mCNN → RAG của GVHD **không áp dụng được**, nên tiêu chí 2 và 3 không đạt được. Thêm nữa, `tDamAge` **không tra được** (xem 1.1) |
 | **4** | **Hướng 3 — thiết kế tân kháng nguyên bằng generative PLM + RAG** | **Rủi ro cao nhất, khuyên không chọn.** Ba cổng rớt độc lập nhau: định vị (đúng lane Prof Ou), đánh giá (không có ground truth cho chuỗi sinh ra), và chỉ số (benchmark sạch cho AUC 0,52–0,60) |
 
 **Khuyến nghị:** nếu phải chọn trong đúng bốn hướng này thì chọn **hướng 2**, thu hẹp thành *"phân loại tế bào lão hóa trong TME từ scRNA-seq, với split gom nhóm theo bệnh nhân/dataset và một tập test độc lập nguồn"*. **Nhưng** khuyến nghị thật của tôi là mang bốn hướng này tới buổi tuần 6 **cùng với** ứng viên A hoặc B của khảo sát 02/10, và để GVHD chọn — vì A và B đã qua cổng dữ liệu, bốn hướng này thì chưa.
+
+> **Cập nhật 07/10/2026 sau hai kiểm chứng ở [mục 7](#7-hai-kiểm-chứng-bổ-sung-0710) — xếp hạng không đổi, nhưng hai lý do đổi, và cả hai đều bất lợi cho hướng 2:**
+>
+> - **Đóng góp đề xuất cho hướng 2 phải viết lại.** Lập luận "các công cụ hiện có không gom nhóm theo bệnh nhân" **đặt trên tiền đề sai**: DeepScence không giám sát (không có split nào), SenePy là chấm điểm theo chữ ký, SenCID có giám sát nhưng huấn luyện trên **bulk in vitro** nên không có bệnh nhân nào trong tập huấn luyện. Khoảng trống thật hẹp hơn: **chưa có mô hình có giám sát nào trên scRNA-seq khối u người với split theo bệnh nhân** — và lý do chưa có là **không có nhãn chuẩn vàng**, tức đúng rủi ro trung tâm của hướng 2.
+> - **Không có tiền lệ cùng GVHD cho đầu vào không phải trình tự.** Cả hai luận văn thầy đã hướng dẫn (T1 peptide + ESM-2, T2 tìm kiếm protein + ESM-2) đều là bài toán trên trình tự. Điều này **củng cố** phản đối với hướng 1 và 4, nhưng **cũng áp lên hướng 2 nhánh scRNA-seq**, nhánh sinh viên đã chốt ngày 07/10.
+> - **Tin tốt, áp dụng cho mọi hướng:** mức thực tế của tiêu chí 2 là **một thang đối chứng có kỷ luật**, không phải kiến trúc chưa ai dùng; và mức thực tế của tiêu chí 4 là **occlusion + hiển thị + đối chiếu motif**, thấp hơn mức tôi đã viết ở mục 2.6 và trong khảo sát 02/10.
 
 ---
 
@@ -89,6 +95,8 @@ Phiên bản thu hẹp duy nhất tôi thấy đứng được: **một task h�
 ## 2. Hướng 2 — Phát hiện tế bào lão hóa trong khối u (Cellular Senescence in TME)
 
 **Hướng khả thi nhất trong bốn hướng.** Nhưng nó đang gộp **hai bài toán khác nhau hoàn toàn** trong một câu, và phải chọn một.
+
+> **Cập nhật 07/10/2026 — sinh viên đã chốt: nếu chọn hướng 2 thì dùng scRNA-seq, không dùng ảnh hình thái nhân.** Phần 2.1 dưới đây giữ lại nhánh ảnh để thấy căn cứ của lựa chọn. **Và hai điểm trong mục 2.4 đã bị đính chính bởi khảo sát 07/10 — đọc [mục 7](#7-hai-kiểm-chứng-bổ-sung-0710) trước khi dùng mục 2.4.**
 
 ### 2.1. Hai nhánh, phải chọn một
 
@@ -248,7 +256,7 @@ Phải nói trước với GVHD, vì đây là nhánh dễ bị trùng nhất tr
 | | **1. Damage/Aging clock** | **2. Senescence trong TME** | **3. Tân kháng nguyên generative** | **4. RAG giải thích đa tầng** |
 |---|---|---|---|---|
 | Hướng | aging | aging ∩ cancer | cancer | cancer |
-| Đầu vào | Vector biểu hiện / bảng | Ảnh **hoặc** vector đơn bào | Chuỗi peptide | Bảng omics + đồ thị + văn bản |
+| Đầu vào | Vector biểu hiện / bảng | **Vector đơn bào (scRNA-seq, chốt 07/10)** | Chuỗi peptide | Bảng omics + đồ thị + văn bản |
 | **Có trục chuỗi amino acid?** | **Không** | **Không** | Có | Không |
 | **Dùng được lane PLM/mCNN của GVHD?** | **Không** | Không | Có — **nhưng đã bị chiếm** | Không |
 | Dữ liệu công khai | GEO/GTEx có; UK Biobank **không** (đơn duyệt) | GEO scRNA-seq **có** `[chưa thử link]` | Có qua figshare Immunity 2023 `[đã thử link 02/10]` | GDSC bulk **410 Gone** `[đã thử link 02/10]` |
@@ -258,7 +266,7 @@ Phải nói trước với GVHD, vì đây là nhánh dễ bị trùng nhất tr
 | Khớp GVHD — sinh học | Không có bài | Không có bài (gần SirtSAGE về chủ đề aging) | **Không có bài cancer** | Không có bài |
 | Khả thi 8–9 tuần | Trung bình | **Cao** (nếu chọn scRNA-seq) | Thấp | Trung bình (nếu đổi thành truy hồi) |
 | Tiêu chí đạt rõ | 1, 5 | **4, 5** (1–3 trung bình) | 5 | 5 |
-| Rủi ro lớn nhất | **Không có trục chuỗi → tiêu chí 2–3 không đạt**; tDamAge không tra được | Nhãn không có chuẩn vàng; đối thủ ở Cell Genomics / Cell Metabolism | **Chuỗi sinh ra không có nhãn thật** + định vị | **Phần giải thích không đo được** |
+| Rủi ro lớn nhất | **Không có trục chuỗi → tiêu chí 2–3 không đạt**; tDamAge không tra được | **Nhãn không có chuẩn vàng** (mục 7.1); không có tiền lệ cùng GVHD cho đầu vào không phải trình tự (mục 7.2) | **Chuỗi sinh ra không có nhãn thật** + định vị | **Phần giải thích không đo được** |
 
 ### So với sáu ứng viên A–F của khảo sát 02/10
 
@@ -278,24 +286,71 @@ Nói thẳng, vì đây là điều quan trọng nhất trong tài liệu này: 
 **Năm việc phải làm trước tuần 6, xếp theo giá trị:**
 
 1. **Hỏi GVHD tên bài báo / DOI của `tDamAge`** — không tra được, và nó là nền của hướng 1.
-2. **Thử link và kiểm code + nhãn của DeepScence và SenCID**, và kiểm xem chúng **có split theo bệnh nhân hay không**. Đây là việc tra cứu giá trị cao nhất còn lại: nếu chúng không làm, hướng 2 có một đóng góp cụ thể ngay.
+2. ~~**Thử link và kiểm code + nhãn của DeepScence và SenCID**, và kiểm xem chúng **có split theo bệnh nhân hay không**.~~ **Đã làm 07/10 — xem [mục 7.1](#71-deepscence-sencid-và-senepy-chia-tập-thế-nào--và-vì-sao-câu-hỏi-ban-đầu-đặt-sai). Kết quả đảo lại tiền đề: không công cụ nào chia theo bệnh nhân, nhưng vì phần lớn không phải mô hình có giám sát, nên đó không phải một đóng góp sẵn.** Còn lại: code và nhãn benchmark của DeepScence vẫn chưa kiểm được (Cell Genomics trả 403).
 3. **Chọn một dataset scRNA-seq khối u công khai, tải thật, đếm số tế bào và số bệnh nhân** — y hệt cách khảo sát 02/10 đã làm với ứng viên A. Không có bước này thì "khả thi" chỉ là phỏng đoán.
 4. **Xác nhận nguồn GPU** (câu 6 trong [danh sách câu hỏi GVHD](aging-cancer-deep-dive.md#13-câu-hỏi-đặt-cho-gvhd-ở-tuần-6)). Hướng 2 nhánh foundation model đơn bào **không chạy trên CPU**.
 5. **Chuẩn bị một trang brief sinh học** cho hướng được chọn, vì GVHD không có bài ở ba trong bốn hướng — sinh viên là người phải mang phần sinh học tới.
+6. **Quyết định cách lấy nhãn cho hướng 2 và nói thẳng nó là proxy** — đây là việc mới, phát sinh từ [mục 7.1](#71-deepscence-sencid-và-senepy-chia-tập-thế-nào--và-vì-sao-câu-hỏi-ban-đầu-đặt-sai): senescence không có chuẩn vàng ở mức tế bào trong mô, nên mọi mô hình có giám sát trên khối u đều học lại một bộ chấm điểm đã có. Phải có câu trả lời cho câu hỏi này trước khi pitch hướng 2.
 
 **Hai câu hỏi mới cho GVHD, thêm vào danh sách ở [khảo sát 02/10 §13](aging-cancer-deep-dive.md):**
 
 - **Với hướng 1 và 4, thầy có chấp nhận một đề tài không dùng PLM/mCNN không?** Nếu không, hai hướng đó rụng vì kiến trúc, không vì chủ đề.
 - **Với hướng 4, thầy đo chất lượng "giải thích tự động" bằng gì?** Nếu không có thước đo thì em xin đổi thành truy hồi bằng chứng có đáp án.
+- **Thêm 07/10:** hai luận văn thầy đã hướng dẫn đều là bài toán trên trình tự ([mục 7.2](#72-đối-chiếu-bốn-hướng-với-hai-luận-văn-cùng-gvhd)). **Thầy có chấp nhận một đề tài có đầu vào là ma trận biểu hiện, không phải chuỗi amino acid, không?** Câu này áp lên cả hướng 2 nhánh scRNA-seq.
 
 ---
 
-## 7. Những điều tài liệu này **chưa** kiểm chứng
+## 7. Hai kiểm chứng bổ sung (07/10)
+
+Hai việc sinh viên yêu cầu làm ngay, vì cả hai làm được mà không cần chờ GVHD. Kết quả **đảo lại một phần mục 2.4**, nên đọc mục này trước khi dùng mục đó.
+
+### 7.1. DeepScence, SenCID và SenePy chia tập thế nào — và vì sao câu hỏi ban đầu đặt sai
+
+**Kết quả ngắn: không công cụ nào trong ba công cụ chia tập theo bệnh nhân, nhưng không phải vì chúng làm sai — mà vì phần lớn chúng không phải mô hình có giám sát.** Đây là **đính chính cho đề xuất đóng góp số 2 ở mục 2.4**: lập luận "các công cụ hiện có không gom nhóm theo bệnh nhân nên chỉ số bị lạm phát" **đặt trên tiền đề sai** và không được mang tới buổi gặp GVHD ở dạng đó.
+
+| Công cụ | Loại mô hình | Dữ liệu huấn luyện | Chia tập | Nguồn |
+|---|---|---|---|---|
+| **DeepScence** (Cell Genomics 2026) | **Không giám sát** — autoencoder ZINB, cộng bộ gene nhân `CoreScence` **39 gene** (gene có mặt ở ≥ 5 bộ chữ ký đã công bố) | Không có nhãn | **Không có train/test split nào.** Đánh giá bằng cách áp lên các dataset độc lập, lấy β-gal staining và IHC làm chuẩn so | `[toàn văn — bản bioRxiv v3]` |
+| **SenCID** (Cell Metabolism 2024) | **Có giám sát — SVM** | **Bulk RNA-seq đã công bố, từ các nghiên cứu *in vitro*** | Không tìm được mô tả split; **tập huấn luyện không có bệnh nhân nào** vì toàn bộ là bulk in vitro | `[toàn văn — trích trong DeepScence]` |
+| **SenePy** (Nat Commun 2025) | **Chấm điểm theo chữ ký**, chữ ký dựng không giám sát (gene động theo tuổi → mạng đồng biểu hiện → hub) | **72 chữ ký chuột + 64 chữ ký người**, từ atlas mô lành, người hiến 1–92 tuổi, **37 mô** | Không có split theo người hiến. Kiểm chứng bằng chuột báo cáo p16-CreERT2-tdTomato, dataset senolytic, mô hình OIS | `[toàn văn]` ([Nat Commun](https://www.nature.com/articles/s41467-025-57047-7)) |
+
+**Ba hệ quả, xếp theo mức quan trọng:**
+
+1. **Khoảng cách in vitro → in vivo đã được đo và công bố, không còn là khoảng trống để nhận.** DeepScence viết thẳng rằng *"a major limitation of SenCID is that its training data were collected from in vitro studies"* và báo rằng SenCID, **dù ngang DeepScence trên dữ liệu in vitro, rớt hẳn trên dữ liệu in vivo với AUROC ≤ 0,2 ở năm loại tế bào** `[toàn văn]`. Con số này là **lý lẽ sẵn có cho phần động cơ** của hướng 2 — nhưng nếu đề tài tự nhận "đóng góp của em là chỉ ra khoảng cách miền", GVHD có thể đáp rằng bài Cell Genomics đã chỉ ra rồi.
+2. **Chỗ trống thật, và nó hẹp hơn mục 2.4 đã nói:** SenePy **không dùng dữ liệu khối u người**, chỉ mô lành; SenCID huấn luyện trên bulk in vitro; DeepScence không giám sát. Nên **chưa có mô hình có giám sát nào được huấn luyện trên scRNA-seq khối u người với split gom nhóm theo bệnh nhân** — đó là câu phát biểu chính xác của khoảng trống. Nhưng phải nói kèm **vì sao chưa có**: xem điểm 3.
+3. **Lý do chưa có là vì không có nhãn, và đó là rủi ro trung tâm của hướng 2.** Cả ba công cụ đều tránh học có giám sát trên mô thật **đúng vì senescence không có chuẩn vàng ở mức tế bào trong mô**. Một đề tài có giám sát trên khối u buộc phải lấy nhãn từ một proxy (chữ ký gene, hoặc đầu ra của DeepScence/SenePy), và khi đó **"phát hiện tế bào lão hóa" thật ra là "học lại một bộ chấm điểm đã có"**. Đây là đòn tấn công mạnh nhất vào hướng 2, và nó **chưa được nêu đủ nặng ở mục 2.7**.
+
+**Việc còn phải kiểm, chưa làm được trong phiên này:** `[chưa kiểm]` mã nguồn và nhãn benchmark của DeepScence (trang Cell Genomics trả **HTTP 403**, bản bioRxiv đọc được nhưng không có mục code availability); `[chưa kiểm]` SenCID có công bố mô tả split ở phần methods hay supplementary hay không (trang Cell Metabolism **403**, ScienceDirect chặn robots). Riêng **mã huấn luyện SenCID thì chưa phát hành**: trong issue #3 của repo, tác giả chỉ nói đang *"considering to add a new option for users to train a new SID"* `[toàn văn]` ([SenCID issue #3](https://github.com/JackieHanLab/SenCID/issues/3)).
+
+### 7.2. Đối chiếu bốn hướng với hai luận văn cùng GVHD
+
+Nguồn: [phân tích hai luận văn](../../thesis/thesis-comparison.md) (05/10/2026) — **T1 Hybrid Cascade** (PLM–mCNN cho peptide, 08/2026) và **T2 BioFlow-Scope** (nền tảng web tin sinh, 08/2026), cả hai **cùng GVHD**. Mọi nhận xét dưới đây là đọc lại từ phân tích đó, **không phải chấm điểm của GVHD**.
+
+**Tiêu chí 2 (cải tiến phương pháp) — mức thực tế dễ hơn tôi đã viết, và đây là tin tốt.** T1 không phát minh kiến trúc mới. Nó đạt tiêu chí 2 bằng một **thang đối chứng có kỷ luật**: đặc trưng thủ công (AAC/DPC/one-hot + RF/SVM) → CNN một cửa sổ → mCNN nhiều cửa sổ → ESM-2 ở bốn cỡ 8M/35M/150M/650M, frozen và fine-tune; cộng kiểm tra lệch độ dài giữa hai lớp (AMP ~22 aa, âm ~44 aa) và Focal Loss cho mất cân bằng; rồi chọn cấu hình theo cả kết quả và chi phí triển khai. **Mức cần đạt là "mỗi bước thêm độ phức tạp đều có đối chứng", không phải "kiến trúc chưa ai dùng".**
+
+**Tiêu chí 4 (XAI) — mức thực tế thấp hơn tôi đã viết.** T1 đạt tiêu chí 4 bằng **occlusion**: che lần lượt từng residue, đo thay đổi đầu ra, hiển thị vùng nhạy cảm trên giao diện, đối chiếu **55 motif**. Không SHAP, không integrated gradients. Và chính phân tích 05/10 ghi rằng T1 **thiếu đánh giá hệ thống về độ trung thực và ổn định của giải thích**. Nghĩa là: một đóng góp XAI chỉ cần **occlusion + hiển thị + đối chiếu nguồn độc lập, cộng một phép kiểm so che vị trí quan trọng với vị trí ngẫu nhiên** là đã **nhỉnh hơn tiền lệ cùng GVHD**.
+
+**Tiêu chí 5 (ứng dụng) — phạm vi linh hoạt hơn tôi nghĩ.** T1 dùng **FastAPI + Streamlit**, cài cục bộ hoặc Docker; T2 dùng Spring Boot + Next.js + PostgreSQL + Redis + Qdrant + FastAPI. **Cả hai đều được chấp nhận**, nên một predictor chuyên biệt gọn gàng là đủ; không bắt buộc kiến trúc ba tầng. Câu hỏi 7 trong danh sách câu hỏi GVHD vì vậy **hạ mức ưu tiên**.
+
+**Và đây là phát hiện khó chịu nhất, phải nói thẳng: cả hai luận văn cùng GVHD đều là bài toán trên trình tự.** T1 ăn chuỗi peptide qua ESM-2; T2 dùng ESM-2 cho tìm kiếm protein. **Không có tiền lệ nào cùng GVHD với đầu vào là ma trận biểu hiện hay vector omics.** Hệ quả cho bốn hướng:
+
+- Nó **củng cố** phản đối cấu trúc với hướng 1 và 4 — đã nêu ở mục 1.6 và 4.4.
+- Nó **cũng áp lên hướng 2 nhánh scRNA-seq**, tức nhánh sinh viên vừa chốt. Chọn scRNA-seq nghĩa là **không có tiền lệ cùng GVHD**, và **thang đối chứng của T1 không chuyển sang được nguyên vẹn**: thang tương đương cho scRNA-seq sẽ là *điểm chữ ký marker → hồi quy logistic/SVM → autoencoder → foundation model đơn bào (scGPT/Geneformer)*. Thang đó hợp lý về mặt phương pháp, nhưng là **thang sinh viên tự dựng**, không phải thang GVHD đã nhìn thấy hoạt động.
+- Ngược lại, **ứng viên A và B của [khảo sát 02/10](aging-cancer-deep-dive.md) rơi đúng vào khuôn T1**: cùng đầu vào trình tự, cùng họ PLM + mCNN, cùng dạng cửa sổ quanh residue, cùng kiểu XAI occlusion trên cửa sổ. Với A hoặc B, **thang đối chứng của T1 dùng lại gần như nguyên vẹn** — tức tiêu chí 2 có đường đi đã được chính GVHD chấp nhận một lần.
+
+**Ba thứ nên lấy từ T1 bất kể chọn hướng nào:** (a) thang baseline → biểu diễn → head → ablation, mỗi bước một đối chứng; (b) kiểm xem mô hình có đang học tín hiệu ngoài mục tiêu hay không (T1 phát hiện lệch độ dài giữa hai lớp — tương đương ở hướng 2 là **lệch loại tế bào hoặc lệch bệnh nhân giữa hai lớp**); (c) XAI nối trực tiếp vào giao diện, không để rời thành một hình trong báo cáo. Từ T2 nên lấy: lưu mỗi lần chạy kèm phiên bản mô hình, hash đầu vào, cấu hình và log.
+
+**Hai điều T1 bị phê trong phân tích 05/10 mà đề tài này phải tránh lặp lại:** split chỉ `drop_duplicates` rồi chia ngẫu nhiên 80/10/10 — **không kiểm soát đồng dạng**, nên chữ "independent" trong bảng kết quả của T1 chỉ là holdout; và F1 được đọc rời khỏi confusion matrix trong khi lớp dương là lớp đa số. Hai lỗi này **đúng là hai lỗi hướng 2 dễ mắc nhất** (gom nhóm theo bệnh nhân, và báo MCC/AUPRC thay vì accuracy trên dữ liệu mất cân bằng nặng).
+
+---
+
+## 8. Những điều tài liệu này **chưa** kiểm chứng
 
 - **`tDamAge`: không tra được bất kỳ nguồn nào.** Mọi phân tích hướng 1 đặt trên giả định rằng nó là một công cụ đo tổn thương phiên mã.
 - **Phiên này chưa tải file dữ liệu nào.** Mọi trạng thái truy cập trong tài liệu này là `[chưa kiểm]`, trừ các dòng dẫn lại khảo sát 02/10 (`[tự đo]`, `[đã thử link]`). Cụ thể: **chưa thử link** GEO scRNA-seq, SenNet, DeepScence, SenCID, CIViC, OncoKB.
-- **Chưa đọc toàn văn bài nào trong phiên này.** Các bài Nature Aging / Nat Commun / Cell Genomics / Cell Metabolism ở trên chỉ có từ tiêu đề và snippet tìm kiếm.
-- **Chưa biết các công cụ senescence hiện có split theo bệnh nhân hay không** — đây là trụ chính của đóng góp đề xuất cho hướng 2, và nó **chưa được kiểm**.
+- **Chưa đọc toàn văn bài nào trong phiên 06/10.** Các bài Nature Aging / Nat Commun / Cell Genomics / Cell Metabolism ở mục 1–6 chỉ có từ tiêu đề và snippet tìm kiếm. **Phiên 07/10 đọc thêm được toàn văn bản bioRxiv v3 của DeepScence và bài SenePy trên Nat Commun** — các khẳng định ở mục 7.1 gắn nhãn theo đó.
+- **Phần đối chiếu hai luận văn (mục 7.2) đọc lại từ [phân tích 05/10](../../thesis/thesis-comparison.md), không đọc trực tiếp hai PDF.** Mọi số trang và con số trong đó thừa hưởng độ tin cậy của phân tích ấy, và chính phân tích ấy ghi rõ là **chưa kiểm toán mã nguồn hay tái lập thực nghiệm** của hai luận văn.
+- ~~**Chưa biết các công cụ senescence hiện có split theo bệnh nhân hay không.**~~ **Đã kiểm 07/10, xem [mục 7.1](#71-deepscence-sencid-và-senepy-chia-tập-thế-nào--và-vì-sao-câu-hỏi-ban-đầu-đặt-sai).** Còn chưa kiểm: **mô tả split trong phần methods/supplementary của SenCID** (Cell Metabolism trả 403, ScienceDirect chặn robots) và **mục code/data availability của DeepScence** (Cell Genomics trả 403; bản bioRxiv v3 đọc được nhưng không có mục đó).
 - **Chưa kiểm** liệu các dataset immunogenicity có công bố tuổi bệnh nhân hay không (ảnh hưởng phần "lớn tuổi" của hướng 3).
 - **Chưa kiểm** điều kiện dùng lại dữ liệu curate của CIViC/OncoKB cho phiên bản khả thi của hướng 4.
 - Bốn hướng này là **cách sinh viên ghi lại lời GVHD**, không phải văn bản GVHD viết. Nếu cách ghi lệch so với ý thầy thì phân tích này lệch theo.

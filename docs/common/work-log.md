@@ -4,6 +4,16 @@
 
 ---
 
+## 07/10/2026 — kiểm DeepScence/SenCID/SenePy, đối chiếu hai luận văn cùng GVHD, chốt scRNA-seq
+
+- Sinh viên chốt: **nếu chọn hướng 2 thì dùng scRNA-seq**, không dùng ảnh hình thái nhân. Đã ghi vào [phân tích 4 hướng](deep-research/reports/advisor-4-directions-analysis.md) (mục 0, 2, 5).
+- **Đính chính quan trọng (mục 7.1):** lập luận "các công cụ senescence hiện có không gom nhóm theo bệnh nhân nên chỉ số bị lạm phát" — đề xuất đóng góp số 2 cho hướng 2 ở bản 06/10 — **đặt trên tiền đề sai**. DeepScence **không giám sát** (autoencoder ZINB + 39 gene CoreScence, **không có train/test split nào**, đánh giá bằng β-gal/IHC); SenePy là **chấm điểm theo chữ ký**, 72 chữ ký chuột + 64 chữ ký người từ mô lành, **không có dữ liệu khối u người**; SenCID có giám sát (SVM) nhưng huấn luyện trên **bulk RNA-seq in vitro** nên tập huấn luyện không có bệnh nhân nào. Khoảng trống thật hẹp hơn: chưa có mô hình có giám sát nào trên scRNA-seq khối u người với split theo bệnh nhân — **và lý do chưa có là senescence không có nhãn chuẩn vàng ở mức tế bào trong mô**, tức đúng rủi ro trung tâm của hướng 2.
+- Khoảng cách in vitro → in vivo **đã được công bố, không còn là khoảng trống để nhận**: DeepScence báo SenCID rớt xuống **AUROC ≤ 0,2 ở năm loại tế bào** trên dữ liệu in vivo. Dùng làm động cơ được, nhận làm đóng góp thì không.
+- **Đối chiếu hai luận văn cùng GVHD (mục 7.2),** từ [phân tích 05/10](thesis/thesis-comparison.md): mức thực tế của **tiêu chí 2** là một **thang đối chứng có kỷ luật** (T1: đặc trưng thủ công → CNN → mCNN → ESM-2 bốn cỡ, frozen vs fine-tune), không phải kiến trúc chưa ai dùng; mức thực tế của **tiêu chí 4** là **occlusion + hiển thị trên giao diện + đối chiếu 55 motif**, không SHAP — thấp hơn mức bản 06/10 đặt ra; **tiêu chí 5** linh hoạt (T1 FastAPI + Streamlit, T2 nền tảng đầy đủ, cả hai được chấp nhận). **Phát hiện bất lợi: cả hai luận văn đều là bài toán trên trình tự** — không có tiền lệ cùng GVHD với đầu vào là ma trận biểu hiện, nên điều này áp lên cả hướng 2 nhánh scRNA-seq vừa chốt, và ngược lại ứng viên A/B của khảo sát 02/10 rơi đúng khuôn T1.
+- **Còn dở:** chưa đọc được mô tả split trong methods của SenCID (Cell Metabolism 403, ScienceDirect chặn robots) và mục code/data availability của DeepScence (Cell Genomics 403). Chưa tải dataset scRNA-seq khối u nào. Việc mới thêm vào danh sách trước tuần 6: **quyết định cách lấy nhãn cho hướng 2 và nói thẳng nó là proxy**.
+
+---
+
 ## 06/10/2026 — phân tích 4 hướng GVHD gợi ý (giao thoa cancer & aging)
 
 - GVHD đưa **4 hướng tiềm năng** (damage/aging clock + nguy cơ ung thư · phát hiện tế bào lão hóa trong TME · thiết kế tân kháng nguyên bằng generative PLM + RAG · RAG giải thích cơ chế đa tầng). Đã phân tích cả bốn theo đúng khung biên bản lần 1 (bài toán/lý do/phần sẽ giải quyết · history research ba bước · năm tiêu chí · cổng dữ liệu · khả thi 8–9 tuần): [advisor-4-directions-analysis.md](deep-research/reports/advisor-4-directions-analysis.md).
