@@ -86,7 +86,7 @@ Mỗi phiên Claude bắt đầu không nhớ gì về phiên trước, và thư
 
 - Danh sách đề tài: [docs/topics/README.md](docs/topics/README.md)
 - Nhật ký làm việc (mọi đề tài): [docs/common/work-log.md](docs/common/work-log.md) · Tài nguyên ngoài repo: [docs/common/resources.md](docs/common/resources.md)
-- **GVHD: Prof. QT Ho (Hồ Quốc Tuấn), ĐH Cần Thơ** — Prof. YY Ou **không phải** GVHD, chỉ là đồng tác giả thường xuyên. Xem [docs/common/advisor/README.md](docs/common/advisor/README.md) để biết các nhánh nghiên cứu của GVHD trước khi đánh giá tính mới của một hướng
+- **GVHD: TS. Hồ Quang Thái (Ho Quang Thai; QT Ho), ĐH Cần Thơ** — tên được người dùng xác nhận lại ngày 05/10/2026. Prof. YY Ou **không phải** GVHD, chỉ là đồng tác giả thường xuyên. Xem [docs/common/advisor/README.md](docs/common/advisor/README.md) để biết các nhánh nghiên cứu của GVHD trước khi đánh giá tính mới của một hướng
 
 ### Định hướng hiện tại: thay RTK–ATP, đang khảo sát song song aging và cancer (02/10/2026)
 

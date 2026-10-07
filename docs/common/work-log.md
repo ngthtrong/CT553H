@@ -4,6 +4,19 @@
 
 ---
 
+## 05/10/2026 — đính chính tên GVHD
+
+- Người dùng xác nhận **GVHD là TS. Hồ Quang Thái (Ho Quang Thai; QT Ho)**. Sửa tên đầy đủ trong CLAUDE.md, hồ sơ GVHD và ghi chép cũ; bổ sung tên vào biên bản lần 1.
+- Sửa nhận xét trong [phân tích hai luận văn](thesis/thesis-comparison.md): cả hai bài **cùng GVHD** với đề tài hiện tại, nên là tiền lệ trực tiếp để tham khảo. Nhận xét trước đó rằng hai bài khác GVHD là sai.
+- Giữ nguyên tên thư mục `Prof Ho/`, tác giả viết tắt trong trích dẫn và trạng thái khảo sát đề tài; việc đính chính tên không tự thay đổi kết luận về nội dung các công bố.
+
+## 05/10/2026 — phân tích hai luận văn tham khảo về tin sinh
+
+- Đọc hai PDF trong `docs/common/thesis/`; lưu [phân tích và so sánh](thesis/thesis-comparison.md), có số trang, bảng kết quả và phân biệt nội dung tác giả báo cáo với nhận xét/đề xuất.
+- Bài Hybrid Cascade hữu ích cho thiết kế thực nghiệm PLM–mCNN, xử lý lệch dữ liệu và ứng dụng XAI; ghi rõ giới hạn split chỉ loại trùng hoàn toàn, nhãn âm, diễn giải Focal Loss, đối chứng cỡ mô hình và đánh giá toàn cascade.
+- BioFlow-Scope hữu ích cho kiến trúc, provenance và kiểm thử hệ thống; ghi rõ ảnh giao diện dùng mock API, kết quả test do tác giả báo cáo, chưa có benchmark chất lượng truy hồi/LLM.
+- Đối chiếu với năm tiêu chí GVHD và hướng aging/cancer đang khảo sát. **Đính chính cùng ngày:** hai PDF ghi Ho Quang Thai, chính là GVHD hiện tại; đây là tiền lệ cùng GVHD, không phải bảo đảm về yêu cầu hay mức đánh giá. Chưa chọn đề tài mới, chưa triển khai hoặc tái lập mã nguồn của hai luận văn.
+
 ## 04/10/2026 — bộ bài giảng HTML tự học: chốt danh mục 15 bài, viết mẫu bài 02 và 09
 
 - Chốt danh mục 15 bài trong `docs/common/lectures/` (dùng chung cho cả hai hướng aging và cancer, chưa gắn slug): A. sinh học nền 01–06, B. khung bài toán và đánh giá 07–09, C. mô hình 10–15 (NN, CNN→MCNN, PLM, truy hồi, XAI, đọc bài báo). Sinh viên chọn: đủ 15 bài, **có bài XAI**, **tra web các chi tiết dễ sai**, viết mẫu 02 + 09 trước.
@@ -53,7 +66,7 @@
 - Điều người dùng nói rõ và đã ghi vào biên bản: **mốc tuần 4 / tuần 6 / tuần 14–15**, **hướng nghiêng về cancer (neoantigen)**, và **năm câu hỏi §12 không còn liên quan**. Những phần khác trong mục này là ghi chú, không phải lời GVHD.
 
 **Xác nhận lại với người dùng bằng câu hỏi trắc nghiệm (cuối phiên)**
-- **GVHD là Prof. QT Ho (Hồ Quốc Tuấn), ĐH Cần Thơ** — Prof. YY Ou **không phải** GVHD. Repo trước đó không chỗ nào nói rõ điều này. Đã ghi vào [advisor/README.md](advisor/README.md) và [CLAUDE.md](../../CLAUDE.md).
+- **GVHD là TS. Hồ Quang Thái (Ho Quang Thai; QT Ho), ĐH Cần Thơ** — tên đầy đủ được đính chính theo người dùng ngày 05/10/2026. Prof. YY Ou **không phải** GVHD. Vai trò được ghi tại [advisor/README.md](advisor/README.md) và [CLAUDE.md](../../CLAUDE.md).
 - **Phát hiện ngược chiều với hướng đang ưu tiên:** trong **14 công trình** của GVHD **không có công trình nào về cancer/tumor/neoantigen**. NeoGen-BC và DeepNeoAG thuộc danh mục **Prof Ou**. Ngược lại, **aging có mặt ở công trình mới nhất của GVHD** — SirtSAGE (2026, Graph Attention cho họ sirtuin). GVHD cũng có tiền lệ XAI riêng: BERT-Promoter (2022, SHAP). Giới hạn: danh mục chỉ là bản scrape 14 bài, có thể chưa đầy đủ.
 - Thầy khuyên **thay hẳn** đề tài, không phải "tìm thêm để so sánh" — đã sửa cách ghi ở mục 1 biên bản.
 - Kỳ vọng về năm tiêu chí: **càng đạt nhiều càng tốt**, không phải chọn một trục. Đã bỏ cách diễn giải "tiêu chí 5 bắt buộc, 1–4 là lựa chọn" khỏi biên bản, thay bằng kỳ vọng thật, kèm lưu ý 8–9 tuần là rủi ro cao và việc cần làm là hỏi GVHD về **thứ tự ưu tiên**.

@@ -1,5 +1,7 @@
 # Biên bản buổi gặp GVHD lần 1 — 02/10/2026
 
+**GVHD: TS. Hồ Quang Thái (Ho Quang Thai; QT Ho)** — tên được sinh viên xác nhận lại ngày 05/10/2026.
+
 > Nội dung được tổng hợp từ ghi chép của sinh viên sau buổi gặp, cập nhật theo phần bổ sung ngày 02/10/2026 (mốc thời gian ở mục 5 và hướng ưu tiên ở mục 6); không phải bản chép nguyên văn lời GVHD.
 >
 > Đề tài trình bày: **Xây dựng hệ thống dự đoán vị trí gắn ATP ở protein RTK có cảnh báo miền áp dụng, dùng PLM–MCNN và truy hồi, đánh giá bằng giao thức kiểm soát rò rỉ dữ liệu** (`rtk-atp-applicability`). Xem [thuyết minh đề tài](../topics/rtk-atp-applicability/04-proposal/topic-proposal.md) và [dàn ý trình bày](2026-10-02-rtk-atp-slide-outline.md).
