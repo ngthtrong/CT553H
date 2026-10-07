@@ -175,11 +175,25 @@ def main() -> None:
             "max": round(float(rate.max()), 4),
         }
         share = (per[poscol] / per[poscol].sum()).sort_values(ascending=False)
+        top_pat = str(share.index[0])
+        report["top1_patient_of_positives"] = top_pat
         report["top1_patient_share_of_positives"] = round(float(share.iloc[0]), 4)
-        report["note_concentration"] = (
-            "Nếu một vài bệnh nhân chiếm phần lớn tế bào dương thì split theo bệnh nhân "
-            "sẽ cho fold rất mất cân bằng — đây là con số quyết định tính khả thi."
+        # Phần tế bào dương của một bệnh nhân phải so với phần TẾ BÀO của chính họ:
+        # bệnh nhân có 30% tế bào thì 30% tế bào dương là mức kỳ vọng, không phải dồn.
+        cell_share_top = float((adata.obs[pkey].astype(str) == top_pat).mean())
+        report["top1_patient_cell_share"] = round(cell_share_top, 4)
+        report["concentration_ratio"] = (
+            round(float(share.iloc[0]) / cell_share_top, 3) if cell_share_top > 0 else None
         )
+        report["note_concentration"] = (
+            "concentration_ratio = (phần tế bào dương của bệnh nhân dồn nhất) / (phần tế bào "
+            "của chính bệnh nhân đó). 1,0 là mức kỳ vọng nếu senescence rải đều; càng lớn thì "
+            "tín hiệu càng gắn với một bệnh nhân, và split theo bệnh nhân càng mất cân bằng. "
+            "Ngưỡng quyết định đi/dừng đã đặt trước ở mục 7.3 của tài liệu phân tích."
+        )
+        n_pos_per_patient = per[poscol].sort_values(ascending=False)
+        report["patients_with_ge20_positives"] = int((n_pos_per_patient >= 20).sum())
+        report["positives_per_patient"] = {str(k): int(v) for k, v in n_pos_per_patient.items()}
 
     out_json = args.out / f"{args.input.name}.senmayo-report.json"
     out_json.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")

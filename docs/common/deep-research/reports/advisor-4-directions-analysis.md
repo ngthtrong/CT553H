@@ -346,6 +346,45 @@ Nguồn: [phân tích hai luận văn](../../thesis/thesis-comparison.md) (05/10
 
 **Hai điều T1 bị phê trong phân tích 05/10 mà đề tài này phải tránh lặp lại:** split chỉ `drop_duplicates` rồi chia ngẫu nhiên 80/10/10 — **không kiểm soát đồng dạng**, nên chữ "independent" trong bảng kết quả của T1 chỉ là holdout; và F1 được đọc rời khỏi confusion matrix trong khi lớp dương là lớp đa số. Hai lỗi này **đúng là hai lỗi hướng 2 dễ mắc nhất** (gom nhóm theo bệnh nhân, và báo MCC/AUPRC thay vì accuracy trên dữ liệu mất cân bằng nặng).
 
+### 7.3. Ngưỡng quyết định đi/dừng cho hướng 2, **đặt trước khi có số** (07/10)
+
+Mục này viết **trước khi chạy script trên dữ liệu thật**, và đó là chủ ý: nếu đặt ngưỡng sau khi nhìn số thì ngưỡng nào cũng đạt. Ngày đặt: 07/10/2026. Dataset đầu tiên dự kiến: GSE103322 (ung thư đầu cổ).
+
+**Bốn điều kiện, phải đạt cả bốn mới đi tiếp hướng 2:**
+
+| # | Điều kiện | Ngưỡng | Vì sao đúng ngưỡng này |
+|---|---|---|---|
+| 1 | **Số bệnh nhân** `n_patients` | **≥ 10** | Chia 5 fold theo bệnh nhân cần ≥ 2 bệnh nhân mỗi fold. Dưới 10 thì một bệnh nhân đổi fold là đổi kết quả |
+| 2 | **Số bệnh nhân có ≥ 20 tế bào dương** `patients_with_ge20_positives` | **≥ 8** | Nếu tế bào dương chỉ có ở 2–3 bệnh nhân thì fold không chứa dương nào sẽ xuất hiện, và MCC không tính được trên fold đó |
+| 3 | **Mức dồn** `concentration_ratio` | **≤ 1,5 → đi · 1,5–3,0 → đi nhưng phải báo per-patient và cân mẫu theo bệnh nhân · > 3,0 → DỪNG** | Đây là tỉ số giữa phần tế bào dương và phần tế bào của chính bệnh nhân dồn nhất, nên 1,0 là mức kỳ vọng nếu senescence rải đều. Trên 3 nghĩa là mô hình sẽ học *bệnh nhân*, không học senescence |
+| 4 | **Độ phủ chữ ký** `signature_coverage` | **≥ 0,6** | Script tự từ chối dưới mức này. Dưới 60% gene thì điểm không còn là SenMayo |
+
+**Nếu không đạt:** dừng hướng 2, chuyển sang ứng viên A hoặc B của [khảo sát 02/10](aging-cancer-deep-dive.md). Không nới ngưỡng để cứu hướng 2 — nếu phải nới thì ghi rõ nới cái nào và vì sao, ở chính mục này, kèm ngày.
+
+**Một điều kiện phụ, không phải cổng dừng nhưng phải báo:** `positive_rate_spread`. Nếu `max / median` > 10 thì tín hiệu gần như chắc chắn gắn với bệnh nhân hoặc với batch, và phải thêm một phân tích theo loại tế bào trước khi nói bất cứ điều gì về senescence.
+
+**Lưu ý đọc số, nhắc lại vì dễ sai:** `positive_fraction` luôn ≈ 5% vì ngưỡng là phân vị 0,95 **trong chính dataset**. Nó không phải tỉ lệ tế bào lão hóa trong khối u, và **không được đưa vào slide như một phát hiện**.
+
+### 7.4. Nhãn proxy: định nghĩa đề xuất, và cách nói trung thực về nó
+
+Đây là rào chính còn lại của hướng 2 (mục 7.1). Dưới đây là **đề xuất**, chưa chạy, chưa kiểm.
+
+**Định nghĩa đề xuất — nhãn đồng thuận ba tín hiệu độc lập:**
+
+- **Tín hiệu 1:** điểm SenMayo (chữ ký 117 gene hiện có), lấy phân vị cao.
+- **Tín hiệu 2:** điểm DeepScence (**không giám sát**, nên không mang theo nhãn của ai), hoặc SenePy nếu DeepScence không chạy được.
+- **Tín hiệu 3:** bằng chứng marker trực tiếp — biểu hiện `CDKN1A` và `CDKN2A`. Lưu ý: **hai gene này không thuộc SenMayo**, nên chúng là tín hiệu trực giao thật, không phải vòng tròn.
+
+**Dương** = ít nhất **2 trong 3** tín hiệu đồng thuận. **Âm** = nằm ở phân vị thấp của **cả ba**. Tế bào ở giữa **bỏ ra khỏi tập huấn luyện**, không gán âm — đây đúng là lỗi mà [khảo sát 02/10](aging-cancer-deep-dive.md) đã bắt ở các bộ dữ liệu neoantigen ("chưa chứng minh là dương" bị dùng như "đã chứng minh là âm").
+
+**Phải báo kèm:** mức đồng thuận giữa ba tín hiệu (Cohen's kappa từng cặp). Nếu kappa rất thấp thì ba tín hiệu đang nói ba chuyện khác nhau, và "đồng thuận 2/3" chỉ là một phép bỏ phiếu may rủi — khi đó phải nói ra, không được che.
+
+**Kiểm chéo:** áp định nghĩa sang **GSE131907** (ung thư phổi, 58 mẫu) và xem tỉ lệ dương cùng mức dồn có giữ được hay không. Dataset thứ hai là **tập test độc lập nguồn** mà mục 2.5 nói là chưa xác định — đây là ứng viên cụ thể đầu tiên cho chỗ đó.
+
+**Cách gọi tên, bắt buộc:** gọi nhãn là **"nhãn đồng thuận SenMayo–DeepScence–marker"**, không gọi là "tế bào lão hóa". Và trong mọi tài liệu phải có một câu: *nhãn này là proxy tính toán, không phải xác nhận thực nghiệm; senescence chưa có chuẩn vàng ở mức tế bào trong mô*. Nói "phát hiện tế bào lão hóa" với nhãn dạng này là **đòn tấn công dễ nhất** mà GVHD hoặc hội đồng sẽ dùng.
+
+**Điều này đổi gì về đóng góp:** với nhãn đồng thuận, đóng góp **không còn là** "phát hiện tế bào lão hóa chính xác hơn". Nó là: *một bộ phân loại có cảnh báo miền áp dụng, huấn luyện trên nhãn đồng thuận nhiều nguồn, đánh giá bằng split gom nhóm theo bệnh nhân, cộng một phép đo xem nhãn của ba công cụ hiện có đồng thuận tới đâu trên mô khối u thật*. Phần in nghiêng cuối **là một kết quả có giá trị dù mô hình không thắng ai** — và theo mục 7.2, một kết quả âm được làm tử tế vẫn cần GVHD chấp nhận trước, nên đó là câu phải hỏi ở tuần 6.
+
 ---
 
 ## 8. Những điều tài liệu này **chưa** kiểm chứng
