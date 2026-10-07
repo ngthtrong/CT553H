@@ -4,6 +4,15 @@
 
 ---
 
+## 07/10/2026 (cuối ngày) — GVHD chấp nhận đầu vào ma trận biểu hiện
+
+- Sinh viên xác nhận: **GVHD chấp nhận đề tài có đầu vào là ma trận biểu hiện gene, không bắt buộc phải là chuỗi amino acid.** Đây là lời GVHD theo ghi nhận của sinh viên, không phải suy luận. Đã ghi vào [biên bản lần 1, mục 1](../meeting/session-01-minutes.md).
+- Hệ quả, đã cập nhật trong [phân tích 4 hướng](deep-research/reports/advisor-4-directions-analysis.md): **cổng "phải có trục chuỗi amino acid" bỏ.** Hướng 2 nhánh scRNA-seq được lợi nhiều nhất, chỉ còn rào chính là **nhãn proxy**. **Hướng 1 và 4 vẫn rụng vì các cổng khác**, độc lập với loại đầu vào: `tDamAge` không tra được nguồn nào và không có tập test độc lập cho "nguy cơ chuyển dạng ác tính"; phần "giải thích tự động" của hướng 4 không đo được.
+- Điều **không đổi**: tiêu chí 2 và 3 vẫn phải tự lập luận cho mọi hướng không dùng trình tự, vì thang đối chứng của T1 (đặc trưng thủ công → CNN → mCNN → ESM-2) không chuyển sang được. Câu hỏi tuần 6 vì vậy thu hẹp lại: **với đầu vào dạng bảng, thầy kỳ vọng tiêu chí 2 và 3 được chứng minh bằng gì?**
+- **Còn dở:** như mục trước — chưa tải dataset scRNA-seq khối u nào, chưa quyết định cách lấy nhãn cho hướng 2.
+
+---
+
 ## 07/10/2026 — kiểm DeepScence/SenCID/SenePy, đối chiếu hai luận văn cùng GVHD, chốt scRNA-seq
 
 - Sinh viên chốt: **nếu chọn hướng 2 thì dùng scRNA-seq**, không dùng ảnh hình thái nhân. Đã ghi vào [phân tích 4 hướng](deep-research/reports/advisor-4-directions-analysis.md) (mục 0, 2, 5).

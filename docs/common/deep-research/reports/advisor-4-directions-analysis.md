@@ -24,7 +24,8 @@ Xếp hạng, nói thẳng:
 > **Cập nhật 07/10/2026 sau hai kiểm chứng ở [mục 7](#7-hai-kiểm-chứng-bổ-sung-0710) — xếp hạng không đổi, nhưng hai lý do đổi, và cả hai đều bất lợi cho hướng 2:**
 >
 > - **Đóng góp đề xuất cho hướng 2 phải viết lại.** Lập luận "các công cụ hiện có không gom nhóm theo bệnh nhân" **đặt trên tiền đề sai**: DeepScence không giám sát (không có split nào), SenePy là chấm điểm theo chữ ký, SenCID có giám sát nhưng huấn luyện trên **bulk in vitro** nên không có bệnh nhân nào trong tập huấn luyện. Khoảng trống thật hẹp hơn: **chưa có mô hình có giám sát nào trên scRNA-seq khối u người với split theo bệnh nhân** — và lý do chưa có là **không có nhãn chuẩn vàng**, tức đúng rủi ro trung tâm của hướng 2.
-> - **Không có tiền lệ cùng GVHD cho đầu vào không phải trình tự.** Cả hai luận văn thầy đã hướng dẫn (T1 peptide + ESM-2, T2 tìm kiếm protein + ESM-2) đều là bài toán trên trình tự. Điều này **củng cố** phản đối với hướng 1 và 4, nhưng **cũng áp lên hướng 2 nhánh scRNA-seq**, nhánh sinh viên đã chốt ngày 07/10.
+> - **Không có tiền lệ cùng GVHD cho đầu vào không phải trình tự.** Cả hai luận văn thầy đã hướng dẫn (T1 peptide + ESM-2, T2 tìm kiếm protein + ESM-2) đều là bài toán trên trình tự. **Điều này không còn là cổng loại** sau xác nhận ở gạch đầu dòng dưới, nhưng vẫn là lý do thang đóng góp phải tự dựng.
+> - **Cập nhật 07/10 cùng ngày, muộn hơn:** sinh viên xác nhận **GVHD chấp nhận đề tài có đầu vào là ma trận biểu hiện, không bắt buộc chuỗi amino acid** (đã ghi vào [biên bản lần 1 mục 1](../../meeting/session-01-minutes.md)). **Cổng "phải có trục chuỗi amino acid" bỏ.** Hướng 2 nhánh scRNA-seq được lợi nhiều nhất; hướng 1 và 4 **vẫn rụng vì các cổng khác** (tDamAge không tra được và không có tập test độc lập cho nguy cơ chuyển dạng; phần giải thích không đo được). Điều **không đổi**: tiêu chí 2 và 3 vẫn phải tự lập luận, vì thang đối chứng của T1 không chuyển sang được.
 > - **Tin tốt, áp dụng cho mọi hướng:** mức thực tế của tiêu chí 2 là **một thang đối chứng có kỷ luật**, không phải kiến trúc chưa ai dùng; và mức thực tế của tiêu chí 4 là **occlusion + hiển thị + đối chiếu motif**, thấp hơn mức tôi đã viết ở mục 2.6 và trong khảo sát 02/10.
 
 ---
@@ -84,7 +85,9 @@ Lập luận mạnh và thật: lão hóa là yếu tố nguy cơ lớn nhất c
 | 4. XAI | **Trung bình** | SHAP trên feature gene thì làm được, nhưng đó đúng là dạng SHAP-chọn-đặc-trưng mà GVHD đã có tiền lệ (BERT-Promoter 2022) → khó gọi là mới |
 | 5. Web app | **Cao** | Upload bảng biểu hiện → trả điểm tuổi sinh học. Dễ làm, demo tốt |
 
-**Tổng: đạt rõ 1 và 5, thiếu 2 và 3** — đúng kết luận khảo sát 02/10 đã nêu khi loại aging clock, và lý do đó **không thay đổi** khi đổi từ methylation clock sang damage clock, vì lý do loại là **hình dạng đầu vào**, không phải chủ đề.
+**Tổng: đạt rõ 1 và 5, thiếu 2 và 3.**
+
+**Cập nhật 07/10:** GVHD chấp nhận đầu vào ma trận biểu hiện, nên hướng này **không còn bị loại vì loại dữ liệu**. Nhưng hai cổng khác vẫn đứng và đủ để loại: **`tDamAge` không tra được nguồn nào** (mục 1.1) và **không tìm được tập test độc lập cho "nguy cơ chuyển dạng ác tính"** (mục 1.5). Và tiêu chí 2–3 vẫn yếu, vì không có cửa sổ residue nào để cải tiến — đó là đặc tính của bài toán, không phải của sở thích GVHD.
 
 ### 1.7. Nếu vẫn muốn làm, phạm vi tối thiểu khả thi
 
@@ -259,6 +262,7 @@ Phải nói trước với GVHD, vì đây là nhánh dễ bị trùng nhất tr
 | Đầu vào | Vector biểu hiện / bảng | **Vector đơn bào (scRNA-seq, chốt 07/10)** | Chuỗi peptide | Bảng omics + đồ thị + văn bản |
 | **Có trục chuỗi amino acid?** | **Không** | **Không** | Có | Không |
 | **Dùng được lane PLM/mCNN của GVHD?** | **Không** | Không | Có — **nhưng đã bị chiếm** | Không |
+| **Bị loại vì loại đầu vào?** | **Không** (GVHD chấp nhận ma trận biểu hiện, 07/10) | **Không** | — | **Không** |
 | Dữ liệu công khai | GEO/GTEx có; UK Biobank **không** (đơn duyệt) | GEO scRNA-seq **có** `[chưa thử link]` | Có qua figshare Immunity 2023 `[đã thử link 02/10]` | GDSC bulk **410 Gone** `[đã thử link 02/10]` |
 | **Tập test độc lập** | **Không xác định được** | **Chưa xác định** — phải tự dựng theo trung tâm | Có (TESLA/ITSNdb) **nhưng AUC 0,52–0,60** | Không cho phần giải thích |
 | Mức đông đúc | Trung bình | **Đã có 3–4 công cụ ở tạp chí mạnh** | Cao + đúng lane Prof Ou | **Đông nhất** |
@@ -296,7 +300,7 @@ Nói thẳng, vì đây là điều quan trọng nhất trong tài liệu này: 
 
 - **Với hướng 1 và 4, thầy có chấp nhận một đề tài không dùng PLM/mCNN không?** Nếu không, hai hướng đó rụng vì kiến trúc, không vì chủ đề.
 - **Với hướng 4, thầy đo chất lượng "giải thích tự động" bằng gì?** Nếu không có thước đo thì em xin đổi thành truy hồi bằng chứng có đáp án.
-- **Thêm 07/10:** hai luận văn thầy đã hướng dẫn đều là bài toán trên trình tự ([mục 7.2](#72-đối-chiếu-bốn-hướng-với-hai-luận-văn-cùng-gvhd)). **Thầy có chấp nhận một đề tài có đầu vào là ma trận biểu hiện, không phải chuỗi amino acid, không?** Câu này áp lên cả hướng 2 nhánh scRNA-seq.
+- ~~**Thêm 07/10:** **Thầy có chấp nhận một đề tài có đầu vào là ma trận biểu hiện, không phải chuỗi amino acid, không?**~~ **Đã có câu trả lời ngày 07/10: GVHD chấp nhận** (sinh viên xác nhận; đã ghi vào [biên bản lần 1 mục 1](../../meeting/session-01-minutes.md)). Câu còn lại, hẹp hơn và vẫn phải hỏi: **với đầu vào dạng đó, thầy kỳ vọng tiêu chí 2 và 3 được chứng minh bằng gì**, khi thang "đặc trưng thủ công → CNN → mCNN → PLM" không áp dụng được?
 
 ---
 
@@ -335,7 +339,7 @@ Nguồn: [phân tích hai luận văn](../../thesis/thesis-comparison.md) (05/10
 **Và đây là phát hiện khó chịu nhất, phải nói thẳng: cả hai luận văn cùng GVHD đều là bài toán trên trình tự.** T1 ăn chuỗi peptide qua ESM-2; T2 dùng ESM-2 cho tìm kiếm protein. **Không có tiền lệ nào cùng GVHD với đầu vào là ma trận biểu hiện hay vector omics.** Hệ quả cho bốn hướng:
 
 - Nó **củng cố** phản đối cấu trúc với hướng 1 và 4 — đã nêu ở mục 1.6 và 4.4.
-- Nó **cũng áp lên hướng 2 nhánh scRNA-seq**, tức nhánh sinh viên vừa chốt. Chọn scRNA-seq nghĩa là **không có tiền lệ cùng GVHD**, và **thang đối chứng của T1 không chuyển sang được nguyên vẹn**: thang tương đương cho scRNA-seq sẽ là *điểm chữ ký marker → hồi quy logistic/SVM → autoencoder → foundation model đơn bào (scGPT/Geneformer)*. Thang đó hợp lý về mặt phương pháp, nhưng là **thang sinh viên tự dựng**, không phải thang GVHD đã nhìn thấy hoạt động.
+- **Sau xác nhận cuối ngày 07/10 (GVHD chấp nhận đầu vào ma trận biểu hiện), đây không còn là cổng loại** — nhưng nó vẫn áp lên hướng 2 nhánh scRNA-seq ở mức khác: chọn scRNA-seq nghĩa là **không có tiền lệ cùng GVHD**, và **thang đối chứng của T1 không chuyển sang được nguyên vẹn**: thang tương đương cho scRNA-seq sẽ là *điểm chữ ký marker → hồi quy logistic/SVM → autoencoder → foundation model đơn bào (scGPT/Geneformer)*. Thang đó hợp lý về mặt phương pháp, nhưng là **thang sinh viên tự dựng**, không phải thang GVHD đã nhìn thấy hoạt động.
 - Ngược lại, **ứng viên A và B của [khảo sát 02/10](aging-cancer-deep-dive.md) rơi đúng vào khuôn T1**: cùng đầu vào trình tự, cùng họ PLM + mCNN, cùng dạng cửa sổ quanh residue, cùng kiểu XAI occlusion trên cửa sổ. Với A hoặc B, **thang đối chứng của T1 dùng lại gần như nguyên vẹn** — tức tiêu chí 2 có đường đi đã được chính GVHD chấp nhận một lần.
 
 **Ba thứ nên lấy từ T1 bất kể chọn hướng nào:** (a) thang baseline → biểu diễn → head → ablation, mỗi bước một đối chứng; (b) kiểm xem mô hình có đang học tín hiệu ngoài mục tiêu hay không (T1 phát hiện lệch độ dài giữa hai lớp — tương đương ở hướng 2 là **lệch loại tế bào hoặc lệch bệnh nhân giữa hai lớp**); (c) XAI nối trực tiếp vào giao diện, không để rời thành một hình trong báo cáo. Từ T2 nên lấy: lưu mỗi lần chạy kèm phiên bản mô hình, hash đầu vào, cấu hình và log.
