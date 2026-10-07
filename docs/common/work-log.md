@@ -4,6 +4,16 @@
 
 ---
 
+## 06/10/2026 — phân tích 4 hướng GVHD gợi ý (giao thoa cancer & aging)
+
+- GVHD đưa **4 hướng tiềm năng** (damage/aging clock + nguy cơ ung thư · phát hiện tế bào lão hóa trong TME · thiết kế tân kháng nguyên bằng generative PLM + RAG · RAG giải thích cơ chế đa tầng). Đã phân tích cả bốn theo đúng khung biên bản lần 1 (bài toán/lý do/phần sẽ giải quyết · history research ba bước · năm tiêu chí · cổng dữ liệu · khả thi 8–9 tuần): [advisor-4-directions-analysis.md](deep-research/reports/advisor-4-directions-analysis.md).
+- **Kết luận:** bốn hướng này là **chủ đề**, không phải bài toán, và **không hướng nào qua được cổng dữ liệu + 8–9 tuần ở dạng đang phát biểu**. Ba trong bốn (1, 2, 4) **không có trục chuỗi amino acid** → pipeline PLM–mCNN không dùng lại được → tiêu chí 2–3 mất. Xếp hạng: hướng 2 (senescence trong TME) khả thi nhất; hướng 4 khả thi nếu đổi thành truy hồi bằng chứng có đáp án; hướng 1 rớt vì hình dạng đầu vào (giống lý do đã loại aging clock ngày 02/10); hướng 3 khuyên không chọn (chuỗi sinh ra không có nhãn thật, cộng bốn cổng cũ).
+- **`tDamAge` không tra được** bất kỳ bài báo/repo/dataset nào — phải xin GVHD tên bài hoặc DOI. Đây là câu hỏi số một về hướng 1.
+- Khuyến nghị: mang bốn hướng này **cùng với** ứng viên A hoặc B của [khảo sát 02/10](deep-research/reports/aging-cancer-deep-dive.md) tới buổi tuần 6 — A và B đạt rõ cả năm tiêu chí và đã qua cổng dữ liệu, bốn hướng mới thì chưa.
+- **Còn dở:** phiên này **chưa tải file dữ liệu nào, chưa đọc toàn văn bài nào** — mọi con số mới là `[chưa kiểm]`. Năm việc trước tuần 6 nằm ở mục 6 của tài liệu; giá trị cao nhất là kiểm xem DeepScence/SenCID **có split theo bệnh nhân hay không** và tải thật một dataset scRNA-seq khối u.
+
+---
+
 ## 05/10/2026 — đính chính tên GVHD
 
 - Người dùng xác nhận **GVHD là TS. Hồ Quang Thái (Ho Quang Thai; QT Ho)**. Sửa tên đầy đủ trong CLAUDE.md, hồ sơ GVHD và ghi chép cũ; bổ sung tên vào biên bản lần 1.
