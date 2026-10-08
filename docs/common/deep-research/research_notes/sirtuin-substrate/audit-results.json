@@ -1,0 +1,223 @@
+{
+  "rauh": {
+    "rows": 6802,
+    "unique_peptides": 6802,
+    "lengths": {
+      "13": 6802
+    },
+    "central_lysine_rows": 6802,
+    "masked_Z_rows": 249,
+    "missing_accession_rows": 473,
+    "multi_accession_rows": 5251,
+    "ratio_error_medians": [
+      0.37,
+      0.22,
+      0.24,
+      0.24,
+      0.21,
+      0.27,
+      0.22
+    ],
+    "omitted_from_ridgeway": [
+      [
+        "GIQCVKKRDLEQA",
+        "Transcription factor p65 ( 123;134;114;92 );RELA protein ( 123 );cDNA FLJ57698, highly similar to Transcription factor p65 ( 134 )",
+        "Q04206;Q2TAM5;B4E082;Q96CP1;E9PKH5;E9PMD5;Q96F54;E9PQS6;E9PKV4;E9PI38"
+      ]
+    ],
+    "missing_measurement_cells": 0
+  },
+  "ridgeway_labels": {
+    "rows": 6801,
+    "accession_strings": 2999,
+    "synthetic_rows": 231,
+    "masked_X_rows": 249,
+    "positive_counts": [
+      176,
+      1901,
+      1844,
+      1038,
+      2614,
+      1199,
+      1692
+    ],
+    "exclusive_positive_counts": [
+      21,
+      319,
+      289,
+      162,
+      1088,
+      269,
+      282
+    ],
+    "label_cardinality": {
+      "0": 1107,
+      "1": 2430,
+      "2": 2087,
+      "3": 902,
+      "4": 226,
+      "5": 44,
+      "6": 5
+    },
+    "mismatches_efficiency_ge1": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "mismatches_category_ge1": [
+      172,
+      1079,
+      673,
+      27,
+      0,
+      462,
+      10
+    ],
+    "mismatches_signal_ratio_ge1": [
+      4763,
+      5292,
+      5575,
+      4635,
+      5839,
+      5163,
+      5408
+    ],
+    "missing_cells": 0
+  },
+  "ridgeway_cellular": {
+    "rows": 149,
+    "proteins": 123,
+    "unique_site_keys": 149,
+    "unique_tryptic_peptides": 134,
+    "OE_negative_KD_positive_rows": 149,
+    "predicted_positive": 64,
+    "positive_detection_fraction": 0.42953020134228187,
+    "score_ge_half_matches_labels": true,
+    "overlapping_train_site_keys": 46,
+    "test_rows_on_train_proteins": 108,
+    "site_key_overlap_is_annotation_only": true,
+    "local_13mer_audit": {
+      "test_windows_compared_without_X": 149,
+      "train_windows_compared_without_X": 6552,
+      "test_windows_with_exact_train_window": 60,
+      "test_windows_with_at_least_10_of_13_matches": 63,
+      "method": "Ungapped equal-position matches of SD13 windows against SD15; NOT full-protein homology"
+    }
+  },
+  "deeppla": {
+    "annotation_rows": 1666,
+    "sirtuin_annotations_by_enzyme_and_species": {
+      "SIRT1 | Homo sapiens": 185,
+      "SIRT1 | Mus musculus": 30,
+      "SIRT2 | Homo sapiens": 52,
+      "SIRT2 | Mus musculus": 6,
+      "SIRT3 | Homo sapiens": 30,
+      "SIRT3 | Mus musculus": 16,
+      "SIRT6 | Homo sapiens": 10,
+      "SIRT6 | Mus musculus": 2,
+      "SIRT7 | Homo sapiens": 12,
+      "SIRT7 | Mus musculus": 4
+    },
+    "cellular_test_site_keys_already_annotated": 1,
+    "train_site_keys_already_annotated": 73
+  },
+  "weinert_EV1": {
+    "rows": 17871,
+    "unique_accession_strings": 3592,
+    "SIRT3_KO_WT_numeric_rows_imported_from_Hebert": 2106,
+    "SIRT3_KO_WT_imported_ratio_ge2_rows_NOT_positive_calls": 483,
+    "imported_ratio_columns": [
+      "Ratio SIRT3 KO/WT Hebert et al",
+      "Ratio CR SIRT3 KO/WT Hebert et al",
+      "Ratio CR WT/WT Hebert et al",
+      "Predicted stoichiometry SIRT3 KO/WT Hebert et al",
+      "Predicted stoichiometry CR SIRT3 KO/WT Hebert et al",
+      "Predicted stoichiometry CR WT/WT Hebert et al"
+    ],
+    "has_site_differential_p_or_q_column": false
+  },
+  "zhang": {
+    "S1_quantitative_rows": 2846,
+    "S1_columns": [
+      "Order",
+      "Symbol|RefseqID",
+      "UniqueID",
+      "Sequence window (with central lysine)",
+      "1",
+      "3",
+      "5",
+      "7",
+      "Unnormalized Data",
+      "Avg. Intensity (unnormalized)",
+      "1.1",
+      "3.1",
+      "5.1",
+      "7.1",
+      "1.2",
+      "3.2",
+      "5.2",
+      "7.2",
+      "Normalized Data"
+    ],
+    "S2_peptide_hit_rows": 134,
+    "S2_unique_tryptic_peptides": 134,
+    "S2_reported_ac_lys_sum": 152,
+    "has_site_differential_p_or_q_column": false
+  },
+  "ridgeway_proteome": {
+    "rows": 145461,
+    "duplicate_accession_position_keys": 0,
+    "cellular_keys_matched": 149,
+    "cellular_SIRT2_scores_matching_at_1e_minus8": 0,
+    "cellular_SIRT2_binary_labels_matching": 128,
+    "SD13_positive_on_149_cellular_keys": 61,
+    "score_discrepancy_examples": [
+      {
+        "accession": "Q09666",
+        "position": 891,
+        "SD13": 0.290231647,
+        "SD14": 0.233196167326873
+      },
+      {
+        "accession": "P04083",
+        "position": 312,
+        "SD13": 0.709550397,
+        "SD14": 0.801009919762105
+      },
+      {
+        "accession": "Q92572",
+        "position": 166,
+        "SD13": 0.463347676,
+        "SD14": 0.323420617085151
+      }
+    ]
+  },
+  "input_sha256": {
+    "41467_2013_BFncomms3327_MOESM80_ESM.xlsx": "f3a26a72c871b547f421e2006d090fb63cc35723d3f3774c3e28b567b420ca46",
+    "41467_2013_BFncomms3327_MOESM81_ESM.xlsx": "f6b5901948d69a5a0f13967096a54b95f060d64878fc36ebf891f8bf62aedc05",
+    "41467_2013_BFncomms3327_MOESM84_ESM.xlsx": "dc201c5e0250eee35365b363f2784636ba7b6686dbf153d692a9490d1080795e",
+    "41467_2013_BFncomms3327_MOESM85_ESM.xlsx": "0f614729ad65ba3ab50a2c6a6e3a449681dddcb6054c9dba5c38dcc1c908aba7",
+    "41467_2013_BFncomms3327_MOESM86_ESM.xlsx": "f5146ea5aa0af9272b75407a32ebe086179f588474d3d6cd276228d826c457c5",
+    "41598_2022_6793_MOESM2_ESM.xlsx": "8f7962e5c0862436196224b2f35c4175bc93a987a67b218cff5dc9b98cd61421",
+    "41598_2022_6793_MOESM3_ESM.xlsx": "11a3a7d651c3373272ee27dc5aa7a25ca7a6126cda3a67e7cfd514bff88746f3",
+    "41598_2022_6793_MOESM4_ESM.xlsx": "83bc9de807d7ef06af1e6959661e16567342013a00b4d0df58bd65cf49a1029d",
+    "41598_2022_6793_MOESM6_ESM.xlsx": "2439201f0ebbbde4359d6d10cff247c991bb7b2c8c2bdf539a67833306b01fa8",
+    "42004_2025_1717_MOESM15_ESM.xlsx": "cab5b6993b51f3a8f2f38cfdacdb9a8b148c03046f0b5b43061b117169d37122",
+    "42004_2025_1717_MOESM16_ESM.xlsx": "8b4ef6ac01b1f2f9b42161ec22b64b916b35bc0ae4ad88d7845599eec6e623d4",
+    "42004_2025_1717_MOESM17_ESM.xlsx": "a04e7321c482a9087b8a17e9c03596ff6a4ffc43d2aa8bd86359b9d736517c92",
+    "deeppla-table-s1.xlsx": "49d157edd1fadea4bda5b09a250e8bfacf4adc2d44e88e3a72b67bf9c1615e28",
+    "github-All_Sirts_Feature_Y_labels.csv": "c76d95999ed5ceee63cc5fd520c97037fea2c2c7fdb8dee41b95411d6ea5ffdb",
+    "github-sirt_training_feature_set.csv": "49104bca07d2c7fa7e86bf7e0597714895cdf29436785501d9d83fc57c2fd663",
+    "weinert-zip-embj0034-2620-sd2.xlsx": "c582379955e194c774725b4a174cf1c8d119ca94cbdb2aa08a890769b4d2fb0d",
+    "weinert-zip-embj0034-2620-sd3.xlsx": "ef0615529bced52db007747eda60161140470c8f88b0d74739536fb9c94d6517",
+    "weinert-zip-embj0034-2620-sd4.xlsx": "86f53526543f01a2d783bfbe0635e37a5e4c75586b0879f552d80ccb5aa99630",
+    "weinert-zip-embj0034-2620-sd5.xlsx": "e462304c78e69a03e20c3373857d333c23838b8bd2d765959b0af53edb9b5ff8",
+    "weinert-zip-embj0034-2620-sd6.xlsx": "ce9cca048e34809dc72d67cfc4b304cd283409af810aa48e3a9dac2c3fbac351",
+    "weinert-zip-embj0034-2620-sd7.xlsx": "c4006f394d219b9cb7ed0607b44ffd1a6f34b404ffbe2681f38967480584e6ef",
+    "weinert-zip-embj0034-2620-sd8.xlsx": "97724181b4ee0b4cb40cf38af511b63425e42917e03e7d70649c64668a85cafb"
+  }
+}

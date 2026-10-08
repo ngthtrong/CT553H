@@ -4,6 +4,17 @@
 
 ---
 
+## 08/10/2026 — kiểm chứng sâu đề tài cơ chất sirtuin: tiếp tục với phạm vi thu hẹp
+
+- Thêm [báo cáo phản biện và thiết kế đề tài](deep-research/reports/sirtuin-substrate-deep-research.md), [ghi chú nguồn/audit tái tạo](deep-research/research_notes/sirtuin-substrate/README.md). Giữ nguyên báo cáo khuyến nghị ban đầu; chưa training hoặc triển khai hệ thống.
+- **Đính chính có bằng chứng:** nhãn Ridgeway khớp `efficiency ≥ 1`, không phải category/ratio threshold; 64/149 là recall trên tập dương chọn lọc, không precision. Deep-PLA đã có SIRT1/2/3/6/7; Smith 2011 và Zhai 2017 là tiền lệ trực tiếp; Ridgeway đã có cellular validation và thành phần MusiteDeep.
+- **Audit:** 6.802→6.801 thiếu chuỗi RELA/p65 GIQCVKKRDLEQA, chưa rõ lý do; 231 dòng `SYNTHETIC`; test 149 có 46 key và 108 dòng cùng protein với pool train, 60 window trùng chuỗi; 149/149 test khớp K và peptide trên snapshot UniProt hiện hành. SD13/SD14 khác toàn bộ điểm SIRT2 và 21 nhãn nhị phân, phải giữ hai snapshot riêng.
+- Đọc được Zhang SIRT2 S1 (2.846 dòng), S2 (134 peptide/152 acK), Weinert EV1 có 2.106 ratio SIRT3 KO/WT nhập từ Hebert. **Chưa đủ nhãn âm đáng tin hoặc uncertainty cho benchmark hai isoform.** PXD021357 là sham/UUO; PXD023479 là interactome, không KO acetylome.
+- **Khuyến nghị:** bảy isoform ở assay; ưu tiên SIRT2/3 cho cellular response; conformal là mở rộng có điều kiện, không hứa 90% trong tế bào. Tiêu chí 5 của GVHD vẫn là website.
+- **Còn dở theo ưu tiên:** lấy bảng Hebert/Rardin gốc (PNAS 403/PMC challenge), replicate/uncertainty và mapping FASTA/homology; giải 152→149 và SD13/14; đọc toàn văn NAD_MCNN/SirtSAGE. Đủ trao đổi phạm vi với GVHD, chưa coi tính mới/benchmark/đề tài đã được duyệt.
+
+---
+
 ## 08/10/2026 — hướng có tính mới ở phần tin học, rồi bản phác B + nén mô hình + conformal
 
 - Sinh viên nhận xét A và B chỉ đặt tính mới ở bài toán sinh học. Đã khảo sát bảy hướng cải tiến tin học C1–C7: [compute-novelty-directions.md](deep-research/reports/compute-novelty-directions.md). Phát hiện: bài RAG-msCNN của GVHD đã thử ProstT5 làm baseline và ghi là không cải thiện đáng kể.

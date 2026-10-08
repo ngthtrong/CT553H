@@ -1,0 +1,685 @@
+[
+  {
+    "file": "ridgeway.xml",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12594832/fullTextXML",
+    "status": 200,
+    "content_type": "application/xml",
+    "bytes": 221799,
+    "sha256": "3e3dfa06f17c89026c93cbf09827f318ce706abe57545acc1e60ef528494e1e8"
+  },
+  {
+    "file": "weinert.xml",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4641529/fullTextXML",
+    "status": 200,
+    "content_type": "application/xml",
+    "bytes": 151855,
+    "sha256": "f0deb0b7fdfdf1d62e76bb120f62b512e9f05f8fcab2e07297719f2aaa5ba9ed"
+  },
+  {
+    "file": "sirt3-2011.xml",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3042044/fullTextXML",
+    "error": "HTTP Error 500: "
+  },
+  {
+    "file": "rauh.html",
+    "url": "https://www.nature.com/articles/ncomms3327",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 462490,
+    "sha256": "2516afc5802e78a33969ccefac778d84fdbdd25237b64a05e7ad7215762da85c"
+  },
+  {
+    "file": "github-tree.json",
+    "url": "https://api.github.com/repos/nashirag/ML-Hybrid_Ensemble_Method/git/trees/main?recursive=1",
+    "status": 200,
+    "content_type": "application/json; charset=utf-8",
+    "bytes": 5713,
+    "sha256": "af536baac00170da376d5c346168e0dcfdfa7b5c3e36bdc42868883ff96d417d"
+  },
+  {
+    "file": "PXD021357.json",
+    "url": "https://www.ebi.ac.uk/pride/ws/archive/v2/projects/PXD021357",
+    "status": 200,
+    "content_type": "text/plain;charset=UTF-8",
+    "bytes": 6155,
+    "sha256": "d3185ee6429d6269d337c37ef99396acb8a724656b54833345ee9fad915aa9d5"
+  },
+  {
+    "file": "PXD021357-files.json",
+    "url": "https://www.ebi.ac.uk/pride/ws/archive/v2/files/byProject?accession=PXD021357&pageSize=1000&page=0",
+    "status": 200,
+    "content_type": "application/json",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "file": "PXD023479.json",
+    "url": "https://www.ebi.ac.uk/pride/ws/archive/v2/projects/PXD023479",
+    "status": 200,
+    "content_type": "text/plain;charset=UTF-8",
+    "bytes": 6342,
+    "sha256": "cf631f22a13e192f502b44a1c8cddb66b921685b9f4c4d4762afe3ef9b1e9516"
+  },
+  {
+    "file": "PXD023479-files.json",
+    "url": "https://www.ebi.ac.uk/pride/ws/archive/v2/files/byProject?accession=PXD023479&pageSize=1000&page=0",
+    "status": 200,
+    "content_type": "application/json",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "file": "PXD019763.json",
+    "url": "https://www.ebi.ac.uk/pride/ws/archive/v2/projects/PXD019763",
+    "status": 200,
+    "content_type": "text/plain;charset=UTF-8",
+    "bytes": 6961,
+    "sha256": "71b1c4a60efe5c751593584b1a0bc1ad1477269141022ebe89d3bdf2abb991cc"
+  },
+  {
+    "file": "PXD019763-files.json",
+    "url": "https://www.ebi.ac.uk/pride/ws/archive/v2/files/byProject?accession=PXD019763&pageSize=1000&page=0",
+    "status": 200,
+    "content_type": "application/json",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "file": "PXD012796.json",
+    "url": "https://www.ebi.ac.uk/pride/ws/archive/v2/projects/PXD012796",
+    "status": 200,
+    "content_type": "text/plain;charset=UTF-8",
+    "bytes": 8637,
+    "sha256": "f96d86331b74cbe77311eb57790193e2a0f70aad2a1fb0cd55d8b49fbf3e6dad"
+  },
+  {
+    "file": "PXD012796-files.json",
+    "url": "https://www.ebi.ac.uk/pride/ws/archive/v2/files/byProject?accession=PXD012796&pageSize=1000&page=0",
+    "status": 200,
+    "content_type": "application/json",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "file": "42004_2025_1717_MOESM1_ESM.pdf",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs42004-025-01717-6/MediaObjects/42004_2025_1717_MOESM1_ESM.pdf",
+    "status": 200,
+    "content_type": "application/pdf",
+    "bytes": 5123892,
+    "sha256": "35bda6932caa1c324125511d236a490a7fbb47744448e20c9951b2465363ccb3"
+  },
+  {
+    "file": "42004_2025_1717_MOESM2_ESM.pdf",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs42004-025-01717-6/MediaObjects/42004_2025_1717_MOESM2_ESM.pdf",
+    "status": 200,
+    "content_type": "application/pdf",
+    "bytes": 138299,
+    "sha256": "7d72e328e9b2f8ee7b43dbd77a6fef6b867b100d5dfae9f580501ad6ee39c82a"
+  },
+  {
+    "file": "42004_2025_1717_MOESM15_ESM.xlsx",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs42004-025-01717-6/MediaObjects/42004_2025_1717_MOESM15_ESM.xlsx",
+    "error": "The read operation timed out"
+  },
+  {
+    "file": "42004_2025_1717_MOESM16_ESM.xlsx",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs42004-025-01717-6/MediaObjects/42004_2025_1717_MOESM16_ESM.xlsx",
+    "status": 200,
+    "content_type": "application/octet-stream",
+    "bytes": 21114,
+    "sha256": "8b4ef6ac01b1f2f9b42161ec22b64b916b35bc0ae4ad88d7845599eec6e623d4"
+  },
+  {
+    "file": "42004_2025_1717_MOESM17_ESM.xlsx",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs42004-025-01717-6/MediaObjects/42004_2025_1717_MOESM17_ESM.xlsx",
+    "error": "The read operation timed out"
+  },
+  {
+    "file": "embj0034-2620-sd1.pdf",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/4641529/bin/embj0034-2620-sd1.pdf",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "file": "embj0034-2620-sd2.xlsx",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/4641529/bin/embj0034-2620-sd2.xlsx",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "file": "embj0034-2620-sd3.xlsx",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/4641529/bin/embj0034-2620-sd3.xlsx",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "file": "embj0034-2620-sd4.xlsx",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/4641529/bin/embj0034-2620-sd4.xlsx",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "file": "embj0034-2620-sd5.xlsx",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/4641529/bin/embj0034-2620-sd5.xlsx",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "file": "embj0034-2620-sd6.xlsx",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/4641529/bin/embj0034-2620-sd6.xlsx",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "file": "embj0034-2620-sd7.xlsx",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/4641529/bin/embj0034-2620-sd7.xlsx",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "file": "embj0034-2620-sd8.xlsx",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/4641529/bin/embj0034-2620-sd8.xlsx",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "file": "embj0034-2620-sd9.pdf",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/4641529/bin/embj0034-2620-sd9.pdf",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "file": "github-All_Sirts_Feature_Y_labels.csv",
+    "url": "https://raw.githubusercontent.com/nashirag/ML-Hybrid_Ensemble_Method/e7cb6d7eb8837c770bd1638dcd45c59688535cfa/SIRT1-7_Investigation/ML_Components/All_Sirts_Feature_Y_labels.csv",
+    "status": 200,
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 224234,
+    "sha256": "c76d95999ed5ceee63cc5fd520c97037fea2c2c7fdb8dee41b95411d6ea5ffdb"
+  },
+  {
+    "file": "github-model_fitting.py",
+    "url": "https://raw.githubusercontent.com/nashirag/ML-Hybrid_Ensemble_Method/e7cb6d7eb8837c770bd1638dcd45c59688535cfa/SIRT1-7_Investigation/ML_Components/model_fitting.py",
+    "status": 200,
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 37163,
+    "sha256": "77e84cac0f71d0699c089509a8a8aa8ac2233ffebc2e2847483a47a43655f723"
+  },
+  {
+    "file": "github-sirt_training_feature_set.csv",
+    "url": "https://raw.githubusercontent.com/nashirag/ML-Hybrid_Ensemble_Method/e7cb6d7eb8837c770bd1638dcd45c59688535cfa/SIRT1-7_Investigation/ML_Components/sirt_training_feature_set.csv",
+    "status": 200,
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 7395733,
+    "sha256": "49104bca07d2c7fa7e86bf7e0597714895cdf29436785501d9d83fc57c2fd663"
+  },
+  {
+    "file": "github-README.md",
+    "url": "https://raw.githubusercontent.com/nashirag/ML-Hybrid_Ensemble_Method/e7cb6d7eb8837c770bd1638dcd45c59688535cfa/SIRT1-7_Investigation/README.md",
+    "status": 200,
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 1850,
+    "sha256": "01ad82ca6e6ab11aed567d0049d3ff29bb143ae643ca7d18cd86a9921a3839ab"
+  },
+  {
+    "file": "github-SIRT_ALL_RUNS.ipynb",
+    "url": "https://raw.githubusercontent.com/nashirag/ML-Hybrid_Ensemble_Method/e7cb6d7eb8837c770bd1638dcd45c59688535cfa/SIRT1-7_Investigation/SIRT_ALL_RUNS.ipynb",
+    "status": 200,
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 166517,
+    "sha256": "f656a253a840da4d7d157c47a1122b0f12e097310cb78b665bd9eb496ac3b90a"
+  },
+  {
+    "file": "github-requirements.txt",
+    "url": "https://raw.githubusercontent.com/nashirag/ML-Hybrid_Ensemble_Method/e7cb6d7eb8837c770bd1638dcd45c59688535cfa/SIRT1-7_Investigation/requirements.txt",
+    "status": 200,
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 142,
+    "sha256": "bd97e66278d0bc3793982d3568be0dbfdb6ab161f8b57257667d616f0fefecc5"
+  },
+  {
+    "file": "41467_2013_BFncomms3327_MOESM79_ESM.pdf",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fncomms3327/MediaObjects/41467_2013_BFncomms3327_MOESM79_ESM.pdf",
+    "error": "The read operation timed out"
+  },
+  {
+    "file": "41467_2013_BFncomms3327_MOESM80_ESM.xlsx",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fncomms3327/MediaObjects/41467_2013_BFncomms3327_MOESM80_ESM.xlsx",
+    "status": 200,
+    "content_type": "application/octet-stream",
+    "bytes": 2122503,
+    "sha256": "f3a26a72c871b547f421e2006d090fb63cc35723d3f3774c3e28b567b420ca46"
+  },
+  {
+    "file": "41467_2013_BFncomms3327_MOESM81_ESM.xlsx",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fncomms3327/MediaObjects/41467_2013_BFncomms3327_MOESM81_ESM.xlsx",
+    "status": 200,
+    "content_type": "application/octet-stream",
+    "bytes": 1295812,
+    "sha256": "f6b5901948d69a5a0f13967096a54b95f060d64878fc36ebf891f8bf62aedc05"
+  },
+  {
+    "file": "41467_2013_BFncomms3327_MOESM84_ESM.xlsx",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fncomms3327/MediaObjects/41467_2013_BFncomms3327_MOESM84_ESM.xlsx",
+    "error": "The read operation timed out"
+  },
+  {
+    "file": "41467_2013_BFncomms3327_MOESM85_ESM.xlsx",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fncomms3327/MediaObjects/41467_2013_BFncomms3327_MOESM85_ESM.xlsx",
+    "status": 200,
+    "content_type": "application/octet-stream",
+    "bytes": 49041,
+    "sha256": "0f614729ad65ba3ab50a2c6a6e3a449681dddcb6054c9dba5c38dcc1c908aba7"
+  },
+  {
+    "file": "41467_2013_BFncomms3327_MOESM86_ESM.xlsx",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fncomms3327/MediaObjects/41467_2013_BFncomms3327_MOESM86_ESM.xlsx",
+    "error": "The read operation timed out"
+  },
+  {
+    "file": "rardin.xml",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3631688/fullTextXML",
+    "error": "HTTP Error 500: "
+  },
+  {
+    "file": "renal-sirt3.xml",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8437958/fullTextXML",
+    "status": 200,
+    "content_type": "application/xml",
+    "bytes": 128140,
+    "sha256": "686810298b8b4963502d2fe5b6e6c326c7eb0233d9b61550b8ef036d48f1ea4f"
+  },
+  {
+    "file": "deeppla.html",
+    "url": "https://oup.silverchair-cdn.com/article-minimal/5612158",
+    "status": 200,
+    "content_type": "text/html",
+    "bytes": 240293,
+    "sha256": "7d043cf932fc53e357c8fce1485dd5662767c912a2caffba0f6a44e3ea2b20db"
+  },
+  {
+    "file": "sirt3-2011.pdf",
+    "url": "https://burrsettles.com/pub/smith.acs11.pdf",
+    "status": 200,
+    "content_type": "application/pdf",
+    "bytes": 1110645,
+    "sha256": "123a3ed65326a6beb50f3d75db7cc83bc87aa383834a6af669f6d3f8a258d5a6"
+  },
+  {
+    "file": "weinert-supp.zip",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4641529/supplementaryFiles",
+    "status": 200,
+    "content_type": "application/zip",
+    "bytes": 10925813,
+    "sha256": "d2bd667bee5ccab889f115bc99c097152cbafd08e6c21c2923b1dff375e1ead8"
+  },
+  {
+    "file": "rardin-supp.zip",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3631688/supplementaryFiles",
+    "status": 200,
+    "content_type": "application/xml",
+    "bytes": 296,
+    "sha256": "a10727ce7a89b4ef2729a22bc46b453b46864a5e8196faa84862cb5fc143b4f5"
+  },
+  {
+    "file": "PXD021357-files-v3.json",
+    "url": "https://www.ebi.ac.uk/pride/ws/archive/v3/files/byProject?accession=PXD021357&pageSize=1000&page=0",
+    "status": 200,
+    "content_type": "application/json",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "file": "PXD023479-files-v3.json",
+    "url": "https://www.ebi.ac.uk/pride/ws/archive/v3/files/byProject?accession=PXD023479&pageSize=1000&page=0",
+    "status": 200,
+    "content_type": "application/json",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "file": "PXD019763-files-v3.json",
+    "url": "https://www.ebi.ac.uk/pride/ws/archive/v3/files/byProject?accession=PXD019763&pageSize=1000&page=0",
+    "status": 200,
+    "content_type": "application/json",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "file": "PXD012796-files-v3.json",
+    "url": "https://www.ebi.ac.uk/pride/ws/archive/v3/files/byProject?accession=PXD012796&pageSize=1000&page=0",
+    "status": 200,
+    "content_type": "application/json",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "file": "42004_2025_1717_MOESM15_ESM.xlsx",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs42004-025-01717-6/MediaObjects/42004_2025_1717_MOESM15_ESM.xlsx",
+    "status": 200,
+    "content_type": "application/octet-stream",
+    "bytes": 19196393,
+    "sha256": "cab5b6993b51f3a8f2f38cfdacdb9a8b148c03046f0b5b43061b117169d37122",
+    "retrieved_at_utc": "2026-10-08T05:09:51.016823+00:00"
+  },
+  {
+    "file": "42004_2025_1717_MOESM17_ESM.xlsx",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs42004-025-01717-6/MediaObjects/42004_2025_1717_MOESM17_ESM.xlsx",
+    "status": 200,
+    "content_type": "application/octet-stream",
+    "bytes": 357224,
+    "sha256": "a04e7321c482a9087b8a17e9c03596ff6a4ffc43d2aa8bd86359b9d736517c92",
+    "retrieved_at_utc": "2026-10-08T05:09:02.415280+00:00"
+  },
+  {
+    "file": "41467_2013_BFncomms3327_MOESM79_ESM.pdf",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fncomms3327/MediaObjects/41467_2013_BFncomms3327_MOESM79_ESM.pdf",
+    "status": 200,
+    "content_type": "application/pdf",
+    "bytes": 1631297,
+    "sha256": "198288f4c0b6cda2c8c2a767ddc4523aabf1779dae351f72570581240cede016",
+    "retrieved_at_utc": "2026-10-08T05:11:05.978373+00:00"
+  },
+  {
+    "file": "41467_2013_BFncomms3327_MOESM84_ESM.xlsx",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fncomms3327/MediaObjects/41467_2013_BFncomms3327_MOESM84_ESM.xlsx",
+    "status": 200,
+    "content_type": "application/octet-stream",
+    "bytes": 198604,
+    "sha256": "dc201c5e0250eee35365b363f2784636ba7b6686dbf153d692a9490d1080795e",
+    "retrieved_at_utc": "2026-10-08T05:09:01.916307+00:00"
+  },
+  {
+    "file": "41467_2013_BFncomms3327_MOESM86_ESM.xlsx",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fncomms3327/MediaObjects/41467_2013_BFncomms3327_MOESM86_ESM.xlsx",
+    "status": 200,
+    "content_type": "application/octet-stream",
+    "bytes": 25113,
+    "sha256": "f5146ea5aa0af9272b75407a32ebe086179f588474d3d6cd276228d826c457c5",
+    "retrieved_at_utc": "2026-10-08T05:09:51.439145+00:00"
+  },
+  {
+    "file": "zhang-sirt2.xml",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8907344/fullTextXML",
+    "status": 200,
+    "content_type": "application/xml",
+    "bytes": 113410,
+    "sha256": "045b55acecf5326e218511bb1ce9c22072c52470a10ee9ecdbd7a78555f8ce8d",
+    "retrieved_at_utc": "2026-10-08T05:09:03.978773+00:00"
+  },
+  {
+    "file": "rardin.html",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3631688/?pdf=1",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 189685,
+    "sha256": "4de54005b6ae0ce5027b6b619551f5f0d50fcc69d58ba8c25682c58b4b6a4bdf",
+    "retrieved_at_utc": "2026-10-08T05:09:03.514972+00:00"
+  },
+  {
+    "file": "weinert.html",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4641529/?pdf=1",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 232411,
+    "sha256": "4c41326efc4c76d1a37393e5b3e1260fe0854c79948b6d9d2ca96e6eff1df873",
+    "retrieved_at_utc": "2026-10-08T05:09:03.921076+00:00"
+  },
+  {
+    "file": "deeppla-methods.docx",
+    "url": "https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/bib/21/5/10.1093_bib_bbz107/7/supplementary_materials_and_methods_bbz107.docx?Expires=2147483647&Signature=dqa7cxFqYubGBHsheKfHexpaidIlyerQoPh3FJJFQJZjMi40uTT4mKBb8pKebFgPA449njLakZtSgrwYIhCPn0xZmT9ufRF0mkcRqlPvAITbnbi7ytOHaKXP4kiMN4xP0MB45ui1vFf99bCpz4w4c-pHGhfjSOHl9TlmGYmw5NuHsnMD39V--mHsegSqB7XTYnpI3NxhPS6Pu6pNpN-ACxVkSCEw-InKrxHS5xANOvjljOgli5TdkJrgaawsdJOXgExCVxNJWZ05LQ7a5~84eQXpon7z4xQqgEhYH6f5-hBNHTdYw71jdb8JLOJyvopKCIlBytmUiRAGOuL7XnzLdg__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA",
+    "status": 200,
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "bytes": 48963,
+    "sha256": "432ad2b41f322d0e7ff30c7025f2b5ee27f531c937c130f2e35a74ed11d519db",
+    "retrieved_at_utc": "2026-10-08T05:09:06.224089+00:00"
+  },
+  {
+    "file": "deeppla-table-s1.xlsx",
+    "url": "https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/bib/21/5/10.1093_bib_bbz107/7/table_s1_bbz107.xlsx?Expires=2147483647&Signature=pZfqVGdOhx-ShWDaJeR-ZXmPOQrrK4GtcKIObeFzJINmbRyKyHHLboBo7hHI81AJrsGj0s4qkL2NpW8-h09jYAA5RcqVuuvV49lgy~eUNT9h8sxzHlKdbR6ktLf5rQ~-8~XfKY~YpZ1Owb0R7dyi5wnG~xLtpJlQopOTIk~JQQOkpWw5PMTDwBWNvGBgeZUaJTP1KnwvO49JstMbdhd10rqStW881WL8ICb78JM6NS2SX3bgmlHVW-Ou1onKY4RQx5JDj2tzsRSrMh3QNaPMrs49tmge29G-Yybq6Bh65h5P7n-VN2JnCVuL6vA0jWXcqaTc9nnCPe~GgCcWfPab6Q__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA",
+    "status": 200,
+    "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "bytes": 111188,
+    "sha256": "49d157edd1fadea4bda5b09a250e8bfacf4adc2d44e88e3a72b67bf9c1615e28",
+    "retrieved_at_utc": "2026-10-08T05:09:06.361930+00:00"
+  },
+  {
+    "file": "rardin-1302961110_sd01.xlsx",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/3631688/bin/1302961110_sd01.xlsx",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 1817,
+    "sha256": "cf28cdf089452d9acbe3f267cd81696ab25031aeaa3f093834073b83a4177f4c",
+    "retrieved_at_utc": "2026-10-08T05:10:41.476534+00:00"
+  },
+  {
+    "file": "rardin-1302961110_sd02.xlsx",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/3631688/bin/1302961110_sd02.xlsx",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 1817,
+    "sha256": "f5ce9cabc0d03ef9239e859fa632de2867150c1fc43a15a530b9057f2ad80ea4",
+    "retrieved_at_utc": "2026-10-08T05:10:41.457141+00:00"
+  },
+  {
+    "file": "rardin-1302961110_sd03.xlsx",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/3631688/bin/1302961110_sd03.xlsx",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 1817,
+    "sha256": "bf0f7d245176ca69348967fda731cd63265f73748bac98cb5fbd0b5258f83be9",
+    "retrieved_at_utc": "2026-10-08T05:10:41.808480+00:00"
+  },
+  {
+    "file": "rardin-1302961110_sd04.xlsx",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/3631688/bin/1302961110_sd04.xlsx",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 1816,
+    "sha256": "329126390ed71a69176bafef9c98e63ce7b1726915da57ac91980a5b954713df",
+    "retrieved_at_utc": "2026-10-08T05:10:41.534804+00:00"
+  },
+  {
+    "file": "rardin-1302961110_sd05.xlsx",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/3631688/bin/1302961110_sd05.xlsx",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 1817,
+    "sha256": "dbc1b595ccd1e63fe851f0f5e28307572575d8f1122f96287883e771b3094392",
+    "retrieved_at_utc": "2026-10-08T05:10:41.517284+00:00"
+  },
+  {
+    "file": "rardin-1302961110_sd06.xlsx",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/3631688/bin/1302961110_sd06.xlsx",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 1817,
+    "sha256": "c3432a4226fc8f82ece98780cb43895951a3edf4ac11ff18a91e363a4c24e62e",
+    "retrieved_at_utc": "2026-10-08T05:10:41.716318+00:00"
+  },
+  {
+    "file": "weinert-EMBJ-34-2620-s002.xlsx",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/4641529/bin/EMBJ-34-2620-s002.xlsx",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 1817,
+    "sha256": "2a3fc2172b4a9611474cc587983ef04acd0d0f6ffc0f9f0a25b66be6b82cb196",
+    "retrieved_at_utc": "2026-10-08T05:10:41.972525+00:00"
+  },
+  {
+    "file": "weinert-EMBJ-34-2620-s003.xlsx",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/4641529/bin/EMBJ-34-2620-s003.xlsx",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 1816,
+    "sha256": "0886e88d03d58c98c095061d9033a8861067afa91338ff89646c550c14e86a97",
+    "retrieved_at_utc": "2026-10-08T05:10:41.981719+00:00"
+  },
+  {
+    "file": "weinert-EMBJ-34-2620-s004.xlsx",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/4641529/bin/EMBJ-34-2620-s004.xlsx",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 1816,
+    "sha256": "037fba467d84b5c2f6a9d76a70bfabdb85f2716c97fcc527d5c569439577aa10",
+    "retrieved_at_utc": "2026-10-08T05:10:41.986435+00:00"
+  },
+  {
+    "file": "weinert-EMBJ-34-2620-s005.xlsx",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/4641529/bin/EMBJ-34-2620-s005.xlsx",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 1817,
+    "sha256": "c46b663305efb438288a7420419278e2bd5fb1807ba525d9b12e0c1bc5924b9a",
+    "retrieved_at_utc": "2026-10-08T05:10:42.007765+00:00"
+  },
+  {
+    "file": "weinert-EMBJ-34-2620-s006.xlsx",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/4641529/bin/EMBJ-34-2620-s006.xlsx",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 1817,
+    "sha256": "6b90488a1357a067af400ad006039b794cbe055598a3cf44809f731689696e12",
+    "retrieved_at_utc": "2026-10-08T05:10:42.169158+00:00"
+  },
+  {
+    "file": "weinert-EMBJ-34-2620-s007.xlsx",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/4641529/bin/EMBJ-34-2620-s007.xlsx",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 1817,
+    "sha256": "fbd73248812a6f84372bf5b7bebcfa90e998108072c94078650fc4950cd6fc07",
+    "retrieved_at_utc": "2026-10-08T05:10:42.287728+00:00"
+  },
+  {
+    "file": "weinert-EMBJ-34-2620-s008.xlsx",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/4641529/bin/EMBJ-34-2620-s008.xlsx",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 1817,
+    "sha256": "53f65741dce6bbfe7bd3ae260a095e20be43d6d3053254f911d8c9bbf0b61e35",
+    "retrieved_at_utc": "2026-10-08T05:10:42.442639+00:00"
+  },
+  {
+    "file": "41598_2022_6793_MOESM1_ESM.pdf",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41598-022-06793-5/MediaObjects/41598_2022_6793_MOESM1_ESM.pdf",
+    "status": 200,
+    "content_type": "application/pdf",
+    "bytes": 11763277,
+    "sha256": "33c52d19e9f343731ecfe8e21a61853a12d55f7b3027f33cb6127e1251f03665",
+    "retrieved_at_utc": "2026-10-08T05:12:53.578923+00:00"
+  },
+  {
+    "file": "41598_2022_6793_MOESM2_ESM.xlsx",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41598-022-06793-5/MediaObjects/41598_2022_6793_MOESM2_ESM.xlsx",
+    "status": 200,
+    "content_type": "application/octet-stream",
+    "bytes": 667124,
+    "sha256": "8f7962e5c0862436196224b2f35c4175bc93a987a67b218cff5dc9b98cd61421",
+    "retrieved_at_utc": "2026-10-08T05:10:43.149555+00:00"
+  },
+  {
+    "file": "41598_2022_6793_MOESM3_ESM.xlsx",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41598-022-06793-5/MediaObjects/41598_2022_6793_MOESM3_ESM.xlsx",
+    "status": 200,
+    "content_type": "application/octet-stream",
+    "bytes": 24071,
+    "sha256": "11a3a7d651c3373272ee27dc5aa7a25ca7a6126cda3a67e7cfd514bff88746f3",
+    "retrieved_at_utc": "2026-10-08T05:10:42.587771+00:00"
+  },
+  {
+    "file": "41598_2022_6793_MOESM4_ESM.xlsx",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41598-022-06793-5/MediaObjects/41598_2022_6793_MOESM4_ESM.xlsx",
+    "status": 200,
+    "content_type": "application/octet-stream",
+    "bytes": 8935357,
+    "sha256": "83bc9de807d7ef06af1e6959661e16567342013a00b4d0df58bd65cf49a1029d",
+    "retrieved_at_utc": "2026-10-08T05:12:50.268606+00:00"
+  },
+  {
+    "file": "41598_2022_6793_MOESM5_ESM.xlsx",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41598-022-06793-5/MediaObjects/41598_2022_6793_MOESM5_ESM.xlsx",
+    "error": "The read operation timed out",
+    "retrieved_at_utc": "2026-10-08T05:13:27.464222+00:00"
+  },
+  {
+    "file": "41598_2022_6793_MOESM6_ESM.xlsx",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41598-022-06793-5/MediaObjects/41598_2022_6793_MOESM6_ESM.xlsx",
+    "status": 200,
+    "content_type": "application/octet-stream",
+    "bytes": 12170,
+    "sha256": "2439201f0ebbbde4359d6d10cff247c991bb7b2c8c2bdf539a67833306b01fa8",
+    "retrieved_at_utc": "2026-10-08T05:10:43.131221+00:00"
+  },
+  {
+    "file": "41419_2021_4134_MOESM1_ESM.docx",
+    "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41419-021-04134-9/MediaObjects/41419_2021_4134_MOESM1_ESM.docx",
+    "error": "HTTP Error 404: Not Found",
+    "retrieved_at_utc": "2026-10-08T05:10:43.381312+00:00"
+  },
+  {
+    "file": "rardin-pnas-sd03.xlsx",
+    "url": "https://www.pnas.org/doi/suppl/10.1073/pnas.1302961110/suppl_file/pnas.201302961si03.xlsx",
+    "error": "HTTP Error 403: Forbidden",
+    "retrieved_at_utc": "2026-10-08T05:18:56.448381+00:00"
+  },
+  {
+    "file": "rardin-pnas-sd04.xlsx",
+    "url": "https://www.pnas.org/doi/suppl/10.1073/pnas.1302961110/suppl_file/pnas.201302961si04.xlsx",
+    "error": "HTTP Error 403: Forbidden",
+    "retrieved_at_utc": "2026-10-08T05:18:56.458663+00:00"
+  },
+  {
+    "file": "rardin-pnas-sd05.xlsx",
+    "url": "https://www.pnas.org/doi/suppl/10.1073/pnas.1302961110/suppl_file/pnas.201302961si05.xlsx",
+    "error": "HTTP Error 403: Forbidden",
+    "retrieved_at_utc": "2026-10-08T05:18:56.467654+00:00"
+  },
+  {
+    "file": "hebert.xml",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3704155/fullTextXML",
+    "error": "HTTP Error 500: ",
+    "retrieved_at_utc": "2026-10-08T05:18:57.691780+00:00"
+  },
+  {
+    "file": "sirt1-2017.xml",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5496887/fullTextXML",
+    "status": 200,
+    "content_type": "application/xml",
+    "bytes": 83779,
+    "sha256": "785480e830a21b564ab96a529b68887310c8cdfcc3182a32d0e3a12ef6e58454",
+    "retrieved_at_utc": "2026-10-08T05:18:58.317023+00:00"
+  },
+  {
+    "file": "uniprot-cellular-2026-10-08.tsv",
+    "url": "https://rest.uniprot.org/uniprotkb/stream?query=accession%3AO00268+OR+accession%3AO00512+OR+accession%3AO00515+OR+accession%3AO14497+OR+accession%3AO14974+OR+accession%3AO75643+OR+accession%3AO76000+OR+accession%3AO76021+OR+accession%3AO95696+OR+accession%3AP02545+OR+accession%3AP04083+OR+accession%3AP04406+OR+accession%3AP05141+OR+accession%3AP05204+OR+accession%3AP05783+OR+accession%3AP05787+OR+accession%3AP06703+OR+accession%3AP06733+OR+accession%3AP06748+OR+accession%3AP06753-2+OR+accession%3AP07910+OR+accession%3AP0DN37+OR+accession%3AP10155+OR+accession%3AP10636+OR+accession%3AP14866+OR+accession%3AP16403+OR+accession%3AP17655+OR+accession%3AP17987+OR+accession%3AP22234+OR+accession%3AP22392+OR+accession%3AP22626+OR+accession%3AP23193+OR+accession%3AP24534+OR+accession%3AP26599+OR+accession%3AP27816+OR+accession%3AP35579+OR+accession%3AP35658+OR+accession%3AP36915+OR+accession%3AP40926+OR+accession%3AP42566+OR+accession%3AP43487+OR+accession%3AP48634+OR+accession%3AP49916+OR+accession%3AP51659+OR+accession%3AP53396+OR+accession%3AP56545+OR+accession%3AP58876+OR+accession%3AP60174+OR+accession%3AP61758+OR+accession%3AP62308+OR+accession%3AP62937+OR+accession%3AP62979+OR+accession%3AP63313+OR+accession%3AP68431+OR+accession%3AP78344+OR+accession%3AP99999+OR+accession%3AQ00839+OR+accession%3AQ01518+OR+accession%3AQ01804+OR+accession%3AQ02078+OR+accession%3AQ08426+OR+accession%3AQ08J23+OR+accession%3AQ09472+OR+accession%3AQ09666+OR+accession%3AQ13206+OR+accession%3AQ13263+OR+accession%3AQ13418+OR+accession%3AQ13428+OR+accession%3AQ14157+OR+accession%3AQ14677+OR+accession%3AQ14978+OR+accession%3AQ15149+OR+accession%3AQ15424+OR+accession%3AQ15554+OR+accession%3AQ15942+OR+accession%3AQ6P5R6+OR+accession%3AQ6ZNB6+OR+accession%3AQ7RTV0+OR+accession%3AQ7Z5K2+OR+accession%3AQ7Z6E9+OR+accession%3AQ8N3Z6+OR+accession%3AQ8NC51+OR+accession%3AQ8NEZ5+OR+accession%3AQ8NFC6+OR+accession%3AQ8WU90+OR+accession%3AQ92572+OR+accession%3AQ92613+OR+accession%3AQ92626+OR+accession%3AQ92793+OR+accession%3AQ92945+OR+accession%3AQ93074+OR+accession%3AQ96CB8+OR+accession%3AQ96EP5+OR+accession%3AQ96G46+OR+accession%3AQ96KM6+OR+accession%3AQ96L91+OR+accession%3AQ96MU7+OR+accession%3AQ96N67+OR+accession%3AQ99504+OR+accession%3AQ99879+OR+accession%3AQ9BQE3+OR+accession%3AQ9BTA9+OR+accession%3AQ9BW91+OR+accession%3AQ9H0C8+OR+accession%3AQ9HAF1+OR+accession%3AQ9HC35+OR+accession%3AQ9NTI5+OR+accession%3AQ9NUU7+OR+accession%3AQ9NYF8+OR+accession%3AQ9P016+OR+accession%3AQ9UBF6+OR+accession%3AQ9UGP4+OR+accession%3AQ9UHB9+OR+accession%3AQ9UHD8+OR+accession%3AQ9ULD2+OR+accession%3AQ9ULH7+OR+accession%3AQ9ULJ6+OR+accession%3AQ9ULV3+OR+accession%3AQ9Y2W2+OR+accession%3AQ9Y3B4+OR+accession%3AQ9Y520+OR+accession%3AQ9Y5Z4+OR+accession%3AQ9Y6G9&format=tsv&fields=accession%2Csequence",
+    "error": "HTTP Error 400: ",
+    "retrieved_at_utc": "2026-10-08T05:27:55.680751+00:00"
+  },
+  {
+    "file": "uniprot-cellular-2026-10-08.tsv",
+    "url": "https://rest.uniprot.org/uniprotkb/stream?query=accession%3AO00268+OR+accession%3AO00512+OR+accession%3AO00515+OR+accession%3AO14497+OR+accession%3AO14974+OR+accession%3AO75643+OR+accession%3AO76000+OR+accession%3AO76021+OR+accession%3AO95696+OR+accession%3AP02545+OR+accession%3AP04083+OR+accession%3AP04406+OR+accession%3AP05141+OR+accession%3AP05204+OR+accession%3AP05783+OR+accession%3AP05787+OR+accession%3AP06703+OR+accession%3AP06733+OR+accession%3AP06748+OR+accession%3AP06753+OR+accession%3AP07910+OR+accession%3AP0DN37+OR+accession%3AP10155+OR+accession%3AP10636+OR+accession%3AP14866+OR+accession%3AP16403+OR+accession%3AP17655+OR+accession%3AP17987+OR+accession%3AP22234+OR+accession%3AP22392+OR+accession%3AP22626+OR+accession%3AP23193+OR+accession%3AP24534+OR+accession%3AP26599+OR+accession%3AP27816+OR+accession%3AP35579+OR+accession%3AP35658+OR+accession%3AP36915+OR+accession%3AP40926+OR+accession%3AP42566+OR+accession%3AP43487+OR+accession%3AP48634+OR+accession%3AP49916+OR+accession%3AP51659+OR+accession%3AP53396+OR+accession%3AP56545+OR+accession%3AP58876+OR+accession%3AP60174+OR+accession%3AP61758+OR+accession%3AP62308+OR+accession%3AP62937+OR+accession%3AP62979+OR+accession%3AP63313+OR+accession%3AP68431+OR+accession%3AP78344+OR+accession%3AP99999+OR+accession%3AQ00839+OR+accession%3AQ01518+OR+accession%3AQ01804+OR+accession%3AQ02078+OR+accession%3AQ08426+OR+accession%3AQ08J23+OR+accession%3AQ09472+OR+accession%3AQ09666+OR+accession%3AQ13206+OR+accession%3AQ13263+OR+accession%3AQ13418+OR+accession%3AQ13428+OR+accession%3AQ14157+OR+accession%3AQ14677+OR+accession%3AQ14978+OR+accession%3AQ15149+OR+accession%3AQ15424+OR+accession%3AQ15554+OR+accession%3AQ15942+OR+accession%3AQ6P5R6+OR+accession%3AQ6ZNB6+OR+accession%3AQ7RTV0+OR+accession%3AQ7Z5K2+OR+accession%3AQ7Z6E9+OR+accession%3AQ8N3Z6+OR+accession%3AQ8NC51+OR+accession%3AQ8NEZ5+OR+accession%3AQ8NFC6+OR+accession%3AQ8WU90+OR+accession%3AQ92572+OR+accession%3AQ92613+OR+accession%3AQ92626+OR+accession%3AQ92793+OR+accession%3AQ92945+OR+accession%3AQ93074+OR+accession%3AQ96CB8+OR+accession%3AQ96EP5+OR+accession%3AQ96G46+OR+accession%3AQ96KM6+OR+accession%3AQ96L91+OR+accession%3AQ96MU7+OR+accession%3AQ96N67+OR+accession%3AQ99504+OR+accession%3AQ99879+OR+accession%3AQ9BQE3+OR+accession%3AQ9BTA9+OR+accession%3AQ9BW91+OR+accession%3AQ9H0C8+OR+accession%3AQ9HAF1+OR+accession%3AQ9HC35+OR+accession%3AQ9NTI5+OR+accession%3AQ9NUU7+OR+accession%3AQ9NYF8+OR+accession%3AQ9P016+OR+accession%3AQ9UBF6+OR+accession%3AQ9UGP4+OR+accession%3AQ9UHB9+OR+accession%3AQ9UHD8+OR+accession%3AQ9ULD2+OR+accession%3AQ9ULH7+OR+accession%3AQ9ULJ6+OR+accession%3AQ9ULV3+OR+accession%3AQ9Y2W2+OR+accession%3AQ9Y3B4+OR+accession%3AQ9Y520+OR+accession%3AQ9Y5Z4+OR+accession%3AQ9Y6G9&format=tsv&fields=accession%2Csequence",
+    "error": "HTTP Error 400: ",
+    "retrieved_at_utc": "2026-10-08T05:30:23.103146+00:00"
+  },
+  {
+    "file": "uniprot-P06753-2.fasta",
+    "url": "https://rest.uniprot.org/uniprotkb/P06753-2.fasta",
+    "status": 200,
+    "content_type": "text/plain;format=fasta",
+    "bytes": 348,
+    "sha256": "25c200c953d883b3b5e8ba6e0422048d292606aaf0054b51099bf4b6cf230e78",
+    "valid_file_signature": true,
+    "retrieved_at_utc": "2026-10-08T05:30:23.178940+00:00"
+  },
+  {
+    "file": "uniprot-cellular-part1-2026-10-08.tsv",
+    "url": "https://rest.uniprot.org/uniprotkb/stream?query=accession%3AO00268+OR+accession%3AO00512+OR+accession%3AO00515+OR+accession%3AO14497+OR+accession%3AO14974+OR+accession%3AO75643+OR+accession%3AO76000+OR+accession%3AO76021+OR+accession%3AO95696+OR+accession%3AP02545+OR+accession%3AP04083+OR+accession%3AP04406+OR+accession%3AP05141+OR+accession%3AP05204+OR+accession%3AP05783+OR+accession%3AP05787+OR+accession%3AP06703+OR+accession%3AP06733+OR+accession%3AP06748+OR+accession%3AP06753+OR+accession%3AP07910+OR+accession%3AP0DN37+OR+accession%3AP10155+OR+accession%3AP10636+OR+accession%3AP14866+OR+accession%3AP16403+OR+accession%3AP17655+OR+accession%3AP17987+OR+accession%3AP22234+OR+accession%3AP22392+OR+accession%3AP22626+OR+accession%3AP23193+OR+accession%3AP24534+OR+accession%3AP26599+OR+accession%3AP27816+OR+accession%3AP35579+OR+accession%3AP35658+OR+accession%3AP36915+OR+accession%3AP40926+OR+accession%3AP42566+OR+accession%3AP43487+OR+accession%3AP48634+OR+accession%3AP49916+OR+accession%3AP51659+OR+accession%3AP53396+OR+accession%3AP56545+OR+accession%3AP58876+OR+accession%3AP60174+OR+accession%3AP61758+OR+accession%3AP62308+OR+accession%3AP62937+OR+accession%3AP62979+OR+accession%3AP63313+OR+accession%3AP68431+OR+accession%3AP78344+OR+accession%3AP99999+OR+accession%3AQ00839+OR+accession%3AQ01518+OR+accession%3AQ01804+OR+accession%3AQ02078+OR+accession%3AQ08426+OR+accession%3AQ08J23+OR+accession%3AQ09472+OR+accession%3AQ09666+OR+accession%3AQ13206+OR+accession%3AQ13263+OR+accession%3AQ13418+OR+accession%3AQ13428+OR+accession%3AQ14157+OR+accession%3AQ14677+OR+accession%3AQ14978+OR+accession%3AQ15149+OR+accession%3AQ15424+OR+accession%3AQ15554+OR+accession%3AQ15942+OR+accession%3AQ6P5R6+OR+accession%3AQ6ZNB6+OR+accession%3AQ7RTV0+OR+accession%3AQ7Z5K2+OR+accession%3AQ7Z6E9&format=tsv&fields=accession%2Csequence",
+    "status": 200,
+    "content_type": "text/plain;format=tsv",
+    "bytes": 65048,
+    "sha256": "00d1b55a75cdc881de96be405cbdb23475ba31c4c3839b75f4604d4b36cc8a97",
+    "valid_file_signature": true,
+    "retrieved_at_utc": "2026-10-08T05:38:28.180706+00:00"
+  },
+  {
+    "file": "uniprot-cellular-part2-2026-10-08.tsv",
+    "url": "https://rest.uniprot.org/uniprotkb/stream?query=accession%3AQ8N3Z6+OR+accession%3AQ8NC51+OR+accession%3AQ8NEZ5+OR+accession%3AQ8NFC6+OR+accession%3AQ8WU90+OR+accession%3AQ92572+OR+accession%3AQ92613+OR+accession%3AQ92626+OR+accession%3AQ92793+OR+accession%3AQ92945+OR+accession%3AQ93074+OR+accession%3AQ96CB8+OR+accession%3AQ96EP5+OR+accession%3AQ96G46+OR+accession%3AQ96KM6+OR+accession%3AQ96L91+OR+accession%3AQ96MU7+OR+accession%3AQ96N67+OR+accession%3AQ99504+OR+accession%3AQ99879+OR+accession%3AQ9BQE3+OR+accession%3AQ9BTA9+OR+accession%3AQ9BW91+OR+accession%3AQ9H0C8+OR+accession%3AQ9HAF1+OR+accession%3AQ9HC35+OR+accession%3AQ9NTI5+OR+accession%3AQ9NUU7+OR+accession%3AQ9NYF8+OR+accession%3AQ9P016+OR+accession%3AQ9UBF6+OR+accession%3AQ9UGP4+OR+accession%3AQ9UHB9+OR+accession%3AQ9UHD8+OR+accession%3AQ9ULD2+OR+accession%3AQ9ULH7+OR+accession%3AQ9ULJ6+OR+accession%3AQ9ULV3+OR+accession%3AQ9Y2W2+OR+accession%3AQ9Y3B4+OR+accession%3AQ9Y520+OR+accession%3AQ9Y5Z4+OR+accession%3AQ9Y6G9&format=tsv&fields=accession%2Csequence",
+    "status": 200,
+    "content_type": "text/plain;format=tsv",
+    "bytes": 38946,
+    "sha256": "a04b25ccacee9d8a6f4523b2051cbc251e637084d6a2afe2ca3a5182e7f834bd",
+    "valid_file_signature": true,
+    "retrieved_at_utc": "2026-10-08T05:38:27.277243+00:00"
+  }
+]
