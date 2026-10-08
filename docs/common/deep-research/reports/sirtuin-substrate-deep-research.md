@@ -497,6 +497,18 @@ Nghĩa là đề tài **không sụp vì khoa học — nó sụp vì ba phép �
 
 ---
 
+## 12. Phụ lục bổ sung 08/10/2026 — đo xong cổng G3: lượng enzyme giải thích phần lớn chênh lệch giữa các isoform
+
+Sau khi báo cáo này được viết, sinh viên hỏi thẳng: **bài toán 7 isoform có còn khả thi không?** Cổng G3 (§8) đã được đo, trên Supplementary Data 5 và 6 của Rauh, tải được qua `media.springernature.com`. Chi tiết và cách tái lập: [06-seven-isoform-feasibility.md](../research_notes/sirtuin-substrate/06-seven-isoform-feasibility.md).
+
+**Kết quả:** số nhãn dương của một isoform tương quan mạnh với lượng enzyme được nhỏ lên mảng — Spearman **ρ = +0,811**, **p = 0,0349** (kiểm định hoán vị đầy đủ, n = 7 isoform) `[tự kiểm]`. SIRT5 được nhỏ **218 µg/ml**, nhiều nhất, và có **2.615** nhãn dương, nhiều nhất; SIRT4 được nhỏ 10 µg/ml và có 1.038. Thêm Spearman(số nhãn dương, `ratio error` trung vị) = **−0,855**: isoform ít enziem thì vừa ít nhãn dương vừa nhiễu hơn. Nghịch lý SIRT5 nêu ở §2.2 vì vậy **có một lời giải thích mang tính kỹ thuật thí nghiệm**, không cần viện tới hoạt tính desuccinylase.
+
+**Hai phản biện phải nói kèm, nếu không sẽ bị bắt lỗi:** (i) n = 7 nên p = 0,0349 nằm sát ngưỡng, đây là tín hiệu chứ không phải bằng chứng quyết định; (ii) SIRT1 và SIRT7 **cùng** ở 20 µg/ml mà có **176** so với **1.692** nhãn dương, nên lượng enzyme **không** giải thích hết. Phát biểu đúng là *lượng enzyme là một biến gây nhiễu cỡ hiệu ứng lớn và chưa ai hiệu chỉnh*, **không** phải *cột SIRT5 chỉ là nồng độ enzyme*.
+
+**Một mối lo của §2.1 bị bác bỏ bằng số:** Supplementary Data 6 (peptide không cho tín hiệu ở ≥ 1 đối chứng) có **220 peptide**, tất cả **220/220 đều còn trong bộ nhãn**, nhưng **185/220 (84,1%)** là dương ở ít nhất một isoform — gần như trùng tỉ lệ của toàn mảng, **5.695/6.802 (83,7%)** `[tự kiểm]`. Vậy giả thuyết "một phần nhãn âm thật ra là không đo được" **không thành** ở mức tổng thể, và chỉ 35/220 peptide âm ở cả bảy isoform. Đây là đính chính cho chính báo cáo này.
+
+**Hệ quả cho phán quyết:** không đổi hướng, nhưng củng cố việc thu hẹp xuống **SIRT1/2/3**, và đổi vai của SIRT4–7 từ "bỏ đi" thành **một phân tích giới hạn của nhãn có số liệu đỡ** — bảng lượng enzyme vs nhãn dương là nội dung của phần đó.
+
 ## Kết luận
 
 Điều đã đổi trong hiểu biết về đề tài này không phải là "nó khó hơn tưởng" — mà là **câu hỏi nghiên cứu đã bị trả lời một phần, bởi chính dữ liệu, trước khi ai kịp huấn luyện mô hình nào.** Nhãn mảng peptide in vitro, khi đem đối chiếu với acetylome trong tế bào ở quy mô 1.417 vị trí, cho MCC gần bằng không. Đó không phải một chướng ngại cần vượt qua bằng kiến trúc tốt hơn; nó là **một dữ kiện về bản chất của nguồn nhãn**, và nó phù hợp đến mức đáng chú ý với ba thứ khác: việc Rauh tự nói các isoform không so được với nhau, việc Weinert đo được stoichiometry trung vị 0,05% và kết luận sirtuin "sửa chữa" hơn là "điều hòa", và việc chính mảng peptide bỏ sót 61% các vị trí phụ thuộc SIRT2 mà nó **có** đo. Bốn bằng chứng độc lập cùng chỉ về một hướng: cửa sổ 13 amino acid không chứa đủ thông tin để trả lời câu hỏi sinh học mà đề tài đặt ra.

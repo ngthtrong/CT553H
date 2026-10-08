@@ -4,6 +4,17 @@
 
 ---
 
+## 08/10/2026 (chiều, muộn) — đo xong cổng G3: lượng enzyme giải thích phần lớn chênh lệch giữa 7 isoform
+
+- Sinh viên hỏi bài toán 7 isoform có còn khả thi không. Đã tải Supplementary Data 5 và 6 của Rauh qua `media.springernature.com` và đo trực tiếp. Ghi chú: [06-seven-isoform-feasibility.md](deep-research/research_notes/sirtuin-substrate/06-seven-isoform-feasibility.md); bảng số: [rauh2013-enzyme-amount-vs-positives.csv](deep-research/research_notes/sirtuin-substrate/data/rauh2013-enzyme-amount-vs-positives.csv); mục 12 của [báo cáo khảo sát sâu](deep-research/reports/sirtuin-substrate-deep-research.md).
+- **Kết quả:** số nhãn dương tương quan với nồng độ enzyme nhỏ lên mảng — Spearman **ρ = +0,811**, **p = 0,0349** (hoán vị đầy đủ, n = 7). SIRT5 nhỏ 218 µg/ml → 2.615 dương; SIRT4 nhỏ 10 µg/ml → 1.038. Spearman(nhãn dương, `ratio error` trung vị) = −0,855. Nghịch lý SIRT5 vì vậy có lời giải thích kỹ thuật thí nghiệm.
+- **Hai phản biện phải nói kèm:** n = 7 nên p sát ngưỡng; và SIRT1 với SIRT7 **cùng** 20 µg/ml mà 176 so với 1.692 nhãn dương, nên lượng enzyme không giải thích hết. Phát biểu đúng: lượng enzyme là biến gây nhiễu cỡ lớn chưa được hiệu chỉnh.
+- **Một mối lo bị bác bỏ bằng số:** Supplementary Data 6 có 220 peptide "không cho tín hiệu ở ≥ 1 đối chứng", tất cả vẫn nằm trong bộ nhãn, nhưng 185/220 (84,1%) là dương ở ít nhất một isoform — gần trùng tỉ lệ toàn mảng 5.695/6.802 (83,7%). Nên giả thuyết "nhãn âm thật ra là không đo được" không thành.
+- **Kết luận về khả thi, ba mức:** SIRT1/2/3 khả thi (khung deacetylase đúng, có bằng chứng mức protein, có tập in-cell); SIRT1 là ca xấu nhất về dữ liệu chứ không về sinh học; SIRT4–7 không khả thi như bài toán "dự đoán cơ chất deacetyl hóa" — chuyển thành phân tích giới hạn của nhãn, lấy chính bảng lượng enzyme vs nhãn dương làm nội dung.
+- **Còn dở:** chưa tách tương quan theo từng cặp (construct, mảng) — Data 5 cho thấy mỗi isoform được thử với nhiều construct và đột biến bất hoạt khác nhau, nên "nồng độ trung vị theo isoform" là phép gộp thô. Và năm việc chặn khác của mục 11.2 vẫn nguyên, trong đó **đọc toàn văn Deep-PLA** là việc có thể đổi phán quyết tính mới.
+
+---
+
 ## 08/10/2026 (chiều) — khảo sát sâu đề tài chính SIRT1–7: **nhãn mảng peptide gần như không chuyển được vào tế bào**
 
 - Phản biện độc lập bản khuyến nghị [topic-final-recommendation.md](deep-research/reports/topic-final-recommendation.md) bằng năm nhánh khảo sát song song (sinh học/nhãn, tính mới, cổng dữ liệu, thiết kế đánh giá, conformal+XAI). Báo cáo tổng hợp: **[sirtuin-substrate-deep-research.md](deep-research/reports/sirtuin-substrate-deep-research.md)**; ghi chú từng nhánh và bảng dẫn xuất: [research_notes/sirtuin-substrate/](deep-research/research_notes/sirtuin-substrate/). Bản khuyến nghị cũ **giữ nguyên không sửa** để đối chiếu.
