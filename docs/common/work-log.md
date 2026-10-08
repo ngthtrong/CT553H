@@ -4,6 +4,16 @@
 
 ---
 
+## 08/10/2026 — hướng có tính mới ở phần tin học, rồi bản phác B + nén mô hình + conformal
+
+- Sinh viên nhận xét A và B chỉ đặt tính mới ở bài toán sinh học. Đã khảo sát bảy hướng cải tiến tin học C1–C7: [compute-novelty-directions.md](deep-research/reports/compute-novelty-directions.md). Phát hiện: bài RAG-msCNN của GVHD đã thử ProstT5 làm baseline và ghi là không cải thiện đáng kể.
+- Sinh viên chọn: có GPU, giữ A/B và thêm cải tiến tin học. Bản phác: [b-method-layer-draft.md](deep-research/reports/b-method-layer-draft.md) (thầy ESM-2 + LoRA + mCNN, học trò chưng cất chạy CPU, conformal theo nhóm kinase, XAI kiểm bằng motif đã biết).
+- **Phát hiện khi tải thật benchmark dbPTM (nhóm CDK):** chỉ có hai file cửa sổ ±10 (1.503 dương / 29.823 âm), không có chia train/test; file thực nghiệm phospho không có cột kinase. Tập train theo kinase phải dựng từ OmniPath (39.036 dòng kinase–vị trí ở người, tải được) và lọc đồng dạng với benchmark.
+- Đối thủ trực tiếp: Prot2Token cho kinase (NeurIPS 2025), nên đề tài nên cạnh tranh bằng tốc độ và bảo đảm thống kê, không bằng độ chính xác.
+- **Còn dở:** chưa tải các nhóm kinase khác, chưa đo trùng OmniPath–dbPTM, chưa đọc toàn văn đối thủ, chưa chạy mô hình.
+
+---
+
 ## 08/10/2026 — so sánh ứng viên B và A với hướng 2 trên cùng bộ tiêu chí
 
 - Thêm [mục 7.6 vào tài liệu phân tích](deep-research/reports/advisor-4-directions-analysis.md): bảng chín trục so **B**, **A** và **hướng 2** (loại nhãn, tập test độc lập, đơn vị gom nhóm, yếu tố gây nhiễu đã đo, dùng lại thang T1, XAI, mức đông đúc, khớp sinh học GVHD, chi phí khởi động).

@@ -19,6 +19,8 @@ Tài liệu này **không chốt hướng**. Mỗi nhận định về "chưa ai
 
 **Gợi ý của tôi (không phải quyết định):** ưu tiên xem **C1 (nén mô hình) kèm C4 (conformal) gắn lên B**, vì B là ứng viên duy nhất đã có benchmark cộng đồng, nên phần cải tiến đo được ngay. Lý do và điều kiện ở mục 4.
 
+> **Bước tiếp theo (08/10):** sinh viên chọn giữ A/B và có GPU; bản phác cụ thể nằm ở [b-method-layer-draft.md](b-method-layer-draft.md).
+
 ## 1. Thước đo để xếp các hướng
 
 Ngoài năm tiêu chí của GVHD ([biên bản lần 1, mục 4](../../../meeting/session-01-minutes.md)), một hướng tin học cần thêm ba điều kiện:
