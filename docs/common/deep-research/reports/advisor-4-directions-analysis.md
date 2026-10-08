@@ -21,7 +21,7 @@ Xếp hạng, nói thẳng:
 
 **Khuyến nghị ban đầu (06/10), đã bị chính dữ liệu đảo lại ngày 07/10 — đọc [mục 7.5](#75-kết-quả-trên-dữ-liệu-thật-và-phán-quyết-dừng-hướng-2-0710) trước:** nếu phải chọn trong đúng bốn hướng này thì chọn **hướng 2**, thu hẹp thành *"phân loại tế bào lão hóa trong TME từ scRNA-seq, với split gom nhóm theo bệnh nhân/dataset và một tập test độc lập nguồn"*. **Nhưng** khuyến nghị thật của tôi là mang bốn hướng này tới buổi tuần 6 **cùng với** ứng viên A hoặc B của khảo sát 02/10, và để GVHD chọn. **Đính chính 07/10:** trong hai ứng viên đó, **chỉ B qua được cổng tập test độc lập**; A thì chưa (xem gạch đầu dòng dưới). Dù vậy cả hai vẫn ở trên bốn hướng mới về mặt dữ liệu, vì nhãn của chúng là nhãn thực nghiệm đã có.
 
-> **Cập nhật 07/10/2026 sau hai kiểm chứng ở [mục 7](#7-hai-kiểm-chứng-bổ-sung-0710) — xếp hạng không đổi, nhưng hai lý do đổi, và cả hai đều bất lợi cho hướng 2:**
+> **Cập nhật 07/10/2026 sau hai kiểm chứng ở [mục 7](#7-kiểm-chứng-bổ-sung-và-phán-quyết-hướng-2-0710) — xếp hạng không đổi, nhưng hai lý do đổi, và cả hai đều bất lợi cho hướng 2:**
 >
 > - **Đóng góp đề xuất cho hướng 2 phải viết lại.** Lập luận "các công cụ hiện có không gom nhóm theo bệnh nhân" **đặt trên tiền đề sai**: DeepScence không giám sát (không có split nào), SenePy là chấm điểm theo chữ ký, SenCID có giám sát nhưng huấn luyện trên **bulk in vitro** nên không có bệnh nhân nào trong tập huấn luyện. Khoảng trống thật hẹp hơn: **chưa có mô hình có giám sát nào trên scRNA-seq khối u người với split theo bệnh nhân** — và lý do chưa có là **không có nhãn chuẩn vàng**, tức đúng rủi ro trung tâm của hướng 2.
 > - **Không có tiền lệ cùng GVHD cho đầu vào không phải trình tự.** Cả hai luận văn thầy đã hướng dẫn (T1 peptide + ESM-2, T2 tìm kiếm protein + ESM-2) đều là bài toán trên trình tự. **Điều này không còn là cổng loại** sau xác nhận ở gạch đầu dòng dưới, nhưng vẫn là lý do thang đóng góp phải tự dựng.
@@ -99,7 +99,7 @@ Phiên bản thu hẹp duy nhất tôi thấy đứng được: **một task h�
 
 **Hướng khả thi nhất trong bốn hướng.** Nhưng nó đang gộp **hai bài toán khác nhau hoàn toàn** trong một câu, và phải chọn một.
 
-> **Cập nhật 07/10/2026 — sinh viên đã chốt: nếu chọn hướng 2 thì dùng scRNA-seq, không dùng ảnh hình thái nhân.** Phần 2.1 dưới đây giữ lại nhánh ảnh để thấy căn cứ của lựa chọn. **Và hai điểm trong mục 2.4 đã bị đính chính bởi khảo sát 07/10 — đọc [mục 7](#7-hai-kiểm-chứng-bổ-sung-0710) trước khi dùng mục 2.4.**
+> **Cập nhật 07/10/2026 — sinh viên đã chốt: nếu chọn hướng 2 thì dùng scRNA-seq, không dùng ảnh hình thái nhân.** Phần 2.1 dưới đây giữ lại nhánh ảnh để thấy căn cứ của lựa chọn. **Và hai điểm trong mục 2.4 đã bị đính chính bởi khảo sát 07/10 — đọc [mục 7](#7-kiểm-chứng-bổ-sung-và-phán-quyết-hướng-2-0710) trước khi dùng mục 2.4.**
 
 ### 2.1. Hai nhánh, phải chọn một
 
@@ -308,7 +308,7 @@ Nói thẳng, vì đây là điều quan trọng nhất trong tài liệu này: 
 
 ---
 
-## 7. Hai kiểm chứng bổ sung (07/10)
+## 7. Kiểm chứng bổ sung và phán quyết hướng 2 (07/10)
 
 Hai việc sinh viên yêu cầu làm ngay, vì cả hai làm được mà không cần chờ GVHD. Kết quả **đảo lại một phần mục 2.4**, nên đọc mục này trước khi dùng mục đó.
 
@@ -425,7 +425,35 @@ Một dataset lớn hơn **không sửa được chuyện này** — GSE131907 v
 
 #### Khuyến nghị sau phán quyết
 
-**Chuyển sang ứng viên B** (vị trí phosphoryl hóa theo nhóm kinase gây ung thư) — đây là ứng viên duy nhất có **benchmark non-homologous do chính dbPTM công bố**, tức cổng dữ liệu đã đóng sẵn, và nó rơi đúng khuôn T1 về phương pháp (mục 7.2). **Ứng viên A** vẫn là lựa chọn thứ hai, nhưng nhớ cổng mở của nó (mục 0): phải tự dựng tập test độc lập, và câu hỏi số 1 cho GVHD quyết định chuyện đó.
+**Chuyển sang ứng viên B** (vị trí phosphoryl hóa theo nhóm kinase gây ung thư) — đây là ứng viên duy nhất có **benchmark non-homologous do chính dbPTM công bố**, tức cổng dữ liệu đã đóng sẵn, và nó rơi đúng khuôn T1 về phương pháp (mục 7.2). **Ứng viên A** vẫn là lựa chọn thứ hai, nhưng nhớ cổng mở của nó (mục 0): phải tự dựng tập test độc lập, và câu hỏi số 1 cho GVHD quyết định chuyện đó. **So sánh đầy đủ B và A với hướng 2 trên chín trục: [mục 7.6](#76-so-sánh-ứng-viên-b-và-a-với-hướng-2-trên-cùng-một-bộ-tiêu-chí-0710).**
+
+### 7.6. So sánh ứng viên B và A với hướng 2 trên **cùng một bộ tiêu chí** (07/10)
+
+Mục 5 so bốn hướng với nhau; mục này trả lời câu khác và quan trọng hơn: **nếu bỏ hướng 2 để sang B hoặc A thì được gì và mất gì**. Chín trục dưới đây là những trục thật sự phân biệt được ba ứng viên, không phải năm tiêu chí GVHD (cả ba đều đạt tiêu chí 5, nên tiêu chí 5 không phân biệt gì).
+
+| Trục | **B — site phospho theo nhóm kinase** | **A — substrate SIRT theo isoform** | **Hướng 2 — senescence trong TME (scRNA-seq)** |
+|---|---|---|---|
+| **1. Loại nhãn** | **Thực nghiệm** (MS phosphoproteomics, dbPTM tổng hợp) `[toàn văn]` | **Thực nghiệm** (microarray Rauh 2013, 6.801 site đếm được) `[tự đo]` | **Proxy tính toán** — điểm biểu hiện của một chữ ký gene, không ai đo trạng thái senescence của từng tế bào (mục 7.1) |
+| **2. Tập test độc lập** | **Có sẵn** — benchmark non-homologous do chính dbPTM công bố `[toàn văn]` | **Chưa có** — split công bố chỉ là holdout 10% trên cùng microarray; phải tự dựng, cổng dừng tuần 7 | **Không có và không dựng được** trong 8–9 tuần: dựng được thì cũng là nhãn proxy ở cả hai đầu |
+| **3. Đơn vị gom nhóm khi chia tập** | Protein (và cụm đồng dạng qua CD-HIT/MMseqs2) — **đã có công cụ chuẩn** | Protein — cùng công cụ | Bệnh nhân — **không có công cụ chuẩn**, và sau khi chấm riêng theo loại tế bào thì **chỉ còn 1–3 bệnh nhân** đủ tế bào dương (mục 7.5) |
+| **4. Yếu tố gây nhiễu đã đo được** | Đồng dạng trình tự — **kiểm soát được** bằng ngưỡng identity | Đồng dạng trình tự — kiểm soát được | **Loại tế bào** — `[tự đo]` 70% tế bào dương là fibroblast, T/B bằng 0. **Không kiểm soát được bằng cách chia tập**, vì nó nằm trong chính nhãn |
+| **5. Dùng lại được thang đối chứng của T1?** | **Được gần như nguyên vẹn** (đặc trưng thủ công → CNN → mCNN → PLM, cùng dạng cửa sổ residue) | **Được** | **Không** — phải tự dựng thang cho dữ liệu đơn bào, và tiêu chí 2–3 phải tự lập luận (mục 7.2) |
+| **6. XAI (tiêu chí 4)** | Occlusion theo vị trí trong cửa sổ → **sequence logo đối chiếu motif kinase đã biết** = có chuẩn ngoài để kiểm tính trung thực | Tương tự, đối chiếu motif substrate sirtuin | **Vòng tròn luận lý**: nhãn sinh ra từ chữ ký SenMayo, nên XAI chỉ ra các gene SenMayo là **tautology**, không phải phát hiện |
+| **7. Mức đông đúc** | **Thấp nhất** — 14 bài DL 2024–26, có một preprint cạnh tranh | Gần như trống ở mức isoform | **Đã có 3–4 công cụ ở tạp chí mạnh** (DeepScence, SenCID, SenePy) |
+| **8. Khớp chuyên môn sinh học GVHD** | Trung bình (kinase/cancer, thầy chưa làm) | **Cao nhất** (sirtuin/aging, gần SirtSAGE) | Thấp — thầy không có bài; sinh viên phải mang toàn bộ phần sinh học |
+| **9. Chi phí khởi động** | **Thấp nhất** — dbPTM phát hành dữ liệu đã cắt cửa sổ ±10, CPU chạy được | Thấp — file nhãn đã tải về | Trung bình–cao: tải, QC, chú giải loại tế bào, và nhánh foundation model **không chạy trên CPU** |
+
+**Đọc bảng này theo một dòng:** B và A thắng hướng 2 **không phải vì chủ đề hay hơn**, mà vì ở trục 1, 2 và 4 chúng có nhãn người khác đã đo bằng thực nghiệm và một yếu tố gây nhiễu kiểm soát được bằng công cụ có sẵn. Đó đúng là ba chỗ hướng 2 thất bại khi chạy số thật.
+
+#### Ba điểm hướng 2 **vẫn hơn**, nói ra cho công bằng
+
+1. **Hướng 2 là hướng duy nhất nằm đúng giao thoa cancer ∩ aging mà GVHD đã khung ra.** B là cancer/kinase, A là aging/sirtuin — **cả hai đều lệch khỏi giao thoa**. Đây là **cái giá thật** của việc chuyển, và là điều phải nói thẳng ở buổi tuần 6 chứ không che đi.
+2. **Hướng 2 có ý nghĩa dịch thuật rõ hơn**: đếm tế bào lão hóa trong khối u nối trực tiếp tới senolytics, dễ trả lời câu "để làm gì" hơn một bảng điểm phosphosite.
+3. **Hướng 2 là do chính GVHD gợi ý.** Bỏ nó cần một lý do có số — và giờ đã có, chính là mục 7.5. Không có mục 7.5 thì việc bỏ sẽ nghe như sinh viên chọn cái dễ.
+
+#### Điều bảng này **không** quyết định
+
+Ba trục quyết định (1, 2, 4) đều là trục **dữ liệu**, không phải trục khoa học. Cách đọc đúng: *trong 8–9 tuần, với nhãn hiện có, B và A đo được còn hướng 2 thì không* — chứ không phải *hướng 2 là câu hỏi kém*. Và **chọn giữa B và A vẫn treo vào một câu hỏi cho GVHD** (câu số 1, mục 0): thầy có coi split tự dựng cộng một tập MS độc lập nguồn là test độc lập đủ chuẩn hay không. Nếu thầy nói có thì A lên trước, vì trục 8 là trục duy nhất A thắng B rõ ràng, và nó quyết định việc thầy có hướng được phần sinh học hay không.
 
 ---
 

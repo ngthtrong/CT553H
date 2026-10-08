@@ -4,6 +4,16 @@
 
 ---
 
+## 08/10/2026 — so sánh ứng viên B và A với hướng 2 trên cùng bộ tiêu chí
+
+- Thêm [mục 7.6 vào tài liệu phân tích](deep-research/reports/advisor-4-directions-analysis.md): bảng chín trục so **B**, **A** và **hướng 2** (loại nhãn, tập test độc lập, đơn vị gom nhóm, yếu tố gây nhiễu đã đo, dùng lại thang T1, XAI, mức đông đúc, khớp sinh học GVHD, chi phí khởi động).
+- **Kết luận một dòng:** B và A thắng hướng 2 ở ba trục dữ liệu (nhãn thực nghiệm, tập test độc lập, nhiễu kiểm soát được) — đúng ba chỗ hướng 2 thất bại khi chạy số thật ở mục 7.5. Không phải vì chủ đề hay hơn.
+- **Cái giá khi bỏ hướng 2, ghi thẳng để nói ở tuần 6:** hướng 2 là ứng viên **duy nhất** nằm đúng giao thoa cancer ∩ aging mà GVHD khung ra; B lệch sang cancer/kinase, A lệch sang aging/sirtuin. Hướng 2 cũng có ý nghĩa dịch thuật rõ hơn, và là hướng do chính GVHD gợi ý — nên lý do bỏ phải là lý do có số (mục 7.5).
+- **Việc chọn B hay A vẫn chưa quyết được ở đây:** treo vào câu hỏi số 1 cho GVHD (thầy có coi split tự dựng cộng tập MS độc lập nguồn là test độc lập đủ chuẩn hay không). Nếu có thì A lên trước, vì khớp sinh học là trục duy nhất A thắng B rõ.
+- **Còn dở:** chưa khảo sát sâu ứng viên B để lên slide tuần 6 (bài cạnh tranh, chi tiết benchmark dbPTM, định nghĩa nhóm kinase). PR #5 đã merge; nhánh đặt lại từ main.
+
+---
+
 ## 07/10/2026 (tối, muộn) — chạy SenMayo trên GSE103322: **dừng hướng 2**
 
 - Áp đúng [bốn ngưỡng đặt trước](deep-research/reports/advisor-4-directions-analysis.md) lên số thật của **GSE103322** (5.902 tế bào, 17 bệnh nhân): `n_patients` 17 **đạt**; `patients_with_ge20_positives` **7/8 KHÔNG đạt**; `concentration_ratio` 1,85 (dải phải cân mẫu); `signature_coverage` 0,97 **đạt**. Phải đạt cả bốn → **dừng hướng 2**. Không nới ngưỡng.
