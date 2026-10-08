@@ -15,6 +15,14 @@
 - **Một con số phải gỡ khỏi mọi tài liệu gửi GVHD cho tới khi đọc lại toàn văn Rauh:** phát biểu "SIRT7 ưa residue thân nước ở −3/−2/+1" (mục 4.2 bản khuyến nghị) có khả năng cao là phát biểu về **SIRT1** bị gán sang SIRT7. Cũng sửa citation **Prot2Token** (bioRxiv 2024.05.31.596915 + LMRL@ICLR 2025, **không phải NeurIPS 2025**).
 - **Còn dở, xếp theo mức có thể đổi quyết định:** (1) đọc toàn văn **Deep-PLA** ([10.1093/bib/bbz107](https://doi.org/10.1093/bib/bbz107)) xem 9 HDAC của nó gồm SIRT nào — SIRT1–7 *là* HDAC class III, nếu trùng thì trục tính mới sinh học sụp; (2) đọc DeepSIRT toàn văn; (3) mở toàn văn Rauh lấy đúng phát biểu motif từng isoform; (4) tải Supplementary Data 5 + 6 của Rauh (lượng enzyme từng isoform; peptide "không đo được" bị gán âm); (5) tự dựng bảng làm giàu residue theo vị trí trên 6.801 vị trí để biết phần XAI có đáng làm không; (6) tải Table S1 của Zhang 2022 xem có fold-change theo từng vị trí. Chưa chạy mô hình nào.
 - **Môi trường:** `static-content.springer.com` trả 403, dùng `media.springernature.com` (200). Phụ lục trên `pmc.ncbi.nlm.nih.gov/.../bin/*.xlsx` trả trang reCAPTCHA với status 200 — phải đi qua trang nhà xuất bản. PRIDE phải dùng API v3 theo từng file (liệt kê thư mục FTP trả 404).
+## 08/10/2026 — kiểm chứng sâu đề tài cơ chất sirtuin: tiếp tục với phạm vi thu hẹp
+
+- Thêm [báo cáo phản biện và thiết kế đề tài](deep-research/reports/sirtuin-substrate-deep-research.md), [ghi chú nguồn/audit tái tạo](deep-research/research_notes/sirtuin-substrate/README.md). Giữ nguyên báo cáo khuyến nghị ban đầu; chưa training hoặc triển khai hệ thống.
+- **Đính chính có bằng chứng:** nhãn Ridgeway khớp `efficiency ≥ 1`, không phải category/ratio threshold; 64/149 là recall trên tập dương chọn lọc, không precision. Deep-PLA đã có SIRT1/2/3/6/7; Smith 2011 và Zhai 2017 là tiền lệ trực tiếp; Ridgeway đã có cellular validation và thành phần MusiteDeep.
+- **Audit:** 6.802→6.801 thiếu chuỗi RELA/p65 GIQCVKKRDLEQA, chưa rõ lý do; 231 dòng `SYNTHETIC`; test 149 có 46 key và 108 dòng cùng protein với pool train, 60 window trùng chuỗi; 149/149 test khớp K và peptide trên snapshot UniProt hiện hành. SD13/SD14 khác toàn bộ điểm SIRT2 và 21 nhãn nhị phân, phải giữ hai snapshot riêng.
+- Đọc được Zhang SIRT2 S1 (2.846 dòng), S2 (134 peptide/152 acK), Weinert EV1 có 2.106 ratio SIRT3 KO/WT nhập từ Hebert. **Chưa đủ nhãn âm đáng tin hoặc uncertainty cho benchmark hai isoform.** PXD021357 là sham/UUO; PXD023479 là interactome, không KO acetylome.
+- **Khuyến nghị:** bảy isoform ở assay; ưu tiên SIRT2/3 cho cellular response; conformal là mở rộng có điều kiện, không hứa 90% trong tế bào. Tiêu chí 5 của GVHD vẫn là website.
+- **Còn dở theo ưu tiên:** lấy bảng Hebert/Rardin gốc (PNAS 403/PMC challenge), replicate/uncertainty và mapping FASTA/homology; giải 152→149 và SD13/14; đọc toàn văn NAD_MCNN/SirtSAGE. Đủ trao đổi phạm vi với GVHD, chưa coi tính mới/benchmark/đề tài đã được duyệt.
 
 ---
 
