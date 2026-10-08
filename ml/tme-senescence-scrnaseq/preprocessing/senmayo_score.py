@@ -86,6 +86,11 @@ def main() -> None:
     ap.add_argument("--celltype-key", default=None, help="tên cột obs chứa loại tế bào, nếu có")
     ap.add_argument("--quantile", type=float, default=0.95, help="ngưỡng phân vị để gọi là 'dương' (mặc định 0,95)")
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument(
+        "--skip-norm",
+        action="store_true",
+        help="đầu vào đã chuẩn hóa và log hóa sẵn (ví dụ log2(TPM/10+1)); bỏ normalize_total + log1p",
+    )
     ap.add_argument("--out", type=Path, default=HERE / "results", help="thư mục ghi kết quả")
     args = ap.parse_args()
 
@@ -127,24 +132,29 @@ def main() -> None:
             "nên dataset này KHÔNG dùng được cho split theo bệnh nhân."
         )
     else:
-        counts = adata.obs[pkey].astype(str).value_counts()
+        # Tế bào không rõ bệnh nhân (NaN) bị loại khỏi mọi thống kê theo bệnh nhân,
+        # nhưng vẫn được chấm điểm và vẫn góp vào ngưỡng phân vị.
+        known = adata.obs[pkey].notna().to_numpy()
+        report["n_cells_without_patient"] = int((~known).sum())
+        counts = adata.obs[pkey][known].astype(str).value_counts()
         report["n_patients"] = int(counts.size)
         report["cells_per_patient"] = {str(k): int(v) for k, v in counts.items()}
         report["cells_per_patient_median"] = float(counts.median())
-        report["top1_patient_share"] = round(float(counts.iloc[0]) / adata.n_obs, 4)
+        report["top1_patient_share"] = round(float(counts.iloc[0]) / int(known.sum()), 4)
 
     if args.celltype_key and args.celltype_key in adata.obs.columns:
         ct = adata.obs[args.celltype_key].astype(str).value_counts()
         report["n_celltypes"] = int(ct.size)
         report["cells_per_celltype"] = {str(k): int(v) for k, v in ct.items()}
 
-    # Chuẩn hóa tối thiểu. Nếu dữ liệu đã log thì bỏ qua bằng --skip-norm ở phiên bản sau;
-    # hiện tại giả định đầu vào là count thô, và ghi rõ giả định đó vào báo cáo.
     adata.var_names = [str(v).upper() for v in adata.var_names]
     adata.var_names_make_unique()
-    sc.pp.normalize_total(adata, target_sum=1e4)
-    sc.pp.log1p(adata)
-    report["preprocessing"] = "normalize_total(1e4) + log1p (giả định đầu vào là count thô)"
+    if args.skip_norm:
+        report["preprocessing"] = "không chuẩn hóa thêm (--skip-norm: đầu vào đã log hóa sẵn)"
+    else:
+        sc.pp.normalize_total(adata, target_sum=1e4)
+        sc.pp.log1p(adata)
+        report["preprocessing"] = "normalize_total(1e4) + log1p (giả định đầu vào là count thô)"
 
     sc.tl.score_genes(adata, present, score_name="senmayo", random_state=args.seed)
     scores = np.asarray(adata.obs["senmayo"], dtype=float)
@@ -161,10 +171,24 @@ def main() -> None:
         "theo bệnh nhân và theo loại tế bào, không phải tỉ lệ dương."
     )
 
-    if pkey is not None:
-        import pandas as pd
+    import pandas as pd
 
-        per = pd.crosstab(adata.obs[pkey].astype(str), pos)
+    if args.celltype_key and args.celltype_key in adata.obs.columns:
+        ctab = pd.crosstab(adata.obs[args.celltype_key].astype(str), pos)
+        ctab.columns = [str(c) for c in ctab.columns]
+        pc = "True" if "True" in ctab.columns else ctab.columns[-1]
+        report["positives_per_celltype"] = {
+            str(k): int(v) for k, v in ctab[pc].sort_values(ascending=False).items()
+        }
+        report["positive_rate_per_celltype"] = {
+            str(k): round(float(v), 4)
+            for k, v in (ctab[pc] / ctab.sum(axis=1)).sort_values(ascending=False).items()
+        }
+
+    if pkey is not None:
+        pat = adata.obs[pkey][known].astype(str)
+        pos_k = pos[known]
+        per = pd.crosstab(pat, pos_k)
         per.columns = [str(c) for c in per.columns]
         poscol = "True" if "True" in per.columns else per.columns[-1]
         rate = (per[poscol] / per.sum(axis=1)).sort_values(ascending=False)
@@ -180,7 +204,7 @@ def main() -> None:
         report["top1_patient_share_of_positives"] = round(float(share.iloc[0]), 4)
         # Phần tế bào dương của một bệnh nhân phải so với phần TẾ BÀO của chính họ:
         # bệnh nhân có 30% tế bào thì 30% tế bào dương là mức kỳ vọng, không phải dồn.
-        cell_share_top = float((adata.obs[pkey].astype(str) == top_pat).mean())
+        cell_share_top = float((pat == top_pat).mean())
         report["top1_patient_cell_share"] = round(cell_share_top, 4)
         report["concentration_ratio"] = (
             round(float(share.iloc[0]) / cell_share_top, 3) if cell_share_top > 0 else None
@@ -191,6 +215,12 @@ def main() -> None:
             "tín hiệu càng gắn với một bệnh nhân, và split theo bệnh nhân càng mất cân bằng. "
             "Ngưỡng quyết định đi/dừng đã đặt trước ở mục 7.3 của tài liệu phân tích."
         )
+        # Bổ sung, KHÔNG thay concentration_ratio: tỉ số đó tính cho mọi bệnh nhân, vì một
+        # bệnh nhân nhỏ có tỉ lệ dương rất cao không phải lúc nào cũng là người dồn nhiều nhất.
+        ratio_all = (per[poscol] / per[poscol].sum()) / (per.sum(axis=1) / per.values.sum())
+        report["concentration_ratio_per_patient"] = {
+            str(k): round(float(v), 3) for k, v in ratio_all.sort_values(ascending=False).items()
+        }
         n_pos_per_patient = per[poscol].sort_values(ascending=False)
         report["patients_with_ge20_positives"] = int((n_pos_per_patient >= 20).sum())
         report["positives_per_patient"] = {str(k): int(v) for k, v in n_pos_per_patient.items()}

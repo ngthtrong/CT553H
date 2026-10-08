@@ -12,6 +12,14 @@
 - **Đính chính trong ngày:** bản 06/10 viết "A và B đều đã qua cổng dữ liệu" — **sai với A**; A chỉ có holdout 10% trên cùng một microarray. Đã sửa ở mục 0, 2.6, 6, 7.2.
 - **Dùng được cho tuần 6:** kết quả âm này có số, trên dữ liệu công khai, và trả lời đúng câu "vấn đề tồn đọng là gì". Nói đúng cách: đây là lý do không chọn hướng 2, không phải một đóng góp đã hoàn thành.
 - **Còn dở:** PR #3 đã merge nhưng **chỉ chứa 2 commit đầu**; bốn commit sau nằm ở PR mới. Code chạy thật ở PR #4 (nhánh `claude/project-thread-l271f1`).
+## 07/10/2026 (khuya) — `tme-senescence-scrnaseq`: chạy SenMayo trên GSE103322 thật, trượt 1/4 ngưỡng và điểm đi theo loại tế bào
+
+- Sinh viên thêm domain NCBI vào danh sách cho phép; GEO trả 200. Đã tải **GSE103322** (HNSCC, Smart-seq2, 5.902 tế bào), chuyển sang h5ad bằng [convert_gse103322.py](../../ml/tme-senescence-scrnaseq/preprocessing/convert_gse103322.py), chấm SenMayo (117 gene, phủ 113). Kết quả và giả định: [README của preprocessing](../../ml/tme-senescence-scrnaseq/preprocessing/README.md).
+- **Bốn ngưỡng đặt trước:** 17 bệnh nhân (đạt), **7 bệnh nhân có ≥ 20 tế bào dương (trượt, cần ≥ 8)**, `concentration_ratio` 1,848 (đạt kèm trọng số), độ phủ 0,966 (đạt).
+- **Phát hiện quan trọng hơn bốn ngưỡng:** 70% tế bào dương là fibroblast, T/B cell bằng 0, nên chênh lệch giữa bệnh nhân chủ yếu là chênh lệch thành phần loại tế bào. Đặt lại ngưỡng trong từng loại: fibroblast chỉ 1 bệnh nhân có ≥ 20 tế bào dương, tế bào ung thư 3 bệnh nhân và `concentration_ratio` 3,35. Nhãn proxy từ điểm SenMayo trên dataset này về cơ bản là nhãn loại tế bào.
+- Mã bệnh nhân suy từ tên tế bào: ra 17, không phải 18 như GEO ghi; 109 tế bào ở plate trộn bị loại khỏi thống kê theo bệnh nhân.
+- Script được sửa thêm: `--skip-norm` cho dữ liệu đã log hóa, loại tế bào không rõ bệnh nhân, thống kê theo loại tế bào, `concentration_ratio_per_patient`. Thêm `within_celltype.py`.
+- **Còn dở:** chưa cập nhật mục 7 của [phân tích 4 hướng](deep-research/reports/advisor-4-directions-analysis.md) (thread phân tích sở hữu file đó). GSE131907 chưa tải.
 
 ---
 
@@ -22,25 +30,6 @@
 - **Cảnh báo phải mang theo:** danh sách lấy được có **117 gene, không phải 125** như bài gốc công bố; **chưa xác định được 8 gene chênh lệch** vì phụ lục là xlsx không lấy được. Không gọi file này là "SenMayo 125 gene" trong tài liệu gửi GVHD.
 - Đã thêm slug `tme-senescence-scrnaseq` vào [danh sách đề tài](../topics/README.md) ở trạng thái đang khảo sát, chỉ có code, chưa có tài liệu đề tài riêng.
 - **Còn dở:** chờ sinh viên chọn một trong hai đường — cho phép host GEO trong cài đặt môi trường cloud, hoặc tải trên máy của sinh viên. Script chạy được ngay khi có file.
-
----
-
-## 07/10/2026 (cuối ngày) — GVHD chấp nhận đầu vào ma trận biểu hiện
-
-- Sinh viên xác nhận: **GVHD chấp nhận đề tài có đầu vào là ma trận biểu hiện gene, không bắt buộc phải là chuỗi amino acid.** Đây là lời GVHD theo ghi nhận của sinh viên, không phải suy luận. Đã ghi vào [biên bản lần 1, mục 1](../meeting/session-01-minutes.md).
-- Hệ quả, đã cập nhật trong [phân tích 4 hướng](deep-research/reports/advisor-4-directions-analysis.md): **cổng "phải có trục chuỗi amino acid" bỏ.** Hướng 2 nhánh scRNA-seq được lợi nhiều nhất, chỉ còn rào chính là **nhãn proxy**. **Hướng 1 và 4 vẫn rụng vì các cổng khác**, độc lập với loại đầu vào: `tDamAge` không tra được nguồn nào và không có tập test độc lập cho "nguy cơ chuyển dạng ác tính"; phần "giải thích tự động" của hướng 4 không đo được.
-- Điều **không đổi**: tiêu chí 2 và 3 vẫn phải tự lập luận cho mọi hướng không dùng trình tự, vì thang đối chứng của T1 (đặc trưng thủ công → CNN → mCNN → ESM-2) không chuyển sang được. Câu hỏi tuần 6 vì vậy thu hẹp lại: **với đầu vào dạng bảng, thầy kỳ vọng tiêu chí 2 và 3 được chứng minh bằng gì?**
-- **Còn dở:** như mục trước — chưa tải dataset scRNA-seq khối u nào, chưa quyết định cách lấy nhãn cho hướng 2.
-
----
-
-## 07/10/2026 — kiểm DeepScence/SenCID/SenePy, đối chiếu hai luận văn cùng GVHD, chốt scRNA-seq
-
-- Sinh viên chốt: **nếu chọn hướng 2 thì dùng scRNA-seq**, không dùng ảnh hình thái nhân. Đã ghi vào [phân tích 4 hướng](deep-research/reports/advisor-4-directions-analysis.md) (mục 0, 2, 5).
-- **Đính chính quan trọng (mục 7.1):** lập luận "các công cụ senescence hiện có không gom nhóm theo bệnh nhân nên chỉ số bị lạm phát" — đề xuất đóng góp số 2 cho hướng 2 ở bản 06/10 — **đặt trên tiền đề sai**. DeepScence **không giám sát** (autoencoder ZINB + 39 gene CoreScence, **không có train/test split nào**, đánh giá bằng β-gal/IHC); SenePy là **chấm điểm theo chữ ký**, 72 chữ ký chuột + 64 chữ ký người từ mô lành, **không có dữ liệu khối u người**; SenCID có giám sát (SVM) nhưng huấn luyện trên **bulk RNA-seq in vitro** nên tập huấn luyện không có bệnh nhân nào. Khoảng trống thật hẹp hơn: chưa có mô hình có giám sát nào trên scRNA-seq khối u người với split theo bệnh nhân — **và lý do chưa có là senescence không có nhãn chuẩn vàng ở mức tế bào trong mô**, tức đúng rủi ro trung tâm của hướng 2.
-- Khoảng cách in vitro → in vivo **đã được công bố, không còn là khoảng trống để nhận**: DeepScence báo SenCID rớt xuống **AUROC ≤ 0,2 ở năm loại tế bào** trên dữ liệu in vivo. Dùng làm động cơ được, nhận làm đóng góp thì không.
-- **Đối chiếu hai luận văn cùng GVHD (mục 7.2),** từ [phân tích 05/10](thesis/thesis-comparison.md): mức thực tế của **tiêu chí 2** là một **thang đối chứng có kỷ luật** (T1: đặc trưng thủ công → CNN → mCNN → ESM-2 bốn cỡ, frozen vs fine-tune), không phải kiến trúc chưa ai dùng; mức thực tế của **tiêu chí 4** là **occlusion + hiển thị trên giao diện + đối chiếu 55 motif**, không SHAP — thấp hơn mức bản 06/10 đặt ra; **tiêu chí 5** linh hoạt (T1 FastAPI + Streamlit, T2 nền tảng đầy đủ, cả hai được chấp nhận). **Phát hiện bất lợi: cả hai luận văn đều là bài toán trên trình tự** — không có tiền lệ cùng GVHD với đầu vào là ma trận biểu hiện, nên điều này áp lên cả hướng 2 nhánh scRNA-seq vừa chốt, và ngược lại ứng viên A/B của khảo sát 02/10 rơi đúng khuôn T1.
-- **Còn dở:** chưa đọc được mô tả split trong methods của SenCID (Cell Metabolism 403, ScienceDirect chặn robots) và mục code/data availability của DeepScence (Cell Genomics 403). Chưa tải dataset scRNA-seq khối u nào. Việc mới thêm vào danh sách trước tuần 6: **quyết định cách lấy nhãn cho hướng 2 và nói thẳng nó là proxy**.
 
 ---
 
