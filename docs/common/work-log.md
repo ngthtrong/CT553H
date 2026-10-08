@@ -4,6 +4,16 @@
 
 ---
 
+## 08/10/2026 — khảo sát hướng có tính mới ở phần tin học
+
+- Sinh viên nhận xét A và B đều đặt tính mới ở bài toán sinh học; đã khảo sát các hướng mà đóng góp nằm ở phương pháp (nhanh hơn, rẻ hơn, chính xác hơn, đáng tin hơn). Kết quả: [compute-novelty-directions.md](deep-research/reports/compute-novelty-directions.md).
+- Bảy hướng C1–C7: nén PLM + CNN chạy CPU, LoRA, token cấu trúc 3Di (ProstT5/SaProt), conformal prediction, kinase zero-shot, đồng hồ methyl hóa trên ComputAgeBench, đáp ứng thuốc trên IMPROVE. Loại peptide kháng ung thư vì quá đông và trùng luận văn T1.
+- **Phát hiện:** bài RAG-msCNN của GVHD (2026) đã dùng ProstT5 làm baseline và ghi là không cải thiện đáng kể, nên hướng "đổi sang PLM có cấu trúc" yếu đi.
+- Gợi ý (chưa quyết): B làm bài toán, C1 nén mô hình làm đóng góp chính, C4 conformal làm phần phụ. Hugging Face và AlphaFold DB truy cập được từ cloud (08/10).
+- **Còn dở:** chưa đọc toàn văn bài nào, chưa đo thời gian CPU; các nhận định "chưa ai làm" đều ghi [chưa kiểm sâu].
+
+---
+
 ## 06/10/2026 — phân tích 4 hướng GVHD gợi ý (giao thoa cancer & aging)
 
 - GVHD đưa **4 hướng tiềm năng** (damage/aging clock + nguy cơ ung thư · phát hiện tế bào lão hóa trong TME · thiết kế tân kháng nguyên bằng generative PLM + RAG · RAG giải thích cơ chế đa tầng). Đã phân tích cả bốn theo đúng khung biên bản lần 1 (bài toán/lý do/phần sẽ giải quyết · history research ba bước · năm tiêu chí · cổng dữ liệu · khả thi 8–9 tuần): [advisor-4-directions-analysis.md](deep-research/reports/advisor-4-directions-analysis.md).
