@@ -4,13 +4,42 @@
 
 ---
 
-## 08/10/2026 — khảo sát hướng có tính mới ở phần tin học
+## 08/10/2026 — so sánh ứng viên B và A với hướng 2 trên cùng bộ tiêu chí
 
-- Sinh viên nhận xét A và B đều đặt tính mới ở bài toán sinh học; đã khảo sát các hướng mà đóng góp nằm ở phương pháp (nhanh hơn, rẻ hơn, chính xác hơn, đáng tin hơn). Kết quả: [compute-novelty-directions.md](deep-research/reports/compute-novelty-directions.md).
-- Bảy hướng C1–C7: nén PLM + CNN chạy CPU, LoRA, token cấu trúc 3Di (ProstT5/SaProt), conformal prediction, kinase zero-shot, đồng hồ methyl hóa trên ComputAgeBench, đáp ứng thuốc trên IMPROVE. Loại peptide kháng ung thư vì quá đông và trùng luận văn T1.
-- **Phát hiện:** bài RAG-msCNN của GVHD (2026) đã dùng ProstT5 làm baseline và ghi là không cải thiện đáng kể, nên hướng "đổi sang PLM có cấu trúc" yếu đi.
-- Gợi ý (chưa quyết): B làm bài toán, C1 nén mô hình làm đóng góp chính, C4 conformal làm phần phụ. Hugging Face và AlphaFold DB truy cập được từ cloud (08/10).
-- **Còn dở:** chưa đọc toàn văn bài nào, chưa đo thời gian CPU; các nhận định "chưa ai làm" đều ghi [chưa kiểm sâu].
+- Thêm [mục 7.6 vào tài liệu phân tích](deep-research/reports/advisor-4-directions-analysis.md): bảng chín trục so **B**, **A** và **hướng 2** (loại nhãn, tập test độc lập, đơn vị gom nhóm, yếu tố gây nhiễu đã đo, dùng lại thang T1, XAI, mức đông đúc, khớp sinh học GVHD, chi phí khởi động).
+- **Kết luận một dòng:** B và A thắng hướng 2 ở ba trục dữ liệu (nhãn thực nghiệm, tập test độc lập, nhiễu kiểm soát được) — đúng ba chỗ hướng 2 thất bại khi chạy số thật ở mục 7.5. Không phải vì chủ đề hay hơn.
+- **Cái giá khi bỏ hướng 2, ghi thẳng để nói ở tuần 6:** hướng 2 là ứng viên **duy nhất** nằm đúng giao thoa cancer ∩ aging mà GVHD khung ra; B lệch sang cancer/kinase, A lệch sang aging/sirtuin. Hướng 2 cũng có ý nghĩa dịch thuật rõ hơn, và là hướng do chính GVHD gợi ý — nên lý do bỏ phải là lý do có số (mục 7.5).
+- **Việc chọn B hay A vẫn chưa quyết được ở đây:** treo vào câu hỏi số 1 cho GVHD (thầy có coi split tự dựng cộng tập MS độc lập nguồn là test độc lập đủ chuẩn hay không). Nếu có thì A lên trước, vì khớp sinh học là trục duy nhất A thắng B rõ.
+- **Còn dở:** chưa khảo sát sâu ứng viên B để lên slide tuần 6 (bài cạnh tranh, chi tiết benchmark dbPTM, định nghĩa nhóm kinase). PR #5 đã merge; nhánh đặt lại từ main.
+
+---
+
+## 07/10/2026 (tối, muộn) — chạy SenMayo trên GSE103322: **dừng hướng 2**
+
+- Áp đúng [bốn ngưỡng đặt trước](deep-research/reports/advisor-4-directions-analysis.md) lên số thật của **GSE103322** (5.902 tế bào, 17 bệnh nhân): `n_patients` 17 **đạt**; `patients_with_ge20_positives` **7/8 KHÔNG đạt**; `concentration_ratio` 1,85 (dải phải cân mẫu); `signature_coverage` 0,97 **đạt**. Phải đạt cả bốn → **dừng hướng 2**. Không nới ngưỡng.
+- **Phát hiện nặng hơn, độc lập với ngưỡng:** điểm SenMayo chủ yếu theo **loại tế bào**, không theo senescence — **70% tế bào dương là fibroblast**, tế bào **T và B không có tế bào dương nào**. Chấm ngưỡng riêng theo loại tế bào thì fibroblast chỉ còn **1 bệnh nhân** có ≥20 dương, và tế bào ung thư có 3 bệnh nhân với `concentration_ratio = 3,35` (**vượt ngưỡng dừng 3,0**). Đây là lỗi SenSeqNet lặp lại ở mức loại tế bào thay vì mức họ protein. **GSE131907 không chạy** — dataset lớn hơn không sửa được chuyện này.
+- **Khuyến nghị mới: chuyển sang ứng viên B** (site phospho theo nhóm kinase) — ứng viên duy nhất có benchmark non-homologous do dbPTM công bố, và rơi đúng khuôn T1. A là lựa chọn hai, nhớ cổng mở về tập test độc lập.
+- **Đính chính trong ngày:** bản 06/10 viết "A và B đều đã qua cổng dữ liệu" — **sai với A**; A chỉ có holdout 10% trên cùng một microarray. Đã sửa ở mục 0, 2.6, 6, 7.2.
+- **Dùng được cho tuần 6:** kết quả âm này có số, trên dữ liệu công khai, và trả lời đúng câu "vấn đề tồn đọng là gì". Nói đúng cách: đây là lý do không chọn hướng 2, không phải một đóng góp đã hoàn thành.
+- **Còn dở:** PR #3 đã merge nhưng **chỉ chứa 2 commit đầu**; bốn commit sau nằm ở PR mới. Code chạy thật ở PR #4 (nhánh `claude/project-thread-l271f1`).
+## 07/10/2026 (khuya) — `tme-senescence-scrnaseq`: chạy SenMayo trên GSE103322 thật, trượt 1/4 ngưỡng và điểm đi theo loại tế bào
+
+- Sinh viên thêm domain NCBI vào danh sách cho phép; GEO trả 200. Đã tải **GSE103322** (HNSCC, Smart-seq2, 5.902 tế bào), chuyển sang h5ad bằng [convert_gse103322.py](../../ml/tme-senescence-scrnaseq/preprocessing/convert_gse103322.py), chấm SenMayo (117 gene, phủ 113). Kết quả và giả định: [README của preprocessing](../../ml/tme-senescence-scrnaseq/preprocessing/README.md).
+- **Bốn ngưỡng đặt trước:** 17 bệnh nhân (đạt), **7 bệnh nhân có ≥ 20 tế bào dương (trượt, cần ≥ 8)**, `concentration_ratio` 1,848 (đạt kèm trọng số), độ phủ 0,966 (đạt).
+- **Phát hiện quan trọng hơn bốn ngưỡng:** 70% tế bào dương là fibroblast, T/B cell bằng 0, nên chênh lệch giữa bệnh nhân chủ yếu là chênh lệch thành phần loại tế bào. Đặt lại ngưỡng trong từng loại: fibroblast chỉ 1 bệnh nhân có ≥ 20 tế bào dương, tế bào ung thư 3 bệnh nhân và `concentration_ratio` 3,35. Nhãn proxy từ điểm SenMayo trên dataset này về cơ bản là nhãn loại tế bào.
+- Mã bệnh nhân suy từ tên tế bào: ra 17, không phải 18 như GEO ghi; 109 tế bào ở plate trộn bị loại khỏi thống kê theo bệnh nhân.
+- Script được sửa thêm: `--skip-norm` cho dữ liệu đã log hóa, loại tế bào không rõ bệnh nhân, thống kê theo loại tế bào, `concentration_ratio_per_patient`. Thêm `within_celltype.py`.
+- **Còn dở:** chưa cập nhật mục 7 của [phân tích 4 hướng](deep-research/reports/advisor-4-directions-analysis.md) (thread phân tích sở hữu file đó). GSE131907 chưa tải.
+
+---
+
+## 07/10/2026 (tối) — thử tải scRNA-seq khối u để chấm SenMayo: bị chặn mạng, đã viết sẵn script
+
+- **Không tải được dataset nào.** Mạng của môi trường cloud chặn gần hết host dữ liệu, đã thử và ghi đúng mã trả về: `ftp.ncbi.nlm.nih.gov` (GEO), `zenodo.org`, `cellxgene`, `huggingface.co`, `figshare`, `cells.ucsc.edu`, `ha-dkfz.github.io` — **403 ở bước CONNECT**. Chỉ `raw.githubusercontent.com` và PyPI đi được. Đã ghi vào [resources.md](resources.md).
+- **Đã làm được phần không cần dataset:** cài scanpy 1.12.4; lấy danh sách gene SenMayo từ bộ chữ ký HA-DKFZ; viết [senmayo_score.py](../../ml/tme-senescence-scrnaseq/preprocessing/senmayo_score.py) đếm tế bào/bệnh nhân, chấm điểm SenMayo và báo **mức dồn tế bào dương theo bệnh nhân**; kiểm trên ma trận tổng hợp 3.000 tế bào (chạy đúng, `top1_patient_share_of_positives = 0,7667` khớp cấu trúc đã cấy). Đây là phép kiểm phần mềm, không phải kết quả sinh học.
+- **Cảnh báo phải mang theo:** danh sách lấy được có **117 gene, không phải 125** như bài gốc công bố; **chưa xác định được 8 gene chênh lệch** vì phụ lục là xlsx không lấy được. Không gọi file này là "SenMayo 125 gene" trong tài liệu gửi GVHD.
+- Đã thêm slug `tme-senescence-scrnaseq` vào [danh sách đề tài](../topics/README.md) ở trạng thái đang khảo sát, chỉ có code, chưa có tài liệu đề tài riêng.
+- **Còn dở:** chờ sinh viên chọn một trong hai đường — cho phép host GEO trong cài đặt môi trường cloud, hoặc tải trên máy của sinh viên. Script chạy được ngay khi có file.
 
 ---
 

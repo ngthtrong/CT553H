@@ -41,6 +41,9 @@ Artifact mới: đặt mã nguồn ngay trong repo (không để trong thư mụ
 | API LLM để sinh dữ liệu tổng hợp | Chưa chọn, chưa có key |
 | Ollama / LLM chạy cục bộ | Chưa cài; máy không có GPU |
 | Colab / Kaggle | Chưa dùng; chỉ đưa bản `*_anon.csv` lên |
+| **Mạng của môi trường cloud** | **Chặn gần hết host dữ liệu** (07/10/2026, đã thử và ghi mã trả về): `ftp.ncbi.nlm.nih.gov` (GEO), `zenodo.org`, `cellxgene`, `huggingface.co`, `figshare`, `cells.ucsc.edu`, `ha-dkfz.github.io` đều **403 ở bước CONNECT**. Đi được: `raw.githubusercontent.com` và PyPI. Chi tiết và hệ quả: [ml/tme-senescence-scrnaseq/preprocessing/README.md](../../ml/tme-senescence-scrnaseq/preprocessing/README.md) |
+| **Mạng của môi trường cloud** | Từ 07/10/2026 (khuya), sau khi sinh viên thêm Allowed domains: `ftp.ncbi.nlm.nih.gov` và `www.ncbi.nlm.nih.gov` trả 200. Trước đó mọi host dữ liệu (GEO, `zenodo.org`, `cellxgene`, `huggingface.co`, `figshare`, `cells.ucsc.edu`) đều 403 ở bước CONNECT. Host khác ngoài NCBI chưa kiểm lại. Thread đang chạy không nhận cấu hình mạng mới, phải mở thread mới |
+| **Dữ liệu GSE103322 (HNSCC scRNA-seq)** | `data/tme-senescence-scrnaseq/raw/` (txt.gz 90 MB) và `processed/GSE103322.h5ad`. Cách tạo lại: lệnh trong [ml/tme-senescence-scrnaseq/preprocessing/README.md](../../ml/tme-senescence-scrnaseq/preprocessing/README.md), mục "Chạy lại" |
 | Notion (kết nối từ 29/09/2026; trong Claude Code cần bật server `plugin:design:notion`) | Trang gốc **Ý tưởng luận văn**: https://app.notion.com/p/3ec486d98ebc80fd9ecceaf626d5a3e6 — chứa 4 trang con, xem bảng đối chiếu bên dưới. Trang đang dùng là **Đề tài chốt: Dự đoán vị trí gắn ATP ở RTK có cảnh báo miền áp dụng**. Sửa nội dung trên Notion thì file trong repo không tự cập nhật, và ngược lại |
 
 ### Bản nội dung chờ nhập Notion
