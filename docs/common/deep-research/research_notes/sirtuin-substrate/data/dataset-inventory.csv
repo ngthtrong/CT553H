@@ -1,0 +1,8 @@
+dataset,rows,proteins,note
+Rauh2013 SuppData1 (peptide array),6802,2937,"7 isoforms x 4 cols, in vitro"
+Ridgeway2025 SuppData15 (binary labels),6801,2999,label = efficiency>=1
+ML-Hybrid All_Sirts_Feature_Y_labels.csv,6801,2999,"same labels, shuffled row order"
+Ridgeway2025 SuppData14 (SIRT2 in-cell HCT116),149,123,positive-only; OE<0 & KD>0 for all 149
+Ridgeway2025 SuppData13 (predictions),145461,2737,7 scores + 7 binary preds
+Sol2012 TableS1 (mouse MEF Sirt3 KO),1566,846,"all quantified sites, 2 SILAC replicates"
+Sol2012 TableS2 (human U2OS SIRT3 KD/OE),3174,1498,"all quantified sites, single ratio"
