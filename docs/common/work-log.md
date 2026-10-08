@@ -4,6 +4,14 @@
 
 ---
 
+## 07/10/2026 (tối, muộn) — chạy SenMayo trên GSE103322: **dừng hướng 2**
+
+- Áp đúng [bốn ngưỡng đặt trước](deep-research/reports/advisor-4-directions-analysis.md) lên số thật của **GSE103322** (5.902 tế bào, 17 bệnh nhân): `n_patients` 17 **đạt**; `patients_with_ge20_positives` **7/8 KHÔNG đạt**; `concentration_ratio` 1,85 (dải phải cân mẫu); `signature_coverage` 0,97 **đạt**. Phải đạt cả bốn → **dừng hướng 2**. Không nới ngưỡng.
+- **Phát hiện nặng hơn, độc lập với ngưỡng:** điểm SenMayo chủ yếu theo **loại tế bào**, không theo senescence — **70% tế bào dương là fibroblast**, tế bào **T và B không có tế bào dương nào**. Chấm ngưỡng riêng theo loại tế bào thì fibroblast chỉ còn **1 bệnh nhân** có ≥20 dương, và tế bào ung thư có 3 bệnh nhân với `concentration_ratio = 3,35` (**vượt ngưỡng dừng 3,0**). Đây là lỗi SenSeqNet lặp lại ở mức loại tế bào thay vì mức họ protein. **GSE131907 không chạy** — dataset lớn hơn không sửa được chuyện này.
+- **Khuyến nghị mới: chuyển sang ứng viên B** (site phospho theo nhóm kinase) — ứng viên duy nhất có benchmark non-homologous do dbPTM công bố, và rơi đúng khuôn T1. A là lựa chọn hai, nhớ cổng mở về tập test độc lập.
+- **Đính chính trong ngày:** bản 06/10 viết "A và B đều đã qua cổng dữ liệu" — **sai với A**; A chỉ có holdout 10% trên cùng một microarray. Đã sửa ở mục 0, 2.6, 6, 7.2.
+- **Dùng được cho tuần 6:** kết quả âm này có số, trên dữ liệu công khai, và trả lời đúng câu "vấn đề tồn đọng là gì". Nói đúng cách: đây là lý do không chọn hướng 2, không phải một đóng góp đã hoàn thành.
+- **Còn dở:** PR #3 đã merge nhưng **chỉ chứa 2 commit đầu**; bốn commit sau nằm ở PR mới. Code chạy thật ở PR #4 (nhánh `claude/project-thread-l271f1`).
 ## 07/10/2026 (khuya) — `tme-senescence-scrnaseq`: chạy SenMayo trên GSE103322 thật, trượt 1/4 ngưỡng và điểm đi theo loại tế bào
 
 - Sinh viên thêm domain NCBI vào danh sách cho phép; GEO trả 200. Đã tải **GSE103322** (HNSCC, Smart-seq2, 5.902 tế bào), chuyển sang h5ad bằng [convert_gse103322.py](../../ml/tme-senescence-scrnaseq/preprocessing/convert_gse103322.py), chấm SenMayo (117 gene, phủ 113). Kết quả và giả định: [README của preprocessing](../../ml/tme-senescence-scrnaseq/preprocessing/README.md).

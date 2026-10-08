@@ -12,6 +12,8 @@
 
 **Định hướng của sinh viên sau buổi gặp (cập nhật 02/10/2026): đề tài RTK–ATP gần như chắc chắn sẽ được thay thế; hai hướng aging và cancer đang được khảo sát song song để so sánh, chưa chọn hướng nào.** Việc “chốt đề tài” trong các tài liệu trước buổi gặp chỉ phản ánh lựa chọn ở thời điểm chuẩn bị. Đây là định hướng của sinh viên, phân biệt với góp ý của GVHD ở trên. Chi tiết ở mục 6.
 
+**Bổ sung 07/10/2026 — loại dữ liệu đầu vào:** theo sinh viên xác nhận, **GVHD chấp nhận một đề tài có đầu vào là ma trận biểu hiện gene, không bắt buộc phải là chuỗi amino acid.** Đây là lời GVHD theo ghi nhận của sinh viên, không phải suy luận từ danh mục công bố. Hệ quả: các hướng có đầu vào dạng bảng/vector (scRNA-seq, omics) **không bị loại vì loại dữ liệu**; nhưng ghi chép **không xác định** GVHD kỳ vọng gì về tiêu chí 2 và 3 trong trường hợp đó — hai luận văn thầy đã hướng dẫn đều là bài toán trên trình tự (xem [phân tích hai luận văn](../common/thesis/thesis-comparison.md)), nên **thang đóng góp cho đầu vào không phải trình tự vẫn là phần sinh viên phải tự lập luận**.
+
 ## 2. Yêu cầu về cách trình bày và động cơ nghiên cứu
 
 Phần trình bày cần rõ ràng, thể hiện sinh viên hiểu bài toán và giúp người nghe nắm được:
