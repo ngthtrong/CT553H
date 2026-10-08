@@ -523,6 +523,20 @@ Việc chặn số 1 ở §11.2 đã xong, sinh viên cung cấp PDF bbz107. Chi
 
 **Một phép đo mới mở ra, rẻ và mạnh:** 288 vị trí curate của Deep-PLA là nhãn dương **độc lập với mảng Rauh** và được xác nhận trên protein nguyên. Đối chiếu chúng với nhãn mảng cho **phép đo chuyển miền thứ hai**, độc lập với phép đo Sol 2012 ở §4. Đây giờ là việc ưu tiên cao nhất, thay cho thứ tự cũ ở §11.2.
 
+## 14. Phụ lục bổ sung 08/10/2026 — tự tính MCC cho các mô hình sirtuin của Deep-PLA
+
+Việc được giao là lấy 288 vị trí curate của Deep-PLA để làm phép đo chuyển miền thứ hai. Chi tiết: [08-deep-pla-per-isoform-mcc.md](../research_notes/sirtuin-substrate/08-deep-pla-per-isoform-mcc.md).
+
+**Phần không làm được:** danh sách 288 vị trí nằm trong Supplementary của bbz107 và **Oxford University Press trả 403** cho mọi đường dẫn thử từ môi trường cloud; web server của Deep-PLA không có trang tải dữ liệu; PLMD (CSDL nguồn của họ) nay chỉ còn thư mục rỗng; iPTMnet 503; dbPTM 403 `[tự kiểm]`. Sinh viên cần tải Supplementary bằng quyền truy cập đã dùng để lấy PDF. Đến lúc đó, phép đo này vẫn `[chưa kiểm]`.
+
+**Đổi lại, được một thứ không có trong bài báo.** Trang `help.php` của web server công bố số nhãn dương, nhãn âm và Sp/Sn/Pr ở ba ngưỡng **cho từng enzyme**, cả cross-validation lẫn test `[tác giả báo cáo]` — bài chỉ báo AUC cho SIRT1 và họ HDAC gộp. Từ (P, N, Sn, Sp) dựng lại được ma trận nhầm lẫn và **tính được MCC**, chỉ số Deep-PLA không báo ở đâu cả.
+
+Cross-validation (người), ngưỡng High, MCC tự tính: **SIRT1 0,403 · SIRT2 0,219 · SIRT3 0,049 · SIRT6 0,321 · SIRT7 −0,016 · HDAC gộp họ 0,557**. SIRT3 có độ nhạy chỉ **7,7%**; SIRT7 **tệ hơn ngẫu nhiên** ở ngưỡng đó. Bảng đầy đủ ba ngưỡng và tập test: [data/deep-pla-sirtuin-mcc-derived.csv](../research_notes/sirtuin-substrate/data/deep-pla-sirtuin-mcc-derived.csv).
+
+**Hai hệ quả, cả hai đều ủng hộ thiết kế đã đề xuất.** Thứ nhất, **mô hình gộp họ HDAC (0,557) tốt hơn mọi mô hình tách theo isoform**, kể cả SIRT1 — ở cỡ dữ liệu 10–185 vị trí, tách theo isoform làm hại nhiều hơn làm lợi, tức Deep-PLA vô tình cung cấp bằng chứng cho bậc B8 (một mô hình đa nhãn chia sẻ biểu diễn thay bảy mô hình rời) ở §5. Thứ hai, nó cho thấy vì sao Sn/Sp/Pr che mất vấn đề: SIRT3 có Sp 0,964 và Pr 0,340 trông tạm được, nhưng MCC 0,049 nói rằng mô hình gần như không phân biệt được gì.
+
+**Phản biện với chính phép tính này:** MCC suy từ số đã làm tròn 4 chữ số nên chỉ nên đọc hai chữ số; P/N trên web server lệch 1 so với Table 1 cho SIRT1 (185 vs 184) và EP300, và lệch nhiều hơn cho dòng "HDACs" (147 vs 94) — chưa giải thích được `[chưa kiểm]`; tỉ lệ dương nền là tạo tác của cách họ dựng tập âm nên MCC này **so được giữa các enzyme trong cùng bài nhưng không so được với bài khác**, đúng lý do benchmark phải chạy lại mọi thứ trên cùng giao thức; và ở tập test SIRT6 chỉ có **2** vị trí dương, SIRT7 **4**, nên đừng dẫn MCC 0,409 và 0,521 như bằng chứng.
+
 ## Kết luận
 
 Điều đã đổi trong hiểu biết về đề tài này không phải là "nó khó hơn tưởng" — mà là **câu hỏi nghiên cứu đã bị trả lời một phần, bởi chính dữ liệu, trước khi ai kịp huấn luyện mô hình nào.** Nhãn mảng peptide in vitro, khi đem đối chiếu với acetylome trong tế bào ở quy mô 1.417 vị trí, cho MCC gần bằng không. Đó không phải một chướng ngại cần vượt qua bằng kiến trúc tốt hơn; nó là **một dữ kiện về bản chất của nguồn nhãn**, và nó phù hợp đến mức đáng chú ý với ba thứ khác: việc Rauh tự nói các isoform không so được với nhau, việc Weinert đo được stoichiometry trung vị 0,05% và kết luận sirtuin "sửa chữa" hơn là "điều hòa", và việc chính mảng peptide bỏ sót 61% các vị trí phụ thuộc SIRT2 mà nó **có** đo. Bốn bằng chứng độc lập cùng chỉ về một hướng: cửa sổ 13 amino acid không chứa đủ thông tin để trả lời câu hỏi sinh học mà đề tài đặt ra.

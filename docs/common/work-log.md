@@ -4,6 +4,18 @@
 
 ---
 
+## 08/10/2026 (tối, muộn) — tự tính MCC cho mô hình sirtuin của Deep-PLA; **288 vị trí bị OUP chặn**
+
+- Ghi chú: [08-deep-pla-per-isoform-mcc.md](deep-research/research_notes/sirtuin-substrate/08-deep-pla-per-isoform-mcc.md); bảng số: [deep-pla-sirtuin-mcc-derived.csv](deep-research/research_notes/sirtuin-substrate/data/deep-pla-sirtuin-mcc-derived.csv); mục 14 của [báo cáo khảo sát sâu](deep-research/reports/sirtuin-substrate-deep-research.md).
+- **Không làm được phần được giao:** danh sách 288 vị trí curate nằm trong Supplementary bbz107, **OUP trả 403** cho mọi đường dẫn thử; web server Deep-PLA không có trang tải dữ liệu; PLMD giờ chỉ còn thư mục rỗng; iPTMnet 503; dbPTM 403. **Việc của sinh viên:** tải Supplementary bbz107 bằng quyền đã dùng để lấy PDF.
+- **Đổi lại được thứ không có trong bài:** `help.php` của web server công bố P, N và Sp/Sn/Pr ba ngưỡng **cho từng enzyme** (bài chỉ báo AUC cho SIRT1 và HDAC gộp). Từ (P, N, Sn, Sp) dựng lại ma trận nhầm lẫn và **tính được MCC**, chỉ số họ không báo ở đâu.
+- **MCC tự tính, cross-validation người, ngưỡng High:** SIRT1 **0,403**, SIRT2 **0,219**, SIRT3 **0,049** (độ nhạy chỉ 7,7%), SIRT6 0,321, SIRT7 **−0,016** (tệ hơn ngẫu nhiên), HDAC gộp họ **0,557**.
+- **Hai hệ quả ủng hộ thiết kế đã đề xuất:** (1) mô hình **gộp họ tốt hơn mọi mô hình tách theo isoform**, kể cả SIRT1 → ở cỡ 10–185 vị trí, tách theo isoform làm hại nhiều hơn làm lợi, tức bằng chứng cho bậc B8 (một mô hình đa nhãn chia sẻ biểu diễn); (2) Sn/Sp/Pr che mất vấn đề — SIRT3 có Sp 0,964 và Pr 0,340 trông tạm được nhưng MCC 0,049.
+- **Phản biện với chính phép tính:** MCC suy từ số làm tròn 4 chữ số, chỉ đọc hai chữ số; P/N trên web lệch 1 so với Table 1 cho SIRT1 (185 vs 184) và EP300, lệch nhiều hơn cho dòng "HDACs" (147 vs 94), chưa giải thích được; tỉ lệ dương nền là tạo tác của cách dựng tập âm nên MCC này **không so được với bài khác**; tập test SIRT6 chỉ 2 dương và SIRT7 4 dương nên không dẫn MCC của chúng làm bằng chứng.
+- **Còn dở:** phép đo 288 vị trí vs nhãn mảng Rauh (chờ file); DeepSIRT và ASEB chưa đọc toàn văn.
+
+---
+
 ## 08/10/2026 (tối) — đọc Deep-PLA: **9 HDAC của nó gồm SIRT1, 2, 3, 6, 7** → trục tính mới sinh học hết
 
 - Sinh viên cung cấp PDF bbz107, đã đọc toàn văn. Ghi chú: [07-deep-pla-hdac-coverage.md](deep-research/research_notes/sirtuin-substrate/07-deep-pla-hdac-coverage.md); mục 13 của [báo cáo khảo sát sâu](deep-research/reports/sirtuin-substrate-deep-research.md).
