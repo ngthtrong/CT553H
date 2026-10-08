@@ -509,6 +509,20 @@ Sau khi báo cáo này được viết, sinh viên hỏi thẳng: **bài toán 7
 
 **Hệ quả cho phán quyết:** không đổi hướng, nhưng củng cố việc thu hẹp xuống **SIRT1/2/3**, và đổi vai của SIRT4–7 từ "bỏ đi" thành **một phân tích giới hạn của nhãn có số liệu đỡ** — bảng lượng enzyme vs nhãn dương là nội dung của phần đó.
 
+## 13. Phụ lục bổ sung 08/10/2026 — đã đọc Deep-PLA: 9 HDAC của nó gồm SIRT1, 2, 3, 6, 7
+
+Việc chặn số 1 ở §11.2 đã xong, sinh viên cung cấp PDF bbz107. Chi tiết: [07-deep-pla-hdac-coverage.md](../research_notes/sirtuin-substrate/07-deep-pla-hdac-coverage.md).
+
+**Câu trả lời là xấu.** Web server chính thức ghi nguyên văn rằng Deep-PLA phủ "deacetylases (HDACs) including **HDAC1, HDAC2, HDAC3, HDAC6, SIRT1, SIRT2, SIRT3, SIRT6, and SIRT7**" `[tác giả báo cáo]` (`http://deeppla.cancerbio.info`). Vậy 9 HDAC = 4 HDAC cổ điển + **5 sirtuin**, thiếu đúng SIRT4 và SIRT5. Và năm isoform đó bao gồm cả **SIRT1, SIRT2, SIRT3** — ba isoform duy nhất mà §12 kết luận là còn khả thi. **Chồng lấn nằm trọn ở phần đáng làm.** Thêm nữa, chính bbz107 dẫn rằng ASEB đã được bổ sung "class I HDAC and **SIRT7** substrate predictive functions" từ trước đó.
+
+**Hệ quả: trục tính mới sinh học (§3, trục 1) coi như hết.** Dự đoán vị trí deacetyl hóa đặc hiệu isoform sirtuin ở mức residue đã tồn tại từ 2020. Mọi câu có chữ "đầu tiên" về mặt sinh học sẽ bị bắt lỗi, và Deep-PLA ở *Briefings in Bioinformatics* là tạp chí GVHD chắc chắn biết.
+
+**Chỗ còn khác biệt, và nó thật:** Table 1 của bbz107 cho thấy dữ liệu của họ **rất nhỏ và khác loại** — năm sirtuin cộng lại chỉ **288 vị trí trên 134 protein** (SIRT1 184, SIRT2 52, SIRT3 30, SIRT6 10, SIRT7 12), text-mining từ PubMed, tức là **cơ chất đã được báo cáo trong tài liệu**. Mảng Rauh có 6.801 vị trí × 7 isoform, hoạt tính peptide in vitro có hệ thống. Hai bộ nhãn đo hai thứ khác nhau. Họ cũng **không báo MCC, không báo AUPRC** (chỉ Sn/Sp/Pr/AUC), **không có chỉ số riêng cho SIRT2/3/6/7**, và dữ liệu nhỏ tới mức "only 5-fold cross-validations were carried out for … SIRT3, SIRT6, SIRT7" `[tác giả báo cáo]`. Phải ghi nhận một điểm họ làm tốt: tập kiểm tra của họ là **vị trí trên protein phi-người**, nên có kiểm soát độc lập thật.
+
+**Phán quyết THU HẸP không đổi, nhưng khung phải đổi hẳn.** Đóng góp giữ lại không phải một bộ dự đoán mới mà là **phép đo xem các bộ dự đoán đã công bố có đúng trong tế bào hay không**. Trước §13, phép đo đó có **một** đối tượng; bây giờ có **ba** — Deep-PLA 2020, DeepSIRT 2021, Ridgeway 2025, ba loại nhãn huấn luyện khác nhau, không bài nào báo MCC/AUPRC, không bài nào đo trên acetylome KO/KD có nhãn âm. Đề tài vì vậy nên trở thành **một benchmark chuyển miền**, dạng việc mà cộng đồng kinase đã làm (benchmarKIN 2025) nhưng cộng đồng sirtuin thì chưa `[chưa tìm thấy, không kết luận là chưa từng có]`.
+
+**Một phép đo mới mở ra, rẻ và mạnh:** 288 vị trí curate của Deep-PLA là nhãn dương **độc lập với mảng Rauh** và được xác nhận trên protein nguyên. Đối chiếu chúng với nhãn mảng cho **phép đo chuyển miền thứ hai**, độc lập với phép đo Sol 2012 ở §4. Đây giờ là việc ưu tiên cao nhất, thay cho thứ tự cũ ở §11.2.
+
 ## Kết luận
 
 Điều đã đổi trong hiểu biết về đề tài này không phải là "nó khó hơn tưởng" — mà là **câu hỏi nghiên cứu đã bị trả lời một phần, bởi chính dữ liệu, trước khi ai kịp huấn luyện mô hình nào.** Nhãn mảng peptide in vitro, khi đem đối chiếu với acetylome trong tế bào ở quy mô 1.417 vị trí, cho MCC gần bằng không. Đó không phải một chướng ngại cần vượt qua bằng kiến trúc tốt hơn; nó là **một dữ kiện về bản chất của nguồn nhãn**, và nó phù hợp đến mức đáng chú ý với ba thứ khác: việc Rauh tự nói các isoform không so được với nhau, việc Weinert đo được stoichiometry trung vị 0,05% và kết luận sirtuin "sửa chữa" hơn là "điều hòa", và việc chính mảng peptide bỏ sót 61% các vị trí phụ thuộc SIRT2 mà nó **có** đo. Bốn bằng chứng độc lập cùng chỉ về một hướng: cửa sổ 13 amino acid không chứa đủ thông tin để trả lời câu hỏi sinh học mà đề tài đặt ra.

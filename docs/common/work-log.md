@@ -4,6 +4,20 @@
 
 ---
 
+## 08/10/2026 (tối) — đọc Deep-PLA: **9 HDAC của nó gồm SIRT1, 2, 3, 6, 7** → trục tính mới sinh học hết
+
+- Sinh viên cung cấp PDF bbz107, đã đọc toàn văn. Ghi chú: [07-deep-pla-hdac-coverage.md](deep-research/research_notes/sirtuin-substrate/07-deep-pla-hdac-coverage.md); mục 13 của [báo cáo khảo sát sâu](deep-research/reports/sirtuin-substrate-deep-research.md).
+- **Web server chính thức ghi nguyên văn:** Deep-PLA phủ "HDAC1, HDAC2, HDAC3, HDAC6, **SIRT1, SIRT2, SIRT3, SIRT6, and SIRT7**". Vậy 9 HDAC = 4 HDAC cổ điển + 5 sirtuin, thiếu đúng SIRT4 và SIRT5 — tức nó bỏ đúng hai isoform mà sinh học nói không nên làm, và phủ trọn SIRT1/2/3 là ba isoform duy nhất còn khả thi. Chồng lấn nằm trọn ở phần đáng làm.
+- Chính bbz107 còn dẫn rằng **ASEB** đã có "class I HDAC and SIRT7 substrate predictive functions" từ trước. Nên dự đoán cơ chất đặc hiệu SIRT7 có tiền lệ còn sớm hơn 2020.
+- **Hệ quả:** "dự đoán vị trí deacetyl hóa đặc hiệu isoform sirtuin ở mức residue" đã tồn tại từ 2020. Bỏ mọi câu có chữ "đầu tiên" về mặt sinh học. Bảng tiền lệ giờ có bốn dòng: ASEB (~2012, SIRT7), Deep-PLA (2020, residue, 5 isoform), DeepSIRT (2021, protein, 7 isoform), Ridgeway (2025, residue, 7 isoform).
+- **Chỗ còn khác biệt và nó thật:** Table 1 của bbz107 — năm sirtuin cộng lại chỉ **288 vị trí trên 134 protein** (SIRT1 184, SIRT2 52, SIRT3 30, SIRT6 10, SIRT7 12), nhãn **text-mining từ PubMed** tức cơ chất đã được báo cáo, khác hẳn 6.801 vị trí hoạt tính peptide in vitro của mảng Rauh. Họ **không báo MCC, không báo AUPRC**, không có chỉ số riêng cho SIRT2/3/6/7, và dữ liệu nhỏ tới mức chỉ chạy nổi 5-fold cho SIRT3/6/7. Điểm họ làm tốt, phải ghi nhận: tập kiểm tra là protein **phi-người**, có kiểm soát độc lập thật.
+- **Khung đề tài phải đổi:** từ "bộ dự đoán đặc hiệu isoform" thành **benchmark chuyển miền cho ba bộ dự đoán đã công bố** (Deep-PLA 2020, DeepSIRT 2021, Ridgeway 2025) trên một tập đánh giá trong tế bào có nhãn âm, với MCC/AUPRC và kiểm soát rò rỉ theo protein và đồng dạng. Phán quyết THU HẸP không đổi, nhưng lý lẽ bán đề tài đổi hẳn.
+- **Việc ưu tiên cao nhất bây giờ (thay thứ tự cũ):** lấy 288 vị trí curate của Deep-PLA và đối chiếu với nhãn mảng Rauh — đó là **phép đo chuyển miền thứ hai, độc lập** với phép đo Sol 2012, và mạnh hơn vì 288 vị trí đó được xác nhận trên protein nguyên.
+- Một chi tiết dùng được: Deep-PLA đo và thấy AUC không đổi đáng kể khi cửa sổ vượt **±12 residue** (Figure S3) — căn cứ có nguồn cho việc chọn cửa sổ 13-mer thay vì chọn tùy ý.
+- **Còn dở:** chưa lấy được danh sách 288 vị trí; chưa đọc DeepSIRT và ASEB toàn văn.
+
+---
+
 ## 08/10/2026 (chiều, muộn) — đo xong cổng G3: lượng enzyme giải thích phần lớn chênh lệch giữa 7 isoform
 
 - Sinh viên hỏi bài toán 7 isoform có còn khả thi không. Đã tải Supplementary Data 5 và 6 của Rauh qua `media.springernature.com` và đo trực tiếp. Ghi chú: [06-seven-isoform-feasibility.md](deep-research/research_notes/sirtuin-substrate/06-seven-isoform-feasibility.md); bảng số: [rauh2013-enzyme-amount-vs-positives.csv](deep-research/research_notes/sirtuin-substrate/data/rauh2013-enzyme-amount-vs-positives.csv); mục 12 của [báo cáo khảo sát sâu](deep-research/reports/sirtuin-substrate-deep-research.md).
