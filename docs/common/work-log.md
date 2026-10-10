@@ -4,6 +4,15 @@
 
 ---
 
+## 11/10/2026 — tiếp tục phiên Claude: hoàn thiện giao diện `degron-e3-specificity`
+
+- Hoàn thiện [presentation.html](../topics/degron-e3-specificity/01-idea/presentation.html): hoạt ảnh trên sơ đồ, ô số liệu có nguồn audit, biểu đồ pooling có bảng và giới hạn phép thử, minh họa tương tác peptide/protein, sáng/tối, dừng chuyển động, cuộn hình trên điện thoại và chế độ in.
+- Phân biệt hình minh họa với số đo; làm rõ bất biến hoán vị chỉ áp dụng kênh nội cnn2w1, không khái quát sang kênh C-term của PAP.
+- Kiểm tra Chromium desktop/điện thoại, sáng/tối, giảm chuyển động, ngoại tuyến/tắt JavaScript, nút tương tác và liên kết nội bộ đều đạt; có kiểm tra ảnh chụp. Chi tiết: [presentation-validation.md](../topics/degron-e3-specificity/01-idea/presentation-validation.md).
+- Không thêm thí nghiệm ML. Ba cổng nghiên cứu trong [quyết định đề tài](../topics/degron-e3-specificity/01-idea/topic-decision.md) vẫn còn; lần này hoàn tất phần trình bày còn dở.
+
+---
+
 ## 10/10/2026 (muộn) — **chốt khuyến nghị đề tài chính: dark kinome trên DARKIN**; bốn lập luận bán đề tài bị gỡ bỏ
 
 - **Hai thông tin sinh viên cung cấp, thu hẹp cuộc so sánh về hai ứng viên:** (1) **GVHD không chấp nhận kết quả âm làm đóng góp chính** (sinh viên đánh giá, chưa phải lời thầy) → loại hướng sirtuin in-vitro khỏi vị trí đề tài chính, vì phán quyết THU HẸP của nó chính là một kết quả âm; (2) **có GPU ổn định hơn Colab miễn phí** → mở lại fine-tuning/LoRA.

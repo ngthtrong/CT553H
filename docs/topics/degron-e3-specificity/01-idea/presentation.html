@@ -286,10 +286,51 @@
   }
   footer p { max-width: 66ch; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-  :where(a, button):focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+  :where(a, button, select, input, .figure-frame):focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
+  /* Điều khiển và minh họa hoạt động hoàn toàn trong file HTML. */
+  .reader-tools[hidden] { display: none; }
+  .reader-tools { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem; padding-block: .8rem; }
+  button, select { font: inherit; font-size: .8rem; color: var(--fg); background: var(--surface);
+    border: 1px solid var(--border-strong); border-radius: 6px; padding: .5rem .7rem; }
+  button { cursor: pointer; }
+  button:hover { border-color: var(--accent); }
+  .reader-tools label { font-size: .8rem; color: var(--fg-muted); }
+  .reader-tools .hint { font-size: .75rem; color: var(--fg-muted); }
+  :root[data-motion="paused"] svg * { animation-play-state: paused !important; }
+  .figure-frame { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); }
+  .figure-frame svg { min-width: 640px; border: 0; border-radius: 0; }
+  .figure-note { display: block; margin-bottom: .45rem; font-family: var(--font-mono); font-size: .68rem; color: var(--accent); }
+  .gate-demo { padding: 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }
+  .gate-demo fieldset { display: flex; flex-wrap: wrap; gap: .75rem; padding: .8rem; border: 1px solid var(--border); border-radius: 6px; }
+  .gate-demo legend, .gate-demo label { font-size: .86rem; }
+  .gate-demo input { accent-color: var(--accent); }
+  .gate-demo input[type="range"] { width: min(100%, 18rem); vertical-align: middle; }
+  .gate-track { height: 14px; background: var(--surface-2); border-radius: 7px; margin: .7rem 0; overflow: hidden; }
+  .gate-track span { display: block; height: 100%; width: 35%; background: var(--accent); }
+  .gate-demo output { font-family: var(--font-mono); font-weight: 500; }
+  .gate-demo p { margin-top: .7rem; font-size: .86rem; }
+  .skip { position: absolute; left: 1rem; top: -5rem; z-index: 100; background: var(--surface); padding: .5rem; }
+  .skip:focus { top: .5rem; }
+  @media print {
+    :root, :root[data-theme="dark"], :root:not([data-theme="light"]) { --bg: #fff; --surface: #fff; --surface-2: #f1f3f5; --fg: #141A22;
+      --fg-muted: #56616E; --border: #D8DFE7; --border-strong: #B7C2CE; --accent: #1A5C85;
+      --accent-soft: #E2EDF4; --ok: #0E6F66; --ok-bg: #DCF0ED; --warn: #8B3521;
+      --warn-bg: #F7E4DF; --new: #6B3B8C; --new-bg: #EFE4F5; color-scheme: light; }
+    .viz, :root[data-theme="dark"] .viz, :root:not([data-theme="light"]) .viz { --s1: #2a78d6; --s2: #eb6834; }
+    nav, .reader-tools, .skip { display: none; }
+    svg * { animation: none !important; }
+    .figure-frame, .scroller { overflow: visible; }
+    .figure-frame svg, table { min-width: 0; }
+    figure, .tiles, .gate-demo { break-inside: avoid; }
+    .wrap { padding: 0; }
+    body { font-size: 11pt; }
+  }
+
 </style>
 </head>
 <body>
+<a class="skip" href="#gt">Bỏ qua mục lục, đọc nội dung</a>
 <div class="wrap">
 
 <nav aria-label="Mục lục">
@@ -303,17 +344,29 @@
     <li><a href="#tk">7 · Tài liệu tham khảo</a></li>
   </ol>
 </nav>
+<div class="reader-tools" hidden>
+  <label for="theme-choice">Giao diện</label>
+  <select id="theme-choice"><option value="auto">Theo hệ thống</option><option value="light">Sáng</option><option value="dark">Tối</option></select>
+  <button id="motion-toggle" type="button" aria-pressed="false">Tạm dừng hoạt ảnh</button>
+  <span class="hint">Sơ đồ nhỏ: vuốt ngang để đọc · hoạt ảnh tôn trọng cài đặt giảm chuyển động</span>
+</div>
 
 <header class="mast">
   <div class="kicker">Luận văn CT553H · Trình bày đề tài · 11/10/2026</div>
   <h1>Dự đoán đặc hiệu E3–degron ở mức residue</h1>
-  <p class="sub">Tế bào quyết định phá hủy protein nào dựa trên những đoạn trình tự ngắn gọi là degron. Hai sàng lọc đã đo hơn 680.000 đoạn, nhưng mọi mô hình hiện có chỉ đọc được <em>thành phần</em> acid amin, không đọc được <em>vị trí</em>.</p>
+  <p class="sub">Tế bào quyết định phá hủy protein nào dựa trên những đoạn trình tự ngắn gọi là degron. Hai sàng lọc đã đo hơn 680.000 đoạn, nhưng kênh nội của PAP mặc định, đã được audit, gộp theo <em>thành phần</em> acid amin và mất thông tin <em>thứ tự</em>.</p>
   <div class="mast-meta">
     <span>Sinh viên: <b>Nguyễn Thế Trọng</b></span>
     <span>GVHD: <b>TS. Hồ Quang Thái</b></span>
     <span>Slug: <b>degron-e3-specificity</b></span>
   </div>
 </header>
+
+<div class="tiles" aria-label="Ba số liệu nền từ audit hiện có">
+  <div class="tile"><span class="v">212.658</span><span class="k">Đoạn peptide bào tương</span><p class="d">Bản đồ 2026 · <a href="../../../common/deep-research/research_notes/degron/degron-audit.json">bảng đếm audit</a></p></div>
+  <div class="tile"><span class="v">475.507</span><span class="k">Đoạn mỗi sheet GPS</span><p class="d">Sàng lọc 2023 · <a href="../../../common/deep-research/research_notes/degron/README.md">ghi chú kiểm dữ liệu</a></p></div>
+  <div class="tile"><span class="v">428</span><span class="k">Gene holdout hiệu dụng</span><p class="d">Tập kiểm tra sau đối chiếu · <a href="../../../common/deep-research/research_notes/degron/holdout-audit.json">kết quả audit</a></p></div>
+</div>
 
 <!-- ======================= 1 ======================= -->
 <section id="gt">
@@ -337,6 +390,7 @@
 </div>
 
 <figure>
+<div class="figure-frame" tabindex="0" role="region" aria-label="Hình minh họa; có thể cuộn ngang trên màn hình nhỏ">
 <svg viewBox="0 0 800 150" role="img" aria-label="Chuỗi bốn bước: protein chứa degron, E3 ligase nhận ra degron, protein bị gắn chuỗi ubiquitin, proteasome phân hủy protein.">
   <defs>
     <marker id="aA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -372,12 +426,14 @@
   <rect class="sv-box" x="640" y="40" width="148" height="64" rx="8"/>
   <text class="sv-lbl" x="714" y="77" text-anchor="middle">Proteasome</text>
 
+  <g class="a-ub" aria-hidden="true"><circle class="sv-hi" cx="104" cy="28" r="5"/><text class="sv-hil" x="115" y="32">Ub</text></g>
   <text class="sv-sm" x="104" y="126" text-anchor="middle">Protein có degron</text>
   <text class="sv-sm" x="300" y="126" text-anchor="middle">Nhận ra degron</text>
   <text class="sv-sm" x="496" y="126" text-anchor="middle">Bị gắn chuỗi Ub</text>
   <text class="sv-sm" x="714" y="126" text-anchor="middle">Bị phân hủy</text>
 </svg>
-<figcaption><strong>Degron là bước quyết định của cả chuỗi.</strong> Mọi bước sau đều phụ thuộc việc E3 có nhận ra đoạn trình tự được tô đậm hay không. Vì vậy câu hỏi "E3 nào nhận ra đoạn nào" chính là câu hỏi quyết định thời gian sống của protein — và đó là câu hỏi đề tài này nhắm vào.</figcaption>
+</div>
+<figcaption><span class="figure-note">SƠ ĐỒ MINH HỌA · không phải ảnh thực nghiệm</span><strong>Degron là bước quyết định của cả chuỗi.</strong> Mọi bước sau đều phụ thuộc việc E3 có nhận ra đoạn trình tự được tô đậm hay không. Vì vậy câu hỏi "E3 nào nhận ra đoạn nào" chính là câu hỏi quyết định thời gian sống của protein — và đó là câu hỏi đề tài này nhắm vào.</figcaption>
 </figure>
 
 <p>Cách đo degron ở quy mô lớn: cắt proteome người thành hàng trăm nghìn đoạn peptide ngắn, gắn mỗi đoạn vào một protein phát sáng (GFP), rồi đo độ sáng còn lại bằng máy phân loại tế bào. Đoạn nào làm GFP bị phá hủy thì đoạn đó chứa degron. Đây là nguồn gốc của hai bộ dữ liệu ở mục 4.</p>
@@ -399,6 +455,7 @@
 </div>
 
 <figure>
+<div class="figure-frame" tabindex="0" role="region" aria-label="Hình minh họa; có thể cuộn ngang trên màn hình nhỏ">
 <svg viewBox="0 0 740 320" role="img" aria-label="So sánh hai đường đi trong cùng một mô hình: peptide gốc và peptide đã đảo thứ tự residue. Vì phép tích chập dùng cửa sổ bằng 1 và sau đó lấy trung bình trên mọi vị trí, hai đầu vào cho ra cùng một điểm.">
   <defs>
     <marker id="aB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -467,14 +524,15 @@
   <line class="sv-ln" x1="320" y1="218" x2="320" y2="244" marker-end="url(#aB)"/>
   <line class="sv-ln" x1="610" y1="218" x2="610" y2="244" marker-end="url(#aB)"/>
 
-  <rect class="sv-box" x="270" y="250" width="100" height="32" rx="5" style="stroke:var(--accent);stroke-width:2"/>
-  <text class="sv-lbl" x="320" y="271" text-anchor="middle">0,7213</text>
-  <rect class="sv-box" x="560" y="250" width="100" height="32" rx="5" style="stroke:var(--accent);stroke-width:2"/>
-  <text class="sv-lbl" x="610" y="271" text-anchor="middle">0,7213</text>
+  <rect class="sv-box a-twin" x="270" y="250" width="100" height="32" rx="5" style="stroke:var(--accent);stroke-width:2"/>
+  <text class="sv-lbl" x="320" y="271" text-anchor="middle">Cùng điểm</text>
+  <rect class="sv-box a-twin" x="560" y="250" width="100" height="32" rx="5" style="stroke:var(--accent);stroke-width:2"/>
+  <text class="sv-lbl" x="610" y="271" text-anchor="middle">Cùng điểm</text>
 
   <text class="sv-hil" x="370" y="306" text-anchor="middle">Hai điểm trùng nhau — Pearson(gốc, đảo) = 1,000000</text>
 </svg>
-<figcaption><strong>Vì sao mô hình tốt nhất hiện có không thể thấy motif.</strong> Phép tích chập dùng cửa sổ bằng 1, nên mỗi residue được biến đổi độc lập, không nhìn láng giềng. Sau đó bước lấy trung bình trên mọi vị trí xóa hoàn toàn thông tin thứ tự. Kết quả là một phép toán <em>bất biến với hoán vị</em>: đảo thứ tự residue thì điểm không đổi. Em đã kiểm bằng cách đảo ngẫu nhiên thứ tự trong từng tile của tập kiểm tra — sai số lớn nhất là 4,8 × 10⁻⁷, tức nhiễu dấu phẩy động. <span class="tag t-m">TỰ ĐO</span></figcaption>
+</div>
+<figcaption><span class="figure-note">SƠ ĐỒ MINH HỌA · không phải ảnh thực nghiệm</span><strong>Vì sao kênh nội cnn2w1 mất thứ tự residue.</strong> Phép tích chập dùng cửa sổ bằng 1, nên mỗi residue được biến đổi độc lập, không nhìn láng giềng. Sau đó bước lấy trung bình trên mọi vị trí xóa hoàn toàn thông tin thứ tự. Kết quả là một phép toán <em>bất biến với hoán vị</em>: đảo thứ tự residue thì điểm không đổi. Phép kiểm chỉ áp dụng cho kênh nội; kênh C-term đọc vị trí ở 5 residue cuối. Em đã kiểm bằng cách đảo ngẫu nhiên thứ tự trong từng tile của tập kiểm tra — sai số lớn nhất là 4,8 × 10⁻⁷, tức nhiễu dấu phẩy động. <span class="tag t-m">TỰ ĐO</span></figcaption>
 </figure>
 
 <p>Đây là một nghịch lý phải giải: sinh học của degron <strong>là chuyện motif</strong> — E3 nhận ra một mẫu trình tự ở một vị trí cụ thể — nhưng thang điểm mà cả lĩnh vực đang tối ưu <strong>không cần biết vị trí</strong>. Vậy phần đặc hiệu E3, phần quyết định <em>E3 nào</em> ra tay, hiện <strong>chưa có mô hình nào</strong> làm, dù nhãn thực nghiệm cho nó đã tồn tại từ 2023.</p>
@@ -654,6 +712,7 @@
 <p>Kiến trúc đề xuất, tên làm việc <strong>CMIL-E3</strong> (học đa thể hiện có điều kiện E3 với cổng phơi lộ). Điểm quan trọng: <strong>mỗi thành phần được suy ra từ một phép đo</strong>, không phải ghép từ từ khóa thời thượng.</p>
 
 <figure>
+<div class="figure-frame" tabindex="0" role="region" aria-label="Hình minh họa; có thể cuộn ngang trên màn hình nhỏ">
 <svg viewBox="0 0 720 230" role="img" aria-label="So sánh degron bị chôn trong protein gấp cuộn, nơi E3 không tiếp cận được, với degron phơi lộ trên chuỗi đã bung ra, nơi E3 bám được.">
   <defs>
     <marker id="aC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -671,6 +730,7 @@
   <text class="sv-hil" x="120" y="186" text-anchor="middle">degron nằm bên trong</text>
   <text class="sv-sm" x="120" y="203" text-anchor="middle">rASA thấp</text>
 
+  <g class="a-knock">
   <rect class="sv-box" x="228" y="96" width="56" height="36" rx="6"/>
   <text class="sv-lbl" x="256" y="119" text-anchor="middle">E3</text>
   <line class="sv-ln" x1="226" y1="114" x2="184" y2="114" marker-end="url(#aC)"/>
@@ -679,6 +739,7 @@
   <text class="sv-sm" x="256" y="152" text-anchor="middle">không tiếp cận</text>
   <text class="sv-sm" x="256" y="168" text-anchor="middle">→ protein tồn tại</text>
 
+  </g>
   <!-- mui chuyen trang thai -->
   <path class="sv-ln" d="M 176 62 Q 280 40 392 58" marker-end="url(#aC)"/>
   <text class="sv-sm" x="284" y="38" text-anchor="middle">gấp cuộn sai hoặc bung ra</text>
@@ -686,15 +747,28 @@
   <!-- phai: chuoi bung ra -->
   <polyline class="sv-ln" points="400,124 430,106 460,124 490,106 520,124 550,106 580,124 610,106 640,124 670,106 700,124"/>
   <polyline points="520,124 550,106 580,124" fill="none" style="stroke:var(--accent);stroke-width:4"/>
+  <g class="a-bind">
   <rect class="sv-box" x="522" y="150" width="56" height="34" rx="6"/>
   <text class="sv-lbl" x="550" y="172" text-anchor="middle">E3</text>
   <line class="sv-ln" x1="550" y1="148" x2="550" y2="126" marker-end="url(#aC)"/>
-  <text class="sv-hil" x="550" y="202" text-anchor="middle">rASA &gt; 0,7 → E3 bám được → phân hủy</text>
+  </g>
+  <text class="sv-hil" x="550" y="202" text-anchor="middle">Phơi lộ giúp E3 tiếp cận degron</text>
 </svg>
-<figcaption><strong>Cơ sở sinh học của cổng phơi lộ.</strong> Phần lớn degron mạnh nằm ở vùng <em>có cấu trúc và bị chôn</em> bên trong protein, nên chúng chỉ hoạt động khi protein gấp cuộn sai hoặc bung ra. Chính tác giả bài 2026 đã đo được điểm degron trên peptide tách rời chỉ tương quan với lượng protein thật <strong>ở vùng phơi lộ cao (rASA &gt; 0,7)</strong> — nhưng họ dùng thông tin cấu trúc để <em>phân tích sau</em>, không đưa vào mô hình. Thành phần 5 của kiến trúc đưa nó vào trong.</figcaption>
+</div>
+<figcaption><span class="figure-note">SƠ ĐỒ MINH HỌA · không phải ảnh thực nghiệm</span><strong>Cơ sở sinh học của cổng phơi lộ.</strong> Phần lớn degron mạnh nằm ở vùng <em>có cấu trúc và bị chôn</em> bên trong protein, nên chúng chỉ hoạt động khi protein gấp cuộn sai hoặc bung ra. Chính tác giả bài 2026 đã đo được điểm degron trên peptide tách rời chỉ tương quan với lượng protein thật <strong>ở vùng phơi lộ cao (rASA &gt; 0,7)</strong> — nhưng họ dùng thông tin cấu trúc để <em>phân tích sau</em>, không đưa vào mô hình. Thành phần 5 của kiến trúc đưa nó vào trong.</figcaption>
 </figure>
 
+<div class="gate-demo" id="gate-demo" hidden>
+  <h4 style="margin-top:0">Thử đổi bối cảnh của cùng một degron <span class="tag t-new">MINH HỌA</span></h4>
+  <fieldset><legend>Bối cảnh quan sát</legend><label><input type="radio" name="context" value="protein" checked> Protein nguyên vẹn</label><label><input type="radio" name="context" value="peptide"> Peptide tách rời</label></fieldset>
+  <p><label for="exposure">Độ phơi lộ giả định (rASA): </label><input id="exposure" type="range" min="0" max="100" value="35" step="1"> <output id="exposure-value" for="exposure">0,35</output></p>
+  <div class="gate-track" aria-hidden="true"><span id="gate-fill"></span></div>
+  <p id="gate-status" role="status">Protein nguyên vẹn: dùng độ phơi lộ giả định 0,35.</p>
+  <p style="margin-bottom:0">Thanh chỉ biểu diễn độ mở giả định, <strong>không phải xác suất nhận biết E3</strong>. Chế độ peptide mở cổng hoàn toàn. Công thức dùng rASA/pLDDT và khả năng chuyển sang protein nguyên vẹn vẫn cần kiểm chứng; minh họa này không chạy mô hình.</p>
+</div>
+
 <figure>
+<div class="figure-frame" tabindex="0" role="region" aria-label="Hình minh họa; có thể cuộn ngang trên màn hình nhỏ">
 <svg viewBox="0 0 750 290" role="img" aria-label="Một tín hiệu khu trú ở một vị trí bị pha loãng khi lấy trung bình trên mọi vị trí, nhưng được giữ lại khi dùng gộp attention có cổng, đồng thời cho ra bản đồ khu trú.">
   <defs>
     <marker id="aD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -718,8 +792,8 @@
     <rect x="470" y="108" width="9" height="12"/><rect x="483" y="111" width="9" height="9"/>
     <rect x="496" y="113" width="9" height="7"/><rect x="509" y="109" width="9" height="11"/>
   </g>
-  <rect class="sv-hi" x="366" y="52" width="9" height="68"/>
-  <rect class="sv-hi" x="379" y="74" width="9" height="46"/>
+  <rect class="sv-hi a-att" x="366" y="52" width="9" height="68"/>
+  <rect class="sv-hi a-att" x="379" y="74" width="9" height="46"/>
   <line class="sv-ln" x1="200" y1="120" x2="528" y2="120"/>
   <text class="sv-hil" x="372" y="44" text-anchor="middle">motif</text>
 
@@ -738,7 +812,8 @@
 
   <text class="sv-sm" x="375" y="276" text-anchor="middle">→ bản đồ khu trú đối chiếu được với 219 footprint đột biến bão hòa</text>
 </svg>
-<figcaption><strong>Lý do thay phép gộp — và giới hạn của lý do này.</strong> Nếu tín hiệu nhận biết E3 thực sự khu trú ở một motif ngắn, thì lấy trung bình trên 30 vị trí sẽ pha loãng nó, còn attention giữ được và cho thêm bản đồ khu trú miễn phí. <strong>Nhưng phải nói kèm:</strong> em đã đo trên <em>thang điểm khối</em> và thấy tín hiệu ở đó <em>dàn đều</em>, không khu trú — thay gộp trung bình bằng gộp max làm hiệu năng sụt từ 0,824 xuống 0,344. <span class="tag t-m">TỰ ĐO</span> Nên sơ đồ này là cơ sở thiết kế cho <strong>nhiệm vụ đặc hiệu E3</strong>, không phải cho thang điểm khối.</figcaption>
+</div>
+<figcaption><span class="figure-note">SƠ ĐỒ MINH HỌA · không phải ảnh thực nghiệm</span><strong>Lý do thay phép gộp — và giới hạn của lý do này.</strong> Nếu tín hiệu nhận biết E3 thực sự khu trú ở một motif ngắn, thì lấy trung bình trên 30 vị trí sẽ pha loãng nó, còn attention giữ được và cho thêm bản đồ khu trú miễn phí. <strong>Nhưng phải nói kèm:</strong> em đã đo trên <em>thang điểm khối</em> và thấy tín hiệu ở đó <em>dàn đều</em>, không khu trú — thay gộp trung bình bằng gộp max làm hiệu năng sụt từ 0,824 xuống 0,344. <span class="tag t-m">TỰ ĐO</span> Nên sơ đồ này là cơ sở thiết kế cho <strong>nhiệm vụ đặc hiệu E3</strong>, không phải cho thang điểm khối.</figcaption>
 </figure>
 
 <div class="scroller">
@@ -781,6 +856,7 @@
 </div>
 
 <figure>
+<div class="figure-frame" tabindex="0" role="region" aria-label="Hình minh họa; có thể cuộn ngang trên màn hình nhỏ">
 <svg viewBox="0 0 820 470" role="img" aria-label="Luồng dữ liệu của kiến trúc CMIL-E3: peptide và trình tự miền E3 đi qua ESM-2 thành embedding mức residue và vector E3; peptide được cắt thành các cửa sổ ứng viên; bộ dò motif được điều biến theo vector E3; thông tin phơi lộ cấu trúc làm cổng cho phép gộp attention; cuối cùng ra hai đầu ra là điểm khối và đặc hiệu E3 kèm bản đồ khu trú.">
   <defs>
     <marker id="aE" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -827,7 +903,7 @@
   <text class="sv-lbl" x="185" y="297" text-anchor="middle">Bộ dò motif, điều kiện theo E3</text>
 
   <line class="sv-ln" x1="185" y1="312" x2="185" y2="334" marker-end="url(#aE)"/>
-  <polyline points="680,62 680,352 358,352" fill="none" style="stroke:var(--accent);stroke-width:2" marker-end="url(#aEa)"/>
+  <polyline class="a-spine" points="680,62 680,352 358,352" fill="none" style="stroke:var(--accent);stroke-width:2" marker-end="url(#aEa)"/>
   <text class="sv-hil" x="520" y="344" text-anchor="middle">⑤ cổng phơi lộ: nhân vào logit attention</text>
   <rect class="sv-box" x="20" y="340" width="330" height="38" rx="6" style="stroke:var(--accent);stroke-width:2"/>
   <text class="sv-lbl" x="185" y="364" text-anchor="middle">④ Gộp attention có cổng</text>
@@ -842,7 +918,8 @@
   <text class="sv-sm" x="410" y="445" text-anchor="middle">+ bản đồ khu trú theo residue</text>
   <text class="sv-sm" x="590" y="436">← mục tiêu thật</text>
 </svg>
-<figcaption><strong>Luồng dữ liệu của CMIL-E3.</strong> Số khoanh tròn khớp với sáu thành phần ở bảng trên. Hai điểm đáng chú ý: vector E3 <em>không</em> nối thẳng vào đầu ra mà <strong>điều biến bộ dò motif</strong>, nên cùng một bộ dò phục vụ mọi E3 và có thể khái quát sang E3 mới qua trình tự của nó; và thông tin cấu trúc <em>không</em> đi vào đầu vào mà <strong>vào thẳng bước gộp</strong> — đây là chỗ cho phép đổi giữa chế độ peptide tách rời (đặt cổng mở hoàn toàn) và chế độ protein nguyên vẹn (đặt rASA thật) mà không đổi mô hình.</figcaption>
+</div>
+<figcaption><span class="figure-note">SƠ ĐỒ MINH HỌA · không phải ảnh thực nghiệm</span><strong>Luồng dữ liệu của CMIL-E3.</strong> Số khoanh tròn khớp với sáu thành phần ở bảng trên. Hai điểm đáng chú ý: vector E3 <em>không</em> nối thẳng vào đầu ra mà <strong>điều biến bộ dò motif</strong>, nên cùng một bộ dò phục vụ mọi E3 và có thể khái quát sang E3 mới qua trình tự của nó; và thông tin cấu trúc <em>không</em> đi vào đầu vào mà <strong>vào thẳng bước gộp</strong> — đây là chỗ cho phép đổi giữa chế độ peptide tách rời (đặt cổng mở hoàn toàn) và chế độ protein nguyên vẹn (đặt rASA thật) mà không đổi mô hình.</figcaption>
 </figure>
 
 <div class="box new">
@@ -850,6 +927,25 @@
   <p><strong>Cổng phơi lộ đặt ở chỗ gộp, không phải ở đầu vào.</strong> Điều này cho một tính chất mà em chưa thấy ai dùng: khi dự đoán trên <em>peptide tách rời</em> (bối cảnh của cả hai sàng lọc) thì đặt cổng bằng "phơi lộ hoàn toàn"; khi dự đoán trên <em>protein nguyên vẹn</em> thì đặt cổng bằng rASA thật. <strong>Cùng một mô hình giải thích được cả hai chế độ chỉ bằng cách đổi cổng</strong> — tức khoảng cách giữa "đo trên peptide" và "dùng trên protein" trở thành một tham số của mô hình thay vì một giới hạn.</p>
   <p style="margin-bottom:0"><strong>Attention đa thể hiện có điều kiện E3 cho degron.</strong> Các mô hình em đã đọc mã đều gộp theo thành phần hoặc trung bình: PAP dùng <code>GlobalAveragePooling1D</code>; ba mô hình GLM là tổng hệ số theo acid amin; Zhang dùng SVM 20 đặc trưng; Degpred dùng BERT cộng BiLSTM. <strong>Không cái nào dùng attention đa thể hiện.</strong></p>
 </div>
+
+<figure class="viz" id="pooling-chart">
+<div class="figure-frame" tabindex="0" role="region" aria-label="Hình minh họa; có thể cuộn ngang trên màn hình nhỏ">
+<svg viewBox="0 0 740 210" role="img" aria-labelledby="pool-title pool-desc">
+  <title id="pool-title">Thay phép gộp trên cùng trọng số kênh nội cnn2w1</title>
+  <desc id="pool-desc">Pearson: gộp trung bình 0,8239; gộp max 0,3443. Trục từ 0 đến 1. Chưa huấn luyện lại cho max pooling.</desc>
+  <text class="cat" x="190" y="24">Pearson với nhãn thang điểm khối · trục đầy đủ 0–1</text>
+  <path class="grid" d="M190 36V158 M290 36V158 M390 36V158 M490 36V158 M590 36V158 M690 36V158"/>
+  <g role="list" aria-label="Hai cấu hình gộp">
+    <g role="listitem"><title>Trung bình: 0,8239</title><text class="cat" x="174" y="73" text-anchor="end">Trung bình</text><rect class="bar1" x="190" y="50" width="411.95" height="34" rx="3"/><text class="dl" x="612" y="73">0,8239</text></g>
+    <g role="listitem"><title>Max: 0,3443</title><text class="cat" x="174" y="133" text-anchor="end">Max</text><rect class="bar2" x="190" y="110" width="172.15" height="34" rx="3"/><text class="dl" x="373" y="133">0,3443</text></g>
+  </g>
+  <path class="axis" d="M190 158H690"/>
+  <g class="tk" text-anchor="middle"><text x="190" y="181">0</text><text x="290" y="181">0,2</text><text x="390" y="181">0,4</text><text x="490" y="181">0,6</text><text x="590" y="181">0,8</text><text x="690" y="181">1,0</text></g>
+</svg>
+</div>
+<figcaption><span class="tag t-m">AUDIT ĐÃ CÓ</span> Nguồn: <a href="../../../common/deep-research/research_notes/degron/pool-test.json">pool-test.json</a>, script <a href="../../../common/deep-research/research_notes/degron/pool_test.py">pool_test.py</a>. Dùng cùng trọng số đã học với gộp trung bình; phép đổi này <strong>chưa chứng minh một kiến trúc max hoặc attention huấn luyện lại sẽ kém hơn</strong>.</figcaption>
+<details class="tblview"><summary>Xem số liệu dạng bảng</summary><div class="scroller"><table><caption>Số liệu audit kênh nội cnn2w1, chưa huấn luyện lại.</caption><thead><tr><th>Phép gộp</th><th class="num">Pearson</th></tr></thead><tbody><tr><td>Trung bình</td><td class="num">0,8239</td></tr><tr><td>Max</td><td class="num">0,3443</td></tr></tbody></table></div></details>
+</figure>
 
 <h3>3.3 Cách đánh giá — và một điều phải nói trước</h3>
 
@@ -1137,10 +1233,49 @@
 
 <footer>
   <p><strong>Trạng thái.</strong> Đề tài chốt ngày 11/10/2026. Chưa huấn luyện mô hình, chưa xây website. Đã tự tải và đếm cả ba bộ dữ liệu, và đã tái lập mô hình công bố của tác giả bằng numpy, khớp cả hai con số của họ. Mọi số có nhãn <span class="tag t-m">TỰ ĐO</span> đều có script tái tạo trong <code>docs/common/deep-research/research_notes/degron/</code>.</p>
-  <p>Báo cáo kiểm chứng chi tiết, gồm toàn bộ phép đo và danh sách những điều còn chưa kiểm: <code>docs/common/deep-research/reports/degron-topic-report/index.html</code>.</p>
+  <p>Báo cáo kiểm chứng chi tiết, gồm toàn bộ phép đo và danh sách những điều còn chưa kiểm: <a href="../../../common/deep-research/reports/degron-topic-report/index.html">mở báo cáo kiểm chứng chi tiết</a>.</p>
   <p style="margin-bottom:0"><strong>Nguồn chính.</strong> Voutsinos và cộng sự, <em>Science Advances</em> 02/2026 · Larsen, Voutsinos và cộng sự, bioRxiv 05/2025 · Zhang và cộng sự, <em>Molecular Cell</em> 2023, GEO GSE240610 · Koren và cộng sự, <em>Cell</em> 2018 · Tokheim và cộng sự, <em>Molecular Cell</em> 2021 · Szulc và cộng sự, <em>Nucleic Acids Research</em> 2024 · Hou và cộng sự, <em>BMC Biology</em> 2022 · MaveDB (CC0).</p>
 </footer>
 
 </div>
+<script>
+(() => {
+  const root = document.documentElement;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const motion = document.getElementById('motion-toggle');
+  let paused = reduced.matches;
+  const showMotion = () => {
+    root.dataset.motion = paused ? 'paused' : 'playing';
+    motion.setAttribute('aria-pressed', String(paused));
+    motion.textContent = paused ? 'Bật hoạt ảnh' : 'Tạm dừng hoạt ảnh';
+    motion.disabled = reduced.matches;
+    if (reduced.matches) motion.textContent = 'Đã giảm chuyển động theo hệ thống';
+  };
+  showMotion();
+  motion.addEventListener('click', () => { paused = !paused; showMotion(); });
+  reduced.addEventListener('change', () => { paused = reduced.matches; showMotion(); });
+  document.querySelector('.reader-tools').hidden = false;
+  document.getElementById('theme-choice').addEventListener('change', event => {
+    if (event.target.value === 'auto') delete root.dataset.theme;
+    else root.dataset.theme = event.target.value;
+  });
+  const exposure = document.getElementById('exposure');
+  const format = n => (n / 100).toFixed(2).replace('.', ',');
+  const updateGate = () => {
+    const peptide = document.querySelector('input[name="context"]:checked').value === 'peptide';
+    const openness = peptide ? 100 : Number(exposure.value);
+    exposure.disabled = peptide;
+    document.getElementById('exposure-value').value = format(Number(exposure.value));
+    document.getElementById('gate-fill').style.width = openness + '%';
+    document.getElementById('gate-status').textContent = peptide
+      ? 'Peptide tách rời: cổng minh họa mở hoàn toàn (1,00).'
+      : 'Protein nguyên vẹn: dùng độ phơi lộ giả định ' + format(openness) + '.';
+  };
+  exposure.addEventListener('input', updateGate);
+  document.querySelectorAll('input[name="context"]').forEach(input => input.addEventListener('change', updateGate));
+  updateGate();
+  document.getElementById('gate-demo').hidden = false;
+})();
+</script>
 </body>
 </html>
