@@ -4,6 +4,18 @@
 
 ---
 
+## 10/10/2026 — tải được Supplementary bbz107 và **đo xong phép chuyển nhãn thứ hai**: mảng Rauh không giàu dương tính trên 289 vị trí curated
+
+- Ghi chú: [09-deep-pla-sites-vs-array.md](deep-research/research_notes/sirtuin-substrate/09-deep-pla-sites-vs-array.md); dữ liệu: [deeppla-curated-sites-vs-rauh-labels.csv](deep-research/research_notes/sirtuin-substrate/data/deeppla-curated-sites-vs-rauh-labels.csv); mục 15 của [báo cáo khảo sát sâu](deep-research/reports/sirtuin-substrate-deep-research.md).
+- **Điểm nghẽn hôm 08/10 đã giải tỏa, không cần tải thủ công.** `academic.oup.com` vẫn 403 với curl, nhưng `WebFetch` đọc được trang bài báo; gọi với `offset: 100000` nó trả về **URL CloudFront đã ký**, và curl với URL đã ký trả 200. Lấy được `table_s1.xlsx`, `table_s4.xlsx`, `table_s5.xlsx`. URL không ký trả `MissingKey`; chữ ký có hạn nên phải lặp lại khi cần tải lại.
+- **Table S1** 1.666 dòng; lọc sirtuin + người cho **289 vị trí** (SIRT1 185, SIRT2 52, SIRT3 30, SIRT7 12, SIRT6 10) — khớp chính xác cột P trên `help.php`, nên chênh ±1 với Table 1 bài in là lỗi bài in.
+- **Kết quả đo:** chỉ **103/289 (35,6%)** vị trí curated có mặt trên mảng Rauh; trên 103 đó mảng gọi dương tính đúng isoform **16 lần (15,5%)**, kỳ vọng 13,7 → độ giàu **1,17×, p = 0,291** (binomial chính xác). Không isoform nào đạt p < 0,05. Dương tính cho ít nhất một isoform 85/103 = 82,5% so với nền 83,7% → **0,986×**, tức tập cơ chất đã được y văn xác nhận không khác một mẫu ngẫu nhiên của mảng.
+- **Ý nghĩa:** xác nhận **độc lập thứ hai** cho kết luận trung tâm (nhãn in-vitro gần như không chuyển được vào tế bào), mạnh hơn phép đo Sol 2012 vì dương tính ở đây xác nhận trên protein cuộn gấp, không suy ra từ fold-change, và không cần giả định ngưỡng. Đây là phần trả lời mạnh nhất cho câu "Deep-PLA đã làm rồi".
+- **Giới hạn phải nói kèm:** 103/289 nên phép kiểm chỉ nói về phần giao (bị giới hạn bởi cách Rauh chọn peptide 2013); SIRT7 n=2 và SIRT6 n=9 quá nhỏ; khớp theo 13-mer trung tâm có thể bắt paralog, bản khớp nghiêm ngặt chưa làm; tập 289 không có âm tính nên chỉ tính được độ giàu, không tính được MCC.
+- **Còn dở:** chưa đọc `table_s4.xlsx` (1,6 MB, dự đoán toàn PLMD) và `table_s5.xlsx`; chưa đọc toàn văn DeepSIRT và ASEB; chưa sửa 7 khẳng định trong `topic-final-recommendation.md`; chưa làm bảng làm giàu residue theo vị trí để quyết định có làm phần XAI hay không.
+
+---
+
 ## 08/10/2026 (tối, muộn) — tự tính MCC cho mô hình sirtuin của Deep-PLA; **288 vị trí bị OUP chặn**
 
 - Ghi chú: [08-deep-pla-per-isoform-mcc.md](deep-research/research_notes/sirtuin-substrate/08-deep-pla-per-isoform-mcc.md); bảng số: [deep-pla-sirtuin-mcc-derived.csv](deep-research/research_notes/sirtuin-substrate/data/deep-pla-sirtuin-mcc-derived.csv); mục 14 của [báo cáo khảo sát sâu](deep-research/reports/sirtuin-substrate-deep-research.md).

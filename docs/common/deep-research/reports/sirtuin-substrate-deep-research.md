@@ -537,6 +537,31 @@ Cross-validation (người), ngưỡng High, MCC tự tính: **SIRT1 0,403 · SI
 
 **Phản biện với chính phép tính này:** MCC suy từ số đã làm tròn 4 chữ số nên chỉ nên đọc hai chữ số; P/N trên web server lệch 1 so với Table 1 cho SIRT1 (185 vs 184) và EP300, và lệch nhiều hơn cho dòng "HDACs" (147 vs 94) — chưa giải thích được `[chưa kiểm]`; tỉ lệ dương nền là tạo tác của cách họ dựng tập âm nên MCC này **so được giữa các enzyme trong cùng bài nhưng không so được với bài khác**, đúng lý do benchmark phải chạy lại mọi thứ trên cùng giao thức; và ở tập test SIRT6 chỉ có **2** vị trí dương, SIRT7 **4**, nên đừng dẫn MCC 0,409 và 0,521 như bằng chứng.
 
+## 15. Phụ lục — Phép đo chuyển nhãn thứ hai: 289 vị trí curated của Deep-PLA (10/10/2026)
+
+Ghi chú đầy đủ: [research_notes/sirtuin-substrate/09-deep-pla-sites-vs-array.md](../research_notes/sirtuin-substrate/09-deep-pla-sites-vs-array.md) · dữ liệu: `research_notes/sirtuin-substrate/data/deeppla-curated-sites-vs-rauh-labels.csv`.
+
+**Điểm nghẽn ở §14 đã được giải tỏa trong phiên này, không cần sinh viên tải thủ công.** `academic.oup.com` trả 403 với curl, nhưng `WebFetch` đọc được trang bài báo, và khi gọi với `offset: 100000` nó trả về URL CloudFront **đã ký**; curl với URL đã ký trả 200. Tải được `table_s1.xlsx` (111.188 B), `table_s4.xlsx` (1.589.346 B), `table_s5.xlsx` (12.452 B). URL không ký trả `<Error><Code>MissingKey</Code>`; chữ ký có hạn nên không lưu lại được.
+
+**Table S1** có 1.666 dòng (`UniProt | Gene | Position | Type | Sequence Window | Enzyme | Organism | Pmids`), mọi cửa sổ 15 aa. Lọc sirtuin + *Homo sapiens* cho **289 vị trí**: SIRT1 185, SIRT2 52, SIRT3 30, SIRT7 12, SIRT6 10 — **khớp chính xác** cột P trên `help.php` đã dùng ở §14, nên chênh lệch ±1 so với Table 1 của bài in (SIRT1 184) là lỗi của bài in, không phải của phép suy MCC.
+
+**Phép đo.** Khớp theo 13-mer trung tâm của cửa sổ 15 aa với 6.802 peptide của mảng Rauh; nhãn dương tính của mảng dùng `efficiency ≥ 1` (quy tắc đã xác thực ở §5, bảng claim–evidence–correction). Kiểm định binomial chính xác, tỷ lệ nền lấy từ chính cột isoform đó.
+
+| Isoform | Curated | Trên mảng | Mảng gọi dương đúng isoform | % | Nền của mảng | Độ giàu | p |
+|---|---|---|---|---|---|---|---|
+| SIRT1 | 185 | 55 | 2 | 3,6% | 2,6% | 1,41× | 0,418 |
+| SIRT2 | 52 | 18 | 5 | 27,8% | 27,9% | 0,99× | 0,595 |
+| SIRT3 | 30 | 19 | 6 | 31,6% | 27,1% | 1,16× | 0,414 |
+| SIRT6 | 10 | 9 | 2 | 22,2% | 17,6% | 1,26× | 0,489 |
+| SIRT7 | 12 | 2 | 1 | 50,0% | 24,9% | 2,01× | 0,436 |
+| **Gộp** | **289** | **103** | **16** | **15,5%** | — | **1,17×** | **0,291** |
+
+Dương tính cho **ít nhất một** isoform: 85/103 = 82,5% so với 83,7% toàn mảng → 0,986×. Tập cơ chất đã được y văn xác nhận **không khác một mẫu ngẫu nhiên của mảng**.
+
+**Ý nghĩa.** Đây là xác nhận **độc lập thứ hai** cho kết luận trung tâm của báo cáo (nhãn in-vitro gần như không chuyển được vào tế bào), và mạnh hơn xác nhận thứ nhất vì dương tính ở đây được xác nhận trên protein cuộn gấp, không suy ra từ fold-change, và không cần giả định ngưỡng nào. Kết hợp với §14: hai tập nhãn mạnh nhất của lĩnh vực — mảng 6.802 vị trí và 289 vị trí curated — không đồng ý với nhau, và cả hai đều cho mô hình yếu. Đó là lý do tồn tại của một benchmark chuyển miền, và là phần trả lời mạnh nhất cho câu "Deep-PLA đã làm rồi".
+
+**Giới hạn phải nói kèm.** Chỉ 103/289 (35,6%) vị trí curated có mặt trên mảng, nên phép kiểm chỉ nói về phần giao, bị giới hạn bởi cách Rauh chọn peptide năm 2013. SIRT7 (n=2) và SIRT6 (n=9) quá nhỏ để trích riêng — độ giàu 2,01× của SIRT7 là 1 trên 2 vị trí. Khớp theo 13-mer trung tâm có thể bắt cùng trình tự ở paralog; bản khớp nghiêm ngặt theo (UniProt, position) chưa làm `[chưa kiểm]`. Nhãn Deep-PLA là text-mining PubMed, không phải curation có kiểm tra lại. Tập 289 không có âm tính nên chỉ tính được độ giàu, không tính được MCC — đúng vấn đề tập chỉ-dương-tính đã mô tả ở ghi chú 04.
+
 ## Kết luận
 
 Điều đã đổi trong hiểu biết về đề tài này không phải là "nó khó hơn tưởng" — mà là **câu hỏi nghiên cứu đã bị trả lời một phần, bởi chính dữ liệu, trước khi ai kịp huấn luyện mô hình nào.** Nhãn mảng peptide in vitro, khi đem đối chiếu với acetylome trong tế bào ở quy mô 1.417 vị trí, cho MCC gần bằng không. Đó không phải một chướng ngại cần vượt qua bằng kiến trúc tốt hơn; nó là **một dữ kiện về bản chất của nguồn nhãn**, và nó phù hợp đến mức đáng chú ý với ba thứ khác: việc Rauh tự nói các isoform không so được với nhau, việc Weinert đo được stoichiometry trung vị 0,05% và kết luận sirtuin "sửa chữa" hơn là "điều hòa", và việc chính mảng peptide bỏ sót 61% các vị trí phụ thuộc SIRT2 mà nó **có** đo. Bốn bằng chứng độc lập cùng chỉ về một hướng: cửa sổ 13 amino acid không chứa đủ thông tin để trả lời câu hỏi sinh học mà đề tài đặt ra.
