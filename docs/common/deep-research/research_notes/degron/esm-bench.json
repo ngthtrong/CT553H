@@ -1,0 +1,32 @@
+{
+ "ESM-2 35M_bs32": {
+  "params_M": 33.5,
+  "tiles_per_sec": 52.0,
+  "minutes_for_212658": 68.2,
+  "hidden_dim": 480,
+  "load_sec": 12.5
+ },
+ "ESM-2 35M_bs128": {
+  "params_M": 33.5,
+  "tiles_per_sec": 64.6,
+  "minutes_for_212658": 54.8,
+  "hidden_dim": 480,
+  "load_sec": 12.5
+ },
+ "ESM-2 650M_bs32": {
+  "params_M": 651.0,
+  "tiles_per_sec": 4.6,
+  "minutes_for_212658": 769.1,
+  "hidden_dim": 1280,
+  "load_sec": 870.4
+ },
+ "ESM-2 650M_bs128": {
+  "params_M": 651.0,
+  "tiles_per_sec": 5.3,
+  "minutes_for_212658": 668.3,
+  "hidden_dim": 1280,
+  "load_sec": 870.4
+ },
+ "cache_35M_GB_fp32": 12.2,
+ "cache_650M_GB_fp32": 32.7
+}

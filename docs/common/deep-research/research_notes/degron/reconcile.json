@@ -1,0 +1,88 @@
+{
+ "full_tiles": 212658,
+ "full_genes": 5327,
+ "train_tiles": 195629,
+ "train_genes": 4830,
+ "tiles_not_in_train": 17029,
+ "genes_not_in_train": 728,
+ "holdout_list": 527,
+ "holdout_genes_with_train_tiles": 99,
+ "holdout_fully_in_train": 96,
+ "holdout_partially": 3,
+ "effective_holdout_genes": 428,
+ "effective_holdout_tiles": 15820,
+ "examples": [
+  {
+   "gene": "ENSG00000023191",
+   "tiles_total": 30,
+   "tiles_in_train": 30,
+   "tiles_held_out": 0
+  },
+  {
+   "gene": "ENSG00000025772",
+   "tiles_total": 20,
+   "tiles_in_train": 20,
+   "tiles_held_out": 0
+  },
+  {
+   "gene": "ENSG00000025796",
+   "tiles_total": 50,
+   "tiles_in_train": 50,
+   "tiles_held_out": 0
+  },
+  {
+   "gene": "ENSG00000029534",
+   "tiles_total": 125,
+   "tiles_in_train": 125,
+   "tiles_held_out": 0
+  },
+  {
+   "gene": "ENSG00000050327",
+   "tiles_total": 104,
+   "tiles_in_train": 104,
+   "tiles_held_out": 0
+  },
+  {
+   "gene": "ENSG00000063176",
+   "tiles_total": 41,
+   "tiles_in_train": 41,
+   "tiles_held_out": 0
+  },
+  {
+   "gene": "ENSG00000076108",
+   "tiles_total": 126,
+   "tiles_in_train": 126,
+   "tiles_held_out": 0
+  },
+  {
+   "gene": "ENSG00000076201",
+   "tiles_total": 99,
+   "tiles_in_train": 99,
+   "tiles_held_out": 0
+  },
+  {
+   "gene": "ENSG00000077420",
+   "tiles_total": 40,
+   "tiles_in_train": 40,
+   "tiles_held_out": 0
+  },
+  {
+   "gene": "ENSG00000079841",
+   "tiles_total": 111,
+   "tiles_in_train": 111,
+   "tiles_held_out": 0
+  },
+  {
+   "gene": "ENSG00000084072",
+   "tiles_total": 20,
+   "tiles_in_train": 20,
+   "tiles_held_out": 0
+  },
+  {
+   "gene": "ENSG00000091436",
+   "tiles_total": 52,
+   "tiles_in_train": 52,
+   "tiles_held_out": 0
+  }
+ ]
+}

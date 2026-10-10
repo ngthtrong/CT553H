@@ -1,0 +1,56 @@
+{
+ "PTEN": {
+  "in_library": true,
+  "ensg": "ENSG00000171862",
+  "tiles_total": 26,
+  "tiles_in_train": 26
+ },
+ "TPMT": {
+  "in_library": true,
+  "ensg": "ENSG00000137364",
+  "tiles_total": 16,
+  "tiles_in_train": 16
+ },
+ "NUDT15": {
+  "in_library": true,
+  "ensg": "ENSG00000136159",
+  "tiles_total": 10,
+  "tiles_in_train": 10
+ },
+ "CYP2C9": {
+  "in_library": false,
+  "ensg": null,
+  "tiles_total": 0,
+  "tiles_in_train": 0
+ },
+ "CYP2C19": {
+  "in_library": false,
+  "ensg": null,
+  "tiles_total": 0,
+  "tiles_in_train": 0
+ },
+ "ASPA": {
+  "in_library": true,
+  "ensg": "ENSG00000108381",
+  "tiles_total": 20,
+  "tiles_in_train": 20
+ },
+ "PRKN": {
+  "in_library": true,
+  "ensg": "ENSG00000185345",
+  "tiles_total": 30,
+  "tiles_in_train": 30
+ },
+ "GCK": {
+  "in_library": true,
+  "ensg": "ENSG00000106633",
+  "tiles_total": 30,
+  "tiles_in_train": 30
+ },
+ "LDLR": {
+  "in_library": false,
+  "ensg": null,
+  "tiles_total": 0,
+  "tiles_in_train": 0
+ }
+}

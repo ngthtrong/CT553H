@@ -1,0 +1,16 @@
+{
+ "cnn2w1": {
+  "average (nhu tac gia)": 0.8239,
+  "max": 0.3443,
+  "top-3 mean": 0.4847,
+  "position_entropy": 3.294,
+  "position_entropy_max": 3.401
+ },
+ "cnn2w7": {
+  "average (nhu tac gia)": 0.825,
+  "max": 0.479,
+  "top-3 mean": 0.6025,
+  "position_entropy": NaN,
+  "position_entropy_max": 3.178
+ }
+}

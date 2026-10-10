@@ -1,0 +1,22 @@
+{
+ "g96": {
+  "n_gene": 96,
+  "tiles_mean": 64.3,
+  "reps_mean": 6.14,
+  "frac_tiles_missing_mean": 0.0
+ },
+ "g428": {
+  "n_gene": 428,
+  "tiles_mean": 37.0,
+  "reps_mean": 6.04,
+  "frac_tiles_missing_mean": 1.0
+ },
+ "g297": {
+  "n_gene": 273,
+  "tiles_mean": 23.6,
+  "reps_mean": 6.14,
+  "frac_tiles_missing_mean": 0.3735
+ },
+ "g297_all_missing": 45,
+ "g297_partial": 228
+}

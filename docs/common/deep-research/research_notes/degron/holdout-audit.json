@@ -1,0 +1,92 @@
+{
+ "train_genes": 4830,
+ "holdout_genes": 527,
+ "direct_gene_overlap": 99,
+ "clusters_train": 2813,
+ "clusters_holdout": 527,
+ "shared_clusters": 99,
+ "holdout_genes_with_train_homolog": 99,
+ "holdout_leak_fraction": 0.1879,
+ "examples": [
+  {
+   "holdout_gene": "ENSG00000023191",
+   "cluster_rep": "ENSG00000023191",
+   "cluster_size": 1,
+   "train_siblings": [
+    "ENSG00000023191"
+   ]
+  },
+  {
+   "holdout_gene": "ENSG00000025772",
+   "cluster_rep": "ENSG00000025772",
+   "cluster_size": 1,
+   "train_siblings": [
+    "ENSG00000025772"
+   ]
+  },
+  {
+   "holdout_gene": "ENSG00000025796",
+   "cluster_rep": "ENSG00000025796",
+   "cluster_size": 1,
+   "train_siblings": [
+    "ENSG00000025796"
+   ]
+  },
+  {
+   "holdout_gene": "ENSG00000029534",
+   "cluster_rep": "ENSG00000029534",
+   "cluster_size": 1,
+   "train_siblings": [
+    "ENSG00000029534"
+   ]
+  },
+  {
+   "holdout_gene": "ENSG00000050327",
+   "cluster_rep": "ENSG00000050327",
+   "cluster_size": 1,
+   "train_siblings": [
+    "ENSG00000050327"
+   ]
+  },
+  {
+   "holdout_gene": "ENSG00000063176",
+   "cluster_rep": "ENSG00000063176",
+   "cluster_size": 1,
+   "train_siblings": [
+    "ENSG00000063176"
+   ]
+  },
+  {
+   "holdout_gene": "ENSG00000076108",
+   "cluster_rep": "ENSG00000076108",
+   "cluster_size": 1,
+   "train_siblings": [
+    "ENSG00000076108"
+   ]
+  },
+  {
+   "holdout_gene": "ENSG00000076201",
+   "cluster_rep": "ENSG00000076201",
+   "cluster_size": 1,
+   "train_siblings": [
+    "ENSG00000076201"
+   ]
+  },
+  {
+   "holdout_gene": "ENSG00000077420",
+   "cluster_rep": "ENSG00000077420",
+   "cluster_size": 1,
+   "train_siblings": [
+    "ENSG00000077420"
+   ]
+  },
+  {
+   "holdout_gene": "ENSG00000079841",
+   "cluster_rep": "ENSG00000079841",
+   "cluster_size": 1,
+   "train_siblings": [
+    "ENSG00000079841"
+   ]
+  }
+ ]
+}

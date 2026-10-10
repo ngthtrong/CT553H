@@ -88,7 +88,20 @@ Mỗi phiên Claude bắt đầu không nhớ gì về phiên trước, và thư
 - Nhật ký làm việc (mọi đề tài): [docs/common/work-log.md](docs/common/work-log.md) · Tài nguyên ngoài repo: [docs/common/resources.md](docs/common/resources.md)
 - **GVHD: TS. Hồ Quang Thái (Ho Quang Thai; QT Ho), ĐH Cần Thơ** — tên được người dùng xác nhận lại ngày 05/10/2026. Prof. YY Ou **không phải** GVHD, chỉ là đồng tác giả thường xuyên. Xem [docs/common/advisor/README.md](docs/common/advisor/README.md) để biết các nhánh nghiên cứu của GVHD trước khi đánh giá tính mới của một hướng
 
-### Định hướng hiện tại: thay RTK–ATP, đang khảo sát song song aging và cancer (02/10/2026)
+### ✅ ĐỀ TÀI ĐÃ CHỐT (11/10/2026): `degron-e3-specificity`
+
+**Dự đoán đặc hiệu E3–degron ở mức residue bằng học đa thể hiện có điều kiện và cổng phơi lộ cấu trúc.** Quyết định của sinh viên ngày 11/10/2026; **chưa có phê duyệt GVHD**, phải báo cáo buổi tuần 6.
+
+- **Đọc trước khi làm gì liên quan đề tài:** [quyết định và phạm vi](docs/topics/degron-e3-specificity/01-idea/topic-decision.md) · [trang trình bày](docs/topics/degron-e3-specificity/01-idea/presentation.html) · [báo cáo kiểm chứng chi tiết](docs/common/deep-research/reports/degron-topic-report/index.html) · [script audit tái tạo được](docs/common/deep-research/research_notes/degron/)
+- **GVHD kỳ vọng một kiến trúc chưa ai dùng** (thông tin 11/10/2026) → kiến trúc đề xuất **CMIL-E3**: học đa thể hiện có điều kiện E3, cộng cổng phơi lộ đặt ở chỗ **gộp** chứ không ở đầu vào.
+- **Quy ước ngôn từ riêng của đề tài:** không dùng chữ "đầu tiên" cho bất kỳ phần nào (đã có ≥5 công cụ trước, MetaDegron dùng PLM từ 2024). Phân biệt rõ **"thang điểm khối"** (đã bão hòa) và **"đặc hiệu E3"** (bài toán của đề tài), không trộn thành một số. Nói kiểm soát đồng dạng của tác giả là "tốt nhưng không hoàn hảo". Gọi 219 footprint là "chuẩn thực nghiệm theo residue", không gọi "ground truth tuyệt đối".
+- **Ba phép đo nền, đã tự thực hiện, dùng để biện minh mọi thiết kế:** (1) PAP mặc định **bất biến hoán vị** — đảo thứ tự residue, Pearson(gốc, đảo) = 1,000000; (2) bản bắt motif `cnn2w7` chỉ hơn **+0,0032**; (3) gộp max làm sụt **0,824 → 0,344**, nên thang điểm khối **không thưởng cho việc khu trú**.
+- **Hệ quả bắt buộc:** kiến trúc mới **sẽ không thắng** trên thang điểm khối. Thước đo chính phải là **nhiệm vụ đặc hiệu E3 và 219 footprint**. Phải chốt việc này với GVHD từ tuần 6.
+- **Ba cổng chặn chưa qua:** đọc toàn văn bài degron transcription factor của cùng nhóm; đếm nhãn E3 dùng được trong Table S3/S4/S6/S7 của Zhang 2023; tra hệ thống tính mới của kiến trúc MIL.
+- **Dữ liệu tái tạo:** script trong `docs/common/deep-research/research_notes/degron/`. Không commit file `.csv.gz`, `.xlsx`, bản clone.
+- **HTML tạo trực tiếp trên hệ thống, không dùng artifact** (yêu cầu của sinh viên 11/10/2026). Artifact bản 1 đã lạc hậu.
+
+### Định hướng cũ: thay RTK–ATP, khảo sát song song aging và cancer (02/10/2026) — **đã kết thúc bằng quyết định ở trên**
 
 **Trạng thái sau buổi gặp:** sinh viên **gần như chắc chắn sẽ đổi đề tài**; RTK–ATP coi như đã bỏ. Hai hướng GVHD gợi ý — **aging** và **cancer** — đang được **khảo sát song song để so sánh**, chưa chọn. **Mốc chặn: tuần 6 phải báo cáo lại đề tài với GVHD** (hiện tuần 4). Đọc [biên bản lần 1](docs/meeting/session-01-minutes.md) để nắm năm tiêu chí đóng góp và yêu cầu về cách trình bày, rồi **[khảo sát sâu aging và cancer](docs/common/deep-research/reports/aging-cancer-deep-dive.md)** (02/10/2026, bản đang dùng: các ứng viên A–F, sáu đính chính bắt buộc, câu hỏi cho GVHD tuần 6). Kiến thức nền để đọc các tài liệu này: [lộ trình tự học](docs/common/biology-basics/learning-roadmap.md) và [bộ bài giảng HTML](docs/common/lectures/) (đang viết, mới có bài 02 và 09). [Bản so sánh lần 1](docs/common/deep-research/reports/aging-vs-cancer-topic-comparison.md) đã bị bản khảo sát sâu thay thế, chỉ giữ làm lịch sử.
 

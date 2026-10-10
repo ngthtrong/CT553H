@@ -4,6 +4,70 @@
 
 ---
 
+## 10/10/2026 (muộn) — **chốt khuyến nghị đề tài chính: dark kinome trên DARKIN**; bốn lập luận bán đề tài bị gỡ bỏ
+
+- **Hai thông tin sinh viên cung cấp, thu hẹp cuộc so sánh về hai ứng viên:** (1) **GVHD không chấp nhận kết quả âm làm đóng góp chính** (sinh viên đánh giá, chưa phải lời thầy) → loại hướng sirtuin in-vitro khỏi vị trí đề tài chính, vì phán quyết THU HẸP của nó chính là một kết quả âm; (2) **có GPU ổn định hơn Colab miễn phí** → mở lại fine-tuning/LoRA.
+- Báo cáo: **[main-topic-decision.md](deep-research/reports/main-topic-decision.md)**; bốn ghi chú nền: [research_notes/main-topic-decision/](deep-research/research_notes/main-topic-decision/).
+- **Khuyến nghị — đề tài chính:** dự đoán kinase cho phosphosite ở dark kinome trên DARKIN, với bộ mã hóa đa cửa sổ trên embedding PLM, **đánh giá song trục** có kiểm soát rò rỉ, và **ca nghiên cứu sirtuin**. **Dự phòng:** đánh giá lại chuẩn hóa DARKIN (song trục, 4 split, kiểm rò rỉ) — dùng **chung toàn bộ hạ tầng**, nên trượt cổng phương pháp không mất việc đã làm. Độ tin cậy **trung bình**; tiêu chí 1 là tiêu chí yếu nhất.
+- **Senescence scRNA-seq bị loại vì điều kiện bắt buộc, không vì điểm thấp:** nhãn SenMayo là điểm chữ ký do chính pipeline sinh ra → mô hình học lại bộ chấm điểm (chính README của hướng đó ghi). Cộng với trượt ngưỡng đi/dừng đã đặt trước và điểm đi theo loại tế bào.
+- **Bốn lập luận phải gỡ khỏi slide tuần 6 (quan trọng hơn phần ủng hộ):** (1) "audit phát hiện DARKIN rò rỉ phía substrate" — **DARKIN đã thấy và chủ động gạt bỏ bằng lý lẽ**, còn đếm sẵn ở Supplementary Fig. 4; (2) "lần đầu đề xuất holdout hai chiều" — **SAGEPhos (ICLR 2025) đã đặt tên** cả hai cold-start và tuyên bố cold-both *"not feasible"* (bipartite liên thông 99,9%); (3) "vượt SOTA 0,2946" — **0,2946 và 0,1911 gần như chắc chắn khác trục đo**; trên trục site baseline của chính DARKIN đã 0,2879 và DARKIN-FT **0,3321**, tức cao hơn 0,2946, và repo COMPASS-PTM **không có code evaluation nào**; (4) "đóng góp là PU learning cho nhãn thiếu" — Kanehira & Harada (CVPR 2016) đã làm đúng việc đó và tự nhận *"slightly improved"*; class prior **không ước lượng được** cho lớp unseen (Mao et al., TKDE 2025); label smoothing đơn thuần thắng ROLE trên COCO.
+- **SOTA thật phải nêu, nếu không sẽ bị bắt lỗi chọn baseline yếu:** trục kinase **0,2250**, trục site **0,3321** (DARKIN-FT + ESM1B, luận văn Pekey 2025 — **chưa qua phản biện**). Hai đính chính: DARKIN đặt kinase **giàu** chú giải vào val/test và kinase dark vào **train** (ngược mô tả thứ cấp phổ biến); và metric tính *"matches **any** of the true kinases"* nên **đã hấp thụ một phần** tác hại của nhãn thiếu.
+- **Khung bán đề tài dùng được, mỗi mắt có nguồn:** kinase thượng nguồn chỉ biết cho **dưới 4%** phosphosite (Johnson 2023, *Nature*; atlas có 83 dark kinase); **151/634 ≈ 23,8%** kinase người understudied, EGFR ~90.000 bài so với HIPK4 9 bài (Essegian 2020); understudied kinase **tiên lượng kết cục xấu** trên 17 ung thư TCGA. **Liên hệ cancer ở mức gene, không ở mức phosphosite; liên hệ aging yếu — không bán như đề tài aging.**
+- **Cầu nối sang hướng GVHD (rẻ, khớp SirtSAGE):** sirtuin **là** cơ chất kinase — JAK1 → SIRT1 Tyr280/Tyr301 **trong catalytic domain**, trục IL-6/ung thư (Wang 2018, JBC); JNK/mTOR/CDK1/CK2 → SIRT1; AMPK → SIRT2 Thr101. Khoảng trống là chỗ mạnh: site MS trên SIRT3/4/6 **chưa gán được kinase nào**, SIRT7 chưa map site nào.
+- **Còn dở — ba phép kiểm nhanh phải xong trước tuần 6:** đọc **S.3.7** của COMPASS-PTM (arXiv 2510.23492) để chốt trục của 0,2946; lấy **DARKIN Supplementary Fig. 4** (nếu đã phân rã AP theo seen/novel thì RQ2 bị thu hẹp); **đếm** còn bao nhiêu dòng test nếu ép substrate-protein-disjoint. Thêm: kiểm bộ mã hóa đa cửa sổ đã ai dùng trên DARKIN chưa (**SAGEPhos nghe như GraphSAGE, phải kiểm kiến trúc**). Chưa chạy baseline, chưa huấn luyện, chưa xây website.
+
+---
+
+## 11/10/2026 (muộn) — **CHỐT ĐỀ TÀI `degron-e3-specificity`**; kiểm chứng xong 10 điểm; GVHD kỳ vọng kiến trúc mới
+
+- **Sinh viên chốt đề tài:** *Dự đoán đặc hiệu E3–degron ở mức residue bằng học đa thể hiện có điều kiện và cổng phơi lộ cấu trúc.* Tài liệu: [topic-decision.md](../topics/degron-e3-specificity/01-idea/topic-decision.md), [presentation.html](../topics/degron-e3-specificity/01-idea/presentation.html) (bố cục 6 mục, mở bằng `file://`), [báo cáo chi tiết bản 3](deep-research/reports/degron-topic-report/index.html). **Chưa có phê duyệt GVHD.**
+- **Thông tin mới từ GVHD: thầy kỳ vọng một kiến trúc chưa ai dùng**, không chấp nhận chỉ một bảng đối chứng có kỷ luật. → đề xuất kiến trúc **CMIL-E3** (học đa thể hiện có điều kiện E3 + cổng phơi lộ ở chỗ gộp), sáu thành phần, **mỗi thành phần gắn với một phép đo tự thực hiện**.
+- **Theo yêu cầu: HTML tạo trực tiếp trên hệ thống, không dùng artifact.** Artifact bản 1 (`XAXzVcA6ot1eVVk4927suc`) giờ **lạc hậu**, file trong repo là bản chuẩn.
+
+### Kết quả kiểm chứng 10 điểm — bốn điểm đi ngược bản 1
+
+- **Tái lập được số của bài báo.** Tự dựng PAP bằng numpy từ trọng số công bố: kênh nội **0,8239** (bài: 0,82), đầy đủ **0,8690** (bài: 0,87) trên holdout hiệu dụng 428 gene. Chênh lệch 0,82–0,87 là do kênh C-term phải áp cho **mọi** tile (trong assay mọi tile đều gắn vào đầu C của GFP).
+- **Phép đo quan trọng nhất:** đảo ngẫu nhiên thứ tự residue → điểm cnn2w1 **không đổi**, Pearson(gốc, đảo) = **1,000000**. PAP mặc định **bất biến hoán vị**, không biểu diễn được motif nào, vẫn đạt 0,869.
+- **BÁC BỎ đóng góp phương pháp của bản 1:** repo có sẵn `cnn2w7` (cửa sổ 7, bắt được motif). Tự chạy: **0,8722 so với 0,8690 = +0,0032**. Trần của trục "thêm năng lực bắt motif" đã do chính tác giả đo.
+- **Thêm:** thay gộp trung bình bằng gộp max làm sụt **0,824 → 0,344**; entropy theo vị trí 3,294/3,401 → tín hiệu thang điểm khối **dàn đều, không khu trú**. Hệ quả: kiến trúc khu trú **sẽ không thắng** trên thang điểm khối — phải chốt thước đo với GVHD trước.
+- **CỔNG CHẶN ĐÃ MỞ:** GEO **GSE240610** tải được. Table S1 = 52,9 MB, 3 sheet × **475.507 dòng** kèm PSI; thêm RAW.tar 21 MB.
+- **BÁC BỎ "chưa ai dùng PLM trên bộ này":** cùng nhóm có bài tiếp theo — degron trên **1.620 (chính xác 1.626) transcription factor**, tiền ấn bioRxiv 17/05/2025, **dùng PAP cùng ESM-1b**, và đã chỉ ra tác động biến thể tương quan độ mạnh degron. Ăn vào một phần đóng góp "giải thích biến thể theo cơ chế".
+- **SỬA SỐ MaveDB:** 100.514 → **69.209 biến thể duy nhất** (bản 1 đếm cả dòng không có điểm; trùng lặp dồn ở PRKN và PTEN).
+- **Rò rỉ bậc 3 đã định lượng:** 6/9 gene MaveDB có tile, **toàn bộ ở tập train**, nhưng chỉ **132 tile = 0,07%** → sửa gần như miễn phí. 3 gene còn lại (CYP2C9, CYP2C19, LDLR) không thuộc bào tương.
+- **Chênh lệch 96 gene đã đặc tả:** phân vùng thật giữ lại **473 gene**; danh sách 527 = 428 đúng + 96 sai + 3 một phần; **45 gene bị giữ lại mà không có trong danh sách**. Nhóm 96 có nhiều tile hơn rõ rệt (64,3 so với 37,0 tile/gene) → suy luận: danh sách là tập tiền tuyển, gene lớn được trả về train.
+- **Alignment độc lập làm giảm tuyên bố bản 1:** Smith-Waterman thật (parasail, sàng 6-mer) → **14/428 (3,3%)** gene holdout có họ hàng trong train ở identity ≥30%/coverage ≥50%; **1 ca trùng 100% trên 77 residue** (`AC104389.5` so với **TRIM5**). Bản 1 nói "không có paralog nào" là quá mạnh.
+- **Lỗi tái lập trong mã công bố:** `train_cnn2w.py` dùng `ci_aa=1` → trỏ vào cột **DNA**, và A/C/G/T đều là ký hiệu acid amin hợp lệ nên bộ lọc không loại. Chạy mã công bố trên dữ liệu công bố sẽ huấn luyện trên chuỗi DNA.
+- **Tài nguyên đã đo:** ESM-2 **35M** 64,6 tile/s → **~55 phút** toàn bộ; **650M** 5,3 tile/s → **~11 giờ**; cache mức residue 650M **32,7 GB** vượt RAM 7 GB. Hugging Face truy cập được.
+- **Giấy phép:** repo và Zenodo **MIT**, MaveDB **CC0**, DegronID other-open, hai bản tiền ấn **CC BY-NC-ND**.
+- **Còn dở — ba cổng chặn:** (1) đọc toàn văn bài degron TF (`biorxiv.org` bị chặn với WebFetch, chỉ lấy được tóm tắt qua API); (2) mở Table S3/S4/S6/S7 của Zhang 2023 để đếm nhãn E3 dùng được; (3) tra hệ thống tính mới của kiến trúc MIL. Chưa huấn luyện mô hình, chưa xây website.
+
+---
+
+## 11/10/2026 — ứng viên mới: dự đoán degron có bối cảnh cấu trúc; audit bản đồ tile 2026
+
+- **Yêu cầu của sinh viên:** tìm hướng mới hơn, đóng góp rõ hơn, Claude tự quyết; vòng này **bỏ ràng buộc lĩnh vực và độ khớp GVHD**, nhắm **dữ liệu mới cộng trục phương pháp gắn lên nó** (sinh viên chọn qua câu hỏi trắc nghiệm).
+- Sản phẩm: [báo cáo HTML](deep-research/reports/degron-topic-report/index.html) — publish tại https://claude.ai/artifact/XAXzVcA6ot1eVVk4927suc. Thêm dòng vào [resources.md](resources.md) và [topics/README.md](../topics/README.md).
+- **Hướng đề xuất:** dự đoán degron (tín hiệu phân hủy protein) có tính tới trạng thái phơi lộ cấu trúc. Đóng góp chính là **thang đánh giá ba bậc**: (1) trong cùng sàng lọc, holdout kiểm soát đồng dạng; (2) chuyển giữa hai sàng lọc khác assay; (3) từ peptide tách rời sang protein nguyên vẹn. Bậc 2 và 3 **chưa ai đo**.
+- **Tự audit bản đồ tile Voutsinos 2026** (repo `KULL-Centre/_2025_Voutsinos_degron_cytosol`, MIT, có SHA-256): 212.658 tile / 5.327 gene; train 195.629 tile / 4.830 gene; nhãn liên tục −0,144…1,132 (hồi quy thật, không phải phân loại mất cân bằng).
+- **Hai giả thuyết của tôi đã sai, ghi lại để không lặp:** holdout chia **theo gene**, và **cả 527 gene holdout đều là cụm đồng dạng đơn lẻ**; tập validation early stopping cũng rời hẳn theo gene (0 gene trùng). **Không được lấy "sửa giao thức đánh giá" làm đóng góp.**
+- **Phát hiện audit thật:** 96/527 gene trong `holdout_selection.txt` có **toàn bộ** tile nằm ở tập train, 3 gene giữ một phần → holdout **hiệu dụng 428 gene / 15.820 tile**. Nguyên nhân chưa xác định. Phải dùng số này khi so với Pearson 0,87 của tác giả.
+- **Ba tầng dữ liệu:** bộ chính đã tải; bộ thứ hai (Zhang 2023, GPS-peptidome, GEO **GSE240610**, có 219 footprint saturation và residue quan trọng cho >5.000 degron → **ground truth XAI thực nghiệm**) **chưa tải**; bộ thứ ba MaveDB **100.514 phép đo độ dồi dào trên 9 gene** (đã truy vấn API; các bộ trong cùng gene chồng nhau, chưa khử trùng lặp).
+- **Tiền lệ:** không được nói "đầu tiên" — đã có deepDegron, Degpred (BERT 2022), MetaDegron (PLM 2024), DegML, và **DEGRONOPEDIA (NAR 2024) là đối thủ trực tiếp ở tiêu chí 5**. Không tìm thấy ai dùng PLM trên bản đồ tile 2026 (chỉ vài lượt tìm web, chưa khảo sát hệ thống).
+- **Còn dở:** (1) **cổng chặn** — thử tải GEO GSE240610, nếu không được thì bậc 2 và XAI sụp; (2) kiểm 9 gene MaveDB có nằm trong thư viện tile không; (3) chạy lại baseline PAP trên 428 gene holdout; (4) đọc toàn văn Methods bài 2026. Chưa chốt đề tài, chưa so với dark kinome và SIRT.
+
+---
+
+## 10/10/2026 — đánh giá chi tiết dark kinome trên DARKIN; loại hướng sửa lỗi phần mềm
+
+- **Quyết định của sinh viên:** loại ý tưởng sửa lỗi phần mềm có kiểm chứng; yêu cầu báo cáo chi tiết dark kinome. Chưa chốt DARKIN, chưa xác nhận bỏ SIRT; đánh giá bỏ ràng buộc thời gian/lĩnh vực/GVHD/tài nguyên như yêu cầu trước.
+- Thêm [báo cáo đánh giá](deep-research/reports/dark-kinome-darkin-evaluation.md), [ghi chú và script audit](deep-research/research_notes/dark-kinome/README.md); thêm cảnh báo vào [khuyến nghị ban đầu](deep-research/reports/criteria-only-recommendation.md) và cập nhật mục lục ứng viên.
+- **Tự kiểm checkout DARKIN pin commit:** split ZSL mặc định 8.559/1.484/1.414 site, 308/46/38 kinase, không trùng kinase; train–test vẫn trùng 462 site keys và 923 dòng test thuộc protein đã thấy. Năm split có min nhãn/kinase test 12–15; phát hiện ngoại lệ residue ngoài S/T/Y cần truy vết. Có SHA/count trong audit JSON, chưa alignment độc lập.
+- **Đối thủ/phản biện:** DARKIN gốc có fine-tuning; Pekey 2025 đã có DARKIN-Interact/LoRA/atlas; COMPASS-PTM 2026 báo mAP 0,2946 trên DARKIN nhưng cần audit chiều AP; benchmarKIN đã thử thêm predicted relationships và ghi nhận giảm hiệu năng. Không giữ khẳng định “kiểm chứng hạ nguồn chưa ai làm” hoặc “đạt cả năm tiêu chí không cần cược”.
+- **Khuyến nghị nghiên cứu:** cân nhắc selection/weighting cạnh để bổ sung thư viện có kiểm soát nhiễu, hoặc nhãn thiếu/khái quát hai phía. XAI cần fidelity riêng; conformal chưa có cơ sở hứa 90% trên kinase mới.
+- **Còn dở:** audit file hạ nguồn/giao kinase, Supplementary COMPASS và đối thủ, mapping/nguồn nhãn/license; chọn RQ với sinh viên. Chưa chạy baseline, training hoặc xây website.
+
+---
+
 ## 10/10/2026 — tải được Supplementary bbz107 và **đo xong phép chuyển nhãn thứ hai**: mảng Rauh không giàu dương tính trên 289 vị trí curated
 
 - Ghi chú: [09-deep-pla-sites-vs-array.md](deep-research/research_notes/sirtuin-substrate/09-deep-pla-sites-vs-array.md); dữ liệu: [deeppla-curated-sites-vs-rauh-labels.csv](deep-research/research_notes/sirtuin-substrate/data/deeppla-curated-sites-vs-rauh-labels.csv); mục 15 của [báo cáo khảo sát sâu](deep-research/reports/sirtuin-substrate-deep-research.md).

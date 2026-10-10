@@ -8,9 +8,21 @@
 |---|---|---|---|---|---|
 | **Slide buổi gặp GVHD lần 1 — đề tài RTK–ATP** | https://claude.ai/artifact/GGw1vJ2wpJKF63gmoBgLYT | Slides (13 trang) | [meeting/session-01-slides/](../meeting/session-01-slides/) | 02/10/2026, bản 8: thêm 2 slide `landscape` (tính cấp thiết + 7 công trình 2023–2026) và `evidence` (bằng chứng A kho RAG/CD-HIT, bảng dropout-vs-RAG), đổi `scope` sang ví dụ thật P34891, `metrics` thêm mốc accuracy 99,04%, đánh số lại 15 trang. Trước đó bản 4: viết lại hoàn toàn cho đề tài đã chốt (phạm vi mức residue, bốn loại rò rỉ, giao thức 9 bước, 2 RQ, chỉ số, sản phẩm, 3 đóng góp, kế hoạch 14 tuần, 6 câu hỏi GVHD). Bỏ 5 slide cũ: framing, gap, proposal, backup, research-questions | Riêng tư. Muốn gửi GVHD thì chia sẻ qua menu Share |
 | **Slide diễn giải đề tài RTK–ATP (6 phần)** | https://claude.ai/artifact/A7kgUgsr28RBUSd59knh1q | Slides (15 trang) | [rtk-atp-applicability/04-proposal/explainer-slides/](../topics/rtk-atp-applicability/04-proposal/explainer-slides/) | 02/10/2026, bản 3 (tạo mới): deck chỉ diễn giải theo bố cục mô tả bài toán → tính cấp thiết + nghiên cứu đã có + vì sao cần làm → input → output → dữ liệu → cách đánh giá. Có 3 hình minh họa (biểu đồ cột điểm ATP theo residue, sơ đồ RTK/màng/túi ATP bằng SVG, đường coverage–risk). Bản 4 thêm phần 7: trang `risks` (4 rủi ro kèm dấu hiệu nhận biết và cổng dừng, 2 giới hạn không khắc phục được, rủi ro định vị) và trang `questions` (7 câu xin ý kiến GVHD). Dùng lại bảng màu và font của deck buổi gặp | Riêng tư |
+| ~~Báo cáo ứng viên đề tài degron~~ | https://claude.ai/artifact/XAXzVcA6ot1eVVk4927suc | Trang HTML (12 mục) | [deep-research/reports/degron-topic-report/](deep-research/reports/degron-topic-report/) | **LẠC HẬU từ 11/10/2026.** Đây là bản 1; bản đang dùng là **bản 3 nằm trong repo**, không publish. Từ 11/10/2026 sinh viên yêu cầu **tạo HTML trực tiếp trên hệ thống, không dùng artifact** — xem mục 1.1 bên dưới | Riêng tư |
 | Slide đề tài chi tiêu (lưu trữ) | https://claude.ai/artifact/YRqpuZNbzNdsBQFRnx7bCn | Slides (8 trang) | [personal-expense-management/01-idea/slides-draft/](../topics/personal-expense-management/01-idea/slides-draft/) | 29/09/2026, bản 4. **Không dùng nữa**: soạn cho đề tài chi tiêu, đã tạm dừng. Mã nguồn chuyển về thư mục đề tài ngày 01/10/2026 | Riêng tư |
 
 Artifact đang ở chế độ riêng tư: chỉ chủ tài khoản mở được link. Repo GitHub cũng đã chuyển sang private từ 01/10/2026.
+
+### 1.1 Quy ước mới từ 11/10/2026: HTML nằm trong repo, không dùng artifact
+
+Sinh viên yêu cầu **tạo file HTML trực tiếp trên hệ thống** thay vì publish artifact. Hai trang đang dùng cho đề tài đã chốt, mở bằng `file://` (không cần server):
+
+| Trang | Đường dẫn | Nội dung |
+|---|---|---|
+| **Trình bày đề tài** | [topics/degron-e3-specificity/01-idea/presentation.html](../topics/degron-e3-specificity/01-idea/presentation.html) | 7 mục theo bố cục sinh viên yêu cầu: giới thiệu → lược sử → giải pháp → dữ liệu → đóng góp theo 5 tiêu chí → hướng đi tiếp → tham khảo. **Có 5 sơ đồ SVG tự vẽ** |
+| **Báo cáo kiểm chứng chi tiết** | [deep-research/reports/degron-topic-report/index.html](deep-research/reports/degron-topic-report/index.html) | Bản 3, 13 mục: kết quả kiểm chứng 10 điểm, kiến trúc CMIL-E3, audit dữ liệu, rủi ro, tham khảo |
+
+Cả hai trang nạp font từ Google Fonts nên **cần mạng để hiển thị đúng font**; không có mạng thì vẫn đọc được bằng font hệ thống. Không có JavaScript, không phụ thuộc thư viện ngoài.
 
 ### Cách sửa một artifact ở phiên mới
 1. Lấy URL từ bảng trên.

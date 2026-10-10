@@ -1,0 +1,18 @@
+{
+ "tiles_total": 195629,
+ "set_counts": {
+  "train": 195629
+ },
+ "genes_per_set": {
+  "train": 4830
+ },
+ "cluster_map_entries": 5273,
+ "cluster_representatives": 3242,
+ "clusters_multi_member": 834,
+ "largest_cluster": 69,
+ "unmapped_genes_train": 0,
+ "label_train": {
+  "n": 195629,
+  "mean": 0.4805
+ }
+}

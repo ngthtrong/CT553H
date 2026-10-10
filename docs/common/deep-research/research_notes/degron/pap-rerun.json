@@ -1,0 +1,46 @@
+{
+ "cnn2w1": {
+  "cnn_kernel": 1,
+  "holdout_hieu_dung_428gene": {
+   "n": 15818,
+   "pearson_full": 0.8245,
+   "pearson_internal_only": 0.8239,
+   "spearman_full": 0.8289,
+   "n_cterm_tiles": 427
+  },
+  "train": {
+   "n": 196651,
+   "pearson_full": 0.8108,
+   "pearson_internal_only": 0.8102,
+   "spearman_full": 0.815,
+   "n_cterm_tiles": 4826
+  },
+  "permutation_test": {
+   "max_abs_delta": 4.76837e-07,
+   "mean_abs_delta": 3.98012e-08,
+   "pearson_base_vs_permuted": 1.0
+  }
+ },
+ "cnn2w7": {
+  "cnn_kernel": 7,
+  "holdout_hieu_dung_428gene": {
+   "n": 15818,
+   "pearson_full": 0.8258,
+   "pearson_internal_only": 0.825,
+   "spearman_full": 0.8302,
+   "n_cterm_tiles": 427
+  },
+  "train": {
+   "n": 196651,
+   "pearson_full": 0.815,
+   "pearson_internal_only": 0.8142,
+   "spearman_full": 0.8197,
+   "n_cterm_tiles": 4826
+  },
+  "permutation_test": {
+   "max_abs_delta": 0.48989,
+   "mean_abs_delta": 0.0590075,
+   "pearson_base_vs_permuted": 0.901836
+  }
+ }
+}

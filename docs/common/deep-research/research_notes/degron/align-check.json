@@ -1,0 +1,194 @@
+{
+ "n_eff_holdout": 428,
+ "n_train": 4830,
+ "n_pairs_aligned": 1998,
+ "max_identity_pct": 100.0,
+ "thresholds": {
+  "id>=30_cov>=50": 14,
+  "id>=40_cov>=50": 4,
+  "id>=50_cov>=50": 3,
+  "id>=60_cov>=50": 2,
+  "id>=25_cov>=80": 10,
+  "id>=30_cov>=80": 4,
+  "id>=40_cov>=30": 10,
+  "id>=60_cov>=30": 3,
+  "id>=90_cov>=10": 2
+ },
+ "top_pairs": [
+  {
+   "holdout": "ENSG00000204899",
+   "train": "ENSG00000242265",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 8.5,
+   "aln_len": 7
+  },
+  {
+   "holdout": "ENSG00000204899",
+   "train": "ENSG00000101447",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 9.8,
+   "aln_len": 8
+  },
+  {
+   "holdout": "ENSG00000176978",
+   "train": "ENSG00000140575",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 1.6,
+   "aln_len": 8
+  },
+  {
+   "holdout": "ENSG00000147162",
+   "train": "ENSG00000131844",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 0.8,
+   "aln_len": 8
+  },
+  {
+   "holdout": "ENSG00000135249",
+   "train": "ENSG00000155876",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 1.0,
+   "aln_len": 8
+  },
+  {
+   "holdout": "ENSG00000135249",
+   "train": "ENSG00000083750",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 1.0,
+   "aln_len": 8
+  },
+  {
+   "holdout": "ENSG00000076685",
+   "train": "ENSG00000145920",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 1.4,
+   "aln_len": 8
+  },
+  {
+   "holdout": "ENSG00000196504",
+   "train": "ENSG00000184304",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 2.4,
+   "aln_len": 11
+  },
+  {
+   "holdout": "ENSG00000239920",
+   "train": "ENSG00000132256",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 96.2,
+   "aln_len": 77
+  },
+  {
+   "holdout": "ENSG00000008130",
+   "train": "ENSG00000114867",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 1.5,
+   "aln_len": 9
+  },
+  {
+   "holdout": "ENSG00000008130",
+   "train": "ENSG00000101197",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 1.2,
+   "aln_len": 7
+  },
+  {
+   "holdout": "ENSG00000008130",
+   "train": "ENSG00000090924",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 1.5,
+   "aln_len": 9
+  },
+  {
+   "holdout": "ENSG00000008130",
+   "train": "ENSG00000141506",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 1.5,
+   "aln_len": 9
+  },
+  {
+   "holdout": "ENSG00000172062",
+   "train": "ENSG00000078687",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 3.4,
+   "aln_len": 10
+  },
+  {
+   "holdout": "ENSG00000009844",
+   "train": "ENSG00000102978",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 2.6,
+   "aln_len": 8
+  },
+  {
+   "holdout": "ENSG00000188559",
+   "train": "ENSG00000037241",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 0.4,
+   "aln_len": 8
+  },
+  {
+   "holdout": "ENSG00000188559",
+   "train": "ENSG00000161970",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 0.4,
+   "aln_len": 8
+  },
+  {
+   "holdout": "ENSG00000216490",
+   "train": "ENSG00000176871",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 3.2,
+   "aln_len": 8
+  },
+  {
+   "holdout": "ENSG00000114626",
+   "train": "ENSG00000124789",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 1.5,
+   "aln_len": 7
+  },
+  {
+   "holdout": "ENSG00000121774",
+   "train": "ENSG00000242173",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 1.8,
+   "aln_len": 8
+  },
+  {
+   "holdout": "ENSG00000160953",
+   "train": "ENSG00000158560",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 1.1,
+   "aln_len": 8
+  },
+  {
+   "holdout": "ENSG00000160953",
+   "train": "ENSG00000105447",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 1.1,
+   "aln_len": 8
+  },
+  {
+   "holdout": "ENSG00000160953",
+   "train": "ENSG00000117595",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 1.0,
+   "aln_len": 7
+  },
+  {
+   "holdout": "ENSG00000197976",
+   "train": "ENSG00000174903",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 1.2,
+   "aln_len": 8
+  },
+  {
+   "holdout": "ENSG00000197976",
+   "train": "ENSG00000138069",
+   "pct_id": 100.0,
+   "pct_cov_of_holdout": 1.2,
+   "aln_len": 8
+  }
+ ]
+}
