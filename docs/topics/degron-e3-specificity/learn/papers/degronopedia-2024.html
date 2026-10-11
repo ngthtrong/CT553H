@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DEGRONOPEDIA 2024 · Máy chủ web tra cứu degron</title>
+<meta name="hub-page" content="p-degp">
+<meta name="description" content="Bài Nucleic Acids Research 2024: máy chủ web tra cứu degron toàn proteome — đối thủ trực tiếp của đề tài ở tiêu chí sản phẩm.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;650&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../assets/hub.css">
+</head>
+<body>
+<a class="skip" href="#vaitro">Bỏ qua điều hướng</a>
+<div class="page">
+
+<nav class="topbar" aria-label="Thanh điều hướng">
+  <a class="home" href="../index.html">← Hub học đề tài</a>
+  <span class="spacer"></span>
+</nav>
+
+<div class="crumb">
+  <a href="../index.html">Hub</a> <span class="sep">/</span>
+  <a href="index.html">Bài báo</a> <span class="sep">/</span>
+  <span>Nhóm 3 · Đối thủ sản phẩm</span> <span class="sep">/</span>
+  <span>DEGRONOPEDIA 2024</span>
+</div>
+
+<div class="eyebrow">Nhóm 3 — Đối thủ sản phẩm · xác minh ở mức tóm tắt</div>
+<h1>Thứ mà sản phẩm của đề tài sẽ bị đem ra so sánh</h1>
+<p class="lede">Một máy chủ web đã chạy, miễn phí, đăng ở tạp chí hàng đầu về công cụ tin sinh học. Nếu đề tài làm một bản sao kém hơn thì tiêu chí ứng dụng coi như mất.</p>
+
+<div class="bib">
+  <dl>
+    <dt>Tác giả</dt>
+    <dd>Szulc NA, Stefaniak F, Piechota M, Soszyńska A, Piórkowska G, Cappannini A, Bujnicki JM, Maniaci C, Pokrzywa W</dd>
+    <dt>Tên bài</dt>
+    <dd><em>DEGRONOPEDIA: a web server for proteome-wide inspection of degrons</em></dd>
+    <dt>Công bố</dt>
+    <dd><strong>Nucleic Acids Research</strong>, 2024, tập 52, số W1, trang W221–W232</dd>
+    <dt>DOI</dt>
+    <dd><a href="https://doi.org/10.1093/nar/gkae238">10.1093/nar/gkae238</a> · PMID 38567734 · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11223883/">PMC11223883</a></dd>
+    <dt>Công cụ</dt>
+    <dd><a href="https://degronopedia.com">degronopedia.com</a> · có bản hướng dẫn thực hành của cùng nhóm, <em>Methods in Enzymology</em> 2025, <a href="https://doi.org/10.1016/bs.mie.2025.06.014">doi:10.1016/bs.mie.2025.06.014</a></dd>
+    <dt>Trạng thái đọc</dt>
+    <dd><span class="tag tag-s">XÁC MINH TÓM TẮT QUA PUBMED</span> · <span class="tag tag-u">CHƯA DÙNG THỬ MÁY CHỦ</span></dd>
+  </dl>
+</div>
+
+<div class="gate two">
+  <div class="g">
+    <h4>Cần biết trước</h4>
+    <ul>
+      <li><a href="../foundations/ubiquitin-degron.html">Bài nền 1</a> — degron và E3.</li>
+      <li><a href="../foundations/structure-exposure.html">Bài nền 3</a> — vùng vô định hình, độ phơi lộ.</li>
+    </ul>
+  </div>
+  <div class="g">
+    <h4>Đọc xong sẽ hiểu được</h4>
+    <ul>
+      <li>Nó làm được gì — và nó làm khá nhiều.</li>
+      <li>Khái niệm “ba thành phần” của một degron hoạt động được.</li>
+      <li>Bốn điểm mà sản phẩm của đề tài phải khác, nếu muốn có lý do tồn tại.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="vaitro">1. Vai trò với đề tài</h2>
+
+<p>GVHD yêu cầu đề tài phải có một sản phẩm ứng dụng. Ở hướng degron, <strong>đã có hai thứ tồn tại</strong>: DEGRONOPEDIA, và một bản chạy trên Colab do chính nhóm tác giả PAP cung cấp. <span class="tag tag-s">NGUỒN</span></p>
+
+<p>Nghĩa là tiêu chí ứng dụng của đề tài <strong>bắt đầu ở thế yếu</strong>: không đủ để làm “một trang web dự đoán degron”, vì câu hỏi đầu tiên sẽ là <em>“khác DEGRONOPEDIA chỗ nào?”</em>. Đó là lý do bài này có một trang riêng dù nó không cung cấp dữ liệu hay phương pháp nào cho đề tài.</p>
+
+<!-- ===================================================== -->
+<h2 id="lamgi">2. Nó làm gì</h2>
+
+<p>Theo tóm tắt chính thức, máy chủ này nhận một protein rồi:</p>
+
+<div class="steps">
+  <div class="step">
+    <div>
+      <h4>Tìm degron, và ánh xạ sang các residue lân cận có thể bị ubiquitin hóa</h4>
+      <p>Cộng với các vùng vô định hình gần đó, vốn có thể đóng vai trò <strong>mầm bung cấu trúc</strong> cho proteasome. <span class="tag tag-s">NGUỒN</span></p>
+    </div>
+  </div>
+  <div class="step">
+    <div>
+      <h4>Đánh giá mức bảo tồn tiến hóa của degron</h4>
+      <p>Một degron được bảo tồn qua các loài thì nhiều khả năng có chức năng thật. <span class="tag tag-s">NGUỒN</span></p>
+    </div>
+  </div>
+  <div class="step">
+    <div>
+      <h4>Báo cáo các biến đổi sau dịch mã và các đột biến có thể bật tắt degron</h4>
+      <p>Tức là nó đã có một dạng phân tích biến thể. <span class="tag tag-s">NGUỒN</span></p>
+    </div>
+  </div>
+  <div class="step">
+    <div>
+      <h4>Dùng học máy chấm độ bền của hai đầu chuỗi, và mô phỏng phân giải protein</h4>
+      <p>Phần mô phỏng dùng để tìm degron xuất hiện ở <strong>các đầu chuỗi mới sinh ra</strong> sau khi protein bị cắt — một ý tưởng tinh tế. <span class="tag tag-s">NGUỒN</span></p>
+    </div>
+  </div>
+  <div class="step">
+    <div>
+      <h4>Và họ có kiểm thực nghiệm</h4>
+      <p>Một motif gây mất ổn định ở đầu C do máy chủ dự đoán đã được xác nhận bằng thực nghiệm, cùng một ca degron sinh ra sau phân giải. <span class="tag tag-s">NGUỒN</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="callout c-key">
+  <span class="ct">Một khái niệm đáng mượn: degron hoạt động được cần ba thành phần</span>
+  <p style="margin-bottom:0">Cùng nhóm tác giả, trong bản hướng dẫn thực hành 2025, phát biểu rằng việc phân hủy hiệu quả dựa trên một <strong>kiến trúc ba phần</strong>: một <em>motif degron</em>, một <em>vị trí ubiquitin hóa</em>, và một <em>mầm để proteasome bung chuỗi</em>. <span class="tag tag-s">NGUỒN</span> Đây là cách nghĩ hữu ích cho đề tài: một mô hình chỉ chấm điểm motif là đang mô hình hóa <strong>một phần ba</strong> của câu chuyện. Nó cũng là một lời giải thích khả dĩ cho việc vì sao điểm đo trên peptide tách rời không chuyển tốt sang protein nguyên vẹn. <span class="tag tag-a">SUY LUẬN</span></p>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="khacbiet">3. Bốn điểm sản phẩm của đề tài phải khác</h2>
+
+<p>Dựa trên những gì DEGRONOPEDIA <em>đã</em> làm, bốn chỗ còn trống:</p>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Điểm khác biệt đề xuất</th><th>Vì sao nó không trùng</th><th>Mức chắc chắn</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Tách hai câu trả lời</strong>: điểm của cả đoạn và bản đồ độ nhạy đột biến theo residue — hiển thị riêng</td>
+      <td>Cần dùng thử công cụ để xác nhận phần nào đã có và phần nào chưa có</td>
+      <td><span class="tag tag-a">SUY LUẬN</span></td>
+    </tr>
+    <tr>
+      <td><strong>2. Hiển thị theo từng residue</strong>, kèm đối chiếu với dấu chân thực nghiệm khi có</td>
+      <td>DEGRONOPEDIA thiên về chú giải và khớp motif; phần học máy của nó tập trung ở hai đầu chuỗi</td>
+      <td><span class="tag tag-u">CHƯA KIỂM — phải dùng thử máy chủ</span></td>
+    </tr>
+    <tr>
+      <td><strong>3. Quét một danh sách biến thể</strong> và trả về biến thể nào tạo hoặc phá degron, kèm cơ chế</td>
+      <td>DEGRONOPEDIA có báo đột biến ảnh hưởng degron, nên chỗ này <strong>chồng lấn</strong> — phải kiểm kỹ mới biết khác ở đâu</td>
+      <td><span class="tag tag-u">CHƯA KIỂM — rủi ro trùng cao</span></td>
+    </tr>
+    <tr>
+      <td><strong>4. Báo rõ miền áp dụng</strong>: nói thẳng khi dự đoán nằm ngoài vùng đã kiểm được — vùng bị chôn, protein không thuộc bào tương, hoặc protein ngoài miền dữ liệu đã kiểm</td>
+      <td>Đây là điểm khác biệt về <em>thái độ</em> chứ không về tính năng, và nó rẻ để làm</td>
+      <td><span class="tag tag-p">ĐỀ XUẤT</span></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout c-warn">
+  <span class="ct">Việc phải làm, rẻ và chưa làm</span>
+  <p style="margin-bottom:0"><strong>Mở <a href="https://degronopedia.com">degronopedia.com</a>, nhập một protein, và xem nó trả về cái gì.</strong> Bốn điểm khác biệt ở trên hiện dựa trên <em>tóm tắt bài báo</em>, không dựa trên việc dùng thử công cụ. Một buổi chiều dùng thử sẽ cho câu trả lời chắc chắn hơn nhiều lần đọc tóm tắt — và nếu điểm 2 hoặc 3 hóa ra đã có sẵn thì phải đổi thiết kế sản phẩm trước khi viết đề cương.</p>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="tach">4. Tách ba mức</h2>
+
+<div class="three">
+  <div class="a">
+    <h4>Tác giả chứng minh được</h4>
+    <p>Một máy chủ web tìm degron toàn proteome eukaryote, ánh xạ sang vị trí ubiquitin hóa và vùng vô định hình, đánh giá bảo tồn, báo biến đổi sau dịch mã và đột biến, chấm độ bền hai đầu chuỗi bằng học máy, và mô phỏng phân giải để tìm degron ở đầu chuỗi mới; kèm hai ca kiểm thực nghiệm. <span class="tag tag-s">NGUỒN — mức tóm tắt</span></p>
+  </div>
+  <div class="b">
+    <h4>Cách đọc của chúng ta</h4>
+    <p>Đây là một công cụ <strong>chú giải</strong> mạnh, không phải một mô hình dự đoán định lượng toàn chuỗi. Khoảng trống của đề tài nằm ở chỗ đó: cho một <em>bản đồ độ nhạy đột biến theo residue</em>, hai thứ mà một công cụ chú giải không cho. <span class="tag tag-a">SUY LUẬN — cần dùng thử để xác nhận</span></p>
+  </div>
+  <div class="c">
+    <h4>Hướng đề tài rút ra</h4>
+    <p>Đừng làm một DEGRONOPEDIA kém hơn. Hoặc làm thứ nó không làm, hoặc thu hẹp sản phẩm xuống một chức năng hẹp làm thật tốt. Và phải chuẩn bị câu trả lời cho câu hỏi “khác gì” <strong>trước</strong> khi GVHD hỏi. <span class="tag tag-p">ĐỀ XUẤT</span></p>
+  </div>
+</div>
+
+<h2 id="tukiem">Tự kiểm tra</h2>
+
+<details class="q">
+  <summary>1. Vì sao sự tồn tại của DEGRONOPEDIA làm <em>giảm</em> điểm tiêu chí ứng dụng của đề tài, chứ không phải tăng?</summary>
+  <div><p>Vì tiêu chí ứng dụng chấm <em>đóng góp</em>, không chấm công sức. Một công cụ đã tồn tại, miễn phí, đăng ở NAR, nghĩa là người dùng đã có chỗ để đi. Sản phẩm của đề tài chỉ có giá trị ở phần nó làm được mà công cụ kia không làm. Điểm chỉ tăng trở lại nếu nêu được rõ phần đó, và chứng minh được nó hữu ích.</p></div>
+</details>
+
+<details class="q">
+  <summary>2. Khái niệm “kiến trúc ba phần” gợi ý gì về giới hạn của mọi mô hình chỉ chấm điểm motif?</summary>
+  <div><p>Rằng chúng mô hình hóa một trong ba điều kiện cần. Một đoạn có motif hoàn hảo nhưng không có lysine gần đó để gắn ubiquitin, hoặc không có vùng vô định hình làm mầm cho proteasome bung chuỗi, thì vẫn có thể không bị phân hủy. Điều này cho thêm một cách giải thích vì sao điểm đo trên peptide tách rời không chuyển tốt sang protein nguyên vẹn — bên cạnh lý do về độ phơi lộ.</p></div>
+</details>
+
+<div class="row" data-done-slot style="margin:2rem 0 0"></div>
+
+<div class="next">
+  <a href="alphamissense-2023.html"><span class="k">Đọc tiếp</span><span class="t">AlphaMissense · điểm, không cơ chế →</span></a>
+  <a href="../topic/open-questions.html"><span class="k">Dùng ở đâu</span><span class="t">Câu hỏi mở · phạm vi tối thiểu của sản phẩm →</span></a>
+</div>
+
+<footer class="pagefoot">
+  <p><strong>Nguồn và cách xác minh.</strong> Thông tin thư mục, danh sách tác giả và tóm tắt xác minh qua PubMed ngày 11/10/2026 (PMID 38567734). Bài gốc: Szulc NA và cộng sự, <em>DEGRONOPEDIA: a web server for proteome-wide inspection of degrons</em>, <em>Nucleic Acids Research</em> 2024;52(W1):W221–W232, <a href="https://doi.org/10.1093/nar/gkae238">doi:10.1093/nar/gkae238</a>. Khái niệm kiến trúc ba phần lấy từ tóm tắt bản hướng dẫn thực hành của cùng nhóm: Szulc NA, Pokrzywa W, <em>Methods in Enzymology</em> 2025;719:67–94, <a href="https://doi.org/10.1016/bs.mie.2025.06.014">doi:10.1016/bs.mie.2025.06.014</a> (PMID 40992849).</p>
+  <p style="margin-bottom:0"><strong>Giới hạn.</strong> Trang này dựa trên tóm tắt, <strong>chưa dùng thử máy chủ</strong>. Bốn điểm khác biệt ở mục 3 là <em>giả định cần kiểm</em>, không phải kết luận — và hai trong bốn điểm có rủi ro trùng lặp cao.</p>
+</footer>
+
+</div>
+<script src="../assets/hub.js"></script>
+</body>
+</html>

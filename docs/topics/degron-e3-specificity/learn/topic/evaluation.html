@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Đánh giá bản đồ residue trước, điểm đoạn sau · Hub học degron</title>
+<meta name="hub-page" content="t-eval">
+<meta name="description" content="Thước đo chính là độ khớp giữa bản đồ dự đoán và độ nhạy đột biến đo theo vị trí trên peptide chưa gặp.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../assets/hub.css">
+</head>
+<body>
+<a class="skip" href="#noidung">Bỏ qua điều hướng</a>
+<div class="page">
+<nav class="topbar" aria-label="Thanh điều hướng"><a class="home" href="../index.html">← Hub học đề tài</a><span class="spacer"></span></nav>
+
+<div class="crumb"><a href="../index.html">Hub</a><span class="sep">/</span><span>Chặng 5 · Hướng đề tài</span><span class="sep">/</span><span>Đánh giá bản đồ residue trước, điểm đoạn sau</span></div>
+
+<div class="eyebrow">Chặng 5 · Hướng đề tài</div>
+
+<h1>Đánh giá bản đồ residue trước, điểm đoạn sau</h1>
+
+<p class="lede">Thước đo chính là độ khớp giữa bản đồ dự đoán và độ nhạy đột biến đo theo vị trí trên peptide chưa gặp.</p>
+
+<div class="callout c-warn"><span class="ct">Phạm vi đã chốt ngày 11/10/2026</span><p style="margin-bottom:0">Mục tiêu là <strong>dự đoán bản đồ độ nhạy đột biến theo residue</strong> của degron. Nhánh dự đoán E3 đã bỏ vì dữ liệu gán E3 quá ít; E3 chỉ là <strong>ca nghiên cứu</strong>. Mọi kiến trúc và phép đánh giá bên dưới vẫn là đề xuất, chưa có kết quả huấn luyện. <a href="../../01-idea/topic-decision.md">Văn bản quyết định</a>.</p>
+</div>
+
+<main id="noidung">
+<div class="gate two"><div class="g">
+<h4>Cần biết trước</h4>
+<p><a href="../foundations/regression-correlation.html">Pearson và Spearman</a>, <a href="../../../../common/lectures/09-leakage-and-homology.html">chia tập chống rò rỉ</a>.</p>
+</div>
+<div class="g">
+<h4>Học xong sẽ hiểu</h4>
+<p>Ba bậc đánh giá, đối chứng bắt buộc và lý do Pearson trên điểm đoạn chỉ là phép kiểm phụ.</p>
+</div>
+</div>
+
+<h2>1. Ba bậc đánh giá</h2>
+<div class="cards c3"><div class="card"><span class="k">Bậc 1 · tái lập</span><span class="t">Điểm đoạn</span><p class="d">PAP đã chạy lại đạt Pearson 0,8690 trên 428 gene holdout hiệu dụng. Đây là baseline đã kiểm, <strong>không</strong> là đóng góp của mô hình mới.</p>
+</div>
+<div class="card"><span class="k">Bậc 2 · chính</span><span class="t">Footprint theo vị trí</span><p class="d">Chia theo peptide trên 2.624 footprint. Báo Spearman <em>theo từng peptide</em> trên vector 28 vị trí và precision@3 so với vị trí quan trọng đo được.</p>
+</div>
+<div class="card"><span class="k">Bậc 3 · ngoài thư viện</span><span class="t">Thay thế đầy đủ</span><p class="d">249 peptide với 28 vị trí × 19 thay thế; chỉ kiểm tra. Báo riêng peptide trùng giữa hai nguồn, không trộn vào huấn luyện.</p>
+</div>
+</div>
+
+<h2>2. Vì sao chọn precision@3?</h2>
+<p>Audit đột biến quét cho median <strong>3 vị trí quan trọng trên 28</strong> ở tập peptide có footprint. Precision@3 hỏi: trong ba vị trí mô hình xếp cao nhất, có bao nhiêu vị trí được phép đo đánh dấu quan trọng? Báo thêm Spearman vì một mô hình có thể xếp đúng ba vị trí đầu nhưng sai thứ tự phần còn lại. Ngưỡng chọn footprint và định nghĩa vị trí quan trọng phải đóng băng trên train, không tối ưu sau khi xem test.</p>
+
+<h2>3. Các đối chứng không thể bỏ</h2>
+<ol><li><strong>Đầu hồi quy theo vị trí không MIL:</strong> kiểm liệu kiến trúc túi có thật sự thêm giá trị khi nhãn residue đã sẵn.</li>
+<li><strong>Ablation cổng cấu trúc và nhãn đoạn:</strong> bỏ từng phần để thấy đóng góp của rASA/pLDDT và nhiệm vụ phụ.</li>
+<li><strong>Mô hình bất biến hoán vị:</strong> đối chứng âm cho thông tin thứ tự. Giả thuyết dự kiến bản đồ phẳng, nhưng đó là <em>dự đoán cần thử</em>, không phải kết quả đã đo.</li>
+<li><strong>Chia peptide, kiểm chồng lấn protein:</strong> ngăn biến thể của cùng peptide đi sang cả train và test.</li>
+</ol>
+
+<h2>4. Giới hạn phép thử pooling đã có</h2>
+<p>Đổi average thành max trên <em>cùng trọng số đã học cho average</em> làm Pearson giảm từ 0,8239 xuống 0,3443 ở kênh nội. Điều này mô tả biểu diễn PAP hiện có; nó không chứng minh một mô hình max được huấn luyện từ đầu sẽ thua. Không dùng phép thử ấy như kết quả đánh giá MIL-Degron.</p>
+
+</main>
+
+<div class="row" data-done-slot style="margin:2rem 0"></div>
+
+<div class="next"><a href="architecture.html"><span class="k">Đọc trước</span><span class="t">← Trang trước</span></a><a href="open-questions.html"><span class="k">Học tiếp</span><span class="t">Trang sau →</span></a></div>
+
+<footer class="pagefoot"><p><strong>Nguồn và trạng thái.</strong> Số liệu tự đếm và thiết kế lấy từ <a href="../../01-idea/topic-decision.md">quyết định đề tài</a> và <a href="../../../../common/deep-research/research_notes/degron-e3-labels/README.md">audit dữ liệu thô</a>. Đề tài do sinh viên chốt; chưa có phê duyệt GVHD. Chưa huấn luyện mô hình mới.</p>
+</footer>
+
+</div>
+<script src="../assets/hub.js"></script></body></html>

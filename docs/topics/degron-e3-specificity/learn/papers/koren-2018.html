@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Koren 2018 · Degron đầu C và khởi đầu GPS-peptidome</title>
+<meta name="hub-page" content="p-koren">
+<meta name="description" content="Bài Cell 2018 đặt ra kỹ thuật GPS-peptidome và quy tắc đầu C, nền tảng của mọi sàng lọc degron sau đó.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;650&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../assets/hub.css">
+</head>
+<body>
+<a class="skip" href="#vaitro">Bỏ qua điều hướng</a>
+<div class="page">
+
+<nav class="topbar" aria-label="Thanh điều hướng">
+  <a class="home" href="../index.html">← Hub học đề tài</a>
+  <span class="spacer"></span>
+</nav>
+
+<div class="crumb">
+  <a href="../index.html">Hub</a> <span class="sep">/</span>
+  <a href="index.html">Bài báo</a> <span class="sep">/</span>
+  <span>Nhóm 3 · Bối cảnh</span> <span class="sep">/</span>
+  <span>Koren 2018</span>
+</div>
+
+<div class="eyebrow">Nhóm 3 — Bối cảnh · xác minh ở mức tóm tắt</div>
+<h1>Bài đặt ra kỹ thuật mà cả lĩnh vực đang dùng</h1>
+<p class="lede">Nếu bạn muốn biết vì sao hai sàng lọc degron hiện đại đều gắn peptide vào GFP rồi chia ống bằng FACS, câu trả lời nằm ở đây.</p>
+
+<div class="bib">
+  <dl>
+    <dt>Tác giả</dt>
+    <dd>Koren I, Timms RT, Kula T, Xu Q, Li MZ, Elledge SJ</dd>
+    <dt>Tên bài</dt>
+    <dd><em>The Eukaryotic Proteome Is Shaped by E3 Ubiquitin Ligases Targeting C-Terminal Degrons</em></dd>
+    <dt>Công bố</dt>
+    <dd><strong>Cell</strong>, 2018, tập 173, số 7, trang 1622–1635.e14</dd>
+    <dt>DOI</dt>
+    <dd><a href="https://doi.org/10.1016/j.cell.2018.04.028">10.1016/j.cell.2018.04.028</a> · PMID 29779948 · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6003881/">PMC6003881</a></dd>
+    <dt>Trạng thái đọc</dt>
+    <dd><span class="tag tag-s">XÁC MINH TÓM TẮT QUA PUBMED</span> · <span class="tag tag-u">CHƯA ĐỌC TOÀN VĂN</span></dd>
+  </dl>
+</div>
+
+<div class="gate two">
+  <div class="g">
+    <h4>Cần biết trước</h4>
+    <ul>
+      <li><a href="../foundations/ubiquitin-degron.html#degron">Bài nền 1, mục 4</a> — các kiểu degron.</li>
+      <li><a href="../foundations/measuring-degrons.html">Bài nền 2</a> — hệ reporter GPS.</li>
+    </ul>
+  </div>
+  <div class="g">
+    <h4>Đọc xong sẽ hiểu được</h4>
+    <ul>
+      <li>“Quy tắc đầu C” là gì và vì sao nó song song với quy tắc đầu N.</li>
+      <li>Nguồn gốc kỹ thuật của cả hai bộ dữ liệu đề tài dùng.</li>
+      <li>Một kết quả tiến hóa đẹp: proteome <em>tránh</em> degron.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="vaitro">1. Vai trò với đề tài</h2>
+
+<p>Bài này <strong>không cung cấp dữ liệu</strong> cho đề tài, nhưng nó cung cấp hai thứ khác:</p>
+
+<ul>
+  <li><strong>Kỹ thuật.</strong> Ý tưởng ghép “sàng lọc độ bền protein toàn cục” với một thư viện peptide tổng hợp, rồi dùng CRISPR để truy ra E3, là của bài này. Cả <a href="zhang-2023.html">Zhang 2023</a> lẫn <a href="voutsinos-2026.html">Voutsinos 2026</a> đều là biến thể của nó.</li>
+  <li><strong>Thước đo kỳ vọng.</strong> Bài này xác định <strong>8 adaptor CRL</strong> cho degron đầu C. Năm năm sau, Zhang 2023 xác định thêm 16 cặp cho degron nội. Con số đó cho thấy <em>tốc độ thật</em> của việc gán E3 bằng thực nghiệm — chậm, vì mỗi cặp là một sàng lọc CRISPR riêng. Đó là lý do nhãn E3 hiếm, và là lý do một mô hình tính toán có chỗ đứng. <span class="tag tag-a">SUY LUẬN</span></li>
+</ul>
+
+<!-- ===================================================== -->
+<h2 id="lamgi">2. Họ làm gì</h2>
+
+<p>Theo tóm tắt chính thức:</p>
+
+<div class="steps">
+  <div class="step">
+    <div>
+      <h4>Ghép GPS với một thư viện peptide người tổng hợp</h4>
+      <p>Tìm ra <strong>hàng nghìn peptide có hoạt tính degron</strong>. Đây là lần đầu degron được tìm ở quy mô thư viện thay vì từng ca. <span class="tag tag-s">NGUỒN</span></p>
+    </div>
+  </div>
+  <div class="step">
+    <div>
+      <h4>Dùng sàng lọc CRISPR để truy E3</h4>
+      <p>Xác định được <strong>8 phức hợp adaptor của Cullin-RING ligase</strong> điều hòa degron đầu C: <strong>6 phức hợp CRL2 và 2 phức hợp CRL4</strong>. <span class="tag tag-s">NGUỒN</span></p>
+    </div>
+  </div>
+  <div class="step">
+    <div>
+      <h4>Và một kết quả ở mức tiến hóa</h4>
+      <p>Phân tích proteome cho thấy đầu C của protein eukaryote <strong>nghèo degron đầu C hơn mức ngẫu nhiên</strong>. Tác giả diễn giải: hệ E3 đã định hình thành phần của proteome qua tiến hóa — protein nào mang degron ở đuôi thì bị loại bớt. Từ đó họ đề xuất một loạt “<strong>quy tắc đầu C</strong>”, song song với quy tắc đầu N đã biết từ 1986. <span class="tag tag-s">NGUỒN</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="callout c-key">
+  <span class="ct">Vì sao kết quả “proteome nghèo degron” lại hay</span>
+  <p style="margin-bottom:0">Nó là một kiểm chứng gián tiếp rất mạnh. Nếu degron đầu C thật sự gây phân hủy trong tế bào thật, thì qua hàng triệu năm, những protein vô tình mang chúng ở đuôi sẽ chịu áp lực chọn lọc âm. Quan sát đúng như vậy nghĩa là hiệu ứng đo được trong đĩa nuôi cấy <strong>có hệ quả thật trong sinh vật sống</strong> — điều mà một phép đo reporter đơn lẻ không chứng minh được. <span class="tag tag-a">SUY LUẬN</span></p>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="tach">3. Tách ba mức</h2>
+
+<div class="three">
+  <div class="a">
+    <h4>Tác giả chứng minh được</h4>
+    <p>Hàng nghìn peptide có hoạt tính degron tìm được bằng GPS cộng thư viện peptide; độ bền của nhiều protein được điều hòa bởi degron nằm ở đầu C; 8 adaptor CRL chịu trách nhiệm (6 CRL2, 2 CRL4); và đầu C của proteome eukaryote nghèo degron đầu C. <span class="tag tag-s">NGUỒN — mức tóm tắt</span></p>
+  </div>
+  <div class="b">
+    <h4>Cách đọc của chúng ta</h4>
+    <p>Bài này cho thấy <strong>gán E3 là việc đắt</strong>: mỗi adaptor là một sàng lọc CRISPR. Năm 2018 được 8, năm 2023 thêm 16. Với hơn 600 E3, tốc độ đó nói rằng phần lớn hệ thống sẽ <em>không bao giờ</em> được gán hết bằng thực nghiệm thuần túy. <span class="tag tag-a">SUY LUẬN</span></p>
+  </div>
+  <div class="c">
+    <h4>Hướng đề tài rút ra</h4>
+    <p>Đây là lập luận ủng hộ mạnh nhất cho việc <strong>điều kiện hóa theo trình tự E3</strong> thay vì theo chỉ số: nếu mô hình khái quát được sang E3 chưa có nhãn, nó bù được đúng chỗ thực nghiệm không với tới. <span class="tag tag-p">ĐỀ XUẤT</span> Xem <a href="../foundations/e3-conditioning.html">bài nền 6</a>.</p>
+  </div>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="hanche">4. Hạn chế, trong khung của đề tài</h2>
+
+<ul>
+  <li><strong>Chỉ degron đầu C.</strong> Degron nội — phần lớn nhất và khó nhất — nằm ngoài. Đó là khoảng trống mà Zhang 2023 lấp.</li>
+  <li><strong>Không có mô hình dự đoán.</strong> Bài này là sinh học thực nghiệm; phần tính toán là phân tích thống kê, không phải mô hình dự đoán từ trình tự.</li>
+  <li><strong>Chưa đọc toàn văn.</strong> Mọi điều trên đây ở mức tóm tắt. Chi tiết về kích thước thư viện, cách tính điểm và quy trình CRISPR <strong>chưa kiểm</strong>. <span class="tag tag-u">CHƯA KIỂM</span></li>
+</ul>
+
+<h2 id="tukiem">Tự kiểm tra</h2>
+
+<details class="q">
+  <summary>1. Vì sao bài này quan trọng với đề tài dù không cung cấp dữ liệu nào?</summary>
+  <div><p>Vì nó đặt ra kỹ thuật mà cả hai bộ dữ liệu của đề tài dựa vào, nên hiểu nó là hiểu nguồn gốc và giới hạn của nhãn. Và vì nó cho một thước đo thực tế về tốc độ gán E3 bằng thực nghiệm — 8 adaptor trong một bài báo lớn — từ đó thấy được vì sao nhãn “E3 nào” khan hiếm tới mức đó.</p></div>
+</details>
+
+<div class="row" data-done-slot style="margin:2rem 0 0"></div>
+
+<div class="next">
+  <a href="tokheim-2021.html"><span class="k">Đọc tiếp</span><span class="t">Tokheim 2021 · deepDegron và ung thư →</span></a>
+  <a href="zhang-2023.html"><span class="k">Hoặc quay lại</span><span class="t">Zhang 2023 · bài kế thừa kỹ thuật này →</span></a>
+</div>
+
+<footer class="pagefoot">
+  <p><strong>Nguồn và cách xác minh.</strong> Thông tin thư mục và tóm tắt xác minh qua PubMed ngày 11/10/2026 (PMID 29779948). Bài gốc: Koren I, Timms RT, Kula T, Xu Q, Li MZ, Elledge SJ, <em>The Eukaryotic Proteome Is Shaped by E3 Ubiquitin Ligases Targeting C-Terminal Degrons</em>, <em>Cell</em> 2018;173(7):1622–1635.e14, <a href="https://doi.org/10.1016/j.cell.2018.04.028">doi:10.1016/j.cell.2018.04.028</a>.</p>
+  <p style="margin-bottom:0"><strong>Giới hạn.</strong> Trang này dựa trên tóm tắt, không dựa trên toàn văn. Không suy đoán thêm số liệu, chỉ số hay chi tiết phương pháp nào ngoài những gì tóm tắt nêu.</p>
+</footer>
+
+</div>
+<script src="../assets/hub.js"></script>
+</body>
+</html>

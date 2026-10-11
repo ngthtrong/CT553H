@@ -1,0 +1,39 @@
+{
+ "source": {
+  "dataset": "Mendeley Data 10.17632/32h94v2yv2.2",
+  "file": "I28 CRL Saturation Mutagenesis.zip",
+  "n_sample_files": 12
+ },
+ "totals": {
+  "n_identifiers": 135040,
+  "n_mutant_identifiers": 135040,
+  "n_wildtype_identifiers": 0,
+  "n_distinct_peptides": 249,
+  "total_reads": 121498124
+ },
+ "position_coverage": {
+  "peptides_with_ge_1_pos": 249,
+  "peptides_with_ge_14_pos": 248,
+  "peptides_with_ge_24_pos": 247,
+  "peptides_with_ge_27_pos": 246,
+  "peptides_with_ge_28_pos": 243
+ },
+ "after_read_filter_ge10": {
+  "peptides": 248,
+  "peptides_with_ge_24_pos": 239,
+  "peptides_with_ge_27_pos": 239
+ },
+ "mutants_per_peptide": {
+  "min": 2,
+  "median": 560,
+  "max": 560
+ },
+ "example_peptides": [
+  "A2RUQ5_C17orf102_2",
+  "A2VEC9_SSPO_88",
+  "A6NMZ7_COL6A6_28",
+  "O00445_SYT5_11",
+  "O00468_AGRN_82"
+ ],
+ "unparsed_examples": []
+}

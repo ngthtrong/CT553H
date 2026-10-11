@@ -1,0 +1,48 @@
+{
+ "source": {
+  "dataset": "Mendeley Data 10.17632/32h94v2yv2.2",
+  "file": "I28 Scanning Mutagenesis.zip",
+  "table": "I28 Scanning Mutagenesis Replicate 1.csv",
+  "read_filter": "Sum >= 10"
+ },
+ "rows": {
+  "total": 283880,
+  "with_psi": 261866,
+  "with_psi_and_reads": 256711,
+  "unparsed": 0
+ },
+ "peptides": {
+  "in_library": 9817,
+  "with_any_scored_mutant": 9590,
+  "with_scored_wildtype": 9011,
+  "with_wt_and_ge1_mutant": 9011
+ },
+ "position_coverage_scored": {
+  "ge_1": 9590,
+  "ge_7": 9182,
+  "ge_14": 9039,
+  "ge_21": 8939,
+  "ge_24": 8877,
+  "ge_27": 8655
+ },
+ "position_coverage_after_read_filter": {
+  "ge_1": 9523,
+  "ge_14": 8866,
+  "ge_21": 8767,
+  "ge_24": 8684,
+  "ge_27": 8316
+ },
+ "positions_per_peptide_scored": {
+  "min": 1,
+  "median": 28.0,
+  "mean": 26.4,
+  "max": 28
+ },
+ "psi_distribution": {
+  "n": 261866,
+  "min": 1.0,
+  "max": 6.0,
+  "mean": 3.641,
+  "sd": 1.165
+ }
+}

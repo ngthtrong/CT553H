@@ -4,6 +4,74 @@
 
 ---
 
+## 11/10/2026 — hoàn thiện hub học `degron-e3-specificity` sau phiên Claude bị ngắt
+
+- Hoàn thiện [hub năm chặng](../topics/degron-e3-specificity/learn/index.html) và [ghi chú vận hành](../topics/degron-e3-specificity/learn/README.md): 22 trang HTML gồm 6 bài nền, danh mục/chín trang bài báo và 5 trang đào sâu đề tài. Nối từng phần của [presentation.html](../topics/degron-e3-specificity/01-idea/presentation.html) tới bài đọc sâu; thêm đường về hub từ báo cáo kiểm chứng và danh sách đề tài.
+- Đồng bộ phần dạy đề tài với quyết định tái định tâm cùng ngày: footprint theo residue là mục tiêu chính; nhãn toàn đoạn là phụ trợ; E3 là ca nghiên cứu. Viết lại các trang dữ liệu, kiến trúc, đánh giá, câu hỏi mở, Zhang 2023, Larsen 2025, MetaDegron 2024 và phần giải thích vì sao bỏ điều kiện hóa E3. Bổ sung tiền lệ BioBlobs, OmniESI, ELITE ngoài danh mục chín bài chính; sửa tác giả MetaDegron và tên BioBlobs trong trình bày.
+- Kiểm [liên kết và nhãn ảnh](../topics/degron-e3-specificity/learn/check_links.py): 22 trang, 360 tham chiếu tương đối, không file/anchor hỏng; `git diff --check` đạt. Đã xem ảnh chụp Chrome của hub, hai trang trọng tâm và hình gốc Voutsinos ở độ rộng 500 px, hub ở 780 px: chữ, điều hướng và chú thích đọc được; hình lớn cuộn trong khung. Không chạy thí nghiệm hoặc huấn luyện mô hình.
+- **Còn thiếu:** Table S5 do tác giả curate chưa truy được; chưa kiểm toàn bộ tiền lệ mới, chưa dùng thử DEGRONOPEDIA; chưa có kết quả mô hình footprint. Các trang ghi rõ đây là giới hạn, không suy ra kết quả còn thiếu.
+- **Đính chính audit:** hai số 27 peptide (được gán E3; có bản đồ bão hòa) không chỉ cùng một tập. Giao của `e3-assignment.json` và `overlap-audit.json` là **23 peptide**; đã sửa [ghi chú audit](deep-research/research_notes/degron-e3-labels/README.md), quyết định đề tài, presentation và hub. Mục cũ bên dưới ghi “27 có cả hai” là sai theo hai JSON đã lưu.
+
+---
+
+## 11/10/2026 (khuya) — **CỔNG CHẶN 2 KHÔNG QUA**: chỉ 1 E3 đủ mẫu; nhưng nhãn theo residue lớn gấp nhiều lần tài liệu ghi
+
+- **Yêu cầu của sinh viên:** đếm nhãn E3/adaptor thực sự dùng được, và đọc đầy đủ công trình gần nhất có thể trùng ý tưởng.
+- **Vòng được paywall:** Table S1–S7 trên PMC trả `Checking your browser - reCAPTCHA`; Europe PMC trả *"not open access"*. Lấy được dữ liệu thô từ **Mendeley Data 10.17632/32h94v2yv2.2** mà chính bài khai báo (3 file ZIP, có SHA-256 trong ghi chú). Zenodo 8103915 chỉ có mã DegronID, không có nhãn.
+- **Ghi chú và 7 script tái tạo:** [research_notes/degron-e3-labels/](deep-research/research_notes/degron-e3-labels/README.md).
+
+### Cổng chặn 2 — kết quả: KHÔNG QUA cho thành phần có điều kiện E3
+
+- **31 screen CRISPR** trong dữ liệu (trừ 3 control) → **27 gán được adaptor**, **25 gán rõ**, **10 E3 khác nhau**.
+- **Phân bố giết thiết kế:** KLHL15 **13** peptide · BAG6 **4** · ASB7 **2** · FEM1B **2** · ASB3, KLHL9, FBXW5, FBXO21, FBXO38, DCAF5 **1 mỗi cái**.
+- **Bền với ngưỡng:** quét 36 tổ hợp (fdr × lfc × goodsgrna) → gán được 16–29, số E3 8–10, và **số E3 có ≥5 peptide LUÔN đúng bằng 1**. Không ngưỡng nào cứu được.
+- **Hệ quả:** thành phần 3 của CMIL-E3 (điều kiện E3 kiểu FiLM) **không huấn luyện được**, và không khái quát sang E3 mới vì chỉ có 10 E3 để học quan hệ trình tự–đặc hiệu. **Không được nói "16 E3 có nhãn CRISPR" như thể đó là 16 lớp dùng được** — con số phải nói là số peptide trên mỗi E3, tức 1–13.
+- Một sai sót đã tự sửa trong phiên: lần chạy đầu loại hit theo **tần suất** nên **loại oan KLHL15** (13/31 screen); đã đổi sang loại bộ máy chung theo danh sách tường minh. `APPBP2` xuất hiện ~17/31 screen nhưng lfc 0,8–1,6 nên tự rơi dưới ngưỡng; bài báo cũng tự thừa nhận có nhiễm sgRNA ở một số lô.
+- **Chưa lấy được Table S5** (gán E3 do tác giả curate, gồm cả "individual testing") → con số trên là **giới hạn dưới**.
+
+### Phát hiện ngoài dự kiến: nhãn theo residue lớn hơn repo ghi rất nhiều
+
+- **Đột biến quét:** 9.817 peptide trong thư viện, **8.831** có cả hoang dã và biến thể được chấm, **256.711 phép đo** có PSI và reads ≥10, median **28/28 vị trí** mỗi peptide.
+- **Peptide thực sự CÓ footprint học được: 2.624** (degron PSI≤3, phủ ≥21 vị trí, có ≥1 vị trí mà đột biến làm PSI tăng ≥1,0); trong đó **2.402 khu trú** (≤6 vị trí quan trọng). **Median 3 vị trí quan trọng trên 28.**
+- **Đột biến bão hòa:** **249 peptide × median 560 biến thể = 135.040** định danh, 239 peptide phủ ≥27 vị trí sau lọc reads. Bài báo nói "219 footprint" — đó là tập tác giả curate; dữ liệu thô đỡ được 239–247.
+- **Chồng lấn:** **27/31** peptide CRISPR có bản đồ đột biến bão hòa; 25 có cả hai. Bốn peptide thiếu đúng là bốn peptide BAG6 (screen riêng, không phải CRL).
+- **Median 3 vị trí quan trọng trên 28** là con số quan trọng nhất của vòng audit: tín hiệu **khu trú thật**, trong khi PAP bất biến hoán vị (Pearson gốc–đảo = 1,000000) nên về nguyên lý không biểu diễn được nó.
+
+### Đọc công trình gần nhất
+
+- **Zhang 2023, toàn văn.** Mô hình của họ là **SVM trên 20 đặc trưng thành phần**, cộng **DegronID** — chấm độ giống motif bằng PSSM dựng từ footprint **đã đo**, rồi gom cụm thứ bậc 40 nhóm. **Không** dự đoán bản đồ đột biến từ trình tự, **không** dùng PLM, **không** có mô hình có điều kiện E3.
+- **Bài transcription factor 05/2025, toàn văn.** Đột biến thực nghiệm của họ **có đích, không bão hòa** (xóa đoạn ASCL1 23–40, HSF1 198–217; điểm ZNF140 H323Y); bản đồ thay thế đầy đủ là **in silico** ΔPAP, không phải đo.
+- **Tra tiền lệ cho bài toán tái định tâm:** không tìm được ai dự đoán bản đồ độ nhạy đột biến theo residue cho degron. Mọi mô hình degron đã có đều ở mức peptide/protein và phần lớn dựa trên thành phần (PAP kernel=1, SVM-20, QCDPred hồi quy logistic, Degpred BERT, MetaDegron SeqVec, deepDegron chỉ hai đầu chuỗi). **Phản biện phải trích:** một khung học máy 2025 báo rằng 6 điểm thay thế mỗi residue đủ suy ra phần còn lại với ~90% độ chính xác trên dữ liệu quét đột biến sâu nói chung.
+
+### Quyết định của sinh viên: TÁI ĐỊNH TÂM — đã thực hiện xong trong phiên
+
+**Tên mới:** *Dự đoán footprint degron ở mức residue bằng học đa thể hiện với cổng phơi lộ cấu trúc, trên nhãn đột biến thực nghiệm.* Slug giữ `degron-e3-specificity` để không vỡ liên kết.
+
+- **Kiến trúc đổi tên CMIL-E3 → MIL-Degron, 6 thành phần → 5.** Bỏ thành phần điều kiện E3. Lý do giữ cấu trúc túi đổi hẳn: không còn là "nhãn chỉ ở mức peptide" mà là **nối nhãn yếu mức đoạn (212.658) với nhãn mạnh mức residue (256.711) trong một mô hình**. Attention giờ **được giám sát trực tiếp** bằng nhãn đột biến, không chỉ dùng để diễn giải.
+- **Thước đo chính mới:** Spearman theo từng peptide trên vector 28 chiều, cộng **precision@3** (chọn 3 vì median số vị trí quan trọng là 3/28), chia **theo peptide** trên 2.624 footprint. Tập kiểm tra khác thư viện: 249 bản đồ thay thế đầy đủ. Đối chứng âm có sẵn: mô hình bất biến hoán vị phải cho bản đồ phẳng.
+- **Đối chứng bắt buộc tự đặt ra:** đầu hồi quy theo vị trí **không có MIL**. Khi đã có nhãn mức residue thì MIL không còn bắt buộc — phải tự nói ra điều này, và nếu đối chứng đủ tốt thì báo đúng như vậy.
+- **E3 còn lại ở vai trò ca nghiên cứu** trên 27 peptide có cả nhãn E3 và bản đồ đột biến đầy đủ; KLHL15 (13 peptide) là lớp duy nhất đủ thử một đầu ra theo E3.
+- **Đã cập nhật:** [topic-decision.md](../topics/degron-e3-specificity/01-idea/topic-decision.md) (viết lại mục 1–6, thêm 2.1 và 7.1–7.2, thêm 4 quy ước ngôn từ), [presentation.html](../topics/degron-e3-specificity/01-idea/presentation.html) (đổi tiêu đề, bảng đầu vào/đầu ra, phạm vi, bảng kiến trúc 5 thành phần, hộp giới hạn lập luận MIL, bảng dữ liệu + hộp số liệu tự đếm, ba bậc thước đo, bảng năm tiêu chí, mục cổng chặn, thêm tài liệu 14 và đánh số lại 15–18 — kiểm cấu trúc HTML và ID: không lỗi, không trùng), [session-02-prep.md](../meeting/session-02-prep.md), [topics/README.md](../topics/README.md), [CLAUDE.md](../../CLAUDE.md).
+- **Còn dở:** chưa lấy được Table S5 (gán E3 do tác giả curate — chỉ thêm peptide, không đổi kết luận); sơ đồ SVG luồng dữ liệu vẫn vẽ nhánh điều kiện E3 đã bỏ, hiện chỉ ghi chú bằng chữ trong figcaption, **chưa vẽ lại**; chưa chạy phép đảo thứ tự residue trên sàng lọc 2; chưa chạy baseline, chưa huấn luyện, chưa xây website.
+
+---
+
+## 11/10/2026 (cuối phiên) — khảo sát lại đề tài một cách trung thực; **cổng chặn 1 đã qua**, hai tuyên bố bị thu hẹp
+
+- **Yêu cầu của sinh viên:** khảo sát và đánh giá trung thực lại `degron-e3-specificity` so với các ứng viên còn lại trong repo. Sau đó sinh viên chọn **chuẩn bị slide tuần 6 luôn**, không đếm nhãn E3 trước.
+- **Phát hiện về quy trình:** quyết định chốt đề tài ngày 11/10 **không có phép so sánh nào**. `grep` xác nhận tài liệu degron không nhắc DARKIN, và `main-topic-decision.md` cùng bốn ghi chú nền không nhắc degron. Ba cổng bắt buộc G1/G2/G3 chưa từng được áp cho degron. Đã áp lại trong phiên này.
+- **Kết quả áp lại ba cổng cho degron:** **G1 (nhãn) đạt, mạnh nhất cả repo** — mọi nhãn là nhãn thực nghiệm. **G2 (đóng góp dương) chưa xác lập** — phụ thuộc số nhãn E3 chưa đếm, và phần bằng chứng vững nhất lại là một kết quả phê phán, đúng loại đã dùng để loại hướng sirtuin. **G3 (website) đạt nhưng yếu nhất** — ba sản phẩm đã tồn tại, không phải hai.
+- **CỔNG CHẶN 1 ĐÃ QUA, theo hướng thuận.** Đọc được toàn văn bài degron transcription factor (Larsen và cộng sự, bioRxiv 05/2025): **không** mô hình hóa đặc hiệu E3, **không** kiến trúc mới, **không** nhãn E3 hay CRISPR, **không** có XAI. PAP cùng ESM-1b chỉ dùng so biến thể CRX. Trục của đề tài còn trống.
+- **Nhưng cùng bài đó buộc sửa hai chỗ:** họ đã tính rASA và pLDDT từ AlphaFold2 kèm DSSP, và đã làm bản đồ thay thế in-silico ΔPAP → "dùng cấu trúc" và "giải thích biến thể" không còn là phần mới. Và có **bộ dữ liệu thứ tư**: thư viện nhân **58.781 đoạn / 1.626 TF**, cộng **8.645 đoạn / 234 protein** chồng lấn với thư viện bào tương — lựa chọn rẻ hơn cho bậc 2 (cùng assay, khác khoang).
+- **PHẢI THU HẸP tuyên bố về nhãn E3.** Đọc toàn văn MetaDegron (*Brief Bioinform* 2024): **đã dự đoán degron theo từng E3 cho 21 E3 ligase**, có máy chủ web với cây chọn E3. Nên không nói "chưa ai làm đặc hiệu E3". Phát biểu đúng: chưa ai huấn luyện trên nhãn adaptor CRL theo CRISPR ở quy mô sàng lọc. Chỗ đó thật sự còn trống — MetaDegron huấn luyện trên **~300 degron curate**, âm tính là **peptide ngẫu nhiên**, chia 90/10, AUC 0,87–0,90, không kiểm soát đồng dạng. Nó cũng đã dùng độ phơi lộ nhưng ở **đầu vào**, không ở bước gộp.
+- **PHẢI THU HẸP tuyên bố tính mới kiến trúc (cổng chặn 3).** Chưa thấy ai dùng MIL cho degron — phần đó giữ. Nhưng **BioBlobs** (arXiv 2510.01632, 10/2025) đã dùng đúng attention-based MIL kiểu Ilse 2018 trên protein, và **OmniESI** (arXiv 2506.17963, 2025) đã dùng điều biến có điều kiện enzyme–cơ chất. Kết luận: **mới ở chỗ ghép và chỗ đặt cổng phơi lộ, không mới ở cơ chế** — đúng mức novelty đã dùng để hạ dark kinome ở phép kiểm 6.5b.
+- **Hai đối thủ mới chưa có trong repo:** **ELITE** (bioRxiv 11/2025, ProtBERT Siamese xếp hạng E3 cho substrate, Integrated Gradients, âm tính từ Negatome) và **E3TargetPred**. Ở mức cặp protein–protein, không mức residue → không giết đề tài, nhưng chiếm khung và phải vào bảng khảo sát.
+- **Phán quyết:** degron **vẫn đứng đầu** các ứng viên trong repo, nhưng vì **G1 và tiêu chí 4**, không vì kiến trúc. Bài bán đề tài đang sai trọng tâm và đã được sửa.
+- **Đã làm:** sửa [presentation.html](../topics/degron-e3-specificity/01-idea/presentation.html) — đóng cổng 1, thêm nhóm G vào bảng khảo sát (giờ bảy nhóm A–G), số thật của MetaDegron, hộp giới hạn tuyên bố tính mới, bộ dữ liệu thứ tư, sửa ba ô trong bảng năm tiêu chí, viết lại mục 6.1, thêm bốn tài liệu tham khảo (14–17). Kiểm cấu trúc HTML và ID: không lỗi, không trùng. Thêm [session-02-prep.md](../meeting/session-02-prep.md) — kịch bản nói, cây quyết định theo câu trả lời của GVHD, danh sách điều phải tự nói ra.
+- **Còn dở:** **đếm nhãn E3 trong Table S3/S4/S6/S7 của Zhang 2023** — giờ là cổng duy nhất còn lại và là con số quyết định G2. Chưa thống nhất tình trạng GPU (10/10 ghi có GPU; mục 9 của topic-decision.md ghi máy không có GPU). Chưa tra danh sách trích dẫn bài 2026 và nội bộ MetaDegron. Chưa huấn luyện mô hình, chưa xây website.
+
+---
+
 ## 11/10/2026 — tiếp tục phiên Claude: hoàn thiện giao diện `degron-e3-specificity`
 
 - Hoàn thiện [presentation.html](../topics/degron-e3-specificity/01-idea/presentation.html): hoạt ảnh trên sơ đồ, ô số liệu có nguồn audit, biểu đồ pooling có bảng và giới hạn phép thử, minh họa tương tác peptide/protein, sáng/tối, dừng chuyển động, cuộn hình trên điện thoại và chế độ in.

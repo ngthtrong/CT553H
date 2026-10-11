@@ -6,13 +6,17 @@
 
 > **Khuyến nghị đề tài chính (10/10/2026, chưa có slug, chưa trình GVHD): dark kinome trên DARKIN.** Bản đang dùng để quyết định: **[chốt đề tài chính](../common/deep-research/reports/main-topic-decision.md)** — tiêu chí và trọng số, bảng so sánh bốn ứng viên, **bốn lập luận bán đề tài phải gỡ bỏ**, lộ trình 8–9 tuần và **sáu phép kiểm trước khi chốt**. Nền kỹ thuật: [đánh giá chi tiết DARKIN](../common/deep-research/reports/dark-kinome-darkin-evaluation.md) (audit dữ liệu, tiền lệ, năm tiêu chí, protocol/XAI/conformal/website). Hai điều kiện bắt buộc dẫn tới khuyến nghị này đến từ câu trả lời của sinh viên ngày 10/10/2026 (kết quả âm không được chấp nhận; có GPU) — **chưa phải lời GVHD**.
 
-> ## ✅ ĐỀ TÀI ĐÃ CHỐT (11/10/2026): `degron-e3-specificity`
+> ## ✅ ĐỀ TÀI ĐÃ CHỐT (11/10/2026), TÁI ĐỊNH TÂM CÙNG NGÀY: `degron-e3-specificity`
 >
-> **Dự đoán đặc hiệu E3–degron ở mức residue bằng học đa thể hiện có điều kiện và cổng phơi lộ cấu trúc.** Quyết định của sinh viên ngày 11/10/2026; **chưa có phê duyệt GVHD**, cần báo cáo buổi tuần 6. Xem [quyết định và phạm vi](degron-e3-specificity/01-idea/topic-decision.md) · [trang trình bày](degron-e3-specificity/01-idea/presentation.html) · [báo cáo kiểm chứng chi tiết](../common/deep-research/reports/degron-topic-report/index.html).
+> **Dự đoán footprint degron ở mức residue bằng học đa thể hiện với cổng phơi lộ cấu trúc, trên nhãn đột biến thực nghiệm.** Slug giữ nguyên để không vỡ liên kết, nhưng **trục đã đổi**. Quyết định của sinh viên; **chưa có phê duyệt GVHD**, cần báo cáo buổi tuần 6. Xem [hub học đề tài](degron-e3-specificity/learn/index.html) · [quyết định và phạm vi](degron-e3-specificity/01-idea/topic-decision.md) · [trang trình bày](degron-e3-specificity/01-idea/presentation.html) · [chuẩn bị buổi tuần 6](../meeting/session-02-prep.md).
 >
-> **GVHD kỳ vọng một kiến trúc chưa ai dùng** (thông tin 11/10/2026) → kiến trúc đề xuất **CMIL-E3**, sáu thành phần, mỗi thành phần gắn với một phép đo tự thực hiện.
+> **Ba cổng chặn đã đóng hết (11/10/2026 khuya).** Cổng 1 qua: đọc toàn văn bài degron transcription factor — họ không làm đặc hiệu E3, không kiến trúc mới, không XAI. Cổng 3 có câu trả lời và **thu hẹp tuyên bố tính mới**: BioBlobs (10/2025) đã dùng MIL có cổng attention trên protein, OmniESI (2025) đã dùng điều biến có điều kiện → "mới ở chỗ ghép, không mới ở cơ chế". **Cổng 2 KHÔNG QUA và buộc đổi trục.**
 >
-> **Ba cổng chặn chưa qua:** (1) đọc toàn văn bài degron transcription factor của cùng nhóm; (2) đếm nhãn E3 dùng được trong Table S3/S4/S6/S7 của Zhang 2023; (3) tra hệ thống tính mới của kiến trúc. Chi tiết ở mục 7 của [topic-decision.md](degron-e3-specificity/01-idea/topic-decision.md).
+> **Phép đếm nhãn E3 từ dữ liệu thô** ([7 script tái tạo](../common/deep-research/research_notes/degron-e3-labels/README.md)): 31 screen CRISPR → 27 gán được → **10 E3** → **chỉ 1 E3 (KLHL15, 13 peptide) có ≥5 peptide**, 6 E3 có đúng 1 peptide. Bền với 36 tổ hợp ngưỡng. → **bỏ thành phần điều kiện E3**, bỏ "đặc hiệu E3" khỏi vị trí thước đo chính.
+>
+> **Phần bù, lớn hơn tài liệu trước ghi nhiều:** nhãn theo residue có **256.711 phép đo** đột biến quét, **2.624 peptide có footprint học được** (2.402 khu trú), **median 3 vị trí quan trọng trên 28**, cộng **135.040 phép đo** trên 249 bản đồ thay thế đầy đủ. Đây là nguồn nhãn và thước đo chính của đề tài.
+>
+> **Quy ước ngôn từ:** không nói "16 E3 có nhãn CRISPR" — nói **số peptide trên mỗi E3** (1–13). Không gọi phần E3 là nhiệm vụ dự đoán, gọi là **ca nghiên cứu** trên 27 peptide. Không nói "chưa ai làm đặc hiệu E3" (MetaDegron đã làm cho 21 E3). Phải tự nói ra rằng khi có nhãn mức residue thì MIL không còn bắt buộc.
 
 | Slug | Tên đề tài | Lĩnh vực | Trạng thái | Tài liệu |
 |---|---|---|---|---|

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Câu hỏi mở, cổng đã đóng và việc còn phải kiểm · Hub học degron</title>
+<meta name="hub-page" content="t-open">
+<meta name="description" content="Ba cổng nghiên cứu trước đây đã được kiểm; dữ liệu E3 làm đổi trục đề tài. Việc còn lại là kiểm thiết kế mới trên nhãn residue.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../assets/hub.css">
+</head>
+<body>
+<a class="skip" href="#noidung">Bỏ qua điều hướng</a>
+<div class="page">
+<nav class="topbar" aria-label="Thanh điều hướng"><a class="home" href="../index.html">← Hub học đề tài</a><span class="spacer"></span></nav>
+
+<div class="crumb"><a href="../index.html">Hub</a><span class="sep">/</span><span>Chặng 5 · Hướng đề tài</span><span class="sep">/</span><span>Câu hỏi mở, cổng đã đóng và việc còn phải kiểm</span></div>
+
+<div class="eyebrow">Chặng 5 · Hướng đề tài</div>
+
+<h1>Câu hỏi mở, cổng đã đóng và việc còn phải kiểm</h1>
+
+<p class="lede">Ba cổng nghiên cứu trước đây đã được kiểm; dữ liệu E3 làm đổi trục đề tài. Việc còn lại là kiểm thiết kế mới trên nhãn residue.</p>
+
+<div class="callout c-warn"><span class="ct">Phạm vi đã chốt ngày 11/10/2026</span><p style="margin-bottom:0">Mục tiêu là <strong>dự đoán bản đồ độ nhạy đột biến theo residue</strong> của degron. Nhánh dự đoán E3 đã bỏ vì dữ liệu gán E3 quá ít; E3 chỉ là <strong>ca nghiên cứu</strong>. Mọi kiến trúc và phép đánh giá bên dưới vẫn là đề xuất, chưa có kết quả huấn luyện. <a href="../../01-idea/topic-decision.md">Văn bản quyết định</a>.</p>
+</div>
+
+<main id="noidung">
+<div class="gate two"><div class="g">
+<h4>Cần biết trước</h4>
+<p><a href="data.html">Nguồn nhãn</a> và <a href="evaluation.html">giao thức đánh giá</a>.</p>
+</div>
+<div class="g">
+<h4>Học xong sẽ hiểu</h4>
+<p>Điều gì đã xác minh, điều gì chỉ là giả thuyết và câu hỏi cụ thể cần đưa tới GVHD.</p>
+</div>
+</div>
+
+<h2>1. Ba cổng nghiên cứu: trạng thái đúng</h2>
+<div class="tablewrap">
+<table><thead><tr><th>Cổng</th><th>Kết quả đã có</th><th>Hệ quả</th></tr>
+</thead><tbody>
+<tr><td>Đọc <a href="../papers/larsen-2025.html">Larsen 2025</a></td><td>Đã đọc toàn văn; bài đo TF và phân tích rASA/pLDDT, bản đồ thay thế <em>in silico</em> bằng ΔPAP.</td><td>Không lấy “dùng cấu trúc” hoặc “giải thích biến thể” làm tuyên bố mới.</td></tr>
+
+<tr><td>Đếm nhãn E3 từ Zhang 2023</td><td>31 screen → 27 peptide gán được → 10 E3; chỉ KLHL15 có ≥5 peptide.</td><td><strong>Bỏ nhánh dự đoán E3</strong>; giữ ca nghiên cứu nhỏ.</td></tr>
+
+<tr><td>Tra tiền lệ phương pháp</td><td>BioBlobs đã dùng gated MIL trên protein; OmniESI đã dùng điều biến có điều kiện.</td><td>Chỉ nói mới ở cách ghép và đặt cổng cho degron, cần rà tiếp trước khi phát biểu tính mới.</td></tr>
+</tbody></table>
+</div>
+
+<h2>2. Những câu hỏi cần hỏi GVHD</h2>
+<ol><li>Thước đo chính <strong>Spearman theo peptide và precision@3 trên footprint residue</strong> có đáp ứng yêu cầu đóng góp phương pháp không?</li>
+<li>Đối chứng hồi quy theo vị trí không MIL phải thắng tới mức nào thì nên bỏ MIL?</li>
+<li>Phạm vi ứng dụng web nào có giá trị khi DEGRONOPEDIA, MetaDegron và Colab PAP đã tồn tại?</li>
+<li>Tài nguyên GPU và bộ nhớ thực tế cho embedding mức residue là bao nhiêu?</li>
+</ol>
+
+<h2>3. Việc còn chưa kiểm</h2>
+<ul><li>Table S5 gán E3 do tác giả curate chưa lấy được; số 10 E3 tự đếm là giới hạn dưới.</li>
+<li>Chưa chạy phép đảo thứ tự trên sàng lọc thứ hai.</li>
+<li>Chưa có baseline và kết quả huấn luyện cho footprint; chưa chứng minh cổng phơi lộ hay MIL cải thiện.</li>
+<li>Chưa kiểm toàn diện tiền lệ sau năm 2026 và nội bộ MetaDegron cho tuyên bố tính mới.</li>
+<li>Chưa đo tốc độ huấn luyện; số thời gian trích embedding không thay thế được phép đo đó.</li>
+</ul>
+
+</main>
+
+<div class="row" data-done-slot style="margin:2rem 0"></div>
+
+<div class="next"><a href="evaluation.html"><span class="k">Đọc trước</span><span class="t">← Trang trước</span></a><a href="../index.html"><span class="k">Học tiếp</span><span class="t">Trang sau →</span></a></div>
+
+<footer class="pagefoot"><p><strong>Nguồn và trạng thái.</strong> Số liệu tự đếm và thiết kế lấy từ <a href="../../01-idea/topic-decision.md">quyết định đề tài</a> và <a href="../../../../common/deep-research/research_notes/degron-e3-labels/README.md">audit dữ liệu thô</a>. Đề tài do sinh viên chốt; chưa có phê duyệt GVHD. Chưa huấn luyện mô hình mới.</p>
+</footer>
+
+</div>
+<script src="../assets/hub.js"></script></body></html>

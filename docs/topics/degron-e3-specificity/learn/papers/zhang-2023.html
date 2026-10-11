@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zhang 2023: nhãn đột biến cho footprint degron · Hub học degron</title>
+<meta name="hub-page" content="p-zhang">
+<meta name="description" content="Nguồn thực nghiệm chính cho mục tiêu mức residue; phép đếm từ dữ liệu thô trong repo khác đơn vị với các con số tóm tắt của tác giả.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../assets/hub.css">
+</head>
+<body>
+<a class="skip" href="#noidung">Bỏ qua điều hướng</a>
+<div class="page">
+<nav class="topbar" aria-label="Thanh điều hướng"><a class="home" href="../index.html">← Hub học đề tài</a><span class="spacer"></span></nav>
+
+<div class="crumb"><a href="../index.html">Hub</a><span class="sep">/</span><span>Chặng 4 · Nghiên cứu liên quan</span><span class="sep">/</span><span>Zhang 2023: nhãn đột biến cho footprint degron</span></div>
+
+<div class="eyebrow">Chặng 4 · Nghiên cứu liên quan</div>
+
+<h1>Zhang 2023: nhãn đột biến cho footprint degron</h1>
+
+<p class="lede">Nguồn thực nghiệm chính cho mục tiêu mức residue; phép đếm từ dữ liệu thô trong repo khác đơn vị với các con số tóm tắt của tác giả.</p>
+
+<div class="callout c-warn"><span class="ct">Phạm vi đã chốt ngày 11/10/2026</span><p style="margin-bottom:0">Mục tiêu là <strong>dự đoán bản đồ độ nhạy đột biến theo residue</strong> của degron. Nhánh dự đoán E3 đã bỏ vì dữ liệu gán E3 quá ít; E3 chỉ là <strong>ca nghiên cứu</strong>. Mọi kiến trúc và phép đánh giá bên dưới vẫn là đề xuất, chưa có kết quả huấn luyện. <a href="../../01-idea/topic-decision.md">Văn bản quyết định</a>.</p>
+</div>
+
+<main id="noidung">
+<div class="bib"><dl><dt>Tác giả</dt>
+<dd>Zhiqian Zhang và cộng sự</dd>
+<dt>Tên bài</dt>
+<dd><em>Elucidation of E3 ubiquitin ligase specificity through proteome-wide internal degron mapping</em></dd>
+<dt>Nguồn</dt>
+<dd><em>Molecular Cell</em> 83, 3377–3392.e6 (2023)</dd>
+<dt>DOI và dữ liệu</dt>
+<dd><a href="https://doi.org/10.1016/j.molcel.2023.08.022">Bài gốc</a> · <a href="https://doi.org/10.17632/32h94v2yv2.2">Mendeley Data 10.17632/32h94v2yv2.2</a></dd>
+</dl>
+</div>
+
+<div class="gate two"><div class="g">
+<h4>Cần biết trước</h4>
+<p><a href="../foundations/measuring-degrons.html">GPS, PSI và đột biến quét</a>.</p>
+</div>
+<div class="g">
+<h4>Học xong sẽ hiểu</h4>
+<p>Phân biệt peptide, phép đo đột biến, footprint và cặp E3–degron.</p>
+</div>
+</div>
+
+<h2>1. Câu hỏi và phương pháp</h2>
+<p>Tác giả tìm degron nội trong protein người, đo độ ổn định peptide bằng hệ GPS, gây đột biến để nhận ra vị trí quan trọng và dùng sàng lọc CRISPR để gán một số degron cho adaptor E3. Bài báo công bố <strong>219 mutational fingerprints</strong> được chọn lọc và thuật toán DegronID để gom nhóm motif. Những kết quả này thuộc <span class="tag tag-s">TÁC GIẢ</span>, không phải hiệu năng của đề tài.</p>
+
+<h2>2. Audit dữ liệu thô hỏi câu khác</h2>
+<div class="tablewrap">
+<table><thead><tr><th>Đơn vị</th><th>Số theo audit</th><th>Dùng ra sao</th></tr>
+</thead><tbody><tr><td>Phép đo đột biến quét có PSI, reads ≥10</td><td>256.711</td><td>Nhãn mạnh mức residue</td></tr>
+<tr><td>Peptide có footprint học được</td><td>2.624</td><td>Tập chính để chia theo peptide</td></tr>
+<tr><td>Peptide có footprint khu trú ≤6 vị trí</td><td>2.402</td><td>Kiểm ý nghĩa của motif</td></tr>
+<tr><td>Phép đo thay thế đầy đủ</td><td>135.040 trên 249 peptide</td><td>Kiểm tra khác thư viện</td></tr>
+</tbody></table>
+</div>
+
+<p><strong>219</strong> là tập fingerprint tác giả curate; <strong>2.624</strong> là số peptide đạt quy tắc lọc audit cho footprint học được. Hai con số không cùng định nghĩa và không được thay thế cho nhau. Median của tập audit là <strong>3 vị trí quan trọng trên 28</strong>. Chi tiết quy tắc lọc: <a href="../../../../common/deep-research/research_notes/degron-e3-labels/README.md">ghi chú và 7 script</a>.</p>
+
+<h2>3. Vì sao không học E3 làm mục tiêu?</h2>
+<p>Tóm tắt bài báo nêu 16 cặp E3–degron; audit MAGeCK thô cho 31 screen, 27 peptide gán được adaptor, 10 E3 và chỉ một E3 có ít nhất 5 peptide. Trong 27 peptide được gán, <strong>23 có bản đồ đột biến bão hòa</strong>; không được lấy 27 peptide có bản đồ trong toàn bộ 31 screen làm giao hai tập. Không suy 16 cặp thành 16 lớp hoặc hàng nghìn nhãn huấn luyện. Table S5 tác giả curate chưa tải được, nên số E3 từ MAGeCK là giới hạn dưới. <a href="../foundations/e3-conditioning.html">Xem vì sao nhánh FiLM theo E3 bị bỏ.</a></p>
+
+<h2>4. Điều bài báo không làm và đề tài đề xuất</h2>
+<div class="three"><div class="a">
+<h4>Tác giả chứng minh</h4>
+<p>Footprint thực nghiệm, cụm motif DegronID và một số cặp E3–degron có hỗ trợ CRISPR.</p>
+</div>
+<div class="b">
+<h4>Diễn giải từ audit</h4>
+<p>Tập đột biến quét đủ lớn để thử dự đoán theo vị trí; tính đại diện vẫn bị giới hạn bởi cách chọn peptide và assay.</p>
+</div>
+<div class="c">
+<h4>Chưa chứng minh</h4>
+<p>MIL-Degron có dự đoán được footprint cho peptide chưa gặp hay không. Cần <a href="../topic/evaluation.html">chia peptide và đối chứng hồi quy theo vị trí</a>.</p>
+</div>
+</div>
+
+</main>
+
+<div class="row" data-done-slot style="margin:2rem 0"></div>
+
+<div class="next"><a href="voutsinos-2026.html"><span class="k">Đọc trước</span><span class="t">← Trang trước</span></a><a href="larsen-2025.html"><span class="k">Học tiếp</span><span class="t">Trang sau →</span></a></div>
+
+<footer class="pagefoot"><p><strong>Nguồn và trạng thái.</strong> Số liệu tự đếm và thiết kế lấy từ <a href="../../01-idea/topic-decision.md">quyết định đề tài</a> và <a href="../../../../common/deep-research/research_notes/degron-e3-labels/README.md">audit dữ liệu thô</a>. Đề tài do sinh viên chốt; chưa có phê duyệt GVHD. Chưa huấn luyện mô hình mới.</p>
+</footer>
+
+</div>
+<script src="../assets/hub.js"></script></body></html>

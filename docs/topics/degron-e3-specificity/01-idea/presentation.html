@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Đặc hiệu E3–degron: trình bày đề tài</title>
+<title>Footprint degron mức residue: trình bày đề tài</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400&family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
   /* Layout: một cột đọc ~66ch; mỗi mục lớn là một "chương" có số thứ tự; sơ đồ input→output dạng grid */
@@ -353,7 +353,7 @@
 
 <header class="mast">
   <div class="kicker">Luận văn CT553H · Trình bày đề tài · 11/10/2026</div>
-  <h1>Dự đoán đặc hiệu E3–degron ở mức residue</h1>
+  <h1>Dự đoán footprint degron ở mức residue</h1>
   <p class="sub">Tế bào quyết định phá hủy protein nào dựa trên những đoạn trình tự ngắn gọi là degron. Hai sàng lọc đã đo hơn 680.000 đoạn, nhưng kênh nội của PAP mặc định, đã được audit, gộp theo <em>thành phần</em> acid amin và mất thông tin <em>thứ tự</em>.</p>
   <div class="mast-meta">
     <span>Sinh viên: <b>Nguyễn Thế Trọng</b></span>
@@ -368,9 +368,16 @@
   <div class="tile"><span class="v">428</span><span class="k">Gene holdout hiệu dụng</span><p class="d">Tập kiểm tra sau đối chiếu · <a href="../../../common/deep-research/research_notes/degron/holdout-audit.json">kết quả audit</a></p></div>
 </div>
 
+<div class="box key">
+  <div class="box-t">Tài liệu học đi kèm</div>
+  <p style="margin-bottom:0">Trang này là bản <strong>trình bày tổng quan</strong>. Phần kiến thức nền, giải thích từng khái niệm từ đầu, và một trang riêng cho mỗi bài báo liên quan nằm ở <strong><a href="../learn/index.html">hub học đề tài</a></strong> — có lộ trình năm chặng dành cho người chưa có nền sinh học. Mỗi mục dưới đây đều có một liên kết “đọc sâu” dẫn tới trang chi tiết tương ứng.</p>
+</div>
+
 <!-- ======================= 1 ======================= -->
 <section id="gt">
 <h2><span class="n">01</span> Giới thiệu</h2>
+
+<p class="muted" style="font-size:.88rem;color:var(--fg-muted)"><strong>Đọc sâu:</strong> <a href="../learn/foundations/ubiquitin-degron.html">UPS, E3 ligase và degron</a> · <a href="../learn/foundations/measuring-degrons.html">cách đo degron ở quy mô lớn</a> · <a href="../learn/foundations/regression-correlation.html">vì sao điểm không đổi khi đảo thứ tự</a></p>
 
 <h3>1.1 Khái niệm cơ bản</h3>
 
@@ -541,7 +548,8 @@
 
 <div class="box key">
   <div class="box-t">Tên đề tài</div>
-  <p style="margin-bottom:0"><strong>Dự đoán đặc hiệu E3–degron ở mức residue bằng học đa thể hiện có điều kiện và cổng phơi lộ cấu trúc.</strong></p>
+  <p><strong>Dự đoán footprint degron ở mức residue bằng học đa thể hiện với cổng phơi lộ cấu trúc, trên nhãn đột biến thực nghiệm.</strong></p>
+  <p style="margin-bottom:0;font-size:.95em;color:var(--fg-muted)">Tên trước — <em>"dự đoán đặc hiệu E3–degron… có điều kiện"</em> — đã bỏ ngày 11/10/2026 sau khi em đếm nhãn E3 từ dữ liệu thô: chỉ <strong>một</strong> E3 có đủ 5 peptide. Xem mục 4 và mục 6.</p>
 </div>
 
 <p><strong>Lý do chọn</strong>, mỗi lý do nối trực tiếp với một phần của vấn đề đã nêu:</p>
@@ -551,9 +559,9 @@
   <thead><tr><th class="num">#</th><th>Vấn đề đã nêu ở 1.2</th><th>Đề tài giải quyết bằng cách</th></tr></thead>
   <tbody>
     <tr><td class="num">1</td><td>Mô hình hiện có không đọc được vị trí (đã đo: bất biến hoán vị)</td><td>Kiến trúc coi mỗi peptide là một <strong>túi các cửa sổ ứng viên</strong> và học <em>chọn</em> cửa sổ nào, thay vì lấy trung bình toàn đoạn</td></tr>
-    <tr><td class="num">2</td><td>Chưa mô hình nào dự đoán <em>E3 nào</em> ra tay</td><td>Mô hình <strong>có điều kiện theo E3</strong>, dùng nhãn CRISPR của 15 adaptor CRL cộng BAG6 đã có từ 2023</td></tr>
+    <tr><td class="num">2</td><td>Chưa mô hình nào dự đoán <em>residue nào</em> trong đoạn quyết định việc nhận biết</td><td>Huấn luyện có giám sát trên <strong>nhãn đột biến thực nghiệm theo từng vị trí</strong>: 256.711 phép đo, 2.624 peptide có footprint, median <strong>3 vị trí quan trọng trên 28</strong> <span class="tag t-m">TỰ ĐO</span></td></tr>
     <tr><td class="num">3</td><td>Degron mạnh thường bị chôn, nên điểm trên peptide tách rời không chuyển sang protein nguyên vẹn</td><td>Đưa <strong>độ phơi lộ cấu trúc vào trong mô hình</strong> như một cổng, thay vì chỉ phân tích sau</td></tr>
-    <tr><td class="num">4</td><td>Mô hình biến thể hiện có không cho cơ chế</td><td>Đầu ra là <strong>cơ chế kiểm được</strong>: "biến thể này tạo degron ở vị trí X, E3 nào có khả năng nhận ra"</td></tr>
+    <tr><td class="num">4</td><td>Mô hình biến thể hiện có không cho cơ chế</td><td>Đầu ra là <strong>cơ chế kiểm được</strong>: "thay residue ở vị trí X làm degron mạnh lên hay yếu đi bao nhiêu" — so trực tiếp được với phép đo</td></tr>
   </tbody>
 </table>
 </div>
@@ -564,6 +572,7 @@
 <!-- ======================= 2 ======================= -->
 <section id="ls">
 <h2><span class="n">02</span> Lược sử nghiên cứu</h2>
+<p class="muted" style="font-size:.88rem;color:var(--fg-muted)"><strong>Đọc sâu:</strong> <a href="../learn/papers/index.html">bản đồ chín bài báo chính</a> · <a href="../learn/topic/gap.html">khoảng trống từ điểm đoạn tới footprint residue</a>.</p>
 
 <h3>2.1 Bốn giai đoạn</h3>
 
@@ -579,7 +588,7 @@
     <div>
       <h4>2018–2023 — Sàng lọc thông lượng cao bằng reporter</h4>
       <p>Nhóm Elledge và Timms phát triển <strong>GPS-peptidome</strong>. Ba đợt: degron đầu C (<em>Cell</em> 2018), degron đầu N, rồi degron nội phân tử (<a href="https://doi.org/10.1016/j.molcel.2023.08.022">Zhang, <strong><em>Molecular Cell</em> 2023</strong></a>): ~470.000 peptide dài 28 acid amin, ~15.800 degron, và <strong>gán E3 bằng CRISPR cho 15 adaptor CRL cộng BAG6</strong>.</p>
-      <p><strong>Để lại:</strong> mô hình trình tự của đợt này là <strong>SVM trên đúng 20 đặc trưng</strong> số lượng acid amin — không có thông tin vị trí — và chỉ dùng để phát hiện ngoại lệ, không để dự đoán. <strong>Nhãn gán E3 chưa ai mô hình hóa.</strong></p>
+      <p><strong>Để lại:</strong> mô hình trình tự của đợt này là <strong>SVM trên đúng 20 đặc trưng</strong> số lượng acid amin — không có thông tin vị trí — và chỉ dùng để phát hiện ngoại lệ, không để dự đoán. <strong>Chưa ai huấn luyện mô hình trên nhãn gán E3 của đợt này</strong> — có công cụ dự đoán degron theo từng E3 (MetaDegron, mục 2.2) nhưng huấn luyện trên khoảng 300 degron đã curate, không phải trên nhãn CRISPR quy mô sàng lọc này.</p>
     </div>
   </div>
   <div class="step">
@@ -592,7 +601,9 @@
   <div class="step">
     <div>
       <h4>2025–2026 — Bản đồ gần toàn phần, ba bài trong 12 tháng</h4>
-      <p><strong>Voutsinos và cộng sự</strong>, <a href="https://doi.org/10.1126/sciadv.adz3483"><em>Science Advances</em> 02/2026</a>: <strong>212.658 đoạn peptide dài 30 acid amin</strong> trên 5.672 protein bào tương, phủ 99,7%. Mô hình <strong>PAP</strong>, Pearson 0,87. <strong>Larsen và cộng sự</strong>, tiền ấn 05/2025: degron trên toàn bộ <strong>1.626 transcription factor</strong>, dùng PAP cùng ESM-1b.</p>
+      <p><strong>Voutsinos và cộng sự</strong>, <a href="https://doi.org/10.1126/sciadv.adz3483"><em>Science Advances</em> 02/2026</a>: <strong>212.658 đoạn peptide dài 30 acid amin</strong> trên 5.672 protein bào tương, phủ 99,7%. Mô hình <strong>PAP</strong>, Pearson 0,87. <strong>Larsen và cộng sự</strong>, <a href="https://doi.org/10.1101/2025.05.16.654404">tiền ấn 05/2025</a>: degron trên toàn bộ <strong>1.626 transcription factor</strong>, <strong>58.781 đoạn có điểm</strong>, dùng PAP cùng ESM-1b.</p>
+      <p><strong>Đã đọc toàn văn bài 05/2025</strong> (11/10/2026) — đây là cổng chặn số một của đề tài và nó <strong>mở theo hướng thuận</strong>: họ <em>không</em> mô hình hóa đặc hiệu E3, <em>không</em> đề xuất kiến trúc mới, <em>không</em> dùng nhãn E3 hay CRISPR, và <em>không</em> có phần giải thích mô hình. PAP cùng ESM-1b chỉ dùng để so biến thể CRX; phần nhắc tới CRL4-DCAF12 và FEM1b nằm ở Thảo luận, là suy đoán theo y văn.</p>
+      <p><strong>Nhưng họ đã chiếm một phần hai trục khác:</strong> đã tính rASA và pLDDT từ AlphaFold2 kèm DSSP, và đã làm bản đồ thay thế <em>in silico</em> ΔPAP cho mọi đột biến điểm trong một vùng của HSF1. Nên cái mới của đề tài không phải "dùng cấu trúc" hay "giải thích biến thể" nói chung.</p>
       <p><strong>Để lại:</strong> cả ba bài đo <em>điểm khối</em>. Không bài nào làm <strong>đặc hiệu E3 ở mức residue</strong>, dù nhãn để làm đã có từ 2023.</p>
     </div>
   </div>
@@ -618,9 +629,9 @@
     </tr>
     <tr>
       <td><strong>C. Học sâu trên trình tự</strong><br><span style="color:var(--fg-muted);font-size:.85em">deepDegron, Degpred, MetaDegron</span></td>
-      <td>Không cần motif biết trước; MetaDegron đã dùng PLM</td>
-      <td>deepDegron chỉ phủ hai đầu chuỗi; nhãn nhỏ; chưa có benchmark độc lập</td>
-      <td>Huấn luyện trên nhãn lớn hơn <strong>hai bậc độ lớn</strong></td>
+      <td>Không cần motif biết trước; <strong>MetaDegron đã dùng PLM và đã dự đoán degron theo từng E3 cho 21 E3 ligase</strong>, kèm máy chủ web có cây chọn E3</td>
+      <td>deepDegron chỉ phủ hai đầu chuỗi. <strong>MetaDegron huấn luyện trên khoảng 300 degron đã curate, âm tính là peptide ngẫu nhiên, chia 90/10, AUC 0,87–0,90</strong> — không kiểm soát đồng dạng, không có thang đo định lượng, và là phân loại degron so với peptide ngẫu nhiên chứ không phải gán E3 ở quy mô proteome</td>
+      <td>Huấn luyện trên nhãn lớn hơn <strong>hai bậc độ lớn</strong>, và trên nhãn E3 <strong>thực nghiệm</strong> thay cho nhãn curate; dùng âm tính thật của sàng lọc thay cho peptide ngẫu nhiên</td>
     </tr>
     <tr>
       <td><strong>D. CNN trên sàng lọc mới</strong><br><span style="color:var(--fg-muted);font-size:.85em">PAP, 2026</span></td>
@@ -640,19 +651,27 @@
       <td><strong>Trả điểm, không trả cơ chế</strong>; bỏ sót PNPO D33V</td>
       <td>Bổ sung chứ không cạnh tranh: đưa ra cơ chế kiểm được</td>
     </tr>
+    <tr>
+      <td><strong>G. Xếp hạng E3 ở mức protein</strong><br><span style="color:var(--fg-muted);font-size:.85em">E3TargetPred; ELITE, tiền ấn 11/2025</span></td>
+      <td>Trả lời đúng câu hỏi "E3 nào cho mục tiêu này"; ELITE dùng ProtBERT kiểu Siamese và có Integrated Gradients</td>
+      <td><strong>Ở mức cặp protein–protein, không ở mức degron hay residue.</strong> Nhãn dương là mạng tương tác, nhãn âm lấy từ Negatome, nên không phân biệt được "có tương tác" với "có degron được nhận ra"; đánh giá bằng kiểm chứng chéo, không có tập kiểm tra kiểm soát đồng dạng</td>
+      <td><strong>Khung đề tài phải tách khỏi nhóm này rõ ràng:</strong> cùng mục tiêu ứng dụng nhưng khác đơn vị dự đoán và khác loại nhãn. Dùng làm đối chiếu khung, không làm baseline cùng thang</td>
+    </tr>
   </tbody>
 </table>
 </div>
 
 <div class="box key">
   <div class="box-t">Khoảng trống nghiên cứu, phát biểu thành một câu</div>
-  <p style="margin-bottom:0">Năng lực <em>đo</em> degron đã tăng bốn bậc độ lớn trong tám năm; năng lực <em>mô hình hóa</em> vẫn ở mức đếm acid amin. Và lý do <strong>không phải vì chưa ai thử</strong>: tác giả bài 2026 đã làm một phiên bản bắt được motif (cửa sổ 7) và nó chỉ hơn <strong>+0,0032 Pearson</strong> <span class="tag t-m">TỰ ĐO</span>. Suy ra <strong>thang điểm khối đã bão hòa</strong>, và chỗ còn trống không phải một mô hình tốt hơn cho cùng thang đo, mà là <strong>một nhãn khác đã tồn tại mà chưa ai dùng</strong>: đặc hiệu E3 ở mức residue.</p>
+  <p style="margin-bottom:0">Năng lực <em>đo</em> degron đã tăng bốn bậc độ lớn trong tám năm; năng lực <em>mô hình hóa</em> vẫn ở mức đếm acid amin. Và lý do <strong>không phải vì chưa ai thử</strong>: tác giả bài 2026 đã làm một phiên bản bắt được motif (cửa sổ 7) và nó chỉ hơn <strong>+0,0032 Pearson</strong> <span class="tag t-m">TỰ ĐO</span>. Suy ra <strong>thang điểm khối đã bão hòa</strong>, và chỗ còn trống không phải một mô hình tốt hơn cho cùng thang đo, mà là <strong>một nhãn khác đã tồn tại mà chưa ai huấn luyện trên đó</strong>: nhãn gán adaptor CRL bằng CRISPR ở quy mô sàng lọc, cộng 219 footprint đột biến bão hòa.</p>
+  <p style="margin-bottom:0;font-size:.95em;color:var(--fg-muted)">Phát biểu phải hẹp đúng mức: <strong>không nói "chưa ai làm đặc hiệu E3"</strong> — MetaDegron đã làm, cho 21 E3, và đã có máy chủ web. Chỗ trống là <em>nguồn nhãn</em> và <em>đơn vị dự đoán</em>: khoảng 300 degron curate so với hơn 680.000 phép đo thực nghiệm, và điểm cho cả đoạn so với bản đồ theo từng residue.</p>
 </div>
 </section>
 
 <!-- ======================= 3 ======================= -->
 <section id="gp">
 <h2><span class="n">03</span> Giải pháp đề xuất</h2>
+<p class="muted" style="font-size:.88rem;color:var(--fg-muted)"><strong>Đọc sâu:</strong> <a href="../learn/topic/architecture.html">MIL-Degron và năm thành phần</a> · <a href="../learn/foundations/mil-attention.html">MIL và attention</a> · <a href="../learn/foundations/structure-exposure.html">cổng phơi lộ</a>.</p>
 
 <h3>3.1 Mô tả bài toán</h3>
 
@@ -661,7 +680,6 @@
     <h4>Đầu vào</h4>
     <ul>
       <li><strong>Trình tự peptide</strong> 28–30 acid amin, kèm vị trí của nó trong protein gốc</li>
-      <li><strong>Định danh E3 ứng viên</strong>, biểu diễn bằng trình tự miền nhận cơ chất của chính E3 đó</li>
       <li><strong>Bối cảnh cấu trúc</strong>: độ phơi lộ với dung môi (rASA) và độ tin cậy cấu trúc (pLDDT) tại từng vị trí, lấy từ mô hình AlphaFold2</li>
     </ul>
   </div>
@@ -669,8 +687,7 @@
   <div class="card">
     <h4>Đầu ra</h4>
     <ul>
-      <li><strong>Điểm đặc hiệu</strong> cho cặp (peptide, E3)</li>
-      <li><strong>Bản đồ khu trú theo residue</strong>: residue nào trong đoạn quyết định việc nhận biết — đây chính là trọng số attention, không phải phân tích thêm</li>
+      <li><strong>Bản đồ độ nhạy đột biến theo từng residue</strong> — một vector 28 chiều: thay residue ở mỗi vị trí thì degron mạnh lên hay yếu đi bao nhiêu. Đây là đầu ra chính, và nó <strong>so trực tiếp được với phép đo thực nghiệm</strong></li>
       <li><strong>Điểm khối</strong> (đầu ra phụ, để so với công cụ hiện có)</li>
     </ul>
   </div>
@@ -683,8 +700,8 @@
     <h4 style="color:var(--ok)">Trong phạm vi</h4>
     <ul>
       <li>Protein người, trọng tâm là protein bào tương (nơi có bản đồ phủ 99,7%)</li>
-      <li><strong>16 E3</strong> có nhãn CRISPR: 15 adaptor CRL cộng BAG6</li>
-      <li>Dự đoán ở mức <strong>đoạn peptide và residue</strong></li>
+      <li>Dự đoán ở mức <strong>từng residue</strong> trong đoạn, huấn luyện có giám sát trên nhãn đột biến</li>
+      <li>Một <strong>ca nghiên cứu E3</strong> trên 23 peptide có cả nhãn E3 và bản đồ đột biến đầy đủ (giao của hai tập 27 peptide)</li>
       <li>Kiểm chứng trên <strong>dữ liệu đột biến thực nghiệm</strong></li>
     </ul>
   </div>
@@ -692,7 +709,7 @@
     <h4 style="color:var(--warn)">Ngoài phạm vi — phải nói rõ</h4>
     <ul>
       <li><strong>Không</strong> dự đoán protein có thực sự bị phân hủy nhanh trong một tế bào cụ thể — việc đó còn phụ thuộc E3 nào được biểu hiện, chaperone, định vị</li>
-      <li><strong>Không</strong> phủ hơn 600 E3, chỉ 16 cái có nhãn</li>
+      <li><strong>Không</strong> dự đoán E3 nào nhận ra degron. Em đã đếm: chỉ <strong>10 E3</strong> có nhãn và <strong>6 trong số đó có đúng một peptide</strong> <span class="tag t-m">TỰ ĐO</span> — nên đây là ca nghiên cứu, không phải nhiệm vụ dự đoán</li>
       <li><strong>Không</strong> thay thế mô hình dự đoán độc tính biến thể; chỉ bổ sung cơ chế</li>
     </ul>
   </div>
@@ -702,14 +719,15 @@
   <div class="box-t">Ba câu hỏi không được đồng nhất với nhau</div>
   <ol style="margin-bottom:0">
     <li><strong>Đoạn này có gây phân hủy khi đứng tách rời?</strong> — cả hai sàng lọc đo điều này, và đo rất tốt. Đây là <em>thang điểm khối</em>, đã bão hòa.</li>
-    <li><strong>Đoạn này bị E3 nào nhận ra, và residue nào quyết định?</strong> — <strong>đây là bài toán của đề tài.</strong></li>
+    <li><strong>Residue nào trong đoạn quyết định việc nhận biết?</strong> — <strong>đây là bài toán của đề tài</strong>, và có 256.711 phép đo thực nghiệm để huấn luyện lẫn chấm điểm.</li>
+    <li><strong>Đoạn này bị E3 nào nhận ra?</strong> — câu hỏi đúng, nhưng nhãn chỉ đủ cho <strong>một</strong> E3, nên nằm ở mức ca nghiên cứu.</li>
     <li><strong>Protein này có bị phân hủy nhanh trong một tế bào cụ thể?</strong> — ngoài phạm vi.</li>
   </ol>
 </div>
 
 <h3>3.2 Phương pháp thực hiện</h3>
 
-<p>Kiến trúc đề xuất, tên làm việc <strong>CMIL-E3</strong> (học đa thể hiện có điều kiện E3 với cổng phơi lộ). Điểm quan trọng: <strong>mỗi thành phần được suy ra từ một phép đo</strong>, không phải ghép từ từ khóa thời thượng.</p>
+<p>Kiến trúc đề xuất, tên làm việc <strong>MIL-Degron</strong> (học đa thể hiện với cổng phơi lộ). Điểm quan trọng: <strong>mỗi thành phần được suy ra từ một phép đo</strong>, không phải ghép từ từ khóa thời thượng. Bản trước có sáu thành phần; thành phần <em>điều kiện E3</em> <strong>đã bỏ</strong> sau khi đếm nhãn.</p>
 
 <figure>
 <div class="figure-frame" tabindex="0" role="region" aria-label="Hình minh họa; có thể cuộn ngang trên màn hình nhỏ">
@@ -831,24 +849,19 @@
       <td>Mọi mô hình đã công bố đều gộp trung bình hoặc dùng thành phần <span class="tag t-m">TỰ ĐO</span></td>
     </tr>
     <tr>
-      <td><strong>3. Điều kiện E3</strong></td>
-      <td>Vector E3 sinh từ <strong>trình tự miền nhận cơ chất của chính E3</strong>, điều biến bộ dò motif theo kiểu FiLM</td>
-      <td>Có 16 E3 với nhãn CRISPR từ 2023 mà <strong>chưa mô hình nào dùng</strong></td>
-    </tr>
-    <tr>
-      <td><strong>4. Gộp túi</strong></td>
+      <td><strong>3. Gộp túi</strong></td>
       <td><strong>Attention có cổng</strong> trên các thể hiện, thay cho global average pooling</td>
-      <td>Nhãn ở mức peptide nhưng cơ chế ở mức cửa sổ con — đúng định nghĩa bài toán đa thể hiện</td>
+      <td>Cấu trúc túi là chỗ nối <strong>nhãn yếu mức đoạn</strong> (212.658 đoạn) với <strong>nhãn mạnh mức residue</strong> (256.711 phép đo) trong <strong>một</strong> mô hình <span class="tag t-m">TỰ ĐO</span></td>
     </tr>
     <tr>
-      <td><strong>5. Cổng phơi lộ</strong></td>
+      <td><strong>4. Cổng phơi lộ</strong></td>
       <td>rASA và pLDDT <strong>nhân vào logit attention</strong>: vị trí bị chôn không được chiếm trọng số</td>
       <td>Tác giả đã đo điểm chỉ tương quan với độ dồi dào ở <strong>rASA &gt; 0,7</strong>, nhưng chỉ dùng cấu trúc để phân tích sau</td>
     </tr>
     <tr>
-      <td><strong>6. Hai đầu ra</strong></td>
-      <td>Đầu A điểm khối (nhãn lớn, nhiệm vụ phụ trợ); đầu B đặc hiệu E3 (nhãn nhỏ, mục tiêu thật)</td>
-      <td>Nhãn B ít, nhãn A rất nhiều nhưng <strong>đã bão hòa</strong> — dùng A làm phụ trợ là cách duy nhất không bỏ phí nó</td>
+      <td><strong>5. Hai đầu ra</strong></td>
+      <td>Đầu A điểm khối (nhãn lớn, nhiệm vụ phụ trợ); đầu B <strong>bản đồ độ nhạy theo residue</strong> (mục tiêu thật). Trọng số attention <strong>được giám sát trực tiếp</strong> bằng nhãn đột biến</td>
+      <td>Nhãn đoạn nhiều nhưng <strong>đã bão hòa</strong>; nhãn residue ít hơn nhưng là thứ cần đo, và median chỉ <strong>3 trên 28</strong> vị trí quan trọng <span class="tag t-m">TỰ ĐO</span></td>
     </tr>
   </tbody>
 <caption>Toàn bộ là <strong>đề xuất</strong> — chưa cài đặt, chưa huấn luyện.</caption>
@@ -857,7 +870,7 @@
 
 <figure>
 <div class="figure-frame" tabindex="0" role="region" aria-label="Hình minh họa; có thể cuộn ngang trên màn hình nhỏ">
-<svg viewBox="0 0 820 470" role="img" aria-label="Luồng dữ liệu của kiến trúc CMIL-E3: peptide và trình tự miền E3 đi qua ESM-2 thành embedding mức residue và vector E3; peptide được cắt thành các cửa sổ ứng viên; bộ dò motif được điều biến theo vector E3; thông tin phơi lộ cấu trúc làm cổng cho phép gộp attention; cuối cùng ra hai đầu ra là điểm khối và đặc hiệu E3 kèm bản đồ khu trú.">
+<svg viewBox="0 0 820 470" role="img" aria-label="Luồng dữ liệu của kiến trúc MIL-Degron: peptide đi qua ESM-2 thành embedding mức residue; peptide được cắt thành các cửa sổ ứng viên; thông tin phơi lộ cấu trúc làm cổng cho phép gộp attention; cuối cùng ra hai đầu ra là điểm khối và bản đồ độ nhạy theo residue. Sơ đồ còn mô tả nhánh điều kiện E3 của bản thiết kế trước, nhánh này đã bỏ.">
   <defs>
     <marker id="aE" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <polygon points="0,1 10,5 0,9" fill="currentColor"/>
@@ -919,13 +932,15 @@
   <text class="sv-sm" x="590" y="436">← mục tiêu thật</text>
 </svg>
 </div>
-<figcaption><span class="figure-note">SƠ ĐỒ MINH HỌA · không phải ảnh thực nghiệm</span><strong>Luồng dữ liệu của CMIL-E3.</strong> Số khoanh tròn khớp với sáu thành phần ở bảng trên. Hai điểm đáng chú ý: vector E3 <em>không</em> nối thẳng vào đầu ra mà <strong>điều biến bộ dò motif</strong>, nên cùng một bộ dò phục vụ mọi E3 và có thể khái quát sang E3 mới qua trình tự của nó; và thông tin cấu trúc <em>không</em> đi vào đầu vào mà <strong>vào thẳng bước gộp</strong> — đây là chỗ cho phép đổi giữa chế độ peptide tách rời (đặt cổng mở hoàn toàn) và chế độ protein nguyên vẹn (đặt rASA thật) mà không đổi mô hình.</figcaption>
+<figcaption><span class="figure-note">SƠ ĐỒ MINH HỌA · không phải ảnh thực nghiệm</span><strong>Luồng dữ liệu của MIL-Degron.</strong> <strong>Lưu ý:</strong> sơ đồ này vẽ cho bản thiết kế trước và vẫn còn nhánh <em>điều kiện E3</em> ở giữa — nhánh đó <strong>đã bỏ</strong> ngày 11/10/2026 sau khi đếm nhãn, nên khi trình bày hãy bỏ qua nó. Điểm còn đúng và quan trọng: thông tin cấu trúc <em>không</em> đi vào đầu vào mà <strong>vào thẳng bước gộp</strong> — đây là chỗ cho phép đổi giữa chế độ peptide tách rời (đặt cổng mở hoàn toàn) và chế độ protein nguyên vẹn (đặt rASA thật) mà không đổi mô hình.</figcaption>
 </figure>
 
 <div class="box new">
   <div class="box-t">Điểm mới của kiến trúc</div>
   <p><strong>Cổng phơi lộ đặt ở chỗ gộp, không phải ở đầu vào.</strong> Điều này cho một tính chất mà em chưa thấy ai dùng: khi dự đoán trên <em>peptide tách rời</em> (bối cảnh của cả hai sàng lọc) thì đặt cổng bằng "phơi lộ hoàn toàn"; khi dự đoán trên <em>protein nguyên vẹn</em> thì đặt cổng bằng rASA thật. <strong>Cùng một mô hình giải thích được cả hai chế độ chỉ bằng cách đổi cổng</strong> — tức khoảng cách giữa "đo trên peptide" và "dùng trên protein" trở thành một tham số của mô hình thay vì một giới hạn.</p>
-  <p style="margin-bottom:0"><strong>Attention đa thể hiện có điều kiện E3 cho degron.</strong> Các mô hình em đã đọc mã đều gộp theo thành phần hoặc trung bình: PAP dùng <code>GlobalAveragePooling1D</code>; ba mô hình GLM là tổng hệ số theo acid amin; Zhang dùng SVM 20 đặc trưng; Degpred dùng BERT cộng BiLSTM. <strong>Không cái nào dùng attention đa thể hiện.</strong></p>
+  <p><strong>Attention được giám sát bằng nhãn thực nghiệm theo residue.</strong> Các mô hình em đã đọc mã đều gộp theo thành phần hoặc trung bình: PAP dùng <code>GlobalAveragePooling1D</code>; ba mô hình GLM là tổng hệ số theo acid amin; Zhang dùng SVM 20 đặc trưng; QCDPred dùng hồi quy logistic trên thành phần; Degpred dùng BERT cộng BiLSTM; MetaDegron dùng SeqVec cộng XGBoost. <strong>Không cái nào dự đoán bản đồ độ nhạy theo từng residue</strong>, và không cái nào dùng attention đa thể hiện. Ở đây trọng số attention không chỉ để diễn giải — nó có <strong>chuẩn thực nghiệm để học và để chấm điểm</strong>.</p>
+  <p><strong>Giới hạn của lập luận MIL, em tự nói ra.</strong> Khi đã có nhãn ở mức residue thì một đầu hồi quy theo từng vị trí là mô hình tự nhiên, và MIL <em>không còn bắt buộc</em>. Lý do giữ cấu trúc túi là để dùng được <strong>cả hai</strong> bộ nhãn trong một mô hình: đầu khối gộp các thể hiện, đầu residue đọc thẳng từng thể hiện. Nếu phép thử cho thấy đầu hồi quy theo vị trí đơn thuần đã đủ, đó là kết quả em phải báo, không phải thất bại cần che.</p>
+  <p style="margin-bottom:0"><strong>Giới hạn của tuyên bố này — phải nói trước khi thầy hỏi.</strong> Từng <em>cơ chế</em> trong MIL-Degron đều đã có tiền lệ ngoài bài toán degron: học đa thể hiện có cổng attention trên protein đã được dùng trong <a href="https://arxiv.org/abs/2510.01632">BioBlobs</a> (10/2025, túi là protein, thể hiện là cấu trúc con, cho dự đoán chức năng), MetaDegron cũng đã dùng độ phơi lộ với dung môi, nhưng làm <em>đặc trưng đầu vào</em>. Và trên trục "dự đoán bản đồ thay thế" nói chung, một khung học máy 2025 đã báo rằng <strong>6 điểm thay thế mỗi residue đủ suy ra phần còn lại với ~90% độ chính xác</strong> trên dữ liệu quét đột biến sâu — phải trích bài này làm phản biện trực tiếp. Vậy phát biểu đúng là: <strong>mới ở chỗ ghép và ở chỗ đặt cổng phơi lộ tại bước gộp, chưa thấy áp cho degron; không mới ở cơ chế.</strong> Em không dùng chữ "chưa ai dùng" cho toàn bộ kiến trúc.</p>
 </div>
 
 <figure class="viz" id="pooling-chart">
@@ -960,15 +975,16 @@
   </div>
   <div class="step">
     <div>
-      <h4>Chuyển giữa hai sàng lọc khác assay</h4>
-      <p>Huấn luyện trên đoạn 30 acid amin của sàng lọc 1, kiểm tra trên đoạn 28 acid amin của sàng lọc 2 (reporter khác, 6 bin thay vì 4, thang đo khác). Chưa ai đo. Dữ liệu <strong>đã tải</strong>.</p>
+      <h4>Dự đoán bản đồ độ nhạy theo residue — <strong>thước đo chính</strong></h4>
+      <p>Chia <strong>theo peptide</strong>, trên <strong>2.624 peptide có footprint học được</strong> <span class="tag t-m">TỰ ĐO</span>. Hai chỉ số: <strong>Spearman theo từng peptide</strong> giữa vector 28 chiều dự đoán và đo được; và <strong>precision@3</strong> — mô hình có đặt độ nhạy cao nhất đúng vào các vị trí quan trọng thật không. Chọn 3 vì median số vị trí quan trọng là <strong>3 trên 28</strong>.</p>
+      <p><strong>Tiên đoán kiểm được:</strong> mô hình bất biến hoán vị <em>phải</em> cho bản đồ phẳng, tức precision@3 bằng mức ngẫu nhiên. Nếu nó không phẳng thì giả thuyết trung tâm của đề tài sai và em phải báo như vậy.</p>
     </div>
   </div>
   <div class="step">
     <div>
-      <h4>Nhiệm vụ cần motif — thước đo chính</h4>
-      <p>Phân biệt <strong>219 footprint degron</strong> dựng bằng đột biến bão hòa; dự đoán residue quan trọng cho hơn 5.000 degron; gán <strong>adaptor CRL nào</strong> trong 16 cái có nhãn.</p>
-      <p><strong>Tiên đoán kiểm được:</strong> mô hình bất biến hoán vị <em>phải</em> thất bại ở đây. Nếu nó không thất bại thì giả thuyết trung tâm của đề tài sai.</p>
+      <h4>Chuyển sang bản đồ thay thế đầy đủ</h4>
+      <p><strong>249 peptide</strong> đột biến bão hòa, 28 vị trí × 19 thay thế, <strong>135.040 phép đo</strong> <span class="tag t-m">TỰ ĐO</span>. Khác thư viện, khác độ phân giải. Chỉ dùng làm <strong>tập kiểm tra</strong>, không huấn luyện.</p>
+      <p><strong>Ca nghiên cứu E3, không phải thước đo:</strong> 23 peptide có <em>cả</em> nhãn E3 và bản đồ bão hòa. Footprint dự đoán có khớp motif của E3 đã biết không? Cả 13 peptide KLHL15 nằm trong giao này; vẫn cần lọc chất lượng nhãn và chia tập trước khi chấm ca này.</p>
     </div>
   </div>
 </div>
@@ -982,6 +998,7 @@
 <!-- ======================= 4 ======================= -->
 <section id="dl">
 <h2><span class="n">04</span> Bộ dữ liệu</h2>
+<p class="muted" style="font-size:.88rem;color:var(--fg-muted)"><strong>Đọc sâu:</strong> <a href="../learn/topic/data.html">bốn nguồn dữ liệu và đơn vị nhãn</a> · <a href="../learn/papers/zhang-2023.html">Zhang 2023 và phép đo đột biến</a>.</p>
 
 <p>Ba bộ, tất cả <strong>đã tải và tự đếm</strong> trong phiên khảo sát, không phải số dẫn lại từ bài báo.</p>
 
@@ -992,17 +1009,44 @@
   <thead><tr><th>Thuộc tính</th><th>Bộ 1 — bản đồ bào tương</th><th>Bộ 2 — GPS-peptidome</th><th>Bộ 3 — biến thể protein nguyên vẹn</th></tr></thead>
   <tbody>
     <tr><td><strong>Nguồn</strong></td><td>Voutsinos 2026, <em>Sci Adv</em></td><td>Zhang 2023, <em>Mol Cell</em></td><td>MaveDB</td></tr>
-    <tr><td><strong>Vai trò</strong></td><td>Huấn luyện chính</td><td><strong>Nhãn đặc hiệu E3 + kiểm tra khác assay</strong></td><td>Kiểm tra trên protein nguyên vẹn</td></tr>
+    <tr><td><strong>Vai trò</strong></td><td><strong>Nhãn yếu mức đoạn</strong> — nhiệm vụ phụ trợ</td><td><strong>Nhãn mạnh mức residue</strong> — huấn luyện chính</td><td>Kiểm tra trên protein nguyên vẹn</td></tr>
     <tr><td><strong>Số phép đo</strong></td><td class="num">212.658 đoạn</td><td class="num">475.507 đoạn × 3 lần đo</td><td class="num">69.209 biến thể duy nhất</td></tr>
     <tr><td><strong>Độ dài đoạn</strong></td><td>30 acid amin, chồng 15</td><td>28 acid amin, bước 23</td><td>— (biến thể điểm)</td></tr>
     <tr><td><strong>Thang đo</strong></td><td>Điểm liên tục 0–1</td><td>PSI 1–6 + Degron Index</td><td>Độ dồi dào protein</td></tr>
     <tr><td><strong>Phủ</strong></td><td>5.672 protein bào tương, 99,7%</td><td>Toàn proteome</td><td>9 gene</td></tr>
-    <tr><td><strong>Nhãn đặc hiệu E3</strong></td><td>Không</td><td><strong>15 adaptor CRL + BAG6, bằng CRISPR</strong></td><td>Không</td></tr>
-    <tr><td><strong>Dữ liệu theo residue</strong></td><td>Không</td><td><strong>219 footprint; residue quan trọng cho &gt;5.000 degron</strong></td><td>Có (biến thể điểm)</td></tr>
+    <tr><td><strong>Nhãn E3</strong></td><td>Không</td><td><strong>27 peptide gán được trên 10 E3</strong>; chỉ KLHL15 (13) đủ 5 peptide <span class="tag t-m">TỰ ĐO</span></td><td>Không</td></tr>
+    <tr><td><strong>Dữ liệu theo residue</strong></td><td>Không</td><td><strong>256.711 phép đo quét; 2.624 peptide có footprint; cộng 135.040 phép đo trên 249 bản đồ thay thế đầy đủ</strong> <span class="tag t-m">TỰ ĐO</span></td><td>Có (biến thể điểm)</td></tr>
     <tr><td><strong>Giấy phép</strong></td><td>MIT</td><td>GEO công khai</td><td>CC0</td></tr>
   </tbody>
 <caption>Mọi con số là <strong>tự đếm</strong>. Bộ 1 có SHA-256 lưu trong repo. Bộ 2 từ <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE240610">GEO GSE240610</a> (Table S1 nặng 52,9 MB). Bộ 3 truy vấn qua API MaveDB.</caption>
 </table>
+</div>
+
+<div class="box key">
+  <div class="box-t">Nhãn theo residue — số tự đếm từ dữ liệu thô, 11/10/2026</div>
+  <p>Repo của em trước đó ghi "219 footprint" và "hơn 5.000 degron" theo bài báo. Em đã tải dữ liệu thô từ <a href="https://data.mendeley.com/datasets/32h94v2yv2/2">Mendeley Data</a> (bài khai báo nguồn này; Table S1–S7 trên PMC chặn bằng reCAPTCHA) và tự đếm:</p>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Đại lượng</th><th class="num">Số đếm</th></tr></thead>
+    <tbody>
+      <tr><td>Phép đo đột biến quét có PSI và reads ≥ 10</td><td class="num"><strong>256.711</strong></td></tr>
+      <tr><td>Peptide có cả hoang dã và biến thể được chấm</td><td class="num">8.831</td></tr>
+      <tr><td>Là degron (PSI hoang dã ≤ 3,0), phủ ≥ 21 vị trí</td><td class="num">3.415</td></tr>
+      <tr><td><strong>Peptide thực sự CÓ footprint học được</strong></td><td class="num"><strong>2.624</strong></td></tr>
+      <tr><td>Trong đó footprint <strong>khu trú</strong> (≤ 6 vị trí quan trọng)</td><td class="num">2.402</td></tr>
+      <tr><td><strong>Median số vị trí quan trọng trên 28</strong></td><td class="num"><strong>3</strong></td></tr>
+      <tr><td>Bản đồ thay thế đầy đủ: peptide × phép đo</td><td class="num">249 × 560 = <strong>135.040</strong></td></tr>
+      <tr><td>Peptide có <em>cả</em> nhãn E3 và bản đồ đầy đủ</td><td class="num">23 / 31</td></tr>
+    </tbody>
+  <caption>Bảy script tái tạo được, chỉ thư viện chuẩn, kèm SHA-256 của nguồn: <code>docs/common/deep-research/research_notes/degron-e3-labels/</code></caption>
+  </table>
+  </div>
+  <p style="margin-bottom:0"><strong>Median 3 vị trí quan trọng trên 28</strong> là con số neo toàn bộ thiết kế: tín hiệu <em>khu trú thật</em>, trong khi mô hình tốt nhất hiện có bất biến hoán vị nên về nguyên lý không biểu diễn được nó.</p>
+</div>
+
+<div class="box">
+  <div class="box-t">Bộ dữ liệu thứ tư, mới xác nhận 11/10/2026 — chưa tải</div>
+  <p style="margin-bottom:0">Bài transcription factor 05/2025 của cùng nhóm có <strong>58.781 đoạn có điểm trên 1.626 transcription factor</strong>, đo trong <strong>nhân</strong> thay vì bào tương, và <strong>8.645 đoạn trên 234 protein chồng lấn</strong> với thư viện bào tương. Đây là một lựa chọn <em>rẻ hơn</em> cho bậc 2: chuyển giữa hai khoang tế bào với <strong>cùng</strong> loại assay, thay vì chuyển sang assay khác. Chưa thử tải, và giấy phép tiền ấn là CC BY-NC-ND nên phải kiểm điều kiện dùng dữ liệu trước khi đưa vào kế hoạch.</p>
 </div>
 
 <h3>4.2 Ưu và nhược</h3>
@@ -1056,6 +1100,7 @@
 <!-- ======================= 5 ======================= -->
 <section id="dg">
 <h2><span class="n">05</span> Đóng góp theo năm tiêu chí</h2>
+<p class="muted" style="font-size:.88rem;color:var(--fg-muted)"><strong>Đọc sâu:</strong> <a href="../learn/topic/evaluation.html">thước đo chính và đối chứng bắt buộc</a> · <a href="../learn/papers/degronopedia-2024.html">tiền lệ sản phẩm web</a>.</p>
 
 <div class="scroller">
 <table>
@@ -1064,32 +1109,32 @@
     <tr>
       <td class="num">1</td>
       <td><strong>Tính mới của hướng</strong></td>
-      <td>Nhãn đặc hiệu E3 đã tồn tại từ 2023 mà <strong>chưa mô hình nào dùng</strong>. Câu hỏi "thang điểm khối có đo đúng thứ sinh học cần không" chưa ai đặt</td>
-      <td>Dự đoán degron <strong>không mới</strong> — đã có 5 công cụ. Không dùng chữ "đầu tiên". Nhóm Copenhagen ra <strong>3 bài trong 12 tháng</strong> nên rủi ro bị vượt là thật</td>
+      <td><strong>Bài toán chưa ai làm:</strong> dự đoán <em>bản đồ độ nhạy đột biến theo từng residue</em> cho degron. Em đã tra: mọi mô hình degron đã có đều ở mức peptide hoặc protein, phần lớn dựa trên thành phần. Nhãn đã tồn tại từ 2023 — <strong>256.711 phép đo</strong> — mà chưa ai huấn luyện trên đó. Và câu hỏi "thang điểm khối có đo đúng thứ sinh học cần không" chưa ai đặt</td>
+      <td>Dự đoán degron <strong>không mới</strong> — đã có 5 công cụ, và <strong>MetaDegron đã dự đoán degron theo từng E3 cho 21 E3</strong>. Không dùng chữ "đầu tiên". Trên trục "dự đoán bản đồ thay thế" nói chung, một khung 2025 đã báo <strong>6 điểm mỗi residue đủ suy ra phần còn lại với ~90%</strong> — phải trích làm phản biện. Nhóm Copenhagen ra <strong>3 bài trong 12 tháng</strong> nên rủi ro bị vượt là thật</td>
     </tr>
     <tr>
       <td class="num">2</td>
       <td><strong>Đề xuất hoặc cải tiến phương pháp</strong></td>
-      <td><strong>Kiến trúc CMIL-E3</strong> với 6 thành phần, mỗi thành phần gắn với một phép đo: học đa thể hiện, điều kiện E3 theo trình tự, <strong>cổng phơi lộ trong mô hình</strong></td>
-      <td>Trần trên thang điểm khối <strong>đã bị đo là +0,003</strong>, nên kiến trúc chỉ chứng minh được giá trị trên nhiệm vụ đặc hiệu. Phải chốt thước đo với thầy trước</td>
+      <td><strong>Kiến trúc MIL-Degron</strong> với 5 thành phần, mỗi thành phần gắn với một phép đo: học đa thể hiện nối nhãn yếu với nhãn mạnh, <strong>cổng phơi lộ ở bước gộp</strong>, và <strong>attention được giám sát bằng nhãn thực nghiệm theo residue</strong></td>
+      <td>Trần trên thang điểm khối <strong>đã bị đo là +0,003</strong>, nên kiến trúc chỉ chứng minh được giá trị trên nhiệm vụ theo residue. Phải chốt thước đo với thầy trước. Và em tự nói ra: <strong>khi đã có nhãn mức residue thì MIL không còn bắt buộc</strong> — lý do giữ túi là để dùng được cả hai bộ nhãn</td>
     </tr>
     <tr>
       <td class="num">3</td>
       <td><strong>Sử dụng phương pháp mới</strong></td>
       <td>PLM <strong>huấn luyện</strong> trên nhãn tile; attention đa thể hiện; cổng cấu trúc — ba thứ không có trong bất kỳ mô hình degron nào đã kiểm</td>
-      <td>PLM cho degron <strong>đã có tiền lệ</strong> (MetaDegron 2024), và nhóm Copenhagen đã dùng ESM-1b. Cái mới là cách dùng, không phải bản thân PLM</td>
+      <td>PLM cho degron <strong>đã có tiền lệ</strong> (MetaDegron 2024), và nhóm Copenhagen đã dùng ESM-1b. Từng cơ chế của kiến trúc cũng có tiền lệ ngoài bài toán degron: <strong>BioBlobs</strong> (MIL có cổng attention trên protein, 10/2025) và <strong>OmniESI</strong> (điều biến có điều kiện enzyme–cơ chất, 2025). Cái mới là <strong>cách ghép và chỗ đặt cổng</strong>, không phải bản thân PLM hay MIL</td>
     </tr>
     <tr>
       <td class="num">4</td>
       <td><strong>XAI</strong></td>
-      <td><strong>Mạnh nhất.</strong> Trọng số attention <em>chính là</em> bản đồ khu trú, đối chiếu được với <strong>219 footprint đột biến bão hòa</strong> — chuẩn thực nghiệm theo từng residue, không phải cơ sở dữ liệu motif. Và có <strong>đối chứng âm hoàn hảo</strong>: mô hình bất biến hoán vị phải cho bản đồ phẳng</td>
-      <td>Độ trung thực của giải thích là chỉ số <strong>riêng</strong>, không suy từ hiệu năng dự đoán. Chưa mở được file footprint</td>
+      <td><strong>Mạnh nhất, và giờ không còn là "chỉ XAI".</strong> Bản đồ khu trú là <em>đầu ra được giám sát</em>, chấm bằng <strong>2.624 footprint</strong> cộng <strong>249 bản đồ thay thế đầy đủ</strong> — chuẩn thực nghiệm theo từng residue, không phải cơ sở dữ liệu motif. Và có <strong>đối chứng âm hoàn hảo</strong>: mô hình bất biến hoán vị phải cho bản đồ phẳng</td>
+      <td>Độ trung thực của giải thích là chỉ số <strong>riêng</strong>, không suy từ hiệu năng dự đoán. File footprint <strong>đã mở và đã đếm</strong> ngày 11/10/2026</td>
     </tr>
     <tr>
       <td class="num">5</td>
       <td><strong>Ứng dụng hoặc website</strong></td>
       <td>Trang quét một protein: track điểm theo residue, <strong>tách hai câu trả lời</strong> (điểm khối so với đặc hiệu E3), quét danh sách biến thể, và <strong>báo rõ miền áp dụng</strong></td>
-      <td>Có <strong>hai</strong> thứ đã tồn tại: <a href="https://doi.org/10.1093/nar/gkae238">DEGRONOPEDIA (<em>NAR</em> 2024)</a> và một Colab của chính tác giả PAP. Phải khác biệt rõ, không làm bản sao kém hơn</td>
+      <td>Có <strong>ba</strong> thứ đã tồn tại, không phải hai: <a href="https://doi.org/10.1093/nar/gkae238">DEGRONOPEDIA (<em>NAR</em> 2024)</a>, <strong>máy chủ web MetaDegron</strong> (có cây chọn E3, hiển thị cấu trúc và mạng tương tác) và một Colab của chính tác giả PAP. Đây là <strong>tiêu chí yếu nhất</strong> của đề tài. Phải khác biệt rõ, không làm bản sao kém hơn</td>
     </tr>
   </tbody>
 </table>
@@ -1099,28 +1144,44 @@
 <!-- ======================= 6 ======================= -->
 <section id="ht">
 <h2><span class="n">06</span> Hướng đi tiếp theo</h2>
+<p class="muted" style="font-size:.88rem;color:var(--fg-muted)"><strong>Đọc sâu:</strong> <a href="../learn/topic/open-questions.html">cổng đã đóng và việc còn cần kiểm</a>.</p>
 
-<h3>6.1 Bốn việc phải làm trước khi cam kết toàn bộ thiết kế</h3>
+<h3>6.1 Trạng thái ba cổng chặn, và việc còn lại</h3>
 
-<p>Ba việc đầu là <strong>cổng chặn</strong>: nếu một trong ba không qua thì thiết kế phải đổi.</p>
+<p>Cập nhật 11/10/2026 (khuya): <strong>cả ba cổng chặn đã đóng.</strong> Cổng 1 qua. Cổng 3 có câu trả lời và nó thu hẹp tuyên bố tính mới. <strong>Cổng 2 không qua</strong> — và nó buộc đổi trục đề tài, từ "đặc hiệu E3" sang "bản đồ độ nhạy theo residue". Phần bù: nhãn theo residue lớn hơn tài liệu trước của em ghi rất nhiều.</p>
 
 <div class="steps">
   <div class="step">
     <div>
-      <h4>Đọc toàn văn bài degron transcription factor <span class="tag t-warn">CỔNG CHẶN</span></h4>
-      <p>Larsen, Voutsinos và cộng sự, tiền ấn 05/2025. Họ đã dùng PAP cùng ESM-1b và đã nối biến thể với độ mạnh degron. <strong>Nếu họ đã làm phần đặc hiệu E3 thì đề tài phải đổi trục.</strong> Hiện em chỉ đọc được phần tóm tắt.</p>
+      <h4>Đọc toàn văn bài degron transcription factor <span class="tag t-m">CỔNG ĐÃ QUA</span></h4>
+      <p>Larsen, Voutsinos và cộng sự, tiền ấn 05/2025. <strong>Đã đọc toàn văn ngày 11/10/2026.</strong> Họ không mô hình hóa đặc hiệu E3, không đề xuất kiến trúc mới, không dùng nhãn E3 hay CRISPR, không có phần giải thích mô hình. Trục của đề tài <strong>còn trống</strong>. Hai điều phải điều chỉnh: họ đã tính rASA và pLDDT từ AlphaFold2, và đã làm bản đồ thay thế <em>in silico</em> ΔPAP — nên "dùng cấu trúc" và "giải thích biến thể" không còn là phần mới. Bù lại, thư viện nhân 58.781 đoạn của họ là một bộ kiểm tra thêm.</p>
     </div>
   </div>
   <div class="step">
     <div>
-      <h4>Mở Table S3, S4, S6, S7 của Zhang 2023 và đếm nhãn dùng được <span class="tag t-warn">CỔNG CHẶN</span></h4>
-      <p>Toàn bộ nhiệm vụ đặc hiệu E3 và tiêu chí 4 dựa vào các file này. Cần biết <strong>bao nhiêu đoạn có nhãn CRISPR đủ tin</strong>. Nếu quá ít thì thành phần điều kiện E3 phải bỏ.</p>
+      <h4>Đếm nhãn E3 dùng được <span class="tag t-m">ĐÃ QUA — và kết quả buộc đổi trục đề tài</span></h4>
+      <p>Table S1–S7 trên PMC chặn bằng reCAPTCHA, Europe PMC trả <em>"not open access"</em>. Em lấy <strong>dữ liệu thô</strong> từ <a href="https://data.mendeley.com/datasets/32h94v2yv2/2">Mendeley Data</a> mà chính bài khai báo, rồi đếm từ MAGeCK gốc.</p>
+      <div class="scroller">
+      <table>
+        <thead><tr><th>Đại lượng</th><th class="num">Số đếm</th></tr></thead>
+        <tbody>
+          <tr><td>Screen CRISPR (trừ 3 control)</td><td class="num">31</td></tr>
+          <tr><td>Gán được adaptor (gán <em>rõ</em>)</td><td class="num">27 (25)</td></tr>
+          <tr><td><strong>Số E3 khác nhau</strong></td><td class="num"><strong>10</strong></td></tr>
+          <tr><td><strong>Số E3 có ≥ 5 peptide</strong></td><td class="num"><strong>1</strong> (KLHL15, 13 peptide)</td></tr>
+          <tr><td>Số E3 có đúng 1 peptide</td><td class="num">6</td></tr>
+        </tbody>
+      <caption>Bền với <strong>36 tổ hợp ngưỡng</strong>: gán được 16–29, số E3 8–10, và số E3 có ≥ 5 peptide <strong>luôn đúng bằng 1</strong>.</caption>
+      </table>
+      </div>
+      <p style="margin-bottom:0"><strong>Hệ quả:</strong> thành phần điều kiện E3 <strong>đã bỏ khỏi kiến trúc</strong>, và "đặc hiệu E3" <strong>đã bỏ khỏi vị trí thước đo chính</strong>. Đề tài tái định tâm sang bản đồ độ nhạy theo residue. E3 còn lại ở vai trò <strong>ca nghiên cứu</strong> trên 27 peptide. <em>Chưa lấy được Table S5</em> (gán E3 do tác giả curate), nên 10 E3 là <strong>giới hạn dưới</strong> — nhưng nó chỉ thêm peptide, không đổi được việc 6 lớp có một mẫu.</p>
     </div>
   </div>
   <div class="step">
     <div>
-      <h4>Tra hệ thống tính mới của kiến trúc <span class="tag t-warn">CỔNG CHẶN</span></h4>
-      <p>Tuyên bố "không mô hình degron nào dùng attention đa thể hiện" hiện dựa trên việc đọc mã ba mô hình cộng vài lượt tìm web. Phải tra danh sách trích dẫn và tài liệu MIL trong tin sinh học <strong>trước khi viết vào đề cương</strong>, vì tiêu chí 2 phụ thuộc nó.</p>
+      <h4>Tra tính mới của kiến trúc <span class="tag t-m">ĐÃ CÓ CÂU TRẢ LỜI, và nó thu hẹp tuyên bố</span></h4>
+      <p>Đã tra ngày 11/10/2026. <strong>Chưa thấy ai dùng học đa thể hiện cho degron</strong> — phần đó giữ được. Nhưng <strong>BioBlobs</strong> (10/2025) đã dùng đúng attention-based MIL trên protein cho dự đoán chức năng, và <strong>OmniESI</strong> (2025) đã dùng điều biến có điều kiện enzyme–cơ chất. Nên tuyên bố phải hạ xuống: <strong>mới ở chỗ ghép và chỗ đặt cổng, không mới ở cơ chế.</strong></p>
+      <p style="margin-bottom:0">Còn lại: tra danh sách trích dẫn của bài 2026 và nội bộ MetaDegron, trước khi viết vào đề cương.</p>
     </div>
   </div>
   <div class="step">
@@ -1137,10 +1198,10 @@
 <table>
   <thead><tr><th>Tuần</th><th>Việc</th><th>Sản phẩm kiểm được</th></tr></thead>
   <tbody>
-    <tr><td><strong>6</strong></td><td>Báo cáo đề tài với GVHD; chốt thước đo; qua ba cổng chặn ở 6.1</td><td>Trang trình bày này cộng quyết định về thước đo</td></tr>
+    <tr><td><strong>6</strong></td><td>Báo cáo đề tài đã tái định tâm với GVHD; <strong>chốt thước đo footprint mức residue</strong></td><td>Trang trình bày này, quyết định phạm vi và bảng đếm nhãn E3 đã hoàn tất</td></tr>
     <tr><td><strong>7–8</strong></td><td>Dựng pipeline dữ liệu cả ba bộ; chạy lại toàn bộ baseline trên tập kiểm tra 428 gene; trích embedding ESM-2</td><td>Bảng baseline tự chạy, không chép số từ bài báo</td></tr>
-    <tr><td><strong>9–10</strong></td><td>Cài đặt CMIL-E3; ablation từng thành phần trong 6 thành phần</td><td>Bảng ablation; kết quả bậc 2 (chuyển giữa hai sàng lọc)</td></tr>
-    <tr><td><strong>11–12</strong></td><td>Nhiệm vụ đặc hiệu E3 và đối chiếu 219 footprint; đánh giá độ trung thực của giải thích</td><td>Kết quả bậc 3 — <strong>thước đo chính</strong></td></tr>
+    <tr><td><strong>9–10</strong></td><td>Cài đặt MIL-Degron; ablation 5 thành phần; <strong>đối chứng bắt buộc</strong>: đầu hồi quy theo vị trí không có MIL</td><td>Bảng ablation; Spearman theo peptide và precision@3 trên 2.624 footprint</td></tr>
+    <tr><td><strong>11–12</strong></td><td>Kiểm tra trên 249 bản đồ thay thế đầy đủ; ca nghiên cứu E3 nhỏ và kiểm độ trung thực của bản đồ</td><td>Spearman theo peptide, precision@3 và đối chứng trên tập kiểm tra khác thư viện</td></tr>
     <tr><td><strong>12–13</strong></td><td>Xây ứng dụng web; viết luận văn</td><td>Trang chạy được, phục vụ mô hình đã xuất</td></tr>
     <tr><td><strong>14–15</strong></td><td>Hoàn thiện và báo cáo</td><td>Luận văn và slide bảo vệ</td></tr>
   </tbody>
@@ -1161,14 +1222,15 @@
 <h3>6.4 Mở rộng sau luận văn</h3>
 
 <ul>
-  <li><strong>Mở rộng số E3.</strong> Hiện chỉ 16 E3 có nhãn CRISPR. Nếu phần điều kiện theo trình tự E3 hoạt động, mô hình có thể dự đoán cho E3 chưa có nhãn — đây là hướng zero-shot tự nhiên.</li>
-  <li><strong>Bộ dữ liệu thứ tư.</strong> Bản đồ degron trên 1.626 transcription factor, nếu tác giả công bố dữ liệu, là tập kiểm tra thêm và là nhóm protein giàu liên quan ung thư.</li>
+  <li><strong>Mở rộng số E3 — cần thêm thực nghiệm, không chỉ thêm mô hình.</strong> Em đã đếm: chỉ <strong>10 E3</strong> có nhãn và 6 trong số đó có đúng một peptide, nên không thể học quan hệ trình tự E3 ↔ đặc hiệu từ bộ này. Muốn làm trục đó thì cần thêm screen CRISPR cho nhiều peptide hơn — đây là hướng sau luận văn, và nó phụ thuộc dữ liệu mới chứ không phụ thuộc kiến trúc.</li>
+  <li><strong>Bộ dữ liệu thứ tư — đã xác nhận có số liệu.</strong> Bản đồ degron trên 1.626 transcription factor: <strong>58.781 đoạn có điểm</strong>, đo trong nhân, và <strong>8.645 đoạn trên 234 protein chồng lấn</strong> với thư viện bào tương. Là tập kiểm tra thêm và là nhóm protein giàu liên quan ung thư. Phải kiểm điều kiện dùng dữ liệu (tiền ấn CC BY-NC-ND) trước khi đưa vào kế hoạch.</li>
   <li><strong>Nối với thiết kế thuốc.</strong> Kỹ thuật PROTAC và molecular glue hoạt động bằng cách tạo degron nhân tạo. Một mô hình dự đoán đặc hiệu E3 là bước đầu để sàng lọc ý tưởng loại này — nhưng đây là <strong>mở rộng xa</strong>, không nằm trong luận văn.</li>
 </ul>
 </section>
 
 <section id="tk">
 <h2><span class="n">07</span> Tài liệu tham khảo</h2>
+<p class="muted" style="font-size:.88rem;color:var(--fg-muted)"><strong>Đọc sâu:</strong> <a href="../learn/papers/index.html">danh mục bài báo kèm mức độ liên quan và trang đọc riêng</a>.</p>
 <p>Mọi DOI dưới đây đã được xác minh qua Crossref ngày 11/10/2026. Cột cuối ghi rõ tài liệu nào <strong>chưa đọc toàn văn</strong>.</p>
 <div class="scroller">
 <table>
@@ -1181,7 +1243,7 @@
     <tr><td class="num">2</td>
       <td><strong>Larsen FB, Voutsinos V, Jonsson N, Johansson KE, Ethelberg FD, Lindorff-Larsen K, Hartmann-Petersen R.</strong> Comprehensive degron mapping in human transcription factors. <em>bioRxiv</em>, 17/05/2025.</td>
       <td><a href="https://doi.org/10.1101/2025.05.16.654404">doi:10.1101/2025.05.16.654404</a> · <a href="https://www.biorxiv.org/content/10.1101/2025.05.16.654404v1">bioRxiv</a></td>
-      <td><strong>Đối thủ gần nhất.</strong> Cùng nhóm; 1.626 transcription factor; dùng PAP cùng ESM-1b. Giấy phép CC BY-NC-ND. <strong>Chưa đọc toàn văn</strong></td></tr>
+      <td><strong>Đối thủ gần nhất.</strong> Cùng nhóm; 1.626 transcription factor, 58.781 đoạn có điểm; dùng PAP cùng ESM-1b; rASA và pLDDT từ AlphaFold2 kèm DSSP. Giấy phép CC BY-NC-ND. <strong>Đã đọc toàn văn 11/10/2026 — không làm đặc hiệu E3, không có kiến trúc mới, không có XAI</strong></td></tr>
     <tr><td class="num">3</td>
       <td><strong>Zhang W, …, Elledge SJ.</strong> Elucidation of E3 ubiquitin ligase specificity through proteome-wide internal degron mapping. <em>Molecular Cell</em>, 2023.</td>
       <td><a href="https://doi.org/10.1016/j.molcel.2023.08.022">doi:10.1016/j.molcel.2023.08.022</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10594193/">PMC10594193</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10688572/">đính chính</a></td>
@@ -1226,6 +1288,26 @@
       <td><strong>ELM</strong> — cơ sở dữ liệu motif tuyến tính chức năng ở eukaryote.</td>
       <td><a href="http://elm.eu.org">elm.eu.org</a></td>
       <td>Nguồn motif degron đã curate, dùng để đối chiếu phần giải thích</td></tr>
+    <tr><td class="num">14</td>
+      <td><strong>Zhang và cộng sự</strong> — dữ liệu thô của sàng lọc GPS-peptidome, đột biến quét, đột biến bão hòa và screen CRISPR. <em>Mendeley Data</em>, phiên bản 2.</td>
+      <td><a href="https://doi.org/10.17632/32h94v2yv2.2">doi:10.17632/32h94v2yv2.2</a></td>
+      <td><strong>Nguồn nhãn của đề tài sau khi tái định tâm.</strong> Dùng nguồn này vì Table S1–S7 trên PMC chặn bằng reCAPTCHA. Ba file ZIP đã tải, có SHA-256 trong ghi chú audit. Zenodo 8103915 chỉ có mã DegronID, <strong>không</strong> có nhãn E3</td></tr>
+    <tr><td class="num">15</td>
+      <td><strong>Zheng M, Lin S, …, Xu H.</strong> MetaDegron: multimodal feature-integrated protein language model for predicting E3 ligase targeted degrons. <em>Briefings in Bioinformatics</em>, 2024. Bản ghi chi tiết của mục 7 ở trên.</td>
+      <td><a href="https://doi.org/10.1093/bib/bbae519">doi:10.1093/bib/bbae519</a></td>
+      <td><strong>Đối thủ gần nhất ở tiêu chí 1 và tiêu chí 5.</strong> Dự đoán degron theo từng E3 cho <strong>21 E3</strong>, có máy chủ web. Huấn luyện trên khoảng <strong>300 degron curate</strong>, âm tính là peptide ngẫu nhiên, chia 90/10, AUC 0,87–0,90. Dùng SeqVec kèm BLSTM và XGBoost trên 10 đặc trưng, trong đó có độ phơi lộ với dung môi — nhưng ở <em>đầu vào</em>, không ở bước gộp</td></tr>
+    <tr><td class="num">16</td>
+      <td><strong>ELITE</strong> — E3 Ligase Inference for Tissue specific Elimination. <em>bioRxiv</em>, 11/2025.</td>
+      <td><a href="https://doi.org/10.1101/2025.11.05.686884">doi:10.1101/2025.11.05.686884</a></td>
+      <td>Xếp hạng E3 cho một substrate ở <strong>mức cặp protein–protein</strong>, ProtBERT kiểu Siamese, Integrated Gradients. Nhãn dương từ mạng tương tác, âm từ Negatome. Khác đơn vị dự đoán và khác loại nhãn so với đề tài; dùng để đối chiếu <em>khung</em></td></tr>
+    <tr><td class="num">17</td>
+      <td><strong>BioBlobs</strong> — Differentiable Graph Partitioning for Protein Representation Learning. <em>arXiv</em>, 10/2025.</td>
+      <td><a href="https://arxiv.org/abs/2510.01632">arXiv:2510.01632</a></td>
+      <td><strong>Tiền lệ cơ chế của thành phần 1 và 4.</strong> Attention-based MIL theo Ilse 2018 trên protein: túi là protein, thể hiện là cấu trúc con học được, có cổng attention. Cho dự đoán chức năng, không cho degron → buộc hạ tuyên bố tính mới xuống "mới ở chỗ ghép"</td></tr>
+    <tr><td class="num">18</td>
+      <td><strong>OmniESI</strong> — a two-stage progressive framework for enzyme–substrate interaction prediction through conditional deep learning. <em>arXiv</em>, 2025.</td>
+      <td><a href="https://arxiv.org/abs/2506.17963">arXiv:2506.17963</a></td>
+      <td><strong>Tiền lệ cơ chế của thành phần 3.</strong> Điều biến có điều kiện hai chiều enzyme–cơ chất — cùng ý tưởng với FiLM. Không dùng tên FiLM, và không cho degron</td></tr>
   </tbody>
 </table>
 </div>
@@ -1234,7 +1316,8 @@
 <footer>
   <p><strong>Trạng thái.</strong> Đề tài chốt ngày 11/10/2026. Chưa huấn luyện mô hình, chưa xây website. Đã tự tải và đếm cả ba bộ dữ liệu, và đã tái lập mô hình công bố của tác giả bằng numpy, khớp cả hai con số của họ. Mọi số có nhãn <span class="tag t-m">TỰ ĐO</span> đều có script tái tạo trong <code>docs/common/deep-research/research_notes/degron/</code>.</p>
   <p>Báo cáo kiểm chứng chi tiết, gồm toàn bộ phép đo và danh sách những điều còn chưa kiểm: <a href="../../../common/deep-research/reports/degron-topic-report/index.html">mở báo cáo kiểm chứng chi tiết</a>.</p>
-  <p style="margin-bottom:0"><strong>Nguồn chính.</strong> Voutsinos và cộng sự, <em>Science Advances</em> 02/2026 · Larsen, Voutsinos và cộng sự, bioRxiv 05/2025 · Zhang và cộng sự, <em>Molecular Cell</em> 2023, GEO GSE240610 · Koren và cộng sự, <em>Cell</em> 2018 · Tokheim và cộng sự, <em>Molecular Cell</em> 2021 · Szulc và cộng sự, <em>Nucleic Acids Research</em> 2024 · Hou và cộng sự, <em>BMC Biology</em> 2022 · MaveDB (CC0).</p>
+  <p style="margin-bottom:0"><strong>Nguồn chính.</strong> Voutsinos và cộng sự, <em>Science Advances</em> 02/2026 · Larsen, Voutsinos và cộng sự, bioRxiv 05/2025 · Zhang và cộng sự, <em>Molecular Cell</em> 2023, GEO GSE240610 · Koren và cộng sự, <em>Cell</em> 2018 · Tokheim và cộng sự, <em>Molecular Cell</em> 2021 · Szulc và cộng sự, <em>Nucleic Acids Research</em> 2024 · Hou và cộng sự, <em>BMC Biology</em> 2022 · Zheng và cộng sự, <em>Briefings in Bioinformatics</em> 2024 (MetaDegron) · MaveDB (CC0).</p>
+  <p style="margin-bottom:0;font-size:.95em;color:var(--fg-muted)"><strong>Cập nhật 11/10/2026 (khuya).</strong> Ba cổng nghiên cứu đã có kết quả: đọc toàn văn bài transcription factor và MetaDegron, rà tiền lệ BioBlobs/OmniESI, tự đếm nhãn E3 từ MAGeCK thô. Nhánh dự đoán E3 đã bỏ; mục tiêu chính là footprint mức residue. Table S5 do tác giả curate vẫn chưa lấy được và cần ghi là giới hạn khi báo số E3.</p>
 </footer>
 
 </div>

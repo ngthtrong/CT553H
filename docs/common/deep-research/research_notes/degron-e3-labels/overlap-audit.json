@@ -1,0 +1,53 @@
+{
+ "sizes": {
+  "crispr": 31,
+  "satmut": 248,
+  "scanmut": 9817
+ },
+ "normalised_sizes": {
+  "crispr": 31,
+  "satmut": 248,
+  "scanmut": 9811
+ },
+ "overlap": {
+  "crispr_in_satmut": 27,
+  "crispr_in_scanmut": 29,
+  "satmut_in_scanmut": 130,
+  "crispr_in_both": 25
+ },
+ "crispr_with_satmut": [
+  "ADCY2_37",
+  "AGRN_82",
+  "ALAS2_8",
+  "ANKZF1_5",
+  "ATP2B2_34",
+  "CCDC17_9",
+  "CCDC3_10",
+  "CDAN1_38",
+  "CDC6_1",
+  "CEP152_52",
+  "COL11A2_20",
+  "DLST_7",
+  "DPP4_25",
+  "FBXO10_3",
+  "FRMD8_15",
+  "GLB1L_2",
+  "HINFP_3",
+  "IFNA8_5",
+  "MDN1_196",
+  "MMP2_13",
+  "NANOS3_5",
+  "SH3BP2_2",
+  "UNC13D_26",
+  "VRK3_15",
+  "ZFHX4_40",
+  "ZNF19_8",
+  "ZNF510_2"
+ ],
+ "crispr_without_satmut": [
+  "ANKRD27_23",
+  "CD68_8",
+  "CDHR4_23",
+  "CFB_17"
+ ]
+}

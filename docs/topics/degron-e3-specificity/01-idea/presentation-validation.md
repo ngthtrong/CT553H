@@ -4,7 +4,7 @@ Phạm vi: hoàn thiện phần giao diện còn dở trong phiên Claude, tại
 
 ## Phần đã hoàn thiện
 
-- Gắn hoạt ảnh vào sơ đồ UPS, hai đầu ra kênh nội, khả năng tiếp cận degron, tín hiệu motif và luồng cấu trúc vào CMIL-E3.
+- Gắn hoạt ảnh vào sơ đồ UPS, hai đầu ra kênh nội, khả năng tiếp cận degron, tín hiệu motif và luồng cấu trúc vào kiến trúc đề xuất (khi đó tên là CMIL-E3).
 - Thêm ba ô số liệu nền với liên kết audit; biểu đồ gộp trung bình/max lấy từ [pool-test.json](../../../common/deep-research/research_notes/degron/pool-test.json), trục Pearson đầy đủ 0–1, có bảng tương đương và giới hạn phép thử cùng trọng số.
 - Thêm minh họa tương tác đổi bối cảnh peptide/protein và độ phơi lộ giả định. Thanh hiển thị không phải xác suất hoặc kết quả mô hình.
 - Điều khiển sáng/tối/theo hệ thống, dừng hoạt ảnh, tôn trọng `prefers-reduced-motion`, khung SVG cuộn ngang trên điện thoại, CSS in tĩnh.
@@ -36,4 +36,12 @@ Chromium headless qua Playwright; chặn yêu cầu HTTPS để kiểm tra khả
 
 - Chưa xác minh lại DOI hay đọc thêm bài báo trong lần chỉnh giao diện này; liên kết ngoài được giữ từ phiên Claude.
 - Ba cổng nghiên cứu trong [topic-decision.md](topic-decision.md) vẫn còn: bài transcription factor, nhãn E3 thực dùng được và tiền lệ kiến trúc MIL.
-- CMIL-E3 vẫn là đề xuất; hoạt ảnh và thanh phơi lộ không phải bằng chứng cho hiệu năng hay khả năng chuyển miền.
+- Kiến trúc vẫn là đề xuất; hoạt ảnh và thanh phơi lộ không phải bằng chứng cho hiệu năng hay khả năng chuyển miền.
+
+## Cập nhật 11/10/2026 (khuya) — nội dung đã đổi sau lần kiểm này
+
+Đề tài **tái định tâm** sang bản đồ độ nhạy theo residue; kiến trúc đổi tên **CMIL-E3 → MIL-Degron** và còn 5 thành phần. Trang đã sửa nhiều mục (tiêu đề, đầu vào/đầu ra, phạm vi, bảng kiến trúc, bảng dữ liệu, ba bậc thước đo, bảng năm tiêu chí, mục cổng chặn, tài liệu tham khảo).
+
+**Đã kiểm lại sau khi sửa:** cấu trúc thẻ HTML khớp, không ID trùng, số thứ tự tài liệu tham khảo 1–18 không trùng, mọi liên kết nội bộ tồn tại.
+
+**Chưa kiểm lại:** ảnh chụp, chế độ in, giao diện điện thoại, sáng/tối, giảm chuyển động — các phép kiểm trong bảng trên chạy trước khi sửa nội dung. **Việc còn lại:** sơ đồ SVG luồng dữ liệu vẫn vẽ nhánh *điều kiện E3* đã bỏ; hiện chỉ ghi chú bằng chữ trong `figcaption`, **chưa vẽ lại hình**.

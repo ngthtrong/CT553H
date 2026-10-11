@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Voutsinos 2026 · Bản đồ degron bào tương và mô hình PAP</title>
+<meta name="hub-page" content="p-vout">
+<meta name="description" content="Đọc hiểu bài Science Advances 2026: 212.658 đoạn peptide, mô hình PAP, và vì sao nó vừa là nền vừa là đối chứng của đề tài.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;650&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../assets/hub.css">
+<style>
+  .bib { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+         box-shadow: var(--shadow); padding: 1.1rem 1.25rem; margin: 1.6rem 0; }
+  .bib dl { display: grid; grid-template-columns: max-content 1fr; gap: .4rem 1.1rem; margin: 0; font-size: .91rem; }
+  .bib dt { font: 600 .72rem/1.7 var(--font-m); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-mute); }
+  .bib dd { margin: 0; }
+  @media (max-width: 560px) { .bib dl { grid-template-columns: 1fr; gap: .1rem .5rem; } .bib dd { margin-bottom: .5rem; } }
+  .three { display: grid; gap: 1rem; margin: 1.6rem 0; }
+  @media (min-width: 760px) { .three { grid-template-columns: repeat(3, 1fr); } }
+  .three > div { padding: 1rem 1.15rem; border-radius: var(--radius-s); border: 1px solid var(--line); background: var(--surface); }
+  .three h4 { margin-top: 0; }
+  .three p { font-size: .92rem; margin-bottom: 0; }
+  .three .a { border-top: 3px solid var(--t); }
+  .three .b { border-top: 3px solid var(--o); }
+  .three .c { border-top: 3px solid var(--m); }
+</style>
+</head>
+<body>
+<a class="skip" href="#vaitro">Bỏ qua điều hướng</a>
+<div class="page">
+
+<nav class="topbar" aria-label="Thanh điều hướng">
+  <a class="home" href="../index.html">← Hub học đề tài</a>
+  <span class="spacer"></span>
+</nav>
+
+<div class="crumb">
+  <a href="../index.html">Hub</a> <span class="sep">/</span>
+  <a href="index.html">Bài báo</a> <span class="sep">/</span>
+  <span>Nhóm 1 · Lõi</span> <span class="sep">/</span>
+  <span>Voutsinos 2026</span>
+</div>
+
+<div class="eyebrow">Nhóm 1 — Lõi · đã đọc toàn văn</div>
+<h1>Bản đồ gần toàn phần degron bào tương, và mô hình PAP</h1>
+<p class="lede">Bài cung cấp nhãn yếu mức đoạn và mô hình PAP làm đối chứng. Audit kênh nội của PAP cho thấy điểm mức đoạn tốt chưa đủ để xác định motif theo vị trí.</p>
+
+<div class="bib">
+  <dl>
+    <dt>Tác giả</dt>
+    <dd>Voutsinos V, Johansson KE, Larsen FB, Grønbæk-Thygesen M, Jonsson N, Holm-Olesen E, Tesei G, Stein A, Fowler DM, Lindorff-Larsen K, Hartmann-Petersen R</dd>
+    <dt>Tên bài</dt>
+    <dd><em>A near-complete map of human cytosolic degrons and their relevance for disease</em></dd>
+    <dt>Công bố</dt>
+    <dd><strong>Science Advances</strong>, 2026 · tiền ấn bioRxiv 05/2025</dd>
+    <dt>DOI</dt>
+    <dd><a href="https://doi.org/10.1126/sciadv.adz3483">10.1126/sciadv.adz3483</a> · PMID 41650254 · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12880521/">PMC12880521</a></dd>
+    <dt>Giấy phép</dt>
+    <dd><strong>CC BY-NC 4.0</strong> — hình và văn bản dùng lại được cho mục đích phi thương mại, có ghi nguồn</dd>
+    <dt>Mã và dữ liệu</dt>
+    <dd><a href="https://github.com/KULL-Centre/_2025_Voutsinos_degron_cytosol">GitHub (MIT)</a> · <a href="https://doi.org/10.5281/zenodo.16925278">Zenodo</a> · <a href="https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1277273">SRA PRJNA1277273</a></dd>
+    <dt>Trạng thái đọc</dt>
+    <dd><span class="tag tag-s">ĐÃ ĐỌC TOÀN VĂN</span> qua PMC ngày 11/10/2026 · <span class="tag tag-m">ĐÃ TẢI DỮ LIỆU VÀ TÁI LẬP MÔ HÌNH</span></dd>
+  </dl>
+</div>
+
+<div class="gate two">
+  <div class="g">
+    <h4>Cần biết trước</h4>
+    <ul>
+      <li><a href="../foundations/measuring-degrons.html">Bài nền 2</a> — hệ reporter, FACS, thang điểm.</li>
+      <li><a href="../foundations/structure-exposure.html">Bài nền 3</a> — rASA và pLDDT, cho mục 5.</li>
+      <li><a href="../foundations/regression-correlation.html">Bài nền 4</a> — Pearson và bất biến hoán vị, cho mục 6.</li>
+    </ul>
+  </div>
+  <div class="g">
+    <h4>Đọc xong sẽ hiểu được</h4>
+    <ul>
+      <li>Bài này đo cái gì, bằng cách nào, trên quy mô nào.</li>
+      <li>PAP là mô hình gì, và vì sao nó đạt 0,87 mà vẫn không biểu diễn được motif.</li>
+      <li>Ba điều bài này chứng minh được, và ba điều nó <em>không</em> làm.</li>
+      <li>Vì sao đề tài dùng nó làm đối chứng chứ không cạnh tranh với nó.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="vaitro">1. Vai trò của bài này với đề tài</h2>
+
+<div class="three">
+  <div class="a">
+    <h4>Nguồn dữ liệu chính</h4>
+    <p>212.658 đoạn peptide có điểm, trên 5.672 protein bào tương. Đây là nguồn nhãn yếu mức đoạn cho nhiệm vụ phụ và baseline PAP; nhãn đột biến theo residue từ Zhang 2023 mới là nguồn huấn luyện chính. Dữ liệu đã tải, đã kiểm SHA-256, đã tự đếm lại. <span class="tag tag-m">TỰ ĐO</span></p>
+  </div>
+  <div class="b">
+    <h4>Mô hình đối chứng</h4>
+    <p>PAP là mô hình tốt nhất hiện có trên bài toán này. Đề tài <strong>không cạnh tranh</strong> với nó trên thang điểm khối, mà dùng nó làm baseline phải chạy lại được.</p>
+  </div>
+  <div class="c">
+    <h4>Nguồn của phát hiện trung tâm</h4>
+    <p>Trên <strong>kênh nội cnn2w1</strong> của mô hình này, phép thử đảo thứ tự residue cho Pearson(gốc, đảo) = 1,000000. Kênh đầu C của PAP có thông tin vị trí và không thuộc kết luận này. <span class="tag tag-m">TỰ ĐO</span></p>
+  </div>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="vande">2. Vấn đề và động cơ</h2>
+
+<p>Trước bài này, degron được biết tới theo kiểu từng ca một: mỗi degron là một nghiên cứu riêng, và các motif đồng thuận gom vào cơ sở dữ liệu như ELM. Kết quả là chỉ biết degron cho một phần rất nhỏ trong hơn 600 E3 của người.</p>
+
+<p>Câu hỏi của nhóm tác giả: <em>nếu đo gần như mọi đoạn của proteome bào tương thì bản đồ degron trông thế nào?</em> Và câu hỏi ứng dụng đi kèm: <em>một đột biến sai nghĩa có thể tạo ra degron mới và gây bệnh theo cách đó không?</em></p>
+
+<!-- ===================================================== -->
+<h2 id="dulieu">3. Dữ liệu: họ đo gì</h2>
+
+<div class="stats">
+  <div class="stat"><span class="v">214.158</span><span class="k">Đoạn trong thư viện</span><p class="d">Mỗi đoạn 30 residue, chồng nhau 15 <span class="tag tag-s">NGUỒN</span></p></div>
+  <div class="stat b"><span class="v">212.658</span><span class="k">Đoạn có điểm</span><p class="d">Yêu cầu ít nhất hai lần đo lặp <span class="tag tag-s">NGUỒN</span> <span class="tag tag-m">đã đếm lại</span></p></div>
+  <div class="stat t"><span class="v">99,7%</span><span class="k">Độ phủ proteome bào tương</span><p class="d">Trên 5.672 protein <span class="tag tag-s">NGUỒN</span></p></div>
+  <div class="stat m"><span class="v">19%</span><span class="k">Đoạn là degron mạnh</span><p class="d">Cộng 30% trung gian và 51% không phải degron <span class="tag tag-s">NGUỒN</span></p></div>
+</div>
+
+<p>Thiết kế thí nghiệm đã mô tả ở <a href="../foundations/measuring-degrons.html">bài nền 2</a>: thư viện GFP–đoạn peptide với mCherry làm đối chứng nội bộ, phân loại bằng FACS thành <strong>bốn ống</strong>, rồi giải trình tự. Các đối chứng bằng cycloheximide, bortezomib và MLN7243 xác nhận việc mất GFP phụ thuộc <strong>E1 và proteasome</strong>, tức đúng là hệ ubiquitin–proteasome. <span class="tag tag-s">NGUỒN</span></p>
+
+<div class="callout c-data">
+  <span class="ct">Một chi tiết về thang đo mà người dùng dữ liệu phải biết</span>
+  <p style="margin-bottom:0">Phân bố điểm degron thô có <strong>bốn đỉnh</strong>, là hệ quả của việc chỉ có bốn ống FACS. Tác giả biến đổi thang để phân bố khớp với phân bố huỳnh quang đo trực tiếp, được <strong>abundance score</strong> — và thang này <strong>ngược chiều</strong> điểm degron (Spearman = −1). Mô hình được huấn luyện để dự đoán <em>abundance score</em>, không phải điểm degron. <span class="tag tag-s">NGUỒN</span> Nhầm chiều ở đây là nhầm dấu toàn bộ kết quả.</p>
+</div>
+
+<h3>Cách họ chia tập kiểm tra — và một đính chính quan trọng</h3>
+
+<p>Đây là chỗ bản ghi chú trước đây của đề tài <strong>đã sai</strong>, và việc đọc toàn văn đã sửa lại được.</p>
+
+<div class="steps">
+  <div class="step">
+    <div>
+      <h4>Gom cụm theo độ giống nhau ở mức protein</h4>
+      <p>Dùng MMseqs2 với ngưỡng e &lt; 0,001, phủ 60%, cluster-mode 1, độ nhạy đầy đủ. Rồi chọn ngẫu nhiên <strong>527 protein</strong> trong số những protein <em>không gom cụm với protein nào khác</em>. <span class="tag tag-s">NGUỒN</span></p>
+    </div>
+  </div>
+  <div class="step">
+    <div>
+      <h4>Rồi lọc thêm một lần nữa ở mức từng đoạn</h4>
+      <p>Vì hai protein không giống nhau vẫn có thể chứa đoạn giống nhau, họ gióng <em>mọi đoạn</em> của tập kiểm tra với <em>mọi đoạn</em> của tập huấn luyện (e &lt; 0,001, phủ 90%), và <strong>trả cả protein về tập huấn luyện</strong> nếu có bất kỳ đoạn nào giống. <span class="tag tag-s">NGUỒN</span></p>
+    </div>
+  </div>
+  <div class="step">
+    <div>
+      <h4>Kết quả: 99 protein bị trả về tập huấn luyện</h4>
+      <p>Còn lại khoảng 7% số đoạn làm tập kiểm tra — cụ thể <strong>15.815 đoạn</strong> trong 211.444 đoạn có trình tự acid amin duy nhất. <span class="tag tag-s">NGUỒN</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="callout c-ok">
+  <span class="ct">Đính chính so với bản ghi chú audit trước đó</span>
+  <p>Audit của đề tài đã đếm được: danh sách 527 gene thực tế gồm <strong>428 gene dùng được + 96 gene nằm trọn trong tập huấn luyện + 3 gene giữ một phần</strong>, và holdout hiệu dụng là <strong>428 gene / 15.820 đoạn</strong>. <span class="tag tag-m">TỰ ĐO</span> Khi đó nguyên nhân được ghi là “<em>chưa do tác giả nêu</em>”, và giả thuyết đưa ra là tác giả tiền tuyển rồi trả gene lớn về tập huấn luyện.</p>
+  <p style="margin-bottom:0"><strong>Giả thuyết đó sai, và phần Methods có nêu nguyên nhân.</strong> 96 + 3 ≈ 99 protein bị trả về tập huấn luyện đúng bằng con số tác giả ghi, và lý do là <strong>bộ lọc giống nhau ở mức từng đoạn</strong>, không phải lọc theo cỡ gene. Con số đoạn cũng khớp: tác giả ghi 15.815, audit đếm 15.820. <span class="tag tag-s">NGUỒN — đọc toàn văn 11/10/2026</span></p>
+</div>
+
+<p><strong>Hệ quả cho cách nói của đề tài:</strong> việc kiểm soát đồng dạng của nhóm tác giả <strong>kỹ hơn</strong> mức đề tài từng ghi nhận — họ lọc ở cả hai mức, protein và đoạn. Nên không được dùng “sửa giao thức đánh giá” làm đóng góp. Cách nói đúng vẫn là <strong>“tốt nhưng không hoàn hảo”</strong>: phép gióng độc lập vẫn tìm ra 14/428 gene (3,3%) có họ hàng trong tập huấn luyện ở identity ≥ 30%, và một gene trùng 100% trên 77 residue với TRIM5. <span class="tag tag-m">TỰ ĐO</span></p>
+
+<!-- ===================================================== -->
+<h2 id="pap">4. Mô hình PAP</h2>
+
+<p><strong>PAP</strong> — <em>peptide abundance predictor</em> — là một mạng tích chập <strong>hai kênh</strong>, và hai kênh được <strong>cộng thẳng</strong> với nhau ở cuối, không có tương tác nào giữa chúng. <span class="tag tag-m">đã đọc mã</span></p>
+
+<figure>
+  <div class="frame">
+    <img src="../assets/figures/voutsinos2026-f4.jpg" width="800" height="338"
+         alt="Hình 4 của Voutsinos và cộng sự 2026. Panel A: sơ đồ kiến trúc hai kênh, kênh nội nhận toàn bộ đoạn peptide và kênh degron đầu C nhận vài residue cuối, hai nhánh đi vào một phép cộng. Panel B: hai biểu đồ phân tán giữa điểm dự đoán và điểm độ dồi dào đo được trên tập holdout, một cho riêng kênh nội và một cho mô hình đầy đủ, kèm bảng ba đoạn peptide ví dụ.">
+  </div>
+  <figcaption>
+    <span class="look">Nhìn vào đâu</span>
+    <strong>Panel A:</strong> hai nhánh gặp nhau ở ký hiệu <strong>Σ</strong> — một phép <em>cộng</em>. Nghĩa là mô hình không học được bất kỳ tương tác nào giữa “nội dung bên trong đoạn” và “đuôi đoạn”; nó chỉ cộng hai điểm độc lập lại.
+    <strong>Panel B, trái sang phải:</strong> chỉ kênh nội cho Pearson 0,82; thêm kênh đầu C lên 0,87. Toàn bộ phần chênh giữa hai hình là đóng góp của <strong>vài residue cuối cùng</strong>.
+    Nhìn kỹ đám mây điểm: nó rộng, nhất là ở khoảng giữa. 0,87 là tương quan tốt, không phải dự đoán chính xác từng đoạn.
+    <span class="src">Hình 4, Voutsinos V và cộng sự, <em>Science Advances</em> 2026, <a href="https://doi.org/10.1126/sciadv.adz3483">doi:10.1126/sciadv.adz3483</a>. Dùng lại theo <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.</span>
+  </figcaption>
+</figure>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Kênh</th><th>Đọc gì</th><th>Kiến trúc</th><th>Biết vị trí không</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Kênh nội</strong></td>
+      <td>25 residue đầu của đoạn</td>
+      <td><code>Conv1D(25 filter, cửa sổ 1)</code> → <code>GlobalAveragePooling1D</code> → ba lớp dày</td>
+      <td><strong>Không.</strong> Bất biến hoán vị hoàn toàn <span class="tag tag-m">TỰ ĐO</span></td>
+    </tr>
+    <tr>
+      <td><strong>Kênh đầu C</strong></td>
+      <td>5 residue cuối</td>
+      <td>one-hot 100 chiều → ba lớp dày</td>
+      <td><strong>Có</strong>, nhưng chỉ trong 5 vị trí cuối</td>
+    </tr>
+    <tr>
+      <td><strong>Hợp nhất</strong></td>
+      <td>—</td>
+      <td><code>Add()</code> — cộng thuần túy</td>
+      <td>Không có tương tác giữa hai kênh</td>
+    </tr>
+  </tbody>
+</table>
+<caption>Chi tiết kiến trúc lấy từ <strong>đọc mã nguồn</strong> <code>train_cnn2w.py</code> và <code>PAP.py</code> trong repo của tác giả, không phải từ bài báo — bài báo mô tả kiến trúc ở mức khái quát. <span class="tag tag-m">TỰ ĐO</span></caption>
+</div>
+
+<div class="callout c-warn">
+  <span class="ct">Đọc cho đúng điều tác giả nói</span>
+  <p>Bài báo viết rằng mạng tích chập “có thể bắt được các hiệu ứng phi tuyến và các motif gồm bất kỳ số acid amin nào <em>nếu chúng nằm trong cửa sổ vị trí được xét</em>”. <span class="tag tag-s">NGUỒN</span> Đây là một phát biểu <strong>có điều kiện</strong>, và nó đúng.</p>
+  <p style="margin-bottom:0">Nhưng cấu hình <strong>mặc định đã công bố</strong> dùng cửa sổ bằng <strong>1</strong>, nên điều kiện đó không thỏa. Chính tác giả mô tả kênh nội là để “mô hình hóa hiệu ứng <em>thành phần</em>”. Vậy không có mâu thuẫn giữa bài báo và phép đo của đề tài — chỉ là một chỗ rất dễ đọc lướt rồi hiểu nhầm rằng mô hình đã bắt motif. <span class="tag tag-a">SUY LUẬN</span></p>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="ketqua">5. Kết quả chính</h2>
+
+<div class="steps">
+  <div class="step">
+    <div>
+      <h4>Thành phần acid amin quyết định gần hết điểm số</h4>
+      <p>W, F, Y, I, C, L, V đứng đầu bảng điểm degron; D, P, E, S, G đứng cuối. Hiệu ứng phụ thuộc <em>vị trí</em> gần như chỉ tồn tại ở vài residue sát đầu C. <span class="tag tag-s">NGUỒN</span> Xem Hình 2 trong <a href="../foundations/regression-correlation.html#visao">bài nền 4</a>.</p>
+    </div>
+  </div>
+  <div class="step">
+    <div>
+      <h4>Phần lớn degron mạnh nằm ở vùng có cấu trúc và bị chôn</h4>
+      <p>Điểm degron cao đi với rASA thấp và pLDDT cao — tức là degron <strong>kiểm soát chất lượng</strong>, chỉ hoạt động khi protein bung ra. <span class="tag tag-s">NGUỒN</span> Xem Hình 3 trong <a href="../foundations/structure-exposure.html#nghichly">bài nền 3</a>.</p>
+    </div>
+  </div>
+  <div class="step">
+    <div>
+      <h4>PAP đạt Pearson 0,87 trên tập kiểm tra giữ riêng</h4>
+      <p>0,82 nếu chỉ dùng kênh nội. Trên 164 phép đo thông lượng thấp làm riêng để kiểm chứng, PAP đạt 0,85. <span class="tag tag-s">NGUỒN</span></p>
+    </div>
+  </div>
+  <div class="step">
+    <div>
+      <h4>ΔPAP dự đoán được độ dồi dào của biến thể sai nghĩa ở vùng phơi lộ</h4>
+      <p>ΔPAP là hiệu điểm giữa trình tự đột biến và trình tự gốc. Biến thể gây bệnh ở vùng phơi lộ có ΔPAP thấp hơn biến thể lành tính, Kruskal–Wallis <strong>P = 5,4 × 10⁻⁶</strong>. <span class="tag tag-s">NGUỒN</span></p>
+    </div>
+  </div>
+  <div class="step">
+    <div>
+      <h4>Và một ca được kiểm thực nghiệm: PNPO D33V</h4>
+      <p>Biến thể gây thiếu hụt PNPO, biểu hiện thành động kinh sơ sinh. Vùng chứa D33 phơi lộ mạnh, và nghiên cứu trước cho thấy biến thể này <em>vẫn còn hoạt tính enzyme và vẫn bền về cấu trúc</em>. ΔPAP dự đoán nó tạo degron mới; thực nghiệm xác nhận protein bị mất theo cơ chế phụ thuộc proteasome. <span class="tag tag-s">NGUỒN</span></p>
+    </div>
+  </div>
+</div>
+
+<figure>
+  <div class="frame">
+    <img src="../assets/figures/voutsinos2026-f6.jpg" width="785" height="275"
+         alt="Hình 6 của Voutsinos và cộng sự 2026. Panel A: biểu đồ hộp so sánh ΔPAP của biến thể lành tính và biến thể gây bệnh trong vùng phơi lộ, nhóm gây bệnh có ΔPAP thấp hơn. Panel B: cấu trúc AlphaFold của PNPO với vị trí D33 tô đỏ nằm ở vùng đầu N phơi lộ.">
+  </div>
+  <figcaption>
+    <span class="look">Nhìn vào đâu</span>
+    <strong>Panel A:</strong> hai hộp lệch nhau — nhóm gây bệnh có ΔPAP <em>thấp hơn</em>, tức đột biến làm đoạn đó trở nên giống degron hơn. Đây là tín hiệu thống kê trên cả quần thể, không phải một quy tắc đúng cho từng biến thể.
+    <strong>Panel B:</strong> D33 nằm ở vùng đầu N phơi lộ — đúng điều kiện để một degron mới sinh ra có thể hoạt động thật.
+    <span class="src">Hình 6, Voutsinos V và cộng sự, <em>Science Advances</em> 2026, <a href="https://doi.org/10.1126/sciadv.adz3483">doi:10.1126/sciadv.adz3483</a>. Dùng lại theo <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.</span>
+  </figcaption>
+</figure>
+
+<!-- ===================================================== -->
+<h2 id="taclap">6. Tự tái lập: con số nào khớp, con số nào mới</h2>
+
+<p>Mô hình PAP đã được dựng lại bằng numpy từ file trọng số công bố, không chạy mã của tác giả. Lý do không chạy mã của họ nằm ở cuối mục này.</p>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Cấu hình</th><th class="num">Tự tái lập</th><th class="num">Bài báo</th><th>Nhận xét</th></tr></thead>
+  <tbody>
+    <tr><td>Chỉ kênh nội</td><td class="num"><strong>0,8239</strong></td><td class="num">0,82</td><td>Khớp</td></tr>
+    <tr><td>Đầy đủ, kênh đầu C áp cho <strong>mọi</strong> đoạn</td><td class="num"><strong>0,8690</strong></td><td class="num">0,87</td><td>Khớp</td></tr>
+    <tr><td>Đầy đủ, kênh đầu C chỉ áp cho đoạn cuối mỗi gene</td><td class="num">0,8245</td><td class="num">—</td><td>Sai — xem giải thích dưới</td></tr>
+  </tbody>
+</table>
+<caption><span class="tag tag-m">TỰ ĐO</span> Trên holdout hiệu dụng 428 gene. Việc khớp <strong>cả hai</strong> con số công bố là bằng chứng bản tái lập đúng. Script <code>rerun_pap.py</code> và <code>test_allct.py</code>.</caption>
+</div>
+
+<p><strong>Vì sao kênh đầu C phải áp cho mọi đoạn:</strong> trong thí nghiệm, <em>mọi</em> đoạn peptide đều được gắn vào đuôi GFP, nên đầu C của đoạn luôn là một đầu tự do — kể cả khi đoạn đó nằm giữa protein gốc. Hiểu ra điều này là chìa khóa để khớp con số 0,87. Đây cũng là một ví dụ đẹp cho thấy <strong>phải hiểu thí nghiệm mới dùng đúng dữ liệu</strong>.</p>
+
+<div class="callout c-warn">
+  <span class="ct">Một lỗi tái lập trong mã công bố</span>
+  <p style="margin-bottom:0">Script huấn luyện <code>train_cnn2w.py</code> đọc cột thứ hai của file dữ liệu làm trình tự acid amin. Nhưng header thật là <code>name, dna, aa, n, …</code> — cột thứ hai là <strong>DNA</strong>. Và vì A, C, G, T đều là ký hiệu acid amin hợp lệ nên bộ lọc của script không loại chúng: cả 5.000 dòng thử đều lọt, thành chuỗi dài 90 ký tự thay vì 30. <span class="tag tag-m">TỰ ĐO</span> Hệ quả thực tế: <strong>chạy mã công bố trên dữ liệu công bố sẽ huấn luyện trên chuỗi DNA.</strong> Chú thích trong chính script ghi một bố cục cột khác, nên gần như chắc chắn nó được viết cho một file trung gian khác. <span class="tag tag-a">SUY LUẬN</span> Đây là lý do cụ thể để tự dựng lại pipeline.</p>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="batbien">7. Phát hiện mà bài báo không làm: bất biến hoán vị</h2>
+
+<p>Đây là phép đo của đề tài, không phải của bài báo. Chi tiết và chứng minh ở <a href="../foundations/regression-correlation.html#batbien">bài nền 4</a>; tóm tắt kết quả:</p>
+
+<div class="stats">
+  <div class="stat"><span class="v">1,000000</span><span class="k">Pearson(gốc, đảo)</span><p class="d">Kênh nội cnn2w1 — đảo thứ tự residue không đổi điểm <span class="tag tag-m">TỰ ĐO</span></p></div>
+  <div class="stat o"><span class="v">+0,0032</span><span class="k">cnn2w7 hơn cnn2w1</span><p class="d">Bản cửa sổ 7 có sẵn trong repo của tác giả, bắt được motif <span class="tag tag-m">TỰ ĐO</span></p></div>
+  <div class="stat m"><span class="v">3,294<span style="font-size:.5em"> / 3,401</span></span><span class="k">Entropy theo vị trí</span><p class="d">Hoạt độ dàn gần như đều trên mọi vị trí <span class="tag tag-m">TỰ ĐO</span></p></div>
+</div>
+
+<p>Ý nghĩa: mô hình đứng đầu bài toán này <strong>không thể biểu diễn một motif nào</strong> ở kênh chính, mà vẫn đạt 0,869. Và bản <em>có</em> bắt motif chỉ hơn +0,003. Hai điều đó cộng lại nói rằng <strong>thang điểm khối đã bão hòa về mặt thông tin trình tự</strong>.</p>
+
+<!-- ===================================================== -->
+<h2 id="tach">8. Tách ba mức: tác giả, cách đọc, hướng đề tài</h2>
+
+<div class="three">
+  <div class="a">
+    <h4>Tác giả chứng minh được</h4>
+    <p>Bản đồ degron phủ 99,7% proteome bào tương; 19% đoạn là degron mạnh; degron mạnh thường bị chôn và có cấu trúc; PAP đạt 0,87 trên tập kiểm tra kiểm soát đồng dạng hai mức; ΔPAP phân biệt được biến thể gây bệnh ở vùng phơi lộ; và một ca PNPO D33V được kiểm thực nghiệm. <span class="tag tag-s">NGUỒN</span></p>
+  </div>
+  <div class="b">
+    <h4>Cách đọc của chúng ta</h4>
+    <p>Pearson 0,87 đo được tốt <em>đại lượng đang được đo</em>, nhưng đại lượng đó gần như là một phép đo thành phần acid amin — chứng minh bằng phép đảo thứ tự và bằng chính Hình 2D của tác giả. Vì vậy con số 0,87 <strong>không</strong> nói mô hình hiểu motif, và không nên dùng nó làm đích để vượt. <span class="tag tag-a">SUY LUẬN</span></p>
+  </div>
+  <div class="c">
+    <h4>Hướng đề tài rút ra</h4>
+    <p>Dùng PAP làm baseline mức đoạn, dùng dữ liệu này làm nhãn yếu phụ trợ, và đặt đích chính ở <strong>bản đồ độ nhạy đột biến theo residue</strong>. E3 chỉ là ca nghiên cứu trên peptide có nhãn chồng lấn. <span class="tag tag-p">ĐỀ XUẤT — chưa làm</span></p>
+  </div>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="hanche">9. Hạn chế và khoảng trống</h2>
+
+<ul>
+  <li><strong>Đo trên peptide tách rời.</strong> Tác giả nói rõ điều này. Hệ quả: điểm chỉ liên hệ được với lượng protein thật ở nhóm phơi lộ nhất — 173 protein có rASA &gt; 0,7, Spearman ρ = −0,47. <span class="tag tag-s">NGUỒN</span></li>
+  <li><strong>Chỉ protein bào tương.</strong> Protein màng, protein tiết, protein hạt nhân nằm ngoài. Khi đề tài dùng MaveDB, ba gene (CYP2C9, CYP2C19, LDLR) không có mặt trong thư viện vì không thuộc bào tương. <span class="tag tag-m">TỰ ĐO</span></li>
+  <li><strong>Một dòng tế bào.</strong> HEK293T. E3 nào không biểu hiện ở dòng này thì degron của nó không hiện ra.</li>
+  <li><strong>Không có nhãn E3.</strong> Bài này hoàn toàn không gán degron nào cho E3 nào. Đó là lý do nhãn E3 chỉ được dùng như ca nghiên cứu nhỏ từ <a href="zhang-2023.html">Zhang 2023</a> — và là bài toán của đề tài.</li>
+  <li><strong>Kiểm soát đồng dạng tốt nhưng không hoàn hảo.</strong> 14/428 gene (3,3%) vẫn có họ hàng phát hiện được trong tập huấn luyện ở identity ≥ 30%, và một gene trùng 100% trên 77 residue với TRIM5. Đây là <em>giới hạn dưới</em> vì phép sàng dùng k-mer khớp chính xác nên bỏ sót họ hàng xa. <span class="tag tag-m">TỰ ĐO</span></li>
+</ul>
+
+<h2 id="tukiem">Tự kiểm tra</h2>
+
+<details class="q">
+  <summary>1. PAP đạt Pearson 0,87. Vì sao đề tài không đặt mục tiêu vượt con số đó?</summary>
+  <div><p>Vì trần của trục đó đã được chính tác giả đo. Bản cnn2w7 có cửa sổ 7, bắt được motif, chỉ hơn +0,0032. Và vì thang điểm chứa rất ít thông tin vị trí (Hình 2D của chính bài báo), một kiến trúc giỏi hơn về motif cũng không có gì để ăn thêm. Vượt 0,87 vài phần nghìn không phải một đóng góp khoa học.</p></div>
+</details>
+
+<details class="q">
+  <summary>2. Nếu bạn chỉ chạy lại mã nguồn công bố trên dữ liệu công bố, bạn sẽ nhận được gì?</summary>
+  <div><p>Một mô hình huấn luyện trên <strong>chuỗi DNA</strong>, vì script đọc nhầm cột. Và bạn có thể không nhận ra, vì A, C, G, T đều là ký hiệu acid amin hợp lệ nên không có lỗi nào được ném ra. Đây là lý do phải tự dựng lại pipeline và tự kiểm bằng cách khớp các con số công bố.</p></div>
+</details>
+
+<details class="q">
+  <summary>3. Vì sao kênh đầu C phải áp cho mọi đoạn, kể cả đoạn nằm giữa protein?</summary>
+  <div><p>Vì trong thí nghiệm, mọi đoạn đều được gắn vào <em>đuôi</em> GFP. Nên đầu C của đoạn luôn là đầu tự do của cả protein lai, bất kể đoạn đó vốn nằm ở đâu trong protein gốc. Áp kênh đầu C cho mọi đoạn cho 0,8690, khớp con số 0,87 của bài báo; chỉ áp cho đoạn cuối gene thì được 0,8245, không khớp.</p></div>
+</details>
+
+<div class="row" data-done-slot style="margin:2rem 0 0"></div>
+
+<div class="next">
+  <a href="zhang-2023.html"><span class="k">Đọc tiếp</span><span class="t">Zhang 2023 · nơi nhãn đặc hiệu E3 nằm →</span></a>
+  <a href="../topic/data.html"><span class="k">Dùng ở đâu</span><span class="t">Trang dữ liệu của đề tài →</span></a>
+</div>
+
+<footer class="pagefoot">
+  <p><strong>Nguồn và cách xác minh.</strong> Toàn văn bài báo đọc qua PubMed Central (PMC12880521) ngày 11/10/2026; thông tin thư mục và giấy phép CC BY-NC 4.0 xác minh qua PubMed và PMC cùng ngày. Bài gốc: Voutsinos V và cộng sự, <em>A near-complete map of human cytosolic degrons and their relevance for disease</em>, <em>Science Advances</em> 2026, <a href="https://doi.org/10.1126/sciadv.adz3483">doi:10.1126/sciadv.adz3483</a>. Hình 4 và Hình 6 dùng lại theo giấy phép, có ghi nguồn tại chỗ.</p>
+  <p style="margin-bottom:0">Mọi số mang nhãn <span class="tag tag-m">TỰ ĐO</span> sinh ra từ script trong <a href="../../../../common/deep-research/research_notes/degron/README.md">ghi chú audit</a>. Mục 3 của trang này <strong>sửa một kết luận sai</strong> trong bản ghi chú đó: nguyên nhân của chênh lệch 96 gene đã được tác giả nêu trong phần Methods, không phải “chưa nêu”.</p>
+</footer>
+
+</div>
+<script src="../assets/hub.js"></script>
+</body>
+</html>

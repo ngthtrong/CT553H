@@ -25,7 +25,7 @@ CT553H/
 │   ├── common/                   Dùng chung cho mọi đề tài
 │   │   ├── advisor/                  Công bố, chuyên môn, tài liệu khoá học của GVHD (dùng để đánh giá độ khớp mọi đề tài)
 │   │   ├── biology-basics/           Lộ trình tự học sinh học nền (PTM, cancer, aging) cho sinh viên CNTT: learning-roadmap.md; papers/ (chưa có) chứa PDF tải về
-│   │   ├── lectures/                 Bộ 15 bài giảng HTML tự học (sinh học nền, cancer, aging, ML, CNN/MCNN, PLM, XAI), mở offline bằng file://; index.html (chưa có) là mục lục
+│   │   ├── lectures/                 Bộ bài giảng HTML tự học (sinh học nền, cancer, aging, ML, CNN/MCNN, PLM, XAI), mở offline bằng file://; index.html là mục lục
 │   │   ├── deep-research/            Khảo sát sâu nhiều nguồn: reports/ (báo cáo tổng hợp), research_notes/<chủ-đề>/ (ghi chú theo nhánh). Chuyển sang docs/topics/<slug>/02-survey/ khi đề tài có slug
 │   │   ├── resources.md              Artifact trên claude.ai, cache và môi trường cục bộ (không nằm trong git)
 │   │   ├── work-log.md               Nhật ký theo phiên: đã làm gì, quyết định gì, còn dở gì (mọi đề tài)
@@ -35,6 +35,7 @@ CT553H/
 │       ├── README.md                 Danh sách đề tài đang cân nhắc và trạng thái
 │       └── <slug>/                   Ví dụ: rtk-atp-applicability/
 │           ├── 01-idea/                  Brainstorm, tóm tắt quyết định riêng đề tài này
+│           ├── learn/                    Hub học HTML của đề tài, nếu cần (hiện có ở degron-e3-specificity)
 │           ├── 02-survey/                Khảo sát app/thị trường, tài liệu và bằng chứng (literature-survey.md)
 │           ├── 03-data/                  Báo cáo EDA, mô tả dữ liệu, chất lượng nhãn
 │           ├── 04-proposal/              Đề cương (LaTeX: proposal.tex + references.bib, biên dịch bằng xelatex + bibtex)
@@ -90,14 +91,17 @@ Mỗi phiên Claude bắt đầu không nhớ gì về phiên trước, và thư
 
 ### ✅ ĐỀ TÀI ĐÃ CHỐT (11/10/2026): `degron-e3-specificity`
 
-**Dự đoán đặc hiệu E3–degron ở mức residue bằng học đa thể hiện có điều kiện và cổng phơi lộ cấu trúc.** Quyết định của sinh viên ngày 11/10/2026; **chưa có phê duyệt GVHD**, phải báo cáo buổi tuần 6.
+**Dự đoán footprint degron ở mức residue bằng học đa thể hiện với cổng phơi lộ cấu trúc, trên nhãn đột biến thực nghiệm.** Quyết định của sinh viên ngày 11/10/2026, **tái định tâm cùng ngày (khuya)** sau khi đếm nhãn E3. Slug giữ nguyên `degron-e3-specificity` để không vỡ liên kết. **Chưa có phê duyệt GVHD**, phải báo cáo buổi tuần 6.
 
-- **Đọc trước khi làm gì liên quan đề tài:** [quyết định và phạm vi](docs/topics/degron-e3-specificity/01-idea/topic-decision.md) · [trang trình bày](docs/topics/degron-e3-specificity/01-idea/presentation.html) · [báo cáo kiểm chứng chi tiết](docs/common/deep-research/reports/degron-topic-report/index.html) · [script audit tái tạo được](docs/common/deep-research/research_notes/degron/)
-- **GVHD kỳ vọng một kiến trúc chưa ai dùng** (thông tin 11/10/2026) → kiến trúc đề xuất **CMIL-E3**: học đa thể hiện có điều kiện E3, cộng cổng phơi lộ đặt ở chỗ **gộp** chứ không ở đầu vào.
-- **Quy ước ngôn từ riêng của đề tài:** không dùng chữ "đầu tiên" cho bất kỳ phần nào (đã có ≥5 công cụ trước, MetaDegron dùng PLM từ 2024). Phân biệt rõ **"thang điểm khối"** (đã bão hòa) và **"đặc hiệu E3"** (bài toán của đề tài), không trộn thành một số. Nói kiểm soát đồng dạng của tác giả là "tốt nhưng không hoàn hảo". Gọi 219 footprint là "chuẩn thực nghiệm theo residue", không gọi "ground truth tuyệt đối".
+- **Đọc trước khi làm gì liên quan đề tài:** [quyết định và phạm vi](docs/topics/degron-e3-specificity/01-idea/topic-decision.md) · [hub học đề tài](docs/topics/degron-e3-specificity/learn/index.html) · [trang trình bày](docs/topics/degron-e3-specificity/01-idea/presentation.html) · [báo cáo kiểm chứng chi tiết](docs/common/deep-research/reports/degron-topic-report/index.html) · [audit PAP](docs/common/deep-research/research_notes/degron/) · [audit nhãn residue và E3](docs/common/deep-research/research_notes/degron-e3-labels/README.md)
+- **GVHD kỳ vọng một kiến trúc chưa ai dùng** (thông tin 11/10/2026) → kiến trúc đề xuất **MIL-Degron**, 5 thành phần: học đa thể hiện nối **nhãn yếu mức đoạn** với **nhãn mạnh mức residue**, cổng phơi lộ đặt ở chỗ **gộp** chứ không ở đầu vào, và **attention được giám sát trực tiếp** bằng nhãn đột biến. Thành phần *điều kiện E3* của bản trước **đã bỏ**.
+- **Quy ước ngôn từ riêng của đề tài:** không dùng chữ "đầu tiên" cho bất kỳ phần nào (đã có ≥5 công cụ trước, MetaDegron dùng PLM từ 2024). Phân biệt rõ **"thang điểm khối"** (đã bão hòa) và **"bản đồ độ nhạy theo residue"** (bài toán của đề tài), không trộn thành một số. **Không nói "16 E3 có nhãn CRISPR"** — nói số peptide trên mỗi E3 (1–13). **Không gọi phần E3 là nhiệm vụ dự đoán**, gọi là **ca nghiên cứu** trên 27 peptide. Nói kiểm soát đồng dạng của tác giả là "tốt nhưng không hoàn hảo". Gọi 219 footprint là "chuẩn thực nghiệm theo residue", không gọi "ground truth tuyệt đối".
 - **Ba phép đo nền, đã tự thực hiện, dùng để biện minh mọi thiết kế:** (1) PAP mặc định **bất biến hoán vị** — đảo thứ tự residue, Pearson(gốc, đảo) = 1,000000; (2) bản bắt motif `cnn2w7` chỉ hơn **+0,0032**; (3) gộp max làm sụt **0,824 → 0,344**, nên thang điểm khối **không thưởng cho việc khu trú**.
-- **Hệ quả bắt buộc:** kiến trúc mới **sẽ không thắng** trên thang điểm khối. Thước đo chính phải là **nhiệm vụ đặc hiệu E3 và 219 footprint**. Phải chốt việc này với GVHD từ tuần 6.
-- **Ba cổng chặn chưa qua:** đọc toàn văn bài degron transcription factor của cùng nhóm; đếm nhãn E3 dùng được trong Table S3/S4/S6/S7 của Zhang 2023; tra hệ thống tính mới của kiến trúc MIL.
+- **Hệ quả bắt buộc:** kiến trúc mới **sẽ không thắng** trên thang điểm khối. Thước đo chính là **bản đồ độ nhạy đột biến theo residue**: Spearman theo từng peptide và **precision@3** trên **2.624 peptide có footprint**, cộng tập kiểm tra **249 bản đồ thay thế đầy đủ**. Phải chốt việc này với GVHD từ tuần 6.
+- **Phép đếm nhãn E3, 11/10/2026 (khuya) — đã đổi trục đề tài.** 31 screen CRISPR → 27 gán được → **10 E3** → **chỉ 1 E3 (KLHL15, 13 peptide) có ≥5 peptide**; 6 E3 có đúng 1 peptide. Bền với 36 tổ hợp ngưỡng. Nguồn: Mendeley `10.17632/32h94v2yv2.2` (Table S1–S7 trên PMC chặn bằng reCAPTCHA). Script: [research_notes/degron-e3-labels/](docs/common/deep-research/research_notes/degron-e3-labels/README.md).
+- **Nhãn theo residue, số tự đếm:** **256.711** phép đo đột biến quét, **2.624** peptide có footprint học được (2.402 khu trú ≤6 vị trí), **median 3 vị trí quan trọng trên 28**, cộng **135.040** phép đo trên 249 bản đồ thay thế đầy đủ. **23/31** peptide CRISPR có cả nhãn E3 được gán và bản đồ bão hòa → ca nghiên cứu; hai tập riêng đều có 27 peptide nhưng giao chỉ 23.
+- **Ba cổng nghiên cứu, cập nhật 11/10/2026 (khuya):** cổng 1 **đã qua** (đã đọc toàn văn bài degron transcription factor); cổng 2 **không qua cho nhánh dự đoán E3** (chỉ KLHL15 có ≥5 peptide) và đã buộc đổi trục sang footprint mức residue; cổng 3 **đã có câu trả lời, thu hẹp tuyên bố** (BioBlobs dùng gated MIL trên protein, OmniESI dùng điều biến có điều kiện). Table S5 do tác giả curate vẫn chưa lấy được; không biến điều này thành tuyên bố đã kiểm mọi nhãn E3. Kết quả G1/G2/G3 và câu hỏi cần hỏi GVHD xem [topic-decision.md](docs/topics/degron-e3-specificity/01-idea/topic-decision.md) và [chuẩn bị buổi gặp tuần 6](docs/meeting/session-02-prep.md).
+- **Hai tuyên bố đã phải thu hẹp:** MetaDegron (2024) **đã** dự đoán degron theo từng E3 cho 21 E3 và có máy chủ web → không nói "chưa ai làm đặc hiệu E3", chỉ nói khác **nguồn nhãn** và khác **đơn vị dự đoán**. Và không nói "kiến trúc chưa ai dùng". Thêm đối thủ ELITE (bioRxiv 11/2025) và E3TargetPred ở mức cặp protein–protein.
 - **Dữ liệu tái tạo:** script trong `docs/common/deep-research/research_notes/degron/`. Không commit file `.csv.gz`, `.xlsx`, bản clone.
 - **HTML tạo trực tiếp trên hệ thống, không dùng artifact** (yêu cầu của sinh viên 11/10/2026). Artifact bản 1 đã lạc hậu.
 

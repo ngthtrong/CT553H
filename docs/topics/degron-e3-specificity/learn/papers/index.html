@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Danh mục bài báo liên quan</title>
+<meta name="description" content="Chín bài báo nền của đề tài footprint degron mức residue, phân loại theo mức độ liên quan, kèm trạng thái đã đọc tới đâu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;650&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../assets/hub.css">
+<style>
+  .tier { margin: 2rem 0; padding-left: 1.1rem; border-left: 4px solid var(--tc, var(--v)); }
+  .tier > h2 { margin-top: .4rem; }
+  .tier .why { color: var(--ink-soft); font-size: .95rem; max-width: 62ch; }
+  .rowcard {
+    display: grid; grid-template-columns: 3.3rem 1fr; gap: 1rem;
+    padding: 1rem 1.15rem; margin: .8rem 0; text-decoration: none; color: inherit;
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--radius); box-shadow: var(--shadow);
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  .rowcard:hover { border-color: var(--tc, var(--v)); transform: translateY(-2px); }
+  @media (prefers-reduced-motion: reduce) { .rowcard:hover { transform: none; } }
+  .rowcard .yr {
+    font: 700 1rem/1.2 var(--font-d); color: var(--tc, var(--v));
+    font-variant-numeric: tabular-nums;
+  }
+  .rowcard .t { font-family: var(--font-d); font-weight: 650; font-size: 1.02rem; line-height: 1.35; }
+  .rowcard:hover .t { color: var(--tc, var(--v)); }
+  .rowcard .cite { font: 500 .78rem/1.5 var(--font-m); color: var(--ink-mute); margin: .15rem 0 .4rem; }
+  .rowcard .d { font-size: .92rem; color: var(--ink-soft); margin: 0; }
+  .rowcard .flags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .55rem; }
+  @media (max-width: 520px) { .rowcard { grid-template-columns: 1fr; gap: .2rem; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#phanloai">Bỏ qua điều hướng</a>
+<div class="page">
+
+<nav class="topbar" aria-label="Thanh điều hướng">
+  <a class="home" href="../index.html">← Hub học đề tài</a>
+  <span class="spacer"></span>
+</nav>
+
+<div class="crumb">
+  <a href="../index.html">Hub</a> <span class="sep">/</span>
+  <span>Chặng 4 · Nghiên cứu liên quan</span>
+</div>
+
+<div class="eyebrow">Chặng 4 · chín bài báo</div>
+<h1>Đọc gì, theo thứ tự nào, và tin tới đâu</h1>
+<p class="lede">Chín bài được nhắc trong hai tài liệu gốc của đề tài, xếp theo mức độ liên quan. Mỗi bài có một trang riêng viết cho người mới, phân biệt rõ điều tác giả chứng minh với cách đọc của chúng ta.</p>
+
+<div class="gate two">
+  <div class="g">
+    <h4>Cần biết trước</h4>
+    <ul>
+      <li>Với các bài thực nghiệm: <a href="../foundations/measuring-degrons.html">bài nền 2</a>.</li>
+      <li>Với các bài mô hình: <a href="../foundations/regression-correlation.html">bài nền 4</a> và <a href="../foundations/mil-attention.html">bài nền 5</a>.</li>
+    </ul>
+  </div>
+  <div class="g">
+    <h4>Thứ tự đọc gợi ý</h4>
+    <ol style="margin-bottom:0">
+      <li><strong>Voutsinos 2026</strong> — nhãn yếu mức đoạn và PAP baseline.</li>
+      <li><strong>Zhang 2023</strong> — nhãn đột biến mức residue.</li>
+      <li><strong>Larsen 2025</strong> — dữ liệu transcription factor và tiền lệ dùng cấu trúc.</li>
+      <li>Sáu bài còn lại khi cần đối chiếu tiền lệ và sản phẩm.</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="phanloai">Cách phân loại</h2>
+
+<p>Mức độ liên quan ở đây không phải “bài nào hay hơn”, mà là <strong>bài nào ảnh hưởng tới quyết định của đề tài</strong>. Một bài rất nổi tiếng vẫn có thể ở nhóm bối cảnh nếu nó không đổi được gì trong thiết kế.</p>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Nhóm</th><th>Nghĩa</th><th class="num">Số bài</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Nhóm 1 — Lõi</strong></td><td>Cung cấp dữ liệu, nhãn hoặc mô hình nền mà đề tài dùng trực tiếp. Không đọc thì không làm được đề tài</td><td class="num">3</td></tr>
+    <tr><td><strong>Nhóm 2 — Tiền lệ phương pháp</strong></td><td>Đã thử dự đoán degron bằng học máy. Quyết định tuyên bố “mới” của đề tài được phép nói tới đâu</td><td class="num">3</td></tr>
+    <tr><td><strong>Nhóm 3 — Đối thủ sản phẩm và bối cảnh</strong></td><td>Định nghĩa đường cơ sở cho tiêu chí ứng dụng, và cho động cơ lâm sàng</td><td class="num">3</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===================================================== -->
+<div class="tier" style="--tc: var(--v)">
+<h2 id="n1">Nhóm 1 — Lõi</h2>
+<p class="why">Ba bài này là nền vật chất của đề tài: một bài cho dữ liệu huấn luyện và mô hình đối chứng, một bài cho nhãn đột biến mức residue, một bài cho miền transcription factor và tiền lệ phân tích cấu trúc.</p>
+
+<a class="rowcard" href="voutsinos-2026.html" data-page-id="p-vout">
+  <span class="yr">2026</span>
+  <span>
+    <span class="t">Bản đồ gần toàn phần degron bào tương người, và mô hình PAP</span>
+    <span class="cite">Voutsinos V và cộng sự · Science Advances · doi:10.1126/sciadv.adz3483</span>
+    <p class="d">212.658 đoạn peptide trên 5.672 protein, phủ 99,7%. PAP đầy đủ đạt Pearson khoảng 0,87. Bộ này cho <strong>nhãn yếu mức đoạn và nhiệm vụ phụ</strong>, cùng mô hình đối chứng; phép đảo thứ tự chỉ kết luận cho kênh nội cnn2w1.</p>
+    <span class="flags"><span class="tag tag-m">ĐÃ TÁI LẬP MÔ HÌNH</span> <span class="tag tag-s">ĐÃ ĐỌC TOÀN VĂN</span> <span class="tag tag-s">CC BY-NC</span></span>
+  </span>
+</a>
+
+<a class="rowcard" href="zhang-2023.html" data-page-id="p-zhang">
+  <span class="yr">2023</span>
+  <span>
+    <span class="t">Làm sáng tỏ đặc hiệu E3 bằng bản đồ degron nội toàn proteome</span>
+    <span class="cite">Zhang W và cộng sự · Molecular Cell · doi:10.1016/j.molcel.2023.08.022</span>
+    <p class="d">Nguồn <strong>nhãn chính theo residue</strong>: audit dữ liệu thô lọc được 2.624 peptide có footprint học được; 219 fingerprint là tập tác giả curate. E3 chỉ đủ cho ca nghiên cứu.</p>
+    <span class="flags"><span class="tag tag-s">ĐÃ ĐỌC TOÀN VĂN</span> <span class="tag tag-m">ĐÃ AUDIT DỮ LIỆU THÔ</span> <span class="tag tag-u">CHƯA LẤY TABLE S5</span></span>
+  </span>
+</a>
+
+<a class="rowcard" href="larsen-2025.html" data-page-id="p-larsen">
+  <span class="yr">2025</span>
+  <span>
+    <span class="t">Lập bản đồ degron toàn diện trên transcription factor người</span>
+    <span class="cite">Larsen FB và cộng sự · bioRxiv · doi:10.1101/2025.05.16.654404</span>
+    <p class="d">Cùng nhóm với bài 2026, bản tiền ấn tháng 05/2025, trên 1.626 transcription factor. Toàn văn đã được đọc: bài có phân tích rASA/pLDDT và bản đồ biến thể <em>in silico</em>, nên đề tài phải phát biểu phần mới hẹp hơn.</p>
+    <span class="flags"><span class="tag tag-s">ĐÃ ĐỌC TOÀN VĂN</span> <span class="tag tag-a">TIỀN ẤN, CHƯA PHẢN BIỆN</span></span>
+  </span>
+</a>
+</div>
+
+<!-- ===================================================== -->
+<div class="tier" style="--tc: var(--b)">
+<h2 id="n2">Nhóm 2 — Tiền lệ phương pháp</h2>
+<p class="why">Ba công cụ đã dự đoán degron bằng học máy trước đề tài. Chúng quan trọng không phải vì đề tài dùng lại, mà vì chúng <strong>giới hạn những gì đề tài được phép gọi là mới</strong>. Đặc biệt MetaDegron: nó đã dùng mô hình ngôn ngữ protein và đã phủ nhiều E3.</p>
+
+<a class="rowcard" href="tokheim-2021.html" data-page-id="p-tok" style="--tc: var(--b)">
+  <span class="yr">2021</span>
+  <span>
+    <span class="t">deepDegron và đột biến làm đổi phân hủy protein trong ung thư</span>
+    <span class="cite">Tokheim C và cộng sự · Molecular Cell · doi:10.1016/j.molcel.2021.01.020</span>
+    <p class="d">Nguồn của con số <strong>hơn 19% gene driver ung thư ảnh hưởng UPS</strong>. Mô hình deepDegron chỉ phủ hai đầu chuỗi. Kiểm thực nghiệm đột biến cắt ngắn ở GATA3 và PPM1D.</p>
+    <span class="flags"><span class="tag tag-s">ĐÃ XÁC MINH TÓM TẮT</span> <span class="tag tag-u">CHƯA ĐỌC TOÀN VĂN</span></span>
+  </span>
+</a>
+
+<a class="rowcard" href="degpred-2022.html" data-page-id="p-degpred" style="--tc: var(--b)">
+  <span class="yr">2022</span>
+  <span>
+    <span class="t">Degpred — dự đoán degron và liên kết E3 bằng học sâu</span>
+    <span class="cite">Hou C và cộng sự · BMC Biology · doi:10.1186/s12915-022-01364-6</span>
+    <p class="d">Dùng BERT dự đoán degron toàn proteome, rồi <em>tính</em> motif cho từng E3 và dựng mạng điều hòa phân hủy. Nguồn của con số “dưới 30 motif, phủ dưới 5% của hơn 600 E3”.</p>
+    <span class="flags"><span class="tag tag-s">ĐÃ XÁC MINH TÓM TẮT</span> <span class="tag tag-u">CHƯA ĐỌC TOÀN VĂN</span></span>
+  </span>
+</a>
+
+<a class="rowcard" href="metadegron-2024.html" data-page-id="p-meta" style="--tc: var(--b)">
+  <span class="yr">2024</span>
+  <span>
+    <span class="t">MetaDegron — mô hình ngôn ngữ protein tích hợp đa đặc trưng</span>
+    <span class="cite">Zheng M và cộng sự · Briefings in Bioinformatics · doi:10.1093/bib/bbae519</span>
+    <p class="d"><strong>Tiền lệ sát nhất về mặt phương pháp.</strong> Đã dùng mô hình ngôn ngữ protein, đã dự đoán degron cho <strong>21 E3 ligase</strong>. Vì vậy đề tài <em>không</em> được nói “lần đầu dùng PLM” hay “lần đầu phủ nhiều E3”.</p>
+    <span class="flags"><span class="tag tag-s">ĐÃ ĐỌC TOÀN VĂN</span> <span class="tag tag-u">CẦN RÀ TIỀN LỆ MỚI</span></span>
+  </span>
+</a>
+</div>
+
+<!-- ===================================================== -->
+<div class="tier" style="--tc: var(--m)">
+<h2 id="n3">Nhóm 3 — Đối thủ sản phẩm và bối cảnh</h2>
+<p class="why">Một bài đặt ra kỹ thuật thực nghiệm mà cả lĩnh vực dùng; một máy chủ web đang chạy là đối thủ trực tiếp ở tiêu chí ứng dụng; một mô hình biến thể nổi tiếng cung cấp phần đối chiếu cho động cơ lâm sàng.</p>
+
+<a class="rowcard" href="koren-2018.html" data-page-id="p-koren" style="--tc: var(--m)">
+  <span class="yr">2018</span>
+  <span>
+    <span class="t">Proteome eukaryote được định hình bởi E3 nhắm degron đầu C</span>
+    <span class="cite">Koren I và cộng sự · Cell · doi:10.1016/j.cell.2018.04.028</span>
+    <p class="d">Bài khởi đầu kỹ thuật GPS-peptidome mà cả hai sàng lọc sau đều dựa vào. Xác định <strong>8 adaptor CRL</strong> cho degron đầu C và đề xuất “quy tắc đầu C”.</p>
+    <span class="flags"><span class="tag tag-s">ĐÃ XÁC MINH TÓM TẮT</span> <span class="tag tag-u">CHƯA ĐỌC TOÀN VĂN</span></span>
+  </span>
+</a>
+
+<a class="rowcard" href="degronopedia-2024.html" data-page-id="p-degp" style="--tc: var(--m)">
+  <span class="yr">2024</span>
+  <span>
+    <span class="t">DEGRONOPEDIA — máy chủ web tra cứu degron toàn proteome</span>
+    <span class="cite">Szulc NA và cộng sự · Nucleic Acids Research · doi:10.1093/nar/gkae238</span>
+    <p class="d"><strong>Đối thủ trực tiếp ở tiêu chí 5</strong> (sản phẩm ứng dụng). Đang chạy, miễn phí, gộp degron với vị trí ubiquitin hóa, vùng vô định hình, bảo tồn và mô phỏng phân giải.</p>
+    <span class="flags"><span class="tag tag-s">ĐÃ XÁC MINH TÓM TẮT</span> <span class="tag tag-u">CHƯA DÙNG THỬ</span></span>
+  </span>
+</a>
+
+<a class="rowcard" href="alphamissense-2023.html" data-page-id="p-am" style="--tc: var(--m)">
+  <span class="yr">2023</span>
+  <span>
+    <span class="t">AlphaMissense — dự đoán tác động biến thể sai nghĩa toàn proteome</span>
+    <span class="cite">Cheng J và cộng sự · Science · doi:10.1126/science.adg7492</span>
+    <p class="d">Không phải bài về degron, nhưng là <strong>đối chứng của động cơ lâm sàng</strong>: nó phân loại 89% biến thể sai nghĩa, mà vẫn xếp PNPO D33V là “có khả năng lành tính” — một biến thể đã được chứng minh gây mất protein qua proteasome.</p>
+    <span class="flags"><span class="tag tag-s">ĐÃ XÁC MINH TÓM TẮT</span> <span class="tag tag-a">BỔ SUNG, KHÔNG CẠNH TRANH</span></span>
+  </span>
+</a>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="nguon">Nguồn dữ liệu và công cụ, không phải bài báo</h2>
+
+<p>Bốn thứ dưới đây là tài nguyên và mô hình nền. Mỗi bài trong <strong>danh mục chính chín bài</strong> phía trên đều có trang đọc riêng.</p>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Tài nguyên</th><th>Dùng làm gì</th><th>Giấy phép / truy cập</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong><a href="https://www.mavedb.org">MaveDB</a></strong></td>
+      <td>Nguồn kiểm tra trên protein nguyên vẹn: 69.209 biến thể duy nhất trên 9 gene, đo trên <em>protein nguyên vẹn</em> <span class="tag tag-m">TỰ ĐO</span></td>
+      <td>CC0, truy vấn qua API ngày 11/10/2026</td>
+    </tr>
+    <tr>
+      <td><strong><a href="https://huggingface.co/facebook/esm2_t33_650M_UR50D">ESM-2</a></strong></td>
+      <td>Mô hình ngôn ngữ protein, dùng cho biểu diễn mức residue (thành phần 2 của kiến trúc). Đã đo thông lượng trên CPU <span class="tag tag-m">TỰ ĐO</span></td>
+      <td>Công khai trên Hugging Face. Nền tảng: <a href="../../../../common/lectures/12-protein-encodings-plm.html">bài giảng 12</a></td>
+    </tr>
+    <tr>
+      <td><strong><a href="https://alphafold.ebi.ac.uk">AlphaFold DB</a></strong></td>
+      <td>Nguồn rASA và pLDDT cho cổng phơi lộ. Xem <a href="../foundations/structure-exposure.html">bài nền 3</a></td>
+      <td>Công khai, CC BY</td>
+    </tr>
+    <tr>
+      <td><strong><a href="http://elm.eu.org">ELM</a></strong></td>
+      <td>Cơ sở dữ liệu motif tuyến tính đã curate; dùng đối chiếu phần giải thích. Zhang 2023 ghi ELM có degron nội của <strong>14 E3</strong>, và chỉ 2 trong 16 E3 của họ trùng với ELM <span class="tag tag-s">NGUỒN</span></td>
+      <td>Công khai cho mục đích học thuật</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="bosung">Công trình được dẫn để đối chiếu, ngoài danh mục chính</h2>
+<p>Hai trang nguồn còn nhắc các công trình sau. Chúng không cung cấp nhãn footprint chính hoặc baseline cùng đơn vị, nên được xếp ở mức <strong>tiền lệ bổ trợ</strong>; đọc bài gốc khi viết phần tính mới.</p>
+<div class="tablewrap"><table>
+  <thead><tr><th>Công trình gốc</th><th>Vai trò và giới hạn liên quan</th></tr></thead>
+  <tbody>
+    <tr><td><a href="https://arxiv.org/abs/2510.01632">BioBlobs (2025)</a></td><td>Tiền lệ gated MIL trên protein. Tác vụ là học biểu diễn và chức năng protein, không phải footprint degron; giới hạn tuyên bố cơ chế MIL là mới.</td></tr>
+    <tr><td><a href="https://arxiv.org/abs/2506.17963">OmniESI (2025)</a></td><td>Tiền lệ điều biến có điều kiện trong tương tác enzyme–cơ chất. Nhánh FiLM theo E3 đã bỏ khỏi thiết kế hiện tại.</td></tr>
+    <tr><td><a href="https://doi.org/10.1101/2025.11.05.686884">ELITE (2025)</a> và E3TargetPred</td><td>Xếp hạng E3 ở mức cặp protein–protein; khác đơn vị nhãn và đầu ra với bản đồ độ nhạy đột biến của peptide. Cần rà lại khi bàn về sản phẩm, không là baseline trực tiếp.</td></tr>
+  </tbody>
+</table></div>
+
+<!-- ===================================================== -->
+<h2 id="quyuoc">Quy ước của các trang bài báo</h2>
+
+<div class="gate two">
+  <div class="g">
+    <h4>Ba mức phải tách bạch</h4>
+    <p>Mỗi trang đều có một mục tách rõ ba thứ hay bị trộn lẫn:</p>
+    <ul style="margin-bottom:0">
+      <li><strong>Tác giả chứng minh được gì</strong> — chỉ những gì bài viết ra.</li>
+      <li><strong>Cách đọc của chúng ta</strong> — diễn giải, có thể sai.</li>
+      <li><strong>Hướng đề tài rút ra</strong> — đề xuất, chưa làm.</li>
+    </ul>
+  </div>
+  <div class="g">
+    <h4>Hình ảnh</h4>
+    <p>Chỉ bài Voutsinos 2026 là <strong>CC BY-NC</strong> nên hình gốc được nhúng kèm ghi nguồn. Các bài khác không mở hoặc chưa kiểm giấy phép — trang chỉ dẫn liên kết tới hình gốc và dùng <strong>sơ đồ tự dựng</strong>.</p>
+    <p style="margin-bottom:0">Chi tiết: <a href="../assets/figures/NOTICE.md">NOTICE.md</a>.</p>
+  </div>
+</div>
+
+<div class="callout c-warn">
+  <span class="ct">Giới hạn trung thực của toàn bộ chặng này</span>
+  <p style="margin-bottom:0">Trong chín bài, <strong>bốn bài đã đọc toàn văn</strong> (Voutsinos 2026, Zhang 2023, Larsen 2025 và MetaDegron 2024). Năm bài còn lại mới xác minh ở mức <strong>thông tin thư mục và phần tóm tắt chính thức</strong>. Những trang đó sẽ nói rõ chỗ nào là từ tóm tắt, và <strong>không</strong> bịa thêm chi tiết phương pháp, số liệu hay kết quả mà tóm tắt không nêu.</p>
+</div>
+
+<div class="next">
+  <a href="voutsinos-2026.html"><span class="k">Bắt đầu từ</span><span class="t">Voutsinos 2026 · dữ liệu và mô hình nền →</span></a>
+  <a href="../topic/gap.html"><span class="k">Hoặc nhảy sang</span><span class="t">Chặng 5 · khoảng trống nghiên cứu →</span></a>
+</div>
+
+<footer class="pagefoot">
+  <p>Thông tin thư mục của cả chín bài được xác minh lại qua PubMed và PMC ngày 11/10/2026; bài tiền ấn Larsen 2025 xác minh qua API bioRxiv cùng ngày. Trạng thái xuất bản của bài tiền ấn tại thời điểm kiểm: <strong>chưa có bản tạp chí</strong>.</p>
+  <p style="margin-bottom:0">Danh sách này lấy từ mục tài liệu tham khảo của <a href="../../01-idea/presentation.html">bản trình bày đề tài</a> và <a href="../../../../common/deep-research/reports/degron-topic-report/index.html">báo cáo kiểm chứng</a>. Nếu hai tài liệu đó cập nhật thêm bài mới, trang này phải cập nhật theo.</p>
+</footer>
+
+</div>
+<script src="../assets/hub.js"></script>
+</body>
+</html>

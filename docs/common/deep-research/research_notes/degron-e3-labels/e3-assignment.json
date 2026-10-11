@@ -1,0 +1,415 @@
+{
+ "source": {
+  "dataset": "Mendeley Data 10.17632/32h94v2yv2.2",
+  "file": "Degron CRISPR Screens.zip",
+  "subdir": "Degron CRISPR (new)/MAGEcK (Completed)"
+ },
+ "thresholds": {
+  "column": "pos|",
+  "fdr_max": 0.1,
+  "lfc_min": 1.5,
+  "good_sgrna_min": 4,
+  "margin_min": 0.5,
+  "core_excluded_by": "danh sách tường minh, không theo tần suất"
+ },
+ "summary": {
+  "n_screens": 31,
+  "n_assigned": 27,
+  "n_unassigned": 4,
+  "n_assigned_clear": 25,
+  "n_distinct_e3": 10,
+  "peptides_per_e3": {
+   "KLHL15": 13,
+   "BAG6": 4,
+   "ASB7": 2,
+   "FEM1B": 2,
+   "GPR75-ASB3": 1,
+   "KLHL9": 1,
+   "FBXW5": 1,
+   "FBXO21": 1,
+   "FBXO38": 1,
+   "DCAF5": 1
+  }
+ },
+ "adaptor_frequency_across_screens": {
+  "KLHL15": 13,
+  "BAG6": 4,
+  "ASB7": 2,
+  "FEM1B": 2,
+  "VPRBP": 1,
+  "APPBP2": 1,
+  "GPR75-ASB3": 1,
+  "KLHL9": 1,
+  "FBXW5": 1,
+  "FBXO21": 1,
+  "FBXO38": 1,
+  "DCAF5": 1
+ },
+ "assignment": {
+  "ADCY2_37": {
+   "e3": "KLHL15",
+   "lfc": 3.92,
+   "fdr": 0.000261,
+   "sg": 4,
+   "margin": 3.92,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": []
+  },
+  "AGRN_82": {
+   "e3": null,
+   "n_adaptor_candidates": 0,
+   "best_noncore": []
+  },
+  "ALAS2_8": {
+   "e3": "KLHL15",
+   "lfc": 3.42,
+   "fdr": 0.000134,
+   "sg": 4,
+   "margin": 3.42,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": [
+    [
+     "TRPC4AP",
+     3.79
+    ]
+   ]
+  },
+  "ANKRD27_23": {
+   "e3": "BAG6",
+   "lfc": 2.19,
+   "fdr": 0.000177,
+   "sg": 6,
+   "margin": 2.19,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": []
+  },
+  "ANKZF1_5": {
+   "e3": "KLHL15",
+   "lfc": 3.03,
+   "fdr": 0.00055,
+   "sg": 6,
+   "margin": 3.03,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": []
+  },
+  "ATP2B2_34": {
+   "e3": "KLHL15",
+   "lfc": 1.54,
+   "fdr": 0.000354,
+   "sg": 5,
+   "margin": 1.54,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": []
+  },
+  "CCDC17_9": {
+   "e3": "ASB7",
+   "lfc": 3.34,
+   "fdr": 0.000413,
+   "sg": 6,
+   "margin": 3.34,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": []
+  },
+  "CCDC3_10": {
+   "e3": "KLHL15",
+   "lfc": 4.53,
+   "fdr": 0.000248,
+   "sg": 5,
+   "margin": 2.73,
+   "n_adaptor_candidates": 2,
+   "other_adaptors": [
+    [
+     "VPRBP",
+     1.8
+    ]
+   ],
+   "stronger_nonadaptor": []
+  },
+  "CD68_8": {
+   "e3": "BAG6",
+   "lfc": 2.63,
+   "fdr": 0.000177,
+   "sg": 6,
+   "margin": 2.63,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": []
+  },
+  "CDAN1_38": {
+   "e3": "KLHL15",
+   "lfc": 2.81,
+   "fdr": 0.000707,
+   "sg": 6,
+   "margin": 2.81,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": []
+  },
+  "CDC6_1": {
+   "e3": null,
+   "n_adaptor_candidates": 0,
+   "best_noncore": []
+  },
+  "CDHR4_23": {
+   "e3": "BAG6",
+   "lfc": 1.91,
+   "fdr": 0.00019,
+   "sg": 6,
+   "margin": 1.91,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": []
+  },
+  "CEP152_52": {
+   "e3": "ASB7",
+   "lfc": 3.1,
+   "fdr": 0.000354,
+   "sg": 6,
+   "margin": 1.5,
+   "n_adaptor_candidates": 2,
+   "other_adaptors": [
+    [
+     "APPBP2",
+     1.59
+    ]
+   ],
+   "stronger_nonadaptor": []
+  },
+  "CFB_17": {
+   "e3": "BAG6",
+   "lfc": 2.34,
+   "fdr": 0.00016,
+   "sg": 6,
+   "margin": 2.34,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": []
+  },
+  "COL11A2_20": {
+   "e3": "KLHL15",
+   "lfc": 3.95,
+   "fdr": 0.000225,
+   "sg": 6,
+   "margin": 3.95,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": []
+  },
+  "DLST_7": {
+   "e3": "GPR75-ASB3",
+   "lfc": 3.29,
+   "fdr": 0.00019,
+   "sg": 6,
+   "margin": 3.29,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": []
+  },
+  "DPP4_25": {
+   "e3": "FEM1B",
+   "lfc": 2.28,
+   "fdr": 0.000177,
+   "sg": 6,
+   "margin": 2.28,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": []
+  },
+  "FBXO10_3": {
+   "e3": "KLHL15",
+   "lfc": 2.02,
+   "fdr": 0.002475,
+   "sg": 5,
+   "margin": 2.02,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": []
+  },
+  "FRMD8_15": {
+   "e3": "KLHL9",
+   "lfc": 1.57,
+   "fdr": 0.000381,
+   "sg": 6,
+   "margin": 1.57,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": []
+  },
+  "GLB1L_2": {
+   "e3": "KLHL15",
+   "lfc": 3.61,
+   "fdr": 0.000291,
+   "sg": 6,
+   "margin": 3.61,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": []
+  },
+  "HINFP_3": {
+   "e3": "FBXW5",
+   "lfc": 2.41,
+   "fdr": 0.05198,
+   "sg": 4,
+   "margin": 2.41,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": [
+    [
+     "VAV2",
+     2.47
+    ]
+   ]
+  },
+  "IFNA8_5": {
+   "e3": "FBXO21",
+   "lfc": 4.03,
+   "fdr": 0.00013,
+   "sg": 6,
+   "margin": 4.03,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": []
+  },
+  "MDN1_196": {
+   "e3": null,
+   "n_adaptor_candidates": 0,
+   "best_noncore": []
+  },
+  "MMP2_13": {
+   "e3": "KLHL15",
+   "lfc": 3.75,
+   "fdr": 0.000236,
+   "sg": 6,
+   "margin": 3.75,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": []
+  },
+  "NANOS3_5": {
+   "e3": null,
+   "n_adaptor_candidates": 0,
+   "best_noncore": [
+    [
+     "TRPC4AP",
+     3.35,
+     0.0002
+    ]
+   ]
+  },
+  "SH3BP2_2": {
+   "e3": "KLHL15",
+   "lfc": 3.62,
+   "fdr": 0.000165,
+   "sg": 5,
+   "margin": 3.62,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": []
+  },
+  "UNC13D_26": {
+   "e3": "FEM1B",
+   "lfc": 3.16,
+   "fdr": 0.000141,
+   "sg": 6,
+   "margin": 3.16,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": []
+  },
+  "VRK3_15": {
+   "e3": "KLHL15",
+   "lfc": 3.27,
+   "fdr": 0.000225,
+   "sg": 5,
+   "margin": 3.27,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": []
+  },
+  "ZFHX4_40": {
+   "e3": "FBXO38",
+   "lfc": 2.79,
+   "fdr": 0.000381,
+   "sg": 6,
+   "margin": 2.79,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": []
+  },
+  "ZNF19_8": {
+   "e3": "KLHL15",
+   "lfc": 2.31,
+   "fdr": 0.000215,
+   "sg": 4,
+   "margin": 2.31,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": []
+  },
+  "ZNF510_2": {
+   "e3": "DCAF5",
+   "lfc": 3.23,
+   "fdr": 0.000309,
+   "sg": 6,
+   "margin": 3.23,
+   "n_adaptor_candidates": 1,
+   "other_adaptors": [],
+   "stronger_nonadaptor": []
+  }
+ },
+ "e3_to_peptides": {
+  "KLHL15": [
+   "ADCY2_37",
+   "ALAS2_8",
+   "ANKZF1_5",
+   "ATP2B2_34",
+   "CCDC3_10",
+   "CDAN1_38",
+   "COL11A2_20",
+   "FBXO10_3",
+   "GLB1L_2",
+   "MMP2_13",
+   "SH3BP2_2",
+   "VRK3_15",
+   "ZNF19_8"
+  ],
+  "BAG6": [
+   "ANKRD27_23",
+   "CD68_8",
+   "CDHR4_23",
+   "CFB_17"
+  ],
+  "ASB7": [
+   "CCDC17_9",
+   "CEP152_52"
+  ],
+  "FEM1B": [
+   "DPP4_25",
+   "UNC13D_26"
+  ],
+  "GPR75-ASB3": [
+   "DLST_7"
+  ],
+  "KLHL9": [
+   "FRMD8_15"
+  ],
+  "FBXW5": [
+   "HINFP_3"
+  ],
+  "FBXO21": [
+   "IFNA8_5"
+  ],
+  "FBXO38": [
+   "ZFHX4_40"
+  ],
+  "DCAF5": [
+   "ZNF510_2"
+  ]
+ }
+}

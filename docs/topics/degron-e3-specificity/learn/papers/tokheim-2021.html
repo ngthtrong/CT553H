@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tokheim 2021 · deepDegron và đột biến phá degron trong ung thư</title>
+<meta name="hub-page" content="p-tok">
+<meta name="description" content="Bài Molecular Cell 2021: hơn 19% gene driver ung thư ảnh hưởng hệ ubiquitin–proteasome, và mô hình deepDegron.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;650&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../assets/hub.css">
+</head>
+<body>
+<a class="skip" href="#vaitro">Bỏ qua điều hướng</a>
+<div class="page">
+
+<nav class="topbar" aria-label="Thanh điều hướng">
+  <a class="home" href="../index.html">← Hub học đề tài</a>
+  <span class="spacer"></span>
+</nav>
+
+<div class="crumb">
+  <a href="../index.html">Hub</a> <span class="sep">/</span>
+  <a href="index.html">Bài báo</a> <span class="sep">/</span>
+  <span>Nhóm 2 · Tiền lệ phương pháp</span> <span class="sep">/</span>
+  <span>Tokheim 2021</span>
+</div>
+
+<div class="eyebrow">Nhóm 2 — Tiền lệ phương pháp · xác minh ở mức tóm tắt</div>
+<h1>Khi phá hỏng tấm biển “hãy phá hủy tôi” gây ung thư</h1>
+<p class="lede">Nguồn của con số được trích nhiều nhất trong phần động cơ của đề tài, và là công cụ học sâu dự đoán degron đầu tiên được dùng ở quy mô ung thư.</p>
+
+<div class="bib">
+  <dl>
+    <dt>Tác giả</dt>
+    <dd>Tokheim C, Wang X, Timms RT, Zhang B, Mena EL, Wang B, Chen C, Ge J, Chu J, Zhang W, Elledge SJ, Brown M, Liu XS</dd>
+    <dt>Tên bài</dt>
+    <dd><em>Systematic characterization of mutations altering protein degradation in human cancers</em></dd>
+    <dt>Công bố</dt>
+    <dd><strong>Molecular Cell</strong>, 2021, tập 81, số 6, trang 1292–1308.e11</dd>
+    <dt>DOI</dt>
+    <dd><a href="https://doi.org/10.1016/j.molcel.2021.01.020">10.1016/j.molcel.2021.01.020</a> · PMID 33567269 · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9245451/">PMC9245451</a></dd>
+    <dt>Công cụ và dữ liệu</dt>
+    <dd><a href="https://deepdegron.readthedocs.io/">deepDegron</a> · <a href="https://data.mendeley.com/datasets/kgfzbpv2w4/1">dữ liệu Mendeley</a></dd>
+    <dt>Trạng thái đọc</dt>
+    <dd><span class="tag tag-s">XÁC MINH TÓM TẮT QUA PUBMED</span> · <span class="tag tag-u">CHƯA ĐỌC TOÀN VĂN</span></dd>
+  </dl>
+</div>
+
+<div class="gate two">
+  <div class="g">
+    <h4>Cần biết trước</h4>
+    <ul>
+      <li><a href="../foundations/ubiquitin-degron.html">Bài nền 1</a> — degron, UPS.</li>
+      <li>Khái niệm gene driver ung thư — xem <a href="../../../../common/lectures/04-cancer-hallmarks.html">bài giảng 04</a>.</li>
+    </ul>
+  </div>
+  <div class="g">
+    <h4>Đọc xong sẽ hiểu được</h4>
+    <ul>
+      <li>Con số “hơn 19%” thật sự nói gì, và không nói gì.</li>
+      <li>Hai cơ chế ngược nhau: đột biến <em>phá</em> degron và đột biến <em>tạo</em> degron.</li>
+      <li>deepDegron làm được gì và giới hạn ở đâu.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="vaitro">1. Vai trò với đề tài</h2>
+
+<p>Hai vai trò, và chúng khác nhau về độ chắc chắn:</p>
+
+<div class="cards c2">
+  <div class="card" style="border-top:3px solid var(--m)">
+    <span class="k">Vai trò 1 — động cơ</span>
+    <span class="t">Nguồn của con số “hơn 19%”</span>
+    <p class="d">Mọi lần đề tài nói “degron liên quan tới ung thư”, câu đó truy ngược về đây. Nên phải trích đúng và hiểu đúng phạm vi của nó.</p>
+  </div>
+  <div class="card" style="border-top:3px solid var(--b)">
+    <span class="k">Vai trò 2 — tiền lệ</span>
+    <span class="t">Mô hình học sâu dự đoán degron</span>
+    <p class="d">deepDegron chứng minh ý tưởng “học degron từ dữ liệu GPS rồi áp lên đột biến ung thư” là làm được. Nhưng nó chỉ phủ hai đầu chuỗi.</p>
+  </div>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="ketqua">2. Kết quả chính, theo tóm tắt chính thức</h2>
+
+<div class="stats">
+  <div class="stat m"><span class="v">&gt;19%</span><span class="k">Gene driver ảnh hưởng UPS</span><p class="d">Trên dữ liệu đa omic <span class="tag tag-s">NGUỒN</span></p></div>
+  <div class="stat b"><span class="v">&gt;9.000</span><span class="k">Khối u</span><p class="d">Thuộc 33 loại ung thư <span class="tag tag-s">NGUỒN</span></p></div>
+  <div class="stat t"><span class="v">2</span><span class="k">Ca kiểm thực nghiệm</span><p class="d">GATA3 và PPM1D <span class="tag tag-s">NGUỒN</span></p></div>
+</div>
+
+<div class="steps">
+  <div class="step">
+    <div>
+      <h4>Hơn 19% gene driver ung thư ảnh hưởng tới chức năng của hệ ubiquitin–proteasome</h4>
+      <p>Dựa trên dữ liệu đa omic của hơn 9.000 khối u thuộc 33 loại ung thư. <span class="tag tag-s">NGUỒN</span></p>
+    </div>
+  </div>
+  <div class="step">
+    <div>
+      <h4>Transcription factor là nhóm cơ chất quan trọng; độ bền của c-Myc do CUL3 điều biến</h4>
+      <p>Lưu ý sự trùng hợp: nhóm transcription factor cũng chính là đối tượng của <a href="larsen-2025.html">Larsen 2025</a>. <span class="tag tag-s">NGUỒN</span></p>
+    </div>
+  </div>
+  <div class="step">
+    <div>
+      <h4>deepDegron: mô hình học sâu tìm đột biến gây mất degron</h4>
+      <p>Và họ <strong>kiểm thực nghiệm</strong> dự đoán: đột biến cắt ngắn kiểu tăng chức năng ở <strong>GATA3</strong> và <strong>PPM1D</strong> làm protein bền hơn. <span class="tag tag-s">NGUỒN</span></p>
+    </div>
+  </div>
+  <div class="step">
+    <div>
+      <h4>Xác định gene driver của UPS liên quan tiên lượng và vi môi trường khối u</h4>
+      <p>Phần này mở rộng sang ứng dụng lâm sàng. <span class="tag tag-s">NGUỒN</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="callout c-warn">
+  <span class="ct">Đọc con số “hơn 19%” cho đúng</span>
+  <p style="margin-bottom:0">Nó nói <strong>gene driver ảnh hưởng tới chức năng của hệ UPS</strong>. Nó <em>không</em> nói “19% ung thư do đột biến degron”. Hệ UPS rộng hơn degron rất nhiều: nó gồm cả bản thân các E3, các enzyme khử ubiquitin, tiểu phần proteasome. Đột biến degron chỉ là một trong các đường. Khi trình bày với GVHD, phải nói đúng phạm vi, nếu không sẽ bị bắt lỗi ngay. <span class="tag tag-a">SUY LUẬN</span></p>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="haichieu">3. Hai cơ chế ngược chiều nhau</h2>
+
+<figure>
+<div class="frame min" tabindex="0" role="region" aria-label="Sơ đồ, có thể cuộn ngang trên màn hình nhỏ">
+<svg viewBox="0 0 760 230" role="img" aria-label="Bên trái: đột biến phá degron làm protein gây ung thư tích tụ. Bên phải: đột biến tạo degron mới làm protein bình thường bị phá hủy và gây bệnh di truyền.">
+  <defs>
+    <marker id="t1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <polygon points="0,1 10,5 0,9" fill="currentColor"/>
+    </marker>
+  </defs>
+
+  <text class="sv-lbl" x="180" y="24" text-anchor="middle" font-weight="600" fill="var(--m)">Đột biến PHÁ degron</text>
+  <text class="sv-lbl" x="580" y="24" text-anchor="middle" font-weight="600" fill="var(--b)">Đột biến TẠO degron</text>
+  <line class="sv-stroke" x1="380" y1="36" x2="380" y2="208" style="opacity:.3"/>
+
+  <!-- trai -->
+  <rect class="sv-box" x="36" y="48" width="170" height="38" rx="6"/>
+  <rect class="sv-m" x="150" y="56" width="44" height="22" rx="4"/>
+  <text class="sv-sm" x="121" y="104" text-anchor="middle">protein gây ung thư, có degron</text>
+  <line class="sv-stroke" x1="240" y1="66" x2="276" y2="66" marker-end="url(#t1)"/>
+  <text class="sv-sm" x="300" y="70">đột biến</text>
+  <rect class="sv-box" x="36" y="124" width="170" height="38" rx="6"/>
+  <g>
+    <rect class="sv-fill" x="150" y="132" width="44" height="22" rx="4" style="stroke:var(--m);stroke-dasharray:4 3"/>
+    <line stroke="var(--m)" stroke-width="2" x1="156" y1="138" x2="188" y2="148"/>
+    <line stroke="var(--m)" stroke-width="2" x1="188" y1="138" x2="156" y2="148"/>
+  </g>
+  <text class="sv-sm" x="121" y="180" text-anchor="middle">degron hỏng → E3 không nhận ra</text>
+  <text class="sv-acc-t" x="121" y="200" text-anchor="middle" fill="var(--m)">protein TÍCH TỤ → ung thư</text>
+
+  <!-- phai -->
+  <rect class="sv-box" x="436" y="48" width="170" height="38" rx="6"/>
+  <text class="sv-sm" x="521" y="104" text-anchor="middle">protein bình thường, không degron</text>
+  <line class="sv-stroke" x1="640" y1="66" x2="676" y2="66" marker-end="url(#t1)"/>
+  <text class="sv-sm" x="700" y="70">đột biến</text>
+  <rect class="sv-box" x="436" y="124" width="170" height="38" rx="6"/>
+  <rect class="sv-b an-pulse" x="550" y="132" width="44" height="22" rx="4"/>
+  <text class="sv-sm" x="521" y="180" text-anchor="middle">degron MỚI sinh ra → E3 bám vào</text>
+  <text class="sv-acc-t" x="521" y="200" text-anchor="middle" fill="var(--b)">protein BIẾN MẤT → bệnh di truyền</text>
+</svg>
+</div>
+<figcaption>
+  <span class="look">Nhìn vào đâu</span>
+  <span class="own">Sơ đồ tự dựng</span>
+  Hai bên là <strong>hai bài toán khác nhau, cần hai loại mô hình khác nhau</strong>. Bên trái — phá degron — là bài của Tokheim 2021, và nó dễ hơn vì chỉ cần biết “chỗ này vốn có degron”. Bên phải — tạo degron — là bài của <a href="voutsinos-2026.html">Voutsinos 2026</a> với ΔPAP, và nó khó hơn vì phải dự đoán cho một trình tự chưa ai đo. Đề tài này chạm vào cả hai, nhưng chủ yếu phục vụ bên phải.
+</figcaption>
+</figure>
+
+<!-- ===================================================== -->
+<h2 id="tach">4. Tách ba mức</h2>
+
+<div class="three">
+  <div class="a">
+    <h4>Tác giả chứng minh được</h4>
+    <p>Hơn 19% gene driver ung thư ảnh hưởng chức năng UPS trên hơn 9.000 khối u và 33 loại ung thư; độ bền c-Myc do CUL3 điều biến; deepDegron tìm được đột biến gây mất degron; và hai dự đoán được kiểm thực nghiệm ở GATA3 và PPM1D. <span class="tag tag-s">NGUỒN — mức tóm tắt</span></p>
+  </div>
+  <div class="b">
+    <h4>Cách đọc của chúng ta</h4>
+    <p>deepDegron chứng minh dòng công việc “học từ dữ liệu GPS → áp lên đột biến ung thư → kiểm bằng thực nghiệm” là khả thi. Nhưng nó học trên dữ liệu GPS <strong>ở hai đầu chuỗi</strong>, nên nó không nói được gì về degron nội — phần lớn nhất. <span class="tag tag-a">SUY LUẬN</span></p>
+  </div>
+  <div class="c">
+    <h4>Hướng đề tài rút ra</h4>
+    <p>Dùng bài này làm <strong>căn cứ động cơ</strong>, nói đúng phạm vi con số. Và học cách làm của nó: một dự đoán tính toán chỉ thuyết phục khi có ít nhất một ca được kiểm thực nghiệm độc lập. <span class="tag tag-p">ĐỀ XUẤT</span></p>
+  </div>
+</div>
+
+<h2 id="hanche">5. Hạn chế, trong khung của đề tài</h2>
+
+<ul>
+  <li><strong>deepDegron chỉ phủ hai đầu chuỗi</strong>, vì dữ liệu GPS lúc đó chỉ có degron đầu N và đầu C.</li>
+  <li><strong>Không gán E3.</strong> Bài này nói về mất degron nói chung, không nói E3 nào.</li>
+  <li><strong>Chưa đọc toàn văn.</strong> Con số “hơn 19%” được định nghĩa chính xác thế nào, và deepDegron có kiến trúc gì, <strong>chưa kiểm</strong>. <span class="tag tag-u">CHƯA KIỂM</span></li>
+</ul>
+
+<h2 id="tukiem">Tự kiểm tra</h2>
+
+<details class="q">
+  <summary>1. Câu “hơn 19% gene driver ung thư là do đột biến degron” sai ở đâu?</summary>
+  <div><p>Sai ở hai chỗ. Thứ nhất, bài nói gene driver <em>ảnh hưởng tới chức năng của hệ UPS</em>, mà UPS rộng hơn degron nhiều — gồm cả E3, enzyme khử ubiquitin, proteasome. Thứ hai, “ảnh hưởng tới” không phải “do”. Cách nói đúng: hơn 19% gene driver ung thư ảnh hưởng tới chức năng hệ ubiquitin–proteasome.</p></div>
+</details>
+
+<details class="q">
+  <summary>2. Vì sao “đột biến phá degron” dễ dự đoán hơn “đột biến tạo degron”?</summary>
+  <div><p>Vì phá degron chỉ cần biết chỗ đó vốn có degron, rồi kiểm xem đột biến có chạm vào residue quan trọng không — thông tin này có thể lấy từ dữ liệu đã đo. Tạo degron thì phải chấm điểm một trình tự <em>chưa từng được đo</em> và nói nó có thành degron hay không, tức là phải có một mô hình dự đoán thật sự khái quát được.</p></div>
+</details>
+
+<div class="row" data-done-slot style="margin:2rem 0 0"></div>
+
+<div class="next">
+  <a href="degpred-2022.html"><span class="k">Đọc tiếp</span><span class="t">Degpred 2022 · BERT cho degron →</span></a>
+  <a href="alphamissense-2023.html"><span class="k">Liên quan</span><span class="t">AlphaMissense · điểm, không cơ chế →</span></a>
+</div>
+
+<footer class="pagefoot">
+  <p><strong>Nguồn và cách xác minh.</strong> Thông tin thư mục, danh sách tác giả và tóm tắt xác minh qua PubMed ngày 11/10/2026 (PMID 33567269). Bài gốc: Tokheim C và cộng sự, <em>Systematic characterization of mutations altering protein degradation in human cancers</em>, <em>Molecular Cell</em> 2021;81(6):1292–1308.e11, <a href="https://doi.org/10.1016/j.molcel.2021.01.020">doi:10.1016/j.molcel.2021.01.020</a>.</p>
+  <p style="margin-bottom:0"><strong>Giới hạn.</strong> Trang này dựa trên tóm tắt. Kiến trúc của deepDegron, định nghĩa chính xác của “ảnh hưởng tới chức năng UPS”, và các chỉ số đánh giá <strong>chưa được kiểm</strong>.</p>
+</footer>
+
+</div>
+<script src="../assets/hub.js"></script>
+</body>
+</html>

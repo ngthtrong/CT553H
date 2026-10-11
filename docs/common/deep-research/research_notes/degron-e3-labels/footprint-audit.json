@@ -1,0 +1,108 @@
+{
+ "source": {
+  "dataset": "Mendeley Data 10.17632/32h94v2yv2.2",
+  "file": "I28 Scanning Mutagenesis.zip",
+  "table": "I28 Scanning Mutagenesis Replicate 1.csv"
+ },
+ "definitions": {
+  "read_min": 10,
+  "degron_psi_max": 3.0,
+  "rescue_delta": 1.0,
+  "min_rescue": 1,
+  "min_pos_covered": 21,
+  "note": "PSI thang 1-6, thap = bi phan huy nhanh"
+ },
+ "counts": {
+  "peptides_with_wt_and_mutants": 8831,
+  "is_degron_wt_psi_le_3": 3439,
+  "degron_and_coverage_ge21": 3415,
+  "degron_coverage_and_has_footprint": 2624,
+  "footprint_localised_le6_positions": 2402
+ },
+ "distributions": {
+  "n_rescue_positions_among_footprints": {
+   "min": 1,
+   "p25": 2,
+   "median": 3.0,
+   "p75": 4,
+   "max": 21
+  },
+  "max_delta_among_footprints": {
+   "min": 1.0,
+   "p25": 1.27,
+   "median": 1.53,
+   "p75": 1.87,
+   "max": 4.47
+  },
+  "psi_range_among_footprints": {
+   "min": 0.99,
+   "p25": 1.75,
+   "median": 2.04,
+   "p75": 2.38,
+   "max": 4.61
+  },
+  "wt_psi_all": {
+   "min": 1.12,
+   "p25": 2.55,
+   "median": 3.42,
+   "p75": 4.64,
+   "max": 6.0
+  }
+ },
+ "sensitivity": [
+  {
+   "degron_psi_max": 2.5,
+   "rescue_delta": 0.5,
+   "n_degron": 2069,
+   "n_with_footprint": 1980
+  },
+  {
+   "degron_psi_max": 2.5,
+   "rescue_delta": 1.0,
+   "n_degron": 2069,
+   "n_with_footprint": 1576
+  },
+  {
+   "degron_psi_max": 2.5,
+   "rescue_delta": 1.5,
+   "n_degron": 2069,
+   "n_with_footprint": 849
+  },
+  {
+   "degron_psi_max": 3.0,
+   "rescue_delta": 0.5,
+   "n_degron": 3415,
+   "n_with_footprint": 3275
+  },
+  {
+   "degron_psi_max": 3.0,
+   "rescue_delta": 1.0,
+   "n_degron": 3415,
+   "n_with_footprint": 2624
+  },
+  {
+   "degron_psi_max": 3.0,
+   "rescue_delta": 1.5,
+   "n_degron": 3415,
+   "n_with_footprint": 1381
+  },
+  {
+   "degron_psi_max": 3.5,
+   "rescue_delta": 0.5,
+   "n_degron": 4572,
+   "n_with_footprint": 4376
+  },
+  {
+   "degron_psi_max": 3.5,
+   "rescue_delta": 1.0,
+   "n_degron": 4572,
+   "n_with_footprint": 3414
+  },
+  {
+   "degron_psi_max": 3.5,
+   "rescue_delta": 1.5,
+   "n_degron": 4572,
+   "n_with_footprint": 1728
+  }
+ ]
+}
