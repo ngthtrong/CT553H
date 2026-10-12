@@ -1,6 +1,6 @@
 # Công cụ audit calibration và miền áp dụng cho bộ dự đoán mCNN+PLM — ứng viên A4
 
-> **Thẻ trạng thái nghiên cứu.** Vị trí của đề tài chỉ ghi ở [DECISIONS.md](../../DECISIONS.md). Cập nhật lần cuối: **12/10/2026**.
+> **Thẻ trạng thái nghiên cứu.** Vị trí của đề tài chỉ ghi ở [DECISIONS.md](../../DECISIONS.md) — hiện là **đề tài dự phòng** theo [D-023](../../DECISIONS.md#d-023). Cập nhật lần cuối: **12/10/2026**.
 
 | | |
 |---|---|
@@ -24,7 +24,8 @@ Mô hình mCNN+PLM của GVHD xuất điểm số được đọc như "độ ti
 ## Rủi ro chính
 - Khoảng trống chỉ dựa trên tóm tắt tìm kiếm (chưa thấy tiền lệ trực tiếp áp conformal/OOD cho đúng lớp PLM-classifier). Cần kiểm kỹ, đặc biệt là bài Nature Methods 04/2026 về "hàng xóm lạ" trong embedding.
 - Cần mã nguồn hoặc trọng số mô hình của GVHD; nếu không có thì phải tự huấn luyện lại baseline tương đương.
-- Dạng công cụ có thể không đáp ứng kỳ vọng "kiến trúc mới" của GVHD ([C-3](../../DECISIONS.md)).
+- ~~Dạng công cụ có thể không đáp ứng kỳ vọng "kiến trúc mới" của GVHD.~~ **Rủi ro này đã được gỡ:** GVHD chấp nhận đóng góp dạng công cụ ([D-022](../../DECISIONS.md#d-022)). Vẫn nên xác nhận lại ở tuần 6 ([C-5](../../DECISIONS.md)).
+- **Rủi ro còn lại lớn nhất:** khoảng trống **hoàn toàn chưa kiểm** — chưa đọc toàn văn nguồn nào. Bài *Nature Methods* 04/2026 về "hàng xóm lạ" trong không gian embedding có thể đang chiếm đúng chỗ này.
 - Đây là phiên bản tổng quát của ý tưởng "cảnh báo miền áp dụng" trong RTK–ATP cũ ([archive](../../archive/topics/rtk-atp-applicability/)).
 
 ## Việc tiếp theo

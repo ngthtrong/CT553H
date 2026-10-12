@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" width="720" height="330" font-family="system-ui,-apple-system,Segoe UI,sans-serif">
+  <rect x="0" y="0" width="720" height="330" fill="#ffffff" stroke="#d4d4d8"/>
+  <text x="16" y="26" font-size="14" font-weight="700" fill="#18181b">Baseline hiện có (PAP) và điểm yếu đã tự đo được</text>
+  <text x="704" y="26" font-size="9" fill="#a1a1aa" text-anchor="end">SƠ ĐỒ TỰ DỰNG</text>
+  <defs><marker id="a5" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#52525b"/></marker></defs>
+
+  <text x="24" y="52" font-size="11" font-weight="700" fill="#18181b">Kiến trúc PAP của Voutsinos 2026 — hai kênh, cộng thẳng lại</text>
+
+  <rect x="28" y="64" width="150" height="50" rx="5" fill="#f4f4f5" stroke="#a1a1aa"/>
+  <text x="103" y="82" font-size="10" font-weight="700" fill="#3f3f46" text-anchor="middle">Kênh nội (cnn2w1)</text>
+  <text x="103" y="96" font-size="9" fill="#52525b" text-anchor="middle">Conv1D kernel=1</text>
+  <text x="103" y="108" font-size="9" fill="#52525b" text-anchor="middle">→ GlobalAveragePooling</text>
+
+  <rect x="28" y="124" width="150" height="46" rx="5" fill="#f4f4f5" stroke="#a1a1aa"/>
+  <text x="103" y="142" font-size="10" font-weight="700" fill="#3f3f46" text-anchor="middle">Kênh C-terminal</text>
+  <text x="103" y="156" font-size="9" fill="#52525b" text-anchor="middle">5 residue cuối, one-hot</text>
+
+  <path d="M186 90 L214 110" stroke="#52525b" stroke-width="1.5" marker-end="url(#a5)"/>
+  <path d="M186 146 L214 126" stroke="#52525b" stroke-width="1.5" marker-end="url(#a5)"/>
+  <circle cx="234" cy="117" r="17" fill="#e4e4e7" stroke="#52525b" stroke-width="1.5"/>
+  <text x="234" y="123" font-size="16" font-weight="700" fill="#3f3f46" text-anchor="middle">+</text>
+  <text x="234" y="152" font-size="9" fill="#71717a" text-anchor="middle">Add()</text>
+  <text x="234" y="164" font-size="8.5" fill="#dc2626" text-anchor="middle">không có tương tác</text>
+  <path d="M254 117 L282 117" stroke="#52525b" stroke-width="1.5" marker-end="url(#a5)"/>
+  <text x="290" y="113" font-size="11" font-weight="700" fill="#18181b">điểm degron</text>
+  <text x="290" y="127" font-size="10" fill="#52525b">Pearson 0,8690</text>
+
+  <!-- permutation test -->
+  <rect x="392" y="60" width="304" height="112" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="406" y="80" font-size="11" font-weight="700" fill="#991b1b">Phép thử đảo thứ tự residue</text>
+  <g font-size="9" text-anchor="middle">
+    <text x="406" y="102" font-size="9.5" fill="#b91c1c" text-anchor="start">gốc:</text>
+    <rect x="444" y="92" width="16" height="16" fill="#e4e4e7" stroke="#a1a1aa"/><text x="452" y="104" fill="#3f3f46">M</text>
+    <rect x="462" y="92" width="16" height="16" fill="#e4e4e7" stroke="#a1a1aa"/><text x="470" y="104" fill="#3f3f46">K</text>
+    <rect x="480" y="92" width="16" height="16" fill="#e4e4e7" stroke="#a1a1aa"/><text x="488" y="104" fill="#3f3f46">T</text>
+    <rect x="498" y="92" width="16" height="16" fill="#e4e4e7" stroke="#a1a1aa"/><text x="506" y="104" fill="#3f3f46">A</text>
+    <text x="528" y="104" fill="#71717a">→</text>
+    <text x="568" y="104" font-size="10" font-weight="700" fill="#18181b">điểm = 3,21</text>
+  </g>
+  <g font-size="9" text-anchor="middle">
+    <text x="406" y="130" font-size="9.5" fill="#b91c1c" text-anchor="start">đảo:</text>
+    <rect x="444" y="120" width="16" height="16" fill="#fecaca" stroke="#dc2626"/><text x="452" y="132" fill="#991b1b">A</text>
+    <rect x="462" y="120" width="16" height="16" fill="#fecaca" stroke="#dc2626"/><text x="470" y="132" fill="#991b1b">T</text>
+    <rect x="480" y="120" width="16" height="16" fill="#fecaca" stroke="#dc2626"/><text x="488" y="132" fill="#991b1b">K</text>
+    <rect x="498" y="120" width="16" height="16" fill="#fecaca" stroke="#dc2626"/><text x="506" y="132" fill="#991b1b">M</text>
+    <text x="528" y="132" fill="#71717a">→</text>
+    <text x="568" y="132" font-size="10" font-weight="700" fill="#dc2626">điểm = 3,21</text>
+  </g>
+  <text x="406" y="156" font-size="10.5" font-weight="700" fill="#991b1b">Pearson(gốc, đảo) = 1,000000</text>
+  <text x="406" y="168" font-size="9.5" fill="#b91c1c">→ kênh nội KHÔNG dùng thứ tự residue</text>
+
+  <!-- measured facts -->
+  <text x="24" y="196" font-size="11.5" font-weight="700" fill="#18181b">Ba con số tự đo, định hình toàn bộ thiết kế đề tài</text>
+  <rect x="24" y="206" width="216" height="64" rx="6" fill="#fafafa" stroke="#a1a1aa"/>
+  <text x="36" y="224" font-size="10" font-weight="700" fill="#3f3f46">Đảo thứ tự, cnn2w1</text>
+  <text x="36" y="242" font-size="13" font-weight="700" fill="#dc2626">Pearson = 1,000000</text>
+  <text x="36" y="260" font-size="9.5" fill="#52525b">Bất biến hoán vị → không biểu</text>
+  <text x="36" y="270" font-size="9.5" fill="#52525b">diễn được motif nào</text>
+
+  <rect x="252" y="206" width="216" height="64" rx="6" fill="#fafafa" stroke="#a1a1aa"/>
+  <text x="264" y="224" font-size="10" font-weight="700" fill="#3f3f46">cnn2w7 so với cnn2w1</text>
+  <text x="264" y="242" font-size="13" font-weight="700" fill="#b45309">+0,0032</text>
+  <text x="264" y="260" font-size="9.5" fill="#52525b">Trần của trục "thêm năng lực bắt</text>
+  <text x="264" y="270" font-size="9.5" fill="#52525b">motif" đã do chính tác giả đo</text>
+
+  <rect x="480" y="206" width="216" height="64" rx="6" fill="#fafafa" stroke="#a1a1aa"/>
+  <text x="492" y="224" font-size="10" font-weight="700" fill="#3f3f46">Đổi phép gộp</text>
+  <text x="492" y="242" font-size="13" font-weight="700" fill="#dc2626">0,824 → 0,344</text>
+  <text x="492" y="260" font-size="9.5" fill="#52525b">Tín hiệu điểm khối dàn đều,</text>
+  <text x="492" y="270" font-size="9.5" fill="#52525b">không khu trú</text>
+
+  <rect x="24" y="280" width="672" height="42" rx="6" fill="#fffbeb" stroke="#fcd34d"/>
+  <text x="38" y="298" font-size="10.5" fill="#78350f"><tspan font-weight="700">Hệ quả:</tspan> đừng đặt đóng góp lên thang điểm khối — trần ở đó chỉ còn +0,0032. Thước đo chính phải là <tspan font-weight="700">bản đồ theo residue</tspan>.</text>
+  <text x="38" y="314" font-size="10.5" fill="#78350f"><tspan font-weight="700">Nhưng:</tspan> phép đổi gộp dùng trọng số đã học CHO gộp trung bình, nên không phải phép thử công bằng. Không suy ra "kiến trúc khu trú sẽ thua".</text>
+</svg>

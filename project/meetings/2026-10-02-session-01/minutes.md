@@ -24,7 +24,7 @@ Phần trình bày cần rõ ràng, thể hiện sinh viên hiểu bài toán v�
 - **Vì sao cần thực hiện nghiên cứu này?** Vấn đề nào còn tồn đọng, vì sao vấn đề đó cần được giải quyết?
 - **Nghiên cứu dự kiến giải quyết phần nào của vấn đề?** Cần làm rõ mối liên hệ giữa hạn chế hiện có và đóng góp đề xuất.
 
-GVHD đặc biệt nhấn mạnh lý do thực hiện nghiên cứu. Khi chỉnh sửa bản trình bày RTK–ATP hoặc chuẩn bị hướng khác, cần làm rõ động cơ nghiên cứu trước khi đi sâu vào mô hình và kỹ thuật.
+GVHD đặc biệt nhấn mạnh lý do thực hiện nghiên cứu. Khi chuẩn bị hướng khác, cần làm rõ động cơ nghiên cứu trước khi đi sâu vào mô hình và kỹ thuật.
 
 ## 3. Yêu cầu về khảo sát các nghiên cứu trước (history research)
 
@@ -38,13 +38,13 @@ Khi biên soạn lại phần khảo sát, có thể dùng bảng gồm: nhóm p
 
 ## 4. Năm tiêu chí lựa chọn và đánh giá đóng góp của đề tài
 
-| STT | Tiêu chí | Nội dung góp ý của GVHD |
-|---|---|---|
-| 1 | **Tính mới của đề tài hoặc hướng nghiên cứu** | Tìm đề tài mới, hướng đi mới hoặc vấn đề chưa có người thực hiện. |
-| 2 | **Đề xuất hoặc cải tiến phương pháp** | Đóng góp có thể nằm ở việc phát triển phương pháp, chẳng hạn chuyển từ CNN sang mCNN hoặc tiếp tục cải tiến mCNN. |
-| 3 | **Sử dụng phương pháp mới** | Xem xét khả năng áp dụng phương pháp mới cho bài toán. GVHD minh họa bằng sự chuyển dịch từ PSSM sang PLM trong nghiên cứu chuỗi amino acid, rồi đặt câu hỏi liệu có thể tìm thêm phương pháp nào mới mẻ hơn hay không. |
-| 4 | **XAI — khả năng giải thích của mô hình** | Giải thích được cách mô hình hoạt động và vì sao mô hình đạt kết quả cao cũng là một dạng đóng góp nghiên cứu. |
-| 5 | **Xây dựng ứng dụng hoặc website** | Vì đây là luận văn thuộc khoa Kỹ thuật phần mềm, cần xây dựng ứng dụng hoặc website để đưa kết quả nghiên cứu vào sử dụng. Đây là thành phần **không thể thiếu**. |
+| STT | Tiêu chí                                                     | Nội dung góp ý của GVHD                                                                                                                                                                                                                                   |
+| --- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | **Tính mới của đề tài hoặc hướng nghiên cứu** | Tìm đề tài mới, hướng đi mới hoặc vấn đề chưa có người thực hiện.                                                                                                                                                                          |
+| 2   | **Đề xuất hoặc cải tiến phương pháp**           | Đóng góp có thể nằm ở việc phát triển phương pháp, chẳng hạn chuyển từ CNN sang mCNN hoặc tiếp tục cải tiến mCNN.                                                                                                                       |
+| 3   | **Sử dụng phương pháp mới**                        | Xem xét khả năng áp dụng phương pháp mới cho bài toán. GVHD minh họa bằng sự chuyển dịch từ PSSM sang PLM trong nghiên cứu chuỗi amino acid, rồi đặt câu hỏi liệu có thể tìm thêm phương pháp nào mới mẻ hơn hay không. |
+| 4   | **XAI — khả năng giải thích của mô hình**        | Giải thích được cách mô hình hoạt động và vì sao mô hình đạt kết quả cao cũng là một dạng đóng góp nghiên cứu.                                                                                                                    |
+| 5   | **Xây dựng ứng dụng hoặc website**                  | Vì đây là luận văn thuộc khoa Kỹ thuật phần mềm, cần xây dựng ứng dụng hoặc website để đưa kết quả nghiên cứu vào sử dụng. Đây là thành phần**không thể thiếu**.                                                    |
 
 **Ghi chú về ví dụ ở tiêu chí 3:** Theo ghi chép của sinh viên, GVHD đề cập PSSM dưới dạng ma trận, hạn chế liên quan đến tính thứ tự của chuỗi amino acid và thời gian so sánh, rồi đối chiếu với việc sử dụng PLM phổ biến trong giai đoạn gần đây. Đây là phần ghi lại cách diễn giải trong buổi trao đổi; nội dung kỹ thuật cần được đối chiếu tài liệu gốc khi đưa vào phần khảo sát chính thức.
 
@@ -56,11 +56,11 @@ Ghi chép không xác định trọng số từng tiêu chí, ngưỡng tối th
 
 ## 5. Mốc thời gian GVHD nêu
 
-| Mốc | Nội dung |
-|---|---|
-| **Tuần 4** | Thời điểm hiện tại, tức buổi gặp này |
-| **Tuần 6** | **Báo cáo lại đề tài rõ ràng với GVHD** |
-| **Tuần 14 hoặc 15** | Tuần báo cáo |
+| Mốc                        | Nội dung                                              |
+| --------------------------- | ------------------------------------------------------ |
+| **Tuần 4**           | Thời điểm hiện tại, tức buổi gặp này          |
+| **Tuần 6**           | **Báo cáo lại đề tài rõ ràng với GVHD** |
+| **Tuần 14 hoặc 15** | Tuần báo cáo                                        |
 
 Những điểm cần tính tới khi lập kế hoạch:
 

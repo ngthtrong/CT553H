@@ -33,3 +33,6 @@ Ghi ngắn, dẫn tới biên bản gốc. Hệ quả cho việc chọn đề t�
 - **07/10/2026 (Trọng truyền đạt):** đầu vào có thể là ma trận biểu hiện gene, không bắt buộc là chuỗi amino acid.
 - **10/10/2026 (Trọng đánh giá):** GVHD không chấp nhận kết quả âm làm đóng góp chính. Đây là rủi ro cho mọi đề tài dạng audit.
 - **11/10/2026 (Trọng truyền đạt, ghi trong [nhật ký degron](../topics/degron-footprint/log.md)):** GVHD kỳ vọng **một kiến trúc chưa ai dùng**, không chấp nhận đóng góp chỉ là một bảng đối chứng có kỷ luật. Đây là rủi ro lớn cho các đề tài dạng audit/benchmark (A2, A3, A4).
+- **12/10/2026 (Trọng truyền đạt):** **GVHD vẫn chấp nhận đóng góp dạng công cụ** (công cụ, thước đo, audit, benchmark, thuật toán tối ưu). Chưa rõ GVHD nói vào lúc nào và bằng hình thức gì; **chưa có biên bản**.
+  - Hai lời 11/10 và 12/10 **được giữ nguyên cả hai**, không xoá lời nào. Cách đọc đang dùng: lời 11/10 là **mong muốn**, không phải điều kiện loại — ghi ở [D-022](../DECISIONS.md#d-022). Đây là cách đọc của Claude, **chưa được GVHD xác nhận trực tiếp**; câu hỏi xác nhận ở C-5 của [DECISIONS.md](../DECISIONS.md).
+  - Điều này **không** nới cổng G2: GVHD nhận dạng công cụ không có nghĩa là nhận kết quả âm ([D-012](../DECISIONS.md#d-012), lời ngày 10/10 vẫn giữ).

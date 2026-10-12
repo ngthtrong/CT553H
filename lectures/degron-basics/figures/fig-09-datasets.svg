@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" width="720" height="300" font-family="system-ui,-apple-system,Segoe UI,sans-serif">
+  <rect x="0" y="0" width="720" height="300" fill="#ffffff" stroke="#d4d4d8"/>
+  <text x="16" y="26" font-size="14" font-weight="700" fill="#18181b">Bốn bộ dữ liệu và vai trò của từng bộ</text>
+  <text x="704" y="26" font-size="9" fill="#a1a1aa" text-anchor="end">SƠ ĐỒ TỰ DỰNG</text>
+
+  <!-- 1 -->
+  <rect x="24" y="46" width="160" height="186" rx="6" fill="#f8fafc" stroke="#94a3b8"/>
+  <rect x="24" y="46" width="160" height="26" rx="6" fill="#e2e8f0" stroke="#94a3b8"/>
+  <text x="104" y="64" font-size="11" font-weight="700" fill="#1e293b" text-anchor="middle">Bộ 1 · bản đồ đoạn</text>
+  <text x="36" y="90" font-size="10" fill="#475569">Voutsinos 2026</text>
+  <text x="36" y="110" font-size="17" font-weight="700" fill="#1e293b">212.658</text>
+  <text x="36" y="124" font-size="9.5" fill="#64748b">đoạn có điểm</text>
+  <text x="36" y="148" font-size="10" fill="#475569">1 điểm cho CẢ đoạn</text>
+  <rect x="36" y="156" width="130" height="12" fill="#cbd5e1" stroke="#94a3b8"/>
+  <text x="101" y="165" font-size="8" fill="#334155" text-anchor="middle">một điểm duy nhất</text>
+  <text x="36" y="188" font-size="10" font-weight="700" fill="#b45309">nhãn YẾU</text>
+  <text x="36" y="204" font-size="9.5" fill="#64748b">dùng làm nhiệm vụ</text>
+  <text x="36" y="216" font-size="9.5" fill="#64748b">phụ trợ</text>
+  <text x="36" y="228" font-size="9" fill="#94a3b8">giấy phép MIT</text>
+
+  <!-- 2 -->
+  <rect x="192" y="46" width="160" height="186" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <rect x="192" y="46" width="160" height="26" rx="6" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="272" y="64" font-size="11" font-weight="700" fill="#1e3a8a" text-anchor="middle">Bộ 2 · đột biến quét</text>
+  <text x="204" y="90" font-size="10" fill="#1e40af">Zhang 2023</text>
+  <text x="204" y="110" font-size="17" font-weight="700" fill="#1d4ed8">256.711</text>
+  <text x="204" y="124" font-size="9.5" fill="#3b82f6">phép đo PSI</text>
+  <text x="204" y="148" font-size="10" fill="#1e40af">1 điểm cho TỪNG vị trí</text>
+  <g>
+    <rect x="204" y="156" width="10" height="12" fill="#93c5fd" stroke="#2563eb"/><rect x="216" y="156" width="10" height="12" fill="#93c5fd" stroke="#2563eb"/>
+    <rect x="228" y="156" width="10" height="12" fill="#dc2626" stroke="#991b1b"/><rect x="240" y="156" width="10" height="12" fill="#93c5fd" stroke="#2563eb"/>
+    <rect x="252" y="156" width="10" height="12" fill="#dc2626" stroke="#991b1b"/><rect x="264" y="156" width="10" height="12" fill="#93c5fd" stroke="#2563eb"/>
+    <rect x="276" y="156" width="10" height="12" fill="#93c5fd" stroke="#2563eb"/><rect x="288" y="156" width="10" height="12" fill="#dc2626" stroke="#991b1b"/>
+    <rect x="300" y="156" width="10" height="12" fill="#93c5fd" stroke="#2563eb"/><rect x="312" y="156" width="10" height="12" fill="#93c5fd" stroke="#2563eb"/>
+  </g>
+  <text x="204" y="188" font-size="10" font-weight="700" fill="#15803d">nhãn MẠNH</text>
+  <text x="204" y="204" font-size="9.5" fill="#1e40af">huấn luyện chính</text>
+  <text x="204" y="216" font-size="10" font-weight="700" fill="#1d4ed8">2.624 peptide có footprint</text>
+  <text x="204" y="228" font-size="9" fill="#60a5fa">Mendeley công khai</text>
+
+  <!-- 3 -->
+  <rect x="360" y="46" width="160" height="186" rx="6" fill="#f0fdf4" stroke="#15803d"/>
+  <rect x="360" y="46" width="160" height="26" rx="6" fill="#dcfce7" stroke="#15803d"/>
+  <text x="440" y="64" font-size="11" font-weight="700" fill="#166534" text-anchor="middle">Bộ 3 · đột biến bão hòa</text>
+  <text x="372" y="90" font-size="10" fill="#15803d">cùng nguồn Zhang 2023</text>
+  <text x="372" y="110" font-size="17" font-weight="700" fill="#166534">135.040</text>
+  <text x="372" y="124" font-size="9.5" fill="#22c55e">định danh</text>
+  <text x="372" y="148" font-size="10" fill="#15803d">vị trí × 19 thay thế</text>
+  <g stroke="#15803d" fill="#bbf7d0">
+    <rect x="372" y="156" width="9" height="8"/><rect x="383" y="156" width="9" height="8"/><rect x="394" y="156" width="9" height="8"/><rect x="405" y="156" width="9" height="8"/>
+    <rect x="372" y="166" width="9" height="8"/><rect x="383" y="166" width="9" height="8"/><rect x="394" y="166" width="9" height="8"/><rect x="405" y="166" width="9" height="8"/>
+  </g>
+  <text x="372" y="188" font-size="10" font-weight="700" fill="#166534">249 peptide</text>
+  <text x="372" y="204" font-size="9.5" fill="#15803d">kiểm độ phân giải cao</text>
+  <text x="372" y="218" font-size="9" fill="#b45309">⚠ chỉ 219 footprint</text>
+  <text x="372" y="228" font-size="9" fill="#b45309">được tác giả curate</text>
+
+  <!-- 4 -->
+  <rect x="528" y="46" width="168" height="186" rx="6" fill="#fafaf9" stroke="#a8a29e"/>
+  <rect x="528" y="46" width="168" height="26" rx="6" fill="#f5f5f4" stroke="#a8a29e"/>
+  <text x="612" y="64" font-size="11" font-weight="700" fill="#44403c" text-anchor="middle">Bộ 4 · protein nguyên vẹn</text>
+  <text x="540" y="90" font-size="10" fill="#57534e">MaveDB (API)</text>
+  <text x="540" y="110" font-size="17" font-weight="700" fill="#44403c">69.209</text>
+  <text x="540" y="124" font-size="9.5" fill="#78716c">biến thể duy nhất</text>
+  <text x="540" y="148" font-size="10" fill="#57534e">độ dồi dào protein thật</text>
+  <text x="540" y="172" font-size="10" fill="#57534e">chỉ <tspan font-weight="700">9 gene</tspan></text>
+  <text x="540" y="192" font-size="10" font-weight="700" fill="#57534e">kiểm tra ngoài</text>
+  <text x="540" y="206" font-size="9.5" fill="#78716c">peptide tách rời ≠</text>
+  <text x="540" y="218" font-size="9.5" fill="#78716c">protein nguyên vẹn</text>
+  <text x="540" y="229" font-size="9" fill="#a8a29e">CC0</text>
+
+  <rect x="24" y="244" width="672" height="46" rx="6" fill="#fffbeb" stroke="#fcd34d"/>
+  <text x="38" y="263" font-size="11.5" fill="#78350f">Mọi con số trên là <tspan font-weight="700">tự đếm từ dữ liệu thô</tspan>, không dẫn lại từ bài báo. Bộ 2 và 3 đã tải về máy, đã kiểm SHA-256.</text>
+  <text x="38" y="280" font-size="11.5" fill="#78350f">Dữ liệu nằm ở <tspan font-family="monospace">topics/degron-footprint/data/</tspan> và <tspan font-weight="700">không bao giờ đưa lên git</tspan>.</text>
+</svg>

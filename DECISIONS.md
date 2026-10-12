@@ -13,16 +13,19 @@
 | Mục | Giá trị | Căn cứ |
 |---|---|---|
 | Giai đoạn | Chọn và hoàn thiện đề tài. **Chưa có đề tài nào được GVHD duyệt**; chưa huấn luyện mô hình hay xây ứng dụng | — |
-| Đề tài chính | **Chưa có** | [D-021](#d-021) |
-| Dự phòng | [`degron-footprint`](topics/degron-footprint/README.md) | [D-016](#d-016) |
-| Đang đào sâu (5) | [xai-fidelity-benchmark](topics/xai-fidelity-benchmark/README.md) (A2) · [structure-sequence-leakage-audit](topics/structure-sequence-leakage-audit/README.md) (A3) · [plm-calibration-audit](topics/plm-calibration-audit/README.md) (A4) · [degron-footprint](topics/degron-footprint/README.md) · [dark-kinome-zero-shot](topics/dark-kinome-zero-shot/README.md) | [D-019](#d-019), [D-021](#d-021) |
+| **Đề tài chính** | **[`degron-footprint`](topics/degron-footprint/README.md)** — footprint / hiệu ứng đột biến degron mức residue | [D-023](#d-023) |
+| **Dự phòng** | **[`plm-calibration-audit`](topics/plm-calibration-audit/README.md)** (A4) — audit calibration và miền áp dụng | [D-023](#d-023) |
+| Đang đào sâu (5, vị trí chưa quyết) | [xai-fidelity-benchmark](topics/xai-fidelity-benchmark/README.md) (A2) · [structure-sequence-leakage-audit](topics/structure-sequence-leakage-audit/README.md) (A3) · [dark-kinome-zero-shot](topics/dark-kinome-zero-shot/README.md) · [budgeted-plm-variant-scoring](topics/budgeted-plm-variant-scoring/README.md) · [scalable-metagenomic-binning](topics/scalable-metagenomic-binning/README.md) | [D-019](#d-019), [D-023](#d-023), C-4 |
 | Thứ tự tiềm năng | Là **số đầu tên thư mục** trong `topics/` (ví dụ `1-ten-de-tai`), do Trọng tự đặt. **Chưa đặt** | [D-019](#d-019) |
-| Định hướng chọn đề tài | 1) ưu tiên tin sinh học; 2) không bó vào dự đoán residue/peptide; 3) ưu tiên tầng công cụ/benchmark/nền tảng; 4) đề tài ngoài tin sinh học vẫn hợp lệ nhưng xếp sau | [D-017](#d-017) |
+| Định hướng chọn đề tài | 1) ưu tiên tin sinh học; 2) không bó vào dự đoán residue/peptide; 3) ưu tiên tầng công cụ/benchmark/nền tảng; 4) đề tài ngoài tin sinh học vẫn hợp lệ nhưng xếp sau. Mức 3 **đã được GVHD xác nhận là hợp lệ** | [D-017](#d-017), [D-022](#d-022) |
+| Đóng góp dạng công cụ | **GVHD chấp nhận** (công cụ, thước đo, audit, benchmark, thuật toán tối ưu). Vẫn phải là đóng góp **dương** đo được | [D-022](#d-022), [D-012](#d-012) |
 | Thước đo một ứng viên | 5 tiêu chí GVHD + 3 cổng bắt buộc G1/G2/G3, xem [course.md](project/course.md) | [D-006](#d-006), [D-012](#d-012) |
 | Đã đóng (lưu trữ) | RCA, RTK–ATP, TME senescence, cơ chất sirtuin, legal QA, quản lý chi tiêu, efflux, IL-6, sửa lỗi phần mềm. Xem [archive/](archive/README.md) | D-003, D-006, D-008, D-010, D-011, D-019, [D-021](#d-021) |
 | Quy ước đang áp dụng | HTML để trong repo, không dùng artifact ([D-013](#d-013)). Repo private ([D-004](#d-004)) | — |
 
-**Mốc tiếp theo:** tuần 6 báo cáo lại đề tài với GVHD (xem [course.md](project/course.md)).
+**Mốc tiếp theo:** tuần 6 báo cáo lại đề tài với GVHD (xem [course.md](project/course.md)) — trình `degron-footprint`.
+
+**Việc chặn gần nhất của đề tài chính:** tính lực thống kê trên tập test 221–322 footprint, trước khi cam kết huấn luyện. Xem [thẻ đề tài](topics/degron-footprint/README.md).
 
 ---
 
@@ -30,8 +33,9 @@
 
 | # | Đề xuất | Người đề xuất | Ghi chú |
 |---|---|---|---|
-| C-2 | Thứ tự tạm trong nhóm A: A4 → A2 → A3 | Claude, 12/10/2026 | Chỉ là gợi ý trong [deep-dive](topics/plm-calibration-audit/research/deep-dive-2026-10-12.md), chưa phải quyết định. Thay bằng số đầu tên thư mục khi Trọng đặt |
-| C-3 | Hỏi GVHD ở tuần 6: đóng góp dạng công cụ/audit/benchmark (A2, A3, A4) có được nhận không | Claude, 12/10/2026 | Ngày 11/10 GVHD kỳ vọng kiến trúc mới, không nhận chỉ một bảng đối chứng ([people.md](project/people.md)). Điều này **mâu thuẫn** với mức 3 của D-017 |
+| C-2 | Thứ tự giữa A2 và A3 | Claude, 12/10/2026 | Phần A4 của đề xuất này **đã được giải quyết** — A4 là dự phòng theo [D-023](#d-023). Còn lại thứ tự A2 ↔ A3, chỉ là gợi ý trong [deep-dive](topics/plm-calibration-audit/research/deep-dive-2026-10-12.md). Thay bằng số đầu tên thư mục khi Trọng đặt |
+| C-4 | Năm ứng viên còn lại giữ trong `topics/` hay đóng bớt: A2, A3, `dark-kinome-zero-shot`, `budgeted-plm-variant-scoring`, `scalable-metagenomic-binning` | Claude, 12/10/2026 | [D-023](#d-023) đã quyết đề tài chính và dự phòng, nhưng **chưa quyết** số phận năm ứng viên này; chúng đang giữ nguyên trạng. Giữ cả năm thì tốn công theo dõi; `dark-kinome-zero-shot` có G2 yếu nhất (trụ tính mới đã sụp) nên là ứng viên đóng trước. Đối chiếu: [khảo sát 7 ứng viên](surveys/seven-candidates-comparison-2026-10-12.md) |
+| C-5 | Xác nhận lại với GVHD ở tuần 6 rằng đóng góp dạng công cụ được nhận | Claude, 12/10/2026 | [D-022](#d-022) dựa trên thông tin Trọng truyền đạt, **chưa có biên bản**, và nó đọc lại lời GVHD ngày 11/10 theo hướng nhẹ hơn. Nên hỏi một câu xác nhận để khỏi phải đổi hướng muộn |
 
 ---
 
@@ -39,8 +43,22 @@
 
 Trường "Ai quyết": **Trọng** (sinh viên), **GVHD**, **Claude (ủy quyền)** — Trọng giao cho Claude tự quyết, **Claude (khuyến nghị)** — chỉ là khuyến nghị nhưng đã được dùng như quyết định.
 
+### D-023
+**12/10/2026 · Trọng · Hiệu lực.** **Đề tài chính là [`degron-footprint`](topics/degron-footprint/README.md)** (dự đoán footprint / hiệu ứng đột biến degron mức residue trên nhãn thực nghiệm). **Dự phòng là [`plm-calibration-audit`](topics/plm-calibration-audit/README.md)** (A4, công cụ audit calibration và miền áp dụng). Thay vị trí đề tài chính ở [D-021](#d-021) ("chưa có đề tài chính") và vị trí dự phòng ở [D-016](#d-016) (degron là dự phòng duy nhất); giải quyết đề xuất C-4 phần đề tài chính/dự phòng.
+
+Lý do: degron là ứng viên duy nhất có **khoảng trống đã chứng minh** chứ không phải "chưa kiểm" — 2.353/2.624 peptide (89,7%) có nhóm cùng cặp thay thế chứa cả vị trí dương và không dương, nên mô hình chỉ dùng thành phần amino acid **bị chứng minh không tách được**; cận trên chính xác của lớp mô hình đó là precision@3 0,6045, oracle không ràng buộc 0,7792 ([audit](topics/degron-footprint/research/composition-context-audit.md)). Thêm vào đó: G1 mạnh nhất repo, TC4 (XAI) được thỏa mãn bởi chính bài toán vì đầu ra là điểm quan trọng theo residue, có kiến trúc để đề xuất (mục 6 của audit), và dữ liệu đã nằm trên máy nên khả thi trong 8–9 tuần còn lại. A4 làm dự phòng vì G2 ít phụ thuộc kết quả âm nhất trong nhóm công cụ và G3 tự nhiên nhất, nay đã hợp lệ theo [D-022](#d-022).
+
+**Chưa quyết (vẫn ở phần C):** vị trí của năm ứng viên còn lại — A2, A3, `dark-kinome-zero-shot`, `budgeted-plm-variant-scoring`, `scalable-metagenomic-binning`. Chúng giữ nguyên trạng "đang đào sâu" cho tới khi Trọng nói khác.
+
+### D-022
+**12/10/2026 · GVHD (Trọng truyền đạt) · Hiệu lực.** **GVHD chấp nhận đóng góp dạng công cụ** (công cụ, thước đo, audit, benchmark, thuật toán tối ưu) làm đóng góp của luận văn. Giải quyết đề xuất C-3 theo hướng thuận và **gỡ rào** cho các ứng viên A2, A3, A4, `budgeted-plm-variant-scoring`, `scalable-metagenomic-binning`.
+
+Hệ quả: mức 3 của [D-017](#d-017) (ưu tiên tầng công cụ/benchmark/nền tảng) không còn mâu thuẫn với kỳ vọng của GVHD. Lời GVHD ngày 11/10 ("kỳ vọng một kiến trúc chưa ai dùng") vì vậy được đọc là **mong muốn, không phải điều kiện loại**; cả hai lời được giữ nguyên văn ở [people.md](project/people.md). Vẫn nên xác nhận lại ở buổi gặp tuần 6, vì đây là thông tin Trọng truyền đạt, chưa có biên bản.
+
+Lưu ý điều **không** thay đổi: cổng [G2](project/course.md) vẫn đòi một đóng góp **dương** đo được — GVHD nhận dạng công cụ không có nghĩa là nhận kết quả âm ([D-012](#d-012)). Tiêu chí 5 (ứng dụng/website) vẫn không thể thiếu ([D-006](#d-006)).
+
 ### D-021
-**12/10/2026 · Trọng · Hiệu lực.** Lưu trữ đề tài `budgeted-microservice-rca` tại [archive/topics/budgeted-microservice-rca/](archive/topics/budgeted-microservice-rca/README.md), giữ toàn bộ tài liệu, code và dữ liệu đã có. **Hiện chưa có đề tài chính.** Thay vị trí đề tài chính ở D-016 và phần giữ RCA trong nhóm đang đào sâu ở D-019; giải quyết đề xuất C-1. Các nội dung còn lại của D-016 và D-019 giữ hiệu lực.
+**12/10/2026 · Trọng · Hiệu lực; phần "chưa có đề tài chính" bị thay bởi [D-023](#d-023).** Lưu trữ đề tài `budgeted-microservice-rca` tại [archive/topics/budgeted-microservice-rca/](archive/topics/budgeted-microservice-rca/README.md), giữ toàn bộ tài liệu, code và dữ liệu đã có. **Hiện chưa có đề tài chính.** Thay vị trí đề tài chính ở D-016 và phần giữ RCA trong nhóm đang đào sâu ở D-019; giải quyết đề xuất C-1. Các nội dung còn lại của D-016 và D-019 giữ hiệu lực.
 
 ### D-020
 **12/10/2026 · Trọng · Hiệu lực.** Bỏ thư mục `data/` ở gốc. Dữ liệu của mỗi đề tài nằm trong chính thư mục đề tài, ở `topics/<ten-de-tai>/data/` (đề tài đã đóng: `archive/topics/<ten-de-tai>/data/`), và bị `.gitignore` chặn. Dữ liệu của đề tài đã đóng được giữ, không xoá.
@@ -55,13 +73,13 @@ Trường "Ai quyết": **Trọng** (sinh viên), **GVHD**, **Claude (ủy quy�
 **12/10/2026 · Trọng · Hiệu lực.** Định hướng chọn đề tài có 4 mức, tóm tắt ở phần A. Mục tiêu tối cao là tìm một đề tài có đóng góp thật, giải quyết vấn đề có ý nghĩa. Mục tiêu này đứng trên độ khớp với các ứng viên đang có.
 
 ### D-016
-**12/10/2026 (chiều) · Claude (ủy quyền: "Claude tự quyết toàn bộ, chốt trong ngày") · Vị trí đề tài chính bị thay bởi [D-021](#d-021); vị trí dự phòng giữ hiệu lực.** Chọn `budgeted-microservice-rca` làm đề tài chính, thay [D-014](#d-014). Degron là dự phòng duy nhất. Căn cứ: [báo cáo lựa chọn mở lĩnh vực](surveys/open-field-topic-selection-2026-10-12.md).
+**12/10/2026 (chiều) · Claude (ủy quyền: "Claude tự quyết toàn bộ, chốt trong ngày") · Vị trí đề tài chính bị thay bởi [D-021](#d-021); vị trí dự phòng bị thay bởi [D-023](#d-023).** Chọn `budgeted-microservice-rca` làm đề tài chính, thay [D-014](#d-014). Degron là dự phòng duy nhất. Căn cứ: [báo cáo lựa chọn mở lĩnh vực](surveys/open-field-topic-selection-2026-10-12.md).
 
 ### D-015
 **12/10/2026 · Trọng · Bị thay bởi D-016, đóng ở D-019.** Đưa `legal-qa-grounding` (hỏi–đáp pháp luật tiếng Việt) lên làm ứng viên hàng đầu ngoài lĩnh vực.
 
 ### D-014
-**11/10/2026 · Trọng · Bị thay bởi D-016.** Chốt degron làm đề tài chính. Khuya cùng ngày tái định tâm: bỏ trục đặc hiệu E3 (chỉ 1 E3 đủ mẫu), chuyển sang dự đoán footprint mức residue trên nhãn đột biến. Slug cũ `degron-e3-specificity`, nay là `degron-footprint`.
+**11/10/2026 · Trọng · Bị thay bởi D-016.** Chốt degron làm đề tài chính. (Degron trở lại vị trí đề tài chính theo [D-023](#d-023), **không phải** vì mục này còn hiệu lực.) Khuya cùng ngày tái định tâm: bỏ trục đặc hiệu E3 (chỉ 1 E3 đủ mẫu), chuyển sang dự đoán footprint mức residue trên nhãn đột biến. Slug cũ `degron-e3-specificity`, nay là `degron-footprint`.
 
 ### D-013
 **11/10/2026 · Trọng · Hiệu lực.** Trang HTML được tạo trực tiếp trong repo và mở bằng `file://`, không publish artifact nữa.

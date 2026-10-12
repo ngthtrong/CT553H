@@ -4,6 +4,26 @@
 
 ---
 
+## 12/10/2026 (tiếp) — tạo hub markdown đơn giản giải thích đề tài
+
+- **Yêu cầu của Trọng:** đọc lại hub HTML ở [lectures/degron-footprint/](../../lectures/degron-footprint/index.html) thấy quá khó hiểu và phức tạp. Cần một hub markdown đơn giản, từ khái niệm cơ bản nhất đến đóng góp, mỗi phần quan trọng có hình, mỗi bài báo một file riêng, trích dẫn dẫn link ngay tại chỗ liên quan.
+- Tạo [lectures/degron-basics/](../../lectures/degron-basics/README.md): **9 bài** (khái niệm → cách đo → bài toán → dữ liệu → khoảng trống → giải pháp → đánh giá → đóng góp → rủi ro), **14 sơ đồ tự dựng** dạng SVG, **12 file bài báo** + chỉ mục. Tổng 38 file. Hub HTML cũ giữ nguyên, hai bản trỏ lẫn nhau.
+- Nội dung không viết mới mà **rút từ các báo cáo audit đã có**; mỗi con số dẫn link về nguồn gốc trong `research/`. Giữ nguyên nhãn bằng chứng và toàn bộ quy ước ngôn từ của đề tài (không nói "chưa ai dùng MIL", không nói "dùng cấu trúc là phần mới", không nói bản đồ mô hình thành phần phải phẳng, không hứa cải thiện 0,1747).
+- Mỗi sơ đồ mang nhãn `SƠ ĐỒ TỰ DỰNG` ở góc trên phải theo quy ước trong [NOTICE.md](../../lectures/degron-footprint/assets/figures/NOTICE.md), để không lẫn với hình của tác giả bài báo. Sơ đồ kiến trúc MIL-Degron mang thêm nhãn `ĐỀ XUẤT, CHƯA KIỂM CHỨNG`.
+- Thêm một dòng trỏ tới hub mới trong [lectures/index.html](../../lectures/index.html). Kiểm: 14 SVG hợp lệ XML, mọi hình được tham chiếu đều tồn tại và mọi hình đều được dùng, `check_links.py` không sinh link hỏng mới.
+
+---
+
+## 12/10/2026 (tiếp) — degron được chốt làm **đề tài chính** ([D-023](../../DECISIONS.md#d-023))
+
+- Trọng chốt: degron là đề tài chính, [`plm-calibration-audit`](../plm-calibration-audit/README.md) (A4) là dự phòng. Kèm thông tin mới: **GVHD vẫn chấp nhận đóng góp dạng công cụ** ([D-022](../../DECISIONS.md#d-022)), nên rào cản C-3 với nhóm A được gỡ.
+- Căn cứ chọn degron, tóm từ [khảo sát 7 ứng viên](../../surveys/seven-candidates-comparison-2026-10-12.md): degron là ứng viên **duy nhất có khoảng trống đã chứng minh** chứ không phải "chưa kiểm" — 89,7% peptide (2.353/2.624) có nhóm cùng cặp thay thế chứa cả vị trí dương và không dương, nên mô hình chỉ dùng thành phần bị **chứng minh** không tách được. Thêm: G1 mạnh nhất repo; TC4 (XAI) thỏa mãn bởi chính bài toán vì đầu ra là điểm quan trọng theo residue; có kiến trúc để đề xuất (mục 6 của audit); dữ liệu đã trên máy nên khả thi trong 8–9 tuần.
+- **Sửa thẻ trạng thái:** dòng G2 trước đây viết "dư địa chỉ 0,1747" làm đề tài trông yếu hơn mức bằng chứng cho phép. Đã viết lại theo đúng số của [audit](research/composition-context-audit.md): cận chính xác 0,6045 cho lớp mô hình thành phần, oracle không ràng buộc 0,7792, ngẫu nhiên 0,1204, tức +28,9% tương đối nếu đạt trần. Câu "G2 chưa xác lập" **giữ nguyên** vì chưa huấn luyện mô hình nào.
+- Dòng G3 cũng được sửa cho đúng: **ba** sản phẩm đã tồn tại (DEGRONOPEDIA, máy chủ web MetaDegron, Colab nhóm PAP), không phải hai. Ứng dụng phải khác biệt được; chỗ khác biệt khả thi là ma trận 28×20 trên nhãn thực nghiệm.
+- **Việc chặn gần nhất:** tính lực thống kê trên tập test 221–322 footprint trước khi cam kết huấn luyện. Chưa chạy.
+
+---
+
 ## 12/10/2026 — `degron-e3-specificity`: đo giới hạn thành phần và quy mô test theo protein
 
 - Theo đề xuất của sinh viên, tải lại scanning và saturation từ Mendeley v2 vào `topics/degron-footprint/data/raw/`, kiểm đầy đủ SHA-256; script cũ tái lập chính xác 8.831 peptide đạt lọc và 2.624 footprint. Báo cáo: [audit thành phần–ngữ cảnh](research/composition-context-audit.md); script/JSON tại [ghi chú audit](research/e3-labels-audit/README.md).
