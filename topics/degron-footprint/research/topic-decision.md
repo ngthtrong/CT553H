@@ -2,7 +2,7 @@
 
 > **Lịch sử quyết định:** các câu "chốt / quyết định / khuyến nghị" trong file này phản ánh thời điểm viết, có thể đã bị thay. Trạng thái hiện hành chỉ nằm ở [DECISIONS.md](../../../DECISIONS.md).
 
-> **Trạng thái hiện hành 12/10/2026: phương án dự phòng.** [Quyết định khảo sát mở](../../../surveys/open-field-topic-selection-2026-10-12.md) chọn `budgeted-microservice-rca` làm chính. Nội dung kiến trúc/slide bên dưới ghi quyết định 11/10; nếu kích hoạt dự phòng phải dùng đính chính trong audit 12/10, không tự coi MIL/cổng cấu trúc đã được chứng minh.
+> **Lịch sử quyết định:** trạng thái hiện hành chỉ ghi tại [DECISIONS.md](../../../DECISIONS.md#d-021). Nội dung kiến trúc/slide bên dưới ghi quyết định 11/10; nếu kích hoạt dự phòng phải dùng đính chính trong audit 12/10, không tự coi MIL/cổng cấu trúc đã được chứng minh.
 
 > **Đề tài chốt ngày 11/10/2026, tái định tâm cùng ngày (khuya)** sau khi qua cổng chặn số 2. Slug giữ nguyên `degron-e3-specificity` để không vỡ liên kết, nhưng **trục đề tài đã đổi** — xem mục 1 và mục 2.1. Chưa có phê duyệt chính thức của GVHD; cần báo cáo ở buổi tuần 6.
 

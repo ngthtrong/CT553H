@@ -1,12 +1,12 @@
 # Quyết định đề tài: lựa chọn bằng chứng cho RCA theo ngân sách
 
-> **Lịch sử quyết định:** các câu "chốt / quyết định / khuyến nghị" trong file này phản ánh thời điểm viết, có thể đã bị thay. Trạng thái hiện hành chỉ nằm ở [DECISIONS.md](../../../DECISIONS.md).
+> **Tài liệu lưu trữ:** xem [D-021](../../../../DECISIONS.md#d-021). **Lịch sử quyết định:** các câu "chốt / quyết định / khuyến nghị" trong file này phản ánh thời điểm viết, có thể đã bị thay. Trạng thái hiện hành chỉ nằm ở [DECISIONS.md](../../../../DECISIONS.md).
 
 **Chọn chính ngày 12/10/2026 theo yêu cầu sinh viên mở lĩnh vực và chốt trong ngày. Chưa phê duyệt GVHD.**
 
 **Tên:** Định vị nguyên nhân sự cố microservice bằng lựa chọn bằng chứng thích ứng theo giá trị chẩn đoán và ngân sách truy vấn.
 
-**Slug:** `budgeted-microservice-rca`. [Báo cáo lựa chọn](../../../surveys/open-field-topic-selection-2026-10-12.md) ghi đối chiếu ứng viên và tiền lệ; [README audit](../code/preprocessing/README.md) ghi cách tái lập dữ liệu. Đây là đề tài cải tiến thuật toán phục vụ một công cụ điều tra sự cố, chưa phải kết quả hoàn thành.
+**Slug:** `budgeted-microservice-rca`. [Báo cáo lựa chọn](../../../../surveys/open-field-topic-selection-2026-10-12.md) ghi đối chiếu ứng viên và tiền lệ; [README audit](../code/preprocessing/README.md) ghi cách tái lập dữ liệu. Đây là đề tài cải tiến thuật toán phục vụ một công cụ điều tra sự cố, chưa phải kết quả hoàn thành.
 
 ## 1. Vấn đề và người dùng
 

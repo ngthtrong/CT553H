@@ -2,7 +2,7 @@
 
 > **Lịch sử quyết định:** các câu "chốt / quyết định / khuyến nghị" trong file này phản ánh thời điểm viết, có thể đã bị thay. Trạng thái hiện hành chỉ nằm ở [DECISIONS.md](../../../DECISIONS.md).
 
-> **Bản lịch sử 10/10/2026.** Quyết định hiện hành là [khảo sát mở và chốt RCA ngày 12/10/2026](../../../surveys/open-field-topic-selection-2026-10-12.md). Bản này không còn chọn đề tài chính.
+> **Bản lịch sử 10/10/2026.** Trạng thái hiện hành chỉ ghi tại [DECISIONS.md](../../../DECISIONS.md#d-021). Bản này không còn chọn đề tài chính.
 
 Ngày: **10/10/2026**. Trạng thái: **khuyến nghị có điều kiện, chưa phải đề tài đã duyệt**. Mốc chặn: **tuần 6 báo cáo lại đề tài với GVHD** (hiện tuần 4).
 

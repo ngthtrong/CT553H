@@ -1,11 +1,11 @@
 # Định vị nguyên nhân sự cố microservice bằng lựa chọn bằng chứng thích ứng theo ngân sách truy vấn
 
-> **Thẻ trạng thái nghiên cứu.** Vị trí của đề tài (chính/dự phòng/đang đào sâu) chỉ ghi ở [DECISIONS.md](../../DECISIONS.md), không ghi ở đây. Cập nhật lần cuối: **12/10/2026**.
+> **Thẻ trạng thái nghiên cứu — tài liệu lưu trữ.** Xem [D-021](../../../DECISIONS.md#d-021). Vị trí của đề tài (chính/dự phòng/đang đào sâu) chỉ ghi ở [DECISIONS.md](../../../DECISIONS.md), không ghi ở đây. Cập nhật lần cuối: **12/10/2026**.
 
 | | |
 |---|---|
 | Lĩnh vực | AIOps, kỹ nghệ phần mềm, học máy. **Ngoài tin sinh học** |
-| Dữ liệu | RCAEval (Hugging Face `phamquiluan/RCAEval`, MIT), 735 ca chèn lỗi trên 3 hệ thống microservice → `topics/budgeted-microservice-rca/data/` |
+| Dữ liệu | RCAEval (Hugging Face `phamquiluan/RCAEval`, MIT), 735 ca chèn lỗi trên 3 hệ thống microservice → `archive/topics/budgeted-microservice-rca/data/` |
 | Giai đoạn | Đã audit dữ liệu; chưa chạy baseline, chưa huấn luyện, chưa có app |
 
 ## Bài toán
@@ -23,11 +23,11 @@ Một dịch vụ hỏng có thể kéo theo nhiều dịch vụ khác cùng b�
 | G3 ứng dụng | Có thiết kế khả thi (công cụ điều tra/replay), chưa xây | [topic-decision.md §6](research/topic-decision.md) |
 
 ## Rủi ro chính
-- **Không khớp chuyên môn GVHD** (tin sinh học), cần hỏi thẳng ở tuần 6. Mâu thuẫn với định hướng ưu tiên tin sinh, xem [C-1 trong DECISIONS](../../DECISIONS.md).
+- **Không khớp chuyên môn GVHD** (tin sinh học), cần hỏi thẳng ở tuần 6. Bối cảnh lựa chọn trước đây: [D-016](../../../DECISIONS.md#d-016); cập nhật ở [D-021](../../../DECISIONS.md#d-021).
 - Chỉ có 3 hệ thống nên bằng chứng chuyển miền yếu; có bias vị trí chèn lỗi (arXiv 2609.27069).
 - Checkpoint tuần 3–4: nếu baseline mạnh đã gần dùng toàn bộ dữ liệu ở mọi mức ngân sách thì dừng, không đổi tập test để cứu đề tài.
 
-## Việc tiếp theo
+## Các việc còn dở khi lưu trữ
 1. Tải toàn bộ 735 ca (hiện mới có index + 6 ca mẫu).
 2. Tái lập 2–3 baseline (BARO, RCD); xác nhận chạy được không cần GPU.
 3. Tra thêm tiền lệ ở ICSE/FSE/ASE/NSDI/OSDI.
@@ -36,4 +36,4 @@ Một dịch vụ hỏng có thể kéo theo nhiều dịch vụ khác cùng b�
 - [log.md](log.md) — nhật ký nghiên cứu riêng đề tài.
 - [research/topic-decision.md](research/topic-decision.md) — phạm vi, RQ, đối chứng, lộ trình 8 tuần.
 - [code/preprocessing/](code/preprocessing/README.md) — script audit dữ liệu và cách tái lập.
-- Bối cảnh lựa chọn: [surveys/open-field-topic-selection-2026-10-12.md](../../surveys/open-field-topic-selection-2026-10-12.md).
+- Bối cảnh lựa chọn: [surveys/open-field-topic-selection-2026-10-12.md](../../../surveys/open-field-topic-selection-2026-10-12.md).

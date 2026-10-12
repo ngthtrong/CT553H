@@ -1,5 +1,7 @@
 # Chốt đề tài sau khảo sát mở lĩnh vực — 12/10/2026
 
+> **Báo cáo lịch sử:** lựa chọn tại thời điểm viết thuộc [D-016](../DECISIONS.md#d-016). Trạng thái hiện hành chỉ ghi tại [DECISIONS.md](../DECISIONS.md#d-021).
+
 > **Lịch sử quyết định:** các câu "chốt / quyết định / khuyến nghị" trong file này phản ánh thời điểm viết, có thể đã bị thay. Trạng thái hiện hành chỉ nằm ở [DECISIONS.md](../DECISIONS.md).
 
 **Quyết định: chọn `budgeted-microservice-rca` làm đề tài chính để xây dựng đề cương và trình GVHD.** Tên: **Định vị nguyên nhân sự cố microservice bằng lựa chọn bằng chứng thích ứng theo giá trị chẩn đoán và ngân sách truy vấn.** Phương án dự phòng duy nhất: degron với nhãn đột biến thực nghiệm, theo [audit mới](../topics/degron-footprint/research/composition-context-audit.md), bỏ tuyên bố ΔPAP hạng 1 và scanning là lề ma trận.
@@ -75,11 +77,11 @@ Hai bản ResearchGate là **nội dung do tác giả công bố**, chưa xác m
 
 **Giả thuyết hẹp:** độ bất định của một ứng viên không cho biết modality nào sẽ sửa thứ hạng. Học mức giảm kỳ vọng của lỗi xếp hạng từ các trạng thái đã quan sát có thể phân bổ truy vấn tốt hơn heuristic bất định/trọng số cố định, đặc biệt khi log/trace thiếu hoặc tín hiệu lỗi lan truyền. Đây là cải tiến ứng dụng của AFA/giá trị thông tin, **không phải cơ chế học mới và chưa có bằng chứng dương**. Khảo sát không chứng minh không tồn tại một công trình khác đã làm giống hệt; độ tin cậy khoảng trống: **vừa**.
 
-Chi tiết thuật toán, baseline, protocol, chỉ số và sản phẩm được khóa trong [quyết định đề tài](../topics/budgeted-microservice-rca/research/topic-decision.md).
+Chi tiết thuật toán, baseline, protocol, chỉ số và sản phẩm được khóa trong [quyết định đề tài](../archive/topics/budgeted-microservice-rca/research/topic-decision.md).
 
 ## 5. Khả thi dữ liệu đã kiểm chứng
 
-Nguồn [RCAEval trên Hugging Face](https://huggingface.co/datasets/phamquiluan/RCAEval), revision `afeacb11bcc94dadfd1c8f483ee4377b2b8b614e`, metadata MIT, truy cập không gated. Repo thuật toán snapshot `259ea4167160256a74ad30004aa3d96a998c846e`. [Script](../topics/budgeted-microservice-rca/code/preprocessing/audit_data.py) và [JSON kết quả](../topics/budgeted-microservice-rca/code/preprocessing/results/data-audit.json) là bằng chứng cục bộ.
+Nguồn [RCAEval trên Hugging Face](https://huggingface.co/datasets/phamquiluan/RCAEval), revision `afeacb11bcc94dadfd1c8f483ee4377b2b8b614e`, metadata MIT, truy cập không gated. Repo thuật toán snapshot `259ea4167160256a74ad30004aa3d96a998c846e`. [Script](../archive/topics/budgeted-microservice-rca/code/preprocessing/audit_data.py) và [JSON kết quả](../archive/topics/budgeted-microservice-rca/code/preprocessing/results/data-audit.json) là bằng chứng cục bộ.
 
 | Bộ | Ca | Dịch vụ có nhãn nguyên nhân | Có logs | Có traces |
 |---|---:|---:|---:|---:|
@@ -108,7 +110,7 @@ RCA thắng theo đánh giá tổng hợp hôm nay, **không thắng mọi tiêu
 
 ## 7. Quyết định hành động
 
-Khóa tên, câu hỏi, dữ liệu lõi và app như [topic-decision.md](../topics/budgeted-microservice-rca/research/topic-decision.md). Bước kế tiếp là đề cương và tái lập baseline/thiết lập broker, không tiếp tục tìm đề tài thứ mười một. Nếu đóng góp thực nghiệm không xuất hiện, báo trung thực và xử lý bằng điều kiện đã ghi; không đổi chỉ số/tập test để tạo kết quả đẹp.
+Khóa tên, câu hỏi, dữ liệu lõi và app như [topic-decision.md](../archive/topics/budgeted-microservice-rca/research/topic-decision.md). Bước kế tiếp là đề cương và tái lập baseline/thiết lập broker, không tiếp tục tìm đề tài thứ mười một. Nếu đóng góp thực nghiệm không xuất hiện, báo trung thực và xử lý bằng điều kiện đã ghi; không đổi chỉ số/tập test để tạo kết quả đẹp.
 
 Degron là dự phòng có kiểm chứng nguồn dữ liệu và khả năng chia theo protein. Các quyết định DARKIN 10/10 và degron 11/10 được giữ làm lịch sử; lựa chọn 12/10 này thay thế chúng ở cấp **đề tài chính**. Các hub/slide cũ mô tả ứng viên cũ, không phải thuyết minh của RCA.
 

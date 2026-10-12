@@ -6,6 +6,7 @@
 
 | Thư mục | Đề tài | Lý do đóng | Quyết định |
 |---|---|---|---|
+| [budgeted-microservice-rca/](topics/budgeted-microservice-rca/) | Lựa chọn bằng chứng RCA theo ngân sách truy vấn | Xem [D-021](../DECISIONS.md#d-021) | [D-021](../DECISIONS.md#d-021) |
 | [rtk-atp-applicability/](topics/rtk-atp-applicability/) | Dự đoán vị trí gắn ATP ở RTK có cảnh báo miền áp dụng | GVHD khuyên đổi đề tài sau buổi gặp 1. Ý tưởng miền áp dụng sống lại ở [plm-calibration-audit](../topics/plm-calibration-audit/README.md) | D-006 |
 | [tme-senescence-scrnaseq/](topics/tme-senescence-scrnaseq/) | Tế bào lão hóa trong vi môi trường khối u từ scRNA-seq | Nhãn SenMayo do chính pipeline sinh ra | D-008 |
 | [sirtuin-substrate/](topics/sirtuin-substrate/) | Cơ chất deacetyl hóa theo isoform SIRT1–7 | Nhãn in vitro gần như không chuyển được vào tế bào; đóng góp còn lại là kết quả âm | D-011 |

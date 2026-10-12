@@ -1,6 +1,6 @@
 # Audit dữ liệu RCAEval cho lựa chọn đề tài
 
-Audit index đầy đủ và sáu ca thô xác định trước, không huấn luyện hay chấm mô hình. [Quyết định đề tài](../../research/topic-decision.md) và [báo cáo khảo sát](../../../../surveys/open-field-topic-selection-2026-10-12.md).
+Audit index đầy đủ và sáu ca thô xác định trước, không huấn luyện hay chấm mô hình. [Quyết định đề tài](../../research/topic-decision.md) và [báo cáo khảo sát](../../../../../surveys/open-field-topic-selection-2026-10-12.md).
 
 ## Nguồn và tái lập
 
@@ -12,11 +12,11 @@ Audit index đầy đủ và sáu ca thô xác định trước, không huấn l
 Từ root repository, với virtual environment đã có:
 
 ```bash
-.venv/bin/python -m pip install -r topics/budgeted-microservice-rca/code/preprocessing/requirements-audit.txt
-.venv/bin/python topics/budgeted-microservice-rca/code/preprocessing/audit_data.py
+.venv/bin/python -m pip install -r archive/topics/budgeted-microservice-rca/code/preprocessing/requirements-audit.txt
+.venv/bin/python archive/topics/budgeted-microservice-rca/code/preprocessing/audit_data.py
 ```
 
-Lần đầu cần mạng tới Hugging Face; lần sau tái sử dụng file nhưng vẫn kiểm SHA và truy vấn metadata ở revision. Không cam kết offline hoàn toàn. Input tại `topics/budgeted-microservice-rca/data/raw/` không commit; kết quả nhỏ [results/data-audit.json](results/data-audit.json) có thể kiểm tra vào Git. Thời gian đọc trong JSON thay đổi theo máy/cache, không phải benchmark hiệu năng.
+Lần đầu cần mạng tới Hugging Face; lần sau tái sử dụng file nhưng vẫn kiểm SHA và truy vấn metadata ở revision. Không cam kết offline hoàn toàn. Input tại `archive/topics/budgeted-microservice-rca/data/raw/` không commit; kết quả nhỏ [results/data-audit.json](results/data-audit.json) có thể kiểm tra vào Git. Thời gian đọc trong JSON thay đổi theo máy/cache, không phải benchmark hiệu năng.
 
 ## Kết quả ngày 12/10/2026
 

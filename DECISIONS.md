@@ -13,13 +13,13 @@
 | Mục | Giá trị | Căn cứ |
 |---|---|---|
 | Giai đoạn | Chọn và hoàn thiện đề tài. **Chưa có đề tài nào được GVHD duyệt**; chưa huấn luyện mô hình hay xây ứng dụng | — |
-| Đề tài chính | [`budgeted-microservice-rca`](topics/budgeted-microservice-rca/README.md), **chưa được GVHD duyệt** | [D-016](#d-016) |
+| Đề tài chính | **Chưa có** | [D-021](#d-021) |
 | Dự phòng | [`degron-footprint`](topics/degron-footprint/README.md) | [D-016](#d-016) |
-| Đang đào sâu (6) | [budgeted-microservice-rca](topics/budgeted-microservice-rca/README.md) · [xai-fidelity-benchmark](topics/xai-fidelity-benchmark/README.md) (A2) · [structure-sequence-leakage-audit](topics/structure-sequence-leakage-audit/README.md) (A3) · [plm-calibration-audit](topics/plm-calibration-audit/README.md) (A4) · [degron-footprint](topics/degron-footprint/README.md) · [dark-kinome-zero-shot](topics/dark-kinome-zero-shot/README.md) | [D-019](#d-019) |
+| Đang đào sâu (5) | [xai-fidelity-benchmark](topics/xai-fidelity-benchmark/README.md) (A2) · [structure-sequence-leakage-audit](topics/structure-sequence-leakage-audit/README.md) (A3) · [plm-calibration-audit](topics/plm-calibration-audit/README.md) (A4) · [degron-footprint](topics/degron-footprint/README.md) · [dark-kinome-zero-shot](topics/dark-kinome-zero-shot/README.md) | [D-019](#d-019), [D-021](#d-021) |
 | Thứ tự tiềm năng | Là **số đầu tên thư mục** trong `topics/` (ví dụ `1-ten-de-tai`), do Trọng tự đặt. **Chưa đặt** | [D-019](#d-019) |
 | Định hướng chọn đề tài | 1) ưu tiên tin sinh học; 2) không bó vào dự đoán residue/peptide; 3) ưu tiên tầng công cụ/benchmark/nền tảng; 4) đề tài ngoài tin sinh học vẫn hợp lệ nhưng xếp sau | [D-017](#d-017) |
 | Thước đo một ứng viên | 5 tiêu chí GVHD + 3 cổng bắt buộc G1/G2/G3, xem [course.md](project/course.md) | [D-006](#d-006), [D-012](#d-012) |
-| Đã đóng (lưu trữ) | RTK–ATP, TME senescence, cơ chất sirtuin, legal QA, quản lý chi tiêu, efflux, IL-6, sửa lỗi phần mềm. Xem [archive/](archive/README.md) | D-003, D-006, D-008, D-010, D-011, D-019 |
+| Đã đóng (lưu trữ) | RCA, RTK–ATP, TME senescence, cơ chất sirtuin, legal QA, quản lý chi tiêu, efflux, IL-6, sửa lỗi phần mềm. Xem [archive/](archive/README.md) | D-003, D-006, D-008, D-010, D-011, D-019, [D-021](#d-021) |
 | Quy ước đang áp dụng | HTML để trong repo, không dùng artifact ([D-013](#d-013)). Repo private ([D-004](#d-004)) | — |
 
 **Mốc tiếp theo:** tuần 6 báo cáo lại đề tài với GVHD (xem [course.md](project/course.md)).
@@ -30,9 +30,8 @@
 
 | # | Đề xuất | Người đề xuất | Ghi chú |
 |---|---|---|---|
-| C-1 | Xác nhận lại RCA có còn là đề tài chính không | Claude, 12/10/2026 | D-016 do Claude chọn theo ủy quyền, **trước** khi có D-017 (ưu tiên tin sinh) và D-019 (6 đề tài ngang hàng đang đào sâu). Hai quyết định này có thể mâu thuẫn với D-016. Nếu bỏ "đề tài chính" thì sửa phần A |
 | C-2 | Thứ tự tạm trong nhóm A: A4 → A2 → A3 | Claude, 12/10/2026 | Chỉ là gợi ý trong [deep-dive](topics/plm-calibration-audit/research/deep-dive-2026-10-12.md), chưa phải quyết định. Thay bằng số đầu tên thư mục khi Trọng đặt |
-| C-3 | Hỏi GVHD ở tuần 6: đóng góp dạng công cụ/audit/benchmark (A2, A3, A4, một phần RCA) có được nhận không | Claude, 12/10/2026 | Ngày 11/10 GVHD kỳ vọng kiến trúc mới, không nhận chỉ một bảng đối chứng ([people.md](project/people.md)). Điều này **mâu thuẫn** với mức 3 của D-017 |
+| C-3 | Hỏi GVHD ở tuần 6: đóng góp dạng công cụ/audit/benchmark (A2, A3, A4) có được nhận không | Claude, 12/10/2026 | Ngày 11/10 GVHD kỳ vọng kiến trúc mới, không nhận chỉ một bảng đối chứng ([people.md](project/people.md)). Điều này **mâu thuẫn** với mức 3 của D-017 |
 
 ---
 
@@ -40,11 +39,14 @@
 
 Trường "Ai quyết": **Trọng** (sinh viên), **GVHD**, **Claude (ủy quyền)** — Trọng giao cho Claude tự quyết, **Claude (khuyến nghị)** — chỉ là khuyến nghị nhưng đã được dùng như quyết định.
 
+### D-021
+**12/10/2026 · Trọng · Hiệu lực.** Lưu trữ đề tài `budgeted-microservice-rca` tại [archive/topics/budgeted-microservice-rca/](archive/topics/budgeted-microservice-rca/README.md), giữ toàn bộ tài liệu, code và dữ liệu đã có. **Hiện chưa có đề tài chính.** Thay vị trí đề tài chính ở D-016 và phần giữ RCA trong nhóm đang đào sâu ở D-019; giải quyết đề xuất C-1. Các nội dung còn lại của D-016 và D-019 giữ hiệu lực.
+
 ### D-020
 **12/10/2026 · Trọng · Hiệu lực.** Bỏ thư mục `data/` ở gốc. Dữ liệu của mỗi đề tài nằm trong chính thư mục đề tài, ở `topics/<ten-de-tai>/data/` (đề tài đã đóng: `archive/topics/<ten-de-tai>/data/`), và bị `.gitignore` chặn. Dữ liệu của đề tài đã đóng được giữ, không xoá.
 
 ### D-019
-**12/10/2026 · Trọng · Hiệu lực.** Tổ chức lại repo. Từ nay quyết định chỉ ghi ở file này. Sáu đề tài đang đào sâu có thư mục riêng trong `topics/`: RCA, A2, A3, A4, degron, dark kinome zero-shot (mở lại hướng này). **Đóng hai đề tài không liên quan tin sinh học**: `legal-qa-grounding` và `personal-expense-management`. RCA vẫn giữ trong `topics/`. Các hướng cũ chuyển vào `archive/`. Thứ tự tiềm năng được mã hóa bằng số đầu tên thư mục, do Trọng tự đặt.
+**12/10/2026 · Trọng · Hiệu lực; phần giữ RCA trong nhóm đang đào sâu bị thay bởi [D-021](#d-021).** Tổ chức lại repo. Từ nay quyết định chỉ ghi ở file này. Sáu đề tài đang đào sâu có thư mục riêng trong `topics/`: RCA, A2, A3, A4, degron, dark kinome zero-shot (mở lại hướng này). **Đóng hai đề tài không liên quan tin sinh học**: `legal-qa-grounding` và `personal-expense-management`. RCA vẫn giữ trong `topics/`. Các hướng cũ chuyển vào `archive/`. Thứ tự tiềm năng được mã hóa bằng số đầu tên thư mục, do Trọng tự đặt.
 
 ### D-018
 **12/10/2026 (tối) · Trọng · Hiệu lực.** Từ 14 ứng viên tầng công cụ trong [khảo sát](surveys/bioinformatics-tool-layer-candidates-2026-10-12.md), đi sâu ba ứng viên bậc A khớp GVHD: A2 (fidelity XAI), A3 (cấu trúc + trình tự, **phải thu hẹp** thành audit vì đã có Denger & Helms 2025), A4 (calibration/miền áp dụng). Nguồn: [journal 12/10](journal/2026-10.md).
@@ -53,7 +55,7 @@ Trường "Ai quyết": **Trọng** (sinh viên), **GVHD**, **Claude (ủy quy�
 **12/10/2026 · Trọng · Hiệu lực.** Định hướng chọn đề tài có 4 mức, tóm tắt ở phần A. Mục tiêu tối cao là tìm một đề tài có đóng góp thật, giải quyết vấn đề có ý nghĩa. Mục tiêu này đứng trên độ khớp với các ứng viên đang có.
 
 ### D-016
-**12/10/2026 (chiều) · Claude (ủy quyền: "Claude tự quyết toàn bộ, chốt trong ngày") · Hiệu lực, chưa GVHD duyệt, xem C-1.** Chọn `budgeted-microservice-rca` làm đề tài chính, thay [D-014](#d-014). Degron là dự phòng duy nhất. Căn cứ: [báo cáo lựa chọn mở lĩnh vực](surveys/open-field-topic-selection-2026-10-12.md).
+**12/10/2026 (chiều) · Claude (ủy quyền: "Claude tự quyết toàn bộ, chốt trong ngày") · Vị trí đề tài chính bị thay bởi [D-021](#d-021); vị trí dự phòng giữ hiệu lực.** Chọn `budgeted-microservice-rca` làm đề tài chính, thay [D-014](#d-014). Degron là dự phòng duy nhất. Căn cứ: [báo cáo lựa chọn mở lĩnh vực](surveys/open-field-topic-selection-2026-10-12.md).
 
 ### D-015
 **12/10/2026 · Trọng · Bị thay bởi D-016, đóng ở D-019.** Đưa `legal-qa-grounding` (hỏi–đáp pháp luật tiếng Việt) lên làm ứng viên hàng đầu ngoài lĩnh vực.

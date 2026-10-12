@@ -1,6 +1,6 @@
 # 50 đề tài tin sinh học từ bài toán của quy trình nghiên cứu
 
-Ngày khảo sát: **12/10/2026**. Phạm vi: tìm kiếm diện rộng, phân tích bài toán, ý nghĩa và đóng góp sơ bộ; dữ liệu được khảo sát ở mức nguồn/tài liệu. **Chưa chọn đề tài mới, chưa thực nghiệm.** `budgeted-microservice-rca` vẫn có trạng thái ghi trong [quyết định hiện hành](../topics/budgeted-microservice-rca/research/topic-decision.md).
+Ngày khảo sát: **12/10/2026**. Phạm vi: tìm kiếm diện rộng, phân tích bài toán, ý nghĩa và đóng góp sơ bộ; dữ liệu được khảo sát ở mức nguồn/tài liệu. **Chưa chọn đề tài mới, chưa thực nghiệm.** Trạng thái lựa chọn hiện hành chỉ ghi tại [DECISIONS.md](../DECISIONS.md#d-021).
 
 Bản này bổ sung [khảo sát 14 ứng viên](bioinformatics-tool-layer-candidates-2026-10-12.md) và [khảo sát mở lĩnh vực](open-field-topic-selection-2026-10-12.md). Các đề tài là **50 hướng bài toán riêng**, không phải 50 đóng góp mới đã được chứng minh. Một hướng chỉ trở thành đề tài luận văn sau khi thu hẹp, đối chiếu phương pháp gần nhất và đóng các cổng đánh giá. Không tạo 50 thư mục đề tài trước khi cần hồ sơ riêng.
 
