@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AlphaMissense 2023 · Điểm gây bệnh, không có cơ chế</title>
+<meta name="hub-page" content="p-am">
+<meta name="description" content="Bài Science 2023: dự đoán tác động biến thể sai nghĩa toàn proteome — và vì sao nó bỏ sót cơ chế degron.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;650&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../assets/hub.css">
+</head>
+<body>
+<a class="skip" href="#vaitro">Bỏ qua điều hướng</a>
+<div class="page">
+
+<nav class="topbar" aria-label="Thanh điều hướng">
+  <a class="home" href="../index.html">← Hub học đề tài</a>
+  <span class="spacer"></span>
+</nav>
+
+<div class="crumb">
+  <a href="../index.html">Hub</a> <span class="sep">/</span>
+  <a href="index.html">Bài báo</a> <span class="sep">/</span>
+  <span>Nhóm 3 · Bối cảnh</span> <span class="sep">/</span>
+  <span>AlphaMissense 2023</span>
+</div>
+
+<div class="eyebrow">Nhóm 3 — Bối cảnh · xác minh ở mức tóm tắt</div>
+<h1>Một con số không nói vì sao</h1>
+<p class="lede">AlphaMissense phân loại 89% biến thể sai nghĩa của người. Nó vẫn xếp PNPO D33V là “có khả năng lành tính” — một biến thể đã được chứng minh gây mất protein qua proteasome. Đó là toàn bộ lý do bài này có mặt ở đây.</p>
+
+<div class="bib">
+  <dl>
+    <dt>Tác giả</dt>
+    <dd>Cheng J, Novati G, Pan J, Bycroft C, Žemgulytė A, Applebaum T, Pritzel A, Wong LH, Zielinski M, Sargeant T, Schneider RG, Senior AW, Jumper J, Hassabis D, Kohli P, Avsec Ž (Google DeepMind)</dd>
+    <dt>Tên bài</dt>
+    <dd><em>Accurate proteome-wide missense variant effect prediction with AlphaMissense</em></dd>
+    <dt>Công bố</dt>
+    <dd><strong>Science</strong>, 2023, tập 381, số 6664, bài eadg7492</dd>
+    <dt>DOI</dt>
+    <dd><a href="https://doi.org/10.1126/science.adg7492">10.1126/science.adg7492</a> · PMID 37733863</dd>
+    <dt>Trạng thái đọc</dt>
+    <dd><span class="tag tag-s">XÁC MINH TÓM TẮT QUA PUBMED</span> · <span class="tag tag-u">CHƯA ĐỌC TOÀN VĂN</span></dd>
+  </dl>
+</div>
+
+<div class="gate two">
+  <div class="g">
+    <h4>Cần biết trước</h4>
+    <ul>
+      <li>Biến thể sai nghĩa là gì — <a href="../../01-gene-to-protein.html">bài giảng 01</a>.</li>
+      <li><a href="voutsinos-2026.html#ketqua">Voutsinos 2026, mục 5</a> — ca PNPO D33V.</li>
+    </ul>
+  </div>
+  <div class="g">
+    <h4>Đọc xong sẽ hiểu được</h4>
+    <ul>
+      <li>AlphaMissense làm gì và làm tốt tới đâu.</li>
+      <li>Vì sao một mô hình rất mạnh vẫn bỏ sót một loại cơ chế.</li>
+      <li>Cách phát biểu quan hệ với nó mà không bị phản biện: <strong>bổ sung</strong>, không cạnh tranh.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="vaitro">1. Vai trò với đề tài</h2>
+
+<p>Bài này không về degron, không cung cấp dữ liệu, không cung cấp phương pháp. Nó có mặt vì một lý do duy nhất: nó là <strong>đối chứng cho lập luận về giá trị lâm sàng</strong> của đề tài.</p>
+
+<p>Lập luận đó có dạng: <em>“các mô hình dự đoán độc tính biến thể hiện nay trả về một điểm gây bệnh mà không nói cơ chế, nên chúng bỏ sót loại biến thể hoạt động bằng cách tạo degron”</em>. Câu đó chỉ đứng được nếu có một ví dụ cụ thể. Ví dụ đó là PNPO D33V.</p>
+
+<!-- ===================================================== -->
+<h2 id="lamgi">2. AlphaMissense làm gì</h2>
+
+<p>Theo tóm tắt chính thức:</p>
+
+<ul>
+  <li>Nó là một <strong>bản chuyển thể của AlphaFold</strong>, được tinh chỉnh trên cơ sở dữ liệu tần số quần thể của biến thể ở người và linh trưởng. <span class="tag tag-s">NGUỒN</span></li>
+  <li>Nó kết hợp <strong>bối cảnh cấu trúc</strong> với <strong>mức bảo tồn tiến hóa</strong>, và đạt kết quả hàng đầu trên nhiều chuẩn đánh giá di truyền và thực nghiệm — <em>mà không huấn luyện trực tiếp trên các dữ liệu đó</em>. <span class="tag tag-s">NGUỒN</span></li>
+  <li>Điểm trung bình của một gene còn dự đoán được mức thiết yếu của gene đó với tế bào. <span class="tag tag-s">NGUỒN</span></li>
+  <li>Họ công bố dự đoán cho <strong>mọi thay thế một acid amin có thể có ở người</strong>, và phân loại <strong>89%</strong> biến thể sai nghĩa là có khả năng lành tính hoặc có khả năng gây bệnh. <span class="tag tag-s">NGUỒN</span></li>
+</ul>
+
+<p>Nói ngắn: đây là một mô hình rất mạnh, phủ rộng, và được dùng rộng rãi. Đề tài <strong>không</strong> cạnh tranh được với nó ở bài toán của nó, và không nên thử.</p>
+
+<!-- ===================================================== -->
+<h2 id="bosot">3. Vì sao nó bỏ sót cơ chế degron</h2>
+
+<figure>
+<div class="frame min" tabindex="0" role="region" aria-label="Sơ đồ, có thể cuộn ngang trên màn hình nhỏ">
+<svg viewBox="0 0 780 240" role="img" aria-label="Hai cách một biến thể gây bệnh. Đường trên: biến thể phá cấu trúc hoặc phá vị trí hoạt động, mô hình bảo tồn tiến hóa bắt được. Đường dưới: biến thể tạo ra degron mới, protein vẫn hoạt động và vẫn bền nhưng bị phá hủy, mô hình bảo tồn có thể bỏ sót.">
+  <defs>
+    <marker id="am1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <polygon points="0,1 10,5 0,9" fill="currentColor"/>
+    </marker>
+  </defs>
+
+  <rect class="sv-box" x="14" y="92" width="130" height="48" rx="8"/>
+  <text class="sv-lbl" x="79" y="114" text-anchor="middle">Biến thể</text>
+  <text class="sv-sm" x="79" y="131" text-anchor="middle">đổi một acid amin</text>
+
+  <!-- duong tren -->
+  <path class="sv-stroke" d="M 148 108 Q 200 56 256 50" marker-end="url(#am1)"/>
+  <rect class="sv-box" x="260" y="24" width="200" height="54" rx="8" style="stroke:var(--t);stroke-width:2"/>
+  <text class="sv-lbl" x="360" y="46" text-anchor="middle">Phá cấu trúc hoặc</text>
+  <text class="sv-lbl" x="360" y="64" text-anchor="middle">phá vị trí hoạt động</text>
+  <line class="sv-stroke" x1="464" y1="50" x2="506" y2="50" marker-end="url(#am1)"/>
+  <rect class="sv-box" x="510" y="24" width="256" height="54" rx="8"/>
+  <text class="sv-sm" x="638" y="46" text-anchor="middle">Vị trí thường được bảo tồn mạnh</text>
+  <text class="sv-acc-t" x="638" y="64" text-anchor="middle" fill="var(--t)">→ mô hình bảo tồn BẮT ĐƯỢC</text>
+
+  <!-- duong duoi -->
+  <path class="sv-stroke sv-ms" d="M 148 126 Q 200 180 256 190" marker-end="url(#am1)" style="stroke-width:2"/>
+  <rect class="sv-box" x="260" y="162" width="200" height="54" rx="8" style="stroke:var(--m);stroke-width:2"/>
+  <text class="sv-lbl" x="360" y="184" text-anchor="middle" fill="var(--m)">Tạo ra một degron mới</text>
+  <text class="sv-sm" x="360" y="202" text-anchor="middle">protein vẫn gấp đúng, vẫn hoạt động</text>
+  <line class="sv-stroke sv-ms" x1="464" y1="190" x2="506" y2="190" marker-end="url(#am1)" style="stroke-width:2"/>
+  <rect class="sv-box" x="510" y="162" width="256" height="54" rx="8" style="stroke:var(--m);stroke-width:2"/>
+  <text class="sv-sm" x="638" y="184" text-anchor="middle">Vị trí có thể KHÔNG được bảo tồn</text>
+  <text class="sv-acc-t" x="638" y="202" text-anchor="middle" fill="var(--m)">→ có nguy cơ bị BỎ SÓT</text>
+
+  <text class="sv-sm" x="390" y="136" text-anchor="middle" font-style="italic">Cùng hậu quả lâm sàng — mất chức năng — nhưng hai đường hoàn toàn khác nhau</text>
+</svg>
+</div>
+<figcaption>
+  <span class="look">Nhìn vào đâu</span>
+  <span class="own">Sơ đồ tự dựng</span>
+  <strong>Đường dưới là chỗ trống.</strong> Một biến thể tạo degron mới không nhất thiết nằm ở vị trí được bảo tồn, và không nhất thiết phá cấu trúc — chính PNPO D33V vẫn còn hoạt tính enzyme và vẫn bền. Một mô hình xây trên bảo tồn tiến hóa và bối cảnh cấu trúc không có lý do gì để báo động ở một vị trí như vậy. Đây là <strong>cách đọc của chúng ta</strong>, không phải điều AlphaMissense tự nhận. <span class="tag tag-a">SUY LUẬN</span>
+</figcaption>
+</figure>
+
+<div class="callout c-key">
+  <span class="ct">Ca cụ thể: PNPO D33V</span>
+  <div class="tablewrap" style="margin:.6rem 0 0">
+  <table>
+    <thead><tr><th>Bằng chứng</th><th>Nói gì</th></tr></thead>
+    <tbody>
+      <tr><td>Lâm sàng</td><td>Biến thể liên quan thiếu hụt PNPO, biểu hiện thành bệnh não động kinh sơ sinh <span class="tag tag-s">NGUỒN</span></td></tr>
+      <tr><td>Nghiên cứu in vitro trước đó</td><td>Biến thể <strong>vẫn còn hoạt tính enzyme và vẫn bền về cấu trúc</strong> <span class="tag tag-s">NGUỒN</span></td></tr>
+      <tr><td>Bối cảnh cấu trúc</td><td>Vùng đầu N chứa D33 <strong>phơi lộ mạnh</strong> — tức degron mới nếu có thì với tới được <span class="tag tag-s">NGUỒN</span></td></tr>
+      <tr><td>Mô hình ΔPAP</td><td>Dự đoán biến thể này <strong>tạo degron mới</strong> <span class="tag tag-s">NGUỒN</span></td></tr>
+      <tr><td>Thực nghiệm</td><td>Xác nhận protein bị mất theo cơ chế <strong>phụ thuộc proteasome</strong> <span class="tag tag-s">NGUỒN</span></td></tr>
+      <tr><td><strong>AlphaMissense</strong></td><td>Xếp là <strong>“có khả năng lành tính”</strong> <span class="tag tag-s">NGUỒN</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<div class="callout c-warn">
+  <span class="ct">Đừng dùng một ca để kết luận về một mô hình</span>
+  <p style="margin-bottom:0">Một biến thể bị phân loại sai <strong>không</strong> chứng minh AlphaMissense yếu — mọi mô hình đều có ca sai, và nó vốn không được thiết kế để phát hiện cơ chế degron. Cách phát biểu đúng là: <em>“đây là một loại cơ chế mà các mô hình dựa trên bảo tồn và cấu trúc không được thiết kế để bắt, và có ít nhất một ca đã được kiểm thực nghiệm cho thấy khoảng trống đó là thật”</em>. Phát biểu mạnh hơn thế sẽ bị phản biện ngay, và xứng đáng bị phản biện. <span class="tag tag-a">SUY LUẬN</span></p>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="tach">4. Tách ba mức</h2>
+
+<div class="three">
+  <div class="a">
+    <h4>Tác giả chứng minh được</h4>
+    <p>Một mô hình chuyển thể từ AlphaFold, tinh chỉnh trên tần số biến thể quần thể, đạt kết quả hàng đầu trên nhiều chuẩn mà không huấn luyện trực tiếp trên chúng; điểm trung bình theo gene dự đoán được tính thiết yếu; và một cơ sở dữ liệu phân loại 89% biến thể sai nghĩa của người. <span class="tag tag-s">NGUỒN — mức tóm tắt</span></p>
+  </div>
+  <div class="b">
+    <h4>Cách đọc của chúng ta</h4>
+    <p>Mô hình trả một <em>điểm</em>, không trả một <em>cơ chế</em>. Với bác sĩ hay nhà di truyền học, biết “biến thể này có khả năng gây bệnh” khác hẳn biết “biến thể này tạo ra một degron ở vị trí X nên protein bị phá hủy”. Cái thứ hai <strong>kiểm được bằng thực nghiệm</strong> và gợi ý được hướng can thiệp. <span class="tag tag-a">SUY LUẬN</span></p>
+  </div>
+  <div class="c">
+    <h4>Hướng đề tài rút ra</h4>
+    <p>Định vị là <strong>bổ sung, không cạnh tranh</strong>. Không so AUC với AlphaMissense trên bài toán phân loại gây bệnh — sẽ thua và cũng không đúng trọng tâm. Thay vào đó đo trên câu hỏi hẹp hơn: <em>trong nhóm biến thể tác động qua cơ chế degron, mô hình có chỉ ra đúng vị trí và cơ chế không</em>. <span class="tag tag-p">ĐỀ XUẤT</span></p>
+  </div>
+</div>
+
+<h2 id="tukiem">Tự kiểm tra</h2>
+
+<details class="q">
+  <summary>1. Vì sao không nên đặt mục tiêu “vượt AlphaMissense”?</summary>
+  <div><p>Vì hai mô hình trả lời hai câu hỏi khác nhau. AlphaMissense trả lời “biến thể này có gây bệnh không” trên toàn bộ proteome, với dữ liệu huấn luyện khổng lồ và tài nguyên của DeepMind. Một mô hình degron trả lời “biến thể này có tạo hoặc phá degron không, ở đâu, và E3 nào liên quan” — trên phạm vi hẹp hơn nhiều. So AUC trên bài toán của họ thì vừa thua vừa trả lời sai câu hỏi.</p></div>
+</details>
+
+<details class="q">
+  <summary>2. Điều gì làm ca PNPO D33V thuyết phục hơn một ca phân loại sai thông thường?</summary>
+  <div><p>Ba lớp bằng chứng độc lập chồng lên nhau: nghiên cứu trước cho thấy biến thể vẫn hoạt động và vẫn bền, nên không phải mất chức năng kiểu thường; cấu trúc cho thấy vùng đó phơi lộ, nên degron mới nếu có thì dùng được; và thực nghiệm xác nhận protein mất theo cơ chế phụ thuộc proteasome. Ba điều đó cùng chỉ về một cơ chế cụ thể, chứ không chỉ nói “mô hình đoán sai”.</p></div>
+</details>
+
+<div class="row" data-done-slot style="margin:2rem 0 0"></div>
+
+<div class="next">
+  <a href="index.html"><span class="k">Hết chặng 4</span><span class="t">Quay lại danh mục bài báo →</span></a>
+  <a href="../topic/gap.html"><span class="k">Học tiếp · chặng 5</span><span class="t">Khoảng trống nghiên cứu →</span></a>
+</div>
+
+<footer class="pagefoot">
+  <p><strong>Nguồn và cách xác minh.</strong> Thông tin thư mục, danh sách tác giả và tóm tắt xác minh qua PubMed ngày 11/10/2026 (PMID 37733863). Bài gốc: Cheng J và cộng sự, <em>Accurate proteome-wide missense variant effect prediction with AlphaMissense</em>, <em>Science</em> 2023;381(6664):eadg7492, <a href="https://doi.org/10.1126/science.adg7492">doi:10.1126/science.adg7492</a>. Mọi chi tiết về ca PNPO D33V, gồm cả việc AlphaMissense xếp nó là có khả năng lành tính, lấy từ Voutsinos V và cộng sự, <em>Science Advances</em> 2026, <a href="https://doi.org/10.1126/sciadv.adz3483">doi:10.1126/sciadv.adz3483</a> — <strong>không</strong> phải từ bài AlphaMissense.</p>
+  <p style="margin-bottom:0"><strong>Giới hạn.</strong> Trang này dựa trên tóm tắt của AlphaMissense. Lời giải thích ở mục 3 về <em>vì sao</em> mô hình dựa trên bảo tồn có thể bỏ sót cơ chế degron là <strong>suy luận của chúng ta</strong>, không phải phân tích do tác giả của bài nào đưa ra.</p>
+</footer>
+
+</div>
+<script src="../assets/hub.js"></script>
+</body>
+</html>

@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mạng nơ-ron cơ bản</title>
+<style>
+:root{
+  --bg:#faf9f6; --surface:#ffffff; --text:#1d2126; --muted:#5d6570; --border:#e2dfd7;
+  --accent:#2c6a8a; --accent-soft:#e7f0f5;
+  --ok:#2d7a4d; --ok-soft:#e6f3eb; --warn:#8f5600; --warn-soft:#fbf1df;
+  --bad:#a23838; --bad-soft:#f8e7e7; --code-bg:#f1efe9;
+  --r-st:#2c6a8a; --r-k:#b4532a; --r-r:#7a4fa0; --r-p:#3f7d3a; --r-hit:#fff1a8;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#15171b; --surface:#1d2026; --text:#e5e4df; --muted:#9aa1ab; --border:#33373f;
+    --accent:#7fb8d6; --accent-soft:#1f2f39;
+    --ok:#79c495; --ok-soft:#1b2c22; --warn:#e2b25c; --warn-soft:#2f2617;
+    --bad:#e38c8c; --bad-soft:#331e1f; --code-bg:#262a31;
+    --r-st:#7fb8d6; --r-k:#e59a72; --r-r:#bf9ae0; --r-p:#93c98c; --r-hit:#4a4318;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:17px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans","Helvetica Neue",Arial,sans-serif}
+main{max-width:46rem;margin:0 auto;padding:24px 16px 64px}
+a{color:var(--accent)}
+h1{font-size:1.85rem;line-height:1.25;margin:.3em 0 .4em}
+h2{font-size:1.3rem;margin:2.2em 0 .5em;padding-top:.6em;border-top:1px solid var(--border)}
+h3{font-size:1.08rem;margin:1.6em 0 .4em}
+p,li{overflow-wrap:break-word}
+code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;font-size:.9em}
+code{background:var(--code-bg);padding:.1em .35em;border-radius:4px}
+.crumb{color:var(--muted);font-size:.9rem}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:.4em 0 1.2em}
+.pill{font-size:.82rem;border:1px solid var(--border);background:var(--surface);border-radius:999px;padding:2px 10px;color:var(--muted)}
+.box{border:1px solid var(--border);background:var(--surface);border-radius:10px;padding:14px 18px;margin:1.2em 0}
+.box>:first-child{margin-top:0}.box>:last-child{margin-bottom:0}
+.box h3{margin-top:0}
+.goal{border-left:4px solid var(--accent)}
+.link{background:var(--accent-soft);border-color:transparent}
+.warn{background:var(--warn-soft);border-color:transparent}
+.label{display:block;font-size:.78rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:.3em}
+.tag{display:inline-block;font-size:.72rem;line-height:1.5;padding:0 6px;border-radius:4px;white-space:nowrap;vertical-align:1px;font-weight:600}
+.t-ok{background:var(--ok-soft);color:var(--ok)}
+.t-dd{background:var(--accent-soft);color:var(--accent)}
+.t-unv{background:var(--warn-soft);color:var(--warn)}
+.t-inf{background:var(--bad-soft);color:var(--bad)}
+.tablewrap{overflow-x:auto;margin:1em 0;border:1px solid var(--border);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--border)}
+th{background:var(--code-bg);font-weight:600}
+tr:last-child td{border-bottom:0}
+figure{margin:1.4em 0}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:.88rem;color:var(--muted);margin-top:.4em}
+details{border:1px solid var(--border);border-radius:8px;background:var(--surface);margin:.6em 0;padding:0 14px}
+summary{cursor:pointer;padding:10px 0;font-weight:600}
+details[open] summary{border-bottom:1px solid var(--border);margin-bottom:.6em}
+details>div{padding-bottom:10px}
+.btns{display:flex;flex-wrap:wrap;gap:6px;margin:.6em 0}
+button{font:inherit;font-size:.88rem;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:6px;padding:4px 10px;cursor:pointer}
+button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.seq{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:1rem;line-height:2;word-break:break-all;letter-spacing:.06em}
+.seq span{cursor:pointer;border-radius:3px;padding:1px 0}
+.seq span.hit{background:var(--r-hit);font-weight:700}
+.seq span.center{outline:2px solid var(--bad)}
+.out{font-size:.92rem;color:var(--muted);min-height:1.6em}
+.win{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:1rem;letter-spacing:.06em;background:var(--code-bg);padding:6px 10px;border-radius:6px;overflow-x:auto;white-space:nowrap}
+.win b{color:var(--bad)}
+nav.pn{display:flex;justify-content:space-between;gap:12px;margin-top:3em;padding-top:1em;border-top:1px solid var(--border);font-size:.95rem}
+.src li{margin:.35em 0;font-size:.93rem}
+svg text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans",Arial,sans-serif}
+.s-stroke{stroke:var(--text)} .s-muted{fill:var(--muted)} .s-text{fill:var(--text)}
+.s-acc{fill:var(--accent)} .s-accs{stroke:var(--accent)} .s-bad{fill:var(--bad)} .s-bads{stroke:var(--bad)}
+.s-ok{fill:var(--ok)} .s-oks{stroke:var(--ok)} .s-surf{fill:var(--surface)} .s-soft{fill:var(--accent-soft)}
+.s-warn{fill:var(--warn)} .s-warns{stroke:var(--warn)} .s-border{stroke:var(--border)}
+
+/* Quick navigation: native links and details work offline without JavaScript. */
+.lecture-nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:8px;padding:10px 0;margin:0 0 16px;background:var(--bg);border-bottom:1px solid var(--border)}
+.lecture-nav>a{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:6px 10px;border:1px solid var(--border);border-radius:8px;background:var(--surface);text-decoration:none;font-size:.88rem}
+.lecture-switch{position:relative;flex:1;min-width:0;margin:0;padding:0;border-radius:8px}
+.lecture-switch>summary{min-height:44px;padding:8px 12px;font-size:.88rem}
+.lecture-switch[open]>summary{margin:0;border-bottom:0}
+.lecture-switch>.lecture-menu{position:absolute;right:0;top:calc(100% + 8px);width:min(40rem,calc(100vw - 32px));max-height:65vh;overflow-y:auto;overscroll-behavior:contain;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:10px;box-shadow:0 6px 18px var(--border)}
+.lecture-menu .lecture-group{margin:8px 8px 4px;font-size:.8rem;font-weight:700;color:var(--muted)}
+.lecture-menu ol{list-style:none;padding:0;margin:0 0 12px}
+.lecture-menu li{margin:0}
+.lecture-menu a,.lecture-menu .lecture-unavailable{display:block;padding:10px 12px;border-radius:6px;line-height:1.45;font-size:.9rem;text-decoration:none}
+.lecture-menu a:hover{background:var(--accent-soft)}
+.lecture-menu a[aria-current="page"]{background:var(--accent-soft);font-weight:700;border-left:3px solid var(--accent)}
+.lecture-menu .lecture-unavailable{color:var(--muted)}
+.lecture-nav a:focus-visible,.lecture-switch>summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+@media print{.lecture-nav{display:none}}
+
+</style>
+</head>
+<body>
+<main>
+
+<nav class="lecture-nav" aria-label="Chuyển nhanh giữa các bài giảng">
+<a href="index.html">Mục lục</a>
+<details class="lecture-switch"><summary>Chuyển bài · Bài 10</summary><div class="lecture-menu"><p class="lecture-group">Phần A — Sinh học nền</p><ol><li><a href="01-gene-to-protein.html">Bài 01: Từ gene đến protein</a></li><li><a href="02-enzymes-and-ptm.html">Bài 02: Enzyme và biến đổi sau dịch mã (PTM)</a></li><li><a href="03-cell-signaling-kinases.html">Bài 03: Tín hiệu tế bào và kinase</a></li><li><a href="04-cancer-hallmarks.html">Bài 04: Ung thư: hallmarks và kinase</a></li><li><a href="05-aging-sirtuins-senescence.html">Bài 05: Lão hóa: sirtuin và senescence</a></li><li><a href="06-biological-databases.html">Bài 06: Các cơ sở dữ liệu sinh học</a></li></ol><p class="lecture-group">Phần B — Khung bài toán và đánh giá</p><ol><li><a href="07-residue-level-framing.html">Bài 07: Đặt bài toán ở mức residue</a></li><li><a href="08-metrics-imbalanced.html">Bài 08: Chỉ số cho dữ liệu mất cân bằng</a></li><li><a href="09-leakage-and-homology.html">Bài 09: Rò rỉ dữ liệu và chuỗi đồng dạng</a></li></ol><p class="lecture-group">Phần C — Mô hình</p><ol><li><a href="10-neural-network-basics.html" aria-current="page">Bài 10: Mạng nơ-ron cơ bản</a></li><li><a href="11-cnn-to-mcnn.html">Bài 11: Từ CNN đến MCNN</a></li><li><a href="12-protein-encodings-plm.html">Bài 12: Mã hóa protein: one-hot, PSSM, PLM</a></li><li><a href="13-retrieval-and-beyond.html">Bài 13: Truy hồi và các hướng sau PLM</a></li><li><a href="14-xai-basics.html">Bài 14: Giải thích mô hình (XAI)</a></li><li><span class="lecture-unavailable">Bài 15: Đọc hiểu một bài báo tin sinh — chưa có</span></li></ol></div></details>
+<a href="09-leakage-and-homology.html" aria-label="Bài trước: Rò rỉ dữ liệu và chuỗi đồng dạng" title="Bài 09: Rò rỉ dữ liệu và chuỗi đồng dạng">←</a>
+<a href="11-cnn-to-mcnn.html" aria-label="Bài sau: Từ CNN đến MCNN" title="Bài 11: Từ CNN đến MCNN">→</a>
+</nav>
+
+
+<div class="crumb"><a href="index.html">Bài giảng nền</a> · Bài 10 / 15 · Phần C — Mô hình</div>
+<h1>Mạng nơ-ron cơ bản</h1>
+<div class="meta">
+  <span class="pill">≈ 35 phút</span>
+  <span class="pill">Dùng cho: cả hai hướng</span>
+  <span class="pill">Đọc trước: bài 07, 08</span>
+</div>
+
+<div class="box goal">
+  <span class="label">Đọc xong bài này, bạn sẽ</span>
+  <ul>
+    <li>Thấy một neuron chính là logistic regression, và ghép nhiều neuron thành mạng nhiều lớp (MLP) như thế nào.</li>
+    <li>Chọn đúng lớp đầu ra và hàm mất mát cho ba dạng bài toán: nhị phân, <strong>đa nhãn</strong> (ứng viên A) và đa lớp.</li>
+    <li>Hiểu gradient descent, learning rate, mini-batch, epoch và backpropagation ở mức đủ để đọc code và đọc bài báo.</li>
+    <li>Nhận ra overfitting và biết ba công cụ kiểm soát hay gặp: dropout, L2, dừng sớm theo validation.</li>
+    <li>Biết cách đưa mất cân bằng lớp vào hàm mất mát, và đọc được đoạn “siêu tham số” trong bài mCNN-ETC của GVHD.</li>
+  </ul>
+</div>
+
+<p class="out" style="font-size:.85rem">Nhãn độ tin cậy trong bài:
+<span class="tag t-ok">đã kiểm</span> đã mở nguồn gốc hoặc bản tóm tắt chính thức trong phiên 04/10/2026 ·
+<span class="tag t-dd">khảo sát sâu</span> lấy từ báo cáo khảo sát sâu, giữ nguyên nhãn của báo cáo ·
+<span class="tag t-unv">chưa kiểm chứng</span> kiến thức nền, chưa mở lại nguồn ·
+<span class="tag t-inf">suy luận</span> lập luận của bài giảng, không có nguồn trực tiếp.</p>
+
+
+<h2>1. Một neuron là logistic regression</h2>
+
+<p>Bài 07 đặt bài toán: mỗi mẫu là một residue, đầu vào là một cửa sổ quanh nó. Baseline đơn giản nhất cho dạng này là logistic regression, và một <strong>neuron</strong> nhân tạo làm đúng việc đó:</p>
+<ol>
+  <li>Nhận một vector số <span class="mono">x = (x<sub>1</sub>, …, x<sub>n</sub>)</span>.</li>
+  <li>Tính tổng có trọng số cộng hệ số tự do: <span class="mono">z = w<sub>1</sub>x<sub>1</sub> + … + w<sub>n</sub>x<sub>n</sub> + b</span>. Các <span class="mono">w</span> là <strong>trọng số</strong> (weight), <span class="mono">b</span> là <strong>bias</strong>. Giá trị <span class="mono">z</span> gọi là <strong>logit</strong>.</li>
+  <li>Cho <span class="mono">z</span> qua một <strong>hàm kích hoạt</strong> (activation function). Với bài toán có/không, hàm đó là sigmoid: <span class="mono">σ(z) = 1 / (1 + e<sup>−z</sup>)</span>, ép mọi số thực về khoảng (0, 1) để đọc như một xác suất.</li>
+</ol>
+
+<p>Đó đúng là công thức của logistic regression. “Huấn luyện” nghĩa là tìm các <span class="mono">w</span> và <span class="mono">b</span> sao cho xác suất dự đoán khớp nhãn nhất. Nếu nghĩ theo kiểu lập trình: mô hình là một hàm có tham số, dữ liệu là bộ test case, và huấn luyện là một vòng lặp tự chỉnh tham số cho hàm qua được nhiều test case nhất.</p>
+
+<div class="box">
+  <span class="label">Tính tay: neuron này có bao nhiêu tham số?</span>
+  <p>Cửa sổ ±10 có 21 residue. Mã hóa one-hot mỗi residue bằng 20 số (bỏ qua ký tự đệm), trải phẳng thành <span class="mono">21 × 20 = 420</span> đầu vào. Một neuron cần 420 trọng số và 1 bias, tức <strong>421 tham số</strong>. Cách mã hóa one-hot, PSSM và PLM nằm ở bài 12.</p>
+</div>
+
+<h2>2. Hàm kích hoạt và mạng nhiều lớp (MLP)</h2>
+
+<p>Một neuron chỉ vẽ được một ranh giới tuyến tính. Muốn học quan hệ phức tạp hơn, ta xếp nhiều neuron thành <strong>lớp</strong> (layer), rồi xếp nhiều lớp nối tiếp. Lớp ở giữa gọi là <strong>lớp ẩn</strong> (hidden layer). Mạng mà mọi neuron của lớp trước nối với mọi neuron của lớp sau gọi là <strong>mạng kết nối đầy đủ</strong> (fully connected), hay <strong>MLP</strong> (multilayer perceptron).</p>
+
+<figure>
+<svg viewBox="0 0 640 230" role="img" aria-labelledby="f1t">
+  <title id="f1t">Bên trái: một neuron. Bên phải: một MLP có một lớp ẩn</title>
+  <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="s-muted"/></marker></defs>
+  <text x="10" y="18" font-size="13" class="s-muted">Một neuron</text>
+  <g font-size="13">
+    <circle cx="40" cy="60" r="14" class="s-soft s-accs"/><text x="40" y="65" text-anchor="middle" class="s-text">x₁</text>
+    <circle cx="40" cy="110" r="14" class="s-soft s-accs"/><text x="40" y="115" text-anchor="middle" class="s-text">x₂</text>
+    <circle cx="40" cy="160" r="14" class="s-soft s-accs"/><text x="40" y="165" text-anchor="middle" class="s-text">xₙ</text>
+    <text x="40" y="140" text-anchor="middle" class="s-muted">⋮</text>
+    <line x1="55" y1="62" x2="143" y2="104" class="s-border" stroke-width="1.5"/>
+    <line x1="55" y1="110" x2="141" y2="110" class="s-border" stroke-width="1.5"/>
+    <line x1="55" y1="158" x2="143" y2="116" class="s-border" stroke-width="1.5"/>
+    <text x="92" y="72" class="s-muted" font-size="12">w₁</text><text x="95" y="104" class="s-muted" font-size="12">w₂</text><text x="92" y="157" class="s-muted" font-size="12">wₙ</text>
+    <circle cx="165" cy="110" r="24" class="s-surf s-stroke" stroke-width="1.5"/>
+    <text x="165" y="107" text-anchor="middle" class="s-text" font-size="13">Σ + b</text>
+    <text x="165" y="122" text-anchor="middle" class="s-muted" font-size="11">= z</text>
+    <line x1="190" y1="110" x2="222" y2="110" class="s-stroke" stroke-width="1.5" marker-end="url(#ah)"/>
+    <rect x="225" y="92" width="40" height="36" rx="6" class="s-surf s-accs" stroke-width="1.5"/>
+    <text x="245" y="115" text-anchor="middle" class="s-text">σ</text>
+    <line x1="266" y1="110" x2="292" y2="110" class="s-stroke" stroke-width="1.5" marker-end="url(#ah)"/>
+    <text x="298" y="115" class="s-text" font-weight="700">p</text>
+    <text x="150" y="200" text-anchor="middle" class="s-muted" font-size="12">p = σ(w·x + b): logistic regression</text>
+  </g>
+  <line x1="330" y1="20" x2="330" y2="210" class="s-border" stroke-width="1"/>
+  <text x="350" y="18" font-size="13" class="s-muted">MLP: đầu vào → lớp ẩn (ReLU) → đầu ra</text>
+  <g id="mlp"></g>
+</svg>
+<figcaption>Hình 1. Một neuron (trái) và một MLP nhỏ (phải). Mỗi đường nối là một trọng số. Mạng thật có hàng trăm đến hàng nghìn neuron mỗi lớp; mCNN-ETC của GVHD dùng 1.024 nút ở lớp kết nối đầy đủ <span class="tag t-ok">đã kiểm</span>.</figcaption>
+</figure>
+
+<h3>Vì sao cần hàm kích hoạt phi tuyến</h3>
+<p>Nếu bỏ hàm kích hoạt, hai lớp tuyến tính chồng nhau vẫn chỉ là một lớp tuyến tính: <span class="mono">W<sub>2</sub>(W<sub>1</sub>x + b<sub>1</sub>) + b<sub>2</sub> = W′x + b′</span>. Xếp bao nhiêu lớp cũng không học thêm được gì. Hàm phi tuyến giữa các lớp mới làm cho độ sâu có ý nghĩa.</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Hàm</th><th>Công thức</th><th>Dùng ở đâu</th></tr></thead>
+<tbody>
+<tr><td><strong>ReLU</strong></td><td class="mono">max(0, z)</td><td>Lớp ẩn, kể cả lớp tích chập. mCNN-ETC ghi đúng công thức này <span class="tag t-ok">đã kiểm</span></td></tr>
+<tr><td><strong>Sigmoid</strong></td><td class="mono">1 / (1 + e<sup>−z</sup>)</td><td>Đầu ra nhị phân và đa nhãn. Ở lớp ẩn của mạng sâu thì gradient dễ bị nhỏ dần, nên ít dùng <span class="tag t-unv">chưa kiểm chứng</span></td></tr>
+<tr><td><strong>Softmax</strong></td><td class="mono">p<sub>k</sub> = e<sup>z<sub>k</sub></sup> / Σ<sub>j</sub> e<sup>z<sub>j</sub></sup></td><td>Đầu ra đa lớp: K xác suất cộng lại bằng 1</td></tr>
+</tbody></table></div>
+
+<h3>Tính tay: MLP lớn nhanh đến đâu</h3>
+<p>Lấy 420 đầu vào one-hot ở mục 1, thêm một lớp ẩn 1.024 nút rồi một neuron đầu ra: <span class="mono">420 × 1.024 + 1.024 + 1.024 + 1 = 432.129</span> tham số. Giờ thay one-hot bằng embedding ProtT5 1.024 chiều mỗi residue <span class="tag t-ok">đã kiểm</span>: cửa sổ 21 residue trải phẳng thành 21.504 số, và riêng lớp ẩn đầu tiên đã cần <span class="mono">21.504 × 1.024 ≈ 22</span> triệu trọng số. Đây là một trong các lý do bài 11 chuyển sang tích chập.</p>
+
+<div class="box link">
+  <span class="label">Bằng chứng thật: phi tuyến có giúp không?</span>
+  <p>Trong bài msCNN-PLM-FAD của GVHD (2026), cùng một embedding ESM-2, logistic regression đạt MCC 0,4749 trên tập độc lập, còn một MLP nông đạt 0,6109; nhưng AUC thì ngược lại, 0,9666 so với 0,9473 <span class="tag t-ok">đã kiểm</span>. Hai chỉ số kể hai câu chuyện khác nhau, đúng như bài 08 cảnh báo. Bảng đầy đủ ở bài 11, mục 7.</p>
+</div>
+
+<h2>3. Đầu ra và hàm mất mát: chọn theo dạng nhãn</h2>
+
+<p><strong>Hàm mất mát</strong> (loss function) là một con số đo mô hình sai bao nhiêu trên một mẫu; huấn luyện là làm nó nhỏ đi. Cặp “lớp đầu ra + hàm mất mát” phải khớp với dạng nhãn của bài toán (bài 07):</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Dạng nhãn</th><th>Lớp đầu ra</th><th>Hàm mất mát</th><th>Ứng viên</th></tr></thead>
+<tbody>
+<tr><td><strong>Nhị phân</strong>: có/không</td><td>1 neuron sigmoid (hoặc 2 neuron softmax, tương đương)</td><td>Binary cross-entropy (BCE)</td><td>B (mỗi nhóm kinase), C, D, E, F</td></tr>
+<tr><td><strong>Đa nhãn</strong>: K câu hỏi có/không độc lập</td><td>K neuron sigmoid, mỗi neuron một nhãn</td><td>Tổng (hoặc trung bình) K BCE</td><td>A: 7 neuron cho SIRT1–7</td></tr>
+<tr><td><strong>Đa lớp</strong>: chọn đúng 1 trong K</td><td>K neuron softmax</td><td>Categorical cross-entropy</td><td>Xếp một protein vào đúng một trong K họ</td></tr>
+</tbody></table></div>
+
+<h3>Binary cross-entropy, đọc bằng ví dụ</h3>
+<p>Với nhãn thật <span class="mono">y ∈ {0, 1}</span> và xác suất dự đoán <span class="mono">p</span>: <span class="mono">BCE = −[y·ln p + (1 − y)·ln(1 − p)]</span>. Khi <span class="mono">y = 1</span> chỉ còn <span class="mono">−ln p</span>:</p>
+<ul>
+  <li><span class="mono">p = 0,9</span> → loss ≈ 0,105: đoán đúng và tự tin, phạt nhẹ.</li>
+  <li><span class="mono">p = 0,5</span> → loss ≈ 0,693: lưỡng lự.</li>
+  <li><span class="mono">p = 0,1</span> → loss ≈ 2,303: đoán sai mà tự tin, phạt nặng gấp hơn 20 lần.</li>
+</ul>
+<p>Hàm này không đếm đúng/sai mà phạt theo <em>mức tự tin</em>, nên nó trơn, lấy đạo hàm được, dùng được cho gradient descent ở mục 4.</p>
+
+<div class="box warn">
+  <span class="label">Bẫy: dùng softmax cho bài đa nhãn</span>
+  <p>Softmax ép 7 xác suất cộng lại bằng 1, tức là bắt mô hình chọn <em>một</em> isoform. Nhưng trong dữ liệu của A, một lysine có thể dương với nhiều SIRT cùng lúc: hàng <code>P05141_163</code> dương với SIRT3, 4, 5, 6 và 7 <span class="tag t-ok">đã kiểm</span>. Với softmax, tăng xác suất SIRT3 buộc phải giảm các isoform khác. Đa nhãn phải dùng 7 sigmoid độc lập.</p>
+</div>
+
+<div class="box warn">
+  <span class="label">Bẫy nhỏ nhưng thật: thứ tự cột nhãn</span>
+  <p>File nhãn của A xếp 7 cột theo thứ tự SIRT5, SIRT4, SIRT1, SIRT7, SIRT2, SIRT6, SIRT3, <strong>không theo số</strong> <span class="tag t-ok">đã kiểm</span>. Hàng <code>P05141_163</code> trong file là <code>1,1,0,1,0,1,1</code> <span class="tag t-dd">khảo sát sâu · tự đo</span>. Đọc theo thứ tự cột thì nó dương với SIRT5, 4, 7, 6, 3; đọc nhầm theo SIRT1–7 thì thành SIRT1, 2, 4, 6, 7. Neuron thứ i học cột thứ i, nên gán tên sai ở bước báo cáo hay trên web app sẽ đổi tên mọi kết quả mà không có lỗi nào báo ra.</p>
+</div>
+
+<p>Hai ghi chú khi đọc code. Thứ nhất, softmax hai lớp và sigmoid một đầu ra là cùng một mô hình: <span class="mono">softmax(z<sub>1</sub>, z<sub>2</sub>)<sub>2</sub> = σ(z<sub>2</sub> − z<sub>1</sub>)</span>. Nhiều bài trong nhóm dùng dạng hai neuron softmax cho bài nhị phân, ví dụ msCNN-PLM-FAD ghi “a Softmax function is used for classification” <span class="tag t-ok">đã kiểm</span>. Thứ hai, trong PyTorch nên dùng <code>BCEWithLogitsLoss</code>, nhận thẳng logit <span class="mono">z</span>. Tài liệu PyTorch giải thích lớp này gộp sigmoid với BCE nên ổn định số học hơn so với tự gọi sigmoid rồi BCE <span class="tag t-ok">đã kiểm</span>.</p>
+
+<h2>4. Học là đi xuống dốc: gradient descent</h2>
+
+<p>Hãy coi loss là độ cao của một địa hình, mỗi tham số là một trục tọa độ. <strong>Gradient</strong> (đạo hàm theo từng tham số) chỉ hướng dốc lên nhanh nhất. <strong>Gradient descent</strong> bước ngược hướng đó:</p>
+<p class="mono" style="text-align:center">w ← w − η · ∂L/∂w</p>
+<p><span class="mono">η</span> là <strong>learning rate</strong>: độ dài mỗi bước. Quá nhỏ thì đi rất chậm; quá lớn thì bước qua đáy, nhảy qua lại, thậm chí văng ra xa. Thử bên dưới với một hàm loss một biến dựng sẵn <span class="mono">L(w) = (w − 3)<sup>2</sup> + 0,5</span>, đáy ở <span class="mono">w = 3</span>.</p>
+
+<div class="btns" id="lrBtns">
+  <button data-lr="0.05" aria-pressed="false">η = 0,05</button>
+  <button data-lr="0.3" aria-pressed="true">η = 0,3</button>
+  <button data-lr="0.9" aria-pressed="false">η = 0,9</button>
+  <button data-lr="1.05" aria-pressed="false">η = 1,05</button>
+</div>
+<div class="btns" id="stepBtns">
+  <button data-act="1" aria-pressed="false">Chạy 1 bước</button>
+  <button data-act="10" aria-pressed="false">Chạy 10 bước</button>
+  <button data-act="reset" aria-pressed="false">Đặt lại</button>
+</div>
+<figure style="margin-top:.4em">
+<svg viewBox="0 0 640 250" role="img" aria-labelledby="f2t">
+  <title id="f2t">Đường loss một biến và các bước gradient descent</title>
+  <g id="gd"></g>
+</svg>
+<figcaption>Hình 2. Mỗi chấm là một bước, bắt đầu từ <span class="mono">w = −1</span>. Với hàm này, mỗi bước nhân khoảng cách tới đáy với <span class="mono">(1 − 2η)</span>, nên hội tụ khi <span class="mono">η &lt; 1</span> và phân kỳ khi <span class="mono">η &gt; 1</span>. Ngưỡng 1 chỉ đúng cho hàm đồ chơi này; loss thật có hàng triệu chiều và không phải parabol.</figcaption>
+</figure>
+<p class="out" id="gdOut"></p>
+
+<h3>Mini-batch, epoch, và trình tối ưu</h3>
+<ul>
+  <li><strong>Mini-batch</strong>: mỗi bước tính gradient trên một nhóm nhỏ mẫu thay vì toàn bộ dữ liệu. Số mẫu mỗi nhóm là <strong>batch size</strong>. Cách này nhanh hơn, và nhiễu của từng batch còn giúp thoát khỏi chỗ trũng xấu <span class="tag t-unv">chưa kiểm chứng</span>.</li>
+  <li><strong>Epoch</strong>: một lượt đi qua toàn bộ tập train. Huấn luyện thường kéo dài nhiều epoch.</li>
+  <li><strong>Adam</strong>: biến thể của gradient descent mà mỗi tham số tự điều chỉnh độ dài bước dựa trên ước lượng các moment của gradient (Kingma &amp; Ba 2014) <span class="tag t-ok">đã kiểm</span>. Đây là lựa chọn mặc định phổ biến <span class="tag t-unv">chưa kiểm chứng</span>.</li>
+</ul>
+<p>Ví dụ thật: mCNN-ETC dùng learning rate 0,001 và batch size 128 <span class="tag t-ok">đã kiểm</span>.</p>
+
+<h2>5. Backpropagation: quy tắc chuỗi, framework tự tính</h2>
+
+<p>Mạng là một chuỗi hàm lồng nhau, nên đạo hàm của loss theo một trọng số ở sâu bên trong tính được bằng <strong>quy tắc chuỗi</strong> (chain rule), đi ngược từ đầu ra về đầu vào. Thuật toán làm việc đó một cách hiệu quả gọi là <strong>backpropagation</strong>.</p>
+<p>Với một neuron sigmoid và BCE, kết quả gọn đến bất ngờ: <span class="mono">∂L/∂z = p − y</span>, nên <span class="mono">∂L/∂w<sub>i</sub> = (p − y)·x<sub>i</sub></span>. Dự đoán lệch nhãn càng nhiều thì trọng số càng bị chỉnh mạnh, và chỉ những đầu vào khác 0 mới bị chỉnh.</p>
+<p>Thực tế bạn <strong>không viết backpropagation bằng tay</strong>: PyTorch và TensorFlow ghi lại các phép tính lúc chạy xuôi rồi tự tính gradient <span class="tag t-unv">chưa kiểm chứng</span>. Việc của bạn là chọn kiến trúc, hàm mất mát và cách đánh giá cho đúng.</p>
+
+<h2>6. Overfitting và ba công cụ kiểm soát</h2>
+
+<p><strong>Overfitting</strong> là khi mô hình học thuộc chi tiết riêng của tập train, kể cả nhiễu, thay vì quy luật chung. Dấu hiệu: loss trên train tiếp tục giảm nhưng loss trên validation bắt đầu tăng.</p>
+
+<figure>
+<svg viewBox="0 0 640 220" role="img" aria-labelledby="f3t">
+  <title id="f3t">Loss train giảm đều, loss validation giảm rồi tăng; điểm dừng sớm ở đáy của validation</title>
+  <line x1="60" y1="20" x2="60" y2="180" class="s-stroke" stroke-width="1.2"/>
+  <line x1="60" y1="180" x2="610" y2="180" class="s-stroke" stroke-width="1.2"/>
+  <text x="18" y="100" font-size="12" class="s-muted" transform="rotate(-90 18 100)" text-anchor="middle">loss</text>
+  <text x="335" y="205" font-size="12" class="s-muted" text-anchor="middle">epoch</text>
+  <path d="M60,40 C150,110 250,145 350,158 C450,168 530,172 610,174" fill="none" class="s-accs" stroke-width="2.5"/>
+  <path d="M60,48 C150,112 230,135 290,136 C350,137 450,112 610,72" fill="none" class="s-bads" stroke-width="2.5"/>
+  <line x1="290" y1="30" x2="290" y2="180" class="s-oks" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="296" y="42" font-size="12" class="s-ok" font-weight="700">dừng ở đây</text>
+  <text x="296" y="57" font-size="11.5" class="s-muted">(đáy của validation)</text>
+  <text x="560" y="166" font-size="12.5" class="s-acc" font-weight="700" text-anchor="end">train</text>
+  <text x="560" y="72" font-size="12.5" class="s-bad" font-weight="700" text-anchor="end">validation</text>
+  <text x="450" y="120" font-size="11.5" class="s-muted" text-anchor="middle">khoảng cách giãn ra = overfitting</text>
+</svg>
+<figcaption>Hình 3. Đường cong minh họa tự vẽ, không phải số liệu thật.</figcaption>
+</figure>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Công cụ</th><th>Làm gì</th><th>Ví dụ thật</th></tr></thead>
+<tbody>
+<tr><td><strong>Dropout</strong></td><td>Trong lúc huấn luyện, tắt ngẫu nhiên một tỉ lệ neuron ở mỗi bước, để mạng không dựa vào vài neuron cụ thể. Lúc dự đoán dùng toàn bộ mạng (Srivastava và cộng sự 2014) <span class="tag t-ok">đã kiểm</span></td><td>mCNN-ETC: 30% <span class="tag t-ok">đã kiểm</span>. msCNN-PLM-FAD: 0,7 <span class="tag t-ok">đã kiểm</span>. RTK_RAG (nhóm Prof Ou) thử từ 0 đến 0,9 <span class="tag t-ok">đã kiểm</span></td></tr>
+<tr><td><strong>L2</strong> (weight decay)</td><td>Cộng thêm <span class="mono">λ·Σw<sup>2</sup></span> vào loss, phạt trọng số lớn, đẩy mô hình về phía đơn giản hơn</td><td>mCNN-ETC: <span class="mono">λ = 0,0005</span> <span class="tag t-ok">đã kiểm</span>. msCNN-PLM-FAD: L2 ở lớp đầu ra <span class="tag t-ok">đã kiểm</span></td></tr>
+<tr><td><strong>Dừng sớm</strong> (early stopping)</td><td>Theo dõi loss (hoặc MCC) trên <em>validation</em> sau mỗi epoch; dừng và giữ trọng số tốt nhất khi nó không cải thiện thêm sau vài epoch</td><td>Hình 3</td></tr>
+</tbody></table></div>
+
+<p>Ba bài trong bảng chọn dropout rất khác nhau, từ 0,3 đến 0,9. Không có “giá trị đúng” chung; dropout là một <strong>siêu tham số</strong> (hyperparameter), tức thứ bạn chọn chứ mô hình không tự học, và phụ thuộc kích thước dữ liệu, kích thước mô hình, loại đầu vào <span class="tag t-inf">suy luận</span>.</p>
+
+<div class="box warn">
+  <span class="label">Nhắc lại từ bài 09: chọn bằng gì?</span>
+  <p>Mọi lựa chọn ở mục này (dropout bao nhiêu, λ bao nhiêu, dừng ở epoch nào) đều phải làm trên <strong>validation</strong>. Nhìn kết quả test để chọn epoch hay dropout là đường rò rỉ thứ ba trong bài 09: test lúc đó đã thành validation, và con số báo cáo sẽ lạc quan.</p>
+</div>
+
+<h2>7. Mất cân bằng lớp trong lúc huấn luyện</h2>
+
+<p>Tập train ATP-549 mà RTK_RAG dùng có 8.502 residue gắn ATP và 205.035 residue không gắn <span class="tag t-ok">đã kiểm</span>, tức khoảng 1 dương trên 24 âm. Khi lấy trung bình loss trên một batch, phần âm chiếm gần như toàn bộ. Mô hình có thể giảm loss khá tốt chỉ bằng cách đẩy mọi xác suất về gần 0, và recall trên lớp dương sẽ thấp <span class="tag t-inf">suy luận</span>.</p>
+
+<h3>Ba cách thường gặp</h3>
+<ol>
+  <li><strong>Trọng số lớp</strong> (class weight). Nhân loss của mẫu dương với một hệ số. Tài liệu PyTorch cho ví dụ: một lớp có 100 mẫu dương và 300 mẫu âm thì <code>pos_weight</code> nên bằng 300 / 100 = 3, và loss khi đó hành xử như thể có 300 mẫu dương; với bài đa nhãn, mỗi nhãn có một <code>pos_weight</code> riêng <span class="tag t-ok">đã kiểm</span>.</li>
+  <li><strong>Lấy mẫu lại</strong> (resampling): nhân bản hoặc sinh thêm mẫu dương (oversampling, SMOTE), hoặc bớt mẫu âm (undersampling). Bài gốc của ứng viên A dùng SMOTE/oversampling <span class="tag t-dd">khảo sát sâu · toàn văn</span>.</li>
+  <li><strong>Chỉ chỉnh ngưỡng</strong> trên validation (bài 08). Nên luôn làm, kể cả khi đã dùng hai cách trên.</li>
+</ol>
+
+<div class="box link">
+  <span class="label">Gắn với ứng viên A: mỗi isoform một trọng số</span>
+  <p>Đếm trên toàn bộ 6.801 dòng của A: SIRT1 chỉ có 176 dương (2,6%), còn SIRT5 có 2.614 dương (38,4%) <span class="tag t-ok">đã kiểm</span>. Theo cách tính của PyTorch, <code>pos_weight</code> của SIRT1 vào khoảng 6.625 / 176 ≈ 37,6, của SIRT5 khoảng 4.187 / 2.614 ≈ 1,6. Một con số chung cho cả 7 nhãn sẽ hoặc bỏ rơi SIRT1, hoặc đẩy SIRT5 thành đoán dương tràn lan. Khi làm thật, tính trọng số trên phần train của từng fold, không tính trên toàn bộ dữ liệu.</p>
+  <p>Khảo sát sâu đề xuất thay bảy mô hình rời của bài gốc bằng <strong>một</strong> mạng đa nhãn dùng chung phần trích đặc trưng <span class="tag t-dd">khảo sát sâu · đề xuất</span>. Bài này cho bạn đủ khái niệm để hiểu đề xuất đó: một thân mạng chung, 7 neuron sigmoid, tổng 7 BCE có <code>pos_weight</code> riêng.</p>
+</div>
+
+<div class="box warn">
+  <span class="label">Hai bẫy khi cân bằng lớp</span>
+  <ul>
+    <li><strong>Chỉ cân bằng trên train.</strong> Validation và test phải giữ tỉ lệ thật, nếu không MCC, precision và AUPRC sẽ không còn phản ánh thực tế (bài 07, 08).</li>
+    <li><strong>Xác suất không còn “thật”.</strong> Sau khi đặt trọng số lớp, đầu ra sigmoid bị đẩy lên so với tỉ lệ dương thật, nên ngưỡng 0,5 không còn có ý nghĩa đặc biệt. Chọn ngưỡng trên validation <span class="tag t-unv">chưa kiểm chứng</span>.</li>
+  </ul>
+</div>
+
+<h2>8. Đọc đoạn “siêu tham số” trong một bài báo</h2>
+
+<p>Đến đây bạn đã đọc được gần hết đoạn mô tả huấn luyện của mCNN-ETC (bài của GVHD). Bảng dưới ánh xạ từng con số trong bài vào khái niệm tương ứng <span class="tag t-ok">đã kiểm</span>:</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Trong bài mCNN-ETC</th><th>Giá trị</th><th>Khái niệm</th></tr></thead>
+<tbody>
+<tr><td>Hàm kích hoạt</td><td>ReLU, <span class="mono">σ(x) = max(0, x)</span></td><td>Mục 2</td></tr>
+<tr><td>Number of hidden nodes</td><td>1.024</td><td>Lớp kết nối đầy đủ, mục 2</td></tr>
+<tr><td>Coefficient of regularization (λ)</td><td>0,0005</td><td>L2, mục 6</td></tr>
+<tr><td>Dropout rate</td><td>30%</td><td>Mục 6</td></tr>
+<tr><td>Learning rate</td><td>0,001</td><td>Mục 4</td></tr>
+<tr><td>Batch size</td><td>128</td><td>Mục 4</td></tr>
+<tr><td>Window sizes</td><td>đã thử 8, 12, …, 36</td><td>Bài 11</td></tr>
+<tr><td>Number of filters</td><td>256</td><td>Bài 11</td></tr>
+</tbody></table></div>
+
+<p>Hai dòng cuối là phần riêng của CNN: kích thước cửa sổ quét và số bộ lọc. Đó là nội dung bài 11.</p>
+
+<h2>Bảng thuật ngữ của bài</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>Thuật ngữ</th><th>Nghĩa ngắn</th></tr></thead>
+<tbody>
+<tr><td>Neuron; trọng số (weight), bias</td><td>Tổng có trọng số của đầu vào cộng bias, qua một hàm kích hoạt; w và b là tham số học được</td></tr>
+<tr><td>Logit</td><td>Giá trị <span class="mono">z</span> trước khi qua sigmoid/softmax</td></tr>
+<tr><td>MLP / lớp kết nối đầy đủ (fully connected, dense)</td><td>Mạng mà mọi neuron lớp trước nối với mọi neuron lớp sau</td></tr>
+<tr><td>Hàm mất mát (loss)</td><td>Con số đo mức sai; huấn luyện là làm nó nhỏ đi</td></tr>
+<tr><td>Binary cross-entropy (BCE)</td><td>Loss cho nhãn có/không; phạt nặng khi sai mà tự tin</td></tr>
+<tr><td>Đa nhãn (multi-label)</td><td>Nhiều câu hỏi có/không độc lập cho một mẫu; dùng nhiều sigmoid</td></tr>
+<tr><td>Gradient descent; learning rate</td><td>Cập nhật tham số ngược hướng gradient của loss; độ dài mỗi bước</td></tr>
+<tr><td>Mini-batch, batch size, epoch</td><td>Nhóm mẫu mỗi bước; số mẫu mỗi nhóm; một lượt qua toàn bộ train</td></tr>
+<tr><td>Backpropagation</td><td>Tính gradient bằng quy tắc chuỗi, đi ngược từ đầu ra</td></tr>
+<tr><td>Overfitting</td><td>Học thuộc train, kém trên dữ liệu mới</td></tr>
+<tr><td>Dropout; L2; dừng sớm</td><td>Tắt ngẫu nhiên neuron lúc huấn luyện; phạt bình phương trọng số; dừng khi validation thôi cải thiện</td></tr>
+<tr><td>Trọng số lớp (class weight, <code>pos_weight</code>)</td><td>Hệ số nhân loss của lớp hiếm</td></tr>
+<tr><td>Siêu tham số (hyperparameter)</td><td>Thứ người làm chọn, mô hình không tự học: learning rate, dropout, số nút…</td></tr>
+</tbody></table></div>
+
+<h2>Câu hỏi tự kiểm</h2>
+
+<details><summary>1. Vì sao ứng viên A dùng 7 neuron sigmoid chứ không dùng softmax 7 lớp?</summary>
+<div>Vì đây là bài đa nhãn: một lysine có thể là cơ chất của nhiều SIRT cùng lúc (ví dụ P05141_163 dương với 5 isoform). Softmax ép 7 xác suất cộng bằng 1, tức là ép chọn một isoform. Sigmoid độc lập cho phép trả lời “có” với nhiều isoform.</div></details>
+
+<details><summary>2. Nhãn thật là 1. Mô hình A cho p = 0,9, mô hình B cho p = 0,1. BCE của mỗi mô hình là bao nhiêu, và điều đó nói gì?</summary>
+<div>A: −ln 0,9 ≈ 0,105. B: −ln 0,1 ≈ 2,303, gấp khoảng 22 lần. BCE phạt rất nặng việc sai mà tự tin, chứ không chỉ đếm đúng/sai.</div></details>
+
+<details><summary>3. Bạn thấy loss trên train nhảy lên xuống mạnh và có lúc tăng vọt ngay từ những epoch đầu. Nghi gì trước?</summary>
+<div>Learning rate quá lớn: mỗi bước nhảy qua đáy (như η = 0,9 hoặc 1,05 ở Hình 2). Thử giảm learning rate. Nếu loss train giảm đều mà loss validation tăng thì đó lại là overfitting, một vấn đề khác.</div></details>
+
+<details><summary>4. Một bạn thử dropout 0; 0,1; …; 0,9, chọn giá trị cho MCC cao nhất trên tập test, rồi báo MCC đó. Sai ở đâu?</summary>
+<div>Dùng nhãn test để chọn siêu tham số là rò rỉ đường thứ ba (bài 09). Phải chọn dropout trên validation (hoặc cross-validation trong phần train), rồi mới đánh giá test đúng một lần.</div></details>
+
+<details><summary>5. Tập train có 100 dương và 2.400 âm. pos_weight nên đặt khoảng bao nhiêu? Có nên cân bằng luôn tập validation không?</summary>
+<div>Khoảng 2.400 / 100 = 24. Không cân bằng validation hay test: hai tập này phải giữ tỉ lệ thật để MCC, precision, AUPRC phản ánh đúng thực tế, và ngưỡng được chọn trên validation có tỉ lệ thật.</div></details>
+
+<h2>Nguồn</h2>
+<ul class="src">
+  <li>Ho QT, Le NQK, Ou YY (2022). mCNN-ETC: identifying electron transporters and their functional families by using multiple windows scanning techniques in convolutional neural networks with evolutionary information of protein sequences. <em>Brief Bioinform</em> 23(1):bbab352. doi:10.1093/bib/bbab352. Toàn văn PDF trong repo: <a href="../resources/papers/ho-quang-thai/bbab352.pdf">advisor/Prof Ho/bbab352.pdf</a> <span class="tag t-ok">đã kiểm</span>: ReLU, 1.024 nút ẩn, λ, dropout, learning rate, batch size.</li>
+  <li>Nguyen DQ, Nguyen VT, Ly CH, Ou YY, Ho QT (2026). msCNN-PLM-FAD: Enhanced predicting FAD binding sites by using protein language representation combined with multiple separable windows convolutional neural networks. <em>Anal Biochem</em> 713:116092. doi:10.1016/j.ab.2026.116092. Toàn văn PDF trong repo: <a href="../resources/papers/ho-quang-thai/1-s2.0-S0003269726000485-main.pdf">advisor/Prof Ho/…S0003269726000485…pdf</a> <span class="tag t-ok">đã kiểm</span>: Bảng 9, softmax ở đầu ra, dropout 0,7, L2.</li>
+  <li>Wei SS, Jhang WE, Liu YC, Chuang CC, Ou YY (2025). RTK_RAG. <em>J Chem Inf Model</em> 65(13):7277–7284. doi:10.1021/acs.jcim.5c00766 (nhóm Prof Ou, không phải GVHD). Toàn văn PDF: <a href="../resources/papers/yu-yen-ou/ci5c00766.pdf">advisor/Prof Ou/ci5c00766.pdf</a> <span class="tag t-ok">đã kiểm</span>: Bảng 1 (ATP-549), thí nghiệm dropout 0–0,9.</li>
+  <li>Srivastava N, Hinton G, Krizhevsky A, Sutskever I, Salakhutdinov R (2014). Dropout: a simple way to prevent neural networks from overfitting. <em>JMLR</em> 15:1929–1958. <a href="https://jmlr.org/papers/v15/srivastava14a.html">jmlr.org</a> <span class="tag t-ok">đã kiểm</span> (qua tóm tắt)</li>
+  <li>Kingma DP, Ba J (2014). Adam: a method for stochastic optimization. <a href="https://arxiv.org/abs/1412.6980">arXiv:1412.6980</a> <span class="tag t-ok">đã kiểm</span> (qua tóm tắt)</li>
+  <li>PyTorch documentation, <code>torch.nn.BCEWithLogitsLoss</code>: gộp sigmoid với BCE, <code>pos_weight</code> và ví dụ 100/300. <a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.BCEWithLogitsLoss.html">docs.pytorch.org</a> <span class="tag t-ok">đã kiểm</span></li>
+  <li>Dữ liệu ứng viên A (thứ tự cột, số dương theo isoform, hàng P05141_163): tự đếm ngày 04/10/2026 trên <a href="https://raw.githubusercontent.com/nashirag/ML-Hybrid_Ensemble_Method/HEAD/SIRT1-7_Investigation/ML_Components/All_Sirts_Feature_Y_labels.csv">file nhãn công khai</a> <span class="tag t-ok">đã kiểm</span>. SMOTE trong bài gốc và đề xuất mô hình đa nhãn: <a href="../archive/surveys/aging-cancer/aging-cancer-deep-dive.md">khảo sát sâu aging và cancer</a>, mục 3, giữ nguyên nhãn của báo cáo.</li>
+  <li>Giáo trình nền cho mục 1–6: Goodfellow I, Bengio Y, Courville A (2016). <em>Deep Learning</em>. MIT Press, <a href="https://www.deeplearningbook.org/">deeplearningbook.org</a>, chương 6–8; Zhang A và cộng sự, <em>Dive into Deep Learning</em>, <a href="https://d2l.ai/">d2l.ai</a> <span class="tag t-unv">chưa kiểm chứng</span> (chưa mở lại trong phiên này).</li>
+  <li>Đường rò rỉ khi chọn mô hình: <a href="09-leakage-and-homology.html">bài 09</a>, mục 5.</li>
+</ul>
+
+<nav class="pn">
+  <a href="09-leakage-and-homology.html">← Bài 09: Rò rỉ dữ liệu và chuỗi đồng dạng</a>
+  <a href="11-cnn-to-mcnn.html">Bài 11: Từ CNN đến MCNN →</a>
+</nav>
+
+</main>
+<script>
+(function(){
+var ns = "http://www.w3.org/2000/svg";
+function el(tag, attrs, parent, text){
+var e = document.createElementNS(ns, tag);
+for (var k in attrs) e.setAttribute(k, attrs[k]);
+if (text !== undefined) e.textContent = text;
+if (parent) parent.appendChild(e);
+return e;
+}
+
+var mlp = document.getElementById("mlp");
+var cols = [{x: 380, n: 4, label: "đầu vào"}, {x: 480, n: 5, label: "lớp ẩn"}, {x: 580, n: 1, label: "đầu ra"}];
+function ys(n){ var out = [], top = 115 - (n - 1) * 17; for (var i = 0; i < n; i++) out.push(top + i * 34); return out; }
+for (var c = 0; c < cols.length - 1; c++){
+var a = ys(cols[c].n), b = ys(cols[c+1].n);
+a.forEach(function(ya){ b.forEach(function(yb){ el("line", {x1: cols[c].x, y1: ya, x2: cols[c+1].x, y2: yb, "class": "s-border", "stroke-width": 1}, mlp); }); });
+}
+cols.forEach(function(col, ci){
+ys(col.n).forEach(function(y){
+el("circle", {cx: col.x, cy: y, r: 11, "class": ci === 0 ? "s-soft s-accs" : (ci === 2 ? "s-surf s-bads" : "s-surf s-stroke"), "stroke-width": 1.4}, mlp);
+});
+el("text", {x: col.x, y: 205, "text-anchor": "middle", "font-size": 12, "class": "s-muted"}, mlp, col.label);
+});
+el("text", {x: 600, y: 120, "font-size": 12, "class": "s-text", "font-weight": 700}, mlp, "p");
+
+var g = document.getElementById("gd"), out = document.getElementById("gdOut");
+var X0 = 60, X1 = 620, Y0 = 20, Y1 = 220, WMIN = -2, WMAX = 8, LMAX = 26;
+var lr = 0.3, w0 = -1, path = [w0];
+function L(w){ return (w - 3) * (w - 3) + 0.5; }
+function sx(w){ return X0 + (w - WMIN) / (WMAX - WMIN) * (X1 - X0); }
+function sy(l){ return Y1 - Math.min(l, LMAX) / LMAX * (Y1 - Y0); }
+function fmt(v){ return (Math.round(v * 100) / 100).toString().replace(".", ","); }
+function draw(){
+while (g.firstChild) g.removeChild(g.firstChild);
+el("line", {x1: X0, y1: Y1, x2: X1, y2: Y1, "class": "s-stroke", "stroke-width": 1.2}, g);
+el("line", {x1: X0, y1: Y0, x2: X0, y2: Y1, "class": "s-stroke", "stroke-width": 1.2}, g);
+for (var t = WMIN; t <= WMAX; t += 2){
+el("text", {x: sx(t), y: Y1 + 16, "text-anchor": "middle", "font-size": 11, "class": "s-muted"}, g, String(t));
+}
+el("text", {x: X1, y: Y1 - 6, "text-anchor": "end", "font-size": 12, "class": "s-muted"}, g, "w");
+el("text", {x: X0 + 6, y: Y0 + 10, "font-size": 12, "class": "s-muted"}, g, "L(w)");
+var d = "";
+for (var i = 0; i <= 100; i++){
+var w = WMIN + (WMAX - WMIN) * i / 100;
+d += (i ? " L" : "M") + sx(w).toFixed(1) + "," + sy(L(w)).toFixed(1);
+}
+el("path", {d: d, fill: "none", "class": "s-accs", "stroke-width": 2}, g);
+el("line", {x1: sx(3), y1: sy(0.5), x2: sx(3), y2: Y1, "class": "s-oks", "stroke-width": 1, "stroke-dasharray": "3 3"}, g);
+for (var j = 1; j < path.length; j++){
+var a = path[j-1], b = path[j];
+if (Math.abs(a) > 50 || Math.abs(b) > 50) break;
+el("line", {x1: sx(Math.max(WMIN, Math.min(WMAX, a))), y1: sy(L(a)), x2: sx(Math.max(WMIN, Math.min(WMAX, b))), y2: sy(L(b)), "class": "s-bads", "stroke-width": 1.2, "stroke-dasharray": "4 3"}, g);
+}
+path.forEach(function(w, k){
+if (w < WMIN || w > WMAX) return;
+el("circle", {cx: sx(w), cy: sy(L(w)), r: k === path.length - 1 ? 6 : 4, "class": k === path.length - 1 ? "s-bad" : "s-warn"}, g);
+});
+var last = path[path.length - 1], steps = path.length - 1;
+var msg = "Bước " + steps + ": w = " + fmt(last) + ", L(w) = " + fmt(L(last)) + ".";
+if (last < WMIN || last > WMAX) msg += " Điểm đã văng ra ngoài khung: loss tăng dần, gradient descent phân kỳ.";
+else if (steps > 0 && Math.abs(last - 3) < 0.05) msg += " Đã gần như tới đáy.";
+else if (lr > 0.5 && steps > 0) msg += " Mỗi bước nhảy qua đáy sang phía bên kia.";
+else if (lr < 0.1 && steps > 0) msg += " Đi đúng hướng nhưng rất chậm.";
+out.textContent = msg;
+}
+document.getElementById("lrBtns").addEventListener("click", function(e){
+var b = e.target.closest("button"); if (!b) return;
+lr = parseFloat(b.getAttribute("data-lr"));
+this.querySelectorAll("button").forEach(function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+path = [w0]; draw();
+});
+document.getElementById("stepBtns").addEventListener("click", function(e){
+var b = e.target.closest("button"); if (!b) return;
+var act = b.getAttribute("data-act");
+if (act === "reset"){ path = [w0]; }
+else {
+var n = parseInt(act, 10);
+for (var i = 0; i < n; i++){
+var w = path[path.length - 1];
+if (Math.abs(w) > 1e6) break;
+path.push(w - lr * 2 * (w - 3));
+}
+}
+draw();
+});
+draw();
+})();
+</script>
+</body>
+</html>

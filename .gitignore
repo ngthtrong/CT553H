@@ -1,10 +1,12 @@
-# Dữ liệu cá nhân: không bao giờ đưa lên git. Sinh lại bằng ml/<đề tài>/preprocessing/clean_data.py
-data/*/raw/
-data/*/interim/
-data/*/processed/
+# Dữ liệu: nằm trong thư mục từng đề tài, KHÔNG BAO GIỜ đưa lên git.
+# Sinh lại bằng script trong code/ hoặc research/ của đề tài đó.
+topics/*/data/
+archive/topics/*/data/
+data/
 
 # Mô hình đã huấn luyện, kết quả nặng
-ml/*/models/
+topics/*/models/
+archive/topics/*/models/
 *.pkl
 *.joblib
 *.pt

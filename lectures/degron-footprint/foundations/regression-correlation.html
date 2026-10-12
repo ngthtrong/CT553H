@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bài nền 4 · Hồi quy, Pearson và bất biến hoán vị</title>
+<meta name="hub-page" content="f-reg">
+<meta name="description" content="Vì sao đây là bài hồi quy, Pearson và Spearman nói gì, và vì sao mô hình tốt nhất hiện có không đọc được thứ tự residue.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;650&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../assets/hub.css">
+</head>
+<body>
+<a class="skip" href="#noidung">Bỏ qua điều hướng</a>
+<div class="page">
+
+<nav class="topbar" aria-label="Thanh điều hướng">
+  <a class="home" href="../index.html">← Hub học đề tài</a>
+  <span class="spacer"></span>
+</nav>
+
+<div class="crumb">
+  <a href="../index.html">Hub</a> <span class="sep">/</span>
+  <span>Chặng 3 · Bài toán tính toán</span> <span class="sep">/</span>
+  <span>Bài nền 4</span>
+</div>
+
+<div class="eyebrow">Bài nền 4 · khoảng 35 phút · trang quan trọng nhất của chặng 3</div>
+<h1>Con số 1,000000, và vì sao nó làm nên cả đề tài</h1>
+<p class="lede">Đảo ngẫu nhiên thứ tự các acid amin trong một đoạn peptide, rồi đưa lại vào mô hình tốt nhất hiện có. Điểm không đổi. Không phải gần như không đổi — <em>không đổi</em>. Bài này giải thích vì sao, và vì sao đó không phải lỗi phần mềm.</p>
+
+<div class="gate two">
+  <div class="g">
+    <h4>Cần biết trước</h4>
+    <ul>
+      <li><a href="measuring-degrons.html">Bài nền 2</a>: nhãn là số thực liên tục.</li>
+      <li>Phép tích chập một chiều: <a href="../../11-cnn-to-mcnn.html">bài giảng 11</a> (30 phút) — nếu chưa biết Conv1D thì nên đọc trước mục 4.</li>
+    </ul>
+  </div>
+  <div class="g">
+    <h4>Học xong sẽ hiểu được</h4>
+    <ul>
+      <li>Vì sao bài toán này là hồi quy, và vì sao điều đó là may mắn.</li>
+      <li>Pearson và Spearman đo gì, và 0,87 thật sự nghĩa là gì.</li>
+      <li>“Bất biến hoán vị” nghĩa là gì, và <strong>tự chứng minh được</strong> vì sao kiến trúc kia có tính chất đó.</li>
+      <li>Vì sao kênh nội không biểu diễn motif có thứ tự vẫn đạt 0,8239, còn PAP đầy đủ đạt 0,8690.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="noidung">1. Hồi quy, không phải phân loại</h2>
+
+<p>Phần lớn bài toán tin sinh học ở mức residue là <strong>phân loại nhị phân mất cân bằng</strong>: vị trí này có bị phosphoryl hóa không, có phải vị trí gắn ATP không. Nhãn dương hiếm, nhãn âm đáng ngờ, và nửa công sức đổ vào việc chọn chỉ số cho đúng (xem <a href="../../08-metrics-imbalanced.html">bài giảng 08</a>).</p>
+
+<p>Bài toán degron thì khác, và khác theo hướng dễ chịu:</p>
+
+<div class="cards c2">
+  <div class="card" style="border-top:3px solid var(--o)">
+    <span class="k">Bài toán residue thông thường</span>
+    <span class="t">Phân loại, mất cân bằng nặng</span>
+    <ul style="font-size:.9rem;margin:.3rem 0 0">
+      <li>Nhãn: có / không</li>
+      <li>Tỉ lệ dương có khi dưới 1%</li>
+      <li>Nhãn âm thường chỉ là “chưa ai đo”</li>
+      <li>Phải dùng MCC, AUPRC, chọn ngưỡng</li>
+    </ul>
+  </div>
+  <div class="card" style="border-top:3px solid var(--t)">
+    <span class="k">Bài toán degron ở đây</span>
+    <span class="t">Hồi quy, nhãn dồi dào</span>
+    <ul style="font-size:.9rem;margin:.3rem 0 0">
+      <li>Nhãn: một số thực cho mỗi đoạn</li>
+      <li>Hơn 680.000 phép đo</li>
+      <li>Mọi đoạn đều được đo, kể cả đoạn “âm”</li>
+      <li>Dùng Pearson, Spearman, sai số</li>
+    </ul>
+  </div>
+</div>
+
+<p>Phân bố nhãn của bộ chính: trung bình <strong>0,481</strong>, độ lệch chuẩn <strong>0,376</strong>, khoảng từ −0,144 tới 1,132. <span class="tag tag-m">TỰ ĐO</span> Không có lớp nào hiếm cả — đây là hồi quy thật.</p>
+
+<!-- ===================================================== -->
+<h2 id="tuongquan">2. Pearson và Spearman: hai câu hỏi khác nhau</h2>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th></th><th>Pearson <span class="en">r</span></th><th>Spearman <span class="en">ρ</span></th></tr></thead>
+  <tbody>
+    <tr><td><strong>Hỏi gì</strong></td><td>Hai đại lượng có quan hệ <em>tuyến tính</em> tới mức nào</td><td>Hai đại lượng có cùng <em>thứ hạng</em> tới mức nào</td></tr>
+    <tr><td><strong>Tính trên</strong></td><td>Giá trị gốc</td><td>Thứ hạng của giá trị</td></tr>
+    <tr><td><strong>Nhạy với</strong></td><td>Giá trị ngoại lai, phép biến đổi thang</td><td>Chỉ quan tâm thứ tự, bỏ qua thang</td></tr>
+    <tr><td><strong>Dùng khi</strong></td><td>So trong cùng một thang đo</td><td><strong>So giữa hai thang khác nhau</strong></td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout c-key">
+  <span class="ct">Vì sao đề tài cần cả hai</span>
+  <p style="margin-bottom:0">Hai sàng lọc dùng hai thang khác nhau: một bên là điểm 0–1, bên kia là PSI 1–6 (xem <a href="measuring-degrons.html#thangdo">bài nền 2</a>). Khi huấn luyện trên sàng lọc này rồi kiểm tra trên sàng lọc kia, Pearson sẽ bị phạt chỉ vì hai thang không trùng nhau — dù mô hình xếp hạng hoàn toàn đúng. Vì vậy phép thử chuyển giữa hai sàng lọc phải báo <strong>Spearman</strong>. <span class="tag tag-a">SUY LUẬN</span></p>
+</div>
+
+<h3>0,87 thật sự nghĩa là gì</h3>
+
+<p>Đây là chỗ rất dễ nói quá. Pearson 0,87 <strong>không</strong> có nghĩa “đúng 87%”.</p>
+
+<ul>
+  <li><strong>r² = 0,76.</strong> Mô hình giải thích được khoảng 76% phương sai của nhãn; 24% còn lại thì không.</li>
+  <li><strong>Pearson không biết gì về sai lệch hệ thống.</strong> Nếu mô hình đoán cao hơn thực tế đúng 0,2 ở mọi mẫu, Pearson vẫn bằng 1,0.</li>
+  <li><strong>Pearson phụ thuộc độ trải của tập kiểm tra.</strong> Tập có nhiều giá trị cực trị sẽ cho r cao hơn, dù sai số tuyệt đối y hệt. Nên r của hai bài báo chỉ so được khi cùng tập kiểm tra.</li>
+  <li><strong>Và quan trọng nhất cho đề tài:</strong> r cao nói mô hình dự đoán tốt <em>đại lượng đang được đo</em>. Nó không nói đại lượng đó có phải thứ ta cần hay không.</li>
+</ul>
+
+<!-- ===================================================== -->
+<h2 id="thanhphan">3. Thành phần so với thứ tự</h2>
+
+<p>Lấy một đoạn peptide. Có hai cách mô tả nó bằng số:</p>
+
+<div class="cards c2">
+  <div class="card" style="border-top:3px solid var(--b)">
+    <span class="k">Biểu diễn theo thành phần</span>
+    <span class="t">Một túi chữ cái</span>
+    <p class="d">Đếm mỗi loại acid amin xuất hiện bao nhiêu lần. Kết quả là một vector 20 chiều. <strong>Mất hoàn toàn thứ tự.</strong></p>
+    <p class="d"><code>LAFRYV</code> → A:1, F:1, L:1, R:1, V:1, Y:1</p>
+  </div>
+  <div class="card" style="border-top:3px solid var(--v)">
+    <span class="k">Biểu diễn theo thứ tự</span>
+    <span class="t">Một chuỗi</span>
+    <p class="d">Giữ nguyên vị trí từng residue. Cho phép nói “F đứng ngay sau A” — tức là cho phép biểu diễn <strong>motif</strong>.</p>
+    <p class="d"><code>LAFRYV</code> ≠ <code>VYRFAL</code></p>
+  </div>
+</div>
+
+<p>Sinh học của degron <strong>là chuyện motif</strong>: E3 nhận ra một mẫu cụ thể, theo một thứ tự cụ thể. Vậy ta chờ đợi rằng mô hình giữ thứ tự sẽ thắng mô hình chỉ đếm. Thực tế không như vậy — và đó là nội dung còn lại của bài.</p>
+
+<!-- ===================================================== -->
+<h2 id="batbien">4. Bất biến hoán vị: tự chứng minh trong ba dòng</h2>
+
+<p>Một hàm <code>f</code> trên chuỗi gọi là <dfn title="permutation invariant">bất biến hoán vị</dfn> nếu đảo thứ tự đầu vào không làm đổi đầu ra: <code>f(x₁…x_L) = f(x_σ(1)…x_σ(L))</code> với mọi hoán vị σ.</p>
+
+<p>Kênh chính của mô hình PAP gồm hai bước: một lớp tích chập một chiều với <strong>cửa sổ bằng 1</strong>, rồi một lớp <strong>gộp trung bình toàn cục</strong>. Hãy xem điều đó dẫn tới đâu.</p>
+
+<div class="callout c-data">
+  <span class="ct">Chứng minh</span>
+  <p><strong>Bước 1 — tích chập cửa sổ 1.</strong> Cửa sổ bằng 1 nghĩa là mỗi vị trí chỉ nhìn chính nó, không nhìn hàng xóm. Nên đầu ra tại vị trí <code>i</code> là <code>h_i = g(x_i)</code>, trong đó <code>g</code> là cùng một hàm cho mọi vị trí. Không có chỗ nào để thông tin “ai đứng cạnh ai” lọt vào.</p>
+  <p><strong>Bước 2 — gộp trung bình.</strong> <code>z = (1/L) · Σᵢ h_i = (1/L) · Σᵢ g(xᵢ)</code></p>
+  <p><strong>Bước 3 — nhóm lại theo loại acid amin.</strong> Gọi <code>n_a</code> là số lần acid amin <code>a</code> xuất hiện trong đoạn. Tổng trên có thể viết lại:</p>
+  <p style="text-align:center"><code>z = Σ<sub>a ∈ 20 acid amin</sub> (n_a / L) · g(a)</code></p>
+  <p style="margin-bottom:0">Vế phải <strong>chỉ chứa số đếm</strong> <code>n_a</code>. Thứ tự biến mất hoàn toàn. Mọi lớp phía sau chỉ nhận <code>z</code> làm đầu vào, nên toàn bộ kênh là một hàm của <em>thành phần acid amin</em> và không gì khác. <strong>Đảo thứ tự thì kết quả không thể đổi.</strong></p>
+</div>
+
+<figure>
+<div class="frame min" tabindex="0" role="region" aria-label="Sơ đồ, có thể cuộn ngang trên màn hình nhỏ">
+<svg viewBox="0 0 780 330" role="img" aria-label="Hai đoạn peptide có cùng thành phần nhưng khác thứ tự đi qua cùng một đường: tích chập cửa sổ một xử lý từng residue độc lập, rồi gộp trung bình xóa thứ tự, nên hai đầu ra trùng nhau.">
+  <defs>
+    <marker id="a4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <polygon points="0,1 10,5 0,9" fill="currentColor"/>
+    </marker>
+  </defs>
+
+  <text class="sv-lbl" x="196" y="22" text-anchor="middle" font-weight="600">Đoạn gốc</text>
+  <text class="sv-lbl" x="584" y="22" text-anchor="middle" font-weight="600">Đoạn đã đảo thứ tự</text>
+
+  <!-- hang residue -->
+  <g class="sv-sm" text-anchor="middle">
+    <rect class="sv-acc" x="96" y="36" width="26" height="30" rx="4"/><text class="sv-on-acc" x="109" y="56">L</text>
+    <rect class="sv-box" x="126" y="36" width="26" height="30" rx="4"/><text x="139" y="56">A</text>
+    <rect class="sv-acc" x="156" y="36" width="26" height="30" rx="4"/><text class="sv-on-acc" x="169" y="56">F</text>
+    <rect class="sv-box" x="186" y="36" width="26" height="30" rx="4"/><text x="199" y="56">R</text>
+    <rect class="sv-acc" x="216" y="36" width="26" height="30" rx="4"/><text class="sv-on-acc" x="229" y="56">Y</text>
+    <rect class="sv-box" x="246" y="36" width="26" height="30" rx="4"/><text x="259" y="56">V</text>
+    <rect class="sv-box" x="276" y="36" width="26" height="30" rx="4"/><text x="289" y="56">G</text>
+  </g>
+  <g class="sv-sm" text-anchor="middle">
+    <rect class="sv-box" x="484" y="36" width="26" height="30" rx="4"/><text x="497" y="56">V</text>
+    <rect class="sv-acc" x="514" y="36" width="26" height="30" rx="4"/><text class="sv-on-acc" x="527" y="56">Y</text>
+    <rect class="sv-box" x="544" y="36" width="26" height="30" rx="4"/><text x="557" y="56">G</text>
+    <rect class="sv-acc" x="574" y="36" width="26" height="30" rx="4"/><text class="sv-on-acc" x="587" y="56">L</text>
+    <rect class="sv-box" x="604" y="36" width="26" height="30" rx="4"/><text x="617" y="56">R</text>
+    <rect class="sv-acc" x="634" y="36" width="26" height="30" rx="4"/><text class="sv-on-acc" x="647" y="56">F</text>
+    <rect class="sv-box" x="664" y="36" width="26" height="30" rx="4"/><text x="677" y="56">A</text>
+  </g>
+
+  <!-- buoc 1 -->
+  <text class="sv-sm" x="12" y="92">Conv1D cửa sổ = 1</text>
+  <text class="sv-sm" x="12" y="108">mỗi residue xử lý riêng,</text>
+  <text class="sv-sm" x="12" y="124">không nhìn hàng xóm</text>
+  <line class="sv-stroke" x1="196" y1="72" x2="196" y2="106" marker-end="url(#a4)"/>
+  <line class="sv-stroke" x1="584" y1="72" x2="584" y2="106" marker-end="url(#a4)"/>
+
+  <g>
+    <rect class="sv-box" x="96" y="112" width="26" height="26" rx="4"/><rect class="sv-box" x="126" y="112" width="26" height="26" rx="4"/>
+    <rect class="sv-box" x="156" y="112" width="26" height="26" rx="4"/><rect class="sv-box" x="186" y="112" width="26" height="26" rx="4"/>
+    <rect class="sv-box" x="216" y="112" width="26" height="26" rx="4"/><rect class="sv-box" x="246" y="112" width="26" height="26" rx="4"/>
+    <rect class="sv-box" x="276" y="112" width="26" height="26" rx="4"/>
+  </g>
+  <g>
+    <rect class="sv-box" x="484" y="112" width="26" height="26" rx="4"/><rect class="sv-box" x="514" y="112" width="26" height="26" rx="4"/>
+    <rect class="sv-box" x="544" y="112" width="26" height="26" rx="4"/><rect class="sv-box" x="574" y="112" width="26" height="26" rx="4"/>
+    <rect class="sv-box" x="604" y="112" width="26" height="26" rx="4"/><rect class="sv-box" x="634" y="112" width="26" height="26" rx="4"/>
+    <rect class="sv-box" x="664" y="112" width="26" height="26" rx="4"/>
+  </g>
+
+  <!-- buoc 2 -->
+  <text class="sv-acc-t" x="12" y="176">Gộp trung bình</text>
+  <text class="sv-sm" x="12" y="192">thứ tự bị XÓA ở đây</text>
+  <line class="sv-stroke sv-accs" x1="196" y1="144" x2="196" y2="180" marker-end="url(#a4)" style="stroke-width:2.4"/>
+  <line class="sv-stroke sv-accs" x1="584" y1="144" x2="584" y2="180" marker-end="url(#a4)" style="stroke-width:2.4"/>
+
+  <rect class="sv-box" x="96" y="186" width="206" height="30" rx="6"/>
+  <text class="sv-sm" x="199" y="205" text-anchor="middle">vector trung bình</text>
+  <rect class="sv-box" x="484" y="186" width="206" height="30" rx="6"/>
+  <text class="sv-sm" x="587" y="205" text-anchor="middle">vector trung bình</text>
+
+  <line class="sv-stroke" x1="196" y1="222" x2="196" y2="252" marker-end="url(#a4)"/>
+  <line class="sv-stroke" x1="584" y1="222" x2="584" y2="252" marker-end="url(#a4)"/>
+
+  <rect class="sv-box an-pulse" x="140" y="258" width="118" height="34" rx="6" style="stroke:var(--v);stroke-width:2.4"/>
+  <text class="sv-lbl" x="199" y="280" text-anchor="middle">điểm 0,641</text>
+  <rect class="sv-box an-pulse" x="528" y="258" width="118" height="34" rx="6" style="stroke:var(--v);stroke-width:2.4"/>
+  <text class="sv-lbl" x="587" y="280" text-anchor="middle">điểm 0,641</text>
+
+  <text class="sv-acc-t" x="390" y="318" text-anchor="middle">Hai điểm bằng nhau — không phải gần bằng, mà bằng</text>
+</svg>
+</div>
+<figcaption>
+  <span class="look">Nhìn vào đâu</span>
+  <span class="own">Sơ đồ tự dựng</span>
+  Chỗ mất thông tin là <strong>mũi tên tím</strong>, không phải lớp tích chập. Tích chập cửa sổ 1 chỉ đơn giản không bao giờ <em>tạo ra</em> thông tin thứ tự; phép gộp trung bình thì <em>xóa</em> mọi thứ tự còn lại. Giá trị 0,641 chỉ là ví dụ minh họa.
+</figcaption>
+</figure>
+
+<div class="lab">
+  <h4>Thử tự tay: đảo thứ tự và xem hai loại mô hình phản ứng khác nhau</h4>
+  <p style="font-size:.93rem">Bấm nút để đảo ngẫu nhiên thứ tự đoạn peptide. Hai “mô hình” đồ chơi chạy song song: một cái chỉ đếm thành phần, một cái dò cửa sổ ba residue liền nhau.</p>
+  <p class="seq" id="pep">—</p>
+  <div class="row">
+    <button id="shuffle" type="button">Đảo ngẫu nhiên thứ tự</button>
+    <button id="reset" type="button" style="background:transparent;color:var(--v);border:1px solid var(--v)">Về đoạn gốc</button>
+  </div>
+  <div style="margin-top:.8rem">
+    <p style="margin:.2rem 0"><strong>Mô hình A — chỉ đếm thành phần</strong> <span class="muted">(giống kênh nội của PAP)</span>: <output id="scoreA">—</output></p>
+    <div class="bar" aria-hidden="true"><span id="barA" style="width:50%"></span></div>
+    <p style="margin:.6rem 0 .2rem"><strong>Mô hình B — dò motif ba residue liền nhau</strong>: <output id="scoreB">—</output></p>
+    <div class="bar" aria-hidden="true"><span id="barB" style="width:50%;background:var(--m)"></span></div>
+  </div>
+  <p id="shuffle-note" class="note" role="status" style="margin-top:.8rem;margin-bottom:0"></p>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="phepdo">5. Phép đo thật trên mô hình thật</h2>
+
+<p>Lập luận ở trên là toán học, nên nó <em>phải</em> đúng. Nhưng một lập luận chưa phải bằng chứng rằng mô hình đã công bố đúng là như vậy. Nên mô hình PAP đã được dựng lại từ file trọng số công bố, rồi chạy phép thử đảo thứ tự trên toàn bộ tập kiểm tra.</p>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Mô hình</th><th class="num">Cửa sổ</th><th class="num">Pearson holdout</th><th class="num">max |Δ| khi đảo</th><th class="num">Pearson(gốc, đảo)</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>cnn2w1</strong> — bản mặc định, chính là PAP</td>
+      <td class="num">1</td><td class="num">0,8690</td>
+      <td class="num">4,8 × 10⁻⁷</td><td class="num"><strong>1,000000</strong></td>
+    </tr>
+    <tr>
+      <td><strong>cnn2w7</strong> — bản bắt motif, cũng có sẵn trong repo của tác giả</td>
+      <td class="num">7</td><td class="num">0,8722</td>
+      <td class="num">4,9 × 10⁻¹</td><td class="num">0,901836</td>
+    </tr>
+  </tbody>
+</table>
+<caption><span class="tag tag-m">TỰ ĐO</span> Trên holdout hiệu dụng 428 gene. Sai số 4,8 × 10⁻⁷ là nhiễu dấu phẩy động, không phải hiệu ứng thật. Script: <code>rerun_pap.py</code> trong <a href="../../../topics/degron-footprint/research/voutsinos-2026-audit/README.md">ghi chú audit</a>.</caption>
+</div>
+
+<p>Đọc bảng này theo hai chiều, và chúng cắt ngược nhau:</p>
+
+<div class="cards c2">
+  <div class="card" style="border-top:3px solid var(--t)">
+    <span class="k">Ủng hộ giả thuyết của đề tài</span>
+    <span class="t">Kênh nội cnn2w1 không biểu diễn được motif có thứ tự</span>
+    <p class="d">Kênh nội cnn2w1 bất biến hoán vị và đạt Pearson <strong>0,8239</strong> khi chấm riêng. PAP đầy đủ, có thêm kênh đầu C theo vị trí, đạt <strong>0,8690</strong>. Điểm mức đoạn tốt không chứng minh kênh nội đã học motif có thứ tự.</p>
+  </div>
+  <div class="card" style="border-top:3px solid var(--o)">
+    <span class="k">Bác bỏ một hướng đóng góp</span>
+    <span class="t">Thêm khả năng bắt motif gần như vô ích</span>
+    <p class="d">cnn2w7 <em>có</em> dùng thứ tự (Pearson gốc–đảo tụt xuống 0,90) nhưng chỉ hơn <strong>+0,0032</strong>. Trần của trục này đã do chính tác giả đo. Không được đề xuất lại nó như một đóng góp.</p>
+  </div>
+</div>
+
+<div class="callout c-warn">
+  <span class="ct">Một đính chính phải nhớ</span>
+  <p style="margin-bottom:0">Tính bất biến hoán vị chỉ áp dụng cho <strong>kênh nội</strong>. Mô hình đầy đủ còn một kênh thứ hai đọc <strong>5 residue cuối</strong> bằng mã hóa one-hot theo vị trí — kênh đó <em>có</em> biết vị trí. Nói “PAP hoàn toàn không biết vị trí” là nói quá. Cách nói đúng: <strong>kênh nội bất biến hoán vị; thông tin vị trí duy nhất mà mô hình có nằm ở năm residue cuối cùng.</strong></p>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="visao">6. Vì sao thành phần lại đủ tốt đến thế?</h2>
+
+<p>Câu hỏi tự nhiên tiếp theo: nếu sinh học là chuyện motif, sao chỉ đếm acid amin lại đạt được 0,82? Hình dưới của chính tác giả trả lời rất rõ.</p>
+
+<figure>
+  <div class="frame">
+    <img src="../assets/figures/voutsinos2026-f2.jpg" width="785" height="504"
+         alt="Hình 2 của Voutsinos và cộng sự 2026. Panel B là bản đồ nhiệt điểm degron trung bình theo acid amin trên trục đứng và vị trí từ âm 30 tới âm 1 trên trục ngang, các dải màu chạy ngang gần như đều. Panel C là biểu đồ cột điểm degron trung bình của 20 acid amin, cao nhất là W, F, Y, I, C và thấp nhất là D, P, E. Panel D là bản đồ hiệu số theo vị trí, gần như trắng ở mọi nơi trừ vài vị trí cuối bên phải.">
+  </div>
+  <figcaption>
+    <span class="look">Nhìn vào đâu</span>
+    <strong>Panel B</strong> là câu trả lời. Các dải màu chạy <strong>ngang</strong>: màu của một hàng gần như không đổi dọc theo trục vị trí. Nói cách khác, một tryptophan đóng góp gần như y hệt dù nó nằm ở vị trí thứ 5 hay thứ 25. <em>Vị trí gần như không quan trọng</em> — trừ vài cột sát mép phải, tức là đầu C.
+    <strong>Panel C</strong> cho thấy cái gì thật sự quyết định: loại acid amin. W, F, Y, I, C, L, V đứng đầu — toàn acid amin kỵ nước và vòng thơm; D, P, E, S, G đứng cuối. Khớp với việc phần lớn degron tìm được là degron kiểm soát chất lượng, vốn giàu residue kỵ nước.
+    <strong>Panel D</strong> đóng đinh kết luận: đây là hiệu số <em>sau khi</em> trừ đi phần giải thích được bằng thành phần. Gần như trắng toàn bộ, chỉ có mấy ô có chấm ở sát đầu C. Nghĩa là <strong>hiệu ứng phụ thuộc vị trí chỉ tồn tại ở đuôi</strong>.
+    <span class="src">Hình 2, Voutsinos V và cộng sự, <em>Science Advances</em> 2026, <a href="https://doi.org/10.1126/sciadv.adz3483">doi:10.1126/sciadv.adz3483</a>. Dùng lại theo <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.</span>
+  </figcaption>
+</figure>
+
+<div class="callout c-key">
+  <span class="ct">Kết luận của cả bài</span>
+  <p>Kênh nội bất biến hoán vị vẫn đạt điểm tốt trên thang mức đoạn; bản đầy đủ có thêm kênh đầu C theo vị trí. <strong>Đây là bằng chứng về giới hạn của phép đo mức đoạn, không chứng minh mọi thông tin vị trí đều vắng mặt.</strong> Kiến trúc và thang đo khớp nhau — và cả hai đều không chạm tới phần sinh học mà đề tài quan tâm.</p>
+  <p style="margin-bottom:0">Nên câu hỏi đúng không phải “làm sao đạt 0,88 thay vì 0,87”, mà là “<strong>có nhãn nào khác đòi hỏi biết vị trí không</strong>”. Có: nhãn đột biến quét theo residue, với 2.624 peptide có footprint học được theo audit. Đó là chỗ đề tài đi tới — xem <a href="../topic/gap.html">trang khoảng trống</a>. <span class="tag tag-a">SUY LUẬN</span></p>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="thuatngu">Bảng thuật ngữ của bài</h2>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Tiếng Việt</th><th>Tiếng Anh</th><th>Nghĩa ngắn</th></tr></thead>
+  <tbody>
+    <tr><td>Hồi quy</td><td class="en">regression</td><td>Dự đoán một số thực, không phải một nhãn lớp</td></tr>
+    <tr><td>Hệ số tương quan Pearson</td><td class="en">Pearson correlation</td><td>Đo mức quan hệ tuyến tính; nhạy với thang đo</td></tr>
+    <tr><td>Hệ số tương quan hạng Spearman</td><td class="en">Spearman correlation</td><td>Đo mức trùng thứ hạng; bỏ qua thang đo</td></tr>
+    <tr><td>Thành phần acid amin</td><td class="en">amino acid composition</td><td>Vector đếm 20 chiều, không chứa thứ tự</td></tr>
+    <tr><td>Bất biến hoán vị</td><td class="en">permutation invariance</td><td>Đảo thứ tự đầu vào không đổi đầu ra</td></tr>
+    <tr><td>Gộp trung bình toàn cục</td><td class="en">global average pooling</td><td>Lấy trung bình trên mọi vị trí; xóa thông tin vị trí</td></tr>
+    <tr><td>Cửa sổ tích chập</td><td class="en">kernel size</td><td>Số vị trí liền nhau mà một filter nhìn cùng lúc</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="tukiem">Tự kiểm tra</h2>
+
+<details class="q">
+  <summary>1. Một mô hình dùng Conv1D cửa sổ 3 rồi gộp trung bình. Nó có bất biến hoán vị không?</summary>
+  <div><p><strong>Không.</strong> Cửa sổ 3 nghĩa là mỗi vị trí nhìn cả hai hàng xóm, nên đầu ra tại vị trí i phụ thuộc bộ ba (x<sub>i−1</sub>, x<sub>i</sub>, x<sub>i+1</sub>). Đảo thứ tự làm đổi các bộ ba đó. Phép gộp trung bình vẫn xóa <em>vị trí tuyệt đối</em> của các motif, nhưng không xóa được việc motif có tồn tại hay không. Đúng như đo được: cnn2w7 có Pearson gốc–đảo là 0,90 chứ không phải 1,0.</p></div>
+</details>
+
+<details class="q">
+  <summary>2. Vì sao phép thử chuyển giữa hai sàng lọc phải báo Spearman chứ không phải Pearson?</summary>
+  <div><p>Vì hai sàng lọc dùng hai thang khác nhau — điểm 0–1 và PSI 1–6, lại còn ngược chiều nhau. Pearson sẽ bị kéo xuống chỉ vì quan hệ giữa hai thang không tuyến tính, dù mô hình xếp thứ hạng hoàn toàn chính xác. Spearman chỉ nhìn thứ hạng nên nó trả lời đúng câu hỏi ta muốn hỏi: “mô hình có xếp đúng đoạn nào mạnh hơn đoạn nào không”.</p></div>
+</details>
+
+<details class="q">
+  <summary>3. Ai đó đề xuất: “dùng PLM và CNN đa cửa sổ để bắt motif, chắc chắn sẽ vượt 0,87”. Phản biện thế nào?</summary>
+  <div><p>Chính tác giả đã làm thí nghiệm đó rồi: bản cnn2w7 có cửa sổ 7, bắt được motif, và chỉ hơn <strong>+0,0032 Pearson</strong>. Trần của trục “thêm năng lực bắt motif” đã được đo, và nó rất thấp. Một đề xuất muốn vượt trội trên thang này phải giải thích được vì sao nó sẽ làm tốt hơn mức +0,003 đó — và hiện chưa có lý do nào, vì bản thân thang điểm chứa rất ít thông tin vị trí (Hình 2D). Kết luận: đừng đặt đóng góp lên trục này.</p></div>
+</details>
+
+<details class="q">
+  <summary>4. Nếu một mô hình mới chỉ đạt Pearson 0,80 trên thang điểm khối nhưng phân biệt tốt 219 dấu chân, đó là thành công hay thất bại?</summary>
+  <div><p>Tùy thước đo đã thống nhất từ trước, và đó chính là lý do phải chốt thước đo với GVHD <em>trước khi làm</em>. Nếu thước đo chính là nhiệm vụ cần motif thì đó là thành công, vì nó đúng tiên đoán: mô hình khu trú không được thưởng trên thang điểm khối nhưng lại làm được việc mà mô hình thành phần không làm được. Nếu thước đo chính vẫn là Pearson trên thang điểm khối thì nó bị coi là thất bại — dù về mặt khoa học không có gì sai. Xem <a href="../topic/evaluation.html">trang thước đo</a>.</p></div>
+</details>
+
+<div class="row" data-done-slot style="margin:2rem 0 0"></div>
+
+<div class="next">
+  <a href="mil-attention.html"><span class="k">Học tiếp</span><span class="t">Bài nền 5 · Học đa thể hiện và gộp bằng attention →</span></a>
+  <a href="../topic/gap.html"><span class="k">Dùng ở đâu</span><span class="t">Khoảng trống nghiên cứu · hệ quả của con số này →</span></a>
+</div>
+
+<footer class="pagefoot">
+  <p><strong>Nguồn.</strong> Bảng phép thử đảo thứ tự, con số +0,0032, và phân bố nhãn là kết quả <strong>tự chạy trong repo</strong> — script <code>rerun_pap.py</code>, <code>audit_degron.py</code>, xem <a href="../../../topics/degron-footprint/research/voutsinos-2026-audit/README.md">ghi chú audit</a>. Hình 2 và các con số 0,82 / 0,87 của tác giả: Voutsinos V và cộng sự, <em>Science Advances</em> 2026, <a href="https://doi.org/10.1126/sciadv.adz3483">doi:10.1126/sciadv.adz3483</a>, đọc toàn văn qua PMC12880521 ngày 11/10/2026.</p>
+  <p style="margin-bottom:0">Hai “mô hình đồ chơi” trong khối tương tác <strong>không phải</strong> mô hình của bài báo. Thứ tự xếp hạng 20 acid amin dùng trong đó lấy theo Hình 2C để minh họa cho gần thực tế, nhưng các trọng số cụ thể là bịa ra cho dễ nhìn.</p>
+</footer>
+
+</div>
+<script src="../assets/hub.js"></script>
+<script>
+(function () {
+  var box = document.getElementById("pep");
+  if (!box) return;
+  // Thứ tự xếp hạng lấy theo Hình 2C của Voutsinos 2026 (cao → thấp).
+  // Trọng số cụ thể là minh họa, không phải tham số của mô hình thật.
+  var RANK = "WFYICLVHMRNTKAGQSDPE".split("");
+  var W = {};
+  RANK.forEach(function (aa, i) { W[aa] = 0.62 - (i / (RANK.length - 1)) * 0.24; });
+
+  var ORIG = "MGLCVFCKKSTYNWAEDPQRIHGVFLYKT".split("");
+  var cur = ORIG.slice();
+
+  function compA(seq) {                 // chỉ thành phần: trung bình trọng số
+    var s = 0;
+    seq.forEach(function (a) { s += (W[a] || 0.5); });
+    return s / seq.length;
+  }
+  function compB(seq) {                 // dò motif: cửa sổ 3 mạnh nhất
+    var best = 0;
+    for (var i = 0; i + 3 <= seq.length; i++) {
+      var m = ((W[seq[i]] || .5) + (W[seq[i + 1]] || .5) + (W[seq[i + 2]] || .5)) / 3;
+      if (m > best) best = m;
+    }
+    return best;
+  }
+  function bestWindow(seq) {
+    var best = 0, at = 0;
+    for (var i = 0; i + 3 <= seq.length; i++) {
+      var m = ((W[seq[i]] || .5) + (W[seq[i + 1]] || .5) + (W[seq[i + 2]] || .5)) / 3;
+      if (m > best) { best = m; at = i; }
+    }
+    return at;
+  }
+  function f(x) { return x.toFixed(4).replace(".", ","); }
+
+  function render(msg) {
+    var at = bestWindow(cur);
+    box.innerHTML = cur.map(function (a, i) {
+      return (i >= at && i < at + 3) ? "<b>" + a + "</b>" : a;
+    }).join("");
+    var a = compA(cur), b = compB(cur);
+    document.getElementById("scoreA").textContent = f(a);
+    document.getElementById("scoreB").textContent = f(b);
+    document.getElementById("barA").style.width = ((a - 0.35) / 0.3 * 100).toFixed(1) + "%";
+    document.getElementById("barB").style.width = ((b - 0.35) / 0.3 * 100).toFixed(1) + "%";
+    document.getElementById("shuffle-note").textContent = msg;
+  }
+
+  document.getElementById("shuffle").addEventListener("click", function () {
+    var before = compB(cur);
+    for (var i = cur.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = cur[i]; cur[i] = cur[j]; cur[j] = t;
+    }
+    var after = compB(cur);
+    render("Đã đảo thứ tự. Mô hình A không đổi một chữ số nào — vì nó chỉ đếm, mà đảo thứ tự thì số đếm giữ nguyên. Mô hình B đổi từ " +
+      f(before) + " thành " + f(after) + " vì cửa sổ mạnh nhất đã khác. Chữ in đậm là cửa sổ ba residue mạnh nhất hiện tại.");
+  });
+  document.getElementById("reset").addEventListener("click", function () {
+    cur = ORIG.slice();
+    render("Đã về đoạn gốc.");
+  });
+  render("Bấm “Đảo ngẫu nhiên thứ tự” và nhìn hai con số: một cái sẽ đứng yên, một cái sẽ nhảy.");
+})();
+</script>
+</body>
+</html>

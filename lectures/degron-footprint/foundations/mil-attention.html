@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bài nền 5 · Học đa thể hiện và gộp bằng attention</title>
+<meta name="hub-page" content="f-mil">
+<meta name="description" content="Túi và thể hiện, các phép gộp trung bình, max và attention có cổng, và vì sao trọng số attention cho luôn bản đồ khu trú.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;650&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../assets/hub.css">
+</head>
+<body>
+<a class="skip" href="#noidung">Bỏ qua điều hướng</a>
+<div class="page">
+
+<nav class="topbar" aria-label="Thanh điều hướng">
+  <a class="home" href="../index.html">← Hub học đề tài</a>
+  <span class="spacer"></span>
+</nav>
+
+<div class="crumb">
+  <a href="../index.html">Hub</a> <span class="sep">/</span>
+  <span>Chặng 3 · Bài toán tính toán</span> <span class="sep">/</span>
+  <span>Bài nền 5</span>
+</div>
+
+<div class="eyebrow">Bài nền 5 · khoảng 30 phút</div>
+<h1>Nhãn ở mức cả đoạn, cơ chế ở mức vài residue</h1>
+<p class="lede">Nhãn mức đoạn chỉ cho một điểm cho cả peptide. Tuy nhiên bộ Zhang 2023 còn có nhãn đột biến theo vị trí. Bài này giải thích vì sao MIL có thể nối hai mức nhãn, và vì sao cần đối chứng hồi quy theo vị trí.</p>
+
+<div class="gate two">
+  <div class="g">
+    <h4>Cần biết trước</h4>
+    <ul>
+      <li><a href="regression-correlation.html">Bài nền 4</a>: gộp trung bình xóa thông tin vị trí.</li>
+      <li>Softmax và gradient descent ở mức cơ bản — <a href="../../10-neural-network-basics.html">bài giảng 10</a>.</li>
+    </ul>
+  </div>
+  <div class="g">
+    <h4>Học xong sẽ hiểu được</h4>
+    <ul>
+      <li>“Túi” và “thể hiện” là gì, và vì sao bài toán degron đúng khuôn này.</li>
+      <li>Ba phép gộp — trung bình, max, attention — mạnh yếu ở đâu.</li>
+      <li>Vì sao trọng số attention tạo một bản đồ ứng viên nhưng chưa tự là giải thích nhân quả.</li>
+      <li>Và vì sao phép đo hiện có lại <strong>không</strong> ủng hộ attention trên thang điểm khối.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="noidung">1. Bài toán đa thể hiện là gì</h2>
+
+<p>Một ví dụ quen thuộc trước. Bạn có một xâu chìa khóa và biết “xâu này mở được cửa”. Bạn không biết chìa nào mở. Nhãn gắn với <strong>cả xâu</strong>, nhưng nguyên nhân nằm ở <strong>một chìa</strong>.</p>
+
+<p>Đó là <dfn title="Multiple Instance Learning">học đa thể hiện</dfn> <span class="en">(MIL)</span>. Từ vựng:</p>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Thuật ngữ</th><th>Tiếng Anh</th><th>Trong ví dụ xâu chìa</th><th>Trong bài toán degron</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Túi</strong></td><td class="en">bag</td><td>Cả xâu chìa</td><td>Một đoạn peptide 28–30 acid amin</td></tr>
+    <tr><td><strong>Thể hiện</strong></td><td class="en">instance</td><td>Một chiếc chìa</td><td>Một cửa sổ ứng viên, ví dụ 7 residue liền nhau</td></tr>
+    <tr><td><strong>Nhãn túi</strong></td><td class="en">bag label</td><td>Mở được hay không</td><td>Điểm degron toàn đoạn</td></tr>
+    <tr><td><strong>Nhãn thể hiện</strong></td><td class="en">instance label</td><td><strong>Không biết</strong></td><td>Nhãn đột biến theo residue <strong>đã có</strong> trong Zhang 2023; có thể dùng để giám sát hoặc kiểm bản đồ</td></tr>
+  </tbody>
+</table>
+</div>
+
+<figure>
+<div class="frame min" tabindex="0" role="region" aria-label="Sơ đồ, có thể cuộn ngang trên màn hình nhỏ">
+<svg viewBox="0 0 780 250" role="img" aria-label="Một đoạn peptide được trượt cửa sổ để sinh ra nhiều cửa sổ ứng viên; tất cả các cửa sổ hợp thành một túi; chỉ nhãn của cả túi là biết được, nhãn của từng cửa sổ thì không.">
+  <defs>
+    <marker id="a5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <polygon points="0,1 10,5 0,9" fill="currentColor"/>
+    </marker>
+  </defs>
+
+  <text class="sv-sm" x="12" y="24">Đoạn peptide (túi)</text>
+  <rect x="12" y="32" width="560" height="24" rx="5" fill="currentColor" opacity=".14"/>
+  <rect class="sv-m" x="268" y="28" width="76" height="32" rx="4" opacity=".85"/>
+  <text class="sv-sm" x="306" y="76" text-anchor="middle" fill="var(--m)">degron thật nằm đâu đó ở đây — ta KHÔNG biết</text>
+
+  <text class="sv-sm" x="12" y="112">Trượt cửa sổ → các thể hiện</text>
+  <g>
+    <rect class="sv-box" x="12" y="122" width="76" height="20" rx="4"/>
+    <rect class="sv-box" x="76" y="148" width="76" height="20" rx="4"/>
+    <rect class="sv-box" x="140" y="122" width="76" height="20" rx="4"/>
+    <rect class="sv-box" x="204" y="148" width="76" height="20" rx="4"/>
+    <rect class="sv-box" x="268" y="122" width="76" height="20" rx="4" style="stroke:var(--m);stroke-width:2.4"/>
+    <rect class="sv-box" x="332" y="148" width="76" height="20" rx="4"/>
+    <rect class="sv-box" x="396" y="122" width="76" height="20" rx="4"/>
+    <rect class="sv-box" x="460" y="148" width="76" height="20" rx="4"/>
+  </g>
+  <text class="sv-sm" x="306" y="116" text-anchor="middle" fill="var(--m)">thể hiện “đúng”</text>
+
+  <line class="sv-stroke" x1="580" y1="132" x2="620" y2="132" marker-end="url(#a5)"/>
+  <rect class="sv-box" x="624" y="104" width="144" height="58" rx="8" style="stroke:var(--v);stroke-width:2"/>
+  <text class="sv-lbl" x="696" y="128" text-anchor="middle">Phép gộp</text>
+  <text class="sv-sm" x="696" y="146" text-anchor="middle">túi → một vector</text>
+
+  <text class="sv-sm" x="12" y="204">Nhãn ta CÓ:</text>
+  <rect class="sv-box" x="112" y="188" width="180" height="26" rx="5" style="stroke:var(--t);stroke-width:2"/>
+  <text class="sv-sm" x="202" y="206" text-anchor="middle" fill="var(--t)">điểm của CẢ đoạn</text>
+  <text class="sv-sm" x="320" y="204">Nhãn ta MUỐN:</text>
+  <rect class="sv-box" x="438" y="188" width="220" height="26" rx="5" style="stroke:var(--m);stroke-width:2;stroke-dasharray:5 4"/>
+  <text class="sv-sm" x="548" y="206" text-anchor="middle" fill="var(--m)">cửa sổ nào chịu trách nhiệm</text>
+
+  <text class="sv-sm" x="390" y="240" text-anchor="middle" font-style="italic">Phép gộp là chỗ duy nhất mô hình quyết định “nghe” thể hiện nào</text>
+</svg>
+</div>
+<figcaption>
+  <span class="look">Nhìn vào đâu</span>
+  <span class="own">Sơ đồ tự dựng</span>
+  Hộp tím bên phải — <strong>phép gộp</strong> — là nơi mọi chuyện được quyết định. Nó biến một tập cửa sổ thành một vector duy nhất để so với nhãn. Cách gộp quyết định mô hình <em>có thể</em> học được gì. Đó là lý do cả bài này nói về một bước mà nhiều người coi là chi tiết kỹ thuật vụn vặt.
+</figcaption>
+</figure>
+
+<!-- ===================================================== -->
+<h2 id="gop">2. Ba cách gộp</h2>
+
+<p>Gọi <code>h₁ … h_K</code> là biểu diễn của K thể hiện trong túi. Phép gộp biến chúng thành một vector <code>z</code>.</p>
+
+<div class="cards c3">
+  <div class="card" style="border-top:3px solid var(--b)">
+    <span class="k">Gộp trung bình</span>
+    <span class="t"><code>z = (1/K) Σ h_k</code></span>
+    <p class="d"><strong>Mạnh:</strong> ổn định, gradient chia đều cho mọi thể hiện, ít nhiễu.</p>
+    <p class="d"><strong>Yếu:</strong> một tín hiệu mạnh ở một vị trí bị <em>pha loãng</em> cho K vị trí. Và không bao giờ biết tín hiệu nằm ở đâu.</p>
+  </div>
+  <div class="card" style="border-top:3px solid var(--o)">
+    <span class="k">Gộp max</span>
+    <span class="t"><code>z = max_k h_k</code></span>
+    <p class="d"><strong>Mạnh:</strong> đúng với giả định MIL cổ điển “chỉ cần một thể hiện dương”. Giữ nguyên tín hiệu khu trú.</p>
+    <p class="d"><strong>Yếu:</strong> gradient chỉ chảy về <em>một</em> thể hiện mỗi lượt, học chậm và dễ kẹt; nhạy với nhiễu; cứng nhắc khi nhiều vị trí cùng đóng góp.</p>
+  </div>
+  <div class="card" style="border-top:3px solid var(--v)">
+    <span class="k">Gộp attention</span>
+    <span class="t"><code>z = Σ a_k · h_k</code></span>
+    <p class="d"><strong>Mạnh:</strong> trọng số <code>a_k</code> do mô hình <em>học</em>, cộng lại bằng 1. Nằm giữa trung bình và max, và tự chọn chỗ nào nằm ở đâu trên dải đó.</p>
+    <p class="d"><strong>Thêm:</strong> bản thân <code>a_k</code> <strong>chính là bản đồ khu trú</strong> — không cần phân tích hậu kỳ.</p>
+  </div>
+</div>
+
+<h3>Attention có cổng</h3>
+
+<p>Trọng số được tính rồi chuẩn hóa bằng softmax để tổng bằng 1. Biến thể <dfn title="gated attention">attention có cổng</dfn> tính điểm thô cho mỗi thể hiện bằng <strong>hai nhánh nhân với nhau</strong>:</p>
+
+<div class="callout c-data">
+  <span class="ct">Công thức, và cách đọc nó bằng lời</span>
+  <p style="text-align:center;margin-bottom:.8rem"><code>e_k = wᵀ ( tanh(V h_k) ⊙ σ(U h_k) )</code> &nbsp;&nbsp; rồi &nbsp;&nbsp; <code>a_k = softmax(e_k)</code></p>
+  <ul style="margin-bottom:0">
+    <li><code>tanh(V h_k)</code> — nhánh <strong>“nội dung”</strong>: thể hiện này trông giống cái ta đang tìm tới mức nào, dấu dương hoặc âm.</li>
+    <li><code>σ(U h_k)</code> — nhánh <strong>“cổng”</strong>, giá trị trong khoảng 0 tới 1: <em>có nên để ý tới thể hiện này không</em>.</li>
+    <li><code>⊙</code> là nhân từng phần tử. Hai nhánh nhân nhau, nên cổng đóng thì nội dung mạnh mấy cũng bị dập.</li>
+    <li><code>softmax</code> biến điểm thô thành trọng số cộng lại bằng 1.</li>
+  </ul>
+</div>
+
+<p>Nhánh cổng là chỗ quan trọng với đề tài: <strong>nó là một chỗ cắm sẵn để nhét thông tin ngoài trình tự vào.</strong> Nếu nhân thêm một đại lượng nữa — chẳng hạn độ phơi lộ rASA tại vị trí đó — thì ta có một cơ chế nói “vị trí này bị chôn, đừng để ý tới nó”. Đó đúng là thành phần 5 của kiến trúc đề xuất (<a href="structure-exposure.html#cong">bài nền 3</a>).</p>
+
+<!-- ===================================================== -->
+<h2 id="thu">3. Thử: khi nào trung bình thua, khi nào không</h2>
+
+<div class="lab">
+  <h4>Cùng một “tổng tín hiệu”, hai cách phân bố</h4>
+  <p style="font-size:.93rem">Hai mươi cột dưới đây là hoạt độ của một bộ dò motif tại 20 vị trí. Thanh trượt <strong>giữ nguyên tổng</strong> và chỉ đổi cách phân bố: từ dàn đều sang dồn vào một chỗ.</p>
+  <div class="row">
+    <label for="loc">Độ khu trú của tín hiệu:</label>
+    <input id="loc" type="range" min="0" max="100" value="0" step="1">
+    <output id="loc-v" for="loc">dàn đều</output>
+  </div>
+  <div class="frame" style="box-shadow:none;border:0;padding:0;background:transparent">
+    <svg id="prof" viewBox="0 0 560 170" role="img" aria-labelledby="prof-t prof-d">
+      <title id="prof-t">Hoạt độ theo 20 vị trí</title>
+      <desc id="prof-d">Các cột biểu diễn hoạt độ của bộ dò motif tại từng vị trí trong đoạn peptide.</desc>
+      <line class="sv-stroke" x1="20" y1="140" x2="548" y2="140"/>
+      <g id="prof-bars"></g>
+    </svg>
+  </div>
+  <div class="tablewrap" style="margin-top:.6rem">
+    <table>
+      <thead><tr><th>Phép gộp</th><th class="num">Giá trị</th><th>Nhận xét</th></tr></thead>
+      <tbody>
+        <tr><td>Trung bình</td><td class="num" id="v-mean">—</td><td id="n-mean">—</td></tr>
+        <tr><td>Max</td><td class="num" id="v-max">—</td><td id="n-max">—</td></tr>
+        <tr><td>Attention</td><td class="num" id="v-att">—</td><td id="n-att">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note" style="margin-bottom:0">Điểm cần thấy: <strong>trung bình không nhúc nhích</strong> dù phân bố đổi hoàn toàn, vì tổng được giữ nguyên. Nghĩa là một mô hình gộp trung bình <em>về nguyên tắc không phân biệt nổi</em> “tín hiệu dàn đều” với “một motif sắc nét”. Attention thì phân biệt được, và còn chỉ ra chỗ nào. Đây là minh họa toán học, không phải dữ liệu thật.</p>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="xai">4. Phần thưởng: trọng số attention là bản đồ khu trú</h2>
+
+<p>Với phần lớn mô hình, muốn biết “mô hình nhìn vào đâu” phải chạy thêm một bước phân tích hậu kỳ: saliency, integrated gradients, SHAP (xem <a href="../../14-xai-basics.html">bài giảng 14</a>). Với attention, các trọng số <code>a_k</code> <strong>đã là</strong> phân bố trên các vị trí, cộng lại bằng 1 — đọc thẳng ra được.</p>
+
+<p>Với đề tài, điều đó đặc biệt có giá vì có sẵn <strong>chuẩn thực nghiệm theo residue</strong> để đối chiếu: 219 dấu chân degron dựng bằng đột biến bão hòa. Ta có thể hỏi một câu định lượng: <em>trọng số attention có trùng với residue mà thực nghiệm chỉ ra là quan trọng không?</em></p>
+
+<div class="callout c-warn">
+  <span class="ct">Nhưng: attention không tự động là lời giải thích</span>
+  <p>Đây là một tranh luận có thật trong học máy, và nếu bỏ qua nó thì phần XAI của luận văn sẽ bị phản biện. Trọng số attention cao <strong>không</strong> đảm bảo thể hiện đó <em>gây ra</em> đầu ra. Có thể có nhiều phân bố attention khác nhau cho ra cùng một dự đoán.</p>
+  <p style="margin-bottom:0">Cách xử lý đúng: coi độ trung thực của giải thích là <strong>một chỉ số riêng, phải đo riêng</strong>, không suy ra từ hiệu năng dự đoán. Và dùng <strong>đối chứng âm</strong>: một mô hình bất biến hoán vị <em>bắt buộc</em> phải cho bản đồ phẳng theo vị trí. Nếu bản đồ của nó vẫn có vẻ “trùng dấu chân” thì phép đánh giá của ta có lỗi. <span class="tag tag-a">SUY LUẬN</span></p>
+</div>
+
+<!-- ===================================================== -->
+<h2 id="canhbao">5. Và đây là chỗ phép đo không ủng hộ attention</h2>
+
+<p>Phần trung thực nhất của bài. Lập luận ở trên nghe rất xuôi: degron là motif ngắn, nên gộp trung bình pha loãng nó, nên attention phải tốt hơn. Phép đo thực tế nói ngược lại — ít nhất là trên thang điểm khối.</p>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Mô hình</th><th class="num">Gộp trung bình</th><th class="num">Gộp max</th><th class="num">Trung bình 3 vị trí mạnh nhất</th><th class="num">Entropy theo vị trí</th></tr></thead>
+  <tbody>
+    <tr><td>cnn2w1 (cửa sổ 1)</td><td class="num"><strong>0,8239</strong></td><td class="num">0,3443</td><td class="num">0,4847</td><td class="num">3,294 / tối đa 3,401</td></tr>
+    <tr><td>cnn2w7 (cửa sổ 7)</td><td class="num"><strong>0,8250</strong></td><td class="num">0,4790</td><td class="num">0,6025</td><td class="num">—</td></tr>
+  </tbody>
+</table>
+<caption><span class="tag tag-m">TỰ ĐO</span> Giá trị tuyệt đối của Pearson trên holdout hiệu dụng 428 gene. Script <code>pool_test.py</code>. Entropy 3,294 trên tối đa 3,401 nghĩa là hoạt độ <strong>gần như đều</strong> trên mọi vị trí.</caption>
+</div>
+
+<p>Đọc thế này: biểu diễn mà mô hình đã học <strong>không khu trú</strong>. Tín hiệu dàn đều khắp 30 vị trí. Trong khung của khối tương tác ở trên, thực tế nằm ở đầu trái thanh trượt, không phải đầu phải.</p>
+
+<div class="gate two">
+  <div class="g">
+    <h4>Giới hạn của phép thử này</h4>
+    <p>Trọng số được huấn luyện <em>cho</em> phép gộp trung bình, rồi bị thay phép gộp mà không huấn luyện lại. Nên nó <strong>không phải</strong> phép so sánh công bằng với một kiến trúc max hay attention huấn luyện từ đầu.</p>
+    <p style="margin-bottom:0">Nó chỉ chứng minh một điều, nhưng chứng minh chắc chắn: <strong>biểu diễn đã học không khu trú theo vị trí</strong>.</p>
+  </div>
+  <div class="g">
+    <h4>Hệ quả cho đề tài</h4>
+    <p>Một kiến trúc dựa trên attention <strong>gần như chắc chắn không thắng</strong> trên thang điểm khối, vì thang đó không thưởng cho việc khu trú.</p>
+    <p style="margin-bottom:0">Nên attention phải được biện minh bằng <strong>nhiệm vụ footprint theo residue</strong> và khả năng học chung nhãn đoạn với nhãn vị trí. Nó phải được so với đầu hồi quy theo vị trí không MIL. Đây là điều phải thống nhất với GVHD <em>trước</em>, không để lộ ra ở tuần 12. <a href="../topic/evaluation.html">Xem trang thước đo</a>.</p>
+  </div>
+</div>
+
+<p class="muted" style="font-size:.9rem">Một chi tiết nhỏ nhưng đáng nhắc: trong mã nguồn huấn luyện của tác giả có một dòng <code>GlobalMaxPooling1D</code> <strong>bị chú thích lại</strong>. <span class="tag tag-m">TỰ ĐO</span> Tức họ đã nghĩ tới phép gộp này; vì sao bỏ thì bài báo không nêu. <span class="tag tag-u">CHƯA KIỂM</span></p>
+
+<!-- ===================================================== -->
+<h2 id="thuatngu">Bảng thuật ngữ của bài</h2>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Tiếng Việt</th><th>Tiếng Anh</th><th>Nghĩa ngắn</th></tr></thead>
+  <tbody>
+    <tr><td>Học đa thể hiện</td><td class="en">multiple instance learning (MIL)</td><td>Nhãn gắn với cả túi, không gắn với từng thể hiện</td></tr>
+    <tr><td>Túi</td><td class="en">bag</td><td>Tập các thể hiện dùng chung một nhãn</td></tr>
+    <tr><td>Thể hiện</td><td class="en">instance</td><td>Một phần tử của túi; ở đây là một cửa sổ residue</td></tr>
+    <tr><td>Phép gộp</td><td class="en">pooling</td><td>Biến tập thể hiện thành một vector duy nhất</td></tr>
+    <tr><td>Attention có cổng</td><td class="en">gated attention</td><td>Trọng số tính bằng tích của nhánh nội dung và nhánh cổng</td></tr>
+    <tr><td>Bản đồ khu trú</td><td class="en">localization map</td><td>Phân bố mức quan trọng theo vị trí</td></tr>
+    <tr><td>Entropy của phân bố</td><td class="en">entropy</td><td>Đo độ “dàn đều”; càng gần tối đa càng đều</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="tukiem">Tự kiểm tra</h2>
+
+<details class="q">
+  <summary>1. Vì sao bài toán degron là bài toán đa thể hiện chứ không phải bài toán chuỗi thông thường?</summary>
+  <div><p>Nếu chỉ có điểm toàn đoạn, nhãn và cơ chế ở hai mức khác nhau nên MIL là một lựa chọn tự nhiên. Nhưng Zhang 2023 đã đo đột biến theo vị trí. Vì vậy MIL không bắt buộc; lý do giữ nó là dùng nhãn đoạn và nhãn vị trí trong cùng mô hình, rồi kiểm với hồi quy theo vị trí không MIL.</p></div>
+</details>
+
+<details class="q">
+  <summary>2. Gộp max hợp với giả định MIL cổ điển hơn gộp attention. Vì sao vẫn chọn attention?</summary>
+  <div><p>Ba lý do. Thứ nhất, gradient: max chỉ chuyển gradient về một thể hiện mỗi lượt nên học chậm và dễ kẹt, còn attention chuyển về mọi thể hiện theo trọng số. Thứ hai, linh hoạt: nếu nhiều vị trí cùng đóng góp thì max bỏ sót, attention thì không. Thứ ba, giải thích: attention cho sẵn phân bố trọng số dùng làm bản đồ khu trú.</p></div>
+</details>
+
+<details class="q">
+  <summary>3. Entropy hoạt độ theo vị trí đo được là 3,294 trên tối đa 3,401. Nói lên điều gì, và không nói lên điều gì?</summary>
+  <div><p><strong>Nói:</strong> hoạt độ mà mô hình đã học gần như phân bố đều trên các vị trí, tức biểu diễn đã học không khu trú. <strong>Không nói:</strong> rằng tín hiệu sinh học thật cũng dàn đều, và cũng không nói rằng một kiến trúc khu trú huấn luyện từ đầu sẽ thất bại. Nó chỉ mô tả mô hình hiện có, trên nhãn hiện có.</p></div>
+</details>
+
+<details class="q">
+  <summary>4. Nếu bản đồ attention của mô hình mới trùng đẹp với 219 dấu chân, đã đủ kết luận mô hình “giải thích được” chưa?</summary>
+  <div><p>Chưa. Cần ít nhất hai thứ nữa. Một là <strong>đối chứng âm</strong>: chạy cùng quy trình đánh giá trên một mô hình bất biến hoán vị, vốn bắt buộc phải cho bản đồ phẳng; nếu nó cũng “trùng đẹp” thì phép đánh giá có lỗi. Hai là <strong>phép kiểm trung thực</strong>: che đi những residue mà attention cho là quan trọng và xem dự đoán có đổi không. Trọng số cao mà che đi không ảnh hưởng gì thì đó không phải giải thích.</p></div>
+</details>
+
+<div class="row" data-done-slot style="margin:2rem 0 0"></div>
+
+<div class="next">
+  <a href="e3-conditioning.html"><span class="k">Học tiếp</span><span class="t">Bài nền 6 · Điều kiện hóa theo E3 →</span></a>
+  <a href="../topic/architecture.html"><span class="k">Dùng ở đâu</span><span class="t">Kiến trúc MIL-Degron · túi và attention →</span></a>
+</div>
+
+<footer class="pagefoot">
+  <p><strong>Nguồn.</strong> Bảng so sánh phép gộp, entropy theo vị trí và chi tiết dòng <code>GlobalMaxPooling1D</code> bị chú thích lại là kết quả <strong>tự chạy trong repo</strong> — script <code>pool_test.py</code>, xem <a href="../../../topics/degron-footprint/research/voutsinos-2026-audit/README.md">ghi chú audit</a>. Khái niệm MIL, các phép gộp và attention có cổng là kiến thức nền của học máy; công thức attention có cổng ghi ở đây theo dạng chuẩn thường gặp trong tài liệu MIL.</p>
+  <p style="margin-bottom:0"><strong>Việc còn phải làm.</strong> BioBlobs đã dùng gated MIL trên protein, nên không thể nói cơ chế attention đa thể hiện là mới. Việc cần kiểm là cách ghép với nhãn footprint degron và cổng phơi lộ — xem <a href="../topic/open-questions.html">trang câu hỏi mở</a>. <span class="tag tag-u">CHƯA KIỂM</span></p>
+</footer>
+
+</div>
+<script src="../assets/hub.js"></script>
+<script>
+(function () {
+  var sl = document.getElementById("loc");
+  if (!sl) return;
+  var bars = document.getElementById("prof-bars");
+  var NS = "http://www.w3.org/2000/svg", N = 20, X0 = 26, W = 20, GAP = 6.4, TOTAL = 20;
+
+  for (var i = 0; i < N; i++) {
+    var r = document.createElementNS(NS, "rect");
+    r.setAttribute("x", X0 + i * (W + GAP));
+    r.setAttribute("width", W);
+    r.setAttribute("rx", 3);
+    r.setAttribute("id", "pb" + i);
+    bars.appendChild(r);
+  }
+
+  function f(x, d) { return x.toFixed(d === undefined ? 3 : d).replace(".", ","); }
+
+  function update() {
+    var t = Number(sl.value) / 100;
+    var peak = 9;                       // vị trí motif
+    var w = [], sum = 0;
+    for (var i = 0; i < N; i++) {
+      var d = i - peak;
+      var spike = Math.exp(-(d * d) / (2 * 0.9 * 0.9));
+      var flat = 1;
+      var v = (1 - t) * flat + t * spike * 6;
+      w.push(v); sum += v;
+    }
+    // chuẩn hóa để TỔNG luôn bằng TOTAL
+    var mx = 0, att = 0, asum = 0, acc = [];
+    for (i = 0; i < N; i++) {
+      w[i] = w[i] / sum * TOTAL;
+      if (w[i] > mx) mx = w[i];
+    }
+    var beta = 2.2;                     // nhiệt độ softmax của attention
+    for (i = 0; i < N; i++) { var e = Math.exp(beta * w[i]); acc.push(e); asum += e; }
+    for (i = 0; i < N; i++) { att += (acc[i] / asum) * w[i]; }
+
+    var mean = TOTAL / N;
+    for (i = 0; i < N; i++) {
+      var h = Math.max(2, (w[i] / 6) * 120);
+      var b = document.getElementById("pb" + i);
+      b.setAttribute("y", 140 - h);
+      b.setAttribute("height", h);
+      b.setAttribute("fill", w[i] > mean * 2 ? "var(--m)" : "var(--v)");
+      b.setAttribute("opacity", w[i] > mean * 2 ? "1" : ".45");
+    }
+
+    document.getElementById("loc-v").value =
+      t < 0.12 ? "dàn đều" : t > 0.82 ? "một motif sắc nét" : "đang dồn lại";
+    document.getElementById("v-mean").textContent = f(mean);
+    document.getElementById("v-max").textContent = f(mx);
+    document.getElementById("v-att").textContent = f(att);
+    document.getElementById("n-mean").textContent = "Không đổi — tổng được giữ nguyên nên trung bình luôn bằng " + f(mean);
+    document.getElementById("n-max").textContent = t < 0.12
+      ? "Thấp: không có vị trí nào nổi bật" : "Cao: bắt được đỉnh";
+    document.getElementById("n-att").textContent = t < 0.12
+      ? "Gần trung bình: không có gì để dồn trọng số vào"
+      : "Dồn trọng số vào vùng đỉnh, và cho biết đỉnh ở đâu";
+  }
+  sl.addEventListener("input", update);
+  update();
+})();
+</script>
+</body>
+</html>

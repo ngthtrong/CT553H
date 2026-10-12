@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MIL-Degron: năm thành phần, một mục tiêu chính · Hub học degron</title>
+<meta name="hub-page" content="t-arch">
+<meta name="description" content="Đây là thiết kế cần kiểm chứng để dùng chung nhãn mức đoạn và mức residue; việc có nhãn residue khiến đối chứng hồi quy theo vị trí trở thành bắt buộc.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../assets/hub.css">
+</head>
+<body>
+<a class="skip" href="#noidung">Bỏ qua điều hướng</a>
+<div class="page">
+<nav class="topbar" aria-label="Thanh điều hướng"><a class="home" href="../index.html">← Hub học đề tài</a><span class="spacer"></span></nav>
+
+<div class="crumb"><a href="../index.html">Hub</a><span class="sep">/</span><span>Chặng 5 · Hướng đề tài</span><span class="sep">/</span><span>MIL-Degron: năm thành phần, một mục tiêu chính</span></div>
+
+<div class="eyebrow">Chặng 5 · Hướng đề tài</div>
+
+<h1>MIL-Degron: năm thành phần, một mục tiêu chính</h1>
+
+<p class="lede">Đây là thiết kế cần kiểm chứng để dùng chung nhãn mức đoạn và mức residue; việc có nhãn residue khiến đối chứng hồi quy theo vị trí trở thành bắt buộc.</p>
+
+<div class="callout c-warn"><span class="ct">Phạm vi đã chốt ngày 11/10/2026</span><p style="margin-bottom:0">Mục tiêu là <strong>dự đoán bản đồ độ nhạy đột biến theo residue</strong> của degron. Nhánh dự đoán E3 đã bỏ vì dữ liệu gán E3 quá ít; E3 chỉ là <strong>ca nghiên cứu</strong>. Mọi kiến trúc và phép đánh giá bên dưới vẫn là đề xuất, chưa có kết quả huấn luyện. <a href="../../../topics/degron-footprint/research/topic-decision.md">Văn bản quyết định</a>.</p>
+</div>
+
+<main id="noidung">
+<div class="gate two"><div class="g">
+<h4>Cần biết trước</h4>
+<p><a href="../foundations/mil-attention.html">MIL và attention</a>, <a href="../foundations/structure-exposure.html">rASA, pLDDT</a>, <a href="../foundations/regression-correlation.html">bất biến hoán vị</a>.</p>
+</div>
+<div class="g">
+<h4>Học xong sẽ hiểu</h4>
+<p>Luồng từ peptide tới bản đồ residue, vì sao có nhiệm vụ phụ mức đoạn, và phép thử nào có thể bác bỏ lựa chọn MIL.</p>
+</div>
+</div>
+
+<h2>1. Luồng dự kiến</h2>
+<figure><div class="frame min" tabindex="0" role="region" aria-label="Sơ đồ kiến trúc, cuộn ngang nếu cần"><svg viewBox="0 0 800 230" role="img" aria-label="Peptide tới PLM mức residue, tạo túi cửa sổ motif, attention với cổng rASA pLDDT, ra bản đồ residue chính và điểm đoạn phụ."><rect class="sv-box" x="10" y="70" width="125" height="70" rx="10"/><text class="sv-lbl" x="73" y="100" text-anchor="middle">Peptide</text><text class="sv-sm" x="73" y="120" text-anchor="middle">28–30 aa</text><text class="sv-lbl" x="152" y="110">→</text><rect class="sv-box" x="180" y="70" width="130" height="70" rx="10"/><text class="sv-lbl" x="245" y="99" text-anchor="middle">PLM</text><text class="sv-sm" x="245" y="120" text-anchor="middle">mỗi residue</text><text class="sv-lbl" x="325" y="110">→</text><rect class="sv-box" x="350" y="70" width="130" height="70" rx="10"/><text class="sv-lbl" x="415" y="99" text-anchor="middle">Cửa sổ</text><text class="sv-sm" x="415" y="120" text-anchor="middle">túi motif</text><text class="sv-lbl" x="493" y="110">→</text><rect class="sv-box" x="520" y="70" width="125" height="70" rx="10"/><text class="sv-lbl" x="583" y="99" text-anchor="middle">Attention</text><text class="sv-sm" x="583" y="120" text-anchor="middle">cổng phơi lộ</text><text class="sv-sm" x="583" y="35" text-anchor="middle">rASA · pLDDT ↓</text><text class="sv-lbl" x="655" y="110">→</text><rect class="sv-box" x="678" y="38" width="112" height="76" rx="10" style="stroke:var(--m)"/><text class="sv-lbl" x="734" y="70" text-anchor="middle">Bản đồ</text><text class="sv-sm" x="734" y="92" text-anchor="middle">residue chính</text><rect class="sv-box" x="678" y="145" width="112" height="60" rx="10"/><text class="sv-sm" x="734" y="178" text-anchor="middle">Điểm đoạn phụ</text><text class="sv-sm" x="654" y="174">↘</text></svg>
+</div>
+<figcaption><span class="own">Sơ đồ tự dựng · thiết kế đề xuất</span> Không có nhánh E3. Cổng cấu trúc là giả thuyết thiết kế, chưa chứng minh cải thiện.</figcaption>
+</figure>
+
+<h2>2. Năm thành phần và phép thử</h2>
+<div class="tablewrap">
+<table><thead><tr><th>#</th><th>Thành phần</th><th>Vì sao xét đến</th><th>Kiểm thế nào</th></tr>
+</thead><tbody>
+<tr><td>1</td><td>Cửa sổ ứng viên motif</td><td>Footprint thật khu trú, median 3/28 vị trí.</td><td>So với mã hóa từng vị trí không dùng cửa sổ.</td></tr>
+
+<tr><td>2</td><td>Embedding PLM mức residue</td><td>Giữ thứ tự và bối cảnh của từng vị trí.</td><td>So với one-hot hoặc mã hóa đơn giản; kiểm chi phí.</td></tr>
+
+<tr><td>3</td><td>Attention có cổng trên túi</td><td>Nối nhãn yếu toàn đoạn với nhãn mạnh từng residue.</td><td>So với đầu hồi quy theo vị trí <strong>không có MIL</strong>.</td></tr>
+
+<tr><td>4</td><td>Cổng phơi lộ rASA, pLDDT tại bước gộp</td><td>Peptide tách rời và protein nguyên vẹn có mức phơi lộ khác nhau.</td><td>Ablation cổng; báo riêng hai chế độ.</td></tr>
+
+<tr><td>5</td><td>Hai đầu ra, huấn luyện đa nhiệm</td><td>Điểm đoạn dồi dào; bản đồ residue là mục tiêu chính.</td><td>So với chỉ học nhãn residue.</td></tr>
+</tbody></table>
+</div>
+
+<h2>3. Điểm cần phản biện trước</h2>
+<p>Attention cao không tự chứng minh residue gây phân hủy. Bản đồ phải được chấm với nhãn đột biến <em>ngoài tập huấn luyện</em>. Khi nhãn theo residue đã có, MIL không còn bắt buộc về mặt bài toán; nếu hồi quy theo vị trí đạt ngang hoặc hơn MIL-Degron, phải báo đúng kết quả ấy. <a href="https://arxiv.org/abs/2510.01632">BioBlobs</a> đã dùng gated MIL trên protein, nên chỉ có thể kiểm tính mới của cách <em>ghép và đặt cổng</em> trong bài toán degron, không nhận cơ chế là mới.</p>
+
+</main>
+
+<div class="row" data-done-slot style="margin:2rem 0"></div>
+
+<div class="next"><a href="data.html"><span class="k">Đọc trước</span><span class="t">← Trang trước</span></a><a href="evaluation.html"><span class="k">Học tiếp</span><span class="t">Trang sau →</span></a></div>
+
+<footer class="pagefoot"><p><strong>Nguồn và trạng thái.</strong> Số liệu tự đếm và thiết kế lấy từ <a href="../../../topics/degron-footprint/research/topic-decision.md">quyết định đề tài</a> và <a href="../../../topics/degron-footprint/research/e3-labels-audit/README.md">audit dữ liệu thô</a>. Đề tài do sinh viên chốt; chưa có phê duyệt GVHD. Chưa huấn luyện mô hình mới.</p>
+</footer>
+
+</div>
+<script src="../assets/hub.js"></script></body></html>

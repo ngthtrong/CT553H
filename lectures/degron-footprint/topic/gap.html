@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Khoảng trống: từ điểm của đoạn đến footprint của residue · Hub học degron</title>
+<meta name="hub-page" content="t-gap">
+<meta name="description" content="Điểm degron của cả đoạn và bản đồ tác động đột biến theo từng vị trí là hai mục tiêu đo khác nhau. Đề tài chọn mục tiêu thứ hai.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../assets/hub.css">
+</head>
+<body>
+<a class="skip" href="#noidung">Bỏ qua điều hướng</a>
+<div class="page">
+<nav class="topbar" aria-label="Thanh điều hướng"><a class="home" href="../index.html">← Hub học đề tài</a><span class="spacer"></span></nav>
+
+<div class="crumb"><a href="../index.html">Hub</a><span class="sep">/</span><span>Chặng 5 · Hướng đề tài</span><span class="sep">/</span><span>Khoảng trống: từ điểm của đoạn đến footprint của residue</span></div>
+
+<div class="eyebrow">Chặng 5 · Hướng đề tài</div>
+
+<h1>Khoảng trống: từ điểm của đoạn đến footprint của residue</h1>
+
+<p class="lede">Điểm degron của cả đoạn và bản đồ tác động đột biến theo từng vị trí là hai mục tiêu đo khác nhau. Đề tài chọn mục tiêu thứ hai.</p>
+
+<div class="callout c-warn"><span class="ct">Phạm vi đã chốt ngày 11/10/2026</span><p style="margin-bottom:0">Mục tiêu là <strong>dự đoán bản đồ độ nhạy đột biến theo residue</strong> của degron. Nhánh dự đoán E3 đã bỏ vì dữ liệu gán E3 quá ít; E3 chỉ là <strong>ca nghiên cứu</strong>. Mọi kiến trúc và phép đánh giá bên dưới vẫn là đề xuất, chưa có kết quả huấn luyện. <a href="../../../topics/degron-footprint/research/topic-decision.md">Văn bản quyết định</a>.</p>
+</div>
+
+<main id="noidung">
+<div class="gate two"><div class="g">
+<h4>Cần biết trước</h4>
+<p><a href="../foundations/measuring-degrons.html">GPS, PSI và đột biến quét</a>; <a href="../foundations/regression-correlation.html">hồi quy và bất biến hoán vị</a>.</p>
+</div>
+<div class="g">
+<h4>Học xong sẽ hiểu</h4>
+<p>Vì sao điểm toàn đoạn cao chưa cho biết residue nào quan trọng, và cách phát biểu tính mới vừa đủ hẹp.</p>
+</div>
+</div>
+
+<h2>1. Hai câu hỏi khác nhau</h2>
+
+<div class="cards c2"><div class="card"><span class="k">Nhãn mức đoạn · đã đo nhiều</span><span class="t">Đoạn peptide này có là degron mạnh không?</span><p class="d"><a href="../papers/voutsinos-2026.html">Voutsinos 2026</a> cho một điểm trên mỗi tile. PAP đạt Pearson khoảng 0,87 trên phép chia tác giả. Điều đó chưa chỉ ra tác động của từng vị trí.</p>
+</div>
+<div class="card"><span class="k">Nhãn mức residue · mục tiêu</span><span class="t">Đổi acid amin ở vị trí nào làm PSI thay đổi?</span><p class="d"><a href="../papers/zhang-2023.html">Zhang 2023</a> đo biến thể đột biến quét. Audit trong repo lọc được 2.624 peptide có footprint học được; 2.402 có tín hiệu khu trú ở tối đa sáu vị trí.</p>
+</div>
+</div>
+
+<h2>2. Vì sao cách dự đoán cũ chưa đủ?</h2>
+
+<p>Audit PAP cho thấy <strong>kênh nội cnn2w1</strong> bất biến khi đảo thứ tự residue: Pearson giữa điểm gốc và điểm đảo là 1,000000. Đây là phép thử trên kênh nội, không áp cho kênh đầu C của PAP. Bản cnn2w7 có khả năng bắt mẫu theo thứ tự nhưng chỉ hơn khoảng +0,0032 Pearson trên điểm toàn đoạn. Đây là <span class="tag tag-m">KẾT QUẢ AUDIT</span>, không phải kết quả của mô hình đề xuất.</p>
+
+<figure><div class="frame min" tabindex="0" role="region" aria-label="Sơ đồ hai đơn vị nhãn"><svg viewBox="0 0 760 170" role="img" aria-label="Một peptide có điểm chung cho cả đoạn ở bên trái; cùng peptide có điểm tác động đột biến riêng ở từng residue ở bên phải."><rect class="sv-box" x="15" y="24" width="290" height="110" rx="12"/><text class="sv-lbl" x="160" y="57" text-anchor="middle">Nhãn đoạn: một số</text><text class="sv-sm" x="160" y="96" text-anchor="middle">0,78 cho toàn bộ peptide</text><text class="sv-lbl" x="380" y="85" text-anchor="middle">→</text><rect class="sv-box" x="455" y="24" width="290" height="110" rx="12"/><text class="sv-lbl" x="600" y="57" text-anchor="middle">Footprint: vector theo vị trí</text><text class="sv-sm" x="600" y="96" text-anchor="middle">0,1 · 0,2 · 1,4 · 0,1 · …</text></svg>
+</div>
+<figcaption><span class="own">Sơ đồ tự dựng</span> Một điểm cho cả đoạn không suy ra được vector theo vị trí. Các số trong hình chỉ minh họa, không phải dữ liệu thí nghiệm.</figcaption>
+</figure>
+
+<h2>3. Phạm vi đóng góp được phép nói</h2>
+<p>Hướng đề xuất là <strong>nối nhãn yếu mức đoạn với nhãn mạnh mức residue</strong> trong một mô hình và kiểm tra liệu cổng phơi lộ cấu trúc có cải thiện bản đồ dự đoán. <a href="../papers/metadegron-2024.html">MetaDegron</a> đã dự đoán theo 21 E3; <a href="https://arxiv.org/abs/2510.01632">BioBlobs</a> đã dùng MIL có cổng attention trên protein. Vì vậy không thể gọi bản thân MIL hoặc dự đoán E3 là mới. Tính mới của cách ghép và hiệu quả của nó còn phải kiểm bằng đối chứng.</p>
+
+</main>
+
+<div class="row" data-done-slot style="margin:2rem 0"></div>
+
+<div class="next"><a href="../papers/index.html"><span class="k">Đọc trước</span><span class="t">← Trang trước</span></a><a href="data.html"><span class="k">Học tiếp</span><span class="t">Trang sau →</span></a></div>
+
+<footer class="pagefoot"><p><strong>Nguồn và trạng thái.</strong> Số liệu tự đếm và thiết kế lấy từ <a href="../../../topics/degron-footprint/research/topic-decision.md">quyết định đề tài</a> và <a href="../../../topics/degron-footprint/research/e3-labels-audit/README.md">audit dữ liệu thô</a>. Đề tài do sinh viên chốt; chưa có phê duyệt GVHD. Chưa huấn luyện mô hình mới.</p>
+</footer>
+
+</div>
+<script src="../assets/hub.js"></script></body></html>

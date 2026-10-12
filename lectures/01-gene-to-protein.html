@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Từ gene đến protein</title>
+<style>
+:root{
+  --bg:#faf9f6; --surface:#ffffff; --text:#1d2126; --muted:#5d6570; --border:#e2dfd7;
+  --accent:#2c6a8a; --accent-soft:#e7f0f5;
+  --ok:#2d7a4d; --ok-soft:#e6f3eb; --warn:#8f5600; --warn-soft:#fbf1df;
+  --bad:#a23838; --bad-soft:#f8e7e7; --code-bg:#f1efe9;
+  --r-st:#2c6a8a; --r-k:#b4532a; --r-r:#7a4fa0; --r-p:#3f7d3a; --r-hit:#fff1a8;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#15171b; --surface:#1d2026; --text:#e5e4df; --muted:#9aa1ab; --border:#33373f;
+    --accent:#7fb8d6; --accent-soft:#1f2f39;
+    --ok:#79c495; --ok-soft:#1b2c22; --warn:#e2b25c; --warn-soft:#2f2617;
+    --bad:#e38c8c; --bad-soft:#331e1f; --code-bg:#262a31;
+    --r-st:#7fb8d6; --r-k:#e59a72; --r-r:#bf9ae0; --r-p:#93c98c; --r-hit:#4a4318;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:17px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans","Helvetica Neue",Arial,sans-serif}
+main{max-width:46rem;margin:0 auto;padding:24px 16px 64px}
+a{color:var(--accent)}
+h1{font-size:1.85rem;line-height:1.25;margin:.3em 0 .4em}
+h2{font-size:1.3rem;margin:2.2em 0 .5em;padding-top:.6em;border-top:1px solid var(--border)}
+h3{font-size:1.08rem;margin:1.6em 0 .4em}
+p,li{overflow-wrap:break-word}
+code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;font-size:.9em}
+code{background:var(--code-bg);padding:.1em .35em;border-radius:4px}
+.crumb{color:var(--muted);font-size:.9rem}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:.4em 0 1.2em}
+.pill{font-size:.82rem;border:1px solid var(--border);background:var(--surface);border-radius:999px;padding:2px 10px;color:var(--muted)}
+.box{border:1px solid var(--border);background:var(--surface);border-radius:10px;padding:14px 18px;margin:1.2em 0}
+.box>:first-child{margin-top:0}.box>:last-child{margin-bottom:0}
+.box h3{margin-top:0}
+.goal{border-left:4px solid var(--accent)}
+.link{background:var(--accent-soft);border-color:transparent}
+.warn{background:var(--warn-soft);border-color:transparent}
+.label{display:block;font-size:.78rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:.3em}
+.tag{display:inline-block;font-size:.72rem;line-height:1.5;padding:0 6px;border-radius:4px;white-space:nowrap;vertical-align:1px;font-weight:600}
+.t-ok{background:var(--ok-soft);color:var(--ok)}
+.t-dd{background:var(--accent-soft);color:var(--accent)}
+.t-unv{background:var(--warn-soft);color:var(--warn)}
+.t-inf{background:var(--bad-soft);color:var(--bad)}
+.tablewrap{overflow-x:auto;margin:1em 0;border:1px solid var(--border);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--border)}
+th{background:var(--code-bg);font-weight:600}
+tr:last-child td{border-bottom:0}
+figure{margin:1.4em 0}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:.88rem;color:var(--muted);margin-top:.4em}
+details{border:1px solid var(--border);border-radius:8px;background:var(--surface);margin:.6em 0;padding:0 14px}
+summary{cursor:pointer;padding:10px 0;font-weight:600}
+details[open] summary{border-bottom:1px solid var(--border);margin-bottom:.6em}
+details>div{padding-bottom:10px}
+.btns{display:flex;flex-wrap:wrap;gap:6px;margin:.6em 0}
+button{font:inherit;font-size:.88rem;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:6px;padding:4px 10px;cursor:pointer}
+button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.seq{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:1rem;line-height:2;word-break:break-all;letter-spacing:.06em}
+.seq span{cursor:pointer;border-radius:3px;padding:1px 0}
+.seq span.hit{background:var(--r-hit);font-weight:700}
+.seq span.center{outline:2px solid var(--bad)}
+.out{font-size:.92rem;color:var(--muted);min-height:1.6em}
+.win{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:1rem;letter-spacing:.06em;background:var(--code-bg);padding:6px 10px;border-radius:6px;overflow-x:auto;white-space:nowrap}
+.win b{color:var(--bad)}
+nav.pn{display:flex;justify-content:space-between;gap:12px;margin-top:3em;padding-top:1em;border-top:1px solid var(--border);font-size:.95rem}
+.src li{margin:.35em 0;font-size:.93rem}
+svg text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans",Arial,sans-serif}
+.s-stroke{stroke:var(--text)} .s-muted{fill:var(--muted)} .s-text{fill:var(--text)}
+.s-acc{fill:var(--accent)} .s-accs{stroke:var(--accent)} .s-bad{fill:var(--bad)} .s-bads{stroke:var(--bad)}
+.s-ok{fill:var(--ok)} .s-oks{stroke:var(--ok)} .s-surf{fill:var(--surface)} .s-soft{fill:var(--accent-soft)}
+.s-warn{fill:var(--warn)} .s-warns{stroke:var(--warn)} .s-border{stroke:var(--border)}
+
+/* Quick navigation: native links and details work offline without JavaScript. */
+.lecture-nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:8px;padding:10px 0;margin:0 0 16px;background:var(--bg);border-bottom:1px solid var(--border)}
+.lecture-nav>a{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:6px 10px;border:1px solid var(--border);border-radius:8px;background:var(--surface);text-decoration:none;font-size:.88rem}
+.lecture-switch{position:relative;flex:1;min-width:0;margin:0;padding:0;border-radius:8px}
+.lecture-switch>summary{min-height:44px;padding:8px 12px;font-size:.88rem}
+.lecture-switch[open]>summary{margin:0;border-bottom:0}
+.lecture-switch>.lecture-menu{position:absolute;right:0;top:calc(100% + 8px);width:min(40rem,calc(100vw - 32px));max-height:65vh;overflow-y:auto;overscroll-behavior:contain;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:10px;box-shadow:0 6px 18px var(--border)}
+.lecture-menu .lecture-group{margin:8px 8px 4px;font-size:.8rem;font-weight:700;color:var(--muted)}
+.lecture-menu ol{list-style:none;padding:0;margin:0 0 12px}
+.lecture-menu li{margin:0}
+.lecture-menu a,.lecture-menu .lecture-unavailable{display:block;padding:10px 12px;border-radius:6px;line-height:1.45;font-size:.9rem;text-decoration:none}
+.lecture-menu a:hover{background:var(--accent-soft)}
+.lecture-menu a[aria-current="page"]{background:var(--accent-soft);font-weight:700;border-left:3px solid var(--accent)}
+.lecture-menu .lecture-unavailable{color:var(--muted)}
+.lecture-nav a:focus-visible,.lecture-switch>summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+@media print{.lecture-nav{display:none}}
+
+</style>
+</head>
+<body>
+<main>
+
+<nav class="lecture-nav" aria-label="Chuyển nhanh giữa các bài giảng">
+<a href="index.html">Mục lục</a>
+<details class="lecture-switch"><summary>Chuyển bài · Bài 01</summary><div class="lecture-menu"><p class="lecture-group">Phần A — Sinh học nền</p><ol><li><a href="01-gene-to-protein.html" aria-current="page">Bài 01: Từ gene đến protein</a></li><li><a href="02-enzymes-and-ptm.html">Bài 02: Enzyme và biến đổi sau dịch mã (PTM)</a></li><li><a href="03-cell-signaling-kinases.html">Bài 03: Tín hiệu tế bào và kinase</a></li><li><a href="04-cancer-hallmarks.html">Bài 04: Ung thư: hallmarks và kinase</a></li><li><a href="05-aging-sirtuins-senescence.html">Bài 05: Lão hóa: sirtuin và senescence</a></li><li><a href="06-biological-databases.html">Bài 06: Các cơ sở dữ liệu sinh học</a></li></ol><p class="lecture-group">Phần B — Khung bài toán và đánh giá</p><ol><li><a href="07-residue-level-framing.html">Bài 07: Đặt bài toán ở mức residue</a></li><li><a href="08-metrics-imbalanced.html">Bài 08: Chỉ số cho dữ liệu mất cân bằng</a></li><li><a href="09-leakage-and-homology.html">Bài 09: Rò rỉ dữ liệu và chuỗi đồng dạng</a></li></ol><p class="lecture-group">Phần C — Mô hình</p><ol><li><a href="10-neural-network-basics.html">Bài 10: Mạng nơ-ron cơ bản</a></li><li><a href="11-cnn-to-mcnn.html">Bài 11: Từ CNN đến MCNN</a></li><li><a href="12-protein-encodings-plm.html">Bài 12: Mã hóa protein: one-hot, PSSM, PLM</a></li><li><a href="13-retrieval-and-beyond.html">Bài 13: Truy hồi và các hướng sau PLM</a></li><li><a href="14-xai-basics.html">Bài 14: Giải thích mô hình (XAI)</a></li><li><span class="lecture-unavailable">Bài 15: Đọc hiểu một bài báo tin sinh — chưa có</span></li></ol></div></details>
+<a href="02-enzymes-and-ptm.html" aria-label="Bài sau: Enzyme và biến đổi sau dịch mã (PTM)" title="Bài 02: Enzyme và biến đổi sau dịch mã (PTM)">→</a>
+</nav>
+
+
+<div class="crumb"><a href="index.html">Bài giảng nền</a> · Bài 01 / 15 · Phần A — Sinh học nền</div>
+<h1>Từ gene đến protein</h1>
+<div class="meta">
+  <span class="pill">≈ 25 phút</span>
+  <span class="pill">Dùng cho: cả hai hướng</span>
+  <span class="pill">Đọc trước: không cần</span>
+</div>
+
+<div class="box goal">
+  <span class="label">Đọc xong bài này, bạn sẽ</span>
+  <ul>
+    <li>Giải thích được đường đi DNA → RNA → protein bằng ngôn ngữ của người làm phần mềm.</li>
+    <li>Biết vì sao một đột biến DNA có thể (hoặc không) làm đổi một amino acid.</li>
+    <li>Nhận ra 20 amino acid qua ký hiệu một chữ, và biết chữ nào mang PTM của các ứng viên đề tài.</li>
+    <li>Hiểu cấu trúc bậc 1–4 ở mức đủ dùng: vì sao chuỗi ký tự quyết định hình dạng, và hình dạng quyết định chức năng.</li>
+    <li>Đọc được một bản ghi FASTA của UniProt và tránh lỗi lệch vị trí khi làm việc với dữ liệu thật.</li>
+  </ul>
+</div>
+<p class="out" style="font-size:.85rem">Nhãn độ tin cậy trong bài:
+<span class="tag t-ok">đã kiểm</span> đã mở nguồn gốc hoặc bản tóm tắt chính thức trong phiên 04/10/2026 ·
+<span class="tag t-dd">khảo sát sâu</span> lấy từ báo cáo khảo sát sâu, giữ nguyên nhãn của báo cáo ·
+<span class="tag t-unv">chưa kiểm chứng</span> kiến thức nền, chưa mở lại nguồn ·
+<span class="tag t-inf">suy luận</span> lập luận của bài giảng, không có nguồn trực tiếp.</p>
+
+
+<h2>1. Vì sao người làm phần mềm cần bài này</h2>
+<p>Đầu vào của mọi ứng viên đề tài đều là <strong>một chuỗi ký tự</strong>, ví dụ <code>MEEPQSDPSVEPPLSQ…</code>, kèm một vị trí trong chuỗi. Bài này giải thích chuỗi đó từ đâu ra, mỗi ký tự nghĩa là gì, và vì sao “vị trí thứ 175” là một khái niệm cần cẩn thận hơn bạn nghĩ.</p>
+
+<h2>2. Học thuyết trung tâm: DNA → RNA → protein</h2>
+
+<figure>
+<svg viewBox="0 0 640 190" role="img" aria-labelledby="cd">
+  <title id="cd">Sơ đồ phiên mã và dịch mã</title>
+  <defs><marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="s-text"/></marker></defs>
+  <rect x="10" y="40" width="160" height="64" rx="10" class="s-surf s-stroke" stroke-width="1.5"/>
+  <text x="90" y="66" text-anchor="middle" font-size="15" font-weight="700" class="s-text">DNA</text>
+  <text x="90" y="86" text-anchor="middle" font-size="12" class="s-muted">bảng chữ A, C, G, T</text>
+  <rect x="240" y="40" width="160" height="64" rx="10" class="s-soft s-accs" stroke-width="1.5"/>
+  <text x="320" y="66" text-anchor="middle" font-size="15" font-weight="700" class="s-text">mRNA</text>
+  <text x="320" y="86" text-anchor="middle" font-size="12" class="s-muted">A, C, G, U (U thay T)</text>
+  <rect x="470" y="40" width="160" height="64" rx="10" class="s-surf s-oks" stroke-width="1.5"/>
+  <text x="550" y="66" text-anchor="middle" font-size="15" font-weight="700" class="s-text">Protein</text>
+  <text x="550" y="86" text-anchor="middle" font-size="12" class="s-muted">bảng chữ 20 amino acid</text>
+  <line x1="172" y1="72" x2="236" y2="72" class="s-stroke" stroke-width="1.6" marker-end="url(#a1)"/>
+  <line x1="402" y1="72" x2="466" y2="72" class="s-stroke" stroke-width="1.6" marker-end="url(#a1)"/>
+  <text x="204" y="32" text-anchor="middle" font-size="12.5" font-weight="700" class="s-text">phiên mã</text>
+  <text x="434" y="32" text-anchor="middle" font-size="12.5" font-weight="700" class="s-text">dịch mã</text>
+  <text x="434" y="128" text-anchor="middle" font-size="11.5" class="s-muted">ribosome đọc từng</text>
+  <text x="434" y="143" text-anchor="middle" font-size="11.5" class="s-muted">bộ ba (codon)</text>
+  <text x="90" y="128" text-anchor="middle" font-size="11.5" class="s-muted">kho mã nguồn,</text>
+  <text x="90" y="143" text-anchor="middle" font-size="11.5" class="s-muted">nằm yên trong nhân</text>
+  <text x="320" y="128" text-anchor="middle" font-size="11.5" class="s-muted">bản sao tạm của</text>
+  <text x="320" y="143" text-anchor="middle" font-size="11.5" class="s-muted">một gene</text>
+  <text x="550" y="128" text-anchor="middle" font-size="11.5" class="s-muted">“chương trình” đang chạy,</text>
+  <text x="550" y="143" text-anchor="middle" font-size="11.5" class="s-muted">làm việc thật trong tế bào</text>
+</svg>
+<figcaption>Hình 1. Một gene là một đoạn DNA. Tế bào chép nó thành mRNA (phiên mã), rồi ribosome đọc mRNA theo từng bộ ba để nối amino acid thành protein (dịch mã).</figcaption>
+</figure>
+
+<ul>
+  <li><strong>DNA</strong> là kho lưu trữ dài hạn, viết bằng bốn chữ A, C, G, T. Một <strong>gene</strong> là đoạn DNA mang “công thức” cho một protein (ở đây bỏ qua các gene không mã hóa protein).</li>
+  <li><strong>Phiên mã</strong> (transcription): tế bào chép gene thành <strong>mRNA</strong>, cùng thông tin nhưng chữ T được thay bằng U.</li>
+  <li><strong>Dịch mã</strong> (translation): ribosome đọc mRNA theo từng nhóm ba chữ gọi là <strong>codon</strong>. Mỗi codon ứng với một amino acid hoặc là tín hiệu dừng. Có 4³ = 64 codon: 61 codon mã hóa amino acid và 3 codon dừng. Codon AUG mã hóa methionine và thường là điểm bắt đầu, nên phần lớn protein mở đầu bằng chữ M <span class="tag t-unv">chưa kiểm chứng</span>.</li>
+  <li>Vì 61 codon chỉ ứng với 20 amino acid, nhiều codon cho cùng một amino acid. Mã di truyền vì thế gọi là <strong>thoái hóa</strong> (degenerate).</li>
+</ul>
+
+<h3>Thử tay: dịch một đoạn DNA</h3>
+<p>Gõ một đoạn DNA (chữ A, C, G, T). Trang sẽ dịch theo bảng mã di truyền chuẩn, từ chữ đầu tiên, mỗi lần ba chữ. Đoạn mặc định là chuỗi tự đặt, nhưng dịch ra đúng 9 residue đầu của p53 trong FASTA ở mục 5. Thử đổi một chữ và xem amino acid nào đổi.</p>
+<input id="dna" class="mono" style="width:100%;font:inherit;font-family:ui-monospace,Menlo,Consolas,monospace;padding:6px 8px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text)" value="ATGGAGGAGCCGCAGTCAGATCCTAGC" aria-label="Chuỗi DNA">
+<div class="win" id="prot" style="margin-top:8px"></div>
+<p class="out" id="protNote"></p>
+
+<h3>Đột biến làm gì với protein</h3>
+<p>Đổi một chữ trong DNA thì codon chứa nó đổi. Có ba khả năng:</p>
+<ul>
+  <li><strong>Đồng nghĩa</strong> (synonymous): codon mới vẫn mã hóa cùng amino acid. Protein không đổi.</li>
+  <li><strong>Sai nghĩa</strong> (missense): codon mới mã hóa amino acid khác. Protein đổi đúng một ký tự. Cách viết thường gặp là <code>R175H</code>: arginine ở vị trí 175 thành histidine.</li>
+  <li><strong>Vô nghĩa</strong> (nonsense): codon mới là codon dừng. Protein bị cắt cụt.</li>
+</ul>
+<p>Đây là cầu nối với PTM: nếu đột biến sai nghĩa rơi đúng vào một site PTM (ví dụ đổi một S thành A), site đó mất khả năng bị biến đổi. Theo ActiveDriverDB, ước tính 21% thay thế amino acid liên quan bệnh nằm ở site PTM <span class="tag t-ok">đã kiểm</span>. Bài 04 dùng lại con số này.</p>
+
+<h2>3. Hai mươi amino acid</h2>
+<p>Mỗi amino acid có một khung chung giống nhau và một <strong>chuỗi bên</strong> (side chain) riêng. Chính chuỗi bên quyết định tính chất hóa học, và quyết định residue đó có nhận được một PTM hay không (bài 02). Bạn không cần thuộc cấu trúc hóa học, chỉ cần nhận ra chữ cái và nhóm tính chất.</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Chữ</th><th>Tên</th><th>Viết tắt 3 chữ</th><th>Nhóm tính chất</th><th>Liên quan đề tài</th></tr></thead>
+<tbody>
+<tr><td><b>A</b></td><td>Alanine</td><td>Ala</td><td>Kỵ nước</td><td></td></tr>
+<tr><td><b>R</b></td><td>Arginine</td><td>Arg</td><td>Tích điện dương</td><td>Carbonyl hóa, glycation</td></tr>
+<tr><td><b>N</b></td><td>Asparagine</td><td>Asn</td><td>Phân cực</td><td></td></tr>
+<tr><td><b>D</b></td><td>Aspartate</td><td>Asp</td><td>Tích điện âm</td><td>Motif của kinase ưa axit</td></tr>
+<tr><td><b>C</b></td><td>Cysteine</td><td>Cys</td><td>Đặc biệt, tạo cầu disulfide</td><td></td></tr>
+<tr><td><b>Q</b></td><td>Glutamine</td><td>Gln</td><td>Phân cực</td><td></td></tr>
+<tr><td><b>E</b></td><td>Glutamate</td><td>Glu</td><td>Tích điện âm</td><td>Motif của kinase ưa axit</td></tr>
+<tr><td><b>G</b></td><td>Glycine</td><td>Gly</td><td>Đặc biệt, nhỏ nhất</td><td></td></tr>
+<tr><td><b>H</b></td><td>Histidine</td><td>His</td><td>Tích điện dương (yếu)</td><td></td></tr>
+<tr><td><b>I</b></td><td>Isoleucine</td><td>Ile</td><td>Kỵ nước</td><td></td></tr>
+<tr><td><b>L</b></td><td>Leucine</td><td>Leu</td><td>Kỵ nước</td><td>Đừng nhầm L với lysine</td></tr>
+<tr><td><b>K</b></td><td>Lysine</td><td>Lys</td><td>Tích điện dương</td><td><strong>Acetyl hóa (A)</strong>, carbonyl hóa, glycation</td></tr>
+<tr><td><b>M</b></td><td>Methionine</td><td>Met</td><td>Kỵ nước</td><td>Thường đứng đầu chuỗi</td></tr>
+<tr><td><b>F</b></td><td>Phenylalanine</td><td>Phe</td><td>Kỵ nước, có vòng thơm</td><td></td></tr>
+<tr><td><b>P</b></td><td>Proline</td><td>Pro</td><td>Đặc biệt, làm chuỗi gấp khúc</td><td>Carbonyl hóa; motif kinase hướng proline</td></tr>
+<tr><td><b>S</b></td><td>Serine</td><td>Ser</td><td>Phân cực, có –OH</td><td><strong>Phosphoryl hóa (B)</strong></td></tr>
+<tr><td><b>T</b></td><td>Threonine</td><td>Thr</td><td>Phân cực, có –OH</td><td><strong>Phosphoryl hóa (B)</strong>, carbonyl hóa</td></tr>
+<tr><td><b>W</b></td><td>Tryptophan</td><td>Trp</td><td>Kỵ nước, có vòng thơm</td><td></td></tr>
+<tr><td><b>Y</b></td><td>Tyrosine</td><td>Tyr</td><td>Có vòng thơm và –OH</td><td><strong>Phosphoryl hóa (B)</strong></td></tr>
+<tr><td><b>V</b></td><td>Valine</td><td>Val</td><td>Kỵ nước</td><td></td></tr>
+</tbody></table></div>
+<p style="font-size:.9rem;color:var(--muted)">Cách chia nhóm tính chất có nhiều phiên bản; bảng trên là cách chia phổ biến trong giáo trình <span class="tag t-unv">chưa kiểm chứng</span>. Cột “liên quan đề tài” lấy từ bài 02.</p>
+
+<div class="box warn">
+  <span class="label">Bẫy khi xử lý dữ liệu</span>
+  <ul style="margin:0">
+    <li><strong>K là lysine, L là leucine.</strong> Chữ cái không phải chữ đầu của tên tiếng Anh trong nhiều trường hợp (K, R, D, E, Q, N, F, W, Y).</li>
+    <li>File FASTA thật đôi khi chứa chữ ngoài 20 chữ chuẩn: <code>X</code> (không xác định), <code>U</code> (selenocysteine), <code>B</code>, <code>Z</code>, <code>J</code>, <code>O</code> <span class="tag t-unv">chưa kiểm chứng</span>. Bộ mã hóa one-hot 20 chiều sẽ vỡ nếu không xử lý trước. Hãy đếm tập ký tự của dataset trước khi viết encoder.</li>
+  </ul>
+</div>
+
+<h2>4. Cấu trúc bậc 1 đến bậc 4</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>Bậc</th><th>Là gì</th><th>Trong dữ liệu của bạn</th></tr></thead>
+<tbody>
+<tr><td>Bậc 1</td><td>Thứ tự amino acid trong chuỗi</td><td>Chuỗi FASTA. Đầu vào của mọi mô hình trong đề tài</td></tr>
+<tr><td>Bậc 2</td><td>Các mẫu gấp cục bộ lặp lại: xoắn α (helix), phiến β (sheet), và vùng không theo mẫu</td><td>Có thể dự đoán từ chuỗi; đôi khi dùng làm đặc trưng phụ</td></tr>
+<tr><td>Bậc 3</td><td>Hình dạng 3D hoàn chỉnh của một chuỗi</td><td>File cấu trúc PDB/mmCIF, hoặc dự đoán của AlphaFold (bài 06)</td></tr>
+<tr><td>Bậc 4</td><td>Nhiều chuỗi ghép lại thành một phức hợp</td><td>Hầu như không dùng trong các ứng viên hiện tại</td></tr>
+</tbody></table></div>
+
+<p>Hai ý cần nhớ. Thứ nhất, chuỗi bậc 1 về cơ bản quyết định protein gấp thành hình gì, và hình dạng 3D quyết định nó làm được gì <span class="tag t-unv">chưa kiểm chứng</span>. Đó là lý do mô hình chỉ nhìn chuỗi vẫn học được điều có ý nghĩa. Thứ hai, hai residue cách xa nhau trên chuỗi có thể nằm sát nhau trong 3D. Bài 02 (mục 7) đã chỉ ra hệ quả của điều này với bài toán vị trí gắn.</p>
+
+<p><strong>Domain</strong> (miền) là một đoạn của protein tự gấp thành một khối có chức năng riêng, ví dụ “miền kinase”. Một protein dài có thể gồm nhiều domain nối với nhau. UniProt chú thích domain theo vị trí, nên bạn sẽ gặp từ này khi đọc dữ liệu.</p>
+
+<h2>5. Đọc một bản ghi FASTA thật</h2>
+<p>Dưới đây là bản ghi của p53 người, tải từ UniProt ngày 04/10/2026 <span class="tag t-ok">đã kiểm</span>. p53 là protein ức chế khối u nổi tiếng nhất, nên sẽ xuất hiện lại ở bài 04.</p>
+<div class="win" style="white-space:pre;font-size:.82rem;line-height:1.5" id="fasta"></div>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Trường</th><th>Giá trị</th><th>Nghĩa</th></tr></thead>
+<tbody>
+<tr><td><code>sp</code></td><td>sp</td><td>Swiss-Prot: phần đã được chuyên gia rà soát. Phần chưa rà soát ghi <code>tr</code> (TrEMBL)</td></tr>
+<tr><td>Accession</td><td>P04637</td><td>Mã định danh ổn định của bản ghi. Đây là thứ dataset dùng để chỉ protein</td></tr>
+<tr><td>Entry name</td><td>P53_HUMAN</td><td>Tên dễ đọc; có thể đổi theo thời gian, đừng dùng làm khóa</td></tr>
+<tr><td><code>OS</code> / <code>OX</code></td><td>Homo sapiens / 9606</td><td>Loài và mã phân loại NCBI của loài</td></tr>
+<tr><td><code>GN</code></td><td>TP53</td><td>Tên gene. Lưu ý: tên gene (TP53) khác tên protein (p53)</td></tr>
+<tr><td><code>PE</code></td><td>1</td><td>Mức bằng chứng tồn tại; 1 là có bằng chứng ở mức protein <span class="tag t-unv">chưa kiểm chứng</span></td></tr>
+<tr><td><code>SV</code></td><td>4</td><td>Phiên bản trình tự. Trình tự đã được sửa 3 lần kể từ bản đầu</td></tr>
+</tbody></table></div>
+
+<p>Ba bản ghi khác mà <a href="biology-learning-roadmap.md">lộ trình tự học</a> (mục 4) đề nghị bạn tự mở, cũng tải ngày 04/10/2026 <span class="tag t-ok">đã kiểm</span>:</p>
+<div class="win" style="white-space:pre;font-size:.78rem;line-height:1.6">&gt;sp|Q96EB6|SIR1_HUMAN NAD-dependent protein deacetylase sirtuin-1 OS=Homo sapiens OX=9606 GN=SIRT1 PE=1 SV=2
+&gt;sp|P31749|AKT1_HUMAN RAC-alpha serine/threonine-protein kinase OS=Homo sapiens OX=9606 GN=AKT1 PE=1 SV=2
+&gt;sp|P05141|ADT2_HUMAN ADP/ATP translocase 2 OS=Homo sapiens OX=9606 GN=SLC25A5 PE=1 SV=7</div>
+<p>P05141 chính là protein của dòng <code>P05141_163</code> trong dữ liệu ứng viên A (bài 02, bài 07).</p>
+
+<h3>Đánh số vị trí, và lỗi lệch một</h3>
+<p>Trong sinh học, residue đầu tiên (thường là M) mang số <strong>1</strong>. Trong Python, chỉ số bắt đầu từ <strong>0</strong>. Vì vậy residue “K163” là <code>seq[162]</code>. Đây là lỗi kinh điển nhất khi cắt cửa sổ.</p>
+<p>Lỗi thứ hai khó thấy hơn: trình tự có <strong>phiên bản</strong> (trường <code>SV</code>) và có <strong>isoform</strong> (các biến thể từ cùng một gene, ghi như <code>P04637-2</code>). Một dataset gắn nhãn “K163” theo phiên bản cũ có thể lệch vị trí so với trình tự bạn tải hôm nay. Cách phòng: sau khi tải trình tự, <strong>kiểm tra ký tự tại mỗi vị trí có nhãn đúng là ký tự mong đợi</strong> (ví dụ <code>seq[pos-1] == "K"</code> với bài toán acetyl hóa), và đếm số dòng không khớp.</p>
+
+<h3>Thử tay: tra vị trí trên p53</h3>
+<p>Nhập một vị trí (đánh số từ 1). Trang trả về residue và cửa sổ ±10 quanh nó. Thử 175, 248, 273: cả ba đều là R trong trình tự này <span class="tag t-ok">đã kiểm</span>, và đều được nhắc đến như các điểm đột biến hay gặp của p53 trong ung thư <span class="tag t-unv">chưa kiểm chứng</span>.</p>
+<div class="btns">
+  <input id="pos" type="number" min="1" value="175" style="width:7em;font:inherit;padding:4px 8px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text)" aria-label="Vị trí">
+  <button id="posBtn">Tra</button>
+</div>
+<div class="win" id="posOut"></div>
+<p class="out" id="cnt"></p>
+
+<h2>Bảng thuật ngữ của bài</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>Thuật ngữ</th><th>Nghĩa ngắn</th></tr></thead>
+<tbody>
+<tr><td>Gene</td><td>Đoạn DNA mang thông tin để tạo một protein (hoặc một RNA chức năng)</td></tr>
+<tr><td>Phiên mã (transcription)</td><td>Chép gene từ DNA sang mRNA</td></tr>
+<tr><td>Dịch mã (translation)</td><td>Ribosome đọc mRNA theo codon để nối amino acid thành protein</td></tr>
+<tr><td>Codon</td><td>Bộ ba nucleotide ứng với một amino acid hoặc tín hiệu dừng</td></tr>
+<tr><td>Amino acid / residue</td><td>Đơn vị cấu tạo protein / một amino acid ở một vị trí cụ thể trong chuỗi</td></tr>
+<tr><td>Chuỗi bên (side chain)</td><td>Phần riêng của mỗi amino acid, quyết định tính chất hóa học</td></tr>
+<tr><td>Đột biến sai nghĩa (missense)</td><td>Đổi một nucleotide làm đổi một amino acid</td></tr>
+<tr><td>Cấu trúc bậc 1/2/3/4</td><td>Thứ tự chuỗi / mẫu gấp cục bộ / hình 3D của một chuỗi / phức hợp nhiều chuỗi</td></tr>
+<tr><td>Domain (miền)</td><td>Đoạn protein tự gấp thành một khối có chức năng riêng</td></tr>
+<tr><td>FASTA</td><td>Định dạng văn bản: một dòng tiêu đề bắt đầu bằng <code>&gt;</code>, sau đó là chuỗi</td></tr>
+<tr><td>Accession (UniProt)</td><td>Mã định danh ổn định của một bản ghi protein, ví dụ P04637</td></tr>
+<tr><td>Isoform</td><td>Biến thể protein từ cùng một gene, có trình tự khác nhau</td></tr>
+</tbody></table></div>
+
+<h2>Câu hỏi tự kiểm</h2>
+<details><summary>1. Vì sao một đột biến DNA có thể không làm đổi protein?</summary>
+<div>Vì mã di truyền thoái hóa: nhiều codon mã hóa cùng một amino acid. Nếu codon mới vẫn ứng với amino acid cũ (đột biến đồng nghĩa), chuỗi protein không đổi.</div></details>
+<details><summary>2. Dataset ghi nhãn cho “K163” của một protein. Trong Python, bạn lấy ký tự đó bằng chỉ số nào, và nên kiểm tra gì?</summary>
+<div><code>seq[162]</code>, vì sinh học đánh số từ 1 còn Python từ 0. Nên kiểm tra <code>seq[162] == "K"</code> cho mọi dòng có nhãn, để phát hiện lệch phiên bản trình tự hoặc isoform.</div></details>
+<details><summary>3. Chữ L và chữ K trong chuỗi protein là gì?</summary>
+<div>L là leucine (kỵ nước). K là lysine (tích điện dương), nơi xảy ra acetyl hóa của ứng viên A.</div></details>
+<details><summary>4. Vì sao không nên dùng entry name (P53_HUMAN) làm khóa khi ghép dữ liệu?</summary>
+<div>Entry name có thể đổi theo thời gian. Accession (P04637) mới là mã định danh ổn định; kèm theo đó nên ghi lại phiên bản trình tự đã dùng.</div></details>
+<details><summary>5. Bộ mã hóa one-hot 20 chiều của bạn báo lỗi “ký tự không hợp lệ” trên một file FASTA thật. Nguyên nhân khả dĩ nhất?</summary>
+<div>File chứa ký tự ngoài 20 amino acid chuẩn, như X (không xác định) hoặc U (selenocysteine). Cần quyết định trước cách xử lý: bỏ chuỗi, thay bằng ký tự đệm, hay thêm một chiều “khác”.</div></details>
+
+<h2>Nguồn</h2>
+<ul class="src">
+  <li>UniProt REST, bản ghi P04637, Q96EB6, P31749, P05141. <a href="https://rest.uniprot.org/uniprotkb/P04637.fasta">rest.uniprot.org/uniprotkb/P04637.fasta</a> <span class="tag t-ok">đã kiểm</span> (tải ngày 04/10/2026)</li>
+  <li>Krassowski M và cộng sự (2018). ActiveDriverDB: human disease mutations and genome variation in post-translational modification sites of proteins. <em>Nucleic Acids Res</em> 46(D1):D901–D910. <a href="https://doi.org/10.1093/nar/gkx973">doi:10.1093/nar/gkx973</a> <span class="tag t-ok">đã kiểm</span> (abstract, qua PubMed)</li>
+  <li>Giáo trình nền: OpenStax <em>Biology 2e</em>, chương 3 và 14–16; Berg <em>Biochemistry</em>, chương 3. Liên kết ở <a href="biology-learning-roadmap.md">lộ trình tự học</a>, mục 1 <span class="tag t-unv">chưa kiểm chứng</span>.</li>
+  <li>Bảng mã di truyền dùng trong phần thử tay là bảng chuẩn; kết quả dịch đoạn mặc định đã được đối chiếu với 9 residue đầu của P04637 <span class="tag t-ok">đã kiểm</span>.</li>
+</ul>
+
+<nav class="pn">
+  <a href="index.html">← Mục lục</a>
+  <a href="02-enzymes-and-ptm.html">Bài 02: Enzyme và PTM →</a>
+</nav>
+
+</main>
+<script>
+(function(){
+  var P53 = "MEEPQSDPSVEPPLSQETFSDLWKLLPENNVLSPLPSQAMDDLMLSPDDIEQWFTEDPGPDEAPRMPEAAPPVAPAPAAPTPAAPAPAPSWPLSSSVPSQKTYQGSYGFRLGFLHSGTAKSVTCTYSPALNKMFCQLAKTCPVQLWVDSTPPPGTRVRAMAIYKQSQHMTEVVRRCPHHERCSDSDGLAPPQHLIRVEGNLRVEYLDDRNTFRHSVVVPYEPPEVGSDCTTIHYNYMCNSSCMGGMNRRPILTIITLEDSSGNLLGRNSFEVRVCACPGRDRRTEEENLRKKGEPHHELPPGSTKRALPNNTSSSPQPKKKPLDGEYFTLQIRGRERFEMFRELNEALELKDAQAGKEPGGSRAHSSHLKSKKGQSTSRHKKLMFKTEGPDSD";
+  var HDR = ">sp|P04637|P53_HUMAN Cellular tumor antigen p53 OS=Homo sapiens OX=9606 GN=TP53 PE=1 SV=4";
+  var f = HDR + "\n"; for (var i = 0; i < P53.length; i += 60) f += P53.slice(i, i + 60) + "\n";
+  document.getElementById("fasta").textContent = f;
+
+  var B = "TCAG", AA = "FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG", CODE = {}, n = 0;
+  for (var a = 0; a < 4; a++) for (var b = 0; b < 4; b++) for (var c = 0; c < 4; c++) CODE[B[a] + B[b] + B[c]] = AA[n++];
+  var dna = document.getElementById("dna"), prot = document.getElementById("prot"), note = document.getElementById("protNote");
+  function tr(){
+    var s = dna.value.toUpperCase().replace(/\s+/g, ""), out = "", bad = false;
+    for (var i = 0; i + 3 <= s.length; i += 3){
+      var cd = s.slice(i, i + 3), aa = CODE[cd];
+      if (!aa){ bad = true; out += "?"; } else out += aa;
+    }
+    prot.textContent = out || "(chưa đủ 3 chữ)";
+    var rest = s.length % 3;
+    note.textContent = (bad ? "Có ký tự ngoài A/C/G/T, hiện là “?”. " : "") + (out.indexOf("*") >= 0 ? "“*” là codon dừng. " : "") + (rest ? rest + " chữ cuối chưa đủ một codon nên bị bỏ qua." : "");
+  }
+  dna.addEventListener("input", tr); tr();
+
+  var pos = document.getElementById("pos"), po = document.getElementById("posOut");
+  function look(){
+    var p = parseInt(pos.value, 10);
+    if (!(p >= 1 && p <= P53.length)){ po.textContent = "Vị trí phải từ 1 đến " + P53.length + "."; return; }
+    var i = p - 1, s = "";
+    for (var j = i - 10; j <= i + 10; j++){ var ch = (j < 0 || j >= P53.length) ? "-" : P53[j]; s += (j === i) ? "<b>" + ch + "</b>" : ch; }
+    po.innerHTML = P53[i] + p + " &nbsp;→&nbsp; " + s + ' &nbsp;<span style="color:var(--muted)">(Python: seq[' + i + "])</span>";
+  }
+  document.getElementById("posBtn").addEventListener("click", look);
+  pos.addEventListener("keydown", function(e){ if (e.key === "Enter") look(); });
+  look();
+  var cnt = {}; for (var k = 0; k < P53.length; k++) cnt[P53[k]] = (cnt[P53[k]] || 0) + 1;
+  document.getElementById("cnt").textContent = "p53 dài " + P53.length + " residue; trong đó K: " + cnt.K + ", S: " + cnt.S + ", T: " + cnt.T + ", Y: " + cnt.Y + ". Đó là số “ứng viên” nếu bài toán là acetyl hóa (K) hay phosphoryl hóa (S/T/Y).";
+})();
+</script>
+</body>
+</html>

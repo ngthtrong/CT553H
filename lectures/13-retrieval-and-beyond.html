@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Truy hồi và các hướng sau PLM</title>
+<style>
+:root{
+  --bg:#faf9f6; --surface:#ffffff; --text:#1d2126; --muted:#5d6570; --border:#e2dfd7;
+  --accent:#2c6a8a; --accent-soft:#e7f0f5;
+  --ok:#2d7a4d; --ok-soft:#e6f3eb; --warn:#8f5600; --warn-soft:#fbf1df;
+  --bad:#a23838; --bad-soft:#f8e7e7; --code-bg:#f1efe9;
+  --r-st:#2c6a8a; --r-k:#b4532a; --r-r:#7a4fa0; --r-p:#3f7d3a; --r-hit:#fff1a8;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#15171b; --surface:#1d2026; --text:#e5e4df; --muted:#9aa1ab; --border:#33373f;
+    --accent:#7fb8d6; --accent-soft:#1f2f39;
+    --ok:#79c495; --ok-soft:#1b2c22; --warn:#e2b25c; --warn-soft:#2f2617;
+    --bad:#e38c8c; --bad-soft:#331e1f; --code-bg:#262a31;
+    --r-st:#7fb8d6; --r-k:#e59a72; --r-r:#bf9ae0; --r-p:#93c98c; --r-hit:#4a4318;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:17px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans","Helvetica Neue",Arial,sans-serif}
+main{max-width:46rem;margin:0 auto;padding:24px 16px 64px}
+a{color:var(--accent)}
+h1{font-size:1.85rem;line-height:1.25;margin:.3em 0 .4em}
+h2{font-size:1.3rem;margin:2.2em 0 .5em;padding-top:.6em;border-top:1px solid var(--border)}
+h3{font-size:1.08rem;margin:1.6em 0 .4em}
+p,li{overflow-wrap:break-word}
+code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;font-size:.9em}
+code{background:var(--code-bg);padding:.1em .35em;border-radius:4px}
+.crumb{color:var(--muted);font-size:.9rem}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:.4em 0 1.2em}
+.pill{font-size:.82rem;border:1px solid var(--border);background:var(--surface);border-radius:999px;padding:2px 10px;color:var(--muted)}
+.box{border:1px solid var(--border);background:var(--surface);border-radius:10px;padding:14px 18px;margin:1.2em 0}
+.box>:first-child{margin-top:0}.box>:last-child{margin-bottom:0}
+.box h3{margin-top:0}
+.goal{border-left:4px solid var(--accent)}
+.link{background:var(--accent-soft);border-color:transparent}
+.warn{background:var(--warn-soft);border-color:transparent}
+.label{display:block;font-size:.78rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:.3em}
+.tag{display:inline-block;font-size:.72rem;line-height:1.5;padding:0 6px;border-radius:4px;white-space:nowrap;vertical-align:1px;font-weight:600}
+.t-ok{background:var(--ok-soft);color:var(--ok)}
+.t-dd{background:var(--accent-soft);color:var(--accent)}
+.t-unv{background:var(--warn-soft);color:var(--warn)}
+.t-inf{background:var(--bad-soft);color:var(--bad)}
+.tablewrap{overflow-x:auto;margin:1em 0;border:1px solid var(--border);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--border)}
+th{background:var(--code-bg);font-weight:600}
+tr:last-child td{border-bottom:0}
+figure{margin:1.4em 0}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:.88rem;color:var(--muted);margin-top:.4em}
+details{border:1px solid var(--border);border-radius:8px;background:var(--surface);margin:.6em 0;padding:0 14px}
+summary{cursor:pointer;padding:10px 0;font-weight:600}
+details[open] summary{border-bottom:1px solid var(--border);margin-bottom:.6em}
+details>div{padding-bottom:10px}
+.btns{display:flex;flex-wrap:wrap;gap:6px;margin:.6em 0}
+button{font:inherit;font-size:.88rem;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:6px;padding:4px 10px;cursor:pointer}
+button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.seq{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:1rem;line-height:2;word-break:break-all;letter-spacing:.06em}
+.seq span{cursor:pointer;border-radius:3px;padding:1px 0}
+.seq span.hit{background:var(--r-hit);font-weight:700}
+.seq span.center{outline:2px solid var(--bad)}
+.out{font-size:.92rem;color:var(--muted);min-height:1.6em}
+.win{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:1rem;letter-spacing:.06em;background:var(--code-bg);padding:6px 10px;border-radius:6px;overflow-x:auto;white-space:nowrap}
+.win b{color:var(--bad)}
+nav.pn{display:flex;justify-content:space-between;gap:12px;margin-top:3em;padding-top:1em;border-top:1px solid var(--border);font-size:.95rem}
+.src li{margin:.35em 0;font-size:.93rem}
+svg text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans",Arial,sans-serif}
+.s-stroke{stroke:var(--text)} .s-muted{fill:var(--muted)} .s-text{fill:var(--text)}
+.s-acc{fill:var(--accent)} .s-accs{stroke:var(--accent)} .s-bad{fill:var(--bad)} .s-bads{stroke:var(--bad)}
+.s-ok{fill:var(--ok)} .s-oks{stroke:var(--ok)} .s-surf{fill:var(--surface)} .s-soft{fill:var(--accent-soft)}
+.s-warn{fill:var(--warn)} .s-warns{stroke:var(--warn)} .s-border{stroke:var(--border)}
+
+/* Quick navigation: native links and details work offline without JavaScript. */
+.lecture-nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:8px;padding:10px 0;margin:0 0 16px;background:var(--bg);border-bottom:1px solid var(--border)}
+.lecture-nav>a{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:6px 10px;border:1px solid var(--border);border-radius:8px;background:var(--surface);text-decoration:none;font-size:.88rem}
+.lecture-switch{position:relative;flex:1;min-width:0;margin:0;padding:0;border-radius:8px}
+.lecture-switch>summary{min-height:44px;padding:8px 12px;font-size:.88rem}
+.lecture-switch[open]>summary{margin:0;border-bottom:0}
+.lecture-switch>.lecture-menu{position:absolute;right:0;top:calc(100% + 8px);width:min(40rem,calc(100vw - 32px));max-height:65vh;overflow-y:auto;overscroll-behavior:contain;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:10px;box-shadow:0 6px 18px var(--border)}
+.lecture-menu .lecture-group{margin:8px 8px 4px;font-size:.8rem;font-weight:700;color:var(--muted)}
+.lecture-menu ol{list-style:none;padding:0;margin:0 0 12px}
+.lecture-menu li{margin:0}
+.lecture-menu a,.lecture-menu .lecture-unavailable{display:block;padding:10px 12px;border-radius:6px;line-height:1.45;font-size:.9rem;text-decoration:none}
+.lecture-menu a:hover{background:var(--accent-soft)}
+.lecture-menu a[aria-current="page"]{background:var(--accent-soft);font-weight:700;border-left:3px solid var(--accent)}
+.lecture-menu .lecture-unavailable{color:var(--muted)}
+.lecture-nav a:focus-visible,.lecture-switch>summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+@media print{.lecture-nav{display:none}}
+
+</style>
+</head>
+<body>
+<main>
+
+<nav class="lecture-nav" aria-label="Chuyển nhanh giữa các bài giảng">
+<a href="index.html">Mục lục</a>
+<details class="lecture-switch"><summary>Chuyển bài · Bài 13</summary><div class="lecture-menu"><p class="lecture-group">Phần A — Sinh học nền</p><ol><li><a href="01-gene-to-protein.html">Bài 01: Từ gene đến protein</a></li><li><a href="02-enzymes-and-ptm.html">Bài 02: Enzyme và biến đổi sau dịch mã (PTM)</a></li><li><a href="03-cell-signaling-kinases.html">Bài 03: Tín hiệu tế bào và kinase</a></li><li><a href="04-cancer-hallmarks.html">Bài 04: Ung thư: hallmarks và kinase</a></li><li><a href="05-aging-sirtuins-senescence.html">Bài 05: Lão hóa: sirtuin và senescence</a></li><li><a href="06-biological-databases.html">Bài 06: Các cơ sở dữ liệu sinh học</a></li></ol><p class="lecture-group">Phần B — Khung bài toán và đánh giá</p><ol><li><a href="07-residue-level-framing.html">Bài 07: Đặt bài toán ở mức residue</a></li><li><a href="08-metrics-imbalanced.html">Bài 08: Chỉ số cho dữ liệu mất cân bằng</a></li><li><a href="09-leakage-and-homology.html">Bài 09: Rò rỉ dữ liệu và chuỗi đồng dạng</a></li></ol><p class="lecture-group">Phần C — Mô hình</p><ol><li><a href="10-neural-network-basics.html">Bài 10: Mạng nơ-ron cơ bản</a></li><li><a href="11-cnn-to-mcnn.html">Bài 11: Từ CNN đến MCNN</a></li><li><a href="12-protein-encodings-plm.html">Bài 12: Mã hóa protein: one-hot, PSSM, PLM</a></li><li><a href="13-retrieval-and-beyond.html" aria-current="page">Bài 13: Truy hồi và các hướng sau PLM</a></li><li><a href="14-xai-basics.html">Bài 14: Giải thích mô hình (XAI)</a></li><li><span class="lecture-unavailable">Bài 15: Đọc hiểu một bài báo tin sinh — chưa có</span></li></ol></div></details>
+<a href="12-protein-encodings-plm.html" aria-label="Bài trước: Mã hóa protein: one-hot, PSSM, PLM" title="Bài 12: Mã hóa protein: one-hot, PSSM, PLM">←</a>
+<a href="14-xai-basics.html" aria-label="Bài sau: Giải thích mô hình (XAI)" title="Bài 14: Giải thích mô hình (XAI)">→</a>
+</nav>
+
+<div class="crumb"><a href="index.html">Bài giảng nền</a> · Bài 13 / 15 · Phần C — Mô hình</div>
+<h1>Truy hồi và các hướng sau PLM</h1>
+<div class="meta"><span class="pill">≈ 25 phút · đọc sau</span><span class="pill">Dùng cho: cả hai hướng</span><span class="pill">Đọc trước: bài 12</span></div>
+<div class="box goal"><span class="label">Đọc xong bài này, bạn sẽ</span><ul><li>Mô tả đúng truy hồi embedding trong RTK_RAG và phân biệt với sinh văn bản.</li><li>Xác định kho được phép dùng khi triển khai.</li><li>Phân biệt thay biểu diễn, học encoder, thay head và hiệu chỉnh bất định.</li><li>Đọc các hướng mới với đúng điều kiện đầu vào, mức chứng cứ và tiền lệ của nhóm.</li></ul></div>
+<p class="out" style="font-size:.85rem">Nhãn độ tin cậy trong bài:
+<span class="tag t-ok">đã kiểm</span> đã mở nguồn gốc hoặc bản tóm tắt chính thức trong phiên 04/10/2026 ·
+<span class="tag t-dd">khảo sát sâu</span> lấy từ báo cáo khảo sát sâu, giữ nguyên nhãn của báo cáo ·
+<span class="tag t-unv">chưa kiểm chứng</span> kiến thức nền, chưa mở lại nguồn ·
+<span class="tag t-inf">suy luận</span> lập luận của bài giảng, không có nguồn trực tiếp.</p>
+
+
+<h2>1. “Sau PLM” không nhất thiết là thay PLM</h2>
+<p>Bài này để đọc sau khi đã hiểu biểu diễn và đánh giá. Mục tiêu là biết một ý tưởng tác động vào phần nào của hệ thống. Có thể đổi đầu vào, học lại encoder, thêm thông tin từ kho ngoài, thay đầu dự đoán hoặc bổ sung cơ chế báo độ bất định. Những thay đổi đó không cùng loại và không nên gom thành một cuộc đua tên mô hình.</p>
+<div class="tablewrap"><table><thead><tr><th>Thành phần muốn đổi</th><th>Ví dụ</th><th>Câu hỏi cần trả lời</th></tr></thead><tbody>
+<tr><td>Thông tin đầu vào</td><td>SaProt, ProstT5</td><td>Lúc dự đoán có cần cấu trúc hoặc token cấu trúc không?</td></tr>
+<tr><td>Cách thích nghi encoder</td><td>Fine-tune, LoRA/PEFT</td><td>Tham số nào được học; cache có còn hợp lệ?</td></tr>
+<tr><td>Thông tin bên ngoài query</td><td>Retrieval augmentation</td><td>Kho chứa gì, có sẵn khi triển khai không?</td></tr>
+<tr><td>Hàm ra quyết định</td><td>Đầu KAN thay dense</td><td>Cải thiện do kiến trúc hay do ngân sách tham số?</td></tr>
+<tr><td>Đầu ra bất định</td><td>Conformal prediction</td><td>Bảo đảm loại gì, dưới giả định nào?</td></tr>
+</tbody></table></div>
+<p>Bảng là cách tổ chức lựa chọn của bài giảng <span class="tag t-inf">suy luận</span>. Các nguồn và mức kiểm chứng cho từng ví dụ được ghi ở các mục tương ứng. Chưa chọn hướng nào cho luận văn chỉ bằng bảng này.</p>
+<h2>2. Truy hồi là một thao tác trên kho tham chiếu</h2>
+<p><strong>Truy hồi</strong> (retrieval) chọn những bản ghi phù hợp từ kho theo một độ đo. Với một vector query q và một tập vector có cùng số chiều, ta có thể tính khoảng cách tới từng bản ghi, xếp hạng rồi lấy K láng giềng gần nhất. K ở đây là số bản ghi lấy ra, không phải lysine trong ký hiệu amino acid.</p>
+<p>Để làm ví dụ toán học, dùng khoảng cách Euclid giữa vector cùng chiều: <code>d(q,x) = √Σ(qⱼ−xⱼ)²</code>. Cosine similarity là <code>(q·x)/(‖q‖‖x‖)</code> khi hai vector khác 0. Một độ đo ưu tiên độ gần theo độ lớn và hướng, độ đo kia chuẩn hóa độ lớn; không được chọn chỉ vì tên quen. Các công thức này định nghĩa phép so vector, không chứng minh “gần” có nghĩa giống chức năng.</p>
+<h3>Tính tay với một kho tự đặt</h3>
+<p>Cho q = (1,0) và kho A = (0,0), B = (2,0), C = (1,3). Theo Euclid, A và B cùng cách q một đơn vị, C cách ba đơn vị. Khi K = 2, ngữ cảnh trung bình của A và B là (1,0). Đây là <strong>ví dụ số học giả lập</strong>, không phải embedding protein. Khi đồng hạng, thuật toán cần một quy tắc ổn định để tái lập danh sách; đổi K có thể đổi vector tổng hợp.</p>
+<div class="box warn"><span class="label">Kho vector không tự mang nhãn đúng</span><p>Truy hồi embedding không giống sao chép nhãn từ hàng xóm. Nếu kho có nhãn và thuật toán dùng nhãn, phải mô tả thành phần đó riêng. Nếu kho chỉ có chuỗi, không được gọi kết quả trung bình embedding là “đồng thuận ground truth”.</p></div>
+<h2>3. RAG trong NLP và nghĩa mở rộng ở RTK_RAG</h2>
+<p>RAG gốc của Lewis và cộng sự có tên <em>Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks</em> <span class="tag t-ok">đã kiểm · metadata</span> — <a href="https://arxiv.org/abs/2005.11401">2020</a>. Bài này không suy ra rằng mọi mô hình gắn tên RAG đều là chatbot hay đều sinh văn bản. Cần đọc đúng đối tượng được truy hồi và phép kết hợp.</p>
+<p>Trong RTK_RAG, nhóm Prof Ou mô tả chuỗi query được chuyển thành embedding ProtTrans <code>L × 1 × 1024</code>; tìm top K chuỗi tương tự trong kho embedding, lấy trung bình embedding các chuỗi được truy hồi thành biểu diễn ngữ cảnh, rồi kết hợp với embedding query theo tỉ lệ <strong>1:1</strong> <span class="tag t-ok">đã kiểm · toàn văn PDF</span> — <a href="../resources/papers/yu-yen-ou/ci5c00766.pdf">mục RAG Framework</a>. Đích cuối là dự đoán site gắn ATP.</p>
+<figure><svg viewBox="0 0 680 315" role="img" aria-labelledby="ragTitle"><title id="ragTitle">Luồng truy hồi và kết hợp biểu diễn theo mô tả RTK_RAG</title>
+<g class="s-surf s-stroke"><rect x="15" y="40" width="170" height="70" rx="8"/><rect x="255" y="40" width="170" height="70" rx="8"/><rect x="485" y="40" width="180" height="70" rx="8"/><rect x="255" y="210" width="170" height="75" rx="8"/><rect x="485" y="210" width="180" height="75" rx="8"/></g>
+<g class="s-text" font-size="14" text-anchor="middle"><text x="100" y="69">Embedding query</text><text x="100" y="92">ProtTrans</text><text x="220" y="80">→</text><text x="340" y="69">Tìm top K</text><text x="340" y="92">trong kho cố định</text><text x="455" y="80">→</text><text x="575" y="69">Trung bình</text><text x="575" y="92">embedding truy hồi</text><text x="340" y="239">Kết hợp 1:1</text><text x="340" y="263">query + ngữ cảnh</text><text x="455" y="254">→</text><text x="575" y="239">MCNN</text><text x="575" y="263">dự đoán site</text></g>
+<path d="M100 110 V246 H250 M575 110 V150 H340 V205" fill="none" class="s-accs" stroke-width="2"/></svg><figcaption>Hình 1. Sơ đồ diễn giải đoạn văn RTK_RAG <span class="tag t-ok">đã kiểm · toàn văn</span>. Không thêm chi tiết về căn chỉnh chiều dài hoặc công thức khoảng cách khi đoạn được đọc chưa đủ xác nhận.</figcaption></figure>
+<p>Hai protein có thể khác chiều dài, nên để thực hiện phép trung bình tensor phải có quy tắc đưa về biểu diễn tương thích. <strong>Đoạn mô tả đã đọc chưa đủ để xác nhận toàn bộ quy tắc căn chỉnh, đệm và ánh xạ residue</strong> <span class="tag t-unv">chưa kiểm chứng</span>. Bài giảng không tự điền chỗ trống bằng một thuật toán thuận tiện rồi gọi đó là RTK_RAG gốc.</p>
+<p>Bài báo nêu kho truy hồi 244 protein và tập RTKs 69 protein <span class="tag t-ok">đã kiểm · Bảng 1</span>. Khi xem dữ liệu repo, nhớ phân biệt số bản ghi với chuỗi duy nhất và tình trạng file nhãn, như <a href="06-biological-databases.html">bài 06</a>. Chưa có kết luận trong bài này về tính khớp giữa mã công khai và số liệu bài báo.</p>
+<h2>4. Kho có sẵn khi triển khai: câu hỏi quan trọng hơn tên RAG</h2>
+<p>Mục 4.2 của <a href="../archive/topics/rtk-atp-applicability/04-proposal/topic-proposal.md">đề cương RTK cũ</a> nêu rõ: protein tương đồng trong kho không tự động là rò rỉ nếu kho thật sự có sẵn khi triển khai <span class="tag t-ok">đã kiểm · tài liệu repo</span>. Cần phân biệt một kho được chốt trước với một kho được dựng từ chính test sau khi biết kết quả.</p>
+<div class="tablewrap"><table><thead><tr><th>Tình huống giả định</th><th>Điều cần công bố</th></tr></thead><tbody>
+<tr><td>Kho ngoài có sẵn trước khi dự đoán</td><td>Phiên bản, ngày chốt, cách lấy mẫu, độ gần với query</td></tr>
+<tr><td>Query tự truy hồi chính nó</td><td>Quy tắc loại self-match và cả bản sao khác accession</td></tr>
+<tr><td>Kho được chọn nhờ nhìn kết quả test</td><td>Test đã tham gia phát triển; cần thiết kế đánh giá lại</td></tr>
+<tr><td>Kết quả trộn họ hàng gần và xa</td><td>Phân tầng hiệu năng để biết phạm vi ứng dụng</td></tr>
+</tbody></table></div>
+<p>Bảng là phân tích giao thức <span class="tag t-inf">suy luận</span> dựa trên đề cương; các đường rò rỉ và kỹ thuật split đã có ở <a href="09-leakage-and-homology.html">bài 09</a>. Không cần lặp toàn bộ ở đây. Với một thí nghiệm retrieval, kho là một phần cấu hình mô hình: thay kho có thể đổi dự đoán dù trọng số không đổi.</p>
+<p>Để đo đóng góp, so cùng encoder/head khi không truy hồi và khi truy hồi, giữ split và cách chọn siêu tham số. Một đối chứng dùng ngữ cảnh không phù hợp có thể giúp xem việc tăng thông tin có tác dụng cụ thể không, nhưng phải thiết kế trước và không lấy test để chọn đối chứng có lợi <span class="tag t-inf">suy luận</span>.</p>
+<h2>5. Vì sao retrieval và graph attention không còn tự là điểm mới?</h2>
+<p>Khảo sát trong repo ghi tiền lệ <strong>RAG-msCNN của GVHD</strong> và <strong>RTK_RAG của nhóm Prof Ou</strong>; <strong>SirtSAGE của GVHD</strong> dùng graph attention gắn với cấu trúc AlphaFold và pLDDT <span class="tag t-dd">khảo sát sâu · toàn văn</span> — <a href="../archive/surveys/aging-cancer/aging-cancer-deep-dive.md">mục 11.1</a> và <a href="../project/advisor-publications/ho-quang-thai.md">danh mục GVHD</a>. Không gán RTK_RAG cho GVHD; cũng không gán các công trình của GVHD sang nhóm khác.</p>
+<p>Do đó, “tôi thêm retrieval” hoặc “tôi dùng graph attention” chưa đủ để giải thích tính mới với nhóm này. Cần nêu khác biệt cụ thể về bài toán, thông tin được dùng, giao thức đánh giá hoặc chức năng hệ thống <span class="tag t-inf">suy luận</span>. Tính mới là một mệnh đề cần khảo sát, không phải thuộc tính tự có của một từ khóa.</p>
+<div class="box link"><span class="label">Gắn với ứng viên A, B</span><p>Một câu hỏi hẹp có thể là: “Thành phần mới có giúp khi đánh giá ở những protein xa dữ liệu huấn luyện không?” Nhưng kiểm soát đồng dạng là điều kiện để hiểu kết quả, không tự thay thế đóng góp phương pháp. Hãy nối câu hỏi với nhu cầu nhãn và giới hạn sinh học đã học ở bài 02–06 <span class="tag t-inf">suy luận</span>.</p></div>
+<h2>6. SaProt và ProstT5: kiểm đầu vào lúc dự đoán</h2>
+<p>SaProt dùng từ vựng nhận biết cấu trúc: kết hợp amino acid với token 3Di từ Foldseek. README được kiểm trong hồ sơ nguồn nói bản 35M và 650M cần token cấu trúc để đạt hiệu năng tối ưu; chế độ chỉ chuỗi AA chạy được nhưng nên fine-tune. Bản 1.3B được README mô tả hoạt động tốt với cả hai chế độ <span class="tag t-ok">đã kiểm · README tại lần kiểm</span> — <a href="https://github.com/westlake-repl/SaProt">SaProt</a>. Đây là mô tả của tác giả, không phải kết quả đo trên A hoặc B.</p>
+<p>ProstT5 học chuyển đổi giữa amino acid và token cấu trúc 3Di. Ví dụ README nhận chuỗi amino acid với tiền tố <code>&lt;AA2fold&gt;</code> khi nhúng AA hoặc đi theo hướng AA → 3Di <span class="tag t-ok">đã kiểm · README</span> — <a href="https://github.com/mheinzinger/ProstT5">ProstT5</a>. Từ ví dụ này có thể suy ra một đường dùng đầu vào AA mà không phải cấp token 3Di thực đo ngay từ đầu <span class="tag t-inf">suy luận triển khai</span>; cần chạy thử đúng pipeline để xác nhận yêu cầu tài nguyên.</p>
+<div class="box warn"><span class="label">Hai kết luận phải giữ riêng</span><p>“Chế độ chỉ chuỗi chạy được” khác “chế độ chỉ chuỗi tốt ngang chế độ có cấu trúc”. “Mô hình dự đoán token cấu trúc” cũng khác “token đó là cấu trúc thực nghiệm”. Khi so sánh, ghi đúng nguồn token và đo hiệu năng theo từng điều kiện đầu vào.</p></div>
+<p>Phần này trả lời một phần câu hỏi còn mở ở mục 11.1 của khảo sát sâu. Nó không xác nhận khả năng thay encoder bằng một lời gọi duy nhất, không xác nhận chi phí kỹ năng bằng không, và không chứng minh chắc chắn cải thiện. Cổng kiểm thực tế là: chạy một chuỗi ngắn, kiểm token/shape/ánh xạ site, rồi đo thời gian và bộ nhớ trên chiều dài đại diện <span class="tag t-inf">suy luận</span>.</p>
+<h2>7. LoRA, KAN và conformal thay các phần khác nhau</h2>
+<h3>LoRA / PEFT: thay cách học</h3>
+<p>LoRA giữ cố định trọng số nền và thêm các cập nhật hạng thấp có thể học <span class="tag t-ok">đã kiểm thêm · abstract</span> — <a href="https://arxiv.org/abs/2106.09685">Hu và cộng sự</a>. Bài 12 đã đặt nó bên cạnh frozen encoder và full fine-tuning. Muốn thử trên protein, vẫn cần xác định module gắn adapter, dữ liệu, split và chi phí thực thi; tiết kiệm tham số học không đồng nghĩa encoder không tốn bộ nhớ.</p>
+<p>Schmirler và cộng sự cung cấp động cơ thực nghiệm cho fine-tuning PLM trên nhiều tác vụ <span class="tag t-ok">đã kiểm · abstract</span> — <a href="https://doi.org/10.1038/s41467-024-51844-2">2024</a>. Phát hiện ở nhiều tác vụ khuyến khích thử, không thay thế phép đo trên nhãn đang chọn. “Nhóm chưa dùng LoRA” cũng cần rà danh mục đầy đủ trước khi đưa thành khẳng định tính mới <span class="tag t-unv">chưa kiểm chứng · tính mới với nhóm</span>.</p>
+<h3>KAN: thay đầu dự đoán, chưa tự bảo đảm XAI</h3>
+<p>Tên và metadata <em>KAN: Kolmogorov-Arnold Networks</em> đã được kiểm <span class="tag t-ok">đã kiểm · metadata</span> — <a href="https://arxiv.org/abs/2404.19756">Liu và cộng sự</a>. Các chi tiết kiến trúc KAN cụ thể, basis function hoặc kết quả trên PTM chưa được kiểm lại ở đây <span class="tag t-unv">chưa kiểm chứng</span>; không sao chép một cấu hình chưa đọc vào bài giảng như kiến trúc chuẩn.</p>
+<p>Khảo sát §11.1 còn lưu ý KAN là thành phần XAI của SirtSAGE <span class="tag t-dd">khảo sát sâu · chưa kiểm</span>. Vì vậy không nên mặc định “KAN mới với nhóm”. Nếu thử đầu KAN ở mức residue, cần đối chứng dense hợp lý, cùng embedding và cách đánh giá; khả năng nhìn thấy một hàm hoặc trọng số chưa tự chứng minh giải thích sinh học đúng <span class="tag t-inf">suy luận</span>. Bài 14 đi sâu các phép kiểm giải thích.</p>
+<h3>Conformal: nói đúng bảo đảm</h3>
+<p>Split conformal dùng tập hiệu chỉnh tách riêng để tạo tập nhãn dự đoán. Với giả định phù hợp, điển hình các mẫu hiệu chỉnh và test có tính hoán đổi (exchangeability), bảo đảm cơ bản là <strong>độ phủ biên</strong>: nhãn thật thuộc tập dự đoán với xác suất ít nhất 1−α. Đây không phải bảo đảm đúng cho từng protein hay từng lớp; cũng không tự là kiểm soát FDR. FDR và các rủi ro khác cần thủ tục riêng <span class="tag t-ok">đã kiểm thêm · hướng dẫn gốc</span> — <a href="https://arxiv.org/html/2107.07511v6">Angelopoulos &amp; Bates, mục 1, 3 và 4</a>.</p>
+<p><strong>Ví dụ suy luận:</strong> đầu ra nhị phân dạng tập có thể chứa cả “âm” và “dương”; khi đó app có thể báo chưa đủ phân giải để chọn một nhãn. Nhưng cách hiện thông báo ấy là thiết kế ứng dụng, không phải một xác suất gây bệnh. Protein trong cùng họ có phụ thuộc, nên chọn đơn vị hiệu chỉnh và kiểm giả định là việc phải làm trước khi tuyên bố bảo đảm <span class="tag t-inf">suy luận</span>.</p>
+<h2>8. Chọn một thí nghiệm nhỏ, không chọn mọi hướng cùng lúc</h2>
+<div class="tablewrap"><table><thead><tr><th>Nhánh</th><th>Phép thử tối thiểu đề xuất</th><th>Rủi ro cần giải trước</th></tr></thead><tbody>
+<tr><td>SaProt/ProstT5</td><td>Đổi biểu diễn, giữ head và protocol</td><td>Nguồn token cấu trúc, ánh xạ residue, chế độ chỉ AA</td></tr>
+<tr><td>LoRA/PEFT</td><td>So với encoder đông lạnh trên cùng split</td><td>Chi phí học, checkpoint/adapter, chọn siêu tham số</td></tr>
+<tr><td>Đầu KAN</td><td>So với dense có ngân sách hợp lý</td><td>Tính mới với nhóm và kiểm giải thích</td></tr>
+<tr><td>Conformal</td><td>Tách calibration, đo độ phủ và kích thước tập</td><td>Giả định, phụ thuộc giữa mẫu, loại bảo đảm</td></tr>
+<tr><td>Retrieval</td><td>Ablation có/không truy hồi, cùng kho đã chốt</td><td>Provenance kho, self-match, hiệu năng theo độ gần</td></tr>
+</tbody></table></div>
+<p>Toàn bộ bảng là kế hoạch so sánh đề xuất <span class="tag t-inf">suy luận</span>, không phải kết quả đã chạy hay ước lượng thời gian. Một kết quả âm vẫn hữu ích nếu câu hỏi rõ và giao thức được giữ ổn định; không cần thay mọi thành phần cho tới khi tìm được một chỉ số đẹp.</p>
+<p>Đối với web app, ghi chính xác đầu vào hỗ trợ: FASTA tùy ý, accession có cache, hay chuỗi kèm cấu trúc. Lựa chọn mô hình quyết định hợp đồng đầu vào. Giả sử một encoder yêu cầu token cấu trúc, app nhận mỗi chuỗi mà không có bước tạo/tra token sẽ thiếu một thành phần của pipeline <span class="tag t-inf">suy luận</span>.</p>
+<p>Trước khi kết thúc, thử viết một đoạn gồm: thành phần thay đổi, tiền lệ gần nhất, một câu hỏi, một đối chứng, một rủi ro và điều kiện dừng. Nếu bạn chỉ điền được tên SaProt/KAN/RAG mà không điền được các phần còn lại, hãy quay lại bài 07–12 trước khi mở rộng đề tài.</p>
+<h2>Bảng thuật ngữ của bài</h2><div class="tablewrap"><table><thead><tr><th>Thuật ngữ</th><th>Cách hiểu trong bài</th></tr></thead><tbody><tr><td>Query</td><td>Đầu vào đang cần tìm thông tin hoặc dự đoán.</td></tr><tr><td>Retrieval corpus</td><td>Kho tham chiếu được phép dùng ở thời điểm truy vấn.</td></tr><tr><td>Top K</td><td>K bản ghi được xếp hạng cao nhất theo độ đo đã chọn.</td></tr><tr><td>Contextual embedding</td><td>Biểu diễn ngữ cảnh tổng hợp; phải ghi cách tạo.</td></tr><tr><td>3Di</td><td>Token cấu trúc được dùng trong các biểu diễn liên quan Foldseek.</td></tr><tr><td>LoRA</td><td>Thích nghi mô hình bằng các cập nhật hạng thấp.</td></tr><tr><td>Calibration set</td><td>Tập hiệu chỉnh, có vai trò riêng với train, validation và test.</td></tr><tr><td>Marginal coverage</td><td>Độ phủ trung bình theo sự ngẫu nhiên của dữ liệu, không phải bảo đảm có điều kiện cho mỗi mẫu.</td></tr><tr><td>FDR</td><td>Kỳ vọng tỉ lệ phát hiện sai trong các phát hiện; khác độ phủ tập dự đoán.</td></tr></tbody></table></div><h2>Câu hỏi tự kiểm</h2><details><summary>RTK_RAG có phải một chatbot sinh văn bản không?</summary><div>Trong bài được đọc, cơ chế là truy hồi và kết hợp embedding để dự đoán site ATP. Không suy ra loại đầu ra chỉ từ tên RAG.</div></details><details><summary>Protein gần query trong kho có tự động là rò rỉ không?</summary><div>Không. Cần xem kho có sẵn khi triển khai, provenance, self-match và giao thức đánh giá. Xem đề cương §4.2 và bài 09.</div></details><details><summary>SaProt chỉ nhận AA thì không chạy được: khẳng định này đúng không?</summary><div>Không đúng với mô tả README đã kiểm. Chế độ AA-only có thể chạy; hiệu năng tối ưu và nhu cầu fine-tune còn phụ thuộc phiên bản.</div></details><details><summary>Conformal cơ bản có bảo đảm FDR ở mọi protein không?</summary><div>Không. Độ phủ biên của tập dự đoán và FDR là hai mục tiêu khác nhau; phải dùng thủ tục và giả định tương ứng.</div></details><details><summary>Vì sao không gọi retrieval là điểm mới với GVHD?</summary><div>Danh mục đã có RAG-msCNN; nhóm Prof Ou có RTK_RAG. Phải chứng minh khác biệt cụ thể và giá trị bằng thí nghiệm, không chỉ nêu tên thành phần.</div></details><h2>Nguồn</h2><ul class="src"><li><span class="tag t-ok">đã kiểm</span> <a href="../resources/papers/yu-yen-ou/ci5c00766.pdf">RTK_RAG, toàn văn PDF trong repo</a>: mục RAG Framework, MCNN và Bảng 1.</li><li><span class="tag t-ok">đã kiểm</span> <a href="../archive/topics/rtk-atp-applicability/04-proposal/topic-proposal.md">Đề cương RTK, §4.2</a>: kho tương đồng có sẵn và đánh giá triển khai.</li><li><span class="tag t-ok">đã kiểm</span> <a href="https://github.com/westlake-repl/SaProt">SaProt README</a>; <a href="https://github.com/mheinzinger/ProstT5">ProstT5 README</a>: nội dung đã kiểm trong hồ sơ Claude 04/10/2026.</li><li><span class="tag t-ok">đã kiểm</span> <a href="https://arxiv.org/abs/2005.11401">Lewis và cộng sự, RAG</a>; <a href="https://arxiv.org/abs/2404.19756">Liu và cộng sự, KAN</a>: metadata, không xác nhận mọi chi tiết phương pháp.</li><li><span class="tag t-ok">đã kiểm</span> <a href="https://arxiv.org/abs/2106.09685">Hu và cộng sự, LoRA</a>: abstract kiểm thêm; <a href="https://doi.org/10.1038/s41467-024-51844-2">Schmirler và cộng sự, 2024</a>: abstract đã kiểm trong hồ sơ nguồn.</li><li><span class="tag t-ok">đã kiểm</span> <a href="https://arxiv.org/html/2107.07511v6">Angelopoulos &amp; Bates — Conformal prediction</a>: kiểm thêm hướng dẫn gốc, độ phủ biên và phân biệt các bảo đảm.</li><li><span class="tag t-dd">khảo sát sâu · giữ nhãn từng nhận định</span> <a href="../archive/surveys/aging-cancer/aging-cancer-deep-dive.md">Khảo sát sâu §11</a>; <a href="../project/advisor-publications/ho-quang-thai.md">danh mục GVHD</a>. Tính mới KAN/LoRA trong toàn bộ nhóm chưa được xác nhận ở bài này.</li></ul><nav class="pn"><a href="12-protein-encodings-plm.html">← Bài 12: Mã hóa protein: one-hot, PSSM, PLM</a><a href="14-xai-basics.html">Bài 14: Giải thích mô hình (XAI) →</a></nav></main>
+</body></html>

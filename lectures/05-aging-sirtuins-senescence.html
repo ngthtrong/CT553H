@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sirtuin và senescence</title>
+<style>
+:root{
+  --bg:#faf9f6; --surface:#ffffff; --text:#1d2126; --muted:#5d6570; --border:#e2dfd7;
+  --accent:#2c6a8a; --accent-soft:#e7f0f5;
+  --ok:#2d7a4d; --ok-soft:#e6f3eb; --warn:#8f5600; --warn-soft:#fbf1df;
+  --bad:#a23838; --bad-soft:#f8e7e7; --code-bg:#f1efe9;
+  --r-st:#2c6a8a; --r-k:#b4532a; --r-r:#7a4fa0; --r-p:#3f7d3a; --r-hit:#fff1a8;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#15171b; --surface:#1d2026; --text:#e5e4df; --muted:#9aa1ab; --border:#33373f;
+    --accent:#7fb8d6; --accent-soft:#1f2f39;
+    --ok:#79c495; --ok-soft:#1b2c22; --warn:#e2b25c; --warn-soft:#2f2617;
+    --bad:#e38c8c; --bad-soft:#331e1f; --code-bg:#262a31;
+    --r-st:#7fb8d6; --r-k:#e59a72; --r-r:#bf9ae0; --r-p:#93c98c; --r-hit:#4a4318;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:17px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans","Helvetica Neue",Arial,sans-serif}
+main{max-width:46rem;margin:0 auto;padding:24px 16px 64px}
+a{color:var(--accent)}
+h1{font-size:1.85rem;line-height:1.25;margin:.3em 0 .4em}
+h2{font-size:1.3rem;margin:2.2em 0 .5em;padding-top:.6em;border-top:1px solid var(--border)}
+h3{font-size:1.08rem;margin:1.6em 0 .4em}
+p,li{overflow-wrap:break-word}
+code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;font-size:.9em}
+code{background:var(--code-bg);padding:.1em .35em;border-radius:4px}
+.crumb{color:var(--muted);font-size:.9rem}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:.4em 0 1.2em}
+.pill{font-size:.82rem;border:1px solid var(--border);background:var(--surface);border-radius:999px;padding:2px 10px;color:var(--muted)}
+.box{border:1px solid var(--border);background:var(--surface);border-radius:10px;padding:14px 18px;margin:1.2em 0}
+.box>:first-child{margin-top:0}.box>:last-child{margin-bottom:0}
+.box h3{margin-top:0}
+.goal{border-left:4px solid var(--accent)}
+.link{background:var(--accent-soft);border-color:transparent}
+.warn{background:var(--warn-soft);border-color:transparent}
+.label{display:block;font-size:.78rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:.3em}
+.tag{display:inline-block;font-size:.72rem;line-height:1.5;padding:0 6px;border-radius:4px;white-space:nowrap;vertical-align:1px;font-weight:600}
+.t-ok{background:var(--ok-soft);color:var(--ok)}
+.t-dd{background:var(--accent-soft);color:var(--accent)}
+.t-unv{background:var(--warn-soft);color:var(--warn)}
+.t-inf{background:var(--bad-soft);color:var(--bad)}
+.tablewrap{overflow-x:auto;margin:1em 0;border:1px solid var(--border);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--border)}
+th{background:var(--code-bg);font-weight:600}
+tr:last-child td{border-bottom:0}
+figure{margin:1.4em 0}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:.88rem;color:var(--muted);margin-top:.4em}
+details{border:1px solid var(--border);border-radius:8px;background:var(--surface);margin:.6em 0;padding:0 14px}
+summary{cursor:pointer;padding:10px 0;font-weight:600}
+details[open] summary{border-bottom:1px solid var(--border);margin-bottom:.6em}
+details>div{padding-bottom:10px}
+.btns{display:flex;flex-wrap:wrap;gap:6px;margin:.6em 0}
+button{font:inherit;font-size:.88rem;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:6px;padding:4px 10px;cursor:pointer}
+button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.seq{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:1rem;line-height:2;word-break:break-all;letter-spacing:.06em}
+.seq span{cursor:pointer;border-radius:3px;padding:1px 0}
+.seq span.hit{background:var(--r-hit);font-weight:700}
+.seq span.center{outline:2px solid var(--bad)}
+.out{font-size:.92rem;color:var(--muted);min-height:1.6em}
+.win{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:1rem;letter-spacing:.06em;background:var(--code-bg);padding:6px 10px;border-radius:6px;overflow-x:auto;white-space:nowrap}
+.win b{color:var(--bad)}
+nav.pn{display:flex;justify-content:space-between;gap:12px;margin-top:3em;padding-top:1em;border-top:1px solid var(--border);font-size:.95rem}
+.src li{margin:.35em 0;font-size:.93rem}
+svg text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans",Arial,sans-serif}
+.s-stroke{stroke:var(--text)} .s-muted{fill:var(--muted)} .s-text{fill:var(--text)}
+.s-acc{fill:var(--accent)} .s-accs{stroke:var(--accent)} .s-bad{fill:var(--bad)} .s-bads{stroke:var(--bad)}
+.s-ok{fill:var(--ok)} .s-oks{stroke:var(--ok)} .s-surf{fill:var(--surface)} .s-soft{fill:var(--accent-soft)}
+.s-warn{fill:var(--warn)} .s-warns{stroke:var(--warn)} .s-border{stroke:var(--border)}
+.cells{display:flex;flex-wrap:wrap;gap:6px;margin:.5em 0}
+.cell{min-width:4.6em;text-align:center;border:1px solid var(--border);border-radius:6px;padding:3px 6px;font-size:.85rem;background:var(--surface);color:var(--muted)}
+.cell.on{background:var(--ok-soft);color:var(--ok);border-color:var(--ok);font-weight:700}
+.cell.bad{background:var(--bad-soft);color:var(--bad);border-color:var(--bad);font-weight:700}
+
+
+/* Quick navigation: native links and details work offline without JavaScript. */
+.lecture-nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:8px;padding:10px 0;margin:0 0 16px;background:var(--bg);border-bottom:1px solid var(--border)}
+.lecture-nav>a{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:6px 10px;border:1px solid var(--border);border-radius:8px;background:var(--surface);text-decoration:none;font-size:.88rem}
+.lecture-switch{position:relative;flex:1;min-width:0;margin:0;padding:0;border-radius:8px}
+.lecture-switch>summary{min-height:44px;padding:8px 12px;font-size:.88rem}
+.lecture-switch[open]>summary{margin:0;border-bottom:0}
+.lecture-switch>.lecture-menu{position:absolute;right:0;top:calc(100% + 8px);width:min(40rem,calc(100vw - 32px));max-height:65vh;overflow-y:auto;overscroll-behavior:contain;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:10px;box-shadow:0 6px 18px var(--border)}
+.lecture-menu .lecture-group{margin:8px 8px 4px;font-size:.8rem;font-weight:700;color:var(--muted)}
+.lecture-menu ol{list-style:none;padding:0;margin:0 0 12px}
+.lecture-menu li{margin:0}
+.lecture-menu a,.lecture-menu .lecture-unavailable{display:block;padding:10px 12px;border-radius:6px;line-height:1.45;font-size:.9rem;text-decoration:none}
+.lecture-menu a:hover{background:var(--accent-soft)}
+.lecture-menu a[aria-current="page"]{background:var(--accent-soft);font-weight:700;border-left:3px solid var(--accent)}
+.lecture-menu .lecture-unavailable{color:var(--muted)}
+.lecture-nav a:focus-visible,.lecture-switch>summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+@media print{.lecture-nav{display:none}}
+
+</style>
+</head>
+<body>
+<main>
+
+<nav class="lecture-nav" aria-label="Chuyển nhanh giữa các bài giảng">
+<a href="index.html">Mục lục</a>
+<details class="lecture-switch"><summary>Chuyển bài · Bài 05</summary><div class="lecture-menu"><p class="lecture-group">Phần A — Sinh học nền</p><ol><li><a href="01-gene-to-protein.html">Bài 01: Từ gene đến protein</a></li><li><a href="02-enzymes-and-ptm.html">Bài 02: Enzyme và biến đổi sau dịch mã (PTM)</a></li><li><a href="03-cell-signaling-kinases.html">Bài 03: Tín hiệu tế bào và kinase</a></li><li><a href="04-cancer-hallmarks.html">Bài 04: Ung thư: hallmarks và kinase</a></li><li><a href="05-aging-sirtuins-senescence.html" aria-current="page">Bài 05: Lão hóa: sirtuin và senescence</a></li><li><a href="06-biological-databases.html">Bài 06: Các cơ sở dữ liệu sinh học</a></li></ol><p class="lecture-group">Phần B — Khung bài toán và đánh giá</p><ol><li><a href="07-residue-level-framing.html">Bài 07: Đặt bài toán ở mức residue</a></li><li><a href="08-metrics-imbalanced.html">Bài 08: Chỉ số cho dữ liệu mất cân bằng</a></li><li><a href="09-leakage-and-homology.html">Bài 09: Rò rỉ dữ liệu và chuỗi đồng dạng</a></li></ol><p class="lecture-group">Phần C — Mô hình</p><ol><li><a href="10-neural-network-basics.html">Bài 10: Mạng nơ-ron cơ bản</a></li><li><a href="11-cnn-to-mcnn.html">Bài 11: Từ CNN đến MCNN</a></li><li><a href="12-protein-encodings-plm.html">Bài 12: Mã hóa protein: one-hot, PSSM, PLM</a></li><li><a href="13-retrieval-and-beyond.html">Bài 13: Truy hồi và các hướng sau PLM</a></li><li><a href="14-xai-basics.html">Bài 14: Giải thích mô hình (XAI)</a></li><li><span class="lecture-unavailable">Bài 15: Đọc hiểu một bài báo tin sinh — chưa có</span></li></ol></div></details>
+<a href="04-cancer-hallmarks.html" aria-label="Bài trước: Ung thư: hallmarks và kinase" title="Bài 04: Ung thư: hallmarks và kinase">←</a>
+<a href="06-biological-databases.html" aria-label="Bài sau: Các cơ sở dữ liệu sinh học" title="Bài 06: Các cơ sở dữ liệu sinh học">→</a>
+</nav>
+
+
+<div class="crumb"><a href="index.html">Bài giảng nền</a> · Bài 05 / 15 · Phần A — Sinh học nền</div>
+<h1>Lão hóa: sirtuin và senescence</h1>
+<div class="meta">
+  <span class="pill">≈ 35 phút</span>
+  <span class="pill">Dùng cho: chỉ aging (ứng viên A, C, D, E)</span>
+  <span class="pill">Đọc trước: bài 02</span>
+</div>
+
+<div class="box goal">
+  <span class="label">Đọc xong bài này, bạn sẽ</span>
+  <ul>
+    <li>Phân biệt bốn từ hay bị dùng lẫn: aging, lifespan, healthspan, senescence.</li>
+    <li>Đọc được khung “hallmarks of aging” (2013 → 2023) và biết hallmark nào nối với ứng viên nào.</li>
+    <li>Giải thích được vì sao sirtuin cần NAD⁺, bảy isoform khác nhau ở đâu, và vì sao câu hỏi “theo từng isoform” có nghĩa.</li>
+    <li>Đọc đúng nhãn của ứng viên A từ file thật: nguồn microarray, thứ tự cột, tỉ lệ dương lệch mạnh theo isoform, và giới hạn của phép đo in vitro.</li>
+    <li>Biết senescence là gì, đo bằng dấu ấn nào, vì sao nó là cầu nối aging–cancer, và vì sao nhãn của ứng viên E mờ hơn nhãn của A.</li>
+  </ul>
+</div>
+
+<p class="out" style="font-size:.85rem">Nhãn độ tin cậy trong bài:
+<span class="tag t-ok">đã kiểm</span> đã mở nguồn gốc hoặc bản tóm tắt chính thức trong phiên 04/10/2026 ·
+<span class="tag t-dd">khảo sát sâu</span> lấy từ báo cáo khảo sát sâu, giữ nguyên nhãn của báo cáo ·
+<span class="tag t-unv">chưa kiểm chứng</span> kiến thức nền, chưa mở lại nguồn ·
+<span class="tag t-inf">suy luận</span> lập luận của bài giảng, không có nguồn trực tiếp.</p>
+
+
+<h2>1. Bốn từ hay bị dùng lẫn</h2>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Từ</th><th>Mức</th><th>Nghĩa trong bài này</th></tr></thead>
+<tbody>
+<tr><td><strong>Aging</strong> (lão hóa)</td><td>Cơ thể</td><td>Sự suy giảm chức năng dần dần theo thời gian, làm tăng nguy cơ bệnh và tử vong</td></tr>
+<tr><td><strong>Lifespan</strong> (tuổi thọ)</td><td>Cơ thể</td><td>Sống được bao lâu</td></tr>
+<tr><td><strong>Healthspan</strong></td><td>Cơ thể</td><td>Khoảng thời gian sống còn khỏe mạnh, chưa mắc bệnh tuổi già</td></tr>
+<tr><td><strong>Senescence</strong> (cellular senescence)</td><td>Tế bào</td><td>Một <em>trạng thái của tế bào</em>: ngừng phân chia ổn định kèm các thay đổi đặc trưng (mục 6)</td></tr>
+</tbody></table></div>
+
+<p>Hai cặp cần tách bạch. Thứ nhất, kéo dài healthspan không đồng nghĩa với kéo dài lifespan; mục 4 có một ví dụ thật về sirtuin cho thấy điều đó. Thứ hai, senescence là chuyện của <em>một tế bào</em>, còn aging là chuyện của <em>cả cơ thể</em>. Trong một số bài cũ, “senescence” được dùng lỏng để chỉ lão hóa nói chung, nên khi đọc phải xem ngữ cảnh <span class="tag t-inf">suy luận</span>.</p>
+
+<p>Vì sao lão hóa đáng nghiên cứu? Khung hallmarks 2013 nêu lão hóa là yếu tố nguy cơ chính của ung thư, tiểu đường, bệnh tim mạch và thoái hóa thần kinh <span class="tag t-ok">đã kiểm</span>. Câu này cũng là lý do hai hướng aging và cancer mà GVHD gợi ý không tách rời nhau.</p>
+
+<h2>2. Khung hallmarks: 9 → 12</h2>
+
+<p>López-Otín và cộng sự (2013) đề xuất chín “dấu hiệu đặc trưng” của lão hóa; bản 2023 mở rộng thành mười hai <span class="tag t-ok">đã kiểm</span>. Một đặc điểm muốn được gọi là hallmark phải thỏa ba tiền đề: (1) xuất hiện theo tuổi; (2) làm nó nặng thêm bằng thực nghiệm thì lão hóa nhanh hơn; (3) can thiệp vào nó có thể làm chậm, dừng hoặc đảo ngược lão hóa <span class="tag t-ok">đã kiểm</span>.</p>
+
+<p>Bản 2013 còn chia các hallmark thành ba nhóm: <strong>nguyên phát</strong> (gây tổn thương, luôn có hại), <strong>đối kháng</strong> (có lợi ở mức thấp, có hại khi quá mức) và <strong>tích hợp</strong> (hậu quả ở mức mô). Senescence thuộc nhóm đối kháng: nó bảo vệ cơ thể khỏi ung thư, nhưng tích tụ quá mức thì thúc đẩy lão hóa <span class="tag t-ok">đã kiểm</span>.</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Hallmark (bản 2023)</th><th>Nối với ứng viên nào trong bài này</th></tr></thead>
+<tbody>
+<tr><td>Genomic instability</td><td>—</td></tr>
+<tr><td>Telomere attrition</td><td>E, gián tiếp: telomere ngắn dần gây senescence (mục 6)</td></tr>
+<tr><td>Epigenetic alterations</td><td><strong>A</strong>: sirtuin gỡ acetyl trên histone</td></tr>
+<tr><td>Loss of proteostasis</td><td><strong>C, D</strong>: protein bị tổn thương hóa học tích tụ</td></tr>
+<tr><td><em>Disabled macroautophagy</em> (mới)</td><td>—</td></tr>
+<tr><td>Deregulated nutrient-sensing</td><td><strong>A</strong>: sirtuin cảm nhận NAD⁺</td></tr>
+<tr><td>Mitochondrial dysfunction</td><td><strong>A</strong>: SIRT3, 4, 5 nằm trong ty thể</td></tr>
+<tr><td>Cellular senescence</td><td><strong>E</strong></td></tr>
+<tr><td>Stem cell exhaustion</td><td>—</td></tr>
+<tr><td>Altered intercellular communication</td><td>E: chất tiết của tế bào senescent (SASP)</td></tr>
+<tr><td><em>Chronic inflammation</em> (mới)</td><td>E: SASP mang tính gây viêm</td></tr>
+<tr><td><em>Dysbiosis</em> (mới)</td><td>—</td></tr>
+</tbody></table></div>
+<p style="font-size:.9rem;color:var(--muted)">Danh sách hallmark <span class="tag t-ok">đã kiểm</span>. Việc sirtuin được bàn ở cả hai mục “epigenetic alterations” và “deregulated nutrient-sensing” trong bản 2013 <span class="tag t-ok">đã kiểm</span>. Cột “nối với ứng viên” là cách sắp xếp của bài giảng <span class="tag t-inf">suy luận</span>.</p>
+
+<div class="box">
+  <span class="label">Cách dùng khung này trong luận văn</span>
+  <p>Hallmark là <strong>khung tổ chức</strong> để đặt đề tài vào bức tranh chung, không phải danh sách quan hệ nhân quả đã chứng minh xong. Một câu mở đầu tốt có dạng: “Đề tài nằm ở hallmark X; cụ thể, nó dự đoán Y ở mức residue.” Đừng viết như thể dự đoán Y sẽ “giải quyết” lão hóa.</p>
+</div>
+
+<h2>3. Sirtuin và NAD⁺</h2>
+
+<p>Bài 02 đã nói sirtuin là deacetylase lớp III, cần NAD⁺. Ở đây xem NAD⁺ đóng vai trò gì. Điểm khác thường: với sirtuin, NAD⁺ không chỉ là chất hỗ trợ mà là <strong>cơ chất bị tiêu thụ</strong>. Mỗi lần gỡ một nhóm acetyl, một phân tử NAD⁺ bị biến thành nicotinamide; sản phẩm phụ còn lại là O-acetyl-ADP-ribose <span class="tag t-ok">đã kiểm</span>.</p>
+
+<figure>
+<svg viewBox="0 0 640 230" role="img" aria-labelledby="f1t">
+  <title id="f1t">Phản ứng deacetyl hóa của sirtuin tiêu thụ NAD⁺</title>
+  <defs><marker id="ah5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="s-text"/></marker></defs>
+  <rect x="20" y="40" width="150" height="46" rx="8" class="s-soft s-accs" stroke-width="1.5"/>
+  <text x="95" y="68" text-anchor="middle" font-size="14" class="s-text" font-weight="600">Protein–K(Ac)</text>
+  <rect x="20" y="110" width="150" height="46" rx="8" class="s-surf s-stroke" stroke-width="1.5"/>
+  <text x="95" y="138" text-anchor="middle" font-size="14" class="s-text" font-weight="600">NAD⁺</text>
+  <rect x="245" y="72" width="130" height="54" rx="27" class="s-surf s-accs" stroke-width="2"/>
+  <text x="310" y="96" text-anchor="middle" font-size="14" class="s-acc" font-weight="700">Sirtuin</text>
+  <text x="310" y="114" text-anchor="middle" font-size="11.5" class="s-muted">SIRT1–7</text>
+  <path d="M172,63 L243,92" class="s-stroke" stroke-width="1.5" fill="none" marker-end="url(#ah5)"/>
+  <path d="M172,133 L243,108" class="s-stroke" stroke-width="1.5" fill="none" marker-end="url(#ah5)"/>
+  <rect x="450" y="18" width="170" height="40" rx="8" class="s-surf s-oks" stroke-width="1.5"/>
+  <text x="535" y="43" text-anchor="middle" font-size="14" class="s-text" font-weight="600">Protein–K</text>
+  <rect x="450" y="78" width="170" height="40" rx="8" class="s-surf s-stroke" stroke-width="1.5"/>
+  <text x="535" y="103" text-anchor="middle" font-size="13" class="s-text">Nicotinamide (NAM)</text>
+  <rect x="450" y="138" width="170" height="40" rx="8" class="s-surf s-stroke" stroke-width="1.5"/>
+  <text x="535" y="163" text-anchor="middle" font-size="13" class="s-text">O-acetyl-ADP-ribose</text>
+  <path d="M377,92 L448,40" class="s-stroke" stroke-width="1.5" fill="none" marker-end="url(#ah5)"/>
+  <path d="M377,99 L448,98" class="s-stroke" stroke-width="1.5" fill="none" marker-end="url(#ah5)"/>
+  <path d="M377,106 L448,156" class="s-stroke" stroke-width="1.5" fill="none" marker-end="url(#ah5)"/>
+  <path d="M480,120 C440,210 340,200 318,130" class="s-bads" stroke-width="1.5" stroke-dasharray="5 4" fill="none" marker-end="url(#ah5)"/>
+  <text x="400" y="216" text-anchor="middle" font-size="12" class="s-bad">NAM ở nồng độ cao ức chế ngược sirtuin</text>
+  <text x="95" y="182" text-anchor="middle" font-size="12" class="s-muted">PARP, CD38 cũng</text>
+  <text x="95" y="198" text-anchor="middle" font-size="12" class="s-muted">tiêu thụ NAD⁺</text>
+</svg>
+<figcaption>Hình 1. Phản ứng của sirtuin theo Houtkooper và cộng sự (2012) <span class="tag t-ok">đã kiểm</span>. Sơ đồ đơn giản hóa, không ghi hệ số phản ứng.</figcaption>
+</figure>
+
+<p>Hệ quả: hoạt tính sirtuin phụ thuộc vào lượng NAD⁺ sẵn có, mà lượng này lại phụ thuộc trạng thái dinh dưỡng của tế bào. Vì thế bản hallmarks 2013 xếp sirtuin cạnh mTOR và AMPK trong nhóm “cảm biến dinh dưỡng”: sirtuin cảm nhận trạng thái thiếu năng lượng qua mức NAD⁺ cao <span class="tag t-ok">đã kiểm</span>. Các enzyme khác như PARP (kích hoạt khi DNA hỏng) và CD38 cũng tiêu thụ NAD⁺, nên chúng cạnh tranh cùng một nguồn với sirtuin <span class="tag t-ok">đã kiểm</span>.</p>
+
+<p>Nối với tuổi tác: mức NAD⁺ trong mô và tế bào giảm dần theo tuổi ở nhiều sinh vật mô hình, kể cả gặm nhấm và người. Cùng bài tổng quan đó cũng nói rõ còn chưa biết việc bổ sung NAD⁺ có an toàn và có lợi cho người cao tuổi hay không <span class="tag t-ok">đã kiểm</span> (Covarrubias và cộng sự 2021, qua tóm tắt).</p>
+
+<div class="box link">
+  <span class="label">Hình dung theo kiểu CNTT</span>
+  <p>NAD⁺ giống một <strong>pool token dùng chung</strong>. Mỗi lần sirtuin xử lý một lysine là tiêu một token; PARP và CD38 cũng rút từ cùng pool. Pool cạn (ví dụ khi DNA hỏng nhiều, PARP hoạt động mạnh) thì sirtuin chậm lại. Đây là chỗ chuyển hóa năng lượng “nói chuyện” với việc điều hòa protein.</p>
+</div>
+
+<h3>Bảy isoform ở người</h3>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Isoform</th><th>Ở đâu trong tế bào</th><th>Hoạt tính chính (theo bảng 2012)</th><th>Cơ chất ví dụ</th></tr></thead>
+<tbody>
+<tr><td>SIRT1</td><td>Nhân, cả bào tương</td><td>Deacetyl hóa</td><td>p53, PGC1α, FOXO1/3, NF-κB…</td></tr>
+<tr><td>SIRT2</td><td>Bào tương; vào nhân ở chuyển tiếp G2/M</td><td>Deacetyl hóa</td><td>Tubulin, FOXO1…</td></tr>
+<tr><td>SIRT3</td><td>Ty thể; deacetylase chính của ty thể</td><td>Deacetyl hóa</td><td>LCAD, SOD2, IDH2…</td></tr>
+<tr><td>SIRT4</td><td>Ty thể</td><td>ADP-ribosyl hóa</td><td>GDH</td></tr>
+<tr><td>SIRT5</td><td>Ty thể</td><td>Deacetyl hóa, gỡ malonyl, gỡ succinyl</td><td>CPS1</td></tr>
+<tr><td>SIRT6</td><td>Chủ yếu trong nhân</td><td>Deacetyl hóa, ADP-ribosyl hóa</td><td>Histone H3K9, H3K56</td></tr>
+<tr><td>SIRT7</td><td>Hạch nhân (nucleolus)</td><td>Chưa rõ vào năm 2012; được báo hoạt hóa phiên mã RNA polymerase I</td><td>Chưa rõ</td></tr>
+</tbody></table></div>
+<p style="font-size:.9rem;color:var(--muted)">Toàn bộ bảng theo Bảng 1 và phần thân của Houtkooper và cộng sự 2012 <span class="tag t-ok">đã kiểm</span>. Đây là hiểu biết của năm 2012; một số ô (nhất là SIRT4, SIRT7) có thể đã được bổ sung sau đó <span class="tag t-unv">chưa kiểm chứng</span>.</p>
+
+<div class="box warn">
+  <span class="label">Bẫy: hai chữ “lớp” khác nhau</span>
+  <p>“Sirtuin là HDAC <strong>lớp III</strong>” (bài 02) là cách xếp các deacetylase. Còn trong bảng của Houtkooper, bảy sirtuin lại được chia thành <strong>bốn nhóm I–IV theo phát sinh loài</strong>: SIRT1–3 nhóm I, SIRT4 nhóm II, SIRT5 nhóm III, SIRT6–7 nhóm IV <span class="tag t-ok">đã kiểm</span>. “SIRT5 thuộc class III” và “sirtuin là class III” nói về hai hệ phân loại khác nhau.</p>
+</div>
+
+<p>Ba điều rút ra cho ứng viên A. (1) Bảy isoform nằm ở các ngăn khác nhau, nên trong tế bào mỗi isoform chỉ “gặp” được một phần cơ chất. (2) Hoạt tính chính của chúng khác nhau, nên “isoform nào gỡ acetyl ở lysine nào” là câu hỏi có nội dung thật chứ không phải chia nhãn cho đẹp. (3) Vì thế bài toán đa nhãn 7 isoform có nghĩa sinh học, khác với bài toán “lysine này có bị acetyl hóa không” <span class="tag t-inf">suy luận</span>.</p>
+
+<h2>4. Sirtuin và tuổi thọ: một bài học về kỷ luật ngôn từ</h2>
+
+<p>Lịch sử của sirtuin trong nghiên cứu lão hóa là một ví dụ đẹp về việc một phát hiện bị đánh giá lại:</p>
+<ul>
+  <li><strong>Nấm men:</strong> tăng biểu hiện Sir2 kéo dài tuổi thọ sao chép <span class="tag t-ok">đã kiểm</span>.</li>
+  <li><strong>Giun và ruồi:</strong> các báo cáo đầu cho thấy hiệu ứng tương tự. Burnett và cộng sự (2011) chuẩn hóa nền di truyền và dùng đối chứng phù hợp thì hiệu ứng kéo dài tuổi thọ <strong>biến mất</strong> ở cả hai loài. Bài không loại trừ vai trò của sirtuin, nhưng làm nghi ngờ độ vững của các báo cáo trước <span class="tag t-ok">đã kiểm</span>.</li>
+  <li><strong>Chuột:</strong> tăng biểu hiện SIRT1 cải thiện một số mặt sức khỏe khi già nhưng <strong>không tăng tuổi thọ</strong>; chuột thiếu SIRT6 lão hóa nhanh, còn chuột đực tăng biểu hiện SIRT6 sống lâu hơn đối chứng. Bản 2013 kết luận ít nhất SIRT1, SIRT3 và SIRT6 góp phần vào “lão hóa khỏe mạnh” <span class="tag t-ok">đã kiểm</span>.</li>
+</ul>
+
+<p>Ví dụ SIRT1 ở chuột chính là chỗ healthspan tăng mà lifespan không tăng (mục 1).</p>
+
+<div class="box link">
+  <span class="label">Hình dung theo kiểu CNTT</span>
+  <p>Burnett 2011 giống phát hiện một A/B test mà nhóm B, ngoài tính năng mới, còn chạy trên một máy chủ khác. Khi đặt hai nhóm lên cùng máy chủ thì “hiệu ứng” biến mất. Biến gây nhiễu (confounder) ở đây là nền di truyền.</p>
+</div>
+
+<div class="box warn">
+  <span class="label">Quy ước ngôn từ trong repo</span>
+  <p>Nói sirtuin <strong>“liên quan con đường lão hóa”</strong>, không nói “chống lão hóa”. Không nói đề tài “giúp kéo dài tuổi thọ”. Một mô hình dự đoán cơ chất SIRT chỉ thu hẹp danh sách cần kiểm chứng bằng thực nghiệm, như câu mẫu trong <a href="biology-learning-roadmap.md">lộ trình tự học</a>, mục 3.</p>
+</div>
+
+<h2>5. Ứng viên A nhìn từ file dữ liệu</h2>
+
+<h3>Nhãn đến từ đâu</h3>
+<p>Rauh và cộng sự (2013) dựng một <strong>peptide microarray</strong> hiển thị 6.802 site acetyl hóa của người, rồi đo khả năng deacetyl hóa của <strong>cả bảy sirtuin</strong> trên từng site. Kết quả cho thấy mỗi isoform có ưu tiên cơ chất riêng, kể cả SIRT4 <span class="tag t-ok">đã kiểm</span>. Bài của Ridgeway và cộng sự (2025), nguồn của ứng viên A, lấy lại bộ dữ liệu này: peptide dài <strong>13 amino acid</strong> (tức cửa sổ ±6), peptide có <strong>signal ratio score ≥ 1</strong> được gán dương, vị trí bị che được thay bằng alanine, tổng cộng 6.801 peptide <span class="tag t-ok">đã kiểm</span>.</p>
+
+<p>Để ý một chi tiết: bảng 2012 ở mục 3 ghi SIRT4 là ADP-ribosyl hóa và SIRT7 “chưa rõ hoạt tính”, vậy mà array vẫn đo được hoạt tính deacetyl hóa của cả hai. Array đo <em>hóa học in vitro</em> trên peptide ngắn; nó không nói hoạt tính đó quan trọng đến đâu trong tế bào <span class="tag t-inf">suy luận</span>.</p>
+
+<h3>Đếm trên file thật</h3>
+<p>File <code>All_Sirts_Feature_Y_labels.csv</code> (224.234 byte, SHA-256 bắt đầu bằng <code>c76d9599</code>) có 6.801 dòng dữ liệu và bảy cột nhãn <span class="tag t-ok">đã kiểm · tự đo</span>. Hình 2 vẽ từ chính các số đếm đó.</p>
+
+<div class="btns" id="chBtns">
+  <button data-v="iso" aria-pressed="true">Tỉ lệ dương theo isoform</button>
+  <button data-v="cnt" aria-pressed="false">Số nhãn dương trên mỗi dòng</button>
+</div>
+<figure>
+<svg viewBox="0 0 640 250" role="img" aria-labelledby="f2t" id="chart">
+  <title id="f2t">Biểu đồ cột từ dữ liệu ứng viên A</title>
+</svg>
+<figcaption id="chCap">Hình 2.</figcaption>
+</figure>
+
+<p>Ba điều đọc được từ hình:</p>
+<ul>
+  <li><strong>Mất cân bằng rất khác nhau giữa các nhãn.</strong> SIRT1 chỉ 176 dương trên 6.801 (2,6%), SIRT5 tới 2.614 (38,4%) <span class="tag t-ok">đã kiểm · tự đo</span>. Một ngưỡng chung hay một chỉ số trung bình cho cả bảy nhãn sẽ che mất SIRT1 (bài 08).</li>
+  <li><strong>Đa nhãn là chuyện thường.</strong> Phần lớn dòng dương với 1 hoặc 2 isoform; 5 dòng dương với 6 isoform; không dòng nào dương với cả 7. Có 1.107 dòng âm với cả bảy <span class="tag t-ok">đã kiểm · tự đo</span>.</li>
+  <li><strong>Nhiều site cùng một protein.</strong> 1.391 mã có hơn một site, chiếm 5.193 dòng; riêng p53 (P04637) có 13 dòng, P05141 có 9 dòng. Ngoài ra có 231 dòng mang mã <code>SYNTHETIC</code>, ý nghĩa chưa rõ, cần đọc bài gốc <span class="tag t-ok">đã kiểm · tự đo</span>. Hệ quả: phải chia train/test theo protein (bài 09).</li>
+</ul>
+
+<h3>Thử tay: đọc một dòng dữ liệu</h3>
+<p>Thứ tự cột trong file là <code>SIRT_5, SIRT_4, SIRT_1, SIRT_7, SIRT_2, SIRT_6, SIRT_3</code>, <strong>không theo số isoform</strong>, và đứng trước còn có một cột chỉ số không tên <span class="tag t-ok">đã kiểm · tự đo</span>. Chọn một dòng, rồi thử cách đọc sai.</p>
+<div class="btns" id="rowBtns">
+  <button data-r="0" aria-pressed="true">P05141 K163</button>
+  <button data-r="1" aria-pressed="false">p53 K382</button>
+  <button data-r="2" aria-pressed="false">p53 K381</button>
+  <button data-r="3" aria-pressed="false">p53 K120</button>
+</div>
+<div class="btns" id="modeBtns">
+  <button data-m="ok" aria-pressed="true">Đọc theo header</button>
+  <button data-m="naive" aria-pressed="false">Đọc sai: giả định cột theo thứ tự SIRT1→7</button>
+</div>
+<div class="win" id="rawLine"></div>
+<div class="cells" id="cells"></div>
+<p class="out" id="rowNote"></p>
+
+<h2>6. In vitro không phải trong tế bào</h2>
+
+<p>Hai ví dụ trong ô thử tay đáng dừng lại.</p>
+
+<p><strong>P05141, lysine 163.</strong> Đây là ADP/ATP translocase 2 (gene SLC25A5). UniProt ghi vị trí của nó là màng trong ty thể, với bằng chứng suy theo đồng dạng (ECO:0000250) <span class="tag t-ok">đã kiểm</span>. Trên array, K163 dương với SIRT3, 4, 5 (ty thể) nhưng cũng dương với SIRT6, 7, vốn ở nhân và hạch nhân <span class="tag t-ok">đã kiểm · tự đo</span>. Trong tế bào, SIRT6/7 khó gặp protein này. Array chỉ đo phản ứng hóa học khi đặt enzyme và peptide cạnh nhau, không đo việc chúng có gặp nhau thật hay không <span class="tag t-inf">suy luận</span>.</p>
+
+<p><strong>p53, lysine 382 và 381.</strong> Mục chú thích PTM của UniProt cho p53 ghi: “Deacetylation of Lys-382 by SIRT1 impairs its ability to induce proapoptotic program and modulate cell senescence”, và “Deacetylation at Lys-381 by SIRT6 decreases its stability, thereby regulating cell senescence” <span class="tag t-ok">đã kiểm</span>. Trên array của ứng viên A, K382 có nhãn SIRT1 = 0 và K381 có nhãn SIRT6 = 0 <span class="tag t-ok">đã kiểm · tự đo</span>.</p>
+
+<div class="box warn">
+  <span class="label">Hai bài học từ p53</span>
+  <ol style="margin:0;padding-left:1.2em">
+    <li><strong>Nhãn âm của A là “âm trên array”</strong>, không phải “không xảy ra trong tế bào”. Peptide 13 amino acid thiếu các điểm bám ở xa, thiếu bạn đồng hành, thiếu điều kiện tế bào; ngưỡng ≥ 1 cũng có thể bỏ sót tín hiệu yếu <span class="tag t-inf">suy luận</span>. Cách nói trung thực mà khảo sát sâu đề xuất: “dự đoán hoạt tính deacetyl hóa mức peptide của từng isoform SIRT” <span class="tag t-dd">khảo sát sâu · toàn văn</span>.</li>
+    <li><strong>Đọc sai cột vẫn ra kết quả “hợp lý”.</strong> Đọc dòng K382 theo thứ tự SIRT1→7 sẽ thấy “dương với SIRT1”, trùng khớp với UniProt. Một lỗi xử lý dữ liệu tạo ra câu chuyện sinh học trông đúng là loại lỗi nguy hiểm nhất. Kiểm dữ liệu bằng header và bằng mã, đừng bằng cảm giác “nghe hợp lý”.</li>
+  </ol>
+</div>
+
+<p>Vậy làm sao đánh giá một mô hình học từ nhãn array? Cần một tập kiểm tra trực giao, đo bằng kỹ thuật khác. Ridgeway và cộng sự dùng các cơ chất SIRT2 đã được khối phổ xác nhận trong tế bào: mô hình SIRT2 của họ tìm lại được 64 trên 149 cơ chất đó, và bài gọi tỉ lệ 43,0% này là precision <span class="tag t-ok">đã kiểm</span>. Khi đọc, tự hỏi mẫu số là gì: “tìm lại được bao nhiêu trong số dương đã biết” gần với định nghĩa recall ở bài 08 hơn <span class="tag t-inf">suy luận</span>. Bài cũng so với precision 2,0% của phương pháp permutation array, đo trên enzyme SET8 <span class="tag t-ok">đã kiểm</span>.</p>
+
+<h2>7. Senescence: tế bào ngừng chia nhưng không chết</h2>
+
+<p><strong>Cellular senescence</strong> là trạng thái tế bào <strong>ngừng chu kỳ phân chia một cách ổn định</strong>, kèm một loạt thay đổi kiểu hình đặc trưng. Hayflick mô tả hiện tượng này lần đầu ở nguyên bào sợi người nuôi cấy qua nhiều lần cấy chuyển (giới hạn Hayflick); về sau người ta biết nguyên nhân là telomere ngắn dần. Tổn thương DNA và việc locus INK4/ARF bị bỏ ức chế theo tuổi cũng gây senescence mà không cần qua telomere <span class="tag t-ok">đã kiểm</span>.</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Dấu ấn / đặc điểm</th><th>Nghĩa ngắn</th></tr></thead>
+<tbody>
+<tr><td>SA-β-gal (senescence-associated β-galactosidase)</td><td>Phép nhuộm hay dùng để nhận diện tế bào senescent trong mô</td></tr>
+<tr><td>p16<sup>INK4a</sup>/Rb và ARF/p53</td><td>Hai con đường chính thực thi việc ngừng phân chia</td></tr>
+<tr><td>SASP (senescence-associated secretory phenotype)</td><td>Tế bào senescent tiết nhiều cytokine gây viêm và enzyme phân giải chất nền; có thể góp phần vào lão hóa</td></tr>
+</tbody></table></div>
+<p style="font-size:.9rem;color:var(--muted)">Ba dòng trên theo López-Otín 2013 <span class="tag t-ok">đã kiểm</span>. Không dấu ấn nào đủ một mình; đồng thuận năm 2019 của International Cell Senescence Association đề xuất đánh giá bằng nhiều dấu ấn theo một thuật toán, và giới thiệu công cụ SeneQuest liệt kê gene liên quan senescence <span class="tag t-ok">đã kiểm</span> (Gorgoulis và cộng sự 2019, qua tóm tắt).</p>
+
+<p>Bao nhiêu tế bào senescent? Một nghiên cứu được trích trong bản 2013 đếm khoảng 8% tế bào senescent ở gan chuột non và khoảng 17% ở chuột rất già; tim, cơ xương và thận thì không thấy thay đổi <span class="tag t-ok">đã kiểm</span>. Tức là senescence tích tụ theo tuổi ở một số mô, không phải mọi mô.</p>
+
+<div class="box link">
+  <span class="label">Cầu nối aging – cancer</span>
+  <p>Senescence là cơ chế chặn ung thư: tế bào có nguy cơ biến đổi thì ngừng phân chia. Nhưng tế bào senescent tích tụ và tiết SASP lại thúc đẩy lão hóa (nhóm “đối kháng” ở mục 2) <span class="tag t-ok">đã kiểm</span>. Bản hallmarks of cancer 2022 của Hanahan đã thêm tế bào senescent vào danh sách các loại tế bào quan trọng trong vi môi trường khối u <span class="tag t-ok">đã kiểm</span> (bài 04). Và p53, một protein trung tâm của ung thư, lại bị SIRT1 và SIRT6 deacetyl hóa theo cách điều hòa senescence (mục 6). Sirtuin, p53 và senescence nằm trên cùng một chuỗi.</p>
+</div>
+
+<h3>Ứng viên E và vì sao nhãn của nó mờ</h3>
+<p>Ứng viên E là bài toán <strong>mức toàn chuỗi</strong>: protein này có “liên quan senescence” không. Bài tham chiếu SenSeqNet (bản công bố Aging Cell 2026) báo accuracy 86,43%, AUC 0,94, MCC 0,7221 <span class="tag t-dd">khảo sát sâu · toàn văn</span>; bài 09 đã phân tích các đường rò rỉ của bộ dữ liệu này. Ở đây chỉ nói về bản chất nhãn:</p>
+<ul>
+  <li>Nhãn của A gắn với <em>một lysine, một enzyme, một phép đo</em>. Nhãn của E gắn với <em>một gene</em>, và “liên quan senescence” thường nghĩa là trong một thí nghiệm nào đó, làm thay đổi gene ấy thì gây ra hoặc ngăn senescence. Cùng một gene có thể cho kết quả khác nhau ở loại tế bào khác <span class="tag t-inf">suy luận</span>.</li>
+  <li>CellAge Build 3 có 866 gene; chỉ 370 gene riêng biệt mang nhãn “Induces” <span class="tag t-dd">khảo sát sâu · tự đo</span>. Danh sách gene nhỏ, còn số chuỗi thì được nhân lên rất nhiều qua ortholog và mảnh chuỗi.</li>
+  <li>Một chương sách 2026 fine-tune ESM-2 trên 640 chuỗi GenAge/không lão hóa chỉ đạt accuracy 0,625 và ROC-AUC 0,743 <span class="tag t-dd">khảo sát sâu · chưa kiểm</span>. Nếu đúng, tín hiệu “liên quan lão hóa” trong chuỗi có thể yếu.</li>
+</ul>
+
+<h2>8. Tổn thương tích lũy: ứng viên C và D</h2>
+
+<p>Carbonyl hóa và glycation (bài 02) không do enzyme điều khiển: chúng là <strong>tổn thương hóa học</strong> tích lũy dần. Chúng nối với hallmark “loss of proteostasis” qua lập luận tổn thương oxy hóa và protein kết tụ <span class="tag t-dd">khảo sát sâu · toàn văn</span>. Hai câu cần giữ đúng mức:</p>
+<ul>
+  <li>Carbonyl hóa là <strong>dấu hiệu tổn thương</strong>, không phải một “đồng hồ đo tuổi” <span class="tag t-dd">khảo sát sâu</span>.</li>
+  <li>Văn liệu về glycation đóng khung theo đái tháo đường nhiều không kém lão hóa, nên framing aging của D yếu hơn C <span class="tag t-dd">khảo sát sâu</span>.</li>
+</ul>
+<p>Còn “aging clock” (đồng hồ sinh học dựa trên methyl hóa DNA, protein huyết tương…) thì sao? Đầu vào của nó là một vector đo đạc trên mỗi người, nhãn là tuổi của người đó, không có chuỗi amino acid nào. Dòng phương pháp PLM → mCNN của GVHD không áp vào được, nên khảo sát sâu loại hướng này, chỉ dùng nó làm câu mở đầu <span class="tag t-dd">khảo sát sâu · mục 10</span>.</p>
+
+<h2>9. GVHD và hướng aging</h2>
+
+<p>Trong danh mục của GVHD và của Prof Ou, khảo sát sâu chỉ tìm được đúng <strong>một</strong> bài thuộc địa hạt aging: <strong>SirtSAGE</strong> (2026) của GVHD, dùng graph attention có cổng cấu trúc để phân loại và lập bản đồ tiến hóa <em>họ protein sirtuin</em> <span class="tag t-dd">khảo sát sâu · toàn văn, file local</span> (<a href="../project/advisor-research.md">hồ sơ GVHD</a>).</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th></th><th>SirtSAGE (GVHD)</th><th>Ứng viên A</th></tr></thead>
+<tbody>
+<tr><td>Đối tượng</td><td>Chính protein sirtuin</td><td>Cơ chất của sirtuin</td></tr>
+<tr><td>Mức phân giải</td><td>Toàn chuỗi</td><td>Một lysine (residue)</td></tr>
+<tr><td>Câu hỏi</td><td>Protein này là sirtuin loại nào</td><td>Lysine này bị isoform nào gỡ acetyl</td></tr>
+</tbody></table></div>
+
+<div class="box link">
+  <span class="label">Gắn với các ứng viên aging</span>
+  <ul style="margin:0">
+    <li><strong>A</strong> cần mục 3–6: NAD⁺, bảy isoform, nguồn nhãn array, giới hạn in vitro. Đây là ứng viên duy nhất mà GVHD hướng dẫn được sâu phần sinh học <span class="tag t-dd">khảo sát sâu · mục 2.6</span>.</li>
+    <li><strong>C, D</strong> cần mục 8 và bài 02. Phần sinh học sinh viên phải tự mang tới buổi tuần 6.</li>
+    <li><strong>E</strong> cần mục 7 và bài 09. Phải nói rõ nhãn mức gene và nguy cơ “số trung thực đi xuống”.</li>
+  </ul>
+</div>
+
+<h2>Bảng thuật ngữ của bài</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>Thuật ngữ</th><th>Nghĩa ngắn</th></tr></thead>
+<tbody>
+<tr><td>Aging / lifespan / healthspan</td><td>Lão hóa / tuổi thọ / khoảng sống khỏe mạnh</td></tr>
+<tr><td>Hallmarks of aging</td><td>Khung 9 (2013) rồi 12 (2023) dấu hiệu đặc trưng của lão hóa</td></tr>
+<tr><td>NAD⁺</td><td>Coenzyme của chuyển hóa năng lượng; sirtuin tiêu thụ nó khi gỡ acetyl</td></tr>
+<tr><td>Nicotinamide (NAM)</td><td>Sản phẩm phụ của phản ứng sirtuin; nồng độ cao thì ức chế ngược sirtuin</td></tr>
+<tr><td>PARP, CD38</td><td>Các enzyme khác cũng tiêu thụ NAD⁺</td></tr>
+<tr><td>Isoform SIRT1–7</td><td>Bảy sirtuin ở người, khác vị trí trong tế bào và hoạt tính</td></tr>
+<tr><td>Peptide microarray</td><td>Tấm mang hàng nghìn peptide ngắn, đo phản ứng của enzyme song song in vitro</td></tr>
+<tr><td>In vitro / in vivo</td><td>Trong ống nghiệm / trong cơ thể sống (hoặc tế bào sống)</td></tr>
+<tr><td>Confounder (biến gây nhiễu)</td><td>Yếu tố khác biệt giữa hai nhóm ngoài yếu tố đang thử, làm sai kết luận</td></tr>
+<tr><td>Cellular senescence</td><td>Tế bào ngừng phân chia ổn định kèm thay đổi kiểu hình</td></tr>
+<tr><td>Giới hạn Hayflick</td><td>Số lần phân chia có hạn của tế bào nuôi cấy, do telomere ngắn dần</td></tr>
+<tr><td>SA-β-gal</td><td>Dấu ấn nhuộm của tế bào senescent</td></tr>
+<tr><td>p16<sup>INK4a</sup></td><td>Protein thực thi việc ngừng chu kỳ, tăng theo tuổi</td></tr>
+<tr><td>SASP</td><td>Kiểu hình chế tiết của tế bào senescent, giàu chất gây viêm</td></tr>
+<tr><td>Ortholog</td><td>Gene tương ứng ở loài khác, cùng nguồn gốc tiến hóa</td></tr>
+</tbody></table></div>
+
+<h2>Câu hỏi tự kiểm</h2>
+
+<details><summary>1. Vì sao nói NAD⁺ là “cơ chất” của sirtuin chứ không chỉ là chất hỗ trợ, và điều đó nối sirtuin với chuyển hóa năng lượng thế nào?</summary>
+<div>Mỗi lần gỡ acetyl, sirtuin tiêu thụ một phân tử NAD⁺, biến nó thành nicotinamide và O-acetyl-ADP-ribose. Vì vậy hoạt tính sirtuin phụ thuộc lượng NAD⁺ sẵn có, mà lượng này phản ánh trạng thái năng lượng và bị PARP, CD38 cạnh tranh. Sirtuin nhờ đó hoạt động như một cảm biến dinh dưỡng.</div></details>
+
+<details><summary>2. Chuột tăng biểu hiện SIRT1 khỏe hơn khi già nhưng không sống lâu hơn. Câu này minh họa sự phân biệt nào ở mục 1?</summary>
+<div>Healthspan và lifespan: cải thiện sức khỏe khi già (healthspan) không đồng nghĩa với kéo dài tuổi thọ (lifespan).</div></details>
+
+<details><summary>3. Bạn đọc file của ứng viên A và thấy cột nhãn đầu tiên toàn số lớn nhất. Bạn kết luận “SIRT1 có nhiều cơ chất nhất”. Sai ở đâu?</summary>
+<div>Cột nhãn đầu tiên là SIRT_5, không phải SIRT_1; thứ tự cột không theo số isoform, và trước đó còn một cột chỉ số không tên. Thực tế SIRT1 có ít dương nhất (176 / 6.801, 2,6%). Phải ánh xạ cột theo header bằng mã.</div></details>
+
+<details><summary>4. K382 của p53 có nhãn SIRT1 = 0 trên array, trong khi UniProt ghi SIRT1 deacetyl hóa K382. Mô hình học từ array dự đoán K382 “không phải cơ chất SIRT1”. Có nên coi đó là lỗi của mô hình?</summary>
+<div>Không hẳn. Mô hình đang học đúng điều nhãn đo: hoạt tính trên peptide 13 amino acid in vitro, với ngưỡng signal ratio ≥ 1. Trong tế bào còn có các yếu tố mà peptide ngắn không có. Đó là giới hạn của nguồn nhãn, nên cần nói đúng phạm vi (“hoạt tính mức peptide”) và đánh giá thêm trên một tập đo bằng kỹ thuật khác.</div></details>
+
+<details><summary>5. Vì sao senescence được coi là “đối kháng”: vừa có lợi vừa có hại?</summary>
+<div>Ở mức vừa phải, senescence chặn các tế bào có nguy cơ thành ung thư bằng cách cho chúng ngừng phân chia. Khi tế bào senescent tích tụ, chất tiết gây viêm của chúng (SASP) góp phần vào lão hóa mô. Vì thế senescence là cầu nối giữa hai hướng aging và cancer.</div></details>
+
+<h2>Nguồn</h2>
+<ul class="src">
+  <li>López-Otín C, Blasco MA, Partridge L, Serrano M, Kroemer G (2013). The hallmarks of aging. <em>Cell</em> 153(6):1194–1217. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3836174/">PMC3836174</a> <span class="tag t-ok">đã kiểm</span> (toàn văn): chín hallmark, ba nhóm, sirtuin trong epigenetic và nutrient-sensing, Sir2 và Burnett 2011, SIRT1/SIRT6 ở chuột, định nghĩa senescence, SA-β-gal, p16<sup>INK4a</sup>, SASP, 8% → 17%.</li>
+  <li>López-Otín C và cộng sự (2023). Hallmarks of aging: An expanding universe. <em>Cell</em> 186(2):243–278. doi:10.1016/j.cell.2022.11.001 <span class="tag t-ok">đã kiểm</span>: mười hai hallmark, ba tiền đề.</li>
+  <li>Houtkooper RH, Pirinen E, Auwerx J (2012). Sirtuins as regulators of metabolism and healthspan. <em>Nat Rev Mol Cell Biol</em> 13(4):225–238. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4872805/">PMC4872805</a> <span class="tag t-ok">đã kiểm</span> (toàn văn): phản ứng tiêu thụ NAD⁺, nicotinamide ức chế ngược, O-acetyl-ADP-ribose, PARP, Bảng 1, bốn nhóm phát sinh loài.</li>
+  <li>Covarrubias AJ, Perrone R, Grozio A, Verdin E (2021). NAD⁺ metabolism and its roles in cellular processes during ageing. <em>Nat Rev Mol Cell Biol</em> 22(2):119–141. <a href="https://doi.org/10.1038/s41580-020-00313-x">doi:10.1038/s41580-020-00313-x</a> <span class="tag t-ok">đã kiểm</span> (tóm tắt trên PubMed): NAD⁺ giảm theo tuổi, chưa biết lợi ích của bổ sung NAD⁺ ở người.</li>
+  <li>Burnett C và cộng sự (2011). Absence of effects of Sir2 overexpression on lifespan in <em>C. elegans</em> and <em>Drosophila</em>. <em>Nature</em> 477:482–485. doi:10.1038/nature10296 <span class="tag t-ok">đã kiểm</span> (tóm tắt).</li>
+  <li>Rauh D và cộng sự (2013). An acetylome peptide microarray reveals specificities and deacetylation substrates for all human sirtuin isoforms. <em>Nat Commun</em> 4:2327. <a href="https://doi.org/10.1038/ncomms3327">doi:10.1038/ncomms3327</a> <span class="tag t-ok">đã kiểm</span> (tóm tắt trên PubMed).</li>
+  <li>Ridgeway NH và cộng sự (2025). Machine learning-driven prediction of substrates for enzymes introducing or removing protein post-translational modifications. <em>Commun Chem</em> 8:340. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12594832/">PMC12594832</a> <span class="tag t-ok">đã kiểm</span> (toàn văn): dữ liệu lấy từ Rauh 2013, peptide 13 amino acid, ngưỡng signal ratio ≥ 1, 64/149 cơ chất SIRT2, 2,0% của permutation array trên SET8.</li>
+  <li>File nhãn ứng viên A: <a href="https://raw.githubusercontent.com/nashirag/ML-Hybrid_Ensemble_Method/HEAD/SIRT1-7_Investigation/ML_Components/All_Sirts_Feature_Y_labels.csv">All_Sirts_Feature_Y_labels.csv</a>, SHA-256 <code>c76d95999ed5ceee63cc5fd520c97037fea2c2c7fdb8dee41b95411d6ea5ffdb</code> <span class="tag t-ok">đã kiểm · tự đo</span> 04/10/2026: mọi số đếm ở mục 5 và các dòng ở ô thử tay.</li>
+  <li>UniProt P04637 (p53) và P05141 (SLC25A5), tải qua REST 04/10/2026 <span class="tag t-ok">đã kiểm</span>: câu chú thích về SIRT1/K382, SIRT6/K381; vị trí trong tế bào của P05141.</li>
+  <li>Gorgoulis V và cộng sự (2019). Cellular Senescence: Defining a Path Forward. <em>Cell</em> 179(4):813–827. doi:10.1016/j.cell.2019.10.005 <span class="tag t-ok">đã kiểm</span> (tóm tắt).</li>
+  <li>Hanahan D (2022). Hallmarks of Cancer: New Dimensions. <em>Cancer Discov</em>. doi:10.1158/2159-8290.CD-21-1059 <span class="tag t-ok">đã kiểm</span>: tế bào senescent trong vi môi trường khối u.</li>
+  <li>Ứng viên A, C, D, E, SirtSAGE, aging clock: <a href="../archive/surveys/aging-cancer/aging-cancer-deep-dive.md">khảo sát sâu aging và cancer</a>, mục 2.6, 3, 5, 6, 7, 10, giữ nguyên nhãn kiểm chứng của báo cáo.</li>
+</ul>
+
+<nav class="pn">
+  <a href="04-cancer-hallmarks.html">← Bài 04: Ung thư: hallmarks và kinase</a>
+  <a href="06-biological-databases.html">Bài 06: Các cơ sở dữ liệu sinh học →</a>
+</nav>
+
+</main>
+<script>
+(function(){
+  var ns = "http://www.w3.org/2000/svg", svg = document.getElementById("chart"), cap = document.getElementById("chCap");
+  var N = 6801;
+  var DATA = {
+    iso: { labels: ["SIRT1","SIRT2","SIRT3","SIRT4","SIRT5","SIRT6","SIRT7"], vals: [176,1901,1844,1038,2614,1199,1692],
+      cap: "Hình 2. Số dòng dương với từng isoform trên 6.801 dòng, xếp theo số isoform (không theo thứ tự cột trong file). Đếm trực tiếp từ file nhãn ngày 04/10/2026." },
+    cnt: { labels: ["0","1","2","3","4","5","6"], vals: [1107,2430,2087,902,226,44,5],
+      cap: "Hình 2. Số dòng theo số isoform dương trên cùng một dòng (0 đến 6; không dòng nào dương với cả 7). Trung bình khoảng 1,54 nhãn dương mỗi dòng. Đếm từ file nhãn ngày 04/10/2026." }
+  };
+  function el(tag, attrs, text){
+    var e = document.createElementNS(ns, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (text !== undefined) e.textContent = text;
+    return e;
+  }
+  function fmt(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+  function pct(n){ var p = 100 * n / N; return (p < 1 ? p.toFixed(2) : p.toFixed(1)).replace(".", ",") + "%"; }
+  function draw(v){
+    var d = DATA[v];
+    while (svg.lastChild && svg.lastChild.nodeName !== "title") svg.removeChild(svg.lastChild);
+    var max = Math.max.apply(null, d.vals), x0 = 60, w = 80, base = 205, hmax = 160;
+    svg.appendChild(el("line", {x1: 40, y1: base, x2: 630, y2: base, "class": "s-stroke", "stroke-width": 1}));
+    d.vals.forEach(function(val, i){
+      var h = Math.max(1, hmax * val / max), x = x0 + i * w;
+      svg.appendChild(el("rect", {x: x, y: base - h, width: w - 24, height: h, rx: 3, "class": (v === "iso" && i === 0) ? "s-bad" : "s-acc"}));
+      svg.appendChild(el("text", {x: x + (w - 24) / 2, y: base - h - 18, "text-anchor": "middle", "font-size": 12, "class": "s-text", "font-weight": 600}, fmt(val)));
+      svg.appendChild(el("text", {x: x + (w - 24) / 2, y: base - h - 5, "text-anchor": "middle", "font-size": 11, "class": "s-muted"}, pct(val)));
+      svg.appendChild(el("text", {x: x + (w - 24) / 2, y: base + 18, "text-anchor": "middle", "font-size": 12.5, "class": "s-text"}, d.labels[i]));
+    });
+    svg.appendChild(el("text", {x: 40, y: 244, "font-size": 11.5, "class": "s-muted"}, v === "iso" ? "Isoform" : "Số isoform dương trên một dòng"));
+    cap.textContent = d.cap;
+  }
+  document.getElementById("chBtns").addEventListener("click", function(e){
+    var b = e.target.closest("button"); if (!b) return;
+    this.querySelectorAll("button").forEach(function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+    draw(b.getAttribute("data-v"));
+  });
+  draw("iso");
+
+  /* Đọc một dòng */
+  var HEADER = ",uid_pos,SIRT_5_EXPERIMENTALLY_ACTIVE,SIRT_4_…,SIRT_1_…,SIRT_7_…,SIRT_2_…,SIRT_6_…,SIRT_3_…";
+  var ORDER = [5,4,1,7,2,6,3];
+  var ROWS = [
+    { raw: "0,P05141_163_c0,1,1,0,1,0,1,1",
+      note: "ADP/ATP translocase 2 (SLC25A5), UniProt ghi ở màng trong ty thể. Dương với SIRT3, 4, 5 (ty thể) nhưng cũng dương với SIRT6, 7 (nhân, hạch nhân)." },
+    { raw: "2349,P04637_382_c0,1,0,0,1,0,0,0",
+      note: "UniProt: “Deacetylation of Lys-382 by SIRT1 …”. Trên array: SIRT1 = 0; dương với SIRT5 và SIRT7." },
+    { raw: "1640,P04637_381_c0,1,0,0,0,1,0,1",
+      note: "UniProt: “Deacetylation at Lys-381 by SIRT6 …”. Trên array: SIRT6 = 0; dương với SIRT2, 3, 5." },
+    { raw: "2514,P04637_120_c0,0,0,0,0,1,0,1",
+      note: "UniProt ghi K120 vừa là N6-acetyllysine vừa là N6-lactoyllysine (một lysine, nhiều PTM). Trên array: dương với SIRT2, SIRT3." }
+  ];
+  var cur = 0, mode = "ok";
+  function render(){
+    var r = ROWS[cur], v = r.raw.split(",").slice(2).map(Number), lab = {};
+    if (mode === "ok") ORDER.forEach(function(iso, j){ lab[iso] = v[j]; });
+    else v.forEach(function(x, j){ lab[j + 1] = x; });
+    document.getElementById("rawLine").innerHTML = '<span style="color:var(--muted)">' + HEADER + "</span><br>" + r.raw;
+    var html = "";
+    for (var i = 1; i <= 7; i++){
+      var on = lab[i] === 1;
+      html += '<span class="cell' + (on ? (mode === "ok" ? " on" : " bad") : "") + '">SIRT' + i + (on ? " ✓" : " ·") + "</span>";
+    }
+    document.getElementById("cells").innerHTML = html;
+    document.getElementById("rowNote").textContent = mode === "ok" ? r.note
+      : "Cách đọc sai: gán cột nhãn thứ nhất cho SIRT1, thứ hai cho SIRT2… Kết quả tô đỏ là sai, dù đôi khi trông rất hợp lý (thử dòng p53 K382).";
+  }
+  function bind(id, key, fn){
+    document.getElementById(id).addEventListener("click", function(e){
+      var b = e.target.closest("button"); if (!b) return;
+      this.querySelectorAll("button").forEach(function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      fn(b.getAttribute(key)); render();
+    });
+  }
+  bind("rowBtns", "data-r", function(x){ cur = +x; });
+  bind("modeBtns", "data-m", function(x){ mode = x; });
+  render();
+})();
+</script>
+</body>
+</html>

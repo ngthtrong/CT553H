@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ung thư: hallmarks và kinase</title>
+<style>
+:root{
+  --bg:#faf9f6; --surface:#ffffff; --text:#1d2126; --muted:#5d6570; --border:#e2dfd7;
+  --accent:#2c6a8a; --accent-soft:#e7f0f5;
+  --ok:#2d7a4d; --ok-soft:#e6f3eb; --warn:#8f5600; --warn-soft:#fbf1df;
+  --bad:#a23838; --bad-soft:#f8e7e7; --code-bg:#f1efe9;
+  --r-st:#2c6a8a; --r-k:#b4532a; --r-r:#7a4fa0; --r-p:#3f7d3a; --r-hit:#fff1a8;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#15171b; --surface:#1d2026; --text:#e5e4df; --muted:#9aa1ab; --border:#33373f;
+    --accent:#7fb8d6; --accent-soft:#1f2f39;
+    --ok:#79c495; --ok-soft:#1b2c22; --warn:#e2b25c; --warn-soft:#2f2617;
+    --bad:#e38c8c; --bad-soft:#331e1f; --code-bg:#262a31;
+    --r-st:#7fb8d6; --r-k:#e59a72; --r-r:#bf9ae0; --r-p:#93c98c; --r-hit:#4a4318;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:17px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans","Helvetica Neue",Arial,sans-serif}
+main{max-width:46rem;margin:0 auto;padding:24px 16px 64px}
+a{color:var(--accent)}
+h1{font-size:1.85rem;line-height:1.25;margin:.3em 0 .4em}
+h2{font-size:1.3rem;margin:2.2em 0 .5em;padding-top:.6em;border-top:1px solid var(--border)}
+h3{font-size:1.08rem;margin:1.6em 0 .4em}
+p,li{overflow-wrap:break-word}
+code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;font-size:.9em}
+code{background:var(--code-bg);padding:.1em .35em;border-radius:4px}
+.crumb{color:var(--muted);font-size:.9rem}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:.4em 0 1.2em}
+.pill{font-size:.82rem;border:1px solid var(--border);background:var(--surface);border-radius:999px;padding:2px 10px;color:var(--muted)}
+.box{border:1px solid var(--border);background:var(--surface);border-radius:10px;padding:14px 18px;margin:1.2em 0}
+.box>:first-child{margin-top:0}.box>:last-child{margin-bottom:0}
+.box h3{margin-top:0}
+.goal{border-left:4px solid var(--accent)}
+.link{background:var(--accent-soft);border-color:transparent}
+.warn{background:var(--warn-soft);border-color:transparent}
+.label{display:block;font-size:.78rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:.3em}
+.tag{display:inline-block;font-size:.72rem;line-height:1.5;padding:0 6px;border-radius:4px;white-space:nowrap;vertical-align:1px;font-weight:600}
+.t-ok{background:var(--ok-soft);color:var(--ok)}
+.t-dd{background:var(--accent-soft);color:var(--accent)}
+.t-unv{background:var(--warn-soft);color:var(--warn)}
+.t-inf{background:var(--bad-soft);color:var(--bad)}
+.tablewrap{overflow-x:auto;margin:1em 0;border:1px solid var(--border);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--border)}
+th{background:var(--code-bg);font-weight:600}
+tr:last-child td{border-bottom:0}
+figure{margin:1.4em 0}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:.88rem;color:var(--muted);margin-top:.4em}
+details{border:1px solid var(--border);border-radius:8px;background:var(--surface);margin:.6em 0;padding:0 14px}
+summary{cursor:pointer;padding:10px 0;font-weight:600}
+details[open] summary{border-bottom:1px solid var(--border);margin-bottom:.6em}
+details>div{padding-bottom:10px}
+.btns{display:flex;flex-wrap:wrap;gap:6px;margin:.6em 0}
+button{font:inherit;font-size:.88rem;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:6px;padding:4px 10px;cursor:pointer}
+button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.seq{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:1rem;line-height:2;word-break:break-all;letter-spacing:.06em}
+.seq span{cursor:pointer;border-radius:3px;padding:1px 0}
+.seq span.hit{background:var(--r-hit);font-weight:700}
+.seq span.center{outline:2px solid var(--bad)}
+.out{font-size:.92rem;color:var(--muted);min-height:1.6em}
+.win{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:1rem;letter-spacing:.06em;background:var(--code-bg);padding:6px 10px;border-radius:6px;overflow-x:auto;white-space:nowrap}
+.win b{color:var(--bad)}
+nav.pn{display:flex;justify-content:space-between;gap:12px;margin-top:3em;padding-top:1em;border-top:1px solid var(--border);font-size:.95rem}
+.src li{margin:.35em 0;font-size:.93rem}
+svg text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans",Arial,sans-serif}
+.s-stroke{stroke:var(--text)} .s-muted{fill:var(--muted)} .s-text{fill:var(--text)}
+.s-acc{fill:var(--accent)} .s-accs{stroke:var(--accent)} .s-bad{fill:var(--bad)} .s-bads{stroke:var(--bad)}
+.s-ok{fill:var(--ok)} .s-oks{stroke:var(--ok)} .s-surf{fill:var(--surface)} .s-soft{fill:var(--accent-soft)}
+.s-warn{fill:var(--warn)} .s-warns{stroke:var(--warn)} .s-border{stroke:var(--border)}
+
+/* Quick navigation: native links and details work offline without JavaScript. */
+.lecture-nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:8px;padding:10px 0;margin:0 0 16px;background:var(--bg);border-bottom:1px solid var(--border)}
+.lecture-nav>a{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:6px 10px;border:1px solid var(--border);border-radius:8px;background:var(--surface);text-decoration:none;font-size:.88rem}
+.lecture-switch{position:relative;flex:1;min-width:0;margin:0;padding:0;border-radius:8px}
+.lecture-switch>summary{min-height:44px;padding:8px 12px;font-size:.88rem}
+.lecture-switch[open]>summary{margin:0;border-bottom:0}
+.lecture-switch>.lecture-menu{position:absolute;right:0;top:calc(100% + 8px);width:min(40rem,calc(100vw - 32px));max-height:65vh;overflow-y:auto;overscroll-behavior:contain;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:10px;box-shadow:0 6px 18px var(--border)}
+.lecture-menu .lecture-group{margin:8px 8px 4px;font-size:.8rem;font-weight:700;color:var(--muted)}
+.lecture-menu ol{list-style:none;padding:0;margin:0 0 12px}
+.lecture-menu li{margin:0}
+.lecture-menu a,.lecture-menu .lecture-unavailable{display:block;padding:10px 12px;border-radius:6px;line-height:1.45;font-size:.9rem;text-decoration:none}
+.lecture-menu a:hover{background:var(--accent-soft)}
+.lecture-menu a[aria-current="page"]{background:var(--accent-soft);font-weight:700;border-left:3px solid var(--accent)}
+.lecture-menu .lecture-unavailable{color:var(--muted)}
+.lecture-nav a:focus-visible,.lecture-switch>summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+@media print{.lecture-nav{display:none}}
+
+</style>
+</head>
+<body>
+<main>
+
+<nav class="lecture-nav" aria-label="Chuyển nhanh giữa các bài giảng">
+<a href="index.html">Mục lục</a>
+<details class="lecture-switch"><summary>Chuyển bài · Bài 04</summary><div class="lecture-menu"><p class="lecture-group">Phần A — Sinh học nền</p><ol><li><a href="01-gene-to-protein.html">Bài 01: Từ gene đến protein</a></li><li><a href="02-enzymes-and-ptm.html">Bài 02: Enzyme và biến đổi sau dịch mã (PTM)</a></li><li><a href="03-cell-signaling-kinases.html">Bài 03: Tín hiệu tế bào và kinase</a></li><li><a href="04-cancer-hallmarks.html" aria-current="page">Bài 04: Ung thư: hallmarks và kinase</a></li><li><a href="05-aging-sirtuins-senescence.html">Bài 05: Lão hóa: sirtuin và senescence</a></li><li><a href="06-biological-databases.html">Bài 06: Các cơ sở dữ liệu sinh học</a></li></ol><p class="lecture-group">Phần B — Khung bài toán và đánh giá</p><ol><li><a href="07-residue-level-framing.html">Bài 07: Đặt bài toán ở mức residue</a></li><li><a href="08-metrics-imbalanced.html">Bài 08: Chỉ số cho dữ liệu mất cân bằng</a></li><li><a href="09-leakage-and-homology.html">Bài 09: Rò rỉ dữ liệu và chuỗi đồng dạng</a></li></ol><p class="lecture-group">Phần C — Mô hình</p><ol><li><a href="10-neural-network-basics.html">Bài 10: Mạng nơ-ron cơ bản</a></li><li><a href="11-cnn-to-mcnn.html">Bài 11: Từ CNN đến MCNN</a></li><li><a href="12-protein-encodings-plm.html">Bài 12: Mã hóa protein: one-hot, PSSM, PLM</a></li><li><a href="13-retrieval-and-beyond.html">Bài 13: Truy hồi và các hướng sau PLM</a></li><li><a href="14-xai-basics.html">Bài 14: Giải thích mô hình (XAI)</a></li><li><span class="lecture-unavailable">Bài 15: Đọc hiểu một bài báo tin sinh — chưa có</span></li></ol></div></details>
+<a href="03-cell-signaling-kinases.html" aria-label="Bài trước: Tín hiệu tế bào và kinase" title="Bài 03: Tín hiệu tế bào và kinase">←</a>
+<a href="05-aging-sirtuins-senescence.html" aria-label="Bài sau: Lão hóa: sirtuin và senescence" title="Bài 05: Lão hóa: sirtuin và senescence">→</a>
+</nav>
+
+<div class="crumb"><a href="index.html">Bài giảng nền</a> · Bài 04 / 15 · Phần A — Sinh học nền</div>
+<h1>Ung thư: hallmarks và kinase</h1>
+<div class="meta"><span class="pill">≈ 25 phút</span><span class="pill">Dùng cho: chỉ cancer · B, F</span><span class="pill">Đọc trước: bài 03</span></div>
+<div class="box goal"><span class="label">Đọc xong bài này, bạn sẽ</span><ul><li>Phân biệt oncogene, gene ức chế khối u và site PTM.</li><li>Đọc khung hallmarks với đúng phiên bản và nhóm khái niệm.</li><li>Nối B, F với động cơ cancer mà không vượt quá bằng chứng.</li><li>Phát hiện việc đổi mẫu số hoặc đổi đơn vị phân tích khi đọc một khẳng định.</li></ul></div>
+<p class="out" style="font-size:.85rem">Nhãn độ tin cậy trong bài:
+<span class="tag t-ok">đã kiểm</span> đã mở nguồn gốc hoặc bản tóm tắt chính thức trong phiên 04/10/2026 ·
+<span class="tag t-dd">khảo sát sâu</span> lấy từ báo cáo khảo sát sâu, giữ nguyên nhãn của báo cáo ·
+<span class="tag t-unv">chưa kiểm chứng</span> kiến thức nền, chưa mở lại nguồn ·
+<span class="tag t-inf">suy luận</span> lập luận của bài giảng, không có nguồn trực tiếp.</p>
+
+
+<h2>1. Từ một site đến một căn bệnh: còn những bước nào?</h2>
+<p>Bài 03 giải thích cách kinase chọn cơ chất và truyền tín hiệu. Bây giờ hãy đặt câu hỏi khó hơn: dự đoán một vị trí phosphoryl hóa có giúp nghiên cứu ung thư không? Có thể tạo ra một giả thuyết hữu ích, nhưng cần phân biệt các tầng bằng chứng. Một nhãn site không tự chứa thông tin về khối u, bệnh nhân hay đáp ứng điều trị. Đây là giới hạn suy ra từ chính đầu vào và đầu ra của bài toán <span class="tag t-inf">suy luận</span>.</p>
+<p>Ung thư liên quan đến tế bào tăng trưởng mất kiểm soát và khả năng xâm lấn, lan tới nơi khác. Không phải mọi khối u đều ác tính; một số ung thư không tạo khối u đặc. Thay đổi gene có thể được thừa hưởng hoặc xuất hiện trong cuộc đời <span class="tag t-ok">đã kiểm</span> — <a href="https://www.cancer.gov/about-cancer/understanding/what-is-cancer">NCI, What Is Cancer?</a>.</p>
+<div class="box"><span class="label">Một câu hỏi dẫn đường</span><p>“Mô hình dự đoán điều gì, và cần thêm bằng chứng gì để nối dự đoán đó với ung thư?” Hãy giữ câu này bên cạnh khi đọc một Introduction dài về bệnh, trong khi bảng kết quả chỉ đo phân loại residue.</p></div>
+<figure><svg viewBox="0 0 700 210" role="img" aria-labelledby="levels"><title id="levels">Các tầng bằng chứng từ residue đến ứng dụng</title>
+<rect x="10" y="40" width="150" height="90" rx="8" class="s-soft s-accs"/><rect x="185" y="40" width="150" height="90" rx="8" class="s-surf s-stroke"/><rect x="360" y="40" width="150" height="90" rx="8" class="s-surf s-stroke"/><rect x="535" y="40" width="150" height="90" rx="8" class="s-surf s-stroke"/>
+<g class="s-text" text-anchor="middle" font-size="14"><text x="85" y="73">Site được dự đoán</text><text x="85" y="99">nhãn mức residue</text><text x="173" y="89">→</text><text x="260" y="73">Cơ chế phân tử</text><text x="260" y="99">thí nghiệm site</text><text x="348" y="89">→</text><text x="435" y="73">Kiểu hình tế bào</text><text x="435" y="99">bối cảnh khối u</text><text x="523" y="89">→</text><text x="610" y="73">Ứng dụng y học</text><text x="610" y="99">bằng chứng riêng</text></g>
+<text x="350" y="170" text-anchor="middle" font-size="14" class="s-muted">Mỗi mũi tên là một bước cần kiểm chứng, không phải hệ quả tự động.</text></svg><figcaption>Hình 1. Sơ đồ lập luận của bài giảng <span class="tag t-inf">suy luận</span>. Đây không phải một quy trình điều trị hay kết quả thực nghiệm.</figcaption></figure>
+<h2>2. Oncogene và gene ức chế khối u</h2>
+<p><strong>Proto-oncogene</strong> tham gia tăng trưởng bình thường; một số thay đổi khiến nó trở thành <strong>oncogene</strong>, thúc đẩy tăng trưởng hoặc sống sót sai bối cảnh. <strong>Gene ức chế khối u</strong> (tumor suppressor gene) giúp kiểm soát tăng trưởng; mất chức năng kiểm soát có thể góp phần gây bệnh <span class="tag t-ok">đã kiểm</span> — <a href="https://www.cancer.gov/about-cancer/understanding/what-is-cancer">NCI</a>.</p>
+<p>Có thể ví oncogene như lệnh “tiếp tục chạy” bị giữ lâu hơn cần thiết, còn mất chức năng gene ức chế khối u như bỏ qua một điều kiện kiểm tra <span class="tag t-inf">suy luận</span>. So sánh này giúp nhớ hai hướng sai lệch, nhưng không biến mọi protein thành một công tắc nhị phân. Không được suy ra rằng kinase nào cũng là oncogene, hoặc giảm hoạt tính kinase nào cũng có lợi.</p>
+<div class="box warn"><span class="label">Phân biệt ba đối tượng</span><p><strong>Gene</strong> mang thông tin mã hóa; <strong>protein</strong> thực hiện hoạt động; <strong>site</strong> là vị trí cụ thể trên protein. Một đột biến gene có thể đổi residue, còn phosphoryl hóa là trạng thái hóa học của residue. “Gene bị đột biến” và “site bị phosphoryl hóa” không phải hai cách gọi cùng một sự kiện. Xem lại bài 01 và 02 nếu chưa phân biệt được.</p></div>
+<p>Trong thực hành đọc báo, hãy gạch dưới chủ ngữ của mỗi câu: tác giả đang nói về gene, protein, một residue, một dòng tế bào hay bệnh nhân? Việc đổi đơn vị phân tích giữa các đoạn rất dễ làm người mới hiểu rằng một kết quả mức site đã chứng minh một kết quả mức bệnh <span class="tag t-inf">suy luận</span>.</p>
+<h2>3. Hallmarks: khung tổ chức kiến thức, không phải nhãn dữ liệu</h2>
+<p><strong>Hallmark</strong> trong ngữ cảnh này là một năng lực hoặc đặc trưng giúp tổ chức hiểu biết về ung thư. Bản 2011 của Hanahan và Weinberg phân biệt sáu năng lực nền, hai hallmark mới nổi và các đặc điểm tạo điều kiện. Bản 2022 nhấn mạnh giá trị của khung như công cụ định hướng suy nghĩ, đồng thời coi những chiều mới được đề xuất là tạm thời <span class="tag t-ok">đã kiểm · abstract</span> — <a href="https://doi.org/10.1016/j.cell.2011.02.013">2011</a>, <a href="https://doi.org/10.1158/2159-8290.CD-21-1059">2022</a>.</p>
+<p>Bảng dưới diễn giải danh sách trong abstract 2011. Cột câu hỏi là gợi ý học của bài giảng, không phải ánh xạ thực nghiệm giữa một kinase và một hallmark.</p>
+<div class="tablewrap"><table><thead><tr><th>Năng lực nền — 2011</th><th>Nghĩa ngắn</th><th>Câu hỏi để đọc tiếp <span class="tag t-inf">suy luận</span></th></tr></thead><tbody>
+<tr><td>Duy trì tín hiệu tăng sinh</td><td>Sustaining proliferative signaling</td><td>Thông điệp tăng trưởng được tạo, truyền và dừng thế nào?</td></tr>
+<tr><td>Né các yếu tố ức chế tăng trưởng</td><td>Evading growth suppressors</td><td>Điều kiện nào đáng lẽ làm tế bào dừng?</td></tr>
+<tr><td>Kháng lại chết tế bào</td><td>Resisting cell death</td><td>Tế bào sống sót trong hoàn cảnh nào?</td></tr>
+<tr><td>Cho phép nhân lên không giới hạn</td><td>Enabling replicative immortality</td><td>Giới hạn phân chia được thay đổi ra sao?</td></tr>
+<tr><td>Kích thích tạo mạch</td><td>Inducing angiogenesis</td><td>Khối u tương tác với môi trường cung cấp dưỡng chất thế nào?</td></tr>
+<tr><td>Hoạt hóa xâm lấn và di căn</td><td>Activating invasion and metastasis</td><td>Làm sao tế bào vượt khỏi nơi xuất phát?</td></tr>
+</tbody></table></div>
+<p><span class="tag t-ok">đã kiểm · abstract</span> Danh sách và cách phân loại lấy từ <a href="https://doi.org/10.1016/j.cell.2011.02.013">Hanahan &amp; Weinberg 2011</a>. Hai hallmark mới nổi trong bài đó là tái lập trình chuyển hóa năng lượng và né sự tiêu diệt của hệ miễn dịch. Bất ổn hệ gene và viêm được mô tả như các điều kiện hỗ trợ. Vi môi trường khối u (tumor microenvironment) đưa các tế bào bình thường được huy động vào cùng bức tranh.</p>
+<p>Vì sao phải giữ đúng nhóm? Nếu gom tất cả thành một danh sách và gọi mỗi dòng là “một hallmark chính thức”, ta làm mất cách tác giả phân biệt <em>năng lực của khối u</em>, <em>điều kiện tạo thuận lợi</em> và <em>thành phần môi trường</em>. Khi viết luận văn, ghi năm của khung đang dùng thay vì nói một số lượng tuyệt đối không có phiên bản <span class="tag t-inf">suy luận</span>.</p>
+<h2>4. Bản 2022 bổ sung điều gì?</h2>
+<div class="tablewrap"><table><thead><tr><th>Chiều mới được bàn luận</th><th>Vai trò trong abstract 2022</th><th>Cách đọc thận trọng</th></tr></thead><tbody>
+<tr><td>Tính linh hoạt kiểu hình và biệt hóa bị gián đoạn</td><td>Phenotypic plasticity and disrupted differentiation: đề xuất như hallmark riêng</td><td>Đề xuất mang tính tạm thời của khung</td></tr>
+<tr><td>Tái lập trình biểu sinh không do đột biến</td><td>Nonmutational epigenetic reprogramming: đặc điểm tạo điều kiện</td><td>Không thu hẹp mọi thay đổi về đột biến DNA</td></tr>
+<tr><td>Hệ vi sinh đa dạng</td><td>Polymorphic microbiomes: đặc điểm tạo điều kiện</td><td>Không phải một nhãn kinase</td></tr>
+<tr><td>Tế bào senescent</td><td>Thành phần quan trọng của vi môi trường khối u</td><td>Cầu nối để đọc bài 05 về aging</td></tr>
+</tbody></table></div>
+<p><span class="tag t-ok">đã kiểm · abstract</span> Nguồn: <a href="https://doi.org/10.1158/2159-8290.CD-21-1059">Hanahan 2022</a>. Không nên biến dòng về senescent cells thành kết luận “senescence luôn gây ung thư”. Abstract xác định một thành phần đáng xét; kết luận về chiều tác động cần bối cảnh và bằng chứng cụ thể.</p>
+<div class="box link"><span class="label">Gắn với hai hướng đang cân nhắc</span><p>Cancer và aging có thể chia sẻ các quá trình sinh học, nhưng đó không phải lý do gộp hai bộ nhãn thành một bài toán. Một nhãn “protein liên quan senescence” của ứng viên E khác một nhãn “residue được kinase phosphoryl hóa” của B. Muốn kết hợp, trước hết phải chỉ ra đơn vị mẫu và quan hệ giữa nhãn <span class="tag t-inf">suy luận</span>; xem <a href="../archive/surveys/aging-cancer/aging-cancer-deep-dive.md">khảo sát sâu</a>, mục 4 và 7.</p></div>
+<h2>5. Vì sao kinase và PTM là một cửa vào hợp lý?</h2>
+<p>Ubersax và Ferrell mô tả tính đặc hiệu phosphoryl hóa như kết quả của nhiều cơ chế: tương tác cục bộ, tương tác xa, protein giàn giáo và adaptor, định vị không gian, cạnh tranh cơ chất và sửa sai <span class="tag t-ok">đã kiểm · abstract</span> — <a href="https://doi.org/10.1038/nrm2203">nguồn</a>. Như vậy, cửa sổ quanh residue cho mô hình một phần thông tin; nó không đo trực tiếp toàn bộ hoạt động tín hiệu trong tế bào.</p>
+<p>Đây là chỗ nối hợp lý giữa bài 03 và khung hallmarks: nghiên cứu tín hiệu giúp đặt câu hỏi về năng lực tăng sinh hoặc sống sót, còn dự đoán site giúp thu hẹp các tương tác phân tử cần khảo sát <span class="tag t-inf">suy luận</span>. Không cần khẳng định một site “quyết định ung thư” để làm cho bài toán có ý nghĩa.</p>
+<h3>ActiveDriverDB: đọc đúng một con số nổi bật</h3>
+<p>Abstract ActiveDriverDB 2018 ước tính <strong>21%</strong> thay thế amino acid liên quan bệnh, tương ứng với missense SNV, nằm tại các site PTM. Cơ sở dữ liệu tích hợp hơn <strong>385.000</strong> site PTM và khoảng <strong>3,6 triệu</strong> thay thế; bài bàn luận khả năng biến đổi mạng tương tác do tạo hoặc mất motif gắn kinase <span class="tag t-ok">đã kiểm · abstract</span> — <a href="https://doi.org/10.1093/nar/gkx973">Krassowski và cộng sự</a>.</p>
+<div class="box warn"><span class="label">Mẫu số quyết định ý nghĩa</span><p>21% ở đây nói về các thay thế <strong>liên quan bệnh nói chung</strong>, không riêng ung thư. Nó không phải xác suất một dự đoán PTM gây bệnh, không phải tỉ lệ mọi đột biến ung thư, cũng không phải độ chính xác của một predictor. Giữ đủ đối tượng, mẫu số và nguồn khi ghi lại số liệu.</p></div>
+<h3>Một ví dụ suy luận, không phải biến thể thật</h3>
+<p>Giả sử một kinase ưa motif chứa S đứng trước P. Ta dựng chuỗi minh họa <code>…A S P G…</code>, rồi thay P thành A: <code>…A S A G…</code>. S vẫn còn, nhưng ngữ cảnh quanh S đổi. Vì vậy một mô hình cửa sổ có thể đổi điểm dự đoán ở S, dù residue trung tâm không bị thay. Đây là ví dụ tự đặt về “thay đổi quanh site”, không phải bằng chứng kinase cụ thể mất hoạt tính <span class="tag t-inf">suy luận</span>. Kiến thức motif và ví dụ thật p53 nằm ở bài 03.</p>
+<p>Trong một thí nghiệm tính toán, có thể chấm điểm chuỗi gốc và chuỗi biến thể, rồi xếp hạng độ chênh. Nhưng chênh lệch điểm chỉ là phản ứng của mô hình với đầu vào. Muốn gọi đó là thay đổi phosphoryl hóa phải có phép đo phù hợp; muốn nối nó với kiểu hình khối u lại cần bằng chứng ở tầng tiếp theo trong Hình 1 <span class="tag t-inf">suy luận</span>.</p>
+<h2>6. Ứng viên B và F hỏi hai câu khác nhau</h2>
+<div class="tablewrap"><table><thead><tr><th></th><th>B: phosphoryl hóa theo nhóm kinase</th><th>F: vị trí gắn nucleotide</th></tr></thead><tbody>
+<tr><td>Câu hỏi</td><td>Residue có là site được nhóm kinase này phosphoryl hóa?</td><td>Residue có tham gia vị trí gắn nucleotide trên họ protein đang xét?</td></tr>
+<tr><td>Đầu vào dự kiến</td><td>Cửa sổ quanh site hoặc biểu diễn chuỗi tương ứng</td><td>Chuỗi protein và vị trí ứng viên</td></tr>
+<tr><td>Nhãn cần phân biệt</td><td>Biến đổi cộng hóa trị trên cơ chất</td><td>Gắn ligand; không đồng nghĩa site bị biến đổi</td></tr>
+<tr><td>Giới hạn</td><td>Không trực tiếp đo hoạt tính kinase trong khối u</td><td>Không trực tiếp đo ái lực hoặc hiệu quả của thuốc</td></tr>
+</tbody></table></div>
+<p>Nội dung đề xuất B và F: <a href="../archive/surveys/aging-cancer/aging-cancer-deep-dive.md">khảo sát sâu</a>, mục 4 và 8 <span class="tag t-dd">khảo sát sâu · toàn văn</span>. Các giới hạn trong bảng là suy ra từ nhãn bài toán <span class="tag t-inf">suy luận</span>. Hướng gắn GTP/GDP trên RAS superfamily vẫn là gợi ý cần khảo sát đối thủ và nguồn nhãn; chưa có kết luận rằng đây là khoảng trống chưa ai làm.</p>
+<p>Bản cập nhật dbPTM 2025 tích hợp dữ liệu proteomic của <strong>13 loại ung thư</strong>, với trọng tâm phosphoproteomic và hồ sơ hoạt tính kinase <span class="tag t-ok">đã kiểm</span> — <a href="https://doi.org/10.1093/nar/gkae1005">Chung và cộng sự</a>. Tuy nhiên, việc cơ sở dữ liệu có dữ liệu ung thư không tự chứng minh rằng mọi dòng trong benchmark kinase đều có nguồn gốc từ khối u. Bài 06 sẽ hướng dẫn đọc provenance trước khi gắn bối cảnh bệnh cho một tập dữ liệu.</p>
+<div class="box link"><span class="label">Gắn với ứng viên B, F: một phạm vi có thể bảo vệ</span><p>“Tôi xây dựng và đánh giá mô hình dự đoán site trên tập dữ liệu đã xác định nguồn, nhằm ưu tiên những vị trí cần kiểm chứng tiếp trong nghiên cứu tín hiệu hoặc tương tác nucleotide.” Đây là cách phát biểu đề xuất <span class="tag t-inf">suy luận</span>. Phần ung thư phải được nối bằng tài liệu sinh học cụ thể, không bằng việc thêm chữ cancer vào tên mô hình.</p></div>
+<h2>7. Tự viết một đoạn động cơ nghiên cứu</h2>
+<p>Thử viết một đoạn theo bốn câu: <strong>bối cảnh sinh học → quan hệ phân tử → khoảng trống dữ liệu hoặc dự đoán → phạm vi đóng góp</strong>. Với mỗi câu, tự đánh dấu đâu là kết quả nguồn đã chứng minh và đâu là giả thuyết của mình. Bài tập này không chọn đề tài thay bạn; nó kiểm xem bạn đã phân biệt được động cơ với kết quả mong muốn chưa.</p>
+<ol><li>Chọn một năng lực trong khung hallmarks và dẫn đúng phiên bản.</li><li>Nêu tương tác kinase–cơ chất hoặc nucleotide–protein mà mình muốn nghiên cứu; không coi mọi nhóm kinase đều đặc hiệu cho ung thư.</li><li>Viết chính xác một dòng dữ liệu gồm những trường gì và nhãn đo bằng cách nào.</li><li>Nêu một phép đánh giá mô hình, rồi một giới hạn sinh học mà phép đánh giá đó không trả lời.</li></ol>
+<p>Về độ khớp với người hướng dẫn, danh mục được rà trong repo chưa ghi nhận bài cancer/tumor/neoantigen của GVHD; RTK_RAG thuộc nhóm Prof Ou <span class="tag t-dd">khảo sát sâu · toàn văn metadata</span> — <a href="../project/advisor-research.md">danh mục</a> và <a href="../archive/surveys/aging-cancer/aging-cancer-deep-dive.md">mục 2.5</a>. Đây là nhận xét trong phạm vi danh mục đã rà, không phải khẳng định tuyệt đối về mọi công trình của tác giả. Nó giúp dự trù phần sinh học cần tự học và câu hỏi cần trao đổi.</p>
+<h2>Bảng thuật ngữ của bài</h2><div class="tablewrap"><table><thead><tr><th>Thuật ngữ</th><th>Cách hiểu trong bài</th></tr></thead><tbody><tr><td>Hallmark</td><td>Khung mô tả năng lực hoặc đặc trưng của ung thư; cần ghi phiên bản.</td></tr><tr><td>Oncogene</td><td>Gene mà biến đổi hoạt động có thể thúc đẩy phát triển ung thư.</td></tr><tr><td>Tumor suppressor</td><td>Gene có vai trò kiểm soát tăng trưởng; mất chức năng có thể góp phần gây bệnh.</td></tr><tr><td>Tumor microenvironment</td><td>Vi môi trường quanh khối u, gồm các thành phần ngoài tế bào ung thư.</td></tr><tr><td>Missense SNV</td><td>Biến thể một nucleotide dẫn đến thay amino acid.</td></tr><tr><td>Network rewiring</td><td>Thay đổi các quan hệ trong mạng tương tác, chẳng hạn do đổi motif.</td></tr><tr><td>Provenance</td><td>Nguồn gốc và lịch sử tạo một dữ kiện hoặc nhãn.</td></tr></tbody></table></div><h2>Câu hỏi tự kiểm</h2><details><summary>Vì sao “21% đột biến ung thư nằm ở PTM” không phải cách ghi đúng nguồn ActiveDriverDB?</summary><div>Abstract nói về thay thế amino acid liên quan bệnh nói chung, tương ứng missense SNV. Chuyển phạm vi sang ung thư làm đổi mẫu số.</div></details><details><summary>Hallmarks 2022 có biến senescence thành nhãn dương cho B không?</summary><div>Không. Senescent cells là thành phần được bổ sung vào vi môi trường khối u. Nhãn B hỏi phosphoryl hóa theo nhóm kinase, ở đơn vị residue.</div></details><details><summary>Thay một residue bên cạnh site có thể làm predictor đổi điểm; đã chứng minh thay đổi hoạt tính chưa?</summary><div>Chưa. Mới biết phản ứng của mô hình với đầu vào; cần kiểm chứng phân tử và bối cảnh tế bào.</div></details><details><summary>B và F khác nhau ở nhãn nào?</summary><div>B hỏi biến đổi phosphoryl hóa; F hỏi vị trí gắn nucleotide. Một site gắn không tự động là một site PTM.</div></details><details><summary>Đọc xong bài này, có thể nói mô hình sẽ chữa ung thư không?</summary><div>Không. Phạm vi là ưu tiên giả thuyết ở mức site và kiểm tra năng lực dự đoán trên dữ liệu xác định. Các tầng ứng dụng khác đòi hỏi bằng chứng khác.</div></details><h2>Nguồn</h2><ul class="src"><li><span class="tag t-ok">đã kiểm</span> NCI, <a href="https://www.cancer.gov/about-cancer/understanding/what-is-cancer">What Is Cancer?</a> — kiểm thêm trong phiên này: định nghĩa và hai loại gene.</li><li><span class="tag t-ok">đã kiểm</span> Hanahan &amp; Weinberg (2011), <a href="https://doi.org/10.1016/j.cell.2011.02.013">Hallmarks of cancer: the next generation</a> — abstract đã kiểm trong hồ sơ Claude.</li><li><span class="tag t-ok">đã kiểm</span> Hanahan (2022), <a href="https://doi.org/10.1158/2159-8290.CD-21-1059">Hallmarks of Cancer: New Dimensions</a> — abstract.</li><li><span class="tag t-ok">đã kiểm</span> Ubersax &amp; Ferrell (2007), <a href="https://doi.org/10.1038/nrm2203">Mechanisms of specificity in protein phosphorylation</a> — abstract.</li><li><span class="tag t-ok">đã kiểm</span> Krassowski và cộng sự (2018), <a href="https://doi.org/10.1093/nar/gkx973">ActiveDriverDB</a> — abstract, đúng phạm vi bệnh nói chung.</li><li><span class="tag t-ok">đã kiểm</span> Chung và cộng sự (2025), <a href="https://doi.org/10.1093/nar/gkae1005">dbPTM 2025</a>.</li><li><span class="tag t-dd">khảo sát sâu · toàn văn / metadata</span> <a href="../archive/surveys/aging-cancer/aging-cancer-deep-dive.md">Khảo sát aging–cancer</a>, mục 2.5, 4, 8; <a href="../project/advisor-research.md">danh mục GVHD</a>.</li></ul><nav class="pn"><a href="03-cell-signaling-kinases.html">← Bài 03: Tín hiệu tế bào và kinase</a><a href="05-aging-sirtuins-senescence.html">Bài 05: Lão hóa: sirtuin và senescence →</a></nav></main>
+</body></html>
