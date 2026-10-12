@@ -1,5 +1,7 @@
 # Chốt đề tài chính: khuyến nghị và cơ sở
 
+> **Bản lịch sử 10/10/2026.** Quyết định hiện hành là [khảo sát mở và chốt RCA ngày 12/10/2026](open-field-topic-selection-2026-10-12.md). Bản này không còn chọn đề tài chính.
+
 Ngày: **10/10/2026**. Trạng thái: **khuyến nghị có điều kiện, chưa phải đề tài đã duyệt**. Mốc chặn: **tuần 6 báo cáo lại đề tài với GVHD** (hiện tuần 4).
 
 > ⚠️ **CẬP NHẬT 11/10/2026 — đã chạy sáu phép kiểm ở mục 6, và kết quả đổi phán quyết của mục 5.2.** Đọc **[kết quả sáu phép kiểm](../research_notes/main-topic-decision/05-six-checks-results.md)** trước khi dùng bản này. Tóm tắt: trụ tiêu chí 1 **sụp** (Table 4 của chính bài DARKIN đã báo cả hai trục trên cả bốn split); cả ba trục phương pháp đã thử **đều có tiền lệ trực tiếp**; nhưng **RQ2 còn nguyên khoảng trống** và phép đo ba tầng 34,7/32,6/32,7 rất thuận. Sinh viên đã xếp **phương pháp** là ưu tiên và bỏ ràng buộc khớp GVHD — hai điều này làm điểm tương đối của đề tài trong mục 3 **phải tính lại**.

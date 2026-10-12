@@ -1,5 +1,15 @@
 # Repository Guidelines
 
+## Current Phase & Top Priority
+
+This repo is in topic-selection phase for a Software Engineering graduation thesis (not yet in execution). The top priority right now, above any other constraint, is **finding and locking a topic with a genuine contribution that solves a meaningful problem**. When evaluating or proposing candidate topics:
+
+1. Lean toward bioinformatics (the advisor's specialty, see `docs/common/advisor/README.md`, and the direction most already explored here), but do not default to narrow AI/ML prediction tasks (residue/peptide/site-level label prediction, as in `rtk-atp-applicability` and `degron-e3-specificity`). Those repeatedly hit the same wall in this repo: the mandatory app/website criterion ends up bolted on after the model, and a measurable positive contribution (gate G2 in `docs/common/deep-research/reports/main-topic-decision.md`) is hard to establish given narrow or precedented labels.
+2. Seriously consider higher-level problems instead: a tool, piece of software, platform, or algorithm that serves a broader bioinformatics research/analysis workflow, rather than a single prediction model. This class of problem naturally satisfies the advisor's "build an application" criterion and fits a Software Engineering thesis better.
+3. A topic entirely outside bioinformatics (e.g. the `legal-qa-grounding` candidate, added 12/10/2026) is still valid, but rank it below 1–2 — only prefer it if a thorough search of higher-level bioinformatics directions doesn't turn up a convincing contribution.
+
+Still apply the advisor's five criteria (`docs/meeting/session-01-minutes.md`, section 4) and the three hard gates G1/G2/G3 (independent labels — measurable positive contribution — feasible app) to any candidate, regardless of which of the above it falls under. Working process, presentation, and file layout for new candidates are left to judgment, as long as the structure and naming conventions below are followed.
+
 ## Project Structure & Module Organization
 
 This is a research and thesis-planning repository with multiple candidate topics. Read [CLAUDE.md](CLAUDE.md), [the topic index](docs/topics/README.md), and recent entries in [the work log](docs/common/work-log.md) before changing research direction.

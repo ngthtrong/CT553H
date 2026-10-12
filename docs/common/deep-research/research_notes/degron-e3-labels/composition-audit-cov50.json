@@ -1,0 +1,764 @@
+{
+  "source": {
+    "doi": "10.17632/32h94v2yv2.2",
+    "archive": "I28 Scanning Mutagenesis.zip",
+    "sha256": "a82bd1ee4bc7a2da69df06cb44dd34fe8480c6fd799340684f5058d02223df50",
+    "member": "I28 Scanning (Completed)/Replicate 1 (BAG6 genotype unclear)/I28 Scanning Mutagenesis Replicate 1.csv"
+  },
+  "definitions": {
+    "reads_min": 10,
+    "wildtype_psi_max": 3.0,
+    "rescue_delta": 1.0,
+    "min_positions": 21,
+    "precision_k": 3,
+    "ties": "expected uniform random tie-breaking",
+    "oracles": "evaluated labels used; optimistic bounds, not learned performance",
+    "spearman_upper": "Cauchy-Schwarz relaxation sqrt(SS_projected_ranks/SS_ranks)",
+    "group": "within peptide, identical wildtype AND replacement amino acids",
+    "p3_upper": "exact expected maximum over within-peptide substitution-pair-constant scores",
+    "noise": "no subtraction of measurement noise; single replicate, genotype unclear"
+  },
+  "counts": {
+    "rows": 283880,
+    "usable_rows": 256711,
+    "library_peptides": 9817,
+    "library_proteins_by_accession": 6582,
+    "sequence_lengths": {
+      "28": 283880
+    },
+    "mutation_scheme_mismatches": 0,
+    "wildtype_peptides_with_terminal_stop": 813,
+    "footprint_peptides_with_terminal_stop": 336,
+    "observed_amino_acid_lengths": {
+      "28": 9004,
+      "27": 813
+    },
+    "standard_scheme_exceptions": {
+      "25:A>H": 63,
+      "25:C>H": 28,
+      "25:D>H": 26,
+      "25:E>H": 28,
+      "25:G>H": 58,
+      "25:I>H": 36,
+      "25:L>H": 54,
+      "25:S>H": 71,
+      "25:T>H": 46,
+      "25:V>H": 68,
+      "26:H>S": 23,
+      "26:K>S": 36,
+      "26:N>S": 23,
+      "26:Q>S": 41,
+      "26:R>S": 86,
+      "26:Y>S": 13,
+      "27:H>S": 32,
+      "27:K>S": 32,
+      "27:N>S": 42,
+      "27:Q>S": 54,
+      "27:Y>S": 16
+    },
+    "transitions": {
+      "A>H": 63,
+      "A>R": 18246,
+      "C>H": 28,
+      "C>R": 5976,
+      "D>H": 26,
+      "D>R": 12612,
+      "E>H": 28,
+      "E>R": 18065,
+      "F>S": 8022,
+      "G>H": 58,
+      "G>R": 15969,
+      "H>A": 6312,
+      "H>S": 55,
+      "I>H": 36,
+      "I>R": 11092,
+      "K>A": 12368,
+      "K>S": 68,
+      "L>H": 54,
+      "L>R": 26099,
+      "M>S": 5474,
+      "N>A": 8181,
+      "N>S": 65,
+      "P>S": 14365,
+      "Q>A": 12130,
+      "Q>S": 95,
+      "R>A": 13048,
+      "R>S": 86,
+      "S>H": 71,
+      "S>R": 20153,
+      "T>H": 46,
+      "T>R": 13777,
+      "V>H": 68,
+      "V>R": 16729,
+      "W>S": 2624,
+      "Y>A": 5762,
+      "Y>S": 29
+    }
+  },
+  "all_usable": {
+    "peptides": 8831,
+    "proteins_by_accession": 6081,
+    "peptides_per_protein": {
+      "n": 6081,
+      "mean": 1.452228251932248,
+      "median": 1,
+      "p25": 1,
+      "p75": 2,
+      "min": 1,
+      "max": 15
+    },
+    "largest_protein_share": 0.0016985618842713169,
+    "with_same_pair_range_ge1": 5285,
+    "with_mixed_rescue_pair_group": 3635,
+    "metrics": {
+      "max_within_pair_range": {
+        "n": 8831,
+        "mean": 1.1955031060471522,
+        "median": 1.0975538629977,
+        "p25": 0.8494669999999998,
+        "p75": 1.4346989999999997,
+        "min": 0.30103400000000047,
+        "max": 4.2722299999999995
+      },
+      "pair_oracle_mse": {
+        "n": 8831,
+        "mean": 0.07692247311747932,
+        "median": 0.05935887819232409,
+        "p25": 0.03868098264996838,
+        "p75": 0.09364720988365953,
+        "min": 0.005246209146590914,
+        "max": 1.0500556190554988
+      },
+      "pair_residual_fraction": {
+        "n": 8831,
+        "mean": 0.3825307305636377,
+        "median": 0.3651130364561898,
+        "p25": 0.25866325080834285,
+        "p75": 0.48918125229300136,
+        "min": 0.007637670918169683,
+        "max": 0.9508924843998969
+      },
+      "pair_mean_oracle_spearman": {
+        "n": 8831,
+        "mean": 0.7369915501237361,
+        "median": 0.7538720386935116,
+        "p25": 0.6673426215737802,
+        "p75": 0.8240006779626011,
+        "min": 0.19659384915442596,
+        "max": 0.9885710532241612
+      },
+      "pair_rankmean_oracle_spearman": {
+        "n": 8831,
+        "mean": 0.750320847271704,
+        "median": 0.7660668572204671,
+        "p25": 0.6848449122154899,
+        "p75": 0.8330142917931632,
+        "min": 0.2018131548841895,
+        "max": 0.9885710532241612
+      },
+      "pair_spearman_relaxed_upper": {
+        "n": 8831,
+        "mean": 0.7740303507294347,
+        "median": 0.7879254352514244,
+        "p25": 0.7130293640013119,
+        "p75": 0.8500083174625522,
+        "min": 0.2800204194482735,
+        "max": 0.9885710532241612
+      },
+      "pair_mean_oracle_p3": {
+        "n": 8831,
+        "mean": 0.24968659217328676,
+        "median": 0.0,
+        "p25": 0.0,
+        "p75": 0.4666666666666666,
+        "min": 0.0,
+        "max": 1.0
+      },
+      "pair_p3_exact_expected_upper": {
+        "n": 8831,
+        "mean": 0.2762496628423477,
+        "median": 0.0,
+        "p25": 0.0,
+        "p75": 0.5,
+        "min": 0.0,
+        "max": 1.0
+      },
+      "unrestricted_p3_upper": {
+        "n": 8831,
+        "mean": 0.3513380893066093,
+        "median": 0.0,
+        "p25": 0.0,
+        "p75": 0.6666666666666666,
+        "min": 0.0,
+        "max": 1.0
+      },
+      "random_p3": {
+        "n": 8831,
+        "mean": 0.05329623023233684,
+        "median": 0.0,
+        "p25": 0.0,
+        "p75": 0.07407407407407407,
+        "min": 0.0,
+        "max": 1.0
+      }
+    }
+  },
+  "footprints": {
+    "peptides": 2624,
+    "proteins_by_accession": 2232,
+    "peptides_per_protein": {
+      "n": 2232,
+      "mean": 1.1756272401433692,
+      "median": 1.0,
+      "p25": 1,
+      "p75": 1,
+      "min": 1,
+      "max": 7
+    },
+    "largest_protein_share": 0.0026676829268292685,
+    "with_same_pair_range_ge1": 2046,
+    "with_mixed_rescue_pair_group": 2353,
+    "metrics": {
+      "max_within_pair_range": {
+        "n": 2624,
+        "mean": 1.3778343727588511,
+        "median": 1.3067674999999999,
+        "p25": 1.0367461186352802,
+        "p75": 1.630518,
+        "min": 0.41961182035058986,
+        "max": 4.02064
+      },
+      "pair_oracle_mse": {
+        "n": 2624,
+        "mean": 0.09511076054136336,
+        "median": 0.07911695775052892,
+        "p25": 0.05418390431777997,
+        "p75": 0.11600142458081482,
+        "min": 0.010843344811556549,
+        "max": 0.6115249673508887
+      },
+      "pair_residual_fraction": {
+        "n": 2624,
+        "mean": 0.3503531129408222,
+        "median": 0.33332711738859094,
+        "p25": 0.24136087669226983,
+        "p75": 0.4489848471098426,
+        "min": 0.0432600500127109,
+        "max": 0.8914478827724082
+      },
+      "pair_mean_oracle_spearman": {
+        "n": 2624,
+        "mean": 0.7584925498740548,
+        "median": 0.7721806760772209,
+        "p25": 0.6961735960490407,
+        "p75": 0.8323696400634863,
+        "min": 0.270423764728228,
+        "max": 0.9736033963406645
+      },
+      "pair_rankmean_oracle_spearman": {
+        "n": 2624,
+        "mean": 0.7717634776131115,
+        "median": 0.7840563630592166,
+        "p25": 0.712992952694094,
+        "p75": 0.8420509784522637,
+        "min": 0.31555224921432506,
+        "max": 0.9778606164985253
+      },
+      "pair_spearman_relaxed_upper": {
+        "n": 2624,
+        "mean": 0.7931085108421932,
+        "median": 0.8047789827695655,
+        "p25": 0.7395319456464586,
+        "p75": 0.8582748105523975,
+        "min": 0.351115438683706,
+        "max": 0.9815019636890264
+      },
+      "pair_mean_oracle_p3": {
+        "n": 2624,
+        "mean": 0.5480669380726545,
+        "median": 0.5555555555555555,
+        "p25": 0.3333333333333333,
+        "p75": 0.75,
+        "min": 0.0,
+        "max": 1.0
+      },
+      "pair_p3_exact_expected_upper": {
+        "n": 2624,
+        "mean": 0.6045356842231842,
+        "median": 0.6666666666666666,
+        "p25": 0.3333333333333333,
+        "p75": 0.7777777777777778,
+        "min": 0.09999999999999999,
+        "max": 1.0
+      },
+      "unrestricted_p3_upper": {
+        "n": 2624,
+        "mean": 0.7792174796747967,
+        "median": 1.0,
+        "p25": 0.6666666666666666,
+        "p75": 1.0,
+        "min": 0.3333333333333333,
+        "max": 1.0
+      },
+      "random_p3": {
+        "n": 2624,
+        "mean": 0.12038686671474316,
+        "median": 0.10714285714285714,
+        "p25": 0.07142857142857142,
+        "p75": 0.14814814814814814,
+        "min": 0.03571428571428571,
+        "max": 0.75
+      }
+    }
+  },
+  "wild_identity_only_diagnostic": {
+    "warning": "Not a composition bound when the replacement differs across positions",
+    "footprints": {
+      "peptides": 2624,
+      "proteins_by_accession": 2232,
+      "peptides_per_protein": {
+        "n": 2232,
+        "mean": 1.1756272401433692,
+        "median": 1.0,
+        "p25": 1,
+        "p75": 1,
+        "min": 1,
+        "max": 7
+      },
+      "largest_protein_share": 0.0026676829268292685,
+      "with_same_pair_range_ge1": 2059,
+      "with_mixed_rescue_pair_group": 2371,
+      "metrics": {
+        "max_within_pair_range": {
+          "n": 2624,
+          "mean": 1.3879126352745954,
+          "median": 1.320405,
+          "p25": 1.041719,
+          "p75": 1.6470690583212702,
+          "min": 0.41961182035058986,
+          "max": 4.02064
+        },
+        "pair_oracle_mse": {
+          "n": 2624,
+          "mean": 0.09707405122181802,
+          "median": 0.08092131261816815,
+          "p25": 0.054575393299102985,
+          "p75": 0.1192567810144345,
+          "min": 0.010843344811556549,
+          "max": 0.6115249673508887
+        },
+        "pair_residual_fraction": {
+          "n": 2624,
+          "mean": 0.35656635422622895,
+          "median": 0.3409652457822191,
+          "p25": 0.2446349519882384,
+          "p75": 0.45628987378531743,
+          "min": 0.0432600500127109,
+          "max": 0.9004082063509004
+        },
+        "pair_mean_oracle_spearman": {
+          "n": 2624,
+          "mean": 0.7548146418708817,
+          "median": 0.7683862308504162,
+          "p25": 0.692420110594475,
+          "p75": 0.8304680702632046,
+          "min": 0.28793315259782376,
+          "max": 0.9736033963406645
+        },
+        "pair_rankmean_oracle_spearman": {
+          "n": 2624,
+          "mean": 0.7682443549330507,
+          "median": 0.7803761134310792,
+          "p25": 0.7087134421747205,
+          "p75": 0.8402319741022013,
+          "min": 0.314329919301605,
+          "max": 0.9778606164985253
+        },
+        "pair_spearman_relaxed_upper": {
+          "n": 2624,
+          "mean": 0.7897994607917861,
+          "median": 0.8024072229021528,
+          "p25": 0.7341961386975914,
+          "p75": 0.8564660102055859,
+          "min": 0.34850923869919065,
+          "max": 0.9815019636890264
+        },
+        "pair_mean_oracle_p3": {
+          "n": 2624,
+          "mean": 0.5442411420021939,
+          "median": 0.5555555555555555,
+          "p25": 0.3333333333333333,
+          "p75": 0.75,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "pair_p3_exact_expected_upper": {
+          "n": 2624,
+          "mean": 0.6012429710505167,
+          "median": 0.6,
+          "p25": 0.3333333333333333,
+          "p75": 0.7777777777777778,
+          "min": 0.09999999999999999,
+          "max": 1.0
+        },
+        "unrestricted_p3_upper": {
+          "n": 2624,
+          "mean": 0.7792174796747967,
+          "median": 1.0,
+          "p25": 0.6666666666666666,
+          "p75": 1.0,
+          "min": 0.3333333333333333,
+          "max": 1.0
+        },
+        "random_p3": {
+          "n": 2624,
+          "mean": 0.12038686671474316,
+          "median": 0.10714285714285714,
+          "p25": 0.07142857142857142,
+          "p75": 0.14814814814814814,
+          "min": 0.03571428571428571,
+          "max": 0.75
+        }
+      }
+    }
+  },
+  "protein_disjoint_80_10_10": [
+    {
+      "seed": 0,
+      "train": {
+        "groups": 5265,
+        "library_peptides": 7872,
+        "footprint_peptides": 2087,
+        "footprint_proteins": 1776
+      },
+      "validation": {
+        "groups": 658,
+        "library_peptides": 1003,
+        "footprint_peptides": 272,
+        "footprint_proteins": 231
+      },
+      "test": {
+        "groups": 659,
+        "library_peptides": 942,
+        "footprint_peptides": 265,
+        "footprint_proteins": 225
+      }
+    },
+    {
+      "seed": 42,
+      "train": {
+        "groups": 5265,
+        "library_peptides": 7908,
+        "footprint_peptides": 2081,
+        "footprint_proteins": 1767
+      },
+      "validation": {
+        "groups": 658,
+        "library_peptides": 950,
+        "footprint_peptides": 293,
+        "footprint_proteins": 246
+      },
+      "test": {
+        "groups": 659,
+        "library_peptides": 959,
+        "footprint_peptides": 250,
+        "footprint_proteins": 219
+      }
+    },
+    {
+      "seed": 87,
+      "train": {
+        "groups": 5265,
+        "library_peptides": 7862,
+        "footprint_peptides": 2116,
+        "footprint_proteins": 1789
+      },
+      "validation": {
+        "groups": 658,
+        "library_peptides": 944,
+        "footprint_peptides": 248,
+        "footprint_proteins": 220
+      },
+      "test": {
+        "groups": 659,
+        "library_peptides": 1011,
+        "footprint_peptides": 260,
+        "footprint_proteins": 223
+      }
+    },
+    {
+      "seed": 1001,
+      "train": {
+        "groups": 5265,
+        "library_peptides": 7836,
+        "footprint_peptides": 2081,
+        "footprint_proteins": 1781
+      },
+      "validation": {
+        "groups": 658,
+        "library_peptides": 1037,
+        "footprint_peptides": 265,
+        "footprint_proteins": 218
+      },
+      "test": {
+        "groups": 659,
+        "library_peptides": 944,
+        "footprint_peptides": 278,
+        "footprint_proteins": 233
+      }
+    },
+    {
+      "seed": 12345,
+      "train": {
+        "groups": 5265,
+        "library_peptides": 7824,
+        "footprint_peptides": 2097,
+        "footprint_proteins": 1785
+      },
+      "validation": {
+        "groups": 658,
+        "library_peptides": 1002,
+        "footprint_peptides": 277,
+        "footprint_proteins": 231
+      },
+      "test": {
+        "groups": 659,
+        "library_peptides": 991,
+        "footprint_peptides": 250,
+        "footprint_proteins": 216
+      }
+    }
+  ],
+  "full_protein_cluster_source": {
+    "file": "protein-id30-cov50_cluster.tsv",
+    "sha256": "1040d57619273950dff6a7ef43cf0e253252016e5d6d777fc1c928389ca3ead3",
+    "library_peptides_covered": 9806,
+    "library_peptides_missing": 11,
+    "footprint_peptides_covered": 2621,
+    "footprint_peptides_missing": 3,
+    "clusters": 4418,
+    "note": "Missing full-length sequences excluded, not assigned independent singleton clusters"
+  },
+  "cluster_disjoint_80_10_10": [
+    {
+      "seed": 0,
+      "train": {
+        "groups": 3534,
+        "library_peptides": 7760,
+        "footprint_peptides": 2008,
+        "footprint_proteins": 1722
+      },
+      "validation": {
+        "groups": 442,
+        "library_peptides": 1027,
+        "footprint_peptides": 310,
+        "footprint_proteins": 240
+      },
+      "test": {
+        "groups": 442,
+        "library_peptides": 1019,
+        "footprint_peptides": 303,
+        "footprint_proteins": 267
+      }
+    },
+    {
+      "seed": 42,
+      "train": {
+        "groups": 3534,
+        "library_peptides": 7897,
+        "footprint_peptides": 2131,
+        "footprint_proteins": 1810
+      },
+      "validation": {
+        "groups": 442,
+        "library_peptides": 992,
+        "footprint_peptides": 261,
+        "footprint_proteins": 219
+      },
+      "test": {
+        "groups": 442,
+        "library_peptides": 917,
+        "footprint_peptides": 229,
+        "footprint_proteins": 200
+      }
+    },
+    {
+      "seed": 87,
+      "train": {
+        "groups": 3534,
+        "library_peptides": 7886,
+        "footprint_peptides": 2079,
+        "footprint_proteins": 1783
+      },
+      "validation": {
+        "groups": 442,
+        "library_peptides": 983,
+        "footprint_peptides": 297,
+        "footprint_proteins": 243
+      },
+      "test": {
+        "groups": 442,
+        "library_peptides": 937,
+        "footprint_peptides": 245,
+        "footprint_proteins": 203
+      }
+    },
+    {
+      "seed": 1001,
+      "train": {
+        "groups": 3534,
+        "library_peptides": 7909,
+        "footprint_peptides": 2112,
+        "footprint_proteins": 1793
+      },
+      "validation": {
+        "groups": 442,
+        "library_peptides": 890,
+        "footprint_peptides": 238,
+        "footprint_proteins": 202
+      },
+      "test": {
+        "groups": 442,
+        "library_peptides": 1007,
+        "footprint_peptides": 271,
+        "footprint_proteins": 234
+      }
+    },
+    {
+      "seed": 12345,
+      "train": {
+        "groups": 3534,
+        "library_peptides": 7980,
+        "footprint_peptides": 2170,
+        "footprint_proteins": 1845
+      },
+      "validation": {
+        "groups": 442,
+        "library_peptides": 927,
+        "footprint_peptides": 227,
+        "footprint_proteins": 192
+      },
+      "test": {
+        "groups": 442,
+        "library_peptides": 899,
+        "footprint_peptides": 224,
+        "footprint_proteins": 192
+      }
+    }
+  ],
+  "current_reference_qc": {
+    "fasta_sha256": "c02e6631ca6070c53f464bdd4308d1953419f9e6cc1996453dd92e3e7a89487a",
+    "library_wildtype_peptides_exactly_contained": 9759,
+    "footprints_exactly_contained": 2602,
+    "footprints_mapped_but_not_exact": 19,
+    "terminal_stop": "One terminal * removed for reference containment; mutation rows unchanged",
+    "note": "Historical library versus current canonical sequence; mismatches need curation"
+  },
+  "cluster_disjoint_exact_reference_subset_80_10_10": [
+    {
+      "seed": 0,
+      "train": {
+        "groups": 3534,
+        "library_peptides": 7725,
+        "footprint_peptides": 1993,
+        "footprint_proteins": 1709
+      },
+      "validation": {
+        "groups": 442,
+        "library_peptides": 1022,
+        "footprint_peptides": 308,
+        "footprint_proteins": 238
+      },
+      "test": {
+        "groups": 442,
+        "library_peptides": 1012,
+        "footprint_peptides": 301,
+        "footprint_proteins": 265
+      }
+    },
+    {
+      "seed": 42,
+      "train": {
+        "groups": 3534,
+        "library_peptides": 7864,
+        "footprint_peptides": 2120,
+        "footprint_proteins": 1800
+      },
+      "validation": {
+        "groups": 442,
+        "library_peptides": 990,
+        "footprint_peptides": 261,
+        "footprint_proteins": 219
+      },
+      "test": {
+        "groups": 442,
+        "library_peptides": 905,
+        "footprint_peptides": 221,
+        "footprint_proteins": 193
+      }
+    },
+    {
+      "seed": 87,
+      "train": {
+        "groups": 3534,
+        "library_peptides": 7849,
+        "footprint_peptides": 2065,
+        "footprint_proteins": 1771
+      },
+      "validation": {
+        "groups": 442,
+        "library_peptides": 981,
+        "footprint_peptides": 296,
+        "footprint_proteins": 242
+      },
+      "test": {
+        "groups": 442,
+        "library_peptides": 929,
+        "footprint_peptides": 241,
+        "footprint_proteins": 199
+      }
+    },
+    {
+      "seed": 1001,
+      "train": {
+        "groups": 3534,
+        "library_peptides": 7881,
+        "footprint_peptides": 2102,
+        "footprint_proteins": 1785
+      },
+      "validation": {
+        "groups": 442,
+        "library_peptides": 883,
+        "footprint_peptides": 233,
+        "footprint_proteins": 197
+      },
+      "test": {
+        "groups": 442,
+        "library_peptides": 995,
+        "footprint_peptides": 267,
+        "footprint_proteins": 230
+      }
+    },
+    {
+      "seed": 12345,
+      "train": {
+        "groups": 3534,
+        "library_peptides": 7939,
+        "footprint_peptides": 2153,
+        "footprint_proteins": 1830
+      },
+      "validation": {
+        "groups": 442,
+        "library_peptides": 925,
+        "footprint_peptides": 227,
+        "footprint_proteins": 192
+      },
+      "test": {
+        "groups": 442,
+        "library_peptides": 895,
+        "footprint_peptides": 222,
+        "footprint_proteins": 190
+      }
+    }
+  ]
+}

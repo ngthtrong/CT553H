@@ -35,9 +35,12 @@ Artifact mới: đặt mã nguồn ngay trong repo (không để trong thư mụ
 
 ## 2. Môi trường và cache cục bộ (không lên git)
 
+**Cập nhật 12/10/2026 — dữ liệu degron đã tải lại trên máy này:** `data/degron-e3-specificity/raw/` có ZIP quét 27.939.862 B và ZIP bão hòa 5.224.902 B, manifest SHA-256; snapshot UniProt hiện tại và response bổ sung cũng được cache. `interim/` có CSV quét và cụm protein MMseqs2; `processed/` có bảng audit theo peptide và FASTA protein. Tái tạo bằng [fetch_scanning.py](deep-research/research_notes/degron-e3-labels/fetch_scanning.py) và các lệnh trong [báo cáo audit](deep-research/reports/degron-composition-context-audit.md). Đây là dữ liệu audit, không phải trọng số hay kết quả huấn luyện. Các trạng thái máy/cloud cũ bên dưới là lịch sử, không xác nhận trạng thái tài nguyên hiện tại.
+
 | Thứ | Vị trí | Cách tạo lại |
 |---|---|---|
 | Môi trường Python | `.venv/` ở thư mục gốc | `python3 -m venv .venv`, rồi `.venv/bin/pip install torch --index-url https://download.pytorch.org/whl/cpu`, rồi `.venv/bin/pip install -r ml/requirements.txt` |
+| **Dữ liệu RCAEval (`budgeted-microservice-rca`)** | `data/budgeted-microservice-rca/raw/` — `cases.parquet` (index 735 ca, SHA-256 đã kiểm) + 6 thư mục ca mẫu (`re2ob_checkoutservice_cpu_1`, v.v.) | `.venv/bin/python ml/budgeted-microservice-rca/preprocessing/audit_data.py` — tải từ Hugging Face `phamquiluan/RCAEval`, revision `afeacb11bcc94dadfd1c8f483ee4377b2b8b614e`, MIT. Chỉ audit, chưa tải hết 735 ca; xem [README tái lập](../../ml/budgeted-microservice-rca/preprocessing/README.md) |
 | **Dữ liệu RTK–ATP (gốc + chuẩn hóa)** | `data/rtk-atp-applicability/raw/` và `processed/` | `python3 ml/rtk-atp-applicability/preprocessing/prepare_data.py` — tải snapshot `b7bd4c2` của [B1607/RTK_RAG](https://github.com/B1607/RTK_RAG), kiểm SHA-256, giải nén, đếm và xuất FASTA/JSONL/CSV. Chạy lại được từ mạng, hoặc dùng ZIP có sẵn qua `--archive` |
 | **Trọng số ProtT5** | chưa tải | Sẽ về `~/.cache/huggingface/` khi chạy bước trích embedding (tuần 3–4). Chưa đo thời gian GPU thực tế |
 | Mô hình embedding | `~/.cache/huggingface/` (bge-m3 khoảng 2,2 GB; multilingual-e5-small, e5-base) | Tự tải khi chạy script thí nghiệm lần đầu |

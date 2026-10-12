@@ -3,15 +3,20 @@
 ## Giai đoạn hiện tại và vai trò
 
 - Đây là giai đoạn **lên ý tưởng và hoàn thiện đề tài**, chưa bắt tay vào thực hiện. đang chuẩn bị gặp GVHD.
-- Đề tài hiện tại **chưa được chốt**: có thể đổi đề tài hoặc chỉnh sửa hướng đi bất cứ lúc nào.
-- **Vai trò của Claude:** người hướng dẫn — giúp brainstorm, cung cấp thông tin, đưa lời khuyên và gợi ý và phản biện, nếu thiếu thông tin về ngữ cảnh thì đặt lại câu hỏi trắc nghiệm để tôi cung cấp thêm thông tin, đừng tự tạo ra ngữ cảnh nếu thiếu.
-- **Vai trò của tôi:** người quyết định hướng đi nhưng cũng không phải lúc nào bạn cũng nghe theo mà phải phân tích lại cho nếu chọn những hướng đi ngớ ngẫn, dựa trên những gợi ý của Claude.
+- Lựa chọn hiện hành: **`budgeted-microservice-rca` (12/10/2026)**; chưa được GVHD phê duyệt, chưa bắt đầu thực nghiệm phương pháp.
 
-### Cách áp dụng
+> **Quyết định lựa chọn 12/10/2026:** theo yêu cầu mở lĩnh vực và chốt trong ngày, đã chọn [`budgeted-microservice-rca`](docs/topics/budgeted-microservice-rca/01-idea/topic-decision.md) làm chính, degron làm dự phòng. [Báo cáo đối chiếu](docs/common/deep-research/reports/open-field-topic-selection-2026-10-12.md) là bản hiện hành. Chưa phê duyệt GVHD; vẫn ở giai đoạn đề cương, chưa huấn luyện hay triển khai ứng dụng.
 
-- Đưa ra các lựa chọn kèm ưu/nhược điểm và lời khuyên, nhưng không tự ý chốt hay mặc định một hướng đi thay tôi.
-- Không coi đề tài hiện tại là cố định; sẵn sàng hỗ trợ khi tôi đổi hoặc điều chỉnh hướng.
-- Chưa viết code hay triển khai trừ khi tôi yêu cầu rõ ràng.
+### Mục tiêu tối cao của giai đoạn này (cập nhật 12/10/2026)
+
+**Tìm và chốt được một đề tài có đóng góp thực sự, giải quyết một vấn đề có ý nghĩa.** Mục tiêu này đứng trên mọi ràng buộc khác ở giai đoạn này — kể cả độ khớp với các ứng viên đang có sẵn trong repo. Khi quyết định hướng đi tiếp theo (khảo sát, so sánh ứng viên, chốt đề tài), ưu tiên theo thứ tự này:
+
+1. **Vẫn nên đi theo hướng tin sinh học (bioinformatics)** — đây là chuyên môn của GVHD ([advisor/README.md](docs/common/advisor/README.md)) và là nền đã đầu tư nhiều công sức khảo sát trong repo (xem [docs/topics/README.md](docs/topics/README.md), [work-log.md](docs/common/work-log.md)).
+2. **Nhưng không bó buộc vào lối dự đoán AI/ML ở mức chi tiết** (ví dụ: dự đoán nhãn ở mức residue/peptide/site như các ứng viên đã xét — `rtk-atp-applicability`, `degron-e3-specificity`, dark kinome, sirtuin). Những hướng này nhiều lần vấp cùng một vấn đề trong repo: tiêu chí 5 (ứng dụng/website) luôn là phần gắn thêm gượng ép sau khi đã có mô hình, và cổng G2 (đóng góp dương đo được) liên tục khó xác lập vì nhãn hẹp hoặc đã có nhiều tiền lệ cùng dạng.
+3. **Cân nhắc nghiêm túc các bài toán ở tầng tổng quan hơn**: công cụ (tool), phần mềm, nền tảng, hoặc thuật toán phục vụ một quy trình nghiên cứu/phân tích tin sinh học rộng hơn — không phải một mô hình dự đoán đơn lẻ. Ví dụ dạng bài toán (không phải danh sách đóng): công cụ kiểm soát rò rỉ dữ liệu/đánh giá chuẩn hóa cho một benchmark đang được dùng rộng rãi nhưng thiếu công cụ kiểm tra; pipeline tái lập hoặc tổng hợp nhiều nguồn dữ liệu rời rạc trong một nhánh tin sinh học; thư viện/API làm cầu nối giữa một phương pháp mới (PLM, XAI, v.v.) với các bài toán đã có; nền tảng trực quan hóa hoặc so sánh nhiều mô hình/bộ dữ liệu. Dạng bài toán này tự nhiên khớp tiêu chí 5 (sản phẩm phần mềm là trọng tâm, không phải phụ lục) và phù hợp hơn với một luận văn khoa Kỹ thuật phần mềm.
+4. **Một đề tài hoàn toàn ngoài tin sinh học** (ví dụ ứng viên `legal-qa-grounding`, 12/10/2026) vẫn là ứng viên hợp lệ, không bị loại bởi định hướng này — nhưng xếp sau các hướng 1–3; chỉ nên ưu tiên chọn nếu khảo sát kỹ các hướng tin sinh học ở tầng cao hơn mà không tìm được đóng góp/ý nghĩa đủ thuyết phục.
+
+Vẫn tham khảo [năm tiêu chí của GVHD](docs/meeting/session-01-minutes.md) (mục 4) và ba cổng bắt buộc G1/G2/G3 (nhãn độc lập — đóng góp dương đo được — ứng dụng khả thi, xem [main-topic-decision.md](docs/common/deep-research/reports/main-topic-decision.md)) khi đánh giá một ứng viên, bất kể ứng viên đó thuộc hướng nào trong bốn hướng trên. Quy trình làm việc cụ thể, cách trình bày, và cách bố trí file cho mỗi ứng viên mới: tự quyết theo tình huống, miễn giữ đúng cấu trúc thư mục và quy ước đặt tên đã mô tả bên dưới.
 
 ## Cấu trúc thư mục
 
@@ -88,49 +93,3 @@ Mỗi phiên Claude bắt đầu không nhớ gì về phiên trước, và thư
 - Danh sách đề tài: [docs/topics/README.md](docs/topics/README.md)
 - Nhật ký làm việc (mọi đề tài): [docs/common/work-log.md](docs/common/work-log.md) · Tài nguyên ngoài repo: [docs/common/resources.md](docs/common/resources.md)
 - **GVHD: TS. Hồ Quang Thái (Ho Quang Thai; QT Ho), ĐH Cần Thơ** — tên được người dùng xác nhận lại ngày 05/10/2026. Prof. YY Ou **không phải** GVHD, chỉ là đồng tác giả thường xuyên. Xem [docs/common/advisor/README.md](docs/common/advisor/README.md) để biết các nhánh nghiên cứu của GVHD trước khi đánh giá tính mới của một hướng
-
-### ✅ ĐỀ TÀI ĐÃ CHỐT (11/10/2026): `degron-e3-specificity`
-
-**Dự đoán footprint degron ở mức residue bằng học đa thể hiện với cổng phơi lộ cấu trúc, trên nhãn đột biến thực nghiệm.** Quyết định của sinh viên ngày 11/10/2026, **tái định tâm cùng ngày (khuya)** sau khi đếm nhãn E3. Slug giữ nguyên `degron-e3-specificity` để không vỡ liên kết. **Chưa có phê duyệt GVHD**, phải báo cáo buổi tuần 6.
-
-- **Đọc trước khi làm gì liên quan đề tài:** [quyết định và phạm vi](docs/topics/degron-e3-specificity/01-idea/topic-decision.md) · [hub học đề tài](docs/topics/degron-e3-specificity/learn/index.html) · [trang trình bày](docs/topics/degron-e3-specificity/01-idea/presentation.html) · [báo cáo kiểm chứng chi tiết](docs/common/deep-research/reports/degron-topic-report/index.html) · [audit PAP](docs/common/deep-research/research_notes/degron/) · [audit nhãn residue và E3](docs/common/deep-research/research_notes/degron-e3-labels/README.md)
-- **GVHD kỳ vọng một kiến trúc chưa ai dùng** (thông tin 11/10/2026) → kiến trúc đề xuất **MIL-Degron**, 5 thành phần: học đa thể hiện nối **nhãn yếu mức đoạn** với **nhãn mạnh mức residue**, cổng phơi lộ đặt ở chỗ **gộp** chứ không ở đầu vào, và **attention được giám sát trực tiếp** bằng nhãn đột biến. Thành phần *điều kiện E3* của bản trước **đã bỏ**.
-- **Quy ước ngôn từ riêng của đề tài:** không dùng chữ "đầu tiên" cho bất kỳ phần nào (đã có ≥5 công cụ trước, MetaDegron dùng PLM từ 2024). Phân biệt rõ **"thang điểm khối"** (đã bão hòa) và **"bản đồ độ nhạy theo residue"** (bài toán của đề tài), không trộn thành một số. **Không nói "16 E3 có nhãn CRISPR"** — nói số peptide trên mỗi E3 (1–13). **Không gọi phần E3 là nhiệm vụ dự đoán**, gọi là **ca nghiên cứu** trên 27 peptide. Nói kiểm soát đồng dạng của tác giả là "tốt nhưng không hoàn hảo". Gọi 219 footprint là "chuẩn thực nghiệm theo residue", không gọi "ground truth tuyệt đối".
-- **Ba phép đo nền, đã tự thực hiện, dùng để biện minh mọi thiết kế:** (1) PAP mặc định **bất biến hoán vị** — đảo thứ tự residue, Pearson(gốc, đảo) = 1,000000; (2) bản bắt motif `cnn2w7` chỉ hơn **+0,0032**; (3) gộp max làm sụt **0,824 → 0,344**, nên thang điểm khối **không thưởng cho việc khu trú**.
-- **Hệ quả bắt buộc:** kiến trúc mới **sẽ không thắng** trên thang điểm khối. Thước đo chính là **bản đồ độ nhạy đột biến theo residue**: Spearman theo từng peptide và **precision@3** trên **2.624 peptide có footprint**, cộng tập kiểm tra **249 bản đồ thay thế đầy đủ**. Phải chốt việc này với GVHD từ tuần 6.
-- **Phép đếm nhãn E3, 11/10/2026 (khuya) — đã đổi trục đề tài.** 31 screen CRISPR → 27 gán được → **10 E3** → **chỉ 1 E3 (KLHL15, 13 peptide) có ≥5 peptide**; 6 E3 có đúng 1 peptide. Bền với 36 tổ hợp ngưỡng. Nguồn: Mendeley `10.17632/32h94v2yv2.2` (Table S1–S7 trên PMC chặn bằng reCAPTCHA). Script: [research_notes/degron-e3-labels/](docs/common/deep-research/research_notes/degron-e3-labels/README.md).
-- **Nhãn theo residue, số tự đếm:** **256.711** phép đo đột biến quét, **2.624** peptide có footprint học được (2.402 khu trú ≤6 vị trí), **median 3 vị trí quan trọng trên 28**, cộng **135.040** phép đo trên 249 bản đồ thay thế đầy đủ. **23/31** peptide CRISPR có cả nhãn E3 được gán và bản đồ bão hòa → ca nghiên cứu; hai tập riêng đều có 27 peptide nhưng giao chỉ 23.
-- **Ba cổng nghiên cứu, cập nhật 11/10/2026 (khuya):** cổng 1 **đã qua** (đã đọc toàn văn bài degron transcription factor); cổng 2 **không qua cho nhánh dự đoán E3** (chỉ KLHL15 có ≥5 peptide) và đã buộc đổi trục sang footprint mức residue; cổng 3 **đã có câu trả lời, thu hẹp tuyên bố** (BioBlobs dùng gated MIL trên protein, OmniESI dùng điều biến có điều kiện). Table S5 do tác giả curate vẫn chưa lấy được; không biến điều này thành tuyên bố đã kiểm mọi nhãn E3. Kết quả G1/G2/G3 và câu hỏi cần hỏi GVHD xem [topic-decision.md](docs/topics/degron-e3-specificity/01-idea/topic-decision.md) và [chuẩn bị buổi gặp tuần 6](docs/meeting/session-02-prep.md).
-- **Hai tuyên bố đã phải thu hẹp:** MetaDegron (2024) **đã** dự đoán degron theo từng E3 cho 21 E3 và có máy chủ web → không nói "chưa ai làm đặc hiệu E3", chỉ nói khác **nguồn nhãn** và khác **đơn vị dự đoán**. Và không nói "kiến trúc chưa ai dùng". Thêm đối thủ ELITE (bioRxiv 11/2025) và E3TargetPred ở mức cặp protein–protein.
-- **Dữ liệu tái tạo:** script trong `docs/common/deep-research/research_notes/degron/`. Không commit file `.csv.gz`, `.xlsx`, bản clone.
-- **HTML tạo trực tiếp trên hệ thống, không dùng artifact** (yêu cầu của sinh viên 11/10/2026). Artifact bản 1 đã lạc hậu.
-
-### Định hướng cũ: thay RTK–ATP, khảo sát song song aging và cancer (02/10/2026) — **đã kết thúc bằng quyết định ở trên**
-
-**Trạng thái sau buổi gặp:** sinh viên **gần như chắc chắn sẽ đổi đề tài**; RTK–ATP coi như đã bỏ. Hai hướng GVHD gợi ý — **aging** và **cancer** — đang được **khảo sát song song để so sánh**, chưa chọn. **Mốc chặn: tuần 6 phải báo cáo lại đề tài với GVHD** (hiện tuần 4). Đọc [biên bản lần 1](docs/meeting/session-01-minutes.md) để nắm năm tiêu chí đóng góp và yêu cầu về cách trình bày, rồi **[khảo sát sâu aging và cancer](docs/common/deep-research/reports/aging-cancer-deep-dive.md)** (02/10/2026, bản đang dùng: các ứng viên A–F, sáu đính chính bắt buộc, câu hỏi cho GVHD tuần 6). Kiến thức nền để đọc các tài liệu này: [lộ trình tự học](docs/common/biology-basics/learning-roadmap.md) và [bộ bài giảng HTML](docs/common/lectures/) (đang viết, mới có bài 02 và 09). [Bản so sánh lần 1](docs/common/deep-research/reports/aging-vs-cancer-topic-comparison.md) đã bị bản khảo sát sâu thay thế, chỉ giữ làm lịch sử.
-
-### Hướng cũ RTK–ATP (`docs/topics/rtk-atp-applicability/`), **coi như đã bỏ từ 02/10/2026**
-
-Các tài liệu dưới đây chỉ giữ làm tham khảo.
-
-**Xây dựng hệ thống dự đoán vị trí gắn ATP ở protein RTK có cảnh báo miền áp dụng, dùng PLM–MCNN và truy hồi, đánh giá bằng giao thức kiểm soát rò rỉ dữ liệu.** Quyết định của sinh viên, **chưa có phê duyệt GVHD** — buổi gặp sáng 02/10/2026.
-
-- **[Thuyết minh chi tiết](docs/topics/rtk-atp-applicability/04-proposal/topic-proposal.md)** — bản đề xuất RTK–ATP trước khi chuyển định hướng
-- [Quyết định và phạm vi](docs/topics/rtk-atp-applicability/01-idea/topic-decision.md) · [Bài báo liên quan chính](docs/topics/rtk-atp-applicability/02-survey/key-papers.md) · [Dữ liệu đã tải và kiểm tra](docs/topics/rtk-atp-applicability/03-data/data-report.md)
-- Trình bày: [dàn ý và kịch bản nói](docs/meeting/2026-10-02-rtk-atp-slide-outline.md) · slide 13 trang: https://claude.ai/artifact/GGw1vJ2wpJKF63gmoBgLYT (mã nguồn [docs/meeting/session-01-slides/](docs/meeting/session-01-slides/))
-- Notion: [Đề tài chốt: Dự đoán vị trí gắn ATP ở RTK có cảnh báo miền áp dụng](https://app.notion.com/p/3ec486d98ebc8103aaa8fef200473880)
-- Dữ liệu tái tạo: `python3 ml/rtk-atp-applicability/preprocessing/prepare_data.py`
-- **Quy ước ngôn từ riêng của đề tài:** nói “kiểm soát rò rỉ”, không nói “chống rò rỉ”/“không rò rỉ”. Gọi identity là “tín hiệu miền áp dụng”, không gọi là “độ tin cậy”. Không tuyên bố “đầu tiên” hay “vượt SOTA”. Nhận xét mã nguồn RTK_RAG luôn kèm giới hạn “chưa kết luận đây là phiên bản tạo ra số liệu bài báo”.
-- Hai RQ: (1) truy hồi giúp bao nhiêu khi kiểm soát đồng dạng, có nhánh k-NN để tách nguồn lợi ích; (2) identity có dùng được làm tín hiệu miền áp dụng không. Việc kỹ thuật từng dự kiến cho hướng cũ: **chạy alignment và gom cụm đồng dạng**, chưa làm; không phải ưu tiên hiện tại.
-
-### Nền khảo sát dẫn tới quyết định (lịch sử, không phải bản đang dùng)
-
-- [Khảo sát 4 đề xuất tin sinh](docs/common/deep-research/reports/bioinformatics-topic-survey.md) · [khảo sát theo trọng tâm hệ thống](docs/common/deep-research/reports/bioinformatics-application-topics.md) · [ghi chú theo nhánh](docs/common/deep-research/research_notes/bioinformatics-topic-survey/)
-- Bằng chứng tự kiểm chứng: [chọn ngưỡng G-mean trong mã công khai](docs/common/deep-research/reports/rtk-rag-threshold-verification.md) · [RAG-msCNN](docs/common/deep-research/reports/rag-mscnn-verification.md)
-- Bản trao đổi và so sánh hướng trước khi chốt: [session-01-prep.md](docs/meeting/session-01-prep.md) · [bioinformatics-application-pitch.md](docs/meeting/bioinformatics-application-pitch.md) · [bioinformatics-topic-ideas-notion.md](docs/meeting/bioinformatics-topic-ideas-notion.md) · [bioinformatics-proposal-notion.md](docs/meeting/bioinformatics-proposal-notion.md)
-
-### Đề tài: quản lý chi tiêu cá nhân (`personal-expense-management`) — **đã bỏ, tài liệu đã xóa 04/10/2026**
-
-- Toàn bộ `docs/topics/personal-expense-management/` (brainstorm, khảo sát, báo cáo dữ liệu, đề cương LaTeX, slide) **đã bị xóa khỏi thư mục làm việc** ngày 04/10/2026. Muốn xem lại thì lấy từ lịch sử git (commit `3a0c6bf` trở về trước).
-- Còn sót lại trong repo: code Python ở `ml/personal-expense-management/` (`preprocessing/clean_data.py`, hai thí nghiệm `rq1-quick-check`, `rq2-baseline-recall`) và các lệnh chạy tương ứng trong [AGENTS.md](AGENTS.md). Chưa quyết định xóa hay giữ.
-- Dòng còn tham chiếu tới đề tài này: [docs/topics/README.md](docs/topics/README.md) (bảng đề tài), [docs/common/resources.md](docs/common/resources.md) (slide lưu trữ, cache embedding, dữ liệu, LaTeX, trang Notion).

@@ -1,6 +1,10 @@
 # Quyết định và phạm vi đề tài: footprint degron ở mức residue
 
+> **Trạng thái hiện hành 12/10/2026: phương án dự phòng.** [Quyết định khảo sát mở](../../../common/deep-research/reports/open-field-topic-selection-2026-10-12.md) chọn `budgeted-microservice-rca` làm chính. Nội dung kiến trúc/slide bên dưới ghi quyết định 11/10; nếu kích hoạt dự phòng phải dùng đính chính trong audit 12/10, không tự coi MIL/cổng cấu trúc đã được chứng minh.
+
 > **Đề tài chốt ngày 11/10/2026, tái định tâm cùng ngày (khuya)** sau khi qua cổng chặn số 2. Slug giữ nguyên `degron-e3-specificity` để không vỡ liên kết, nhưng **trục đề tài đã đổi** — xem mục 1 và mục 2.1. Chưa có phê duyệt chính thức của GVHD; cần báo cáo ở buổi tuần 6.
+
+> **Audit 12/10/2026:** [báo cáo thành phần–ngữ cảnh](../../../common/deep-research/reports/degron-composition-context-audit.md) đã lượng hóa giới hạn của score thành phần: cận kỳ vọng precision@3 **0,6045**, oracle không ràng buộc **0,7792**; 2.046/2.624 footprint có cùng cặp thay thế nhưng chênh ΔPSI ≥1. Test thử theo cụm protein identity 30%, coverage hai chiều 50%, chỉ giữ peptide khớp tham chiếu còn **221–301 footprint** qua 5 seed. Phương án ma trận thay thế trong báo cáo là **đề xuất đang khảo sát**, chưa thay kiến trúc hoặc tên đề tài ở tài liệu này. Các trang trình bày cũ chưa được đồng bộ toàn bộ với audit mới.
 
 ## 1. Tên đề tài
 
@@ -17,10 +21,10 @@ Tên cũ — *"Dự đoán đặc hiệu E3–degron ở mức residue bằng h�
 
 Mọi con số dưới đây là **tự đếm từ dữ liệu thô**, không dẫn lại từ bài báo.
 
-1. **Mô hình tốt nhất hiện có không đọc được vị trí.** Tự dựng lại PAP (*Science Advances* 2026) bằng numpy từ trọng số công bố, rồi đảo ngẫu nhiên thứ tự acid amin trong từng tile: điểm **không đổi**, Pearson(gốc, đảo) = **1,000000**. Mô hình đó bất biến hoán vị — không biểu diễn được motif nào — mà vẫn đạt Pearson 0,869.
-2. **Thang điểm khối đã bão hòa.** Tác giả có sẵn bản `cnn2w7` (cửa sổ 7, bắt được motif); tự chạy lại: chỉ hơn **+0,0032 Pearson**. "Thêm năng lực bắt motif" không còn là trục đóng góp trên thang đó.
-3. **Nhưng tín hiệu khu trú tồn tại thật, và đã đếm được.** Trong bộ đột biến quét của Zhang 2023: **2.624 peptide** có footprint học được, trong đó **2.402 khu trú** ở **≤ 6 vị trí**, và **median đúng 3 vị trí quan trọng trên 28**. Một mô hình bất biến hoán vị về nguyên lý không thể dự đoán được bản đồ này.
-4. **Nhãn theo residue đủ lớn để huấn luyện có giám sát:** **256.711 phép đo** có PSI và reads ≥ 10 từ đột biến quét, cộng **135.040** phép đo từ 249 bản đồ thay thế đầy đủ.
+1. **Kênh nội PAP cnn2w1 không dùng thứ tự residue.** Đảo thứ tự cho Pearson(gốc, đảo) = **1,000000**. Đây là tính chất của kênh nội dựa thành phần, không phải toàn bộ PAP có kênh C-terminal. PAP đầy đủ được tái lập ở Pearson 0,869. ΔPAP vẫn dự đoán được ảnh hưởng thay thế; trong cùng peptide, mô hình thành phần chỉ bắt buộc cho cùng giá trị ở các vị trí có cùng cặp (WT, replacement).
+2. **Lợi ích của bản đối chứng bắt motif nhỏ trên điểm toàn đoạn.** `cnn2w7` chỉ hơn **+0,0032 Pearson** trong cấu hình đã tái lập. Điều này chưa chứng minh thang đo bão hòa hoặc mọi kiến trúc có ngữ cảnh đều không thể cải thiện.
+3. **Nhãn khu trú có phần vượt biểu diễn thành phần.** Có **2.624 footprint**, **2.402 khu trú**, median 3 vị trí quan trọng. Audit mới cho thấy **2.046** peptide có vị trí cùng cặp thay thế nhưng chênh ΔPSI ≥1. Đây là khác biệt nhãn quan sát, chưa tách phần ngữ cảnh có thể học khỏi nhiễu thực nghiệm.
+4. **Nguồn nhãn theo vị trí:** **256.711 dòng** có PSI và reads ≥10 từ quét, cộng **135.040 định danh** trong thư viện bão hòa của 249 peptide. Bão hòa còn cần tính/curate score; không gọi mọi định danh là một ΔPSI đã xác nhận.
 
 ### 2.1 Cổng chặn 2 đã đóng, và nó buộc đổi trục
 
@@ -54,8 +58,8 @@ Bền với **36 tổ hợp ngưỡng**: gán được 16–29, số E3 8–10, 
 | | Bộ 1 — bản đồ bào tương | Bộ 2 — đột biến quét | Bộ 3 — đột biến bão hòa | Bộ 4 — biến thể protein nguyên vẹn |
 |---|---|---|---|---|
 | Nguồn | Voutsinos 2026, *Sci Adv* | Zhang 2023, Mendeley `32h94v2yv2` | cùng nguồn | MaveDB (API) |
-| Vai trò | **Nhãn yếu, mức đoạn** (nhiệm vụ phụ trợ) | **Nhãn mạnh, mức residue** — huấn luyện chính | **Tập kiểm tra độ phân giải cao** | Kiểm tra trên protein nguyên vẹn |
-| Số phép đo | 212.658 đoạn | **256.711** (PSI, reads ≥ 10) | **135.040** | 69.209 biến thể duy nhất |
+| Vai trò | **Nhãn yếu, mức đoạn** (nhiệm vụ phụ trợ) | **Nhãn mạnh, mức residue** — huấn luyện chính | **Kiểm tra độ phân giải cao sau xử lý score và chia tập** | Kiểm tra trên protein nguyên vẹn |
+| Số phép đo | 212.658 đoạn | **256.711** (PSI, reads ≥ 10) | **135.040 định danh; chưa phải số score đạt lọc** | 69.209 biến thể duy nhất |
 | Đơn vị nhãn | một điểm cho cả đoạn | ΔPSI theo **từng vị trí** | ΔPSI theo **vị trí × 19 thay thế** | độ dồi dào protein |
 | Peptide dùng được | 5.327 gene | **2.624** có footprint (2.402 khu trú) | **249** (239 phủ ≥ 27 vị trí) | 9 gene |
 | Thang đo | Điểm liên tục 0–1 | PSI 1–6 | PSI 1–6 | Độ dồi dào |
@@ -75,12 +79,12 @@ GVHD **kỳ vọng một kiến trúc chưa ai dùng** (thông tin ngày 11/10/2
 | 2 | Embedding PLM **mức residue**, không gộp trước | Mọi mô hình degron đã công bố đều gộp trung bình hoặc dùng thành phần |
 | 3 | **Attention có cổng** trên các thể hiện, thay global average pooling | Cấu trúc túi là chỗ nối **nhãn yếu mức đoạn** (212.658) với **nhãn mạnh mức residue** (256.711) trong **một** mô hình |
 | 4 | **Cổng phơi lộ**: rASA và pLDDT nhân vào logit attention | Tác giả đo điểm chỉ tương quan độ dồi dào ở rASA > 0,7, nhưng chỉ dùng cấu trúc để phân tích sau |
-| 5 | Hai đầu ra, huấn luyện đa nhiệm: điểm khối (phụ trợ) và **bản đồ độ nhạy theo residue** (mục tiêu) | Nhãn đoạn nhiều nhưng đã bão hòa; nhãn residue ít hơn nhưng là thứ cần đo |
+| 5 | Hai đầu ra, huấn luyện đa nhiệm: điểm khối (phụ trợ) và **bản đồ độ nhạy theo residue** (mục tiêu) | Nhãn đoạn nhiều; nhãn residue là thứ cần đo. Lợi ích nhãn phụ chưa được thực nghiệm |
 
 **Hai điểm mới, phát biểu hẹp đúng mức:**
 
 - **Cổng phơi lộ đặt ở chỗ gộp, không phải đầu vào.** Dự đoán trên peptide tách rời thì đặt cổng "phơi lộ hoàn toàn"; trên protein nguyên vẹn thì đặt rASA thật. Cùng một mô hình giải thích cả hai chế độ, tức khoảng cách tile-so-với-protein trở thành một tham số của mô hình.
-- **Attention được giám sát trực tiếp bằng nhãn thực nghiệm theo residue**, thay vì chỉ dùng làm diễn giải sau khi huấn luyện. Đây là chỗ bộ nhãn mới đổi bản chất thiết kế: trọng số attention có **ground truth** để học và để chấm điểm.
+- **Attention có thể được giám sát bằng nhãn đột biến theo residue**, nhưng trọng số attention và ảnh hưởng đột biến là hai đối tượng khác nhau. Không gọi nhãn đột biến là ground truth trực tiếp của attention hoặc coi đây tự nó là phương pháp mới; cần đối chứng và kiểm giá trị của cách nối hai đối tượng.
 
 **Phải tự nói ra giới hạn của lập luận MIL.** Khi đã có nhãn ở mức residue thì một đầu hồi quy theo từng vị trí là mô hình tự nhiên, và MIL không còn bắt buộc. Lý do giữ cấu trúc túi là **để dùng được cả hai bộ nhãn trong một mô hình**: đầu khối gộp các thể hiện, đầu residue đọc thẳng từng thể hiện. Nếu phép thử cho thấy đầu hồi quy theo vị trí đơn thuần đã đủ, thì đó là kết quả phải báo, không phải thất bại cần che.
 
@@ -90,13 +94,13 @@ Thước đo chính **không phải** Pearson trên thang điểm khối. Ba b�
 
 1. **Tái lập baseline trên thang điểm khối.** 428 gene holdout hiệu dụng; PAP chạy lại đã đạt Pearson 0,8690. Bậc này để chứng minh chạy lại được, **không** để đặt đóng góp.
 2. **Dự đoán bản đồ độ nhạy theo residue — thước đo chính.** Chia **theo peptide**, trên 2.624 peptide có footprint. Chỉ số: Spearman theo từng peptide giữa vector 28 chiều dự đoán và đo được; và **precision@3** — mô hình có đặt độ nhạy cao nhất đúng vào các vị trí quan trọng thật không (median 3 trên 28).
-3. **Chuyển sang bản đồ thay thế đầy đủ.** 249 peptide đột biến bão hòa, 28 vị trí × 19 thay thế. Khác thư viện, khác độ phân giải. Chỉ dùng làm **tập kiểm tra**, không huấn luyện.
+3. **Chuyển sang bản đồ thay thế đầy đủ.** 249 peptide bão hòa thô, cần xử lý score và mask ô không hợp lệ; không mặc định mọi peptide có đủ 28×19 nhãn. Có 130/248 peptide đạt reads trùng bộ quét nên cần giữ peptide/protein/cụm cùng phía trước khi gọi là tập kiểm tra. Nếu đề xuất ma trận dùng một phần bão hòa để train, phải chốt protocol mới và giữ riêng phần test.
 
-**Đối chứng âm có sẵn, và nó là điểm mạnh của thiết kế:** mô hình bất biến hoán vị phải cho bản đồ **phẳng**, tức precision@3 bằng mức ngẫu nhiên. Nếu nó không phẳng thì giả thuyết trung tâm của đề tài sai và phải báo như vậy.
+**Đối chứng bắt buộc:** ΔPAP tính trên đúng thay thế thực nghiệm, mô hình thành phần và đầu hồi quy theo vị trí không MIL. Bản đồ của mô hình thành phần không bắt buộc phẳng; ràng buộc đúng là score trùng nhau ở các vị trí cùng cặp thay thế trong cùng peptide. Các oracle/cận ở audit 12/10 dùng nhãn đánh giá, không phải performance đã đo của các baseline này.
 
 **Ca nghiên cứu E3, không phải thước đo:** 23 peptide có cả nhãn E3 và bản đồ bão hòa. Câu hỏi: footprint dự đoán có khớp motif của E3 đã biết không? Cả 13 peptide KLHL15 nằm trong giao này; vẫn cần lọc chất lượng nhãn và chia tập trước khi chấm ca nghiên cứu.
 
-> **Vẫn phải thống nhất với GVHD trước khi bắt đầu.** Phép đo cho thấy thay gộp trung bình bằng gộp max làm hiệu năng trên thang điểm khối sụt **0,824 → 0,344**, và entropy theo vị trí 3,294 trên tối đa 3,401 — tín hiệu thang điểm khối **dàn đều, không khu trú**. Nên kiến trúc khu trú **gần như chắc chắn không thắng trên thang điểm khối**. Thước đo chính phải là bậc 2 và bậc 3. Nếu GVHD yêu cầu thắng trên thang điểm khối thì phải thiết kế lại đề tài.
+> **Vẫn phải thống nhất thước đo với GVHD trước khi bắt đầu.** Đổi gộp trung bình sang max trên **cùng trọng số đã học cho gộp trung bình** làm Pearson sụt **0,824 → 0,344**. Đây không phải so sánh công bằng với max pooling được huấn luyện lại, nên không suy ra kiến trúc khu trú sẽ thua hoặc không thể cải thiện điểm toàn đoạn. Thước đo chính đề xuất vẫn là bậc 2 và bậc 3 vì khớp câu hỏi footprint.
 
 ## 7. Ba cổng chặn — trạng thái cập nhật 11/10/2026 (cuối phiên)
 
