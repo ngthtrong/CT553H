@@ -1,0 +1,316 @@
+{
+ "n_score_sets_downloaded": 26,
+ "per_gene": {
+  "ASPA": {
+   "n_score_sets": 2,
+   "rows": 12308,
+   "rows_with_score": 12303,
+   "unique_variants_after_dedup": 6154,
+   "sum_of_per_set_unique": 12303,
+   "duplication_collapsed": 6149
+  },
+  "CYP2C19": {
+   "n_score_sets": 3,
+   "rows": 8802,
+   "rows_with_score": 8802,
+   "unique_variants_after_dedup": 8598,
+   "sum_of_per_set_unique": 8602,
+   "duplication_collapsed": 4
+  },
+  "CYP2C9": {
+   "n_score_sets": 3,
+   "rows": 13454,
+   "rows_with_score": 13454,
+   "unique_variants_after_dedup": 8804,
+   "sum_of_per_set_unique": 13453,
+   "duplication_collapsed": 4649
+  },
+  "GCK": {
+   "n_score_sets": 3,
+   "rows": 26950,
+   "rows_with_score": 26950,
+   "unique_variants_after_dedup": 9620,
+   "sum_of_per_set_unique": 26950,
+   "duplication_collapsed": 17330
+  },
+  "LDLR": {
+   "n_score_sets": 3,
+   "rows": 41772,
+   "rows_with_score": 41772,
+   "unique_variants_after_dedup": 17916,
+   "sum_of_per_set_unique": 41772,
+   "duplication_collapsed": 23856
+  },
+  "NUDT15": {
+   "n_score_sets": 3,
+   "rows": 9215,
+   "rows_with_score": 8705,
+   "unique_variants_after_dedup": 3015,
+   "sum_of_per_set_unique": 8703,
+   "duplication_collapsed": 5688
+  },
+  "PRKN": {
+   "n_score_sets": 2,
+   "rows": 18425,
+   "rows_with_score": 18424,
+   "unique_variants_after_dedup": 9283,
+   "sum_of_per_set_unique": 18424,
+   "duplication_collapsed": 9141
+  },
+  "PTEN": {
+   "n_score_sets": 6,
+   "rows": 25537,
+   "rows_with_score": 24869,
+   "unique_variants_after_dedup": 8777,
+   "sum_of_per_set_unique": 24867,
+   "duplication_collapsed": 16090
+  },
+  "TPMT": {
+   "n_score_sets": 1,
+   "rows": 4028,
+   "rows_with_score": 4028,
+   "unique_variants_after_dedup": 4027,
+   "sum_of_per_set_unique": 4027,
+   "duplication_collapsed": 0
+  }
+ },
+ "total_unique_variants_after_dedup": 76194,
+ "total_rows": 160491,
+ "per_score_set": {
+  "urn:mavedb:00000013-a-1": {
+   "gene": "PTEN",
+   "title": "PTEN VAMP-seq",
+   "rows": 4409,
+   "rows_with_score": 4409,
+   "unique_variants": 4408,
+   "declared_numVariants": 4409,
+   "license": "CC0"
+  },
+  "urn:mavedb:00000013-b-1": {
+   "gene": "TPMT",
+   "title": "TPMT VAMP-seq",
+   "rows": 4028,
+   "rows_with_score": 4028,
+   "unique_variants": 4027,
+   "declared_numVariants": 4028,
+   "license": "CC0"
+  },
+  "urn:mavedb:00000054-a-1": {
+   "gene": "PTEN",
+   "title": "PTEN lipid phosphatase scores",
+   "rows": 8681,
+   "rows_with_score": 8013,
+   "unique_variants": 8012,
+   "declared_numVariants": 8681,
+   "license": "CC0"
+  },
+  "urn:mavedb:00000055-0-1": {
+   "gene": "NUDT15",
+   "title": "NUDT15 combined scores",
+   "rows": 3015,
+   "rows_with_score": 2845,
+   "unique_variants": 2845,
+   "declared_numVariants": 3015,
+   "license": "CC0"
+  },
+  "urn:mavedb:00000055-a-1": {
+   "gene": "NUDT15",
+   "title": "NUDT15 protein stability scores",
+   "rows": 3100,
+   "rows_with_score": 2924,
+   "unique_variants": 2923,
+   "declared_numVariants": 3100,
+   "license": "CC0"
+  },
+  "urn:mavedb:00000055-b-1": {
+   "gene": "NUDT15",
+   "title": "NUDT15 activity scores",
+   "rows": 3100,
+   "rows_with_score": 2936,
+   "unique_variants": 2935,
+   "declared_numVariants": 3100,
+   "license": "CC0"
+  },
+  "urn:mavedb:00000062-a-1": {
+   "gene": "CYP2C9",
+   "title": "Abundance of CYP2C9 variants",
+   "rows": 109,
+   "rows_with_score": 109,
+   "unique_variants": 108,
+   "declared_numVariants": 109,
+   "license": "CC0"
+  },
+  "urn:mavedb:00000062-b-1": {
+   "gene": "CYP2C19",
+   "title": "Abundance of CYP2C19 variants",
+   "rows": 121,
+   "rows_with_score": 121,
+   "unique_variants": 121,
+   "declared_numVariants": 121,
+   "license": "CC0"
+  },
+  "urn:mavedb:00000095-a-1": {
+   "gene": "CYP2C9",
+   "title": "CYP2C9 activity scores as measured by Click-seq",
+   "rows": 6524,
+   "rows_with_score": 6524,
+   "unique_variants": 6524,
+   "declared_numVariants": 6524,
+   "license": "CC0"
+  },
+  "urn:mavedb:00000095-b-1": {
+   "gene": "CYP2C9",
+   "title": "CYP2C9 abundance scores as measured by VAMP-seq",
+   "rows": 6821,
+   "rows_with_score": 6821,
+   "unique_variants": 6821,
+   "declared_numVariants": 6821,
+   "license": "CC0"
+  },
+  "urn:mavedb:00000096-a-1": {
+   "gene": "GCK",
+   "title": "GCK activity measured by complementation",
+   "rows": 9362,
+   "rows_with_score": 9362,
+   "unique_variants": 9362,
+   "declared_numVariants": 9362,
+   "license": "CC0"
+  },
+  "urn:mavedb:00000096-b-1": {
+   "gene": "GCK",
+   "title": "GCK variant abundance measured by DHFR-PCA",
+   "rows": 9201,
+   "rows_with_score": 9201,
+   "unique_variants": 9201,
+   "declared_numVariants": 9201,
+   "license": "CC0"
+  },
+  "urn:mavedb:00000101-a-1": {
+   "gene": "PTEN",
+   "title": "PTEN VAMP-seq Fill-in",
+   "rows": 4514,
+   "rows_with_score": 4514,
+   "unique_variants": 4514,
+   "declared_numVariants": 4514,
+   "license": "CC0"
+  },
+  "urn:mavedb:00000102-0-1": {
+   "gene": "PTEN",
+   "title": "PTEN VAMP-seq Combined",
+   "rows": 5477,
+   "rows_with_score": 5477,
+   "unique_variants": 5477,
+   "declared_numVariants": 5477,
+   "license": "CC0"
+  },
+  "urn:mavedb:00000114-a-1": {
+   "gene": "PRKN",
+   "title": "Parkin (PRKN) cellular abundance",
+   "rows": 9220,
+   "rows_with_score": 9219,
+   "unique_variants": 9219,
+   "declared_numVariants": 9220,
+   "license": "CC0"
+  },
+  "urn:mavedb:00000657-a-1": {
+   "gene": "ASPA",
+   "title": "Aspartoacylase (ASPA) cellular abundance",
+   "rows": 6152,
+   "rows_with_score": 6152,
+   "unique_variants": 6152,
+   "declared_numVariants": 6152,
+   "license": "CC0"
+  },
+  "urn:mavedb:00000657-b-1": {
+   "gene": "ASPA",
+   "title": "Aspartoacylase (ASPA) cellular toxicity",
+   "rows": 6156,
+   "rows_with_score": 6151,
+   "unique_variants": 6151,
+   "declared_numVariants": 6156,
+   "license": "CC0"
+  },
+  "urn:mavedb:00001199-a-1": {
+   "gene": "CYP2C19",
+   "title": "CYP2C19 VAMP-seq nonsynonymous scores",
+   "rows": 8149,
+   "rows_with_score": 8149,
+   "unique_variants": 8149,
+   "declared_numVariants": 8149,
+   "license": "CC0"
+  },
+  "urn:mavedb:00001199-a-2": {
+   "gene": "CYP2C19",
+   "title": "CYP2C19 VAMP-seq synonymous scores",
+   "rows": 532,
+   "rows_with_score": 532,
+   "unique_variants": 332,
+   "declared_numVariants": 532,
+   "license": "CC0"
+  },
+  "urn:mavedb:00001244-a-1": {
+   "gene": "PTEN",
+   "title": "PTEN Variant Imaging in Neurons",
+   "rows": 1228,
+   "rows_with_score": 1228,
+   "unique_variants": 1228,
+   "declared_numVariants": 1228,
+   "license": "CC0"
+  },
+  "urn:mavedb:00001244-b-1": {
+   "gene": "PTEN",
+   "title": "PTEN VIS-seq in hiPSCs",
+   "rows": 1228,
+   "rows_with_score": 1228,
+   "unique_variants": 1228,
+   "declared_numVariants": 1228,
+   "license": "CC0"
+  },
+  "urn:mavedb:00001247-a-1": {
+   "gene": "GCK",
+   "title": "GCK Y2H",
+   "rows": 8387,
+   "rows_with_score": 8387,
+   "unique_variants": 8387,
+   "declared_numVariants": 8387,
+   "license": "CC0"
+  },
+  "urn:mavedb:00001269-a-1": {
+   "gene": "LDLR",
+   "title": "LDLR missense variant effects on LDL uptake.",
+   "rows": 17390,
+   "rows_with_score": 17390,
+   "unique_variants": 17390,
+   "declared_numVariants": 17390,
+   "license": "CC0"
+  },
+  "urn:mavedb:00001269-b-1": {
+   "gene": "LDLR",
+   "title": "LDLR missense variant effects on LDLR cell-surface abundance.",
+   "rows": 16796,
+   "rows_with_score": 16796,
+   "unique_variants": 16796,
+   "declared_numVariants": 16796,
+   "license": "CC0"
+  },
+  "urn:mavedb:00001269-c-1": {
+   "gene": "LDLR",
+   "title": "LDLR missense variant effects on LDL uptake with VLDL.",
+   "rows": 7586,
+   "rows_with_score": 7586,
+   "unique_variants": 7586,
+   "declared_numVariants": 7586,
+   "license": "CC0"
+  },
+  "urn:mavedb:00001281-a-1": {
+   "gene": "PRKN",
+   "title": "PRKN abundance MAVE",
+   "rows": 9205,
+   "rows_with_score": 9205,
+   "unique_variants": 9205,
+   "declared_numVariants": 9205,
+   "license": "CC0"
+  }
+ },
+ "note": "Khử trùng lặp theo khóa HGVS trong từng gene. Các score set cùng gene chồng nhau nên tổng theo từng set lớn hơn số duy nhất. Biến thể _wt và _sy bị loại."
+}

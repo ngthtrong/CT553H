@@ -25,7 +25,7 @@
 
 **Mốc tiếp theo:** tuần 6 báo cáo lại đề tài với GVHD (xem [course.md](project/course.md)) — trình `degron-footprint`.
 
-**Việc chặn gần nhất của đề tài chính:** tính lực thống kê trên tập test 221–322 footprint, trước khi cam kết huấn luyện. Xem [thẻ đề tài](topics/degron-footprint/README.md).
+**Việc chặn gần nhất của đề tài chính:** Trọng xác nhận **C-6** (bảy đề xuất từ audit dữ liệu 13/10, gồm mốc đánh giá G2 và nguồn nhãn chính). Việc chặn trước đó — tính lực thống kê trên tập test 221–322 footprint — **đã xong 13/10: đủ lực**. Xem [thẻ đề tài](topics/degron-footprint/README.md) và [báo cáo audit](topics/degron-footprint/research/full-data-audit/README.md).
 
 ---
 
@@ -35,6 +35,7 @@
 |---|---|---|---|
 | C-2 | Thứ tự giữa A2 và A3 | Claude, 12/10/2026 | Phần A4 của đề xuất này **đã được giải quyết** — A4 là dự phòng theo [D-023](#d-023). Còn lại thứ tự A2 ↔ A3, chỉ là gợi ý trong [deep-dive](topics/plm-calibration-audit/research/deep-dive-2026-10-12.md). Thay bằng số đầu tên thư mục khi Trọng đặt |
 | C-4 | Năm ứng viên còn lại giữ trong `topics/` hay đóng bớt: A2, A3, `dark-kinome-zero-shot`, `budgeted-plm-variant-scoring`, `scalable-metagenomic-binning` | Claude, 12/10/2026 | [D-023](#d-023) đã quyết đề tài chính và dự phòng, nhưng **chưa quyết** số phận năm ứng viên này; chúng đang giữ nguyên trạng. Giữ cả năm thì tốn công theo dõi; `dark-kinome-zero-shot` có G2 yếu nhất (trụ tính mới đã sụp) nên là ứng viên đóng trước. Đối chiếu: [khảo sát 7 ứng viên](surveys/seven-candidates-comparison-2026-10-12.md) |
+| C-6 | **Bảy đề xuất từ audit dữ liệu đầy đủ của `degron-footprint`** (13/10), xem [báo cáo §9](topics/degron-footprint/research/full-data-audit/README.md): **(1)** sửa cách phát biểu mục tiêu G2 — bỏ "vượt 0,6045 / +28,9%", dùng baseline thành phần trung thực **0,4897** làm mốc và báo kèm trần nhãn **0,6514**, vì 0,6045 và 0,7792 đều là oracle đọc nhãn test; **(2)** chuyển trọng tâm nhãn sang **bộ bão hòa** (nhiễu 16,7% so với 75,9%, Jaccard 0,66 so với 0,50, ma trận phủ 97,9%) và nhận rủi ro chỉ 235 peptide; **(3)** dùng nhãn trung bình hai replicate thay vì một; **(4)** chọn split cụm protein **cov80** thay cov50 để lực đạt 0,92–0,94; **(5)** giữ 130 peptide có cả hai nguồn nhãn cùng phía train/test; **(6)** nêu SVM của Zhang 2023 trong G3 và đề cương, làm rõ khác phạm vi peptide/residue; **(7)** không trộn mẫu BAG6 WT với hai replicate kia | Claude, 13/10/2026 | Đề xuất (1) và (2) đổi mốc đánh giá và nguồn nhãn chính của đề tài nên **cần Trọng quyết**, không tự áp. Việc chặn cũ ("tính lực thống kê") **đã xong**: tập test 221–322 đủ lực. Thẻ đề tài đã sửa phần **bằng chứng đo được**; phần **mốc cam kết** vẫn chờ mục này |
 | C-5 | Xác nhận lại với GVHD ở tuần 6 rằng đóng góp dạng công cụ được nhận | Claude, 12/10/2026 | [D-022](#d-022) dựa trên thông tin Trọng truyền đạt, **chưa có biên bản**, và nó đọc lại lời GVHD ngày 11/10 theo hướng nhẹ hơn. Nên hỏi một câu xác nhận để khỏi phải đổi hướng muộn |
 
 ---

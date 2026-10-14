@@ -1,0 +1,52 @@
+{
+ "n_saturation_peptides": 248,
+ "tile_rule": {
+  "step": 23,
+  "length": 28,
+  "start_formula": "(n-1)*step"
+ },
+ "tile_rule_check": {
+  "match": 128,
+  "mismatch": 2,
+  "no_truth": 117,
+  "no_derivation": 1,
+  "examples_mismatch": [
+   {
+    "peptide": "Q8NFD5_ARID1B_46",
+    "truth": "SSTTTGEKITKVYELGNEPERKLWVDRY",
+    "derived": "GMNQSGLMASSSPYSQPMNNSSSLMNTQ"
+   },
+   {
+    "peptide": "Q9ULA0_DNPEP_2",
+    "truth": "FVNRSPSPFHAVAECRNRLLQAGFSELK",
+    "derived": "VQTAAKELLKFVNRSPSPFHAVAECRNR"
+   }
+  ],
+  "n_sequences_available": 245
+ },
+ "internal_wt_reference": {
+  "n_peptides": 236,
+  "median_cells_per_peptide": 56.0,
+  "median_within_peptide_sd": 0.0576,
+  "cross_check_vs_scanning_wt": {
+   "n_peptides": 117,
+   "pearson": 0.7882,
+   "mean_diff": -0.0132,
+   "sd_diff": 0.5795,
+   "meaning": "Pearson cao và mean_diff nhỏ thì WT nội tại dùng được làm mốc, nên tính được ΔPSI cho CẢ các peptide không có trong bộ scanning."
+  }
+ },
+ "dpsi_matrix": {
+  "n_peptides_with_matrix": 235,
+  "mean_fill_rate_of_28x19": 0.9791,
+  "n_substitution_cells_in_both_halves": 122412,
+  "pearson_dpsi_between_halves": 0.8335,
+  "sd_noise_single_half": 0.2645,
+  "noise_share_of_observed_variance": 0.1667,
+  "n_positive_cells_half_a": 12553,
+  "n_positive_cells_half_b": 12874,
+  "n_positive_in_both": 10106,
+  "jaccard_positive_cells": 0.6596,
+  "note": "jaccard_positive_cells là trần lặp lại khi gọi một Ô là dương. Mô hình dự đoán ô không thể vượt mức này trên nhãn một-nửa."
+ }
+}

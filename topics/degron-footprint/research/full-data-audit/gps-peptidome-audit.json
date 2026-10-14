@@ -1,0 +1,76 @@
+{
+ "source": "Mendeley 10.17632/32h94v2yv2.2, I28 GPS Peptidome Screen and MLN4924 and SVM.zip",
+ "svm_10pct_training": {
+  "author_svm_observed_vs_predicted": {
+   "n": 260989,
+   "pearson": 0.8955,
+   "mean_x": 3.6981,
+   "mean_y": 3.7694,
+   "sd_x": 1.2535,
+   "sd_y": 1.1483,
+   "mean_diff": -0.0714,
+   "sd_diff": 0.5584,
+   "rmse": 0.563
+  },
+  "author_replicate_error_column": {
+   "n": 260989,
+   "median_abs": 0.239,
+   "p90_abs": 0.6526,
+   "mean_abs": 0.3069,
+   "meaning": "Ước lượng sai số giữa hai replicate do chính tác giả ghi."
+  },
+  "mln4924_delta_psi": {
+   "n": 260989,
+   "median": -0.0561,
+   "p05": -0.601,
+   "p95": 0.5247,
+   "n_stabilised_ge_1": 1978,
+   "frac_stabilised_ge_1": 0.0076,
+   "meaning": "MLN4924 ức chế neddylation nên chặn CRL. deltaPSI >= 1 là peptide bền lên rõ khi chặn CRL, tức phụ thuộc CRL."
+  }
+ },
+ "svm_5pct_training": {
+  "author_svm_observed_vs_predicted": {
+   "n": 260989,
+   "pearson": 0.8916,
+   "mean_x": 3.6981,
+   "mean_y": 3.752,
+   "sd_x": 1.2535,
+   "sd_y": 1.1427,
+   "mean_diff": -0.0539,
+   "sd_diff": 0.5683,
+   "rmse": 0.5708
+  },
+  "author_replicate_error_column": {
+   "n": 260989,
+   "median_abs": 0.239,
+   "p90_abs": 0.6526,
+   "mean_abs": 0.3069,
+   "meaning": "Ước lượng sai số giữa hai replicate do chính tác giả ghi."
+  },
+  "mln4924_delta_psi": {
+   "n": 260989,
+   "median": -0.0561,
+   "p05": -0.601,
+   "p95": 0.5247,
+   "n_stabilised_ge_1": 1978,
+   "frac_stabilised_ge_1": 0.0076,
+   "meaning": "MLN4924 ức chế neddylation nên chặn CRL. deltaPSI >= 1 là peptide bền lên rõ khi chặn CRL, tức phụ thuộc CRL."
+  }
+ },
+ "control_replicate_reproducibility": {
+  "n": 343236,
+  "pearson": 0.9304,
+  "mean_x": 3.6892,
+  "mean_y": 3.7962,
+  "sd_x": 1.2728,
+  "sd_y": 1.2722,
+  "mean_diff": -0.107,
+  "sd_diff": 0.4747,
+  "rmse": 0.4866,
+  "sd_noise_single_replicate": 0.3357,
+  "meaning": "Nhiễu PSI mức peptide trên thang toàn peptidome. So với bộ scanning (sd chênh ~0,46 ở reads>=10) để biết nhiễu là tính chất của assay hay của riêng thư viện quét.",
+  "read_min": 10
+ },
+ "implication_for_topic": "Zhang 2023 đã công bố một mô hình dự đoán PSI trên chính peptidome này. Mọi tuyên bố đóng góp của đề tài phải so với baseline này, không chỉ so với DEGRONOPEDIA / MetaDegron / PAP. Lưu ý phạm vi khác nhau: baseline này dự đoán PSI mức PEPTIDE, còn đề tài nhắm footprint và hiệu ứng đột biến mức RESIDUE — là nhiệm vụ khác, nên đây không phải đối thủ trực tiếp, nhưng phải nêu và không được bỏ qua."
+}

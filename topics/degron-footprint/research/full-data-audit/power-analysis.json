@@ -1,0 +1,52 @@
+{
+ "measured_on": {
+  "n_peptides": 2403,
+  "labels": "replicate 2",
+  "scores": "replicate 1",
+  "note": "cả hai chấm trên cùng peptide nên dùng kiểm ghép cặp"
+ },
+ "observed": {
+  "precision_at_3_replicate_ceiling": 0.6514,
+  "precision_at_3_composition_baseline": 0.4897,
+  "paired_mean_difference": 0.1617,
+  "paired_sd_of_difference": 0.2416,
+  "effect_size_dz": 0.6694
+ },
+ "power": {
+  "n_221": 1.0,
+  "n_271": 1.0,
+  "n_301": 1.0,
+  "n_322": 1.0,
+  "n_500": 1.0,
+  "n_1000": 1.0,
+  "n_2000": 1.0
+ },
+ "mde": {
+  "n_221": 0.0455,
+  "n_271": 0.0411,
+  "n_301": 0.039,
+  "n_322": 0.0377,
+  "n_500": 0.0303,
+  "n_1000": 0.0214,
+  "n_2000": 0.0151
+ },
+ "n_required_for_power_080_at_observed_effect": 18,
+ "against_theoretical_class_bound_0_6045": {
+  "replicate_ceiling": 0.6514,
+  "bound": 0.6045,
+  "headroom": 0.0469,
+  "power": {
+   "n_221": 0.8228,
+   "n_271": 0.8917,
+   "n_301": 0.9204,
+   "n_322": 0.9362,
+   "n_500": 0.9914,
+   "n_1000": 1.0,
+   "n_2000": 1.0
+  },
+  "note": "Dùng cùng sd ghép cặp đã đo. Đây là trường hợp sát biên: nếu đề tài cam kết 'vượt 0,6045' thì ở cỡ test nhỏ nhất, MDE xấp xỉ bằng chính dư địa.",
+  "n_required_for_power_080": 209
+ },
+ "caveat_sd": "sd ghép cặp 0,2416 đo trên cặp (replicate đầy đủ, baseline thành phần). Một mô hình học được so với baseline có thể cho sd khác; khi có mô hình thật phải tính lại lực bằng sd của chính cặp đó, không dùng lại con số này.",
+ "interpretation": "paired_mean_difference là dư địa THẬT giữa trần thực nghiệm (một phép đo lặp) và baseline chỉ thành phần, đo trên cùng peptide. Một mô hình học được không thể vượt trần này mà không khử nhiễu đo. So cỡ test 221–322 với n_required_for_power_080_at_observed_effect để biết tập test theo cụm protein có đủ lực hay không. MDE là mức cải thiện nhỏ nhất phát hiện được ở lực 0,80 với cỡ đó."
+}

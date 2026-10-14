@@ -1,4 +1,4 @@
-[← Bài trước](07-evaluation.md) · Bài 8/9 · [Bài sau: Rủi ro →](09-risks.md)
+[← Bài trước](07-evaluation.md) · Bài 8/10 · [Bài sau: Rủi ro →](09-risks.md)
 
 # Bài 8 — Đóng góp nếu nghiên cứu hoàn thiện thành công
 

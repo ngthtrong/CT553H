@@ -1,0 +1,155 @@
+{
+ "thresholds": {
+  "read_min": 10,
+  "degron_psi_max": 3.0,
+  "rescue_delta": 1.0,
+  "min_pos": 21
+ },
+ "n_ids_passing_reads": {
+  "rep1": 256711,
+  "rep2": 256920,
+  "wt": 259232
+ },
+ "psi_agreement": {
+  "rep1_vs_rep2": {
+   "reads_ge_10": {
+    "n": 255947,
+    "pearson": 0.9585,
+    "spearman": 0.9588,
+    "mean_diff": -0.0015,
+    "sd_diff": 0.3336,
+    "mad": 0.1914
+   },
+   "reads_ge_50": {
+    "n": 239862,
+    "pearson": 0.964,
+    "spearman": 0.9639,
+    "mean_diff": 0.0001,
+    "sd_diff": 0.3098,
+    "mad": 0.1856
+   },
+   "reads_ge_100": {
+    "n": 211089,
+    "pearson": 0.969,
+    "spearman": 0.9688,
+    "mean_diff": 0.0011,
+    "sd_diff": 0.2867,
+    "mad": 0.1774
+   },
+   "reads_ge_500": {
+    "n": 18587,
+    "pearson": 0.9833,
+    "spearman": 0.9628,
+    "mean_diff": 0.0025,
+    "sd_diff": 0.2104,
+    "mad": 0.1365
+   }
+  },
+  "rep1_vs_wt": {
+   "reads_ge_10": {
+    "n": 255995,
+    "pearson": 0.9291,
+    "spearman": 0.9307,
+    "mean_diff": -0.115,
+    "sd_diff": 0.4442,
+    "mad": 0.2579
+   },
+   "reads_ge_50": {
+    "n": 240782,
+    "pearson": 0.936,
+    "spearman": 0.9371,
+    "mean_diff": -0.1152,
+    "sd_diff": 0.4216,
+    "mad": 0.2517
+   },
+   "reads_ge_100": {
+    "n": 213674,
+    "pearson": 0.9432,
+    "spearman": 0.944,
+    "mean_diff": -0.1136,
+    "sd_diff": 0.3975,
+    "mad": 0.2425
+   },
+   "reads_ge_500": {
+    "n": 22726,
+    "pearson": 0.9672,
+    "spearman": 0.9376,
+    "mean_diff": -0.0682,
+    "sd_diff": 0.3045,
+    "mad": 0.2004
+   }
+  },
+  "rep2_vs_wt": {
+   "reads_ge_10": {
+    "n": 255975,
+    "pearson": 0.9239,
+    "spearman": 0.9257,
+    "mean_diff": -0.1135,
+    "sd_diff": 0.4603,
+    "mad": 0.2659
+   },
+   "reads_ge_50": {
+    "n": 240271,
+    "pearson": 0.9314,
+    "spearman": 0.9326,
+    "mean_diff": -0.1152,
+    "sd_diff": 0.4364,
+    "mad": 0.2593
+   },
+   "reads_ge_100": {
+    "n": 212563,
+    "pearson": 0.9394,
+    "spearman": 0.9402,
+    "mean_diff": -0.1147,
+    "sd_diff": 0.4106,
+    "mad": 0.2498
+   },
+   "reads_ge_500": {
+    "n": 21431,
+    "pearson": 0.964,
+    "spearman": 0.93,
+    "mean_diff": -0.0721,
+    "sd_diff": 0.3149,
+    "mad": 0.2046
+   }
+  }
+ },
+ "dpsi_noise": {
+  "n_position_pairs": 85518,
+  "n_peptides": 3085,
+  "pearson": 0.7229,
+  "spearman": 0.6485,
+  "var_observed_dpsi": 0.3184,
+  "sd_noise_single_replicate": 0.2974,
+  "var_noise_single_replicate": 0.0884,
+  "noise_share_of_observed_variance": 0.2777,
+  "residual_after_composition_oracle_rep1": 0.35,
+  "noise_share_of_that_residual": 0.7935,
+  "interpretation": "Nếu tỉ lệ nhiễu trên phương sai dư gần 1 thì phần 35,0% chủ yếu là nhiễu đo, không phải ngữ cảnh học được."
+ },
+ "footprint_reproducibility": {
+  "n_footprint_rep1": 2624,
+  "n_footprint_rep2": 2639,
+  "n_peptides_covered_in_both": 3085,
+  "n_footprint_rep1_also_covered_in_rep2": 2356,
+  "n_recovered_as_footprint_in_rep2": 2104,
+  "recovery_rate": 0.893,
+  "n_identical_positive_set": 377,
+  "mean_jaccard_of_positive_positions": 0.4965,
+  "note": "recovery_rate là tỉ lệ peptide được gọi là footprint ở rep1 mà cũng được gọi ở rep2 với cùng ngưỡng. Jaccard đo trùng khớp ở mức VỊ TRÍ, là thứ mô hình phải dự đoán."
+ },
+ "bag6_wt_comparison": {
+  "wt_vs_rep1": {
+   "n_position_pairs": 79055,
+   "n_peptides": 2850,
+   "pearson_dpsi": 0.5772,
+   "spearman_dpsi": 0.4441
+  },
+  "wt_vs_rep2": {
+   "n_position_pairs": 77811,
+   "n_peptides": 2807,
+   "pearson_dpsi": 0.5567,
+   "spearman_dpsi": 0.4326
+  }
+ }
+}

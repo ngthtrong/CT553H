@@ -1,4 +1,4 @@
-[← Bài trước](04-datasets.md) · Bài 5/9 · [Bài sau: Giải pháp đề xuất →](06-proposed-solution.md)
+[← Bài trước](04-datasets.md) · Bài 5/10 · [Bài sau: Giải pháp đề xuất →](06-proposed-solution.md)
 
 # Bài 5 — Khoảng trống: vì sao đề tài có chỗ đứng
 
@@ -121,6 +121,8 @@ Bản chẩn đoán gom chỉ theo residue gốc cho cận 0,6012, nhưng **khô
 
 **Dư địa = 0,7792 − 0,6045 = 0,1747**, tức **+28,9% tương đối** so với mốc 0,6045.
 
+> **⚠ Cập nhật 13/10/2026 — đoạn trên đã lỗi.** Cả hai mốc 0,6045 và 0,7792 là **oracle chọn được nhờ nhìn nhãn test**, nên **không mô hình nào đạt được**, và hiệu của hai oracle **không phải dư địa**. Sau khi dựng được lần đo thứ hai, mốc đúng là: baseline thành phần ước lượng trung thực **0,4897**, trần nhãn thực nghiệm **0,6514**, dư địa thật **0,1617**. Lập luận về *cơ chế* của khoảng trống (89,7% peptide bị ràng buộc) **vẫn đúng** — chỉ phần quy ra con số dư địa là sai. Xem [bài 10](10-data-up-close.md) và [full-data-audit mục 4](../../topics/degron-footprint/research/full-data-audit/README.md).
+
 Hai điều cần hiểu về hai mốc này:
 
 **Vì sao oracle chỉ 0,7792 mà không phải 1,0?** Vì nhiều peptide có **ít hơn 3 vị trí dương**. Khi chỉ có 1 hoặc 2 footprint thật, không cách nào chọn được 3 vị trí mà cả 3 đều đúng. Nên **không lấy 1,0 làm mốc có thể đạt được**.
@@ -158,9 +160,9 @@ So sánh với các ứng viên khác ([khảo sát 7 ứng viên](../../surveys
 
 Phải tự nói ra, vì GVHD sẽ hỏi và vì đó là sự thật.
 
-**1. Chưa tách nhiễu khỏi tín hiệu.** Phần 35,0% phương sai dư **không chắc là ngữ cảnh học được**. Dữ liệu một replicate, reads tối thiểu thấp, genotype BAG6 chưa rõ. Một phần dư đó có thể chỉ là nhiễu đo. Phải kiểm lặp lại và độ sâu reads trước khi gọi nó là tín hiệu sinh học.
+**1. ~~Chưa tách nhiễu khỏi tín hiệu.~~ Đã tách ngày 13/10, và kết quả xấu hơn lo ngại.** Dựng được lần đo thứ hai nên đo được trực tiếp: trong phần dư đó, **75,9% là nhiễu đo**; phần ngữ cảnh học được nhiều nhất chỉ **8,7%** phương sai, không phải 35,0%. Đã thử chữa bằng cách siết ngưỡng reads và **thất bại** — tỉ lệ nhiễu không đổi từ reads ≥ 10 đến ≥ 200. Chi tiết dễ hiểu ở [bài 10 mục 6](10-data-up-close.md).
 
-**2. Dư địa 0,1747 không phải cải thiện đã hứa.** Nó là khoảng trống *trên nhãn hiện có*, với một oracle được phép nhìn nhãn. Một mô hình thật phải học từ dữ liệu, nên sẽ không đạt tới oracle.
+**2. Dư địa 0,1747 không phải cải thiện đã hứa — và nay đã bị bác bỏ hẳn.** Nó là hiệu của *hai oracle được phép nhìn nhãn*, nên không phải dư địa của mô hình nào. Số đúng: **0,1617**, từ baseline trung thực 0,4897 lên trần nhãn 0,6514.
 
 **3. Trần của thang điểm khối gần như đã cạn.** Chính tác giả đã đo: bản `cnn2w7` (có cửa sổ 7, tức *có* dùng thứ tự) chỉ hơn bản `cnn2w1` **+0,0032** Pearson. Nghĩa là **đừng đặt đóng góp lên thang điểm đoạn** — ở đó gần như không còn gì để ăn. Thước đo chính phải là **bản đồ theo residue**.
 

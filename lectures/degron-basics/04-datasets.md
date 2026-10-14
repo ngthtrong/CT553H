@@ -1,4 +1,4 @@
-[← Bài trước](03-the-problem.md) · Bài 4/9 · [Bài sau: Khoảng trống →](05-the-gap.md)
+[← Bài trước](03-the-problem.md) · Bài 4/10 · [Bài sau: Khoảng trống →](05-the-gap.md)
 
 # Bài 4 — Bốn bộ dữ liệu
 
@@ -21,7 +21,9 @@
 | **Đơn vị nhãn** | 1 điểm cho cả đoạn                   | ΔPSI**từng vị trí**                | ΔPSI vị trí × 19 thay thế | độ dồi dào protein    |
 | **Dùng được**   | 5.327 gene                                | **2.624 peptide có footprint**        | 249 peptide                    | chỉ 9 gene               |
 | **Giấy phép**     | MIT                                       | Mendeley công khai                          | Mendeley công khai            | CC0                       |
-| **Đã tải?**      | ✅                                        | ✅                                           | ✅                             | ❌ chưa                  |
+| **Đã tải?**      | ✅                                        | ✅                                           | ✅                             | ✅ **đã tải 13/10** |
+
+> **Cập nhật 13/10/2026.** Cả bốn bộ **đã tải đủ**: MaveDB nay có **26 bộ điểm** với **76.194 biến thể duy nhất** (số 69.209 ở trên tính từ metadata trên tập nhỏ hơn), và bộ 2 nay có **cả 5/5 file Mendeley** thay vì 2. Ngoài ra đã tự tính PSI cho **bốn điều kiện mới** mà bảng trên chưa phản ánh: quét lần đo 2, mẫu BAG6 WT, bão hòa nửa A và nửa B. Xem [bài 10](10-data-up-close.md).
 
 ---
 
@@ -79,7 +81,9 @@ Kết quả, và đây là con số đáng lo:
 
 Chia 80/10/10 theo số cụm, thử 5 seed (`0, 42, 87, 1001, 12345`). Ở seed 42: 274 footprint (cov80), 221 footprint (cov50).
 
-> **Đây là rủi ro số một của đề tài.** Tập test chỉ hơn 200 mẫu. Chưa biết n đó có đủ để chứng minh một cải thiện so với mốc 0,6045. Xem [bài 9](09-risks.md).
+> ~~**Đây là rủi ro số một của đề tài.** Tập test chỉ hơn 200 mẫu. Chưa biết n đó có đủ.~~
+>
+> **✅ Cập nhật 13/10/2026: đã tính, tập test đủ lực** — lực 0,82–0,94 ở n = 221–322 so với mốc oracle 0,6045, và ≈1,00 so với baseline thành phần trung thực 0,4897. **Hệ quả: dùng split cov80** (271–322), không dùng cov50. Rủi ro số một đã đổi thành "nhãn mức residue chỉ lặp lại khoảng một nửa". Xem [bài 10](10-data-up-close.md) và [bài 9](09-risks.md).
 
 Điểm tốt: **footprint không dồn vào vài protein**. Trung vị 1 footprint/protein, nhiều nhất là 7, nên protein lớn nhất chỉ chiếm **0,267%** số footprint. Nghĩa là tập test nhỏ nhưng không bị một protein chi phối.
 
@@ -87,9 +91,11 @@ Chia 80/10/10 theo số cụm, thử 5 seed (`0, 42, 87, 1001, 12345`). Ở seed
 
 ## 4. Bộ 3 — bẫy cần tránh
 
+> **Cập nhật 13/10/2026 — mục này cần đọc kèm kết quả mới.** Bộ bão hòa **không có phép đo bản gốc nào** (0/134.608 định danh là `mut0`), nên ΔPSI không tự tính được; đã giải bằng ô thay-bằng-chính-nó làm mốc, dựng được ma trận cho **235 peptide** phủ **97,9%**. Và nghịch lý: bộ này **sạch hơn bộ quét rõ rệt** (nhiễu chiếm 16,7% so với 75,9%, nhãn lặp lại 0,6596 so với 0,4965). Xem [bài 10 mục 5–6](10-data-up-close.md).
+
 Bộ bão hòa nghe hấp dẫn: **135.040** phép đo, vị trí × 19 thay thế, gần kín cả bảng. Nhưng:
 
-- 135.040 là **số định danh**, không phải 135.040 ΔPSI đã đạt chất lượng.
+- 135.040 là **số định danh**, không phải 135.040 ΔPSI đã đạt chất lượng. Số ô dựng được và đo ở cả hai nửa: **122.412**.
 - Chỉ **219 footprint** được tác giả curate.
 - **130 trên 248** peptide bão hòa cũng có mặt trong bộ quét → **trùng lặp**. Nếu dùng bộ bão hòa để train mà vẫn gọi cả 249 peptide là test độc lập thì đó là rò rỉ.
 - Cần xử lý score và mask ô không hợp lệ (ô `WT → WT`, ô có ký hiệu stop `*`) trước khi dùng.
@@ -124,11 +130,11 @@ Chi tiết và 7 script đếm: [e3-labels-audit/](../../topics/degron-footprint
 
 Dữ liệu ở `topics/degron-footprint/data/`:
 
-| Thư mục      | Nội dung                                                                        |
-| -------------- | -------------------------------------------------------------------------------- |
-| `raw/`       | file gốc,**không sửa tay** — 2 ZIP, manifest SHA-256, snapshot UniProt |
-| `interim/`   | cache — CSV quét đã giải nén, cụm MMseqs2                                 |
-| `processed/` | đầu ra script — bảng audit theo peptide, FASTA protein                       |
+| Thư mục      | Dung lượng | Nội dung                                                                        |
+| -------------- | ---: | -------------------------------------------------------------------------------- |
+| `raw/`       | 692 MB | file gốc,**không sửa tay** — 4 nguồn, manifest SHA-256, snapshot UniProt |
+| `interim/`   | 1,1 GB | cache — 3 ZIP đã giải nén, cụm MMseqs2                                 |
+| `processed/` | 117 MB | đầu ra script — **5 bảng PSI**, bảng audit theo peptide, FASTA protein |
 
 **Hai quy tắc tuyệt đối** (từ [CLAUDE.md](../../CLAUDE.md)):
 

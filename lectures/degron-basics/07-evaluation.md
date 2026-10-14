@@ -1,4 +1,4 @@
-[← Bài trước](06-proposed-solution.md) · Bài 7/9 · [Bài sau: Đóng góp nếu thành công →](08-contribution.md)
+[← Bài trước](06-proposed-solution.md) · Bài 7/10 · [Bài sau: Đóng góp nếu thành công →](08-contribution.md)
 
 # Bài 7 — Đánh giá thế nào
 
@@ -44,7 +44,7 @@ Mục đích duy nhất: **chứng minh mình chạy lại được**. Đây *kh
 - Dữ liệu: 2.624 peptide có footprint
 - Chia tập: **theo cụm protein** (MMseqs2, identity ≥ 30%, coverage hai chiều)
 - Chỉ số: **precision@3** và Spearman theo peptide
-- Mốc phải vượt: **0,6045**
+- Mốc phải vượt: ~~**0,6045**~~ → **0,4897** (baseline thành phần ước lượng trung thực), và báo kèm **trần nhãn 0,6514**. Sửa 13/10: 0,6045 là oracle đọc nhãn test, xem [bài 10](10-data-up-close.md)
 
 ### Bậc 3 — ma trận thay thế đầy đủ
 
@@ -85,7 +85,18 @@ Với n ≈ 250, macro theo peptide, câu hỏi là: **có phát hiện được
 
 Nếu mô hình đạt 0,70 thì chênh 0,10 — có thể phát hiện được. Nếu đạt 0,63 thì chênh 0,025 — rất có thể lọt vào khoảng nhiễu và không chứng minh được gì.
 
-**Việc phải làm trước khi huấn luyện bất cứ thứ gì:** tính lực thống kê. Dữ liệu đã nằm trên máy, không cần tải thêm. Đây là [việc tiếp theo số 1](../../topics/degron-footprint/README.md) của đề tài.
+> **✅ Cập nhật 13/10/2026 — đã tính, và tập test ĐỦ LỰC.** Kiểm ghép cặp theo peptide với độ lệch chuẩn đo thật 0,2416:
+>
+> | So với mốc nào | Dư địa | n cần cho lực 0,80 | Lực ở n = 221–322 |
+> |---|---:|---:|---|
+> | Baseline thành phần trung thực (0,4897) | 0,1617 | **18** | ≈ 1,00 |
+> | Cận oracle 0,6045 | 0,0469 | **209** | **0,82–0,94** |
+>
+> Mức cải thiện nhỏ nhất phát hiện được: **0,0455** ở n = 221, **0,0377** ở n = 322. Kết luận đứng vững ở cả ba cách xử lý tie.
+>
+> **Hệ quả thực hành:** dùng **split coverage 80%** (271–322 footprint, lực 0,92–0,94), **không** dùng cov50 (n = 221 chỉ cho lực 0,82). Khi có mô hình thật phải tính lại lực bằng độ lệch chuẩn của chính cặp đó. Nguồn: [full-data-audit mục 5](../../topics/degron-footprint/research/full-data-audit/README.md).
+>
+> Rủi ro số một của đề tài vì vậy **đã đổi** thành: nhãn mức residue chỉ lặp lại khoảng một nửa giữa hai lần đo (Jaccard 0,4965) — xem [bài 10 mục 6](10-data-up-close.md).
 
 Điểm an ủi: footprint **không dồn vào vài protein** (trung vị 1/protein, tối đa 7, protein lớn nhất chiếm 0,267%). Nên tập test nhỏ nhưng không bị một protein chi phối.
 

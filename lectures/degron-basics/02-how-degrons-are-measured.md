@@ -1,4 +1,4 @@
-[← Bài trước](01-protein-and-degron.md) · Bài 2/9 · [Bài sau: Bài toán của đề tài →](03-the-problem.md)
+[← Bài trước](01-protein-and-degron.md) · Bài 2/10 · [Bài sau: Bài toán của đề tài →](03-the-problem.md)
 
 # Bài 2 — Người ta đo degron bằng cách nào
 
@@ -33,10 +33,10 @@ Tức là **độ sáng trở thành thước đo độ bền**. Đây là mẹo
 
 Từ việc tile nằm ở nhóm nào, người ta tính ra một con số gọi là **PSI** (Protein Stability Index), chạy từ **1 đến 6**.
 
-| PSI | Nghĩa |
-|---:|---|
-| gần 1 | tile rất bền, **degron yếu** hoặc không phải degron |
-| gần 6 | tile bị phá rất nhanh, **degron mạnh** |
+|    PSI | Nghĩa                                                         |
+| -----: | -------------------------------------------------------------- |
+| gần 1 | tile rất bền,**degron yếu** hoặc không phải degron |
+| gần 6 | tile bị phá rất nhanh,**degron mạnh**                |
 
 **Hãy nhớ chiều này cho đúng: PSI cao = bị phá nhiều = degron mạnh.** Rất dễ nhớ ngược vì chữ "Stability" (độ bền) gợi ý chiều ngược lại.
 
@@ -54,11 +54,11 @@ Với mỗi đột biến, tính:
 ΔPSI = PSI(phiên bản đột biến) − PSI(phiên bản gốc)
 ```
 
-| ΔPSI | Nghĩa |
-|---|---|
-| **dương, lớn** (≥ 1,0) | đột biến làm degron **mạnh lên** rõ rệt → vị trí này **quan trọng** |
-| gần 0 | đột biến gần như không ảnh hưởng → vị trí này **không quan trọng** |
-| âm | đột biến làm degron yếu đi |
+| ΔPSI                            | Nghĩa                                                                                      |
+| -------------------------------- | ------------------------------------------------------------------------------------------- |
+| **dương, lớn** (≥ 1,0) | đột biến làm degron**mạnh lên** rõ rệt → vị trí này **quan trọng** |
+| gần 0                           | đột biến gần như không ảnh hưởng → vị trí này**không quan trọng**      |
+| âm                              | đột biến làm degron yếu đi                                                            |
 
 Ngưỡng **ΔPSI ≥ 1,0** là ngưỡng đang dùng để gọi một vị trí là "quan trọng". Ngưỡng đó cùng các ngưỡng lọc khác (reads ≥ 10, PSI của bản gốc ≤ 3,0, ít nhất 21 vị trí đo được) ghi ở [composition-context-audit.md mục 2](../../topics/degron-footprint/research/composition-context-audit.md).
 
@@ -99,13 +99,13 @@ Phát hiện quan trọng: **tín hiệu không dàn đều.** Trong 28 vị tr�
 
 Con số tự đếm từ dữ liệu thô:
 
-| | Số đếm |
-|---|---:|
-| Peptide có WT và đột biến đạt lọc | 8.831 |
-| Peptide là degron | 3.439 |
-| Đủ độ phủ vị trí | 3.415 |
-| **Peptide có footprint** | **2.624** |
-| Trong đó footprint **khu trú** | 2.402 |
+|                                              |            Số đếm |
+| -------------------------------------------- | -------------------: |
+| Peptide có WT và đột biến đạt lọc    |                8.831 |
+| Peptide là degron                           |                3.439 |
+| Đủ độ phủ vị trí                      |                3.415 |
+| **Peptide có footprint**              |      **2.624** |
+| Trong đó footprint**khu trú**       |                2.402 |
 | **Trung vị số vị trí quan trọng** | **3 trên 28** |
 
 Nguồn: [composition-context-audit.md mục 2](../../topics/degron-footprint/research/composition-context-audit.md), tái lập được bằng script trong [e3-labels-audit/](../../topics/degron-footprint/research/e3-labels-audit/README.md).

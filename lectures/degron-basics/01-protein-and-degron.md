@@ -1,4 +1,4 @@
-[← Về hub](README.md) · Bài 1/9 · [Bài sau: Người ta đo degron bằng cách nào →](02-how-degrons-are-measured.md)
+[← Về hub](README.md) · Bài 1/10 · [Bài sau: Người ta đo degron bằng cách nào →](02-how-degrons-are-measured.md)
 
 # Bài 1 — Protein, degron và chuyện phân hủy
 

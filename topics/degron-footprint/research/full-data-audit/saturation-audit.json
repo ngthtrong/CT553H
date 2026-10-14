@@ -1,0 +1,53 @@
+{
+ "thresholds": {
+  "read_min": 10,
+  "rescue_delta": 1.0
+ },
+ "half_split_check": {
+  "n_ids_reads_ge_100_both": 110544,
+  "pearson_psi": 0.9544,
+  "verdict": "Tương quan cao thì hai nửa đúng là hai replicate của cùng thiết kế 6 bin. Thấp thì thứ tự bin đã giả định sai và mọi số dưới đây không dùng được."
+ },
+ "matrix_coverage_read_min_10": {
+  "n_peptides": 248,
+  "max_position_seen": 28,
+  "n_cells_union_of_halves": 132513,
+  "n_cells_measured_in_both_halves": 131489,
+  "n_peptides_with_wt_reference": 0,
+  "n_cells_with_dpsi_half_a": 0,
+  "n_cells_with_dpsi_half_b": 0,
+  "theoretical_max_cells_28x20": 138880,
+  "fill_rate_union": 0.9542,
+  "fill_rate_both_halves": 0.9468
+ },
+ "matrix_coverage_read_min_50": {
+  "n_peptides": 248,
+  "max_position_seen": 28,
+  "n_cells_union_of_halves": 127581,
+  "n_cells_measured_in_both_halves": 124057,
+  "n_peptides_with_wt_reference": 0,
+  "n_cells_with_dpsi_half_a": 0,
+  "n_cells_with_dpsi_half_b": 0,
+  "theoretical_max_cells_28x20": 138880,
+  "fill_rate_union": 0.9186,
+  "fill_rate_both_halves": 0.8933
+ },
+ "matrix_coverage_read_min_100": {
+  "n_peptides": 247,
+  "max_position_seen": 28,
+  "n_cells_union_of_halves": 119014,
+  "n_cells_measured_in_both_halves": 110544,
+  "n_peptides_with_wt_reference": 0,
+  "n_cells_with_dpsi_half_a": 0,
+  "n_cells_with_dpsi_half_b": 0,
+  "theoretical_max_cells_28x20": 138320,
+  "fill_rate_union": 0.8604,
+  "fill_rate_both_halves": 0.7992
+ },
+ "overlap_with_scanning": {
+  "n_saturation_peptides": 248,
+  "n_also_in_scanning": 130,
+  "n_saturation_only": 118,
+  "implication": "Peptide có cả hai nguồn phải nằm CÙNG phía train/test, nếu không thì rò rỉ giữa hai nhiệm vụ. Nếu saturation được dùng để train thì không được gọi 249 peptide là test độc lập."
+ }
+}

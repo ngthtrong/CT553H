@@ -1,4 +1,4 @@
-[← Bài trước](08-contribution.md) · Bài 9/9 · [Về hub](README.md)
+[← Bài trước](08-contribution.md) · Bài 9/10 · [Bài sau: Dữ liệu thật →](10-data-up-close.md)
 
 # Bài 9 — Rủi ro và điều có thể làm đề tài sụp
 
@@ -12,13 +12,17 @@ Bài này tồn tại để bạn không bị bất ngờ. Xếp theo mức nguy
 
 ---
 
-## Rủi ro 1 — lực thống kê (nguy hiểm nhất)
+## Rủi ro 1 — ~~lực thống kê~~ → **đã giải quyết 13/10/2026**
 
-**Vấn đề:** chia test theo cụm protein chỉ còn **221–322 footprint**. Với n ≈ 250, một cải thiện nhỏ so với mốc 0,6045 có thể **không chứng minh được**, dù mô hình thật sự tốt hơn.
+**Vấn đề đã nêu:** chia test theo cụm protein chỉ còn **221–322 footprint**. Với n ≈ 250, một cải thiện nhỏ có thể không chứng minh được.
 
-**Vì sao nguy hiểm:** nó không phụ thuộc vào việc bạn làm tốt đến đâu. Đây là giới hạn của dữ liệu.
+**✅ Đã tính, và tập test đủ lực.** So với baseline thành phần trung thực (0,4897) thì chỉ cần **18** peptide. So với mốc oracle 0,6045 thì cần **209**, và n = 221–322 cho lực **0,82–0,94**. Kết luận vững ở cả ba cách xử lý tie.
 
-**Cách biết sớm:** tính lực thống kê. **Dữ liệu đã nằm trên máy**, không cần tải gì, không cần GPU. Đây là [việc tiếp theo số 1](../../topics/degron-footprint/README.md).
+**Việc còn lại từ rủi ro này:** dùng **split coverage 80%** (271–322) chứ không phải cov50, vì ở n = 221 lực chỉ 0,82. Và khi có mô hình thật thì phải tính lại lực bằng độ lệch chuẩn của chính cặp so sánh đó.
+
+Nguồn: [full-data-audit mục 5](../../topics/degron-footprint/research/full-data-audit/README.md), giải thích dễ hiểu ở [bài 10](10-data-up-close.md).
+
+> **Rủi ro số một mới: nhãn mức residue chỉ lặp lại khoảng một nửa.** Hai lần đo độc lập đồng ý "peptide này có footprint" ở mức **89,3%**, nhưng đồng ý **đúng vị trí nào** chỉ ở mức **Jaccard 0,4965**, và chỉ **16,0%** peptide có tập vị trí dương giống hệt. Đề tài dự đoán đúng ở mức residue đó, nên đây là trần cứng cho mọi mô hình. Không chữa được bằng siết ngưỡng reads (đã thử, thất bại).
 
 **Nếu sụp:** giảm độ chặt của phép chia cụm (cov80 cho 271–322 thay vì 221–301), hoặc bổ sung bộ nhân của [Larsen 2025](papers/larsen-2025.md), hoặc kích hoạt dự phòng.
 
@@ -35,13 +39,25 @@ Bài này tồn tại để bạn không bị bất ngờ. Xếp theo mức nguy
 
 Nếu phần lớn 35% đó là nhiễu thí nghiệm, thì **không mô hình nào học được nó**, và dư địa 0,1747 là ảo.
 
-**Cách biết sớm:** kiểm tính ổn định giữa các replicate và theo độ sâu reads, trước khi huấn luyện. Ghi ở [composition-context-audit.md mục 4.2](../../topics/degron-footprint/research/composition-context-audit.md).
+> **⚠ Cập nhật 13/10/2026 — đã kiểm, và lo ngại này phần lớn là đúng.** Dựng được lần đo thứ hai từ read thô nên tách được trực tiếp:
+>
+> | | |
+> |---|---:|
+> | Phần dư sau oracle thành phần | 0,3612 |
+> | Trong đó là **nhiễu đo** | **75,9%** |
+> | **Ngữ cảnh học được, cận trên** | **0,0872** |
+>
+> Tức phần có thể học thêm là khoảng **8,7%** phương sai, **không phải 35,0%**. Dư địa 0,1747 thì **đúng là ảo**, nhưng vì một lý do khác nữa: nó là hiệu của hai oracle đọc nhãn test. Dư địa thật là **0,1617** so với baseline thành phần trung thực.
+>
+> **Đã thử chữa và thất bại:** siết ngưỡng reads từ 10 lên 200 **không** giảm tỉ lệ nhiễu (giữ 0,72–0,77) mà mất một nửa dữ liệu. Nhiễu ~0,24–0,34 được xác nhận **bốn lần độc lập** ⇒ là tính chất của thí nghiệm GPS. **Đừng thử lại hướng này.**
+>
+> Chi tiết dễ hiểu: [bài 10 mục 6](10-data-up-close.md). Số liệu: [full-data-audit](../../topics/degron-footprint/research/full-data-audit/README.md).
 
 ---
 
 ## Rủi ro 3 — G3, ứng dụng không khác biệt được
 
-**Vấn đề:** đã có **ba** sản phẩm — [DEGRONOPEDIA](papers/degronopedia-2024.md), máy chủ web [MetaDegron](papers/metadegron-2024.md), và Colab của nhóm PAP. Tiêu chí 5 của GVHD không thể thiếu, nhưng "làm thêm một web nữa" không phải đóng góp.
+**Vấn đề:** đã có **bốn** tiền lệ — [DEGRONOPEDIA](papers/degronopedia-2024.md), máy chủ web [MetaDegron](papers/metadegron-2024.md), Colab của nhóm PAP, và — **mới phát hiện 13/10** — **mô hình học máy của chính nhóm Zhang 2023**, dự đoán PSI toàn peptidome (Pearson 0,8955, RMSE 0,563 trên 260.989 peptide), nằm trong file Mendeley 393 MB mà repo chưa từng tải. Cái thứ tư **khác phạm vi** (dự đoán ở mức peptide, không phải mức residue) nên không phải đối thủ trực tiếp, nhưng **phải nêu** trong đề cương. Tiêu chí 5 của GVHD không thể thiếu, nhưng "làm thêm một web nữa" không phải đóng góp.
 
 **Cách xử lý:** nhắm vào thứ cả ba đều không có — **ma trận vị trí × acid amin thay vào, dựa trên nhãn đột biến thực nghiệm**. Phải kiểm lại ba sản phẩm đó thật sự không xuất ra thứ này.
 
@@ -106,4 +122,4 @@ Cả ba đều **không cần GPU** và **không cần tải thêm dữ liệu**
 
 ---
 
-[← Bài trước](08-contribution.md) · [Về hub](README.md)
+[← Bài trước](08-contribution.md) · [Bài sau: Dữ liệu thật →](10-data-up-close.md) · [Về hub](README.md)

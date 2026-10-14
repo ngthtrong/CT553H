@@ -8,9 +8,13 @@
 
 ---
 
+> **Cập nhật 13/10/2026 — một số con số bên dưới đã đổi.** Sau [audit dữ liệu đầy đủ](../../topics/degron-footprint/research/full-data-audit/README.md), ba điều quan trọng nhất: **(1)** việc chặn "tính lực thống kê" **đã xong, tập test đủ lực**; **(2)** hai mốc 0,6045 và 0,7792 là **oracle đọc nhãn test**, không mô hình nào đạt, nên cách đọc "dư địa 0,1747 / +28,9%" không còn dùng; **(3)** rủi ro số một **đổi** thành "nhãn mức residue chỉ lặp lại khoảng một nửa". Chỗ nào còn số cũ đều có ghi chú chỉ sang [bài 10](10-data-up-close.md).
+
+---
+
 ## Đọc theo thứ tự này
 
-Mỗi bài 5–10 phút. Bài 1–3 là nền, bài 4–6 là đề tài, bài 7–9 là đánh giá và rủi ro.
+Mỗi bài 5–10 phút. Bài 1–3 là nền, bài 4–6 là đề tài, bài 7–9 là đánh giá và rủi ro, bài 10 là dữ liệu thật.
 
 | # | Bài                                                                    | Trả lời câu hỏi                                                                                                           |
 | - | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -23,6 +27,7 @@ Mỗi bài 5–10 phút. Bài 1–3 là nền, bài 4–6 là đề tài, bài 7
 | 7 | [Đánh giá thế nào](07-evaluation.md)                                | precision@3 là gì? Ba bậc đánh giá. Con số phải vượt                                                                |
 | 8 | [Đóng góp nếu thành công](08-contribution.md)                      | Nếu làm xong thì đóng góp là gì, cho ai, đo bằng gì                                                                |
 | 9 | [Rủi ro và điều có thể làm đề tài sụp](09-risks.md)           | Chỗ nào dễ chết nhất, và cách biết sớm                                                                               |
+| 10 | [Dữ liệu thật trông như thế nào](10-data-up-close.md)       | **Mới 13/10.** Mở file ra xem: một dòng gồm gì, PSI tính ra sao, dữ liệu tốt đến đâu |
 
 **Mỗi bài báo liên quan có một file riêng:** xem [papers/](papers/README.md) — 12 công trình, mỗi file nói rõ bài đó làm gì, liên quan đến đề tài ở đâu, và **chiếm chỗ nào** của mình.
 
@@ -58,24 +63,31 @@ Hệ quả: nếu trong cùng một peptide ta thay `A → V` ở hai vị trí 
 
 ### Con số phải vượt
 
-| Mốc                                                   |      precision@3 | Nghĩa là                              |
-| ------------------------------------------------------ | ---------------: | --------------------------------------- |
-| Đoán ngẫu nhiên                                    |           0,1204 | sàn                                    |
-| **Trần của mô hình chỉ dùng thành phần** | **0,6045** | **mốc đề tài phải vượt**   |
-| Oracle không ràng buộc                              |           0,7792 | mốc không thể vượt trên tập này |
+Bảng này **đã được sửa ngày 13/10** sau khi dựng được lần đo thứ hai. Hai con số cũ (0,6045 và 0,7792) là **oracle đọc chính nhãn test**, nên không mô hình nào đạt được chúng:
 
-Dư địa **0,1747**, tức **+28,9% tương đối**. Nguồn: [composition-context-audit.md](../../topics/degron-footprint/research/composition-context-audit.md).
+| Mốc | precision@3 | Nghĩa là |
+| --- | ---: | --- |
+| Đoán ngẫu nhiên | 0,1204 | sàn |
+| **Baseline thành phần, ước lượng trung thực** | **0,4897** | **mốc thật phải vượt** |
+| ~~Cận của lớp thành phần~~ | ~~0,6045~~ | oracle — **nhìn nhãn test**, không đạt được |
+| **Trần nhãn thực nghiệm** | **0,6514** | một lần đo chấm trên nhãn lần đo kia |
+| ~~Oracle không ràng buộc~~ | ~~0,7792~~ | oracle — **nhìn nhãn test**, không đạt được |
+
+Dư địa thật là **0,1617** (từ 0,4897 lên 0,6514), không phải 0,1747. Nguồn: [full-data-audit mục 4](../../topics/degron-footprint/research/full-data-audit/README.md); giải thích dễ hiểu ở [bài 10](10-data-up-close.md).
+
+> Mốc **cam kết** cuối cùng của đề tài vẫn **chờ Trọng xác nhận** ở [DECISIONS.md phần C-6](../../DECISIONS.md). Bảng trên là **bằng chứng đo được**, không phải quyết định.
 
 ### Trạng thái thật, không tô hồng
 
 |                        |                                                                                                                      |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Dữ liệu              | **Đã tải, đã kiểm SHA-256, đã audit.** Không phải tải lại                                          |
+| Dữ liệu              | **Đã tải đủ bốn nguồn, kiểm SHA-256, đã audit** (13/10). Thêm **4 bảng PSI mới** repo chưa từng có. Xem [bài 10](10-data-up-close.md) |
 | Mô hình              | **Chưa huấn luyện gì cả.** Chưa có một kết quả mô hình nào                                        |
 | Khoảng trống         | **Đã chứng minh** (89,7%, cận chính xác, kiểm bằng script)                                             |
 | Kiến trúc đề xuất | **Chỉ là đề xuất.** Có tiền lệ cho từng cơ chế; mới ở chỗ ghép                                  |
-| Rủi ro lớn nhất     | Tập test chỉ còn**221–322 footprint** sau khi chia theo cụm protein. Chưa biết có đủ lực thống kê |
-| Việc chặn gần nhất | **Tính lực thống kê**, trước khi cam kết huấn luyện                                                   |
+| Rủi ro lớn nhất     | **Nhãn mức residue chỉ lặp lại khoảng một nửa** giữa hai lần đo (Jaccard 0,4965) — đúng chỗ đề tài làm |
+| ~~Lực thống kê~~ | ~~Chưa biết n ≈ 250 có đủ~~ → **đã giải quyết 13/10: đủ lực** (0,82–0,94 ở n = 221–322). Dùng split cov80 |
+| Việc chặn gần nhất | **Trọng xác nhận C-6** ở [DECISIONS.md](../../DECISIONS.md) — gồm mốc G2 và nguồn nhãn chính |
 
 ---
 
@@ -87,12 +99,12 @@ Dư địa **0,1747**, tức **+28,9% tương đối**. Nguồn: [composition-co
 2. **Không nói "dùng cấu trúc là phần mới".** [Larsen 2025](papers/larsen-2025.md) đã tính rASA và pLDDT từ AlphaFold2, và đã làm bản đồ thay thế *in silico*.
 3. **Không nói "mô hình thành phần cho bản đồ phẳng".** Ràng buộc đúng là: *trong cùng peptide, các vị trí có cùng cặp (acid amin gốc, acid amin thay vào) buộc phải nhận cùng điểm*. Bản đồ của nó không bắt buộc phẳng.
 
-Và một điều về số liệu: **không hứa cải thiện 0,1747 như điều chắc chắn**. Đó là dư địa trên nhãn hiện có, chưa tách phần ngữ cảnh học được khỏi nhiễu đo.
+Và một điều về số liệu, **đã mạnh hơn sau 13/10**: không chỉ là "chưa hứa 0,1747", mà **con số 0,1747 đã bị bác bỏ** — nó dựa trên oracle 0,7792 đọc nhãn test. Đã tách nhiễu: **75,9%** phần dư là nhiễu đo, phần học được tối đa **8,7%** phương sai, không phải 35%. Xem [bài 10 mục 6](10-data-up-close.md).
 
 ---
 
 ## Hình trong hub này
 
-Tất cả 12 sơ đồ trong [figures/](figures/) đều là **sơ đồ tự dựng** (SVG, mình vẽ), và đều mang nhãn `SƠ ĐỒ TỰ DỰNG` ở góc trên phải để không lẫn với hình của tác giả bài báo.
+Tất cả 16 sơ đồ trong [figures/](figures/) đều là **sơ đồ tự dựng** (SVG, mình vẽ), và đều mang nhãn `SƠ ĐỒ TỰ DỰNG` ở góc trên phải để không lẫn với hình của tác giả bài báo.
 
 Hình gốc của tác giả nằm riêng ở [lectures/degron-footprint/assets/figures/](../degron-footprint/assets/figures/NOTICE.md), chỉ gồm hình của Voutsinos 2026 vì bài đó giấy phép CC BY-NC cho phép dùng lại. Các bài khác chỉ được dẫn link, không sao chép hình — lý do ghi trong [NOTICE.md](../degron-footprint/assets/figures/NOTICE.md).

@@ -4,6 +4,25 @@
 
 ---
 
+## 13/10/2026 — tải đủ bốn nguồn dữ liệu; dựng PSI cho mọi điều kiện; **đo được trần nhãn và lực thống kê**
+
+Báo cáo đầy đủ: [research/full-data-audit/](research/full-data-audit/README.md). Không huấn luyện mô hình nào.
+
+- **Tải đủ:** Mendeley cả **5/5** file (trước có 2), GEO GSE240610, repo Voutsinos @ `9b3eafa6` (trước **đã mất khỏi máy**), 26 score set MaveDB. SHA-256 khớp checksum Mendeley công bố. Zenodo `16925278` trả 403 từ mạng này. Manifest: `data/raw/full-download-manifest.json`.
+- **Dựng PSI từ read thô cho mọi điều kiện**, thứ repo chưa từng có: Replicate 2, mẫu BAG6 WT, và cả hai nửa bão hòa. Công thức suy ra và kiểm trên **261.865** giá trị của Replicate 1, lệch ≤ **5,0 × 10⁻⁷**. Tái lập đúng **2.624** footprint.
+- **Lỗi trong pipeline công bố của Zhang 2023:** script gộp đọc `header=TRUE` trên file count không có header nên **ăn mất dòng đầu của cả 6 file**; lan cả vào hệ số chuẩn hóa. Ảnh hưởng nhỏ (3 định danh, không có footprint nào) nhưng phải mô phỏng lại mới khớp số tác giả.
+- **Rủi ro số hai đã đo được.** ΔPSI rep1 vs rep2 Pearson **0,7229**; nhiễu một replicate SD **0,2974**. Footprint lặp lại ở mức peptide **89,3%**, nhưng **mức vị trí Jaccard chỉ 0,4965** — tức *residue nào* là footprint chỉ lặp lại khoảng một nửa, và đó chính là thứ đề tài dự đoán. Phân rã lại cùng cơ sở macro: dư sau oracle 0,3612, **75,9% là nhiễu**, ngữ cảnh học được cận trên chỉ **0,0872** (không phải 35%). Quét ngưỡng reads 10→200 cho thấy **nhiễu không phải tạo tác của ngưỡng**.
+- **Trần thực nghiệm do nhãn đặt ra:** rep1 chấm trên nhãn rep2 cho precision@3 **0,6514**. Baseline thành phần **ước lượng trung thực** chỉ **0,4897**, không phải 0,6045 — cả 0,6045 và 0,7792 đều là oracle đọc nhãn test. Dư địa thật **0,1617**, không phải 0,1747 theo cách đọc cũ.
+- **Việc chặn đã trả lời: tập test đủ lực.** Kiểm ghép cặp, SD đo thật 0,2416, d_z 0,669. So baseline trung thực: cần **18** peptide, lực ≈1,00. So mốc 0,6045: cần **209**, lực **0,82–0,94** ở n = 221–322 — đạt nhưng sát biên ở cov50, nên **nên dùng split cov80**.
+- **Bộ bão hòa tốt hơn bộ quét trên mọi trục**, và là nguồn duy nhất cho ma trận 28×20: nhiễu chiếm **16,7%** (so 75,9%), ΔPSI giữa hai nửa Pearson **0,8335**, Jaccard ô dương **0,6596**, ma trận phủ **97,9%** của 28×19 trên **235** peptide. Nhưng bộ này **không có phép đo hoang dã nào** — giải bằng ô đồng nghĩa (amino acid thay vào trùng WT) làm WT nội tại, 28 ô/peptide, SD trong peptide 0,031; quy tắc tile (28-mer, bước 23) khớp **128/130** trình tự thật. **130/248** peptide có cả hai nguồn nhãn nên phải cùng phía train/test.
+- **Phát hiện ảnh hưởng tới G3:** file Mendeley 393 MB lần đầu tải chứa **mô hình học máy của chính nhóm Zhang** dự đoán PSI toàn peptidome (Pearson **0,8955** ở 10% train, RMSE 0,563 trên 260.989 peptide). Thẻ đề tài trước chỉ biết DEGRONOPEDIA, MetaDegron, PAP. Khác phạm vi (peptide so với residue) nên không phải đối thủ trực tiếp, nhưng phải nêu.
+- Nhiễu ~0,30 được xác nhận **bốn lần độc lập**: quét 0,2974, bão hòa 0,2645, peptidome 0,3357, và chính tác giả ghi 0,239 ⇒ tính chất của assay GPS. MLN4924: chỉ **0,76%** peptide bền lên ≥1 PSI khi chặn CRL. MaveDB: **76.194** biến thể duy nhất (ước lượng cũ từ metadata 69.209).
+- **Mẫu BAG6 WT không trộn được** với hai replicate kia: ΔPSI chỉ tương quan 0,56–0,58 (so 0,72 giữa hai replicate) và lệch hệ thống −0,11 PSI.
+- Bảy đề xuất ghi vào [DECISIONS.md](../../DECISIONS.md) phần C (C-6), **chờ Trọng xác nhận** — gồm sửa cách phát biểu mục tiêu G2 và chuyển trọng tâm nhãn sang bộ bão hòa.
+- **Hub học đã đồng bộ:** thêm [bài 10 "Dữ liệu thật trông như thế nào"](../../lectures/degron-basics/10-data-up-close.md) (mô tả dữ liệu dễ hiểu: một dòng gồm gì, PSI tính ra sao, dữ liệu tốt đến đâu) kèm 2 sơ đồ mới. Đồng thời chèn ghi chú cập nhật vào bài 4, 5, 7, 9 và thẻ README của hub, vì các bài đó đang ghi mốc 0,6045 / dư địa 0,1747 và "rủi ro số một là lực thống kê" — nay đều đã lỗi.
+
+---
+
 ## 12/10/2026 (tiếp) — tạo hub markdown đơn giản giải thích đề tài
 
 - **Yêu cầu của Trọng:** đọc lại hub HTML ở [lectures/degron-footprint/](../../lectures/degron-footprint/index.html) thấy quá khó hiểu và phức tạp. Cần một hub markdown đơn giản, từ khái niệm cơ bản nhất đến đóng góp, mỗi phần quan trọng có hình, mỗi bài báo một file riêng, trích dẫn dẫn link ngay tại chỗ liên quan.

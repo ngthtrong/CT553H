@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" width="720" height="440" font-family="system-ui,-apple-system,Segoe UI,sans-serif">
+  <rect x="0" y="0" width="720" height="440" fill="#ffffff" stroke="#d4d4d8"/>
+  <text x="16" y="26" font-size="14" font-weight="700" fill="#18181b">Dữ liệu trên máy: tải về gì, tự tính ra gì</text>
+  <text x="704" y="26" font-size="9" fill="#a1a1aa" text-anchor="end">SƠ ĐỒ TỰ DỰNG</text>
+  <text x="16" y="46" font-size="10" fill="#64748b">Trạng thái ngày 13/10/2026. Tổng ~1,9 GB, không bao giờ lên git.</text>
+
+  <!-- column headers -->
+  <text x="24" y="72" font-size="11" font-weight="700" fill="#334155">TẢI VỀ · raw/ · 692 MB</text>
+  <text x="272" y="72" font-size="11" font-weight="700" fill="#334155">GIẢI NÉN · interim/ · 1,1 GB</text>
+  <text x="520" y="72" font-size="11" font-weight="700" fill="#334155">TỰ TÍNH · processed/ · 117 MB</text>
+
+  <!-- raw boxes -->
+  <rect x="24" y="82" width="216" height="52" rx="5" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="36" y="100" font-size="10" font-weight="700" fill="#1e293b">Zhang 2023 · Mendeley</text>
+  <text x="36" y="115" font-size="9.5" fill="#475569">cả 5/5 file · 411 MB</text>
+  <text x="36" y="128" font-size="9" fill="#64748b">quét · bão hòa · peptidome · CRISPR</text>
+
+  <rect x="24" y="142" width="216" height="40" rx="5" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="36" y="160" font-size="10" font-weight="700" fill="#1e293b">GEO GSE240610 · 72 MB</text>
+  <text x="36" y="174" font-size="9" fill="#64748b">bảng PSI toàn peptidome</text>
+
+  <rect x="24" y="190" width="216" height="40" rx="5" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="36" y="208" font-size="10" font-weight="700" fill="#1e293b">Voutsinos 2026 · 180 MB</text>
+  <text x="36" y="222" font-size="9" fill="#64748b">repo GitHub, ghim commit</text>
+
+  <rect x="24" y="238" width="216" height="40" rx="5" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="36" y="256" font-size="10" font-weight="700" fill="#1e293b">MaveDB · 24 MB</text>
+  <text x="36" y="270" font-size="9" fill="#64748b">26 bộ điểm, 9 gene</text>
+
+  <rect x="24" y="286" width="216" height="40" rx="5" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="36" y="304" font-size="10" font-weight="700" fill="#1e293b">UniProt · 7 MB</text>
+  <text x="36" y="318" font-size="9" fill="#64748b">trình tự protein người</text>
+
+  <!-- arrows -->
+  <path d="M244 108 L266 108" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#a)"/>
+  <path d="M244 162 L266 162" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#a)"/>
+  <defs>
+    <marker id="a" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <!-- interim -->
+  <rect x="272" y="82" width="216" height="52" rx="5" fill="#fffbeb" stroke="#d97706"/>
+  <text x="284" y="100" font-size="10" font-weight="700" fill="#92400e">3 ZIP đã giải nén</text>
+  <text x="284" y="115" font-size="9.5" fill="#78350f">file đếm reads thô: id + số đếm</text>
+  <text x="284" y="128" font-size="9" fill="#a16207">6 thùng × mỗi điều kiện</text>
+
+  <rect x="272" y="142" width="216" height="40" rx="5" fill="#fffbeb" stroke="#d97706"/>
+  <text x="284" y="160" font-size="10" font-weight="700" fill="#92400e">cụm protein MMseqs2</text>
+  <text x="284" y="174" font-size="9" fill="#a16207">để chia tập không rò rỉ</text>
+
+  <text x="284" y="206" font-size="9.5" fill="#64748b">Thư mục này chỉ là <tspan font-weight="700">cache</tspan>.</text>
+  <text x="284" y="220" font-size="9.5" fill="#64748b">Xoá được, giải nén lại là có.</text>
+
+  <path d="M492 108 L514 108" stroke="#2563eb" stroke-width="1.5" marker-end="url(#b)"/>
+  <defs>
+    <marker id="b" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <!-- processed -->
+  <rect x="520" y="82" width="176" height="196" rx="5" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="532" y="100" font-size="10" font-weight="700" fill="#1e3a8a">5 bảng PSI</text>
+  <text x="532" y="112" font-size="8.5" fill="#1d4ed8">mỗi dòng = 1 biến thể + PSI</text>
+
+  <line x1="532" y1="120" x2="684" y2="120" stroke="#93c5fd"/>
+  <text x="532" y="136" font-size="9.5" fill="#1e3a8a">quét lần 1 · 261.868</text>
+  <text x="532" y="152" font-size="9.5" font-weight="700" fill="#1e3a8a">quét lần 2 · 261.999</text>
+  <text x="532" y="168" font-size="9.5" font-weight="700" fill="#1e3a8a">mẫu BAG6 WT · 264.036</text>
+  <text x="532" y="184" font-size="9.5" font-weight="700" fill="#1e3a8a">bão hòa nửa A · 134.608</text>
+  <text x="532" y="200" font-size="9.5" font-weight="700" fill="#1e3a8a">bão hòa nửa B · 134.563</text>
+
+  <rect x="532" y="212" width="152" height="30" rx="4" fill="#dbeafe" stroke="#60a5fa"/>
+  <text x="608" y="224" font-size="8.5" fill="#1e3a8a" text-anchor="middle">4 bảng in đậm là MỚI,</text>
+  <text x="608" y="235" font-size="8.5" fill="#1e3a8a" text-anchor="middle">repo chưa từng có</text>
+
+  <text x="532" y="258" font-size="9" fill="#64748b">+ bảng audit, FASTA</text>
+  <text x="532" y="270" font-size="9" fill="#64748b">protein đã lọc</text>
+
+  <!-- bottom rule -->
+  <rect x="24" y="340" width="672" height="40" rx="5" fill="#f0fdf4" stroke="#16a34a"/>
+  <text x="36" y="358" font-size="10" font-weight="700" fill="#14532d">Quy tắc: mọi thứ trong processed/ phải sinh lại được bằng script.</text>
+  <text x="36" y="372" font-size="9.5" fill="#166534">Nếu một file không sinh lại được thì nó là nợ kỹ thuật, không phải kết quả.</text>
+
+  <rect x="24" y="388" width="672" height="38" rx="5" fill="#fef2f2" stroke="#dc2626"/>
+  <text x="36" y="406" font-size="10" font-weight="700" fill="#7f1d1d">Cổng kiểm trước khi tin bảng PSI tự tính:</text>
+  <text x="36" y="419" font-size="9.5" fill="#991b1b">dựng lại lần 1 từ read thô rồi so với số của tác giả — 261.865 giá trị, lệch tối đa 0,0000005. Đạt.</text>
+</svg>

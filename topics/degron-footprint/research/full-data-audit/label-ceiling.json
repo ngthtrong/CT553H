@@ -1,0 +1,36 @@
+{
+ "thresholds": {
+  "read_min": 10,
+  "degron_psi_max": 3.0,
+  "rescue_delta": 1.0,
+  "min_pos": 21,
+  "top_k": 3,
+  "seed": 0
+ },
+ "n_peptides_covered_both": 3085,
+ "rep1_scores_on_rep2_labels": {
+  "n_peptides_scored": 2403,
+  "precision_at_3": 0.6514,
+  "random_baseline": 0.1235
+ },
+ "rep2_scores_on_rep1_labels": {
+  "n_peptides_scored": 2356,
+  "precision_at_3": 0.6488,
+  "random_baseline": 0.1198
+ },
+ "comparison": {
+  "composition_bound_rep1_from_2026_10_12_audit": 0.6045,
+  "unconstrained_oracle_rep1_from_2026_10_12_audit": 0.7792,
+  "random_rep1_from_2026_10_12_audit": 0.1204,
+  "meaning": "Nếu precision@3 của replicate-chấm-replicate THẤP HƠN 0,6045 thì mục tiêu G2 'vượt 0,6045' không kiểm chứng được trên nhãn một-replicate: một phép đo lặp của cùng đại lượng sinh học còn không đạt mức đó."
+ },
+ "variance_decomposition_macro_per_peptide": {
+  "n_peptides": 3081,
+  "n_skipped_missing_sequence": 0,
+  "residual_share_after_pair_oracle": 0.3612,
+  "noise_share_of_total": 0.274,
+  "noise_share_of_residual": 0.7587,
+  "learnable_context_share_upper_bound": 0.0872,
+  "basis": "Nhãn = trung bình hai replicate. Var nhiễu của trung bình = Var(d1-d2)/4. Mọi tỉ lệ chuẩn hóa theo phương sai của chính peptide rồi lấy trung bình macro theo peptide, cùng cơ sở với con số 35,0% của audit 12/10."
+ }
+}

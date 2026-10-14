@@ -1,0 +1,105 @@
+{
+ "thresholds_swept": [
+  10,
+  25,
+  50,
+  100,
+  200,
+  400,
+  800
+ ],
+ "fixed": {
+  "degron_psi_max": 3.0,
+  "rescue_delta": 1.0,
+  "min_pos": 21,
+  "top_k": 3,
+  "seed": 0
+ },
+ "rows": [
+  {
+   "read_min": 10,
+   "n_footprints_rep1": 2624,
+   "n_peptides_shared_scored": 2400,
+   "residual_share_after_pair_oracle": 0.3612,
+   "noise_share_of_total": 0.274,
+   "noise_share_of_residual": 0.7587,
+   "learnable_context_upper_bound": 0.0872,
+   "precision_at_3_replicate_ceiling": 0.6511,
+   "precision_at_3_composition_baseline": 0.4892,
+   "paired_gap": 0.1619,
+   "paired_sd": 0.2415,
+   "mde_at_n_250_power_080": 0.0428
+  },
+  {
+   "read_min": 25,
+   "n_footprints_rep1": 2579,
+   "n_peptides_shared_scored": 2357,
+   "residual_share_after_pair_oracle": 0.3587,
+   "noise_share_of_total": 0.2715,
+   "noise_share_of_residual": 0.7568,
+   "learnable_context_upper_bound": 0.0872,
+   "precision_at_3_replicate_ceiling": 0.6505,
+   "precision_at_3_composition_baseline": 0.4883,
+   "paired_gap": 0.1622,
+   "paired_sd": 0.2429,
+   "mde_at_n_250_power_080": 0.043
+  },
+  {
+   "read_min": 50,
+   "n_footprints_rep1": 2474,
+   "n_peptides_shared_scored": 2236,
+   "residual_share_after_pair_oracle": 0.3526,
+   "noise_share_of_total": 0.2646,
+   "noise_share_of_residual": 0.7504,
+   "learnable_context_upper_bound": 0.088,
+   "precision_at_3_replicate_ceiling": 0.6568,
+   "precision_at_3_composition_baseline": 0.493,
+   "paired_gap": 0.1638,
+   "paired_sd": 0.2314,
+   "mde_at_n_250_power_080": 0.041
+  },
+  {
+   "read_min": 100,
+   "n_footprints_rep1": 2175,
+   "n_peptides_shared_scored": 1923,
+   "residual_share_after_pair_oracle": 0.3406,
+   "noise_share_of_total": 0.2452,
+   "noise_share_of_residual": 0.7199,
+   "learnable_context_upper_bound": 0.0954,
+   "precision_at_3_replicate_ceiling": 0.6696,
+   "precision_at_3_composition_baseline": 0.4964,
+   "paired_gap": 0.1732,
+   "paired_sd": 0.2304,
+   "mde_at_n_250_power_080": 0.0408
+  },
+  {
+   "read_min": 200,
+   "n_footprints_rep1": 1309,
+   "n_peptides_shared_scored": 1069,
+   "residual_share_after_pair_oracle": 0.3236,
+   "noise_share_of_total": 0.2479,
+   "noise_share_of_residual": 0.7661,
+   "learnable_context_upper_bound": 0.0757,
+   "precision_at_3_replicate_ceiling": 0.6614,
+   "precision_at_3_composition_baseline": 0.5061,
+   "paired_gap": 0.1553,
+   "paired_sd": 0.2183,
+   "mde_at_n_250_power_080": 0.0387
+  },
+  {
+   "read_min": 400,
+   "n_footprints_rep1": 128,
+   "n_peptides_shared_scored": 64,
+   "residual_share_after_pair_oracle": 0.3614,
+   "noise_share_of_total": 0.3631,
+   "noise_share_of_residual": 1.0048,
+   "learnable_context_upper_bound": 0.0,
+   "precision_at_3_replicate_ceiling": 0.599,
+   "precision_at_3_composition_baseline": 0.4844,
+   "paired_gap": 0.1146,
+   "paired_sd": 0.2159,
+   "mde_at_n_250_power_080": 0.0383
+  }
+ ],
+ "interpretation": "Đọc theo hai cột cùng lúc: siết reads thì nhiễu giảm và phần ngữ cảnh học được tăng, nhưng n_footprints_rep1 giảm nên tập test nhỏ đi. Điểm chọn ngưỡng là nơi paired_gap còn lớn hơn mde_at_n_250_power_080 mà n_footprints vẫn đủ chia theo cụm protein."
+}

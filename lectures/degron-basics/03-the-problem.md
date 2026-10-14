@@ -1,4 +1,4 @@
-[← Bài trước](02-how-degrons-are-measured.md) · Bài 3/9 · [Bài sau: Bốn bộ dữ liệu →](04-datasets.md)
+[← Bài trước](02-how-degrons-are-measured.md) · Bài 3/10 · [Bài sau: Bốn bộ dữ liệu →](04-datasets.md)
 
 # Bài 3 — Bài toán của đề tài
 

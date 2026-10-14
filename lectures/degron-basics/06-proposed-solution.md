@@ -1,4 +1,4 @@
-[← Bài trước](05-the-gap.md) · Bài 6/9 · [Bài sau: Đánh giá thế nào →](07-evaluation.md)
+[← Bài trước](05-the-gap.md) · Bài 6/10 · [Bài sau: Đánh giá thế nào →](07-evaluation.md)
 
 # Bài 6 — Giải pháp đề xuất: MIL-Degron
 
