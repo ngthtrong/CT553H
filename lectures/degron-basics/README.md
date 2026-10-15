@@ -27,6 +27,19 @@
 
 ---
 
+> **Cập nhật 15/10/2026 (phiên chiều) — đào sâu bộ nhân Larsen 2025 và bảy rủi ro.**
+> Nguồn: [báo cáo đầy đủ](../../topics/degron-footprint/research/larsen-nuclear-and-risks-2026-10-15/README.md).
+> Toàn bộ nằm trong [bài 9](09-risks.md); bốn điều đổi cách hành động:
+>
+> 1. **Bộ nhân Larsen dùng được về giấy phép, nhưng không cứu được nhãn residue.** Dữ liệu mức tile nằm trong repo GitHub dưới **giấy phép MIT** (không phải sau CC BY-NC-ND của bài báo), chỉ một file 5,77 MB đã chú giải sẵn PAP/rASA/pLDDT. **Nhưng** nó chỉ có nhãn **mức tile 30-aa**, **không một nhãn mức residue nào**, và **97,4%** TF của nó đã có trong peptidome GPS ⇒ là **test chuyển assay/chuyển ngăn**, không phải test trình tự chưa thấy. Đường thoát ghi ở rủi ro 1 **không tồn tại**. Xem [papers/larsen-2025.md](papers/larsen-2025.md).
+> 2. **Tiền lệ thứ năm: [Degformer](papers/degformer-2026.md)** đã xuất **đúng** ma trận 28 × 20 ΔPSI từ đúng nhãn của đề tài. Câu "chưa tìm thấy sản phẩm nào xuất ma trận 28×20" **đã sai**. Nhưng nó có **4,09% rò rỉ trình tự** trong split ngẫu nhiên của chính nó ⇒ là **baseline nên đánh bại**, không phải án tử.
+> 3. **Kết quả âm "siết read 10 → 200" nay có lời giải thích trích dẫn được** (DiMSum: số hạng sai số **cộng không phụ thuộc số đọc**; Enrich2: lọc theo count từng làm *xấu* đi độ tương đồng replicate), và thuốc chữa là **thêm replicate, không phải thêm read**.
+> 4. **Đơn vị suy luận là cụm protein, không phải peptide** — bỏ qua lồng nhau cho tỉ lệ dương giả **trên 45%**. Con số cần báo ở bộ bão hòa là **số cụm**, không phải 91.
+>
+> Thêm: **không tìm thấy công cụ dự đoán degron mới nào công bố 2025–2026** (PubMed 41 bản ghi, Europe PMC 100+127 hit, 15/10) — tín hiệu thời điểm tốt nhất đang có, nhưng phải viết đúng dạng "đã chạy truy vấn X, không tìm thấy".
+
+---
+
 ## Đọc theo thứ tự này
 
 Mỗi bài 5–10 phút. Bài 1–3 là nền, bài 4–6 là đề tài, bài 7–9 là đánh giá và rủi ro, bài 10 là dữ liệu thật.
@@ -44,7 +57,7 @@ Mỗi bài 5–10 phút. Bài 1–3 là nền, bài 4–6 là đề tài, bài 7
 | 9 | [Rủi ro và điều có thể làm đề tài sụp](09-risks.md)           | Chỗ nào dễ chết nhất, và cách biết sớm                                                                               |
 | 10 | [Dữ liệu thật trông như thế nào](10-data-up-close.md)       | **Mới 13/10.** Mở file ra xem: một dòng gồm gì, PSI tính ra sao, dữ liệu tốt đến đâu |
 
-**Mỗi bài báo liên quan có một file riêng:** xem [papers/](papers/README.md) — **13** công trình (thêm [Schulze 2026](papers/schulze-2026.md) ngày 14/10), mỗi file nói rõ bài đó làm gì, liên quan đến đề tài ở đâu, và **chiếm chỗ nào** của mình.
+**Mỗi bài báo liên quan có một file riêng:** xem [papers/](papers/README.md) — **15** công trình (thêm [Degformer 2026](papers/degformer-2026.md) và [LeBlanc 2026](papers/leblanc-2026.md) ngày 15/10), mỗi file nói rõ bài đó làm gì, liên quan đến đề tài ở đâu, và **chiếm chỗ nào** của mình.
 
 ---
 
@@ -66,9 +79,11 @@ Người ta đã đo thực nghiệm hàng trăm nghìn đột biến như vậy
 
 ### Vì sao có chỗ cho đề tài
 
-**Câu trả lời ngắn nhất: chưa có mô hình nào được huấn luyện cho đúng nhiệm vụ này.** Bốn sản phẩm đã có
-(DEGRONOPEDIA, MetaDegron, Colab của nhóm PAP, SVM của chính nhóm Zhang) đều xuất điểm ở mức **peptide
-hoặc motif**, không ở mức residue.
+**Câu trả lời ngắn nhất: chưa có mô hình nào được huấn luyện và *đánh giá* cho đúng nhiệm vụ này.** Năm sản
+phẩm đã có (DEGRONOPEDIA, MetaDegron, Colab của nhóm PAP, SVM của chính nhóm Zhang, và — **mới 15/10** —
+[Degformer](papers/degformer-2026.md)) đều **giám sát ở mức peptide**: bốn cái đầu xuất điểm mức peptide
+hoặc motif, còn Degformer có xuất ma trận 28×20 nhưng bằng **532 lượt forward trên một đầu đọc CLS token**,
+không phải một đầu mức residue — và **dưới split ngẫu nhiên có 4,09% rò rỉ trình tự**, không có trần nhãn.
 
 Bằng chứng mạnh nhất cho điều đó, đo ngày 14/10: lấy mô hình tốt nhất hiện có (PAP) và dùng nó đúng cách
 cho bài toán này — tính **ΔPAP** trên đúng những thay thế thí nghiệm đã làm — thì nó chỉ đạt precision@3
@@ -139,6 +154,9 @@ Nguồn: [full-data-audit mục 4–6](../../topics/degron-footprint/research/fu
 3. **Không nói "cổng phơi lộ là điểm mới" (mới 15/10).** Tiền đề đã được Voutsinos 2026, Larsen 2025, QCDPred, DEGRONOPEDIA và JoGo công bố; **hiện tượng ΔPAP đổi dấu thì Larsen 2025 đã tìm ra trên CRX** (0,54 ở IDR so với −0,19 ở vùng gấp). Và cổng **không huấn luyện được** trên nhiệm vụ chính.
 4. **Không nói "PAP là mô hình tồi" (mới 15/10).** Nó thua trên nhiệm vụ residue vì **được huấn luyện cho việc khác**. Câu đúng: *chưa có mô hình nào được huấn luyện cho đúng nhiệm vụ này*.
 5. **Không nói "mô hình thành phần cho bản đồ phẳng".** Ràng buộc đúng là: *trong cùng peptide, các vị trí có cùng cặp (acid amin gốc, acid amin thay vào) buộc phải nhận cùng điểm*. Bản đồ của nó không bắt buộc phẳng.
+6. **Không nói "chưa tiền lệ nào xuất ma trận 28×20" (mới 15/10).** [Degformer](papers/degformer-2026.md) đã xuất, trên đúng nhãn của đề tài; [Larsen 2025](papers/larsen-2025.md) đã làm cho từng protein đơn lẻ. Câu đúng: *ma trận đó chưa bao giờ được dựng **dưới split cụm protein, kèm trần nhãn đã đo, kèm bất định từng ô, và có điều kiện theo lớp phơi lộ***.
+7. **Không nói "MIL bền hơn với nhãn nhiễu" (mới 15/10).** Lý lẽ của Ilse et al. là về nhãn **vắng mặt**, không phải nhãn **nhiễu**; và **không tìm thấy** phép so sánh có kiểm soát nào theo tỉ lệ nhiễu. Nói đúng: *đây là một thí nghiệm có tiên đoán ghi trước, chưa phải kết quả đã biết*.
+8. **Không nói "chưa ai đặt cổng phơi lộ ở bước gộp" (mới 15/10).** Một attention pooling học được trên node đã chứa rASA **về nguyên tắc biểu diễn được** cổng đó, nên tuyên bố phải dựa vào **ablation ô chéo**, không dựa vào việc không tìm thấy tiền lệ.
 
 Và một điều về số liệu, **đã mạnh hơn sau 13/10**: không chỉ là "chưa hứa 0,1747", mà **con số 0,1747 đã bị bác bỏ** — nó dựa trên oracle 0,7792 đọc nhãn test. Đã tách nhiễu: **75,9%** phần dư là nhiễu đo, phần học được tối đa **8,7%** phương sai, không phải 35%. Xem [bài 10 mục 6](10-data-up-close.md).
 

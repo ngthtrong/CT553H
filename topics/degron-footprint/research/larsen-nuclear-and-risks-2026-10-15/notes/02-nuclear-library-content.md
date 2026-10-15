@@ -104,7 +104,7 @@ báo **không** báo bất kỳ thước đo lặp lại nào ở mức residue,
 - Mốc nhiễu của assay GPS mà đề tài đã tự đo (để đối chiếu, không phải của bài Larsen): SD nhiễu một
   replicate **0,3357** PSI trên 343.236 peptide của sàng peptidome, 0,2974 ở bộ quét, 0,2645 ở bộ bão hoà,
   và chính Zhang ghi trung vị |sai số| **0,239**. `[tự đo, phiên trước]` —
-  [full-data-audit §7](../../topics/degron-footprint/research/full-data-audit/README.md)
+  [full-data-audit §7](../../full-data-audit/README.md)
 
 ### Inferences
 
@@ -253,7 +253,7 @@ tốt, ΔPAP đổi dấu).
   0,7**, và tương quan **tăng khi nâng ngưỡng rASA** (Fig. S9). `[bài báo]` —
   [Voutsinos bioRxiv v1](https://www.biorxiv.org/content/10.1101/2025.05.10.653233v1.full)
 - Ghi chú đối chiếu nội bộ: hai con số 0,41 / 0,36 đã được ghi trong
-  [architecture-check](../../topics/degron-footprint/research/architecture-check/README.md) của đề tài, và
+  [architecture-check](../../architecture-check/README.md) của đề tài, và
   lần này **đọc được trực tiếp từ toàn văn**, nên có thể nâng nhãn từ `[qua tóm tắt]` lên `[đọc]`.
   `[tự đo]`
 
@@ -322,7 +322,7 @@ dữ liệu TF.
   một đóng góp nhỏ nhưng rẻ, nếu đề tài cần.
 - `[suy luận]` Mốc mạnh nhất cho **nhiệm vụ mức residue** vẫn **không nằm trong bài này**. Đề tài đã tự đo
   ΔPAP `cnn2w7` precision@3 = 0,4270 so với baseline thành phần 0,4884 trên bộ quét GPS
-  ([pap-baseline](../../topics/degron-footprint/research/pap-baseline/README.md), `[tự đo, phiên trước]`).
+  ([pap-baseline](../../pap-baseline/README.md), `[tự đo, phiên trước]`).
   Thư viện Larsen **không** thay thế được mốc đó.
 
 ### Gaps
@@ -372,7 +372,7 @@ protein**.
 - Kiểm rò rỉ thực nghiệm mà đề tài đã làm trên **nhiệm vụ residue**: tách peptide theo việc protein của nó
   có trong gene train của PAP hay không → ΔPAP `cnn2w7` cho **0,4268** (656 peptide, có trong train) so
   với **0,4270** (1.747 peptide, không) → **không có lợi thế**. `[tự đo, phiên trước]` —
-  [pap-baseline §B.3](../../topics/degron-footprint/research/pap-baseline/README.md)
+  [pap-baseline §B.3](../../pap-baseline/README.md)
 
 ### Inferences
 
