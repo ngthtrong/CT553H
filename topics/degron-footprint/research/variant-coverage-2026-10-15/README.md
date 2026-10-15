@@ -276,6 +276,59 @@ ngách này — lập luận cấp thiết phải tự dựng, và nay dựng đ
 > thực nghiệm đã đo. Phạm vi là degron **tự trị**; degron phụ thuộc phosphoryl hóa nằm ngoài
 > tầm của assay, và điều đó đã được đo chứ không phải giả định.
 
+## 8b. Mắt nối trụ 1 → trụ 2: đã đo ba lần, **chưa thiết lập được**
+
+Trụ 1 nói *vùng* degron giàu biến thể gây bệnh. Trụ 2 dự đoán ở mức **residue**. Câu hỏi nối hai
+trụ: **ở độ phân giải residue thì tín hiệu bệnh có còn không?** Đã đo ba cách. **[đo]**
+
+**Phép 1 — nhị phân footprint / không footprint**, trong cùng peptide degron (ngưỡng ΔPSI ≥ 1,0
+của repo; footprint chiếm **9,0%** ô đã đo):
+
+| | Gây bệnh | Lành tính |
+|---|---:|---:|
+| Vị trí footprint | 45 | 76 |
+| Vị trí không footprint | 650 | 853 |
+
+**OR = 0,777**, CI 95% [0,530; 1,139] ⇒ **rỗng**. Mất lực: chỉ 121 biến thể có phân loại ở vị trí
+footprint; phân tầng vô vọng (17–20 tầng có thông tin).
+
+**Phép 2 và 3 — ΔPSI liên tục** ([`delta_psi_test.py`](delta_psi_test.py), seed 20261015, 2.000 lần
+bootstrap **theo cụm cov80**). Thước đo **AUC = P(ΔPSI gây bệnh > ΔPSI lành tính)**, 0,5 là rỗng.
+Hướng giả thuyết: phá degron ⇒ protein bền hơn ⇒ ΔPSI dương ⇒ AUC > 0,5.
+
+| Tầng | Khớp | n gây bệnh / lành tính | Trung vị ΔPSI (bệnh / lành) | **AUC** | CI 95% |
+|---|---|---:|---|---:|---|
+| `scan_pos` | **vị trí** | 695 / 929 · 620 cụm | 0,150 / 0,130 | **0,5166** | [0,479; 0,554] |
+| `scan_exact` | đúng acid amin | 67 / 36 · 73 cụm | 0,185 / 0,109 | 0,5195 | [0,400; 0,645] |
+| `sat_exact` | **đúng ô**, nhãn sạch nhất | 26 / 25 · 24 cụm | **0,270 / 0,058** | **0,6738** | [0,489; 0,831] |
+
+Ghép cặp **trong cùng peptide**, tầng có lực nhất (`scan_pos`, 82 peptide có cả hai nhóm): hiệu
+trung bình **+0,033**, CI [−0,079; +0,141], **51,2%** peptide có hiệu dương — đúng bằng tung đồng xu.
+
+**Cách đọc trung thực:**
+
+1. **Ở độ phân giải residue, tín hiệu bệnh CHƯA được thiết lập.** Tầng duy nhất **có lực**
+   (`scan_pos`, n = 1.624, 620 cụm) cho **0,5166** với CI khá chặt [0,479; 0,554] ⇒ nếu có hiệu ứng
+   thì **nhỏ**, AUC không quá ≈ 0,55. Cả ba phép đều nhất quán với rỗng.
+2. **Có một mạch đáng chú ý nhưng chưa đủ đỡ:** hiệu ứng **tăng dần** khi khớp chặt hơn và nhãn sạch
+   hơn — 0,517 → 0,520 → **0,674**, và ở `sat_exact` trung vị ΔPSI của nhóm gây bệnh **gấp 4,6 lần**
+   nhóm lành tính (0,270 so 0,058). Đó **đúng** là dạng mà người ta kỳ vọng nếu hiệu ứng thật đang bị
+   (a) khớp-theo-vị-trí và (b) nhiễu nhãn làm suy giảm. **Nhưng** `sat_exact` có n = 51 và CI
+   **[0,489; 0,831] vẫn chạm 0,5** ⇒ **không được gọi là dương**.
+3. **Và phép sạch nhất KHÔNG thể tăng lực bằng dữ liệu hiện có.** Bộ bão hòa chỉ có 91 peptide; số
+   biến thể ClinVar khớp đúng ô bị chặn ở **≈51 ca có phân loại**. ⇒ Mắt nối này **không đo được dứt
+   điểm bằng dữ liệu đang có**; muốn đóng thì cần nguồn nhãn mức residue mới.
+4. **Một phần lý do rỗng, đã đo:** phần lớn biến thể ClinVar rơi vào ô **bị nhiễu loạn yếu** — trung
+   vị ΔPSI chỉ 0,13–0,27 so với ngưỡng footprint **1,0**. Biến thể ClinVar không tập trung vào ô
+   footprint mạnh.
+
+**Hệ quả cho khung đề tài — đã ghi thành [D-036](../../../../DECISIONS.md#d-036):** giữ trụ 1 ở
+**mức vùng**; **không** được nói *"residue mà đề tài dự đoán là residue mang tín hiệu bệnh"*; và
+**không** dùng ClinVar làm đích xác nhận cho mô hình. ClinVar chỉ dùng làm **động lực** (530.412 VUS
+chưa ai gán cơ chế) chứ không làm nhãn đánh giá.
+
+---
+
 ## 9. Việc còn thiếu, xếp theo mức đe doạ kết luận
 
 1. **Đối chứng bảo tồn và độ vô trật tự** — việc quan trọng nhất. Nếu giàu lên 2,15 lần biến

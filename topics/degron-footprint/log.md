@@ -4,6 +4,21 @@
 
 ---
 
+## 15/10/2026 (phiên 11) — cập nhật brief slide theo khung ba trụ
+
+Tài liệu: [presentation/slide-content-2026-10-15.md](presentation/slide-content-2026-10-15.md). Căn cứ: [D-033](../../DECISIONS.md#d-033), [D-034](../../DECISIONS.md#d-034), [D-035](../../DECISIONS.md#d-035), [D-036](../../DECISIONS.md#d-036). **Chỉ sửa brief; không dựng slide, không đo mới, không ghi quyết định mới.**
+
+- **Vì sao phải sửa:** brief viết ở phiên 9, **trước** khi khung có trụ cấp thiết và trụ phần mềm. Phần A của sổ quyết định ghi "nội dung slide đã cập nhật theo D-033/D-034/D-035" — câu đó **chưa đúng tại thời điểm viết**, nay mới đúng; đã sửa lại A và mục D cho khớp.
+- **Thêm phần "Product" (slide 23–24)** đặt trước Next steps, theo yêu cầu của Trọng. Slide 23: dịch vụ dự đoán — ma trận 28×20, bất định neo vào trần đo lường, chấm đột biến tuỳ ý, API, cờ ngoài phân phối và cờ ngăn tế bào, xuất xứ nhãn; lý lẽ "vì sao là phần mềm" dựa trên nhiễu đo 75,9% và Jaccard 0,4965. Slide 24: harness đánh giá (một split cho mọi mô hình, một khuôn báo cáo kèm trần và MDE) + miền áp dụng 116.702 tile / 17.287 protein, **87,3% cụm cov80 chưa thấy**.
+- **Đánh số lại:** 24 → **26 slide**. Next steps thành slide 25, Questions thành slide 26. Mục lục và ngân sách thời gian chia lại: phần Product lấy 2 phút từ phần 3, 5, 6.
+- **Slide 6 viết lại theo [D-035](../../DECISIONS.md#d-035):** bỏ mạch dẫn "đột biến lái ung thư" (Tokheim 2021, Liu 2021, DegronMD), thay bằng con số **tự đo 2,148×** ở **mức vùng**. Trích dẫn cũ chuyển xuống ghi chú sản xuất để trả lời nếu GVHD hỏi.
+- **Ràng buộc [D-036](../../DECISIONS.md#d-036) đã áp vào câu chữ:** trụ 1 ghi rõ "region level"; ClinVar là **động lực**, không phải đích xác nhận; ≈1.600 là con số **độ phủ**, không đặt cạnh harness; không trích AUC 0,674 (n = 51) rời khỏi CI [0,489; 0,831]. Thêm **năm câu cấm**: "degrons are mutation hotspots", mọi khung "cancer driver mutations", "the residues we predict carry disease signal", "validated against ClinVar", "pathogenic because it breaks a degron".
+- **Các chỗ sửa khác:** slide 5 (phạm vi **degron tự trị**), slide 13 (diễn giải biến thể lên đầu, gọi đúng là *mechanistic hypothesis*), slide 14 (bảng **ba trụ** + dòng **C5 phần mềm** ⬜), slide 18 (nguồn thứ 7 **ClinVar** kèm yêu cầu ghi công PMID 29165669 và câu phủ nhận chẩn đoán; peptidome GPS thêm vai miền áp dụng; dung lượng ≈ 1,9 → **2,3 GB**, đo bằng `du`), slide 25 (dòng G3 thành "designed, not built"; tuần 11–13 trỏ sang slide 23–24; việc C-16 đánh dấu đã đóng).
+- **Việc còn lại, ghi ở bảng cuối brief:** Trọng tự viết **câu hỏi 1 và 4 của slide 26** (Q1 xin duyệt khung ba trụ, Q4 phạm vi phần mềm); đối chiếu lại từng ô bảng so sánh tiền lệ ở slide 23; nếu chạy kịp đối chứng bảo tồn/vô trật tự thì thay một dòng ở slide 6.
+- **Trang khung một trang mang đi buổi gặp 16/10:** [framework-one-pager.html](../../project/meetings/2026-10-16-session-02/framework-one-pager.html) (HTML in vừa một trang A4, mở bằng `file://` theo [D-013](../../DECISIONS.md#d-013)) kèm [bản Markdown](../../project/meetings/2026-10-16-session-02/framework-one-pager.md) để đọc nhanh. Nội dung: mục đích buổi gặp (duyệt khung + xin biên bản cho D-034) · bài toán và phạm vi · bảng ba trụ kèm số đỡ · khối "vì sao phần mềm là đóng góp" · **bảy giới hạn nói thẳng** · lộ trình tới điểm kiểm tuần 10 · ô trống cho câu hỏi và ghi chú biên bản. Bốn câu hỏi xin GVHD **để trống, Trọng tự viết**.
+
+---
+
 ## 15/10/2026 (phiên 10) — độ phủ biến thể ClinVar: lập luận cấp thiết đầu tiên có số đo
 
 Căn cứ: [D-033](../../DECISIONS.md#d-033). Báo cáo: [variant-coverage-2026-10-15](research/variant-coverage-2026-10-15/README.md). Trọng hỏi *phần mềm có giải quyết được vấn đề ý nghĩa bài toán không* và *degron có là ngách quan trọng không*; câu đầu là **không** (hai trục độc lập), câu sau đi đo.
@@ -18,6 +33,10 @@ Căn cứ: [D-033](../../DECISIONS.md#d-033). Báo cáo: [variant-coverage-2026-
 - **Việc đe doạ kết luận nhiều nhất, chưa làm:** khử **bảo tồn** và **độ vô trật tự**. Nếu 2,148 biến mất sau khi khử thì nó chỉ nói "degron nằm trong vùng chức năng". Ghi ở [D](../../DECISIONS.md#doi-chung-cap-thiet).
 - **Cuối phiên — khung đề tài được chốt:** Trọng cho biết đã **trao đổi trực tiếp với GVHD** và được xác nhận **trụ phần mềm được tính là đóng góp** ([D-034](../../DECISIONS.md#d-034); nguyên liệu thô ở [people.md](../../project/people.md), **chưa có biên bản**). Trọng **ủy quyền cho Claude trong phiên này** xác nhận các mục C về khung và đóng góp ⇒ [D-035](../../DECISIONS.md#d-035) nhận **C-18** (phạm vi degron tự trị + dòng mầm), **C-17** (a + b), **C-19** ⇒ **C-16 chuyển sang không dùng**. **Hàng đợi C nay trống**; còn chờ bên ngoài là [C-5](../../DECISIONS.md#c-5) (GVHD duyệt khung, buổi gặp **16/10**) và C-11a (email giấy phép).
 - ⚠ **Giá phải trả của C-19, ghi để không quên:** rủi ro *"cả hai nguồn nhãn mức residue đều của Zhang 2023"* **vẫn mở và nay không có ứng viên nào**. Yêu cầu cho ứng viên thay thế: readout là **độ bền**, trên **degron tự trị**, **nhóm tác giả khác**, nhãn **mức residue**.
+- **Đo thêm cuối phiên: mắt nối trụ 1 → trụ 2 CHƯA thiết lập được** ([D-036](../../DECISIONS.md#d-036), [báo cáo §8b](research/variant-coverage-2026-10-15/README.md)). Ba phép, đều nhất quán với rỗng: (1) nhị phân footprint/không, **OR 0,777** [0,530; 1,139]; (2) ΔPSI liên tục khớp **vị trí**, tầng có lực nhất (n = 1.624, 620 cụm), **AUC 0,5166** [0,479; 0,554]; (3) ΔPSI khớp **đúng ô**, nhãn sạch nhất nhưng n = 51, AUC 0,6738 [0,489; 0,831] — **CI vẫn chạm 0,5**. Ghép cặp trong cùng peptide: +0,033 [−0,079; +0,141], 51,2% dương.
+  - Mạch đáng theo: hiệu ứng **tăng đơn điệu** khi khớp chặt hơn và nhãn sạch hơn (0,517 → 0,520 → 0,674; trung vị ΔPSI gây bệnh **gấp 4,6 lần** lành tính ở tầng sạch nhất) — đúng dạng hiệu ứng thật bị nhiễu nhãn làm suy giảm. Nhưng n = 51 không chở được tuyên bố.
+  - **Không đóng được bằng dữ liệu hiện có:** bộ bão hòa chỉ 91 peptide ⇒ số ca khớp đúng ô chặn ở ≈51. Việc này **gộp** với lỗ mà D-035 để lại khi bỏ `CTNNB1`: cần **một nguồn nhãn mức residue mới**.
+  - Hệ quả câu chữ: giữ trụ 1 ở **mức vùng**; **cấm** nói "residue đề tài dự đoán là residue mang tín hiệu bệnh"; ClinVar chỉ là **động lực**, không phải đích xác nhận mô hình.
 - Không huấn luyện mô hình; **mục tiêu G2 vượt 0,7693 không đổi và chưa đạt**. **Không sửa `presentation/`** — Trọng yêu cầu chốt khung trước, việc slide để sau.
 
 ---

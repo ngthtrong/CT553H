@@ -1,0 +1,329 @@
+/* ============================================================================
+   Deck buổi gặp GVHD 16/10/2026 — degron-footprint
+   Thiết kế MỚI, không dùng lại khuôn slide cũ (deck.json / presentation.html).
+   Bảng màu và quy ước lấy từ presentation/slide-content-2026-10-15.md,
+   mục "Phong cách thiết kế".
+   Sân khấu cố định 1280x720 (16:9), JS co giãn theo cửa sổ.
+   ========================================================================== */
+
+:root {
+  --paper:    #FAFBFC;   /* nền slide */
+  --ink:      #15323F;   /* chữ chính */
+  --degron:   #D1495B;   /* nhấn 1 — degron / bất ổn định / PSI thấp */
+  --stable:   #2A9D8F;   /* nhấn 2 — bền / an toàn / PSI cao */
+  --model:    #386FA4;   /* nhấn 3 — mô hình / tính toán */
+  --muted:    #8FA3AD;   /* lưới, trục, nhãn phụ */
+  --warn:     #E9C46A;   /* chưa đo / [proposed] */
+
+  --ink-70:   #4A6673;
+  --ink-45:   #7D949E;
+  --rule:     #DCE3E7;
+  --rule-2:   #EDF1F3;
+  --degron-bg:#FBEDEF;
+  --stable-bg:#E7F4F2;
+  --model-bg: #E8F0F7;
+  --warn-bg:  #FCF5E4;
+
+  --sans: 'Inter', -apple-system, 'Segoe UI', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --W: 1280px;
+  --H: 720px;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0; height: 100%;
+  background: #0E1A20;
+  font-family: var(--sans);
+  color: var(--ink);
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------------ sân khấu */
+
+#viewport {
+  position: fixed; inset: 0;
+  display: grid; place-items: center;
+}
+
+#stage {
+  position: relative;
+  width: var(--W); height: var(--H);
+  background: var(--paper);
+  box-shadow: 0 24px 70px rgba(0,0,0,.55);
+  overflow: hidden;
+  transform-origin: center center;
+}
+
+.slide {
+  position: absolute; inset: 0;
+  padding: 44px 58px 54px;
+  display: none;
+  flex-direction: column;
+  opacity: 0;
+}
+.slide.current { display: flex; animation: slide-in .32s cubic-bezier(.2,.7,.3,1) forwards; }
+@keyframes slide-in {
+  from { opacity: 0; transform: translateX(14px); }
+  to   { opacity: 1; transform: none; }
+}
+.slide.back.current { animation-name: slide-in-back; }
+@keyframes slide-in-back {
+  from { opacity: 0; transform: translateX(-14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ------------------------------------------------------- khung chung của trang */
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ink-45);
+  display: flex; gap: 10px; align-items: center;
+  margin-bottom: 10px;
+}
+.eyebrow .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--model); }
+
+h1.title {
+  font-size: 46px; line-height: 1.1; font-weight: 700; letter-spacing: -.022em;
+  margin: 0 0 18px; max-width: 24ch; text-wrap: balance;
+}
+h2 {
+  font-size: 29px; line-height: 1.18; font-weight: 700; letter-spacing: -.018em;
+  margin: 0 0 6px; max-width: 30ch; text-wrap: balance;
+}
+h2 em { font-style: normal; color: var(--degron); }
+.lede {
+  font-size: 16px; line-height: 1.45; color: var(--ink-70);
+  margin: 0 0 16px; max-width: 86ch;
+}
+.body { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 14px; }
+
+p  { margin: 0 0 10px; }
+ul { margin: 0 0 10px; padding-left: 18px; }
+li { margin-bottom: 7px; line-height: 1.42; }
+li::marker { color: var(--muted); }
+b, strong { font-weight: 700; }
+code, .mono { font-family: var(--mono); font-size: .92em; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+.hl-d { color: var(--degron); font-weight: 700; }
+.hl-s { color: var(--stable); font-weight: 700; }
+.hl-m { color: var(--model);  font-weight: 700; }
+
+/* chân slide: nhãn bằng chứng, trích dẫn, giấy phép */
+.foot {
+  position: absolute; left: 58px; right: 58px; bottom: 18px;
+  font-size: 11px; line-height: 1.4; color: var(--ink-45);
+  border-top: 1px solid var(--rule-2); padding-top: 7px;
+}
+.foot b { color: var(--ink-70); font-weight: 600; }
+
+/* ----------------------------------------------------------------- bố cục cột */
+
+.cols      { display: grid; gap: 22px; flex: 1; min-height: 0; }
+.c-2       { grid-template-columns: 1fr 1fr; }
+.c-2-wide  { grid-template-columns: 1.35fr 1fr; }
+.c-2-narrow{ grid-template-columns: 1fr 1.35fr; }
+.c-3       { grid-template-columns: repeat(3, 1fr); }
+.stack     { display: flex; flex-direction: column; gap: 12px; min-height: 0; }
+.center    { justify-content: center; }
+.grow      { flex: 1; min-height: 0; }
+
+/* -------------------------------------------------------------------- hộp/chip */
+
+.card {
+  background: #fff; border: 1px solid var(--rule); border-radius: 10px;
+  padding: 14px 16px;
+}
+.card.key    { border-left: 3px solid var(--model);  background: var(--model-bg); }
+.card.good   { border-left: 3px solid var(--stable); background: var(--stable-bg); }
+.card.alert  { border-left: 3px solid var(--degron); background: var(--degron-bg); }
+.card.open   { border: 1px dashed var(--warn); background: var(--warn-bg); }
+.card > :last-child { margin-bottom: 0; }
+.card-t {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--ink-45); margin-bottom: 8px;
+}
+
+.chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--mono); font-size: 10.5px; font-weight: 500;
+  padding: 3px 8px; border-radius: 20px; white-space: nowrap;
+}
+.chip.m   { background: var(--stable-bg); color: #1D6F65; }   /* đã đo */
+.chip.o   { background: var(--warn-bg);   color: #8A6A17; }   /* chưa đo / proposed */
+.chip.s   { background: var(--model-bg);  color: #2A567F; }   /* nguồn/tác giả */
+.chip.d   { background: var(--degron-bg); color: #A23247; }   /* cảnh báo */
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.kpi { display: flex; align-items: baseline; gap: 9px; }
+.kpi .v {
+  font-family: var(--mono); font-size: 34px; font-weight: 700;
+  letter-spacing: -.02em; line-height: 1;
+}
+.kpi .u { font-size: 12.5px; color: var(--ink-70); line-height: 1.3; }
+
+/* --------------------------------------------------------------------- bảng */
+
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td {
+  padding: 6px 9px; text-align: left; vertical-align: top;
+  border-bottom: 1px solid var(--rule-2);
+}
+thead th {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--ink-45); font-weight: 500;
+  border-bottom: 1px solid var(--rule); background: #fff;
+}
+tbody tr:last-child td { border-bottom: none; }
+td.r, th.r { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.c, th.c { text-align: center; }
+tr.mine td { background: var(--model-bg); font-weight: 600; }
+tr.mine td:first-child { box-shadow: inset 3px 0 0 var(--model); }
+table.tight th, table.tight td { padding: 4.5px 8px; font-size: 12px; }
+table.xtight th, table.xtight td { padding: 3.5px 7px; font-size: 11.5px; }
+.group-a td:first-child { box-shadow: inset 3px 0 0 var(--muted); }
+
+/* ------------------------------------------------------------- bước animation */
+
+/* phần tử chờ bước: ẩn tới khi .on */
+[data-step] { opacity: 0; transition: opacity .42s ease, transform .42s cubic-bezier(.2,.7,.3,1); }
+[data-step] { transform: translateY(7px); }
+[data-step].on { opacity: 1; transform: none; }
+[data-step][data-anim="fade"] { transform: none; }
+[data-step][data-anim="left"]  { transform: translateX(-14px); }
+[data-step][data-anim="right"] { transform: translateX(14px); }
+[data-step][data-anim="pop"]   { transform: scale(.9); transform-origin: center; }
+[data-step][data-anim="grow"]  { transform: scaleX(0); transform-origin: left center; }
+[data-step].on[data-anim="grow"] { transform: scaleX(1); }
+
+/* nhòe những dòng đã qua, làm nổi dòng hiện tại — dùng ở bảng dài */
+.dim { opacity: .45; transition: opacity .4s ease; }
+
+/* ----------------------------------------------------------------- SVG chung */
+
+svg { display: block; max-width: 100%; }
+svg text { font-family: var(--sans); fill: var(--ink); }
+svg .mono { font-family: var(--mono); }
+svg .lbl  { font-size: 11px; fill: var(--ink-70); }
+svg .lblx { font-size: 9.5px; fill: var(--ink-45); }
+.fig { display: flex; flex-direction: column; gap: 6px; min-height: 0; }
+.fig .cap { font-size: 10.5px; color: var(--ink-45); line-height: 1.35; }
+.fig .cap b { color: var(--ink-70); font-weight: 600; }
+.fig-body { flex: 1; min-height: 0; display: grid; place-items: center; }
+.fig-body > svg { max-height: 100%; height: auto; }
+
+/* ô peptide mono dùng ở nhiều slide */
+.pep { display: flex; gap: 2px; font-family: var(--mono); font-size: 12px; }
+.pep span {
+  width: 21px; height: 25px; display: grid; place-items: center;
+  background: #EEF2F4; border: 1px solid var(--rule); border-radius: 3px;
+  transition: background .45s ease, color .45s ease, border-color .45s ease, transform .45s ease;
+}
+.pep span.hit { background: var(--degron); color: #fff; border-color: var(--degron); }
+.pep span.soft{ background: var(--degron-bg); border-color: #EBC3C9; color: #A23247; }
+.pep span.ok  { background: var(--stable-bg); border-color: #B9DED8; color: #1D6F65; }
+
+/* thanh PSI 1..6, tái dùng ở slide 7, 16, 20 */
+.psibar { display: flex; flex-direction: column; gap: 4px; width: 100%; }
+.psibar .track {
+  height: 15px; border-radius: 8px;
+  background: linear-gradient(90deg, var(--degron) 0%, #E8A39B 38%, #BFD9D4 62%, var(--stable) 100%);
+}
+.psibar .ends { display: flex; justify-content: space-between; font-size: 10.5px; color: var(--ink-70); }
+
+/* ---------------------------------------------- hiệu ứng riêng, chạy nền nhẹ */
+
+@keyframes pulse-soft { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+.pulse { animation: pulse-soft 2.6s ease-in-out infinite; }
+
+@keyframes dash-run { to { stroke-dashoffset: -34; } }
+.flow { stroke-dasharray: 7 7; animation: dash-run 1.5s linear infinite; }
+
+@keyframes drift-y { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+.drift { animation: drift-y 3.4s ease-in-out infinite; }
+
+/* khi slide không hiện thì dừng mọi animation nền cho nhẹ máy */
+.slide:not(.current) * { animation-play-state: paused !important; }
+
+/* ------------------------------------------------------------------ thanh HUD */
+
+#hud {
+  position: fixed; left: 0; right: 0; bottom: 0; height: 30px;
+  display: flex; align-items: center; gap: 14px;
+  padding: 0 14px; font-family: var(--mono); font-size: 11px;
+  color: #8FA3AD; background: rgba(8,16,21,.92);
+  border-top: 1px solid rgba(255,255,255,.07);
+  z-index: 50;
+}
+#hud .sec { color: #B7C7CE; }
+#hud .spacer { flex: 1; }
+#hud kbd {
+  font-family: var(--mono); font-size: 10px; color: #CBD8DD;
+  background: rgba(255,255,255,.1); border-radius: 3px; padding: 1px 5px;
+}
+#progress {
+  position: fixed; left: 0; bottom: 30px; height: 2px;
+  background: var(--model); z-index: 51; transition: width .3s ease;
+}
+
+/* ghi chú người nói */
+#notes {
+  position: fixed; right: 0; top: 0; bottom: 30px; width: 380px;
+  background: #0E1A20; color: #C6D4DA; border-left: 1px solid rgba(255,255,255,.1);
+  padding: 18px 20px; overflow-y: auto; font-size: 13px; line-height: 1.55;
+  z-index: 49; display: none;
+}
+body.notes-on #notes { display: block; }
+#notes h3 {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+  color: #7E949C; margin: 0 0 10px; font-weight: 500;
+}
+#notes .n-body > :first-child { margin-top: 0; }
+#notes b { color: #EAF2F5; }
+#notes .warn { color: var(--warn); }
+#notes .no { color: #E58B9A; }
+#notes ul { padding-left: 17px; }
+#notes li { margin-bottom: 6px; }
+
+/* bảng tổng quan các slide */
+#overview {
+  position: fixed; inset: 0; background: rgba(8,16,21,.97);
+  z-index: 60; display: none; overflow-y: auto; padding: 26px;
+}
+body.overview-on #overview { display: block; }
+#overview .grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(186px, 1fr)); gap: 12px;
+}
+#overview .ov {
+  background: #16262E; border: 1px solid rgba(255,255,255,.1); border-radius: 8px;
+  padding: 10px 12px; cursor: pointer; color: #C6D4DA;
+}
+#overview .ov:hover, #overview .ov.here { border-color: var(--model); background: #1B313C; }
+#overview .ov .n { font-family: var(--mono); font-size: 10px; color: #7E949C; }
+#overview .ov .t { font-size: 12.5px; line-height: 1.3; margin-top: 4px; color: #E6EEF1; }
+#overview h3 {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+  color: #7E949C; margin: 0 0 14px; font-weight: 500;
+}
+
+/* ------------------------------------------------------------------- in / PDF */
+
+@media print {
+  @page { size: 1280px 720px; margin: 0; }
+  html, body { overflow: visible; background: #fff; height: auto; }
+  #hud, #progress, #notes, #overview { display: none !important; }
+  #viewport { position: static; display: block; }
+  #stage { width: 1280px; height: auto; box-shadow: none; transform: none !important; }
+  .slide {
+    display: flex !important; opacity: 1 !important; position: relative;
+    width: 1280px; height: 720px; page-break-after: always; animation: none !important;
+  }
+  [data-step] { opacity: 1 !important; transform: none !important; }
+  .dim { opacity: 1 !important; }
+  .pulse, .flow, .drift { animation: none !important; }
+}

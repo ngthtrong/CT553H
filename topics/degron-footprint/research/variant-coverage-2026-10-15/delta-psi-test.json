@@ -1,0 +1,108 @@
+{
+  "seed": 20261015,
+  "n_bootstrap": 2000,
+  "hypothesis": "phá degron => protein bền hơn => ΔPSI dương; nên AUC P(ΔPSI gây bệnh > ΔPSI lành tính) > 0,5 nếu có tín hiệu",
+  "counts": {
+    "scan_pos_vus": 15574,
+    "scan_pos_benign": 929,
+    "scan_pos_pathogenic": 695,
+    "scan_exact_pathogenic": 67,
+    "scan_exact_vus": 871,
+    "sat_exact_pathogenic": 26,
+    "sat_exact_vus": 486,
+    "scan_exact_benign": 36,
+    "sat_exact_benign": 25
+  },
+  "tiers": {
+    "scan_pos": {
+      "n_pathogenic": 695,
+      "n_benign": 929,
+      "n_vus": 15574,
+      "n_clusters": 620,
+      "median_dpsi_pathogenic": 0.14986415199999992,
+      "median_dpsi_benign": 0.13047661999999982,
+      "median_dpsi_vus": 0.12861586449999995,
+      "auc_patho_gt_benign": 0.5165909038108587,
+      "auc_ci95_bootstrap_by_cluster": [
+        0.4790117635266889,
+        0.5535374160025599
+      ],
+      "paired_within_peptide": {
+        "n_peptides": 82,
+        "mean_diff": 0.032601041451800226,
+        "median_diff": 0.010032721571428677,
+        "ci95": [
+          -0.07945221391562135,
+          0.1410976847549942
+        ],
+        "n_positive": 42,
+        "frac_positive": 0.5121951219512195
+      },
+      "auc_abs_dpsi": 0.48519642843314154,
+      "auc_abs_ci95": [
+        0.4432564660381919,
+        0.5271428693841527
+      ]
+    },
+    "scan_exact": {
+      "n_pathogenic": 67,
+      "n_benign": 36,
+      "n_vus": 871,
+      "n_clusters": 73,
+      "median_dpsi_pathogenic": 0.18453546200000037,
+      "median_dpsi_benign": 0.10939647349999992,
+      "median_dpsi_vus": 0.0904699550000001,
+      "auc_patho_gt_benign": 0.5194859038142621,
+      "auc_ci95_bootstrap_by_cluster": [
+        0.40006651147322914,
+        0.6449074074074074
+      ],
+      "paired_within_peptide": {
+        "n_peptides": 4,
+        "mean_diff": 0.22213748691666668,
+        "median_diff": 0.24668798283333326,
+        "ci95": [
+          -0.19921845883333322,
+          0.6300211753333333
+        ],
+        "n_positive": 3,
+        "frac_positive": 0.75
+      },
+      "auc_abs_dpsi": 0.6011608623548922,
+      "auc_abs_ci95": [
+        0.47264957264957264,
+        0.7303240740740741
+      ]
+    },
+    "sat_exact": {
+      "n_pathogenic": 26,
+      "n_benign": 25,
+      "n_vus": 486,
+      "n_clusters": 24,
+      "median_dpsi_pathogenic": 0.26999154099999995,
+      "median_dpsi_benign": 0.05827899575000006,
+      "median_dpsi_vus": 0.11921463499999985,
+      "auc_patho_gt_benign": 0.6738461538461539,
+      "auc_ci95_bootstrap_by_cluster": [
+        0.4891304347826087,
+        0.83125
+      ],
+      "paired_within_peptide": {
+        "n_peptides": 3,
+        "mean_diff": 0.4256723627777778,
+        "median_diff": 0.20136655483333335,
+        "ci95": [
+          -0.13367622450000005,
+          1.209326758
+        ],
+        "n_positive": 2,
+        "frac_positive": 0.6666666666666666
+      },
+      "auc_abs_dpsi": 0.6153846153846154,
+      "auc_abs_ci95": [
+        0.4260355029585799,
+        0.8055555555555556
+      ]
+    }
+  }
+}

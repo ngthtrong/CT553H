@@ -1,0 +1,1688 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Residue-Level Prediction of Degron Mutation Effects — CT553H</title>
+<!--
+  Bộ slide buổi gặp GVHD 16/10/2026 · đề tài degron-footprint.
+  Nội dung lấy từ presentation/slide-content-2026-10-15.md (26 slide).
+  Chữ trên slide: tiếng Anh. Ghi chú người nói (.speaker-note): tiếng Việt, bấm N.
+  Thiết kế mới, không dùng lại khuôn slide cũ.
+  Mở bằng file:// — không cần mạng (font có dự phòng hệ thống).
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="deck.css">
+</head>
+<body>
+
+<div id="viewport"><div id="stage">
+
+<!-- ====================================================== 1 · TITLE ====== -->
+<section class="slide" data-section="Title" data-title="Residue-level prediction of degron mutation effects">
+  <div class="body center">
+    <div class="eyebrow"><span class="dot"></span>Undergraduate thesis proposal · CT553H · Progress report, week 6</div>
+    <h1 class="title">Residue-Level Prediction of Degron Mutation Effects from Experimental Protein-Stability Data</h1>
+
+    <div class="pep" style="margin:4px 0 26px" aria-hidden="true">
+      <span>Q</span><span>D</span><span>T</span><span>D</span><span>L</span><span>D</span><span>L</span>
+      <span>E</span><span>M</span><span class="soft">L</span><span class="hit">A</span><span class="hit">P</span>
+      <span class="hit">Y</span><span class="hit">I</span><span class="soft">P</span><span>M</span><span>D</span>
+      <span style="opacity:.85">D</span><span style="opacity:.72">D</span><span style="opacity:.6">F</span>
+      <span style="opacity:.5">Q</span><span style="opacity:.4">L</span><span style="opacity:.32">R</span>
+      <span style="opacity:.25">S</span><span style="opacity:.19">F</span><span style="opacity:.14">D</span>
+      <span style="opacity:.1">Q</span><span style="opacity:.07">L</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:auto auto;gap:7px 30px;font-size:15px;max-width:66ch">
+      <div style="color:var(--ink-45)">Student</div><div><b>Nguyễn Thế Trọng</b> — B2305615</div>
+      <div style="color:var(--ink-45)">Advisor</div><div><b>Dr. Hồ Quang Thái</b></div>
+      <div style="color:var(--ink-45)">Programme</div><div>Software Engineering, College of Information and Communication Technology, Can Tho University</div>
+    </div>
+  </div>
+  <div class="foot">October 2026 · Data, scripts, result files and the decision log are kept in the project repository.</div>
+
+  <div class="speaker-note">
+    <p><b>Mở đầu.</b> Tiêu đề theo khuôn <i>[bài toán] bằng [nguồn nhãn]</i>; <b>cố ý chưa đặt tên mô hình</b> vì kiến trúc chưa chốt (lựa chọn 3 của Trọng).</p>
+    <p>Dải peptide trên slide là <b>HIF1A tile 25</b> — chính peptide sẽ dùng làm ví dụ ở slide 16, ô đỏ là footprint đo được.</p>
+    <p class="warn">Không dùng chữ "enhanced" / "improved" / "novel" ở tiêu đề khi chưa có kết quả so sánh.</p>
+    <p><b>Phím:</b> → bước tiếp · N ghi chú · O tổng quan · F toàn màn hình · P in PDF.</p>
+  </div>
+</section>
+
+<!-- ============================================ 2 · INTRODUCTION ========= -->
+<section class="slide" data-section="Introduction" data-title="Proteins are chains of residues">
+  <div class="eyebrow"><span class="dot"></span>Introduction · 1 of 5</div>
+  <h2>Proteins are chains of amino acid residues</h2>
+  <div class="cols c-2-narrow">
+    <div class="stack">
+      <p class="lede"><b>Proteins do the work of the cell</b> — catalysis, signalling, structure, transport.
+      A protein is a <b>linear chain of amino acids</b>; each link is called a <b>residue</b>.</p>
+      <ul style="font-size:14.5px">
+        <li>20 standard amino acid types</li>
+        <li>The order of residues is the <b>sequence</b>: <code>MKTAYIAKQR…</code></li>
+        <li>Sequence determines the 3-D fold; the fold determines function</li>
+      </ul>
+      <div class="card key">
+        <div class="card-t">Two words used throughout this talk</div>
+        <table class="tight"><tbody>
+          <tr><td style="width:40%"><b>Residue</b></td><td>one position in the chain — “position 7”</td></tr>
+          <tr><td><b>Amino acid type</b></td><td>what sits at that position — “valine”</td></tr>
+        </tbody></table>
+      </div>
+      <p style="font-size:14.5px;margin:0">A <b>mutation</b> changes the amino acid type at one residue:
+      <code>M7V</code> = methionine → valine at position 7.</p>
+    </div>
+
+    <div class="fig">
+      <div class="fig-body">
+        <svg viewBox="0 0 470 330" width="470" height="330">
+          <!-- bước 1: chuỗi thẳng -->
+          <g data-step="1" data-anim="fade">
+            <text class="lbl" x="12" y="26">1 · a linear chain, numbered</text>
+            <g>
+              <line x1="30" y1="62" x2="430" y2="62" stroke="#C8D3D8" stroke-width="2"/>
+              <g class="mono" font-size="10" text-anchor="middle">
+                <circle cx="40"  cy="62" r="13" fill="#EEF2F4" stroke="#C8D3D8"/><text x="40"  y="66">M</text><text class="lblx" x="40"  y="88">1</text>
+                <circle cx="95"  cy="62" r="13" fill="#EEF2F4" stroke="#C8D3D8"/><text x="95"  y="66">K</text><text class="lblx" x="95"  y="88">2</text>
+                <circle cx="150" cy="62" r="13" fill="#EEF2F4" stroke="#C8D3D8"/><text x="150" y="66">T</text><text class="lblx" x="150" y="88">3</text>
+                <circle cx="205" cy="62" r="13" fill="#EEF2F4" stroke="#C8D3D8"/><text x="205" y="66">A</text><text class="lblx" x="205" y="88">4</text>
+                <circle cx="260" cy="62" r="13" fill="#EEF2F4" stroke="#C8D3D8"/><text x="260" y="66">Y</text><text class="lblx" x="260" y="88">5</text>
+                <circle cx="315" cy="62" r="13" fill="#EEF2F4" stroke="#C8D3D8"/><text x="315" y="66">I</text><text class="lblx" x="315" y="88">6</text>
+                <circle cx="370" cy="62" r="13" fill="#EEF2F4" stroke="#C8D3D8"/><text x="370" y="66">A</text><text class="lblx" x="370" y="88">7</text>
+                <circle cx="425" cy="62" r="13" fill="#EEF2F4" stroke="#C8D3D8"/><text x="425" y="66">K</text><text class="lblx" x="425" y="88">8</text>
+              </g>
+            </g>
+          </g>
+
+          <!-- bước 2: gập -->
+          <g data-step="2" data-anim="pop">
+            <text class="lbl" x="12" y="134">2 · the chain folds</text>
+            <path d="M120 230 C 60 190, 92 148, 150 160 C 206 172, 232 142, 262 160
+                     C 300 182, 306 230, 262 246 C 214 264, 168 266, 120 230 Z"
+                  fill="#E8F0F7" stroke="var(--model)" stroke-width="2" class="drift"/>
+            <g class="mono" font-size="9" text-anchor="middle" fill="var(--ink-70)">
+              <circle cx="150" cy="178" r="9" fill="#fff" stroke="#C8D3D8"/><text x="150" y="181">M</text>
+              <circle cx="188" cy="205" r="9" fill="#fff" stroke="#C8D3D8"/><text x="188" y="208">K</text>
+              <circle cx="228" cy="186" r="9" fill="#fff" stroke="#C8D3D8"/><text x="228" y="189">T</text>
+              <circle cx="246" cy="222" r="9" fill="#fff" stroke="#C8D3D8"/><text x="246" y="225">A</text>
+              <circle cx="206" cy="240" r="9" fill="#fff" stroke="#C8D3D8"/><text x="206" y="243">Y</text>
+              <circle cx="166" cy="228" r="9" fill="#fff" stroke="#C8D3D8"/><text x="166" y="231">I</text>
+            </g>
+            <text class="lblx" x="330" y="200">fold → function</text>
+            <path d="M296 206 L 320 206" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#ar-s2)"/>
+          </g>
+
+          <!-- bước 3: đột biến -->
+          <g data-step="3" data-anim="pop">
+            <text class="lbl" x="12" y="288">3 · one substitution changes one position</text>
+            <rect x="12" y="298" width="200" height="24" rx="5" fill="var(--degron-bg)" stroke="var(--degron)"/>
+            <text class="mono" x="24" y="315" font-size="12" fill="#A23247">M7V</text>
+            <text class="lblx" x="68" y="315">methionine → valine at 7</text>
+            <circle cx="370" cy="62" r="13" fill="var(--degron)" stroke="var(--degron)"/>
+            <text class="mono" x="370" y="66" font-size="10" text-anchor="middle" fill="#fff">V</text>
+          </g>
+
+          <defs>
+            <marker id="ar-s2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+              <path d="M0 0 L7 3.5 L0 7 z" fill="var(--muted)"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+      <div class="cap"><b>own diagram.</b> Residue = a position; amino acid type = what occupies it.</div>
+    </div>
+  </div>
+  <div class="foot">The whole thesis rests on this distinction: a <b>28 position × 20 type</b> matrix.</div>
+
+  <div class="speaker-note">
+    <p><b>Vì sao có slide này.</b> Phân biệt <i>residue</i> (vị trí) và <i>loại acid amin</i> phải nói <b>ngay</b> — đây là chỗ hay lẫn, và cả đề tài đứng trên phân biệt đó: ma trận 28 <b>vị trí</b> × 20 <b>loại</b>.</p>
+    <p><b>Ba bước:</b> bấm lần 1 chuỗi thẳng có đánh số → lần 2 gập lại → lần 3 một hạt đổi đỏ kèm nhãn M7V.</p>
+    <p>Không có con số nào ở đây, cố ý. Mọi số định lượng bắt đầu từ slide 6–7 khi đã giải thích cách đo.</p>
+  </div>
+</section>
+
+<!-- ======================================================= 3 ============= -->
+<section class="slide" data-section="Introduction" data-title="Synthesis against degradation">
+  <div class="eyebrow"><span class="dot"></span>Introduction · 2 of 5</div>
+  <h2>Protein level is set by a balance: synthesis against degradation</h2>
+  <div class="cols c-2">
+    <div class="stack">
+      <p class="lede">A protein's concentration in the cell is not set by production alone.</p>
+      <div class="card key" style="text-align:center;padding:16px">
+        <div class="mono" style="font-size:17px;font-weight:500">
+          amount in cell = <span class="hl-s">rate of synthesis</span> − <span class="hl-d">rate of degradation</span>
+        </div>
+      </div>
+      <p style="font-size:14.5px;margin:4px 0 2px"><b>Cells destroy proteins on purpose, and constantly:</b></p>
+      <ul style="font-size:14.5px">
+        <li>to switch signals <b>off</b> on schedule — cell-cycle regulators, transcription factors</li>
+        <li>to clear <b>misfolded</b> or damaged copies before they aggregate</li>
+        <li>to adjust quickly to changed conditions</li>
+      </ul>
+      <div class="card alert" data-step="2">
+        <b>Consequence.</b> A protein that is <i>made</i> correctly but <i>destroyed</i> too fast is just as
+        absent as one that was never made. Degradation is a control layer in its own right.
+      </div>
+    </div>
+
+    <div class="fig">
+      <div class="fig-body">
+        <svg viewBox="0 0 440 340" width="440" height="340">
+          <!-- trụ cân -->
+          <line x1="220" y1="118" x2="220" y2="268" stroke="#C8D3D8" stroke-width="5" stroke-linecap="round"/>
+          <path d="M175 272 L265 272 L248 290 L192 290 Z" fill="#DDE5E9"/>
+
+          <!-- đòn cân, nghiêng ở bước 1 -->
+          <g data-step="0" style="opacity:1;transform:none">
+            <g id="beam" style="transition:transform .9s cubic-bezier(.3,.8,.3,1);transform-origin:220px 118px">
+              <line x1="70" y1="118" x2="370" y2="118" stroke="var(--ink)" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="220" cy="118" r="8" fill="var(--ink)"/>
+              <!-- đĩa trái: synthesis -->
+              <line x1="92" y1="118" x2="92" y2="162" stroke="#B6C4CB" stroke-width="2"/>
+              <path d="M52 162 L132 162 L120 190 L64 190 Z" fill="var(--stable-bg)" stroke="var(--stable)" stroke-width="1.6"/>
+              <text class="lbl" x="92" y="180" text-anchor="middle" fill="#1D6F65" font-weight="600">synthesis</text>
+              <!-- đĩa phải: degradation -->
+              <line x1="348" y1="118" x2="348" y2="162" stroke="#B6C4CB" stroke-width="2"/>
+              <path d="M308 162 L388 162 L376 190 L320 190 Z" fill="var(--degron-bg)" stroke="var(--degron)" stroke-width="1.6"/>
+              <text class="lbl" x="348" y="180" text-anchor="middle" fill="#A23247" font-weight="600">degradation</text>
+            </g>
+          </g>
+
+          <!-- mũi tên vào / ra -->
+          <path d="M92 86 L92 110" stroke="var(--stable)" stroke-width="2.5" marker-end="url(#ar-in)" class="flow"/>
+          <path d="M348 110 L348 86" stroke="var(--degron)" stroke-width="2.5" marker-end="url(#ar-out)" class="flow"/>
+          <text class="lblx" x="92" y="76" text-anchor="middle">made</text>
+          <text class="lblx" x="348" y="76" text-anchor="middle">destroyed</text>
+
+          <!-- mức protein -->
+          <text class="lbl" x="220" y="36" text-anchor="middle" font-weight="600">protein level in the cell</text>
+          <rect x="150" y="44" width="140" height="17" rx="8" fill="#E7EDF0"/>
+          <rect id="level" x="150" y="44" width="118" height="17" rx="8" fill="var(--model)"
+                style="transition:width .9s cubic-bezier(.3,.8,.3,1)"/>
+
+          <!-- bước 2: đĩa phải nặng dần -->
+          <g data-step="2" data-anim="fade">
+            <text class="lblx" x="348" y="212" text-anchor="middle" fill="#A23247">degradation up</text>
+            <text class="lblx" x="220" y="316" text-anchor="middle">⇒ the protein disappears although synthesis never changed</text>
+          </g>
+
+          <defs>
+            <marker id="ar-in" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0 0 L8 4 L0 8 z" fill="var(--stable)"/></marker>
+            <marker id="ar-out" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0 0 L8 4 L0 8 z" fill="var(--degron)"/></marker>
+          </defs>
+        </svg>
+      </div>
+      <div class="cap"><b>own diagram.</b> Step 2 tips the balance toward degradation; the level bar falls with it.</div>
+    </div>
+  </div>
+  <div class="foot">No numbers on this slide, deliberately — every quantitative statement about stability comes after the assay is explained (slide 7).</div>
+
+  <div class="speaker-note">
+    <p><b>Vai của slide.</b> Để người nghe hiểu <b>vì sao độ bền là một đại lượng đáng dự đoán</b>. Không có con số nào ở đây — cố ý.</p>
+    <p><b>Animation:</b> bấm lần 1 cân cân bằng; lần 2 đĩa "degradation" nặng xuống và thanh mức protein tụt — nói đúng câu "made correctly but destroyed too fast is just as absent".</p>
+  </div>
+</section>
+
+<!-- ======================================================= 4 ============= -->
+<section class="slide" data-section="Introduction" data-title="The ubiquitin–proteasome system">
+  <div class="eyebrow"><span class="dot"></span>Introduction · 3 of 5</div>
+  <h2>The ubiquitin–proteasome system performs targeted degradation</h2>
+  <div class="cols c-2-narrow">
+    <div class="stack">
+      <p class="lede">Selective degradation in eukaryotes runs through the <b>ubiquitin–proteasome system</b> (UPS).</p>
+      <table class="tight">
+        <thead><tr><th style="width:30%">Step</th><th>What happens</th></tr></thead>
+        <tbody>
+          <tr data-dim-until="1"><td><b>1. Recognition</b></td><td>an <b>E3 ubiquitin ligase</b> binds a specific signal in the target protein</td></tr>
+          <tr data-dim-until="2"><td><b>2. Tagging</b></td><td>the E3 transfers chains of <b>ubiquitin</b>, a small marker protein, onto the target</td></tr>
+          <tr data-dim-until="3"><td><b>3. Degradation</b></td><td>the <b>26S proteasome</b> recognises the chain, unfolds the target and cuts it into peptides</td></tr>
+        </tbody>
+      </table>
+      <div class="card alert" data-step="4">
+        <div class="card-t">Scale of the recognition problem</div>
+        <div class="kpi"><div class="v hl-d">600+</div>
+          <div class="u">human E3 ligases, each recognising its own set of targets.<br>
+          Specificity of the whole system therefore lives in <b>step 1</b>.</div></div>
+      </div>
+    </div>
+
+    <div class="fig">
+      <div class="fig-body">
+        <svg viewBox="0 0 500 350" width="500" height="350">
+          <!-- protein đích -->
+          <rect x="40" y="52" width="250" height="40" rx="20" fill="#EDF1F3" stroke="#C8D3D8" stroke-width="1.6"/>
+          <text class="lbl" x="56" y="77">target protein</text>
+          <!-- đoạn degron -->
+          <rect id="degron-seg" x="214" y="52" width="60" height="40" rx="12"
+                fill="#EDF1F3" stroke="#C8D3D8" stroke-width="1.6"
+                style="transition:fill .6s ease, stroke .6s ease"/>
+
+          <!-- bước 1: E3 tiến tới và khớp -->
+          <g data-step="1">
+            <path d="M300 128 L300 100" stroke="var(--model)" stroke-width="2" marker-end="url(#ar-u)"/>
+            <path d="M258 130 q 42 -8 84 0 q 6 34 -42 44 q -48 -10 -42 -44 z"
+                  fill="var(--model-bg)" stroke="var(--model)" stroke-width="2"/>
+            <text class="lbl" x="300" y="158" text-anchor="middle" fill="#2A567F" font-weight="600">E3 ligase</text>
+            <text class="lblx" x="300" y="190" text-anchor="middle">binds the degron</text>
+          </g>
+
+          <!-- bước 2: chuỗi ubiquitin -->
+          <g data-step="2">
+            <g fill="var(--stable)" opacity=".92">
+              <circle cx="196" cy="34" r="11"/><circle cx="174" cy="16" r="11"/>
+              <circle cx="148" cy="22" r="11"/><circle cx="126" cy="8"  r="11"/>
+            </g>
+            <path d="M196 34 L174 16 L148 22 L126 8" stroke="var(--stable)" stroke-width="2.4" fill="none"/>
+            <line x1="200" y1="46" x2="196" y2="44" stroke="var(--stable)" stroke-width="2.4"/>
+            <text class="lblx" x="236" y="20" fill="#1D6F65">poly-ubiquitin chain</text>
+          </g>
+
+          <!-- bước 3: proteasome -->
+          <g data-step="3">
+            <path d="M100 236 L100 300" stroke="var(--muted)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ar-g)"/>
+            <rect x="150" y="226" width="150" height="86" rx="12" fill="#E7EDF0" stroke="var(--muted)" stroke-width="2"/>
+            <line x1="150" y1="252" x2="300" y2="252" stroke="var(--muted)" stroke-width="1.4"/>
+            <line x1="150" y1="286" x2="300" y2="286" stroke="var(--muted)" stroke-width="1.4"/>
+            <text class="lbl" x="225" y="275" text-anchor="middle" font-weight="600">26S proteasome</text>
+            <g class="mono" font-size="9" fill="var(--ink-45)">
+              <rect x="326" y="238" width="30" height="13" rx="3" fill="#EDF1F3" stroke="#D3DBE0"/>
+              <rect x="326" y="258" width="22" height="13" rx="3" fill="#EDF1F3" stroke="#D3DBE0"/>
+              <rect x="326" y="278" width="34" height="13" rx="3" fill="#EDF1F3" stroke="#D3DBE0"/>
+              <rect x="326" y="298" width="26" height="13" rx="3" fill="#EDF1F3" stroke="#D3DBE0"/>
+            </g>
+            <text class="lblx" x="372" y="272">short peptides</text>
+            <path d="M304 268 L320 268" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#ar-g)"/>
+          </g>
+
+          <defs>
+            <marker id="ar-u" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0 0 L8 4 L0 8 z" fill="var(--model)"/></marker>
+            <marker id="ar-g" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0 0 L8 4 L0 8 z" fill="var(--muted)"/></marker>
+          </defs>
+        </svg>
+      </div>
+      <div class="cap"><b>own diagram</b> — three clicks, matching the three rows of the table.</div>
+    </div>
+  </div>
+  <div class="foot">Mechanism established in the literature; E3 count as reported in <b>DegronMD</b>, Xu, Hu &amp; Zhao, <i>Mol Biol Evol</i> 40(12), 2023, DOI 10.1093/molbev/msad253.</div>
+
+  <div class="speaker-note">
+    <p><b>Con số 600+</b> lấy từ DegronMD: <i>"The human genome encodes over 600 E3 ligases; however, only a small number of targeted degron instances have been identified so far"</i>. Câu thứ hai chính là câu dẫn nhập của đề tài, dùng lại ở slide 13.</p>
+    <p><b>Animation 4 bước</b> khớp đúng ba dòng bảng + con số: (1) E3 khớp vào đoạn degron, đoạn đó tô đỏ; (2) chuỗi ubiquitin gắn lên; (3) proteasome nhả ra peptide ngắn; (4) hiện con số 600+.</p>
+    <p class="warn">Không dùng GIF ngoài: đã tra Wikimedia Commons 15/10, <b>không có</b> animation UPS nào có giấy phép dùng được. Hình này tự dựng, giữ đúng bảng màu.</p>
+  </div>
+</section>
+
+<!-- ======================================================= 5 ============= -->
+<section class="slide" data-section="Introduction" data-title="A degron is the recognition signal">
+  <div class="eyebrow"><span class="dot"></span>Introduction · 4 of 5</div>
+  <h2>A degron is the recognition signal — and the question is <em>which residues</em> carry it</h2>
+  <div class="cols c-2-wide">
+    <div class="stack">
+      <p class="lede">A <b>degron</b> is the short segment of a protein that an E3 ligase recognises in order to
+      mark it for degradation. It is the “address label” of step 1.</p>
+      <ul style="font-size:14.5px">
+        <li>Typically a <b>short linear motif</b>, a few to a few tens of residues</li>
+        <li>Can sit at the N-terminus, the C-terminus, or <b>internally</b></li>
+        <li>Degron <b>strength is graded</b>, not binary: strong → intermediate → inactive</li>
+      </ul>
+      <div class="card key" data-step="4">
+        <div class="card-t">The question this thesis asks is one level finer</div>
+        <p style="font-size:15.5px;margin:0">Within a degron, <b>which individual residues</b> determine its
+        strength — and by how much does the strength change when one of them is substituted?</p>
+      </div>
+      <div class="card" data-step="5" style="border-left:3px solid var(--muted)">
+        <div class="card-t">Scope statement</div>
+        <p style="font-size:13px;margin:0">Labels here are measured on <b>isolated 28-residue peptides</b> fused to
+        a reporter, so the assay sees <b>autonomous degrons</b>: signals that work inside the 28-mer on their own.
+        Degrons that need priming — for example phosphorylation by another kinase — are outside its reach.
+        Predictions describe <b>peptide-level stability</b>, and do not by themselves establish an effect on the
+        intact protein or any therapeutic effect.</p>
+      </div>
+    </div>
+
+    <div class="fig">
+      <div class="fig-body">
+        <svg viewBox="0 0 430 360" width="430" height="360">
+          <!-- tầng 1: cả protein -->
+          <g data-step="1" data-anim="fade">
+            <text class="lblx" x="10" y="18">1 · the folded protein</text>
+            <path d="M96 92 C 40 58, 70 20, 128 32 C 184 44, 214 16, 246 36
+                     C 288 62, 290 106, 244 120 C 196 136, 146 128, 96 92 Z"
+                  fill="#E7EDF0" stroke="var(--muted)" stroke-width="1.8"/>
+            <rect x="176" y="62" width="54" height="22" rx="7" fill="var(--degron-bg)"
+                  stroke="var(--degron)" stroke-width="1.8" class="pulse"/>
+          </g>
+
+          <!-- tầng 2: zoom vào 28 ô -->
+          <g data-step="2">
+            <path d="M203 92 L203 132" stroke="var(--muted)" stroke-width="1.4" stroke-dasharray="4 3"/>
+            <path d="M176 84 L34 142 M230 84 L372 142" stroke="#D3DBE0" stroke-width="1"/>
+            <text class="lblx" x="10" y="138">2 · the 28-residue segment the assay measures</text>
+            <g class="mono" font-size="8.5" text-anchor="middle">
+              <!-- 28 ô, sinh tay để giữ file tĩnh -->
+              <g fill="var(--ink-70)">
+                <rect x="34"  y="146" width="12" height="20" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="40"  y="160">Q</text>
+                <rect x="48"  y="146" width="12" height="20" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="54"  y="160">D</text>
+                <rect x="62"  y="146" width="12" height="20" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="68"  y="160">T</text>
+                <rect x="76"  y="146" width="12" height="20" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="82"  y="160">D</text>
+                <rect x="90"  y="146" width="12" height="20" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="96"  y="160">L</text>
+                <rect x="104" y="146" width="12" height="20" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="110" y="160">D</text>
+                <rect x="118" y="146" width="12" height="20" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="124" y="160">L</text>
+                <rect x="132" y="146" width="12" height="20" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="138" y="160">E</text>
+                <rect x="146" y="146" width="12" height="20" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="152" y="160">M</text>
+                <rect x="160" y="146" width="12" height="20" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="166" y="160">L</text>
+                <rect x="174" y="146" width="12" height="20" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="180" y="160">A</text>
+                <rect x="188" y="146" width="12" height="20" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="194" y="160">P</text>
+                <rect x="202" y="146" width="12" height="20" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="208" y="160">Y</text>
+                <rect x="216" y="146" width="12" height="20" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="222" y="160">I</text>
+                <rect x="230" y="146" width="12" height="20" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="236" y="160">P</text>
+                <rect x="244" y="146" width="12" height="20" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="250" y="160">M</text>
+                <rect x="258" y="146" width="12" height="20" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="264" y="160">D</text>
+                <rect x="272" y="146" width="12" height="20" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="278" y="160">D</text>
+                <rect x="286" y="146" width="12" height="20" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="292" y="160">D</text>
+                <rect x="300" y="146" width="12" height="20" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="306" y="160">F</text>
+                <rect x="314" y="146" width="12" height="20" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="320" y="160">Q</text>
+                <rect x="328" y="146" width="12" height="20" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="334" y="160">L</text>
+                <rect x="342" y="146" width="12" height="20" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="348" y="160">R</text>
+                <rect x="356" y="146" width="12" height="20" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="362" y="160">S</text>
+              </g>
+            </g>
+            <text class="lblx" x="34" y="180">28 positions · one amino acid each</text>
+          </g>
+
+          <!-- tầng 3: chỉ vài ô quyết định -->
+          <g data-step="3">
+            <text class="lblx" x="10" y="214">3 · only a few of them carry the signal</text>
+            <g class="mono" font-size="11" text-anchor="middle">
+              <rect x="110" y="224" width="30" height="34" rx="4" fill="#EEF2F4" stroke="#CFD8DD"/><text x="125" y="246" fill="var(--ink-45)">L</text>
+              <rect x="144" y="224" width="30" height="34" rx="4" fill="var(--degron)" stroke="var(--degron)"/><text x="159" y="246" fill="#fff">A</text>
+              <rect x="178" y="224" width="30" height="34" rx="4" fill="var(--degron)" stroke="var(--degron)"/><text x="193" y="246" fill="#fff">P</text>
+              <rect x="212" y="224" width="30" height="34" rx="4" fill="var(--degron)" stroke="var(--degron)"/><text x="227" y="246" fill="#fff">Y</text>
+              <rect x="246" y="224" width="30" height="34" rx="4" fill="var(--degron)" stroke="var(--degron)"/><text x="261" y="246" fill="#fff">I</text>
+              <rect x="280" y="224" width="30" height="34" rx="4" fill="#EEF2F4" stroke="#CFD8DD"/><text x="295" y="246" fill="var(--ink-45)">P</text>
+            </g>
+            <g class="lblx">
+              <text x="125" y="272" text-anchor="middle">10</text><text x="159" y="272" text-anchor="middle">11</text>
+              <text x="193" y="272" text-anchor="middle">12</text><text x="227" y="272" text-anchor="middle">13</text>
+              <text x="261" y="272" text-anchor="middle">14</text><text x="295" y="272" text-anchor="middle">15</text>
+            </g>
+          </g>
+
+          <!-- bước 4: câu hỏi -->
+          <g data-step="4">
+            <rect x="92" y="294" width="236" height="34" rx="17" fill="#fff" stroke="var(--degron)" stroke-width="1.8"/>
+            <text x="210" y="316" text-anchor="middle" font-size="15" font-weight="700" fill="var(--degron)">which residues?</text>
+          </g>
+        </svg>
+      </div>
+      <div class="cap"><b>own diagram.</b> Zoom: whole protein → the 28-mer the assay measures → the residues that matter.</div>
+    </div>
+  </div>
+  <div class="foot">“Autonomous degrons” is a <b>measured</b> property of the assay, not an assumption — see slide 6.</div>
+
+  <div class="speaker-note">
+    <p><b>Hình quan trọng nhất của phần dẫn nhập.</b> Zoom ba tầng: cả protein → 28 ô → 3–4 ô đỏ → câu hỏi "which residues?".</p>
+    <p><b>Cụm "autonomous degrons"</b> thêm theo <b>D-035</b>: phạm vi degron tự trị, biến thể dòng mầm. Đây là giới hạn của <b>assay</b>, <b>đã đo</b> (slide 6), không phải giả định.</p>
+    <p class="warn">Câu scope statement là yêu cầu cứng của hướng dẫn §2 và phải nằm <b>ngay</b> ở slide định nghĩa bài toán, không để xuống phần giới hạn.</p>
+    <p>Gradation "19% strong / 30% intermediate / 51% non-degron" là số của Voutsinos 2026 — <b>để dành tới slide 10</b>, ở đây chỉ nói "graded".</p>
+  </div>
+</section>
+
+<!-- ======================================================= 6 ============= -->
+<section class="slide" data-section="Introduction" data-title="Why this matters: disease variants in degrons">
+  <div class="eyebrow"><span class="dot"></span>Introduction · 5 of 5 · why the question is worth asking</div>
+  <h2>Measured degron regions are enriched for disease variants</h2>
+  <div class="cols c-2">
+    <div class="stack">
+      <p style="font-size:14.5px;margin:0 0 4px"><b>Degrons are a disease mechanism in both directions:</b></p>
+      <div class="fig" style="flex:0 0 auto">
+        <svg viewBox="0 0 480 128" width="480" height="128">
+          <g data-step="1" data-anim="left">
+            <rect x="4" y="8" width="228" height="112" rx="9" fill="var(--degron-bg)" stroke="#EBC3C9"/>
+            <text class="lbl" x="18" y="30" font-weight="700" fill="#A23247">degron destroyed</text>
+            <g class="mono" font-size="9" text-anchor="middle">
+              <rect x="18" y="44" width="70" height="20" rx="4" fill="#fff" stroke="#E0B5BC"/>
+              <text x="53" y="58" fill="var(--ink-70)">degron</text>
+              <line x1="24" y1="62" x2="82" y2="46" stroke="var(--degron)" stroke-width="2"/>
+            </g>
+            <path d="M96 54 L122 54" stroke="var(--degron)" stroke-width="1.8" marker-end="url(#ar-d6)"/>
+            <text class="lblx" x="130" y="50">E3 no longer binds</text>
+            <text class="lblx" x="130" y="64">→ protein accumulates</text>
+            <text class="lblx" x="18" y="92">e.g. a tumour suppressor pathway left switched on</text>
+            <text class="lblx" x="18" y="108" font-style="italic">mechanism established in the literature</text>
+          </g>
+          <g data-step="2" data-anim="right">
+            <rect x="244" y="8" width="232" height="112" rx="9" fill="var(--stable-bg)" stroke="#B9DED8"/>
+            <text class="lbl" x="258" y="30" font-weight="700" fill="#1D6F65">degron created</text>
+            <g class="mono" font-size="9" text-anchor="middle">
+              <rect x="258" y="44" width="70" height="20" rx="4" fill="#fff" stroke="#A9D6CF"/>
+              <text x="293" y="58" fill="var(--ink-70)">new motif</text>
+            </g>
+            <path d="M336 54 L362 54" stroke="var(--stable)" stroke-width="1.8" marker-end="url(#ar-s6)"/>
+            <text class="lblx" x="370" y="50">healthy protein</text>
+            <text class="lblx" x="370" y="64">cleared early</text>
+            <text class="lblx" x="258" y="92">⇒ <tspan font-weight="600">loss of function</tspan> — e.g. PNPO D33V</text>
+            <text class="lblx" x="258" y="108" font-style="italic">author's result · Voutsinos et al., Sci Adv 2026</text>
+          </g>
+          <defs>
+            <marker id="ar-d6" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+              <path d="M0 0 L7 3.5 L0 7 z" fill="var(--degron)"/></marker>
+            <marker id="ar-s6" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+              <path d="M0 0 L7 3.5 L0 7 z" fill="var(--stable)"/></marker>
+          </defs>
+        </svg>
+      </div>
+
+      <div class="card open" data-step="5">
+        <div class="card-t">What this number does and does not say</div>
+        <ul style="font-size:12.5px;margin:0">
+          <li>it is a <b>region-level</b> association; whether the <i>individual residues</i> in a degron carry the
+            disease signal is <b>not established</b> by our data</li>
+          <li>variants are <b>not</b> over-represented in degrons by location: 33.4% of variants vs 32.4% of tiles</li>
+          <li>conservation and disorder are <b>not yet controlled for</b></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="stack">
+      <div class="card" data-step="3">
+        <div class="card-t">How much clinical variation falls in degrons? We measured it</div>
+        <p style="font-size:12.5px;color:var(--ink-70);margin:0 0 10px">ClinVar, <b>2.56 million</b> missense variants,
+        mapped onto every peptide the GPS screen measured.</p>
+
+        <!-- forest plot một dòng -->
+        <svg viewBox="0 0 430 108" width="430" height="108">
+          <line x1="40" y1="78" x2="408" y2="78" stroke="#D3DBE0" stroke-width="1"/>
+          <g class="lblx" text-anchor="middle">
+            <text x="86"  y="96">1.0</text><text x="166" y="96">1.5</text>
+            <text x="246" y="96">2.0</text><text x="326" y="96">2.5</text>
+          </g>
+          <line x1="86" y1="20" x2="86" y2="78" stroke="var(--muted)" stroke-width="1.4" stroke-dasharray="5 4"/>
+          <text class="lblx" x="92" y="30">no enrichment</text>
+          <g data-step="4" data-anim="pop">
+            <line x1="249.5" y1="56" x2="282" y2="56" stroke="var(--degron)" stroke-width="3"/>
+            <circle cx="269" cy="56" r="8" fill="var(--degron)"/>
+            <text class="mono" x="286" y="52" font-size="17" font-weight="700" fill="var(--degron)">2.148</text>
+            <text class="lblx" x="286" y="68">[2.072, 2.227]</text>
+          </g>
+          <text class="lbl" x="40" y="16">odds ratio, pathogenic vs benign — <tspan font-weight="600">within the same protein</tspan></text>
+          <text class="lblx" x="40" y="68" text-anchor="start">3,114 strata</text>
+        </svg>
+
+        <div class="chips" style="margin-top:8px">
+          <span class="chip m">✓ own measurement</span>
+          <span class="chip s">Mantel–Haenszel, stratified by protein</span>
+          <span class="chip d">region level only — residue level not established</span>
+        </div>
+      </div>
+
+      <div class="card alert" data-step="4">
+        <div class="kpi"><div class="v hl-d">530,412</div>
+          <div class="u">variants of <b>uncertain significance</b> sitting inside those degron regions,
+          to which no current tool assigns a mechanism</div></div>
+      </div>
+
+      <div class="card" data-step="6" style="border-left:3px solid var(--model)">
+        <p style="font-size:12.5px;margin:0"><b>And degrons are also a drug-design target:</b> targeted protein
+        degradation works by <i>recruiting</i> the degradation machinery to a protein of interest. Knowing which
+        residues control degron strength is <b>upstream of that design problem</b>.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><b>Own measurement</b>, ClinVar <code>variant_summary</code> of 12 Oct 2026 (Landrum et al., <i>NAR</i> 2018, PMID 29165669).
+  ClinVar classifications are <b>not for diagnostic use</b>; this thesis does not predict disease or claim therapeutic effect.</div>
+
+  <div class="speaker-note">
+    <p><b>Đây là slide trả lời câu GVHD nhấn mạnh nhất ở buổi gặp 1: <i>vì sao cần nghiên cứu</i>.</b> Bản phiên 9 trả lời bằng ba con số của tác giả khác về ung thư; bản này trả lời bằng một con số <b>tự đo</b> (D-033).</p>
+    <p class="no">⚠ Ba dòng "does and does not say" là <b>bắt buộc</b>, không được tách khỏi con số 2,148 (D-033, D-036). Ở mức residue, ba phép đo đều nhất quán với rỗng (tầng có lực nhất AUC 0,5166 [0,479; 0,554]).</p>
+    <p><b>Nếu GVHD hỏi "residue mô hình chỉ ra có liên quan bệnh không":</b> trả lời thẳng — <i>chưa thiết lập được với dữ liệu hiện có; đề tài được đánh giá bằng nhãn thực nghiệm của chính nó, ClinVar chỉ là động lực</i>.</p>
+    <p class="warn">⚠ Vì sao bỏ khung "đột biến lái ung thư" (D-035): trong 8 degron lái ung thư kinh điển chỉ <b>HIF1A</b> hiện ra trong assay. <code>CTNNB1</code> codon 31–48 đo tốt mà không phải degron (PSI 5,27 / 5,36), <code>MYC</code> T58/S62 vắng mặt, <code>NFE2L2</code> ETGE không phải degron.</p>
+    <p>Đối chứng bảo tồn / vô trật tự <b>chưa chạy</b>. Nếu chạy kịp thì thay dòng thứ ba; nếu không thì giữ nguyên "not yet controlled for".</p>
+    <p class="no">Giữ câu PROTAC ở dạng "upstream of that design problem"; <b>không</b> nói đề tài phục vụ thiết kế thuốc.</p>
+  </div>
+</section>
+
+<!-- ============================================ 7 · RELATED WORK ========= -->
+<section class="slide" data-section="Related work" data-title="How degron data is measured: the GPS assay">
+  <div class="eyebrow"><span class="dot"></span>Related work · 1 of 5 · the precondition for reading the next table</div>
+  <h2>How degron data is measured: the GPS stability assay</h2>
+  <div class="cols c-2">
+    <div class="stack">
+      <p class="lede">Every dataset on the next slide comes from one experimental idea —
+      <b>Global Protein Stability (GPS) profiling</b>, introduced by Koren et al., <i>Cell</i> 2018.</p>
+      <table class="tight">
+        <thead><tr><th style="width:12%">Step</th><th>What is done</th></tr></thead>
+        <tbody>
+          <tr data-dim-until="1"><td class="c"><b>1</b></td><td>Synthesise a library of short peptides, each <b>fused to a fluorescent reporter</b> (GFP)</td></tr>
+          <tr data-dim-until="1"><td class="c"><b>2</b></td><td>Express one peptide per cell, alongside a second, stable reporter as internal control</td></tr>
+          <tr data-dim-until="1"><td class="c"><b>3</b></td><td>Sort cells by the <b>reporter ratio</b> using FACS, into stability bins</td></tr>
+          <tr data-dim-until="1"><td class="c"><b>4</b></td><td>Sequence each bin; a peptide's bin distribution gives its stability score</td></tr>
+        </tbody>
+      </table>
+      <figure style="margin:0" data-step="1">
+        <img src="../../../../lectures/degron-footprint/assets/figures/voutsinos2026-f1.jpg"
+             alt="GPS assay schematic, Voutsinos et al. 2026 Figure 1"
+             style="width:100%;border:1px solid var(--rule);border-radius:8px">
+        <figcaption class="cap" style="margin-top:5px">
+          Voutsinos et al., <i>Sci Adv</i> 2026, Fig. 1. DOI 10.1126/sciadv.adz3483. <b>CC BY-NC 4.0.</b>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="stack">
+      <div class="card key" data-step="2">
+        <div class="card-t">The resulting label — Protein Stability Index (PSI)</div>
+        <div class="psibar" style="margin:4px 0 10px">
+          <div class="track"></div>
+          <div class="ends">
+            <span><b class="hl-d">1 — low PSI</b><br>degraded quickly = <b>strong degron</b></span>
+            <span style="text-align:right"><b class="hl-s">6 — high PSI</b><br>stable = <b>not a degron</b></span>
+          </div>
+        </div>
+        <p style="font-size:12.5px;margin:0;color:var(--ink-70)">Scale <b>1 … 6</b> (6 bins) in the dataset used here.
+        Bin counts differ between papers — Zhang 6 bins, Voutsinos 4, Larsen 4 gates on a <b>reversed</b> scale.</p>
+      </div>
+
+      <div class="card alert" data-step="3">
+        <div class="card-t">Mutation effect = a difference between two measured constructs</div>
+        <div class="mono" style="font-size:17px;font-weight:500;text-align:center;margin:6px 0 10px">
+          ΔPSI = PSI(mutant) − PSI(wild type)
+        </div>
+        <svg viewBox="0 0 400 92" width="400" height="92">
+          <line x1="200" y1="14" x2="200" y2="74" stroke="var(--muted)" stroke-width="1.4" stroke-dasharray="5 4"/>
+          <text class="lblx" x="200" y="88" text-anchor="middle">ΔPSI = 0 · no effect</text>
+          <g data-step="4" data-anim="right">
+            <rect x="200" y="20" width="150" height="22" rx="5" fill="var(--stable-bg)" stroke="var(--stable)"/>
+            <text class="lbl" x="210" y="35" fill="#1D6F65" font-weight="600">ΔPSI &gt; 0 — stabilised</text>
+            <text class="lblx" x="356" y="35">⇒ the residue <tspan font-weight="700">was</tspan> part of a working degron</text>
+          </g>
+          <g data-step="4" data-anim="left">
+            <rect x="50" y="48" width="150" height="22" rx="5" fill="var(--degron-bg)" stroke="var(--degron)"/>
+            <text class="lbl" x="60" y="63" fill="#A23247" font-weight="600">ΔPSI &lt; 0 — destabilised</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="card" data-step="4" style="border-left:3px solid var(--warn)">
+        <p style="font-size:12.5px;margin:0"><b>Keep the sign straight.</b> This is the one convention that has
+        been got wrong before in this project: <b>low PSI = degraded</b>, and <b>ΔPSI &gt; 0 = the mutation
+        rescued the peptide</b>. Every figure in this talk keeps the same direction.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot">Koren I, Timms RT, Kula T, Xu Q, Li MZ, Elledge SJ. <i>Cell</i> 173(7):1622–1635.e14, 2018. DOI 10.1016/j.cell.2018.04.028</div>
+
+  <div class="speaker-note">
+    <p><b>Slide điều kiện:</b> phải giải thích cách đo <b>trước</b> khi so sánh nhãn ở slide 8.</p>
+    <p class="no">⚠ Chiều của PSI và chiều của ΔPSI là <b>hai chỗ đã nhầm</b> trong tài liệu học của repo — in to, tô màu, giữ đúng chiều ở mọi hình sau.</p>
+    <p>Hình của tác giả đặt ở slide này là cố ý: tăng độ tin cậy và cho thấy đã đọc bài gốc. <b>Caption CC BY-NC 4.0 là bắt buộc</b>, không được bỏ.</p>
+    <p>Thanh PSI 1→6 tái sử dụng ở slide 16 và 20.</p>
+  </div>
+</section>
+
+<!-- ======================================================= 8 ============= -->
+<section class="slide" data-section="Related work" data-title="Prior work at a glance">
+  <div class="eyebrow"><span class="dot"></span>Related work · 2 of 5 · history research, step 1: group by method</div>
+  <h2>Prior work at a glance</h2>
+  <div class="body">
+    <table class="xtight">
+      <thead><tr>
+        <th style="width:17%">Work</th><th style="width:15%">Year · venue</th><th style="width:16%">Method group</th>
+        <th style="width:15%">Prediction unit</th><th style="width:17%">Labels</th><th>Output</th>
+      </tr></thead>
+      <tbody>
+        <tr class="group-a"><td><b>Koren et al.</b></td><td>2018 · <i>Cell</i></td><td>experimental screen</td>
+          <td><span class="mono" style="color:var(--muted)">▭▭▭</span> peptide (C-term)</td><td>GPS, measured</td><td>degron catalogue</td></tr>
+        <tr class="group-a"><td><b>Degpred</b>, Hou et al.</td><td>2022 · <i>BMC Biol</i></td><td>BERT sequence model</td>
+          <td><span class="mono" style="color:var(--muted)">▰▰▰▰</span> degron location</td><td>curated motifs + E3 interactions</td><td>proteome-wide degron map</td></tr>
+        <tr class="group-a"><td><b>Zhang et al.</b></td><td>2023 · <i>Mol Cell</i></td><td>screen + ML</td>
+          <td><span class="mono" style="color:var(--muted)">▭▭▭</span> peptide</td><td>GPS + <b>mutagenesis</b>, measured</td><td>fingerprints, DegronID; SVM for PSI</td></tr>
+        <tr class="group-a"><td><b>DegronMD</b>, Xu et al.</td><td>2023 · <i>Mol Biol Evol</i></td><td>pattern + ML knowledgebase</td>
+          <td><span class="mono" style="color:var(--muted)">▰▰▰▰</span> location; mutation impact</td><td>curated + evolutionary/structural</td><td>degrome map, 89,318 mutations</td></tr>
+        <tr class="group-a"><td><b>DEGRONOPEDIA</b>, Szulc et al.</td><td>2024 · <i>NAR</i></td><td>database + ML web server</td>
+          <td><span class="mono" style="color:var(--muted)">▰▰▰▰</span> motif, terminus</td><td>curated motifs, structure</td><td>annotation, proteolysis simulation</td></tr>
+        <tr class="group-a"><td><b>MetaDegron</b>, Zheng et al.</td><td>2024 · <i>Brief Bioinform</i></td><td>PLM + multimodal features</td>
+          <td><span class="mono" style="color:var(--muted)">▭▭▭</span> peptide, per E3</td><td>~300 curated degrons, 21 E3s</td><td>per-E3 degron classification</td></tr>
+        <tr class="group-a"><td><b>Voutsinos et al. (PAP)</b></td><td>2026 · <i>Sci Adv</i></td><td>experimental map + CNN</td>
+          <td><span class="mono" style="color:var(--muted)">▭▭▭</span> 30-aa tile</td><td>GPS, measured, &gt;200k tiles</td><td>tile degron score</td></tr>
+        <tr class="group-a"><td><b>Larsen et al.</b></td><td>2025 · bioRxiv <span class="chip o" style="padding:1px 6px">preprint</span></td><td>experimental map</td>
+          <td><span class="mono" style="color:var(--muted)">▭▭▭</span> 30-aa tile (TFs)</td><td>sort-seq abundance, measured</td><td>TF degron map</td></tr>
+        <tr class="group-a"><td><b>Degformer</b></td><td>2026 · <b>GitHub, no publication</b></td><td>transformer</td>
+          <td><span class="mono" style="color:var(--muted)">▭▭▭</span> peptide (28-mer)</td><td>Zhang 2023 tables</td><td>PSI; <b>28×20 ΔPSI matrix</b></td></tr>
+        <tr class="mine" data-step="1"><td><b>This thesis</b></td><td>—</td><td>—</td>
+          <td><span class="mono" style="color:var(--degron)">▪</span> <b>individual residue</b></td>
+          <td><b>GPS mutagenesis, measured</b></td><td><b>28×20 ΔPSI matrix + per-position map</b></td></tr>
+      </tbody>
+    </table>
+
+    <div class="chips" data-step="2" style="margin-top:4px">
+      <span class="chip s">▰▰▰▰ region / motif</span>
+      <span class="chip s">▭▭▭ whole peptide or tile</span>
+      <span class="chip d">▪ one residue — only the last row</span>
+    </div>
+  </div>
+  <div class="foot">Evidence level per work recorded in the thesis bibliography. <b>Degformer assessed by reading its full source code</b>, not a publication.</div>
+
+  <div class="speaker-note">
+    <p><b>Animation:</b> 9 dòng hiện trước, <b>dừng lại</b>, rồi mới hiện dòng "This thesis" — để người nghe tự thấy chỗ trống ở cột prediction unit trước khi mình nói. Bước 2 hiện chú giải icon.</p>
+    <p class="no">⚠ Hai điều phải giữ đúng: (a) Larsen 2025 là <b>preprint</b>, đã gắn nhãn; (b) Degformer <b>không có bài báo</b> — cột venue ghi rõ "GitHub, no publication", nếu không bảng sẽ gợi ý sai rằng nó đã được phản biện.</p>
+    <p><b>Trích dẫn đầy đủ</b> nằm ở phụ lục A1; đã đối chiếu qua PubMed ngày 15/10/2026 (và bioRxiv API cho Larsen).</p>
+  </div>
+</section>
+
+<!-- ======================================================= 9 ============= -->
+<section class="slide" data-section="Related work" data-title="Group 1: motif and database tools">
+  <div class="eyebrow"><span class="dot"></span>Related work · 3 of 5 · history research, step 2: strengths and limits</div>
+  <h2>Group 1 — motif and database tools: broad coverage, curated labels</h2>
+  <div class="cols c-2-wide">
+    <div class="stack">
+      <div class="chips" style="margin-bottom:2px">
+        <span class="chip s">Degpred 2022</span><span class="chip s">DegronMD 2023</span>
+        <span class="chip s">DEGRONOPEDIA 2024</span><span class="chip s">MetaDegron 2024</span>
+      </div>
+      <div class="card good">
+        <div class="card-t">What they achieved</div>
+        <ul style="font-size:12.5px;margin:0">
+          <li>Moved degron identification from a handful of known motifs to <b>proteome scale</b>:
+            Degpred predicts degrons directly from sequence; DegronMD reports <b>18,000+</b> new degron instances</li>
+          <li>Added the surrounding biology: ubiquitination sites, disordered regions, structural context,
+            E3 assignment — DEGRONOPEDIA also simulates proteolysis to find post-cleavage degrons</li>
+          <li><b>Delivered usable web tools</b> with batch submission — a genuine strength, and the state of the
+            art for the question “where are the degrons in my protein?”</li>
+          <li>MetaDegron shows a <b>protein language model</b> beats earlier feature-based prediction, over 21 E3s</li>
+        </ul>
+      </div>
+      <div class="card alert" data-step="1">
+        <div class="card-t">Where they fall short for the question in this thesis</div>
+        <table class="xtight"><thead><tr><th style="width:44%">Limitation</th><th>Why it matters here</th></tr></thead>
+        <tbody>
+          <tr><td>Labels are <b>curated motifs</b>, a few hundred instances; negatives often <b>random peptides</b></td>
+              <td>measured negatives are much harder than random ones, so reported AUCs are <b>not comparable</b> to a measured-label benchmark</td></tr>
+          <tr><td>Prediction unit is <b>a motif or a protein region</b></td>
+              <td>they answer <i>where is a degron</i>, not <i>which residue inside it matters</i></td></tr>
+          <tr><td>Similarity control between train and test <b>not reported</b> for the small curated sets</td>
+              <td>homologous leakage cannot be excluded</td></tr>
+        </tbody></table>
+      </div>
+      <div class="card key" data-step="2">
+        <b>The gap this group leaves:</b> these tools <b>locate</b> degrons. None is trained on
+        <b>measured mutation effects</b>, so none ranks residues inside a degron.
+      </div>
+    </div>
+
+    <div class="fig">
+      <div class="fig-body">
+        <svg viewBox="0 0 300 352" width="300" height="352">
+          <text class="lbl" x="8" y="18" font-weight="600">resolution of the answer</text>
+          <line x1="40" y1="34" x2="40" y2="306" stroke="#CFD8DD" stroke-width="2"/>
+          <path d="M40 306 L36 296 M40 306 L44 296" stroke="#CFD8DD" stroke-width="2"/>
+
+          <g>
+            <circle cx="40" cy="62" r="6" fill="var(--muted)"/>
+            <text class="lbl" x="58" y="58" font-weight="600">protein</text>
+            <text class="lblx" x="58" y="74">“does this protein have a degron?”</text>
+          </g>
+          <g>
+            <circle cx="40" cy="130" r="6" fill="var(--muted)"/>
+            <text class="lbl" x="58" y="126" font-weight="600">region</text>
+            <text class="lblx" x="58" y="142">DegronMD · DEGRONOPEDIA</text>
+          </g>
+          <g>
+            <circle cx="40" cy="198" r="6" fill="var(--muted)"/>
+            <text class="lbl" x="58" y="194" font-weight="600">motif</text>
+            <text class="lblx" x="58" y="210">Degpred · MetaDegron</text>
+          </g>
+          <g data-step="2" data-anim="pop">
+            <circle cx="40" cy="268" r="7" fill="var(--warn)"/>
+            <rect x="56" y="248" width="226" height="42" rx="7" fill="var(--warn-bg)"
+                  stroke="var(--warn)" stroke-dasharray="5 4" stroke-width="1.6"/>
+            <text class="lbl" x="68" y="266" font-weight="700" fill="#8A6A17">residue</text>
+            <text class="lblx" x="68" y="281" fill="#8A6A17">empty — nothing in this group reaches here</text>
+          </g>
+          <text class="lblx" x="8" y="330">the same axis returns on slides 10 and 12,</text>
+          <text class="lblx" x="8" y="344">with the gap narrowing each time</text>
+        </svg>
+      </div>
+      <div class="cap"><b>own diagram.</b> One figure, three uses.</div>
+    </div>
+  </div>
+  <div class="foot">Evidence levels differ per work: Degpred <b>[unverified — abstract only]</b> · DEGRONOPEDIA, MetaDegron, DegronMD <b>[source: the authors' own pages]</b>.</div>
+
+  <div class="speaker-note">
+    <p class="no">⚠ Mức bằng chứng từng bài rất khác nhau, slide <b>không</b> được nói quá. Ba dòng "where they fall short" viết ở mức <i>"not reported"</i> / <i>"often random peptides"</i>; <b>không</b> viết "they leak" hay "their numbers are wrong".</p>
+    <p>Câu về nhãn âm ngẫu nhiên và AUC 0,87–0,90 của MetaDegron: nói <b>"not comparable"</b>, đừng nói "inflated".</p>
+    <p>Việc phải làm trước khi dùng slide này trong <b>luận văn</b> (không chặn buổi gặp): đọc toàn văn Degpred, kiểm mức xuất ra của nó, kiểm cách chia tập của MetaDegron.</p>
+  </div>
+</section>
+
+<!-- ====================================================== 10 ============= -->
+<section class="slide" data-section="Related work" data-title="Group 2: measured maps — the closest prior work">
+  <div class="eyebrow"><span class="dot"></span>Related work · 4 of 5 · the closest prior work</div>
+  <h2>Group 2 — large-scale measured maps and sequence models</h2>
+  <div class="cols c-2-wide">
+    <div class="stack">
+      <div class="card good">
+        <div class="card-t">What they achieved — this is where the field's labels come from</div>
+        <ul style="font-size:12.3px;margin:0">
+          <li><b>Koren 2018</b> established GPS peptidome screening: thousands of peptides with degron activity,
+            plus the “C-end rule” E3 adaptors</li>
+          <li><b>Zhang 2023</b> added <b>mutagenesis</b> on top of the screen — scanning and saturation — and
+            derived mutational fingerprints for 219 degrons; their SVM predicts peptidome PSI at Pearson
+            <b class="num">0.8955</b> (RMSE 0.563) over 260,989 peptides</li>
+          <li><b>Voutsinos 2026</b> produced a near-complete cytosolic map: <b>&gt;200,000</b> 30-residue tiles from
+            <b>&gt;5,000</b> proteins, 99.7% coverage — <b>19%</b> strong / <b>30%</b> intermediate / <b>51%</b>
+            non-degron — and trained <b>PAP</b>, a two-channel CNN reaching Pearson <b class="num">0.82 / 0.87</b></li>
+          <li><b>Larsen 2025</b> extended it to all <b>1,626</b> human transcription factors, with pre-computed
+            PAP / rASA / pLDDT annotation <span class="chip o" style="padding:1px 6px">preprint</span></li>
+          <li><b>Degformer 2026</b> is the most direct precedent: a transformer trained on Zhang's tables that
+            <b>does output a 28×20 ΔPSI matrix</b>. Self-reported correlations 0.9162–0.9463</li>
+        </ul>
+      </div>
+
+      <div class="card alert" data-step="3">
+        <div class="card-t">Where they fall short for the residue-level question</div>
+        <table class="xtight"><thead><tr><th style="width:26%">Work</th><th>Limitation relevant here</th></tr></thead>
+        <tbody>
+          <tr><td>Zhang SVM · PAP · Larsen</td><td>prediction unit is the <b>whole peptide or tile</b> — one score
+            per segment, so no ranking of residues within it</td></tr>
+          <tr><td><b>PAP specifically</b></td><td>its internal channel is <code>Conv1D(kernel=1)</code> + global
+            average pooling ⇒ <b>permutation-invariant</b>: shuffling residue order leaves its score unchanged
+            <span class="chip m" style="padding:1px 6px">own measurement: Pearson 1.000000</span></td></tr>
+          <tr><td><b>Degformer</b></td><td>random train/test split with <b>4.09%</b> identical-sequence leakage;
+            duplicate sequences kept with conflicting labels; the head reads the <b>CLS token</b> only — the matrix
+            is assembled from 532 forward passes, not from a residue-level head; <b>blind test set absent from the
+            repo</b>, so headline numbers are not reproducible</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+
+    <div class="stack">
+      <figure style="margin:0">
+        <img src="../../../../lectures/degron-footprint/assets/figures/voutsinos2026-f4.jpg"
+             alt="PAP architecture and held-out scatter plots, Voutsinos et al. 2026 Figure 4"
+             style="width:100%;border:1px solid var(--rule);border-radius:8px">
+        <figcaption class="cap" style="margin-top:5px">
+          PAP architecture and held-out performance. Voutsinos et al., <i>Sci Adv</i> 2026, Fig. 4.
+          DOI 10.1126/sciadv.adz3483. <b>CC BY-NC 4.0.</b>
+        </figcaption>
+      </figure>
+
+      <div class="card" data-step="1" style="border-left:3px solid var(--degron)">
+        <div class="card-t">The permutation test — own measurement</div>
+        <svg viewBox="0 0 400 136" width="400" height="136">
+          <g class="mono" font-size="9" text-anchor="middle" fill="var(--ink-70)">
+            <g id="perm-orig">
+              <rect x="8"  y="12" width="17" height="22" rx="3" fill="#EEF2F4" stroke="#CFD8DD"/><text x="16.5" y="27">L</text>
+              <rect x="27" y="12" width="17" height="22" rx="3" fill="var(--degron-bg)" stroke="var(--degron)"/><text x="35.5" y="27">A</text>
+              <rect x="46" y="12" width="17" height="22" rx="3" fill="var(--degron-bg)" stroke="var(--degron)"/><text x="54.5" y="27">P</text>
+              <rect x="65" y="12" width="17" height="22" rx="3" fill="#EEF2F4" stroke="#CFD8DD"/><text x="73.5" y="27">Y</text>
+              <rect x="84" y="12" width="17" height="22" rx="3" fill="#EEF2F4" stroke="#CFD8DD"/><text x="92.5" y="27">I</text>
+              <rect x="103" y="12" width="17" height="22" rx="3" fill="#EEF2F4" stroke="#CFD8DD"/><text x="111.5" y="27">P</text>
+            </g>
+            <g data-step="2">
+              <rect x="8"  y="76" width="17" height="22" rx="3" fill="#EEF2F4" stroke="#CFD8DD"/><text x="16.5" y="91">P</text>
+              <rect x="27" y="76" width="17" height="22" rx="3" fill="#EEF2F4" stroke="#CFD8DD"/><text x="35.5" y="91">Y</text>
+              <rect x="46" y="76" width="17" height="22" rx="3" fill="var(--degron-bg)" stroke="var(--degron)"/><text x="54.5" y="91">A</text>
+              <rect x="65" y="76" width="17" height="22" rx="3" fill="#EEF2F4" stroke="#CFD8DD"/><text x="73.5" y="91">I</text>
+              <rect x="84" y="76" width="17" height="22" rx="3" fill="var(--degron-bg)" stroke="var(--degron)"/><text x="92.5" y="91">P</text>
+              <rect x="103" y="76" width="17" height="22" rx="3" fill="#EEF2F4" stroke="#CFD8DD"/><text x="111.5" y="91">L</text>
+            </g>
+          </g>
+          <g data-step="2">
+            <path d="M64 40 L64 70" stroke="var(--model)" stroke-width="1.6" marker-end="url(#ar-p10)"/>
+            <text class="lblx" x="72" y="60" fill="#2A567F">shuffle residue order</text>
+          </g>
+          <rect x="150" y="12" width="88" height="22" rx="5" fill="var(--model-bg)" stroke="var(--model)"/>
+          <text class="mono" x="194" y="27" font-size="10" text-anchor="middle" fill="#2A567F">PAP score</text>
+          <g data-step="2">
+            <rect x="150" y="76" width="88" height="22" rx="5" fill="var(--model-bg)" stroke="var(--model)"/>
+            <text class="mono" x="194" y="91" font-size="10" text-anchor="middle" fill="#2A567F">PAP score</text>
+          </g>
+          <g data-step="3">
+            <text x="268" y="62" font-size="30" font-weight="700" fill="var(--degron)">=</text>
+            <text class="mono" x="292" y="50" font-size="11" font-weight="700" fill="var(--degron)">Pearson = 1.000000</text>
+            <text class="lblx" x="292" y="68">the score cannot see position</text>
+          </g>
+          <defs><marker id="ar-p10" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+            <path d="M0 0 L7 3.5 L0 7 z" fill="var(--model)"/></marker></defs>
+        </svg>
+        <div class="cap"><b>own diagram, own measurement</b> — re-implementation from the authors' MIT-licensed code.</div>
+      </div>
+    </div>
+  </div>
+  <div class="foot">Degformer: own reading of the full source and own leakage measurement on its shipped CSV. PAP numbers as reported by the authors; the permutation test is ours.</div>
+
+  <div class="speaker-note">
+    <p><b>Slide quan trọng nhất của phần 3, và chỗ dễ sai nhất.</b></p>
+    <p class="no">1. <b>Phải nói Degformer đã xuất ma trận 28×20.</b> Câu "chưa sản phẩm nào xuất ma trận 28×20" <b>đã bị bác bỏ</b>, không được xuất hiện ở bất kỳ đâu. Cách nói đúng: <i>nhiệm vụ không còn trống, nhưng <b>điều kiện đánh giá</b> còn trống</i> — đó là cầu nối sang slide 12–13.</p>
+    <p>2. Số Degformer 0,9162/0,9420/0,9463 là <b>self-reported</b>; repo chỉ dùng <code>scipy.stats.pearsonr</code> nên rất có thể là Pearson. Ghi "self-reported correlations", <b>không</b> ghi "ρ".</p>
+    <p>3. <b>Phép kiểm bất biến hoán vị là tự đo</b> — một trong hai con số tự đo mạnh nhất của đề tài. Nhãn nguồn phải rõ để GVHD biết đó là việc của sinh viên.</p>
+    <p>4. Larsen 2025: ghi <b>preprint</b>. <b>Không</b> nói nó là test trình tự chưa thấy — 1.583/1.626 (97,4%) TF của nó đã có trong peptidome GPS.</p>
+  </div>
+</section>
+
+<!-- ====================================================== 11 ============= -->
+<section class="slide" data-section="Related work" data-title="Group 3: adjacent variant-effect models">
+  <div class="eyebrow"><span class="dot"></span>Related work · 5 of 5 · history research, step 3: contrast with this thesis</div>
+  <h2>Group 3 — adjacent variant-effect models: different question, strong baselines</h2>
+  <div class="cols c-2-wide">
+    <div class="stack">
+      <p class="lede">These are <b>not</b> competitors on the same task, but they set the bar for any claim about
+      variant effects.</p>
+      <table class="tight">
+        <thead><tr><th style="width:23%">Work</th><th style="width:30%">What it predicts</th><th>Relation to this thesis</th></tr></thead>
+        <tbody>
+          <tr data-dim-until="1"><td><b>AlphaMissense</b><br><span class="lblx">2023 · <i>Science</i></span></td>
+            <td>is a missense variant <b>pathogenic</b></td>
+            <td>different question — pathogenicity, no mechanism. This thesis <b>adds mechanism</b>, it does not replace it</td></tr>
+          <tr data-dim-until="2"><td><b>Schulze &amp; Lindorff-Larsen</b><br><span class="lblx">2026 · <i>eLife</i></span></td>
+            <td>effect of substitutions on <b>cellular abundance</b>, from 6 VAMP-seq experiments, <b>31,614</b> variants</td>
+            <td>substitution matrices conditioned only on <b>buried vs exposed</b> already predict abundance well;
+              the authors propose them as a <b>strong baseline</b>. rASA alone gives Spearman <b class="num">0.45</b></td></tr>
+          <tr data-dim-until="3"><td><b>LeBlanc et al.</b><br><span class="lblx">2026 · <i>Cell Systems</i></span></td>
+            <td>activation-domain strength on a tile library; separates <b>abundance</b> from <b>coactivator binding</b></td>
+            <td>not a degron paper, but sets the methodological bar: report <b>weight stability</b> across
+              seeds/bootstraps, compare against the <b>replicate ceiling</b> (their best 0.555 vs ceiling 0.568),
+              and split by <b>protein cluster</b></td></tr>
+        </tbody>
+      </table>
+      <div class="card key" data-step="4">
+        <b>What this group tells us:</b> any residue-level claim has to be measured against a
+        <b>simple structural baseline</b> and reported <b>next to the experimental noise ceiling</b> —
+        otherwise the number means little.
+      </div>
+    </div>
+
+    <div class="fig">
+      <div class="fig-body">
+        <svg viewBox="0 0 330 340" width="330" height="340">
+          <g class="lblx" text-anchor="middle">
+            <rect x="6"   y="14" width="72" height="54" rx="7" fill="#EEF2F4" stroke="#CFD8DD"/>
+            <text x="42" y="36">pathogenic?</text><text x="42" y="52">AlphaMissense</text>
+            <rect x="86"  y="14" width="72" height="54" rx="7" fill="#EEF2F4" stroke="#CFD8DD"/>
+            <text x="122" y="36">how</text><text x="122" y="50">abundant?</text><text x="122" y="62">Schulze 2026</text>
+            <rect x="166" y="14" width="72" height="54" rx="7" fill="#EEF2F4" stroke="#CFD8DD"/>
+            <text x="202" y="30">activation</text><text x="202" y="43">strength?</text><text x="202" y="59">LeBlanc 2026</text>
+            <g data-step="4" data-anim="pop">
+              <rect x="246" y="14" width="78" height="54" rx="7" fill="var(--degron-bg)" stroke="var(--degron)" stroke-width="1.8"/>
+              <text x="285" y="30" fill="#A23247" font-weight="700">which residue</text>
+              <text x="285" y="43" fill="#A23247" font-weight="700">controls</text>
+              <text x="285" y="56" fill="#A23247" font-weight="700">degradation?</text>
+            </g>
+          </g>
+
+          <g data-step="5">
+            <path d="M122 72 L122 112 L170 112" stroke="var(--muted)" stroke-width="1.5" fill="none" marker-end="url(#ar-g11)"/>
+            <path d="M202 72 L202 100 L170 100" stroke="var(--muted)" stroke-width="1.5" fill="none" marker-end="url(#ar-g11)"/>
+            <rect x="24" y="128" width="282" height="128" rx="9" fill="var(--model-bg)" stroke="var(--model)" stroke-width="1.6"/>
+            <text class="lbl" x="40" y="150" font-weight="700" fill="#2A567F">evaluation conventions we adopt</text>
+            <g class="lblx" fill="var(--ink-70)">
+              <text x="40" y="172">· a simple <tspan font-weight="700">structural baseline</tspan> to beat</text>
+              <text x="40" y="192">· the <tspan font-weight="700">replicate ceiling</tspan> printed next to every number</text>
+              <text x="40" y="212">· <tspan font-weight="700">protein-cluster</tspan> split, never random</text>
+              <text x="40" y="232">· <tspan font-weight="700">seed and bootstrap stability</tspan> of the weights</text>
+            </g>
+            <text class="lblx" x="40" y="280">Attributed on the slide as “following LeBlanc et al. 2026”,</text>
+            <text class="lblx" x="40" y="296">not presented as this thesis's own idea.</text>
+          </g>
+          <defs><marker id="ar-g11" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+            <path d="M0 0 L7 3.5 L0 7 z" fill="var(--muted)"/></marker></defs>
+        </svg>
+      </div>
+      <div class="cap"><b>own diagram.</b></div>
+    </div>
+  </div>
+  <div class="foot">Schulze &amp; Lindorff-Larsen, <i>eLife</i> 13, DOI 10.7554/eLife.103721 · LeBlanc et al., <i>Cell Syst</i> 17(9):101701, DOI 10.1016/j.cels.2026.101701 — <b>both read in full</b>.</div>
+
+  <div class="speaker-note">
+    <p><b>Vì sao nhóm này có mặt:</b> nó là nguồn của <b>hai quy ước đánh giá</b> đề tài sẽ dùng. Theo LeBlanc 2026 thì <b>phải ghi "theo LeBlanc et al. 2026"</b> khi dùng ba cách làm đó — không trình bày như lựa chọn riêng của đề tài.</p>
+    <p>Nếu GVHD hỏi về AlphaMissense: đề tài <b>bổ sung cơ chế</b>, không thay thế điểm gây bệnh. Đây cũng là chỗ nối sang slide 13 (người dùng: diễn giải biến thể).</p>
+  </div>
+</section>
+
+<!-- ================================= 12 · GAP, URGENCY, CONTRIBUTION ==== -->
+<section class="slide" data-section="Gap" data-title="The gap is provable, not merely unexplored">
+  <div class="eyebrow"><span class="dot"></span>Gap · 1 of 3 · the strongest asset of this thesis</div>
+  <h2>The gap is <em>provable</em>, not merely unexplored</h2>
+  <div class="cols c-2-wide">
+    <div class="stack">
+      <p class="lede">The closest published model for degron strength, <b>PAP</b>, cannot answer the
+      residue-level question — and this is a <b>mathematical property of the model class</b>, not a shortfall
+      in training.</p>
+
+      <div class="card key">
+        <div class="card-t">The argument</div>
+        <ul style="font-size:12.8px;margin:0">
+          <li>PAP's internal channel is <code>Conv1D(kernel=1)</code> → <code>GlobalAveragePooling</code>,
+            so its score is a function of <b>amino acid composition only</b></li>
+          <li>For such a model, the predicted effect of substituting <code>a → b</code> is
+            <span class="mono" style="background:#fff;padding:2px 6px;border-radius:3px">Δf(a→b) = f(c − e<sub>a</sub> + e<sub>b</sub>) − f(c)</span>
+            — the right-hand side <b>contains no position index</b></li>
+          <li>Therefore, for any group of substitutions sharing the same amino acid pair, the model must assign
+            <b>identical</b> effects, whatever the positions</li>
+        </ul>
+      </div>
+
+      <div class="card alert" data-step="4">
+        <div class="card-t">How often that breaks the task — own measurement, scanning mutagenesis set</div>
+        <table class="tight"><tbody>
+          <tr><td>Peptides with a measured footprint</td><td class="r">2,624</td></tr>
+          <tr><td>…of which have a same-substitution-pair group containing <b>both</b> a positive and a
+            non-positive position</td><td class="r"><b class="hl-d">2,353 — 89.7%</b></td></tr>
+        </tbody></table>
+        <p style="font-size:12.5px;margin:8px 0 0">On those peptides a composition-only model is
+        <b>provably unable</b> to separate the residues that matter from the ones that do not.</p>
+      </div>
+
+      <div class="card good" data-step="5">
+        <div class="card-t">And the gap now has a price, not only a proof</div>
+        <div class="kpi"><div class="v hl-s">+0.0289</div>
+          <div class="u">cell-level AUROC from adding <b>local-neighbourhood</b> features to an otherwise
+          composition-only model<br>
+          <span class="num">95% CI [0.0264, 0.0313]</span> · 1,599 protein clusters · 2,288 peptides</div></div>
+      </div>
+    </div>
+
+    <div class="fig">
+      <div class="fig-body">
+        <svg viewBox="0 0 400 390" width="400" height="390">
+          <text class="lbl" x="6" y="16">Same peptide, same amino acids — only the <tspan font-weight="700">order</tspan> differs</text>
+
+          <!-- trường hợp A -->
+          <g data-step="1">
+            <text class="lblx" x="6" y="42">substitution at position 7</text>
+            <g class="mono" font-size="9" text-anchor="middle" fill="var(--ink-70)">
+              <rect x="6"   y="50" width="18" height="24" rx="3" fill="#EEF2F4" stroke="#CFD8DD"/><text x="15"  y="66">M</text>
+              <rect x="26"  y="50" width="18" height="24" rx="3" fill="#EEF2F4" stroke="#CFD8DD"/><text x="35"  y="66">K</text>
+              <rect x="46"  y="50" width="18" height="24" rx="3" fill="#EEF2F4" stroke="#CFD8DD"/><text x="55"  y="66">T</text>
+              <rect x="66"  y="50" width="18" height="24" rx="3" fill="#EEF2F4" stroke="#CFD8DD"/><text x="75"  y="66">L</text>
+              <rect x="86"  y="50" width="18" height="24" rx="3" fill="#EEF2F4" stroke="#CFD8DD"/><text x="95"  y="66">G</text>
+              <rect x="106" y="50" width="18" height="24" rx="3" fill="#EEF2F4" stroke="#CFD8DD"/><text x="115" y="66">W</text>
+              <rect x="126" y="50" width="18" height="24" rx="3" fill="var(--degron)" stroke="var(--degron)"/><text x="135" y="66" fill="#fff">V</text>
+              <rect x="146" y="50" width="18" height="24" rx="3" fill="#EEF2F4" stroke="#CFD8DD"/><text x="155" y="66">S</text>
+              <rect x="166" y="50" width="18" height="24" rx="3" fill="#EEF2F4" stroke="#CFD8DD"/><text x="175" y="66">E</text>
+            </g>
+            <rect x="200" y="50" width="92" height="24" rx="5" fill="var(--degron-bg)" stroke="var(--degron)"/>
+            <text class="mono" x="246" y="66" font-size="10" text-anchor="middle" fill="#A23247">ΔPSI = +1.8</text>
+            <text class="lblx" x="300" y="66">measured</text>
+          </g>
+
+          <!-- trường hợp B -->
+          <g data-step="2">
+            <text class="lblx" x="6" y="104">the same A→V pair at position 19</text>
+            <g class="mono" font-size="9" text-anchor="middle" fill="var(--ink-70)">
+              <rect x="6"   y="112" width="18" height="24" rx="3" fill="#EEF2F4" stroke="#CFD8DD"/><text x="15"  y="128">M</text>
+              <rect x="26"  y="112" width="18" height="24" rx="3" fill="#EEF2F4" stroke="#CFD8DD"/><text x="35"  y="128">K</text>
+              <rect x="46"  y="112" width="18" height="24" rx="3" fill="#EEF2F4" stroke="#CFD8DD"/><text x="55"  y="128">T</text>
+              <rect x="66"  y="112" width="18" height="24" rx="3" fill="#EEF2F4" stroke="#CFD8DD"/><text x="75"  y="128">L</text>
+              <rect x="86"  y="112" width="18" height="24" rx="3" fill="#EEF2F4" stroke="#CFD8DD"/><text x="95"  y="128">G</text>
+              <rect x="106" y="112" width="18" height="24" rx="3" fill="#EEF2F4" stroke="#CFD8DD"/><text x="115" y="128">W</text>
+              <rect x="126" y="112" width="18" height="24" rx="3" fill="#EEF2F4" stroke="#CFD8DD"/><text x="135" y="128">A</text>
+              <rect x="146" y="112" width="18" height="24" rx="3" fill="#EEF2F4" stroke="#CFD8DD"/><text x="155" y="128">S</text>
+              <rect x="166" y="112" width="18" height="24" rx="3" fill="var(--degron)" stroke="var(--degron)"/><text x="175" y="128" fill="#fff">V</text>
+            </g>
+            <rect x="200" y="112" width="92" height="24" rx="5" fill="#EEF2F4" stroke="#CFD8DD"/>
+            <text class="mono" x="246" y="128" font-size="10" text-anchor="middle" fill="var(--ink-70)">ΔPSI = −0.1</text>
+            <text class="lblx" x="300" y="128">measured</text>
+          </g>
+
+          <!-- hai đồng hồ -->
+          <g data-step="3">
+            <text class="lbl" x="6" y="176" font-weight="600">What a composition-only model returns</text>
+            <g transform="translate(70,258)">
+              <path d="M-52 0 A 52 52 0 0 1 52 0" fill="none" stroke="#E2E8EB" stroke-width="11" stroke-linecap="round"/>
+              <line x1="0" y1="0" x2="26" y2="-38" stroke="var(--model)" stroke-width="3.4" stroke-linecap="round"/>
+              <circle cx="0" cy="0" r="5" fill="var(--model)"/>
+              <text class="lblx" x="0" y="26" text-anchor="middle">position 7</text>
+              <text class="mono" x="0" y="-56" font-size="12" font-weight="700" text-anchor="middle" fill="var(--model)">+0.62</text>
+            </g>
+            <g transform="translate(228,258)">
+              <path d="M-52 0 A 52 52 0 0 1 52 0" fill="none" stroke="#E2E8EB" stroke-width="11" stroke-linecap="round"/>
+              <line x1="0" y1="0" x2="26" y2="-38" stroke="var(--model)" stroke-width="3.4" stroke-linecap="round"/>
+              <circle cx="0" cy="0" r="5" fill="var(--model)"/>
+              <text class="lblx" x="0" y="26" text-anchor="middle">position 19</text>
+              <text class="mono" x="0" y="-56" font-size="12" font-weight="700" text-anchor="middle" fill="var(--model)">+0.62</text>
+            </g>
+            <text x="298" y="252" font-size="26" font-weight="700" fill="var(--degron)">=</text>
+            <text class="lblx" x="318" y="248">identical,</text>
+            <text class="lblx" x="318" y="262">by construction</text>
+          </g>
+
+          <g data-step="4">
+            <rect x="6" y="302" width="388" height="32" rx="7" fill="var(--degron-bg)" stroke="var(--degron)" stroke-width="1.6"/>
+            <text class="mono" x="200" y="322" font-size="12" font-weight="700" text-anchor="middle" fill="#A23247">
+              89.7% of 2,624 footprint peptides are in this situation</text>
+          </g>
+          <g data-step="6">
+            <text class="lblx" x="6" y="358">Verification: 200 exhaustive comparisons · 4,000 rank-bound checks ·</text>
+            <text class="lblx" x="6" y="374">an explicit rank-2 counterexample · the permutation test on PAP itself</text>
+          </g>
+        </svg>
+      </div>
+      <div class="cap"><b>own diagram, own measurement</b> — scripts and JSON result files in the repository.</div>
+    </div>
+  </div>
+  <div class="foot">PAP is not a bad model — it was trained for a <b>segment-level</b> score. Using it for residue-level effects is using it <b>outside its design</b>.</div>
+
+  <div class="speaker-note">
+    <p><b>Tài sản mạnh nhất của đề tài, và là slide nên mở đầu phần lập luận.</b> Không đợt audit nào trong bốn đợt 13–15/10 làm yếu trụ này. Nói rõ <b>"provable"</b> và nói rõ đây là <b>tự đo</b>.</p>
+    <p class="no">⚠ Hai con số đừng lẫn: <b>89,7%</b> là trên 2.624 peptide <b>có footprint</b>; <b>68,9%</b> là tỉ lệ tương ứng trên <b>bộ quét</b> đo ở phiên 8. Slide dùng 89,7%; nếu GVHD hỏi về bộ quét thì đưa 68,9%.</p>
+    <p class="no">⚠ Khi nói "+0,0289" <b>phải nói kèm</b> rằng 80% của nó là <b>thành phần của lân cận ±3</b>, không phải thứ tự và không phải vị trí tuyệt đối (C-17). Nếu chỉ nói "+0,0289 nhờ thêm ngữ cảnh vị trí" thì GVHD sẽ hiểu sai theo đúng hướng mà phép đo đã bác.</p>
+    <p><b>Câu chuyển tiếp đúng mức:</b> <i>"PAP is not a bad model — it was trained for a segment-level score. Using it for residue-level effects is using it outside its design."</i> Mạnh hơn hẳn việc nói PAP yếu, và dẫn thẳng sang slide 13.</p>
+  </div>
+</section>
+
+<!-- ====================================================== 13 ============= -->
+<section class="slide" data-section="Gap" data-title="Why now, and who needs it">
+  <div class="eyebrow"><span class="dot"></span>Gap · 2 of 3</div>
+  <h2>Why now, and who needs it</h2>
+  <div class="cols c-2">
+    <div class="stack">
+      <div class="card good">
+        <div class="card-t">Why the question is answerable only now</div>
+        <ul style="font-size:12.5px;margin:0">
+          <li>Measured residue-level labels at scale <b>did not exist before 2023</b>: Zhang et al.'s scanning and
+            saturation mutagenesis is the first large set of <b>measured mutation effects</b> on degrons</li>
+          <li>The reference map and the baseline model appeared in <b>2026</b> (Voutsinos et al.) — so there is now
+            both a benchmark population and a model to beat</li>
+          <li>Yet the recognition problem remains open: <b>over 600</b> human E3 ligases, only a small number of
+            degron instances characterised <span class="lblx">(DegronMD, 2023)</span></li>
+        </ul>
+      </div>
+
+      <div class="card alert" data-step="1">
+        <div class="card-t">What is still missing — the opening this thesis targets</div>
+        <table class="xtight"><thead><tr><th style="width:38%">Missing piece</th><th>Current state</th></tr></thead>
+        <tbody>
+          <tr><td>A model <b>trained on the residue-level objective</b></td>
+              <td>published degron models are trained on <b>segment</b> scores; applying them per-residue is use outside design</td></tr>
+          <tr><td><b>Evaluation conditions</b> for residue-level claims</td>
+              <td>the closest precedent (Degformer) uses a random split with <b>measurable leakage</b>, reports no label ceiling and no per-prediction uncertainty</td></tr>
+          <tr><td>A <b>measured noise ceiling</b> attached to reported numbers</td>
+              <td>own measurement: ceilings <b class="num">0.9458</b> (scanning) / <b class="num">0.9519</b> (saturation);
+                  residue-set agreement between replicates is Jaccard <b class="num">0.4965</b></td></tr>
+          <tr><td>Knowing <b>at which scale</b> the information sits</td>
+              <td>own decomposition: whole-peptide composition → ±3 neighbourhood → order within it → absolute position</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+
+    <div class="stack">
+      <div class="fig" style="flex:0 0 auto">
+        <div class="fig-body">
+          <svg viewBox="0 0 470 170" width="470" height="170">
+            <line x1="24" y1="86" x2="440" y2="86" stroke="#CFD8DD" stroke-width="2"/>
+            <path d="M440 86 L432 82 M440 86 L432 90" stroke="#CFD8DD" stroke-width="2"/>
+            <g class="lblx" text-anchor="middle" fill="var(--ink-45)">
+              <text x="60" y="106">2018</text><text x="172" y="106">2023</text>
+              <text x="266" y="106">2024</text><text x="330" y="106">2025</text><text x="396" y="106">2026</text>
+            </g>
+            <!-- mốc dữ liệu ở trên -->
+            <g data-step="2">
+              <circle cx="60" cy="86" r="5" fill="var(--stable)"/>
+              <line x1="60" y1="81" x2="60" y2="58" stroke="var(--stable)" stroke-width="1.4"/>
+              <text class="lblx" x="60" y="50" text-anchor="middle" fill="#1D6F65">Koren</text>
+              <circle cx="172" cy="86" r="5" fill="var(--stable)"/>
+              <line x1="172" y1="81" x2="172" y2="40" stroke="var(--stable)" stroke-width="1.4"/>
+              <text class="lblx" x="172" y="32" text-anchor="middle" fill="#1D6F65" font-weight="700">Zhang — mutagenesis</text>
+              <circle cx="330" cy="86" r="5" fill="var(--stable)"/>
+              <line x1="330" y1="81" x2="330" y2="58" stroke="var(--stable)" stroke-width="1.4"/>
+              <text class="lblx" x="330" y="50" text-anchor="middle" fill="#1D6F65">Larsen</text>
+              <circle cx="396" cy="86" r="5" fill="var(--stable)"/>
+              <line x1="396" y1="81" x2="396" y2="40" stroke="var(--stable)" stroke-width="1.4"/>
+              <text class="lblx" x="396" y="32" text-anchor="middle" fill="#1D6F65" font-weight="700">Voutsinos + PAP</text>
+            </g>
+            <!-- mốc công cụ ở dưới -->
+            <g data-step="3">
+              <circle cx="266" cy="86" r="5" fill="var(--model)"/>
+              <line x1="266" y1="91" x2="266" y2="120" stroke="var(--model)" stroke-width="1.4"/>
+              <text class="lblx" x="266" y="134" text-anchor="middle" fill="#2A567F">DEGRONOPEDIA · MetaDegron</text>
+              <circle cx="396" cy="86" r="5" fill="var(--model)"/>
+              <line x1="396" y1="91" x2="396" y2="140" stroke="var(--model)" stroke-width="1.4"/>
+              <text class="lblx" x="396" y="154" text-anchor="middle" fill="#2A567F">Degformer</text>
+            </g>
+            <g data-step="4" data-anim="pop">
+              <rect x="412" y="60" width="54" height="34" rx="7" fill="var(--warn-bg)" stroke="var(--warn)"
+                    stroke-dasharray="5 4" stroke-width="1.6"/>
+              <text class="lblx" x="439" y="74" text-anchor="middle" fill="#8A6A17">residue-level</text>
+              <text class="lblx" x="439" y="86" text-anchor="middle" fill="#8A6A17">model + protocol</text>
+            </g>
+            <text class="lblx" x="24" y="20">data</text>
+            <text class="lblx" x="24" y="166">tools</text>
+          </svg>
+        </div>
+        <div class="cap"><b>own diagram.</b> Data milestones above the axis, tools below; the empty slot is the opening.</div>
+      </div>
+
+      <div class="card key" data-step="5">
+        <div class="card-t">Intended users</div>
+        <table class="xtight"><thead><tr><th style="width:38%">User</th><th>What they get</th></tr></thead>
+        <tbody>
+          <tr><td><b>Variant interpretation</b><br><span class="lblx">530,412 VUS sit inside measured degron regions (slide 6)</span></td>
+              <td>a <b>mechanistic hypothesis</b> to complement pathogenicity scores: does this substitution
+                  stabilise or destabilise the peptide, and by how much</td></tr>
+          <tr><td><b>Experimental biologists</b> designing degron mutations</td>
+              <td>a <b>prioritisation tool</b> — “test these 3 residues first”, with calibrated uncertainty</td></tr>
+          <tr><td><b>Bioinformatics / ML researchers</b></td>
+              <td>a reference task with measured ceiling, honest baselines and a homology-controlled split</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><b>Search statement:</b> PubMed and Europe PMC queries <b>run on 15 Oct 2026</b> returned no degron-prediction tool published in 2025–2026 beyond those listed; of 19 papers citing Larsen 2025 and Voutsinos 2026, none is a residue-level footprint model.</div>
+
+  <div class="speaker-note">
+    <p class="no">1. <b>Diễn giải biến thể lên đầu</b> (cập nhật phiên 11) vì nay có số đỡ: 530.412 VUS (D-033). Theo <b>D-036</b>, viết đúng là "mechanistic <b>hypothesis</b>". <b>Không</b> viết "explains why a variant is pathogenic".</p>
+    <p>Nhà sinh học thực nghiệm phải gọi đúng là <b>prioritisation tool</b>, không phải công cụ quyết định — vì Jaccard 0,50 ở mức residue. Nhóm PROTAC/molecular glue <b>đã bị gỡ</b> khỏi danh sách người dùng; đừng thêm lại.</p>
+    <p class="no">2. Ô "at which scale" phải viết dạng <i>"a literature search on 15 Oct 2026 did not find…"</i>, tuyệt đối <b>không</b> viết "nobody has published this breakdown".</p>
+    <p>3. <b>Câu search statement ở chân slide là bắt buộc.</b></p>
+    <p>4. Nếu GVHD hỏi "đã có Degformer rồi thì sao": <i>"nhiệm vụ đã có người làm, nhưng chưa ai làm dưới điều kiện đánh giá đứng được: split theo cụm protein, trần nhãn, bất định từng dự đoán. Em đo được 4,09% rò rỉ trình tự y hệt trong phép chia của họ."</i></p>
+  </div>
+</section>
+
+<!-- ====================================================== 14 ============= -->
+<section class="slide" data-section="Contribution" data-title="Contribution: three pillars">
+  <div class="eyebrow"><span class="dot"></span>Gap · 3 of 3 · what this thesis claims</div>
+  <h2>Contribution: three pillars</h2>
+  <div class="cols c-2-wide">
+    <div class="stack">
+      <div class="cols c-3" style="flex:0 0 auto;gap:10px">
+        <div class="card good" style="padding:11px 12px">
+          <div class="card-t" style="margin-bottom:5px">Pillar 1</div>
+          <div style="font-size:14px;font-weight:700">Urgency</div>
+          <div style="font-size:11.5px;color:var(--ink-70);margin-top:4px">why the question is worth asking</div>
+          <div class="chip m" style="margin-top:7px">✓ measured, <b>region level</b>: OR 2.148</div>
+        </div>
+        <div class="card good" style="padding:11px 12px">
+          <div class="card-t" style="margin-bottom:5px">Pillar 2</div>
+          <div style="font-size:14px;font-weight:700">Method</div>
+          <div style="font-size:11.5px;color:var(--ink-70);margin-top:4px">residue-level prediction · proof of the
+            gap · evaluation protocol · a new architecture</div>
+          <div class="chips" style="margin-top:7px"><span class="chip m">✓ C1–C3</span><span class="chip o">⬜ C4</span></div>
+        </div>
+        <div class="card open" style="padding:11px 12px">
+          <div class="card-t" style="margin-bottom:5px">Pillar 3</div>
+          <div style="font-size:14px;font-weight:700">Software</div>
+          <div style="font-size:11.5px;color:var(--ink-70);margin-top:4px">prediction service with measured
+            uncertainty + reproducible evaluation harness</div>
+          <div class="chip o" style="margin-top:7px">⬜ C5 designed, not built — slides 23–24</div>
+        </div>
+      </div>
+
+      <div class="card" data-step="1">
+        <div class="card-t">Five contributions — status as of October 2026</div>
+        <table class="xtight"><thead><tr><th style="width:7%">#</th><th>Contribution</th><th style="width:21%">Status</th></tr></thead>
+        <tbody>
+          <tr><td><b>C1</b></td><td><b>Proof that the current model class cannot localise</b> degron residues —
+            89.7% of footprint peptides, explicit rank-2 counterexample, permutation test on PAP (Pearson 1.000000)</td>
+            <td><span class="chip m">✓ measured</span></td></tr>
+          <tr><td><b>C2</b></td><td><b>An evaluation protocol for the residue-level task</b> — two mutation-effect
+            label sets with distinct roles, measured ceilings (<span class="num">0.9458</span> /
+            <span class="num">0.9519</span>), honest composition baseline, published-model control,
+            protein-cluster split, and a <b>pre-computed detection threshold</b> (MDE <span class="num">0.0123</span>)</td>
+            <td><span class="chip m">✓ measured</span></td></tr>
+          <tr><td><b>C3</b></td><td><b>A decomposition of where the predictive information sits</b>, and a model
+            that beats the closest published control on the context axis:
+            <b class="num">+0.0300</b> over ΔPAP <code>cnn2w7</code> (CI [0.0234, 0.0366])</td>
+            <td><span class="chip m">✓ first positive result</span></td></tr>
+          <tr><td><b>C4</b></td><td><b>An architecture</b> closing the remaining gap on the substitution matrix —
+            currently <b class="num hl-d">−0.0420</b> behind ΔPAP <code>cnn2w1</code>
+            (target: beat <b class="num">0.7693</b>, ceiling 0.9519)</td>
+            <td><span class="chip o">⬜ open — the work ahead</span></td></tr>
+          <tr><td><b>C5</b></td><td><b>Software</b>: a residue-level prediction service whose uncertainty is
+            anchored to the measured ceiling, plus an evaluation harness that re-runs prior models under the
+            same cluster split</td>
+            <td><span class="chip o">⬜ built in weeks 11–13</span></td></tr>
+        </tbody></table>
+      </div>
+    </div>
+
+    <div class="stack">
+      <div class="card key" data-step="2">
+        <div class="card-t">The decomposition is the part worth stating carefully</div>
+        <p style="font-size:12.5px;margin:0 0 10px;color:var(--ink-70)">Where does the <b class="num">+0.0289</b> gain
+        actually come from?</p>
+
+        <svg viewBox="0 0 400 184" width="400" height="184">
+          <text class="lblx" x="0" y="12">whole-peptide composition — the baseline everything is measured against</text>
+          <rect x="0" y="20" width="400" height="16" rx="3" fill="#E4EAED"/>
+
+          <g data-step="3">
+            <text class="lbl" x="0" y="62" font-weight="700" fill="#1D6F65">±3 neighbourhood composition</text>
+            <rect x="0" y="70" width="320" height="26" rx="4" fill="var(--stable)" data-step="3" data-anim="grow"/>
+            <text class="mono" x="330" y="88" font-size="13" font-weight="700" fill="#1D6F65">+0.0232</text>
+            <text class="lblx" x="10" y="88" fill="#fff" font-weight="700">80% of the gain</text>
+          </g>
+          <g data-step="4">
+            <text class="lbl" x="0" y="122">order within that neighbourhood</text>
+            <rect x="0" y="128" width="79" height="20" rx="4" fill="#8FC4BC" data-step="4" data-anim="grow"/>
+            <text class="mono" x="89" y="143" font-size="11" fill="var(--ink-70)">+0.0057</text>
+          </g>
+          <g data-step="5">
+            <text class="lbl" x="0" y="170">absolute position in the peptide</text>
+            <rect x="0" y="174" width="3" height="8" rx="1.5" fill="var(--muted)"/>
+            <text class="mono" x="13" y="182" font-size="11" fill="var(--degron)" font-weight="700">+0.0002 — nil</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="card alert" data-step="6">
+        <p style="font-size:14.5px;margin:0">⇒ The right question is <b>not</b> “composition or position?”<br>
+        but <b class="hl-d">“composition at which scale?”</b></p>
+      </div>
+
+      <div class="card" data-step="7" style="border-left:3px solid var(--warn)">
+        <p style="font-size:12px;margin:0">Beating ΔPAP is beating a model used <b>outside its design</b> — it was
+        trained for 30-mer tile abundance. Further evidence the bar is low: the composition-only baseline M0
+        <b>ties</b> ΔPAP <code>cnn2w7</code> (+0.0008, CI [−0.0057, 0.0074]). <b>No model has been trained for
+        this task</b> — that is the gap claimed here.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="chip m" style="padding:1px 6px">✓</span> own measurement with result files ·
+    <span class="chip o" style="padding:1px 6px">⬜</span> open.</div>
+
+  <div class="speaker-note">
+    <p><b>Bảng phân rã là chỗ mạnh nhất của slide này</b> và là chỗ thể hiện tính trung thực: nó <b>tự hạ</b> cách nói "vị trí thắng thành phần" mà chính repo từng dùng.</p>
+    <p class="no">⚠ <b>Không được nói "position beats composition"</b> (C-17 mục b). Phát biểu đúng: <i>"composition at a ±3 neighbourhood scale beats composition at whole-peptide scale"</i>. GVHD đọc bảng phân rã sẽ thấy ngay nếu nói sai.</p>
+    <p class="no">⚠ <b>Câu chân "ΔPAP ngoài thiết kế" là bắt buộc.</b> Nếu không nói, câu "+0,0300" bị đọc quá mạnh.</p>
+    <p><b>Lời GVHD xác nhận trụ phần mềm (D-034) không lên slide</b>, vì chưa có biên bản: <b>nói miệng</b> và xin ghi biên bản ở slide 26. Lời đó <b>không</b> nới G2 và <b>không</b> bỏ yêu cầu kiến trúc mới, nên C4 vẫn là ô mở chính.</p>
+    <p>Mốc đã khoá, đừng đổi khi chưa có quyết định mới: <b>0,7693</b> · trần <b>0,9519</b> · ngưỡng phát hiện <b>0,0123</b>.</p>
+  </div>
+</section>
+
+<!-- ======================================= 15 · PROBLEM DEFINITION ====== -->
+<section class="slide" data-section="Problem" data-title="Input, output, label">
+  <div class="eyebrow"><span class="dot"></span>Problem definition · 1 of 3</div>
+  <h2>Input, output, label</h2>
+  <div class="cols c-2">
+    <div class="stack">
+      <div class="card key">
+        <div class="card-t">Task</div>
+        <p style="font-size:14.5px;margin:0">Given a degron peptide, predict the effect of <b>every possible
+        single substitution</b> on its stability, <b>at residue resolution</b>.</p>
+      </div>
+      <table class="tight"><tbody>
+        <tr><td style="width:30%"><b>Input</b></td><td>a <b>28-residue peptide</b> sequence (optionally its
+          structural context: rASA, pLDDT)</td></tr>
+        <tr><td><b>Output 1</b></td><td>a <b>28 × 20 matrix</b> of predicted ΔPSI — one value per
+          (position, amino acid type)</td></tr>
+        <tr><td><b>Output 2</b></td><td>a <b>per-position importance map</b> — the 19 substitutions at each
+          position aggregated</td></tr>
+        <tr><td><b>Label</b></td><td><b>ΔPSI = PSI(substituted) − PSI(wild type)</b>, both <b>measured</b> in
+          the GPS assay</td></tr>
+        <tr><td><b>Label sign</b></td><td>ΔPSI <b>&gt; 0</b> ⇒ the substitution <b>stabilised</b> the peptide ⇒
+          that residue was part of a working degron</td></tr>
+        <tr><td><b>Unit of inference</b></td><td>the <b>protein cluster</b> (MMseqs2, ≥30% identity, 80%
+          coverage) — not the peptide, and not the residue</td></tr>
+      </tbody></table>
+
+      <div class="card good" data-step="2">
+        <div class="card-t">Two framings of the same output, both reported</div>
+        <ul style="font-size:12.8px;margin:0">
+          <li><b>cell-level</b> — is this one (position, amino acid) substitution stabilising? → <b>AUROC</b>
+            <span class="chip m" style="padding:1px 6px">primary metric</span></li>
+          <li><b>position-level</b> — which positions carry the degron? → <b>precision@3</b>
+            <span class="chip s" style="padding:1px 6px">secondary</span></li>
+        </ul>
+      </div>
+
+      <div class="card" data-step="3" style="border-left:3px solid var(--muted)">
+        <div class="card-t">Scope</div>
+        <p style="font-size:12.5px;margin:0">Peptides are measured <b>in isolation</b>, fused to a reporter, in
+        the cytosol. Results describe that system. Transfer to intact proteins is a separate question with its
+        own labels.</p>
+      </div>
+    </div>
+
+    <div class="fig">
+      <div class="fig-body">
+        <svg viewBox="0 0 470 348" width="470" height="348">
+          <!-- đầu vào -->
+          <g data-step="1" data-anim="left">
+            <text class="lblx" x="6" y="16">input</text>
+            <rect x="4" y="24" width="120" height="118" rx="9" fill="#fff" stroke="var(--rule)"/>
+            <text class="lbl" x="64" y="44" text-anchor="middle" font-weight="600">28-mer peptide</text>
+            <g class="mono" font-size="8" text-anchor="middle" fill="var(--ink-70)">
+              <rect x="16" y="56" width="14" height="16" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="23" y="68">Q</text>
+              <rect x="32" y="56" width="14" height="16" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="39" y="68">D</text>
+              <rect x="48" y="56" width="14" height="16" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="55" y="68">T</text>
+              <rect x="64" y="56" width="14" height="16" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="71" y="68">D</text>
+              <rect x="80" y="56" width="14" height="16" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="87" y="68">L</text>
+              <rect x="96" y="56" width="14" height="16" rx="2" fill="#EEF2F4" stroke="#CFD8DD"/><text x="103" y="68">…</text>
+            </g>
+            <text class="lblx" x="16" y="92">optional structural context</text>
+            <g class="chips">
+              <rect x="16" y="100" width="42" height="15" rx="7" fill="var(--model-bg)"/>
+              <text class="mono" x="37" y="111" font-size="8.5" text-anchor="middle" fill="#2A567F">rASA</text>
+              <rect x="62" y="100" width="46" height="15" rx="7" fill="var(--model-bg)"/>
+              <text class="mono" x="85" y="111" font-size="8.5" text-anchor="middle" fill="#2A567F">pLDDT</text>
+            </g>
+            <text class="lblx" x="16" y="132">one sequence per query</text>
+          </g>
+
+          <!-- mô hình -->
+          <path d="M128 84 L156 84" stroke="var(--muted)" stroke-width="1.6" marker-end="url(#ar-io)"/>
+          <g data-step="1">
+            <rect x="158" y="46" width="104" height="76" rx="9" fill="var(--model-bg)"
+                  stroke="var(--model)" stroke-width="1.8" stroke-dasharray="6 4"/>
+            <text class="lbl" x="210" y="80" text-anchor="middle" font-weight="700" fill="#2A567F">model</text>
+            <text class="lblx" x="210" y="98" text-anchor="middle" fill="#2A567F">architecture: see slide 21</text>
+          </g>
+          <path d="M266 84 L294 84" stroke="var(--muted)" stroke-width="1.6" marker-end="url(#ar-io)"/>
+
+          <!-- đầu ra 1: ma trận -->
+          <g data-step="2" data-anim="right">
+            <text class="lblx" x="298" y="16">output 1 · 28 × 20 matrix of ΔPSI</text>
+            <g>
+              <rect x="298" y="24" width="120" height="168" fill="#fff" stroke="var(--rule)"/>
+              <g>
+                <rect x="302" y="28" width="112" height="8" fill="#DDEBE8"/>
+                <rect x="302" y="38" width="112" height="8" fill="#CFE5E1"/>
+                <rect x="302" y="48" width="112" height="8" fill="#F2DDE0"/>
+                <rect x="302" y="58" width="112" height="8" fill="#E7F2F0"/>
+                <rect x="302" y="68" width="112" height="8" fill="#9FD3CB"/>
+                <rect x="302" y="78" width="112" height="8" fill="#6FBFB4"/>
+                <rect x="302" y="88" width="112" height="8" fill="#4FB0A3"/>
+                <rect x="302" y="98" width="112" height="8" fill="#63B9AD"/>
+                <rect x="302" y="108" width="112" height="8" fill="#EEF4F3"/>
+                <rect x="302" y="118" width="112" height="8" fill="#F6E4E6"/>
+                <rect x="302" y="128" width="112" height="8" fill="#E9F3F1"/>
+                <rect x="302" y="138" width="112" height="8" fill="#D8EBE7"/>
+                <rect x="302" y="148" width="112" height="8" fill="#F3DFE2"/>
+                <rect x="302" y="158" width="112" height="8" fill="#EDF3F2"/>
+                <rect x="302" y="168" width="112" height="8" fill="#E3F0ED"/>
+                <rect x="302" y="178" width="112" height="8" fill="#F7E6E8"/>
+              </g>
+              <text class="lblx" x="298" y="204">28 positions × 20 amino acid types</text>
+            </g>
+          </g>
+
+          <!-- đầu ra 2: bar -->
+          <g data-step="3" data-anim="right">
+            <text class="lblx" x="298" y="232">output 2 · per-position importance map</text>
+            <g>
+              <line x1="298" y1="312" x2="298" y2="240" stroke="#CFD8DD" stroke-width="1.2"/>
+              <rect x="299" y="300" width="7" height="12" fill="#C3D5D2"/>
+              <rect x="309" y="294" width="7" height="18" fill="#C3D5D2"/>
+              <rect x="319" y="268" width="7" height="44" fill="var(--stable)"/>
+              <rect x="329" y="252" width="7" height="60" fill="var(--stable)"/>
+              <rect x="339" y="256" width="7" height="56" fill="var(--stable)"/>
+              <rect x="349" y="248" width="7" height="64" fill="var(--stable)"/>
+              <rect x="359" y="298" width="7" height="14" fill="#C3D5D2"/>
+              <rect x="369" y="304" width="7" height="8"  fill="#C3D5D2"/>
+              <rect x="379" y="290" width="7" height="22" fill="#C3D5D2"/>
+              <rect x="389" y="302" width="7" height="10" fill="#C3D5D2"/>
+              <rect x="399" y="296" width="7" height="16" fill="#C3D5D2"/>
+              <line x1="298" y1="312" x2="414" y2="312" stroke="#CFD8DD" stroke-width="1.2"/>
+            </g>
+            <text class="lblx" x="298" y="328">the footprint: positions whose substitutions stabilise</text>
+          </g>
+
+          <!-- thang màu -->
+          <g data-step="2">
+            <text class="lblx" x="4" y="218">ΔPSI colour scale</text>
+            <defs>
+              <linearGradient id="g-dpsi" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#D1495B"/><stop offset="50%" stop-color="#FAFBFC"/>
+                <stop offset="100%" stop-color="#2A9D8F"/>
+              </linearGradient>
+            </defs>
+            <rect x="4" y="226" width="200" height="13" rx="3" fill="url(#g-dpsi)" stroke="#D9E1E5"/>
+            <text class="lblx" x="4" y="254" fill="var(--degron)">destabilised</text>
+            <text class="lblx" x="204" y="254" text-anchor="end" fill="var(--stable)">stabilised</text>
+            <text class="lblx" x="4" y="276">a stabilising substitution means the</text>
+            <text class="lblx" x="4" y="290">wild-type residue <tspan font-weight="700">was carrying</tspan> the degron</text>
+          </g>
+
+          <defs><marker id="ar-io" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+            <path d="M0 0 L8 4 L0 8 z" fill="var(--muted)"/></marker></defs>
+        </svg>
+      </div>
+      <div class="cap"><b>own diagram.</b> The matrix panel is schematic; slide 16 shows a real measured one.</div>
+    </div>
+  </div>
+  <div class="foot">Cluster-level, not peptide-level, is the unit of inference — ignoring the nesting inflates false positives.</div>
+
+  <div class="speaker-note">
+    <p><b>"Unit of inference is the protein cluster"</b> phải nói sớm. Nhưng sau phiên 8 thì <b>mức phạt đã đo được và nhỏ hơn lo ngại</b>: thư viện bão hòa chọn mỗi protein một peptide ⇒ 91 peptide trên 91 protein / <b>89 cụm</b>, lồng nhau ở mức protein gần như không có.</p>
+    <p>Phạt thật nằm ở <b>ô lồng trong peptide</b>: ICC 0,0625, cỡ cụm trung bình 526 ⇒ hệ số thiết kế <b>33,79</b>, tức ≈ <b>1.416 ô độc lập hiệu dụng</b> — không phải 47.847, và cũng <b>không phải</b> 91.</p>
+    <p class="no">Con số "dương giả trên 45%" là cảnh báo chung từ y văn, <b>không</b> phải phép đo trên dữ liệu này — đừng trích như số của đề tài.</p>
+    <p class="no">⚠ Thước đo chính của ma trận là <b>AUROC mức ô</b> (trần 0,9519), <b>không</b> phải Spearman (trần chỉ 0,6989). Đừng đảo lại.</p>
+  </div>
+</section>
+
+<!-- ====================================================== 16 ============= -->
+<section class="slide" data-section="Problem" data-title="One worked example: HIF1A tile 25">
+  <div class="eyebrow"><span class="dot"></span>Problem definition · 2 of 3 · real measured data</div>
+  <h2>One worked example — a single degron peptide, as the data actually sees it</h2>
+  <div class="cols c-2-narrow">
+    <div class="stack">
+      <div class="card">
+        <table class="xtight"><tbody>
+          <tr><td style="width:36%">Peptide ID</td><td class="mono"><b>Q16665_HIF1A_25</b></td></tr>
+          <tr><td>Sequence</td><td class="mono" style="font-size:10.5px;letter-spacing:.5px">QDTDLDLEMLAPYIPMDDDFQLRSFDQL</td></tr>
+          <tr><td>Residues in the protein</td><td class="mono">553 – 580</td></tr>
+          <tr><td>Wild-type PSI</td><td><b class="num hl-d">2.19</b> <span class="lblx">(low ⇒ this peptide is a degron)</span></td></tr>
+          <tr><td>Measured matrix</td><td><b>529 cells</b> of 28 × 19, averaged over two independent halves</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="card key" data-step="1">
+        <div class="card-t">Reading one cell</div>
+        <p style="font-size:13px;margin:0">Substituting position <b>12</b> (<code>P</code>) to <code>D</code>
+        gives ΔPSI = <b class="num hl-s">+2.58</b> ⇒ the peptide became <b>much more stable</b> ⇒ that residue
+        <b>is</b> part of the working degron.</p>
+      </div>
+
+      <div class="card good" data-step="2">
+        <div class="card-t">Reading a row</div>
+        <p style="font-size:13px;margin:0 0 6px">At position 12, <b>all 19</b> measured substitutions stabilise
+        the peptide. Positions where <i>most</i> substitutions stabilise are the degron's <b>footprint</b> —
+        the residues the E3 ligase depends on.</p>
+        <p style="font-size:12.5px;margin:0;color:var(--ink-70)">Footprint here: positions <b>10–14</b>
+        <span class="mono">L-A-P-Y-I</span>.</p>
+      </div>
+
+      <div class="card alert" data-step="3">
+        <div class="card-t">A row that is not a footprint</div>
+        <p style="font-size:12.5px;margin:0">At position <b>23</b> (<code>R</code>) the mean effect is
+        <b class="num">−0.31</b>: no substitution rescues the peptide, so that residue is <b>not</b> carrying the
+        signal. The task is to tell rows like this apart from rows like position 12.</p>
+      </div>
+
+      <div class="card" data-step="4" style="border-left:3px solid var(--muted)">
+        <div class="card-t">Cross-check against the literature</div>
+        <p style="font-size:12.5px;margin:0">Positions 10–12 are <span class="mono">L562-A563-P564</span> — the
+        <b>LXXLAP</b> motif of HIF1A, whose proline <b>P564</b> is the hydroxylation site recognised by the VHL
+        E3 ligase. The measured footprint <b>recovers a textbook degron site</b> that was never given to the
+        assay. <span class="chip s" style="padding:1px 6px">literature cross-check, not a result of this thesis</span></p>
+      </div>
+    </div>
+
+    <div class="fig">
+      <div class="fig-body" style="align-items:start">
+        <div style="position:relative;width:100%">
+          <img src="figures/example-matrix.svg" alt="Measured 28x20 ΔPSI matrix for HIF1A tile 25"
+               style="width:100%;display:block">
+          <!-- lớp phủ: một ô -->
+          <div data-step="1" style="position:absolute;left:47.0%;top:41.49%;width:2.43%;height:2.58%;
+               border:2.5px solid #15323F;border-radius:2px;box-shadow:0 0 0 3px rgba(21,50,63,.14)"></div>
+          <!-- lớp phủ: cả hàng vị trí 12 -->
+          <div data-step="2" style="position:absolute;left:9.6%;top:41.0%;width:50.5%;height:3.4%;
+               border:2px solid #2A9D8F;border-radius:3px;background:rgba(42,157,143,.1)"></div>
+          <!-- lớp phủ: hàng vị trí 23 -->
+          <div data-step="3" style="position:absolute;left:9.6%;top:69.4%;width:50.5%;height:3.4%;
+               border:2px dashed #D1495B;border-radius:3px;background:rgba(209,73,91,.08)"></div>
+        </div>
+      </div>
+      <div class="cap"><b>own measurement</b>, rebuilt from Zhang et al. 2023 raw counts.
+        Generated by <span class="mono">research/slide-figures-2026-10-15/make_example_matrix.py</span>;
+        inputs checksummed. <b>Measured labels — no model output on this slide.</b></div>
+    </div>
+  </div>
+  <div class="foot">PSI reconstruction validated against the authors' own table to a maximum deviation of
+    <b class="num">5.0 × 10⁻⁷</b> over 261,865 values.</div>
+
+  <div class="speaker-note">
+    <p><b>Con số kiểm 5,0 × 10⁻⁷ là tài sản trình bày mạnh</b> — nó chứng minh pipeline dựng lại nhãn từ read thô là đúng, và nó <b>đã đo</b>. Giữ ở chân slide.</p>
+    <p class="no">⚠ <b>Không dùng ví dụ <code>M7V ΔPSI = +1,4</code></b> trong hồ sơ học tập — đó là ví dụ số <b>giả định</b> để dạy. Mọi số trên slide này sinh từ file dữ liệu bằng script, có SHA-256 đầu vào.</p>
+    <p><b>Về train/test:</b> trong thiết kế hiện hành (học ngữ cảnh trên bộ quét, xác nhận ma trận trên bộ bão hòa) thì <b>cả 91 peptide bão hòa đều ở phía đánh giá</b> — không có peptide bão hòa "trong tập train". Slide này chỉ hiện <b>nhãn đo được</b>, không có đầu ra mô hình, nên không rò rỉ gì. Nếu GVHD hỏi thì nói đúng như vậy.</p>
+    <p><b>HIF1A là lựa chọn có chủ ý:</b> nó là degron duy nhất trong 8 degron lái ung thư kinh điển <b>hiện ra</b> trong assay (D-035). Dùng nó làm ví dụ <b>không</b> đồng nghĩa quay lại khung "đột biến lái ung thư" — không nói chữ đó.</p>
+    <p class="warn">Mắt nối LXXLAP/P564 là <b>tra y văn</b>, gắn nhãn rõ. Đừng trình bày như phát hiện của đề tài.</p>
+  </div>
+</section>
+
+<!-- ====================================================== 17 ============= -->
+<section class="slide" data-section="Problem" data-title="Feasibility: what the data permits">
+  <div class="eyebrow"><span class="dot"></span>Problem definition · 3 of 3 · the honest slide</div>
+  <h2>Feasibility: what the data permits, and what it does not</h2>
+  <div class="cols c-2-wide">
+    <div class="stack">
+      <div class="card">
+        <div class="card-t">Measured benchmark constants — cell-level AUROC, all with result files</div>
+        <table class="xtight">
+          <thead><tr><th></th><th class="r">Scanning set</th><th class="r">Saturation matrix</th></tr></thead>
+          <tbody>
+            <tr><td>Clusters / peptides / cells</td><td class="r">1,985 / 2,994 / 83,446</td><td class="r">89 / 91 / 47,847</td></tr>
+            <tr><td>ΔPAP <code>cnn2w1</code> <span class="lblx">published control</span></td><td class="r">0.7943</td><td class="r"><b>0.7693</b></td></tr>
+            <tr><td>ΔPAP <code>cnn2w7</code></td><td class="r">0.8357</td><td class="r">—</td></tr>
+            <tr><td><b>M0 — composition only</b></td><td class="r">0.8393</td><td class="r">0.7071</td></tr>
+            <tr><td><b>M3 — ±3 neighbourhood context</b></td><td class="r"><b class="hl-s">0.8682</b></td><td class="r">0.7273</td></tr>
+            <tr><td><b>Measurement ceiling</b></td><td class="r"><b>0.9458</b></td><td class="r"><b>0.9519</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cols c-2" style="flex:0 0 auto;gap:12px">
+        <div class="card good" data-step="4">
+          <div class="card-t">Where the model is ahead</div>
+          <p style="font-size:12.3px;margin:0">paired by peptide, bootstrapped by cluster</p>
+          <ul style="font-size:12.3px;margin:6px 0 0">
+            <li>M3 − M0 = <b class="num">+0.0289</b>, CI [0.0264, 0.0313] — wins on <b>72.5%</b> of peptides</li>
+            <li>M3 − ΔPAP <code>cnn2w7</code> = <b class="num">+0.0300</b>, CI [0.0234, 0.0366]</li>
+          </ul>
+        </div>
+        <div class="card alert" data-step="5">
+          <div class="card-t">Where it is still behind — the stated target</div>
+          <ul style="font-size:12.3px;margin:0">
+            <li>on the substitution matrix, M3 − ΔPAP <code>cnn2w1</code> = <b class="num hl-d">−0.0420</b>,
+              CI [−0.0580, −0.0256]</li>
+            <li><b>but the ranking reverses by metric</b>: at position level M3 gives Spearman
+              <b class="num">0.4440</b> against ΔPAP's <b class="num">0.3553</b> ⇒ claims are reported
+              <b>per metric</b>, never pooled</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cols c-2" style="flex:0 0 auto;gap:12px">
+        <div class="card key" data-step="6">
+          <div class="card-t">Statistical power, computed in advance</div>
+          <table class="xtight"><tbody>
+            <tr><td>Minimum detectable difference, saturation <span class="lblx">paired, 80% power</span></td><td class="r"><b>0.0123</b></td></tr>
+            <tr><td>…unpaired equivalent</td><td class="r">0.0491</td></tr>
+            <tr><td>…scanning set</td><td class="r"><b>0.0025 – 0.0036</b></td></tr>
+            <tr><td>Power at the measured delta</td><td class="r">0.995</td></tr>
+            <tr><td>Cell-within-peptide ICC / design effect</td><td class="r">0.0625 / <b>33.79</b></td></tr>
+            <tr><td>⇒ effective independent cells</td><td class="r"><b>≈ 1,416</b></td></tr>
+          </tbody></table>
+        </div>
+        <div class="stack" style="gap:12px">
+          <div class="card" data-step="7" style="border-left:3px solid var(--model)">
+            <b style="font-size:12.5px">Committed in advance:</b>
+            <span style="font-size:12.3px">an ablation worth <b>≥ 0.012</b> is detectable on the saturation set;
+            anything below that is <b>not</b>, and will be reported as <b>indistinguishable</b> rather than as a win.</span>
+          </div>
+          <div class="card alert" data-step="8">
+            <div class="card-t">Remaining limits of the labels</div>
+            <table class="xtight"><tbody>
+              <tr><td>Residue-set agreement between replicates (Jaccard)</td><td class="r"><b>0.4965</b></td></tr>
+              <tr><td colspan="2" style="font-size:11.5px;color:var(--ink-70)">⇒ report uncertainty, not one
+                confident answer. Measurement noise is <b>not</b> fixable by read-depth filtering — consistent
+                with DiMSum (<i>Genome Biol</i> 2020); the remedy is more replicates.</td></tr>
+            </tbody></table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fig">
+      <div class="fig-body">
+        <svg viewBox="0 0 330 350" width="330" height="350">
+          <!-- trục 0.70 -> 0.96 -->
+          <line x1="46" y1="30" x2="46" y2="300" stroke="#CFD8DD" stroke-width="1.4"/>
+          <g class="lblx" text-anchor="end" fill="var(--ink-45)">
+            <text x="40" y="304">0.70</text><text x="40" y="252">0.75</text>
+            <text x="40" y="200">0.80</text><text x="40" y="148">0.85</text>
+            <text x="40" y="96">0.90</text><text x="40" y="44">0.95</text>
+          </g>
+          <text class="lbl" x="6" y="16" font-weight="600">cell-level AUROC</text>
+
+          <!-- cột scanning -->
+          <text class="lblx" x="112" y="322" text-anchor="middle" font-weight="600">scanning</text>
+          <text class="lblx" x="112" y="336" text-anchor="middle">1,985 clusters</text>
+          <g data-step="1">
+            <line x1="62" y1="44.7" x2="162" y2="44.7" stroke="var(--ink)" stroke-width="1.6" stroke-dasharray="6 3"/>
+            <text class="lblx" x="166" y="42">ceiling 0.9458</text>
+            <rect x="74" y="125.3" width="18" height="174.7" rx="3" fill="var(--stable)"/>
+            <text class="mono" x="83" y="118" font-size="9" font-weight="700" text-anchor="middle" fill="#1D6F65">0.8682</text>
+            <text class="lblx" x="83" y="316" text-anchor="middle">M3</text>
+            <rect x="96" y="155.4" width="18" height="144.6" rx="3" fill="#A9CFC9"/>
+            <text class="lblx" x="105" y="150" text-anchor="middle">M0</text>
+            <rect x="118" y="159.1" width="18" height="140.9" rx="3" fill="#B9C7D4"/>
+            <text class="lblx" x="127" y="316" text-anchor="middle">ΔPAP</text>
+            <text class="lblx" x="127" y="328" text-anchor="middle">w7</text>
+            <rect x="140" y="202.1" width="18" height="97.9" rx="3" fill="#B9C7D4"/>
+            <text class="lblx" x="149" y="196" text-anchor="middle">w1</text>
+          </g>
+
+          <!-- cột saturation -->
+          <text class="lblx" x="246" y="322" text-anchor="middle" font-weight="600">saturation</text>
+          <text class="lblx" x="246" y="336" text-anchor="middle">89 clusters</text>
+          <g data-step="2">
+            <line x1="196" y1="38.4" x2="300" y2="38.4" stroke="var(--ink)" stroke-width="1.6" stroke-dasharray="6 3"/>
+            <text class="lblx" x="222" y="34">ceiling 0.9519</text>
+            <rect x="208" y="292.6" width="18" height="7.4" rx="3" fill="#A9CFC9"/>
+            <text class="lblx" x="217" y="288" text-anchor="middle">M0</text>
+            <rect x="230" y="271.7" width="18" height="28.3" rx="3" fill="var(--stable)"/>
+            <text class="lblx" x="239" y="316" text-anchor="middle">M3</text>
+            <rect x="252" y="228.1" width="18" height="71.9" rx="3" fill="var(--degron)"/>
+            <text class="mono" x="261" y="222" font-size="9" font-weight="700" text-anchor="middle" fill="#A23247">0.7693</text>
+            <text class="lblx" x="261" y="316" text-anchor="middle">ΔPAP</text>
+            <text class="lblx" x="261" y="328" text-anchor="middle">w1</text>
+          </g>
+          <g data-step="3">
+            <path d="M282 232 L282 268" stroke="var(--degron)" stroke-width="1.6"
+                  marker-start="url(#ar-u17)" marker-end="url(#ar-d17)"/>
+            <text class="mono" x="288" y="248" font-size="10" font-weight="700" fill="var(--degron)">−0.0420</text>
+            <text class="lblx" x="288" y="262" fill="var(--degron)">target</text>
+          </g>
+          <defs>
+            <marker id="ar-u17" markerWidth="7" markerHeight="7" refX="3.5" refY="6" orient="auto">
+              <path d="M3.5 0 L7 7 L0 7 z" fill="var(--degron)"/></marker>
+            <marker id="ar-d17" markerWidth="7" markerHeight="7" refX="3.5" refY="1" orient="auto">
+              <path d="M3.5 7 L0 0 L7 0 z" fill="var(--degron)"/></marker>
+          </defs>
+        </svg>
+      </div>
+      <div class="cap"><b>own measurements.</b> Ahead on the left, behind on the right — the same model.</div>
+    </div>
+  </div>
+  <div class="foot">These are <b>measurement</b> ceilings — an upper bound on what the labels can score,
+    <b>not</b> a promise of achievable performance.</div>
+
+  <div class="speaker-note">
+    <p class="no">1. ⚠ <b>Câu chân slide về "measurement ceiling ≠ achievable performance" là bắt buộc.</b> Đây là đúng loại lỗi đã mắc <b>hai lần</b> trong repo. Không viết "headroom to the ceiling" ở bất kỳ đâu.</p>
+    <p class="no">2. ⚠ <b>Không dùng 0,6045 và 0,7792</b> — hai số đó là oracle đọc nhãn test, đã bị D-025 loại.</p>
+    <p>3. Thước đo chính nay là <b>AUROC mức ô</b>. Bộ precision@3 (0,4270 / 0,4897 / 0,6514) vẫn đúng, để ở <b>phụ lục A2</b> — đừng trộn hai thang trên cùng một bảng.</p>
+    <p>4. <b>Dòng "committed in advance" là điểm mạnh trình bày.</b> Nói ngưỡng 0,012 <b>trước</b> khi chạy ablation thì mạnh; nói sau thì thành biện hộ. MDE cũ 0,071 <b>đã sai</b> — suy từ phương sai không ghép cặp.</p>
+    <p>5. <b>Dòng "ranking reverses by metric" phải giữ.</b> Tự nêu thì mạnh: cùng một mô hình thắng ở thang mức vị trí và thua ở thang mức ô.</p>
+  </div>
+</section>

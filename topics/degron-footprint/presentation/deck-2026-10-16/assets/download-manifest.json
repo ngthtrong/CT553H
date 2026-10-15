@@ -1,0 +1,78 @@
+[
+  {
+    "path": "vendor/clean/clean.scss",
+    "url": "https://raw.githubusercontent.com/grantmcdermott/quarto-revealjs-clean/5f8a06d9a9dab5509fe1aca6ef6e4f89a8910996/_extensions/clean/clean.scss",
+    "sha256": "c620de9dc603d9288179a3166c77c7c2c1766bd51a325aa69444db31091ada75",
+    "bytes": 7391,
+    "retrieved": "2026-10-15"
+  },
+  {
+    "path": "vendor/clean/LICENSE",
+    "url": "https://raw.githubusercontent.com/grantmcdermott/quarto-revealjs-clean/5f8a06d9a9dab5509fe1aca6ef6e4f89a8910996/LICENSE",
+    "sha256": "d28d35c589a0e69fb6a8eabfc39fe0b3f597ab61ad59d1c897bf24f8875e9d90",
+    "bytes": 1072,
+    "retrieved": "2026-10-15"
+  },
+  {
+    "path": "vendor/reveal.js",
+    "url": "https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.js",
+    "sha256": "46538b52db48724192f59bf46f5e851a18e302777c46f4a34c32709d010d6a29",
+    "bytes": 112163,
+    "retrieved": "2026-10-15"
+  },
+  {
+    "path": "vendor/reveal.css",
+    "url": "https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.css",
+    "sha256": "68f915a11ebf7203c0446576b7e952ff61c5dd02134a8a226ffaf62ed42136d2",
+    "bytes": 54097,
+    "retrieved": "2026-10-15"
+  },
+  {
+    "path": "vendor/reveal-LICENSE",
+    "url": "https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/LICENSE",
+    "sha256": "34014800f4126ac2525e224166f099f26628612e95c41f76d70841b63138c989",
+    "bytes": 1108,
+    "retrieved": "2026-10-15"
+  },
+  {
+    "path": "assets/fam188a.gif",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b3/I-TASSER_predicted_protein_fold_of_Fam188a.gif",
+    "sha256": "0e37f44b52235448f661ee0045001b78875ca1396ca93c4a92005b513045592f",
+    "bytes": 25668,
+    "retrieved": "2026-10-15"
+  },
+  {
+    "path": "vendor/inter-regular.ttf",
+    "url": "https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf",
+    "sha256": "1b08e7fc267a5c7e1d614100f604b83e7e8a0be241f0f288faa2b3ac93a683ba",
+    "bytes": 324820,
+    "retrieved": "2026-10-15"
+  },
+  {
+    "path": "vendor/inter-semibold.ttf",
+    "url": "https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf",
+    "sha256": "e7a1aaf7eda9f2fad4131725fa556265ec75ca7b2d756260173a040363e8d4f7",
+    "bytes": 326048,
+    "retrieved": "2026-10-15"
+  },
+  {
+    "path": "vendor/inter-OFL.txt",
+    "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/inter/OFL.txt",
+    "sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57",
+    "bytes": 4377,
+    "retrieved": "2026-10-15"
+  },
+  {
+    "path": "vendor/clean/preview.png",
+    "url": "https://raw.githubusercontent.com/grantmcdermott/quarto-revealjs-clean/5f8a06d9a9dab5509fe1aca6ef6e4f89a8910996/clean-title.png",
+    "sha256": "30259fa2e5726f2c9f70c16b9a0e58afac338a6061e55da15c24c9c1efb0a501",
+    "bytes": 346083,
+    "retrieved": "2026-10-15"
+  },
+  {
+    "path": "assets/ring-domain.gif",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/d9/1chc_animated.gif",
+    "sha256": "c9ba053c19f9daf162dd891d40ca84e55845312b1b08a7efa762a7d5a3414bde",
+    "retrieved": "2026-10-15"
+  }
+]

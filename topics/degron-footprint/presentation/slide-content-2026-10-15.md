@@ -17,7 +17,7 @@
 | # | Lựa chọn | Hệ quả trong file |
 |---|---|---|
 | 1 | **Đóng khung bài toán theo hướng C-15**: nhiệm vụ **mức residue** là trụ, cross-assay hạ xuống chương đo lường | Phần 5 (slide 15–17) viết đầy đủ cho mức residue. ✅ **Nay đã là quyết định: [D-031](../../../DECISIONS.md#d-031)** |
-| 2 | **15–20 phút, 24 slide** | Phân bổ ở bảng mục lục |
+| 2 | **15–20 phút, 24 slide** (nay **26**, thêm phần Product ở phiên 11) | Phân bổ ở bảng mục lục |
 | 3 | **Tiêu đề mô tả nhiệm vụ, không đặt tên mô hình** | Slide 1 |
 | 4 | **Độ trung thực "giữ tối thiểu"**: chỉ nêu giới hạn trực tiếp của bài toán và dữ liệu; không nêu các hướng đã bị loại, không nêu tranh luận nội bộ về mức đóng góp | Giải thích cách áp dụng ở mục "Ranh giới của lựa chọn 4" |
 
@@ -51,6 +51,41 @@ mua được hiệu năng là **lân cận cục bộ**, và phần lớn là **
 Nói "position beats composition" là **sai bản chất phép đo của chính mình**, và GVHD đọc bảng trên sẽ thấy
 ngay.
 
+### ✅ Cập nhật theo khung ba trụ (phiên 11, 15/10/2026): D-033, D-034, D-035, D-036
+
+Bản phiên 9 soạn **trước** khi khung có trụ cấp thiết và trụ phần mềm. Khung đem xin duyệt ở buổi gặp
+16/10 ([C-5](../../../DECISIONS.md#c-5)) có **ba trụ**: **cấp thiết đo được** · **phương pháp mức residue
+kèm kiến trúc mới** · **phần mềm**. Sườn và thứ tự giữ nguyên, thêm hai slide thành **26 slide**; các chỗ đổi:
+
+| Chỗ | Bản phiên 9 | Bản này | Căn cứ |
+|---|---|---|---|
+| Slide 5, câu scope | "isolated 28-residue peptides" | thêm **autonomous degrons** (degron tự trị trong 28-mer) | [D-035](../../../DECISIONS.md#d-035) |
+| Slide 6, vì sao cần nghiên cứu | dẫn bằng **đột biến lái ung thư** (Tokheim, Liu, DegronMD) | dẫn bằng con số **tự đo 2,148×** ở **mức vùng**, kèm hai kết quả âm | [D-033](../../../DECISIONS.md#d-033), [D-035](../../../DECISIONS.md#d-035), [D-036](../../../DECISIONS.md#d-036) |
+| Slide 13, người dùng | ba nhóm ngang nhau | **diễn giải biến thể** lên đầu, với vai **động lực** (530.412 VUS), không phải đích xác nhận | [D-036](../../../DECISIONS.md#d-036) |
+| Slide 14, đóng góp | C1–C4 | thêm bảng **ba trụ** và dòng **C5 — phần mềm** | [D-033](../../../DECISIONS.md#d-033), [D-034](../../../DECISIONS.md#d-034) |
+| Slide 18, dữ liệu | 6 nguồn | thêm **ClinVar**; peptidome GPS thêm vai **miền áp dụng** | [D-033](../../../DECISIONS.md#d-033) |
+| **Phần mới "Product"** | không có | **slide 23–24**, đặt trước Next steps | [D-033](../../../DECISIONS.md#d-033), [D-034](../../../DECISIONS.md#d-034) |
+| Next steps / Questions | slide 23 / 24 | **slide 25 / 26**; G3 đã viết lại, Q1 và Q4 **Trọng tự viết** (việc 9 cuối file) | [C-5](../../../DECISIONS.md#c-5) |
+
+⚠ **Ràng buộc của [D-036](../../../DECISIONS.md#d-036), bắt buộc ở mọi slide nhắc ClinVar.** Ở **mức
+vùng**, degron giàu biến thể gây bệnh 2,148 lần, và con số này **đứng được**. Ở **mức residue** thì **chưa
+thiết lập được**: ba phép đo đều nhất quán với rỗng (tầng có lực nhất: AUC **0,5166** [0,479; 0,554]).
+Hệ quả câu chữ:
+
+- ClinVar là **động lực** của bài toán, **không** phải đích xác nhận mô hình.
+- ≈1.600 biến thể "chấm được bằng đúng ô đã đo" là con số **độ phủ**, không trình bày như một phép kiểm.
+- **Không** trích AUC 0,674 của tầng khớp đúng ô (n = 51) tách khỏi CI [0,489; 0,831] của nó.
+
+**Câu cấm bổ sung** (thêm vào danh sách năm câu bên dưới):
+
+6. ❌ "degrons are mutation hotspots": tỉ lệ biến thể trong degron bằng đúng tỉ lệ nền (33,4% so 32,4%)
+7. ❌ mọi khung dẫn bằng "cancer driver mutations": 7/8 degron lái ung thư kinh điển không hiện ra trong
+   assay ([D-035](../../../DECISIONS.md#d-035))
+8. ❌ "the residues we predict are the ones carrying disease signal": đã đo ba lần, chưa thấy
+   ([D-036](../../../DECISIONS.md#d-036))
+9. ❌ "validated against ClinVar" / "ClinVar confirms the model"
+10. ❌ "pathogenic because it breaks a degron": 2,148 là liên hệ, chưa khử bảo tồn và độ vô trật tự
+
 ### Ranh giới của lựa chọn 4 ("giữ tối thiểu")
 
 Giữ tối thiểu **không phải** nói sai. Danh sách "đừng nói" ở
@@ -79,26 +114,29 @@ residue-level claims"* — bộ quét cũng là nhãn hiệu ứng đột biến
 
 ---
 
-## Mục lục 24 slide
+## Mục lục 26 slide
 
 | # | Phần | Slide | Trạng thái nội dung |
 |---|---|---|---|
 | 1 | Title | 1 | ✅ đầy đủ |
-| 2 | Introduction | 2–6 | ✅ đầy đủ |
+| 2 | Introduction | 2–6 | ✅ đầy đủ — slide 6 **viết lại** quanh con số 2,148 mức vùng (phiên 11) |
 | 3 | Related work | 7–11 | ✅ đầy đủ |
-| 4 | Gap, urgency, contribution | 12–14 | ✅ đầy đủ — slide 14 nay **có con số dương**, chỉ ô C4 còn mở |
+| 4 | Gap, urgency, contribution | 12–14 | ✅ đầy đủ — slide 14 có **bảng ba trụ**; ô C4, C5 còn mở |
 | 5 | Problem definition | 15–17 | ✅ đầy đủ |
-| 6 | Datasets | 18–20 | ✅ đầy đủ (một ô cần sinh hình) |
+| 6 | Datasets | 18–20 | ✅ đầy đủ (một ô cần sinh hình); slide 18 thêm ClinVar |
 | 7 | Method | 21–22 | **sườn** — mốc và lý lẽ đã có số, kiến trúc chưa chạy |
-| 8 | Next steps | 23 | ✅ đầy đủ |
-| 9 | Questions | 24 | ✅ đầy đủ |
+| 8 | **Product** (mới) | **23–24** | ✅ nội dung đầy đủ; sản phẩm **chưa xây**, mọi ô là thiết kế |
+| 9 | Next steps | 25 | ✅ đầy đủ |
+| 10 | Questions | 26 | ✅ đầy đủ |
 
-Ngân sách thời gian 15–20 phút: phần 1–2 ≈ 3 phút · phần 3 ≈ 4 phút · phần 4 ≈ 3 phút ·
-phần 5 ≈ 3 phút · phần 6 ≈ 3 phút · phần 7–9 ≈ 3 phút.
+Ngân sách thời gian 15–20 phút: phần 1–2 ≈ 3 phút · phần 3 ≈ 3,5 phút · phần 4 ≈ 3 phút ·
+phần 5 ≈ 2,5 phút · phần 6 ≈ 2,5 phút · phần 7 ≈ 1,5 phút · **phần 8 ≈ 2 phút** · phần 9–10 ≈ 2 phút.
+Hai phút cho phần Product lấy từ phần 3, 5, 6 (mỗi phần bớt ≈ 0,5 phút). Nếu quá giờ, slide 19 và 20 có thể
+nói lướt vì chi tiết đã nằm trong phụ lục A3–A4.
 
 ---
 
-## Phong cách thiết kế (áp dụng cho cả 24 slide)
+## Phong cách thiết kế (áp dụng cho cả 26 slide)
 
 **Tone màu tin sinh học, tối giản hiện đại.** Bảng màu đề xuất, dùng nhất quán:
 
@@ -261,10 +299,14 @@ giữ được bảng màu.
 > > strength change when one of them is substituted?
 >
 > **Scope statement.** Labels in this work are measured on **isolated 28-residue peptides** fused to a
-> reporter. Predictions therefore describe peptide-level stability, and do **not** by themselves establish
-> an effect on the intact protein or any therapeutic effect.
+> reporter, so the assay sees **autonomous degrons**: signals that work inside the 28-mer on their own.
+> Degrons that need priming (for example phosphorylation by another kinase) are outside its reach.
+> Predictions describe peptide-level stability, and do **not** by themselves establish an effect on the
+> intact protein or any therapeutic effect.
 
-**Ghi chú sản xuất.** Câu scope statement là yêu cầu cứng của
+**Ghi chú sản xuất.** Cụm **"autonomous degrons"** thêm theo [D-035](../../../DECISIONS.md#d-035): phạm vi
+**degron tự trị**, biến thể **dòng mầm**. Đây là giới hạn của **assay**, đã đo (slide 6), không phải giả
+định. Câu scope statement là yêu cầu cứng của
 [hướng dẫn §2](../../../project/advisor-presentation-guide.md) và phải nằm **ngay** ở slide định nghĩa bài
 toán, không để xuống phần giới hạn. Gradation "19% strong / 30% intermediate / 51% non-degron" là số của
 Voutsinos 2026 — để dành tới slide 10, ở đây chỉ nói "graded".
@@ -277,48 +319,74 @@ Dùng lại [`fig-05-footprint.svg`](../../../lectures/degron-basics/figures/fig
 3. Zoom tiếp: 3–4 ô tô đỏ san hô đậm = residue quyết định; các ô còn lại nhạt.
 4. Hiện câu hỏi "which residues?" cạnh các ô đỏ.
 
-## Slide 6 — Why this matters: mutations that create or destroy degrons cause disease
+## Slide 6 — Why this matters: measured degron regions are enriched for disease variants
 
 **Chữ lên slide:**
 
-> Degrons are a **disease mechanism in both directions**.
+> Degrons are a **disease mechanism in both directions**:
+> - a mutation that **destroys** a degron lets a protein escape degradation and **accumulate**
+> - a mutation that **creates** a degron clears a healthy protein early ⇒ **loss of function** —
+>   e.g. PNPO D33V (Voutsinos et al., *Sci Adv* 2026)
 >
-> | Direction | Consequence | Reported in |
-> |---|---|---|
-> | A mutation **destroys** an existing degron | an oncoprotein escapes degradation and **accumulates** → uncontrolled proliferation | Tokheim et al., *Mol Cell* 2021 · Liu et al., *Nat Commun* 2021 |
-> | A mutation **creates** a new degron | a healthy protein is destroyed prematurely → **loss of function** | Voutsinos et al., *Sci Adv* 2026 (PNPO D33V) |
+> **How much clinical variation falls in degrons? We measured it.**
+> ClinVar, 2.56 million missense variants, mapped onto every peptide the GPS screen measured:
 >
-> Scale reported across human tumours:
-> - **over 19%** of cancer driver genes affect ubiquitin–proteasome function — Tokheim et al. 2021
-> - **2,406** degron-exchange events identified in gene fusions, enriched for oncogene stabilisation — Liu et al. 2021
-> - **89,318** mutations predicted to disrupt degron function across the pan-cancer degrome — DegronMD, 2023
+> | Comparison, **within the same protein** | Odds ratio, pathogenic vs benign |
+> |---|---:|
+> | inside a measured degron vs elsewhere in that protein | **2.148** [2.072, 2.227] |
+> | strata | 3,114 proteins (Mantel–Haenszel) |
+>
+> Inside those degron regions sit **530,412 variants of uncertain significance** that no current tool
+> assigns a mechanism to.
+>
+> **What this number does and does not say**
+> - it is a **region-level** association; whether the *individual residues* in a degron carry the
+>   disease signal is **not established** by our data
+> - variants are **not** over-represented in degrons by location: 33.4% of variants vs 32.4% of tiles
+> - conservation and disorder are **not yet controlled for**
 >
 > **And degrons are also a drug-design target:** targeted protein degradation works by *recruiting* the
 > degradation machinery to a protein of interest. Knowing which residues control degron strength is
 > upstream of that design problem.
 >
-> <small>Figures as reported by the cited authors; this thesis does not predict disease or claim therapeutic effect.</small>
+> <small>Own measurement, ClinVar variant_summary of 12 Oct 2026 (Landrum et al., NAR 2018, PMID 29165669). ClinVar classifications are not for diagnostic use; this thesis does not predict disease or claim therapeutic effect.</small>
 
-**Ghi chú sản xuất.** Đây là slide trả lời câu GVHD **nhấn mạnh nhất** ở buổi gặp 1 — *vì sao cần nghiên
-cứu* ([biên bản mục 2](../../../project/meetings/2026-10-02-session-01/minutes.md)). Ba con số đều là **số
-của tác giả**, nhãn `[nguồn]`, không phải tự đo. Câu cuối (disclaimer) **giữ nguyên**, vì
-[contribution-assessment §4.3](../research/contribution-assessment-2026-10-15.md) đã cảnh báo nhóm người dùng
-PROTAC là chỗ dễ bị bắt lỗi thổi phồng nhất — nên nói "upstream of that design problem", **không** nói đề
-tài phục vụ thiết kế thuốc.
+**Ghi chú sản xuất.** Đây là slide trả lời câu GVHD **nhấn mạnh nhất** ở buổi gặp 1, *vì sao cần nghiên
+cứu* ([biên bản mục 2](../../../project/meetings/2026-10-02-session-01/minutes.md)). Bản phiên 9 trả lời bằng
+ba con số **của tác giả khác** về ung thư; bản này trả lời bằng một con số **tự đo**
+([D-033](../../../DECISIONS.md#d-033); [báo cáo §6](../research/variant-coverage-2026-10-15/README.md)).
 
-Trích dẫn đầy đủ (dùng cho slide phụ lục references):
-- Tokheim C, Wang X, Timms RT, … Elledge SJ, Brown M, Liu XS. *Systematic characterization of mutations
-  altering protein degradation in human cancers.* **Mol Cell** 81(6):1292–1308.e11, 2021.
-  [DOI 10.1016/j.molcel.2021.01.020](https://doi.org/10.1016/j.molcel.2021.01.020)
-- Liu J, Tokheim C, Lee JD, … Pandolfi PP, Wei W. *Genetic fusions favor tumorigenesis through degron loss
-  in oncogenes.* **Nat Commun** 12:6704, 2021.
-  [DOI 10.1038/s41467-021-26871-y](https://doi.org/10.1038/s41467-021-26871-y)
-- Xu H, Hu R, Zhao Z. *DegronMD: Leveraging Evolutionary and Structural Features…* **Mol Biol Evol**
-  40(12), 2023. [DOI 10.1093/molbev/msad253](https://doi.org/10.1093/molbev/msad253)
+- ⚠ **Vì sao bỏ khung "đột biến lái ung thư"** ([D-035](../../../DECISIONS.md#d-035)), chuẩn bị nếu GVHD hỏi:
+  trong 8 degron lái ung thư kinh điển chỉ **HIF1A** hiện ra trong assay. `CTNNB1` codon 31–48 **đo tốt mà
+  không phải degron** (PSI 5,27 / 5,36), `MYC` T58/S62 vắng mặt, `NFE2L2` ETGE không phải degron. Ba degron
+  đó đều **có điều kiện** (cần mồi phosphoryl hóa hoặc bám hai motif), nên nằm ngoài một 28-mer. Mạch soma
+  cũng không có dữ liệu: cột `Oncogenicity` chỉ có 145 giá trị trong tile degron, 0 trong bộ bão hòa.
+- ⚠ **Ba dòng "does and does not say" là bắt buộc**, không được tách khỏi con số 2,148
+  ([D-033](../../../DECISIONS.md#d-033), [D-036](../../../DECISIONS.md#d-036)). Dòng đầu là giới hạn mới nhất:
+  ở mức residue, ba phép đo đều nhất quán với rỗng (tầng có lực nhất AUC 0,5166 [0,479; 0,554]). Nếu GVHD hỏi
+  "vậy residue mô hình chỉ ra có liên quan bệnh không", trả lời thẳng: *chưa thiết lập được với dữ liệu hiện
+  có; đề tài được đánh giá bằng nhãn thực nghiệm của chính nó, ClinVar chỉ là động lực*.
+- ⚠ Đối chứng bảo tồn / độ vô trật tự **chưa chạy** ([D](../../../DECISIONS.md#doi-chung-cap-thiet)). Nếu chạy
+  kịp trước buổi gặp thì thay dòng thứ ba bằng kết quả; nếu không thì giữ nguyên câu "not yet controlled for".
+- Câu chân slide: ClinVar **không có giấy phép kiểu CC**, chỉ yêu cầu **ghi công** và một câu **phủ nhận
+  chẩn đoán** ([SOURCE.md](../data/raw/clinvar/SOURCE.md)). Giữ cả hai.
+- Giữ câu PROTAC ở dạng "upstream of that design problem"; **không** nói đề tài phục vụ thiết kế thuốc
+  ([contribution-assessment §4.3](../research/contribution-assessment-2026-10-15.md)).
+- Ví dụ PNPO D33V là số của tác giả, nhãn `[nguồn]`. Ba bài Tokheim 2021, Liu 2021, DegronMD 2023 **không lên
+  slide này nữa**; DegronMD vẫn ở slide 4 (con số 600 E3) và slide 8–9. Giữ trích dẫn của Tokheim và Liu ở
+  phụ lục references để trả lời nếu GVHD hỏi về ung thư:
+  - Tokheim C, Wang X, Timms RT, … Elledge SJ, Brown M, Liu XS. **Mol Cell** 81(6):1292–1308.e11, 2021.
+    [DOI 10.1016/j.molcel.2021.01.020](https://doi.org/10.1016/j.molcel.2021.01.020)
+  - Liu J, Tokheim C, Lee JD, … Pandolfi PP, Wei W. **Nat Commun** 12:6704, 2021.
+    [DOI 10.1038/s41467-021-26871-y](https://doi.org/10.1038/s41467-021-26871-y)
+  - ClinVar: Landrum MJ et al. **Nucleic Acids Res** 2018, PMID 29165669 (đúng PMID mà ClinVar đề nghị
+    trích, xem [SOURCE.md](../data/raw/clinvar/SOURCE.md)).
 
-**Hình.** Hai nhánh đối xứng, mũi tên ngược chiều nhau: nhánh trên "degron destroyed → protein accumulates"
-(đỏ san hô dần đậm, cột protein cao lên), nhánh dưới "degron created → protein cleared" (xanh mòng, cột
-thấp xuống). Ở giữa là protein hoang dã. **Animation:** hai nhánh chạy lần lượt. `own diagram`.
+**Hình.** Hai panel. **Trái:** hai nhánh đối xứng như bản cũ: "degron destroyed → protein accumulates" (đỏ
+san hô) và "degron created → protein cleared" (xanh mòng). **Phải:** một forest plot một dòng, OR 2,148 với
+CI, vạch dọc nét đứt tại OR = 1, nhãn `within-protein, 3,114 proteins`. Bên dưới, chip hổ phách
+`region level only — residue level not established`. **Animation:** panel trái trước, rồi điểm OR hiện ra,
+rồi chip hổ phách. `own diagram`, số từ `research/variant-coverage-2026-10-15/enrichment.json`.
 
 ---
 
@@ -618,14 +686,14 @@ kim đồng hồ **không nhích**. Dưới cùng: `89.7% of 2,624 peptides are 
 > | A model **trained on the residue-level objective** | published degron models are trained on segment scores; applying them per-residue is use outside design |
 > | **Evaluation conditions** for residue-level claims | the closest precedent (Degformer) uses a random split with measurable leakage, reports no label ceiling and no per-prediction uncertainty |
 > | A **measured noise ceiling** attached to reported numbers | own measurement: cell-level measurement ceilings are **0.9458** (scanning) and **0.9519** (saturation); residue-set agreement between replicates is Jaccard **0.4965** — an honest tool must report both |
-> | Knowing **at which scale** the information actually sits | own decomposition: whole-peptide composition → ±3 neighbourhood → order within it → absolute position. Nobody has published this breakdown for degrons |
+> | Knowing **at which scale** the information actually sits | own decomposition: whole-peptide composition → ±3 neighbourhood → order within it → absolute position. A literature search on 15 Oct 2026 did not find this breakdown published for degrons |
 >
 > **Intended users**
 > | User | What they get |
 > |---|---|
+> | **Variant interpretation** — 530,412 VUS sit inside measured degron regions (slide 6) | a **mechanistic hypothesis** to complement pathogenicity scores: does this substitution stabilise or destabilise the peptide, and by how much |
 > | **Experimental biologists** designing degron mutations | a **prioritisation tool**: "test these 3 residues first", with calibrated uncertainty |
 > | **Bioinformatics / ML researchers** | a reference task with measured ceiling, honest baselines and a homology-controlled split |
-> | **Variant interpretation** | a mechanistic complement to pathogenicity scores — *why* a variant destabilises |
 >
 > <small>Search statement: PubMed and Europe PMC queries run on 15 Oct 2026 returned no degron-prediction tool published in 2025–2026 beyond those listed; of 19 papers citing Larsen 2025 and Voutsinos 2026, none is a residue-level footprint model.</small>
 
@@ -635,9 +703,15 @@ kim đồng hồ **không nhích**. Dưới cùng: `89.7% of 2,624 peptides are 
    phải gọi đúng là **prioritisation tool**, không phải công cụ quyết định — vì Jaccard 0,50 ở mức residue.
    Nhóm PROTAC/molecular glue **đã bị gỡ** khỏi danh sách người dùng theo đúng khuyến nghị ở §4.3; đừng thêm
    lại.
-2. **Câu search statement ở chân slide là bắt buộc** và phải viết đúng dạng *"queries run on 15 Oct 2026
+   **Cập nhật phiên 11:** nhóm **diễn giải biến thể** lên đầu vì nay có số đỡ (530.412 VUS,
+   [D-033](../../../DECISIONS.md#d-033)). ⚠ Theo [D-036](../../../DECISIONS.md#d-036), viết đúng là "mechanistic
+   **hypothesis**". **Không** viết "explains why a variant is pathogenic", vì mắt nối residue → bệnh chưa thiết
+   lập được. Đầu ra là dự đoán ΔPSI có bất định, không phải phân loại gây bệnh.
+2. **Sửa ở phiên 11:** ô "at which scale" trước đây viết *"Nobody has published this breakdown"* — vi phạm
+   câu cấm số 5 của chính file này. Nay viết đúng dạng *"a literature search on 15 Oct 2026 did not find…"*.
+3. **Câu search statement ở chân slide là bắt buộc** và phải viết đúng dạng *"queries run on 15 Oct 2026
    returned no…"*, tuyệt đối **không** viết "nobody has done this".
-3. Nếu GVHD hỏi "đã có Degformer rồi thì sao" — câu trả lời chuẩn bị sẵn, **không** cần lên slide:
+4. Nếu GVHD hỏi "đã có Degformer rồi thì sao" — câu trả lời chuẩn bị sẵn, **không** cần lên slide:
    *"nhiệm vụ đã có người làm, nhưng chưa ai làm dưới điều kiện đánh giá đứng được: split theo cụm protein,
    trần nhãn, bất định từng dự đoán. Em đo được 4,09% rò rỉ trình tự y hệt trong phép chia của họ."*
 
@@ -646,21 +720,30 @@ Voutsinos 2026) ở trên trục, hai mốc công cụ (DEGRONOPEDIA/MetaDegron 
 Cuối trục, một ô hổ phách rỗng nhãn "residue-level model + evaluation conditions". **Animation:** các mốc
 hiện dần theo năm; ô hổ phách hiện cuối. `own diagram`.
 
-## Slide 14 — Contribution ⟨phần lớn đã đo; một ô còn mở⟩
+## Slide 14 — Contribution: three pillars ⟨phần lớn đã đo; hai ô còn mở⟩
 
 > ✅ **Cập nhật sau phiên 8.** Bản đầu ghi C3 là "chưa có gì". Nay C3 **đã có con số dương** trên trục ngữ
 > cảnh, và chỗ **chưa thắng** cũng đã được đo thành một mục tiêu có số. Chỉ ô C4 còn là kế hoạch.
 
 **Chữ lên slide:**
 
-> **Four contributions — status as of October 2026**
+> **The thesis rests on three pillars**
+>
+> | Pillar | What it contributes | Evidence |
+> |---|---|---|
+> | **1. Urgency** | why the question is worth asking | ✅ measured, **region level**: OR 2.148 within-protein (slide 6) |
+> | **2. Method** | residue-level prediction, a proof of the gap, an evaluation protocol, a new architecture | ✅ C1–C3 measured · ⬜ C4 open |
+> | **3. Software** | a prediction service with measured uncertainty, and a reproducible evaluation harness | ⬜ C5 designed, not built (slides 23–24) |
+>
+> **Five contributions — status as of October 2026**
 >
 > | # | Contribution | Status |
 > |---|---|---|
 > | **C1** | **Proof that the current model class cannot localise** degron residues — 89.7% of footprint peptides, explicit rank-2 counterexample, permutation test on PAP (Pearson 1.000000) | ✅ **measured** |
 > | **C2** | **An evaluation protocol for the residue-level task** — two mutation-effect label sets with distinct roles, measured ceilings (**0.9458** / **0.9519**), honest composition baseline, published-model control, protein-cluster split, and a **pre-computed detection threshold** (MDE **0.0123**) | ✅ **measured** |
 > | **C3** | **A decomposition of where the predictive information sits**, and a model that beats the closest published control on the context axis: **+0.0300** over ΔPAP `cnn2w7` (CI [0.0234, 0.0366]) | ✅ **first positive result** |
-> | **C4** | **An architecture** closing the remaining gap on the substitution matrix — currently **−0.0420** behind ΔPAP `cnn2w1` (target: beat **0.7693**, ceiling 0.9519) — plus the application | ⬜ **open — this is the work ahead** |
+> | **C4** | **An architecture** closing the remaining gap on the substitution matrix — currently **−0.0420** behind ΔPAP `cnn2w1` (target: beat **0.7693**, ceiling 0.9519) | ⬜ **open — this is the work ahead** |
+> | **C5** | **Software**: a residue-level prediction service whose uncertainty is anchored to the measured ceiling, plus an evaluation harness that re-runs prior models under the same cluster split | ⬜ **designed — built in weeks 11–13** |
 >
 > **The decomposition is the part worth stating carefully:**
 >
@@ -676,6 +759,11 @@ hiện dần theo năm; ô hổ phách hiện cuối. `own diagram`.
 > <small>✅ own measurement with result files · ⬜ open. Beating ΔPAP is beating a model used outside its design: no model has been trained for this task — that is the gap claimed here.</small>
 
 **Ghi chú sản xuất.**
+- **Cập nhật phiên 11.** Thêm bảng ba trụ ([C-5](../../../DECISIONS.md#c-5)) và dòng **C5**. C4 bỏ cụm "plus the
+  application" vì ứng dụng nay là trụ riêng (C5). Lời GVHD xác nhận trụ phần mềm là đóng góp
+  ([D-034](../../../DECISIONS.md#d-034)) **không** lên slide, vì chưa có biên bản: nói miệng và xin ghi biên bản
+  ở slide 26. Lời đó **không** nới G2 và **không** bỏ yêu cầu kiến trúc mới, nên C4 vẫn là ô mở chính.
+- Trụ 1 ghi **"region level"** ngay trong bảng, theo [D-036](../../../DECISIONS.md#d-036).
 - ⚠ **Câu chân slide là bắt buộc.** ΔPAP được huấn luyện cho **độ dồi dào của tile 30-mer**, nên thắng nó
   **không** phải thắng một mô hình huấn luyện cho nhiệm vụ này. Thêm bằng chứng rào này thấp: mốc M0
   chỉ-thành-phần **hoà** ΔPAP `cnn2w7` (+0,0008, CI [−0,0057; 0,0074]). Nếu không nói, câu "+0,0300" bị
@@ -688,7 +776,8 @@ hiện dần theo năm; ô hổ phách hiện cuối. `own diagram`.
 - Mốc đã khoá, **đừng đổi khi chưa có quyết định mới**: **0,7693** (AUROC mức ô của ΔPAP `cnn2w1` trên bộ
   bão hòa — tái lập mốc 0,7692 ngày 14/10), trần **0,9519**, ngưỡng phát hiện **0,0123**.
 
-**Hình.** Bốn ô xếp hàng: ba ô đầu tô đầy (xanh mòng, dấu ✓), ô C4 viền nét đứt hổ phách. Dưới đó, bảng phân
+**Hình.** Ba cột trụ ở trên (Urgency / Method / Software), dưới mỗi cột là các ô đóng góp thuộc nó. Năm ô:
+C1–C3 tô đầy (xanh mòng, dấu ✓), C4 và C5 viền nét đứt hổ phách. Dưới đó, bảng phân
 rã vẽ thành **thanh xếp chồng ngang** dài đúng tỉ lệ: đoạn `±3 composition` dài 80%, `order` ngắn, `absolute
 position` gần như không thấy — hình này **tự nói** thông điệp mà không cần đọc số. `own diagram`.
 
@@ -852,16 +941,17 @@ Trần vẽ **nét đứt đen** có nhãn `measurement ceiling`. **Animation:**
 
 **Chữ lên slide:**
 
-> **≈ 1.9 GB on disk, four primary sources, every file checksummed**
+> **≈ 2.3 GB on disk, every file checksummed**
 >
 > | # | Source | Identifier pinned | Licence | Role in the thesis |
 > |---|---|---|---|---|
 > | 1 | **Zhang et al. 2023** — scanning + saturation mutagenesis | Mendeley Data `10.17632/32h94v2yv2.2` (v2), all 5 files | **CC BY 4.0** | **primary labels** — measured mutation effects |
-> | 2 | **Zhang et al. 2023** — GPS peptidome PSI table | NCBI GEO `GSE240610` | GEO terms | peptide-level context, author SVM comparison |
+> | 2 | **Zhang et al. 2023** — GPS peptidome PSI table | NCBI GEO `GSE240610` | GEO terms | peptide-level context, author SVM comparison; **application domain** (116,702 degron tiles) |
 > | 3 | **Voutsinos et al. 2026** — cytosolic tile library + PAP model | GitHub `KULL-Centre/_2025_Voutsinos_degron_cytosol` @ `9b3eafa6` | **MIT** (code + data in repo) | **baseline model** + benchmark population |
 > | 4 | **MaveDB** — 26 score sets, 9 genes | API, URNs recorded | **CC0** | intact-protein transfer check |
 > | 5 | **Larsen et al. 2025** — transcription-factor tile library | GitHub `KULL-Centre/_2025_Larsen_…` @ tag `v1.0` | **MIT** (data file) | cross-assay / cross-compartment test at tile level |
 > | 6 | UniProtKB/Swiss-Prot human, release **2026_03** · AlphaFold DB **v6**, 8 structures | REST, snapshot pinned | CC BY 4.0 | wild-type sequences; structural context |
+> | 7 | **ClinVar** — `variant_summary`, 2.56 M missense variants | NCBI FTP, file of 12 Oct 2026, SHA-256 recorded | **attribution required** (PMID 29165669); not for diagnostic use | **motivation only** — region-level enrichment (slide 6); not a validation target |
 >
 > **Integrity:** SHA-256 recorded for every file; the Mendeley set **matches the publisher's published
 > checksums**. Download dates, pinned revisions, per-file provenance and a reprocessing log are kept in a
@@ -870,6 +960,12 @@ Trần vẽ **nét đứt đen** có nhãn `measurement ceiling`. **Animation:**
 > <small>Licences verified per source on 13–15 Oct 2026. Paper licence and data licence can differ: Larsen et al. is CC BY-NC-ND as a preprint, while its tile-level data file is MIT in the authors' GitHub repository.</small>
 
 **Ghi chú sản xuất.**
+- **Cập nhật phiên 11 — nguồn 7 ClinVar** ([D-033](../../../DECISIONS.md#d-033)). Dung lượng tăng từ ≈ 1,9 lên
+  ≈ 2,3 GB. Ba điều phải biết để trả lời: (a) ClinVar **không có giấy phép kiểu CC**; điều kiện là **ghi
+  công** và câu phủ nhận chẩn đoán **phải đi theo đầu ra** của ứng dụng (slide 23); (b) file **ghi đè mỗi
+  tuần**, muốn tái lập đúng số phải dùng bản archive tháng 10/2026 ([SOURCE.md](../data/raw/clinvar/SOURCE.md));
+  (c) cột vai ghi **"motivation only"** theo [D-036](../../../DECISIONS.md#d-036): ClinVar không dùng để xác
+  nhận mô hình. Nguồn 2 thêm vai **miền áp dụng** của dịch vụ (slide 24).
 - **Câu cuối về "paper licence ≠ data licence" nên giữ** — nó cho thấy mức cẩn thận về giấy phép, và là một
   điểm mạnh thật của repo.
 - ⚠ **Giấy phép Larsen còn một chỗ mơ hồ chưa đóng:** MIT nominally là giấy phép phần mềm; Trọng **đã gửi
@@ -1124,9 +1220,131 @@ và đâu là việc sẽ làm.
 
 ---
 
-# PHẦN 8 — NEXT STEPS
+# PHẦN 8 — PRODUCT ⟨MỚI, phiên 11⟩
 
-## Slide 23 — Plan for the remaining weeks
+> **Vì sao có phần này.** Khung đem xin duyệt có ba trụ, và trụ thứ ba là **phần mềm**
+> ([D-033](../../../DECISIONS.md#d-033)). GVHD đã xác nhận bằng lời rằng trụ này được tính là đóng góp
+> ([D-034](../../../DECISIONS.md#d-034)), **chưa có biên bản**. Phần này đặt **sau** Method vì sản phẩm đóng gói
+> mô hình và giao thức đánh giá, và **trước** Next steps vì lịch tuần 11–13 trỏ vào nó.
+>
+> **Mạch hai slide:** slide 23 nói *sản phẩm là gì, và vì sao ở bài toán này phần mềm là một đóng góp chứ không
+> phải vỏ ngoài*. Slide 24 nói *nó được kiểm bằng gì và dùng cho miền nào*.
+>
+> **Ranh giới câu chữ:** sản phẩm **chưa xây**, mọi ô là thiết kế. Lời D-034 **không** nới G2, **không** bỏ
+> yêu cầu kiến trúc mới. ClinVar chỉ là động lực, **không** phải phép kiểm của sản phẩm
+> ([D-036](../../../DECISIONS.md#d-036)).
+
+## Slide 23 — The software deliverable: residue-level predictions with measured uncertainty
+
+**Chữ lên slide:**
+
+> **Why software is a contribution here, not packaging**
+>
+> The bottleneck of this task is **not accuracy alone, it is measurement noise** — own measurements:
+> - **75.9%** of the residual after a composition oracle is measurement noise
+> - replicate agreement on *which* residues form the footprint: Jaccard **0.4965**
+> - measurement ceilings: **0.9458** (scanning) · **0.9519** (saturation)
+>
+> ⇒ A tool that returns **one confident answer** misrepresents the data. The useful output is a prediction
+> **with its uncertainty, stated against what the assay itself can resolve**.
+>
+> **What the service returns**
+> | Feature | Detail |
+> |---|---|
+> | **28 × 20 ΔPSI matrix** + per-position map | for any 28-residue peptide or protein window |
+> | **Per-cell uncertainty** | calibrated, and reported **next to the measured ceiling** |
+> | **Arbitrary-mutation scoring** | a user-specified substitution, not only a precomputed table |
+> | **API** | programmatic access, alongside the web interface |
+> | **Out-of-distribution flag** | warns when the query falls in a protein cluster unseen in training |
+> | **Compartment flag** | labels are cytosolic; nuclear or secreted contexts are flagged |
+> | **Label provenance** | every measured cell shown with its source and replicate values |
+>
+> **Against existing tools** — checked tool by tool
+> | | DEGRONOPEDIA | MetaDegron | PAP Colab | Zhang SVM | Degformer | **This service** |
+> |---|:-:|:-:|:-:|:-:|:-:|:-:|
+> | Output unit | motif | peptide | tile | peptide | 28×20 | **28×20 + map** |
+> | API | – | – | – | – | – | **✓** |
+> | Arbitrary-mutation scoring on the web | – | – | – | – | – | **✓** |
+> | Per-prediction uncertainty vs measured ceiling | – | – | – | – | – | **✓** |
+> | Measured-label provenance · compartment flag | – | – | – | – | – | **✓** |
+>
+> <small>⬜ designed, not built. Comparison as checked on 14–15 Oct 2026 from each tool's paper, web page or source code; Degformer has no publication. Any ClinVar annotation shown carries ClinVar's attribution and its "not for direct diagnostic use" notice.</small>
+
+**Ghi chú sản xuất.**
+- **Lý lẽ "vì sao là phần mềm" là chỗ quan trọng nhất của slide.** Nó trả lời sẵn câu GVHD có thể hỏi:
+  *"đề tài Kỹ thuật phần mềm thì phần mềm ở đâu, và nó có phải chỉ là giao diện bọc mô hình không"*. Số 75,9%
+  là tự đo ([full-data-audit](../research/full-data-audit/README.md)); con số đó cho thấy thêm độ chính xác có
+  trần, còn **báo đúng độ bất định** là phần bài toán đang thiếu ([D-033](../../../DECISIONS.md#d-033)).
+- ⚠ **Bảng so sánh: chỉ để những dòng đã kiểm.** **Không** thêm dòng "batch submission": MetaDegron và DegronMD
+  đều có ([README đề tài, G3](../README.md)). Dòng "28×20" của Degformer phải ghi đúng là ✓-tương-đương
+  (nó **có** xuất ma trận), nên khác biệt nằm ở ba dòng dưới, không ở đơn vị đầu ra. Trước khi dựng, đối chiếu
+  lại từng ô với [README đề tài, dòng G3](../README.md) (năm điểm khác biệt "đã kiểm từng công cụ": API, chấm
+  đột biến tuỳ ý qua web, bất định neo vào trần, xuất xứ nhãn, cờ ngăn tế bào) và [báo cáo 15/10 §5.3, §6](../research/larsen-nuclear-and-risks-2026-10-15/README.md); nếu ô nào
+  chưa kiểm được thì ghi "not checked", không ghi "–".
+- **Bất định "calibrated"** là mục tiêu thiết kế, chưa có phương pháp chốt. Nếu GVHD hỏi cách làm, trả lời ở
+  mức hướng: ensemble theo seed hoặc conformal trên tập hiệu chỉnh tách theo cụm; chưa chọn. Đừng hứa con số
+  độ phủ khoảng tin cậy.
+- **Câu ClinVar ở chân slide** là điều kiện sử dụng dữ liệu, không phải trang trí
+  ([SOURCE.md](../data/raw/clinvar/SOURCE.md)). Nếu dịch vụ hiển thị phân loại ClinVar thì ghi công và câu
+  phủ nhận phải đi kèm. Dịch vụ **không** phát ra phân loại gây bệnh ([D-036](../../../DECISIONS.md#d-036)).
+- **Cờ ngoài phân phối** có số đỡ ở slide 24 (87,3% cụm của miền áp dụng chưa thấy).
+
+**Hình.** Sơ đồ một luồng ngang: `query (sequence + optional mutation)` → `[model, xanh thép]` → hai đầu ra
+song song: **heatmap 28×20** với dải bất định từng ô (ô càng mờ càng bất định) và **bar per-position**; cạnh
+heatmap một thước dọc nhỏ nhãn `measurement ceiling`. Phía trên luồng, ba chip cờ: `OOD`, `compartment`,
+`provenance`. Một khung chú thích nhỏ ở góc: ví dụ JSON trả về từ API (3–4 dòng, giá trị để `…`, **không**
+điền số minh họa). Toàn bộ viền nét đứt hổ phách, nhãn `[proposed, not built]`. `own diagram`.
+
+## Slide 24 — The evaluation harness, and where the service applies
+
+**Chữ lên slide:**
+
+> **Evaluation harness — the method chapter, made re-runnable**
+> | Component | What it does |
+> |---|---|
+> | Model loaders | composition baseline · ΔPAP (`cnn2w1`, `cnn2w7`) · Degformer checkpoint (isolated) · the thesis model |
+> | **One split for all** | protein clusters, MMseqs2 ≥30% identity / 80% coverage; overlapping clusters removed for cross-source tests |
+> | **One report format** | paired delta + bootstrap CI by cluster, **measured ceiling** and **MDE** printed next to every number |
+> | Reproducibility | fixed seeds, config files, result JSON; every number traceable to a file |
+>
+> ⇒ The comparisons on slides 17 and 22 become a command anyone can re-run, instead of a table to trust.
+>
+> **Application domain — what the service will be asked about**
+> | | Count |
+> |---|---:|
+> | Degron tiles in the GPS peptidome (PSI ≤ 3.0) | **116,702** |
+> | …on proteins | **17,287** |
+> | …in protein clusters **unseen** in training | **87.3%** |
+> | ClinVar variants of uncertain significance inside those regions | **530,412** |
+>
+> ⇒ Most queries will be **outside the training clusters** — which is why the out-of-distribution flag and the
+> cluster-split evaluation are part of the product, not optional extras.
+>
+> <small>Own counts, research/variant-coverage-2026-10-15. ⬜ harness and service designed, not built. ClinVar is the motivation for the domain, not a validation target.</small>
+
+**Ghi chú sản xuất.**
+- **Harness là phần (b) của trụ phần mềm** theo thứ tự Trọng đã chọn ở [D-033](../../../DECISIONS.md#d-033):
+  (a) dịch vụ là trụ, (b) harness là chương đánh giá. Nó cũng là nơi thực hiện nghĩa vụ đối chứng **Degformer**
+  dưới split cụm ([D-028.8](../../../DECISIONS.md#d-028)).
+- ⚠ **Degformer checkpoint là pickle**, nạp nó thực thi mã tuỳ ý ([resources/README.md](../../../resources/README.md)).
+  Chữ "isolated" trên slide là vì vậy: chạy trong thư mục riêng, `python3 -I`. Không cần giải thích trên slide,
+  nhưng phải biết để trả lời.
+- ⚠ **Không** đưa con số ≈1.600 biến thể "chấm được bằng đúng ô đã đo" lên slide này. Theo
+  [D-036](../../../DECISIONS.md#d-036) nó chỉ là độ phủ; đặt nó cạnh harness dễ bị đọc thành một phép kiểm.
+- **87,3%** là theo cụm cov80 (13.814 / 15.819 cụm); theo protein thì 67,9% tile nằm trên protein chưa thấy.
+  Dùng một con số trên slide, giữ con số kia để trả lời.
+- Lời [D-034](../../../DECISIONS.md#d-034) không xuất hiện trên slide. Nói miệng, và xin ghi biên bản ở slide 26.
+
+**Hình.** Hai panel. **Trái:** sơ đồ harness: bốn hộp mô hình xếp dọc (xanh thép) đi qua **một** cổng
+`same cluster split` vào **một** hộp `report: Δ, CI, ceiling, MDE`. **Phải:** thanh ngang 100% chia hai đoạn,
+`seen clusters 12.7%` (xanh mòng) và `unseen clusters 87.3%` (hổ phách), nhãn `116,702 degron tiles`.
+`own diagram`.
+
+---
+
+# PHẦN 9 — NEXT STEPS
+
+## Slide 25 — Plan for the remaining weeks
 
 **Chữ lên slide:**
 
@@ -1135,7 +1353,7 @@ và đâu là việc sẽ làm.
 > |---|---|---|
 > | **G1** | labels are independent experimental measurements | ✅ **met** — all labels measured, none generated by this pipeline |
 > | **G2** | a measurable **positive** contribution | ✅ **first positive result**: +0.0289 over the composition class, +0.0300 over the published control, both with CIs excluding zero. ⬜ The matrix gap (−0.0420) is the remaining target |
-> | **G3** | a feasible application | ⚠ **in design** — five precedents exist; differentiation is API, arbitrary-mutation scoring, uncertainty anchored to the measured ceiling, label provenance |
+> | **G3** | a feasible application | ⚠ **designed, not built** — a prediction service with measured uncertainty + an evaluation harness (slides 23–24); application domain 116,702 degron tiles, 87.3% in unseen clusters |
 >
 > **Plan**
 > | Week | Work | Output |
@@ -1144,7 +1362,7 @@ và đâu là việc sẽ làm.
 > | **8** | ablations · seed stability · Degformer checkpoint re-run under the cluster split | controlled comparison table |
 > | **9** | representation grid (PLM vs one-hot) · error analysis by group | where the gain comes from, where it fails |
 > | **10** | **hard checkpoint** | if the matrix target is not met, report it as a bounded negative and shift weight to benchmark + application |
-> | **11–13** | application: 28×20 matrix, per-position map, uncertainty, API | the deliverable for criterion 5 |
+> | **11–13** | **software** (slides 23–24): prediction service — 28×20 matrix, per-position map, uncertainty, API, flags — and the evaluation harness | the deliverable for criterion 5 |
 > | **14–15** | thesis write-up and defence | — |
 >
 > **Reproducibility commitments:** fixed seeds; configuration and results written to files; every number
@@ -1158,11 +1376,14 @@ và đâu là việc sẽ làm.
   phòng** ([D-026](../../../DECISIONS.md#d-026)).
 - ⚠ **Nếu Trọng muốn bảng tuần này thành căn cứ** thì cần một mục quyết định mới sửa D-029 — hiện bảng trên
   là **suy ra** từ D-029 + D-031, không phải một quyết định đã ghi.
-- **Một việc tuỳ chọn chưa đưa vào bảng:** [C-16](../../../DECISIONS.md#c-16) — dùng dữ liệu `CTNNB1` của
-  Krishna 2026 (*Nat Genet* 58:366–375) làm **đối chứng ngoài độc lập** (nhóm tác giả khác, assay khác,
-  protein chưa thấy). Nó đóng được rủi ro "cả hai nguồn nhãn đều của một nhóm tác giả". Nhưng **giấy phép
-  chưa rõ** và readout là **tín hiệu Wnt**, không phải độ bền ⇒ chỉ gọi được là **đối chứng hội tụ**. Đang
-  chờ Trọng; nếu nhận thì chèn vào tuần 8–9.
+- **Cập nhật phiên 11:** dòng G3 và tuần 11–13 trỏ sang phần Product. Harness thực ra được dựng dần từ tuần 8
+  (lần chạy lại Degformer dưới split cụm đã là một phần của nó); tuần 11–13 là đóng gói thành dịch vụ.
+- ~~Việc tuỳ chọn C-16 (đối chứng `CTNNB1` của Krishna 2026)~~ — **đã chuyển sang không dùng** bởi
+  [D-035](../../../DECISIONS.md#d-035): tile chứa codon 31–48 đo tốt và **không phải degron** (PSI 5,27 / 5,36).
+  ⚠ Giá phải trả: rủi ro *"cả hai nguồn nhãn mức residue đều của Zhang 2023"* **vẫn mở, chưa có ứng viên**, và
+  theo [D-036](../../../DECISIONS.md#d-036) nó nay **trùng** với việc nối trụ 1 tới mức residue. Không lên
+  slide; nếu GVHD hỏi thì nói thẳng và nói yêu cầu cho ứng viên thay thế (readout độ bền, degron tự trị, nhóm
+  tác giả khác, nhãn mức residue).
 - **Không** nêu trên slide rằng không có đề tài dự phòng. Nếu GVHD hỏi thì trả lời thẳng.
 - Ba cổng G1/G2/G3 là khung nội bộ của repo, **không phải** của học phần — nếu dùng từ "gate" trên slide thì
   nói rõ đây là tiêu chí tự đặt, hoặc đổi nhãn thành "readiness check" để tránh gợi ý sai rằng học phần có
@@ -1171,7 +1392,11 @@ và đâu là việc sẽ làm.
 **Hình.** Thanh tiến độ ngang tuần 6 → 15, ba chip trạng thái G1/G2/G3 (xanh mòng ✓ / hổ phách ⬜ / hổ phách
 ⚠) ở đầu, và một **cờ đỏ san hô ở tuần 10** nhãn "checkpoint: pivot if no positive delta". `own diagram`.
 
-## Slide 24 — Questions for discussion
+---
+
+# PHẦN 10 — QUESTIONS
+
+## Slide 26 — Questions for discussion
 
 **Chữ lên slide:**
 
@@ -1234,13 +1459,24 @@ và đâu là việc sẽ làm.
 | ~~1~~ | ~~Trọng chốt C-15~~ | — | ✅ **xong** — [D-031](../../../DECISIONS.md#d-031) |
 | ~~3~~ | ~~Đếm số cụm protein trong n = 91~~ | — | ✅ **xong** — 89 cụm |
 | 2 | **Sinh hình ví dụ** từ `psi-sat_*.tsv`: chọn peptide trong tập train, xuất heatmap 28×20 + bar per-position | **slide 16** | 1 script nhỏ |
-| 4 | Dựng các sơ đồ tự dựng, hoặc chỉnh lại từ [`lectures/degron-basics/figures/`](../../../lectures/degron-basics/figures/) | 2, 3, 4, 5, 6, 9, 11, 12, 13, 14, 17, 18, 19, 20, 21, 22, 23 | **phần lớn thời gian** |
+| 4 | Dựng các sơ đồ tự dựng, hoặc chỉnh lại từ [`lectures/degron-basics/figures/`](../../../lectures/degron-basics/figures/) | 2, 3, 4, 5, 6, 9, 11, 12, 13, 14, 17, 18, 19, 20, 21, 22, 23, 24, 25 | **phần lớn thời gian** |
 | 5 | Kiểm lại caption + giấy phép cho 2 hình của Voutsinos (slide 7, 10) | 7, 10 | rẻ |
 | 6 | Quyết định định dạng xuất: HTML trong repo (theo [D-013](../../../DECISIONS.md#d-013)) hay PPTX để trình bày | — | quyết định |
-| 7 | **Mới:** quyết định có ghi bảng tuần ở slide 23 thành một mục sửa [D-029](../../../DECISIONS.md#d-029) hay không | 23 | quyết định |
-| 8 | **Mới:** nếu nhận [C-16](../../../DECISIONS.md#c-16) thì thêm một dòng đối chứng ngoài vào slide 22 | 22, 23 | quyết định |
+| 7 | Quyết định có ghi bảng tuần ở slide 25 thành một mục sửa [D-029](../../../DECISIONS.md#d-029) hay không | 25 | quyết định |
+| ~~8~~ | ~~Nếu nhận C-16 thì thêm đối chứng ngoài vào slide 22~~ | — | ✅ **đóng**: C-16 chuyển sang không dùng ([D-035](../../../DECISIONS.md#d-035)) |
+| 9 | **Mới (phiên 11):** Trọng viết lại câu hỏi 1 và 4 của **slide 26** theo khung ba trụ (Q1 xin duyệt khung, Q4 phạm vi phần mềm); sửa ghi chú câu 1 trỏ [C-5](../../../DECISIONS.md#c-5) và bỏ gợi ý (b) về C-16 | **26** | Trọng tự làm |
+| 10 | **Mới (phiên 11):** nếu chạy kịp đối chứng bảo tồn / độ vô trật tự cho con số 2,148 ([D](../../../DECISIONS.md#doi-chung-cap-thiet)) thì thay dòng thứ ba ở slide 6 | 6 | 1 phiên đo |
+| 11 | **Mới (phiên 11):** đối chiếu lại từng ô bảng so sánh tiền lệ ở slide 23 với báo cáo nguồn; ô nào chưa kiểm ghi "not checked" | 23 | rẻ |
 
 **Chưa làm trong phiên này:** chưa dựng slide, chưa sinh hình, chưa sửa
 [presentation.html](presentation.html) hay [session-02-prep.md](session-02-prep.md), chưa ghi quyết định nào
 vào [DECISIONS.md](../../../DECISIONS.md), chưa huấn luyện hay đo thêm bất cứ thứ gì. Mọi con số trong file
 này **trích** từ các báo cáo đã có, không có con số nào đo mới trong phiên này.
+
+**Phiên 11 (15/10/2026) cũng vậy:** chỉ sửa brief theo D-033…D-036 (slide 5, 6, 13, 14, 18, 25, phần Product
+23–24, mục lục). Không dựng slide, không đo mới. Số mới đưa vào brief đều trích từ
+[variant-coverage-2026-10-15](../research/variant-coverage-2026-10-15/README.md), trừ dung lượng ≈ 2,3 GB đo
+bằng `du` lúc sửa. **Slide 26 chưa sửa**: Trọng tự viết (việc 9). Trang khung một trang mang đi buổi gặp 16/10:
+[framework-one-pager.html](../../../project/meetings/2026-10-16-session-02/framework-one-pager.html)
+(bản in A4, mở bằng `file://`) và [bản Markdown](../../../project/meetings/2026-10-16-session-02/framework-one-pager.md)
+— bốn câu hỏi trong đó cũng để trống chờ Trọng viết.

@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khung đề tài degron</title>
+<style>
+  :root {
+    --bg: #FAFBFC; --ink: #15323F; --muted: #5b7380; --line: #d5dee3;
+    --degron: #D1495B; --stable: #2A9D8F; --model: #386FA4; --warn: #E9C46A;
+    --warn-bg: #fdf7e8; --ok-bg: #e9f5f3; --head-bg: #eef2f4;
+  }
+  @page { size: A4; margin: 10mm 11mm; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 9.3pt/1.35 "Inter", "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  }
+  .page { max-width: 190mm; margin: 0 auto; padding: 14px; }
+  header { border-bottom: 2px solid var(--ink); padding-bottom: 4px; margin-bottom: 6px; }
+  h1 { font-size: 13pt; margin: 0 0 2px; line-height: 1.18; }
+  .meta { color: var(--muted); font-size: 8.5pt; }
+  h2 {
+    font-size: 10pt; margin: 7px 0 3px; padding-left: 6px;
+    border-left: 4px solid var(--model);
+  }
+  p, ul, ol { margin: 0 0 4px; }
+  ul, ol { padding-left: 15px; }
+  li { margin: 1px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 8.8pt; margin-bottom: 4px; }
+  th, td { border: 1px solid var(--line); padding: 3px 5px; vertical-align: top; text-align: left; }
+  th { background: var(--head-bg); font-size: 8.5pt; }
+  .n { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr.ok td:last-child { background: var(--ok-bg); }
+  tr.open td:last-child { background: var(--warn-bg); }
+  .why { background: var(--ok-bg); border-left: 3px solid var(--stable); padding: 4px 7px; margin: 4px 0; }
+  .lim { border-left: 3px solid var(--degron); padding-left: 7px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
+  .mono { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 8.4pt; }
+  .notes { border: 1px dashed var(--muted); min-height: 24mm; padding: 4px 7px; color: var(--muted); font-size: 8.4pt; }
+  .q { border: 1px solid var(--line); padding: 4px 7px; min-height: 18mm; }
+  .q ol { margin: 0; padding-left: 18px; }
+  .q li { margin: 4px 0; }
+  footer { color: var(--muted); font-size: 7.6pt; margin-top: 5px; border-top: 1px solid var(--line); padding-top: 3px; }
+  a { color: var(--model); }
+  @media screen and (max-width: 640px) {
+    .grid { grid-template-columns: 1fr; }
+    table { font-size: 8.2pt; }
+  }
+  @media print { .page { padding: 0; max-width: none; } a { color: var(--ink); text-decoration: none; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <h1>Khung đề tài xin duyệt — dự đoán hiệu ứng đột biến degron ở mức residue</h1>
+  <div class="meta">Buổi gặp GVHD lần 2 · <b>16/10/2026</b> (cuối tuần 6) · SV Nguyễn Thế Trọng (B2305615)
+    · GVHD TS. Hồ Quang Thái · CT553H · mọi con số là <b>tự đo</b>, có file kết quả trong repo</div>
+</header>
+
+<h2>Mục đích buổi gặp</h2>
+<ol>
+  <li><b>Xin thầy duyệt khung đề tài gồm ba trụ</b> dưới đây — tới nay đề tài chưa có căn cứ nào ghi là đã được duyệt.</li>
+  <li><b>Xin ghi biên bản</b> cho lời thầy xác nhận ngày 15/10: trụ phần mềm được tính là đóng góp (hiện chỉ là lời truyền đạt).</li>
+</ol>
+
+<div class="grid">
+  <div>
+    <h2>Bài toán</h2>
+    <p>Degron là đoạn trình tự ngắn khiến protein bị đánh dấu để phân hủy. Câu hỏi:
+      <b>residue nào trong degron quyết định độ bền</b>, và thay một residue thì độ bền đổi bao nhiêu.</p>
+    <p><b>Vào:</b> peptide 28 residue. <b>Ra:</b> ma trận <span class="mono">28 × 20</span> ΔPSI
+      + bản đồ theo vị trí. <b>Nhãn:</b> ΔPSI <b>đo thực nghiệm</b> (assay GPS, Zhang 2023).</p>
+  </div>
+  <div>
+    <h2>Phạm vi — đã đo, không phải giả định</h2>
+    <p><b>Degron tự trị</b> (hoạt động được trong một 28-mer), biến thể <b>dòng mầm</b>.</p>
+    <p>Trong 8 degron lái ung thư kinh điển chỉ <b>HIF1A</b> hiện ra. <span class="mono">CTNNB1</span>
+      codon 31–48 đo tốt nhưng <b>không phải degron</b> (PSI 5,27 / 5,36); <span class="mono">MYC</span>
+      T58/S62 vắng mặt. Chúng đều <b>cần mồi</b> nên không thể hiện trong một 28-mer ⇒ đề tài
+      <b>không</b> dùng đột biến lái ung thư làm mạch dẫn.</p>
+  </div>
+</div>
+
+<h2>Ba trụ của khung</h2>
+<table>
+  <tr><th style="width:13%">Trụ</th><th>Nội dung và số đỡ</th><th style="width:17%">Trạng thái</th></tr>
+  <tr class="ok">
+    <td><b>1. Cấp thiết</b></td>
+    <td>Vùng protein mà thực nghiệm đo được là degron <b>giàu biến thể gây bệnh 2,148 lần</b> so với lành tính
+      (CI <span class="n">[2,072; 2,227]</span>), so sánh <b>trong cùng một protein</b> — Mantel–Haenszel,
+      <b>3.114 protein</b>, 2,56 triệu biến thể ClinVar. Trong vùng đó có <b>530.412 biến thể chưa rõ ý nghĩa</b>
+      mà chưa công cụ nào gán cơ chế.</td>
+    <td>✅ <b>đã đo</b> — ở <b>mức vùng</b></td>
+  </tr>
+  <tr class="open">
+    <td><b>2. Phương pháp</b></td>
+    <td><b>(a)</b> <b>Chứng minh</b> lớp mô hình hiện tại không định vị được residue: 89,7% peptide có footprint,
+      phản ví dụ hạng 2, phép kiểm hoán vị trên PAP (Pearson <span class="n">1,000000</span>).
+      <b>(b)</b> <b>Giao thức đánh giá</b>: hai bộ nhãn, trần đo lường <b>0,9458 / 0,9519</b>, split theo cụm
+      protein, ngưỡng phát hiện <b>0,0123</b> tính trước. <b>(c)</b> <b>Kết quả dương đầu tiên</b>:
+      <b>+0,0300</b> AUROC so với mô hình degron công bố gần nhất, trên trục ngữ cảnh.
+      <b>(d)</b> <b>Kiến trúc mới</b> — chưa chạy.</td>
+    <td>✅ (a)(b)(c) đã đo<br>⬜ <b>(d) việc chính còn lại</b></td>
+  </tr>
+  <tr class="open">
+    <td><b>3. Phần mềm</b></td>
+    <td><b>(a)</b> <b>Dịch vụ dự đoán</b>: ma trận 28×20 + bản đồ vị trí, <b>bất định từng ô neo vào trần đo
+      lường</b>, chấm đột biến tuỳ ý, <b>API</b>, cờ ngoài phân phối, cờ ngăn tế bào, xuất xứ nhãn.
+      <b>(b)</b> <b>Harness đánh giá</b> tái lập: nạp các mô hình trước, áp <b>cùng một split</b> cụm, báo delta
+      kèm trần và ngưỡng phát hiện. Miền áp dụng: <b>116.702</b> tile degron / <b>17.287</b> protein,
+      <b>87,3%</b> cụm chưa thấy trong huấn luyện.</td>
+    <td>⬜ <b>đã thiết kế, chưa xây</b> (tuần 11–13)</td>
+  </tr>
+</table>
+
+<div class="why">
+  <b>Vì sao phần mềm là một đóng góp, không phải vỏ ngoài.</b> Nút cổ chai của bài toán <b>không phải độ chính
+  xác</b>: <b>75,9%</b> phần dư sau khi đã biết thành phần acid amin là <b>nhiễu đo</b>, và hai replicate chỉ
+  đồng ý về <i>residue nào</i> là footprint ở mức Jaccard <b>0,4965</b>. Một công cụ trả về <b>một câu trả lời
+  chắc chắn là sai bản chất dữ liệu</b>. Cái còn thiếu là dự đoán <b>kèm độ bất định, đặt cạnh chính giới hạn
+  của phép đo</b>.
+</div>
+
+<h2>Giới hạn nói thẳng</h2>
+<ol class="lim">
+  <li><b>Trụ 1 chỉ đứng ở mức vùng.</b> Ở mức <b>residue</b> thì <b>chưa thiết lập được</b>: ba phép đo độc lập
+    đều nhất quán với rỗng (tầng có lực nhất AUC <b>0,5166</b>, CI [0,479; 0,554]) ⇒ đề tài <b>không</b> nói
+    residue nó dự đoán là residue mang tín hiệu bệnh, và <b>không</b> dùng ClinVar làm đích xác nhận mô hình.
+    ClinVar là <b>động lực</b>.</li>
+  <li><b>Biến thể không giàu lên theo <i>vị trí</i></b> — tỉ lệ trong degron bằng đúng tỉ lệ nền (33,4% so 32,4%)
+    ⇒ không nói "degron là điểm nóng biến thể".</li>
+  <li><b>Con số 2,148 chưa khử bảo tồn và độ vô trật tự.</b> Nếu khử mà nó biến mất thì nó chỉ nói "degron nằm
+    trong vùng chức năng". Đối chứng này <b>chưa chạy</b>.</li>
+  <li><b>G2 chưa đạt.</b> Trên ma trận bão hòa còn <b>thua 0,0420</b> so với mốc công bố (0,7273 so
+    <b>0,7693</b>; trần đo lường 0,9519). Mục tiêu còn lại có số rõ ràng.</li>
+  <li><b>Nhiệm vụ đã có tiền lệ.</b> Degformer (repo GitHub, <b>không có bài báo</b>) <b>đã xuất đúng ma trận
+    28×20</b>. Chỗ khác biệt là <b>điều kiện đánh giá</b> (split theo cụm, trần nhãn, bất định từng dự đoán),
+    không phải "chưa ai làm" — đã đo <b>4,09%</b> rò rỉ trình tự y hệt trong phép chia của họ.</li>
+  <li><b>Cả hai nguồn nhãn mức residue đều của một nhóm tác giả</b> (Zhang 2023), hiện <b>chưa có ứng viên thay
+    thế</b>. Giới hạn này phải nằm trong đề cương.</li>
+  <li><b>Đề tài không có dự phòng</b> — nên có điểm kiểm cứng ở tuần 10.</li>
+</ol>
+
+<h2>Lộ trình</h2>
+<table>
+  <tr><th style="width:9%">Tuần</th><th>Việc</th><th style="width:34%">Đầu ra</th></tr>
+  <tr><td><b>7</b></td><td>Ba biến thể kiến trúc trên một lưới, nhắm mốc <b>0,7693</b></td><td>delta đo được trên ma trận, kèm CI</td></tr>
+  <tr><td><b>8</b></td><td>Ablation · độ ổn định theo seed · chạy lại checkpoint Degformer dưới split cụm</td><td>bảng đối chứng có kiểm soát</td></tr>
+  <tr><td><b>9</b></td><td>Lưới biểu diễn (PLM so one-hot) · phân tích lỗi theo nhóm</td><td>cải thiện đến từ đâu, thất bại ở đâu</td></tr>
+  <tr class="open"><td><b>10</b></td><td><b>Điểm kiểm cứng</b></td><td>nếu không đạt: báo đúng là kết quả âm có biên, dồn trọng số sang benchmark + phần mềm</td></tr>
+  <tr><td><b>11–13</b></td><td>Phần mềm: dịch vụ dự đoán + harness đánh giá</td><td>sản phẩm cho tiêu chí 5</td></tr>
+  <tr><td><b>14–15</b></td><td>Viết luận văn và bảo vệ</td><td>—</td></tr>
+</table>
+
+<div class="grid">
+  <div>
+    <h2>Câu hỏi xin thầy</h2>
+    <div class="q"><ol><li>&nbsp;</li><li>&nbsp;</li><li>&nbsp;</li><li>&nbsp;</li></ol></div>
+  </div>
+  <div>
+    <h2>Ghi chú trong buổi gặp</h2>
+    <div class="notes">Ghi nguyên văn lời thầy, rồi chuyển vào <span class="mono">minutes.md</span>.
+      Hệ quả cho đề tài ghi thành một mục mới trong sổ quyết định.</div>
+  </div>
+</div>
+
+<footer>
+  Nguồn số liệu: <span class="mono">research/variant-coverage-2026-10-15</span> (trụ 1, miền áp dụng) ·
+  <span class="mono">residue-task-derisk-2026-10-15</span> (trụ 2) ·
+  <span class="mono">full-data-audit</span> (trần đo lường, nhiễu) ·
+  <span class="mono">pap-baseline</span> (phép kiểm hoán vị).
+  Trạng thái hiện hành chỉ nằm ở <span class="mono">DECISIONS.md</span>; trang này là bản đọc nhanh cho buổi
+  gặp, không phải nơi ghi quyết định.
+</footer>
+
+</div>
+</body>
+</html>
