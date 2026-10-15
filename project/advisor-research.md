@@ -39,4 +39,6 @@ Giới hạn của nhận định này, phải nói kèm:
 
 ## 4. Tài liệu trong thư mục
 
+- [Gợi ý trình bày slide và báo cáo](advisor-presentation-guide.md): rút từ bản phân tích Trọng gửi ngày 14/10/2026, đối chiếu chọn lọc sáu PDF. Có mẫu dẫn nhập, workflow, bảng thực nghiệm, dàn ý và các ngoại lệ cần tránh khái quát quá mức; đây là tài liệu tham khảo, không phải lời GVHD.
+
 Hai thư mục chứa PDF bài báo và tài liệu khoá học. **Chỉ được giữ vì repo đang private** — xem quy ước trong [CLAUDE.md](../CLAUDE.md). Nếu chuyển repo sang public hoặc chia sẻ cho người khác, kể cả GVHD, phải gỡ trước, kể cả khỏi lịch sử git.

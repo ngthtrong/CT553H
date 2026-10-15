@@ -34,7 +34,9 @@ Họ dùng PAP cùng ESM-1b chỉ để **so sánh biến thể CRX**. Phần nh
 
 Đây là phần quan trọng, và nó bắt buộc:
 
-**1. Họ đã dùng cấu trúc.** Đã tính **rASA và pLDDT** từ AlphaFold2 kèm DSSP.
+**1. Họ đã dùng cấu trúc.** Đã tính **rASA và pLDDT** từ AlphaFold2 kèm DSSP. Điểm degron so với rASA \|r\| = **0,41**, so pLDDT \|r\| = **0,36** trên toàn thư viện; 32% degron có rASA > 0,7 và 40% có pLDDT < 70.
+
+**1b. Họ đã tìm ra hiện tượng ΔPAP đổi dấu** (bổ sung 14/10/2026, [tra y văn](../../../topics/degron-footprint/research/architecture-check/prior-art-exposure-gate.md)). Trên CRX, tách theo vùng: ΔPAP Pearson **0,54** trong vùng vô định hình so với **−0,19** trong homeodomain đã gấp (ESM-1b đi ngược: 0,31 và 0,52). Nên phép đo của repo ngày 14/10 trên 6 protein MaveDB là **xác nhận lại ở quy mô lớn hơn**, không phải phát hiện. Nhãn của họ là transactivation, không phải độ dồi dào, và chính họ ghi là khó tách hai thứ.
 → **"Dùng cấu trúc" không còn là phần mới của đề tài.**
 
 **2. Họ đã làm bản đồ thay thế *in silico*.** Đã tính ΔPAP cho **mọi đột biến điểm** trong một vùng của HSF1.

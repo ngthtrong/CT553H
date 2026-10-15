@@ -1,6 +1,6 @@
 # Benchmark độ trung thực (fidelity) của XAI trên mô hình protein/điều hòa gen — ứng viên A2
 
-> **Thẻ trạng thái nghiên cứu.** Vị trí của đề tài chỉ ghi ở [DECISIONS.md](../../DECISIONS.md). Cập nhật lần cuối: **12/10/2026**.
+> **Thẻ trạng thái nghiên cứu.** Vị trí của đề tài chỉ ghi ở [DECISIONS.md](../../../DECISIONS.md). Cập nhật lần cuối: **12/10/2026**.
 
 | | |
 |---|---|
@@ -23,7 +23,7 @@ Các bài báo (kể cả BERT-Promoter của GVHD, dùng SHAP) coi điểm quan
 
 ## Rủi ro chính
 - Có hai công trình liền kề cần đọc kỹ trước khi tin là còn trống: **TPCAV** (concept attribution cho genomics) và **benchmark bioRxiv 01/2025** về mô hình sequence-function diễn giải được.
-- Dạng benchmark/audit có thể không đáp ứng kỳ vọng "kiến trúc mới" của GVHD ([C-3](../../DECISIONS.md)).
+- Dạng benchmark/audit có thể không đáp ứng kỳ vọng "kiến trúc mới" của GVHD ([C-3](../../../DECISIONS.md)).
 
 ## Việc tiếp theo
 1. Đọc toàn văn TPCAV, benchmark 01/2025 và position paper ICML 2026.
@@ -31,4 +31,4 @@ Các bài báo (kể cả BERT-Promoter của GVHD, dùng SHAP) coi điểm quan
 
 ## Trong thư mục này
 - [log.md](log.md) · [research/deep-dive-2026-10-12.md](research/deep-dive-2026-10-12.md)
-- Nguồn danh mục: [surveys/bioinformatics-tool-layer-candidates-2026-10-12.md](../../surveys/bioinformatics-tool-layer-candidates-2026-10-12.md) (mục A2)
+- Nguồn danh mục: [surveys/bioinformatics-tool-layer-candidates-2026-10-12.md](../../../surveys/bioinformatics-tool-layer-candidates-2026-10-12.md) (mục A2)

@@ -1,6 +1,6 @@
 # Tối ưu bước đồ thị và phân cụm cho phân nhóm contig metagenomics
 
-> **Thẻ trạng thái nghiên cứu.** Vị trí của đề tài chỉ ghi ở [DECISIONS.md](../../DECISIONS.md). Cập nhật lần cuối: **12/10/2026** (mới mở hồ sơ).
+> **Thẻ trạng thái nghiên cứu.** Vị trí của đề tài chỉ ghi ở [DECISIONS.md](../../../DECISIONS.md). Cập nhật lần cuối: **12/10/2026** (mới mở hồ sơ).
 
 | | |
 |---|---|
@@ -34,8 +34,8 @@ Khoảng trống đã **dịch sang chỗ khác nhưng vẫn còn**: chọn tham
 
 ## Rủi ro chính
 
-- **Khớp GVHD yếu nhất trong mọi ứng viên:** trong 14 công trình của GVHD **không có bài nào về metagenomics** ([advisor-research.md](../../project/advisor-research.md)). Đây là rủi ro lớn hơn cả G2.
-- **Không đáp ứng kỳ vọng "kiến trúc chưa ai dùng"** (GVHD, 11/10) — cùng rủi ro với [C-3](../../DECISIONS.md).
+- **Khớp GVHD yếu nhất trong mọi ứng viên:** trong 14 công trình của GVHD **không có bài nào về metagenomics** ([advisor-research.md](../../../project/advisor-research.md)). Đây là rủi ro lớn hơn cả G2.
+- **Không đáp ứng kỳ vọng "kiến trúc chưa ai dùng"** (GVHD, 11/10) — cùng rủi ro với [C-3](../../../DECISIONS.md).
 - Hướng "chọn cạnh thích nghi theo độ dài contig" có tiền lệ gần: **CoCoBin** (bioRxiv 08/2025) gom contig theo khoảng độ dài trước khi tính tương đồng rồi chạy Louvain; **METAMVGL** (2021) học trọng số giữa hai loại đồ thị.
 - Nút thắt coverage đa mẫu **đã được giải quyết** bởi Fairy (*Microbiome* 2024): thay alignment bằng sketch k-mer, nhanh hơn >250×. Không nên nhắm vào bước này.
 - **Hạ tầng:** CAMI II cần vài trăm GB dung lượng và RAM lớn. Chưa kiểm máy của Trọng có đủ không.

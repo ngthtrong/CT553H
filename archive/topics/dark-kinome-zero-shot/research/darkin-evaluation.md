@@ -26,7 +26,7 @@ Giả thuyết trung tâm: chất lượng xếp hạng ở mức liên kết v�
 | **[ĐỀ XUẤT]** | Thiết kế nghiên cứu hoặc giả thuyết chưa thực nghiệm |
 | **[CHƯA XÁC MINH]** | Chưa đọc đủ, chưa tải/chạy, hoặc chưa có dữ liệu để kết luận |
 
-Nguồn nội bộ: [năm tiêu chí của GVHD](../../../project/meetings/2026-10-02-session-01/minutes.md), [bản khuyến nghị ban đầu](../../../archive/surveys/criteria-only-recommendation.md). Bằng chứng tự kiểm: [ghi chú audit](darkin-audit/README.md), [audit-results.json](darkin-audit/audit-results.json). Chỉ khảo sát và audit dữ liệu/mã; chưa chạy baseline hoặc model mới.
+Nguồn nội bộ: [năm tiêu chí của GVHD](../../../../project/meetings/2026-10-02-session-01/minutes.md), [bản khuyến nghị ban đầu](../../../surveys/criteria-only-recommendation.md). Bằng chứng tự kiểm: [ghi chú audit](darkin-audit/README.md), [audit-results.json](darkin-audit/audit-results.json). Chỉ khảo sát và audit dữ liệu/mã; chưa chạy baseline hoặc model mới.
 
 ## 2. Bài toán, ý nghĩa và giới hạn đầu ra
 
@@ -55,9 +55,9 @@ Ví dụ minh họa: nhập vị trí S123 và danh sách kinase ứng viên; h�
 **[ĐO]** Checkout `tastanlab/darkin` tại commit `498de014951f962f77ca1b96340fead3cc24c450`, tải ngày 10/10/2026. Script audit dùng thư viện chuẩn Python; SHA-256 từng CSV split được lưu trong JSON. Không đưa bản clone hoặc embedding lên Git.
 
 ```bash
-python3 topics/dark-kinome-zero-shot/research/darkin-audit/audit_data.py \
+python3 archive/topics/dark-kinome-zero-shot/research/darkin-audit/audit_data.py \
   --checkout /path/to/darkin \
-  --output topics/dark-kinome-zero-shot/research/darkin-audit/audit-results.json
+  --output archive/topics/dark-kinome-zero-shot/research/darkin-audit/audit-results.json
 ```
 
 ### 3.2 Split mặc định, ZSL seed 12345

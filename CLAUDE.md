@@ -53,6 +53,7 @@ Khuôn của một thư mục đề tài và cách thêm/đóng đề tài: xem 
 - **Dữ liệu** nằm trong chính thư mục đề tài: `topics/<ten-de-tai>/data/{raw,interim,processed}/`. Thư mục này bị `.gitignore` chặn; không bao giờ commit dữ liệu, tên thật hay file chưa ẩn danh. Mọi file trong `data/processed/` phải sinh lại được bằng script trong `code/` hoặc `research/` của đề tài. Script tìm thư mục đề tài qua file `log.md` (`TOPIC`), nên `data/` đi theo khi đổi tên hay chuyển thư mục đề tài.
 - **Thí nghiệm tái lập được:** cố định seed; ghi config và kết quả nhỏ ra file trong thư mục đề tài. Số liệu đưa vào tài liệu phải trỏ tới file kết quả tương ứng.
 - **Nhãn bằng chứng** khi viết khảo sát: phân biệt rõ đã tự đo, nguồn tác giả, phân tích, đề xuất, và chưa xác minh (chỉ thấy qua tóm tắt tìm kiếm). Không nói "chưa ai làm" khi mới tra qua tóm tắt.
+- **Khi soạn slide/báo cáo:** đọc [gợi ý trình bày từ sáu bài của nhóm GVHD](project/advisor-presentation-guide.md) để tham khảo mạch dẫn nhập, workflow, bảng đối chứng/ablation và giới hạn lập luận. Đây là gợi ý theo yêu cầu của Trọng, không phải yêu cầu bắt buộc của GVHD; mẫu học phần và trạng thái trong `DECISIONS.md` vẫn là căn cứ.
 - **Trang HTML** tạo trực tiếp trong repo, mở bằng `file://`, không publish artifact ([D-013](DECISIONS.md#d-013)).
 - **Repo private** ([D-004](DECISIONS.md#d-004)): được chứa PDF bài báo và phân tích về bài của nhóm GVHD. Nếu đổi sang public hoặc chia sẻ repo (kể cả cho GVHD) thì phải gỡ các phần này trước, kể cả khỏi lịch sử git.
 

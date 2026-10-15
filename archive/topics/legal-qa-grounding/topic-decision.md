@@ -4,13 +4,13 @@
 
 > Ngày: **12/10/2026**. Trạng thái: **sinh viên chốt làm đề tài ứng viên hàng đầu, cần Claude tự tìm hoàn toàn ngoài phạm vi các đề tài đang xét trong repo (bỏ ràng buộc lĩnh vực và khớp GVHD)** — theo đúng yêu cầu của sinh viên cùng ngày. **Chưa có phê duyệt GVHD.** Đây là lần đầu tiên repo này rời khỏi lĩnh vực tin sinh học/protein; mọi đề tài trước (`rtk-atp-applicability`, `degron-e3-specificity`, dark kinome DARKIN, sirtuin, senescence scRNA-seq) đều là dự đoán trên trình tự/omics protein.
 >
-> Nhãn bằng chứng dùng theo quy ước đã có trong repo ở [main-topic-decision.md](../../../topics/dark-kinome-zero-shot/research/main-topic-decision-2026-10-10.md): **[ĐO]** tự chạy/tự tải trong phiên này, **[NGUỒN]** tác giả/tổ chức công bố, **[PHÂN TÍCH]** suy luận của Claude, **[ĐỀ XUẤT]** chưa thực nghiệm, **[CHƯA XÁC MINH]** chưa truy cập hoặc chưa kiểm được.
+> Nhãn bằng chứng dùng theo quy ước đã có trong repo ở [main-topic-decision.md](../dark-kinome-zero-shot/research/main-topic-decision-2026-10-10.md): **[ĐO]** tự chạy/tự tải trong phiên này, **[NGUỒN]** tác giả/tổ chức công bố, **[PHÂN TÍCH]** suy luận của Claude, **[ĐỀ XUẤT]** chưa thực nghiệm, **[CHƯA XÁC MINH]** chưa truy cập hoặc chưa kiểm được.
 
 ## 0. Yêu cầu của sinh viên dẫn tới tài liệu này
 
 Nguyên văn yêu cầu (12/10/2026): không còn giới hạn về lĩnh vực hay các đề tài đang xem xét trong repo; có thể tìm một đề tài hoàn toàn khác; tiêu chí là **đóng góp và ý nghĩa thực sự**, **dữ liệu đủ khả thi và xử lý được**; mục tiêu là **chốt được đề tài trong ngày**; vẫn tham khảo **khung năm tiêu chí của GVHD** ([session-01-minutes.md, mục 4](../../../project/meetings/2026-10-02-session-01/minutes.md)) và cách đánh giá một đề tài nghiên cứu nói chung; Claude quyết định toàn bộ, đóng vai nhà nghiên cứu tìm đề tài.
 
-**Hệ quả cho cách áp khung cũ:** bảng trọng số ở [main-topic-decision.md mục 2](../../../topics/dark-kinome-zero-shot/research/main-topic-decision-2026-10-10.md) có cột "khớp GVHD: lĩnh vực, phương pháp, năm tiêu chí" nặng 20%. Vòng này **tách đôi** cột đó — phần "khớp năm tiêu chí" (tính mới, phương pháp, XAI, website) vẫn giữ và áp đầy đủ; phần "khớp lĩnh vực chuyên môn của GVHD" **chủ động gác qua một bên** theo đúng yêu cầu hôm nay, nhưng được ghi lại thành rủi ro tường minh ở mục 8, không bị giấu đi.
+**Hệ quả cho cách áp khung cũ:** bảng trọng số ở [main-topic-decision.md mục 2](../dark-kinome-zero-shot/research/main-topic-decision-2026-10-10.md) có cột "khớp GVHD: lĩnh vực, phương pháp, năm tiêu chí" nặng 20%. Vòng này **tách đôi** cột đó — phần "khớp năm tiêu chí" (tính mới, phương pháp, XAI, website) vẫn giữ và áp đầy đủ; phần "khớp lĩnh vực chuyên môn của GVHD" **chủ động gác qua một bên** theo đúng yêu cầu hôm nay, nhưng được ghi lại thành rủi ro tường minh ở mục 8, không bị giấu đi.
 
 ## 1. Tên đề tài
 
@@ -90,7 +90,7 @@ Ba thành phần, mỗi thành phần gắn một câu hỏi nghiên cứu đo �
 
 ## 7. Tài nguyên tính toán — ước lượng, chưa đo thật
 
-**[ĐỀ XUẤT], chưa chạy:** embedding tiếng Việt cỡ nhỏ (PhoBERT-base, Vietnamese-SBERT) chạy được trên CPU cho vài nghìn điều luật trong vài phút; LLM sinh câu trả lời 3B tham số chạy suy luận được trên GPU đã có theo xác nhận trước đó của sinh viên ([main-topic-decision.md mục 0](../../../topics/dark-kinome-zero-shot/research/main-topic-decision-2026-10-10.md)); không cần huấn luyện mô hình ngôn ngữ từ đầu. Nhẹ hơn đáng kể so với các đề tài tin sinh học đã xét (không cần ProtT5/ESM-2 hàng chục GB cache).
+**[ĐỀ XUẤT], chưa chạy:** embedding tiếng Việt cỡ nhỏ (PhoBERT-base, Vietnamese-SBERT) chạy được trên CPU cho vài nghìn điều luật trong vài phút; LLM sinh câu trả lời 3B tham số chạy suy luận được trên GPU đã có theo xác nhận trước đó của sinh viên ([main-topic-decision.md mục 0](../dark-kinome-zero-shot/research/main-topic-decision-2026-10-10.md)); không cần huấn luyện mô hình ngôn ngữ từ đầu. Nhẹ hơn đáng kể so với các đề tài tin sinh học đã xét (không cần ProtT5/ESM-2 hàng chục GB cache).
 
 ## 8. Rủi ro phải nói thẳng, không giấu
 

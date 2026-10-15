@@ -24,7 +24,9 @@ Nguồn: [full-data-audit mục 5](../../topics/degron-footprint/research/full-d
 
 > **Rủi ro số một mới: nhãn mức residue chỉ lặp lại khoảng một nửa.** Hai lần đo độc lập đồng ý "peptide này có footprint" ở mức **89,3%**, nhưng đồng ý **đúng vị trí nào** chỉ ở mức **Jaccard 0,4965**, và chỉ **16,0%** peptide có tập vị trí dương giống hệt. Đề tài dự đoán đúng ở mức residue đó, nên đây là trần cứng cho mọi mô hình. Không chữa được bằng siết ngưỡng reads (đã thử, thất bại).
 
-**Nếu sụp:** giảm độ chặt của phép chia cụm (cov80 cho 271–322 thay vì 221–301), hoặc bổ sung bộ nhân của [Larsen 2025](papers/larsen-2025.md), hoặc kích hoạt dự phòng.
+**Nếu sụp:** giảm độ chặt của phép chia cụm (cov80 cho 271–322 thay vì 221–301), hoặc bổ sung bộ nhân của [Larsen 2025](papers/larsen-2025.md). ⚠ **Không còn dự phòng để kích hoạt** — [D-026](../../DECISIONS.md#d-026) (14/10) đã bỏ.
+
+> ⚠ **Rủi ro này đã trở lại ở dạng khác, 15/10.** Phép tính lực trên chỉ áp cho **bộ quét**. Sau khi [D-025](../../DECISIONS.md#d-025) chuyển nguồn nhãn chính sang **bộ bão hòa**, cỡ mẫu là **91 peptide** (không phải 235, vì ngưỡng PSI WT ≤ 3,0 cắt bớt), và **lực cho cỡ đó chưa tính**. Đây là **việc chặn duy nhất** còn lại.
 
 ---
 
@@ -59,7 +61,9 @@ Nếu phần lớn 35% đó là nhiễu thí nghiệm, thì **không mô hình n
 
 **Vấn đề:** đã có **bốn** tiền lệ — [DEGRONOPEDIA](papers/degronopedia-2024.md), máy chủ web [MetaDegron](papers/metadegron-2024.md), Colab của nhóm PAP, và — **mới phát hiện 13/10** — **mô hình học máy của chính nhóm Zhang 2023**, dự đoán PSI toàn peptidome (Pearson 0,8955, RMSE 0,563 trên 260.989 peptide), nằm trong file Mendeley 393 MB mà repo chưa từng tải. Cái thứ tư **khác phạm vi** (dự đoán ở mức peptide, không phải mức residue) nên không phải đối thủ trực tiếp, nhưng **phải nêu** trong đề cương. Tiêu chí 5 của GVHD không thể thiếu, nhưng "làm thêm một web nữa" không phải đóng góp.
 
-**Cách xử lý:** nhắm vào thứ cả ba đều không có — **ma trận vị trí × acid amin thay vào, dựa trên nhãn đột biến thực nghiệm**. Phải kiểm lại ba sản phẩm đó thật sự không xuất ra thứ này.
+**Cách xử lý:** nhắm vào thứ cả bốn đều không có — **ma trận vị trí × acid amin thay vào, dựa trên nhãn đột biến thực nghiệm**.
+
+> ✅ **Đã kiểm ngày 14–15/10** ([tra y văn](../../topics/degron-footprint/research/architecture-check/prior-art-exposure-gate.md)): cả bốn đều xuất ở mức **peptide hoặc motif**. DEGRONOPEDIA là annotation motif; MetaDegron phân loại degron theo E3 (**nhánh học sâu chỉ dùng trình tự**, không attention); PAP/Colab xuất điểm khối; SVM Zhang xuất PSI mức peptide. **Chưa tìm thấy** sản phẩm nào xuất ma trận 28×20 trên nhãn đột biến thực nghiệm. Vẫn ghi là "chưa tìm thấy", không phải "chưa ai làm".
 
 ---
 
@@ -73,6 +77,10 @@ Hai nhánh:
 
 **Cách xử lý:** không đặt đóng góp lên thang điểm đoạn. Dùng bậc 2 và 3 ([bài 7](07-evaluation.md)).
 
+> ✅ **Có bằng chứng dương cho trục này, đo 14/10.** Đổi kernel 1 → 7 cho **+0,1311** precision@3 ở mức residue, so với chỉ **+0,0032** Pearson trên điểm đoạn. Nên lo ngại "trục ngữ cảnh đã cạn" **không áp cho thang đo của đề tài**. Xem [bài 5 mục 5.2](05-the-gap.md).
+
+**4c. ⚠ Cổng phơi lộ không huấn luyện được — rủi ro này đã thành hiện thực, 15/10.** Mọi nhãn huấn luyện chính là **peptide tách rời gắn đầu C của GFP**, nên rASA **không có phương sai** và tham số của cổng **không nhận diện được**. Thành phần 4 đã bị hạ xuống **cơ chế chuyển giao** và đưa ra khỏi đường găng của G2 ([bài 6 mục 3.2](06-proposed-solution.md), đề xuất [C-8](../../DECISIONS.md)).
+
 ---
 
 ## Rủi ro 5 — tính mới bị thu hẹp thêm
@@ -83,10 +91,13 @@ Hai nhánh:
 |---|---|---|
 | 11/10 | [BioBlobs](papers/bioblobs-2025.md) đã dùng attention-MIL trên protein; [OmniESI](papers/omniesi-2025.md) đã dùng điều biến có điều kiện | Không được nói cơ chế là mới |
 | 11/10 | [Larsen 2025](papers/larsen-2025.md) đã dùng rASA/pLDDT và đã làm bản đồ ΔPAP *in silico* | "Dùng cấu trúc" và "giải thích biến thể" không còn mới |
+| **14/10** | **Larsen 2025 còn đã tìm ra hiện tượng ΔPAP đổi dấu** trên CRX: Pearson **0,54** ở IDR so với **−0,19** ở vùng gấp | Phép đo 14/10 của repo chỉ là **xác nhận lại**, không phải phát hiện |
+| **14/10** | [Schulze & Lindorff-Larsen 2026](papers/schulze-2026.md) đã gộp 6 VAMP-seq / 31.614 biến thể trên **đúng 6 protein** repo dùng, tách chôn/phơi lộ | Thành **baseline bắt buộc**; và tiết lộ hai lỗi phương pháp của phép đo 14/10 |
+| **15/10** | Tự phát hiện: **cổng phơi lộ không huấn luyện được** trên nhiệm vụ chính | Mất một trong hai "điểm mới" đã nêu |
 
-**Việc còn chưa làm:** tra danh sách trích dẫn của bài 2026 và tra nội bộ [MetaDegron](papers/metadegron-2024.md). Có thể còn phát hiện nữa.
+**Việc còn chưa làm:** đọc toàn văn QCDPred, DEGRONOPEDIA, JoGo (hiện chỉ **[qua tóm tắt]**).
 
-**Cách xử lý:** phát biểu hẹp từ đầu — *mới ở chỗ ghép và ở chỗ đặt cổng phơi lộ tại bước gộp, chưa thấy áp cho degron*. Nếu nói hẹp sẵn thì một phát hiện mới không làm sụp tuyên bố.
+**Cách xử lý, đã đổi 15/10:** vì tính mới kiến trúc đã bị thu hẹp bốn lần, [C-7](../../DECISIONS.md) đề xuất **chuyển chỗ đặt tính mới** sang **nhiệm vụ và benchmark** — nơi chưa tìm thấy tiền lệ và nơi bằng chứng đã đo xong. Xem [bài 8 mục 1.2](08-contribution.md).
 
 ---
 
@@ -112,13 +123,19 @@ Không nguy hiểm nhưng sẽ gây rắc rối nếu để lâu:
 
 ---
 
-## Tóm lại: ba việc trước khi viết dòng code huấn luyện đầu tiên
+## Tóm lại: việc trước khi viết dòng code huấn luyện đầu tiên
 
-1. **Tính lực thống kê** trên n = 221–322. Rẻ, dữ liệu đã có. Quyết định đề tài đứng hay sụp.
-2. **Kiểm tính ổn định của nhãn** giữa replicate và theo độ sâu reads. Quyết định dư địa 0,1747 là thật hay ảo.
-3. **Thống nhất thước đo với GVHD** ở tuần 6. Quyết định đề tài được đánh giá bằng thước nào.
+Bản 12/10 có ba việc. Hai đã xong:
 
-Cả ba đều **không cần GPU** và **không cần tải thêm dữ liệu**.
+| Việc | Trạng thái |
+|---|---|
+| ~~Tính lực thống kê trên n = 221–322~~ | ✅ **xong 13/10, đủ lực** (0,82–0,94) — nhưng chỉ cho **bộ quét** |
+| ~~Kiểm tính ổn định của nhãn~~ | ✅ **xong 13/10**: 75,9% phần dư là nhiễu, phần học được tối đa 8,7% |
+| **Tính lực trên n = 91** (bộ bão hòa, nguồn nhãn chính theo [D-025](../../DECISIONS.md#d-025)) | ⬜ **việc chặn duy nhất còn lại** |
+| **Thống nhất thước đo với GVHD** ở tuần 6 | ⬜ chưa, và tuần 6 là **16/10** |
+| Trọng xác nhận [C-7, C-8, C-9](../../DECISIONS.md) | ⬜ chờ |
+
+Cả ba việc còn lại đều **không cần GPU** và **không cần tải thêm dữ liệu**.
 
 ---
 

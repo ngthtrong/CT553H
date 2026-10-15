@@ -40,7 +40,7 @@ Câu này có khả năng được hỏi, và trả lời trung thực là:
 - **Mạnh nhất ở tiêu chí 4, và giờ nó không còn là "chỉ XAI".** Bản đồ theo residue là **đầu ra được giám sát**, chấm bằng 2.624 footprint cộng 249 bản đồ thay thế đầy đủ, kèm một đối chứng âm đã đo được (mô hình bất biến hoán vị phải cho bản đồ phẳng). Các hướng còn lại trong repo chỉ đối chiếu được với cơ sở dữ liệu motif.
 - **Yếu nhất ở tiêu chí 2 so với kỳ vọng "kiến trúc chưa ai dùng".** Nói thẳng mức độ: mới ở cách ghép và chỗ đặt cổng.
 
-**Không nói** rằng đề tài này đã thắng một cuộc so sánh có hệ thống với các hướng khác — [phép so sánh đó chưa được làm](../../../journal/README.md). Nếu thầy muốn thấy các hướng đã cân nhắc thì dẫn [khảo sát aging và cancer](../../../archive/surveys/aging-cancer/aging-cancer-deep-dive.md) và [đánh giá dark kinome](../../dark-kinome-zero-shot/research/main-topic-decision-2026-10-10.md).
+**Không nói** rằng đề tài này đã thắng một cuộc so sánh có hệ thống với các hướng khác — [phép so sánh đó chưa được làm](../../../journal/README.md). Nếu thầy muốn thấy các hướng đã cân nhắc thì dẫn [khảo sát aging và cancer](../../../archive/surveys/aging-cancer/aging-cancer-deep-dive.md) và [đánh giá dark kinome](../../../archive/topics/dark-kinome-zero-shot/research/main-topic-decision-2026-10-10.md).
 
 ## 4. Câu hỏi xin ý kiến, xếp theo mức đổi kế hoạch
 

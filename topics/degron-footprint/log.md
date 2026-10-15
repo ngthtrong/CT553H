@@ -4,6 +4,47 @@
 
 ---
 
+## 15/10/2026 — lập luận lại đề tài, và một lỗi lập luận bị phát hiện
+
+Tài liệu: [research/topic-argument-2026-10-15.md](research/topic-argument-2026-10-15.md), thay mạch cũ ở [topic-decision.md](research/topic-decision.md) (11/10). **Không huấn luyện mô hình nào.** Ba đề xuất ghi vào [DECISIONS.md phần C](../../DECISIONS.md): C-7, C-8, C-9.
+
+- **Lỗi lập luận quan trọng nhất, tự phát hiện: cổng phơi lộ không huấn luyện được trên nhiệm vụ chính.** Toàn bộ nhãn huấn luyện là **peptide 28-mer tách rời gắn vào đầu C của GFP**, nên **mọi peptide phơi lộ như nhau** và rASA/pLDDT **không có phương sai** — tham số của cổng **không nhận diện được** từ dữ liệu. Ba báo cáo trước đều không thấy điều này. Hệ quả: thành phần 4 hạ xuống **cơ chế chuyển giao**, ra khỏi đường găng của G2, và **không dành tuần 7–8 cho nó** (đề xuất **C-8**).
+- **Lý lẽ kỹ thuật chính đổi sang ngữ cảnh vị trí**, nơi có bằng chứng đo được: đổi kernel 1 → 7 cho **+0,1311** precision@3 mức residue so với chỉ **+0,0032** Pearson trên điểm đoạn — **gấp ~41 lần**. Trần "+0,0032" mà chính tác giả đo **không chuyển sang** nhiệm vụ mức residue. Đây là bằng chứng dương đầu tiên của repo cho hướng mô hình có ngữ cảnh.
+- **Cách kể chuyện về PAP được sửa cho đúng.** ΔPAP thua baseline thành phần không phải vì PAP tồi mà vì nó **được huấn luyện cho điểm cả đoạn**, không cho ảnh hưởng đột biến theo vị trí. Câu dẫn nhập đúng và mạnh hơn: **chưa có mô hình nào được huấn luyện cho đúng nhiệm vụ này**. Bốn tiền lệ đều xuất ở mức peptide/motif — đã kiểm, kể cả MetaDegron-D chỉ dùng trình tự.
+- **Đề xuất chuyển chỗ đặt đóng góp** từ "kiến trúc mới" sang "**benchmark mức residue đầu tiên** + mô hình thắng trên nó" (**C-7**). Lý do: [D-022](../../DECISIONS.md#d-022) đã cho phép đóng góp dạng công cụ; tính mới kiến trúc đã bị thu hẹp **bốn lần**; còn bộ trần nhãn + baseline + đối chứng + lực + split thì **đã đo xong** và không bài nào trong sáu bài đã đọc có. Rủi ro nhận kèm: [D-012](../../DECISIONS.md#d-012) vẫn đòi đóng góp dương, nên mô hình vượt 0,4897 **vẫn bắt buộc**.
+- **Đề xuất đổi thước đo ma trận từ Spearman sang AUROC mức ô** (**C-9**): trần nhãn Spearman chỉ 0,6989 còn trần AUROC đạt 0,9519, và nhiệm vụ của đề tài là tách ô dương chứ không phải xếp hạng mọi ô. Dư địa AUROC **0,1827** lớn hơn dư địa bộ quét (0,1617) trên nhãn ít nhiễu hơn nhiều.
+- **Hub học `degron-basics/` đã viết lại theo mạch mới:** bài 5 (bảng mốc mới + hai mục 5.1/5.2 mới), bài 6 (mục 3 viết lại hoàn toàn để hạ cổng phơi lộ), bài 7 (bậc 3 thành bậc chính, AUROC, n = 91), bài 8 (câu đóng góp mới + lý do chuyển tính mới), bài 9 (rủi ro 4c mới, bảng thu hẹp tính mới thêm 3 dòng), README (5 thay đổi lớn, bảng mốc mới, danh sách "đừng nói sai" từ 3 lên 5 mục).
+- **Mốc tuần 6 là 16/10** (buổi gặp 1 là 02/10, tuần 4) — tính ra ngày mai, và buổi gặp **chưa định ngày**. Tài liệu trình bày vẫn **chưa sửa** theo yêu cầu của Trọng ngày 14/10.
+
+---
+
+## 14/10/2026 — kiểm lại baseline PAP, chạy đối chứng ΔPAP, kiểm tiền đề cổng phơi lộ
+
+Báo cáo: [research/pap-baseline/](research/pap-baseline/README.md) và
+[research/architecture-check/](research/architecture-check/README.md). **Không huấn luyện mô hình nào.**
+
+- **Trọng xác nhận C-6** (bảy đề xuất audit 13/10) → [D-025](../../DECISIONS.md#d-025), và **chấp nhận không có đề tài dự phòng** → [D-026](../../DECISIONS.md#d-026). Mốc G2 từ nay là baseline thành phần **0,4897** kèm trần nhãn **0,6514**; nguồn nhãn chính là **bộ bão hòa**.
+- **Tái lập PAP khớp tuyệt đối** sau khi tải lại repo @`9b3eafa6`: kênh nội 0,8239, đầy đủ 0,8690, `cnn2w7` 0,8722 — trùng bốn chữ số với phiên 11/10 **và** khớp hai số công bố (0,82 / 0,87). Đóng việc còn thiếu của audit 13/10.
+- **Đối chứng ΔPAP, chưa ai chạy trước đây:** trên nhãn footprint bộ quét, ΔPAP `cnn2w7` đạt precision@3 **0,4270**, `cnn2w1` 0,2959 — **thấp hơn baseline thành phần 0,4884**, kiểm ghép cặp p ≈ 6 × 10⁻¹⁹. Nên mốc 0,4897 của D-025 là mốc khó hơn ΔPAP và đúng để cam kết.
+- **Bằng chứng dương đầu tiên cho trục "thêm ngữ cảnh cục bộ":** `cnn2w1` → `cnn2w7` chỉ +0,0032 Pearson trên thang điểm khối (chính tác giả đo), nhưng **+0,1311** precision@3 trên nhiệm vụ residue. Trần "+0,0032" **không áp được** cho thang đo của đề tài.
+- **Không có rò rỉ từ tập train PAP:** 0,4268 (protein có trong train) so với 0,4270 (không có). Nên ΔPAP dùng được làm đối chứng toàn tập test.
+- **Việc chặn mới, phát hiện ngoài dự tính:** bộ bão hòa sau khi áp đúng ngưỡng peptide degron (PSI WT ≤ 3,0) chỉ còn **91 peptide**, không phải 235. D-025 đề xuất 2 kèm điều kiện tính lại lực; cỡ mẫu thật để tính là **91**. Đường ra nếu thiếu lực: nới ngưỡng lên 3,5 (141 peptide) hoặc chấm mức ô.
+- **Thước đo cho ma trận nên là AUROC, không phải Spearman:** trần nửa-chấm-nửa là Spearman 0,6989 so với **AUROC 0,9519**; ΔPAP đạt AUROC 0,7692 nên dư địa 0,1827. Gộp 19 thay thế lên mức vị trí làm Spearman tăng 0,3553 → 0,4130.
+- **Tiền đề cổng phơi lộ đúng, hiệu ứng mạnh.** Trên 33.718 biến thể missense của 6 protein bào tương MaveDB kèm AlphaFold v6: Spearman(ΔPAP, độ dồi dào) đi từ **−0,1928** ở residue chôn lên **+0,3733** ở phơi lộ ≥ 0,7; theo pLDDT còn mạnh hơn (−0,1642 ở ≥ 90 lên **+0,3973** ở < 50). Hệ số tương tác ΔPAP × rASA **+0,6625**, bootstrap [0,627; 0,700]. Bỏ PRKN ra vẫn còn **+0,5990** [0,546; 0,648].
+- **ΔPAP đổi dấu ở residue chôn** — mô hình degron không có cấu trúc sai dấu ở 47% residue. Cổng phơi lộ không chỉ tăng điểm, nó sửa một lỗi hệ thống. **pLDDT phân tách mạnh hơn rASA** nên nếu chỉ chọn một thì chọn pLDDT (cũng rẻ hơn).
+- **Ràng buộc thiết kế mới cho nhiệm vụ phụ:** PSI hoang dã Zhang so với điểm tile Voutsinos cho Spearman 0,7333 toàn cục nhưng chỉ **0,2921** trong nhóm peptide degron → nhãn đoạn phân biệt "có degron hay không" tốt, phân biệt **mức độ** kém. Nhiệm vụ phụ nên là **phân loại**, không phải hồi quy ngang hàng.
+- **Rò rỉ chéo nhiệm vụ phải ghi vào benchmark:** 725/770 peptide footprint có tile trong tập train của PAP (dù đo ra không có lợi thế nào).
+- Hai tiền đề kiến trúc **vẫn chưa kiểm được** vì cần huấn luyện: cấu trúc túi so với đầu hồi quy theo vị trí, và PLM mức residue so với one-hot.
+- Phát hiện vận hành: **AlphaFold DB trả 403 nếu không có User-Agent**; thêm `-A "Mozilla/5.0"` thì tải được. 8 cấu trúc kèm SHA-256 ở `data/raw/alphafold/manifest.txt`.
+- **Tra y văn cho cổng phơi lộ (cùng ngày, sau phép đo) — và nó sửa lại kết luận:** [prior-art-exposure-gate.md](research/architecture-check/prior-art-exposure-gate.md). **Tiền đề không mới**: Voutsinos 2026 (ρ = −0,47; Kruskal–Wallis P = 5,4 × 10⁻⁶), Larsen 2025 (\|r\| 0,41 với rASA), QCDPred, DEGRONOPEDIA, JoGo đều đã báo. **Hiện tượng đổi dấu cũng đã có người tìm ra**: Larsen 2025 báo ΔPAP Pearson **0,54** ở IDR của CRX so với **−0,19** ở homeodomain đã gấp. Phép đo của repo là xác nhận lại ở quy mô lớn hơn trên nhãn độ dồi dào, **không phải phát hiện** — đã sửa câu nói quá trong báo cáo và thẻ đề tài.
+- **Tìm được tiền lệ phương pháp sát nhất, và nó là baseline bắt buộc:** [Schulze & Lindorff-Larsen, *eLife* 2026](https://doi.org/10.7554/eLife.103721) (cùng nhóm Voutsinos), gộp **6 thí nghiệm VAMP-seq / 31.614 biến thể** trên **đúng 6 protein** mà repo dùng, tách chôn/phơi lộ ở ngưỡng rASA **0,1**, dựng ma trận thay thế theo lớp, đối chứng ThermoMPNN ΔΔG. **rASA một mình cho Spearman 0,45** — mạnh hơn ΔPAP ở khoảng phơi lộ nhất (0,3733). Ghi chú: [schulze-2026.md](../../lectures/degron-basics/papers/schulze-2026.md).
+- **Bài đó phát hiện hai lỗi phương pháp của phép đo 14/10:** (a) bộ **GCK** dùng trong tập đo bằng **DHFR-PCA**, không phải VAMP-seq — trộn hai phenotype; (b) **NUDT15 và ASPA là homodimer**, rASA tính trên AlphaFold monomer phân loại sai residue ở mặt tiếp xúc. **Con số hệ số tương tác +0,6625 chưa dùng được** cho tới khi chạy lại.
+- **Nhưng Schulze 2026 tự nêu khoảng trống đúng là hướng đề tài:** framework cấu trúc của họ không bắt được **neo-degron ở vị trí phơi lộ**, và họ mời đưa vào "đặc trưng sinh hóa phức tạp hơn". Kèm ca cụ thể **PRKN S109** — residue phơi lộ có profile thay thế giống residue chôn. Dùng làm dẫn nhập.
+- **Nơi đặt cổng vẫn chưa tìm thấy tiền lệ:** PAP dùng cấu trúc chỉ để phân tích sau; **MetaDegron-D chỉ dùng trình tự** (khả năng tiếp cận dung môi từ Spider2 chỉ vào nhánh XGBoost, không có attention, chỉ max-pooling); DEGRONOPEDIA dùng ở bước annotation; Schulze 2026 dùng để chia lớp. Ghi là **chưa tìm thấy**, không phải "chưa ai làm", và tính mới của đề tài **không nên** dựa chính vào điểm này.
+- Sửa mâu thuẫn trong thẻ đề tài: nhãn mức residue được gọi là "rủi ro số hai" ở một chỗ và "nay là rủi ro số một" ở chỗ khác.
+
+---
+
 ## 13/10/2026 — tải đủ bốn nguồn dữ liệu; dựng PSI cho mọi điều kiện; **đo được trần nhãn và lực thống kê**
 
 Báo cáo đầy đủ: [research/full-data-audit/](research/full-data-audit/README.md). Không huấn luyện mô hình nào.
@@ -35,7 +76,7 @@ Báo cáo đầy đủ: [research/full-data-audit/](research/full-data-audit/REA
 
 ## 12/10/2026 (tiếp) — degron được chốt làm **đề tài chính** ([D-023](../../DECISIONS.md#d-023))
 
-- Trọng chốt: degron là đề tài chính, [`plm-calibration-audit`](../plm-calibration-audit/README.md) (A4) là dự phòng. Kèm thông tin mới: **GVHD vẫn chấp nhận đóng góp dạng công cụ** ([D-022](../../DECISIONS.md#d-022)), nên rào cản C-3 với nhóm A được gỡ.
+- Trọng chốt: degron là đề tài chính, [`plm-calibration-audit`](../../archive/topics/plm-calibration-audit/README.md) (A4) là dự phòng. Kèm thông tin mới: **GVHD vẫn chấp nhận đóng góp dạng công cụ** ([D-022](../../DECISIONS.md#d-022)), nên rào cản C-3 với nhóm A được gỡ.
 - Căn cứ chọn degron, tóm từ [khảo sát 7 ứng viên](../../surveys/seven-candidates-comparison-2026-10-12.md): degron là ứng viên **duy nhất có khoảng trống đã chứng minh** chứ không phải "chưa kiểm" — 89,7% peptide (2.353/2.624) có nhóm cùng cặp thay thế chứa cả vị trí dương và không dương, nên mô hình chỉ dùng thành phần bị **chứng minh** không tách được. Thêm: G1 mạnh nhất repo; TC4 (XAI) thỏa mãn bởi chính bài toán vì đầu ra là điểm quan trọng theo residue; có kiến trúc để đề xuất (mục 6 của audit); dữ liệu đã trên máy nên khả thi trong 8–9 tuần.
 - **Sửa thẻ trạng thái:** dòng G2 trước đây viết "dư địa chỉ 0,1747" làm đề tài trông yếu hơn mức bằng chứng cho phép. Đã viết lại theo đúng số của [audit](research/composition-context-audit.md): cận chính xác 0,6045 cho lớp mô hình thành phần, oracle không ràng buộc 0,7792, ngẫu nhiên 0,1204, tức +28,9% tương đối nếu đạt trần. Câu "G2 chưa xác lập" **giữ nguyên** vì chưa huấn luyện mô hình nào.
 - Dòng G3 cũng được sửa cho đúng: **ba** sản phẩm đã tồn tại (DEGRONOPEDIA, máy chủ web MetaDegron, Colab nhóm PAP), không phải hai. Ứng dụng phải khác biệt được; chỗ khác biệt khả thi là ma trận 28×20 trên nhãn thực nghiệm.

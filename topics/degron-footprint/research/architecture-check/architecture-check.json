@@ -1,0 +1,376 @@
+{
+ "seed": 0,
+ "pap_model": "cnn2w7",
+ "window": 30,
+ "alphafold": "AlphaFold DB v6, tải 14/10/2026, xem data/raw/alphafold/manifest.txt",
+ "gate_premise_mavedb": {
+  "per_gene": {
+   "PTEN": {
+    "location": "cytosol",
+    "n_missense": 4112,
+    "n_wt_match_af": 4112,
+    "median_missense": 0.771,
+    "median_nonsense": 0.064,
+    "median_synonymous": 1.003,
+    "spearman_all": -0.1903,
+    "spearman_by_rasa": {
+     "buried <0.2": [
+      -0.2869,
+      1864
+     ],
+     "0.2–0.5": [
+      0.1062,
+      1252
+     ],
+     "0.5–0.7": [
+      0.1878,
+      451
+     ],
+     "exposed ≥0.7": [
+      0.0264,
+      545
+     ]
+    }
+   },
+   "TPMT": {
+    "location": "cytosol",
+    "n_missense": 3689,
+    "n_wt_match_af": 3689,
+    "median_missense": 0.82,
+    "median_nonsense": 0.154,
+    "median_synonymous": 1.031,
+    "spearman_all": -0.1995,
+    "spearman_by_rasa": {
+     "buried <0.2": [
+      -0.2141,
+      1790
+     ],
+     "0.2–0.5": [
+      -0.034,
+      1194
+     ],
+     "0.5–0.7": [
+      0.1417,
+      558
+     ],
+     "exposed ≥0.7": [
+      0.084,
+      147
+     ]
+    }
+   },
+   "NUDT15": {
+    "location": "cytosol",
+    "n_missense": 2922,
+    "n_wt_match_af": 2922,
+    "median_missense": 0.751,
+    "median_nonsense": 0.086,
+    "median_synonymous": 0.995,
+    "spearman_all": -0.2103,
+    "spearman_by_rasa": {
+     "buried <0.2": [
+      -0.2919,
+      1287
+     ],
+     "0.2–0.5": [
+      -0.1936,
+      1098
+     ],
+     "0.5–0.7": [
+      0.2405,
+      338
+     ],
+     "exposed ≥0.7": [
+      0.1835,
+      199
+     ]
+    }
+   },
+   "ASPA": {
+    "location": "cytosol",
+    "n_missense": 5843,
+    "n_wt_match_af": 5843,
+    "median_missense": 0.415,
+    "median_nonsense": 0.0,
+    "median_synonymous": 1.0,
+    "spearman_all": -0.0271,
+    "spearman_by_rasa": {
+     "buried <0.2": [
+      -0.0723,
+      3054
+     ],
+     "0.2–0.5": [
+      0.2198,
+      1935
+     ],
+     "0.5–0.7": [
+      0.23,
+      626
+     ],
+     "exposed ≥0.7": [
+      0.1748,
+      228
+     ]
+    }
+   },
+   "PRKN": {
+    "location": "cytosol",
+    "n_missense": 8756,
+    "n_wt_match_af": 8756,
+    "median_missense": 0.874,
+    "median_nonsense": 0.012,
+    "median_synonymous": 1.0,
+    "spearman_all": -0.1022,
+    "spearman_by_rasa": {
+     "buried <0.2": [
+      -0.2178,
+      3259
+     ],
+     "0.2–0.5": [
+      0.0362,
+      2728
+     ],
+     "0.5–0.7": [
+      0.3687,
+      1443
+     ],
+     "exposed ≥0.7": [
+      0.647,
+      1326
+     ]
+    }
+   },
+   "GCK": {
+    "location": "cytosol",
+    "n_missense": 8396,
+    "n_wt_match_af": 8396,
+    "median_missense": 0.779,
+    "median_nonsense": -0.007,
+    "median_synonymous": 0.995,
+    "spearman_all": -0.0972,
+    "spearman_by_rasa": {
+     "buried <0.2": [
+      -0.1599,
+      4695
+     ],
+     "0.2–0.5": [
+      0.1469,
+      2568
+     ],
+     "0.5–0.7": [
+      0.145,
+      887
+     ],
+     "exposed ≥0.7": [
+      0.1741,
+      246
+     ]
+    }
+   },
+   "CYP2C9": {
+    "location": "er_membrane",
+    "n_missense": 6370,
+    "n_wt_match_af": 6370,
+    "median_missense": 0.772,
+    "median_nonsense": 0.01,
+    "median_synonymous": 0.995,
+    "spearman_all": -0.1397,
+    "spearman_by_rasa": {
+     "buried <0.2": [
+      -0.179,
+      3499
+     ],
+     "0.2–0.5": [
+      0.0334,
+      2059
+     ],
+     "0.5–0.7": [
+      0.0129,
+      678
+     ],
+     "exposed ≥0.7": [
+      -0.0672,
+      134
+     ]
+    }
+   },
+   "CYP2C19": {
+    "location": "er_membrane",
+    "n_missense": 121,
+    "n_wt_match_af": 5,
+    "median_missense": 0.637,
+    "median_nonsense": null,
+    "median_synonymous": null
+   }
+  },
+  "cytosol": {
+   "all": [
+    -0.1187,
+    33718
+   ],
+   "by_rasa": {
+    "buried <0.2": [
+     -0.1928,
+     15949
+    ],
+    "0.2–0.5": [
+     0.0695,
+     10775
+    ],
+    "0.5–0.7": [
+     0.2342,
+     4303
+    ],
+    "exposed ≥0.7": [
+     0.3733,
+     2691
+    ]
+   },
+   "by_plddt": {
+    "<50": [
+     0.3973,
+     2258
+    ],
+    "50–70": [
+     0.1675,
+     1019
+    ],
+    "70–90": [
+     -0.015,
+     6216
+    ],
+    "≥90": [
+     -0.1642,
+     24225
+    ]
+   },
+   "regression_rank_scale": {
+    "n": 33718,
+    "beta_dPAP": -0.1808,
+    "beta_rASA": 0.5038,
+    "beta_dPAP_x_rASA": 0.6625,
+    "beta_dPAP_x_rASA_bootstrap95": [
+     0.6268,
+     0.6996
+    ]
+   }
+  },
+  "all": {
+   "all": [
+    -0.122,
+    40088
+   ],
+   "by_rasa": {
+    "buried <0.2": [
+     -0.1908,
+     19448
+    ],
+    "0.2–0.5": [
+     0.0635,
+     12834
+    ],
+    "0.5–0.7": [
+     0.2063,
+     4981
+    ],
+    "exposed ≥0.7": [
+     0.3498,
+     2825
+    ]
+   },
+   "by_plddt": {
+    "<50": [
+     0.3973,
+     2258
+    ],
+    "50–70": [
+     0.1515,
+     1186
+    ],
+    "70–90": [
+     -0.0129,
+     7427
+    ],
+    "≥90": [
+     -0.1642,
+     29217
+    ]
+   },
+   "regression_rank_scale": {
+    "n": 40088,
+    "beta_dPAP": -0.1811,
+    "beta_rASA": 0.502,
+    "beta_dPAP_x_rASA": 0.6392,
+    "beta_dPAP_x_rASA_bootstrap95": [
+     0.6049,
+     0.6743
+    ]
+   }
+  },
+  "cytosol_without_PRKN": {
+   "all": [
+    -0.1245,
+    24962
+   ],
+   "by_rasa": {
+    "buried <0.2": [
+     -0.1837,
+     12690
+    ],
+    "0.2–0.5": [
+     0.0835,
+     8047
+    ],
+    "0.5–0.7": [
+     0.168,
+     2860
+    ],
+    "exposed ≥0.7": [
+     0.1294,
+     1365
+    ]
+   },
+   "by_plddt": {
+    "<50": [
+     0.051,
+     858
+    ],
+    "50–70": [
+     0.2411,
+     620
+    ],
+    "70–90": [
+     0.209,
+     2043
+    ],
+    "≥90": [
+     -0.15,
+     21441
+    ]
+   },
+   "regression_rank_scale": {
+    "n": 24962,
+    "beta_dPAP": -0.1685,
+    "beta_rASA": 0.4466,
+    "beta_dPAP_x_rASA": 0.599,
+    "beta_dPAP_x_rASA_bootstrap95": [
+     0.5456,
+     0.6478
+    ]
+   }
+  }
+ },
+ "cross_assay_zhang_vs_voutsinos": {
+  "n_zhang_peptides_with_wt_psi": 8831,
+  "n_with_overlapping_voutsinos_tile_ge20aa": 2726,
+  "spearman_zhang_wt_psi_vs_voutsinos_abundance": 0.7333,
+  "spearman_within_degron_peptides_wt_psi_le_3": [
+   0.2921,
+   1000
+  ],
+  "n_footprint_peptides": 2624,
+  "footprint_peptides_with_voutsinos_tile": 770,
+  "footprint_peptides_with_tile_in_pap_train": 725,
+  "note": "Cả hai đều là điểm độ bền của peptide tách rời gắn vào đầu C của GFP; Spearman cao thì nhãn đoạn và nhãn residue có thể dùng chung một biểu diễn. Peptide có tile trùng ở tập train của bất kỳ mô hình nào phải được tính vào thiết kế split (rò rỉ chéo nhiệm vụ)."
+ }
+}

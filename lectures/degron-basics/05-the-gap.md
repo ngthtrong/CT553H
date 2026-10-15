@@ -110,26 +110,73 @@ Bản chẩn đoán gom chỉ theo residue gốc cho cận 0,6012, nhưng **khô
 
 ![Mục tiêu định lượng](figures/fig-08-ceiling.svg)
 
-*Sơ đồ tự dựng.*
+*Sơ đồ tự dựng. Hình vẽ theo bảng cũ; đọc bảng dưới đây làm chuẩn.*
 
-| Mốc | precision@3 | Nghĩa |
+> **Bảng này đã được viết lại ngày 15/10/2026.** Bản trước dùng hai mốc 0,6045 và 0,7792 và nói dư địa là
+> 0,1747. Cả hai mốc đó là **oracle được phép nhìn nhãn test**, nên không mô hình nào đạt được, và hiệu của
+> hai oracle **không phải dư địa**. Nguồn số mới: [full-data-audit mục 4](../../topics/degron-footprint/research/full-data-audit/README.md)
+> và [pap-baseline](../../topics/degron-footprint/research/pap-baseline/README.md).
+
+| Mốc | precision@3 | Nghĩa là |
 |---|---:|---|
-| Đoán ngẫu nhiên | **0,1204** | sàn |
-| Oracle trung bình theo cặp | 0,5481 | oracle *đạt được*, chưa phải cận |
-| **Cận trên chính xác của mô hình thành phần** | **0,6045** | **mốc phải vượt** |
-| Oracle không ràng buộc theo nhóm | **0,7792** | mốc không thể vượt trên tập này |
+| Đoán ngẫu nhiên | 0,1232 | sàn |
+| ΔPAP `cnn2w1` (chỉ thành phần) | 0,2959 | mô hình công bố, dùng kênh không có ngữ cảnh |
+| **ΔPAP `cnn2w7`** | **0,4270** | **mô hình degron công bố gần nhất, trên đúng nhiệm vụ này** |
+| **Baseline thành phần, ước lượng trung thực** | **0,4897** | **mốc thật phải vượt** ([D-025](../../DECISIONS.md#d-025)) |
+| **Trần nhãn thực nghiệm** | **0,6514** | một lần đo chấm trên nhãn lần đo kia — giới hạn trên |
 
-**Dư địa = 0,7792 − 0,6045 = 0,1747**, tức **+28,9% tương đối** so với mốc 0,6045.
+**Dư địa thật = 0,6514 − 0,4897 = 0,1617.**
 
-> **⚠ Cập nhật 13/10/2026 — đoạn trên đã lỗi.** Cả hai mốc 0,6045 và 0,7792 là **oracle chọn được nhờ nhìn nhãn test**, nên **không mô hình nào đạt được**, và hiệu của hai oracle **không phải dư địa**. Sau khi dựng được lần đo thứ hai, mốc đúng là: baseline thành phần ước lượng trung thực **0,4897**, trần nhãn thực nghiệm **0,6514**, dư địa thật **0,1617**. Lập luận về *cơ chế* của khoảng trống (89,7% peptide bị ràng buộc) **vẫn đúng** — chỉ phần quy ra con số dư địa là sai. Xem [bài 10](10-data-up-close.md) và [full-data-audit mục 4](../../topics/degron-footprint/research/full-data-audit/README.md).
+### 5.1 Một điều bất ngờ: mô hình công bố **thua** baseline tầm thường
 
-Hai điều cần hiểu về hai mốc này:
+Đây là phép đo mới nhất (14/10) và nó đổi cách kể chuyện.
 
-**Vì sao oracle chỉ 0,7792 mà không phải 1,0?** Vì nhiều peptide có **ít hơn 3 vị trí dương**. Khi chỉ có 1 hoặc 2 footprint thật, không cách nào chọn được 3 vị trí mà cả 3 đều đúng. Nên **không lấy 1,0 làm mốc có thể đạt được**.
+Mình lấy PAP, tính **ΔPAP** = điểm(peptide đột biến) − điểm(peptide gốc) trên **đúng** những thay thế mà
+thí nghiệm đã làm, rồi chấm bằng cùng một precision@3. Kết quả: ΔPAP `cnn2w7` đạt **0,4270**, trong khi
+baseline thành phần đạt **0,4884** — tức mô hình công bố **thấp hơn 0,0615**, kiểm ghép cặp trên cùng
+peptide cho **p ≈ 6 × 10⁻¹⁹**.
 
-**Vì sao "cận trên chính xác" khác "oracle trung bình"?** Phép lấy trung bình theo nhóm tối ưu *squared error*, không tối ưu precision@3. Cận 0,6045 được tính riêng bằng quy hoạch động, xử lý tie bằng kỳ vọng chọn đều ngẫu nhiên (không được "nhìn nhãn" để chọn vị trí đúng trong một nhóm bằng điểm). Vì vậy **không gọi 0,5481 là trần** — nó chỉ là một oracle cụ thể.
+> **Đừng nói "PAP là mô hình tồi".** PAP được huấn luyện để chấm **điểm của cả đoạn**, không phải **ảnh
+> hưởng đột biến theo từng vị trí**. Dùng nó qua ΔPAP là **dùng ngoài mục đích**.
+>
+> Câu đúng, và mạnh hơn, là: **chưa có mô hình nào được huấn luyện cho đúng nhiệm vụ này.** Đó là lý do có
+> chỗ cho đề tài, và cũng là lý do mốc 0,4897 nằm **trên** mô hình công bố chứ không dưới.
 
----
+### 5.2 Và một điều tốt: trục ngữ cảnh **chưa cạn**
+
+Bản trước của bài này nói "trần của thang điểm khối gần như đã cạn, chỉ +0,0032". Câu đó **đúng, nhưng chỉ
+đúng trên thang điểm khối**. Cùng một thay đổi kiến trúc — đổi kernel của convolution từ 1 lên 7, tức cho
+mô hình nhìn được 7 residue liền nhau thay vì 1 — cho hai kết quả rất khác nhau:
+
+| Thang đo | kernel 1 | kernel 7 | Chênh |
+|---|---:|---:|---:|
+| Pearson điểm khối (holdout 428 gene) | 0,8690 | 0,8722 | **+0,0032** |
+| **precision@3 footprint mức residue** | 0,2959 | 0,4270 | **+0,1311** |
+
+**Gấp khoảng 41 lần.** Nghĩa là trần "+0,0032" mà chính tác giả đo được **không chuyển sang** nhiệm vụ mức
+residue. Thêm năng lực bắt ngữ cảnh cục bộ **vẫn còn chỗ để ăn** trên đúng thang đo của đề tài.
+
+Đây là **bằng chứng dương đầu tiên** của repo cho hướng mô hình có ngữ cảnh. Giới hạn phải nói kèm: cả hai
+đều là mô hình **đã công bố**, không phải mô hình của đề tài — nó nói **trục này đáng đi**, không nói mô
+hình nào sẽ thắng.
+
+### 5.3 Nếu dùng bộ bão hòa thì mốc khác, và dư địa còn lớn hơn
+
+[D-025](../../DECISIONS.md#d-025) đã chốt bộ bão hòa làm nguồn nhãn chính. Ở đó thước đo nên là **AUROC mức
+ô** chứ không phải Spearman, vì trần nhãn của hai thước đo rất khác nhau:
+
+| Mốc trên ma trận bão hòa | Spearman mức ô | AUROC mức ô |
+|---|---:|---:|
+| ΔPAP tốt nhất | 0,3553 | **0,7692** |
+| **Trần nhãn** (một nửa chấm trên nhãn nửa kia) | 0,6989 | **0,9519** |
+| Dư địa | 0,3436 | **0,1827** |
+
+Xếp hạng **mọi** ô thì khó (trần chỉ 0,6989), nhưng **tách ô dương khỏi ô âm** thì nhãn làm rất tốt (trần
+0,9519) — và nhiệm vụ của đề tài là cái sau. Dư địa AUROC **0,1827** lớn hơn dư địa của bộ quét (0,1617),
+trên nhãn **ít nhiễu hơn nhiều** (16,7% so với 75,9%).
+
+Giá phải trả: sau khi áp đúng ngưỡng peptide degron (PSI WT ≤ 3,0), bộ bão hòa chỉ còn **91 peptide**, không
+phải 235. Đó là **việc chặn duy nhất** còn lại trước khi huấn luyện.
 
 ## 6. Độ tin cậy của những con số này
 
@@ -164,7 +211,14 @@ Phải tự nói ra, vì GVHD sẽ hỏi và vì đó là sự thật.
 
 **2. Dư địa 0,1747 không phải cải thiện đã hứa — và nay đã bị bác bỏ hẳn.** Nó là hiệu của *hai oracle được phép nhìn nhãn*, nên không phải dư địa của mô hình nào. Số đúng: **0,1617**, từ baseline trung thực 0,4897 lên trần nhãn 0,6514.
 
-**3. Trần của thang điểm khối gần như đã cạn.** Chính tác giả đã đo: bản `cnn2w7` (có cửa sổ 7, tức *có* dùng thứ tự) chỉ hơn bản `cnn2w1` **+0,0032** Pearson. Nghĩa là **đừng đặt đóng góp lên thang điểm đoạn** — ở đó gần như không còn gì để ăn. Thước đo chính phải là **bản đồ theo residue**.
+**3. ~~Trần của thang điểm khối gần như đã cạn.~~ Câu này chỉ đúng trên thang điểm khối.** Đúng là bản
+`cnn2w7` chỉ hơn `cnn2w1` **+0,0032** Pearson trên điểm đoạn. Nhưng trên nhiệm vụ residue, cùng thay đổi đó
+cho **+0,1311** precision@3 (mục 5.2). Kết luận giữ nguyên — **đừng đặt đóng góp lên thang điểm đoạn** — nhưng
+lý do bây giờ là "thang đó không phải thang của đề tài", **không** phải "ngữ cảnh không giúp được gì".
+
+**4. Phần ngữ cảnh học được rất hẹp.** Dù trục chưa cạn, phần phương sai mà ngữ cảnh có thể giải thích nhiều
+nhất chỉ **8,7%**, vì 75,9% phần dư là nhiễu đo. Nên đóng góp phải phát biểu ở dạng **định vị / xếp hạng
+đúng vị trí** (precision@3, AUROC), **không** ở dạng "giải thích thêm bao nhiêu phần trăm phương sai".
 
 > Và một cảnh báo về phép thử đổi phép gộp: đổi `GlobalAveragePooling` sang max làm Pearson sụt **0,824 → 0,344**. Nhưng phép thử đó dùng **trọng số đã huấn luyện cho gộp trung bình**, nên **không phải** so sánh công bằng với một kiến trúc max pooling được huấn luyện lại từ đầu. **Không suy ra "kiến trúc khu trú sẽ thua".**
 >
@@ -184,9 +238,18 @@ Vì A/C/G/T đều là ký hiệu acid amin hợp lệ, bộ lọc của script 
 
 ## 9. Tóm lại, chỗ đứng của đề tài là gì
 
-> Mô hình hiện có **bị chứng minh** là không thể phân biệt vị trí quan trọng với vị trí không quan trọng, khi hai vị trí có cùng cặp thay thế. Điều đó xảy ra ở **89,7%** peptide. Trần của lớp mô hình đó là **precision@3 = 0,6045**, trong khi mức có thể đạt trên cùng dữ liệu là **0,7792**.
+> Mô hình hiện có **bị chứng minh** là không thể phân biệt vị trí quan trọng với vị trí không quan trọng khi
+> hai vị trí có cùng cặp thay thế. Điều đó xảy ra ở **89,7%** peptide.
 >
-> Một mô hình **biết vị trí và ngữ cảnh** thì không bị ràng buộc đó. Việc xây mô hình như vậy và đo xem nó lấy được bao nhiêu trong khoảng 0,1747 — **đó là đóng góp của đề tài**.
+> Hơn thế: **chưa có mô hình nào được huấn luyện cho đúng nhiệm vụ này.** Mô hình degron công bố gần nhất,
+> dùng qua ΔPAP, chỉ đạt precision@3 **0,4270** — **thấp hơn** cả baseline thành phần (0,4884, p ≈ 6 × 10⁻¹⁹).
+> Mốc phải vượt là **0,4897**, trần nhãn là **0,6514**.
+>
+> Và trục đáng đi đã có bằng chứng: đổi kernel 1 → 7 cho **+0,1311** precision@3 ở mức residue, so với chỉ
+> +0,0032 trên thang điểm khối.
+>
+> Xây mô hình như vậy, đo xem nó lấy được bao nhiêu trong **0,1617** (hoặc **0,1827** AUROC trên ma trận
+> bão hòa) — **đó là đóng góp của đề tài**.
 
 [Bài 6](06-proposed-solution.md) nói cách xây mô hình đó.
 

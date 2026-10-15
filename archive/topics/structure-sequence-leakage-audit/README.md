@@ -1,6 +1,6 @@
 # Audit lợi ích của cấu trúc AlphaFold + trình tự PLM cho protein màng/vận chuyển, có kiểm soát rò rỉ — ứng viên A3
 
-> **Thẻ trạng thái nghiên cứu.** Vị trí của đề tài chỉ ghi ở [DECISIONS.md](../../DECISIONS.md). Cập nhật lần cuối: **12/10/2026**.
+> **Thẻ trạng thái nghiên cứu.** Vị trí của đề tài chỉ ghi ở [DECISIONS.md](../../../DECISIONS.md). Cập nhật lần cuối: **12/10/2026**.
 
 | | |
 |---|---|
@@ -23,7 +23,7 @@
 
 ## Rủi ro chính
 - **Không được nói "đầu tiên kết hợp cấu trúc + trình tự cho protein vận chuyển".**
-- Dạng audit có thể không đáp ứng kỳ vọng "kiến trúc mới" của GVHD ([C-3](../../DECISIONS.md)).
+- Dạng audit có thể không đáp ứng kỳ vọng "kiến trúc mới" của GVHD ([C-3](../../../DECISIONS.md)).
 
 ## Việc tiếp theo
 1. Đọc toàn văn Denger & Helms 2025 và tóm tắt hội thảo Palazzolo 2026.
@@ -31,4 +31,4 @@
 
 ## Trong thư mục này
 - [log.md](log.md) · [research/deep-dive-2026-10-12.md](research/deep-dive-2026-10-12.md)
-- Nguồn danh mục: [surveys/bioinformatics-tool-layer-candidates-2026-10-12.md](../../surveys/bioinformatics-tool-layer-candidates-2026-10-12.md) (mục A3)
+- Nguồn danh mục: [surveys/bioinformatics-tool-layer-candidates-2026-10-12.md](../../../surveys/bioinformatics-tool-layer-candidates-2026-10-12.md) (mục A3)

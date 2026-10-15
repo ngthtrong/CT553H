@@ -1,6 +1,6 @@
 # Nhật ký đề tài `budgeted-plm-variant-scoring`
 
-> Mới nhất ở trên. Trạng thái hiện hành chỉ ghi ở [DECISIONS.md](../../DECISIONS.md).
+> Mới nhất ở trên. Trạng thái hiện hành chỉ ghi ở [DECISIONS.md](../../../DECISIONS.md).
 
 ---
 

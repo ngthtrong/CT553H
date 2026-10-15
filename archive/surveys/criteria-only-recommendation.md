@@ -2,7 +2,7 @@
 
 > **LƯU TRỮ — không dùng để ra quyết định.** Tài liệu lịch sử; mọi câu "chốt / quyết định / khuyến nghị" bên dưới đã hết hiệu lực. Trạng thái hiện hành: [DECISIONS.md](../../DECISIONS.md).
 
-> **Cập nhật 10/10/2026:** bản này giữ làm khuyến nghị ban đầu. Dùng [báo cáo đánh giá dark kinome trên DARKIN](../../topics/dark-kinome-zero-shot/research/darkin-evaluation.md) cho quyết định hiện tại: đã tìm tiền lệ DARKIN-Interact/COMPASS-PTM và kiểm chứng hạ nguồn trong benchmarKIN; lời hứa conformal 90%, motif là ground truth XAI và kết luận đạt cả năm tiêu chí chưa được chứng minh. Số liệu split được audit lại với commit/SHA trong báo cáo mới.
+> **Cập nhật 10/10/2026:** bản này giữ làm khuyến nghị ban đầu. Dùng [báo cáo đánh giá dark kinome trên DARKIN](../topics/dark-kinome-zero-shot/research/darkin-evaluation.md) cho quyết định hiện tại: đã tìm tiền lệ DARKIN-Interact/COMPASS-PTM và kiểm chứng hạ nguồn trong benchmarKIN; lời hứa conformal 90%, motif là ground truth XAI và kết luận đạt cả năm tiêu chí chưa được chứng minh. Số liệu split được audit lại với commit/SHA trong báo cáo mới.
 
 Ngày: **10/10/2026**. Câu hỏi của sinh viên: *bỏ qua ràng buộc thời gian, lĩnh vực, độ liên quan tới đề tài của GVHD, và CPU/GPU; chỉ xét năm tiêu chí đánh giá — đề xuất đề tài nào?* Được tìm thêm, không bắt buộc dùng các ứng viên có trong repo.
 

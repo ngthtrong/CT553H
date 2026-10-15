@@ -4,6 +4,8 @@
 
 Bài này giải thích thước đo. Quan trọng vì **chọn sai thước đo là tự làm sụp đề tài** — trần của thang điểm đoạn gần như đã cạn (xem [bài 5 mục 7](05-the-gap.md)).
 
+> **Sửa ngày 15/10/2026, hai chỗ.** **(1)** Mốc bậc 2 là **0,4897** và đối chứng ΔPAP là **0,4270** (đã chạy 14/10). **(2)** Bậc 3 nay là **bậc chính** theo [D-025](../../DECISIONS.md#d-025), thước đo là **AUROC mức ô** chứ không phải Spearman ([đề xuất C-9](../../DECISIONS.md)), và cỡ mẫu thật là **91 peptide**, không phải 249.
+
 ---
 
 ## 1. precision@3 — thước đo chính
@@ -25,6 +27,8 @@ Ví dụ trong hình:
 
 **Thước đo phụ:** Spearman theo từng peptide, giữa vector 28 chiều dự đoán và vector đo được. Nó đo khả năng xếp hạng toàn bộ, không chỉ top-3.
 
+> **Nhưng trên ma trận bão hòa thì đừng dùng Spearman làm chính.** Trần nhãn của Spearman mức ô chỉ **0,6989**, còn trần của **AUROC** đạt **0,9519** — xếp hạng *mọi* ô thì khó, nhưng *tách ô dương khỏi ô âm* thì nhãn làm rất tốt, và nhiệm vụ của đề tài là cái sau. Xem mục 2 bậc 3.
+
 > **Một chi tiết kỹ thuật dễ sai:** chỉ số phải là **trung bình macro theo peptide**. Không được coi 28 vị trí trong một peptide là 28 mẫu độc lập, vì chúng không độc lập. Lỗi này sẽ làm khoảng tin cậy nhỏ giả tạo.
 
 ---
@@ -45,12 +49,25 @@ Mục đích duy nhất: **chứng minh mình chạy lại được**. Đây *kh
 - Chia tập: **theo cụm protein** (MMseqs2, identity ≥ 30%, coverage hai chiều)
 - Chỉ số: **precision@3** và Spearman theo peptide
 - Mốc phải vượt: ~~**0,6045**~~ → **0,4897** (baseline thành phần ước lượng trung thực), và báo kèm **trần nhãn 0,6514**. Sửa 13/10: 0,6045 là oracle đọc nhãn test, xem [bài 10](10-data-up-close.md)
+- **Đối chứng đã có số, chạy 14/10:** ΔPAP `cnn2w7` = **0,4270**, ΔPAP `cnn2w1` = 0,2959, ngẫu nhiên 0,1232. Mô hình công bố **thấp hơn** baseline thành phần (p ≈ 6 × 10⁻¹⁹) — xem [bài 5 mục 5.1](05-the-gap.md)
 
-### Bậc 3 — ma trận thay thế đầy đủ
+### Bậc 3 — ma trận thay thế đầy đủ · **nay là bậc CHÍNH**
 
-- Dữ liệu: 249 peptide bão hòa
-- Cần xử lý score, mask ô không hợp lệ, và xử lý **130/248 peptide trùng với bộ quét**
-- Nếu dùng một phần bão hòa để train thì **phải chốt protocol mới** và giữ riêng phần test
+[D-025](../../DECISIONS.md#d-025) đã chốt bộ bão hòa làm **nguồn nhãn chính**, nên bậc này đổi vai từ "bậc khó nhất" thành "bậc chính".
+
+- Dữ liệu: 235 peptide dựng được ma trận → **chỉ 91 peptide** sau khi áp đúng ngưỡng peptide degron (PSI WT ≤ 3,0). **Con số 249 trong bản trước là số định danh thô, không phải cỡ mẫu dùng được.**
+- Thước đo: **AUROC mức ô** (đề xuất [C-9](../../DECISIONS.md))
+
+| Mốc trên ma trận | Spearman mức ô | **AUROC mức ô** |
+|---|---:|---:|
+| ΔPAP tốt nhất | 0,3553 | **0,7692** |
+| **Trần nhãn** | 0,6989 | **0,9519** |
+| Dư địa | 0,3436 | **0,1827** |
+
+- **Dư địa 0,1827 lớn hơn bậc 2** (0,1617), trên nhãn **ít nhiễu hơn nhiều** (16,7% so với 75,9%). Đây là lý lẽ chính để theo D-025.
+- Gộp 19 thay thế lên mức vị trí làm Spearman tăng 0,3553 → **0,4130**, đúng như kỳ vọng nếu nhiễu mức ô bị triệt tiêu khi gộp. Nên ứng dụng trình bày **cả hai tầng**.
+- Vẫn cần xử lý score, mask ô không hợp lệ, và giữ **130/248 peptide trùng bộ quét** cùng một phía train/test.
+- Nếu dùng một phần bão hòa để train thì **phải chốt protocol mới** và giữ riêng phần test.
 
 ---
 
@@ -60,11 +77,14 @@ Ba con số tự đo, cả ba đều nói cùng một điều:
 
 | Phép đo | Kết quả | Nghĩa |
 |---|---|---|
-| `cnn2w7` so với `cnn2w1` | **+0,0032** Pearson | Trần của trục "thêm năng lực bắt motif" **đã do chính tác giả đo**, và nó rất thấp |
+| `cnn2w7` so với `cnn2w1`, **trên điểm đoạn** | **+0,0032** Pearson | Trên thang này, trục "thêm năng lực bắt motif" gần như cạn |
+| `cnn2w7` so với `cnn2w1`, **trên precision@3 residue** | **+0,1311** | ⚠ **Gấp ~41 lần.** Trần +0,0032 **không chuyển sang** nhiệm vụ mức residue — đo 14/10 |
 | Đổi phép gộp (trung bình → max) | 0,824 → **0,344** | Tín hiệu điểm khối **dàn đều**, không khu trú |
 | Entropy theo vị trí | 3,294 / 3,401 | Gần tối đa → không có vị trí nào trội hẳn |
 
 Nếu đặt đóng góp ở Pearson trên điểm đoạn, thì đóng góp tối đa khả dĩ là khoảng **+0,003**. Không ai gọi đó là đóng góp luận văn.
+
+> **Nhưng chú ý dòng thứ hai của bảng, thêm ngày 14/10.** Kết luận "đừng đặt đóng góp lên thang điểm đoạn" **vẫn đúng**, nhưng lý do đã đổi: không phải vì "ngữ cảnh không giúp được gì", mà vì **thang điểm đoạn không phải thang của đề tài**. Trên thang đúng, cùng thay đổi kiến trúc đó cho **+0,1311**.
 
 > **Nhưng phải nói kèm giới hạn:** phép đổi phép gộp dùng **trọng số đã huấn luyện cho gộp trung bình**, nên **không phải** so sánh công bằng với kiến trúc max pooling huấn luyện lại từ đầu. **Không được suy ra "kiến trúc khu trú sẽ thua"** hoặc "thang điểm khối đã bão hòa".
 
@@ -81,7 +101,7 @@ Sau khi chia theo cụm protein, tập test chỉ còn:
 | ≥ 80% | **271–322** |
 | ≥ 50% | **221–301** |
 
-Với n ≈ 250, macro theo peptide, câu hỏi là: **có phát hiện được một cải thiện precision@3 so với mốc 0,6045 không?**
+Với n ≈ 250, macro theo peptide, câu hỏi là: **có phát hiện được một cải thiện precision@3 so với mốc đã chọn không?**
 
 Nếu mô hình đạt 0,70 thì chênh 0,10 — có thể phát hiện được. Nếu đạt 0,63 thì chênh 0,025 — rất có thể lọt vào khoảng nhiễu và không chứng minh được gì.
 
@@ -97,6 +117,8 @@ Nếu mô hình đạt 0,70 thì chênh 0,10 — có thể phát hiện được
 > **Hệ quả thực hành:** dùng **split coverage 80%** (271–322 footprint, lực 0,92–0,94), **không** dùng cov50 (n = 221 chỉ cho lực 0,82). Khi có mô hình thật phải tính lại lực bằng độ lệch chuẩn của chính cặp đó. Nguồn: [full-data-audit mục 5](../../topics/degron-footprint/research/full-data-audit/README.md).
 >
 > Rủi ro số một của đề tài vì vậy **đã đổi** thành: nhãn mức residue chỉ lặp lại khoảng một nửa giữa hai lần đo (Jaccard 0,4965) — xem [bài 10 mục 6](10-data-up-close.md).
+
+> ⚠ **Nhưng phép tính lực trên chỉ áp cho bậc 2 (bộ quét).** Sau khi [D-025](../../DECISIONS.md#d-025) chuyển nguồn nhãn chính sang **bộ bão hòa**, cỡ mẫu là **91 peptide**, và **lực cho cỡ đó chưa được tính**. Đây là **việc chặn duy nhất** còn lại trước khi huấn luyện. Nếu không đủ lực thì hai đường ra: nới ngưỡng PSI WT lên 3,5 (141 peptide, phải biện minh) hoặc chấm ở **mức ô** (91 × ~500 ô) kèm xử lý phụ thuộc trong peptide.
 
 Điểm an ủi: footprint **không dồn vào vài protein** (trung vị 1/protein, tối đa 7, protein lớn nhất chiếm 0,267%). Nên tập test nhỏ nhưng không bị một protein chi phối.
 

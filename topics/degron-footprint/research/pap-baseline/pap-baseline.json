@@ -1,0 +1,154 @@
+{
+ "seed": 0,
+ "voutsinos_repo_commit": "9b3eafa6",
+ "A_voutsinos_holdout": {
+  "n_tiles": 15818,
+  "n_genes": 428,
+  "cnn2w1": {
+   "pearson_internal_only": 0.8239,
+   "pearson_full_cterm_all_tiles": 0.869
+  },
+  "cnn2w7": {
+   "pearson_internal_only": 0.825,
+   "pearson_full_cterm_all_tiles": 0.8722
+  },
+  "published": {
+   "internal_only": 0.82,
+   "full": 0.87
+  },
+  "previous_rerun_2026_10_11": {
+   "cnn2w1_internal_only": 0.8239,
+   "cnn2w1_full": 0.869,
+   "cnn2w7_full": 0.8722
+  }
+ },
+ "B_scanning_footprint": {
+  "n_shared_peptides": 3085,
+  "n_stop_mutants_scored_truncated": 0,
+  "labels_rep2": {
+   "n_peptides_scored": 2403,
+   "precision_at_3": {
+    "random": 0.1232,
+    "dPAP_cnn2w1": 0.2959,
+    "dPAP_cnn2w7": 0.427,
+    "composition_from_rep1": 0.4884,
+    "ceiling_rep1": 0.6514
+   },
+   "spearman_per_peptide_mean": {
+    "dPAP_cnn2w1": 0.4128,
+    "dPAP_cnn2w7": 0.4337
+   },
+   "paired": {
+    "dPAP_cnn2w1_minus_composition": {
+     "mean_diff": -0.1925,
+     "bootstrap95": [
+      -0.2043,
+      -0.181
+     ],
+     "wilcoxon_p": 1.89e-156
+    },
+    "dPAP_cnn2w1_minus_ceiling": {
+     "mean_diff": -0.3555,
+     "bootstrap95": [
+      -0.3677,
+      -0.343
+     ],
+     "wilcoxon_p": 0.0
+    },
+    "dPAP_cnn2w7_minus_composition": {
+     "mean_diff": -0.0615,
+     "bootstrap95": [
+      -0.073,
+      -0.049
+     ],
+     "wilcoxon_p": 6.32e-19
+    },
+    "dPAP_cnn2w7_minus_ceiling": {
+     "mean_diff": -0.2244,
+     "bootstrap95": [
+      -0.2361,
+      -0.2125
+     ],
+     "wilcoxon_p": 2.89e-207
+    }
+   },
+   "by_pap_train_overlap": {
+    "protein_in_pap_train": {
+     "n": 656,
+     "dPAP_cnn2w1": 0.3054,
+     "dPAP_cnn2w7": 0.4268
+    },
+    "protein_not_in_pap_train": {
+     "n": 1747,
+     "dPAP_cnn2w1": 0.2923,
+     "dPAP_cnn2w7": 0.427
+    }
+   }
+  },
+  "labels_mean_rep1_rep2": {
+   "n_peptides_scored": 2265,
+   "precision_at_3": {
+    "random": 0.1124,
+    "dPAP_cnn2w1": 0.2882,
+    "dPAP_cnn2w7": 0.4364
+   },
+   "spearman_per_peptide_mean": {
+    "dPAP_cnn2w1": 0.4528,
+    "dPAP_cnn2w7": 0.4747
+   },
+   "by_pap_train_overlap": {
+    "protein_in_pap_train": {
+     "n": 614,
+     "dPAP_cnn2w1": 0.2975,
+     "dPAP_cnn2w7": 0.437
+    },
+    "protein_not_in_pap_train": {
+     "n": 1651,
+     "dPAP_cnn2w1": 0.2847,
+     "dPAP_cnn2w7": 0.4361
+    }
+   }
+  }
+ },
+ "C_saturation_matrix": {
+  "n_peptides_with_sequence": 245,
+  "n_degron_peptides_wt_psi_le_3": 91,
+  "cell_level": {
+   "ceiling_half_a_vs_half_b_spearman": {
+    "mean": 0.6989,
+    "n": 91
+   },
+   "ceiling_half_a_scores_half_b_labels_auroc": {
+    "mean": 0.9519,
+    "n": 91
+   },
+   "dPAP_cnn2w1_spearman": {
+    "mean": 0.3553,
+    "n": 91
+   },
+   "dPAP_cnn2w1_auroc": {
+    "mean": 0.7692,
+    "n": 91
+   },
+   "dPAP_cnn2w7_spearman": {
+    "mean": 0.3527,
+    "n": 91
+   },
+   "dPAP_cnn2w7_auroc": {
+    "mean": 0.7646,
+    "n": 91
+   }
+  },
+  "position_level": {
+   "dPAP_cnn2w1_spearman": {
+    "mean": 0.413,
+    "n": 91
+   },
+   "dPAP_cnn2w7_spearman": {
+    "mean": 0.4067,
+    "n": 91
+   }
+  },
+  "note": "Nhãn ô = trung bình hai nửa (S1–S6, S7–S12), WT nội tại là trung vị các ô đồng nghĩa. Trần dùng nhãn một nửa nên thấp hơn trần thật của nhãn trung bình hai nửa."
+ }
+}

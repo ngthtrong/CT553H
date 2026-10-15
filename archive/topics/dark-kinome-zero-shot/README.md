@@ -1,6 +1,6 @@
 # Dự đoán liên kết kinase–phosphosite zero-shot cho dark kinome (DARKIN)
 
-> **Thẻ trạng thái nghiên cứu.** Vị trí của đề tài chỉ ghi ở [DECISIONS.md](../../DECISIONS.md). Cập nhật lần cuối: **12/10/2026** (mở lại để đào sâu; khảo sát gốc 10–11/10/2026).
+> **Thẻ trạng thái nghiên cứu.** Vị trí của đề tài chỉ ghi ở [DECISIONS.md](../../../DECISIONS.md). Cập nhật lần cuối: **12/10/2026** (mở lại để đào sâu; khảo sát gốc 10–11/10/2026).
 
 | | |
 |---|---|
@@ -23,7 +23,7 @@ Hướng ưu tiên trong [đánh giá 10/10](research/darkin-evaluation.md): ch�
 ## Rủi ro chính
 - Hướng đang **rất nóng**: DARKIN 2025, SAGEPhos (ICLR 2025), COMPASS-PTM (*Nat Commun* 2026), KinoPlex (*Nat Biotech* 2026), Prot2Token…
 - SOTA công khai theo trục kinase chỉ khoảng 0,19–0,24 AP. Spread giữa 4 split (~0,024) lớn hơn nhiều so với std giữa các seed.
-- Lại là dạng dự đoán mức site, đúng kiểu mà [D-017](../../DECISIONS.md#d-017) khuyên không bó vào.
+- Lại là dạng dự đoán mức site, đúng kiểu mà [D-017](../../../DECISIONS.md#d-017) khuyên không bó vào.
 
 ## Việc tiếp theo
 - Xác định xem RQ2 (suy luận hoạt tính kinase hạ nguồn, benchmarKIN) có đủ dữ liệu cho kinase ít chú giải không. Nếu không đủ thì hướng này khó vượt G2.

@@ -2,3 +2,5 @@ pandas>=2.0
 scikit-learn>=1.5
 sentence-transformers>=3.0
 # torch bản CPU: pip install torch --index-url https://download.pytorch.org/whl/cpu
+h5py>=3.14          # đọc trọng số PAP (Voutsinos 2026) trong research/pap-baseline/
+biopython>=1.85     # SASA Shrake–Rupley cho cấu trúc AlphaFold, research/architecture-check/

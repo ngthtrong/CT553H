@@ -1,6 +1,6 @@
 # Nhật ký đề tài `dark-kinome-zero-shot`
 
-> Mới nhất ở trên. Các mục dưới đây được tách nguyên văn từ nhật ký chung cũ (`docs/common/work-log.md`) ngày 12/10/2026. Câu chữ "chốt/quyết định" bên dưới là lịch sử; trạng thái hiện hành chỉ nằm ở [DECISIONS.md](../../DECISIONS.md).
+> Mới nhất ở trên. Các mục dưới đây được tách nguyên văn từ nhật ký chung cũ (`docs/common/work-log.md`) ngày 12/10/2026. Câu chữ "chốt/quyết định" bên dưới là lịch sử; trạng thái hiện hành chỉ nằm ở [DECISIONS.md](../../../DECISIONS.md).
 
 ---
 
@@ -21,7 +21,7 @@
 ## 10/10/2026 — đánh giá chi tiết dark kinome trên DARKIN; loại hướng sửa lỗi phần mềm
 
 - **Quyết định của sinh viên:** loại ý tưởng sửa lỗi phần mềm có kiểm chứng; yêu cầu báo cáo chi tiết dark kinome. Chưa chốt DARKIN, chưa xác nhận bỏ SIRT; đánh giá bỏ ràng buộc thời gian/lĩnh vực/GVHD/tài nguyên như yêu cầu trước.
-- Thêm [báo cáo đánh giá](research/darkin-evaluation.md), [ghi chú và script audit](research/darkin-audit/README.md); thêm cảnh báo vào [khuyến nghị ban đầu](../../archive/surveys/criteria-only-recommendation.md) và cập nhật mục lục ứng viên.
+- Thêm [báo cáo đánh giá](research/darkin-evaluation.md), [ghi chú và script audit](research/darkin-audit/README.md); thêm cảnh báo vào [khuyến nghị ban đầu](../../surveys/criteria-only-recommendation.md) và cập nhật mục lục ứng viên.
 - **Tự kiểm checkout DARKIN pin commit:** split ZSL mặc định 8.559/1.484/1.414 site, 308/46/38 kinase, không trùng kinase; train–test vẫn trùng 462 site keys và 923 dòng test thuộc protein đã thấy. Năm split có min nhãn/kinase test 12–15; phát hiện ngoại lệ residue ngoài S/T/Y cần truy vết. Có SHA/count trong audit JSON, chưa alignment độc lập.
 - **Đối thủ/phản biện:** DARKIN gốc có fine-tuning; Pekey 2025 đã có DARKIN-Interact/LoRA/atlas; COMPASS-PTM 2026 báo mAP 0,2946 trên DARKIN nhưng cần audit chiều AP; benchmarKIN đã thử thêm predicted relationships và ghi nhận giảm hiệu năng. Không giữ khẳng định “kiểm chứng hạ nguồn chưa ai làm” hoặc “đạt cả năm tiêu chí không cần cược”.
 - **Khuyến nghị nghiên cứu:** cân nhắc selection/weighting cạnh để bổ sung thư viện có kiểm soát nhiễu, hoặc nhãn thiếu/khái quát hai phía. XAI cần fidelity riêng; conformal chưa có cơ sở hứa 90% trên kinase mới.

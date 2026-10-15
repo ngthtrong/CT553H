@@ -12,7 +12,8 @@
 |---|---|---|
 | [Voutsinos 2026](voutsinos-2026.md) | Bộ dữ liệu 1 + **baseline PAP** mà đề tài phải vượt | [TỰ KIỂM] tái lập PAP, khớp cả hai số công bố |
 | [Zhang 2023](zhang-2023.md) | **Bộ dữ liệu 2 và 3 — nguồn nhãn chính** | [TỰ KIỂM] tải, checksum, tự đếm toàn bộ |
-| [Larsen 2025](larsen-2025.md) | Bộ dữ liệu thứ tư (chưa tải); **đã thu hẹp tính mới** của đề tài | [ĐÃ ĐỌC] toàn văn |
+| [Larsen 2025](larsen-2025.md) | Bộ dữ liệu thứ tư (chưa tải); **đã thu hẹp tính mới** của đề tài — kể cả hiện tượng ΔPAP đổi dấu | [ĐÃ ĐỌC] toàn văn |
+| [Schulze 2026](schulze-2026.md) | **Baseline bắt buộc** cho nhãn độ dồi dào (ma trận theo lớp phơi lộ + ThermoMPNN); tự nêu khoảng trống neo-degron | [ĐÃ ĐỌC] toàn văn |
 | [MaveDB](mavedb.md) | Bộ dữ liệu 4 — kiểm trên protein nguyên vẹn | [TỰ KIỂM] đã đếm qua API |
 
 ## Nhóm 2 — đối thủ trực tiếp, chiếm cùng khung ứng dụng

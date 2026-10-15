@@ -70,12 +70,12 @@ Không phải degron nào cũng như nhau. Một degron **mạnh** làm protein 
 
 Ghi sẵn ở đây để đừng hứa quá khi báo cáo:
 
-| Không làm | Vì sao |
-|---|---|
-| Không dự đoán protein có thật sự bị phá nhanh trong một tế bào cụ thể | Còn phụ thuộc E3 nào đang được biểu hiện, chaperone, protein nằm ở đâu trong tế bào |
-| **Không dự đoán E3 nào nhận ra degron** | Đếm từ dữ liệu thô: chỉ có **10 E3** có nhãn, và **6 trong số đó chỉ có đúng 1 peptide**. Không đủ để huấn luyện. Xem [bài 4](04-datasets.md) |
-| Không thay thế mô hình dự đoán độc tính biến thể | Chỉ bổ sung cơ chế |
-| Nhãn là peptide **tách rời**, không phải protein nguyên vẹn | Thí nghiệm cắt protein thành đoạn ngắn rồi đo riêng từng đoạn — xem [bài 2](02-how-degrons-are-measured.md) |
+| Không làm                                                                         | Vì sao                                                                                                                                                                            |
+| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Không dự đoán protein có thật sự bị phá nhanh trong một tế bào cụ thể | Còn phụ thuộc E3 nào đang được biểu hiện, chaperone, protein nằm ở đâu trong tế bào                                                                                |
+| **Không dự đoán E3 nào nhận ra degron**                                 | Đếm từ dữ liệu thô: chỉ có **10 E3** có nhãn, và **6 trong số đó chỉ có đúng 1 peptide**. Không đủ để huấn luyện. Xem [bài 4](04-datasets.md) |
+| Không thay thế mô hình dự đoán độc tính biến thể                        | Chỉ bổ sung cơ chế                                                                                                                                                             |
+| Nhãn là peptide **tách rời**, không phải protein nguyên vẹn           | Thí nghiệm cắt protein thành đoạn ngắn rồi đo riêng từng đoạn — xem [bài 2](02-how-degrons-are-measured.md)                                                          |
 
 Cái cuối là một giới hạn thật và phải nói ra trong luận văn: một đoạn peptide bị cắt rời có thể hành xử khác với khi nó còn nằm trong protein nguyên vẹn, nơi nó có thể bị gập vào bên trong và không lộ ra cho E3 thấy.
 

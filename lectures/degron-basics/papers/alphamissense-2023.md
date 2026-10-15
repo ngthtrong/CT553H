@@ -34,7 +34,7 @@ Câu trả lời nằm ở **loại câu hỏi**, không ở chất lượng mô
 
 Cùng nhóm bài toán này còn có **ESM1b** của Brandes 2023 (*Nature Genetics*), đã tính sẵn điểm cho **toàn bộ ~450 triệu biến thể missense** của người, công khai.
 
-Điều đó là lý do một ứng viên đề tài khác của repo — [budgeted-plm-variant-scoring](../../../topics/budgeted-plm-variant-scoring/README.md) — gặp vấn đề về lý do nghiên cứu: với biến thể đơn, bảng điểm đã có sẵn. Degron **không** gặp vấn đề đó, vì nó trả lời câu hỏi khác (cơ chế mức residue trên nhãn độ bền thực nghiệm), và vì nhãn của nó là ΔPSI đo được, không phải điểm độc tính.
+Điều đó là lý do một ứng viên đề tài khác của repo — [budgeted-plm-variant-scoring](../../../archive/topics/budgeted-plm-variant-scoring/README.md) — gặp vấn đề về lý do nghiên cứu: với biến thể đơn, bảng điểm đã có sẵn. Degron **không** gặp vấn đề đó, vì nó trả lời câu hỏi khác (cơ chế mức residue trên nhãn độ bền thực nghiệm), và vì nhãn của nó là ΔPSI đo được, không phải điểm độc tính.
 
 ---
 

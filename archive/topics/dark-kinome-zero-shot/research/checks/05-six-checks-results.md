@@ -12,7 +12,7 @@ Quy ước nhãn: **[ĐO]** tự chạy/tự đếm trong phiên này · **[NGU�
 | **Không cần quan tâm đề tài có liên quan nghiên cứu hiện tại của GVHD hay không** | **6.6 mất mục đích hoàn toàn** → đã bỏ. Ca nghiên cứu sirtuin tồn tại *chỉ* để nối sang SirtSAGE. Cũng làm **giảm** lợi thế của DARKIN so với các ứng viên khác (xem mục 7) |
 | Thầy chưa có bài toán mở trong nhóm | Không nhận được bài toán sẵn → phải tự đề xuất vào một hướng đông đúc |
 | Không nên chấp nhận kết quả âm | Giữ nguyên điều kiện bắt buộc G2 |
-| Phạm vi website không quan trọng | ⚠️ Xung đột với [biên bản lần 1, mục 4](../../../../project/meetings/2026-10-02-session-01/minutes.md): GVHD nói tiêu chí 5 là **"không thể thiếu"**. Giữ website ở phạm vi tối thiểu, không bỏ |
+| Phạm vi website không quan trọng | ⚠️ Xung đột với [biên bản lần 1, mục 4](../../../../../project/meetings/2026-10-02-session-01/minutes.md): GVHD nói tiêu chí 5 là **"không thể thiếu"**. Giữ website ở phạm vi tối thiểu, không bỏ |
 
 ## 6.1 — Trục đo của mAP 0,2946 (COMPASS-PTM): **ĐÃ CHỐT, cross-axis**
 
@@ -69,7 +69,7 @@ Ba hệ quả:
 
 **[NGUỒN]** *"Kinases that are associated with fewer than **15** phosphosites are defined as train kinases"*; ngưỡng cho validation là *"at least **10** phosphosites per kinase"*; kinase ≥ 90% sequence identity bị gom cùng một tập.
 
-→ Sửa con số "< 10 site → train" trong [nhật ký 10/10](../../../../journal/README.md). Đúng là **< 15**. Chiều thì không đổi: kinase **giàu** chú giải nằm ở val/test.
+→ Sửa con số "< 10 site → train" trong [nhật ký 10/10](../../../../../journal/README.md). Đúng là **< 15**. Chiều thì không đổi: kinase **giàu** chú giải nằm ở val/test.
 
 ## 6.3 — Ép substrate-protein-disjoint còn lại bao nhiêu: **ĐÃ CHỐT, [ĐO]**
 

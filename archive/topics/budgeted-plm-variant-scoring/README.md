@@ -1,6 +1,6 @@
 # Sàng lọc biến thể protein nhiều tầng theo ngân sách tính toán, dùng PLM
 
-> **Thẻ trạng thái nghiên cứu.** Vị trí của đề tài chỉ ghi ở [DECISIONS.md](../../DECISIONS.md). Cập nhật lần cuối: **12/10/2026** (mới mở hồ sơ).
+> **Thẻ trạng thái nghiên cứu.** Vị trí của đề tài chỉ ghi ở [DECISIONS.md](../../../DECISIONS.md). Cập nhật lần cuối: **12/10/2026** (mới mở hồ sơ).
 
 | | |
 |---|---|
@@ -30,7 +30,7 @@ Cho một protein và một thư viện biến thể, dùng PLM huấn luyện s
 - **Lý do cần nghiên cứu yếu với biến thể đơn.** Toàn bộ ~450 triệu biến thể missense của người đã được tính sẵn và công khai (ESM1b — Brandes *Nat Genet* 2023; AlphaMissense; VespaG). Không được trình bày đề tài như thể việc chấm biến thể đơn còn đắt.
 - **Ba hướng B, C và phần "mô hình nhỏ" đã có tiền lệ gần trùng:** ESME (*iScience* 2025), Shao 2026 (bioRxiv), OFS (2024), VespaG (2024), VESM (*Nat Methods* 2026).
 - **Chất lượng đạt đỉnh quanh 650M.** Ba nguồn độc lập đều cho thấy lên 3B/15B gần như không tăng chất lượng. Nếu đúng thì tầng 2 của cascade vô nghĩa.
-- **Không đáp ứng kỳ vọng "kiến trúc chưa ai dùng"** của GVHD nêu ngày 11/10 ([people.md](../../project/people.md)) — cùng rủi ro với [C-3](../../DECISIONS.md).
+- **Không đáp ứng kỳ vọng "kiến trúc chưa ai dùng"** của GVHD nêu ngày 11/10 ([people.md](../../../project/people.md)) — cùng rủi ro với [C-3](../../../DECISIONS.md).
 - Khớp GVHD chỉ ở mức trung bình: đúng protein + PLM, nhưng danh mục GVHD là phân loại có giám sát, không có bài nào về dự đoán hiệu ứng đột biến.
 - Quy ước ngôn từ: **không nói "chưa ai làm cascade theo ngân sách"** — mới tra 2 lượt qua tóm tắt.
 

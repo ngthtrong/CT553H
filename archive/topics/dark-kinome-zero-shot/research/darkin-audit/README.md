@@ -12,9 +12,9 @@ Ngày kiểm: **10/10/2026**. Báo cáo: [dark-kinome-darkin-evaluation.md](../d
 ```bash
 git clone https://github.com/tastanlab/darkin.git /tmp/ct553h-darkin-review
 git -C /tmp/ct553h-darkin-review checkout 498de014951f962f77ca1b96340fead3cc24c450
-python3 topics/dark-kinome-zero-shot/research/darkin-audit/audit_data.py \
+python3 archive/topics/dark-kinome-zero-shot/research/darkin-audit/audit_data.py \
   --checkout /tmp/ct553h-darkin-review \
-  --output topics/dark-kinome-zero-shot/research/darkin-audit/audit-results.json
+  --output archive/topics/dark-kinome-zero-shot/research/darkin-audit/audit-results.json
 ```
 
 Chạy từ root CT553H. Lệnh checkout chỉ dùng với clone riêng như trên. Không pin theo nhánh mặc định vì có thể drift. Script ghi commit thực tế; người tái lập cần đối chiếu commit/SHA đã công bố.

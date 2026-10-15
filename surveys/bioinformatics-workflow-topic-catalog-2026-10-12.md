@@ -6,7 +6,7 @@ Bản này bổ sung [khảo sát 14 ứng viên](bioinformatics-tool-layer-cand
 
 ## 1. Cách đọc và căn cứ đánh giá
 
-Ưu tiên yêu cầu mới: **vấn đề có ý nghĩa → người dùng/quy trình → phần cải tiến → phép đo → ứng dụng**. Có thể dùng ML, tối ưu hóa, thống kê hoặc quy tắc; không bắt buộc xây thêm một bộ dự đoán residue/peptide. Tham khảo [chuyên môn GVHD](../project/advisor-research.md), [năm tiêu chí](../project/meetings/2026-10-02-session-01/minutes.md) và [G1/G2/G3](../topics/dark-kinome-zero-shot/research/main-topic-decision-2026-10-10.md).
+Ưu tiên yêu cầu mới: **vấn đề có ý nghĩa → người dùng/quy trình → phần cải tiến → phép đo → ứng dụng**. Có thể dùng ML, tối ưu hóa, thống kê hoặc quy tắc; không bắt buộc xây thêm một bộ dự đoán residue/peptide. Tham khảo [chuyên môn GVHD](../project/advisor-research.md), [năm tiêu chí](../project/meetings/2026-10-02-session-01/minutes.md) và [G1/G2/G3](../archive/topics/dark-kinome-zero-shot/research/main-topic-decision-2026-10-10.md).
 
 Mọi đoạn **“đóng góp”** dưới đây mang nghĩa **[ĐỀ XUẤT]**. Sự tồn tại và chức năng của tiền lệ có nguồn sơ cấp; phần chưa được tiền lệ giải quyết là **giả thuyết khoảng trống**, chưa phải kết luận “chưa ai làm”. Không suy ra một lĩnh vực hết vấn đề chỉ vì đã có benchmark lớn.
 

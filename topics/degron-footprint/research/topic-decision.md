@@ -116,7 +116,7 @@ Thước đo chính **không phải** Pearson trên thang điểm khối. Ba b�
 
 ### 7.1 Ba cổng bắt buộc G1/G2/G3, áp lại cho đề tài này
 
-Ba điều kiện này đến từ [báo cáo chốt đề tài chính](../../dark-kinome-zero-shot/research/main-topic-decision-2026-10-10.md). Lúc chốt degron ban đầu chúng chưa được áp; bảng dưới là lần áp lại sau đó. G2 vẫn cần kết quả mô hình footprint trên peptide chưa gặp mới xác lập được.
+Ba điều kiện này đến từ [báo cáo chốt đề tài chính](../../../archive/topics/dark-kinome-zero-shot/research/main-topic-decision-2026-10-10.md). Lúc chốt degron ban đầu chúng chưa được áp; bảng dưới là lần áp lại sau đó. G2 vẫn cần kết quả mô hình footprint trên peptide chưa gặp mới xác lập được.
 
 | Cổng | Kết quả | Căn cứ |
 |---|---|---|

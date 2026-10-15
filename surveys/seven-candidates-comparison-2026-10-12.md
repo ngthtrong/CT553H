@@ -15,12 +15,12 @@ Trượt một cổng là loại, không bù bằng điểm cao ở chỗ khác 
 | Ứng viên | G1 nhãn độc lập | G2 đóng góp dương | G3 ứng dụng |
 |---|---|---|---|
 | [degron-footprint](../topics/degron-footprint/README.md) | **Đạt, mạnh nhất repo** — toàn bộ nhãn thực nghiệm | **Chưa xác lập** — baseline thành phần amino acid đã đạt precision@3 0,6045, trần 0,7792, dư địa 0,1747 | **Yếu nhất** |
-| [dark-kinome-zero-shot](../topics/dark-kinome-zero-shot/README.md) | Đạt — nhãn chú giải từ CSDL | **Yếu** — trụ tính mới đã sụp, cả 3 trục phương pháp đều có tiền lệ | Khả thi |
-| [xai-fidelity-benchmark](../topics/xai-fidelity-benchmark/README.md) (A2) | Khả quan, chưa audit | **Chưa rõ** — có thể ra kết quả âm | Khả thi |
-| [structure-sequence-leakage-audit](../topics/structure-sequence-leakage-audit/README.md) (A3) | Khả quan, chưa audit | **Rủi ro trung bình–cao** — kết quả âm | Làm được, không tự nhiên |
-| [plm-calibration-audit](../topics/plm-calibration-audit/README.md) (A4) | Khả quan, chưa audit | **Khả quan nhất nhóm A** | **Tự nhiên** |
-| **[budgeted-plm-variant-scoring](../topics/budgeted-plm-variant-scoring/README.md)** (LC1, mới) | **Đạt** — DMS thực nghiệm, chỉ dùng để đánh giá | **Chưa rõ, rủi ro cao** — phần tốc độ đã có tiền lệ; phần cascade phụ thuộc chênh lệch rẻ–đắt mà bằng chứng nói là nhỏ | **Tốt** |
-| **[scalable-metagenomic-binning](../topics/scalable-metagenomic-binning/README.md)** (LC2, mới) | **Đạt** — CAMI II có ground truth theo genome | **Khả quan** — thời gian và RAM là đại lượng dương, dễ đo, chỗ cải thiện rõ | Trung bình |
+| [dark-kinome-zero-shot](../archive/topics/dark-kinome-zero-shot/README.md) | Đạt — nhãn chú giải từ CSDL | **Yếu** — trụ tính mới đã sụp, cả 3 trục phương pháp đều có tiền lệ | Khả thi |
+| [xai-fidelity-benchmark](../archive/topics/xai-fidelity-benchmark/README.md) (A2) | Khả quan, chưa audit | **Chưa rõ** — có thể ra kết quả âm | Khả thi |
+| [structure-sequence-leakage-audit](../archive/topics/structure-sequence-leakage-audit/README.md) (A3) | Khả quan, chưa audit | **Rủi ro trung bình–cao** — kết quả âm | Làm được, không tự nhiên |
+| [plm-calibration-audit](../archive/topics/plm-calibration-audit/README.md) (A4) | Khả quan, chưa audit | **Khả quan nhất nhóm A** | **Tự nhiên** |
+| **[budgeted-plm-variant-scoring](../archive/topics/budgeted-plm-variant-scoring/README.md)** (LC1, mới) | **Đạt** — DMS thực nghiệm, chỉ dùng để đánh giá | **Chưa rõ, rủi ro cao** — phần tốc độ đã có tiền lệ; phần cascade phụ thuộc chênh lệch rẻ–đắt mà bằng chứng nói là nhỏ | **Tốt** |
+| **[scalable-metagenomic-binning](../archive/topics/scalable-metagenomic-binning/README.md)** (LC2, mới) | **Đạt** — CAMI II có ground truth theo genome | **Khả quan** — thời gian và RAM là đại lượng dương, dễ đo, chỗ cải thiện rõ | Trung bình |
 
 ## 2. Hai trục quyết định ngoài G1/G2/G3
 

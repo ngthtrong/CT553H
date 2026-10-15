@@ -1,8 +1,8 @@
 # Chốt đề tài chính: khuyến nghị và cơ sở
 
-> **Lịch sử quyết định:** các câu "chốt / quyết định / khuyến nghị" trong file này phản ánh thời điểm viết, có thể đã bị thay. Trạng thái hiện hành chỉ nằm ở [DECISIONS.md](../../../DECISIONS.md).
+> **Lịch sử quyết định:** các câu "chốt / quyết định / khuyến nghị" trong file này phản ánh thời điểm viết, có thể đã bị thay. Trạng thái hiện hành chỉ nằm ở [DECISIONS.md](../../../../DECISIONS.md).
 
-> **Bản lịch sử 10/10/2026.** Trạng thái hiện hành chỉ ghi tại [DECISIONS.md](../../../DECISIONS.md#d-021). Bản này không còn chọn đề tài chính.
+> **Bản lịch sử 10/10/2026.** Trạng thái hiện hành chỉ ghi tại [DECISIONS.md](../../../../DECISIONS.md#d-021). Bản này không còn chọn đề tài chính.
 
 Ngày: **10/10/2026**. Trạng thái: **khuyến nghị có điều kiện, chưa phải đề tài đã duyệt**. Mốc chặn: **tuần 6 báo cáo lại đề tài với GVHD** (hiện tuần 4).
 
@@ -14,7 +14,7 @@ Ngày: **10/10/2026**. Trạng thái: **khuyến nghị có điều kiện, chư
 
 | Thông tin                                                                                                       | Nguồn                          | Hệ quả trực tiếp                                                                                                                                                                                                                                                                                                      |
 | ---------------------------------------------------------------------------------------------------------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **GVHD không chấp nhận kết quả âm làm đóng góp chính** (sinh viên đánh giá là rủi ro cao) | Sinh viên trả lời 10/10/2026 | **Loại hướng sirtuin in-vitro** khỏi vị trí đề tài chính. Phán quyết của [khảo sát sâu sirtuin](../../../archive/topics/sirtuin-substrate/sirtuin-substrate-deep-research.md) là THU HẸP và *đổi lời hứa sang "một phép đo có kiểm soát về mức độ KHÔNG chuyển được của nhãn"* — đó đúng là một kết quả âm |
+| **GVHD không chấp nhận kết quả âm làm đóng góp chính** (sinh viên đánh giá là rủi ro cao) | Sinh viên trả lời 10/10/2026 | **Loại hướng sirtuin in-vitro** khỏi vị trí đề tài chính. Phán quyết của [khảo sát sâu sirtuin](../../sirtuin-substrate/sirtuin-substrate-deep-research.md) là THU HẸP và *đổi lời hứa sang "một phép đo có kiểm soát về mức độ KHÔNG chuyển được của nhãn"* — đó đúng là một kết quả âm |
 | **Có GPU ổn định hơn Colab/Kaggle miễn phí**                                                        | Sinh viên trả lời 10/10/2026 | Mở lại fine-tuning và LoRA. Gỡ đúng ràng buộc mà[đính chính số 9](darkin-evaluation.md) của báo cáo DARKIN đã nói là *không* quyết định novelty nhưng có quyết định phạm vi thực nghiệm                                                                                      |
 
 Hai câu trả lời này thu hẹp cuộc so sánh về **hai ứng viên**, và cần nói rõ: chúng **không** phải là lời GVHD. Mục 7 còn ghi cả câu cần hỏi lại GVHD.
@@ -37,7 +37,7 @@ Dự phòng này **dùng chung toàn bộ hạ tầng** với đề tài chính:
 
 ## 2. Tiêu chí, trọng số và điều kiện bắt buộc
 
-Trọng số dưới đây do tôi đặt, phản ánh hai câu trả lời ở mục 0; GVHD **chưa** công bố trọng số nào ([biên bản lần 1, mục 4](../../../project/meetings/2026-10-02-session-01/minutes.md) ghi rõ "càng đạt nhiều tiêu chí càng tốt" và tiêu chí 5 là không thể thiếu).
+Trọng số dưới đây do tôi đặt, phản ánh hai câu trả lời ở mục 0; GVHD **chưa** công bố trọng số nào ([biên bản lần 1, mục 4](../../../../project/meetings/2026-10-02-session-01/minutes.md) ghi rõ "càng đạt nhiều tiêu chí càng tốt" và tiêu chí 5 là không thể thiếu).
 
 **Ba điều kiện bắt buộc — trượt là loại, không bù bằng điểm cao ở chỗ khác:**
 
@@ -52,7 +52,7 @@ Trọng số dưới đây do tôi đặt, phản ánh hai câu trả lời ở 
 | Khả năng có đóng góp dương đo được (tiêu chí 2–3 của GVHD) |        25% | Cao nhất vì G2                                                                                                |
 | Dữ liệu và nhãn hợp lệ, cách đánh giá đứng được             |        20% | Quyết định đề tài có đo được gì không                                                              |
 | Khớp GVHD: lĩnh vực, phương pháp, năm tiêu chí                    |        20% | Người duyệt đề tài                                                                                        |
-| Khả thi 8–9 tuần, 1 GPU, kèm website                                   |        15% | [Biên bản, mục 5](../../../project/meetings/2026-10-02-session-01/minutes.md)                                                        |
+| Khả thi 8–9 tuần, 1 GPU, kèm website                                   |        15% | [Biên bản, mục 5](../../../../project/meetings/2026-10-02-session-01/minutes.md)                                                        |
 | Tính mới và mức độ đông đúc của hướng                         |        10% | Thấp**không** vì ít quan trọng mà vì cả bốn ứng viên đều đã có tiền lệ dày; xem mục 4 |
 | Rủi ro rò rỉ và tái lập                                              |         5% | Đã có công cụ kiểm soát                                                                                  |
 | Tận dụng việc đã có                                                  |         5% | Cố ý để thấp, tránh chi phí đã bỏ ra chi phối                                                        |
@@ -76,7 +76,7 @@ Trọng số dưới đây do tôi đặt, phản ánh hai câu trả lời ở 
 
 ### 3.1 Vì sao B trượt G1 — và đây là trở ngại mang tính quyết định
 
-`archive/topics/tme-senescence-scrnaseq/code/preprocessing/README.md` tự ghi, ở [dòng 97](../../../archive/topics/tme-senescence-scrnaseq/code/preprocessing/README.md):
+`archive/topics/tme-senescence-scrnaseq/code/preprocessing/README.md` tự ghi, ở [dòng 97](../../tme-senescence-scrnaseq/code/preprocessing/README.md):
 
 > Điểm SenMayo là **điểm biểu hiện của một chữ ký gene, không phải nhãn thực nghiệm**. Senescence không có chuẩn vàng ở mức tế bào trong mô, nên mọi mô hình có giám sát huấn luyện trên nhãn dẫn từ điểm này **đang học lại chính bộ chấm điểm đó**.
 
@@ -86,7 +86,7 @@ Dataset lớn hơn (GSE131907) có thể sửa điều kiện số bệnh nhân,
 
 ### 3.2 Vì sao C trượt G2
 
-[Khảo sát sâu sirtuin](../../../archive/topics/sirtuin-substrate/sirtuin-substrate-deep-research.md) đã đo hai lần, độc lập nhau, và cả hai lần đều cho cùng kết luận: nhãn mảng peptide in vitro gần như không chuyển được vào tế bào — MCC **+0,047…+0,080** (Sol 2012, n = 1.417) và **−0,007** trên tập chồng lấn chặt; độ giàu **1,17×, p = 0,291** trên 103 vị trí curated giao với mảng Rauh. Thêm vào đó, **Deep-PLA (2020) đã phủ SIRT1, 2, 3, 6, 7 ở mức residue**, tức phần đáng làm nhất đã có tiền lệ.
+[Khảo sát sâu sirtuin](../../sirtuin-substrate/sirtuin-substrate-deep-research.md) đã đo hai lần, độc lập nhau, và cả hai lần đều cho cùng kết luận: nhãn mảng peptide in vitro gần như không chuyển được vào tế bào — MCC **+0,047…+0,080** (Sol 2012, n = 1.417) và **−0,007** trên tập chồng lấn chặt; độ giàu **1,17×, p = 0,291** trên 103 vị trí curated giao với mảng Rauh. Thêm vào đó, **Deep-PLA (2020) đã phủ SIRT1, 2, 3, 6, 7 ở mức residue**, tức phần đáng làm nhất đã có tiền lệ.
 
 Đây là công việc tốt và bằng chứng vững. Nhưng đóng góp còn lại **là một kết quả âm**, và theo mục 0 thì đó là rủi ro cao. Giữ lại làm nguồn ca nghiên cứu, xem mục 5.4.
 
@@ -125,16 +125,16 @@ Ba câu hỏi nghiên cứu:
 | Tiêu chí                             | Đóng góp dự kiến                                                                                                                                                                                                                                                                                                                                      | Mức tin cậy                            |
 | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
 | **1. Tính mới**                | ~~Trục site là trục ứng dụng cần nhưng ít được báo cáo; chưa bài nào báo cáo nhất quán cả hai trục trên cả bốn split~~ → **ĐÃ RÚT 11/10/2026.** **Table 4 của chính bài DARKIN đã báo cáo cả hai trục trên cả bốn split** (kinase AP 0,1531–0,1800 và Phospho-site AP 0,2747–0,3482), cộng Family AP, Group AP, Masked Group AP và hit@k. Xem [kết quả phép kiểm 6.2c](checks/05-six-checks-results.md). Còn lại: **RQ2** (phân rã AP theo ba tầng substrate) là khoảng trống thật — Fig. 4 chỉ **đếm** site, không đo AP theo tầng | **Đã sụp trụ chính.** Xem mục 6 (đã chạy) |
-| **2. Cải tiến phương pháp** | Bộ mã hóa**đa cửa sổ** trên embedding PLM cho bài toán theo cặp, cộng mục tiêu xếp hạng theo trục site. Đúng ví dụ GVHD nêu ("CNN sang mCNN hoặc tiếp tục cải tiến mCNN") và đúng nhánh dày nhất trong [danh mục của thầy](../../../project/advisor-research.md)                                                                | Khá, nếu kiểm 6.5 đạt               |
+| **2. Cải tiến phương pháp** | Bộ mã hóa**đa cửa sổ** trên embedding PLM cho bài toán theo cặp, cộng mục tiêu xếp hạng theo trục site. Đúng ví dụ GVHD nêu ("CNN sang mCNN hoặc tiếp tục cải tiến mCNN") và đúng nhánh dày nhất trong [danh mục của thầy](../../../../project/advisor-research.md)                                                                | Khá, nếu kiểm 6.5 đạt               |
 | **3. Phương pháp mới**       | PLM thay cho đặc trưng thủ công — đúng ví dụ GVHD nêu (PSSM → PLM)                                                                                                                                                                                                                                                                             | Khá                                     |
 | **4. XAI**                       | Attribution trên cửa sổ peptide và miền kinase,**kiểm fidelity riêng** (occlusion, randomization theo [Adebayo 2018](https://papers.nips.cc/paper/2018/hash/294a8ed24b1ad22ec2e7efea049b8737-Abstract.html)) và đối chiếu motif atlas **trên phần không dùng để train**. GVHD đã có tiền lệ XAI: BERT-Promoter dùng SHAP | Khá                                     |
 | **5. Ứng dụng/website**        | Hai luồng ở mục 5.5                                                                                                                                                                                                                                                                                                                                     | Đạt, nếu giữ phạm vi ở mục 5.5    |
 
 ### 5.3 Vì sao khớp GVHD — và chỗ phải trung thực
 
-**Khớp về phương pháp, rất rõ.** Đây là bài toán **mức residue trên trình tự protein**, đúng dạng với nhánh dày nhất trong danh mục GVHD (ATP-binding sites, msCNN-PLM-FAD, mCNN-GenEfflux, MFPS_CNN). GVHD **chấp nhận đầu vào không phải trình tự** ([biên bản, mục 1, bổ sung 07/10](../../../project/meetings/2026-10-02-session-01/minutes.md)), nhưng cũng chính biên bản đó ghi: thang đóng góp cho đầu vào **không** phải trình tự là phần sinh viên phải tự lập luận, vì hai luận văn thầy đã hướng dẫn đều là bài toán trên trình tự. Đề tài này **không phải chịu gánh nặng đó** — đó là một lợi thế thật của A so với B.
+**Khớp về phương pháp, rất rõ.** Đây là bài toán **mức residue trên trình tự protein**, đúng dạng với nhánh dày nhất trong danh mục GVHD (ATP-binding sites, msCNN-PLM-FAD, mCNN-GenEfflux, MFPS_CNN). GVHD **chấp nhận đầu vào không phải trình tự** ([biên bản, mục 1, bổ sung 07/10](../../../../project/meetings/2026-10-02-session-01/minutes.md)), nhưng cũng chính biên bản đó ghi: thang đóng góp cho đầu vào **không** phải trình tự là phần sinh viên phải tự lập luận, vì hai luận văn thầy đã hướng dẫn đều là bài toán trên trình tự. Đề tài này **không phải chịu gánh nặng đó** — đó là một lợi thế thật của A so với B.
 
-**Khớp về lĩnh vực: phải phát biểu cẩn thận.** Danh mục GVHD **không có công trình nào về cancer** ([advisor/README.md, mục 3](../../../project/advisor-research.md)); aging có điểm neo ở SirtSAGE. Khảo sát [04](checks/04-dark-kinome-cancer-aging-framing.md) cho kết quả rõ:
+**Khớp về lĩnh vực: phải phát biểu cẩn thận.** Danh mục GVHD **không có công trình nào về cancer** ([advisor/README.md, mục 3](../../../../project/advisor-research.md)); aging có điểm neo ở SirtSAGE. Khảo sát [04](checks/04-dark-kinome-cancer-aging-framing.md) cho kết quả rõ:
 
 - **Khung dark kinome mạnh và định lượng được.** NIH IDG đứng sau; **151/634 ≈ 23,8% kinase người là understudied** (Essegian et al., *Cell Reports Medicine* 2020, [PMC7659504](https://pmc.ncbi.nlm.nih.gov/articles/PMC7659504/)); độ lệch chú ý: **EGFR ~90.000 bài so với HIPK4 9 bài**.
 - **Liên hệ cancer: thật, nhưng ở mức gene.** Essegian 2020 trên 17 ung thư solid TCGA: biểu hiện của understudied kinase **tiên lượng kết cục xấu**; PKMYT1 overexpressed ở 17/20 ung thư. **Chưa** có bằng chứng nối dự đoán cặp kinase–site với kết cục lâm sàng.
@@ -197,7 +197,7 @@ Phải phân biệt rõ trên giao diện: liên kết **curated** / **dự đo�
 
 | Rủi ro                                                                                                                           | Dấu hiệu nhận biết                                                            | Xử lý                                                                                                                                                                                                                                                                                             |
 | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Tiêu chí 1 không đủ với GVHD** — hướng đông đúc (Pekey 2025, COMPASS-PTM 2026, KinoPlex 2026, SAGEPhos 2025) | GVHD hỏi "khác gì mấy bài kia" mà không trả lời được bằng một bảng | **Rủi ro số một.** Chuẩn bị sẵn **bảng khác biệt theo nhóm phương pháp** đúng format [mục 3 của biên bản](../../../project/meetings/2026-10-02-session-01/minutes.md); dựa novelty vào **trục site + phân rã ba tầng + kiểm rò rỉ corpus**, không dựa vào "mô hình mới" |
+| **Tiêu chí 1 không đủ với GVHD** — hướng đông đúc (Pekey 2025, COMPASS-PTM 2026, KinoPlex 2026, SAGEPhos 2025) | GVHD hỏi "khác gì mấy bài kia" mà không trả lời được bằng một bảng | **Rủi ro số một.** Chuẩn bị sẵn **bảng khác biệt theo nhóm phương pháp** đúng format [mục 3 của biên bản](../../../../project/meetings/2026-10-02-session-01/minutes.md); dựa novelty vào **trục site + phân rã ba tầng + kiểm rò rỉ corpus**, không dựa vào "mô hình mới" |
 | Phương pháp không tạo cải thiện                                                                                            | Cổng tuần 4                                                                     | Phương án dự phòng, chia sẻ toàn bộ hạ tầng                                                                                                                                                                                                                                               |
 | **Chọn baseline yếu**                                                                                                     | So với 0,1911 mà không nhắc 0,2250                                            | Phải nêu**cả** 0,2250 (kinase) và **0,3321** (site) của Pekey. Luận văn đó công khai và cùng nhóm tác giả benchmark — bỏ qua sẽ bị bắt lỗi                                                                                                                         |
 | Trộn hai trục AP                                                                                                                | Trích "+54%" của COMPASS-PTM                                                    | Mọi bảng ghi rõ trục. Đọc S.3.7 trước (mục 6.1)                                                                                                                                                                                                                                            |
@@ -219,7 +219,7 @@ Ba phép đầu làm được trong vài giờ và **phải xong trước buổi
 
 ## 7. Những gì còn thiếu, có thể đổi quyết định
 
-**Thông tin từ GVHD — quan trọng hơn mọi phép kiểm ở trên.** Câu hỏi đã có sẵn ở [mục 7 biên bản lần 1](../../../project/meetings/2026-10-02-session-01/minutes.md), nay thêm trọng tâm:
+**Thông tin từ GVHD — quan trọng hơn mọi phép kiểm ở trên.** Câu hỏi đã có sẵn ở [mục 7 biên bản lần 1](../../../../project/meetings/2026-10-02-session-01/minutes.md), nay thêm trọng tâm:
 
 1. **Thứ tự ưu tiên giữa năm tiêu chí** nếu không đạt hết trong 8–9 tuần. Câu này quyết định nên dồn sức vào phương pháp hay vào đánh giá + sản phẩm. => phương pháp
 2. **"Cancer" của thầy là nhánh nào?** Danh mục thầy không có công trình cancer. Nếu thầy có một nhánh cụ thể trong đầu, đề tài này có thể lệch. => không cần quan tâm đến việc có liên quan đến các nghiên cứu hiện tại của giảng viên hay không!
