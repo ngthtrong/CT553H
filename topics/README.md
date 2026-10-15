@@ -14,10 +14,10 @@ topics/<ten-de-tai>/
 ├── code/            Script tiền xử lý / thí nghiệm (tạo khi có)
 ├── presentation/    Slide, trang HTML trình bày, bản chuẩn bị buổi gặp (tạo khi có)
 ├── proposal/        Đề cương LaTeX (tạo khi có)
-└── data/            Dữ liệu thật: raw/ (gốc, không sửa tay), interim/ (cache), processed/ (đầu ra script). KHÔNG lên git, trừ README.md (sổ nguồn gốc)
+└── data/            Dữ liệu thật: raw/ (gốc, không sửa tay), interim/ (cache), processed/ (đầu ra script). Chỉ data/README.md và SOURCE.md lên git
 ```
 
-Nội dung `data/` bị `.gitignore` chặn (`**/data/*`), trừ `data/README.md` (`!**/data/README.md`) ghi nguồn gốc và quá trình xử lý dữ liệu — xem quy ước trong [CLAUDE.md](../CLAUDE.md). Script tìm thư mục đề tài qua file `log.md` và thư mục gốc repo qua `DECISIONS.md`, nên vẫn chạy được sau khi đổi tên hay chuyển thư mục; `git mv` mang theo cả `data/`.
+Nội dung `data/` bị `.gitignore` chặn, trừ `data/README.md` (sổ tổng hợp) và `SOURCE.md` ở mọi độ sâu (nguồn gốc/giấy phép của từng bộ) — xem quy ước trong [CLAUDE.md](../CLAUDE.md) và căn cứ [D-030.3](../DECISIONS.md#d-030). Script tìm thư mục đề tài qua file `log.md` và thư mục gốc repo qua `DECISIONS.md`, nên vẫn chạy được sau khi đổi tên hay chuyển thư mục; `git mv` mang theo cả `data/`.
 
 ## Thêm hoặc đóng một đề tài
 

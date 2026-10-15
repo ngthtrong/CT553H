@@ -1,0 +1,42 @@
+{
+  "counts": {
+    "degron_pathogenic": 26078,
+    "other_pathogenic": 33131,
+    "outside_measured": 36005,
+    "degron_benign": 28940,
+    "other_benign": 77052
+  },
+  "crude": {
+    "table": {
+      "degron_patho": 26078,
+      "degron_benign": 28940,
+      "other_patho": 33131,
+      "other_benign": 77052
+    },
+    "or": 2.0956807573178593,
+    "ci95": [
+      2.0518933220025053,
+      2.1404026171819637
+    ]
+  },
+  "mh_by_protein": {
+    "or_mh": 2.147829939497126,
+    "ci95": [
+      2.071933912892332,
+      2.2265060773875907
+    ],
+    "strata_informative": 3114,
+    "strata_total": 13561
+  },
+  "mh_by_cluster_cov80": {
+    "or_mh": 2.0942864115615727,
+    "ci95": [
+      2.023709014733397,
+      2.167325214109037
+    ],
+    "strata_informative": 2903,
+    "strata_total": 12390
+  },
+  "n_proteins": 13561,
+  "n_clusters": 12390
+}

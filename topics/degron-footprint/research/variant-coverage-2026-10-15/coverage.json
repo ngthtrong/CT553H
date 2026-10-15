@@ -1,0 +1,498 @@
+{
+  "universe_peptides": {
+    "sat": 91,
+    "scan": 2994,
+    "lib": 9817,
+    "pepdome_degron": 116702,
+    "pepdome_degron_psi20": 45999,
+    "pepdome_degron_psi15": 13801,
+    "pepdome_all": 360724
+  },
+  "universe_proteins": {
+    "sat": 91,
+    "scan": 2474,
+    "lib": 6582,
+    "pepdome_degron": 17287,
+    "pepdome_degron_psi20": 13248,
+    "pepdome_degron_psi15": 7090,
+    "pepdome_all": 18536
+  },
+  "measured_cells": {
+    "sat": 2547,
+    "scan": 83446
+  },
+  "clinvar_file_bytes": 455785525,
+  "pipeline": {
+    "missense_total": 2564486,
+    "gene_in_library": 2526412,
+    "refaa_validated": 2349511,
+    "refaa_mismatch": 176901,
+    "gene_not_in_library": 38074
+  },
+  "hits_by_tier": {
+    "sat": {
+      "conflicting": 26,
+      "pathogenic": 26,
+      "vus": 500,
+      "benign": 26,
+      "other": 13
+    },
+    "scan": {
+      "vus": 15653,
+      "benign": 938,
+      "pathogenic": 699,
+      "conflicting": 879,
+      "other": 522
+    },
+    "lib": {
+      "other": 1363,
+      "pathogenic": 1706,
+      "vus": 48753,
+      "benign": 3181,
+      "conflicting": 2609
+    },
+    "pepdome_degron": {
+      "pathogenic": 26075,
+      "conflicting": 27855,
+      "vus": 530412,
+      "benign": 28942,
+      "other": 17117
+    },
+    "pepdome_degron_psi20": {
+      "pathogenic": 11424,
+      "vus": 208365,
+      "conflicting": 10606,
+      "benign": 11431,
+      "other": 6837
+    },
+    "pepdome_degron_psi15": {
+      "pathogenic": 3484,
+      "vus": 61790,
+      "conflicting": 2950,
+      "benign": 3441,
+      "other": 2052
+    },
+    "pepdome_all": {
+      "vus": 1583772,
+      "pathogenic": 59214,
+      "conflicting": 92246,
+      "other": 44106,
+      "benign": 105996
+    }
+  },
+  "hits_total_by_tier": {
+    "sat": 591,
+    "scan": 18691,
+    "lib": 57612,
+    "pepdome_degron": 630401,
+    "pepdome_degron_psi20": 248663,
+    "pepdome_degron_psi15": 73717,
+    "pepdome_all": 1885334
+  },
+  "hits_at_measured_position": {
+    "sat": {
+      "conflicting": 26,
+      "pathogenic": 26,
+      "vus": 499,
+      "benign": 26,
+      "other": 13
+    },
+    "scan": {
+      "vus": 15574,
+      "benign": 929,
+      "pathogenic": 695,
+      "conflicting": 876,
+      "other": 522
+    }
+  },
+  "hits_at_exact_measured_cell": {
+    "sat": {
+      "conflicting": 25,
+      "pathogenic": 26,
+      "vus": 486,
+      "benign": 25,
+      "other": 13
+    },
+    "scan": {
+      "pathogenic": 67,
+      "vus": 871,
+      "other": 24,
+      "conflicting": 39,
+      "benign": 36
+    }
+  },
+  "measured_exact_cells": {
+    "sat": 47847,
+    "scan": 83446
+  },
+  "tile_fraction_degron": {
+    "pepdome_degron": 0.3235,
+    "pepdome_degron_psi20": 0.1275,
+    "pepdome_degron_psi15": 0.0383
+  },
+  "oncogenicity_all": {
+    "-": 2563371,
+    "no classification for the single variant": 314,
+    "Likely oncogenic": 232,
+    "Oncogenic": 232,
+    "Benign": 2,
+    "Uncertain significance": 332,
+    "Likely benign": 1,
+    "Conflicting classifications of oncogenicity": 2
+  },
+  "oncogenicity_by_tier": {
+    "sat": {
+      "-": 591
+    },
+    "scan": {
+      "-": 18680,
+      "no classification for the single variant": 5,
+      "Likely oncogenic": 4,
+      "Oncogenic": 1,
+      "Uncertain significance": 1
+    },
+    "lib": {
+      "-": 57585,
+      "no classification for the single variant": 11,
+      "Oncogenic": 4,
+      "Uncertain significance": 7,
+      "Likely oncogenic": 5
+    },
+    "pepdome_degron": {
+      "-": 630075,
+      "no classification for the single variant": 90,
+      "Oncogenic": 75,
+      "Likely oncogenic": 70,
+      "Uncertain significance": 91
+    },
+    "pepdome_degron_psi20": {
+      "-": 248544,
+      "no classification for the single variant": 30,
+      "Oncogenic": 20,
+      "Uncertain significance": 38,
+      "Likely oncogenic": 31
+    },
+    "pepdome_degron_psi15": {
+      "-": 73691,
+      "no classification for the single variant": 11,
+      "Oncogenic": 5,
+      "Likely oncogenic": 5,
+      "Uncertain significance": 5
+    },
+    "pepdome_all": {
+      "-": 1884511,
+      "no classification for the single variant": 234,
+      "Oncogenic": 168,
+      "Likely oncogenic": 161,
+      "Benign": 1,
+      "Uncertain significance": 257,
+      "Conflicting classifications of oncogenicity": 2
+    }
+  },
+  "driver_degron_coverage": {
+    "CTNNB1": {
+      "accession": "P35222",
+      "in_uniprot_snapshot": true,
+      "length": 781,
+      "sat_tiles": [],
+      "scan_tiles": [],
+      "lib_tiles": [],
+      "pepdome_degron_tiles": [
+        [
+          231,
+          258
+        ],
+        [
+          277,
+          304
+        ],
+        [
+          300,
+          327
+        ],
+        [
+          323,
+          350
+        ],
+        [
+          392,
+          419
+        ],
+        [
+          484,
+          511
+        ],
+        [
+          507,
+          534
+        ],
+        [
+          576,
+          603
+        ]
+      ],
+      "pepdome_all_n_tiles": 33
+    },
+    "NFE2L2": {
+      "accession": "Q16236",
+      "in_uniprot_snapshot": true,
+      "length": 605,
+      "sat_tiles": [],
+      "scan_tiles": [],
+      "lib_tiles": [],
+      "pepdome_degron_tiles": [
+        [
+          484,
+          511
+        ],
+        [
+          553,
+          580
+        ]
+      ],
+      "pepdome_all_n_tiles": 15
+    },
+    "MYC": {
+      "accession": "P01106",
+      "in_uniprot_snapshot": true,
+      "length": 454,
+      "sat_tiles": [],
+      "scan_tiles": [],
+      "lib_tiles": [],
+      "pepdome_degron_tiles": [],
+      "pepdome_all_n_tiles": 12
+    },
+    "CCNE1": {
+      "accession": "P24864",
+      "in_uniprot_snapshot": true,
+      "length": 410,
+      "sat_tiles": [],
+      "scan_tiles": [],
+      "lib_tiles": [],
+      "pepdome_degron_tiles": [
+        [
+          93,
+          120
+        ],
+        [
+          116,
+          143
+        ],
+        [
+          139,
+          166
+        ],
+        [
+          162,
+          189
+        ],
+        [
+          208,
+          235
+        ],
+        [
+          231,
+          258
+        ],
+        [
+          254,
+          281
+        ],
+        [
+          277,
+          304
+        ],
+        [
+          323,
+          350
+        ]
+      ],
+      "pepdome_all_n_tiles": 16
+    },
+    "HIF1A": {
+      "accession": "Q16665",
+      "in_uniprot_snapshot": true,
+      "length": 826,
+      "sat_tiles": [
+        [
+          553,
+          580
+        ]
+      ],
+      "scan_tiles": [
+        [
+          553,
+          580
+        ],
+        [
+          760,
+          787
+        ]
+      ],
+      "lib_tiles": [
+        [
+          392,
+          419
+        ],
+        [
+          553,
+          580
+        ],
+        [
+          760,
+          787
+        ]
+      ],
+      "pepdome_degron_tiles": [
+        [
+          47,
+          74
+        ],
+        [
+          93,
+          120
+        ],
+        [
+          162,
+          189
+        ],
+        [
+          185,
+          212
+        ],
+        [
+          208,
+          235
+        ],
+        [
+          254,
+          281
+        ],
+        [
+          300,
+          327
+        ],
+        [
+          323,
+          350
+        ],
+        [
+          553,
+          580
+        ],
+        [
+          760,
+          787
+        ]
+      ],
+      "pepdome_all_n_tiles": 33
+    },
+    "NOTCH1": {
+      "accession": "P46531",
+      "in_uniprot_snapshot": true,
+      "length": 2555,
+      "sat_tiles": [],
+      "scan_tiles": [],
+      "lib_tiles": [
+        [
+          1473,
+          1500
+        ],
+        [
+          2393,
+          2420
+        ]
+      ],
+      "pepdome_degron_tiles": [
+        [
+          70,
+          97
+        ],
+        [
+          1404,
+          1431
+        ],
+        [
+          1496,
+          1523
+        ],
+        [
+          1565,
+          1592
+        ],
+        [
+          1588,
+          1615
+        ],
+        [
+          1611,
+          1638
+        ],
+        [
+          1726,
+          1753
+        ],
+        [
+          1749,
+          1776
+        ],
+        [
+          1956,
+          1983
+        ]
+      ],
+      "pepdome_all_n_tiles": 105
+    },
+    "FBXW7": {
+      "accession": "Q969H0",
+      "in_uniprot_snapshot": true,
+      "length": 707,
+      "sat_tiles": [],
+      "scan_tiles": [],
+      "lib_tiles": [],
+      "pepdome_degron_tiles": [
+        [
+          277,
+          304
+        ],
+        [
+          300,
+          327
+        ],
+        [
+          346,
+          373
+        ],
+        [
+          484,
+          511
+        ],
+        [
+          622,
+          649
+        ],
+        [
+          691,
+          718
+        ]
+      ],
+      "pepdome_all_n_tiles": 31
+    },
+    "TP53": {
+      "accession": "P04637",
+      "in_uniprot_snapshot": true,
+      "length": 393,
+      "sat_tiles": [],
+      "scan_tiles": [],
+      "lib_tiles": [],
+      "pepdome_degron_tiles": [
+        [
+          231,
+          258
+        ]
+      ],
+      "pepdome_all_n_tiles": 11
+    }
+  },
+  "driver_variants_found": 4875
+}

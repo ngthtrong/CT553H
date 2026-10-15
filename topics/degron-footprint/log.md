@@ -4,6 +4,36 @@
 
 ---
 
+## 15/10/2026 (phiên 10) — độ phủ biến thể ClinVar: lập luận cấp thiết đầu tiên có số đo
+
+Căn cứ: [D-033](../../DECISIONS.md#d-033). Báo cáo: [variant-coverage-2026-10-15](research/variant-coverage-2026-10-15/README.md). Trọng hỏi *phần mềm có giải quyết được vấn đề ý nghĩa bài toán không* và *degron có là ngách quan trọng không*; câu đầu là **không** (hai trục độc lập), câu sau đi đo.
+
+- **Tải ClinVar** `variant_summary.txt.gz` (455.785.525 byte, `Last-Modified` 12/10/2026), sổ xuất xứ ở [clinvar/SOURCE.md](data/raw/clinvar/SOURCE.md). Kiểm chứng toạ độ bắt buộc: acid amin hoang dã phải khớp UniProt — **93,0%** khớp (2.349.511/2.526.412), 7,0% bị loại vì lệch transcript.
+- **Dùng peptidome GPS làm miền áp dụng, lần đầu.** Repo có Table S1 từ 13/10 nhưng chưa dùng. Bảy tầng: 91 bão hòa · 2.994 quét · 9.817 thư viện · **116.702 tile degron / 17.287 protein** · 360.724 tile đo được. Ba tầng đầu tái lập đúng D-031 nên loader đáng tin. **87,3% cụm cov80** của miền degron **chưa thấy** trong tập huấn luyện.
+- **Con số quyết định:** vùng degron giàu biến thể **gây bệnh** so với **lành tính** gấp **2,148×** (CI [2,072; 2,227]), Mantel–Haenszel phân tầng **theo protein**, 3.114 tầng; theo cụm cov80 là 2,094. Thô là 2,096 ⇒ **không** phải tạo tác mức gene. Đây là lập luận cấp thiết đầu tiên của đề tài dựa trên số đo.
+- **Độ phủ đạt ngưỡng cam kết trước:** **≈1.600** biến thể chấm được bằng **đúng ô thực nghiệm** (575 bão hòa + 1.037 quét), ≈1.350 là VUS. Phân biệt quan trọng: bộ quét có 18.691 biến thể rơi vào peptide nhưng chỉ **1.037** trùng đúng acid amin, vì thư viện quét chỉ có một thay thế mỗi vị trí (≈1/19).
+- **Kết quả âm 1 — không giàu lên theo vị trí.** Tỉ lệ biến thể trong degron bằng đúng tỉ lệ nền ở cả ba ngưỡng (33,4%/32,4%; 13,2%/12,8%; 3,9%/3,8%). ⇒ **Không nói “degron là điểm nóng biến thể”**. Và ngưỡng PSI ≤ 3,0 cho 32,4% tile toàn proteome là degron ⇒ câu “nằm trong degron” gần như không mang thông tin.
+- **Kết quả âm 2 — degron lái ung thư phần lớn không hiện ra.** Chỉ **HIF1A** (PSI 1,86/1,51; MLN4924 → 2,45). `CTNNB1` codon 31–48 **đo tốt mà không phải degron** (reads 145/66, PSI 5,27/5,36); `MYC` T58/S62 vắng mặt; `NFE2L2` ETGE không phải degron. Assay GPS chỉ thấy degron **tự trị**. ⇒ Mạch "đột biến lái ung thư" mà Claude đề xuất đầu phiên **bị chính phép đo bác bỏ**; phạm vi đúng là **degron tự trị + biến thể dòng mầm**.
+- **Mạch soma không có dữ liệu:** cột `Oncogenicity` chỉ có ~800 giá trị trên 2,56 triệu, trong đó 145 trong tile degron, 5 trong bộ quét, **0** trong bộ bão hòa.
+- **Việc đe doạ kết luận nhiều nhất, chưa làm:** khử **bảo tồn** và **độ vô trật tự**. Nếu 2,148 biến mất sau khi khử thì nó chỉ nói "degron nằm trong vùng chức năng". Ghi ở [D](../../DECISIONS.md#doi-chung-cap-thiet).
+- **Cuối phiên — khung đề tài được chốt:** Trọng cho biết đã **trao đổi trực tiếp với GVHD** và được xác nhận **trụ phần mềm được tính là đóng góp** ([D-034](../../DECISIONS.md#d-034); nguyên liệu thô ở [people.md](../../project/people.md), **chưa có biên bản**). Trọng **ủy quyền cho Claude trong phiên này** xác nhận các mục C về khung và đóng góp ⇒ [D-035](../../DECISIONS.md#d-035) nhận **C-18** (phạm vi degron tự trị + dòng mầm), **C-17** (a + b), **C-19** ⇒ **C-16 chuyển sang không dùng**. **Hàng đợi C nay trống**; còn chờ bên ngoài là [C-5](../../DECISIONS.md#c-5) (GVHD duyệt khung, buổi gặp **16/10**) và C-11a (email giấy phép).
+- ⚠ **Giá phải trả của C-19, ghi để không quên:** rủi ro *"cả hai nguồn nhãn mức residue đều của Zhang 2023"* **vẫn mở và nay không có ứng viên nào**. Yêu cầu cho ứng viên thay thế: readout là **độ bền**, trên **degron tự trị**, **nhóm tác giả khác**, nhãn **mức residue**.
+- Không huấn luyện mô hình; **mục tiêu G2 vượt 0,7693 không đổi và chưa đạt**. **Không sửa `presentation/`** — Trọng yêu cầu chốt khung trước, việc slide để sau.
+
+---
+
+## 15/10/2026 — tổ chức lại sổ quyết định và đồng bộ thẻ trạng thái
+
+Căn cứ: [D-032](../../DECISIONS.md#d-032). Đây là phiên biên tập tài liệu; không huấn luyện, không đo mới và không sửa dữ liệu.
+
+- Sổ quyết định có [bản đọc nhanh](../../DECISIONS.md#hien-hanh), hiệu lực theo khoản, lịch sử thu gọn và phần theo dõi riêng; giữ nguyên mã và nguyên văn 31 hồ sơ cũ.
+- Đồng bộ README với bằng chứng đã có: ridge đã huấn luyện, nội dung slide đã cập nhật; việc tải Larsen đã làm, phản hồi giấy phép vẫn đang chờ.
+- Làm rõ phạm vi MDE và dẫn tới nghĩa vụ đối chứng Degformer; C-16/C-17 còn ở phần chờ xác nhận, không ghi thêm phê duyệt nghiên cứu.
+- Cập nhật quy ước trong `CLAUDE.md` và các liên kết; giữ nguyên `AGENTS.md`. Các mục nhật ký cũ bên dưới giữ làm lịch sử.
+- Kiểm tra: nguyên văn 31 hồ sơ và mã D cũ còn đủ; anchor trỏ sổ quyết định hợp lệ; render Markdown giữ đúng bảng/khối thu gọn; `git diff --check` đạt. Kiểm link toàn repo còn đúng một lỗi có sẵn tại `lectures/14-xai-basics.html` → `15-reading-bioinfo-papers.html`, ngoài phạm vi phiên này.
+
+---
+
 ## 15/10/2026 (phiên 9) — viết nội dung slide trình bày với GVHD, bằng tiếng Anh
 
 Tài liệu: [presentation/slide-content-2026-10-15.md](presentation/slide-content-2026-10-15.md).
