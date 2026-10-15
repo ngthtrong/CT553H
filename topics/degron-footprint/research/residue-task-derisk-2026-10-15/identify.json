@@ -1,0 +1,69 @@
+{
+ "n_bootstrap": 40,
+ "window": 3,
+ "framework": "Bootstrap theo CỤM protein. Với mỗi véc-tơ trọng số: |mu|/SD theo từng hệ số, tỉ lệ hệ số có |mu|/SD > 2, đồng thuận dấu, và tái lập nửa–nửa. So trực tiếp được với bảng reframe §11.2, nơi nhãn là PSI MỨC PEPTIDE và chỉ 28,9% ô vị trí tách khỏi 0.",
+ "sources": {
+  "scanning_mutation_effect": {
+   "n_peptides": 2994,
+   "n_cells": 83446,
+   "n_clusters": 1985,
+   "vectors": [
+    {
+     "label": "120 ô (lệch vị trí, acid amin) — NGỮ CẢNH",
+     "n_coefficients": 120,
+     "median_abs_mu_over_sd": 2.31,
+     "share_abs_mu_over_sd_gt2": 0.533,
+     "sign_consensus": 0.9,
+     "half_half_reproducibility": 0.9943
+    },
+    {
+     "label": "tổng theo acid amin của ngữ cảnh (20 chiều)",
+     "n_coefficients": 20,
+     "median_abs_mu_over_sd": 5.13,
+     "share_abs_mu_over_sd_gt2": 0.85,
+     "sign_consensus": 0.988,
+     "half_half_reproducibility": 0.9994
+    },
+    {
+     "label": "cặp thay thế (WT, đột biến) — 40 chiều",
+     "n_coefficients": 40,
+     "median_abs_mu_over_sd": 8.72,
+     "share_abs_mu_over_sd_gt2": 0.55,
+     "sign_consensus": 0.817,
+     "half_half_reproducibility": 1.0
+    }
+   ]
+  },
+  "saturation_mutation_effect": {
+   "n_peptides": 91,
+   "n_cells": 47847,
+   "n_clusters": 89,
+   "vectors": [
+    {
+     "label": "120 ô (lệch vị trí, acid amin) — NGỮ CẢNH",
+     "n_coefficients": 120,
+     "median_abs_mu_over_sd": 1.25,
+     "share_abs_mu_over_sd_gt2": 0.25,
+     "sign_consensus": 0.84,
+     "half_half_reproducibility": 0.9703
+    },
+    {
+     "label": "tổng theo acid amin của ngữ cảnh (20 chiều)",
+     "n_coefficients": 20,
+     "median_abs_mu_over_sd": 1.49,
+     "share_abs_mu_over_sd_gt2": 0.45,
+     "sign_consensus": 0.863,
+     "half_half_reproducibility": 0.983
+    },
+    {
+     "label": "cặp thay thế (WT, đột biến) — 40 chiều",
+     "n_coefficients": 40,
+     "median_abs_mu_over_sd": 6.36,
+     "share_abs_mu_over_sd_gt2": 0.925,
+     "sign_consensus": 0.976,
+     "half_half_reproducibility": 0.9983
+    }
+   ]
+  }
+ }
+}

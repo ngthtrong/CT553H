@@ -4,6 +4,164 @@
 
 ---
 
+## 15/10/2026 (phiên 9) — viết nội dung slide trình bày với GVHD, bằng tiếng Anh
+
+Tài liệu: [presentation/slide-content-2026-10-15.md](presentation/slide-content-2026-10-15.md).
+**Không huấn luyện, không đo mới, không dựng slide** — chỉ viết nội dung. Theo yêu cầu của Trọng, nên
+[D-030](../../DECISIONS.md#d-030) mục 1 (lùi tài liệu trình bày) và ghi chú học tập "chỉ sửa tài liệu trình
+bày khi được yêu cầu" **đều đã được gỡ chặn bằng lời yêu cầu trực tiếp**. Điều kiện số của D-030 mục 1 cũng
+đã đạt từ phiên 8 (+0,0289).
+
+- **Bốn lựa chọn Trọng chốt khi được hỏi:** đóng khung theo hướng C-15 (mức residue); 15–20 phút / 24 slide;
+  tiêu đề **mô tả nhiệm vụ, không đặt tên mô hình**; độ trung thực **"giữ tối thiểu"** (chỉ giới hạn trực
+  tiếp của bài toán và dữ liệu; không nêu các hướng đã bị loại hay tranh luận nội bộ về mức đóng góp).
+- **Nội dung 24 slide theo chín phần Trọng yêu cầu**, chữ slide **tiếng Anh**, ghi chú sản xuất tiếng Việt.
+  Phần đầy đủ: 1–13, 15–20, 23–24. Phần **sườn có cắm mốc**: slide 14 (ô C4) và 21–22 (kiến trúc).
+  Mỗi slide có **đặc tả hình/animation** riêng, và 7 trong số đó dùng lại SVG có sẵn ở
+  [lectures/degron-basics/figures/](../../lectures/degron-basics/figures/).
+- **Trích dẫn đã đối chiếu lại qua PubMed và bioRxiv API ngày 15/10**, vì bảng tiền lệ là chỗ GVHD yêu cầu
+  chính xác tên và tác giả: lấy đúng danh sách tác giả, tạp chí, volume/trang, DOI cho 9 công trình. Hai
+  điều phải ghi trên slide: **Larsen 2025 là preprint**, và **Degformer không có bài báo**.
+- **Phát hiện khi viết: bản nháp đầu đã lạc hậu ngay trong ngày.** Viết trước khi đọc phiên 8, nên sáu con
+  số và một phát biểu bị sai; đã sửa toàn bộ và ghi bảng đối chiếu ở đầu file. Chỗ sai: C-15 còn "chờ"
+  (nay là D-031) · "chưa có con số dương" (nay +0,0289 / +0,0300) · MDE **0,071 → 0,0123** · "chưa đếm cụm"
+  (nay 89) · "n = 91 là cỡ mẫu phần mức residue" (**sai** — bộ quét cho 1.985 cụm) · rủi ro LeBlanc "chưa
+  giải quyết" (nay đã khoanh, 56× → 2,2×) · lý lẽ MIL (nay là **giám sát yếu**).
+- **Áp [C-17](../../DECISIONS.md#c-17) mục b vào toàn bộ tài liệu trình bày:** cấm câu "vị trí thắng thành
+  phần"; thay bằng *"composition at a ±3 neighbourhood scale beats composition at whole-peptide scale"*,
+  kèm bảng phân rã +0,0232 / +0,0057 / +0,0002 ngay trên slide 14. Danh sách "không được nói" trên slide
+  tăng từ 3 lên **6 câu**, thêm cả *"bộ bão hòa là nguồn duy nhất đỡ được mức residue"* (D-031 mục 2 đã sửa).
+- **Hai chỗ cố ý không đưa lên slide theo lựa chọn "giữ tối thiểu", nhưng đã soạn câu trả lời sẵn** trong
+  ghi chú: rủi ro LeBlanc, và chỗ mơ hồ giấy phép MIT của bộ Larsen đang chờ email.
+- **Việc còn chặn dựng slide:** sinh hình ví dụ 28×20 từ `psi-sat_*.tsv` (chưa có script), và dựng các sơ đồ.
+
+---
+
+## 15/10/2026 (phiên 8) — thực hiện C-15: hai việc chặn đóng lại, và con số dương đầu tiên cho G2
+
+Trọng ra lệnh *"tiến hành thực hiện đề xuất C-15, nghiên cứu thêm để giảm thiểu rủi ro và trình bày được đóng góp rõ ràng"* ⇒ [D-031](../../DECISIONS.md#d-031). Báo cáo đầy đủ: [residue-task-derisk-2026-10-15](research/residue-task-derisk-2026-10-15/README.md). Sáu lệnh đo, mọi lệnh **chỉ đọc** `data/`.
+
+- **Việc chặn 1 — lực trên n = 91: giải quyết, và rủi ro nhỏ hơn đã tưởng 6 lần.** 91 peptide nằm trên **91 protein / 89 cụm** cov80 (thư viện bão hòa chọn mỗi protein một peptide ⇒ lồng nhau mức protein gần như không tồn tại). Ghép cặp theo peptide + bootstrap theo cụm: SE 0,0040–0,0044 ⇒ **MDE 0,0123** ở lực 80%, lực tại delta đo được **0,995**. Con số **0,071** của phiên trước sai vì suy từ phương sai **không ghép cặp**; MDE không ghép cặp cũng chỉ 0,0491. ICC ô-trong-peptide 0,0625 ⇒ **≈ 1.416 ô độc lập hiệu dụng** (không phải 47.847, cũng không phải 91). Bậc thang ngưỡng: 3,5 cho 141 peptide / 137 cụm, 4,0 cho 176 / 172.
+- **Việc chặn 2 — rủi ro LeBlanc: khoanh được bằng số.** Chạy đúng khuôn §11.2 (bootstrap theo cụm, |μ|/SD từng hệ số) nhưng trên nhãn **hiệu ứng đột biến** và véc-tơ **ngữ cảnh cục bộ ±3**: % hệ số tách khỏi 0 **28,9% → 53,3%**, đồng thuận dấu **0,684 → 0,90**, tỉ lệ áp đảo của thành phần **≈ 56× → 2,2×**. ⇒ Kết luận LeBlanc đúng cho **nhãn mức tile**, không phải cho nhãn đột biến. Bộ bão hòa một mình **yếu** cho tham số ngữ cảnh (25%, 89 cụm) nhưng **mạnh nhất bảng** cho cặp thay thế (92,5%).
+- **Phát hiện đổi thiết kế: có HAI nguồn nhãn mức residue, không phải một.** Bộ quét cũng là nhãn hiệu ứng đột biến: **2.994 peptide degron / 1.985 cụm / 83.446 ô**, trần đo lường AUROC **0,9458**. Nó đỡ **trục ngữ cảnh**; bộ bão hòa đỡ **ma trận 19 thay thế**. Sửa [D-028](../../DECISIONS.md#d-028) mục 5 ("nguồn duy nhất"). Chồng lặp 61/89 cụm nên mọi phép chuyển nguồn phải loại cụm trùng — đã làm (bỏ 145/2.994 peptide).
+- **Con số dương đầu tiên cho G2 [đo].** Năm mô hình ridge, split cụm cov80, 5 fold × 5 seed, AUROC mức ô macro theo peptide: M0 chỉ-thành-phần **0,8393** → M3 có ngữ cảnh **0,8682** ⇒ **+0,0289** (CI [0,0264; 0,0313], 1.599 cụm, Wilcoxon 8 × 10⁻¹²⁹). So **ΔPAP `cnn2w7`** (0,8357) thì **+0,0300** (CI [0,0234; 0,0366], ghép cặp 2.064 peptide / 1.471 cụm). Trụ 89,7% nay **có một con số**: trên bộ quét, 68,9% peptide có nhóm cùng cặp thay thế bị chia dương/không-dương, và giá của việc không tách được chúng là +0,0289.
+- **Nhưng phân rã delta đổi cách phát biểu, và đây là chỗ phải nói thật.** Vị trí **tuyệt đối** một mình: +0,0052; **thành phần cửa sổ ±3 không thứ tự**: **+0,0232** (80% của tổng); thêm thứ tự: +0,0057; thêm vị trí tuyệt đối lên trên ngữ cảnh: **+0,0002** ⇒ bằng 0. Nên **không** được nói "vị trí thắng thành phần". Câu đúng: *thành phần ở thang **lân cận ±3** thắng thành phần ở thang **cả peptide*** — **tinh chỉnh** LeBlanc chứ không chống. Ghi thành [C-17](../../DECISIONS.md#c-17).
+- **Chỗ vẫn thua, và nay là mục tiêu G2 có số.** Chuyển sang ma trận bão hòa (huấn luyện chỉ trên bộ quét, cụm rời, **19 thay thế chưa thấy**): M3 **0,7273** so với ΔPAP `cnn2w1` **0,7693** ⇒ **−0,0420** (CI [−0,0580; −0,0256]). Trên thang **mức vị trí** thì **đảo**: 0,4440 so 0,3553 ⇒ phải báo theo từng thước đo. Mục tiêu G2 còn lại: **vượt 0,7693**, trần đo lường 0,9519.
+- **Lý lẽ cho MIL phải đổi [chưa xác minh — tra qua tóm tắt].** Không tìm thấy phép so trực tiếp MIL ↔ đầu theo residue trên cùng nhiệm vụ mức residue; mô típ chuẩn là **đầu theo residue khi có nhãn mức residue, MIL khi chỉ có nhãn mức túi**. ⇒ "Chưa tìm thấy tiền lệ" là lý lẽ **yếu**. Lý lẽ thay thế có số đỡ: **giám sát yếu** — nhãn mức túi rất dồi dào nhưng không nhận diện được tham số vị trí (28,9%), nhãn mức ô nhận diện được nhưng ít (89 cụm).
+- **Nguồn nhãn độc lập đã tìm được [chưa xác minh — chưa tải].** Krishna 2026 (*Nat Genet* 58:366–375): SGE nội sinh, **342 đột biến missense**, **codon 31–48** của degron `CTNNB1`. Đã kiểm **[đo]**: `P35222` **không** có trong bảng PSI của Zhang, **không** có trong thư viện TF của Larsen, và codon 31–48 nằm **trọn** trong tile 2 (residue 24–51 theo quy tắc `(n−1)·23`) ⇒ chấm được bằng đúng mô hình 28-mer. ⚠ Readout là **tín hiệu Wnt**, không phải độ bền; giấy phép bảng điểm **chưa rõ**. Đề xuất [C-16](../../DECISIONS.md#c-16).
+- **Nợ kỹ thuật đã trả trong phiên:** `ridge_fit` đổi từ SVD sang phân rã Gram (nhanh ≈ 15 lần), khớp `sklearn.linear_model.Ridge` tới **7 × 10⁻¹⁴**. Kiểm chéo đường ống: n = 91, trần 0,9519 và ΔPAP `cnn2w1` 0,7693 **tái lập đúng** [pap-baseline §C](research/pap-baseline/README.md) ngày 14/10.
+- **Đính chính đã dán:** [reframe-options](research/reframe-options-2026-10-15/README.md) nay có khối đính chính ở đầu cho ba chỗ (+0,1061 nhiễu lẫn, "dư địa đến trần", §11.2 chỉ đúng cho nhãn peptide).
+
+---
+
+## 15/10/2026 — đánh giá vòng học tập 2, giải thích WT và hiệu ứng thực nghiệm
+
+- Lưu nguyên văn câu trả lời và đánh giá năm câu trong [hồ sơ học tập](learning/assessment-log.md). Không tính câu 1 gửi trước lượt bị ngắt thành một lần kiểm tra độc lập.
+- Tiến bộ: đã sửa tên phiên mã/dịch mã, đọc đúng ô M7V, tính ΔPSI +1,4 và đúng chiều làm bền; hiểu mất thông tin thứ tự ở mô hình đếm thành phần. Chưa vững: WT, hiệu ứng đo/dự đoán, ΔPSI/xác suất và vai trò E3/nhận diện trực tiếp.
+- Bổ sung định nghĩa và ví dụ số **giả định**, nhận diện thiếu sót khi người dạy dùng WT chưa giải nghĩa; đặt bốn câu vòng 3, đang chờ phản hồi. Đọc lại [D-027](../../DECISIONS.md#d-027) để giữ đúng căn cứ trạng thái; không đổi thiết kế nghiên cứu trong phiên học tập.
+
+---
+
+## 15/10/2026 — đánh giá vòng học tập 1, đặt câu hỏi vòng 2
+
+- Lưu nguyên văn sáu câu trả lời và chấm từng câu trong [hồ sơ học tập](learning/assessment-log.md), không suy ra phần trăm hiểu cả đề tài từ tổng điểm.
+- Bằng chứng tích cực: phân biệt residue/loại aa, hiểu vai trò thứ tự, mục đích định vị/ưu tiên thí nghiệm và giới hạn chuyển peptide sang protein. Nội dung cần sửa: đảo tên phiên mã/dịch mã, ma trận 28×28, lẫn ΔPSI với xác suất và suy luận trực tiếp về nhận diện E3.
+- Đã giải thích sửa sai và đặt năm câu vòng 2; đang chờ phản hồi, chưa ghi nội dung nào nắm vững qua kiểm tra lặp. Đọc lại phần C của [DECISIONS.md](../../DECISIONS.md) để giữ C-12/C-13 đúng vai đề xuất chờ xác nhận khi đánh giá trạng thái đề tài.
+
+---
+
+## 15/10/2026 (tối, phiên 7) — lần thử G2 đầu tiên: **hướng cross-assay không đứng được**, và hai con số của phiên trước bị quy sai
+
+Tài liệu: [cross-assay-model-2026-10-15/](research/cross-assay-model-2026-10-15/README.md). Script: [transfer_experiment.py](research/cross-assay-model-2026-10-15/transfer_experiment.py). Đề xuất mới: **[C-15](../../DECISIONS.md)**. Chạy theo [D-030](../../DECISIONS.md#d-030) mục 1 (Trọng: chốt hướng đóng góp cụ thể **trước** khi làm tài liệu trình bày) — và phép đo đã làm đúng việc đó, theo hướng phủ định.
+
+- **Kết quả, 5 seed, chấm trên nhãn tile ở cụm test:** A chỉ-GPS **0,7806 ± 0,0029** · B chỉ-tile **0,7955 ± 0,0043** · **C biểu diễn dùng chung + đầu riêng mỗi assay 0,7983 ± 0,0022** · D stacking 0,7955. **C − B = +0,0029** (SD 0,0024, thắng 5/5 seed) — dấu ổn định nhưng chỉ bằng **1,5%** phần còn lại.
+- **Kiểm năng lực, 3 seed:** gradient boosting trên nhãn tile **0,7791 ± 0,0048** — **thấp hơn ridge tuyến tính**; gộp thêm GPS cho boosting **0,7847** (+0,0057), vẫn thấp hơn ridge chỉ-tile. **Mô hình phi tuyến mạnh không mở được dư địa.**
+- **Lỗi 1 của Claude — nhánh D vô nghĩa ngay từ thiết kế.** Dự đoán của A là `X·wA`, tổ hợp tuyến tính của chính các cột `X`, nên ridge trên `[pA, X]` **cộng tuyến hoàn toàn** với ridge trên `X`: D buộc phải bằng B. SD 0,0000 xác nhận.
+- **Lỗi 2 — con số +0,1061 của phiên 4 bị nhiễu lẫn và quy sai nguyên nhân.** Học GPS → chấm GPS: 0,8848. Học GPS → chấm tile: 0,7786. **Học tile → chấm tile: 0,7955.** Nếu 0,1061 là dịch chuyển assay thì học đúng assay phải lấy lại gần hết — nó chỉ lấy lại **0,0169**. Phần còn lại là **nhãn tile vốn khó dự đoán hơn nhãn GPS**. Phần **vẫn đúng**: phép đo nhãn-so-nhãn ở phiên 3 (tương quan thật hai assay **0,785** so với trần nhiễu 0,978) không cần mô hình nên không bị ảnh hưởng — hai assay **thật sự bất đồng hệ thống**, chỉ là **giá mô hình phải trả** thì nhỏ.
+- **Lỗi 3 — lặp lại đúng loại lỗi [D-025](../../DECISIONS.md#d-025) mục 1 đã sửa một lần.** Coi **trần độ tin cậy** (0,9903) là **dư địa đạt được**. Trần đó là chặn trên của **phép đo**, không phải lời hứa về mức dự đoán được từ trình tự. Bằng chứng: ba lớp mô hình đều dừng quanh **0,78–0,80**. Phải sửa mọi chỗ viết "dư địa đến trần".
+- **Kết luận: không có chỗ cho một kiến trúc mới có delta dương cỡ luận văn ở hướng cross-assay.** Trần của ý tưởng đó ≈ **+0,017**; chuyển giao cho +0,003…+0,006; biểu diễn tốt hơn thì có dư địa nhưng đó là **sân của PAP** (tác giả báo Pearson 0,82/0,87 trên tile giữ lại).
+- **Điều vẫn giữ giá trị:** phần đo và phân rã **chặn** được những gì người khác tuyên bố (split cụm không mua gì; tương quan thật hai assay 0,785; ba lớp mô hình dừng ở 0,78–0,80). Xứng làm **một chương đo lường**, không xứng làm câu đóng góp chính.
+- **[C-15](../../DECISIONS.md) đề nghị quay lại nhiệm vụ mức residue làm trụ đóng góp** — nơi duy nhất còn lại có khoảng trống **chứng minh bằng toán** (89,7%), **chưa có mô hình nào huấn luyện đúng nhiệm vụ**, và nhãn **hiệu ứng đột biến** là loại duy nhất nhận diện được tham số vị trí. Nhận lại rủi ro **n = 91** và rủi ro LeBlanc. Khác biệt so với 14/10: nay **năm hướng thay thế đã bị loại bằng số**.
+
+---
+
+## 15/10/2026 (tối, phiên 6) — chốt tám đề xuất, xếp thứ tự tám tuần, tải bộ nhân Larsen
+
+Quyết định mới: **[D-028](../../DECISIONS.md#d-028)** (Trọng, chấp nhận cả tám đề xuất) và **[D-029](../../DECISIONS.md#d-029)** (Claude ủy quyền, thứ tự tám tuần). **Phần C của DECISIONS.md nay trống**, chỉ còn [C-5](../../DECISIONS.md) là việc phải làm chứ không phải việc phải quyết.
+
+- **D-028 chấp nhận:** C-8 (hạ cổng phơi lộ) · C-9 (AUROC mức ô) · C-12 (hai việc chặn + điểm kiểm tuần 10) · C-14 (split cụm thôi là điểm thiết kế chính) · **C-13 bản đã sửa** (tile và bộ bão hòa **hai vai riêng**, sửa một phần [D-025](../../DECISIONS.md#d-025) đề xuất 2) · C-10 (tải Larsen) · C-11a (email giấy phép) · C-11b (Degformer làm baseline, kèm điều kiện trích dẫn). **C-7 đóng** vì [D-027](../../DECISIONS.md#d-027) đã giải quyết.
+- **D-029 — thứ tự tám tuần,** căn cứ: rủi ro lớn nhất không phải kỹ thuật mà là **chưa đề tài nào được GVHD duyệt**. Tuần 6–7 tài liệu + hỏi GVHD (⚠ **chờ Trọng bật đèn xanh** vì đã dặn không tự sửa `presentation/`) · 7–8 mô hình cross-assay (lần thử G2 thật đầu tiên) · 8 bộ nhân Larsen → mức 5 bậc thang · 9 chương mức residue (lực trên n = 91) · **10 điểm kiểm cứng** · 11–13 ứng dụng và viết. Thứ tự này **hoãn G2 thêm một tuần** — đánh đổi có ý thức.
+- **Đã thực hiện C-10 ngay trong phiên.** `git clone` tag **`v1.0`** (commit `2698ecc6`), lấy `transfac_tiles.csv.gz` (5.771.779 byte, SHA-256 `0c31057d…`) + `LICENSE` vào `data/raw/larsen-2025/`, kèm [SOURCE.md](data/raw/larsen-2025/SOURCE.md).
+- **Audit khi tải cho hai kết quả đáng giá.** (1) **Mốc PAP 0,79 của tác giả đã tái lập độc lập**: Pearson(`pap`, `degron_score`) = **−0,7899** trên 59.000 tile, khớp bốn chữ số (dấu âm vì `degron_score` ngược chiều PAP). (2) **Đây là chỗ duy nhất rASA/pLDDT có phương sai thật** — rASA trung vị **0,6900**, SD **0,2334**, **49,4%** tile > 0,7 — nên là nơi duy nhất kiểm được cổng phơi lộ, đúng như [C-8](../../DECISIONS.md) dự đoán. Độ tin cậy `degron_score` **0,9701** (trần r 0,9849) trên **59.016** tile / **1.627** gene.
+- **Giải quyết một câu hỏi treo từ phiên chiều:** số tile thật là **63.258 dòng**, và nó **không khớp bất kỳ con số nào in trong bài** (58.781 / 58.992 / 62.992 / 63.011 / 63.230) ⇒ bài không nhất quán với chính nó; khi trích phải dùng số đếm được từ file.
+
+---
+
+## 15/10/2026 (tối, phiên 5) — dọn hai món nợ phương pháp: Phát hiện 2 **vững**, rủi ro LeBlanc **là thật**, và C-13 phải sửa
+
+Tài liệu: [reframe-options §11](research/reframe-options-2026-10-15/README.md). Script: [method_debt.py](research/reframe-options-2026-10-15/method_debt.py). Theo lựa chọn của Trọng: dọn nợ trước khi chốt các đề xuất C.
+
+- **Nợ 1 — Phát hiện 2 không phải tạo tác của mô hình yếu.** Ba mô hình, 3 seed: ridge dịch chuyển cụm **−0,0032**, **gradient boosting −0,0014** (*nhỏ hơn cả* ridge), **1-NN theo đồng nhất vị trí −0,0094**. Lời giải thích "mô hình quá đơn giản để ghi nhớ định danh protein" **bị bác bỏ**; điều kiện kèm [C-14](../../DECISIONS.md) đã thực hiện.
+- **Và đã tìm ra cơ chế:** 1-NN đồng dạng chỉ đạt **ρ ≈ 0,31** so với **0,89** của ridge ⇒ tra cứu theo đồng dạng trình tự **gần như vô dụng** cho nhiệm vụ này, nên **không có tín hiệu đồng dạng nào để rò rỉ**. Split cụm cov80 không mua được gì **vì tín hiệu là thành phần, không phải họ hàng trình tự**. Thêm: **gradient boosting (0,8813) không thắng ridge (0,8858)** — tín hiệu mức peptide là đơn giản, cộng tính.
+- **Nợ 2 — rủi ro LeBlanc là thật, ở mức tham số.** Bootstrap ×40 trên 43.635 peptide: véc-tơ **560 ô (vị trí, acid amin)** có \|μ\|/SD trung vị **1,24**, chỉ **28,9%** hệ số tách được khỏi 0, đồng thuận dấu **0,684**; còn **tổng theo acid amin** đạt trung vị **69,02**, 100% tách khỏi 0, đồng thuận dấu **1,000** — ổn định hơn ≈ **56 lần**. Tái lập nửa–nửa của véc-tơ 560 chiều **nhìn cao (0,9801)** nhưng đó là vì nó **thừa hưởng** thành phần mức acid amin; phép kiểm phân biệt được là **từng hệ số**.
+- **Hệ quả buộc phải sửa [C-13](../../DECISIONS.md), và nó cứu lại bộ bão hòa.** Nhãn dùng ở nợ 2 là PSI **cả peptide** — cùng loại với nhãn **mức tile**. Nên **tile không đỡ được bất kỳ tuyên bố mức residue nào**. Hai nguồn có **hai vai riêng, không thay thế nhau**: tile đỡ benchmark + phân rã + cỡ mẫu + trần nhãn; **bộ bão hòa là nguồn duy nhất** đỡ mức residue vì nhãn của nó là **hiệu ứng đột biến**. ⇒ **Việc chặn "lực trên n = 91" KHÔNG mất đi** như phiên 3–4 đã nói, nó **thu hẹp vào chương mức residue**.
+- **Và nó không mâu thuẫn trụ 89,7% mà giải thích trụ đó:** chứng minh 89,7% nói mô hình thành phần *không thể* định vị; nợ 2 nói nhãn peptide *cũng không đủ để học* định vị. Hai việc khác nhau, cùng chỉ về một chỗ — muốn nói về residue thì **buộc** phải có nhãn đột biến.
+
+---
+
+## 15/10/2026 (tối, phiên 4) — đối chứng offset **đạt**, bậc thang 2×2 cho ba phát hiện; chỗ đặt đóng góp hẹp lại lần nữa
+
+Tài liệu: [reframe-options-2026-10-15/ §10](research/reframe-options-2026-10-15/README.md). Script: [cascade_and_offset.py](research/reframe-options-2026-10-15/cascade_and_offset.py). Đề xuất mới: **[C-14](../../DECISIONS.md)**. **Chưa huấn luyện mô hình sâu nào** (chỉ ridge tuyến tính làm thước đo).
+
+- **Trọng xác nhận [D-027](../../DECISIONS.md#d-027) là quyết định của chính mình**, không phải lời GVHD truyền đạt ⇒ đã sửa nhãn provenance; [C-5](../../DECISIONS.md) **vẫn mở**.
+- **(a) Đối chứng offset: ĐẠT, giới hạn số 1 ở §9.4 đã đóng.** Biến thiên theo offset chỉ **0,0044 AUROC** (offset 0/1/2 cho 0,9069 / 0,9026 / 0,9040) so với khoảng cách **0,0773** ⇒ ngữ cảnh 2 residue giải thích nhiều nhất **≈ 6%**. Chỉ 140/17.820 trình tự khớp nhiều hơn một tile. **Con số 0,0773 dùng được trước GVHD.**
+- **(b) Bậc thang 2×2, 5 seed, cả hai ô ngoài mẫu.** Đã sửa hai lỗi của bản nháp: ô "cùng cụm" trước đó là **trong mẫu**, và trước đó chỉ **một** split (bài học từ chính bài PROTAC: rank-1 một seed tụt 0,161). Giữ nguyên trình tự, cụm và mô hình, chỉ đổi một thứ mỗi lần.
+- **Phát hiện 1 — toàn bộ khoảng cách tổng quát hóa là dịch chuyển assay; trình tự lạ đóng góp bằng 0.** Dịch chuyển cụm **−0,0039** (cụm chưa thấy *hơi tốt hơn*, ổn định qua 5 seed, SD 0,0016–0,0028) so với dịch chuyển assay **+0,1061** ⇒ tỉ lệ **27×**. Cộng với §9 (hai assay tin cậy 0,975 và 0,981) ⇒ đây là loại **thứ ba** chưa ai đặt tên: **thiên lệch hệ thống giữa định dạng assay** — không phải nhiễu, không phải trình tự lạ. Bài PROTAC quy 81% khoảng cách cho nhiễu đo; ở đây nhiễu gần như **không đóng góp gì**.
+- **Phát hiện 2 — split cụm protein cov80 không mua được gì trên nhiệm vụ này.** **Mâu thuẫn với [D-025](../../DECISIONS.md#d-025) đề xuất 4** của chính repo, và với phần phân tích lực vốn chọn cov80 thay cov50. ⇒ [C-14](../../DECISIONS.md) đề nghị **xét lại**, không phải bỏ. ⚠ Giới hạn: mô hình là **ridge tuyến tính trên one-hot**, có thể quá đơn giản để ghi nhớ định danh protein; **phải chạy lại khi có mô hình mạnh** trước khi sửa D-025.
+- **Phát hiện 3 — kênh theo vị trí chỉ thêm +0,0028 đến +0,0030** so với chỉ thành phần ⇒ **xác nhận độc lập cho LeBlanc 2026** trên assay khác, 5 seed. Rủi ro số một của [C-12](../../DECISIONS.md) **đã được đo và nó là thật — ở mức peptide**. Nhưng **không** bác bỏ trụ thứ nhất: repo đã chứng minh bằng toán rằng mô hình chỉ-thành-phần **không thể định vị** residue (89,7%). Hai điều cùng đúng — *thành phần đủ để chấm cả đoạn, nhưng bị chứng minh không thể định vị bên trong đoạn*. ⇒ Luận văn **không được** nói "vị trí giúp chấm điểm peptide"; lý lẽ vị trí chỉ sống **ở mức residue**.
+- **Chỗ đặt đóng góp hẹp lại ba lần nhờ loại trừ.** Không phải: trình tự lạ (−0,0039), ngữ cảnh vị trí mức peptide (+0,0030), cổng phơi lộ (không nhận diện được). Còn lại **đúng hai**: **dịch chuyển định dạng assay** (+0,1061, hệ thống) và **định vị mức residue** (bất khả thi cho mô hình thành phần).
+- **Mục tiêu số mới:** cross-assay Spearman **0,7786 ± 0,0065**, trần nhiễu **0,9778** ⇒ dư địa **0,1992** trên **4.308 cụm protein**. So mốc cũ (0,4897 → 0,6514, n = 91): dư địa lớn hơn, cỡ mẫu gấp **47 lần**, baseline **không phải oracle**.
+
+---
+
+## 15/10/2026 (tối, phiên 3) — đọc toàn văn bài PROTAC, đo khoảng cách qua assay: **H1 có thông điệp**, và nó đảo kết luận của bài mẫu
+
+Tài liệu: [reframe-options-2026-10-15/ §9](research/reframe-options-2026-10-15/README.md). Quyết định mới: **[D-027](../../DECISIONS.md#d-027)**.
+
+- **Trọng cho biết: đóng góp dạng "đo và phân rã trần của một lớp bài toán" được nhận, nhưng đề tài vẫn nên có kiến trúc mới** → ghi thành [D-027](../../DECISIONS.md#d-027), giải quyết [C-7](../../DECISIONS.md) theo hướng **thuận có điều kiện**: mạch benchmark + phân rã làm **khung**, kiến trúc mới **vẫn bắt buộc**. ⚠ Chưa rõ đây là lời GVHD truyền đạt hay quyết định của Trọng — nếu là lời GVHD thì phải đổi nhãn mục và đóng C-5.
+- **Đã đọc toàn văn arXiv 2605.11764** (Klamt, Nejdl, Tang; nộp 12/05/2026; **preprint chưa phản biện**). Thứ chuyển sang được không phải con số mà là **bậc thang**: random-CV **0,802** → cross-lab **0,678** → LOTO **0,653** trên cùng cohort 36 target, ghép cặp n = 35. Mấu chốt: mức giữa **giữ nguyên định danh target** nên dịch chuyển cấu trúc bị loại, hiệu số cô lập đúng một nguyên nhân. Phân tích **chính** của họ là **ω² = 0,256** (hiệu chỉnh chệch), không phải bậc thang. Họ viết thẳng bốn chặn là *"partially-overlapping bounds rather than a strict additive identity"*, và phần giới hạn **tự hạ** hiệu ứng warhead +0,042 của chính mình xuống dưới sai số seed.
+- **Đo bậc thang hai mức cho degron** — chuyển "cùng hợp chất, hai phòng" thành **"cùng trình tự, hai assay"**. Ghép 28-mer của GPS làm chuỗi con đúng của 30-mer của Voutsinos: **17.820 trình tự dùng chung, 4.610 accession, 4.308 cụm protein cov80**. Script: [cross_assay_gap.py](research/reframe-options-2026-10-15/cross_assay_gap.py).
+- **Kết quả: trần trong assay 0,9813 → qua assay 0,9041 ⇒ khoảng cách 0,0773 AUROC.** Và nó **đảo kết luận của bài PROTAC**: ở đó phương sai đo chiếm **81%** khoảng cách, ở đây **gần như 0%** — hai assay đều rất tin cậy (0,9749 và 0,9807), trần nhiễu 0,9778, nhưng tương quan **thật** sau chỉnh suy giảm chỉ **0,7854** ⇒ **≈ 0,215 còn thiếu là hệ thống, không phải nhiễu**. Đây là kết quả **trái chiều, không phải lặp lại**, và nó mạnh hơn cho đề tài vì nói **có thứ thật để mô hình hóa**.
+- **Khoảng cách tập trung đúng chỗ cần dự đoán:** trên dải khó 2,0 < PSI < 4,0 (n = 7.601) AUROC rơi **0,9041 → 0,7839** và |r| rơi **0,768 → 0,5291**; con số toàn dải được làm đẹp bởi hai đuôi dễ. Trên 10.219 ca **tự tin** vẫn **19,10% bất đồng ý hoàn toàn**.
+- ⇒ **Nhiệm vụ của kiến trúc mới đã được định nghĩa bằng số:** xử lý **dịch chuyển định dạng assay**, chấm trên **dải khó**. Mục tiêu hẹp, đo được, có mốc sẵn.
+- **Năm giới hạn của chính phép đo, đã ghi:** (1) 28-mer là chuỗi con của 30-mer nên tile mang thêm tới **2 residue ngữ cảnh** — **phải chạy đối chứng theo offset**; (2) hai assay khác nhau nhiều trục cùng lúc, phép đo chỉ chặn **tổng**; (3) trần 0,9813 là tái lập **kỹ thuật**, nên lạc quan; (4) `setdefault` giữ tile đầu tiên; (5) cả hai assay đều bào tương ⇒ **chưa phải chuyển ngăn tế bào**.
+- **Bậc thang còn thiếu hai mức:** mức 4 (qua assay + qua cụm cov80) **phải có** để phát biểu đóng góp, cần huấn luyện; mức 5 (qua ngăn tế bào) cần [C-10](../../DECISIONS.md).
+
+---
+
+## 15/10/2026 (tối) — đánh giá lại mức đóng góp, và một phép đo đổi bài toán
+
+Tài liệu: [contribution-assessment-2026-10-15.md](research/contribution-assessment-2026-10-15.md) và [reframe-options-2026-10-15/](research/reframe-options-2026-10-15/README.md). **Không huấn luyện mô hình nào.** Hai đề xuất mới ghi vào [DECISIONS.md phần C](../../DECISIONS.md): **C-12**, **C-13**.
+
+- **Đánh giá trung thực mức đóng góp theo yêu cầu của Trọng.** Chấm từng thành phần: khoảng trống 89,7% **cao về lập luận nhưng bằng 0 về đóng góp** (nó biện minh cho đề tài, không *là* đề tài); kiến trúc **gần 0** (Degformer đã xuất ma trận 28×20, Yang 2026 là tập mẹ của cổng phơi lộ); benchmark **trung bình và là chỗ thật nhất**, nhưng từng món đều là **thực hành chuẩn** trong DMS nên tính mới là "chưa ai lấp cho nhiệm vụ này", không phải "phương pháp luận mới"; **mô hình thắng baseline chưa tồn tại**. Kết luận: nếu mọi việc còn lại thành công thì mức tương đương **một bài short paper tốt**, không phải đóng góp khoa học mới.
+- **Ba nhóm người dùng được chấm lại.** Nhà nghiên cứu khác lợi nhất nhưng vẫn trung bình (n = 91 làm benchmark **thiếu lực để xếp hạng phương pháp** — MDE ≈ 0,071 so với ablation 0,02–0,05); nhà sinh học thực nghiệm **thấp hơn vẻ ngoài** (Jaccard 0,50 buộc công cụ tự hạ tin cậy ⇒ phải gọi đúng là **công cụ sàng lọc ưu tiên**); người làm PROTAC **gần 0** (peptide 28-mer gắn GFP trong bào tương) ⇒ đề nghị gỡ khỏi đề cương. Ghi thành **C-12**, kèm: gỡ chữ "việc chặn duy nhất" (có **hai** việc chặn — rủi ro LeBlanc "thành phần > vị trí" nghiêm trọng hơn lực trên n = 91), đưa phép kiểm ổn định seed/bootstrap **lên trước** huấn luyện, và đặt **điểm kiểm cứng cuối tuần 10**.
+- **Phép đo mới, và nó đổi bài toán.** Mở `data/raw/voutsinos-2026/repo/score/degrons.csv.gz` — file đã nằm trên máy từ 13/10 nhưng chưa ai dùng đúng cách. Nó có **212.658 tile / 5.327 gene** và **có sẵn cột sai số từng tile**, nên trần nhãn tính được **chính xác**, không phải ước lượng qua replicate: reliability `degron_score` **0,9807** → trần r = **0,9903**; `abundance_score` 0,8549 → **0,9246**. So với nhiệm vụ chính đang bị chặn ở **n = 91, trần 0,6514**. Script: [probe_tile_reliability.py](research/reframe-options-2026-10-15/probe_tile_reliability.py).
+- **Phép đo đó cũng loại một hướng trước khi nó được đề xuất:** `degron_score` và `abundance_score` tương quan **−0,9558** ⇒ gần như cùng một lượng, **không** dùng được như hai assay độc lập.
+- **Tra bên ngoài 15/10:** dạng đóng góp "đo trần, phân rã khoảng cách, chứng minh kiến trúc không phá được, rồi đưa một can thiệp có delta dương" **đang được nhận và công bố trong chính năm 2026** — [arXiv 2605.11764](https://arxiv.org/abs/2605.11764) cho PROTAC (random split 0,85–0,91 so với LOTO ≈ 0,67; chặn **0,124 AUROC** do phương sai đo giữa phòng; 8 kiến trúc + ESM-2 3B + 2.000 lượt tinh chỉnh không phá được trần; rank-1 một seed **tụt 0,161** khi kiểm nhiều seed; phần dương few-shot 0,668 → **0,7050**) và bioRxiv 2026.06.29.735309 cho protein–ligand. **Chưa ai làm cho degron.** Cả hai **chưa đọc toàn văn**.
+- **Chưa tìm thấy tiền lệ** (tra web + PubMed + Consensus ngày 15/10, **không** phải "chưa ai làm"): phân rã khoảng cách tổng quát hóa cho dự đoán degron; chuẩn hóa hiệu năng theo trần nhãn từ replicate rồi cho thấy **thứ hạng mô hình đổi** (chuẩn mực trong khoa học thần kinh, trong DMS chỉ dùng làm phép kiểm lành mạnh — ProteinGym **tự nêu** vấn đề nhưng không chuẩn hóa); benchmark chuyển assay cho bộ dự đoán degron. Nhưng **ý tưởng trần nhãn có tiền lệ** trong protein ML (arXiv 1809.10389, trần ΔΔG 0,73–0,83; FLIGHTED) ⇒ **không được nói là phát minh**.
+- **Voutsinos 2026 là baseline cứng hơn tưởng:** mô hình của chính họ đạt **Pearson 0,82/0,87** so với độ dồi dào đo được **trên tile giữ lại**, và họ báo **phần lớn degron nằm ở vùng bị chôn**. Họ cũng đã công bố một **kết quả âm** trên nhiệm vụ chuyển giao: điểm tile trung bình tương quan **kém** với độ dồi dào protein nguyên vẹn, tốt hơn ở vị trí phơi lộ/vô định hình.
+- **Đề xuất C-13:** nhận **H1 (phân rã khoảng cách qua assay/qua ngăn tế bào)** làm mạch chính, **H2 (chuẩn hóa theo trần nhãn)** làm chương phương pháp, **H3 (chuyển giao peptide → protein nguyên vẹn, có điều kiện phơi lộ)** làm chương chuyển giao; H4 (chuyển sang mức tile đơn thuần) **không khuyến nghị** vì phải thắng tác giả bộ dữ liệu trên sân của họ. Giữ tên đề tài và trụ 89,7%; bộ bão hòa chuyển sang vai **sản phẩm ứng dụng**. Việc này **sửa một phần [D-025](../../DECISIONS.md#d-025) đề xuất 2** nên cần Trọng quyết. Mạch trình bày đã điền theo khuôn mười trang của [hướng dẫn trình bày](../../project/advisor-presentation-guide.md).
+
+---
+
+## 15/10/2026 — bắt đầu hỏi đáp đánh giá hiểu biết theo vòng
+
+- Theo yêu cầu của Trọng, tạo [hồ sơ học tập](learning/assessment-log.md): lưu câu hỏi, câu trả lời nguyên văn, đánh giá có bằng chứng, giải thích sửa sai và kiểm tra lại qua các vòng.
+- Vòng 1 có sáu câu từ protein/residue/đột biến đến cơ chế degron, diễn giải reporter và mục tiêu đề tài; **đang chờ câu trả lời, chưa đánh giá năng lực**.
+- Đối chiếu nguồn hiện hành, ghi cảnh báo lỗi chiều PSI/ΔPSI và trạng thái nhãn cũ trong bài giảng 2, cùng nhận định tính mới ma trận đã bị tiền lệ Degformer cập nhật. Hồ sơ dùng sổ dữ liệu, audit và trạng thái tại [DECISIONS.md](../../DECISIONS.md) làm căn cứ tương ứng; chưa sửa các bài giảng hay thiết kế nghiên cứu.
+
+---
+
 ## 15/10/2026 (chiều) — bộ nhân Larsen: giấy phép đã qua, nhưng nó không cứu nhãn residue; và một tiền lệ thứ năm
 
 Tài liệu: [research/larsen-nuclear-and-risks-2026-10-15/](research/larsen-nuclear-and-risks-2026-10-15/README.md), kèm sáu file ghi chép trong `notes/`. **Không huấn luyện mô hình nào.** Hai đề xuất mới ghi vào [DECISIONS.md phần C](../../DECISIONS.md): C-10, C-11.

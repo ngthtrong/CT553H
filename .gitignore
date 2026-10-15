@@ -1,8 +1,13 @@
 # Dữ liệu: nằm trong thư mục từng đề tài, KHÔNG BAO GIỜ đưa lên git.
 # Sinh lại bằng script trong code/ hoặc research/ của đề tài đó.
-topics/*/data/
-archive/topics/*/data/
-data/
+# Chặn NỘI DUNG mọi thư mục data/ (không chặn chính thư mục) để README.md nguồn gốc
+# dữ liệu bên trong vẫn lên git. SOURCE.md ở mọi độ sâu cũng lên git: nó giữ thông báo
+# giấy phép và xuất xứ của từng bộ dữ liệu tải về (ví dụ thông báo MIT của Larsen 2025).
+**/data/**
+!**/data/README.md
+!**/data/raw/
+!**/data/raw/*/
+!**/data/**/SOURCE.md
 
 # Mô hình đã huấn luyện, kết quả nặng
 topics/*/models/

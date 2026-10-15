@@ -1,0 +1,109 @@
+{
+ "note": "Lực tính trên SD THẬT của chênh lệch ghép cặp giữa hai mô hình, không phải SD của nhãn. Đơn vị bootstrap là CỤM protein cov80.",
+ "alpha": 0.05,
+ "target_power": 0.8,
+ "sources": {
+  "saturation": {
+   "M1_plus_position_index": {
+    "observed_delta": 0.0123,
+    "ci95": [
+     0.0046,
+     0.0199
+    ],
+    "se_cluster": 0.004,
+    "n_clusters": 89,
+    "mde_80pct_power": 0.0112,
+    "power_at_observed": 0.868
+   },
+   "M2_plus_window_composition": {
+    "observed_delta": 0.017,
+    "ci95": [
+     0.0087,
+     0.0255
+    ],
+    "se_cluster": 0.0042,
+    "n_clusters": 89,
+    "mde_80pct_power": 0.0118,
+    "power_at_observed": 0.982
+   },
+   "M3_plus_ordered_context": {
+    "observed_delta": 0.0201,
+    "ci95": [
+     0.0117,
+     0.0285
+    ],
+    "se_cluster": 0.0044,
+    "n_clusters": 89,
+    "mde_80pct_power": 0.0123,
+    "power_at_observed": 0.995
+   },
+   "M4_context_and_position": {
+    "observed_delta": 0.0182,
+    "ci95": [
+     0.0096,
+     0.0265
+    ],
+    "se_cluster": 0.0044,
+    "n_clusters": 89,
+    "mde_80pct_power": 0.0123,
+    "power_at_observed": 0.985
+   },
+   "_unpaired_reference": {
+    "se_of_mean_auroc_cluster_bootstrap": 0.0124,
+    "mde_80pct_power_unpaired_two_sample": 0.0491,
+    "meaning": "Phép so KHÔNG ghép cặp cần mức chênh lớn hơn ≈ sqrt(2) lần. Ghép cặp theo peptide là lý do lực đủ ở n nhỏ."
+   }
+  },
+  "scanning": {
+   "M1_plus_position_index": {
+    "observed_delta": 0.0052,
+    "ci95": [
+     0.0035,
+     0.007
+    ],
+    "se_cluster": 0.0009,
+    "n_clusters": 1599,
+    "mde_80pct_power": 0.0025,
+    "power_at_observed": 1.0
+   },
+   "M2_plus_window_composition": {
+    "observed_delta": 0.0232,
+    "ci95": [
+     0.0211,
+     0.0251
+    ],
+    "se_cluster": 0.001,
+    "n_clusters": 1599,
+    "mde_80pct_power": 0.0028,
+    "power_at_observed": 1.0
+   },
+   "M3_plus_ordered_context": {
+    "observed_delta": 0.0289,
+    "ci95": [
+     0.0264,
+     0.0313
+    ],
+    "se_cluster": 0.0013,
+    "n_clusters": 1599,
+    "mde_80pct_power": 0.0036,
+    "power_at_observed": 1.0
+   },
+   "M4_context_and_position": {
+    "observed_delta": 0.0291,
+    "ci95": [
+     0.0266,
+     0.0317
+    ],
+    "se_cluster": 0.0013,
+    "n_clusters": 1599,
+    "mde_80pct_power": 0.0036,
+    "power_at_observed": 1.0
+   },
+   "_unpaired_reference": {
+    "se_of_mean_auroc_cluster_bootstrap": 0.0038,
+    "mde_80pct_power_unpaired_two_sample": 0.0151,
+    "meaning": "Phép so KHÔNG ghép cặp cần mức chênh lớn hơn ≈ sqrt(2) lần. Ghép cặp theo peptide là lý do lực đủ ở n nhỏ."
+   }
+  }
+ }
+}

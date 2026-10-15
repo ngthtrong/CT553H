@@ -1,0 +1,128 @@
+{
+ "metric": "AUROC mức ô, trung bình macro theo peptide",
+ "note": "Mọi phép so GHÉP CẶP trên cùng peptide, bootstrap theo CỤM protein cov80. Trần là trần ĐO LƯỜNG, không phải mức học được.",
+ "sources": {
+  "scanning": {
+   "ceiling_measurement": 0.9458,
+   "comparisons": {
+    "M0_composition_only_vs_dPAP_cnn2w1": {
+     "mean": 0.0421,
+     "ci95": [
+      0.0366,
+      0.048
+     ],
+     "sd_cluster_bootstrap": 0.0029,
+     "n_clusters": 1471,
+     "n_peptides": 2064,
+     "win_rate": 0.6773,
+     "wilcoxon_p": 3.45685548199507e-92,
+     "mean_model": 0.8365,
+     "mean_delta_pap": 0.7943
+    },
+    "M3_plus_ordered_context_vs_dPAP_cnn2w1": {
+     "mean": 0.0714,
+     "ci95": [
+      0.0652,
+      0.0775
+     ],
+     "sd_cluster_bootstrap": 0.0031,
+     "n_clusters": 1471,
+     "n_peptides": 2064,
+     "win_rate": 0.7922,
+     "wilcoxon_p": 8.377772502829699e-167,
+     "mean_model": 0.8657,
+     "mean_delta_pap": 0.7943
+    },
+    "M0_composition_only_vs_dPAP_cnn2w7": {
+     "mean": 0.0008,
+     "ci95": [
+      -0.0057,
+      0.0074
+     ],
+     "sd_cluster_bootstrap": 0.0033,
+     "n_clusters": 1471,
+     "n_peptides": 2064,
+     "win_rate": 0.3958,
+     "wilcoxon_p": 8.557929772624765e-07,
+     "mean_model": 0.8365,
+     "mean_delta_pap": 0.8357
+    },
+    "M3_plus_ordered_context_vs_dPAP_cnn2w7": {
+     "mean": 0.03,
+     "ci95": [
+      0.0234,
+      0.0366
+     ],
+     "sd_cluster_bootstrap": 0.0033,
+     "n_clusters": 1471,
+     "n_peptides": 2064,
+     "win_rate": 0.5756,
+     "wilcoxon_p": 1.134951734476384e-34,
+     "mean_model": 0.8657,
+     "mean_delta_pap": 0.8357
+    }
+   }
+  },
+  "saturation": {
+   "ceiling_measurement": 0.9519,
+   "comparisons": {
+    "M0_composition_only_vs_dPAP_cnn2w1": {
+     "mean": -0.0621,
+     "ci95": [
+      -0.0766,
+      -0.0476
+     ],
+     "sd_cluster_bootstrap": 0.0075,
+     "n_clusters": 89,
+     "n_peptides": 91,
+     "win_rate": 0.1758,
+     "wilcoxon_p": 2.1306665798434893e-11,
+     "mean_model": 0.7071,
+     "mean_delta_pap": 0.7693
+    },
+    "M3_plus_ordered_context_vs_dPAP_cnn2w1": {
+     "mean": -0.042,
+     "ci95": [
+      -0.058,
+      -0.0256
+     ],
+     "sd_cluster_bootstrap": 0.0083,
+     "n_clusters": 89,
+     "n_peptides": 91,
+     "win_rate": 0.2418,
+     "wilcoxon_p": 1.2694572440206562e-06,
+     "mean_model": 0.7273,
+     "mean_delta_pap": 0.7693
+    },
+    "M0_composition_only_vs_dPAP_cnn2w7": {
+     "mean": -0.0574,
+     "ci95": [
+      -0.0772,
+      -0.0362
+     ],
+     "sd_cluster_bootstrap": 0.0104,
+     "n_clusters": 89,
+     "n_peptides": 91,
+     "win_rate": 0.1758,
+     "wilcoxon_p": 9.525770263150247e-09,
+     "mean_model": 0.7071,
+     "mean_delta_pap": 0.7646
+    },
+    "M3_plus_ordered_context_vs_dPAP_cnn2w7": {
+     "mean": -0.0373,
+     "ci95": [
+      -0.0575,
+      -0.0148
+     ],
+     "sd_cluster_bootstrap": 0.0108,
+     "n_clusters": 89,
+     "n_peptides": 91,
+     "win_rate": 0.2418,
+     "wilcoxon_p": 5.031607671859068e-06,
+     "mean_model": 0.7273,
+     "mean_delta_pap": 0.7646
+    }
+   }
+  }
+ }
+}

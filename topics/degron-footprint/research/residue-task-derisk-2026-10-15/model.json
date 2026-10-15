@@ -1,0 +1,174 @@
+{
+ "window": 3,
+ "n_seeds": 5,
+ "n_folds": 5,
+ "metric": "AUROC mức ô, trung bình macro theo peptide",
+ "scanning": {
+  "n_peptides": 2994,
+  "n_cells": 83446,
+  "n_clusters": 1985,
+  "n_features": {
+   "M0_composition_only": 60,
+   "M1_plus_position_index": 88,
+   "M2_plus_window_composition": 80,
+   "M3_plus_ordered_context": 180,
+   "M4_context_and_position": 208
+  },
+  "macro_auroc": {
+   "M0_composition_only": {
+    "mean": 0.8393,
+    "sd_across_seeds": 0.0002
+   },
+   "M1_plus_position_index": {
+    "mean": 0.8445,
+    "sd_across_seeds": 0.0002
+   },
+   "M2_plus_window_composition": {
+    "mean": 0.8625,
+    "sd_across_seeds": 0.0002
+   },
+   "M3_plus_ordered_context": {
+    "mean": 0.8682,
+    "sd_across_seeds": 0.0003
+   },
+   "M4_context_and_position": {
+    "mean": 0.8684,
+    "sd_across_seeds": 0.0001
+   }
+  },
+  "paired_vs_M0": {
+   "M1_plus_position_index": {
+    "mean": 0.0052,
+    "ci95": [
+     0.0035,
+     0.007
+    ],
+    "sd_cluster_bootstrap": 0.0009,
+    "n_clusters": 1599,
+    "wilcoxon_p": 8.175541857077052e-20,
+    "n_peptides": 2288,
+    "win_rate": 0.5625
+   },
+   "M2_plus_window_composition": {
+    "mean": 0.0232,
+    "ci95": [
+     0.0211,
+     0.0251
+    ],
+    "sd_cluster_bootstrap": 0.001,
+    "n_clusters": 1599,
+    "wilcoxon_p": 5.256177564822737e-123,
+    "n_peptides": 2288,
+    "win_rate": 0.7115
+   },
+   "M3_plus_ordered_context": {
+    "mean": 0.0289,
+    "ci95": [
+     0.0264,
+     0.0313
+    ],
+    "sd_cluster_bootstrap": 0.0013,
+    "n_clusters": 1599,
+    "wilcoxon_p": 7.921888680731486e-129,
+    "n_peptides": 2288,
+    "win_rate": 0.7251
+   },
+   "M4_context_and_position": {
+    "mean": 0.0291,
+    "ci95": [
+     0.0266,
+     0.0317
+    ],
+    "sd_cluster_bootstrap": 0.0013,
+    "n_clusters": 1599,
+    "wilcoxon_p": 2.2369916346792204e-129,
+    "n_peptides": 2288,
+    "win_rate": 0.7277
+   }
+  }
+ },
+ "saturation_transfer": {
+  "n_scanning_peptides_kept_for_training": 2849,
+  "n_scanning_peptides_dropped_cluster_overlap": 145,
+  "n_saturation_peptides": 91,
+  "n_saturation_cells": 47847,
+  "note": "Huấn luyện CHỈ trên bộ quét, chấm trên bộ bão hòa. Mọi peptide quét có cụm protein cov80 trùng với bộ bão hòa đã bị loại khỏi tập huấn luyện. Thay thế của bộ quét gần như toàn bộ là ->R, nên đây là phép chuyển sang 19 thay thế CHƯA THẤY.",
+  "macro_auroc": {
+   "M0_composition_only": {
+    "value": 0.7071,
+    "alpha": 0.1,
+    "position_level_spearman": 0.4368
+   },
+   "M1_plus_position_index": {
+    "value": 0.7194,
+    "alpha": 0.1,
+    "position_level_spearman": 0.4524
+   },
+   "M2_plus_window_composition": {
+    "value": 0.7241,
+    "alpha": 0.1,
+    "position_level_spearman": 0.446
+   },
+   "M3_plus_ordered_context": {
+    "value": 0.7273,
+    "alpha": 0.1,
+    "position_level_spearman": 0.444
+   },
+   "M4_context_and_position": {
+    "value": 0.7253,
+    "alpha": 0.1,
+    "position_level_spearman": 0.4456
+   }
+  },
+  "paired_vs_M0": {
+   "M1_plus_position_index": {
+    "mean": 0.0123,
+    "ci95": [
+     0.0046,
+     0.0199
+    ],
+    "sd_cluster_bootstrap": 0.004,
+    "n_clusters": 89,
+    "n_peptides": 91,
+    "win_rate": 0.6923,
+    "wilcoxon_p": 0.000897974473086553
+   },
+   "M2_plus_window_composition": {
+    "mean": 0.017,
+    "ci95": [
+     0.0087,
+     0.0255
+    ],
+    "sd_cluster_bootstrap": 0.0042,
+    "n_clusters": 89,
+    "n_peptides": 91,
+    "win_rate": 0.7143,
+    "wilcoxon_p": 0.00017815301123888055
+   },
+   "M3_plus_ordered_context": {
+    "mean": 0.0201,
+    "ci95": [
+     0.0117,
+     0.0285
+    ],
+    "sd_cluster_bootstrap": 0.0044,
+    "n_clusters": 89,
+    "n_peptides": 91,
+    "win_rate": 0.6484,
+    "wilcoxon_p": 4.195655290231862e-05
+   },
+   "M4_context_and_position": {
+    "mean": 0.0182,
+    "ci95": [
+     0.0096,
+     0.0265
+    ],
+    "sd_cluster_bootstrap": 0.0044,
+    "n_clusters": 89,
+    "n_peptides": 91,
+    "win_rate": 0.6484,
+    "wilcoxon_p": 0.0001403756238722381
+   }
+  }
+ }
+}

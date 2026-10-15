@@ -1,0 +1,37 @@
+{
+ "metric": "AUROC mức ô, trung bình macro theo peptide",
+ "scanning": {
+  "n_peptides_both_replicates": 2723,
+  "measurement_ceiling_rep1_scores_rep2_labels": 0.9458,
+  "n_peptides_in_ceiling": 2102,
+  "delta_pap": {
+   "cnn2w1": {
+    "macro_auroc": 0.7943,
+    "n_peptides": 2064
+   },
+   "cnn2w7": {
+    "macro_auroc": 0.8357,
+    "n_peptides": 2064
+   }
+  },
+  "note": "Trần là trần ĐO LƯỜNG (một replicate chấm trên replicate kia), KHÔNG phải mức dự đoán được từ trình tự."
+ },
+ "saturation": {
+  "n_peptides": 91,
+  "measurement_ceiling_half_vs_half": 0.9519,
+  "delta_pap": {
+   "cnn2w1": {
+    "macro_auroc": 0.7693,
+    "n_peptides": 91
+   },
+   "cnn2w7": {
+    "macro_auroc": 0.7646,
+    "n_peptides": 91
+   }
+  },
+  "cross_check_vs_pap_baseline_2026_10_14": {
+   "expected_ceiling": 0.9519,
+   "expected_delta_pap_cnn2w1": 0.7692
+  }
+ }
+}

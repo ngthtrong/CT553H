@@ -31,7 +31,7 @@ CT553H/
 │   ├── advisor-publications/   Danh mục công bố đã scrape (ho-quang-thai.md, yu-yen-ou.md)
 │   └── meetings/               Mỗi buổi gặp một thư mục YYYY-MM-DD-session-NN/: prep.md, minutes.md, slides/
 ├── topics/                 Mỗi đề tài đang đào sâu một thư mục, gói gọn tài liệu + code
-│   └── <ten-de-tai>/           README.md (thẻ trạng thái) · log.md · research/ · code/ · presentation/ · proposal/ · data/ (không lên git)
+│   └── <ten-de-tai>/           README.md (thẻ trạng thái) · log.md · research/ · code/ · presentation/ · proposal/ · data/ (không lên git, trừ data/README.md)
 ├── surveys/                Khảo sát diện rộng chưa gắn với một đề tài (danh mục ứng viên)
 ├── resources/              ★ Mọi tài nguyên: README.md (chỉ mục + artifact/Notion/dữ liệu/môi trường), papers/, reference-theses/, course/
 ├── lectures/               Mọi bài giảng tự học (HTML mở bằng file://, CS535, lộ trình sinh học, hub học degron)
@@ -50,7 +50,8 @@ Khuôn của một thư mục đề tài và cách thêm/đóng đề tài: xem 
 - **Tên file/thư mục:** chữ thường, không dấu, tiếng Anh, nối bằng gạch ngang. Thư mục đề tài có thể có **số đầu tên** (`1-ten-de-tai`) thể hiện mức tiềm năng; số này **do Trọng tự đặt**, Claude không tự đổi.
 - **Liên kết** giữa các tài liệu dùng đường dẫn tương đối. Sau khi di chuyển hay đổi tên file, chạy `python3 tools/check_links.py` và sửa đến khi không còn link hỏng. Đổi tên thư mục đề tài thì dùng `python3 tools/rename_topic.py <cũ> <mới>`.
 - **Script** tìm thư mục gốc repo qua file `DECISIONS.md` (không dùng `parents[N]`), để vẫn chạy được sau khi chuyển thư mục.
-- **Dữ liệu** nằm trong chính thư mục đề tài: `topics/<ten-de-tai>/data/{raw,interim,processed}/`. Thư mục này bị `.gitignore` chặn; không bao giờ commit dữ liệu, tên thật hay file chưa ẩn danh. Mọi file trong `data/processed/` phải sinh lại được bằng script trong `code/` hoặc `research/` của đề tài. Script tìm thư mục đề tài qua file `log.md` (`TOPIC`), nên `data/` đi theo khi đổi tên hay chuyển thư mục đề tài.
+- **Dữ liệu** nằm trong chính thư mục đề tài: `topics/<ten-de-tai>/data/{raw,interim,processed}/`. Nội dung thư mục này bị `.gitignore` chặn; không bao giờ commit dữ liệu, tên thật hay file chưa ẩn danh. Mọi file trong `data/processed/` phải sinh lại được bằng script trong `code/` hoặc `research/` của đề tài. Script tìm thư mục đề tài qua file `log.md` (`TOPIC`), nên `data/` đi theo khi đổi tên hay chuyển thư mục đề tài.
+- **Sổ nguồn gốc dữ liệu:** mỗi `data/` có một `data/README.md`, và mỗi bộ dữ liệu tải về có thêm một `SOURCE.md` cạnh nó (hai loại file duy nhất trong `data/` được lên git, nhờ ngoại lệ `!**/data/README.md` và `!**/data/**/SOURCE.md`). `SOURCE.md` giữ **thông báo giấy phép nguyên văn** và xuất xứ ghim của riêng bộ đó; `data/README.md` giữ bản tổng hợp. Nó ghi: (1) **nguồn gốc** từng bộ dữ liệu: URL/DOI/accession, phiên bản hoặc commit ghim, giấy phép, ngày tải, manifest/SHA-256; (2) **danh mục từng file** trong `raw/`, `interim/`, `processed/`: script nào tạo ra, từ đầu vào nào, đã kiểm gì; (3) **giải thích các trường** của tập dữ liệu dùng để huấn luyện/đánh giá: cấu trúc định danh, ý nghĩa, đơn vị và chiều của từng cột, nhãn suy ra thế nào; (4) **nhật ký xử lý** theo ngày, mới nhất ở trên; (5) lệnh **dựng lại từ đầu**. Mỗi lần tải thêm, xử lý lại hay xoá file trong `data/` thì cập nhật README này **trong cùng phiên**. File không rõ script tạo ra thì ghi rõ "không có script" thay vì đoán. Mẫu: [topics/degron-footprint/data/README.md](topics/degron-footprint/data/README.md).
 - **Thí nghiệm tái lập được:** cố định seed; ghi config và kết quả nhỏ ra file trong thư mục đề tài. Số liệu đưa vào tài liệu phải trỏ tới file kết quả tương ứng.
 - **Nhãn bằng chứng** khi viết khảo sát: phân biệt rõ đã tự đo, nguồn tác giả, phân tích, đề xuất, và chưa xác minh (chỉ thấy qua tóm tắt tìm kiếm). Không nói "chưa ai làm" khi mới tra qua tóm tắt.
 - **Khi soạn slide/báo cáo:** đọc [gợi ý trình bày từ sáu bài của nhóm GVHD](project/advisor-presentation-guide.md) để tham khảo mạch dẫn nhập, workflow, bảng đối chứng/ablation và giới hạn lập luận. Đây là gợi ý theo yêu cầu của Trọng, không phải yêu cầu bắt buộc của GVHD; mẫu học phần và trạng thái trong `DECISIONS.md` vẫn là căn cứ.
@@ -63,3 +64,4 @@ Khuôn của một thư mục đề tài và cách thêm/đóng đề tài: xem 
 2. Việc chung: thêm 3–5 dòng lên đầu `journal/YYYY-MM.md`.
 3. Có quyết định mới: cập nhật `DECISIONS.md` (phần B, rồi phần A).
 4. Có tài nguyên mới hoặc đổi trạng thái tài nguyên: cập nhật [resources/README.md](resources/README.md).
+5. Có tải, xử lý hay xoá dữ liệu: cập nhật `topics/<ten-de-tai>/data/README.md` (nguồn gốc, danh mục file, các trường, nhật ký xử lý).
