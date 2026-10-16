@@ -4,6 +4,81 @@
 
 ---
 
+## 15/10/2026 — script Việt–Anh và tài liệu đọc hiểu cho 26 slide
+
+Theo yêu cầu Trọng, đọc đủ **năm phần paste** của `index.html` trong `deck-2026-10-16/`; bản ghép khớp file repo khi bỏ khoảng trắng. Soạn [speaker-script-bilingual.md](presentation/deck-2026-10-16/speaker-script-bilingual.md): mỗi slide có thông điệp, lời nói VI/EN, giải thích, hỏi đáp và nguồn; thêm bảng thuật ngữ, câu tự kiểm và bảng đối soát nguồn. Không điền câu trả lời vào hồ sơ đánh giá học tập.
+
+- **Đối soát đáng chú ý:** PAP Spearman **0,3553 là mức ô**, còn mức vị trí ghi **0,4130** trong `pap-baseline.json`; không dùng cặp 0,4440/0,3553 để tuyên bố đảo hạng. Delta scanning **+0,0300** dùng tập chung 2.064 peptide (M3 0,8657 / PAP 0,8357), khác tập của M3 0,8682. **87,3%** tính theo cụm (13.814/15.819), MDE 0,0123 thuộc cặp M3−M0, xác nhận Larsen vẫn chờ C-11a. Script nêu các giới hạn này; người soạn script không sửa HTML. Khi rà cuối thấy HTML đã đổi phần chữ/nhãn M7V→A7V ở slide 2; lời nói đã dùng A7V.
+- **Giới hạn biên soạn:** số minh họa slide 12 chưa gắn định danh không được coi là phép đo; bảng công cụ không chuyển “chưa kiểm” thành “không có”. Q1/Q4 slide 26 vẫn chờ Trọng hoàn thiện. Không có khảo sát web, benchmark, huấn luyện hay quyết định mới.
+- **Kiểm cuối:** đủ 26 mục slide với lời nói VI/EN, đọc hiểu và Q&A; **119 link/fragment mới** trong năm file đều hợp lệ; Pandoc chuyển thành HTML đủ 26 anchor slide, 8 bảng, 78 mục ngôn ngữ/đọc hiểu; đối chiếu số HIF1A, cấp metric PAP và delta ghép cặp với JSON; `git diff --check` trong phạm vi đạt. Không sửa `index.html`, CSS/JS hoặc `DECISIONS.md`.
+
+---
+
+## 15/10/2026 — dựng slide PowerPoint `deck-pptx-2026-10-16/` (26 slide + 2 phụ lục, GIF, animation)
+
+Theo yêu cầu Trọng: **tìm mẫu slide (không dùng lại mẫu trong repo) → tìm GIF → tạo animation → dựng slide từ [brief](presentation/slide-content-2026-10-15.md), định dạng `.pptx`, không phải deck HTML** ([D-037](../../DECISIONS.md#d-037)). Không đo mới, không huấn luyện, không đổi quyết định nghiên cứu. Sản phẩm: [deck-pptx-2026-10-16](presentation/deck-pptx-2026-10-16/README.md). Không đọc, sửa hay ghi `deck-2026-10-16/` và `deck-external-2026-10-16/` (chỉ **đọc** file [measured-example.json](presentation/deck-external-2026-10-16/assets/measured-example.json) làm đầu vào cho slide 16).
+
+- **Mẫu:** Quarto Clean, reveal.js White và SlidesCarnival đã dùng ở repo nên **loại**. Tra thêm *assertion–evidence* (Alley, Penn State) và Beamer *metropolis*; chỉ vận dụng **nguyên tắc** (tiêu đề là câu khẳng định, nền tối cho slide mở đầu, thanh tiến độ tối giản), không tải mẫu. ⚠ Giấy phép metropolis có hai nguồn mâu thuẫn, chưa xác minh. Bố cục viết bằng `python-pptx` ([lib.py](presentation/deck-pptx-2026-10-16/lib.py)).
+- **GIF (Commons, tra qua API):** ba GIF **mới** so với deck ngoài, **CC BY-SA** — dịch mã (slide 2), URM1 họ ubiquitin (slide 4; ghi đúng là *ubiquitin-fold*, không phải E3), GFP reporter (slide 7; bản 24,6 MB được **thu nhỏ** còn 1 MB). **Không có GIF proteasome/E3/degron nào** trên Commons, nên cơ chế UPS dựng bằng hình khối. Ghi công, SHA-256 và điều khoản ShareAlike ở [SOURCES.md](presentation/deck-pptx-2026-10-16/SOURCES.md).
+- **Animation:** hiệu ứng *fade* theo bấm chuột, viết thẳng XML `p:timing` ([lib.py](presentation/deck-pptx-2026-10-16/lib.py)); **21 slide** có bước hiện dần (chuỗi → gập → M7V; E3 → ubiquitin → proteasome; phễu dữ liệu; cột AUROC bộ quét → bộ bão hòa → khoảng cách −0,0420; …). GIF chạy ở Slide Show.
+- **Hình từ dữ liệu:** slide 16 là ma trận ΔPSI **đo** của `O00468_AGRN_82` (532 ô, 86/95 thay thế làm bền ở vị trí 15–19), dựng bằng [figs.py](presentation/deck-pptx-2026-10-16/figs.py). Ma trận bão hòa nằm **phía đánh giá** nên slide ghi là *minh họa nhãn đo*, không phải ví dụ huấn luyện.
+- **Kiểm tra:** `validate.py` của skill pptx **PASSED**; quét chữ không còn câu cấm của brief (vị trí thắng thành phần, "nobody has", "validated against ClinVar", 0,6045 / 0,7792, …); 28 slide đều có ghi chú người nói. ⚠ **Chưa mở bằng PowerPoint thật, chưa phát thử animation**: máy không có LibreOffice. Bố cục xem bằng bộ vẽ lại tự viết ([render_preview.py](presentation/deck-pptx-2026-10-16/render_preview.py)), nên có thể lệch nhẹ so với PowerPoint. Ký tự `✓ △ ⇒` đổi thành `● ▲ →` vì Calibri không có.
+- **Chỗ lệch brief có chủ ý** (bảng đầy đủ ở SOURCES.md): ô giấy phép Larsen ghi *đang chờ xác nhận* (C-11a); MDE 0,0123 gắn với cặp M3 − M0; G1–G3 gọi *readiness check*; Q1/Q4 slide 26 là **ô giữ chỗ**, Trọng tự viết (việc 9).
+- **Việc tiếp theo (Trọng):** mở file một lần và bấm qua 26 slide; viết Q1/Q4; chọn một trong ba bản hoặc gộp.
+
+## 15/10/2026 — dựng deck `deck-2026-10-16/` (26 slide, animation tự dựng, hình sinh từ dữ liệu)
+
+Theo yêu cầu Trọng trong phiên: **tìm mẫu slide → tìm GIF → tạo animation → dựng slide từ
+[brief](presentation/slide-content-2026-10-15.md)**, kèm hai ràng buộc Trọng nói giữa chừng:
+**không dùng lại mẫu slide cũ** và **không đụng vào `deck-external-2026-10-16/`**. Không đo mới, không huấn
+luyện, không ghi quyết định nghiên cứu mới. Sản phẩm: [deck-2026-10-16/](presentation/deck-2026-10-16/README.md).
+
+- **Mẫu slide:** tra các framework HTML (reveal.js, Slidev, Marp, impress.js, Slipshow; mẫu khoa học của IPGP).
+  **Không dùng cái nào** — reveal.js từ CDN cần mạng khi mở `file://`, và yêu cầu "không dùng lại mẫu cũ" loại
+  cả `deck.json`/`slides/` lẫn `presentation.html`. Viết **engine riêng** ~190 dòng: sân khấu 16:9 cố định,
+  bước animation theo `data-step`, panel ghi chú, bảng tổng quan, chế độ `?all`, in ra PDF.
+- **GIF: tra xong và quyết định không dùng.** Tra Wikimedia Commons qua API cho `proteasome`, `ubiquitin`,
+  `degron`, `E3 ligase`, `ubiquitination animation`, `flow cytometry sorting`, `protein folding`: **không có
+  GIF nào vừa đúng chủ đề vừa có giấy phép dùng được**. Hai GIF tìm được là CC BY-SA 3.0 và sai nội dung.
+  Nguồn animation UPS tốt đều không mở: HHMI BioInteractive (CC BY-NC-SA), WEHI.TV (xin phép từng lần),
+  hình tạp chí (CC BY-NC-**ND**). ⇒ Animation **tự dựng bằng SVG + CSS**, đúng khuyến nghị của brief.
+- **Hình sinh từ dữ liệu cho slide 16** (việc số 2 của brief, nay **xong**):
+  [`research/slide-figures-2026-10-15/`](research/slide-figures-2026-10-15/README.md) — ma trận ΔPSI 28×20 **đo
+  được** của `Q16665_HIF1A_25`, chọn bằng quy tắc cố định, kèm SHA-256 hai file đầu vào. Footprint rơi đúng
+  **vị trí 10–14** = `L562-A563-P564-Y565-I566`, tức lõi **LXXLAP** mà VHL nhận diện; vị trí 12 có **19/19**
+  thay thế đều làm bền, vị trí 23 là đối chứng âm (−0,31). ⚠ Mắt nối LXXLAP/P564 là **tra y văn**
+  (PMID 11504942), đã gắn nhãn `literature cross-check` trên slide, **không** trình bày như phát hiện mới.
+  ⚠ Cả 91 peptide bão hòa đều ở phía đánh giá nên không có peptide "trong tập train" như brief giả định;
+  script **ghi rõ trạng thái split** thay vì giả định, và slide chỉ hiện nhãn đo nên không rò rỉ.
+- **26 slide, 13 sơ đồ tự dựng + 2 hình tác giả** (Voutsinos 2026 Fig. 1 và Fig. 4, CC BY-NC 4.0, caption đủ
+  tác giả/DOI/giấy phép). Chữ trên slide tiếng Anh, ghi chú người nói tiếng Việt kèm các câu cấm.
+- **Ba lỗi kỹ thuật tìm ra khi soát bằng ảnh chụp thật**, đã sửa và đáng ghi vì dễ lặp lại:
+  (1) quy tắc `[data-step][data-anim="…"]` đặt **sau** `[data-step].on` nên mọi khối có hướng bay **kẹt ở vị
+  trí lệch** — SVG cắt mất chữ; (2) `code, .mono { font-size: .92em }` đè lên thuộc tính `font-size` của
+  `<text>` trong SVG làm **mọi sơ đồ phóng to**; (3) `.cols` không khoá chiều cao hàng grid nên hình **tràn
+  khỏi sân khấu**. Đã soát lại từng slide bằng Chrome headless ở chế độ `?all`.
+- **Kiểm:** HTML cân bằng thẻ, 26 `<section>` / 26 ghi chú, mọi đường dẫn tài nguyên tồn tại, xuất PDF ra
+  đúng **26 trang** 1280×720.
+- **Chưa làm:** câu hỏi 1 và 4 của slide 26 vẫn **chờ Trọng viết** (bản hiện tại lấy từ brief, câu 1 đã thêm
+  dòng xin ghi biên bản khung ba trụ); chưa đối chiếu lại từng ô bảng so sánh công cụ ở slide 23; chưa chạy
+  đối chứng bảo tồn/vô trật tự cho con số 2,148. Nay `presentation/` có **hai** deck cho cùng buổi gặp —
+  chọn một hoặc gộp là việc của Trọng.
+
+---
+
+## 15/10/2026 — dựng deck bên ngoài cho buổi gặp 16/10
+
+Theo yêu cầu Trọng: tra mẫu ngoài repo, tìm GIF và tạo animation, dựng từ [brief](presentation/slide-content-2026-10-15.md) **chỉ trong [deck-external-2026-10-16/](presentation/deck-external-2026-10-16/README.md)**. Không đọc, sao chép hoặc ghi vào thư mục `deck-2026-10-16/` đang được Trọng chỉnh sửa. Không huấn luyện, chạy benchmark mới hay ghi quyết định nghiên cứu mới.
+
+- **Thiết kế:** tra Quarto Clean của Grant McDermott (MIT), Reveal.js White (MIT) và Biology Thesis của SlidesCarnival; tham khảo Clean để viết bố cục HTML riêng, dùng Inter cục bộ. [SOURCES.md](presentation/deck-external-2026-10-16/SOURCES.md) ghi mức truy cập từng nguồn, giấy phép, những ứng viên không dùng và SHA tài nguyên.
+- **Sản phẩm:** 26 slide chính + 7 phụ lục, tách nội dung thành 7 file; `index.html` nhỏ, chạy `file://` không cần mạng. Hai GIF Commons (dịch mã, domain RING) có ghi công và poster tĩnh; RING ghi rõ domain virus PDB 1CHC, không gọi là E3 người. SVG tự dựng cho gập chuỗi, cân bằng, UPS, zoom, forest plot, hoán vị PAP, so sánh benchmark, luồng xử lý và split cụm.
+- **Nội dung:** giữ hai phía kết quả (+0,0300 bộ quét / −0,0420 bão hòa), G2 chưa đạt, A/B/C chưa chạy và phần mềm chưa xây. Q1/Q4 slide 26 chừa cho Trọng. Ghi chú trích brief có phần đối chiếu trước đoạn nguồn để không đưa chữ cũ lên slide.
+- **Đồng bộ trạng thái:** sửa hai dòng cũ trong README vẫn gọi C-16/C-17 là đang chờ hoặc gọi `CTNNB1` là ứng viên hiện hành; chúng mâu thuẫn với [D-035](../../DECISIONS.md#d-035). Chỉ dẫn lại quyết định đã có, không tạo quyết định mới.
+- **Đối chiếu khi dựng:** ví dụ AGRN là nhãn đo ở phía đánh giá, không gọi là mẫu train; MDE gắn cặp M3−M0 theo [D-031](../../DECISIONS.md#d-031); giấy phép Larsen vẫn chờ email theo [C-11a](../../DECISIONS.md#c-11a); bảng tính năng công cụ dùng “not documented / not checked” theo mức nguồn, không biến chưa kiểm thành vắng mặt. Chi tiết ở SOURCES, không sửa brief gốc.
+- **Kiểm tra / bản mang theo:** kết quả, lệnh tái kiểm và giới hạn ở [VALIDATION.md](presentation/deck-external-2026-10-16/VALIDATION.md); [PDF](presentation/deck-external-2026-10-16/exports/degron-footprint-external-2026-10-16.pdf). Tiến độ trình bày cập nhật ở [sổ theo dõi](../../DECISIONS.md#tai-lieu-trinh-bay); không thêm D mới.
+
+---
+
 ## 15/10/2026 (phiên 11) — cập nhật brief slide theo khung ba trụ
 
 Tài liệu: [presentation/slide-content-2026-10-15.md](presentation/slide-content-2026-10-15.md). Căn cứ: [D-033](../../DECISIONS.md#d-033), [D-034](../../DECISIONS.md#d-034), [D-035](../../DECISIONS.md#d-035), [D-036](../../DECISIONS.md#d-036). **Chỉ sửa brief; không dựng slide, không đo mới, không ghi quyết định mới.**

@@ -1,0 +1,8 @@
+{
+ "heatmap_source": "deck-external-2026-10-16/assets/measured-example.json",
+ "sha256_source": "db0fc13e882b30f133d51798483e012a71314a770ea52ee0b2092b91d2fb9f63",
+ "peptide": "O00468_AGRN_82",
+ "wt_psi": 2.8782551625,
+ "cells": 532,
+ "color_limit": 2.8228609529999997
+}

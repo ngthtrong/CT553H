@@ -6,6 +6,9 @@
 
 | Thư mục | Nội dung |
 |---|---|
+| [Script Việt–Anh cho deck 16/10/2026](../topics/degron-footprint/presentation/deck-2026-10-16/speaker-script-bilingual.md) | 26 slide: lời nói song ngữ, giải thích để tự học, cách đọc hình, hỏi đáp, từ điển và nguồn; có đối soát metric và giới hạn của bản HTML, soạn từ năm phần paste ngày 15/10 |
+| [Slide PowerPoint cho 16/10/2026](../topics/degron-footprint/presentation/deck-pptx-2026-10-16/README.md) | `.pptx` 26 slide + 2 phụ lục, animation bấm chuột, ghi chú người nói; ba GIF Commons CC BY-SA (Tekksavvy, Hsp90, Erik A. Rodriguez), tra mẫu *assertion–evidence* / Beamer *metropolis* (chỉ nguyên tắc, không tải mẫu); [nguồn, giấy phép, SHA-256 và các chỗ lệch brief](../topics/degron-footprint/presentation/deck-pptx-2026-10-16/SOURCES.md) |
+| [Deck bên ngoài cho 16/10/2026](../topics/degron-footprint/presentation/deck-external-2026-10-16/README.md) | 26 slide + 7 phụ lục, HTML offline / PDF; tham khảo Quarto Clean (MIT), hai GIF Commons có ghi công, SVG tự dựng; [nguồn và giấy phép](../topics/degron-footprint/presentation/deck-external-2026-10-16/SOURCES.md), [manifest SHA-256](../topics/degron-footprint/presentation/deck-external-2026-10-16/assets/asset-manifest.json) |
 | [course/CT553H.pdf](course/CT553H.pdf) | Yêu cầu học phần / rubric. Tóm tắt ở [project/course.md](../project/course.md) |
 | [papers/ho-quang-thai/](papers/ho-quang-thai/) | PDF bài báo của GVHD (TS. Hồ Quang Thái). Danh mục 14 công trình: [project/advisor-publications/ho-quang-thai.md](../project/advisor-publications/ho-quang-thai.md) |
 | [Phân tích trình bày Trọng gửi, 14/10/2026](papers/ho-quang-thai/advisor-presentation-analysis-2026-10-14.txt) | Bản paste giữ nguyên; [hướng dẫn sử dụng khi làm slide/báo cáo](../project/advisor-presentation-guide.md) đã đối chiếu chọn lọc PDF và ghi các điểm cần giới hạn |

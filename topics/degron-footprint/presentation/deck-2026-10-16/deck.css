@@ -48,6 +48,8 @@ html, body {
   position: fixed; inset: 0;
   display: grid; place-items: center;
 }
+/* khi bật ghi chú, sân khấu lùi sang trái đúng bề rộng panel, không bị panel che */
+body.notes-on #viewport { right: 380px; }
 
 #stage {
   position: relative;
@@ -107,7 +109,10 @@ ul { margin: 0 0 10px; padding-left: 18px; }
 li { margin-bottom: 7px; line-height: 1.42; }
 li::marker { color: var(--muted); }
 b, strong { font-weight: 700; }
-code, .mono { font-family: var(--mono); font-size: .92em; }
+code { font-family: var(--mono); font-size: .92em; }
+/* .mono CHỈ đổi font chữ, không đặt cỡ: nếu đặt cỡ thì quy tắc CSS này sẽ đè lên
+   thuộc tính font-size của phần tử <text>/<g> trong SVG và mọi sơ đồ bị phóng to. */
+.mono { font-family: var(--mono); }
 .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
 
 .hl-d { color: var(--degron); font-weight: 700; }
@@ -124,7 +129,10 @@ code, .mono { font-family: var(--mono); font-size: .92em; }
 
 /* ----------------------------------------------------------------- bố cục cột */
 
-.cols      { display: grid; gap: 22px; flex: 1; min-height: 0; }
+.cols      { display: grid; gap: 22px; flex: 1; min-height: 0;
+             grid-auto-rows: minmax(0, 1fr); }
+/* không có dòng này thì ô grid nở theo nội dung và hình tràn khỏi sân khấu */
+.cols > *  { min-height: 0; min-width: 0; }
 .c-2       { grid-template-columns: 1fr 1fr; }
 .c-2-wide  { grid-template-columns: 1.35fr 1fr; }
 .c-2-narrow{ grid-template-columns: 1fr 1.35fr; }
@@ -144,6 +152,8 @@ code, .mono { font-family: var(--mono); font-size: .92em; }
 .card.alert  { border-left: 3px solid var(--degron); background: var(--degron-bg); }
 .card.open   { border: 1px dashed var(--warn); background: var(--warn-bg); }
 .card > :last-child { margin-bottom: 0; }
+.card.compact { padding: 9px 12px; }
+.card.compact .card-t { margin-bottom: 5px; }
 .card-t {
   font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em;
   text-transform: uppercase; color: var(--ink-45); margin-bottom: 8px;
@@ -190,16 +200,23 @@ table.xtight th, table.xtight td { padding: 3.5px 7px; font-size: 11.5px; }
 
 /* ------------------------------------------------------------- bước animation */
 
-/* phần tử chờ bước: ẩn tới khi .on */
-[data-step] { opacity: 0; transition: opacity .42s ease, transform .42s cubic-bezier(.2,.7,.3,1); }
-[data-step] { transform: translateY(7px); }
-[data-step].on { opacity: 1; transform: none; }
-[data-step][data-anim="fade"] { transform: none; }
+/* Phần tử chờ bước: ẩn và lệch sẵn, tới khi có .on thì hiện và về đúng chỗ.
+   Thứ tự các khối dưới đây quan trọng: trạng thái NGHỈ khai báo trước, trạng thái
+   .on khai báo SAU. Nếu đảo lại, quy tắc [data-step][data-anim="…"] (cùng độ ưu
+   tiên với [data-step].on nhưng đứng sau) sẽ thắng và phần tử kẹt ở vị trí lệch. */
+[data-step] {
+  opacity: 0; transform: translateY(7px);
+  transition: opacity .42s ease, transform .42s cubic-bezier(.2,.7,.3,1);
+}
+[data-step][data-anim="fade"]  { transform: none; }
 [data-step][data-anim="left"]  { transform: translateX(-14px); }
 [data-step][data-anim="right"] { transform: translateX(14px); }
 [data-step][data-anim="pop"]   { transform: scale(.9); transform-origin: center; }
 [data-step][data-anim="grow"]  { transform: scaleX(0); transform-origin: left center; }
-[data-step].on[data-anim="grow"] { transform: scaleX(1); }
+
+[data-step].on,
+[data-step][data-anim].on       { opacity: 1; transform: none; }
+[data-step][data-anim="grow"].on { transform: scaleX(1); }
 
 /* nhòe những dòng đã qua, làm nổi dòng hiện tại — dùng ở bảng dài */
 .dim { opacity: .45; transition: opacity .4s ease; }
@@ -212,10 +229,13 @@ svg .mono { font-family: var(--mono); }
 svg .lbl  { font-size: 11px; fill: var(--ink-70); }
 svg .lblx { font-size: 9.5px; fill: var(--ink-45); }
 .fig { display: flex; flex-direction: column; gap: 6px; min-height: 0; }
-.fig .cap { font-size: 10.5px; color: var(--ink-45); line-height: 1.35; }
-.fig .cap b { color: var(--ink-70); font-weight: 600; }
+/* .cap dùng được cả ngoài .fig (figcaption, chú thích trong card) */
+.cap { font-size: 10.5px; color: var(--ink-45); line-height: 1.35; }
+.cap b { color: var(--ink-70); font-weight: 600; }
+.cap i, .cap em { font-style: italic; }
 .fig-body { flex: 1; min-height: 0; display: grid; place-items: center; }
 .fig-body > svg { max-height: 100%; height: auto; }
+.fig-body img { max-height: 100%; }
 
 /* ô peptide mono dùng ở nhiều slide */
 .pep { display: flex; gap: 2px; font-family: var(--mono); font-size: 12px; }
@@ -270,6 +290,10 @@ svg .lblx { font-size: 9.5px; fill: var(--ink-45); }
   position: fixed; left: 0; bottom: 30px; height: 2px;
   background: var(--model); z-index: 51; transition: width .3s ease;
 }
+
+/* khối ghi chú nằm trong từng slide: chỉ là NGUỒN dữ liệu, không bao giờ hiển thị
+   trên sân khấu — JS chép nội dung sang panel #notes. */
+.speaker-note { display: none !important; }
 
 /* ghi chú người nói */
 #notes {

@@ -160,14 +160,16 @@ def colour(d, vmax):
 
 
 def render_svg(rec):
-    cell = 17
-    left, top = 74, 86
+    # ô rộng hơn cao: ma trận 28 hàng x 20 cột vốn gần vuông, nhưng slide 16:9 thì
+    # thấp và rộng, nên giãn ngang để hình dùng hết khung mà không phải thu nhỏ chữ
+    cell_w, cell_h = 24, 15
+    left, top = 74, 104
     n_pos, n_aa = rd.TILE_LEN, len(AA_ORDER)
-    grid_w, grid_h = n_aa * cell, n_pos * cell
+    grid_w, grid_h = n_aa * cell_w, n_pos * cell_h
     bar_x = left + grid_w + 44
-    bar_w = 150
+    bar_w = 170
     width = bar_x + bar_w + 92
-    height = top + grid_h + 96
+    height = top + grid_h + 112
 
     vmax = max(abs(rec["dpsi_min"]), abs(rec["dpsi_max"]))
     out = [
@@ -187,14 +189,14 @@ def render_svg(rec):
     # nhãn nhóm hoá tính trên trục x
     x = left
     for name, aas in AA_GROUPS:
-        w = len(aas) * cell
-        out.append(f'<line x1="{x}" y1="{top - 22}" x2="{x + w}" y2="{top - 22}" '
+        w = len(aas) * cell_w
+        out.append(f'<line x1="{x}" y1="{top - 24}" x2="{x + w}" y2="{top - 24}" '
                    f'stroke="{C_MUTED}" stroke-width="1"/>')
-        out.append(f'<text x="{x + w / 2}" y="{top - 27}" font-size="9" fill="{C_MUTED}" '
+        out.append(f'<text x="{x + w / 2}" y="{top - 29}" font-size="9" fill="{C_MUTED}" '
                    f'text-anchor="middle">{name}</text>')
         x += w
     for j, aa in enumerate(AA_ORDER):
-        out.append(f'<text x="{left + j * cell + cell / 2}" y="{top - 7}" font-size="10" '
+        out.append(f'<text x="{left + j * cell_w + cell_w / 2}" y="{top - 7}" font-size="10" '
                    f'font-family="JetBrains Mono, monospace" fill="{C_INK}" '
                    f'text-anchor="middle">{aa}</text>')
 
@@ -202,25 +204,25 @@ def render_svg(rec):
     for i, row in enumerate(rec["matrix"]):
         pos = i + 1
         wt = rec["sequence"][i]
-        y = top + i * cell
-        out.append(f'<text x="{left - 26}" y="{y + cell - 5}" font-size="9" fill="{C_MUTED}" '
+        y = top + i * cell_h
+        out.append(f'<text x="{left - 26}" y="{y + cell_h - 4}" font-size="9" fill="{C_MUTED}" '
                    f'text-anchor="end">{pos}</text>')
-        out.append(f'<text x="{left - 10}" y="{y + cell - 5}" font-size="10" '
+        out.append(f'<text x="{left - 10}" y="{y + cell_h - 4}" font-size="10" '
                    f'font-family="JetBrains Mono, monospace" font-weight="600" '
                    f'fill="{C_INK}" text-anchor="end">{wt}</text>')
         for j, aa in enumerate(AA_ORDER):
             d = row[aa]
-            cx = left + j * cell
+            cx = left + j * cell_w
             if aa == wt:
-                out.append(f'<rect x="{cx}" y="{y}" width="{cell}" height="{cell}" '
+                out.append(f'<rect x="{cx}" y="{y}" width="{cell_w}" height="{cell_h}" '
                            f'fill="none" stroke="{C_INK}" stroke-width="1.4"/>')
             elif d is None:
-                out.append(f'<rect x="{cx}" y="{y}" width="{cell}" height="{cell}" '
+                out.append(f'<rect x="{cx}" y="{y}" width="{cell_w}" height="{cell_h}" '
                            f'fill="#FFFFFF" stroke="#E4E9EC" stroke-width=".5"/>')
-                out.append(f'<line x1="{cx + 4}" y1="{y + cell - 4}" x2="{cx + cell - 4}" '
-                           f'y2="{y + 4}" stroke="#D6DDE2" stroke-width="1"/>')
+                out.append(f'<line x1="{cx + 5}" y1="{y + cell_h - 3}" x2="{cx + cell_w - 5}" '
+                           f'y2="{y + 3}" stroke="#D6DDE2" stroke-width="1"/>')
             else:
-                out.append(f'<rect x="{cx}" y="{y}" width="{cell}" height="{cell}" '
+                out.append(f'<rect x="{cx}" y="{y}" width="{cell_w}" height="{cell_h}" '
                            f'fill="{colour(d, vmax)}" stroke="#FFFFFF" stroke-width=".5"/>')
 
     # bar per-position
@@ -234,13 +236,13 @@ def render_svg(rec):
     for i, p in enumerate(rec["per_position"]):
         v = p["mean_dpsi"] or 0.0
         w = bar_w * abs(v) / (2 * pmax)
-        y = top + i * cell + 2
+        y = top + i * cell_h + 2
         x0 = zero if v >= 0 else zero - w
         fill = C_STABLE if v >= 0 else C_DEGRON
-        out.append(f'<rect x="{x0}" y="{y}" width="{max(w, 0.6)}" height="{cell - 4}" '
+        out.append(f'<rect x="{x0}" y="{y}" width="{max(w, 0.6)}" height="{cell_h - 4}" '
                    f'fill="{fill}" opacity="{0.95 if abs(v) >= 1.0 else 0.5}"/>')
         if abs(v) >= 1.0:
-            out.append(f'<text x="{zero + bar_w / 2 + 8}" y="{y + cell - 6}" font-size="9" '
+            out.append(f'<text x="{zero + bar_w / 2 + 10}" y="{y + cell_h - 4}" font-size="8.5" '
                        f'font-weight="700" fill="{C_INK}">{v:+.2f}</text>')
 
     # thang màu
@@ -250,12 +252,15 @@ def render_svg(rec):
     steps = 40
     for s in range(steps):
         t = -1 + 2 * s / (steps - 1)
-        out.append(f'<rect x="{left + s * 5}" y="{cb_y}" width="5" height="11" '
+        out.append(f'<rect x="{left + s * 6}" y="{cb_y}" width="6" height="11" '
                    f'fill="{colour(t * vmax, vmax)}"/>')
     out.append(f'<text x="{left}" y="{cb_y + 25}" font-size="9" fill="{C_DEGRON}">'
                f'&#8722;{vmax:.1f} destabilised</text>')
-    out.append(f'<text x="{left + steps * 5}" y="{cb_y + 25}" font-size="9" fill="{C_STABLE}" '
-               f'text-anchor="end">stabilised +{vmax:.1f} &#8594; residue is part of the degron</text>')
+    out.append(f'<text x="{left + steps * 6}" y="{cb_y + 25}" font-size="9" fill="{C_STABLE}" '
+               f'text-anchor="end">stabilised +{vmax:.1f}</text>')
+    out.append(f'<text x="{left}" y="{cb_y + 42}" font-size="9.5" fill="{C_INK}">'
+               f'a stabilising substitution means the wild-type residue '
+               f'<tspan font-weight="700">was carrying</tspan> the degron</text>')
     out.append("</svg>")
     return "\n".join(out)
 

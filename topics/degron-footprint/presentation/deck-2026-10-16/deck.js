@@ -28,6 +28,9 @@
   var notes   = document.querySelector('#notes .n-body');
   var ovGrid  = document.querySelector('#overview .grid');
 
+  // ?all trong URL: mọi bước hiện sẵn — dùng để soát bố cục và để in
+  var SHOW_ALL = location.search.indexOf('all') >= 0;
+
   var i = 0;        // slide hiện tại
   var step = 0;     // bước animation trong slide
   var typed = '';   // bộ đệm nhảy slide bằng số
@@ -90,6 +93,7 @@
     notes.innerHTML = note ? note.innerHTML
       : '<p style="color:#7E949C">— không có ghi chú —</p>';
 
+    if (SHOW_ALL) step = maxStep(sl);
     applySteps();
     location.hash = 's' + (i + 1);
     document.querySelectorAll('#overview .ov').forEach(function (o, k) {
@@ -161,16 +165,7 @@
     }
   });
 
-  /* --------------------------------------------------------------- chuột / chạm */
-
-  document.addEventListener('click', function (e) {
-    if (e.target.closest('#hud') || e.target.closest('#overview') ||
-        e.target.closest('#notes') || e.target.closest('a')) return;
-    next();
-  });
-  document.addEventListener('contextmenu', function (e) {
-    e.preventDefault(); prev();
-  });
+  /* --------------------------------------------------------------------- chạm */
 
   var tx = null;
   document.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });

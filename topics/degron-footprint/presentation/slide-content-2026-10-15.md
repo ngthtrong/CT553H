@@ -1461,7 +1461,7 @@ heatmap một thước dọc nhỏ nhãn `measurement ceiling`. Phía trên lu�
 | 2 | **Sinh hình ví dụ** từ `psi-sat_*.tsv`: chọn peptide trong tập train, xuất heatmap 28×20 + bar per-position | **slide 16** | 1 script nhỏ |
 | 4 | Dựng các sơ đồ tự dựng, hoặc chỉnh lại từ [`lectures/degron-basics/figures/`](../../../lectures/degron-basics/figures/) | 2, 3, 4, 5, 6, 9, 11, 12, 13, 14, 17, 18, 19, 20, 21, 22, 23, 24, 25 | **phần lớn thời gian** |
 | 5 | Kiểm lại caption + giấy phép cho 2 hình của Voutsinos (slide 7, 10) | 7, 10 | rẻ |
-| 6 | Quyết định định dạng xuất: HTML trong repo (theo [D-013](../../../DECISIONS.md#d-013)) hay PPTX để trình bày | — | quyết định |
+| ~~6~~ | ~~Quyết định định dạng xuất: HTML hay PPTX~~ | — | ✅ **xong** cho bản này: Trọng chọn PPTX ([D-037](../../../DECISIONS.md#d-037)); hai deck HTML giữ nguyên ([D-013](../../../DECISIONS.md#d-013)) |
 | 7 | Quyết định có ghi bảng tuần ở slide 25 thành một mục sửa [D-029](../../../DECISIONS.md#d-029) hay không | 25 | quyết định |
 | ~~8~~ | ~~Nếu nhận C-16 thì thêm đối chứng ngoài vào slide 22~~ | — | ✅ **đóng**: C-16 chuyển sang không dùng ([D-035](../../../DECISIONS.md#d-035)) |
 | 9 | **Mới (phiên 11):** Trọng viết lại câu hỏi 1 và 4 của **slide 26** theo khung ba trụ (Q1 xin duyệt khung, Q4 phạm vi phần mềm); sửa ghi chú câu 1 trỏ [C-5](../../../DECISIONS.md#c-5) và bỏ gợi ý (b) về C-16 | **26** | Trọng tự làm |
