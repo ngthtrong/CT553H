@@ -5,6 +5,7 @@
    Phím:
      →  ↓  Space  PageDown   bước tiếp (hiện bước animation kế, hết thì sang slide)
      ←  ↑  Backspace PageUp  lùi
+     Ctrl + ← / →              chuyển thẳng slide trước / sau, bỏ qua bước
      Home / End                slide đầu / cuối
      N                         bật/tắt ghi chú người nói
      O  hoặc Esc               bảng tổng quan 26 slide
@@ -134,8 +135,20 @@
   /* ------------------------------------------------------------------- bàn phím */
 
   document.addEventListener('keydown', function (e) {
-    if (e.metaKey || e.ctrlKey || e.altKey) return;
     var k = e.key;
+    if (e.metaKey || e.altKey) return;
+    if (e.ctrlKey) {
+      if (k === 'ArrowLeft' || k === 'ArrowRight') {
+        e.preventDefault();
+        typed = '';
+        var target = i + (k === 'ArrowRight' ? 1 : -1);
+        if (target >= 0 && target < slides.length) {
+          step = 0;
+          show(target, k === 'ArrowLeft');
+        }
+      }
+      return;
+    }
 
     if (k >= '0' && k <= '9') { typed += k; return; }
     if (k === 'Enter' && typed) { goto(parseInt(typed, 10) - 1); typed = ''; return; }

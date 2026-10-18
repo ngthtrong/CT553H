@@ -4,6 +4,14 @@
 
 ---
 
+## 18/10/2026 — chỉnh HUD và phím chuyển slide trực tiếp
+
+Theo yêu cầu Trọng: chữ HUD (gồm nhãn và phím tắt) đổi sang `#15323F`, giữ nền độ đục 20%. Thêm `Ctrl + ←/→` chuyển thẳng slide trước/sau ở bước 0; mũi tên thường vẫn chạy từng bước. Thêm hướng dẫn trên HUD. Đã kiểm bằng Chromium: chuyển trực tiếp khi slide còn bước, lùi, hai biên đầu/cuối, mũi tên thường, không lỗi JavaScript; xem ảnh HUD 1440×900 và `git diff --check` đạt. Không đổi nghiên cứu/G1/G2/G3.
+
+## 18/10/2026 — bỏ foot/cap khỏi mặt slide HTML
+
+Theo yêu cầu Trọng, xóa 39 khối `.foot`/`.cap` đang hiển thị và 9 comment chứa các khối này trong `presentation/deck-2026-10-16/index.html`. Chuyển nội dung của 39 khối vào `.speaker-note` cùng slide để giữ nguồn và chú thích qua phím N. Giữ CSS, JavaScript, hình và đủ 26 slide. Đã kiểm cấu trúc thẻ HTML cân bằng, nội dung chuyển được giữ nguyên và `git diff --check`. Không đổi trạng thái nghiên cứu hay G1/G2/G3.
+
 ## 16/10/2026 — trang Notion tóm tắt đề tài (tiếng Anh, ưu tiên hình)
 
 Theo yêu cầu Trọng: soạn **một trang Notion cô đọng, chỉ thông tin cốt lõi, ưu tiên hình ảnh / GIF / sơ đồ thay vì chữ**; trong phiên Trọng đổi sang **tiếng Anh** và yêu cầu **dựng biểu đồ bằng code/thư viện, không đặt toạ độ SVG bằng tay**. Sản phẩm: [notion-2026-10-16](presentation/notion-2026-10-16/README.md) và trang <https://app.notion.com/p/3fb486d98ebc81b382abc2df429660d8> (riêng tư). Không đo mới, không huấn luyện, không đổi quyết định nghiên cứu. Không đọc hay sửa `deck-2026-10-16/` và `pptx-2026-10-16/` (chỉ **dùng lại** ba GIF, `example-heatmap.png` và hình Voutsinos Fig. 4 đã có).

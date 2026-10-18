@@ -36,7 +36,7 @@
 
 html, body {
   margin: 0; padding: 0; height: 100%;
-  background: #0E1A20;
+  background: #FAFBFC;
   font-family: var(--sans);
   color: var(--ink);
   overflow: hidden;
@@ -276,14 +276,14 @@ svg .lblx { font-size: 9.5px; fill: var(--ink-45); }
   position: fixed; left: 0; right: 0; bottom: 0; height: 30px;
   display: flex; align-items: center; gap: 14px;
   padding: 0 14px; font-family: var(--mono); font-size: 11px;
-  color: #8FA3AD; background: rgba(8,16,21,.92);
+  color: #15323F; background: rgba(8,16,21,0);
   border-top: 1px solid rgba(255,255,255,.07);
   z-index: 50;
 }
-#hud .sec { color: #B7C7CE; }
+#hud .sec { color: #15323F; }
 #hud .spacer { flex: 1; }
 #hud kbd {
-  font-family: var(--mono); font-size: 10px; color: #CBD8DD;
+  font-family: var(--mono); font-size: 10px; color: #15323F;
   background: rgba(255,255,255,.1); border-radius: 3px; padding: 1px 5px;
 }
 #progress {

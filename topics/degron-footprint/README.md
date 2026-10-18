@@ -1,5 +1,7 @@
 # Dự đoán footprint / hiệu ứng đột biến degron mức residue trên nhãn thực nghiệm
 
+> **18/10/2026 — tinh gọn mặt slide HTML:** bỏ foot/cap khỏi [deck-2026-10-16](presentation/deck-2026-10-16/index.html), giữ nguồn và chú thích trong ghi chú người nói (N). Trạng thái nghiên cứu và G1/G2/G3 không đổi.
+
 > **15/10/2026 — tài liệu tập nói và đọc hiểu:** [script Việt–Anh cho đủ 26 slide](presentation/deck-2026-10-16/speaker-script-bilingual.md), bám năm phần paste của `index.html`, có thuật ngữ, cách đọc hình, hỏi đáp và đối soát metric. Không có phép đo/huấn luyện mới; trạng thái G1/G2/G3 và việc nghiên cứu tiếp theo theo [sổ quyết định](../../DECISIONS.md#hien-hanh).
 
 > **Trình bày 16/10 — cập nhật 15/10/2026: `presentation/` nay có BA deck cho cùng buổi gặp**, dựng ở ba phiên khác nhau, **không đồng bộ tự động**; chọn một hoặc gộp là việc của Trọng.
