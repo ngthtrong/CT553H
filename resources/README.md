@@ -31,7 +31,7 @@ Từ 11/10/2026, trang HTML được tạo trực tiếp trong repo, không publ
 
 Nếu cần sửa lại một artifact: `read` bản trên claude.ai trước (có thể đã được sửa trực tiếp), đồng bộ vào thư mục mã nguồn trong repo, rồi publish với `url` cũ và `root` là thư mục đó.
 
-## 3. Notion — **tất cả là lịch sử**
+## 3. Notion — một trang hiện hành, phần còn lại là lịch sử
 
 Trang gốc **Ý tưởng luận văn**: https://app.notion.com/p/3ec486d98ebc80fd9ecceaf626d5a3e6. Trong Claude Code cần bật server Notion. Notion và repo không tự đồng bộ với nhau.
 
@@ -40,6 +40,7 @@ Trang gốc **Ý tưởng luận văn**: https://app.notion.com/p/3ec486d98ebc80
 | [Đề tài chốt: Dự đoán vị trí gắn ATP ở RTK…](https://app.notion.com/p/3ec486d98ebc8103aaa8fef200473880) | [topic-proposal.md](../archive/topics/rtk-atp-applicability/04-proposal/topic-proposal.md) | **Lỗi thời** — RTK–ATP đã đóng ([D-006](../DECISIONS.md#d-006)). Tiêu đề "Đề tài chốt" trên Notion **không còn đúng**; nên sửa trên Notion. Bản Notion có phần ★ (tính cấp thiết, 7 công trình 2023–2026) mà repo không có |
 | [Đề xuất chốt: vị trí gắn ATP + dự phòng efflux](https://app.notion.com/p/3ec486d98ebc813bb56eface997a23a9) | [bioinformatics-proposal-notion.md](../archive/meetings/bioinformatics-proposal-notion.md) | Lịch sử |
 | [bioinformatics-topic-ideas-notion](https://app.notion.com/p/3ec486d98ebc80a79ce1f6765bbf93ed) | [bioinformatics-topic-ideas-notion.md](../archive/meetings/bioinformatics-topic-ideas-notion.md) | Lịch sử |
+| [**Residue-Level Prediction of Degron Mutation Effects**](https://app.notion.com/p/3fb486d98ebc81b382abc2df429660d8) | [notion-2026-10-16/content.md](../topics/degron-footprint/presentation/notion-2026-10-16/content.md) | **Hiện hành, 16/10/2026** — trang tóm tắt tiếng Anh, 9 hình (3 GIF Commons CC BY-SA, hình Voutsinos CC BY-NC, 4 biểu đồ matplotlib + 1 heatmap tự sinh), 10 mục. **Riêng tư (draft)**, chưa đặt dưới trang cha. ⚠ Chia sẻ ra ngoài thì phải rà ShareAlike/NC trước — xem [README thư mục](../topics/degron-footprint/presentation/notion-2026-10-16/README.md) |
 | [Đề tài quản lý chi tiêu cá nhân](https://app.notion.com/p/3ea486d98ebc8101ad92c0786e2797fc) | — | Lịch sử, đề tài đã đóng |
 
 ## 4. Dữ liệu, môi trường và cache cục bộ (không lên git)

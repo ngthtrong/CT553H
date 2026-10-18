@@ -4,6 +4,18 @@
 
 ---
 
+## 16/10/2026 — trang Notion tóm tắt đề tài (tiếng Anh, ưu tiên hình)
+
+Theo yêu cầu Trọng: soạn **một trang Notion cô đọng, chỉ thông tin cốt lõi, ưu tiên hình ảnh / GIF / sơ đồ thay vì chữ**; trong phiên Trọng đổi sang **tiếng Anh** và yêu cầu **dựng biểu đồ bằng code/thư viện, không đặt toạ độ SVG bằng tay**. Sản phẩm: [notion-2026-10-16](presentation/notion-2026-10-16/README.md) và trang <https://app.notion.com/p/3fb486d98ebc81b382abc2df429660d8> (riêng tư). Không đo mới, không huấn luyện, không đổi quyết định nghiên cứu. Không đọc hay sửa `deck-2026-10-16/` và `pptx-2026-10-16/` (chỉ **dùng lại** ba GIF, `example-heatmap.png` và hình Voutsinos Fig. 4 đã có).
+
+- **Chín hình, mười mục chữ ngắn.** Ba GIF Commons (dịch mã · protein họ ubiquitin PDB 2QJL · GFP reporter), ma trận ΔPSI **đo thật** của HIF1A tile 25, hình PAP của Voutsinos 2026, và **bốn biểu đồ mới** dựng bằng **matplotlib**: forest plot OR 2,148/2,094 · thanh xếp chồng phân rã +0,0289 (±3 composition 80% · thứ tự 20% · vị trí tuyệt đối ≈ 0) · thanh ngang G2 (M0 0,7071 · M3 0,7273 · đích 0,7693 · trần 0,9519) · Gantt tuần 6→15 có điểm kiểm cứng tuần 10.
+- **Số đọc từ file kết quả, không gõ tay:** [figures.py](presentation/notion-2026-10-16/figures.py) nạp `variant-coverage-2026-10-15/enrichment.json` và `residue-task-derisk-2026-10-15/model.json`; bốn mốc bị khoá bởi quyết định là hằng số có tên, nguồn ghi trong README của thư mục.
+- **Lần đầu viết SVG tay rồi bỏ:** bản dựng đầu đặt toạ độ SVG trực tiếp và dính một lỗi thật — `.replace(".", ",")` áp lên cả chuỗi chứa toạ độ làm `x1="689.4"` thành `x1="689,4"`, vẽ vạch CI từ mép trái. Sau khi Trọng yêu cầu dùng thư viện thì lỗi loại này không còn chỗ phát sinh.
+- **Ràng buộc câu chữ:** trang có hẳn một mục **“What this work does not claim”** liệt kê bảy câu cấm ([D-033](../../DECISIONS.md#d-033), [D-035](../../DECISIONS.md#d-035), [D-036](../../DECISIONS.md#d-036), [C-17](../../DECISIONS.md#c-17)); con số 2,148 luôn đi kèm ba giới hạn; ClinVar ghi vai **motivation only**; Degformer giữ làm baseline phải vượt.
+- ⚠ **Hai điểm cần Trọng biết.** (1) **ShareAlike:** [SOURCES.md của bản PPTX](presentation/pptx-2026-10-16/SOURCES.md) ghi ba GIF *“không dùng chung với phần còn lại của luận văn khi chưa xử lý điều khoản ShareAlike”*; trang Notion là bề mặt mới, hiện **riêng tư** và đã ghi công đầy đủ, nhưng chia sẻ ra ngoài thì phải rà lại (cùng với CC BY-**NC** của hình Voutsinos). (2) **Bảng màu của repo trượt validator màu** của skill `dataviz` (amber ngoài dải độ sáng, xám dưới sàn chroma, cặp teal↔đỏ ΔE 7,7 deutan); giữ nguyên vì là quy ước chung ba deck, bù bằng nhãn số trực tiếp trên mọi mark — đổi bảng màu sẽ là một quyết định trình bày riêng.
+
+---
+
 ## 15/10/2026 — script Việt–Anh và tài liệu đọc hiểu cho 26 slide
 
 Theo yêu cầu Trọng, đọc đủ **năm phần paste** của `index.html` trong `deck-2026-10-16/`; bản ghép khớp file repo khi bỏ khoảng trắng. Soạn [speaker-script-bilingual.md](presentation/deck-2026-10-16/speaker-script-bilingual.md): mỗi slide có thông điệp, lời nói VI/EN, giải thích, hỏi đáp và nguồn; thêm bảng thuật ngữ, câu tự kiểm và bảng đối soát nguồn. Không điền câu trả lời vào hồ sơ đánh giá học tập.
