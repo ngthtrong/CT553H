@@ -4,6 +4,84 @@
 
 ---
 
+## 19/10/2026 — viết lại cách mở đầu từng mục ở trang chính tiếng Anh
+
+- Theo yêu cầu của Trọng: bỏ kiểu trình bày nhãn **"Message: …"** (và các nhãn tương tự `Why it is worth doing.` · `Who uses it.` · `The plain question:` · `Motivation.` · `The direction, three pieces in order:` · `What exists so far.` · `User flow:`) ở [trang chính tiếng Anh](https://app.notion.com/p/3fe486d98ebc811eba29eb9e0987a0e1); mỗi mục 1–8 nay **mở đầu bằng một đoạn văn hoàn chỉnh** gộp ý thông điệp vào mạch văn.
+- **Không đổi nội dung, số đo hay cấu trúc**: mọi con số (2.148× · 530,412 VUS · 532 · n = 91 · 5,0 × 10⁻⁷ / 261.865 · 0.8082 vs 0.7693 · Jaccard 0,4965), callout cảnh báo, bảng, hình và câu hỏi chuyển mục giữ nguyên; chỉ sửa câu dẫn.
+- Sửa trực tiếp trên Notion bằng 14 phép thay thế có đích (readback đã kiểm), rồi mirror vào bản nguồn [en/content-main.md](presentation/notion-2026-10-19-combined/en/content-main.md) kèm sửa câu "How to read this page".
+- ⚠ Khi fetch thấy bản Notion **đã bị sửa tay, lệch với repo**: mục 1 đã bỏ nhãn sẵn, tiêu đề mục 3 là "Research-gap", công thức dùng `PSI_WT` (repo: `PSI_reference`), sơ đồ mục 6 là ảnh PNG thay cho Mermaid, callout 🚧 mục 7 bằng **tiếng Việt**, và mục 8 **không có** callout `Status: planned, not built`. Các chỗ lệch này **giữ nguyên, chưa đồng bộ** — cần Trọng quyết lấy bên nào.
+- **Bản tiếng Việt chưa đổi**: trang tám mục tiếng Việt vẫn dùng kiểu "Thông điệp/Message".
+
+---
+
+## 19/10/2026 — dẫn nguồn chi tiết cho trang con 3 (bản tiếng Anh)
+
+- Thêm mục **`3.4 · Sources behind every number on this page`** vào [trang con 3](https://app.notion.com/p/3fe486d98ebc81539287e95d2f8866e3): bảng 10 dòng ánh xạ từng con số → **nguồn ngoài** (ClinVar bản 12/10/2026, Zhang 2023 Mendeley/GEO, Voutsinos 2026 @`9b3eafa6`, Degformer, UniProt `2026_03`, LeBlanc 2026, MMseqs2, Schulze 2026) → **report nội bộ** (`variant-coverage-2026-10-15`, `voutsinos-2026-audit`, `residue-task-derisk-2026-10-15`, `g2-extension/saturation-2026-10-18`, `pap-baseline`, `full-data-audit`, `topic-report`), kèm callout ghi công và giấy phép.
+- Bổ sung dẫn nguồn tại chỗ cho các bảng 3.2–3.3 và thêm số đỡ: 2.564.486 missense / 93,0% khớp UniProt, tầng `scan_pos` 695/929 trên 620 cụm, max |Δ| 4,8 × 10⁻⁷ của phép kiểm hoán vị PAP, 4,09% rò rỉ trong split của Degformer.
+- **Không có phép đo mới**: mọi số đã có trong các report được dẫn; chỉ thêm đường dẫn và trích dẫn. ⚠ **Bản tiếng Việt chưa có mục 3.4** — hai bản nay lệch nhau ở trang con 3.
+
+---
+
+## 19/10/2026 — bản tiếng Anh của trang tám mục
+
+- Dựng [Residue-Level Degron Mutation Effects: Eight-Section Overview](https://app.notion.com/p/3fe486d98ebc811eba29eb9e0987a0e1) — bản **tiếng Anh** của trang tám mục, cùng cấu trúc: trang chính ở mức ý tưởng + **bảy trang con** chi tiết.
+- Dịch 1:1 theo mục, **không thêm nội dung hay số đo**; chỉ đổi định dạng số sang quy ước tiếng Anh (2.148× · 0.8082 · 530,412) và nhãn bằng chứng ([UNVERIFIED]/[SOURCE]). Dùng lại đúng tám hình đó, caption đã dịch, giữ ghi công và tên giấy phép; hai hình Trọng dặn bỏ vẫn không có mặt.
+- Bản nguồn: [notion-2026-10-19-combined/en/](presentation/notion-2026-10-19-combined/en/README.md). ⚠ Nay có **ba bản phải đồng bộ bằng tay**: Notion tiếng Anh, repo tiếng Anh, bản tiếng Việt.
+- Lưu ý kỹ thuật: tiêu đề dùng dấu gạch dài `—` bị Notion **cắt mất phần sau dấu gạch** khi tạo trang; đã đổi sang dấu hai chấm. Chỉ kiểm bằng readback, chưa mở bằng giao diện Notion thật.
+
+---
+
+## 19/10/2026 — trang Notion tám mục: trang chính mỏng + bảy trang con
+
+- Theo yêu cầu của Trọng, gộp [trang lộ trình](https://app.notion.com/p/3fe486d98ebc81fc9ac2c4794a452cd3) và bản trình bày cho giáo viên thành [Degron ở mức residue — bản trình bày tám mục](https://app.notion.com/p/3fe486d98ebc8164b0e8de199d371f76): giới thiệu → nghiên cứu liên quan → khoảng trống → định nghĩa bài toán → dữ liệu → xử lý dữ liệu → phương pháp tạm thời đề xuất → sản phẩm.
+- **Trang chính là khung ở mức ý tưởng** (mỗi mục một thông điệp + câu bắc cầu); chi tiết đẩy xuống **bảy trang con**, một trang cho mỗi mục (mục 5–6 dùng chung một trang). Chi tiết lấy thêm từ [outline-2026-10-19.md](presentation/outline-2026-10-19.md): Koren 2018, Zhang SVM 0,8955, bất biến hoán vị của PAP, 4,09% rò rỉ Degformer, phân rã thang (+0,0232 / +0,0057 / +0,0002), chín bước xử lý có số, bảng so sánh sản phẩm, 87,3% OOD, bốn câu không được nói.
+- **Không có số đo, lập luận hay quyết định mới**; mọi câu cấm đang hiệu lực được giữ và liệt kê ở mục cuối trang chính.
+- Dùng lại 8 hình đã có trong workspace + 7 Mermaid; **bỏ** sơ đồ ubiquitin–proteasome tự dựng và GIF A4V giả định theo yêu cầu. Bản nguồn: [notion-2026-10-19-combined/](presentation/notion-2026-10-19-combined/README.md).
+- ⚠ Hai link Trọng gửi (`3fe4c97e…`, `9704c97e…`) vẫn **không đọc được** sau khi chia sẻ access và mở "anyone with link": kết nối Notion gắn theo **một workspace** (`ngthtrong`, `ae23eae2…`). Nội dung dựng từ bản readback trong repo của chính hai trang đó. Chưa kiểm bằng giao diện Notion thật, chỉ readback.
+
+---
+
+## 19/10/2026 — bổ sung hình, GIF và sơ đồ cho Notion
+
+- Thêm sơ đồ sinh học, GIF A4V giả định, sơ đồ GPS và heatmap AGRN đo thật vào [trang chính](https://app.notion.com/p/3fe4c97ef69581ed968df52b445de084); bổ sung hình tương ứng ở ba trang con và benchmark ở trang kết quả.
+- Hai Mermaid mới giải thích nguồn thông tin của mô hình và chia tập theo cụm. Giữ ba trang con, nội dung ý tưởng và trạng thái G2; không có quyết định hoặc phép đo mới.
+- Nguồn, script và kết quả kiểm: [VISUALS.md](presentation/notion-2026-10-19/VISUALS.md). Đã kiểm hình cục bộ và readback bốn trang; chưa kiểm giao diện Notion thật.
+
+---
+
+## 19/10/2026 — mở rộng Notion để trình bày ý tưởng với giáo viên
+
+- Theo phản hồi của Trọng, mở rộng [trang chính](https://app.notion.com/p/3fe4c97ef69581ed968df52b445de084) thành mạch chín phần: bối cảnh, nhu cầu, tiền lệ, bài toán, dữ liệu, cách tiếp cận, bằng chứng, đóng góp còn mở và phần mềm. Giữ hình đã có và ba child-page block.
+- Bổ sung giải thích chuyên sâu cho cả ba trang con: đọc ma trận và lựa chọn thí nghiệm; đơn vị độc lập, ngân sách nhãn và nhiễu; ablation, kiến trúc và chồng lặp Degformer. Thêm liên kết quay về trang chính.
+- Bản nguồn hiện tại: [advisor-overview.md](presentation/notion-2026-10-19/advisor-overview.md). Đã fetch lại cả bốn trang để kiểm nội dung và cấu trúc; không xác nhận hiển thị bằng giao diện. Không có thí nghiệm hoặc quyết định mới; G2 vẫn chưa hoàn tất.
+
+---
+
+## 19/10/2026 — bản Notion cô đọng theo brief
+
+- Tạo [trang riêng tư mới](https://app.notion.com/p/3fe4c97ef69581ed968df52b445de084) gồm chín bước ngắn, sơ đồ Mermaid, GIF có ghi công và ba trang con. Trang cũ ghi bên dưới trả NOT_FOUND với kết nối hiện tại; không sửa hoặc xoá bản cũ.
+- Bản chính xác đã gửi: [published-concise.md](presentation/notion-2026-10-19/published-concise.md). Đã fetch lại trang chính, xác nhận chín bước, GIF, Mermaid và ba child-page block. Chưa kiểm hiển thị GIF bằng giao diện.
+- Không có quyết định hoặc thực nghiệm mới; trạng thái chính thức theo [DECISIONS.md](../../DECISIONS.md#hien-hanh).
+
+---
+
+## 19/10/2026 — Trang Notion lộ trình (tiếng Việt) + ba trang con
+
+Theo yêu cầu của Trọng: dựng một trang Notion dùng làm **khung lộ trình để follow**, trực quan
+hơn, có hình/GIF/sơ đồ, link thẳng tới nghiên cứu và tới trang con. Mạch chín bước và nội dung
+hai trang con 1–2 do **Trọng soạn** (paste trong phiên); Claude dựng trang, chèn hình và đối
+soát số với `research/`.
+
+- **Trang chính** (9 mục, sơ đồ Mermaid 9 bước, 4 hình): <https://app.notion.com/p/3fe486d98ebc81fc9ac2c4794a452cd3> — **riêng tư (draft)**.
+- **Ba trang con:** [mức residue](https://app.notion.com/p/3fe486d98ebc815e9314c3076cd76ff2) · [dataset và xử lý](https://app.notion.com/p/3fe486d98ebc8139819dd8682a49c8ef) · [kết quả và chỗ còn hở](https://app.notion.com/p/3fe486d98ebc81b18331cf1c39b852b4). Trang con 3 **Claude thêm**, không có trong brief — dựng hoàn toàn từ JSON 18/10, xoá riêng được mà lộ trình vẫn đủ.
+- **Hồ sơ sản xuất trong repo:** [presentation/notion-2026-10-19/](presentation/notion-2026-10-19/README.md) — `content.md` (bản nguồn 4 trang), `figures.py` → `png/`, bảng ánh xạ 8 hình + giấy phép.
+- **Hai biểu đồ dựng mới** từ `g2-saturation-2026-10-18/` và `g2-extension-2026-10-18/`: `fig-benchmark.png` (7 mô hình, ridge M3 0,8082 vs ΔPAP 0,7693, trần đo lường 0,9519) và `fig-degformer.png` (0,9248 / 0,9227 / 0,7500 / 0,8082). Lý do dựng mới: `fig-03-g2-target.png` của [trang Notion 16/10](presentation/notion-2026-10-16/README.md) vẽ M3 **chuyển giao** 0,7273, **đã lạc hậu** so với kết quả học trực tiếp 18/10. Trang 16/10 **không bị thay thế**, chỉ là mục đích khác (tóm tắt tiếng Anh một màn hình).
+- **Câu chữ:** đã áp các câu cấm còn hiệu lực ([D-031](../../DECISIONS.md#d-031), [D-033](../../DECISIONS.md#d-033), [D-035](../../DECISIONS.md#d-035), [D-036](../../DECISIONS.md#d-036), [C-17](../../DECISIONS.md#c-17)) và đưa chúng ra mặt trang ở mục “Đề tài không tuyên bố điều gì”. **G2 vẫn ghi là chưa hoàn tất.**
+- ⚠ Ba GIF là **CC BY-SA**; trang đang riêng tư nên chưa phát sinh nghĩa vụ phân phối — phải rà lại trước khi chia sẻ ra ngoài.
+- **Không có quyết định mới.** G1/G2/G3 không đổi.
+
+---
+
 ## 18/10/2026 — lưu hồ sơ thực nghiệm còn liên quan
 
 Theo yêu cầu Trọng: tổng hợp [báo cáo 41 nhóm thực nghiệm](research/experiment-report-2026-10-18/README.md) từ nguồn đã lưu, mỗi nhóm có lý do, dữ liệu, cách làm, kết quả, giới hạn và đường dẫn bằng chứng. Gồm nhãn/split, baseline, ngữ cảnh, học trực tiếp bão hòa 18/10, E1/E2 mở rộng, cross-assay/cấu trúc, ClinVar và ví dụ đo thật; E3 chưa có kết quả cuối tại mốc chốt nên không ghi đã hoàn tất. Không chạy lại huấn luyện.
