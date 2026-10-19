@@ -1,0 +1,369 @@
+{
+  "preregistered": [
+    "bilinear",
+    "film",
+    "cross_ridge"
+  ],
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "macro_auroc": {
+    "bilinear": 0.7932823955623058,
+    "film": 0.8028021492697422,
+    "cross_ridge": 0.7924274467170294,
+    "ridge_reference": 0.8081859035239344,
+    "DeltaPAP_reference": 0.7692837466691289
+  },
+  "per_seed": {
+    "bilinear": [
+      0.7869545854344747,
+      0.7807301433387963,
+      0.7746926114367595
+    ],
+    "film": [
+      0.7977587819115215,
+      0.7919878212155153,
+      0.799133743759905
+    ],
+    "cross_ridge": [
+      0.7924274467170294,
+      0.7924274467170294,
+      0.7924274467170294
+    ]
+  },
+  "epochs": {
+    "bilinear": [
+      {
+        "seed": 17,
+        "fold": 0,
+        "epoch": 3
+      },
+      {
+        "seed": 17,
+        "fold": 1,
+        "epoch": 3
+      },
+      {
+        "seed": 17,
+        "fold": 2,
+        "epoch": 4
+      },
+      {
+        "seed": 17,
+        "fold": 3,
+        "epoch": 5
+      },
+      {
+        "seed": 17,
+        "fold": 4,
+        "epoch": 4
+      },
+      {
+        "seed": 29,
+        "fold": 0,
+        "epoch": 3
+      },
+      {
+        "seed": 29,
+        "fold": 1,
+        "epoch": 2
+      },
+      {
+        "seed": 29,
+        "fold": 2,
+        "epoch": 5
+      },
+      {
+        "seed": 29,
+        "fold": 3,
+        "epoch": 2
+      },
+      {
+        "seed": 29,
+        "fold": 4,
+        "epoch": 4
+      },
+      {
+        "seed": 43,
+        "fold": 0,
+        "epoch": 2
+      },
+      {
+        "seed": 43,
+        "fold": 1,
+        "epoch": 1
+      },
+      {
+        "seed": 43,
+        "fold": 2,
+        "epoch": 3
+      },
+      {
+        "seed": 43,
+        "fold": 3,
+        "epoch": 2
+      },
+      {
+        "seed": 43,
+        "fold": 4,
+        "epoch": 2
+      }
+    ],
+    "film": [
+      {
+        "seed": 17,
+        "fold": 0,
+        "epoch": 2
+      },
+      {
+        "seed": 17,
+        "fold": 1,
+        "epoch": 2
+      },
+      {
+        "seed": 17,
+        "fold": 2,
+        "epoch": 2
+      },
+      {
+        "seed": 17,
+        "fold": 3,
+        "epoch": 3
+      },
+      {
+        "seed": 17,
+        "fold": 4,
+        "epoch": 4
+      },
+      {
+        "seed": 29,
+        "fold": 0,
+        "epoch": 3
+      },
+      {
+        "seed": 29,
+        "fold": 1,
+        "epoch": 3
+      },
+      {
+        "seed": 29,
+        "fold": 2,
+        "epoch": 4
+      },
+      {
+        "seed": 29,
+        "fold": 3,
+        "epoch": 3
+      },
+      {
+        "seed": 29,
+        "fold": 4,
+        "epoch": 2
+      },
+      {
+        "seed": 43,
+        "fold": 0,
+        "epoch": 3
+      },
+      {
+        "seed": 43,
+        "fold": 1,
+        "epoch": 2
+      },
+      {
+        "seed": 43,
+        "fold": 2,
+        "epoch": 3
+      },
+      {
+        "seed": 43,
+        "fold": 3,
+        "epoch": 2
+      },
+      {
+        "seed": 43,
+        "fold": 4,
+        "epoch": 2
+      }
+    ],
+    "cross_ridge": [
+      {
+        "fold": 0,
+        "alpha": 100
+      },
+      {
+        "fold": 1,
+        "alpha": 1
+      },
+      {
+        "fold": 2,
+        "alpha": 1
+      },
+      {
+        "fold": 3,
+        "alpha": 100
+      },
+      {
+        "fold": 4,
+        "alpha": 10
+      }
+    ]
+  },
+  "comparisons": {
+    "bilinear": {
+      "minus_ridge": {
+        "delta": -0.014903507961628572,
+        "ci95": [
+          -0.022675628321174333,
+          -0.00716004252791336
+        ],
+        "n_peptides": 91,
+        "n_clusters": 89,
+        "n_positive_peptides": 30
+      },
+      "minus_DeltaPAP": {
+        "delta": 0.023998648893177023,
+        "ci95": [
+          0.005790178639484209,
+          0.04332759728378141
+        ],
+        "n_peptides": 91,
+        "n_clusters": 89,
+        "n_positive_peptides": 62
+      },
+      "per_seed_minus_ridge": [
+        {
+          "delta": -0.02123131808945992,
+          "ci95": [
+            -0.03171273797919555,
+            -0.01064166670293191
+          ],
+          "n_peptides": 91,
+          "n_clusters": 89,
+          "n_positive_peptides": 26
+        },
+        {
+          "delta": -0.027455760185138126,
+          "ci95": [
+            -0.03646171977991207,
+            -0.018021103283810517
+          ],
+          "n_peptides": 91,
+          "n_clusters": 89,
+          "n_positive_peptides": 21
+        },
+        {
+          "delta": -0.03349329208717517,
+          "ci95": [
+            -0.04565616737040867,
+            -0.02238699808623423
+          ],
+          "n_peptides": 91,
+          "n_clusters": 89,
+          "n_positive_peptides": 27
+        }
+      ],
+      "meets_preregistered_criterion": false
+    },
+    "film": {
+      "minus_ridge": {
+        "delta": -0.005383754254192271,
+        "ci95": [
+          -0.013590535142239717,
+          0.00281539917417306
+        ],
+        "n_peptides": 91,
+        "n_clusters": 89,
+        "n_positive_peptides": 40
+      },
+      "minus_DeltaPAP": {
+        "delta": 0.033518402600613326,
+        "ci95": [
+          0.017891056040431726,
+          0.04977214796174709
+        ],
+        "n_peptides": 91,
+        "n_clusters": 89,
+        "n_positive_peptides": 66
+      },
+      "per_seed_minus_ridge": [
+        {
+          "delta": -0.010427121612412969,
+          "ci95": [
+            -0.019631723524652273,
+            -0.0014788205064590165
+          ],
+          "n_peptides": 91,
+          "n_clusters": 89,
+          "n_positive_peptides": 33
+        },
+        {
+          "delta": -0.01619808230841923,
+          "ci95": [
+            -0.025889293532430163,
+            -0.006268211561190992
+          ],
+          "n_peptides": 91,
+          "n_clusters": 89,
+          "n_positive_peptides": 27
+        },
+        {
+          "delta": -0.00905215976402941,
+          "ci95": [
+            -0.01861405148335584,
+            0.0002816837294177317
+          ],
+          "n_peptides": 91,
+          "n_clusters": 89,
+          "n_positive_peptides": 36
+        }
+      ],
+      "meets_preregistered_criterion": false
+    },
+    "cross_ridge": {
+      "minus_ridge": {
+        "delta": -0.015758456806904977,
+        "ci95": [
+          -0.02265577171111411,
+          -0.008551056567384694
+        ],
+        "n_peptides": 91,
+        "n_clusters": 89,
+        "n_positive_peptides": 30
+      },
+      "minus_DeltaPAP": {
+        "delta": 0.02314370004790062,
+        "ci95": [
+          0.004800037620715634,
+          0.04201787656000262
+        ],
+        "n_peptides": 91,
+        "n_clusters": 89,
+        "n_positive_peptides": 60
+      },
+      "per_seed_minus_ridge": [
+        {
+          "delta": -0.015758456806904977,
+          "ci95": [
+            -0.02265577171111411,
+            -0.008551056567384694
+          ],
+          "n_peptides": 91,
+          "n_clusters": 89,
+          "n_positive_peptides": 30
+        }
+      ],
+      "meets_preregistered_criterion": false
+    }
+  },
+  "success_criterion": "positive paired delta against ridge in all three seeds AND cluster bootstrap CI excluding zero AND the same against frozen DeltaPAP",
+  "cross_ridge_features": 2580,
+  "runner_sha256": "03ac3b63b2bd4e3861191740854338801c760d32a957e19fe6d035ff0886038d",
+  "versions": {
+    "numpy": "2.5.3",
+    "torch": "2.14.0+cpu",
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]"
+  }
+}

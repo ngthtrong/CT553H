@@ -8,7 +8,7 @@
      Ctrl + ← / →              chuyển thẳng slide trước / sau, bỏ qua bước
      Home / End                slide đầu / cuối
      N                         bật/tắt ghi chú người nói
-     O  hoặc Esc               bảng tổng quan 26 slide
+     O  hoặc Esc               bảng tổng quan 34 slide + 7 phụ lục
      F                         toàn màn hình
      P                         chế độ in (mọi bước hiện sẵn) — rồi Ctrl+P để xuất PDF
      số + Enter                nhảy tới slide
@@ -22,6 +22,8 @@
 
   var stage   = document.getElementById('stage');
   var slides  = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  // phụ lục (A1…A7) nằm sau 34 slide lõi: không tính vào số đếm và vạch tiến độ
+  var CORE    = slides.filter(function (s) { return !s.hasAttribute('data-appendix'); }).length;
   var hudPos  = document.getElementById('hud-pos');
   var hudSec  = document.getElementById('hud-sec');
   var hudStep = document.getElementById('hud-step');
@@ -86,9 +88,10 @@
     if (back) sl.classList.add('back');
     sl.classList.add('current');
 
-    hudPos.textContent = (i + 1) + ' / ' + slides.length;
+    var ap = sl.getAttribute('data-appendix');
+    hudPos.textContent = ap ? ('A' + ap + ' / 7 · phụ lục') : ((i + 1) + ' / ' + CORE);
     hudSec.textContent = sl.getAttribute('data-section') || '';
-    bar.style.width = ((i + 1) / slides.length * 100) + '%';
+    bar.style.width = (Math.min(i + 1, CORE) / CORE * 100) + '%';
 
     var note = sl.querySelector('.speaker-note');
     notes.innerHTML = note ? note.innerHTML
@@ -122,7 +125,8 @@
   slides.forEach(function (sl, k) {
     var d = document.createElement('div');
     d.className = 'ov';
-    d.innerHTML = '<div class="n">' + (k + 1) + ' · ' +
+    var apk = sl.getAttribute('data-appendix');
+    d.innerHTML = '<div class="n">' + (apk ? 'A' + apk : (k + 1)) + ' · ' +
       (sl.getAttribute('data-section') || '') + '</div><div class="t">' +
       (sl.getAttribute('data-title') || '') + '</div>';
     d.addEventListener('click', function () {

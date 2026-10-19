@@ -4,6 +4,117 @@
 
 ---
 
+## 18/10/2026 — lưu hồ sơ thực nghiệm còn liên quan
+
+Theo yêu cầu Trọng: tổng hợp [báo cáo 41 nhóm thực nghiệm](research/experiment-report-2026-10-18/README.md) từ nguồn đã lưu, mỗi nhóm có lý do, dữ liệu, cách làm, kết quả, giới hạn và đường dẫn bằng chứng. Gồm nhãn/split, baseline, ngữ cảnh, học trực tiếp bão hòa 18/10, E1/E2 mở rộng, cross-assay/cấu trúc, ClinVar và ví dụ đo thật; E3 chưa có kết quả cuối tại mốc chốt nên không ghi đã hoàn tất. Không chạy lại huấn luyện.
+
+- Giữ SHA-256 nguồn trong `evidence-manifest.json`; kiểm số headline từ JSON, mã tham chiếu, link và bản render Markdown; kết quả kiểm ở [VALIDATION.md](research/experiment-report-2026-10-18/VALIDATION.md).
+- Ghi rõ các mâu thuẫn Spearman mức ô/vị trí, số peptide ngưỡng phụ, mẫu số nhiễu; không sửa file nghiên cứu gốc hoặc slide, không tạo quyết định mới. Trạng thái nghiên cứu và G1/G2/G3 theo DECISIONS.
+
+---
+
+## 18/10/2026 (phiên sau) — ba thí nghiệm G2 mở rộng, tiền đăng ký trước khi chạy
+
+Theo yêu cầu Trọng: *"kiểm tra lại G2 còn có thể thực hiện thêm gì không, nếu có thì thực hiện tiếp"*. Ba việc còn mở ở [§5 báo cáo buổi sáng](research/g2-saturation-2026-10-18/README.md) đều chạy được; tiêu chí chốt trước ở [PREREGISTRATION.md](research/g2-extension-2026-10-18/PREREGISTRATION.md), kết quả ở [báo cáo](research/g2-extension-2026-10-18/README.md).
+
+- **E1 — lập luận "88,12% chồng khít" của chính buổi sáng đã bị bác.** Chấm riêng **5.684 ô** không có đúng sequence trong `training_data.csv`: Degformer còn **0,9227**, rụng **0,0021**. Vậy chồng khít mức ô **không** giải thích khoảng cách. Rò rỉ thật ở **mức peptide**: WT **91/91** trong train, mỗi peptide giữ lại trung vị **57** ô, **không peptide nào** sạch. Ridge trên cùng tập con vẫn hơn ΔPAP **+0,0509** [+0,0239; +0,0812].
+- **E2 — cả ba ứng viên tương tác đều không đạt tiêu chí.** FiLM **0,8028**, bilinear **0,7933**, ridge tích chéo **0,7924** — thua ridge M3 ở **cả ba seed**. Cả ba vẫn hơn ΔPAP (+0,0231…+0,0335). Cộng cổng sigmoid buổi sáng là **bốn** cơ chế bị loại.
+- **E3 — kiến trúc Degformer tự học thì còn tệ hơn.** Dựng lại đúng class và đúng siêu tham số công bố, huấn luyện từ đầu dưới cov80 cùng ngân sách nhãn: **0,7500**, thua ridge **−0,0582** [−0,0734; −0,0426] và thua cả ΔPAP **−0,0193** [−0,0330; −0,0058]. **Trần 30 epoch không bị chạm ở fold nào** — cả 5/5 fold đạt điểm tốt nhất ở **epoch 2** rồi validation xấu dần, nên đây **không** phải huấn luyện thiếu. Còn lại: 1 seed, không hiệu chỉnh siêu tham số, không tái lập tiền huấn luyện 569k dòng.
+- **[DIỄN GIẢI] Ba kết quả kẹp chặt câu hỏi về Degformer.** E1 loại "do trùng dữ liệu", E3 loại "do kiến trúc" — phần còn lại là **569.270 dòng tiền huấn luyện**. Ghép với E2: ở n = 89 cụm, nút thắt là **lượng nhãn chứ không phải sức chứa mô hình**. Chưa có thí nghiệm tách riêng yếu tố này; nó là việc tiếp theo được đề xuất.
+- **Hồ sơ:** cập nhật A và D của [DECISIONS.md](../../DECISIONS.md#hien-hanh), [data/README.md](data/README.md) (dòng đời `g2-ext-*`), [resources/README.md](../../resources/README.md). **Mở một mục C mới — [C-20](../../DECISIONS.md#c-20)** đề xuất đổi trọng tâm việc G2 từ "thêm sức chứa" sang "thêm nhãn"; đây là **đề xuất của Claude, chờ Trọng**, không tự ghi thành quyết định. Không nới cổng G2, không đổi D-027/D-031.
+- **Kiểm:** không tải dữ liệu mới, cả ba thí nghiệm đọc lại cache bão hoà và nguồn Degformer đã ghim SHA, chạy `python -I` theo [D-028.8](../../DECISIONS.md#d-028). `check_links.py` trở lại **55** link hỏng có sẵn, không thêm link mới.
+
+---
+
+## 18/10/2026 — viết lại nội dung trong từng khung, một thang chữ, và sửa số G2 trên deck
+
+Theo yêu cầu Trọng: lượt trước mới **chia slide và đổi kiểu khung**, chưa sờ tới **chữ bên trong khung**; nhiều khung vẫn phức tạp, chưa trực quan. Chi tiết quy ước: [README deck §thang chữ](presentation/deck-2026-10-16/README.md#noi-dung-khung-18102026).
+
+- **Một thang chữ, ba cỡ.** Thay **101 chỗ `font-size` nội tuyến** (11 cỡ khác nhau từ 11 đến 16px) bằng ba class `.t-lead` 15px · thân khung 13,5px · `.t-note` 12px. Các cỡ lẻ khác thành class có tên (`.stat`, `.pillar-h`, `.seqline`, `.thanks`, `.kpi.sm/.xs`); `.lede` thống nhất 17px. Ngoài SVG nay chỉ còn 9 / 9,5 / 10,5px của chú thích hình và một `<tspan>` chỉ số dưới.
+- **Mẫu `.lines` — mỗi dòng một ý**, nhãn in đậm đứng trước, dấu `·` do CSS sinh, số tách ra bằng `.v`. Đã viết lại **23 khung** ở slide 8, 11, 16, 17, 18, 20, 21, 22, 23, 24, 26, 27, 28, 29, 30, 31, 32 và phụ lục A2. Trên mặt slide nay **không còn khối nào ≥ 20 từ** ngoài các câu dẫn (`.lede`) và bốn câu hỏi của slide 34 — đó là chỗ câu dài đúng vai.
+- **Gộp khung.** Slide 22 *Feasibility* từ **bảy** khung nhỏ còn **ba**: ba delta · cái đã xác lập · bốn giới hạn. Slide 15 gộp hai chip của C4 vào cùng hàng với con số.
+- **Sửa lỗi nhân tiện:** sáu khung slide 15 khai `class` **hai lần** (`class="card" … class="good"`) nên viền phân loại chưa bao giờ hiện; nay gộp làm một.
+- **Sửa số G2 cho khớp [DECISIONS.md](../../DECISIONS.md#hien-hanh).** Deck còn kể chuyện cũ *"M3 0,7273, thua 0,0420, C4 còn mở"*. Đã sửa ở slide 15, 16, 21, 22, 27, 29, 33, 34 và phụ lục A2. Slide 21 đổi hẳn khung kể: **hai chế độ** — A chuyển giao (vẫn thua 0,0420) và B học trực tiếp (ridge 0,8082, **+0,0389** [+0,0216; +0,0571]) — kèm cảnh báo **không trộn hai chế độ** vì khác ngân sách nhãn. Slide 22 và A2 thêm cột/dòng cho ridge, gate, ba ứng viên và Degformer.
+- **Không nới cổng:** mọi chỗ nói "target cleared" đều đi kèm "component open" — bốn thiết kế tương tác đã thử, không cái nào vượt ridge thường ([báo cáo mở rộng](research/g2-extension-2026-10-18/README.md)). Giữ nguyên các câu ràng buộc: *composition at which scale* ([C-17b](../../DECISIONS.md#c-17b)), *a literature search … did not find it reported*, câu trần đo lường, câu ΔPAP ngoài thiết kế, dòng giấy phép ClinVar/Larsen.
+- **Kiểm:** probe headless nay đo **cả hai** lỗi — tràn mép slide **và hai khung đè lên nhau** trong lòng slide (lỗi mà slide 15 mắc phải giữa lượt này và probe cũ không bắt được). Kết quả cuối: **`OVF=none LAP=none` trên 41 slide**, PDF headless **41 trang**, soi ảnh render slide 15, 18, 21, 22, 29, A2.
+
+**Không đổi** phép đo nào; mọi số lấy từ hai báo cáo nghiên cứu cùng ngày.
+
+---
+
+## 18/10/2026 — huấn luyện bão hòa và đối chứng G2
+
+Theo yêu cầu Trọng: thực hiện việc còn lại cho G2 rồi cập nhật repo. [Báo cáo](research/g2-saturation-2026-10-18/README.md) · [protocol](research/g2-saturation-2026-10-18/PROTOCOL.md) · [results](research/g2-saturation-2026-10-18/results.json).
+
+- Học trực tiếp bão hòa, 91 peptide / 89 cụm / 47.847 ô; outer cov80 5 fold, inner validation cov80, seed 17/29/43. Đã chạy 45 mô hình mạng và hai ablation, ridge chọn alpha inner; không dùng nhánh scanning.
+- Ridge ensemble OOF **0,8082**; ΔPAP tái lập **0,7693**; delta **+0,0389** [0,0216; 0,0571]. Gate+PAP **0,8002**; bỏ gate **0,7937**; bỏ PAP **0,8015**. Gate vẫn thua ridge, hiệu ứng gate âm ở seed 29; không giấu bằng ensemble.
+- Tải Degformer epoch50, source và training table ghim SHA; thực thi riêng class đã đọc, chạy `python -I`, không chạy top-level nguồn. Checkpoint đạt **0,9248** nhưng **42.163 ô / 88,12%** sequence trùng train, WT 91/91. Chưa có bản retrain cov80 sạch.
+- Lưu script, JSON, log nhỏ trong research; ma trận, dự đoán và checkpoint trong data (gitignored); cập nhật sổ nguồn/manifest. Giữ toàn bộ thay đổi slide có sẵn.
+- Kiểm lại pipeline hai lần cho cùng headline; reload 45 checkpoint khớp dự đoán và không chồng cụm train/validation/test. Link mới và diff G2 đạt; checker toàn repo còn 55 lượt link hỏng cũ/ngoài phần bổ sung, whitespace ở deck độc lập được giữ nguyên. [Validation](research/g2-saturation-2026-10-18/VALIDATION.md).
+- Cập nhật tiến độ ở DECISIONS A/D, không tạo quyết định mới, không đổi điều kiện: **mốc số vượt, G2 chưa hoàn tất** do thành phần kiến trúc chưa vững/tính mới chưa xác lập. Các phép so là exploratory trên dữ liệu phát triển, không phải untouched test.
+
+---
+
+## 18/10/2026 — thống nhất kiểu khung, bỏ tô nền, viết lại chữ trong khung
+
+Theo yêu cầu Trọng: các text box còn phức tạp, chưa trực quan; và không được tô màu nền tuỳ tiện — phải thống nhất, hoặc chỉ đóng khung và đổi màu chữ tiêu đề.
+
+- **Một kiểu khung duy nhất.** `.card` nay **nền trong suốt + viền mảnh**; bốn biến thể `key/good/alert/open` chỉ còn khác nhau ở **màu chữ tiêu đề** và màu viền nhạt (`open` viền gạch đứt). `.chip` cũng bỏ nền, chuyển sang viền mảnh + chữ màu. Hàng bảng nhấn đổi từ mảng nền sang **viền trái + chữ đậm** (`tr.hi`, `tr.mine`). Xoá **12 chỗ `border-left:3px` nội tuyến**, chuyển thành class. Màu nền nay chỉ còn trong **sơ đồ SVG**, nơi mảng màu mang nghĩa.
+- **Viết lại 26 khối chữ** dài ≥ 22 từ thành câu nhãn ngắn, ngắt dòng theo ý, số tách khỏi câu — hiện **không còn khối nào ≥ 22 từ** trên mặt slide. Giữ nguyên các câu ràng buộc: *composition at which scale* ([C-17b](../../DECISIONS.md#c-17b)), *a literature search on 15 Oct 2026 did not find it reported*, câu trần đo lường, câu ΔPAP ngoài thiết kế, dòng giấy phép ClinVar/Larsen.
+- **Kiểm:** `OVF=none` trên cả 41 slide; PDF headless 41 trang; soi ảnh render các slide 11, 18, 20, 22, 28, 33.
+
+**Không đổi** nội dung khoa học, số đo hay quyết định nào.
+
+## 18/10/2026 — tách năm slide theo ý chính, vẽ lại slide ba trụ, bỏ emoji
+
+Theo yêu cầu Trọng: rà toàn bộ xem còn slide nào nên tách như phần Feasibility, và **bỏ emoji** khỏi mặt slide. Deck nay **34 slide lõi + 7 phụ lục** (PDF 41 trang).
+
+- **Tách năm slide** (tiêu chí: ≥ 6 khối và ≥ 170 từ, mà hai phần nói hai chuyện khác nhau): Group 2 → *nguồn nhãn của lĩnh vực* + *vì sao không bài nào trả lời mức residue* (phép kiểm hoán vị tự đo có chỗ riêng); Contribution → *ba trụ* + *phân rã where the information sits*; Dataset → *hai bộ nhãn* + *split và định dạng bản ghi*; Proposed approach → *phần đã chốt* + *phần mở*; Software → *vì sao là đóng góp* + *đặc tả và đối chứng*.
+- **Slide ba trụ vẽ lại cho có trọng tâm** (yêu cầu bổ sung trong phiên): bỏ bảng C1–C5 nhiều chữ, thay bằng **ba cột trụ**, mỗi đóng góp một card ngắn có dấu trạng thái và một con số (OR 2.148 · +0.0300 · −0.0420), chốt bằng một dòng *bốn trong năm đã đo; phần mở là C4 và nó có một con số để đạt*.
+- **Bỏ emoji khỏi slide** (31 chỗ `✓` `⬜` `⚠`): thay bằng dấu vẽ bằng CSS — `.chip::before` là ô vuông đặc (đã đo) / vòng tròn rỗng (còn mở) / chấm tròn (cảnh báo), `.mark` ô vuông xanh trong bảng đối chứng công cụ, chữ trong SVG rút còn `G1 / G2 / G3`. Ghi chú người nói giữ nguyên `⚠` vì không chiếu lên màn hình.
+- **Rà lại 33 tham chiếu chéo** (`slide N`, eyebrow phụ lục, nhãn trong hình, ghi chú) sau khi số thứ tự đổi; eyebrow từng phần cập nhật (Related work 6 slide, Datasets 4, Method 3, Product 3).
+- **Kiểm:** `OVF=none` trên cả 41 slide; PDF headless **41 trang**; HUD đọc `22 / 34`; soi ảnh render các slide mới tách.
+
+**Không đổi** nội dung khoa học, số đo hay quyết định nào.
+
+## 18/10/2026 — ba slide thực nghiệm cho phần Feasibility
+
+Theo yêu cầu Trọng: phần *Feasibility* phải **trình bày các thực nghiệm** (scanning, M0, M3, w1, saturation), không chỉ đưa bảng hằng số. Deck nay **29 slide lõi + 7 phụ lục** (PDF 36 trang).
+
+- **Slide 17 — bốn mô hình đang được so.** Sơ đồ bốn dải 28 ô cho thấy mỗi mô hình **nhìn thấy gì** quanh residue bị thay: M0 thành phần cả peptide (60 cột) · M1 thêm chỉ số vị trí (88) · M2 thành phần cửa sổ ±3 không thứ tự (80) · M3 ngữ cảnh ±3 có thứ tự (180); ΔPAP `cnn2w1`/`cnn2w7` là **đối chứng đã công bố, không huấn luyện lại**, lấy hiệu hai điểm PAP. Ghi rõ phần giữ cố định: cùng ridge (alpha bằng PRESS/LOO), cùng split cụm cov80, 5 fold × 5 seed, AUROC mức ô macro theo peptide.
+- **Slide 18 — thực nghiệm trên bộ quét.** Thanh ngang sáu mô hình + trần 0,9458, kèm thang delta ghép cặp: M1−M0 +0,0052 · M2−M0 +0,0232 · **M3−M0 +0,0289** (thắng 72,5% peptide), M4 không thêm gì (0,8684). Câu chốt giữ đúng [C-17b](../../DECISIONS.md#c-17b): *composition at which scale*, không phải "vị trí thắng thành phần".
+- **Slide 19 — chuyển sang ma trận bão hoà.** Học **chỉ trên bộ quét** (2.849 peptide, loại 145 peptide trùng cụm) → chấm trên 91 peptide / 89 cụm / 47.847 ô: M0 0,7071 · M3 0,7273 · **ΔPAP `cnn2w1` 0,7693** · trần 0,9519; mức vị trí thì **đảo chiều** (M3 0,4440 so với ΔPAP 0,3553, trần 0,6989). Đây là đích C4 nói thẳng kèm cách đọc đúng: âm này là về **chuyển sang thay thế chưa thấy**, không phải về hướng mức residue.
+- **Slide 20 (cũ 17) rút gọn**: bỏ bảng hằng số nay đã trùng, giữ hai KPI +0,0289 / −0,0420, trần, ngưỡng 0,0123 và giới hạn nhãn Jaccard 0,4965.
+- Số lấy nguyên từ [residue-task-derisk-2026-10-15](research/residue-task-derisk-2026-10-15/README.md) và [pap-baseline](research/pap-baseline/README.md), **không gõ số mới**. Hai biểu đồ thanh có trục hoành bắt đầu ở 0,75 và 0,65 — **in ghi chú ngay trên hình**.
+- Thêm slide làm **số thứ tự dịch +3** từ 17 trở đi: đã sửa mọi tham chiếu chéo trong deck (eyebrow phụ lục A2/A3/A4, "slides 17 and 22", "slides 23–24", ghi chú người nói).
+- **Kiểm:** `OVF=none` trên cả 36 slide; PDF headless **36 trang**; soi ảnh render bốn trang 17–20.
+
+## 18/10/2026 — rà bố cục từng slide, vẽ lại slide 8, thêm phụ lục A7
+
+Theo yêu cầu Trọng: soi **từng slide** xem có lỗi bố cục, quá phức tạp hay quá đơn giản không; trình bày **trực quan** thay vì liệt kê trong hộp; dùng bố cục chuẩn (chia cột, lưới, trục thời gian); **tận dụng khoảng trắng**; mỗi slide một ý chính. Đã soi bằng **ảnh render thật** của cả 33 trang, không đoán.
+
+- **Lỗi hệ thống tìm được:** nội dung dồn lên đỉnh, **đáy trống 25–40%** ở 14 slide. Thêm hai tiện ích CSS: `.slide.fill` dàn đều theo chiều dọc (chỉ khi ≥ 3 khối, dùng `:has(> :nth-child(3))` — với 2 khối thì tạo hố giữa trang, đã thử và bỏ), `.slide.mid` căn giữa khi nội dung ngắn hơn khung. Bảng lỗi–cách sửa từng slide: [README deck](presentation/deck-2026-10-16/README.md#ra-bo-cuc-18102026).
+- **Slide 8 vẽ lại hoàn toàn:** từ bảng 10 dòng × 5 cột thành **biểu đồ hai trục** — năm (2018→2026) × đơn vị dự đoán (region · motif · peptide/tile · **residue**); chấm đặc = nhãn đo được, chấm rỗng = nhãn curated; **cột `residue` để trống**, chỉ có đề tài đứng đó. Chữ trên slide **252 → 61 từ**. Bảng đầy đủ chuyển sang **phụ lục A7** (deck nay 26 + 7 phụ lục, PDF 33 trang).
+- **Slide 13 và 25 bố cục lại:** 13 đưa **trục thời gian lên thành băng hero** + ba chip mốc, hai bảng xuống hai cột; 25 thành **lưới ba card G1/G2/G3** trên cùng, bảng tuần ở giữa, **thanh tiến độ tuần chạy ngang dưới cùng**. Slide 26 thành **lưới 2×2 giãn đầy khung**.
+- **Hình:** gỡ GIF Fam188a khỏi slide 2 (nền đen chọi bảng màu, không thêm thông tin); slide 7 đổi hình Fig. 1 của Voutsinos — **không đọc nổi ở cỡ cột slide** — sang **sơ đồ FACS** cỡ lớn, và chuyển Fig. 1 xuống **phụ lục A5**; slide 5 gom GIF RING + ba chip vào một card; slide 1 dải peptide thành băng ngang, thông tin người làm xếp 3 cột.
+- **Chữ trên sân khấu sau hai lượt: 5.294 → 3.531 từ (−33%)** trên 22 slide đã sửa.
+- **Kiểm:** script đo tràn khung (dựng mọi slide ở 720px, bật hết bước animation, đo `getBoundingClientRect` của mọi phần tử) → **`OVF=none`** trên cả 33 slide; PDF headless **33 trang**; HUD vẫn đếm 26 lõi, phụ lục hiện `A1 / 7`.
+
+**Không đổi** nội dung khoa học, số đo, G1/G2/G3 hay quyết định nào.
+
+## 18/10/2026 — rút gọn chữ trên deck, thêm 6 phụ lục, vẽ lại sơ đồ ClinVar
+
+Theo yêu cầu Trọng: deck đang **quá nhiều chữ**; mỗi slide chỉ nên mang **ý chính và câu hỏi chính**, không liệt kê hết số liệu; giữ nguyên bố cục, hình và animation; chỉ cắt **slide trung bình/nặng**; phần cắt đi dồn vào **ghi chú người nói** và **phụ lục** (không dùng lại `.foot` vì đã gỡ); được phép thêm ảnh/GIF và **không chặn theo giấy phép** vì deck dùng nội bộ.
+
+- **Cắt chữ 22 slide (5–26).** Chữ hiển thị trên sân khấu giảm **5.294 → 3.637 từ (−31%)**; nặng nhất giảm nhiều nhất: slide 21 359→217, slide 14 321→199, slide 20 284→194, slide 10 282→174. Slide 1–4 không cắt (1 và 3 giữ nguyên, 2 và 4 chỉ thêm ảnh). Cách cắt: card thành nhãn ngắn, bỏ cột tham chiếu khỏi bảng (slide 8 bỏ *method group* và *labels*, 18 bỏ *identifier*, 22 bỏ *what is held fixed*), số phụ và CI rời khỏi slide.
+- **Sáu phụ lục A1–A6 dựng mới** — A1 trích dẫn (14 công trình kèm DOI) · A2 hằng số benchmark đầy đủ · A3 xuất xứ dữ liệu · A4 từ điển trường · A5 kiến trúc PAP + phép kiểm hoán vị + audit Degformer · A6 lực thống kê và MDE. Chân slide 26 đã hứa đúng sáu phụ lục này từ bản trước mà deck chưa có; nay khớp. Engine `deck.js` sửa để HUD và vạch tiến độ vẫn đếm **26 slide lõi**, phụ lục hiện `A1 / 6`.
+- **Vẽ lại sơ đồ ClinVar ở slide 6** thành ba tầng: phễu độ phủ (2.564.486 → 2.349.511 = 93,0% → 630.401 trong vùng degron, 530.412 VUS) → phép so **gây bệnh/lành tính trong cùng protein** bằng bốn thanh tỉ lệ (26.078 · 28.940 so với 33.131 · 77.052 ⇒ 0,90 so với 0,43) → tỉ số của hai tỉ lệ = **OR 2,148 [2,072; 2,227]** trên trục có mốc *no effect*. Số lấy từ [variant-coverage-2026-10-15](research/variant-coverage-2026-10-15/README.md), không gõ tay số mới.
+- **Thêm ảnh/GIF:** slide 2 GIF gập protein, slide 4 GIF ubiquitin (PDB 2QJL) + ảnh 26S proteasome (NIH BioArt, public domain), slide 5 GIF miền RING, slide 19 sơ đồ FACS. Nguồn + giấy phép + SHA-256 ghi ở [SOURCES.md](presentation/deck-2026-10-16/SOURCES.md) mới.
+- **Ghi công CC BY-NC của hai hình Voutsinos đưa trở lại mặt slide** (figcaption dưới hình, slide 7 và 10): sau khi `.foot` bị gỡ thì ghi công không còn hiển thị, mà đó là điều kiện giấy phép. Câu *"trần đo lường không phải lời hứa về hiệu năng đạt được"* cũng đưa lại slide 17 dưới dạng `.cap`.
+- **Kiểm:** xuất PDF headless ra đúng **32 trang** 1280×720 (26 + 6); soát mắt các trang 4, 5, 6, 14, 17, 21, 26; sửa một chỗ tràn (card PROTAC ở slide 6 chuyển sang cột trái) và một chỗ đè chữ trong sơ đồ mới; `tools/check_links.py` không còn link hỏng nào thuộc thư mục deck.
+
+**Không đổi** nghiên cứu, số đo, G1/G2/G3 hay quyết định nào. Không đụng `pptx-2026-10-16/` và `notion-2026-10-16/`. Hai việc còn lại của deck vẫn mở: Trọng tự viết câu hỏi 1 và 4 (slide 26 nay chỉ còn bản rút gọn), và đối chiếu từng ô bảng so sánh công cụ ở slide 23 (`–` → `not checked`).
+
 ## 18/10/2026 — chỉnh HUD và phím chuyển slide trực tiếp
 
 Theo yêu cầu Trọng: chữ HUD (gồm nhãn và phím tắt) đổi sang `#15323F`, giữ nền độ đục 20%. Thêm `Ctrl + ←/→` chuyển thẳng slide trước/sau ở bước 0; mũi tên thường vẫn chạy từng bước. Thêm hướng dẫn trên HUD. Đã kiểm bằng Chromium: chuyển trực tiếp khi slide còn bước, lùi, hai biên đầu/cuối, mũi tên thường, không lỗi JavaScript; xem ảnh HUD 1440×900 và `git diff --check` đạt. Không đổi nghiên cứu/G1/G2/G3.

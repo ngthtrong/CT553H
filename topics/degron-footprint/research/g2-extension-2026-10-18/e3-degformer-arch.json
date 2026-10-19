@@ -1,0 +1,278 @@
+{
+  "seed": 17,
+  "max_epochs": 30,
+  "patience": 6,
+  "folds": [
+    {
+      "fold": 0,
+      "best_epoch": 2,
+      "best_val_mse": 0.8384034914801242,
+      "stopped_at_cap": false,
+      "curve": [
+        {
+          "epoch": 1,
+          "val_mse": 0.9088533585275008,
+          "seconds": 82.0
+        },
+        {
+          "epoch": 2,
+          "val_mse": 0.8384034914801242,
+          "seconds": 63.2
+        },
+        {
+          "epoch": 3,
+          "val_mse": 0.8781046986237011,
+          "seconds": 63.3
+        },
+        {
+          "epoch": 4,
+          "val_mse": 1.0438833360132527,
+          "seconds": 62.5
+        },
+        {
+          "epoch": 5,
+          "val_mse": 1.2278237164534864,
+          "seconds": 63.4
+        },
+        {
+          "epoch": 6,
+          "val_mse": 1.452929793931151,
+          "seconds": 64.5
+        },
+        {
+          "epoch": 7,
+          "val_mse": 1.6664859546796702,
+          "seconds": 63.3
+        },
+        {
+          "epoch": 8,
+          "val_mse": 2.0174763588983056,
+          "seconds": 63.0
+        }
+      ]
+    },
+    {
+      "fold": 1,
+      "best_epoch": 2,
+      "best_val_mse": 1.3156493569997865,
+      "stopped_at_cap": false,
+      "curve": [
+        {
+          "epoch": 1,
+          "val_mse": 1.3256236596114912,
+          "seconds": 66.2
+        },
+        {
+          "epoch": 2,
+          "val_mse": 1.3156493569997865,
+          "seconds": 65.0
+        },
+        {
+          "epoch": 3,
+          "val_mse": 1.46316529783459,
+          "seconds": 62.7
+        },
+        {
+          "epoch": 4,
+          "val_mse": 1.720615211842544,
+          "seconds": 65.7
+        },
+        {
+          "epoch": 5,
+          "val_mse": 2.102191051276028,
+          "seconds": 65.2
+        },
+        {
+          "epoch": 6,
+          "val_mse": 2.591902484914374,
+          "seconds": 62.8
+        },
+        {
+          "epoch": 7,
+          "val_mse": 2.6671235835425047,
+          "seconds": 65.1
+        },
+        {
+          "epoch": 8,
+          "val_mse": 2.890349496829771,
+          "seconds": 64.7
+        }
+      ]
+    },
+    {
+      "fold": 2,
+      "best_epoch": 2,
+      "best_val_mse": 1.219112244297763,
+      "stopped_at_cap": false,
+      "curve": [
+        {
+          "epoch": 1,
+          "val_mse": 1.368427373872438,
+          "seconds": 66.6
+        },
+        {
+          "epoch": 2,
+          "val_mse": 1.219112244297763,
+          "seconds": 66.2
+        },
+        {
+          "epoch": 3,
+          "val_mse": 1.2216613898615118,
+          "seconds": 67.7
+        },
+        {
+          "epoch": 4,
+          "val_mse": 1.445697934573468,
+          "seconds": 64.6
+        },
+        {
+          "epoch": 5,
+          "val_mse": 1.4661529472888026,
+          "seconds": 66.9
+        },
+        {
+          "epoch": 6,
+          "val_mse": 1.700919637947858,
+          "seconds": 63.1
+        },
+        {
+          "epoch": 7,
+          "val_mse": 1.7808175080812239,
+          "seconds": 64.1
+        },
+        {
+          "epoch": 8,
+          "val_mse": 1.9365836354039303,
+          "seconds": 62.7
+        }
+      ]
+    },
+    {
+      "fold": 3,
+      "best_epoch": 2,
+      "best_val_mse": 0.8365569139181142,
+      "stopped_at_cap": false,
+      "curve": [
+        {
+          "epoch": 1,
+          "val_mse": 0.867935312584429,
+          "seconds": 64.5
+        },
+        {
+          "epoch": 2,
+          "val_mse": 0.8365569139181142,
+          "seconds": 64.2
+        },
+        {
+          "epoch": 3,
+          "val_mse": 0.8540172096542092,
+          "seconds": 64.3
+        },
+        {
+          "epoch": 4,
+          "val_mse": 0.97397631353759,
+          "seconds": 64.8
+        },
+        {
+          "epoch": 5,
+          "val_mse": 1.0650076178467194,
+          "seconds": 64.6
+        },
+        {
+          "epoch": 6,
+          "val_mse": 1.0907637091033098,
+          "seconds": 66.1
+        },
+        {
+          "epoch": 7,
+          "val_mse": 1.2218931423006105,
+          "seconds": 64.7
+        },
+        {
+          "epoch": 8,
+          "val_mse": 1.2882939768739696,
+          "seconds": 63.9
+        }
+      ]
+    },
+    {
+      "fold": 4,
+      "best_epoch": 2,
+      "best_val_mse": 1.2290940068763936,
+      "stopped_at_cap": false,
+      "curve": [
+        {
+          "epoch": 1,
+          "val_mse": 1.3582191318737755,
+          "seconds": 65.1
+        },
+        {
+          "epoch": 2,
+          "val_mse": 1.2290940068763936,
+          "seconds": 66.5
+        },
+        {
+          "epoch": 3,
+          "val_mse": 1.2440810835450038,
+          "seconds": 64.8
+        },
+        {
+          "epoch": 4,
+          "val_mse": 1.296094371979396,
+          "seconds": 64.0
+        },
+        {
+          "epoch": 5,
+          "val_mse": 1.592466129949274,
+          "seconds": 61.9
+        },
+        {
+          "epoch": 6,
+          "val_mse": 1.3801758933233008,
+          "seconds": 62.3
+        },
+        {
+          "epoch": 7,
+          "val_mse": 1.6862573557382232,
+          "seconds": 64.4
+        },
+        {
+          "epoch": 8,
+          "val_mse": 1.7191802024155705,
+          "seconds": 62.8
+        }
+      ]
+    }
+  ],
+  "hyperparameters": "author published: Adam lr 1e-4, batch 512, d_model 128, 4 layers, 8 heads, ff 256, dropout 0.1",
+  "target": "absolute PSI of the sequence, z scored on outer train; cell score is pred(mutant) minus pred(wild type)",
+  "macro_auroc": {
+    "degformer_arch_cov80": 0.7499777738296205,
+    "ridge": 0.8081859035239344,
+    "DeltaPAP": 0.7692837466691289,
+    "Degformer_official_checkpoint_leaky": 0.9248138004606896
+  },
+  "comparisons": {
+    "degformer_arch_minus_ridge": {
+      "delta": -0.05820812969431403,
+      "ci95": [
+        -0.07342464205020159,
+        -0.04259355644053897
+      ],
+      "n_peptides": 91,
+      "n_clusters": 89,
+      "n_positive_peptides": 15
+    },
+    "degformer_arch_minus_DeltaPAP": {
+      "delta": -0.019305972839508433,
+      "ci95": [
+        -0.03300468320086159,
+        -0.005770215195154776
+      ],
+      "n_peptides": 91,
+      "n_clusters": 89,
+      "n_positive_peptides": 31
+    }
+  },
+  "runner_sha256": "03ac3b63b2bd4e3861191740854338801c760d32a957e19fe6d035ff0886038d"
+}

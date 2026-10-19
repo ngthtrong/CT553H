@@ -99,7 +99,7 @@ h2 {
 }
 h2 em { font-style: normal; color: var(--degron); }
 .lede {
-  font-size: 16px; line-height: 1.45; color: var(--ink-70);
+  font-size: 17px; line-height: 1.45; color: var(--ink-70);
   margin: 0 0 16px; max-width: 86ch;
 }
 .body { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 14px; }
@@ -138,21 +138,74 @@ code { font-family: var(--mono); font-size: .92em; }
 .c-2-narrow{ grid-template-columns: 1fr 1.35fr; }
 .c-3       { grid-template-columns: repeat(3, 1fr); }
 .stack     { display: flex; flex-direction: column; gap: 12px; min-height: 0; }
+/* .fill: phân bố các khối theo chiều dọc thay vì dồn lên đỉnh và để trống đáy.
+   Đặt ở <section class="slide fill">; chỉ dùng cho slide có >= 3 khối, nếu không
+   khoảng cách giữa hai khối sẽ hở quá rộng. */
+.slide.fill > .body:has(> :nth-child(3)),
+.slide.fill .cols > .stack:has(> :nth-child(3)) { justify-content: space-between; }
+
+/* .mid: khi nội dung ngắn hơn khung, căn giữa theo chiều dọc thay vì dồn lên đỉnh,
+   để khoảng trắng chia đều trên dưới. */
+.slide.mid .cols > * { align-self: center; }
 .center    { justify-content: center; }
 .grow      { flex: 1; min-height: 0; }
 
 /* -------------------------------------------------------------------- hộp/chip */
 
+/* MỘT kiểu khung duy nhất: viền mảnh, KHÔNG tô nền.
+   Phân loại chỉ thể hiện ở MÀU CHỮ TIÊU ĐỀ (.card-t) và màu viền nhạt,
+   không bao giờ bằng mảng màu nền — quy ước 18/10/2026. */
 .card {
-  background: #fff; border: 1px solid var(--rule); border-radius: 10px;
+  background: transparent; border: 1px solid var(--rule); border-radius: 10px;
   padding: 14px 16px;
 }
-.card.key    { border-left: 3px solid var(--model);  background: var(--model-bg); }
-.card.good   { border-left: 3px solid var(--stable); background: var(--stable-bg); }
-.card.alert  { border-left: 3px solid var(--degron); background: var(--degron-bg); }
-.card.open   { border: 1px dashed var(--warn); background: var(--warn-bg); }
+.card.key   { border-color: #C9DCEC; }
+.card.good  { border-color: #BFDFD9; }
+.card.alert { border-color: #EFCAD0; }
+.card.open  { border-color: var(--warn); border-style: dashed; }
+.card.key   > .card-t { color: var(--model); }
+.card.good  > .card-t { color: #1D6F65; }
+.card.alert > .card-t { color: var(--degron); }
+.card.open  > .card-t { color: #8A6A17; }
 .card > :last-child { margin-bottom: 0; }
 .card.compact { padding: 9px 12px; }
+
+/* THANG CHỮ TRONG KHUNG — chỉ ba cỡ, quy ước 18/10/2026 lượt sáu.
+   Trước đây mỗi khung tự đặt font-size nội tuyến (12 / 12,5 / 12,8 / 13 / 13,5 / 14 / 14,5 / 15 / 16px)
+   nên hai khung cạnh nhau lệch cỡ. Nay: thân khung 13,5px là mặc định, .t-lead 15px cho một
+   câu dẫn, .t-note 12px cho dòng phụ. Không thêm font-size nội tuyến vào nội dung HTML nữa;
+   thuộc tính font-size trong SVG không thuộc thang này. */
+.card { font-size: 13.5px; }
+.card p, .card ul, .card li { font-size: 13.5px; }
+.t-lead { font-size: 15px; line-height: 1.38; }
+.t-body { font-size: 13.5px; line-height: 1.38; }
+.t-note { font-size: 12px; line-height: 1.36; color: var(--ink-70); }
+.card .t-lead, .card .t-body, .card .t-note { margin: 0; }
+
+/* MỖI DÒNG MỘT Ý: nhãn in đậm đứng trước, số tách ra khỏi câu, không dùng dấu đầu dòng.
+   Dùng thay cho đoạn văn dài trong khung; giới hạn thực tế khoảng 12 từ một dòng. */
+.lines { display: flex; flex-direction: column; gap: 6px; }
+.lines > * { margin: 0; font-size: 13.5px; line-height: 1.34; }
+.lines.sm > * { font-size: 12px; line-height: 1.32; }
+.lines .k { font-weight: 700; }
+.lines .v { font-family: var(--mono); font-variant-numeric: tabular-nums; font-weight: 700; }
+.lines .x { color: var(--ink-45); }
+/* dấu phân cách giữa nhãn và nội dung, không phải ký tự gõ tay trong HTML */
+.lines .k + span::before { content: "· "; color: var(--ink-45); }
+
+/* KPI cỡ nhỏ, thay cho font-size nội tuyến 26/27px rải rác */
+.kpi.sm .v { font-size: 26px; }
+.kpi.xs .v { font-size: 20px; }
+.kpi .v.nowrap { white-space: nowrap; }
+
+/* Con số đứng một mình trong khung trụ đóng góp, và tên trụ. */
+.stat { font-family: var(--mono); font-variant-numeric: tabular-nums;
+        font-size: 17px; font-weight: 700; margin: 4px 0 2px; }
+.pillar-h { font-size: 20px; font-weight: 700; }
+/* dải trình tự mono cỡ lớn giữa slide */
+.seqline { font-family: var(--mono); font-size: 17px; font-weight: 500; }
+.arrow { color: var(--muted); font-size: 18px; }
+.thanks { font-size: 18px; font-weight: 700; margin: 0 0 5px; }
 .card.compact .card-t { margin-bottom: 5px; }
 .card-t {
   font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em;
@@ -162,13 +215,32 @@ code { font-family: var(--mono); font-size: .92em; }
 .chip {
   display: inline-flex; align-items: center; gap: 5px;
   font-family: var(--mono); font-size: 10.5px; font-weight: 500;
-  padding: 3px 8px; border-radius: 20px; white-space: nowrap;
+  padding: 2.5px 8px; border-radius: 20px; white-space: nowrap;
+  background: transparent;
 }
-.chip.m   { background: var(--stable-bg); color: #1D6F65; }   /* đã đo */
-.chip.o   { background: var(--warn-bg);   color: #8A6A17; }   /* chưa đo / proposed */
-.chip.s   { background: var(--model-bg);  color: #2A567F; }   /* nguồn/tác giả */
-.chip.d   { background: var(--degron-bg); color: #A23247; }   /* cảnh báo */
+/* chip cũng chỉ đóng khung, không tô nền */
+.chip.m   { color: #1D6F65; border: 1px solid #BFDFD9; }   /* đã đo */
+.chip.o   { color: #8A6A17; border: 1px dashed #E2CD93; }  /* chưa đo / proposed */
+.chip.s   { color: #2A567F; border: 1px solid #C9DCEC; }   /* nguồn / ghi chú */
+.chip.d   { color: #A23247; border: 1px solid #EFCAD0; }   /* cảnh báo */
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* Dấu trạng thái: một ô vuông nhỏ cùng màu chữ của chip, thay cho ký tự emoji
+   (✓ ⬜ ⚠ trước đây). Chip nào không muốn có dấu thì thêm class .nodot. */
+.chip::before {
+  content: ""; display: inline-block; flex: 0 0 auto;
+  width: 7px; height: 7px; border-radius: 2px;
+  background: currentColor; opacity: .9;
+}
+.chip.nodot::before { display: none; }
+.chip.o::before { border-radius: 50%; background: none; box-shadow: inset 0 0 0 2px currentColor; }
+.chip.d::before { border-radius: 50%; }
+
+/* Dấu "có" trong bảng đối chứng công cụ */
+.mark {
+  display: inline-block; width: 9px; height: 9px; border-radius: 2px;
+  background: var(--stable);
+}
 
 .kpi { display: flex; align-items: baseline; gap: 9px; }
 .kpi .v {
@@ -187,13 +259,15 @@ th, td {
 thead th {
   font-family: var(--mono); font-size: 10px; letter-spacing: .07em;
   text-transform: uppercase; color: var(--ink-45); font-weight: 500;
-  border-bottom: 1px solid var(--rule); background: #fff;
+  border-bottom: 1px solid var(--rule);
 }
 tbody tr:last-child td { border-bottom: none; }
 td.r, th.r { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
 td.c, th.c { text-align: center; }
-tr.mine td { background: var(--model-bg); font-weight: 600; }
+tr.mine td { font-weight: 600; border-top: 1px solid var(--rule); }
 tr.mine td:first-child { box-shadow: inset 3px 0 0 var(--model); }
+tr.hi td { font-weight: 600; box-shadow: inset 0 -1px 0 var(--degron-bg); }
+tr.hi td:first-child { box-shadow: inset 3px 0 0 var(--degron), inset 0 -1px 0 var(--degron-bg); }
 table.tight th, table.tight td { padding: 4.5px 8px; font-size: 12px; }
 table.xtight th, table.xtight td { padding: 3.5px 7px; font-size: 11.5px; }
 .group-a td:first-child { box-shadow: inset 3px 0 0 var(--muted); }
@@ -247,6 +321,8 @@ svg .lblx { font-size: 9.5px; fill: var(--ink-45); }
 .pep span.hit { background: var(--degron); color: #fff; border-color: var(--degron); }
 .pep span.soft{ background: var(--degron-bg); border-color: #EBC3C9; color: #A23247; }
 .pep span.ok  { background: var(--stable-bg); border-color: #B9DED8; color: #1D6F65; }
+/* dải peptide cỡ lớn, dùng làm băng hình ở trang bìa */
+.pep.wide span { width: 34px; height: 40px; font-size: 14px; border-radius: 4px; }
 
 /* thanh PSI 1..6, tái dùng ở slide 7, 16, 20 */
 .psibar { display: flex; flex-direction: column; gap: 4px; width: 100%; }

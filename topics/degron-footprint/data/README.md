@@ -2,7 +2,7 @@
 
 > File này là **sổ nguồn gốc** của thư mục `data/`: mỗi file đến từ đâu, phiên bản nào, giấy phép gì, ai/script nào tạo ra, và đã xử lý qua những bước nào. Nội dung `data/` bị `.gitignore` chặn; **riêng file này được lên git** (ngoại lệ `!**/data/README.md`).
 >
-> Cập nhật lần cuối: **15/10/2026** (phiên 10). Tổng dung lượng ≈ **2,3 GB** (`raw/` 1,2 GB · `interim/` 1,1 GB · `processed/` 123 MB).
+> Cập nhật lần cuối: **18/10/2026** (thêm Degformer và đầu ra G2). Dung lượng trước phiên G2 ≈ **2,3 GB** (`raw/` 1,2 GB · `interim/` 1,1 GB · `processed/` 123 MB).
 >
 > **Khi thêm, xử lý lại hoặc xoá file trong `data/`:** sửa bảng ở mục 3 (và mục 4 nếu đổi định dạng tập huấn luyện), rồi thêm một dòng vào nhật ký mục 5.
 
@@ -32,11 +32,16 @@ Dữ liệu tải về là dữ liệu không tin cậy: đọc bằng `python3 
 | 8 | **Larsen et al. 2025** — bộ nhân, tile TF | GitHub `KULL-Centre/_2025_Larsen_degron_transcriptionfactors` tag **`v1.0`** (commit `2698ecc6`) | **MIT** (repo); ⚠ phủ cả file dữ liệu hay không **đang chờ xác nhận qua email** | 15/10 | `raw/larsen-2025/` | SHA-256 + audit trong [SOURCE.md](raw/larsen-2025/SOURCE.md) |
 | 9 | **NCBI ClinVar** — phân loại biến thể lâm sàng | `ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/variant_summary.txt.gz`, `Last-Modified` **12/10/2026**. ⚠ **Không có số phiên bản, ghi đè mỗi tuần** | ⚠ **Không có giấy phép kiểu CC** — chỉ **yêu cầu ghi công** + câu phủ nhận chẩn đoán phải đi theo đầu ra ứng dụng | 15/10 | `raw/clinvar/` | SHA-256 `a5198a11…28218`, nguyên văn điều khoản trong [SOURCE.md](raw/clinvar/SOURCE.md) |
 
-**Chưa tải (không có trong `data/`):** read giải trình tự thô (SRA `PRJNA1277273` của Zhang); repo Degformer (baseline chính thức theo [D-028.8](../../../DECISIONS.md#d-028), **chưa tải** — checkpoint là pickle, phải để thư mục biệt lập và chạy `python3 -I`); bản **archive** của ClinVar để ghim số liệu ([SOURCE.md §5](raw/clinvar/SOURCE.md)).
+**Chưa tải (không có trong `data/`):** read giải trình tự thô (SRA `PRJNA1277273` của Zhang); bản **archive** của ClinVar để ghim số liệu ([SOURCE.md §5](raw/clinvar/SOURCE.md)).
+
+**Đã tải 18/10:** Degformer, commit `49ee524599671f2b5e30d9cd052ce6baa55c06d8`, Apache-2.0; [SOURCE/giấy phép nguyên văn](raw/degformer-isolated/SOURCE.md). Nguồn https://github.com/Alpine2048/Degformer; manifest SHA-256 từng file được giữ trong SOURCE và [manifest có version control](../research/g2-saturation-2026-10-18/source-manifest.json).
 
 ## 3. Danh mục từng file
 
 ### 3.1 `raw/`
+
+**Bổ sung 18/10:** `degformer-isolated/{predict.py,train_v2.py,README.md,LICENSE,peptide_model_epoch50.pt,training_data.csv,manifest.json}` từ [download.py](../research/g2-saturation-2026-10-18/download.py); SHA từng file được kiểm. Không chạy top-level code nguồn. Training table có 569.270 dòng; dùng kiểm overlap, không dùng huấn luyện mô hình đề tài. Checkpoint được nạp riêng qua `python -I`.
+
 
 | File / thư mục | Nguồn (mục 2) | Tạo bởi | Ghi chú |
 |---|---|---|---|
@@ -72,6 +77,25 @@ Dữ liệu tải về là dữ liệu không tin cậy: đọc bằng `python3 
 | `gps-peptidome-rep1.tsv` (21 MB, 475.506 dòng) | `research/variant-coverage-2026-10-15/coverage.py` tự dựng nếu thiếu (15/10, phiên 10) | Cache của sheet **`I28 Control Replicate 1`** trong Table S1 GEO. Cột `peptide reads psi`. Chỉ là cache để khỏi đọc lại `.xlsx` 52,9 MB (openpyxl rất chậm trên 475k dòng); xoá được |
 
 ### 3.3 `processed/`
+
+**Bổ sung G2 18/10**, sinh bởi [run.py](../research/g2-saturation-2026-10-18/run.py):
+
+- `g2-saturation-input.npz`: `X` (47.847×181, 180 đặc trưng M3 + ΔPAP mutant−WT), `y` (ΔPSI trung bình hai nửa), `idx` (91 cặp start/end của peptide), `peps`, `groups` (cov80), `rowg` (cụm từng ô), `seqs` (mutant sequence), `wt` (WT sequence từng ô). Nguồn: `residue_data.load_all()`, PSI sat_a/sat_b, CSV quét để lấy trình tự tham chiếu, UniProt ghim, `protein-id30-cov80_cluster.tsv`, trọng số PAP `cnn2w1_weights.h5`. Không dùng nhãn scanning để huấn luyện phiên này.
+- `g2-saturation-{ridge,gate_pap,no_gate_pap,gate_no_pap}-predictions.npz`: `seeds` và `predictions` (3×47.847), điểm OOF đúng cùng thứ tự ô của input.
+- `g2-saturation-predictions.npz`: mỗi key là tên mô hình (gồm DeltaPAP, Degformer); điểm ensemble hoặc frozen, dài 47.847.
+- `g2-saturation-models/*.pt`: 45 checkpoint mạng, kèm config, seed, epoch và chỉ số train/validation/test. Không phải model triển khai train trên toàn bộ dữ liệu.
+
+Kiểm [audit.py](../research/g2-saturation-2026-10-18/audit.py): cỡ mẫu 91/89/47.847, dự đoán hữu hạn, outer test clusters rời nhau, tái lập ΔPAP 0,7692837467; bootstrap ghép cặp cụm. Kết quả JSON/log nhỏ nằm ở research. Bản tải và mọi NPZ/PT bị gitignore.
+
+**Bổ sung G2 mở rộng 18/10 (phiên sau)**, sinh bởi [run_ext.py](../research/g2-extension-2026-10-18/run_ext.py). **Không nguồn dữ liệu mới**: cả ba thí nghiệm đọc lại `g2-saturation-input.npz` và `data/raw/degformer-isolated/`.
+
+- `g2-ext-{bilinear,film}-predictions.npz`: `seeds` (17/29/43) và `predictions` (3×47.847), điểm OOF cùng thứ tự ô với input.
+- `g2-ext-cross_ridge-predictions.npz`: `predictions` (47.847). Mô hình tất định nên chỉ một lượt, không có trục seed.
+- `g2-ext-degformer_arch-predictions.npz`: `predictions` (47.847) và `seed`. Điểm ô là `pred(mutant) − pred(wild type)` của transformer huấn luyện lại; mục tiêu huấn luyện là **PSI tuyệt đối** chuẩn hoá z theo outer-train, nên file này **không cùng thang** với các mô hình học thẳng ΔPSI — chỉ dùng để xếp hạng (AUROC bất biến với phép đổi thang affine dương).
+- `g2-ext-models/*.pt`: checkpoint của `bilinear`, `film` (3 seed × 5 fold mỗi loại) và `degformer_arch` (1 seed × 5 fold), kèm seed, epoch, chỉ số train/validation/test, và `target_mean`/`target_sd` cho `degformer_arch`.
+
+Tiêu chí của ba thí nghiệm được chốt trước ở [PREREGISTRATION.md](../research/g2-extension-2026-10-18/PREREGISTRATION.md); JSON kết quả `e1-overlap.json`, `e2-candidates.json`, `e3-degformer-arch.json` nằm ở research. Mọi NPZ/PT ở đây bị gitignore.
+
 
 | File | Sinh bởi | Đầu vào | Ghi chú / kiểm |
 |---|---|---|---|
@@ -162,6 +186,10 @@ Nằm trong `interim/zhang-scanning-unzip/.../Replicate 1 (BAG6 genotype unclear
 Mỗi file là **một bin của một điều kiện**. Tab-separated, **không có header**, hai cột: `id` và số read thô (số nguyên). Thứ tự bin theo số `S<k>`: với bộ quét Replicate 1 và bộ bão hòa nửa A là `S1..S6` = bin 1..6; Replicate 2 và nửa B là `S7..S12` = bin 1..6. Ánh xạ đầy đủ từ file sang điều kiện nằm trong `CONDITIONS` của `research/full-data-audit/build_psi.py`.
 
 ## 5. Nhật ký xử lý
+
+- **18/10/2026 (phiên sau)** — Không tải gì thêm. Sinh thêm dự đoán OOF và checkpoint cho ba thí nghiệm mở rộng (`g2-ext-*`), đọc lại cache bão hoà và nguồn Degformer đã ghim. [Báo cáo](../research/g2-extension-2026-10-18/README.md).
+- **18/10/2026** — Tải Degformer ghim commit và kiểm SHA; tạo cache đặc trưng bão hòa, 45 checkpoint mạng và dự đoán OOF 3 seed ×5 fold; audit 42.163 sequence ô test trong training_data.csv. Script/lineage/schema ở mục 3; [báo cáo](../research/g2-saturation-2026-10-18/README.md).
+
 
 Mới nhất ở trên. Chi tiết phân tích nằm trong báo cáo được dẫn; ở đây chỉ ghi việc gì đã làm **với dữ liệu**.
 

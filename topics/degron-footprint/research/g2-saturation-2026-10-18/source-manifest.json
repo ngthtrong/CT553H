@@ -1,0 +1,35 @@
+{
+  "commit": "49ee524599671f2b5e30d9cd052ce6baa55c06d8",
+  "files": {
+    "predict.py": {
+      "url": "https://raw.githubusercontent.com/Alpine2048/Degformer/49ee524599671f2b5e30d9cd052ce6baa55c06d8/predict.py",
+      "bytes": 5228,
+      "sha256": "c4e2e04ec617bf15b5f608db4d817d4d5c3273c1612560650cca05beed838a2d"
+    },
+    "train_v2.py": {
+      "url": "https://raw.githubusercontent.com/Alpine2048/Degformer/49ee524599671f2b5e30d9cd052ce6baa55c06d8/train_v2.py",
+      "bytes": 6834,
+      "sha256": "9cfe10c31f235d2e266ac7e150189555a2724a123099d589c0c19c4a2d4ca8d1"
+    },
+    "LICENSE": {
+      "url": "https://raw.githubusercontent.com/Alpine2048/Degformer/49ee524599671f2b5e30d9cd052ce6baa55c06d8/LICENSE",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/Alpine2048/Degformer/49ee524599671f2b5e30d9cd052ce6baa55c06d8/README.md",
+      "bytes": 6268,
+      "sha256": "7ad9cde4f0f0c19d05c7cf88b224cadc9f258b7a38c15a30acc4eed94f8c5f3c"
+    },
+    "peptide_model_epoch50.pt": {
+      "url": "https://raw.githubusercontent.com/Alpine2048/Degformer/49ee524599671f2b5e30d9cd052ce6baa55c06d8/peptide_model_epoch50.pt",
+      "bytes": 2203871,
+      "sha256": "c39599ca00f3dd97b88d9415fd0cc88ff37dca55edcac32d99a5a492dd476a55"
+    },
+    "training_data.csv": {
+      "url": "https://raw.githubusercontent.com/Alpine2048/Degformer/49ee524599671f2b5e30d9cd052ce6baa55c06d8/training_data.csv",
+      "bytes": 19924471,
+      "sha256": "6d492962b6c3afee62a4b66d2d9aa08821cd2401b499596998ca177f596146f2"
+    }
+  }
+}
