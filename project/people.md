@@ -1,6 +1,6 @@
 # Con người trong dự án
 
-> Thông tin thô, dùng chung cho mọi đề tài. Quyết định không ghi ở đây, xem [DECISIONS.md](../DECISIONS.md).
+
 
 ## Sinh viên
 

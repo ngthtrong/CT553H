@@ -1,9 +1,5 @@
 # Quyết định và phạm vi đề tài: footprint degron ở mức residue
 
-> **Lịch sử quyết định:** các câu "chốt / quyết định / khuyến nghị" trong file này phản ánh thời điểm viết, có thể đã bị thay. Trạng thái hiện hành chỉ nằm ở [DECISIONS.md](../../../DECISIONS.md).
-
-> **Lịch sử quyết định:** trạng thái hiện hành chỉ ghi tại [DECISIONS.md](../../../DECISIONS.md#d-021). Nội dung kiến trúc/slide bên dưới ghi quyết định 11/10; nếu kích hoạt dự phòng phải dùng đính chính trong audit 12/10, không tự coi MIL/cổng cấu trúc đã được chứng minh.
-
 > **Đề tài chốt ngày 11/10/2026, tái định tâm cùng ngày (khuya)** sau khi qua cổng chặn số 2. Slug giữ nguyên `degron-e3-specificity` để không vỡ liên kết, nhưng **trục đề tài đã đổi** — xem mục 1 và mục 2.1. Chưa có phê duyệt chính thức của GVHD; cần báo cáo ở buổi tuần 6.
 
 > **Audit 12/10/2026:** [báo cáo thành phần–ngữ cảnh](composition-context-audit.md) đã lượng hóa giới hạn của score thành phần: cận kỳ vọng precision@3 **0,6045**, oracle không ràng buộc **0,7792**; 2.046/2.624 footprint có cùng cặp thay thế nhưng chênh ΔPSI ≥1. Test thử theo cụm protein identity 30%, coverage hai chiều 50%, chỉ giữ peptide khớp tham chiếu còn **221–301 footprint** qua 5 seed. Phương án ma trận thay thế trong báo cáo là **đề xuất đang khảo sát**, chưa thay kiến trúc hoặc tên đề tài ở tài liệu này. Các trang trình bày cũ chưa được đồng bộ toàn bộ với audit mới.
@@ -32,13 +28,13 @@ Mọi con số dưới đây là **tự đếm từ dữ liệu thô**, không d
 
 Đếm từ MAGeCK thô ([ghi chú và 7 script](e3-labels-audit/README.md)):
 
-| | Số đếm |
-|---|---:|
-| Screen CRISPR | **31** |
-| Gán được adaptor | 27 (gán **rõ**: 25) |
-| **Số E3 khác nhau** | **10** |
+|                                   |                        Số đếm |
+| --------------------------------- | -------------------------------: |
+| Screen CRISPR                     |                     **31** |
+| Gán được adaptor              |      27 (gán **rõ**: 25) |
+| **Số E3 khác nhau**       |                     **10** |
 | **Số E3 có ≥ 5 peptide** | **1** (KLHL15, 13 peptide) |
-| Số E3 có đúng 1 peptide | 6 |
+| Số E3 có đúng 1 peptide       |                                6 |
 
 Bền với **36 tổ hợp ngưỡng**: gán được 16–29, số E3 8–10, và số E3 có ≥ 5 peptide **luôn đúng bằng 1**.
 
@@ -57,15 +53,15 @@ Bền với **36 tổ hợp ngưỡng**: gán được 16–29, số E3 8–10, 
 
 ## 4. Bộ dữ liệu, đã tải và tự đếm
 
-| | Bộ 1 — bản đồ bào tương | Bộ 2 — đột biến quét | Bộ 3 — đột biến bão hòa | Bộ 4 — biến thể protein nguyên vẹn |
-|---|---|---|---|---|
-| Nguồn | Voutsinos 2026, *Sci Adv* | Zhang 2023, Mendeley `32h94v2yv2` | cùng nguồn | MaveDB (API) |
-| Vai trò | **Nhãn yếu, mức đoạn** (nhiệm vụ phụ trợ) | **Nhãn mạnh, mức residue** — huấn luyện chính | **Kiểm tra độ phân giải cao sau xử lý score và chia tập** | Kiểm tra trên protein nguyên vẹn |
-| Số phép đo | 212.658 đoạn | **256.711** (PSI, reads ≥ 10) | **135.040 định danh; chưa phải số score đạt lọc** | 69.209 biến thể duy nhất |
-| Đơn vị nhãn | một điểm cho cả đoạn | ΔPSI theo **từng vị trí** | ΔPSI theo **vị trí × 19 thay thế** | độ dồi dào protein |
-| Peptide dùng được | 5.327 gene | **2.624** có footprint (2.402 khu trú) | **249** (239 phủ ≥ 27 vị trí) | 9 gene |
-| Thang đo | Điểm liên tục 0–1 | PSI 1–6 | PSI 1–6 | Độ dồi dào |
-| Giấy phép | MIT | Mendeley công khai | Mendeley công khai | CC0 |
+|                       | Bộ 1 — bản đồ bào tương                          | Bộ 2 — đột biến quét                                 | Bộ 3 — đột biến bão hòa                                           | Bộ 4 — biến thể protein nguyên vẹn |
+| --------------------- | -------------------------------------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------ | ---------------------------------------- |
+| Nguồn                | Voutsinos 2026, *Sci Adv*                              | Zhang 2023, Mendeley `32h94v2yv2`                        | cùng nguồn                                                             | MaveDB (API)                             |
+| Vai trò              | **Nhãn yếu, mức đoạn** (nhiệm vụ phụ trợ) | **Nhãn mạnh, mức residue** — huấn luyện chính | **Kiểm tra độ phân giải cao sau xử lý score và chia tập** | Kiểm tra trên protein nguyên vẹn     |
+| Số phép đo         | 212.658 đoạn                                           | **256.711** (PSI, reads ≥ 10)                       | **135.040 định danh; chưa phải số score đạt lọc**          | 69.209 biến thể duy nhất              |
+| Đơn vị nhãn       | một điểm cho cả đoạn                               | ΔPSI theo **từng vị trí**                        | ΔPSI theo **vị trí × 19 thay thế**                            | độ dồi dào protein                   |
+| Peptide dùng được | 5.327 gene                                               | **2.624** có footprint (2.402 khu trú)             | **249** (239 phủ ≥ 27 vị trí)                                  | 9 gene                                   |
+| Thang đo             | Điểm liên tục 0–1                                   | PSI 1–6                                                   | PSI 1–6                                                                 | Độ dồi dào                           |
+| Giấy phép           | MIT                                                      | Mendeley công khai                                        | Mendeley công khai                                                      | CC0                                      |
 
 Tập kiểm tra của bộ 1: **428 gene hiệu dụng / 15.820 tile**, tính từ dữ liệu — **không** dùng danh sách 527 gene công bố, vì 96 gene trong đó thực ra nằm hết ở tập huấn luyện.
 
@@ -75,13 +71,13 @@ Chồng lấn: **27/31 peptide CRISPR** có bản đồ đột biến bão hòa;
 
 GVHD **kỳ vọng một kiến trúc chưa ai dùng** (thông tin ngày 11/10/2026). Năm thành phần; thành phần điều kiện E3 của bản trước **đã bỏ**.
 
-| # | Thành phần | Phép đo buộc phải có nó |
-|---|---|---|
-| 1 | Mỗi vị trí sinh một cửa sổ ứng viên motif; peptide là một "túi" cửa sổ | Mô hình hiện có bất biến hoán vị (Pearson gốc–đảo = 1,000000), còn footprint thật khu trú ở median 3/28 vị trí |
-| 2 | Embedding PLM **mức residue**, không gộp trước | Mọi mô hình degron đã công bố đều gộp trung bình hoặc dùng thành phần |
-| 3 | **Attention có cổng** trên các thể hiện, thay global average pooling | Cấu trúc túi là chỗ nối **nhãn yếu mức đoạn** (212.658) với **nhãn mạnh mức residue** (256.711) trong **một** mô hình |
-| 4 | **Cổng phơi lộ**: rASA và pLDDT nhân vào logit attention | Tác giả đo điểm chỉ tương quan độ dồi dào ở rASA > 0,7, nhưng chỉ dùng cấu trúc để phân tích sau |
-| 5 | Hai đầu ra, huấn luyện đa nhiệm: điểm khối (phụ trợ) và **bản đồ độ nhạy theo residue** (mục tiêu) | Nhãn đoạn nhiều; nhãn residue là thứ cần đo. Lợi ích nhãn phụ chưa được thực nghiệm |
+| # | Thành phần                                                                                                                 | Phép đo buộc phải có nó                                                                                                                             |
+| - | ---------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1 | Mỗi vị trí sinh một cửa sổ ứng viên motif; peptide là một "túi" cửa sổ                                          | Mô hình hiện có bất biến hoán vị (Pearson gốc–đảo = 1,000000), còn footprint thật khu trú ở median 3/28 vị trí                          |
+| 2 | Embedding PLM **mức residue**, không gộp trước                                                                    | Mọi mô hình degron đã công bố đều gộp trung bình hoặc dùng thành phần                                                                      |
+| 3 | **Attention có cổng** trên các thể hiện, thay global average pooling                                             | Cấu trúc túi là chỗ nối **nhãn yếu mức đoạn** (212.658) với **nhãn mạnh mức residue** (256.711) trong **một** mô hình |
+| 4 | **Cổng phơi lộ**: rASA và pLDDT nhân vào logit attention                                                         | Tác giả đo điểm chỉ tương quan độ dồi dào ở rASA > 0,7, nhưng chỉ dùng cấu trúc để phân tích sau                                    |
+| 5 | Hai đầu ra, huấn luyện đa nhiệm: điểm khối (phụ trợ) và **bản đồ độ nhạy theo residue** (mục tiêu) | Nhãn đoạn nhiều; nhãn residue là thứ cần đo. Lợi ích nhãn phụ chưa được thực nghiệm                                                    |
 
 **Hai điểm mới, phát biểu hẹp đúng mức:**
 
@@ -118,11 +114,11 @@ Thước đo chính **không phải** Pearson trên thang điểm khối. Ba b�
 
 Ba điều kiện này đến từ [báo cáo chốt đề tài chính](../../../archive/topics/dark-kinome-zero-shot/research/main-topic-decision-2026-10-10.md). Lúc chốt degron ban đầu chúng chưa được áp; bảng dưới là lần áp lại sau đó. G2 vẫn cần kết quả mô hình footprint trên peptide chưa gặp mới xác lập được.
 
-| Cổng | Kết quả | Căn cứ |
-|---|---|---|
-| **G1** nhãn thực nghiệm hoặc chú giải độc lập | **ĐẠT, mạnh nhất trong repo** | Điểm tile từ reporter assay, PSI từ sàng lọc, 219 footprint từ đột biến bão hòa. Không nhãn nào do pipeline của đề tài sinh ra. So sánh: hướng senescence scRNA-seq trượt cổng này |
-| **G2** đóng góp dương đo được | **CHƯA XÁC LẬP** | Phần bằng chứng đã có (bất biến hoán vị, +0,0032, 0,824 → 0,344) là kết quả phê phán về baseline. Đóng góp dương mới phải đến từ dự đoán footprint mức residue trên peptide chưa gặp, vượt đối chứng hồi quy theo vị trí không MIL; mô hình ấy chưa chạy |
-| **G3** ứng dụng hoặc website khả thi | **ĐẠT, nhưng yếu nhất** | **Ba** sản phẩm đã tồn tại, không phải hai: DEGRONOPEDIA (*NAR* 2024), máy chủ web MetaDegron, Colab của tác giả PAP |
+| Cổng                                                        | Kết quả                               | Căn cứ                                                                                                                                                                                                                                                                                                 |
+| ------------------------------------------------------------ | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **G1** nhãn thực nghiệm hoặc chú giải độc lập | **ĐẠT, mạnh nhất trong repo** | Điểm tile từ reporter assay, PSI từ sàng lọc, 219 footprint từ đột biến bão hòa. Không nhãn nào do pipeline của đề tài sinh ra. So sánh: hướng senescence scRNA-seq trượt cổng này                                                                                             |
+| **G2** đóng góp dương đo được                 | **CHƯA XÁC LẬP**               | Phần bằng chứng đã có (bất biến hoán vị, +0,0032, 0,824 → 0,344) là kết quả phê phán về baseline. Đóng góp dương mới phải đến từ dự đoán footprint mức residue trên peptide chưa gặp, vượt đối chứng hồi quy theo vị trí không MIL; mô hình ấy chưa chạy |
+| **G3** ứng dụng hoặc website khả thi               | **ĐẠT, nhưng yếu nhất**      | **Ba** sản phẩm đã tồn tại, không phải hai: DEGRONOPEDIA (*NAR* 2024), máy chủ web MetaDegron, Colab của tác giả PAP                                                                                                                                                                |
 
 ### 7.2 Hai đối thủ, chưa có trong các tài liệu trước
 
@@ -148,9 +144,9 @@ Ba điều kiện này đến từ [báo cáo chốt đề tài chính](../../..
 
 Máy: AMD Ryzen 5 5500U, 12 luồng, 7 GB RAM, không GPU.
 
-| | Thông lượng | Toàn bộ 212.658 tile | Cache mức residue |
-|---|---|---|---|
-| ESM-2 **35M** | 64,6 tile/s | **~55 phút** | 12,2 GB fp32 |
-| ESM-2 **650M** | 5,3 tile/s | **~11 giờ** | **32,7 GB fp32** — vượt RAM |
+|                      | Thông lượng | Toàn bộ 212.658 tile | Cache mức residue                   |
+| -------------------- | -------------- | ---------------------- | ------------------------------------ |
+| ESM-2 **35M**  | 64,6 tile/s    | **~55 phút**    | 12,2 GB fp32                         |
+| ESM-2 **650M** | 5,3 tile/s     | **~11 giờ**     | **32,7 GB fp32** — vượt RAM |
 
 Kết luận: dùng **35M để lặp thí nghiệm**, 650M chỉ một lượt cuối chạy qua đêm theo luồng. Kiến trúc cần embedding mức residue nên **đây là lý do cụ thể để xin GPU**.
