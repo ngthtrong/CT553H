@@ -25,7 +25,7 @@
 | Đánh giá               | Bộ quét: ngữ cảnh; bão hòa: 19 thay thế; tile: đo lường cross-assay. AUROC mức ô, macro theo peptide; ghép cặp theo peptide, bootstrap theo cụm, split cov80                             | [D-031](#d-031), [D-025](#d-025), [D-028](#d-028)                                                                                                       |
 | Yêu cầu đóng góp     | Đóng góp dương + thành phần kiến trúc mới + ứng dụng; khung đo và phân rã đã được **Trọng** nhận. **Mới 15/10: GVHD xác nhận trụ phần mềm** (dịch vụ dự đoán có bất định + harness) **được tính là đóng góp** — chưa có biên bản, xin ghi biên bản ở buổi gặp 16/10. Không nới cổng G2 và không bỏ yêu cầu kiến trúc mới | [D-034](#d-034), [D-006](#d-006), [D-012](#d-012), [D-027](#d-027), [C-5](#c-5)                                                                           |
 | Thứ tự / mốc kiểm tra | Residue G2 → đánh giá trên bộ nhân Larsen đã tải → **cuối tuần 10** → ứng dụng và viết; tài liệu trình bày theo yêu cầu của Trọng                                       | [D-031](#d-031), [D-029](#d-029), [D-030](#d-030)                                                                                                       |
-| Đang chờ / tài liệu   | **C có một mục mới: [C-20](#c-20)** (18/10 — đổi trọng tâm G2 sang "thêm nhãn", sau năm kết quả âm về kiến trúc; chờ Trọng). C-16…C-19 đã giải quyết bởi [D-035](#d-035). Còn chờ **bên ngoài**: [C-5](#c-5) (GVHD duyệt khung, **buổi gặp 16/10**) và [C-11a](#c-11a) (email giấy phép). Đã dựng **hai** deck cho buổi gặp: [deck-2026-10-16](topics/degron-footprint/presentation/deck-2026-10-16/README.md) (26 slide, animation SVG/CSS, hình slide 16 sinh từ dữ liệu) và [deck-external-2026-10-16](topics/degron-footprint/presentation/deck-external-2026-10-16/index.html) (26 slide + 7 phụ lục, có GIF); **và bản thứ ba `.pptx`** ([deck-pptx-2026-10-16](topics/degron-footprint/presentation/deck-pptx-2026-10-16/README.md), 26 slide + 2 phụ lục, 3 GIF, animation bấm chuột, [D-037](#d-037)); **chọn một hoặc gộp là việc của Trọng**. Câu hỏi 1 và 4 của slide cuối **chờ Trọng viết** | [Theo dõi](#theo-doi), [slide-content](topics/degron-footprint/presentation/slide-content-2026-10-15.md)                                              |
+| Đang chờ / tài liệu   | **C có một mục mới: [C-20](#c-20)** (18/10 — đổi trọng tâm G2 sang "thêm nhãn", sau năm kết quả âm về kiến trúc; chờ Trọng). C-16…C-19 đã giải quyết bởi [D-035](#d-035). Còn chờ **bên ngoài**: [C-5](#c-5) (GVHD duyệt khung, **buổi gặp 16/10**) và [C-11a](#c-11a) (email giấy phép). Bộ slide cho buổi gặp: **một deck HTML duy nhất**, [deck-2026-10-16](topics/degron-footprint/presentation/deck-2026-10-16/README.md) (bản rút gọn 19/10: **23 slide lõi + 21 phụ lục**, mục đích **xin duyệt khung**, ít thực nghiệm — [D-038](#d-038)); bản `.pptx` và deck external đã xoá. Câu hỏi 1 và 4 của slide cuối **chờ Trọng viết** | [Theo dõi](#theo-doi), [slide-content](topics/degron-footprint/presentation/slide-content-2026-10-15.md)                                              |
 
 <a id="so-quyet-dinh"></a>
 
@@ -33,7 +33,7 @@
 
 **Ba thông tin tách biệt:** hiệu lực (`Còn áp dụng` / `Một phần` / `Bị thay`), phạm vi (`Nghiên cứu` / `Repo` / `Lịch sử, bối cảnh`) và tiến độ thực hiện (ở [D](#theo-doi) hoặc README/log đề tài). Đưa vào lịch sử không tự bãi bỏ một quyết định đóng đề tài hay một điều kiện hợp lệ.
 
-**Người quyết:** Trọng; GVHD (ghi rõ biên bản hay Trọng truyền đạt); Claude (ủy quyền, kèm lời giao quyền); Claude (khuyến nghị, được dùng làm chuẩn từ trước). Không đổi nguồn thẩm quyền của hồ sơ cũ khi biên tập. Quyết định mới nhất: [D-036](#d-036).
+**Người quyết:** Trọng; GVHD (ghi rõ biên bản hay Trọng truyền đạt); Claude (ủy quyền, kèm lời giao quyền); Claude (khuyến nghị, được dùng làm chuẩn từ trước). Không đổi nguồn thẩm quyền của hồ sơ cũ khi biên tập. Quyết định mới nhất: [D-038](#d-038).
 
 <a id="nghien-cuu-degron"></a>
 
@@ -338,14 +338,25 @@ Lưu ý điều **không** thay đổi: cổng [G2](project/course.md) vẫn đ�
 
 ### B2. Quy ước repo còn áp dụng
 
+<a id="d-038"></a>
+
+#### D-038 — Một deck HTML duy nhất cho buổi xin duyệt khung, rút còn 23 slide lõi
+
+**19/10/2026 · Trọng · Còn áp dụng.** Trọng nêu: *“mục đích buổi là xin duyệt khung với GVHD, chỉ sử dụng bản deck [HTML] tôi đã xóa bản pptx và không dùng bản external, tôi muốn áp dụng đề xuất rút gọn lên bản HTML nhưng nên hạn chế trình bày các thực nghiệm, nếu trình bày phải trình bày một cách dễ hiểu nhất có thể”*.
+
+- Khoản 1. **Còn áp dụng:** bộ slide dùng cho buổi là [deck-2026-10-16](topics/degron-footprint/presentation/deck-2026-10-16/README.md) (HTML, mở bằng `file://`, [D-013](#d-013)). Bản `.pptx` và deck external **đã bị xoá khỏi repo**, không còn là sản phẩm.
+- Khoản 2. **Còn áp dụng:** mục đích buổi là **xin GVHD duyệt khung đề tài** ([C-5](#c-5), vẫn mở) — slide nói ý tưởng, hướng đi và tính khả thi, **không** là báo cáo thực nghiệm. Thực nghiệm chỉ còn **một slide** diễn đạt bằng lời thường; bảng số và các thí nghiệm chi tiết nằm ở phụ lục.
+- Khoản 3. **Thay:** [D-037](#d-037) khoản 1–2 (bản PPTX; "chọn một hoặc gộp ba bản").
+- **Không đổi:** trạng thái nghiên cứu, ràng buộc câu chữ của [D-031](#d-031)…[D-036](#d-036), và các mục C đang chờ ([C-5](#c-5), [C-20](#c-20)). Việc rút gọn chỉ đổi cách trình bày, không đổi con số nào.
+
 <a id="d-037"></a>
 
 #### D-037 — Bộ slide buổi gặp 16/10 dựng dạng PPTX
 
-**15/10/2026 · Trọng · Còn áp dụng.** Trọng yêu cầu: *“tạo slide pptx không phải tạo deck html”*, kèm tìm mẫu slide **không dùng lại mẫu đã có trong repo**, tìm GIF, làm animation, rồi dựng từ [brief](topics/degron-footprint/presentation/slide-content-2026-10-15.md).
+**15/10/2026 · Trọng · Một phần — khoản 1–2 bị thay bởi [D-038](#d-038); khoản 3 còn áp dụng cho các GIF đã dùng trong deck HTML.** Trọng yêu cầu: *“tạo slide pptx không phải tạo deck html”*, kèm tìm mẫu slide **không dùng lại mẫu đã có trong repo**, tìm GIF, làm animation, rồi dựng từ [brief](topics/degron-footprint/presentation/slide-content-2026-10-15.md).
 
-- Khoản 1. **Còn áp dụng:** bộ slide này là **`.pptx`** tạo trong repo (không publish artifact), animation là hiệu ứng PowerPoint bấm chuột. Sản phẩm: [deck-pptx-2026-10-16](topics/degron-footprint/presentation/deck-pptx-2026-10-16/README.md). Đóng việc 6 của brief ("HTML hay PPTX") **cho bản này**.
-- Khoản 2. **Không đổi** [D-013](#d-013): trang HTML khác vẫn tạo trong repo, mở bằng `file://`. Hai deck HTML đã dựng cùng ngày **giữ nguyên**, không bị thay thế; chọn một hoặc gộp ba bản là việc của Trọng.
+- Khoản 1. **Bị thay bởi [D-038](#d-038)** (bản `.pptx` đã xoá 19/10/2026). Nguyên văn: bộ slide này là **`.pptx`** tạo trong repo (không publish artifact), animation là hiệu ứng PowerPoint bấm chuột. Sản phẩm: [deck-pptx-2026-10-16](topics/degron-footprint/presentation/deck-pptx-2026-10-16/README.md). Đóng việc 6 của brief ("HTML hay PPTX") **cho bản này**.
+- Khoản 2. **Bị thay bởi [D-038](#d-038)** (chỉ dùng một deck HTML). Nguyên văn: **không đổi** [D-013](#d-013): trang HTML khác vẫn tạo trong repo, mở bằng `file://`. Hai deck HTML đã dựng cùng ngày **giữ nguyên**, không bị thay thế; chọn một hoặc gộp ba bản là việc của Trọng.
 - Khoản 3. GIF chỉ dùng khi **đã kiểm giấy phép và ghi công** (ba GIF Commons, CC BY-SA); nhãn bằng chứng và ràng buộc câu chữ của [D-031](#d-031), [D-033](#d-033)…[D-036](#d-036) áp nguyên cho bản PPTX.
 - Không đổi thiết kế thí nghiệm hay trạng thái nghiên cứu.
 

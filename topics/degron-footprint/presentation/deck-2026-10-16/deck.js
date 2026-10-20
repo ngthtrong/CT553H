@@ -8,7 +8,7 @@
      Ctrl + ← / →              chuyển thẳng slide trước / sau, bỏ qua bước
      Home / End                slide đầu / cuối
      N                         bật/tắt ghi chú người nói
-     O  hoặc Esc               bảng tổng quan 34 slide + 7 phụ lục
+     O  hoặc Esc               bảng tổng quan (slide lõi + phụ lục)
      F                         toàn màn hình
      P                         chế độ in (mọi bước hiện sẵn) — rồi Ctrl+P để xuất PDF
      số + Enter                nhảy tới slide
@@ -22,14 +22,17 @@
 
   var stage   = document.getElementById('stage');
   var slides  = Array.prototype.slice.call(document.querySelectorAll('.slide'));
-  // phụ lục (A1…A7) nằm sau 34 slide lõi: không tính vào số đếm và vạch tiến độ
+  // phụ lục (A1…An) nằm sau các slide lõi: không tính vào số đếm và vạch tiến độ
   var CORE    = slides.filter(function (s) { return !s.hasAttribute('data-appendix'); }).length;
+  var APPX    = slides.length - CORE;
   var hudPos  = document.getElementById('hud-pos');
   var hudSec  = document.getElementById('hud-sec');
   var hudStep = document.getElementById('hud-step');
   var bar     = document.getElementById('progress');
   var notes   = document.querySelector('#notes .n-body');
   var ovGrid  = document.querySelector('#overview .grid');
+  document.querySelector('#overview h3').textContent =
+    CORE + ' slides + ' + APPX + ' appendix — click to jump';
 
   // ?all trong URL: mọi bước hiện sẵn — dùng để soát bố cục và để in
   var SHOW_ALL = location.search.indexOf('all') >= 0;
@@ -89,7 +92,7 @@
     sl.classList.add('current');
 
     var ap = sl.getAttribute('data-appendix');
-    hudPos.textContent = ap ? ('A' + ap + ' / 7 · phụ lục') : ((i + 1) + ' / ' + CORE);
+    hudPos.textContent = ap ? ('A' + ap + ' / ' + APPX + ' · phụ lục') : ((i + 1) + ' / ' + CORE);
     hudSec.textContent = sl.getAttribute('data-section') || '';
     bar.style.width = (Math.min(i + 1, CORE) / CORE * 100) + '%';
 

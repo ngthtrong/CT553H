@@ -4,6 +4,40 @@
 
 ---
 
+## 19/10/2026 — rút gọn trang chính Notion tiếng Anh (lượt hai)
+
+- Theo yêu cầu của Trọng: trang chính **dài và mất tính cô đọng**; rút gọn nhưng giữ mạch lập luận. Trọng nói rõ **không dùng các dòng “Next:”** giữa các mục (thô, gượng): đã **bỏ cả chín dòng**, thay bằng câu mở đầu mỗi mục nối tiếp ý cuối mục trước (vd. §2 mở bằng “hai câu hỏi đầu đã có lời đáp; câu thứ ba là chỗ luận văn phải chứng minh phần đóng góp”, §3 mở bằng “những điều kiện đó quan trọng vì…”, §4 “mỗi phép thay thế ấy”).
+- Mỗi mục còn một đoạn ngắn + tối đa một hình/bảng: toggle viết tắt bỏ `MDE/pLDDT/OOD/cnn2w`; bảng 1 gộp Koren vào hàng Zhang; bảng 3 từ 6 còn 4 hàng; §9 chuyển open items thành danh sách đánh số và gộp 7 gạch đầu dòng giới hạn còn 5 (nhóm *One label source / Narrow coverage / Region versus residue / Ceiling / Novelty and approval*). **Không đổi con số, không đổi trạng thái G2**, các câu rào (region-level, không phải headroom, G2 chưa hoàn tất) vẫn còn.
+- **Chú thích hình rút gọn** (Figure 1–5 trang chính): mỗi caption chỉ nói hình đang cho thấy gì; bỏ mã định danh peptide, mô tả cell viền, PDB, tên Commons, CI; hai GIF CC BY-SA giữ một dòng ghi công tối thiểu (tác giả + giấy phép). Nguồn đầy đủ vẫn ở README thư mục. Chưa cần dựng hình mới nên **không dùng codex cli**.
+- **Thêm hình ý tưởng phương pháp ở §6** (theo yêu cầu của Trọng): ba khối đặc trưng → ablation → thành phần kiến trúc (mở) → ΔPSI + độ bất định (mở), nhãn nguyên peptide là hỗ trợ chưa kiểm; nét liền = bằng chứng sơ bộ, nét đứt = còn mở. Hình thành **Figure 5**, hình benchmark đổi thành **Figure 6**. Đã **thử `codex exec`** giao dựng hình: chạy quá 7 phút không ra file nào nên dừng, tự viết [fig_method.py](presentation/notion-2026-10-19-combined/en/fig_method.py) bằng matplotlib. Chỉ dùng số đã có (80%, 0.8082).
+- Sửa bằng `update_content` theo từng đoạn nên **giữ nguyên 5 hình, 3 bảng và 7 trang con**; đã đọc lại trang để kiểm. Bản nguồn repo [en/content-main.md](presentation/notion-2026-10-19-combined/en/content-main.md) đã mirror. Bản tiếng Việt **chưa** rút gọn.
+
+---
+
+## 19/10/2026 — rà soát trình bày toàn bộ trang tiếng Anh và sửa lại 8 trang
+
+- **Rà soát theo góc nhìn người đọc báo cáo** trên trang chính + bảy trang con tiếng Anh, rồi **sửa tất cả** theo yêu cầu của Trọng, kèm **bỏ hết emoji, chuyển sang Notion icon**.
+- **Cấu trúc:** trang chính từ 8 → **9 mục** (gộp *dataset* + *data processing* thành §5; tách **§7 Current results** khỏi phương pháp; thêm **§9 Plan, open items and limitations**). Tiêu đề trang đổi thành **“Residue-Level Degron Mutation Effects: Project Overview”** (bỏ “Eight-Section”). Bảy trang con **đổi tên theo mục cha** và tiểu mục dùng chung hệ số (hết lỗi “đọc §7 lại bấm subpage 6”); trang con 5 hết chỗ trộn hai không gian số.
+- **Trình bày:** bỏ sạch nhãn đầu đoạn và các câu tự nhắc người thuyết trình (cột bảng `What to say` ×3, `Do not say…`, `Do not add a “batch submission” row`, `Do not put the ≈1,600 variants…`, `Use one number on a slide…`, `A sentence to drop:`, `Two messages:`); tiêu đề không còn kể ý định người viết; **hình/bảng đã đánh số** (Figure 1–5, Table 1–3 ở trang chính; `3.1`/`5.3`/`7.1`… ở trang con) và được gọi tên trong văn; **4 hình trước đây không caption nay đều có**; callout gom về **bốn vai** (orientation `icons/document_gray` · scope `icons/ruler_gray` · limitation `icons/warning_yellow` · status `icons/clock_blue`), page icon `icons/dna_blue` + microscope/book/target/ruler/database/chart/wrench.
+- **Sửa nội dung không nhất quán** (có đối soát repo, **không đo mới**): `PSI_WT` → **`PSI_ref`** kèm định nghĩa reference từng tập; phễu bộ quét ghi rõ **8.831 → 3.439 → 2.994** (lọc `reads ≥ 10` + `≥ 21 vị trí`, theo [residue_data.py](research/residue-task-derisk-2026-10-15/residue_data.py)) và ghi chú **2.624** là tập cũ đòi thêm footprint ([e3-labels-audit](research/e3-labels-audit/README.md)) nên không so trực tiếp; giải thích **28×19 vs 28×20** ngay trang chính; thêm **toggle viết tắt** định nghĩa `M0/M3`, `cov80`, `cnn2w1/w7`, `MDE`, `cell`; thêm **Koren 2018** vào bảng related work; **1.626 vs 1.627** của Larsen ghi rõ là hai mẫu số; sửa tham chiếu chéo sai ở trang sản phẩm (nay trỏ **Table 7.1**); dung lượng dữ liệu **≈2,3 GB** (khớp `data/README.md`).
+- **Phát hiện về repo:** thư mục `presentation/pptx-2026-10-16/` (23 file, có cả `translation.gif`, `ubl-2qjl.gif`, `example-heatmap.png`, `grid-schematic.png`, `gfp-small.gif`) **đang bị xoá khỏi working tree, chưa commit** — `git ls-files` vẫn thấy đủ, nên link trong các bản nguồn **không sai**, chỉ là `check_links.py` báo hỏng. Phiên này **không tự phục hồi, không tự xoá**; chờ Trọng chọn `git checkout -- …/pptx-2026-10-16` hay xoá thật rồi sửa link. Ngoài ra `resources/README.md` gọi thư mục này là `deck-pptx-2026-10-16` — tên **chưa từng tồn tại**.
+- **Lưu ý kỹ thuật Notion:** `replace_content` **giữ caption cũ** của block ảnh và bỏ qua caption mới; ảnh **không có caption** thì `update_content` không match được (phải thêm dòng in nghiêng dưới ảnh), và một lần `replace_content` **đẩy ảnh không caption lên đầu trang** (trang con 5, đã dựng lại). Tên icon phải thuộc bộ Notion: `chart-bar`/`bar-chart`/`graph`/`info` bị từ chối.
+- Bản nguồn repo đã mirror: [en/content-main.md](presentation/notion-2026-10-19-combined/en/content-main.md) · [en/content-subpages.md](presentation/notion-2026-10-19-combined/en/content-subpages.md) · [en/README.md](presentation/notion-2026-10-19-combined/en/README.md). ⚠ **Bản tiếng Việt chưa rà soát** nên hai bản nay **lệch cấu trúc**, không còn là bản dịch 1:1.
+
+---
+
+## 19/10/2026 — rút gọn deck HTML còn 23 slide để xin duyệt khung
+
+- Theo yêu cầu của Trọng ([D-038](../../DECISIONS.md#d-038)): mục đích buổi là **xin GVHD duyệt khung**; chỉ dùng [deck HTML](presentation/deck-2026-10-16/README.md) (Trọng đã xoá bản `.pptx`, không dùng deck external); **hạn chế thực nghiệm**, nếu có thì phải dễ hiểu.
+- Deck từ **34 slide lõi + 7 phụ lục** thành **23 lõi + 21 phụ lục**. 14 slide chuyển xuống A8–A21 (không xoá). Phần Problem bỏ bốn slide thực nghiệm; thay bằng **một slide mới** (15) diễn đạt ba ý bằng lời thường và một biểu đồ hai cột; thêm **một slide mock-up công cụ** (20, không có số dự đoán thật).
+- Slide "khoảng trống" (10) viết lại: bỏ công thức Conv1D/GlobalAveragePooling (xuống A11), giữ ý "đếm acid amin thì không phân biệt được vị trí". Slide 11 thêm lập luận "532 phép thay thế" cho nhóm nhà sinh học thực nghiệm.
+- Sửa lỗi slide 1: tên **Nguyễn Thế Trọng** (bản cũ ghi "Thanh"), chức danh **Dr.** (bản cũ ghi "Prof."), "week 6" → "week 7".
+- **Không đổi** con số, trạng thái G1/G2/G3 hay câu cấm; các câu rào bắt buộc đi theo mọi con số còn lại.
+- ⚠ **Hậu quả của việc xoá `pptx-2026-10-16/`:** các file nguồn Notion ([notion-2026-10-16](presentation/notion-2026-10-16/README.md), [notion-2026-10-19](presentation/notion-2026-10-19/README.md), [notion-2026-10-19-combined](presentation/notion-2026-10-19-combined/README.md)) vẫn trỏ tới `../pptx-2026-10-16/assets/*` (translation.gif, ubl-2qjl.gif, gfp-small.gif, example-heatmap.png, grid-schematic.png) nên **link ảnh hỏng** — chưa sửa, chờ Trọng quyết có chép ảnh về từng thư mục hay không. Các mục lịch sử cũ trong log này vẫn nhắc tới hai deck đã xoá.
+- Chờ Trọng: hàng "tuần 7" của slide 22 (vẫn "tìm thành phần thắng ridge", trong khi [C-20](../../DECISIONS.md#c-20) đang chờ) và Q1/Q4 của slide 23.
+
+---
+
 ## 19/10/2026 — viết lại cách mở đầu từng mục ở trang chính tiếng Anh
 
 - Theo yêu cầu của Trọng: bỏ kiểu trình bày nhãn **"Message: …"** (và các nhãn tương tự `Why it is worth doing.` · `Who uses it.` · `The plain question:` · `Motivation.` · `The direction, three pieces in order:` · `What exists so far.` · `User flow:`) ở [trang chính tiếng Anh](https://app.notion.com/p/3fe486d98ebc811eba29eb9e0987a0e1); mỗi mục 1–8 nay **mở đầu bằng một đoạn văn hoàn chỉnh** gộp ý thông điệp vào mạch văn.

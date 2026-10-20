@@ -1,28 +1,58 @@
-# Deck buổi gặp GVHD 16/10/2026 — bản dựng trong repo
+# Deck buổi gặp GVHD — bản dựng trong repo
 
-> **34 slide lõi + 7 phụ lục A1–A7**, chữ trên slide **tiếng Anh**, ghi chú người nói **tiếng Việt**.
-> Dựng từ [slide-content-2026-10-15.md](../slide-content-2026-10-15.md) (brief phiên 11).
+> **Bản rút gọn 19/10/2026: 23 slide lõi + 21 phụ lục (A1–A21)**, chữ trên slide **tiếng Anh**, ghi chú người nói **tiếng Việt**.
+> Mục đích buổi: **xin GVHD duyệt khung đề tài** ([C-5](../../../../DECISIONS.md#c-5)) — nói ý tưởng, hướng đi, tính khả thi;
+> **không** là báo cáo thực nghiệm ([D-038](../../../../DECISIONS.md#d-038)).
 > Mở bằng `file://`, không cần mạng, không publish artifact ([D-013](../../../../DECISIONS.md#d-013)).
->
-> **Bản rút gọn 18/10/2026** — theo yêu cầu của Trọng: mỗi slide chỉ mang **ý chính**, không giải
-> thích dài; chữ cắt đi dồn vào **ghi chú người nói** và **phụ lục**; thêm ảnh/GIF minh hoạ. Chi tiết
-> ở mục [Bản rút gọn 18/10/2026](#ban-rut-gon-18102026).
+> Đây là **deck duy nhất** còn lại cho buổi này: bản `.pptx` và deck external đã xoá (D-038).
 
 Mở: **[index.html](index.html)**.
 
-Đọc và tập nói: **[script song ngữ Việt–Anh theo 26 slide](speaker-script-bilingual.md)** — kèm giải thích
-thuật ngữ, cách đọc hình, hỏi đáp và đối soát các chỗ cần nói chính xác hơn trong HTML. Bản soạn
-15/10/2026 từ đủ năm phần paste; các đoạn nói dùng một ngôn ngữ mỗi lần, phần đọc hiểu dùng để tự học.
+Đọc và tập nói: **[script song ngữ Việt–Anh](speaker-script-bilingual.md)** — ⚠ soạn từ bản 26 slide ngày 15/10, **chưa đồng bộ**
+với bản 23 slide này (thứ tự và số slide đã đổi); dùng cho thuật ngữ và hỏi đáp, đừng dùng số slide trong đó.
 
-Trong thư mục `presentation/` có **hai** bản deck cho cùng buổi gặp, dựng ở hai phiên khác nhau:
+<a id="ban-rut-gon-19102026"></a>
+## Bản rút gọn 19/10/2026 — để xin duyệt khung
 
-| Thư mục | Dựng khi | Khác biệt |
+**Yêu cầu của Trọng:** rút gọn deck HTML, **hạn chế trình bày thực nghiệm**; nếu trình bày thì phải **dễ hiểu nhất có thể**.
+Không đổi con số hay trạng thái nghiên cứu nào; chỉ đổi cách trình bày. Slide chuyển xuống phụ lục **không bị xoá**.
+
+**Luồng chính (23 slide):**
+
+| # | Slide | Ghi chú |
 |---|---|---|
-| **`deck-2026-10-16/`** (thư mục này) | phiên 15/10, rút gọn 18/10 | engine tự viết, **không** dùng lại khuôn slide cũ; 34 slide + **7 phụ lục A1–A7**; animation SVG/CSS tự dựng, **có thêm 3 GIF + 2 ảnh Commons** từ 18/10 |
-| [`pptx-2026-10-16/`](../pptx-2026-10-16/README.md) | phiên khác cùng ngày | bản PowerPoint `.pptx` 26 slide + 2 phụ lục, animation bấm chuột, ghi chú người nói; ba GIF Commons kèm ghi công |
+| 1 | Title | sửa họ tên (Nguyễn **Thế** Trọng), chức danh (Dr.), "framework for approval · week 7" |
+| 2–4 | Introduction (3) | residue · degron · vì sao đáng làm (2,148, kèm ba dòng giới hạn) |
+| 5–9 | Related work (5) | GPS/PSI · bảng một nhìn · nhóm 1 · nhãn của cả lĩnh vực · vì sao chưa ai trả lời mức residue |
+| 10 | Gap 1/2 | **viết lại cho dễ hiểu**: "đếm acid amin thì không phân biệt được vị trí"; công thức Conv1D xuống A11 |
+| 11 | Gap 2/2 | trục thời gian · chỗ còn thiếu · người dùng (bỏ số trần, thêm "532 phép thay thế") |
+| 12 | Contribution | ba trụ |
+| 13–14 | Problem | input / output / label · ví dụ đo thật HIF1A |
+| 15 | **MỚI** What the data already tells us | thay bốn slide thực nghiệm: ba ý bằng lời thường + một biểu đồ hai cột |
+| 16–17 | Datasets | pipeline và cổng kiểm · hai bộ nhãn |
+| 18–19 | Method | phần đã cố định · phần còn mở |
+| 20 | **MỚI** What the tool would look like | hình mock-up dịch vụ (ma trận, bất định, danh sách ưu tiên, cờ); không có số dự đoán thật |
+| 21 | Product 2/2 | dịch vụ trả về gì và so với công cụ hiện có |
+| 22–23 | Next steps · Questions | kế hoạch (tuần 7) · bốn câu hỏi cho GVHD |
 
-Hai bản **không đồng bộ tự động**. Nội dung đều bám cùng brief và cùng các ràng buộc câu chữ của
-[D-031](../../../../DECISIONS.md#d-031), [D-033](../../../../DECISIONS.md#d-033)…[D-036](../../../../DECISIONS.md#d-036).
+**Chuyển xuống phụ lục** (A1–A7 giữ nguyên số): A8 synthesis vs degradation · A9 UPS · A10 nhóm 3 (mô hình liền kề) ·
+A11 lập luận hình thức của khoảng trống (bản đầy đủ slide 10) · A12 phân rã thông tin theo thang · A13 bốn mô hình ·
+A14 thí nghiệm 1 (bộ quét) · A15 thí nghiệm 2 (ma trận bão hoà, hai chế độ) · A16 slide feasibility trung thực ·
+A17 nguồn dữ liệu và giấy phép · A18 cách cắt dữ liệu và định dạng bản ghi · A19 kế hoạch đánh giá · A20 vì sao phần mềm là đóng góp ·
+A21 harness và miền áp dụng.
+
+**Đã giữ ở slide lõi dù là số liệu:** cổng kiểm 5,0 × 10⁻⁷ (slide 16), bảng hai bộ nhãn (17), 2,148 (4). Các câu rào bắt buộc
+(trần đo lường không phải lời hứa, ΔPAP là đối chứng không phải đối thủ, "composition at ±3 scale") đã đi theo mọi con số.
+
+**Hai hình mới (tự dựng, SVG):** biểu đồ hai cột ở slide 15 lấy số từ [g2-saturation](../../research/g2-saturation-2026-10-18/README.md) (0,7693 · 0,8082 · trần 0,9519, trục bắt đầu từ 0,70 và in trên hình); mock-up ở slide 20 **không có dữ liệu thật** — ô ma trận sinh giả với seed cố định chỉ để minh hoạ bố cục, và hình ghi rõ *schematic only*.
+
+**Kiểm sau khi sửa (19/10/2026):** probe tràn khung/đè khung (cách ở mục *Kiểm* bên dưới) cho **`OVF=none LAP=none` trên cả 44 slide**; PDF headless ra **44 trang**; 33 tham chiếu chéo `slide N` / `appendix AN` đã liệt kê lại và sửa theo bảng trên.
+
+**Chưa đổi, cần Trọng quyết:** hàng "tuần 7" của slide 22 vẫn là *tìm thành phần thắng ridge*; [C-20](../../../../DECISIONS.md#c-20) đề xuất
+đo lượng nhãn trước và **đang chờ**. Q1 và Q4 của slide 23 vẫn là bản brief, **chờ Trọng tự viết**.
+
+⚠ **Số slide trong các mục lịch sử bên dưới** (bản rút gọn 18/10, rà bố cục, ba slide thực nghiệm, tách slide…) là của **bản 34 slide**.
+Đối chiếu bằng bảng ở trên.
 
 ## Điều khiển
 
@@ -31,7 +61,7 @@ Hai bản **không đồng bộ tự động**. Nội dung đều bám cùng bri
 | `→` `↓` `Space` `PageDown` | bước tiếp — hiện bước animation kế, hết bước thì sang slide |
 | `←` `↑` `Backspace` `PageUp` | lùi (lùi vào slide trước ở trạng thái **đã hiện đủ**) |
 | `N` | bật/tắt panel **ghi chú người nói** (tiếng Việt) |
-| `O` / `Esc` | bảng tổng quan 34 slide + 7 phụ lục, bấm để nhảy |
+| `O` / `Esc` | bảng tổng quan 23 slide + 21 phụ lục, bấm để nhảy |
 | `F` | toàn màn hình |
 | `P` | chế độ in → rồi `Ctrl+P` để xuất PDF |
 | số + `Enter` | nhảy tới slide theo số |
@@ -48,14 +78,14 @@ chrome --headless --no-pdf-header-footer \
   --print-to-pdf=deck.pdf --virtual-time-budget=9000 'file:///<đường dẫn>/index.html?all'
 ```
 
-Đã kiểm 18/10/2026: ra đúng **41 trang** 1280×720 (34 lõi + 7 phụ lục). Thanh HUD và vạch tiến độ
-vẫn đếm theo **34 slide lõi**; slide phụ lục hiện `A1 / 6 · phụ lục`.
+Đã kiểm 19/10/2026: ra đúng **44 trang** 1280×720 (23 lõi + 21 phụ lục). Thanh HUD và vạch tiến độ
+đếm theo **23 slide lõi**; slide phụ lục hiện `A8 / 21 · phụ lục`.
 
 ## Cấu trúc
 
 | File | Nội dung |
 |---|---|
-| [index.html](index.html) | 41 `<section class="slide">` — 34 lõi + 7 mang `data-appendix="1…7"`; mỗi slide có một `.speaker-note` (ẩn, JS chép sang panel) |
+| [index.html](index.html) | 44 `<section class="slide">` — 23 lõi + 21 mang `data-appendix="1…21"`; mỗi slide có một `.speaker-note` (ẩn, JS chép sang panel) |
 | [SOURCES.md](SOURCES.md) | nguồn, giấy phép và SHA-256 của mọi ảnh/GIF dùng trên slide |
 | [deck.css](deck.css) | bảng màu, bố cục, trạng thái bước animation, chế độ in |
 | [deck.js](deck.js) | engine: điều hướng, bước animation, ghi chú, tổng quan, `?all`, in |
