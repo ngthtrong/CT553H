@@ -1,8 +1,0 @@
-isoform,enzyme_conc_median_ug_per_ml,enzyme_conc_min,enzyme_conc_max,n_arrays_in_suppl_data_5,n_positive_efficiency_ge_1,pct_positive,ratio_error_median
-SIRT1,20,20,125,22,176,2.6,0.370
-SIRT2,115,20,115,14,1901,27.9,0.220
-SIRT3,24,10,135,16,1844,27.1,0.240
-SIRT4,10,10,20,8,1038,15.3,0.240
-SIRT5,218,6,218,6,2615,38.4,0.210
-SIRT6,60,20,100,4,1199,17.6,0.270
-SIRT7,20,20,20,8,1692,24.9,0.220

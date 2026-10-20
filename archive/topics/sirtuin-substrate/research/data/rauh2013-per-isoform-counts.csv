@@ -1,8 +1,0 @@
-isoform,label_positives,exclusive_positives,rauh_cat_eq_1,rauh_cat_eq_0,median_signal_ratio,median_ratio_error,median_efficiency
-SIRT1,176,21,4,27,1.07,0.37,0.3714
-SIRT2,1901,319,822,637,0.99,0.22,0.5217
-SIRT3,1844,289,1171,1302,1.06,0.24,0.4065
-SIRT4,1038,162,1011,1428,1.01,0.24,0.3402
-SIRT5,2614,1088,2615,2538,0.96,0.21,0.5208
-SIRT6,1199,269,737,954,1.06,0.27,0.4405
-SIRT7,1692,282,1682,2476,1.03,0.22,0.3204
