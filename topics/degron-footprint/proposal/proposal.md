@@ -10,8 +10,6 @@ lang: vi-VN
 **Giáo viên hướng dẫn 1:** TS. Hồ Quang Thái — MSCB: [Bổ sung]  
 **Giáo viên hướng dẫn 2:** [Bổ sung nếu có] — MSCB: [Bổ sung nếu có]
 
-*Bản dự thảo ngày 21/10/2026. Tên đề tài và phương án nghiên cứu chờ thống nhất với giảng viên hướng dẫn.*
-
 # I. MỞ ĐẦU
 
 ## 1. Lý do chọn đề tài
