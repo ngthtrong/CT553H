@@ -1,5 +1,15 @@
 # Đánh giá trung thực mức đóng góp thực tế của đề tài — 15/10/2026
 
+> **Đồng bộ 21/10/2026 — đọc khối này trước; phần còn lại là bản ghi lịch sử (viết trước G2 ngày 18/10).** Số liệu hiện hành nằm ở khối "Trạng thái 21/10/2026" của [topic-decision.md](topic-decision.md). Những chỗ dưới đây đã lỗi thời:
+>
+> - **§1, §2, §6 "mô hình thắng baseline chưa tồn tại":** ridge M3 đạt AUROC mức ô **0,8082**, vượt ΔPAP **0,7693** (+0,0389, CI 95% theo cụm [+0,0216; +0,0571]) trên benchmark phát triển OOF 91 peptide / 89 cụm cov80 — [g2-saturation-2026-10-18](g2-saturation-2026-10-18/README.md). Đây chưa phải xác nhận cuối và **G2 chưa hoàn tất**.
+> - **§2 "Kiến trúc gần 0" nay được các phép đo củng cố:** cổng + ΔPAP 0,8002, FiLM 0,8028, bilinear 0,7933, cross-ridge 0,7924 đều thua ridge; Degformer huấn luyện lại dưới cov80 là 0,7500 — [g2-extension-2026-10-18](g2-extension-2026-10-18/README.md). Checkpoint Degformer công bố (0,9248) có rò rỉ mức peptide nên không phải holdout sạch.
+> - **Các số 0,4270 / 0,4884 / 0,4897 (§2, §6)** là precision@3 trên thang bộ quét; **không so trực tiếp** với AUROC mức ô của G2.
+> - **§3.1 "n = 91 không đủ lực":** G2 báo CI bootstrap theo cụm trên 89 cụm; nút thắt "lượng nhãn" vẫn là [DIỄN GIẢI], chưa kiểm trực tiếp (đường cong học còn mở).
+> - **§2 hàng Ứng dụng, §4.2 ("bốn tính năng không ai có"; "họ đã có … MetaDegron"):** batch submission không phải điểm khác biệt (MetaDegron, DegronMD đều có). [Audit MetaDegron 21/10](metadegron-analysis-2026-10-21/README.md): đây là công cụ bổ sung motif/E3 (302 dòng nhãn nhị phân, một classifier dùng chung, không có ΔPSI theo phép thay), **không phải đối thủ cùng bài toán**; việc chấm `−ΔScore` của nó trên ma trận G2 **chưa chạy**.
+> - **§5, §6 "chưa có mô hình nào…":** tránh dạng tuyệt đối; Degformer đã xuất ma trận 28×20 và Degpred có điểm theo residue. Phần bảo vệ được là nguồn nhãn, cách đánh giá (split cụm, kiểm rò rỉ), baseline mạnh và ứng dụng, trong phạm vi đã đo.
+> - Liên kết tới `DECISIONS.md` trỏ vào file đã xoá ở `f03d80d` (xem [CLAUDE.md](../../../CLAUDE.md)); giữ nguyên làm lịch sử.
+
 > **Tài liệu phân tích, không phải quyết định.** Đề nghị đi kèm đã ghi thành
 > [C-12](../../../DECISIONS.md) và **chờ Trọng xác nhận**.
 >

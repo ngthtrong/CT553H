@@ -21,7 +21,7 @@ import math
 import re
 from pathlib import Path
 
-TOPIC = next(p for p in Path(__file__).resolve().parents if (p / "log.md").exists())
+TOPIC = next(p for p in Path(__file__).resolve().parents if (p / "data" / "README.md").exists())
 PROC = TOPIC / "data/processed"
 PAT = re.compile(r"^(?P<pep>.+?)_mut(?P<pos>\d+)$")
 

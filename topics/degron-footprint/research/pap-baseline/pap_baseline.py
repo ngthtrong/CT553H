@@ -33,7 +33,7 @@ import numpy as np
 from scipy.stats import spearmanr, rankdata, wilcoxon
 
 HERE = Path(__file__).resolve().parent
-TOPIC = next(p for p in HERE.parents if (p / "log.md").exists())
+TOPIC = next(p for p in HERE.parents if (p / "data" / "README.md").exists())
 sys.path.insert(0, str(TOPIC / "research/full-data-audit"))
 import label_ceiling as lc            # noqa: E402  load_psi, load_sequences, build_peptides
 import saturation_matrix as sm       # noqa: E402  derive_sequence, load_uniprot, SAT_PAT

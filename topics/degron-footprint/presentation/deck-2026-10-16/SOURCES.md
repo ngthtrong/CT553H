@@ -10,7 +10,16 @@
 | File | Slide | Nguồn | Giấy phép | Ghi công trên slide |
 |---|---|---|---|---|
 | `lectures/.../voutsinos2026-f1.jpg` | 7 | Voutsinos et al., *Sci Adv* 2026, Fig. 1 — DOI 10.1126/sciadv.adz3483 | **CC BY-NC 4.0** | ✅ figcaption dưới hình |
-| `lectures/.../voutsinos2026-f4.jpg` | 10 | Voutsinos et al., *Sci Adv* 2026, Fig. 4 — cùng DOI | **CC BY-NC 4.0** | ✅ figcaption dưới hình |
+| `assets/voutsinos2026-f4.jpg` | 8 (bản 23 slide) | Voutsinos et al., *Sci Adv* 2026, Fig. 4 — cùng DOI | **CC BY-NC 4.0** | ✅ figcaption dưới hình |
+
+**Sửa đường dẫn slide 8 — 21/10/2026:** hình Fig. 4 (kiến trúc PAP và hai biểu đồ
+holdout) được khôi phục nguyên bản từ lịch sử Git tại commit
+`8c6c53ae448a5f57f75d948943f6d6fdfed517e5`, đường dẫn cũ
+`lectures/degron-footprint/assets/figures/voutsinos2026-f4.jpg`.
+Lưu hình ngay trong `assets/` của deck để dùng offline sau khi thư mục bài giảng bị xóa.
+Nguồn: [bài báo gốc](https://doi.org/10.1126/sciadv.adz3483),
+[toàn văn XML](https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12880521/fullTextXML).
+SHA-256: `455604ed104d11996ea678f57c3b0e2c734659eca946158268043c5492d19418`.
 
 Hai caption này **thêm mới 18/10/2026**: trước đó phần ghi công nằm ở `.foot`, mà `.foot` đã bị gỡ
 khỏi slide, nên ghi công không còn hiển thị. Caption là điều kiện của CC BY-NC, không bỏ được.

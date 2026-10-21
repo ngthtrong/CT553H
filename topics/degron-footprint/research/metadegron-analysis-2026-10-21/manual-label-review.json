@@ -1,0 +1,48 @@
+{
+  "generator": "review-labels.py",
+  "sampling": "simple random without replacement, seed17",
+  "n": 40,
+  "curation_supported": {
+    "count": 22,
+    "n": 40,
+    "rate": 0.55,
+    "ci95": [
+      0.39829091798932054,
+      0.6929469218909508
+    ]
+  },
+  "unresolved_lineage": {
+    "count": 18,
+    "n": 40,
+    "rate": 0.45,
+    "ci95": [
+      0.3070530781090492,
+      0.6017090820106794
+    ]
+  },
+  "not_human_despite_s2_title": {
+    "count": 11,
+    "n": 40,
+    "rate": 0.275,
+    "ci95": [
+      0.16108016247667337,
+      0.42834955806210573
+    ]
+  },
+  "ubiquitination_assay_in_elm_metadata": {
+    "count": 4,
+    "n": 40,
+    "rate": 0.1,
+    "ci95": [
+      0.03957952868260638,
+      0.23051775227522298
+    ]
+  },
+  "all_source_coordinate_slices_contained_in_reported_peptide": true,
+  "biological_wrong_rate": null,
+  "biological_ambiguity_rate": null,
+  "why_null": "Source-trace review is complete for 40 rows, but direct primary experimental adjudication is incomplete; no defensible biological mislabel rate.",
+  "details_path": "topics/degron-footprint/data/raw/metadegron/derived/manual-label-review-records.json",
+  "scope_of_manual_read": "all 40 rows, source coordinates, S2 PMIDs, current ELM matching metadata; not all underlying experimental papers",
+  "important_distinction": "18 unresolved traces do not mean 18 wrong degrons; ELM true-positive binding motif does not by itself prove degradation"
+}

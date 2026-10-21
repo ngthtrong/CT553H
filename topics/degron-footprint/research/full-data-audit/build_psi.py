@@ -29,7 +29,7 @@ import json
 import math
 from pathlib import Path
 
-TOPIC = next(p for p in Path(__file__).resolve().parents if (p / "log.md").exists())
+TOPIC = next(p for p in Path(__file__).resolve().parents if (p / "data" / "README.md").exists())
 SCAN = TOPIC / "data/interim/zhang-scanning-unzip/I28 Scanning (Completed)"
 SAT = TOPIC / "data/interim/zhang-saturation-unzip/I28 CRL Saturation (Completed)"
 OUT = TOPIC / "data/processed"

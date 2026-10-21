@@ -27,11 +27,11 @@ Chạy từ thư mục gốc repo. Không có test suite; kiểm tính đúng b�
 
 Script import lẫn nhau qua `sys.path` (ví dụ `g2-saturation` dùng `residue-task-derisk-2026-10-15/residue_data.py`, `derisk.py` và `pap-baseline/pap_baseline.py`), nên đổi tên/chuyển thư mục `research/` sẽ làm hỏng script khác.
 
-**Cách script tìm đường dẫn — đang hỏng sau đợt dọn repo:**
-- Thư mục đề tài: `TOPIC = next(p for p in HERE.parents if (p/'log.md').exists())` (23 script). `topics/degron-footprint/log.md` hiện đang bị xoá trong working tree.
-- Gốc repo: vòng lặp tìm `DECISIONS.md` (9 script, ví dụ `reframe-options-*`, `e3-labels-audit/*`, `presentation/notion-*/figures.py`). `DECISIONS.md` đã bị xoá ở commit `f03d80d`.
+**Cách script tìm đường dẫn (đã sửa 21/10/2026):** các marker cũ `log.md` và `DECISIONS.md` đã bị xoá ở commit `f03d80d`/`546b745`, nên script giờ tìm bằng file còn tồn tại:
+- Thư mục đề tài: `TOPIC = next(p for p in HERE.parents if (p/'data'/'README.md').exists())` → `topics/degron-footprint/`.
+- Gốc repo: vòng lặp / `next(...)` tìm `CLAUDE.md`.
 
-Trước khi chạy lại một script cũ, kiểm marker nó dùng; cần khôi phục marker (file rỗng là đủ) hoặc sửa cách tìm gốc — hỏi Trọng trước khi chọn.
+Script mới viết dùng đúng hai marker này; đừng khôi phục `log.md`/`DECISIONS.md`. Các README thí nghiệm cũ vẫn còn liên kết tới hai file đã xoá — đó là bản ghi lịch sử, không sửa hàng loạt.
 
 ## Quy ước nghiên cứu
 

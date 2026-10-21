@@ -31,7 +31,7 @@ from Bio.PDB.SASA import ShrakeRupley
 from scipy.stats import spearmanr
 
 HERE = Path(__file__).resolve().parent
-TOPIC = next(p for p in HERE.parents if (p / "log.md").exists())
+TOPIC = next(p for p in HERE.parents if (p / "data" / "README.md").exists())
 sys.path.insert(0, str(TOPIC / "research/full-data-audit"))
 sys.path.insert(0, str(TOPIC / "research/pap-baseline"))
 import label_ceiling as lc  # noqa: E402

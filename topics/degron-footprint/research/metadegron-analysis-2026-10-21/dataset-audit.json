@@ -1,0 +1,1110 @@
+{
+  "generator": "audit_dataset.py --stage profile",
+  "script_sha256": "e8d4e9b888d82c5e9b82d7f96bc714d7a0c03ae14570273d2fe11fd302741b7c",
+  "positive": {
+    "rows": 302,
+    "proteins_by_accession": 240,
+    "protein_sequences": 241,
+    "unique_motif_sequences": 274,
+    "unique_entry_coordinates": 302,
+    "classes": {
+      "DEG_APCC_DBOX_1": 63,
+      "DEG_APCC_KENBOX_2": 39,
+      "CBL": 28,
+      "DEG_SCF_TRCP1_1": 21,
+      "DEG_APCC_TPR_1": 16,
+      "DEG_SPOP_SBC_1": 16,
+      "DEG_Kelch_Keap1_1": 14,
+      "DEG_COP1_1": 12,
+      "DEG_SCF_FBW7_1": 9,
+      "DEG_SIAH_1": 9,
+      "DEG_Nend_UBRbox_4": 8,
+      "DEG_ODPH_VHL_1": 8,
+      "DEG_SCF_TIR1_1": 7,
+      "LIG_APCC_ABBA_1": 7,
+      "DEG_CRL4_CDT2_1": 6,
+      "DEG_SCF_COI1_1": 6,
+      "DEG_MDM2_SWIB_1": 5,
+      "DEG_Kelch_KLHL3_1": 4,
+      "CBLL1": 3,
+      "DEG_SCF_FBW7_2": 3,
+      "DEG_SCF_SKP2-CKS1_1": 3,
+      "Other": 3,
+      "DEG_Kelch_actinfilin_1": 2,
+      "DEG_Kelch_Keap1_2": 2,
+      "DEG_Nend_UBRbox_1": 2,
+      "DEG_CRL4_CDT2_2": 1,
+      "DEG_Nend_Nbox_1": 1,
+      "DEG_Nend_UBRbox_2": 1,
+      "DEG_Nend_UBRbox_3": 1,
+      "ITCH": 1,
+      "SCF_FBXO31": 1
+    },
+    "sources": {
+      "ELM_TP": 166,
+      "signal": 93,
+      "natcancer": 16,
+      "natcomm": 13,
+      "natcancer,signal": 9,
+      "natcomm,natcancer,signal": 5
+    },
+    "species_suffix": {
+      "HUMAN": 227,
+      "TAKRU": 3,
+      "XENLA": 5,
+      "ARBPU": 1,
+      "YEAST": 9,
+      "BPV1": 1,
+      "ARATH": 24,
+      "MEDTR": 1,
+      "DROME": 12,
+      "RAT": 1,
+      "MOUSE": 9,
+      "HV1BR": 2,
+      "LISMO": 1,
+      "CAEEL": 1,
+      "SOLLC": 2,
+      "SV40": 1,
+      "PEA": 1,
+      "EBVB9": 1
+    },
+    "pmids": {
+      "31680160": 166,
+      "28292960": 93,
+      "35121836": 16,
+      "26732515": 13,
+      "35121836; 28292960": 9,
+      "26732515; 35121836; 28292960": 5
+    },
+    "reported_length_counts": {
+      "5": 89,
+      "6": 49,
+      "7": 64,
+      "8": 17,
+      "9": 23,
+      "10": 7,
+      "11": 17,
+      "12": 12,
+      "13": 15,
+      "14": 3,
+      "18": 6
+    },
+    "coordinate_length_counts": {
+      "2": 3,
+      "3": 53,
+      "4": 3,
+      "5": 36,
+      "6": 43,
+      "7": 64,
+      "8": 17,
+      "9": 23,
+      "10": 7,
+      "11": 17,
+      "12": 12,
+      "13": 15,
+      "14": 3,
+      "18": 6
+    },
+    "core_matches_reported": 243,
+    "reported_contains_core": 302,
+    "s2_matches_repository_identifiers": true,
+    "s2_matches_repository_sequences": true,
+    "topic_accession_overlap": 80,
+    "topic_exact_protein_sequence_overlap": 77,
+    "upstream_cluster_values": {
+      "1": 77,
+      "0": 63,
+      "3": 58,
+      "4": 56,
+      "2": 48
+    }
+  },
+  "properties": {
+    "positive_rows": 212,
+    "proteins": 158,
+    "coordinate_join_to_302": 212
+  },
+  "negative": {
+    "rows": 1510,
+    "proteins": 1457,
+    "coordinate_length_counts": {
+      "3": 15,
+      "4": 265,
+      "5": 15,
+      "6": 180,
+      "7": 215,
+      "8": 320,
+      "9": 85,
+      "10": 115,
+      "11": 35,
+      "12": 85,
+      "13": 60,
+      "14": 75,
+      "15": 15,
+      "19": 30
+    },
+    "filtered_rows": 1428,
+    "positive_protein_overlap": 14,
+    "exact_positive_coordinate_overlap": 0,
+    "length_histogram_equals_5x_positive_coordinate_length_plus_one": true
+  },
+  "web_e3_count": 21,
+  "e3_motif_mapping": {
+    "CBL": {
+      "motif_compatible_rows": 28,
+      "mapped_classes": [
+        "CBL"
+      ]
+    },
+    "CDC20": {
+      "motif_compatible_rows": 125,
+      "mapped_classes": [
+        "DEG_APCC_DBOX_1",
+        "DEG_APCC_KENBOX_2",
+        "DEG_APCC_TPR_1",
+        "LIG_APCC_ABBA_1",
+        "LIG_APCC_ABBAyCdc20_2"
+      ]
+    },
+    "COP1": {
+      "motif_compatible_rows": 12,
+      "mapped_classes": [
+        "DEG_COP1_1"
+      ]
+    },
+    "DTL": {
+      "motif_compatible_rows": 7,
+      "mapped_classes": [
+        "DEG_CRL4_CDT2_1",
+        "DEG_CRL4_CDT2_2"
+      ]
+    },
+    "CUL3": {
+      "motif_compatible_rows": 6,
+      "mapped_classes": [
+        "DEG_Kelch_KLHL3_1",
+        "DEG_Kelch_actinfilin_1"
+      ]
+    },
+    "KLHL3": {
+      "motif_compatible_rows": 4,
+      "mapped_classes": [
+        "DEG_Kelch_KLHL3_1"
+      ]
+    },
+    "KLHL2": {
+      "motif_compatible_rows": 4,
+      "mapped_classes": [
+        "DEG_Kelch_KLHL3_1"
+      ]
+    },
+    "KEAP1": {
+      "motif_compatible_rows": 16,
+      "mapped_classes": [
+        "DEG_Kelch_Keap1_1",
+        "DEG_Kelch_Keap1_2"
+      ]
+    },
+    "KLHL17": {
+      "motif_compatible_rows": 2,
+      "mapped_classes": [
+        "DEG_Kelch_actinfilin_1"
+      ]
+    },
+    "MDM2": {
+      "motif_compatible_rows": 5,
+      "mapped_classes": [
+        "DEG_MDM2_SWIB_1"
+      ]
+    },
+    "VHL": {
+      "motif_compatible_rows": 8,
+      "mapped_classes": [
+        "DEG_ODPH_VHL_1"
+      ]
+    },
+    "FBXW7": {
+      "motif_compatible_rows": 12,
+      "mapped_classes": [
+        "DEG_SCF_FBW7_1",
+        "DEG_SCF_FBW7_2"
+      ]
+    },
+    "SKP2": {
+      "motif_compatible_rows": 3,
+      "mapped_classes": [
+        "DEG_SCF_SKP2-CKS1_1"
+      ]
+    },
+    "BTRC": {
+      "motif_compatible_rows": 21,
+      "mapped_classes": [
+        "DEG_SCF_TRCP1_1"
+      ]
+    },
+    "SIAH2": {
+      "motif_compatible_rows": 9,
+      "mapped_classes": [
+        "DEG_SIAH_1"
+      ]
+    },
+    "SIAH1": {
+      "motif_compatible_rows": 9,
+      "mapped_classes": [
+        "DEG_SIAH_1"
+      ]
+    },
+    "SPOP": {
+      "motif_compatible_rows": 16,
+      "mapped_classes": [
+        "DEG_SPOP_SBC_1"
+      ]
+    },
+    "FBXL2": {
+      "motif_compatible_rows": 0,
+      "mapped_classes": [
+        "SCF_FBXL2"
+      ]
+    },
+    "FBXO31": {
+      "motif_compatible_rows": 1,
+      "mapped_classes": [
+        "SCF_FBXO31"
+      ]
+    },
+    "NEDD4": {
+      "motif_compatible_rows": 1,
+      "mapped_classes": [
+        "ITCH"
+      ]
+    },
+    "ITCH": {
+      "motif_compatible_rows": 1,
+      "mapped_classes": [
+        "ITCH"
+      ]
+    }
+  },
+  "classification": {
+    "rows": 1633,
+    "positive": 212,
+    "negative": 1421,
+    "excluded_negative_rows_for_missing_or_invalid_sequence": 7
+  },
+  "schemas": {
+    "repo/data/annotated_degrons_properties.tsv": {
+      "rows": 212,
+      "columns": [
+        "Entry",
+        "Entry_Isoform",
+        "DEGRON",
+        "START",
+        "END",
+        "ASA_SCORE",
+        "CONS_SCORE",
+        "FCONS_SCORE",
+        "COIL",
+        "HELIX",
+        "STRAND",
+        "DSS_SCORE",
+        "RIG_SCORE",
+        "ANCHOR_SCORE",
+        "Domain_pfam",
+        "nflanking_ub_lysines",
+        "ub_lysines",
+        "nflanking_lysines",
+        "any_lysines",
+        "nflanking_ptms",
+        "ptms_flanking",
+        "Type"
+      ],
+      "dtypes": {
+        "Entry": "str",
+        "Entry_Isoform": "str",
+        "DEGRON": "str",
+        "START": "int64",
+        "END": "int64",
+        "ASA_SCORE": "float64",
+        "CONS_SCORE": "float64",
+        "FCONS_SCORE": "float64",
+        "COIL": "float64",
+        "HELIX": "float64",
+        "STRAND": "float64",
+        "DSS_SCORE": "float64",
+        "RIG_SCORE": "float64",
+        "ANCHOR_SCORE": "float64",
+        "Domain_pfam": "int64",
+        "nflanking_ub_lysines": "int64",
+        "ub_lysines": "str",
+        "nflanking_lysines": "float64",
+        "any_lysines": "str",
+        "nflanking_ptms": "int64",
+        "ptms_flanking": "str",
+        "Type": "str"
+      },
+      "missing": {
+        "Entry": 0,
+        "Entry_Isoform": 0,
+        "DEGRON": 0,
+        "START": 0,
+        "END": 0,
+        "ASA_SCORE": 0,
+        "CONS_SCORE": 0,
+        "FCONS_SCORE": 0,
+        "COIL": 0,
+        "HELIX": 0,
+        "STRAND": 0,
+        "DSS_SCORE": 0,
+        "RIG_SCORE": 0,
+        "ANCHOR_SCORE": 0,
+        "Domain_pfam": 0,
+        "nflanking_ub_lysines": 0,
+        "ub_lysines": 0,
+        "nflanking_lysines": 0,
+        "any_lysines": 0,
+        "nflanking_ptms": 0,
+        "ptms_flanking": 0,
+        "Type": 0
+      },
+      "exact_duplicate_rows": 0
+    },
+    "repo/data/degron_data.txt": {
+      "rows": 302,
+      "columns": [
+        "class",
+        "Entry",
+        "Entry name",
+        "START",
+        "END",
+        "deg_seq",
+        "source",
+        "cluster",
+        "protein seq"
+      ],
+      "dtypes": {
+        "class": "str",
+        "Entry": "str",
+        "Entry name": "str",
+        "START": "int64",
+        "END": "int64",
+        "deg_seq": "str",
+        "source": "str",
+        "cluster": "int64",
+        "protein seq": "str"
+      },
+      "missing": {
+        "class": 0,
+        "Entry": 0,
+        "Entry name": 0,
+        "START": 0,
+        "END": 0,
+        "deg_seq": 0,
+        "source": 0,
+        "cluster": 0,
+        "protein seq": 0
+      },
+      "exact_duplicate_rows": 0
+    },
+    "repo/data/simulated_degrons.tsv.gz": {
+      "rows": 1510,
+      "columns": [
+        "Entry",
+        "Entry_Isoform",
+        "DEGRON",
+        "START",
+        "END",
+        "ASA_SCORE",
+        "CONS_SCORE",
+        "FCONS_SCORE",
+        "COIL",
+        "HELIX",
+        "STRAND",
+        "DSS_SCORE",
+        "RIG_SCORE",
+        "ANCHOR_SCORE",
+        "Domain_pfam",
+        "nflanking_ub_lysines",
+        "ub_lysines",
+        "nflanking_lysines",
+        "any_lysines",
+        "nflanking_ptms",
+        "ptms_flanking"
+      ],
+      "dtypes": {
+        "Entry": "str",
+        "Entry_Isoform": "str",
+        "DEGRON": "str",
+        "START": "int64",
+        "END": "int64",
+        "ASA_SCORE": "float64",
+        "CONS_SCORE": "float64",
+        "FCONS_SCORE": "float64",
+        "COIL": "float64",
+        "HELIX": "float64",
+        "STRAND": "float64",
+        "DSS_SCORE": "float64",
+        "RIG_SCORE": "float64",
+        "ANCHOR_SCORE": "float64",
+        "Domain_pfam": "int64",
+        "nflanking_ub_lysines": "int64",
+        "ub_lysines": "str",
+        "nflanking_lysines": "int64",
+        "any_lysines": "str",
+        "nflanking_ptms": "int64",
+        "ptms_flanking": "str"
+      },
+      "missing": {
+        "Entry": 0,
+        "Entry_Isoform": 0,
+        "DEGRON": 0,
+        "START": 0,
+        "END": 0,
+        "ASA_SCORE": 0,
+        "CONS_SCORE": 0,
+        "FCONS_SCORE": 0,
+        "COIL": 0,
+        "HELIX": 0,
+        "STRAND": 0,
+        "DSS_SCORE": 0,
+        "RIG_SCORE": 0,
+        "ANCHOR_SCORE": 0,
+        "Domain_pfam": 0,
+        "nflanking_ub_lysines": 0,
+        "ub_lysines": 0,
+        "nflanking_lysines": 0,
+        "any_lysines": 0,
+        "nflanking_ptms": 0,
+        "ptms_flanking": 0
+      },
+      "exact_duplicate_rows": 0
+    },
+    "repo/data/test_properties.tsv": {
+      "rows": 20,
+      "columns": [
+        "Gene_names",
+        "Entry",
+        "DEGRON",
+        "Start",
+        "End",
+        "solvent_accessibility",
+        "conservative_score",
+        "coiled_coil",
+        "a_helix",
+        "disorder",
+        "flexibility",
+        "anchoring_score",
+        "structured_domain",
+        "flanking_ub_lysine",
+        "flanking_ptms",
+        "Hit"
+      ],
+      "dtypes": {
+        "Gene_names": "str",
+        "Entry": "str",
+        "DEGRON": "str",
+        "Start": "int64",
+        "End": "int64",
+        "solvent_accessibility": "float64",
+        "conservative_score": "float64",
+        "coiled_coil": "float64",
+        "a_helix": "float64",
+        "disorder": "float64",
+        "flexibility": "float64",
+        "anchoring_score": "float64",
+        "structured_domain": "int64",
+        "flanking_ub_lysine": "int64",
+        "flanking_ptms": "int64",
+        "Hit": "str"
+      },
+      "missing": {
+        "Gene_names": 0,
+        "Entry": 0,
+        "DEGRON": 0,
+        "Start": 0,
+        "End": 0,
+        "solvent_accessibility": 0,
+        "conservative_score": 0,
+        "coiled_coil": 0,
+        "a_helix": 0,
+        "disorder": 0,
+        "flexibility": 0,
+        "anchoring_score": 0,
+        "structured_domain": 0,
+        "flanking_ub_lysine": 0,
+        "flanking_ptms": 0,
+        "Hit": 0
+      },
+      "exact_duplicate_rows": 0
+    },
+    "repo/supporting_file/Degpred_result.csv": {
+      "rows": 400,
+      "columns": [
+        "predicted_probs",
+        "true_labels",
+        "symbol"
+      ],
+      "dtypes": {
+        "predicted_probs": "float64",
+        "true_labels": "int64",
+        "symbol": "str"
+      },
+      "missing": {
+        "predicted_probs": 0,
+        "true_labels": 0,
+        "symbol": 0
+      },
+      "exact_duplicate_rows": 0
+    },
+    "repo/supporting_file/elm_class_202309.txt": {
+      "rows": 28,
+      "columns": [
+        "Accession",
+        "ELMIdentifier",
+        "Motif",
+        "FunctionalSiteName",
+        "Description",
+        "Regex"
+      ],
+      "dtypes": {
+        "Accession": "str",
+        "ELMIdentifier": "str",
+        "Motif": "str",
+        "FunctionalSiteName": "str",
+        "Description": "str",
+        "Regex": "str"
+      },
+      "missing": {
+        "Accession": 0,
+        "ELMIdentifier": 0,
+        "Motif": 0,
+        "FunctionalSiteName": 0,
+        "Description": 0,
+        "Regex": 0
+      },
+      "exact_duplicate_rows": 0
+    },
+    "repo/supporting_file/simulated_degron2.csv": {
+      "rows": 733,
+      "columns": [
+        "Entry",
+        "Entry_Isoform",
+        "DEGRON",
+        "START",
+        "END",
+        "ASA_SCORE",
+        "CONS_SCORE",
+        "FCONS_SCORE",
+        "COIL",
+        "HELIX",
+        "STRAND",
+        "DSS_SCORE",
+        "RIG_SCORE",
+        "ANCHOR_SCORE",
+        "Domain_pfam",
+        "nflanking_ub_lysines",
+        "ub_lysines",
+        "nflanking_lysines",
+        "any_lysines",
+        "nflanking_ptms",
+        "ptms_flanking"
+      ],
+      "dtypes": {
+        "Entry": "str",
+        "Entry_Isoform": "str",
+        "DEGRON": "str",
+        "START": "int64",
+        "END": "int64",
+        "ASA_SCORE": "float64",
+        "CONS_SCORE": "float64",
+        "FCONS_SCORE": "float64",
+        "COIL": "float64",
+        "HELIX": "float64",
+        "STRAND": "float64",
+        "DSS_SCORE": "float64",
+        "RIG_SCORE": "float64",
+        "ANCHOR_SCORE": "float64",
+        "Domain_pfam": "int64",
+        "nflanking_ub_lysines": "int64",
+        "ub_lysines": "str",
+        "nflanking_lysines": "int64",
+        "any_lysines": "str",
+        "nflanking_ptms": "int64",
+        "ptms_flanking": "str"
+      },
+      "missing": {
+        "Entry": 0,
+        "Entry_Isoform": 0,
+        "DEGRON": 0,
+        "START": 0,
+        "END": 0,
+        "ASA_SCORE": 0,
+        "CONS_SCORE": 0,
+        "FCONS_SCORE": 0,
+        "COIL": 0,
+        "HELIX": 0,
+        "STRAND": 0,
+        "DSS_SCORE": 0,
+        "RIG_SCORE": 0,
+        "ANCHOR_SCORE": 0,
+        "Domain_pfam": 0,
+        "nflanking_ub_lysines": 0,
+        "ub_lysines": 0,
+        "nflanking_lysines": 0,
+        "any_lysines": 0,
+        "nflanking_ptms": 0,
+        "ptms_flanking": 0
+      },
+      "exact_duplicate_rows": 0
+    },
+    "repo/supporting_file/simulated_degrons.tsv.gz": {
+      "rows": 1510,
+      "columns": [
+        "Entry",
+        "Entry_Isoform",
+        "DEGRON",
+        "START",
+        "END",
+        "ASA_SCORE",
+        "CONS_SCORE",
+        "FCONS_SCORE",
+        "COIL",
+        "HELIX",
+        "STRAND",
+        "DSS_SCORE",
+        "RIG_SCORE",
+        "ANCHOR_SCORE",
+        "Domain_pfam",
+        "nflanking_ub_lysines",
+        "ub_lysines",
+        "nflanking_lysines",
+        "any_lysines",
+        "nflanking_ptms",
+        "ptms_flanking"
+      ],
+      "dtypes": {
+        "Entry": "str",
+        "Entry_Isoform": "str",
+        "DEGRON": "str",
+        "START": "int64",
+        "END": "int64",
+        "ASA_SCORE": "float64",
+        "CONS_SCORE": "float64",
+        "FCONS_SCORE": "float64",
+        "COIL": "float64",
+        "HELIX": "float64",
+        "STRAND": "float64",
+        "DSS_SCORE": "float64",
+        "RIG_SCORE": "float64",
+        "ANCHOR_SCORE": "float64",
+        "Domain_pfam": "int64",
+        "nflanking_ub_lysines": "int64",
+        "ub_lysines": "str",
+        "nflanking_lysines": "int64",
+        "any_lysines": "str",
+        "nflanking_ptms": "int64",
+        "ptms_flanking": "str"
+      },
+      "missing": {
+        "Entry": 0,
+        "Entry_Isoform": 0,
+        "DEGRON": 0,
+        "START": 0,
+        "END": 0,
+        "ASA_SCORE": 0,
+        "CONS_SCORE": 0,
+        "FCONS_SCORE": 0,
+        "COIL": 0,
+        "HELIX": 0,
+        "STRAND": 0,
+        "DSS_SCORE": 0,
+        "RIG_SCORE": 0,
+        "ANCHOR_SCORE": 0,
+        "Domain_pfam": 0,
+        "nflanking_ub_lysines": 0,
+        "ub_lysines": 0,
+        "nflanking_lysines": 0,
+        "any_lysines": 0,
+        "nflanking_ptms": 0,
+        "ptms_flanking": 0
+      },
+      "exact_duplicate_rows": 0
+    },
+    "repo/supporting_file/uniprot_seq.tsv": {
+      "rows": 20377,
+      "columns": [
+        "Entry",
+        "Reviewed",
+        "Entry Name",
+        "Protein names",
+        "Gene Names",
+        "Organism",
+        "Length",
+        "Gene Names (primary)",
+        "Sequence",
+        "Tissue specificity",
+        "Ensembl",
+        "Entry_Isoform"
+      ],
+      "dtypes": {
+        "Entry": "str",
+        "Reviewed": "str",
+        "Entry Name": "str",
+        "Protein names": "str",
+        "Gene Names": "str",
+        "Organism": "str",
+        "Length": "int64",
+        "Gene Names (primary)": "str",
+        "Sequence": "str",
+        "Tissue specificity": "str",
+        "Ensembl": "str",
+        "Entry_Isoform": "str"
+      },
+      "missing": {
+        "Entry": 0,
+        "Reviewed": 0,
+        "Entry Name": 0,
+        "Protein names": 0,
+        "Gene Names": 136,
+        "Organism": 0,
+        "Length": 0,
+        "Gene Names (primary)": 159,
+        "Sequence": 0,
+        "Tissue specificity": 10379,
+        "Ensembl": 1106,
+        "Entry_Isoform": 0
+      },
+      "exact_duplicate_rows": 0
+    },
+    "supplementary/supplementary_table_s1_bbae519.xlsx#Table S1": {
+      "rows": 7,
+      "columns": [
+        "Name",
+        "Release year",
+        "Category",
+        "Feature input",
+        "Algorithm",
+        "Type",
+        "Availability",
+        "Prediction webserver",
+        "Other omics",
+        "PubMed ID"
+      ],
+      "dtypes": {
+        "Name": "str",
+        "Release year": "object",
+        "Category": "str",
+        "Feature input": "str",
+        "Algorithm": "str",
+        "Type": "str",
+        "Availability": "str",
+        "Prediction webserver": "str",
+        "Other omics": "str",
+        "PubMed ID": "object"
+      },
+      "missing": {
+        "Name": 0,
+        "Release year": 0,
+        "Category": 0,
+        "Feature input": 0,
+        "Algorithm": 0,
+        "Type": 0,
+        "Availability": 0,
+        "Prediction webserver": 0,
+        "Other omics": 0,
+        "PubMed ID": 0
+      },
+      "exact_duplicate_rows": 0
+    },
+    "supplementary/supplementary_table_s2_bbae519.xlsx#Table S2": {
+      "rows": 302,
+      "columns": [
+        "UniProt ID",
+        "Entry name",
+        "Start",
+        "End",
+        "Degron instance",
+        "PudMed ID",
+        "Source protein squence"
+      ],
+      "dtypes": {
+        "UniProt ID": "str",
+        "Entry name": "str",
+        "Start": "int64",
+        "End": "int64",
+        "Degron instance": "str",
+        "PudMed ID": "object",
+        "Source protein squence": "str"
+      },
+      "missing": {
+        "UniProt ID": 0,
+        "Entry name": 0,
+        "Start": 0,
+        "End": 0,
+        "Degron instance": 0,
+        "PudMed ID": 0,
+        "Source protein squence": 0
+      },
+      "exact_duplicate_rows": 0
+    },
+    "supplementary/supplementary_table_s3_bbae519.xlsx#Table S3": {
+      "rows": 1510,
+      "columns": [
+        "Entry",
+        "Degron",
+        "Start",
+        "End",
+        "ASA_SCORE",
+        "CONS_SCORE",
+        "FCONS_SCORE",
+        "COIL",
+        "HELIX",
+        "STRAND",
+        "Disorder_SCORE",
+        "RIG_SCORE",
+        "ANCHOR_SCORE",
+        "Domain_pfam",
+        "nflanking_ub_lysines",
+        "ub_lysines",
+        "nflanking_lysines",
+        "any_lysines",
+        "nflanking_ptms",
+        "ptms_flanking"
+      ],
+      "dtypes": {
+        "Entry": "str",
+        "Degron": "str",
+        "Start": "int64",
+        "End": "int64",
+        "ASA_SCORE": "float64",
+        "CONS_SCORE": "float64",
+        "FCONS_SCORE": "float64",
+        "COIL": "float64",
+        "HELIX": "float64",
+        "STRAND": "float64",
+        "Disorder_SCORE": "float64",
+        "RIG_SCORE": "float64",
+        "ANCHOR_SCORE": "float64",
+        "Domain_pfam": "int64",
+        "nflanking_ub_lysines": "int64",
+        "ub_lysines": "object",
+        "nflanking_lysines": "int64",
+        "any_lysines": "object",
+        "nflanking_ptms": "int64",
+        "ptms_flanking": "object"
+      },
+      "missing": {
+        "Entry": 0,
+        "Degron": 0,
+        "Start": 0,
+        "End": 0,
+        "ASA_SCORE": 0,
+        "CONS_SCORE": 0,
+        "FCONS_SCORE": 0,
+        "COIL": 0,
+        "HELIX": 0,
+        "STRAND": 0,
+        "Disorder_SCORE": 0,
+        "RIG_SCORE": 0,
+        "ANCHOR_SCORE": 0,
+        "Domain_pfam": 0,
+        "nflanking_ub_lysines": 0,
+        "ub_lysines": 0,
+        "nflanking_lysines": 0,
+        "any_lysines": 0,
+        "nflanking_ptms": 0,
+        "ptms_flanking": 0
+      },
+      "exact_duplicate_rows": 0
+    },
+    "supplementary/supplementary_table_s4_bbae519.xlsx#Positive": {
+      "rows": 20,
+      "columns": [
+        "Gene name",
+        "Entry",
+        "Degron type",
+        "Start",
+        "End",
+        "ASA_SCORE",
+        "CONS_SCORE",
+        "FCONS_SCORE",
+        "COIL",
+        "HELIX",
+        "STRAND",
+        "DSS_SCORE",
+        "RIG_SCORE",
+        "ANCHOR_SCORE",
+        "Domain_pfam",
+        "nflanking_ub_lysines",
+        "ub_lysines",
+        "nflanking_lysines",
+        "any_lysines",
+        "nflanking_ptms",
+        "ptms_flanking",
+        "Hit",
+        "Protein name"
+      ],
+      "dtypes": {
+        "Gene name": "str",
+        "Entry": "str",
+        "Degron type": "str",
+        "Start": "int64",
+        "End": "int64",
+        "ASA_SCORE": "float64",
+        "CONS_SCORE": "float64",
+        "FCONS_SCORE": "float64",
+        "COIL": "float64",
+        "HELIX": "float64",
+        "STRAND": "float64",
+        "DSS_SCORE": "float64",
+        "RIG_SCORE": "float64",
+        "ANCHOR_SCORE": "float64",
+        "Domain_pfam": "int64",
+        "nflanking_ub_lysines": "int64",
+        "ub_lysines": "object",
+        "nflanking_lysines": "int64",
+        "any_lysines": "str",
+        "nflanking_ptms": "int64",
+        "ptms_flanking": "object",
+        "Hit": "str",
+        "Protein name": "str"
+      },
+      "missing": {
+        "Gene name": 0,
+        "Entry": 0,
+        "Degron type": 0,
+        "Start": 0,
+        "End": 0,
+        "ASA_SCORE": 0,
+        "CONS_SCORE": 0,
+        "FCONS_SCORE": 0,
+        "COIL": 0,
+        "HELIX": 0,
+        "STRAND": 0,
+        "DSS_SCORE": 0,
+        "RIG_SCORE": 0,
+        "ANCHOR_SCORE": 0,
+        "Domain_pfam": 0,
+        "nflanking_ub_lysines": 0,
+        "ub_lysines": 0,
+        "nflanking_lysines": 0,
+        "any_lysines": 0,
+        "nflanking_ptms": 0,
+        "ptms_flanking": 0,
+        "Hit": 0,
+        "Protein name": 0
+      },
+      "exact_duplicate_rows": 0
+    },
+    "supplementary/supplementary_table_s4_bbae519.xlsx#Simulated": {
+      "rows": 1510,
+      "columns": [
+        "Entry",
+        "Degron type",
+        "START",
+        "END",
+        "ASA_SCORE",
+        "CONS_SCORE",
+        "FCONS_SCORE",
+        "COIL",
+        "HELIX",
+        "STRAND",
+        "DSS_SCORE",
+        "RIG_SCORE",
+        "ANCHOR_SCORE",
+        "Domain_pfam",
+        "nflanking_ub_lysines",
+        "ub_lysines",
+        "nflanking_lysines",
+        "any_lysines",
+        "nflanking_ptms",
+        "ptms_flanking"
+      ],
+      "dtypes": {
+        "Entry": "str",
+        "Degron type": "str",
+        "START": "int64",
+        "END": "int64",
+        "ASA_SCORE": "float64",
+        "CONS_SCORE": "float64",
+        "FCONS_SCORE": "float64",
+        "COIL": "float64",
+        "HELIX": "float64",
+        "STRAND": "float64",
+        "DSS_SCORE": "float64",
+        "RIG_SCORE": "float64",
+        "ANCHOR_SCORE": "float64",
+        "Domain_pfam": "int64",
+        "nflanking_ub_lysines": "int64",
+        "ub_lysines": "str",
+        "nflanking_lysines": "int64",
+        "any_lysines": "str",
+        "nflanking_ptms": "int64",
+        "ptms_flanking": "str"
+      },
+      "missing": {
+        "Entry": 0,
+        "Degron type": 0,
+        "START": 0,
+        "END": 0,
+        "ASA_SCORE": 0,
+        "CONS_SCORE": 0,
+        "FCONS_SCORE": 0,
+        "COIL": 0,
+        "HELIX": 0,
+        "STRAND": 0,
+        "DSS_SCORE": 0,
+        "RIG_SCORE": 0,
+        "ANCHOR_SCORE": 0,
+        "Domain_pfam": 0,
+        "nflanking_ub_lysines": 0,
+        "ub_lysines": 0,
+        "nflanking_lysines": 0,
+        "any_lysines": 0,
+        "nflanking_ptms": 0,
+        "ptms_flanking": 0
+      },
+      "exact_duplicate_rows": 0
+    },
+    "supplementary/supplementary_table_s5_bbae519.xlsx#Average": {
+      "rows": 15,
+      "columns": [
+        "Tools",
+        "Metrics",
+        "Values"
+      ],
+      "dtypes": {
+        "Tools": "str",
+        "Metrics": "str",
+        "Values": "float64"
+      },
+      "missing": {
+        "Tools": 0,
+        "Metrics": 0,
+        "Values": 0
+      },
+      "exact_duplicate_rows": 0
+    },
+    "supplementary/supplementary_table_s5_bbae519.xlsx#All": {
+      "rows": 150,
+      "columns": [
+        "Tools",
+        "Metrics",
+        "Values",
+        "Times"
+      ],
+      "dtypes": {
+        "Tools": "str",
+        "Metrics": "str",
+        "Values": "float64",
+        "Times": "str"
+      },
+      "missing": {
+        "Tools": 0,
+        "Metrics": 0,
+        "Values": 0,
+        "Times": 0
+      },
+      "exact_duplicate_rows": 0
+    }
+  }
+}

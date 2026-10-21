@@ -194,7 +194,7 @@ Không tìm được công trình nào dự đoán **bản đồ độ nhạy đ
 | Zhang SVM (2023) | 20 đặc trưng thành phần | peptide |
 | QCDPred (nấm men) | hồi quy logistic trên thành phần | tile |
 | Degpred (2022) | BERT + BiLSTM | peptide/protein |
-| MetaDegron (2024) | SeqVec + BLSTM, XGBoost 10 đặc trưng | peptide, theo từng E3 trong 21 E3 |
+| MetaDegron (2024) | SeqVec + BLSTM (D) và XGBoost 10 đặc trưng (X), hai route riêng | hit motif/cửa sổ, 21 lựa chọn E3 qua regex, **một** classifier dùng chung (đính chính 21/10, [audit](../metadegron-analysis-2026-10-21/README.md)) |
 | deepDegron (2021) | mạng sâu trên trình tự | chỉ hai đầu chuỗi |
 
 Tiền lệ gần nhất về **phương pháp luận** nằm ngoài bài toán degron: một khung học máy 2025 báo rằng **6 điểm thay thế mỗi residue là đủ để suy ra phần còn lại với độ chính xác ~90%** trên dữ liệu quét đột biến sâu nói chung. Phải trích bài này nếu đặt đóng góp ở trục "dự đoán bản đồ thay thế", vì nó là phản biện trực tiếp về tính mới của ý tưởng.

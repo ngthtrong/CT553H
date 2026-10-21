@@ -1,0 +1,123 @@
+{
+  "checkpoint_sha256": "351b244019117484bccc137966ef8484a7e02cc7780b5ce41a923380d14bec9c",
+  "literal_sha256": "1b05c0fd9062e395f84fbdd7de099268d4b029b0e263e9b1ce3797f20b7decc2",
+  "pickle_opcodes": {
+    "PROTO": 1,
+    "GLOBAL": 6,
+    "BINPUT": 70,
+    "EMPTY_TUPLE": 2,
+    "NEWOBJ": 2,
+    "EMPTY_DICT": 2,
+    "MARK": 4,
+    "BINUNICODE": 47,
+    "NEWFALSE": 4,
+    "BININT2": 3,
+    "BININT1": 8,
+    "NONE": 30,
+    "BINFLOAT": 5,
+    "TUPLE1": 3,
+    "SHORT_BINBYTES": 2,
+    "TUPLE3": 2,
+    "REDUCE": 3,
+    "NEWTRUE": 1,
+    "BININT": 2,
+    "TUPLE": 2,
+    "BUILD": 4,
+    "BINBYTES": 1,
+    "SETITEMS": 2,
+    "STOP": 1
+  },
+  "executed_opcodes": 0,
+  "trees": 300,
+  "model_param": {
+    "base_score": "5E-1",
+    "num_class": "0",
+    "num_feature": "10",
+    "num_target": "1"
+  },
+  "objective": {
+    "name": "binary:logistic",
+    "reg_loss_param": {
+      "scale_pos_weight": "1"
+    }
+  },
+  "feature_order": [
+    "ASA_SCORE",
+    "DSS_SCORE",
+    "FCONS_SCORE",
+    "COIL",
+    "ANCHOR_SCORE",
+    "nflanking_ptms",
+    "nflanking_ub_lysines",
+    "HELIX",
+    "RIG_SCORE",
+    "Domain_pfam"
+  ],
+  "feature_names": [],
+  "parser_bytes_consumed": 1208480,
+  "generator": "safe-predict-x.py",
+  "method": "static literal data plus independently authored numerical tree inference",
+  "positive_rows": 20,
+  "negative_pool": 733,
+  "results": [
+    {
+      "seed": 1,
+      "auroc": 0.9575
+    },
+    {
+      "seed": 2,
+      "auroc": 0.9650000000000001
+    },
+    {
+      "seed": 3,
+      "auroc": 0.98
+    },
+    {
+      "seed": 4,
+      "auroc": 0.98
+    },
+    {
+      "seed": 5,
+      "auroc": 0.95
+    },
+    {
+      "seed": 6,
+      "auroc": 0.9874999999999999
+    },
+    {
+      "seed": 7,
+      "auroc": 0.9425
+    },
+    {
+      "seed": 8,
+      "auroc": 0.95
+    },
+    {
+      "seed": 9,
+      "auroc": 0.98
+    },
+    {
+      "seed": 10,
+      "auroc": 0.9775
+    },
+    {
+      "seed": 17,
+      "auroc": 0.9175
+    },
+    {
+      "seed": 29,
+      "auroc": 0.9650000000000001
+    },
+    {
+      "seed": 43,
+      "auroc": 0.9299999999999999
+    }
+  ],
+  "published_mean": 0.967,
+  "recalculated_author_seed_mean": 0.9670000000000002,
+  "difference": 2.220446049250313e-16,
+  "test_positive_coordinates_in_curated": 8,
+  "test_positive_coordinates_in_properties": 8,
+  "audit_seed_mean": 0.9375,
+  "limitation": "same prepared property tables and stored weights; not original feature generation, independent experiment, or GPS transfer"
+}

@@ -2,7 +2,7 @@
 import json,hashlib,urllib.request
 from pathlib import Path
 HERE=Path(__file__).resolve().parent
-TOPIC=next(p for p in HERE.parents if (p/'log.md').exists())
+TOPIC=next(p for p in HERE.parents if (p/'data'/'README.md').exists())
 out=TOPIC/'data/raw/degformer-isolated';out.mkdir(parents=True,exist_ok=True)
 m=json.loads((HERE/'source-manifest.json').read_text())
 for name,meta in m['files'].items():

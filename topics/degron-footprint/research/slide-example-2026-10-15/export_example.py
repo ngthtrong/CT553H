@@ -12,8 +12,8 @@ import json
 import statistics
 from pathlib import Path
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / "DECISIONS.md").exists())
-TOPIC = next(p for p in Path(__file__).resolve().parents if (p / "log.md").exists())
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / "CLAUDE.md").exists())
+TOPIC = next(p for p in Path(__file__).resolve().parents if (p / "data" / "README.md").exists())
 OUT = TOPIC / "presentation/deck-external-2026-10-16/assets"
 
 

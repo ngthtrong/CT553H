@@ -11,7 +11,7 @@ import json
 from collections import defaultdict
 from pathlib import Path
 
-TOPIC = next(p for p in Path(__file__).resolve().parents if (p / "log.md").exists())
+TOPIC = next(p for p in Path(__file__).resolve().parents if (p / "data" / "README.md").exists())
 MAVE = TOPIC / "data/raw/mavedb"
 
 

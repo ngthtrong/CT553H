@@ -1,0 +1,244 @@
+{
+  "generator": "validate.py",
+  "checks": [
+    {
+      "check": "positive-count-csv-vs-pandas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "accessions-two-counts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "human-count-independent",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "s2-independent-openpyxl",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "footprint-old-vs-new-denominator",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "saturation-and-crispr-denominators",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "g2-shape-groups",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "g2-recompute-DeltaPAP",
+      "passed": true,
+      "detail": 0.7692837466691289
+    },
+    {
+      "check": "g2-recompute-ridge",
+      "passed": true,
+      "detail": 0.8081859035239344
+    },
+    {
+      "check": "degformer-retrain-independent-metric",
+      "passed": true,
+      "detail": 0.7499777738296205
+    },
+    {
+      "check": "hif1a-13-rescue-positions-from-npz",
+      "passed": true,
+      "detail": {
+        "positions": 13
+      }
+    },
+    {
+      "check": "composition-independent-seed29-readback",
+      "passed": true,
+      "detail": {
+        "auroc": 0.7374756018217307,
+        "groups_disjoint": true
+      }
+    },
+    {
+      "check": "all-preregistered-seeds-coverages",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "existing-topic-cov50-cov80-groups-preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "safe-x-all-ten-repeats-vs-s5",
+      "passed": true,
+      "detail": {
+        "max_abs_error": 8.881784197001252e-16,
+        "mean": 0.9670000000000002
+      }
+    },
+    {
+      "check": "safe-x-no-pickle-execution",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "beta-trcp-overlap-two-methods",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "author-x-sampling-population",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "duplicate-leakage-present-all-folds",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "readme-headline-ledger",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "readme-measured-lines-link-json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "readme-no-unqualified-priority-claims",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "own-scripts-parse",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "all-preexisting-dirty-files-preserved",
+      "passed": true,
+      "detail": {
+        "files": 33
+      }
+    },
+    {
+      "check": "root-head-unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "new-status-paths-within-scope",
+      "passed": true,
+      "detail": [
+        "topics/degron-footprint/data/README.md",
+        "topics/degron-footprint/research/metadegron-analysis-2026-10-21/"
+      ]
+    },
+    {
+      "check": "third-party-data-remains-ignored",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "local-report-links",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "check": "downloaded-and-derived-sha256",
+      "passed": true,
+      "detail": {
+        "files_checked": 173,
+        "mismatch": []
+      }
+    }
+  ],
+  "g2_recomputed": {
+    "DeltaPAP": 0.7692837466691289,
+    "ridge": 0.8081859035239344,
+    "Degformer_retrained": 0.7499777738296205
+  },
+  "readme_number_ledger": {
+    "302": [
+      "dataset-audit.json",
+      "positive.rows",
+      302
+    ],
+    "240": [
+      "dataset-audit.json",
+      "positive.proteins_by_accession",
+      240
+    ],
+    "227": [
+      "dataset-audit.json",
+      "positive.species_suffix.HUMAN",
+      227
+    ],
+    "212": [
+      "dataset-audit.json",
+      "properties.positive_rows",
+      212
+    ],
+    "0,8082": [
+      "validation.json",
+      "g2_recomputed.ridge",
+      0.8082
+    ],
+    "0,7693": [
+      "validation.json",
+      "g2_recomputed.DeltaPAP",
+      0.7693
+    ],
+    "0,7500": [
+      "validation.json",
+      "g2_recomputed.Degformer_retrained",
+      0.75
+    ],
+    "0,9670": [
+      "safe-x-reproduction.json",
+      "recalculated_author_seed_mean",
+      0.967
+    ],
+    "8/20": [
+      "safe-x-reproduction.json",
+      "test_positive_coordinates_in_properties / positive_rows",
+      "8/20"
+    ],
+    "91–111": [
+      "composition-baseline.json",
+      "author_x_sampling.fold_leakage.test_rows_with_identical_coordinate_in_train",
+      [
+        91,
+        111
+      ]
+    ],
+    "2 peptide": [
+      "overlap-audit.json",
+      "datasets.footprint.regional_peptides",
+      2
+    ]
+  },
+  "limitations": [
+    "No MetaDegron-D GPS transfer or mutant-map score produced",
+    "No full primary-experiment biological error rate",
+    "No remote prediction submitted"
+  ],
+  "scope": {
+    "new_git_status_paths": [
+      "topics/degron-footprint/data/README.md",
+      "topics/degron-footprint/research/metadegron-analysis-2026-10-21/"
+    ],
+    "preexisting_untouched": true
+  },
+  "passed": true
+}

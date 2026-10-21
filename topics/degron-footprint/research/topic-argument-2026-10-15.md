@@ -1,5 +1,13 @@
 # Lập luận lại đề tài sau khi đối chiếu y văn — 15/10/2026
 
+> **Đồng bộ 21/10/2026 — bản ghi lịch sử; khối "Trạng thái 21/10/2026" trong [topic-decision.md](topic-decision.md) được ưu tiên khi mâu thuẫn.** Đã lỗi thời sau G2 (18/10) và audit MetaDegron (21/10):
+>
+> - **Mục 4 (cổng phơi lộ) và mục 7.2 (kiến trúc):** cổng + ΔPAP đạt 0,8002, thua ridge M3 0,8082 và đảo dấu ở seed 29; FiLM, bilinear, cross-ridge cũng thua ridge ở mọi seed — [g2-extension-2026-10-18](g2-extension-2026-10-18/README.md). Cổng không còn là hướng được ủng hộ bằng phép đo.
+> - **Mục 3.1 "trục ngữ cảnh chưa bão hòa" (+0,1311 precision@3):** đo trên kernel của PAP; G2 chưa cho thấy mô hình học sâu có ngữ cảnh vượt ridge. Số precision@3 ở đây **không cùng thang** với AUROC mức ô của G2.
+> - **Mục 7.1 (câu đóng góp "Chưa có mô hình nào được huấn luyện cho…"):** chuyển sang dạng có điều kiện; [audit MetaDegron](metadegron-analysis-2026-10-21/claims-verification.md) cho thấy ranh giới "mức residue" không độc quyền (Degpred có score residue, Degformer có mutation map).
+> - **Mục 7.4 "tính lực trên n = 91 — việc chặn duy nhất":** đã xong ([residue-task-derisk](residue-task-derisk-2026-10-15/README.md), G2); thứ còn mở là đường cong học, tiền huấn luyện nhãn mức túi và Degformer sạch cụm.
+> - **MetaDegron (bảng "chỗ đứng", mục 6):** "chỉ trình tự" đúng cho nhánh D; nhánh X dùng ASA/disorder ở đầu vào. Không có 21 head riêng; xem [model-and-evaluation.md](metadegron-analysis-2026-10-21/model-and-evaluation.md).
+
 > Viết lại mạch lập luận của đề tài dựa trên **mọi** thứ đã đo và đã đọc, gồm ba đợt mới nhất:
 > [audit dữ liệu đầy đủ](full-data-audit/README.md) (13/10), [baseline PAP + đối chứng ΔPAP](pap-baseline/README.md)
 > và [tiền đề kiến trúc](architecture-check/README.md) (14/10), và [tra y văn](architecture-check/prior-art-exposure-gate.md) (14/10).

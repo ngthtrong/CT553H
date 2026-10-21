@@ -23,7 +23,7 @@ import json
 import math
 from pathlib import Path
 
-TOPIC = next(p for p in Path(__file__).resolve().parents if (p / "log.md").exists())
+TOPIC = next(p for p in Path(__file__).resolve().parents if (p / "data" / "README.md").exists())
 BASE = (TOPIC / "data/interim/zhang-gps-unzip/I28 Initial MLN4924 SVM (Completed)")
 READ_MIN = 10
 

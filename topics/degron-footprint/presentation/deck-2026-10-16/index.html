@@ -6,7 +6,7 @@
 <title>Residue-Level Prediction of Degron Mutation Effects — CT553H</title>
 <!--
   Bộ slide buổi gặp GVHD · đề tài degron-footprint. Bản rút gọn 19/10/2026 để xin duyệt khung:
-  23 slide lõi + 21 phụ lục. Dựng từ bản 34 + 7 slide (16/10, rút gọn 18/10).
+  24 slide lõi + 20 phụ lục. Dựng từ bản 34 + 7 slide (16/10, rút gọn 18/10).
   Chữ trên slide: tiếng Anh. Ghi chú người nói (.speaker-note): tiếng Việt, bấm N.
   Thiết kế mới, không dùng lại khuôn slide cũ.
   Mở bằng file:// — không cần mạng (font có dự phòng hệ thống).
@@ -53,9 +53,9 @@
     <div><b>Nguồn và chú thích của slide:</b></div>
     <div>October 2026 · Data, scripts, result files and the decision log are kept in the project repository.</div>
 
-    <p class="warn"><b>Bản rút gọn 19/10/2026 — mục đích buổi: xin GVHD duyệt khung đề tài</b> (C-5). Còn <b>23 slide lõi</b>; phần thực nghiệm chi tiết, bảng số và các slide nền sinh học thứ yếu đã chuyển xuống <b>phụ lục A8–A21</b> (không xoá). Bấm <b>O</b> để xem tổng quan.</p>
+    <p class="warn"><b>Bản rút gọn 19/10/2026 — mục đích buổi: xin GVHD duyệt khung đề tài</b> (C-5). Còn <b>24 slide lõi</b>; phần thực nghiệm chi tiết, bảng số và các slide nền sinh học thứ yếu đã chuyển xuống <b>phụ lục A8–A20</b> (không xoá). Bấm <b>O</b> để xem tổng quan.</p>
     <p><b>Mở đầu.</b> Tiêu đề theo khuôn <i>[bài toán] bằng [nguồn nhãn]</i>; <b>cố ý chưa đặt tên mô hình</b> vì kiến trúc chưa chốt (lựa chọn 3 của Trọng).</p>
-    <p>Dải peptide trên slide là <b>HIF1A tile 25</b> — chính peptide sẽ dùng làm ví dụ ở slide 14, ô đỏ là footprint đo được.</p>
+    <p>Dải peptide trên slide là <b>HIF1A tile 25</b> — chính peptide sẽ dùng làm ví dụ ở slide 15, ô đỏ là footprint đo được.</p>
     <p class="warn">Không dùng chữ "enhanced" / "improved" / "novel" ở tiêu đề khi chưa có kết quả so sánh.</p>
     <p><b>Phím:</b> → bước tiếp · N ghi chú · O tổng quan · F toàn màn hình · P in PDF.</p>
   </div>
@@ -63,7 +63,7 @@
 
 <!-- ================================================ slide 2 ===== -->
 <section class="slide mid" data-section="Introduction" data-title="Proteins are chains of residues">
-  <div class="eyebrow"><span class="dot"></span>Introduction · 1 of 3</div>
+  <div class="eyebrow"><span class="dot"></span>Introduction · 1 of 4</div>
   <h2>Proteins are chains of amino acid residues</h2>
   <div class="cols c-2-narrow">
     <div class="stack">
@@ -152,14 +152,102 @@
 
     <p><b>Vì sao có slide này.</b> Phân biệt <i>residue</i> (vị trí) và <i>loại acid amin</i> phải nói <b>ngay</b> — đây là chỗ hay lẫn, và cả đề tài đứng trên phân biệt đó: ma trận 28 <b>vị trí</b> × 20 <b>loại</b>.</p>
     <p><b>Ba bước:</b> bấm lần 1 chuỗi thẳng có đánh số → lần 2 gập lại → lần 3 một hạt đổi đỏ kèm nhãn M7V.</p>
-    <p>Không có con số nào ở đây, cố ý. Mọi số định lượng bắt đầu từ slide 4 (số tự đo trên ClinVar) và slide 5 (cách đo).</p>
+    <p>Không có con số nào ở đây, cố ý. Mọi số định lượng bắt đầu từ slide 5 (số tự đo trên ClinVar) và slide 6 (cách đo).</p>
     <p><b>Chữ đã cắt khỏi slide — nói miệng:</b> "proteins do the work of the cell — catalysis, signalling, structure, transport"; chuỗi ví dụ <code>MKTAYIAKQR…</code>; "sequence determines the 3-D fold; the fold determines function". GIF bên trái là một fold dự đoán (Fam188a, Wikimedia Commons) — chỉ để thấy chuỗi gập lại thành khối ba chiều, <b>không</b> phải protein của đề tài.</p>
   </div>
 </section>
 
 <!-- ================================================ slide 3 ===== -->
+<section class="slide" data-section="Introduction" data-title="Protein level: synthesis against degradation">
+  <div class="eyebrow"><span class="dot"></span>Introduction · 2 of 4 · why degradation matters</div>
+  <h2>Protein level is set by a balance: synthesis against degradation</h2>
+  <div class="cols c-2">
+    <div class="stack">
+      <p class="lede">A protein's concentration in the cell is not set by production alone.</p>
+      <div class="card key" style="text-align:center;padding:16px">
+        <div class="seqline">
+          amount in cell = <span class="hl-s">rate of synthesis</span> − <span class="hl-d">rate of degradation</span>
+        </div>
+      </div>
+      <p class="t-lead" style="margin:4px 0 2px"><b>Cells destroy proteins on purpose, and constantly:</b></p>
+      <ul class="t-lead">
+        <li>to switch signals <b>off</b> on schedule — cell-cycle regulators, transcription factors</li>
+        <li>to clear <b>misfolded</b> or damaged copies before they aggregate</li>
+        <li>to adjust quickly to changed conditions</li>
+      </ul>
+      <div class="card alert" data-step="2">
+        <b>Consequence.</b> A protein that is <i>made</i> correctly but <i>destroyed</i> too fast is just as
+        absent as one that was never made. Degradation is a control layer in its own right.
+      </div>
+    </div>
+
+    <div class="fig">
+      <div class="fig-body">
+        <svg viewBox="0 0 440 340" style="width:100%;height:auto">
+          <!-- trụ cân -->
+          <line x1="220" y1="118" x2="220" y2="268" stroke="#C8D3D8" stroke-width="5" stroke-linecap="round"/>
+          <path d="M175 272 L265 272 L248 290 L192 290 Z" fill="#DDE5E9"/>
+
+          <!-- đòn cân, nghiêng ở bước 1 -->
+          <g data-step="0" style="opacity:1;transform:none">
+            <g id="beam" style="transition:transform .9s cubic-bezier(.3,.8,.3,1);transform-origin:220px 118px">
+              <line x1="70" y1="118" x2="370" y2="118" stroke="var(--ink)" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="220" cy="118" r="8" fill="var(--ink)"/>
+              <!-- đĩa trái: synthesis -->
+              <line x1="92" y1="118" x2="92" y2="162" stroke="#B6C4CB" stroke-width="2"/>
+              <path d="M52 162 L132 162 L120 190 L64 190 Z" fill="var(--stable-bg)" stroke="var(--stable)" stroke-width="1.6"/>
+              <text class="lbl" x="92" y="180" text-anchor="middle" fill="#1D6F65" font-weight="600">synthesis</text>
+              <!-- đĩa phải: degradation -->
+              <line x1="348" y1="118" x2="348" y2="162" stroke="#B6C4CB" stroke-width="2"/>
+              <path d="M308 162 L388 162 L376 190 L320 190 Z" fill="var(--degron-bg)" stroke="var(--degron)" stroke-width="1.6"/>
+              <text class="lbl" x="348" y="180" text-anchor="middle" fill="#A23247" font-weight="600">degradation</text>
+            </g>
+          </g>
+
+          <!-- mũi tên vào / ra -->
+          <path d="M92 86 L92 110" stroke="var(--stable)" stroke-width="2.5" marker-end="url(#ar-in)" class="flow"/>
+          <path d="M348 110 L348 86" stroke="var(--degron)" stroke-width="2.5" marker-end="url(#ar-out)" class="flow"/>
+          <text class="lblx" x="92" y="76" text-anchor="middle">made</text>
+          <text class="lblx" x="348" y="76" text-anchor="middle">destroyed</text>
+
+          <!-- mức protein -->
+          <text class="lbl" x="220" y="36" text-anchor="middle" font-weight="600">protein level in the cell</text>
+          <rect x="150" y="44" width="140" height="17" rx="8" fill="#E7EDF0"/>
+          <rect id="level" x="150" y="44" width="118" height="17" rx="8" fill="var(--model)"
+                style="transition:width .9s cubic-bezier(.3,.8,.3,1)"/>
+
+          <!-- bước 2: đĩa phải nặng dần -->
+          <g data-step="2" data-anim="fade">
+            <text class="lblx" x="348" y="212" text-anchor="middle" fill="#A23247">degradation up</text>
+            <text class="lblx" x="220" y="316" text-anchor="middle">⇒ the protein disappears although synthesis never changed</text>
+          </g>
+
+          <defs>
+            <marker id="ar-in" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0 0 L8 4 L0 8 z" fill="var(--stable)"/></marker>
+            <marker id="ar-out" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0 0 L8 4 L0 8 z" fill="var(--degron)"/></marker>
+          </defs>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="speaker-note">
+    <div><b>Nguồn và chú thích của slide:</b></div>
+    <div><b>own diagram.</b> Step 2 tips the balance toward degradation; the level bar falls with it.</div>
+    <div>No numbers on this slide, deliberately — every quantitative statement about stability comes after the assay is explained (slide 6).</div>
+
+    <p><b>Vai của slide.</b> Để người nghe hiểu <b>vì sao độ bền là một đại lượng đáng dự đoán</b>. Không có con số nào ở đây — cố ý.</p>
+    <p><b>Animation:</b> bấm lần 1 cân cân bằng; lần 2 đĩa "degradation" nặng xuống và thanh mức protein tụt — nói đúng câu "made correctly but destroyed too fast is just as absent".</p>
+  </div>
+</section>
+
+<!-- ================================================ slide 4 ===== -->
 <section class="slide fill" data-section="Introduction" data-title="A degron is the recognition signal">
-  <div class="eyebrow"><span class="dot"></span>Introduction · 2 of 3</div>
+  <div class="eyebrow"><span class="dot"></span>Introduction · 3 of 4</div>
   <h2>A degron is the recognition signal — and the question is <em>which residues</em> carry it</h2>
   <div class="cols c-2-wide">
     <div class="stack">
@@ -279,20 +367,20 @@
   <div class="speaker-note">
     <div><b>Nguồn và chú thích của slide:</b></div>
     <div><b>own diagram.</b> Zoom: whole protein → the 28-mer the assay measures → the residues that matter.</div>
-    <div>“Autonomous degrons” is a <b>measured</b> property of the assay, not an assumption — see slide 4.</div>
+    <div>“Autonomous degrons” is a <b>measured</b> property of the assay, not an assumption — see slide 5.</div>
 
     <p><b>Hình quan trọng nhất của phần dẫn nhập.</b> Zoom ba tầng: cả protein → 28 ô → 3–4 ô đỏ → câu hỏi "which residues?".</p>
-    <p><b>Cụm "autonomous degrons"</b> thêm theo <b>D-035</b>: phạm vi degron tự trị, biến thể dòng mầm. Đây là giới hạn của <b>assay</b>, <b>đã đo</b> (slide 4), không phải giả định.</p>
+    <p><b>Cụm "autonomous degrons"</b> thêm theo <b>D-035</b>: phạm vi degron tự trị, biến thể dòng mầm. Đây là giới hạn của <b>assay</b>, <b>đã đo</b> (slide 5), không phải giả định.</p>
     <p class="warn">Câu scope statement là yêu cầu cứng của hướng dẫn §2 và phải nằm <b>ngay</b> ở slide định nghĩa bài toán, không để xuống phần giới hạn.</p>
-    <p>Gradation "19% strong / 30% intermediate / 51% non-degron" là số của Voutsinos 2026 — <b>để dành tới slide 8</b>, ở đây chỉ nói "graded".</p>
-    <p><b>Chữ đã cắt khỏi slide — nói miệng:</b> degron thường là motif tuyến tính ngắn, vài đến vài chục residue; có thể ở N-đầu, C-đầu hoặc bên trong; cường độ phân mức <i>strong → intermediate → inactive</i> (số 19/30/51% của Voutsinos để tới slide 8). Bản scope đầy đủ: degron cần <b>priming</b> — ví dụ phosphoryl hoá bởi một kinase khác — nằm <b>ngoài tầm</b> của assay; dự đoán không tự nó thiết lập tác động trên protein nguyên vẹn hay tác dụng điều trị.</p>
+    <p>Gradation "19% strong / 30% intermediate / 51% non-degron" là số của Voutsinos 2026 — <b>để dành tới slide 9</b>, ở đây chỉ nói "graded".</p>
+    <p><b>Chữ đã cắt khỏi slide — nói miệng:</b> degron thường là motif tuyến tính ngắn, vài đến vài chục residue; có thể ở N-đầu, C-đầu hoặc bên trong; cường độ phân mức <i>strong → intermediate → inactive</i> (số 19/30/51% của Voutsinos để tới slide 9). Bản scope đầy đủ: degron cần <b>priming</b> — ví dụ phosphoryl hoá bởi một kinase khác — nằm <b>ngoài tầm</b> của assay; dự đoán không tự nó thiết lập tác động trên protein nguyên vẹn hay tác dụng điều trị.</p>
 <p><b>GIF mới:</b> miền <b>RING finger</b> (PDB 1chc) — miền xúc tác của phần lớn E3 ligase. Hsp90 / Wikimedia Commons, <b>CC BY-SA 3.0</b>, ghi công ngay dưới hình. <span class="warn">⚠ ShareAlike: phải rà lại nếu chia sẻ deck ra ngoài repo.</span></p>
   </div>
 </section>
 
-<!-- ================================================ slide 4 ===== -->
+<!-- ================================================ slide 5 ===== -->
 <section class="slide" data-section="Introduction" data-title="Why this matters: disease variants in degrons">
-  <div class="eyebrow"><span class="dot"></span>Introduction · 3 of 3 · why the question is worth asking</div>
+  <div class="eyebrow"><span class="dot"></span>Introduction · 4 of 4 · why the question is worth asking</div>
   <h2>Measured degron regions are enriched for disease variants</h2>
   <div class="cols c-2">
     <div class="stack">
@@ -456,7 +544,7 @@
   </div>
 </section>
 
-<!-- ================================================ slide 5 ===== -->
+<!-- ================================================ slide 6 ===== -->
 <section class="slide fill" data-section="Related work" data-title="How degron data is measured: the GPS assay">
   <div class="eyebrow"><span class="dot"></span>Related work · 1 of 5 · the precondition for reading the next table</div>
   <h2>How degron data is measured: the GPS stability assay</h2>
@@ -532,16 +620,16 @@
     <div>Voutsinos et al., <i>Sci Adv</i> 2026, Fig. 1. DOI 10.1126/sciadv.adz3483. <b>CC BY-NC 4.0.</b></div>
     <div>Koren I, Timms RT, Kula T, Xu Q, Li MZ, Elledge SJ. <i>Cell</i> 173(7):1622–1635.e14, 2018. DOI 10.1016/j.cell.2018.04.028</div>
 
-    <p><b>Slide điều kiện:</b> phải giải thích cách đo <b>trước</b> khi so sánh nhãn ở slide 6.</p>
+    <p><b>Slide điều kiện:</b> phải giải thích cách đo <b>trước</b> khi so sánh nhãn ở slide 7.</p>
     <p class="no">⚠ Chiều của PSI và chiều của ΔPSI là <b>hai chỗ đã nhầm</b> trong tài liệu học của repo — in to, tô màu, giữ đúng chiều ở mọi hình sau.</p>
     <p>Hình của tác giả đặt ở slide này là cố ý: tăng độ tin cậy và cho thấy đã đọc bài gốc. <b>Caption CC BY-NC 4.0 là bắt buộc</b>, không được bỏ.</p>
-    <p>Thanh PSI 1→6 tái sử dụng ở slide 14 và 17.</p>
-    <p><b>Chữ đã cắt khỏi slide — nói miệng:</b> số bin khác nhau giữa các bài — Zhang 6 bin, Voutsinos 4, Larsen 4 cổng trên thang <b>đảo ngược</b>; đây là chỗ dễ lẫn khi đọc bảng ở slide 6. Bốn bước GPS bản dài: thư viện peptide ngắn fused GFP · một peptide/tế bào kèm reporter bền làm nội chuẩn · FACS theo tỉ số reporter · giải trình tự từng bin, phân bố bin cho ra điểm bền.</p>
+    <p>Thanh PSI 1→6 tái sử dụng ở slide 15 và 18.</p>
+    <p><b>Chữ đã cắt khỏi slide — nói miệng:</b> số bin khác nhau giữa các bài — Zhang 6 bin, Voutsinos 4, Larsen 4 cổng trên thang <b>đảo ngược</b>; đây là chỗ dễ lẫn khi đọc bảng ở slide 7. Bốn bước GPS bản dài: thư viện peptide ngắn fused GFP · một peptide/tế bào kèm reporter bền làm nội chuẩn · FACS theo tỉ số reporter · giải trình tự từng bin, phân bố bin cho ra điểm bền.</p>
 <p>Ghi công CC BY-NC 4.0 nay <b>hiện trên slide</b> dưới hình (figcaption), không chỉ nằm trong ghi chú — đây là điều kiện giấy phép, không bỏ được.</p>
   </div>
 </section>
 
-<!-- ================================================ slide 6 ===== -->
+<!-- ================================================ slide 7 ===== -->
 <section class="slide" data-section="Related work" data-title="Prior work at a glance">
   <div class="eyebrow"><span class="dot"></span>Related work · 2 of 5 · history research, step 1: group by method</div>
   <h2>Everything published so far predicts a <em>segment</em></h2>
@@ -608,7 +696,7 @@
           <div><span class="k">But</span><span class="x">predicts at peptide level, no publication
             <span class="chip s" style="padding:1px 6px">full table: appendix A7</span></span></div>
           <div><span class="k">Also</span><span class="x">adjacent variant-effect models
-            <span class="chip s" style="padding:1px 6px">appendix A10</span></span></div>
+            <span class="chip s" style="padding:1px 6px">appendix A9</span></span></div>
         </div>
       </div>
     </div>
@@ -626,7 +714,7 @@
   </div>
 </section>
 
-<!-- ================================================ slide 7 ===== -->
+<!-- ================================================ slide 8 ===== -->
 <section class="slide" data-section="Related work" data-title="Group 1: motif and database tools">
   <div class="eyebrow"><span class="dot"></span>Related work · 3 of 5 · history research, step 2: strengths and limits</div>
   <h2>Group 1 — motif and database tools: broad coverage, curated labels</h2>
@@ -691,7 +779,7 @@
             <text class="lbl" x="68" y="266" font-weight="700" fill="#8A6A17">residue</text>
             <text class="lblx" x="68" y="281" fill="#8A6A17">empty — nothing in this group reaches here</text>
           </g>
-          <text class="lblx" x="8" y="330">the same axis returns on slides 8–9 and 10,</text>
+          <text class="lblx" x="8" y="330">the same axis returns on slides 9–10 and 10,</text>
           <text class="lblx" x="8" y="344">with the gap narrowing each time</text>
         </svg>
       </div>
@@ -712,7 +800,7 @@
   </div>
 </section>
 
-<!-- ================================================ slide 8 ===== -->
+<!-- ================================================ slide 9 ===== -->
 <section class="slide mid" data-section="Related work" data-title="Group 2a: where the field's labels come from">
   <div class="eyebrow"><span class="dot"></span>Related work · 4 of 5 · the closest prior work, part 1</div>
   <h2>Group 2 — this is where the field's <em>labels</em> come from</h2>
@@ -740,7 +828,7 @@
 
     <div class="stack">
       <figure style="margin:0">
-        <img src="../../../../lectures/degron-footprint/assets/figures/voutsinos2026-f4.jpg"
+        <img src="assets/voutsinos2026-f4.jpg"
              alt="PAP architecture and held-out scatter plots, Voutsinos et al. 2026 Figure 4"
              style="width:100%;border:1px solid var(--rule);border-radius:8px">
         <figcaption class="cap" style="margin-top:4px">Voutsinos et al., <i>Sci Adv</i> 2026, Fig. 4 ·
@@ -757,7 +845,7 @@
     <div>Degformer: own reading of the full source and own leakage measurement on its shipped CSV. PAP numbers as reported by the authors; the permutation test is ours.</div>
 
     <p><b>Slide quan trọng nhất của phần 3, và chỗ dễ sai nhất.</b></p>
-    <p class="no">1. <b>Phải nói Degformer đã xuất ma trận 28×20.</b> Câu "chưa sản phẩm nào xuất ma trận 28×20" <b>đã bị bác bỏ</b>, không được xuất hiện ở bất kỳ đâu. Cách nói đúng: <i>nhiệm vụ không còn trống, nhưng <b>điều kiện đánh giá</b> còn trống</i> — đó là cầu nối sang slide 10–11.</p>
+    <p class="no">1. <b>Phải nói Degformer đã xuất ma trận 28×20.</b> Câu "chưa sản phẩm nào xuất ma trận 28×20" <b>đã bị bác bỏ</b>, không được xuất hiện ở bất kỳ đâu. Cách nói đúng: <i>nhiệm vụ không còn trống, nhưng <b>điều kiện đánh giá</b> còn trống</i> — đó là cầu nối sang slide 11–12.</p>
     <p>2. Số Degformer 0,9162/0,9420/0,9463 là <b>self-reported</b>; repo chỉ dùng <code>scipy.stats.pearsonr</code> nên rất có thể là Pearson. Ghi "self-reported correlations", <b>không</b> ghi "ρ".</p>
     <p>3. <b>Phép kiểm bất biến hoán vị là tự đo</b> — một trong hai con số tự đo mạnh nhất của đề tài. Nhãn nguồn phải rõ để GVHD biết đó là việc của sinh viên.</p>
     <p>4. Larsen 2025: ghi <b>preprint</b>. <b>Không</b> nói nó là test trình tự chưa thấy — 1.583/1.626 (97,4%) TF của nó đã có trong peptidome GPS.</p>
@@ -766,7 +854,7 @@
   </div>
 </section>
 
-<!-- ================================================ slide 9 ===== -->
+<!-- ================================================ slide 10 ===== -->
 <section class="slide mid" data-section="Related work" data-title="Group 2b: why none answers the residue question">
   <div class="eyebrow"><span class="dot"></span>Related work · 5 of 5 · history research, step 3: contrast with this thesis</div>
   <h2>…and why <em>none</em> of them answers the residue question</h2>
@@ -842,14 +930,14 @@
         <div class="lines">
           <div><span class="k">Shuffle the residues</span><span class="x">the score does not move</span></div>
           <div><span class="k">Pearson</span><span class="x"><span class="v">1.000000</span> original vs
-            shuffled <span class="lblx">the formal gap: slide 10</span></span></div>
+            shuffled <span class="lblx">the formal gap: slide 11</span></span></div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="speaker-note">
-    <p class="warn">Bản rút gọn 19/10: nhóm 3 (AlphaMissense · Schulze &amp; Lindorff-Larsen · LeBlanc) nay ở <b>phụ lục A10</b>. Nếu cần ghi công quy ước đánh giá thì nói: "theo LeBlanc et al. 2026".</p>
+    <p class="warn">Bản rút gọn 19/10: nhóm 3 (AlphaMissense · Schulze &amp; Lindorff-Larsen · LeBlanc) nay ở <b>phụ lục A9</b>. Nếu cần ghi công quy ước đánh giá thì nói: "theo LeBlanc et al. 2026".</p>
     <div><b>Group 2, phần 2 — vì sao không bài nào trả lời được mức residue</b></div>
     <p>Ba dòng hạn chế: đơn vị dự đoán là cả peptide/tile; PAP bất biến hoán vị (<code>Conv1D(kernel=1)</code> + global average pooling); Degformer chia ngẫu nhiên, rò rỉ <b>4,09%</b> trình tự y hệt và <b>thiếu tập blind</b> trong repo.</p>
     <p>Phép kiểm hoán vị là <b>tự đo</b> — một trong hai con số tự đo mạnh nhất. Nói rõ nhãn nguồn để GVHD biết đó là việc của sinh viên.</p>
@@ -857,7 +945,7 @@
   </div>
 </section>
 
-<!-- ================================================ slide 10 ===== -->
+<!-- ================================================ slide 11 ===== -->
 <section class="slide mid" data-section="Gap" data-title="Why today's models cannot say which residue matters">
   <div class="eyebrow"><span class="dot"></span>Gap · 1 of 2 · the strongest asset of this thesis</div>
   <h2>Today's best model cannot say <em>which residue</em> matters</h2>
@@ -963,17 +1051,17 @@
     <div><b>Nguồn và chú thích của slide:</b></div>
     <div>PAP is not a bad model — it was trained for a <b>segment-level</b> score. Using it for residue-level effects is using it <b>outside its design</b>.</div>
 
-    <p class="warn">Bản rút gọn 19/10: công thức Conv1D / GlobalAveragePooling, bảng 2.353/2.624 và delta +0,0289 đã chuyển sang <b>phụ lục A11</b> (bản đầy đủ của slide này) và A5. Slide chỉ giữ một ý: <b>đếm acid amin thì không phân biệt được vị trí</b>.</p>
+    <p class="warn">Bản rút gọn 19/10: công thức Conv1D / GlobalAveragePooling, bảng 2.353/2.624 và delta +0,0289 đã chuyển sang <b>phụ lục A10</b> (bản đầy đủ của slide này) và A5. Slide chỉ giữ một ý: <b>đếm acid amin thì không phân biệt được vị trí</b>.</p>
     <p><b>Tài sản mạnh nhất của đề tài, và là slide nên mở đầu phần lập luận.</b> Không đợt audit nào trong bốn đợt 13–15/10 làm yếu trụ này. Nói rõ <b>"provable"</b> và nói rõ đây là <b>tự đo</b>.</p>
     <p class="no">⚠ Hai con số đừng lẫn: <b>89,7%</b> là trên 2.624 peptide <b>có footprint</b>; <b>68,9%</b> là tỉ lệ tương ứng trên <b>bộ quét</b> đo ở phiên 8. Slide dùng 89,7%; nếu GVHD hỏi về bộ quét thì đưa 68,9%.</p>
     <p class="no">⚠ Khi nói "+0,0289" <b>phải nói kèm</b> rằng 80% của nó là <b>thành phần của lân cận ±3</b>, không phải thứ tự và không phải vị trí tuyệt đối (C-17). Nếu chỉ nói "+0,0289 nhờ thêm ngữ cảnh vị trí" thì GVHD sẽ hiểu sai theo đúng hướng mà phép đo đã bác.</p>
-    <p><b>Câu chuyển tiếp đúng mức:</b> <i>"PAP is not a bad model — it was trained for a segment-level score. Using it for residue-level effects is using it outside its design."</i> Mạnh hơn hẳn việc nói PAP yếu, và dẫn thẳng sang slide 11.</p>
+    <p><b>Câu chuyển tiếp đúng mức:</b> <i>"PAP is not a bad model — it was trained for a segment-level score. Using it for residue-level effects is using it outside its design."</i> Mạnh hơn hẳn việc nói PAP yếu, và dẫn thẳng sang slide 12.</p>
     <p><b>Chữ đã cắt khỏi slide — nói miệng:</b> con số +0,0289 đo trên <b>1.599 cụm protein / 2.288 peptide</b>; bản dài của ba bước lập luận: điểm PAP là hàm chỉ của thành phần acid amin, nên hiệu ứng thay thế a→b không chứa chỉ số vị trí, do đó mọi nhóm thay thế cùng cặp acid amin bị gán hiệu ứng y hệt bất kể vị trí.</p>
 <p>⚠ Nhắc lại khi nói "+0,0289": <b>80% là thành phần của lân cận ±3</b>, không phải thứ tự, không phải vị trí tuyệt đối.</p>
   </div>
 </section>
 
-<!-- ================================================ slide 11 ===== -->
+<!-- ================================================ slide 12 ===== -->
 <section class="slide" data-section="Gap" data-title="Why now, and who needs it">
   <div class="eyebrow"><span class="dot"></span>Gap · 2 of 2</div>
   <h2>Why <em>now</em>, and who needs it</h2>
@@ -1048,7 +1136,7 @@
         <div class="card-t">Intended users</div>
         <table class="xtight"><thead><tr><th style="width:38%">User</th><th>What they get</th></tr></thead>
         <tbody>
-          <tr><td><b>Variant interpretation</b><br><span class="lblx">530,412 VUS in degron regions · slide 4</span></td>
+          <tr><td><b>Variant interpretation</b><br><span class="lblx">530,412 VUS in degron regions · slide 5</span></td>
               <td>a <b>mechanistic hypothesis</b> beside pathogenicity scores: stabilising or destabilising,
                   and by how much</td></tr>
           <tr><td><b>Experimental biologists</b></td>
@@ -1074,7 +1162,7 @@
   </div>
 </section>
 
-<!-- ================================================ slide 12 ===== -->
+<!-- ================================================ slide 13 ===== -->
 <section class="slide" data-section="Contribution" data-title="Contribution: three pillars">
   <div class="eyebrow"><span class="dot"></span>Contribution · what this thesis claims</div>
   <h2>Three pillars — and <em>where each one stands</em></h2>
@@ -1161,14 +1249,14 @@
     <p><b>Bảng phân rã là chỗ mạnh nhất của slide này</b> và là chỗ thể hiện tính trung thực: nó <b>tự hạ</b> cách nói "vị trí thắng thành phần" mà chính repo từng dùng.</p>
     <p class="no">⚠ <b>Không được nói "position beats composition"</b> (C-17 mục b). Phát biểu đúng: <i>"composition at a ±3 neighbourhood scale beats composition at whole-peptide scale"</i>. GVHD đọc bảng phân rã sẽ thấy ngay nếu nói sai.</p>
     <p class="no">⚠ <b>Câu chân "ΔPAP ngoài thiết kế" là bắt buộc.</b> Nếu không nói, câu "+0,0300" bị đọc quá mạnh.</p>
-    <p><b>Lời GVHD xác nhận trụ phần mềm (D-034) không lên slide</b>, vì chưa có biên bản: <b>nói miệng</b> và xin ghi biên bản ở slide 23. Lời đó <b>không</b> nới G2 và <b>không</b> bỏ yêu cầu kiến trúc mới, nên C4 vẫn là ô mở chính.</p>
+    <p><b>Lời GVHD xác nhận trụ phần mềm (D-034) không lên slide</b>, vì chưa có biên bản: <b>nói miệng</b> và xin ghi biên bản ở slide 24. Lời đó <b>không</b> nới G2 và <b>không</b> bỏ yêu cầu kiến trúc mới, nên C4 vẫn là ô mở chính.</p>
     <p>Mốc đã khoá, đừng đổi khi chưa có quyết định mới: <b>0,7693</b> · trần <b>0,9519</b> · ngưỡng phát hiện <b>0,0123</b>.</p>
     <p><b>Số đã rút khỏi bảng C1–C5 — ở phụ lục A2, nói khi được hỏi:</b> C1 — 89,7% peptide có footprint, phản ví dụ hạng 2 tường minh, phép kiểm hoán vị PAP Pearson 1,000000. C2 — hai bộ nhãn hiệu ứng đột biến với hai vai, trần 0,9458 / 0,9519, baseline thành phần, đối chứng mô hình đã công bố, split theo cụm protein, ngưỡng phát hiện MDE 0,0123. C3 — +0,0300 với CI [0,0234; 0,0366]. C4 — trần 0,9519. C5 — harness chạy lại mô hình trước dưới cùng split cụm.</p>
 <p>Câu "M0 ties ΔPAP cnn2w7" bản đầy đủ: <b>+0,0008, CI [−0,0057; 0,0074]</b>.</p>
   </div>
 </section>
 
-<!-- ================================================ slide 13 ===== -->
+<!-- ================================================ slide 14 ===== -->
 <section class="slide fill mid" data-section="Problem" data-title="Input, output, label">
   <div class="eyebrow"><span class="dot"></span>Problem definition · 1 of 3</div>
   <h2>Input, output, label</h2>
@@ -1240,7 +1328,7 @@
             <rect x="158" y="46" width="104" height="76" rx="9" fill="var(--model-bg)"
                   stroke="var(--model)" stroke-width="1.8" stroke-dasharray="6 4"/>
             <text class="lbl" x="210" y="80" text-anchor="middle" font-weight="700" fill="#2A567F">model</text>
-            <!-- <text class="lblx" x="210" y="98" text-anchor="middle" fill="#2A567F">architecture in slide 19</text> -->
+            <!-- <text class="lblx" x="210" y="98" text-anchor="middle" fill="#2A567F">architecture in slide 20</text> -->
           </g>
           <path d="M266 84 L294 84" stroke="var(--muted)" stroke-width="1.6" marker-end="url(#ar-io)"/>
 
@@ -1319,7 +1407,7 @@
 
   <div class="speaker-note">
     <div><b>Nguồn và chú thích của slide:</b></div>
-    <div><b>own diagram.</b> The matrix panel is schematic; slide 14 shows a real measured one.</div>
+    <div><b>own diagram.</b> The matrix panel is schematic; slide 15 shows a real measured one.</div>
     <div>Cluster-level, not peptide-level, is the unit of inference — ignoring the nesting inflates false positives.</div>
 
     <p><b>"Unit of inference is the protein cluster"</b> phải nói sớm. Nhưng sau phiên 8 thì <b>mức phạt đã đo được và nhỏ hơn lo ngại</b>: thư viện bão hòa chọn mỗi protein một peptide ⇒ 91 peptide trên 91 protein / <b>89 cụm</b>, lồng nhau ở mức protein gần như không có.</p>
@@ -1330,7 +1418,7 @@
   </div>
 </section>
 
-<!-- ================================================ slide 14 ===== -->
+<!-- ================================================ slide 15 ===== -->
 <section class="slide" data-section="Problem" data-title="One worked example: HIF1A tile 25">
   <div class="eyebrow"><span class="dot"></span>Problem definition · 2 of 3 · real measured data</div>
   <h2>One worked example — a single degron peptide, as the data actually sees it</h2>
@@ -1424,7 +1512,7 @@
   </div>
 </section>
 
-<!-- ================================================ slide 15 ===== -->
+<!-- ================================================ slide 16 ===== -->
 <section class="slide" data-section="Problem" data-title="What the data already tells us">
   <div class="eyebrow"><span class="dot"></span>Problem definition · 3 of 3 · first results, in plain words</div>
   <h2>What we already know — and what we <em>do not</em></h2>
@@ -1435,7 +1523,7 @@
         <p class="t-lead">The <b>±3 residues around a substitution</b> predict its effect better than the
         peptide's overall amino-acid make-up.</p>
         <div class="chips" style="margin-top:7px"><span class="chip m">measured</span>
-          <span class="chip s">appendix A12</span></div>
+          <span class="chip s">appendix A11</span></div>
       </div>
       <div class="card good" data-step="2">
         <div class="card-t">2 · A simple model already beats the published control</div>
@@ -1449,7 +1537,7 @@
         <p class="t-lead">Five more complex models were tried and <b>none beat plain ridge</b>. So far the limit
         looks like the <b>amount of labelled data</b>, not model size.</p>
         <p class="t-note" style="margin-top:6px">Learning from the scanning set only and transferring to the
-        matrix still loses to the control — appendix A15.</p>
+        matrix still loses to the control — appendix A14.</p>
       </div>
     </div>
 
@@ -1494,17 +1582,17 @@
 
   <div class="speaker-note">
     <div><b>Nguồn và chú thích của slide:</b></div>
-    <div><b>own measurements.</b> Số lấy từ <code>research/g2-saturation-2026-10-18/</code> và <code>research/g2-extension-2026-10-18/</code>; bản đầy đủ ở phụ lục A14–A16.</div>
+    <div><b>own measurements.</b> Số lấy từ <code>research/g2-saturation-2026-10-18/</code> và <code>research/g2-extension-2026-10-18/</code>; bản đầy đủ ở phụ lục A13–A15.</div>
 
-    <p class="warn"><b>Slide mới 19/10</b> thay bốn slide thực nghiệm (nay là phụ lục A13–A16) để buổi xin duyệt khung không sa vào số liệu. Ba ý, mỗi ý một câu: (1) láng giềng ±3 quan trọng; (2) mô hình đơn giản đã vượt đối chứng; (3) chưa có thành phần mới — và đó là câu hỏi 3 ở slide 23.</p>
+    <p class="warn"><b>Slide mới 19/10</b> thay bốn slide thực nghiệm (nay là phụ lục A12–A15) để buổi xin duyệt khung không sa vào số liệu. Ba ý, mỗi ý một câu: (1) láng giềng ±3 quan trọng; (2) mô hình đơn giản đã vượt đối chứng; (3) chưa có thành phần mới — và đó là câu hỏi 3 ở slide 24.</p>
     <p class="no">⚠ <b>Câu dưới hình là bắt buộc:</b> trần đo lường không phải lời hứa về hiệu năng đạt được. Không viết "headroom to the ceiling". Trục không bắt đầu từ 0 (0,70) — đã in trên hình; nếu GVHD hỏi thì nói thẳng.</p>
-    <p class="no">⚠ Hình chỉ là <b>chế độ B</b> (học trực tiếp trên ma trận, OOF theo cụm): ridge M3 <b>0,8082</b> so với ΔPAP <code>cnn2w1</code> <b>0,7693</b>, +0,0389 [+0,0216; +0,0571]. <b>Không</b> trình bày nó như đóng góp kiến trúc — ridge là mô hình đơn giản; thành phần mới vẫn là ô mở. Chế độ A (học trên bộ quét rồi chuyển sang ma trận) <b>vẫn thua</b> −0,0420 — đã nói ở thẻ 3 và ở A15; đừng trộn hai chế độ thành một chuỗi tiến bộ.</p>
-    <p>Thẻ 1: phát biểu đúng là <i>"composition at a ±3 neighbourhood scale beats composition at whole-peptide scale"</i> (+0,0289 trên bộ quét, 80% đến từ thành phần lân cận ±3); <b>không</b> nói "vị trí thắng thành phần" (C-17b). Chi tiết ở A12.</p>
+    <p class="no">⚠ Hình chỉ là <b>chế độ B</b> (học trực tiếp trên ma trận, OOF theo cụm): ridge M3 <b>0,8082</b> so với ΔPAP <code>cnn2w1</code> <b>0,7693</b>, +0,0389 [+0,0216; +0,0571]. <b>Không</b> trình bày nó như đóng góp kiến trúc — ridge là mô hình đơn giản; thành phần mới vẫn là ô mở. Chế độ A (học trên bộ quét rồi chuyển sang ma trận) <b>vẫn thua</b> −0,0420 — đã nói ở thẻ 3 và ở A14; đừng trộn hai chế độ thành một chuỗi tiến bộ.</p>
+    <p>Thẻ 1: phát biểu đúng là <i>"composition at a ±3 neighbourhood scale beats composition at whole-peptide scale"</i> (+0,0289 trên bộ quét, 80% đến từ thành phần lân cận ±3); <b>không</b> nói "vị trí thắng thành phần" (C-17b). Chi tiết ở A11.</p>
     <p>Thẻ 3: năm mô hình sức chứa lớn hơn đều thua ridge: cổng sigmoid · FiLM · bilinear · ridge tích chéo · kiến trúc transformer của Degformer huấn luyện lại dưới cov80 (0,7500). Cách đọc "nút thắt là lượng nhãn" đang là đề xuất <b>C-20, chờ Trọng</b> — nói là <i>cách đọc hiện tại</i>, không phải kết luận đã chốt.</p>
   </div>
 </section>
 
-<!-- ================================================ slide 16 ===== -->
+<!-- ================================================ slide 17 ===== -->
 <section class="slide" data-section="Datasets" data-title="From raw reads to labels: pipeline and validation gate">
   <div class="eyebrow"><span class="dot"></span>Datasets · 1 of 2</div>
   <h2>From raw reads to labels: pipeline and validation gate</h2>
@@ -1608,11 +1696,11 @@
     <p><b>Phễu hẹp dần theo từng bước</b> — người nghe thấy ngay 91 đến từ đâu, và đó là cách trung thực nhất để giới thiệu con số nhỏ đó. Nếu quá giờ, slide này có thể nói lướt (chi tiết ở phụ lục A3).</p>
     <p><b>Chữ đã cắt khỏi slide — nói miệng:</b> bước 1 là một file cho mỗi bin mỗi điều kiện; bước 2 công thức <code>nbᵢ = bᵢ × factorᵢ</code>. Cùng bộ mã đó dựng được <b>các điều kiện tác giả không công bố bảng PSI</b> — đó là lý do có replicate thứ hai. Ba construct sai trong bảng tác giả: <b>hai</b> có <code>Sum = 0 / PSI = NA</code> dù có read, <b>một</b> lệch PSI <b>0,62</b>.</p>
     <p><b>Ảnh mới:</b> sơ đồ FACS (Wikimedia Commons) đặt cạnh bước đọc read theo bin, để thấy "bin" là <b>cổng phân loại tế bào</b> chứ không phải một khái niệm tính toán.</p>
-    <p><b>Đã bỏ khỏi slide 18/10 cho đỡ chật — nói miệng:</b> "Also found and corrected: ba construct bị chấm sai trong bảng tác giả do lỗi header" (hai cái <code>Sum = 0 / PSI = NA</code> dù có read, một cái lệch PSI 0,62). Đây là chi tiết chứng minh đã đọc dữ liệu tới từng dòng — đáng nói miệng, không cần in lên slide.</p>
+    <p><b>Đã bỏ khỏi slide 19/10 cho đỡ chật — nói miệng:</b> "Also found and corrected: ba construct bị chấm sai trong bảng tác giả do lỗi header" (hai cái <code>Sum = 0 / PSI = NA</code> dù có read, một cái lệch PSI 0,62). Đây là chi tiết chứng minh đã đọc dữ liệu tới từng dòng — đáng nói miệng, không cần in lên slide.</p>
   </div>
 </section>
 
-<!-- ================================================ slide 17 ===== -->
+<!-- ================================================ slide 18 ===== -->
 <section class="slide mid" data-section="Datasets" data-title="Two label sets, two roles">
   <div class="eyebrow"><span class="dot"></span>Datasets · 2 of 2 · the two sources of residue-level labels</div>
   <h2>Two mutation-effect label sets — <em>two different jobs</em></h2>
@@ -1644,7 +1732,7 @@
       </div>
       <div class="chips">
         <span class="chip m">all sources downloaded · SHA-256 per file · licence-checked</span>
-        <span class="chip s">provenance: appendix A17</span>
+        <span class="chip s">provenance: appendix A16</span>
       </div>
   </div>
 
@@ -1658,7 +1746,7 @@
   </div>
 </section>
 
-<!-- ================================================ slide 18 ===== -->
+<!-- ================================================ slide 19 ===== -->
 <section class="slide mid" data-section="Method" data-title="Proposed approach: what is already fixed">
   <div class="eyebrow"><span class="dot"></span>Method · 1 of 2 · the part that is settled</div>
   <h2>Proposed approach — what is <em>already fixed</em></h2>
@@ -1672,7 +1760,7 @@
           <tr><td>Split · baselines</td><td>protein cluster · composition-only baseline · published control
             <b>ΔPAP</b></td></tr>
           <tr><td>Where information sits</td><td>the <b>±3 neighbourhood</b> carries most of the gain
-            <span class="chip s" style="padding:1px 6px">appendix A12</span></td></tr>
+            <span class="chip s" style="padding:1px 6px">appendix A11</span></td></tr>
         </tbody></table>
       </div>
 
@@ -1682,7 +1770,7 @@
           <div><span class="k">Target</span><span class="x">beat the published control on the
             substitution matrix</span></div>
           <div><span class="k">Now</span><span class="x">plain ridge already does —
-            <span class="v">+0.0389</span> <span class="lblx">slide 15</span></span></div>
+            <span class="v">+0.0389</span> <span class="lblx">slide 16</span></span></div>
           <div><span class="k">Still open</span><span class="x">a learned component that beats plain
             ridge</span></div>
         </div>
@@ -1747,12 +1835,12 @@
     </ul>
     <p><b>Cần điền sau:</b> (a) chọn A/B/C sau khi chạy; (b) sơ đồ kiến trúc với kích thước tensor (<code>L = 28</code>, <code>D = ?</code>, cửa sổ <code>w = ±3</code>); (c) delta đo được so với 0,7693 kèm bất định; (d) ablation ô chéo cho đặc trưng phơi lộ.</p>
     <p class="warn"><b>rASA/pLDDT không có phương sai</b> trên nhãn chính (peptide tách rời đều phơi lộ như nhau) ⇒ tham số cổng phơi lộ <b>không nhận diện được</b> từ dữ liệu nhiệm vụ chính. Nó là <b>cơ chế chuyển giao</b>, <b>không</b> nằm trên đường găng.</p>
-    <p><b>Chữ đã cắt khỏi slide — nói miệng:</b> nhãn là ΔPSI đo được, <b>trung bình hai replicate</b>; thước đo phụ là Spearman mức vị trí và precision@3; cụm chồng nhau bị loại cho mọi phép đánh giá chéo nguồn; ngưỡng phát hiện <b>0,0123</b> (bão hoà) · <b>0,0025–0,0036</b> (quét) tính trước — đã nói ở phụ lục A16; <b>vị trí tuyệt đối ≈ 0</b> trong phân rã. Nhánh B pre-train trên bộ bag-level lớn (<b>260k peptide / 212k tile</b>). Ba cơ chế thành phần: attention-MIL, conditional modulation, đặc trưng phơi lộ.</p>
+    <p><b>Chữ đã cắt khỏi slide — nói miệng:</b> nhãn là ΔPSI đo được, <b>trung bình hai replicate</b>; thước đo phụ là Spearman mức vị trí và precision@3; cụm chồng nhau bị loại cho mọi phép đánh giá chéo nguồn; ngưỡng phát hiện <b>0,0123</b> (bão hoà) · <b>0,0025–0,0036</b> (quét) tính trước — đã nói ở phụ lục A15; <b>vị trí tuyệt đối ≈ 0</b> trong phân rã. Nhánh B pre-train trên bộ bag-level lớn (<b>260k peptide / 212k tile</b>). Ba cơ chế thành phần: attention-MIL, conditional modulation, đặc trưng phơi lộ.</p>
 <p class="no">⚠ Năm câu bị bác bỏ vẫn không được nói: "novel aggregation mechanism" · "MIL robust với nhãn nhiễu" · "chưa ai đặt cổng phơi lộ ở bước pooling" · "MIL vs per-position head không có tiền lệ" · mọi dạng "nobody has done X".</p>
   </div>
 </section>
 
-<!-- ================================================ slide 19 ===== -->
+<!-- ================================================ slide 20 ===== -->
 <section class="slide" data-section="Method" data-title="Proposed approach: the open architecture">
   <div class="eyebrow"><span class="dot"></span>Method · 2 of 2 · <span style="color:#8A6A17">the open work</span></div>
   <h2>What is <em>open</em>: can bag-level labels be mined for residue output?</h2>
@@ -1809,7 +1897,7 @@
   </div>
 </section>
 
-<!-- ================================================ slide 20 ===== -->
+<!-- ================================================ slide 21 ===== -->
 <section class="slide" data-section="Product" data-title="What the tool would look like">
   <div class="eyebrow"><span class="dot"></span>Product · 1 of 2 · <span style="color:#8A6A17">designed, not built</span></div>
   <h2>What the tool would look <em>like</em></h2>
@@ -2525,14 +2613,14 @@
     <div><b>Nguồn và chú thích của slide:</b></div>
     <div><b>own diagram — mock-up.</b> Ma trận là hình minh hoạ, <b>không có số dự đoán thật</b>; thanh và râu bất định chỉ là kí hiệu.</div>
 
-    <p class="warn"><b>Slide mới 19/10.</b> Phần mềm là trụ 3 và đã được GVHD chấp nhận về nguyên tắc (D-034, chưa có biên bản), nhưng slide cũ chỉ có chữ. Slide này cho GVHD <b>thấy</b> sản phẩm. Nội dung slide "Why the software is a contribution" cũ nay ở <b>phụ lục A20</b>; harness đánh giá và miền áp dụng ở <b>A21</b>.</p>
+    <p class="warn"><b>Slide mới 19/10.</b> Phần mềm là trụ 3 và đã được GVHD chấp nhận về nguyên tắc (D-034, chưa có biên bản), nhưng slide cũ chỉ có chữ. Slide này cho GVHD <b>thấy</b> sản phẩm. Nội dung slide "Why the software is a contribution" cũ nay ở <b>phụ lục A19</b>; harness đánh giá và miền áp dụng ở <b>A20</b>.</p>
     <p>Luồng người dùng: nhập peptide → xem ma trận → xem bất định → chọn đột biến và đối chứng → xuất danh sách để kiểm chứng.</p>
     <p class="no">⚠ Trạng thái: <b>[đề xuất, chưa xây]</b>. Hiệu quả tiết kiệm thí nghiệm <b>chưa được kiểm chứng</b>; gọi đúng là <b>prioritisation tool</b>, không phải công cụ quyết định (Jaccard 0,4965 ở mức residue). Dịch vụ <b>không</b> phát phân loại gây bệnh (D-036). Bất định "đã hiệu chỉnh" là mục tiêu thiết kế, chưa chọn phương pháp.</p>
     <p>Lý lẽ cho bất định: <b>75,9%</b> phần dư sau oracle thành phần là nhiễu đo (tự đo) — nên một câu trả lời chắc chắn là trình bày sai dữ liệu.</p>
   </div>
 </section>
 
-<!-- ================================================ slide 21 ===== -->
+<!-- ================================================ slide 22 ===== -->
 <section class="slide mid" data-section="Product" data-title="What the service returns, against existing tools">
   <div class="eyebrow"><span class="dot"></span>Product · 2 of 2 · the specification</div>
   <h2>What the service returns — and what is <em>new</em> about it</h2>
@@ -2592,7 +2680,7 @@
   </div>
 </section>
 
-<!-- ================================================ slide 22 ===== -->
+<!-- ================================================ slide 23 ===== -->
 <section class="slide" data-section="Next steps" data-title="Plan for the remaining weeks">
   <div class="eyebrow"><span class="dot"></span>Next steps</div>
   <h2>Plan for the remaining weeks</h2>
@@ -2695,11 +2783,11 @@
     <p class="no"><b>Không</b> nêu trên slide rằng đề tài không có dự phòng (D-026). Nếu GVHD hỏi thì trả lời thẳng.</p>
     <p class="warn">⚠ Rủi ro <i>"cả hai nguồn nhãn mức residue đều của Zhang 2023"</i> <b>vẫn mở, chưa có ứng viên thay thế</b> (D-035). Không lên slide; nếu GVHD hỏi thì nói thẳng và nêu yêu cầu cho ứng viên thay thế: readout độ bền, degron tự trị, nhóm tác giả khác, nhãn mức residue.</p>
     <p>Ba cổng G1/G2/G3 là <b>khung nội bộ của repo</b>, không phải của học phần — đã ghi rõ ở caption hình.</p>
-    <p><b>Chữ đã cắt khỏi slide — nói miệng:</b> G1 "tất cả nhãn đều đo được, không có nhãn nào do pipeline này sinh ra"; G3 còn kèm <b>87,3% cụm chưa thấy</b> (đã có ở phụ lục A21); tuần 9 là lưới representation <b>PLM so với one-hot</b>, và "where it fails"; tuần 10 nếu không đạt thì <b>dồn trọng số sang benchmark + ứng dụng</b>; tuần 11–13 dịch vụ gồm ma trận 28×20, bản đồ theo vị trí, bất định, API, các cờ.</p>
+    <p><b>Chữ đã cắt khỏi slide — nói miệng:</b> G1 "tất cả nhãn đều đo được, không có nhãn nào do pipeline này sinh ra"; G3 còn kèm <b>87,3% cụm chưa thấy</b> (đã có ở phụ lục A20); tuần 9 là lưới representation <b>PLM so với one-hot</b>, và "where it fails"; tuần 10 nếu không đạt thì <b>dồn trọng số sang benchmark + ứng dụng</b>; tuần 11–13 dịch vụ gồm ma trận 28×20, bản đồ theo vị trí, bất định, API, các cờ.</p>
   </div>
 </section>
 
-<!-- ================================================ slide 23 ===== -->
+<!-- ================================================ slide 24 ===== -->
 <section class="slide fill" data-section="Questions" data-title="Questions for discussion">
   <div class="eyebrow"><span class="dot"></span>Questions for discussion</div>
   <h2>Four questions for the advisor</h2>
@@ -2743,7 +2831,7 @@
 
   <div class="speaker-note">
     <div><b>Nguồn và chú thích của slide:</b></div>
-    <div>Mục đích buổi: <b>xin duyệt khung đề tài</b>. Phụ lục sau phần hỏi đáp: A1–A21 (bấm O để xem tổng quan): A1 trích dẫn · A2 hằng số benchmark · A3 xuất xứ dữ liệu · A4 từ điển trường · A5 PAP + phép kiểm hoán vị · A6 lực thống kê và MDE · A7 bảng công trình · A8–A21 các slide đã chuyển khỏi luồng chính ngày 19/10.</div>
+    <div>Mục đích buổi: <b>xin duyệt khung đề tài</b>. Phụ lục sau phần hỏi đáp: A1–A20 (bấm O để xem tổng quan): A1 trích dẫn · A2 hằng số benchmark · A3 xuất xứ dữ liệu · A4 từ điển trường · A5 PAP + phép kiểm hoán vị · A6 lực thống kê và MDE · A7 bảng công trình · A8–A20 các slide đã chuyển khỏi luồng chính ngày 19/10.</div>
 
     <p class="warn"><b>Việc 9 trong brief: Trọng tự viết lại câu 1 và câu 4.</b> Bản trên là bản brief đã có, <b>đã thêm</b> một dòng xin ghi biên bản cho khung ba trụ (C-5). Nếu Trọng chưa sửa thì dùng tạm bản này.</p>
     <p><b>Câu hỏi 1 là C-5</b> — việc phải làm, chưa làm, không hoãn được: toàn bộ cách đặt đóng góp hiện nay dựa trên D-022, là thông tin Trọng truyền đạt và <b>chưa có biên bản</b>. Hỏi xong thì ghi vào <code>project/meetings/</code> và cập nhật <code>DECISIONS.md</code>.</p>
@@ -2795,7 +2883,7 @@
 
 <!-- ================================================ appendix ===== -->
 <section class="slide" data-appendix="2" data-section="Appendix" data-title="A2 · Full benchmark constants">
-  <div class="eyebrow"><span class="dot"></span>Appendix A2 · every number behind appendix A12, A16, slides 18–19 and appendix A19</div>
+  <div class="eyebrow"><span class="dot"></span>Appendix A2 · every number behind appendix A11, A15, slides 19–20 and appendix A18</div>
   <h2>A2 · Full benchmark constants</h2>
   <div class="body">
     <div class="cols c-2" style="gap:16px">
@@ -2886,7 +2974,7 @@
 
 <!-- ================================================ appendix ===== -->
 <section class="slide" data-appendix="3" data-section="Appendix" data-title="A3 · Data provenance">
-  <div class="eyebrow"><span class="dot"></span>Appendix A3 · pinned identifiers for every source in appendix A17</div>
+  <div class="eyebrow"><span class="dot"></span>Appendix A3 · pinned identifiers for every source in appendix A16</div>
   <h2>A3 · Data provenance</h2>
   <div class="body">
     <table class="xtight">
@@ -2927,7 +3015,7 @@
 
 <!-- ================================================ appendix ===== -->
 <section class="slide" data-appendix="4" data-section="Appendix" data-title="A4 · Field dictionary">
-  <div class="eyebrow"><span class="dot"></span>Appendix A4 · the record format in appendix A18</div>
+  <div class="eyebrow"><span class="dot"></span>Appendix A4 · the record format in appendix A17</div>
   <h2>A4 · Field dictionary</h2>
   <div class="body">
     <div class="cols c-2" style="gap:16px">
@@ -3102,7 +3190,7 @@
 
 <!-- ================================================ appendix ===== -->
 <section class="slide" data-appendix="7" data-section="Appendix" data-title="A7 · Prior work, full table">
-  <div class="eyebrow"><span class="dot"></span>Appendix A7 · the table behind slide 6</div>
+  <div class="eyebrow"><span class="dot"></span>Appendix A7 · the table behind slide 7</div>
   <h2>A7 · Prior work, work by work</h2>
   <div class="body">
     <table class="xtight">
@@ -3132,102 +3220,14 @@
 
   <div class="speaker-note">
     <div><b>Phụ lục A7</b></div>
-    <p>Bảng đầy đủ của slide 6. Mức bằng chứng từng bài ghi trong thư mục nghiên cứu; Degformer đánh giá bằng cách đọc toàn bộ mã nguồn, không có bài báo.</p>
+    <p>Bảng đầy đủ của slide 7. Mức bằng chứng từng bài ghi trong thư mục nghiên cứu; Degformer đánh giá bằng cách đọc toàn bộ mã nguồn, không có bài báo.</p>
     <p>Hai điều phải giữ đúng: Larsen 2025 là <b>preprint</b>; Degformer <b>không có bài báo</b> — nếu bỏ nhãn đó thì bảng gợi ý sai rằng nó đã qua phản biện.</p>
   </div>
 </section>
 
 <!-- ================================================ appendix ===== -->
-<section class="slide" data-appendix="8" data-section="Appendix" data-title="A8 · Synthesis against degradation">
-  <div class="eyebrow"><span class="dot"></span>Appendix A8 · moved from Introduction · synthesis against degradation</div>
-  <h2>Protein level is set by a balance: synthesis against degradation</h2>
-  <div class="cols c-2">
-    <div class="stack">
-      <p class="lede">A protein's concentration in the cell is not set by production alone.</p>
-      <div class="card key" style="text-align:center;padding:16px">
-        <div class="seqline">
-          amount in cell = <span class="hl-s">rate of synthesis</span> − <span class="hl-d">rate of degradation</span>
-        </div>
-      </div>
-      <p class="t-lead" style="margin:4px 0 2px"><b>Cells destroy proteins on purpose, and constantly:</b></p>
-      <ul class="t-lead">
-        <li>to switch signals <b>off</b> on schedule — cell-cycle regulators, transcription factors</li>
-        <li>to clear <b>misfolded</b> or damaged copies before they aggregate</li>
-        <li>to adjust quickly to changed conditions</li>
-      </ul>
-      <div class="card alert" data-step="2">
-        <b>Consequence.</b> A protein that is <i>made</i> correctly but <i>destroyed</i> too fast is just as
-        absent as one that was never made. Degradation is a control layer in its own right.
-      </div>
-    </div>
-
-    <div class="fig">
-      <div class="fig-body">
-        <svg viewBox="0 0 440 340" style="width:100%;height:auto">
-          <!-- trụ cân -->
-          <line x1="220" y1="118" x2="220" y2="268" stroke="#C8D3D8" stroke-width="5" stroke-linecap="round"/>
-          <path d="M175 272 L265 272 L248 290 L192 290 Z" fill="#DDE5E9"/>
-
-          <!-- đòn cân, nghiêng ở bước 1 -->
-          <g data-step="0" style="opacity:1;transform:none">
-            <g id="beam" style="transition:transform .9s cubic-bezier(.3,.8,.3,1);transform-origin:220px 118px">
-              <line x1="70" y1="118" x2="370" y2="118" stroke="var(--ink)" stroke-width="4" stroke-linecap="round"/>
-              <circle cx="220" cy="118" r="8" fill="var(--ink)"/>
-              <!-- đĩa trái: synthesis -->
-              <line x1="92" y1="118" x2="92" y2="162" stroke="#B6C4CB" stroke-width="2"/>
-              <path d="M52 162 L132 162 L120 190 L64 190 Z" fill="var(--stable-bg)" stroke="var(--stable)" stroke-width="1.6"/>
-              <text class="lbl" x="92" y="180" text-anchor="middle" fill="#1D6F65" font-weight="600">synthesis</text>
-              <!-- đĩa phải: degradation -->
-              <line x1="348" y1="118" x2="348" y2="162" stroke="#B6C4CB" stroke-width="2"/>
-              <path d="M308 162 L388 162 L376 190 L320 190 Z" fill="var(--degron-bg)" stroke="var(--degron)" stroke-width="1.6"/>
-              <text class="lbl" x="348" y="180" text-anchor="middle" fill="#A23247" font-weight="600">degradation</text>
-            </g>
-          </g>
-
-          <!-- mũi tên vào / ra -->
-          <path d="M92 86 L92 110" stroke="var(--stable)" stroke-width="2.5" marker-end="url(#ar-in)" class="flow"/>
-          <path d="M348 110 L348 86" stroke="var(--degron)" stroke-width="2.5" marker-end="url(#ar-out)" class="flow"/>
-          <text class="lblx" x="92" y="76" text-anchor="middle">made</text>
-          <text class="lblx" x="348" y="76" text-anchor="middle">destroyed</text>
-
-          <!-- mức protein -->
-          <text class="lbl" x="220" y="36" text-anchor="middle" font-weight="600">protein level in the cell</text>
-          <rect x="150" y="44" width="140" height="17" rx="8" fill="#E7EDF0"/>
-          <rect id="level" x="150" y="44" width="118" height="17" rx="8" fill="var(--model)"
-                style="transition:width .9s cubic-bezier(.3,.8,.3,1)"/>
-
-          <!-- bước 2: đĩa phải nặng dần -->
-          <g data-step="2" data-anim="fade">
-            <text class="lblx" x="348" y="212" text-anchor="middle" fill="#A23247">degradation up</text>
-            <text class="lblx" x="220" y="316" text-anchor="middle">⇒ the protein disappears although synthesis never changed</text>
-          </g>
-
-          <defs>
-            <marker id="ar-in" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-              <path d="M0 0 L8 4 L0 8 z" fill="var(--stable)"/></marker>
-            <marker id="ar-out" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-              <path d="M0 0 L8 4 L0 8 z" fill="var(--degron)"/></marker>
-          </defs>
-        </svg>
-      </div>
-
-    </div>
-  </div>
-
-
-  <div class="speaker-note">
-    <div><b>Nguồn và chú thích của slide:</b></div>
-    <div><b>own diagram.</b> Step 2 tips the balance toward degradation; the level bar falls with it.</div>
-    <div>No numbers on this slide, deliberately — every quantitative statement about stability comes after the assay is explained (slide 5).</div>
-
-    <p><b>Vai của slide.</b> Để người nghe hiểu <b>vì sao độ bền là một đại lượng đáng dự đoán</b>. Không có con số nào ở đây — cố ý.</p>
-    <p><b>Animation:</b> bấm lần 1 cân cân bằng; lần 2 đĩa "degradation" nặng xuống và thanh mức protein tụt — nói đúng câu "made correctly but destroyed too fast is just as absent".</p>
-  </div>
-</section>
-
-<!-- ================================================ appendix ===== -->
-<section class="slide" data-appendix="9" data-section="Appendix" data-title="A9 · The ubiquitin–proteasome system">
-  <div class="eyebrow"><span class="dot"></span>Appendix A9 · moved from Introduction · the ubiquitin–proteasome system</div>
+<section class="slide" data-appendix="8" data-section="Appendix" data-title="A8 · The ubiquitin–proteasome system">
+  <div class="eyebrow"><span class="dot"></span>Appendix A8 · moved from Introduction · the ubiquitin–proteasome system</div>
   <h2>The ubiquitin–proteasome system performs targeted degradation</h2>
   <div class="cols c-2-narrow">
     <div class="stack">
@@ -3338,7 +3338,7 @@
     <div><b>Nguồn và chú thích của slide:</b></div>
     <div>Mechanism established in the literature; E3 count as reported in <b>DegronMD</b>, Xu, Hu &amp; Zhao, <i>Mol Biol Evol</i> 40(12), 2023, DOI 10.1093/molbev/msad253.</div>
 
-    <p><b>Con số 600+</b> lấy từ DegronMD: <i>"The human genome encodes over 600 E3 ligases; however, only a small number of targeted degron instances have been identified so far"</i>. Câu thứ hai chính là câu dẫn nhập của đề tài, dùng lại ở slide 11.</p>
+    <p><b>Con số 600+</b> lấy từ DegronMD: <i>"The human genome encodes over 600 E3 ligases; however, only a small number of targeted degron instances have been identified so far"</i>. Câu thứ hai chính là câu dẫn nhập của đề tài, dùng lại ở slide 12.</p>
     <p><b>Animation 4 bước</b> khớp đúng ba dòng bảng + con số: (1) E3 khớp vào đoạn degron, đoạn đó tô đỏ; (2) chuỗi ubiquitin gắn lên; (3) proteasome nhả ra peptide ngắn; (4) hiện con số 600+.</p>
     <p class="warn">Không dùng GIF ngoài: đã tra Wikimedia Commons 15/10, <b>không có</b> animation UPS nào có giấy phép dùng được. Hình này tự dựng, giữ đúng bảng màu.</p>
     <p><b>Ảnh mới:</b> GIF cấu trúc họ ubiquitin (PDB 2qjl) hiện ở bước 2 cùng dòng "Tagging"; ảnh 26S proteasome (NIH BioArt, public domain) hiện ở bước 3 cùng dòng "Degradation". Đây là slide nội bộ nên dùng ảnh Commons kèm ghi nguồn ngắn; nếu deck ra ngoài thì rà lại giấy phép (ubiquitin.gif là CC BY-SA 3.0).</p>
@@ -3346,8 +3346,8 @@
 </section>
 
 <!-- ================================================ appendix ===== -->
-<section class="slide fill mid" data-appendix="10" data-section="Appendix" data-title="A10 · Group 3: adjacent variant-effect models">
-  <div class="eyebrow"><span class="dot"></span>Appendix A10 · moved from Related work · history research, step 3 — adjacent models</div>
+<section class="slide fill mid" data-appendix="9" data-section="Appendix" data-title="A9 · Group 3: adjacent variant-effect models">
+  <div class="eyebrow"><span class="dot"></span>Appendix A9 · moved from Related work · history research, step 3 — adjacent models</div>
   <h2>Group 3 — adjacent variant-effect models: different question, strong baselines</h2>
   <div class="cols c-2-wide">
     <div class="stack">
@@ -3421,14 +3421,14 @@
     <div>Schulze &amp; Lindorff-Larsen, <i>eLife</i> 13, DOI 10.7554/eLife.103721 · LeBlanc et al., <i>Cell Syst</i> 17(9):101701, DOI 10.1016/j.cels.2026.101701 — <b>both read in full</b>.</div>
 
     <p><b>Vì sao nhóm này có mặt:</b> nó là nguồn của <b>hai quy ước đánh giá</b> đề tài sẽ dùng. Theo LeBlanc 2026 thì <b>phải ghi "theo LeBlanc et al. 2026"</b> khi dùng ba cách làm đó — không trình bày như lựa chọn riêng của đề tài.</p>
-    <p>Nếu GVHD hỏi về AlphaMissense: đề tài <b>bổ sung cơ chế</b>, không thay thế điểm gây bệnh. Đây cũng là chỗ nối sang slide 11 (người dùng: diễn giải biến thể).</p>
+    <p>Nếu GVHD hỏi về AlphaMissense: đề tài <b>bổ sung cơ chế</b>, không thay thế điểm gây bệnh. Đây cũng là chỗ nối sang slide 12 (người dùng: diễn giải biến thể).</p>
     <p><b>Chữ đã cắt khỏi slide — nói miệng:</b> Schulze &amp; Lindorff-Larsen lấy từ <b>6 thí nghiệm VAMP-seq</b>; LeBlanc tách <b>abundance</b> khỏi <b>coactivator binding</b> và không phải bài về degron; "weight stability across seeds/bootstraps" là nguyên văn quy ước của họ. Khi dùng ba quy ước đó phải ghi "theo LeBlanc et al. 2026".</p>
   </div>
 </section>
 
 <!-- ================================================ appendix ===== -->
-<section class="slide" data-appendix="11" data-section="Appendix" data-title="A11 · The gap is provable, not merely unexplored">
-  <div class="eyebrow"><span class="dot"></span>Appendix A11 · the formal argument behind slide 10</div>
+<section class="slide" data-appendix="10" data-section="Appendix" data-title="A10 · The gap is provable, not merely unexplored">
+  <div class="eyebrow"><span class="dot"></span>Appendix A10 · the formal argument behind slide 11</div>
   <h2>The gap is <em>provable</em>, not merely unexplored</h2>
   <div class="cols c-2-wide" style="gap:16px">
     <div class="stack">
@@ -3553,15 +3553,15 @@
     <p><b>Tài sản mạnh nhất của đề tài, và là slide nên mở đầu phần lập luận.</b> Không đợt audit nào trong bốn đợt 13–15/10 làm yếu trụ này. Nói rõ <b>"provable"</b> và nói rõ đây là <b>tự đo</b>.</p>
     <p class="no">⚠ Hai con số đừng lẫn: <b>89,7%</b> là trên 2.624 peptide <b>có footprint</b>; <b>68,9%</b> là tỉ lệ tương ứng trên <b>bộ quét</b> đo ở phiên 8. Slide dùng 89,7%; nếu GVHD hỏi về bộ quét thì đưa 68,9%.</p>
     <p class="no">⚠ Khi nói "+0,0289" <b>phải nói kèm</b> rằng 80% của nó là <b>thành phần của lân cận ±3</b>, không phải thứ tự và không phải vị trí tuyệt đối (C-17). Nếu chỉ nói "+0,0289 nhờ thêm ngữ cảnh vị trí" thì GVHD sẽ hiểu sai theo đúng hướng mà phép đo đã bác.</p>
-    <p><b>Câu chuyển tiếp đúng mức:</b> <i>"PAP is not a bad model — it was trained for a segment-level score. Using it for residue-level effects is using it outside its design."</i> Mạnh hơn hẳn việc nói PAP yếu, và dẫn thẳng sang slide 11.</p>
+    <p><b>Câu chuyển tiếp đúng mức:</b> <i>"PAP is not a bad model — it was trained for a segment-level score. Using it for residue-level effects is using it outside its design."</i> Mạnh hơn hẳn việc nói PAP yếu, và dẫn thẳng sang slide 12.</p>
     <p><b>Chữ đã cắt khỏi slide — nói miệng:</b> con số +0,0289 đo trên <b>1.599 cụm protein / 2.288 peptide</b>; bản dài của ba bước lập luận: điểm PAP là hàm chỉ của thành phần acid amin, nên hiệu ứng thay thế a→b không chứa chỉ số vị trí, do đó mọi nhóm thay thế cùng cặp acid amin bị gán hiệu ứng y hệt bất kể vị trí.</p>
 <p>⚠ Nhắc lại khi nói "+0,0289": <b>80% là thành phần của lân cận ±3</b>, không phải thứ tự, không phải vị trí tuyệt đối.</p>
   </div>
 </section>
 
 <!-- ================================================ appendix ===== -->
-<section class="slide" data-appendix="12" data-section="Appendix" data-title="A12 · Where the predictive information sits">
-  <div class="eyebrow"><span class="dot"></span>Appendix A12 · moved from Contribution · the decomposition, stated carefully</div>
+<section class="slide" data-appendix="11" data-section="Appendix" data-title="A11 · Where the predictive information sits">
+  <div class="eyebrow"><span class="dot"></span>Appendix A11 · moved from Contribution · the decomposition, stated carefully</div>
   <h2>Where does the gain actually <em>come from</em>?</h2>
   <div class="cols c-2-wide">
     <div class="fig">
@@ -3621,13 +3621,13 @@
     <p>Bảng phân rã là chỗ mạnh nhất và cũng là chỗ thể hiện tính trung thực: nó <b>tự hạ</b> cách nói "vị trí thắng thành phần" mà chính repo từng dùng.</p>
     <p class="no">⚠ Phát biểu đúng (C-17b): <b>composition at a ±3 neighbourhood scale beats composition at whole-peptide scale</b>. GVHD đọc bảng này sẽ thấy ngay nếu nói sai.</p>
     <p>⚠ Câu "ΔPAP bị dùng ngoài thiết kế" là bắt buộc: nếu không nói, con số +0,0300 bị đọc quá mạnh. M0 chỉ-thành-phần đã hoà ΔPAP <code>cnn2w7</code> (+0,0008, CI [−0,0057; 0,0074]).</p>
-    <p>Thang delta đầy đủ nằm ở phụ lục A14 và A2.</p>
+    <p>Thang delta đầy đủ nằm ở phụ lục A13 và A2.</p>
   </div>
 </section>
 
 <!-- ================================================ appendix ===== -->
-<section class="slide mid" data-appendix="13" data-section="Appendix" data-title="A13 · The four models being compared">
-  <div class="eyebrow"><span class="dot"></span>Appendix A13 · moved from Problem definition · what is actually being compared</div>
+<section class="slide mid" data-appendix="12" data-section="Appendix" data-title="A12 · The four models being compared">
+  <div class="eyebrow"><span class="dot"></span>Appendix A12 · moved from Problem definition · what is actually being compared</div>
   <h2>Four models, one question: <em>how much context</em> does a substitution need?</h2>
   <div class="cols c-2-wide" style="gap:20px">
 
@@ -3689,7 +3689,7 @@
       <div class="card compact open">
         <div class="card-t">ΔPAP is not retrained</div>
         <p class="t-body" style="margin:0"><b>Published weights, no retraining.</b><br>
-        <code>cnn2w1</code> = kernel 1, the permutation-invariant channel (slide 10) ·
+        <code>cnn2w1</code> = kernel 1, the permutation-invariant channel (slide 11) ·
         <code>cnn2w7</code> = kernel 7</p>
       </div>
       <div class="card good compact">
@@ -3704,14 +3704,14 @@
     <div><b>Slide thực nghiệm 1/3 — mô hình nào đang được so</b></div>
     <p>Bốn mô hình, cùng một học máy: <b>ridge</b>, alpha chọn bằng PRESS/LOO giải tích, chia theo cụm protein cov80, 5 fold × 5 seed, chấm bằng AUROC mức ô trung bình macro theo peptide. Số cột đặc trưng: M0 <b>60</b> · M1 <b>88</b> · M2 <b>80</b> · M3 <b>180</b> · M4 (ngữ cảnh + chỉ số vị trí) <b>208</b>.</p>
     <p>M0 = one-hot acid amin hoang dã + one-hot acid amin đột biến + <b>thành phần cả peptide</b>. M1 thêm chỉ số vị trí 1…28. M2 thêm <b>thành phần cửa sổ ±3 không thứ tự</b>. M3 thêm <b>ngữ cảnh ±3 có thứ tự</b>.</p>
-    <p>ΔPAP <b>không huấn luyện lại</b> — dùng trọng số công bố của Voutsinos 2026; ΔPAP = PAP(đột biến) − PAP(hoang dã). <code>cnn2w1</code> là kênh nhân rộng 1, chính là kênh bất biến hoán vị ở slide 10; <code>cnn2w7</code> rộng 7.</p>
-    <p class="warn">Nếu GVHD hỏi "sao không dùng mạng nơ-ron ngay": bốn mô hình này là <b>đối chứng để đo trục thông tin</b>, không phải sản phẩm cuối. Kiến trúc là phần việc mở (slide 19).</p>
+    <p>ΔPAP <b>không huấn luyện lại</b> — dùng trọng số công bố của Voutsinos 2026; ΔPAP = PAP(đột biến) − PAP(hoang dã). <code>cnn2w1</code> là kênh nhân rộng 1, chính là kênh bất biến hoán vị ở slide 11; <code>cnn2w7</code> rộng 7.</p>
+    <p class="warn">Nếu GVHD hỏi "sao không dùng mạng nơ-ron ngay": bốn mô hình này là <b>đối chứng để đo trục thông tin</b>, không phải sản phẩm cuối. Kiến trúc là phần việc mở (slide 20).</p>
   </div>
 </section>
 
 <!-- ================================================ appendix ===== -->
-<section class="slide" data-appendix="14" data-section="Appendix" data-title="A14 · Experiment 1 — the scanning set">
-  <div class="eyebrow"><span class="dot"></span>Appendix A14 · moved from Problem definition · experiment 1</div>
+<section class="slide" data-appendix="13" data-section="Appendix" data-title="A13 · Experiment 1 — the scanning set">
+  <div class="eyebrow"><span class="dot"></span>Appendix A13 · moved from Problem definition · experiment 1</div>
   <h2>Experiment 1 — on the <em>scanning</em> set: does local context pay?</h2>
   <div class="body">
 
@@ -3819,8 +3819,8 @@
 </section>
 
 <!-- ================================================ appendix ===== -->
-<section class="slide" data-appendix="15" data-section="Appendix" data-title="A15 · Experiment 2 — the saturation matrix: two regimes">
-  <div class="eyebrow"><span class="dot"></span>Appendix A15 · moved from Problem definition · experiment 2 · two regimes</div>
+<section class="slide" data-appendix="14" data-section="Appendix" data-title="A14 · Experiment 2 — the saturation matrix: two regimes">
+  <div class="eyebrow"><span class="dot"></span>Appendix A14 · moved from Problem definition · experiment 2 · two regimes</div>
   <h2>Experiment 2 — the <em>saturation</em> matrix: transfer loses, direct learning wins</h2>
   <div class="body">
 
@@ -3936,8 +3936,8 @@
 </section>
 
 <!-- ================================================ appendix ===== -->
-<section class="slide" data-appendix="16" data-section="Appendix" data-title="A16 · Feasibility: what the data permits">
-  <div class="eyebrow"><span class="dot"></span>Appendix A16 · moved from Problem definition · the honest slide</div>
+<section class="slide" data-appendix="15" data-section="Appendix" data-title="A15 · Feasibility: what the data permits">
+  <div class="eyebrow"><span class="dot"></span>Appendix A15 · moved from Problem definition · the honest slide</div>
   <h2>Feasibility: what the data permits, and what it does <em>not</em></h2>
   <div class="cols c-2-wide" style="gap:14px">
     <div class="stack" style="gap:10px">
@@ -4076,8 +4076,8 @@
 </section>
 
 <!-- ================================================ appendix ===== -->
-<section class="slide fill" data-appendix="17" data-section="Appendix" data-title="A17 · Data sources: all downloaded, all licence-checked">
-  <div class="eyebrow"><span class="dot"></span>Appendix A17 · moved from Datasets · data sources</div>
+<section class="slide fill" data-appendix="16" data-section="Appendix" data-title="A16 · Data sources: all downloaded, all licence-checked">
+  <div class="eyebrow"><span class="dot"></span>Appendix A16 · moved from Datasets · data sources</div>
   <h2>Data sources — all downloaded, all licence-checked</h2>
   <div class="body">
     <div class="kpi" style="margin-bottom:8px">
@@ -4137,7 +4137,7 @@
     <div><b>Nguồn và chú thích của slide:</b></div>
     <div>Figures reproduced in this talk: only Voutsinos et al. 2026 (CC BY-NC 4.0), with attribution. All other papers are cited, not reproduced.</div>
 
-    <p><b>Nguồn 7 ClinVar</b> (D-033). Ba điều phải biết để trả lời: (a) ClinVar <b>không có giấy phép kiểu CC</b> — điều kiện là <b>ghi công</b> và câu <b>phủ nhận chẩn đoán</b> phải đi theo đầu ra của ứng dụng (slide 21); (b) file <b>ghi đè mỗi tuần</b>, muốn tái lập đúng số phải dùng bản archive tháng 10/2026; (c) cột vai ghi <b>"motivation only"</b> theo D-036.</p>
+    <p><b>Nguồn 7 ClinVar</b> (D-033). Ba điều phải biết để trả lời: (a) ClinVar <b>không có giấy phép kiểu CC</b> — điều kiện là <b>ghi công</b> và câu <b>phủ nhận chẩn đoán</b> phải đi theo đầu ra của ứng dụng (slide 22); (b) file <b>ghi đè mỗi tuần</b>, muốn tái lập đúng số phải dùng bản archive tháng 10/2026; (c) cột vai ghi <b>"motivation only"</b> theo D-036.</p>
     <p class="warn">⚠ <b>Giấy phép Larsen còn một chỗ mơ hồ chưa đóng:</b> MIT nominally là giấy phép phần mềm; Trọng <b>đã gửi email</b> xin xác nhận MIT phủ cả file dữ liệu (C-11a) và <b>đang chờ trả lời</b>. <b>Không</b> đưa lên slide, nhưng phải biết để trả lời nếu GVHD hỏi.</p>
     <p class="no">Nguồn 5 là <b>mức tile, trình tự hoang dã, không có nhãn mức residue nào</b> — vai của nó là test chuyển assay, <b>không</b> phải nguồn nhãn residue.</p>
     <p><b>Chữ đã cắt khỏi slide — nói miệng:</b> Mendeley DOI bản đầy đủ 10.17632/32h94v2yv2.2 (v2), cả 5 file; ClinVar có ghi SHA-256; "SHA-256 recorded for every file, updated in the same session as any download" là quy ước sổ nguồn gốc dữ liệu của repo. Chi tiết từng file ở <b>phụ lục A3</b>.</p>
@@ -4145,8 +4145,8 @@
 </section>
 
 <!-- ================================================ appendix ===== -->
-<section class="slide mid" data-appendix="18" data-section="Appendix" data-title="A18 · The split, and the record format">
-  <div class="eyebrow"><span class="dot"></span>Appendix A18 · moved from Datasets · how the data is cut and stored</div>
+<section class="slide mid" data-appendix="17" data-section="Appendix" data-title="A17 · The split, and the record format">
+  <div class="eyebrow"><span class="dot"></span>Appendix A17 · moved from Datasets · how the data is cut and stored</div>
   <h2>The cut goes <em>around clusters</em>, never through them</h2>
   <div class="cols c-2" style="gap:20px">
     <div class="fig">
@@ -4215,8 +4215,8 @@
 </section>
 
 <!-- ================================================ appendix ===== -->
-<section class="slide fill mid" data-appendix="19" data-section="Appendix" data-title="A19 · Evaluation plan">
-  <div class="eyebrow"><span class="dot"></span>Appendix A19 · moved from Method · evaluation plan</div>
+<section class="slide fill mid" data-appendix="18" data-section="Appendix" data-title="A18 · Evaluation plan">
+  <div class="eyebrow"><span class="dot"></span>Appendix A18 · moved from Method · evaluation plan</div>
   <h2>Evaluation plan</h2>
   <div class="cols c-2-wide">
     <div class="stack">
@@ -4229,7 +4229,7 @@
             <td>paired diff + bootstrap CI</td><td><span class="chip m">+0.0300</span> scanning ·
               <span class="chip m">+0.0389</span> matrix</td></tr>
           <tr><td>At which scale does the information sit?</td>
-            <td>same split, same metric</td><td><span class="chip m">decomposed</span> <span class="lblx">appendix A12</span></td></tr>
+            <td>same split, same metric</td><td><span class="chip m">decomposed</span> <span class="lblx">appendix A11</span></td></tr>
           <tr><td>Are context weights <b>stable</b> across bootstraps?</td>
             <td>sign agreement, |μ|/SD</td><td><span class="chip m">53.3% separable</span></td></tr>
           <tr data-step="1"><td>Does the <b>MIL bridge</b> recover residue information?</td>
@@ -4295,7 +4295,7 @@
             </g>
           </g>
           <text class="lblx" x="4" y="262">green = measured baseline · amber = the work of weeks 7–9</text>
-          <text class="lblx" x="4" y="274">this grid is the scanning set; the saturation benchmark is A15–A16</text>
+          <text class="lblx" x="4" y="274">this grid is the scanning set; the saturation benchmark is A14–A15</text>
         </svg>
       </div>
 
@@ -4318,8 +4318,8 @@
 </section>
 
 <!-- ================================================ appendix ===== -->
-<section class="slide mid" data-appendix="20" data-section="Appendix" data-title="A20 · Why the software is a contribution">
-  <div class="eyebrow"><span class="dot"></span>Appendix A20 · moved from Product · why the software is a contribution</div>
+<section class="slide mid" data-appendix="19" data-section="Appendix" data-title="A19 · Why the software is a contribution">
+  <div class="eyebrow"><span class="dot"></span>Appendix A19 · moved from Product · why the software is a contribution</div>
   <h2>Why the software is a <em>contribution</em>, not packaging</h2>
   <div class="cols c-2" style="gap:20px">
     <div class="stack">
@@ -4414,13 +4414,13 @@
     <p class="no">⚠ <b>Bảng so sánh: chỉ để những dòng đã kiểm.</b> <b>Không</b> thêm dòng "batch submission" — MetaDegron và DegronMD đều có. Dòng "28×20" của Degformer ghi đúng là nó <b>có</b> xuất ma trận, nên khác biệt nằm ở ba dòng dưới. Ô nào chưa kiểm được thì ghi "not checked", không ghi "–".</p>
     <p><b>Bất định "calibrated"</b> là mục tiêu thiết kế, chưa có phương pháp chốt. Nếu GVHD hỏi: ensemble theo seed hoặc conformal trên tập hiệu chỉnh tách theo cụm; <b>chưa chọn</b>. Đừng hứa con số độ phủ khoảng tin cậy.</p>
     <p><b>Câu ClinVar ở chân slide</b> là điều kiện sử dụng dữ liệu, không phải trang trí. Dịch vụ <b>không</b> phát ra phân loại gây bệnh (D-036).</p>
-    <p><b>Chữ đã cắt khỏi slide — nói miệng (đã có ở phụ lục A16 và slide 17):</b> Jaccard giữa hai replicate <b>0,4965</b>; trần đo lường <b>0,9458</b> (quét) và <b>0,9519</b> (bão hoà). Bảng đối chứng công cụ: ô chưa kiểm được phải ghi "not checked" thay vì "–" (việc còn lại #2 trong README).</p>
+    <p><b>Chữ đã cắt khỏi slide — nói miệng (đã có ở phụ lục A15 và slide 18):</b> Jaccard giữa hai replicate <b>0,4965</b>; trần đo lường <b>0,9458</b> (quét) và <b>0,9519</b> (bão hoà). Bảng đối chứng công cụ: ô chưa kiểm được phải ghi "not checked" thay vì "–" (việc còn lại #2 trong README).</p>
   </div>
 </section>
 
 <!-- ================================================ appendix ===== -->
-<section class="slide" data-appendix="21" data-section="Appendix" data-title="A21 · The evaluation harness, and where the service applies">
-  <div class="eyebrow"><span class="dot"></span>Appendix A21 · moved from Product · the harness and the application domain</div>
+<section class="slide" data-appendix="20" data-section="Appendix" data-title="A20 · The evaluation harness, and where the service applies">
+  <div class="eyebrow"><span class="dot"></span>Appendix A20 · moved from Product · the harness and the application domain</div>
   <h2>The evaluation harness, and where the service applies</h2>
   <div class="cols c-2">
     <div class="stack">
@@ -4435,7 +4435,7 @@
           <tr><td>Reproducibility</td><td>fixed seeds, configs, result JSON</td></tr>
         </tbody></table>
         <div class="lines" style="margin-top:9px">
-          <div><span class="k">Effect</span><span class="x">A14–A15 and slide 17 become a command anyone can
+          <div><span class="k">Effect</span><span class="x">A13–A14 and slide 18 become a command anyone can
             re-run, not a table to trust</span></div>
         </div>
       </div>
@@ -4523,7 +4523,7 @@
     <p class="warn">⚠ <b>Degformer checkpoint là pickle</b>, nạp nó thực thi mã tuỳ ý. Chữ "isolated" trên slide là vì vậy: thư mục riêng, <code>python3 -I</code>. Không cần giải thích trên slide, nhưng phải biết để trả lời.</p>
     <p class="no">⚠ <b>Không</b> đưa con số ≈1.600 biến thể "chấm được bằng đúng ô đã đo" lên slide này. Theo D-036 nó chỉ là <b>độ phủ</b>; đặt cạnh harness dễ bị đọc thành một phép kiểm.</p>
     <p><b>87,3%</b> là theo cụm cov80 (13.814 / 15.819 cụm); theo protein thì 67,9% tile nằm trên protein chưa thấy. Dùng một con số trên slide, giữ con số kia để trả lời.</p>
-    <p>Lời <b>D-034</b> không xuất hiện trên slide. <b>Nói miệng</b>, và xin ghi biên bản ở slide 23.</p>
+    <p>Lời <b>D-034</b> không xuất hiện trên slide. <b>Nói miệng</b>, và xin ghi biên bản ở slide 24.</p>
     <p><b>Chữ đã cắt khỏi slide — nói miệng:</b> model loaders gồm ΔPAP <code>cnn2w1</code> và <code>cnn2w7</code>; cụm chồng nhau bị loại cho phép kiểm chéo nguồn; "every number traceable to a file" là cam kết tái lập. Ô "…on proteins 17.287" vẫn trên slide; nhớ <b>87,3% là theo cụm cov80</b> (13.814/15.819), theo protein thì 67,9%.</p>
   </div>
 </section>

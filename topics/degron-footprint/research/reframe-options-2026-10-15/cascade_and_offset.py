@@ -14,7 +14,7 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).resolve()
-while not (ROOT / "DECISIONS.md").exists():
+while not (ROOT / "CLAUDE.md").exists():
     if ROOT.parent == ROOT:
         sys.exit("khong tim thay goc repo")
     ROOT = ROOT.parent

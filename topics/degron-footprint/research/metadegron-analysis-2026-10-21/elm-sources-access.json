@@ -1,0 +1,41 @@
+[
+  {
+    "url": "http://elm.eu.org/downloads.html",
+    "path": "topics/degron-footprint/data/raw/metadegron/elm-downloads.html",
+    "client_date": "2026-10-21",
+    "attempted_at_utc": "2026-10-21T01:48:35.121781+00:00",
+    "license": "chưa xác nhận",
+    "downloaded": true,
+    "status": 200,
+    "final_url": "http://elm.eu.org/downloads.html",
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 25489,
+    "sha256": "7c0f920a66ababfd31cb8d5a12278a4755a10f369869cb1a063e04c3e0437574"
+  },
+  {
+    "url": "http://elm.eu.org/media/Elm_academic_license.pdf",
+    "path": "topics/degron-footprint/data/raw/metadegron/elm-academic-license.pdf",
+    "client_date": "2026-10-21",
+    "attempted_at_utc": "2026-10-21T01:48:35.122471+00:00",
+    "license": "chưa xác nhận",
+    "downloaded": true,
+    "status": 200,
+    "final_url": "http://elm.eu.org/media/Elm_academic_license.pdf",
+    "content_type": "application/pdf",
+    "bytes": 47503,
+    "sha256": "6db35458b887e6ee24631355cfaff92fe1caeb209cae5abb2a791a37cd18f535"
+  },
+  {
+    "url": "http://elm.eu.org/instances.tsv?limit=10000",
+    "path": "topics/degron-footprint/data/raw/metadegron/elm-instances-all.tsv",
+    "client_date": "2026-10-21",
+    "attempted_at_utc": "2026-10-21T01:48:35.124118+00:00",
+    "license": "chưa xác nhận",
+    "downloaded": true,
+    "status": 200,
+    "final_url": "http://elm.eu.org/instances.tsv?limit=10000",
+    "content_type": "text/tsv",
+    "bytes": 23680,
+    "sha256": "f178ea065ac3526d254a882e1239c2115fc680737ede6cb45859e5ca763ecb25"
+  }
+]

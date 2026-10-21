@@ -2,7 +2,7 @@
 
 > File này là **sổ nguồn gốc** của thư mục `data/`: mỗi file đến từ đâu, phiên bản nào, giấy phép gì, ai/script nào tạo ra, và đã xử lý qua những bước nào. Nội dung `data/` bị `.gitignore` chặn; **riêng file này được lên git** (ngoại lệ `!**/data/README.md`).
 >
-> Cập nhật lần cuối: **18/10/2026** (thêm Degformer và đầu ra G2). Dung lượng trước phiên G2 ≈ **2,3 GB** (`raw/` 1,2 GB · `interim/` 1,1 GB · `processed/` 123 MB).
+> Cập nhật lần cuối: **21/10/2026** (thêm audit MetaDegron; giữ nguyên dữ liệu/đầu ra G2). Dung lượng trước phiên G2 ≈ **2,3 GB** (`raw/` 1,2 GB · `interim/` 1,1 GB · `processed/` 123 MB).
 >
 > **Khi thêm, xử lý lại hoặc xoá file trong `data/`:** sửa bảng ở mục 3 (và mục 4 nếu đổi định dạng tập huấn luyện), rồi thêm một dòng vào nhật ký mục 5.
 
@@ -31,6 +31,7 @@ Dữ liệu tải về là dữ liệu không tin cậy: đọc bằng `python3 
 | 7 | **AlphaFold DB v6** — 8 cấu trúc protein MaveDB | `alphafold.ebi.ac.uk/files/AF-<acc>-F1-model_v6.pdb` (**cần User-Agent**, nếu không EBI trả 403) | CC BY 4.0 | 14/10 | `raw/alphafold/` | Số residue + SHA-256 trong `raw/alphafold/manifest.txt` |
 | 8 | **Larsen et al. 2025** — bộ nhân, tile TF | GitHub `KULL-Centre/_2025_Larsen_degron_transcriptionfactors` tag **`v1.0`** (commit `2698ecc6`) | **MIT** (repo); ⚠ phủ cả file dữ liệu hay không **đang chờ xác nhận qua email** | 15/10 | `raw/larsen-2025/` | SHA-256 + audit trong [SOURCE.md](raw/larsen-2025/SOURCE.md) |
 | 9 | **NCBI ClinVar** — phân loại biến thể lâm sàng | `ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/variant_summary.txt.gz`, `Last-Modified` **12/10/2026**. ⚠ **Không có số phiên bản, ghi đè mỗi tuần** | ⚠ **Không có giấy phép kiểu CC** — chỉ **yêu cầu ghi công** + câu phủ nhận chẩn đoán phải đi theo đầu ra ứng dụng | 15/10 | `raw/clinvar/` | SHA-256 `a5198a11…28218`, nguyên văn điều khoản trong [SOURCE.md](raw/clinvar/SOURCE.md) |
+| 10 | **MetaDegron**, *Briefings in Bioinformatics* 2024, DOI `10.1093/bib/bbae519`; repo, toàn văn, supplementary S1–S5, web và truy nguồn ELM | GitHub `BioDataStudy/MetaDegron` @ **`ca12c0cf9d2e2d76655689973ac45c6c063a899d`** (20/06/2024); PMC11491831 / Europe PMC supplementaryFiles | **Repo không có LICENSE: chưa xác nhận**; bài CC BY 4.0; quyền dữ liệu nhập từ ELM không suy ra từ giấy phép bài. Đã đọc ELM Academic License, chỉ dùng truy nguồn nội bộ; chưa nhập vào train/ứng dụng | 21/10 | `raw/metadegron/` | SHA-256 từng file dữ liệu/trọng số tải đủ, URL, lỗi truy cập, license và script trong [manifest](../research/metadegron-analysis-2026-10-21/source-manifest.json); [báo cáo](../research/metadegron-analysis-2026-10-21/README.md) |
 
 **Chưa tải (không có trong `data/`):** read giải trình tự thô (SRA `PRJNA1277273` của Zhang); bản **archive** của ClinVar để ghim số liệu ([SOURCE.md §5](raw/clinvar/SOURCE.md)).
 
@@ -39,6 +40,10 @@ Dữ liệu tải về là dữ liệu không tin cậy: đọc bằng `python3 
 ## 3. Danh mục từng file
 
 ### 3.1 `raw/`
+
+**Bổ sung MetaDegron 21/10:** `metadegron/repo/` là clone ghim, không chạy mã tải về; `paper.{xml,html}`, `supplementary-files.zip`, `supplementary/*.xlsx` là nguồn đọc. Các URL XLSX lẻ trả HTML challenge và bảng review 2017 trả trang ELTEnet được giữ như bằng chứng lỗi, **không coi là dữ liệu truy cập được**. `web-*.html`, ảnh demo và ELM/license/snapshot truy nguồn giữ dưới `raw/`, không lên git. Hai file lớn SeqVec/embedding có endpoint HTTP 200 nhưng fetch thử bị giới hạn dung lượng, **không giữ payload, không có SHA đầy đủ**.
+
+`metadegron/derived/` chứa bảng chuẩn hóa JSON, mẫu kiểm nguồn, FASTA protein và MMseqs2 cov50/cov80 kèm log/tmp; do [audit_dataset.py](../research/metadegron-analysis-2026-10-21/audit_dataset.py) sinh. Cụm protein hiện có của đề tài chỉ được đọc, không ghi lại. `xgboost-literal-state.json` được [safe-predict-x.py](../research/metadegron-analysis-2026-10-21/safe-predict-x.py) tách bằng đọc **literal byte UBJSON** trong pickle, không gọi unpickle/khởi tạo đối tượng từ file. Kết quả nhỏ/kiểm chéo nằm ở research; không tạo dữ liệu mới trong `processed/`, không đổi nhãn G2. Lệnh dựng lại và giới hạn: [VALIDATION.md](../research/metadegron-analysis-2026-10-21/VALIDATION.md).
 
 **Bổ sung 18/10:** `degformer-isolated/{predict.py,train_v2.py,README.md,LICENSE,peptide_model_epoch50.pt,training_data.csv,manifest.json}` từ [download.py](../research/g2-saturation-2026-10-18/download.py); SHA từng file được kiểm. Không chạy top-level code nguồn. Training table có 569.270 dòng; dùng kiểm overlap, không dùng huấn luyện mô hình đề tài. Checkpoint được nạp riêng qua `python -I`.
 
@@ -186,6 +191,8 @@ Nằm trong `interim/zhang-scanning-unzip/.../Replicate 1 (BAG6 genotype unclear
 Mỗi file là **một bin của một điều kiện**. Tab-separated, **không có header**, hai cột: `id` và số read thô (số nguyên). Thứ tự bin theo số `S<k>`: với bộ quét Replicate 1 và bộ bão hòa nửa A là `S1..S6` = bin 1..6; Replicate 2 và nửa B là `S7..S12` = bin 1..6. Ánh xạ đầy đủ từ file sang điều kiện nằm trong `CONDITIONS` của `research/full-data-audit/build_psi.py`.
 
 ## 5. Nhật ký xử lý
+
+- **21/10/2026 — MetaDegron:** tạo riêng `raw/metadegron/`; clone commit `ca12c0cf…`, tải toàn văn/supplementary qua PMC/Europe PMC, trang web mẫu và nguồn ELM. `fetch-sources.py` ghi truy cập; `audit_dataset.py` đếm schema/nhãn, dựng bảng chuỗi chỉ dưới raw/derived, phân cụm protein id30 cov50/cov80 và kiểm overlap với Zhang/Voutsinos/Larsen; `safe-predict-x.py` đọc literal cây số an toàn để tái tính nhánh X, không `pickle.load`, không chạy notebook/mã nguồn tải về; `review-labels.py` tổng hợp mẫu truy nguồn; `inventory-sources.py` ghi SHA-256 và giấy phép; `validate.py` kiểm chéo. Không gửi chuỗi lên server, không tải đủ checkpoint SeqVec/embedding lớn, không nhập nhãn binary vào ΔPSI, không sửa các bảng/cụm G2 cũ. Kết quả và giới hạn: [metadegron-analysis-2026-10-21](../research/metadegron-analysis-2026-10-21/README.md).
 
 - **18/10/2026 (phiên sau)** — Không tải gì thêm. Sinh thêm dự đoán OOF và checkpoint cho ba thí nghiệm mở rộng (`g2-ext-*`), đọc lại cache bão hoà và nguồn Degformer đã ghim. [Báo cáo](../research/g2-extension-2026-10-18/README.md).
 - **18/10/2026** — Tải Degformer ghim commit và kiểm SHA; tạo cache đặc trưng bão hòa, 45 checkpoint mạng và dự đoán OOF 3 seed ×5 fold; audit 42.163 sequence ô test trong training_data.csv. Script/lineage/schema ở mục 3; [báo cáo](../research/g2-saturation-2026-10-18/README.md).

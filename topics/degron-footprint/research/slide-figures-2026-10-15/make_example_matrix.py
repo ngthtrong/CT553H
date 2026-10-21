@@ -38,7 +38,7 @@ import statistics
 import sys
 from pathlib import Path
 
-TOPIC = next(p for p in Path(__file__).resolve().parents if (p / "log.md").exists())
+TOPIC = next(p for p in Path(__file__).resolve().parents if (p / "data" / "README.md").exists())
 HERE = Path(__file__).resolve().parent
 DERISK = TOPIC / "research/residue-task-derisk-2026-10-15"
 sys.path.insert(0, str(DERISK))

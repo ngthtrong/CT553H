@@ -20,7 +20,7 @@ import numpy as np
 from sklearn.ensemble import HistGradientBoostingRegressor
 
 ROOT = Path(__file__).resolve()
-while not (ROOT / "DECISIONS.md").exists():
+while not (ROOT / "CLAUDE.md").exists():
     if ROOT.parent == ROOT:
         sys.exit("khong tim thay goc repo")
     ROOT = ROOT.parent

@@ -17,8 +17,8 @@ from pathlib import Path
 import requests
 
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / "DECISIONS.md").exists())
-TOPIC = next(p for p in Path(__file__).resolve().parents if (p / "log.md").exists())  # thư mục đề tài
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / "CLAUDE.md").exists())
+TOPIC = next(p for p in Path(__file__).resolve().parents if (p / "data" / "README.md").exists())  # thư mục đề tài
 HEADERS = {"User-Agent": "CT553H-research-audit/1.0"}
 
 

@@ -1,0 +1,170 @@
+{
+  "head": "546b745182a6a4226646f46903075c71ae6dea74",
+  "files": [
+    {
+      "status": " M",
+      "path": "CLAUDE.md",
+      "sha256": "670fca61156df577097885a0aefec92e3dcc18c74d0fd34b51db5ff479c5f9ad"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/presentation/deck-2026-10-16/README.md",
+      "sha256": "723fd403c8276ab76c8669296eb8496cbd93b12a8cbceb0593fc11b46f67c3bb"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/presentation/deck-2026-10-16/SOURCES.md",
+      "sha256": "d2634658145f100f3291ffa75f364f68941b84ce0fc091b70cefe84c338ccd04"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/presentation/deck-2026-10-16/index.html",
+      "sha256": "1e369696e7f69398b3d08c91f601caf60dd40735ef1410d87fadd55be292dbf5"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/architecture-check/architecture_check.py",
+      "sha256": "17aa61a31894c59784eb7ea955c634ab1dc0aca4bdbeaddf1316b07bdf3dc1ad"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/cross-assay-model-2026-10-15/transfer_experiment.py",
+      "sha256": "853d3b56ba7b10a28e5cb7f64af4054d9857c512b654c32b240e0fee14a67eec"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/e3-labels-audit/audit_composition.py",
+      "sha256": "03c2ba9b075dd0e531b96bfa52bada111afb1521d3268431607fcbea40ffa811"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/e3-labels-audit/fetch_scanning.py",
+      "sha256": "b2cb61d20b9519246f2e78dd1fe6e0d67ade1efb94bd50b8aa31f3cd170edd21"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/e3-labels-audit/prepare_protein_clusters.py",
+      "sha256": "9ba24bdf438e99986d53150346e3c4808148df661dd7eb58d7cee54fd7e75462"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/full-data-audit/build_psi.py",
+      "sha256": "1703c6607375abac03b6c0bca46a03bc51492df41995e9e410dabe3ef3462ef5"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/full-data-audit/fetch_all.py",
+      "sha256": "7826084f58c2f85cada7142294da8bf616ad669d8d6cab8d446612d972427fb5"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/full-data-audit/gps_peptidome_audit.py",
+      "sha256": "17409617d447b9cb18e14d9fbb216a8b8f22417c7e357efbaf5c9ccff2da3a80"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/full-data-audit/label_ceiling.py",
+      "sha256": "63950bf0b9c5089e75416077f87544eefd1186c4c1f16b5196890ece90aa04bb"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/full-data-audit/mavedb_audit.py",
+      "sha256": "fe819e4d8b9287bf18a3d94980cd0fc5359a7cf3ea5f411cb3af127f2de0b260"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/full-data-audit/power_analysis.py",
+      "sha256": "7994d94ae9d1c82d55c4ba81eff144210272b0e3e5ea8757f1cd245d2ba26d44"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/full-data-audit/read_depth_sweep.py",
+      "sha256": "053c83dac1aca31235bcefb6b69f62731b427f55d66240afee149c0bae0d0a23"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/full-data-audit/replicate_audit.py",
+      "sha256": "6d092d19850adbe237c1b7061ae1bfea6142ecd99aa0e0836457fc209966db76"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/full-data-audit/saturation_audit.py",
+      "sha256": "1b1d47c95b770f112b2f39875735fd4531f479680740622e087bd2a5c364dc4a"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/full-data-audit/saturation_matrix.py",
+      "sha256": "7d9c1a87d523bc9ef033d26bed5fe48ade73df3ea5723c276e3f339944cac266"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/g2-extension-2026-10-18/run_ext.py",
+      "sha256": "70a8c7a88fece7468d941d51f6ef6af890922025eb159c6432eaa8259160d5ea"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/g2-saturation-2026-10-18/audit.py",
+      "sha256": "ead2dc170ebd850f59279652719d3668ee31713c7b5777e90c47a73238ef7cbf"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/g2-saturation-2026-10-18/download.py",
+      "sha256": "50c80c1984d871a283396f27e85709d920f8382a14129051deb50ba15af32831"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/g2-saturation-2026-10-18/run.py",
+      "sha256": "ccc443a5c8f4e3778c1519015359b237417e3268c621631be4110abc242edfd0"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/pap-baseline/pap_baseline.py",
+      "sha256": "d7d27ae3a739549734b199ab7ab7f5a848a18b2d7e6932cb68b53d1ea21fe1b9"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/reframe-options-2026-10-15/cascade_and_offset.py",
+      "sha256": "1135154b8cf66d4f9b6aac924a75c0e4b1ac91fc9c48b7eb09f6faaa40886029"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/reframe-options-2026-10-15/cross_assay_gap.py",
+      "sha256": "69e2500514c7fbee02eb35b35de7b6a153db5f9dfe05254709042fe4681235f1"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/reframe-options-2026-10-15/method_debt.py",
+      "sha256": "cf2733d0a72f2537c491d2ab559db481a54fa713b105d672cce38fab81873791"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/residue-task-derisk-2026-10-15/residue_data.py",
+      "sha256": "3735e46c686ac27048dfc127fafdc70c0e06fff324e1bc81fd92ecbb9c45043b"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/slide-example-2026-10-15/export_example.py",
+      "sha256": "b1b9dc33807bde20e3fb19c1d505a2ec6a2f52e28af4fc392fba95cd809aa6db"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/slide-figures-2026-10-15/make_example_matrix.py",
+      "sha256": "377b0ffcb3a2ff49f65091e407cc9b231d5fdf82536903fecd316d6f5becc2c3"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/topic-decision.md",
+      "sha256": "12554390e31b6129113fc80eac6e778beb5f0dd02314e43ace05fb978b93ad8f"
+    },
+    {
+      "status": " M",
+      "path": "topics/degron-footprint/research/variant-coverage-2026-10-15/coverage.py",
+      "sha256": "9682b6653a2c88948fc718d9a79691ef74e3deecbb17165712349c47b3da9c01"
+    },
+    {
+      "status": "??",
+      "path": "topics/degron-footprint/presentation/deck-2026-10-16/assets/voutsinos2026-f4.jpg",
+      "sha256": "455604ed104d11996ea678f57c3b0e2c734659eca946158268043c5492d19418"
+    }
+  ]
+}

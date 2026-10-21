@@ -1,0 +1,17 @@
+{
+  "client_date": "2026-10-21",
+  "queries": [
+    "MetaDegron bbae519 github BioDataStudy web server supplementary",
+    "MetaDegron zenodo figshare 2024 degron",
+    "\"MetaDegron\" \"Zenodo\" OR \"Figshare\"",
+    "\"MetaDegron\" \"figshare\" \"zenodo\" data"
+  ],
+  "relevant_primary_sources_found": [
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC11491831/",
+    "https://github.com/BioDataStudy/MetaDegron",
+    "http://modinfor.com/MetaDegron/",
+    "https://academic.oup.com/bib/article/25/6/bbae519/7828723",
+    "https://pubmed.ncbi.nlm.nih.gov/39431517/"
+  ],
+  "zenodo_figshare": "No identified MetaDegron-specific deposit in this bounded search; not evidence of nonexistence"
+}
