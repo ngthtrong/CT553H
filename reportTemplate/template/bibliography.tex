@@ -1,34 +1,31 @@
-% Một danh mục IEEE, đánh số theo thứ tự trích dẫn.
-\newif\ifReportBiblatex
+% One IEEE reference list, numbered in order of first citation.
+\newif\ifThesisBiblatex
 \ifdefined\UseBibtex
-  \ReportBiblatexfalse
+  \ThesisBiblatexfalse
 \else
-  \ReportBiblatextrue
+  \ThesisBiblatextrue
 \fi
-\providecommand{\ReportArticlesDatabase}{bibliography/articles}
-\ifReportBiblatex
+\providecommand{\ThesisBibDatabase}{bibliography/references}
+\ifThesisBiblatex
   \usepackage[backend=biber,style=ieee,sorting=none]{biblatex}
-  \addbibresource{bibliography/legal.bib}
-  \addbibresource{bibliography/books.bib}
-  \addbibresource{\ReportArticlesDatabase.bib}
-  \addbibresource{bibliography/references.bib}
+  \addbibresource{\ThesisBibDatabase.bib}
   \DeclareLanguageMapping{vietnamese}{english}
   \let\citep\cite
   \let\citet\textcite
-  \newcommand{\PrintReportBibliography}{%
-    \addchap{Tài liệu tham khảo}
+  \newcommand{\PrintThesisBibliography}{%
+    \addchap{REFERENCES}
     \ifdefined\TemplateHasReferences
-      \begin{english}\printbibliography[heading=none]\end{english}
+      \printbibliography[heading=none]
     \fi}
 \else
   \usepackage[numbers,square,sort&compress]{natbib}
-  \renewcommand{\bibsection}{\addchap{Tài liệu tham khảo}}
-  \newcommand{\PrintReportBibliography}{%
+  \renewcommand{\bibsection}{\addchap{REFERENCES}}
+  \newcommand{\PrintThesisBibliography}{%
     \bibliographystyle{ieeetr}
     \ifdefined\TemplateHasReferences
-      \bibliography{bibliography/legal,bibliography/books,\ReportArticlesDatabase,bibliography/references}
+      \bibliography{\ThesisBibDatabase}
     \else
-      \addchap{Tài liệu tham khảo}
+      \addchap{REFERENCES}
     \fi}
 \fi
-% scripts/build.py tự phát hiện trích dẫn và bật TemplateHasReferences.
+% scripts/build.py detects citations and enables TemplateHasReferences.

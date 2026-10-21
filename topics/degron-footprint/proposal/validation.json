@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-21",
+  "format": "Letter, 1-inch margins, Times New Roman; geometry follows supplied sample",
+  "pages": 7,
+  "checks": [
+    "seven required sections in Word and PDF",
+    "student metadata",
+    "Letter page size",
+    "embedded fonts",
+    "no LaTeX overflow or missing glyphs",
+    "preliminary metrics match results.json"
+  ],
+  "files": {
+    "reportTemplate/guideline-thesis/Đề cương LV Mau.pdf": "e95a9b88ba02623fb5757735bfce80edd0e413b89bf656131452c1bd0f047622",
+    "reportTemplate/guideline-thesis/Đề cương LV Mau (1).docx": "daf9d0ee9152fe20e3a0aea215ecf005a35f80ac2908f60f92f6d9f2187932bb",
+    "topics/degron-footprint/proposal/proposal.md": "3e58553ccb3d871b80172342d07e48a0a2836c1536386cf561dd344e02aaf7b6",
+    "topics/degron-footprint/proposal/proposal.pdf": "cf12cffd54f152ea80b02e1318d26c07acffdeb295b6a427318d4bc00ff9cbdc",
+    "topics/degron-footprint/proposal/proposal.docx": "9f342b10b26fcd229a2469a9532287aa8d9f72014f5ceb639dd9b6bc3d123915",
+    "topics/degron-footprint/proposal/references.bib": "eebd7284e259468b9365030f422f003adee97015fc140d0987f76d731baab923",
+    "topics/degron-footprint/proposal/header.tex": "31e3156b8c563c5c0c6737dbafd92df1fb63da491018760a18b0c2d9af7df86d",
+    "topics/degron-footprint/proposal/layout.lua": "f30e14efeb740561018e11c5ad6b37ec8b07265b5f30940d873f64c54fce46ba",
+    "topics/degron-footprint/proposal/build.py": "f7e115b23cc5d30590d4b042bcac0b31b43ffa5ac142e074162aa39b2eedd4a5"
+  }
+}

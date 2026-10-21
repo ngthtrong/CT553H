@@ -1,0 +1,17 @@
+\usepackage{xurl}
+\usepackage{titlesec}
+\usepackage{etoolbox}
+\titleformat{\section}{\normalfont\bfseries\fontsize{13}{16}\selectfont}{}{0pt}{}
+\titleformat{\subsection}{\normalfont\bfseries\fontsize{12}{15}\selectfont}{}{0pt}{}
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+\titlespacing*{\subsection}{0pt}{8pt}{4pt}
+\setlength{\emergencystretch}{2em}
+\setlength{\tabcolsep}{4pt}
+\AtBeginEnvironment{longtable}{\fontsize{10.5}{12.5}\selectfont}
+\AtBeginDocument{\hypersetup{colorlinks=false,pdfborder={0 0 0}}}
+\makeatletter
+\renewcommand{\maketitle}{\begin{center}\bfseries\fontsize{14}{18}\selectfont\@title\end{center}\vspace{8pt}}
+\makeatother
+\widowpenalty=10000
+\clubpenalty=10000
+\AtBeginEnvironment{enumerate}{\fontsize{11}{13}\selectfont\interlinepenalty=10000}

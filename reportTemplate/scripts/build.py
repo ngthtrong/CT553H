@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the standalone template with an empty or populated IEEE bibliography."""
+"""Build the standalone thesis template with an empty or populated IEEE bibliography."""
 import argparse
 import os
 from pathlib import Path
@@ -9,7 +9,7 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-TARGETS = ['content', 'smoke', 'bulletin-vi', 'bulletin-en', 'summary-vi', 'summary-en']
+TARGETS = ['content', 'smoke']
 UNRESOLVED = re.compile(
     r'undefined references|undefined citations|(?:Reference|Citation).*undefined|'
     r'Rerun to get|Label\(s\) may have changed|Please (?:re)?run (?:LaTeX|Biber)|'
@@ -39,7 +39,7 @@ def main():
     args = parser.parse_args()
     if not shutil.which('xelatex'):
         parser.error('XeLaTeX is missing; run make doctor.')
-    bibliography = args.target in ['content', 'smoke']
+    bibliography = True
     biber_available = has_package('ieee.bbx') and bool(shutil.which('biber'))
     use_biber = bibliography and (args.bibliography == 'biblatex' or
                                   (args.bibliography == 'auto' and biber_available))
@@ -57,8 +57,7 @@ def main():
     for pattern in ['*.aux', '*.bbl', '*.blg', '*.bcf', '*.run.xml', '*.toc', '*.lof', '*.lot', '*.out']:
         for artifact in out.rglob(pattern):
             artifact.unlink()
-    source = ('main.tex' if args.target == 'content' else 'examples/formatting.tex'
-              if args.target == 'smoke' else f'deliverables/{args.target}.tex')
+    source = 'main.tex' if args.target == 'content' else 'examples/formatting.tex'
     definitions = ('\\def\\TwoSidedReport{1}' if args.twoside else '')
     definitions += '\\def\\UseBiblatex{1}' if use_biber else '\\def\\UseBibtex{1}'
     env = os.environ.copy()

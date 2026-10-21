@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate template sources/PDFs; placeholders and short reports are allowed."""
+"""Validate thesis template sources/PDFs; placeholders and short documents are allowed."""
 from pathlib import Path
 import re
 import shutil
@@ -7,11 +7,7 @@ import subprocess
 
 from build import ROOT, UNRESOLVED, LAYOUT_ERRORS
 
-EXPECTED = {
-    'content': 'content', 'content-twoside': 'content',
-    'bulletin-vi': 'bulletin-vi', 'bulletin-en': 'bulletin-en',
-    'summary-vi': 'summary-vi', 'summary-en': 'summary-en',
-}
+EXPECTED = {'content': 'content', 'content-twoside': 'content'}
 errors = []
 
 
@@ -25,7 +21,7 @@ for tool in ['pdfinfo', 'pdftotext', 'pdffonts']:
 
 # Resolve local TeX resources; traversal/symlinks must never escape this directory.
 source_files = [ROOT / 'main.tex']
-for folder in ['template', 'config', 'frontmatter', 'chapters', 'appendices', 'deliverables', 'examples']:
+for folder in ['template', 'config', 'frontmatter', 'chapters', 'appendices', 'examples']:
     source_files.extend((ROOT / folder).rglob('*.tex'))
 for source in source_files:
     text = '\n'.join(line.split('%', 1)[0] for line in source.read_text().splitlines())
@@ -73,15 +69,21 @@ for folder, job in targets.items():
             errors.append(f'{folder}: unembedded font: {line}')
     pdf_text = output(['pdftotext', '-layout', str(pdf), '-'])
     if folder in ['content', 'content-twoside']:
-        for heading in ['Mở đầu', 'Kết luận và kiến nghị', 'Tài liệu tham khảo', 'Danh mục từ viết tắt']:
+        for heading in ['THESIS REVISION CONFIRMATION', 'COMMENTS OF THE ADVISOR', 'ACKNOWLEDGEMENTS',
+                        'COMMITMENT TO RESULTS', 'ABSTRACT', 'TÓM TẮT', 'TABLE OF CONTENTS',
+                        'LIST OF FIGURES', 'LIST OF TABLES', 'GLOSSARY AND ABBREVIATIONS',
+                        'PART 1. INTRODUCTION', 'PART 2. CONTENT', 'CHAPTER 1: PROBLEM DESCRIPTION',
+                        'CHAPTER 4: TESTING AND EVALUATION', 'PART 3. CONCLUSION', 'REFERENCES',
+                        'APPENDIX A: INSTALLATION AND USER GUIDE']:
             if heading not in pdf_text:
                 errors.append(f'{folder}: missing section {heading}')
-        if 'INFORMATION ON RESEARCH RESULTS' not in pdf_text:
-            errors.append(f'{folder}: English form missing')
+        for leftover in ['BÁO CÁO TỔNG KẾT', 'Mã số đề tài', 'INFORMATION ON RESEARCH RESULTS']:
+            if leftover in pdf_text:
+                errors.append(f'{folder}: research-report leftover {leftover}')
     if folder == 'smoke' and not re.search(r'\[1\]', pdf_text):
         errors.append('smoke: IEEE citation [1] missing')
     print(f'{pdf.relative_to(ROOT)}: {pages} pages, A4, fonts embedded, references/layout checked')
 
 if errors:
     raise SystemExit('\n'.join(errors))
-print('PASS: standalone template; no minimum page count or acceptance-dossier requirement.')
+print('PASS: standalone thesis template; no minimum page count or acceptance-dossier requirement.')

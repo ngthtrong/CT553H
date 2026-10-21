@@ -4,15 +4,17 @@
   \IfFileExists{/mnt/c/Windows/Fonts/times.ttf}{%
     \setmainfont{times.ttf}[Path=/mnt/c/Windows/Fonts/,
       BoldFont=timesbd.ttf,ItalicFont=timesi.ttf,BoldItalicFont=timesbi.ttf]
-  }{\PackageError{ctu-report}{Times New Roman not found}{Install all four Times New Roman faces and refresh fontconfig.}}}
+  }{\PackageError{ctu-thesis}{Times New Roman not found}{Install all four Times New Roman faces and refresh fontconfig.}}}
 \usepackage{unicode-math}
 \setmathfont{latinmodern-math.otf}
+% The thesis is written in English (as the reference theses); Vietnamese is
+% needed only for the Tóm tắt page and Vietnamese names.
 \usepackage{polyglossia}
-\setdefaultlanguage{vietnamese}
-\setotherlanguage{english}
+\setdefaultlanguage{english}
+\setotherlanguage{vietnamese}
 \usepackage{setspace}
 \setstretch{1.3}
-\setlength{\parindent}{1cm}
+\setlength{\parindent}{1.27cm}
 \setlength{\parskip}{0pt}
 \emergencystretch=2em
 % Keep figure/table separation consistent, including pages containing only floats.

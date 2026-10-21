@@ -19,7 +19,7 @@ if not shutil.which('bibtex') and not shutil.which('biber'):
 if shutil.which('kpsewhich'):
     for package in ['scrreprt.cls', 'fontspec.sty', 'polyglossia.sty', 'unicode-math.sty',
                     'geometry.sty', 'setspace.sty', 'graphicx.sty', 'longtable.sty',
-                    'booktabs.sty', 'tabularx.sty', 'amsmath.sty', 'tikz.sty', 'pdfpages.sty',
+                    'booktabs.sty', 'tabularx.sty', 'amsmath.sty', 'tikz.sty',
                     'scrlayer-scrpage.sty', 'hyperref.sty', 'bookmark.sty', 'natbib.sty', 'ieeetr.bst']:
         found = subprocess.run(['kpsewhich', package], capture_output=True, text=True).stdout.strip()
         print(f'{package}: {"OK" if found else "MISSING"}')

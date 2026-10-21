@@ -1,69 +1,78 @@
-\newcommand{\SignatureBlock}[1]{%
-  \par\begin{flushright}\begin{minipage}{.46\textwidth}\centering
-  \textbf{#1}\\{\itshape (Ký và ghi rõ họ tên)}\par\vspace{22mm}
-  \end{minipage}\end{flushright}}
-\newcommand{\CoverFrame}{%
-  \begin{tikzpicture}[remember picture,overlay]
-    \draw[line width=.8pt] ($(current page.north west)+(20mm,-20mm)$)
-      rectangle ($(current page.south east)+(-20mm,20mm)$);
-    \draw[line width=.4pt] ($(current page.north west)+(21mm,-21mm)$)
-      rectangle ($(current page.south east)+(-21mm,21mm)$);
-  \end{tikzpicture}}
-\newcommand{\CoverHeading}{%
-  \MinistryName\\\textbf{\UniversityName}\par
-  \vspace{10mm}\includegraphics[width=30mm]{logo-ctu.png}\par
-  \vspace{10mm}{\fontsize{18bp}{22bp}\selectfont\bfseries BÁO CÁO TỔNG KẾT\par}
-  \medskip\textbf{ĐỀ TÀI NGHIÊN CỨU KHOA HỌC CỦA SINH VIÊN}\par}
-\newcommand{\CoverTitle}{%
-  {\fontsize{16bp}{20bp}\selectfont\bfseries\ProjectTitle\par}
-  \vspace{6mm}\textbf{Mã số đề tài: \ProjectCode}\par}
-% Covers have centered content inside the double frame; body margins restored after.
-\newenvironment{reportcover}{%
-  \clearpage\newgeometry{left=25mm,right=25mm,top=25mm,bottom=25mm,headheight=22bp,footskip=10mm}%
-  \thispagestyle{empty}%
-}{\clearpage\restoregeometry}
+% ---- Fixed names ---------------------------------------------------------------
+% polyglossia resets caption names, so hook the language rather than redefine them.
+\addto\captionsenglish{%
+  \renewcommand*{\chaptername}{CHAPTER}%
+  \renewcommand*{\appendixname}{APPENDIX}%
+  \renewcommand*{\contentsname}{TABLE OF CONTENTS}%
+  \renewcommand*{\listfigurename}{LIST OF FIGURES}%
+  \renewcommand*{\listtablename}{LIST OF TABLES}%
+  \renewcommand*{\figurename}{Figure}%
+  \renewcommand*{\tablename}{Table}}
 
-% Official forms follow the supplied PDF layout; scientific body keeps its own style.
-\newenvironment{officialform}{%
-  \clearpage\begingroup\pagestyle{empty}\setstretch{1}%
-  \fontsize{13bp}{15bp}\selectfont\setlength{\parindent}{0pt}%
-  \setlength{\parskip}{1bp}\FormLogo%
-}{\clearpage\endgroup}
-% Put the same CTU mark on every official form, independent of the header language.
-\newcommand{\FormLogo}{%
+% ---- Covers ------------------------------------------------------------------
+\newcommand{\ThesisFrame}{%
   \begin{tikzpicture}[remember picture,overlay]
-    \node[anchor=north west,inner sep=0pt] at
-      ($(current page.north west)+(30mm,-20mm)$)
-      {\includegraphics[width=16mm]{logo-ctu.png}};
+    \draw[line width=1.6pt] ($(current page.north west)+(20mm,-20mm)$)
+      rectangle ($(current page.south east)+(-20mm,20mm)$);
+    \draw[line width=.5pt] ($(current page.north west)+(21.8mm,-21.8mm)$)
+      rectangle ($(current page.south east)+(-21.8mm,21.8mm)$);
   \end{tikzpicture}}
-\newcommand{\FormAgencyVI}{%
-  \noindent\hspace*{18mm}\begin{minipage}{.61\textwidth}\centering
-  \MinistryName\\\textbf{\UniversityName}\par
-  \end{minipage}\par\vspace{6mm}}
-\newcommand{\FormAgencyLogoVI}{%
-  \noindent\hspace*{18mm}\begin{minipage}{.61\textwidth}\centering
-  \textbf{\MinistryName\\\UniversityName}\par
-  \end{minipage}\par\vspace{5mm}}
-\newcommand{\FormAgencyLogoEN}{%
-  \noindent\hspace*{18mm}\begin{minipage}{.82\textwidth}\centering
-  \textbf{\MinistryNameEnglish\\\UniversityNameEnglish}\par
-  \end{minipage}\par\vspace{5mm}}
-\newcommand{\FormAgencyEN}{\FormAgencyLogoEN}
-\newcommand{\FormTitle}[1]{%
-  {\centering\fontsize{14bp}{17bp}\selectfont\bfseries #1\par}\vspace{5mm}}
-\newcommand{\FormContentsEntry}[1]{\phantomsection\addcontentsline{toc}{chapter}{#1}}
-\newcommand{\FormSection}[1]{\par\addvspace{3bp}\textbf{#1}\par\nopagebreak[4]}
-\newcommand{\FormLine}[1]{\par\noindent -- #1\par}
-\newcommand{\FormIndented}[1]{\par\begingroup\leftskip=8mm\noindent #1\par\endgroup}
-% Blank fields are intentional in this reusable template.
-\newcommand{\PendingField}[1]{\dotfill}
-\newcommand{\FormSignature}[2]{%
-  \par\noindent\hfill\begin{minipage}{.48\textwidth}\centering
-  Ngày \ldots\ tháng \ldots\ năm \ldots\\\textbf{#1}\par\vspace{20mm}\textbf{#2}\par
-  \end{minipage}\par}
-\newcommand{\FormJointSignature}[2]{%
-  \par\noindent\begin{minipage}[t]{.48\textwidth}\centering\vspace{0pt}
-  \mbox{}\\\textbf{Xác nhận của \UniversitySignatureName}\par\vspace{20mm}
-  \end{minipage}\hfill\begin{minipage}[t]{.48\textwidth}\centering\vspace{0pt}
-  Ngày \ldots\ tháng \ldots\ năm \ldots\\\textbf{#1}\par\vspace{20mm}\textbf{#2}\par
-  \end{minipage}\par}
+% Covers have centred content inside the frame; body margins restored after.
+\newenvironment{thesiscover}{%
+  \clearpage\newgeometry{left=28mm,right=28mm,top=28mm,bottom=28mm,headheight=21bp,footskip=10mm}%
+  \thispagestyle{empty}\ThesisFrame\centering\setstretch{1.3}\fontsize{14bp}{18bp}\selectfont
+}{\clearpage\restoregeometry}
+\newcommand{\ThesisCoverHeading}{%
+  {\fontsize{12.5bp}{17bp}\selectfont\UniversityName\\\CollegeName\\\textbf{\FacultyName}\par}
+  \vspace{12mm}\includegraphics[width=30mm]{logo-ctu.png}\par}
+\newcommand{\ThesisCoverProgram}{%
+  \textbf{GRADUATION THESIS}\par
+  \textbf{\parbox{.62\textwidth}{\centering\setstretch{1.3}\DegreeName}}\par
+  \textbf{\ProgramName}\par}
+\newcommand{\ThesisCoverTitle}{%
+  {\fontsize{16bp}{21bp}\selectfont\bfseries\ThesisTitle\par}%
+  \ifx\ThesisSubtitle\ThesisEmpty\else
+    \vspace{3mm}{\bfseries\ThesisSubtitle\par}%
+  \fi}
+\newcommand{\ThesisCoverFooter}{\textbf{\textit{\ThesisLocation, \ThesisDate}}\par}
+
+% ---- Fixed front-matter pages -------------------------------------------------
+% Unnumbered chapter heading that also appears in the table of contents; pages
+% before the table of contents carry only the centred page number.
+\newcommand{\FrontChapter}[1]{\addchap{#1}\thispagestyle{thesisplain}}
+% Dotted writing lines for pages that are completed by hand.
+\newcommand{\DottedLines}[1]{\foreach \i in {1,...,#1}{\par\noindent\dotfill\par}}
+\newcommand{\SignatureBlock}[2]{%
+  \par\vspace{6mm}\begin{flushright}\begin{minipage}{.5\textwidth}\centering
+  \SigningDate\par\textbf{#1}\par\vspace{22mm}\textbf{#2}\par
+  \end{minipage}\end{flushright}}
+
+% ---- Numbering of the three parts -------------------------------------------
+% PART 1 and PART 3 number their sections 1., 2., 3.1.; the chapters of PART 2
+% (and the appendices) use 1.1., 1.1.1.
+\newcommand{\ThesisFlatNumbering}{%
+  \setcounter{section}{0}%
+  \renewcommand*{\thesection}{\arabic{section}}%
+  \renewcommand*{\thesubsection}{\thesection.\arabic{subsection}}%
+  \renewcommand*{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}}
+\newcommand{\ThesisChapterNumbering}{%
+  \renewcommand*{\thesection}{\thechapter.\arabic{section}}%
+  \renewcommand*{\thesubsection}{\thesection.\arabic{subsection}}%
+  \renewcommand*{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}}
+
+% ---- Use case specification (faculty template, Chapter 1) ----------------------
+% \begin{usecasespec}{Caption}{label}
+%   \ucname{Name}{UC-01}  \ucactor{Actor}{Priority}{Classification}
+%   \ucfull{Heading}{text}  ...
+% \end{usecasespec}
+\newenvironment{usecasespec}[2]{%
+  \small\setstretch{1.15}
+  \begin{longtable}{|P{.465\textwidth}|P{.465\textwidth}|}
+  \caption{#1}\label{#2}\\\hline\endfirsthead
+  \hline\endhead}{\end{longtable}}
+\newcommand{\ucname}[2]{\textbf{Use case name:} #1 & \textbf{ID:} #2 \\\hline}
+\newcommand{\ucactor}[3]{%
+  \textbf{Primary actor:} #1 &
+  \textbf{Necessity level:} #2\par\textbf{Classification:} #3 \\\hline}
+\newcommand{\ucfull}[2]{%
+  \multicolumn{2}{|P{.93\textwidth}|}{\textbf{#1}\par #2\vspace{2bp}} \\\hline}

@@ -1,8 +1,14 @@
-\begin{reportcover}
-\CoverFrame
-\centering\setstretch{1.3}
-\CoverHeading
-\vspace{18mm}\CoverTitle
-\vspace{10mm}\textbf{Chủ nhiệm đề tài: Sinh viên \PrincipalName}\par
-\vfill\textbf{\ReportLocation, \ReportDate}\par\vspace{5mm}
-\end{reportcover}
+% Outer cover (bìa chính): university block, logo, programme, title, student.
+\begin{thesiscover}
+\ThesisCoverHeading
+\vspace{14mm}\ThesisCoverProgram
+\vspace{14mm}\ThesisCoverTitle
+\vfill
+\textbf{Student: \StudentName}\par
+\textbf{Student ID: \StudentId}\par
+\textbf{Class: \StudentYears\ (\StudentCourse)}\par
+\textbf{Advisor: \AdvisorName}\par
+\ifx\AdvisorTwoName\ThesisEmpty\else\textbf{\AdvisorTwoName}\par\fi
+\vfill
+\ThesisCoverFooter
+\end{thesiscover}

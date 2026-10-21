@@ -13,7 +13,7 @@ Repo luận văn tốt nghiệp CT553H (Kỹ thuật phần mềm, ĐH Cần Th�
 - `lectures/` — bài tự học (HTML mở bằng `file://`, notebook CS535, `degron-basics/` gồm bài giảng + ghi chép từng paper trong `papers/`).
 - `project/` — thông tin người liên quan, công bố của GVHD, biên bản gặp.
 - `resources/` — PDF bài báo, luận văn tham khảo, đề cương học phần (repo private nên được chứa PDF).
-- `reportTemplate/` — template LaTeX báo cáo NCKH của ĐHCT, độc lập với phần còn lại (xem `reportTemplate/README.md`).
+- `reportTemplate/` — template LaTeX báo cáo luận văn tốt nghiệp (Khoa Kỹ thuật phần mềm, ĐHCT), độc lập với phần còn lại (xem `reportTemplate/README.md`); `guideline-thesis/` trong đó là mẫu/hướng dẫn gốc của Khoa. Template NCKH cũ nằm ở commit `30c20ef`.
 
 ## Chạy script nghiên cứu
 
@@ -46,9 +46,9 @@ Cần Python 3.9+ (chỉ thư viện chuẩn), GNU Make, XeLaTeX, Biber/BibTeX, 
 
 ```bash
 make -C reportTemplate doctor     # kiểm môi trường
-make -C reportTemplate content    # build/content/content.pdf (hoặc all, smoke, deliverables, bulletin-vi, ...)
+make -C reportTemplate content    # build/content/content.pdf (hoặc content-twoside, smoke, all)
 make -C reportTemplate check      # kiểm PDF, log, A4, phông nhúng
 make -C reportTemplate content BIBLIOGRAPHY=bibtex   # ép natbib/BibTeX thay vì biblatex/Biber
 ```
 
-Luôn build qua Make/`scripts/build.py` (tự lặp đến khi tham chiếu ổn định); một lượt XeLaTeX trực tiếp không đủ. Build dừng khi có lỗi LaTeX, overfull box, thiếu ký tự, nhãn trùng hoặc tham chiếu chưa giải quyết. Metadata ở `config/metadata.tex` và `config/members.tex`; nội dung ở `chapters/`, `frontmatter/`, `deliverables/content/`.
+Luôn build qua Make/`scripts/build.py` (tự lặp đến khi tham chiếu ổn định); một lượt XeLaTeX trực tiếp không đủ. Build dừng khi có lỗi LaTeX, overfull box, thiếu ký tự, nhãn trùng hoặc tham chiếu chưa giải quyết. Metadata ở `config/metadata.tex`; nội dung ở `frontmatter/`, `chapters/`, `appendices/`; tên chương/phần/phụ lục viết hoa ngay trong nguồn.
