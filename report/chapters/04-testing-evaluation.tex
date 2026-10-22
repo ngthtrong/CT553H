@@ -1,33 +1,625 @@
 % CHAPTER 4: kiểm thử phần mềm và đánh giá thực nghiệm.
+% Bảng, hình và các con số trong §4.2 được sinh từ các tệp JSON kết quả bằng
+% assets/ch4/build_ch4_assets.py; không sửa tay các tệp đã sinh trong assets/ch4/.
+\input{assets/ch4/numbers}
+\newcommand{\jsonfile}[1]{\nolinkurl{#1}}
 \chapter{TESTING AND EVALUATION}\label{chap:evaluation}
 
 \section{Testing Objectives}
+To check that the research pipeline gives reproducible results without leakage between training and test
+clusters, and that the prototype validates input, keeps coordinates and score direction correct, and
+exports data consistently with the research runner.
 
-\section{Experimental Evaluation}
+This chapter has two parts. Section~\ref{sec:experiments} reports the experimental evaluation of the
+research pipeline; these experiments have been run. Sections~\ref{sec:testplan} to~\ref{sec:testeval} follow
+the test-plan outline of the Faculty for the prototype tool. Only a minimal offline command-line prototype
+exists (no graphical interface); its consistency checks against the research runner have been run and are
+reported there, while the parts of the plan that need the full prototype are still \textbf{[PENDING]}.
+
+\section{Experimental Evaluation}\label{sec:experiments}
 \subsection{Experimental Setup}
-% Dữ liệu, cách chia tập, đường cơ sở, cấu hình, môi trường tính toán.
-\subsection{Evaluation Metrics}
-\subsection{Results}
-% Bảng/hình kết quả; mỗi con số trỏ tới tệp kết quả sinh ra nó.
-\subsection{Discussion}
-% Diễn giải, ablation, giới hạn của bằng chứng.
 
-\section{Software Testing Plan}
+\paragraph{Data and labels.}
+The labels come from the saturation-mutagenesis experiment of Zhang et al.\ \citep{zhang2023,zhang2023data}.
+For each peptide, the effect of a substitution is $\Delta\mathrm{PSI}=\mathrm{PSI}_{\mathrm{mutant}}-\mathrm{PSI}_{\mathrm{WT}}$
+(Chapter~\ref{chap:background}). The data set contains two replicate halves of each peptide. The
+$\mathrm{PSI}_{\mathrm{WT}}$ reference of a half is the median PSI of the synonymous cells of that half,
+and at least ten such cells are required. The cell label is the mean $\Delta\mathrm{PSI}$ of the two halves;
+a cell is \emph{positive} when $\Delta\mathrm{PSI}\ge 1$. A peptide is accepted as a degron only if
+$\mathrm{PSI}_{\mathrm{WT}}\le 3.0$. Table~\ref{tab:funnel} shows how the \nNRaw{} raw saturation peptides reduce to
+the \nNKept{} peptides of the benchmark. The single largest cause of loss is the degron threshold, which
+removes \nNDropDegron{} peptides; the technical causes together remove only
+$\nNDropRefs+\nNDropMismatch+\nNDropNoSeq=13$ peptides. The benchmark set contains \nNPep{} peptides in \nNClu{}
+protein clusters and \nNCells{} cells. The measurement ceiling of this set, computed as the agreement between
+its two experimental halves, is \nCeilingSat{} AUROC.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Fate of the raw saturation peptides under the label filters}\label{tab:funnel}
+  \input{assets/ch4/tab-funnel}
+\end{table}
+
+\paragraph{Splits.}
+Proteins are clustered with MMseqs2 \citep{steinegger2017} at 30\% identity and 80\% coverage (cov80). The
+outer evaluation uses five folds with whole clusters assigned to folds. Inside each outer training set, 20\%
+of the clusters form a validation set for choosing hyper-parameters, so no outer-test label is ever used for
+tuning. Training is repeated with seeds 17, 29 and 43. The three seeds share the same outer partition and
+differ only in the inner validation split and in network initialisation, so they are not three independent
+partitions. The reported score of a model is the AUROC of the average of the three seeds' out-of-fold
+scores; per-seed results are also kept.
+
+\paragraph{Models.}
+\begin{itemize}
+  \item \textbf{Ridge M3.} Ridge regression \citep{hoerl1970} on 180 features: one-hot reference and
+        substituted amino acid (40), peptide composition (20) and the ordered $\pm 3$ residue context (120).
+        The penalty is chosen from $\{1,10,100,1000\}$ on the inner validation set.
+  \item \textbf{$\Delta$PAP.} The difference of the PAP degron score \citep{voutsinos2026} between mutant and
+        wild type, with the published network frozen (variant \texttt{cnn2w1}). It is the reference
+        baseline and uses no training labels.
+  \item \textbf{Gated networks.} The same 180 features, with the substitution (pair) and the
+        composition-plus-context inputs projected separately to 32 dimensions; a sigmoid of the pair projection
+        multiplies the context representation, followed by an MLP ($64\to32\to1$). Variants add the frozen
+        $\Delta$PAP as a residual or remove the gate. Training uses AdamW (learning rate $2\times10^{-3}$,
+        weight decay $0.01$, batch of about 1,024, at most 60 epochs, patience 8).
+  \item \textbf{Degformer.} The published checkpoint (epoch 50) of the transformer \citep{degformer}, scored as
+        $\mathrm{pred}(\mathrm{mutant})-\mathrm{pred}(\mathrm{WT})$; and the same architecture
+        (d\_model 128, 4 layers, 8 heads) retrained from scratch on the training clusters of each fold.
+\end{itemize}
+Further interaction designs (FiLM, rank-8 bilinear, ridge with cross-product features) were added as
+\emph{pre-registered candidates} in Section~\ref{sec:res-interaction}.
+
+\paragraph{Pre-registration.}
+The acceptance criteria of the overlap check, the interaction designs, the retrained Degformer architecture, the
+learning-curve and threshold experiments, the re-clustering, the pre-training experiment, the calibration and
+the audit of the external labels were written to a protocol file before the experiments were run, and were
+not changed afterwards. Where a result below is described as met or not met, it refers to those fixed criteria.
+Observations made after seeing the numbers are labelled as descriptive. The first direct-learning experiment
+(Table~\ref{tab:g2}) has a protocol file but is treated as exploratory.
+
+\paragraph{Environment.}
+All experiments ran on CPU with Python 3.12.3, NumPy 2.5.3 and PyTorch 2.14.0 (CPU build); each result file
+records the SHA-256 of its input and of its runner. Large caches and checkpoints are generated again by the
+runners and are not kept in the repository.
+
+\subsection{Evaluation Metrics}
+The main metric is the cell-level AUROC (positive: $\Delta\mathrm{PSI}\ge1$), computed per peptide that has both
+classes and then averaged over peptides (macro AUROC). Paired differences between two models are computed on
+the same peptides. The 95\% confidence intervals come from 5,000 bootstrap resamples of protein clusters
+\citep{efron1979}; every peptide of a sampled cluster is kept, so cells and peptides are not treated as
+independent. These intervals are conditional on the stored out-of-fold predictions and do not include the
+variance of retraining. No correction is made for the many comparisons, so a single interval is a
+development-stage indication and not a confirmation.
+
+Probabilities are assessed with the Brier score (the mean squared difference between the predicted
+probability and the 0/1 label over the cells), the Brier skill score against a constant forecast of the base rate,
+$\mathrm{BSS}=1-\mathrm{Brier}/\mathrm{Brier}_{\mathrm{const}}$, and the expected calibration error (ECE) over ten
+equal-mass bins, pooled over the outer-test cells and bootstrapped by cluster in the same way. Ranking utility is the
+\emph{enrichment at $k\%$}: for each peptide, the substitutions are ordered by predicted score, the precision of the
+top $k\%$ is divided by the fraction of positive cells of that peptide, and the ratio is averaged over the peptides
+that have both classes; a random ranking has enrichment 1.
+
+\subsection{Results}\label{sec:results}
+All results below are on a \emph{development benchmark}: the same \nNPep{} peptides have been examined in
+several experiments, and the out-of-fold design is not an independent validation on unseen data.
+
+\subsubsection{Direct Learning on the Saturation Matrix}
+Table~\ref{tab:g2} lists the macro AUROC of each model. Ridge M3 reaches \nAucRidge{}, above the frozen
+$\Delta$PAP baseline (\nAucDPAP{}). The paired difference is \nDRidgeDPAP{} with a cluster-bootstrap interval
+\nCIRidgeDPAP{} (Table~\ref{tab:g2paired}). The gated network with residual $\Delta$PAP reaches \nAucGatePap{}
+and is below ridge (difference \nDGateRidge{}, \nCIGateRidge{}). Removing the gate (\nAucNoGate{}) or the
+$\Delta$PAP residual (\nAucGateNoPap{}) does not change this picture: both variants stay below ridge.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Macro AUROC on the \nNPep{} peptides of the saturation benchmark. The last column keeps only the cells
+  whose exact sequence is not in the training data of the published Degformer.}\label{tab:g2}
+  \input{assets/ch4/tab-g2}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Paired AUROC differences between models}\label{tab:g2paired}
+  \input{assets/ch4/tab-g2-paired}
+\end{table}
+
+The result of the gate is not stable across seeds (Table~\ref{tab:g2seeds}). In seed 29 the gated network is
+\emph{below} the network without the gate (difference \nSeedFlipDelta{}, \nSeedFlipCI{}), whereas it is above in the other
+two seeds. The ensemble figure should therefore not be read as evidence that the gate helps.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Per-seed AUROC of the three main models}\label{tab:g2seeds}
+  \input{assets/ch4/tab-g2-seeds}
+\end{table}
+
+\subsubsection{Published Degformer Checkpoint and Retrained Architecture}\label{sec:res-degformer}
+The published Degformer checkpoint scores \nAucDegOfficial{}, but this is not a held-out result: \nOverlapCells{} of the
+\nNCellsEOne{} mutant cells (\nOverlapPct\%) have an exact sequence in its training file, and the wild type of
+all \nNPep{} peptides is in it as well. A natural suspicion is that this exact overlap alone explains the high score.
+Restricting the evaluation to the \nNonOverlapCells{} cells without overlap leaves the score essentially unchanged
+(\nAucDegNonOverlap{}, Table~\ref{tab:g2}), so exact cell overlap does not explain the gap. The remaining leak is at
+the level of the peptide: the model has seen most of the matrix of every peptide, and removing a few dozen cells does
+not create an unseen peptide. The comparison of the published checkpoint with the models of this thesis is
+therefore not a fair test of generalisation, and no claim is made about it.
+
+A fair comparison of the architecture requires the same label budget and the same cluster-wise split. Retrained
+under these conditions (one seed, hyper-parameters as published by its authors, target the absolute PSI),
+the Degformer architecture reaches \nAucDegArch{}, below ridge (difference \nDDegArchRidge{}, \nCIDegArchRidge{}) and below
+$\Delta$PAP (Table~\ref{tab:e2}). This lower score is not necessarily a property of the architecture
+itself: it may reflect the small number of training clusters (see Section~\ref{sec:res-curve}).
+
+\subsubsection{Interaction Designs}\label{sec:res-interaction}
+Three interaction designs were fixed before running: FiLM, a rank-8 bilinear form and ridge with 2,400
+cross-product features. A candidate was to be called a useful architectural component only if the following
+held at the same time: (a) its paired difference to ridge is positive in all three seeds, (b) the confidence
+interval of the ensemble difference excludes zero, and (c) the same holds against $\Delta$PAP. None of the
+candidates met the criterion (Table~\ref{tab:e2}). The best of them, FiLM, is \nDFilmRidge{} (\nCIFilmRidge{})
+relative to ridge and is below ridge in every seed. The sigmoid gate of the first experiment gives the same
+direction, and the retrained Degformer architecture is far lower. All candidates are above the frozen
+$\Delta$PAP, but so is plain ridge.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Interaction designs against ridge M3. ``Criterion met'' applies the pre-registered rule above; for the
+  sigmoid gate and the one-seed Degformer architecture the rule is applied descriptively.}\label{tab:e2}
+  \input{assets/ch4/tab-e2}
+\end{table}
+
+This result does not show that interaction between the substituted amino acid and its context is absent. It
+shows that, at this sample size (\nNClu{} clusters), what four different mechanisms add is not enough to
+offset the variance they bring. The question of model capacity is therefore left open and is not answered by
+trying one more variant (see Section~\ref{sec:res-curve}).
+
+\subsubsection{Learning Curve and Relaxing the Degron Threshold}\label{sec:res-curve}
+Two questions were put together and their criteria fixed before running. \textbf{P1:} does the AUROC still rise
+with the number of training clusters? \textbf{P0:} can the 85 peptides removed by the degron threshold be
+used as extra \emph{training} labels if the threshold is relaxed from 3.0 to 4.0? The design keeps the
+outer-test cells exactly equal to those of the \nNPep{} benchmark peptides, so every number is comparable with
+\nAucRidge{}; the added peptides enter only the outer-training sets, and those that fall in a test cluster
+are removed from the training of that fold (\nExclFoldZero{} cells in fold 0 and \nExclFoldThree{} cells in fold 3,
+none in the other folds). The partition of the five folds was checked to be identical to the earlier experiment; at the 100\% level, the two
+models reproduce the earlier scores of \nAucRidge{} and \nAucGateNoPap{} exactly. Two models of different capacity
+were fixed in advance: ridge M3 and the gated network without $\Delta$PAP.
+
+\begin{figure}[htbp]
+  \centering
+  \input{assets/ch4/fig-learning-curve}
+  \caption{Macro AUROC against the mean number of training clusters (nested cluster subsets of 25, 50, 75 and 100\%
+  of the outer-training data; the dashed segment is the relaxed-threshold training set). Data:
+  \jsonfile{learning-curve-2026-10-22/results.json}.}\label{fig:curve}
+\end{figure}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Learning curve (P1) and relaxed degron threshold 4.0 (P0). Ranges are over 5 folds and 3 seeds.}\label{tab:curve}
+  \input{assets/ch4/tab-curve}
+\end{table}
+
+\paragraph{P1.} Table~\ref{tab:curve} and Figure~\ref{fig:curve} show the curves. Under the fixed rule the learning curve of ridge does not support the hypothesis of label shortage
+(Table~\ref{tab:verdict}). From 100\% to 50\% of the clusters the difference is only \nPoneRidgeD{} (\nPoneRidgeCI{}) and
+the sequence of means is not monotone. This must not be read as evidence that the data limit has been reached: the design does not
+measure a ceiling. The gated network behaves differently: it gains \nPoneGateD{} (\nPoneGateCI{}), the curve is
+monotone, and the criterion is met. The two curves together suggest that ridge has absorbed what the original
+distribution of clusters can teach it, while the larger-capacity network is still rising at about 70 clusters.
+The gap between ridge and the network narrows with data but is not closed (ridge is still higher by \nGapExt{}
+at the relaxed-threshold level); the result does not rehabilitate any of the rejected designs, and it must
+not be extrapolated to ``more data will make the architecture win''. One of the predictions written before the run,
+that P1 would probably be supported, was therefore not borne out for ridge.
+
+\paragraph{P0.} Adding \nNNewPep{} peptides (\nNNewCells{} cells, \nNNewClu{} clusters not in the benchmark) lifts ridge from
+\nAucRidge{} to \nAucRidgeExt{}, a gain of \nPzeroRidgeD{} (\nPzeroRidgeCI{}), positive in each seed
+(\nPzeroRidgeSeeds). The gated network gains \nPzeroGateD{} (\nPzeroGateCI{}). Both meet the pre-registered
+criteria. The protocol had also predicted, before the run, that P0 would probably fail, because
+peptides with a high $\mathrm{PSI}_{\mathrm{WT}}$ are already stable and might have almost no positive cells.
+The measurement contradicts this prediction (Table~\ref{tab:newgroup}): the share of positive cells falls only from
+\nPosBase\% to \nPosNew\%, and the 95th percentile of $\Delta\mathrm{PSI}$ in the added peptides is \nDpsiPNinetyFiveNew{}, against \nDpsiPNinetyFiveBase{} in the benchmark peptides. The threshold of 3.0
+therefore appears more conservative than the mutation-effect task requires, even if it is the right threshold
+for the different question of whether a peptide is a degron.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Pre-registered verdicts of P1 and P0}\label{tab:verdict}
+  \input{assets/ch4/tab-curve-verdict}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Cells of the benchmark peptides and of the 85 peptides added by relaxing the threshold}\label{tab:newgroup}
+  \input{assets/ch4/tab-newgroup}
+\end{table}
+
+\subsubsection{Number of Clusters or Coverage of the Distribution}\label{sec:res-partb}
+The two curves of the previous section seem to contradict each other: ridge is flat between 35 and 71
+clusters, yet it rises when 83 more clusters are added. One reading is that the two steps add different things:
+the first thickens the existing region of $\mathrm{PSI}_{\mathrm{WT}}$, the second widens it. The previous experiment
+cannot separate the two, because it changes the number of clusters and the region together. A second
+experiment, with its criteria fixed before running, keeps the whole original training set and adds a
+nested fraction of the new clusters (Table~\ref{tab:partb}). The main criterion compares the gain at +50\% of the new
+clusters (about 42 clusters) with the marginal gain of 36 old-region clusters measured before, \nBaseMarginal{}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Gain over the benchmark training set when a fraction of the new clusters is added}\label{tab:partb}
+  \input{assets/ch4/tab-partb}
+\end{table}
+
+For ridge the gain at +50\% is \nBFiftyRidge{} (\nBFiftyRidgeCI{}), whose interval lies entirely above \nBaseMarginal{}:
+the main criterion supports coverage of the distribution. For the network the interval contains \nBaseMarginal{}, so the new
+clusters are useful but not shown to be better than old ones (Table~\ref{tab:partbverdict}). The secondary
+criterion, the shape of the curve, gives the opposite answer: the gain at +25\% is \nBFracRidge\% of the total
+for ridge and \nBFracGate\% for the network, below the threshold of 60\% fixed for ``early saturation'', so the
+fixed rule says ``proportional to the number of clusters''. Because the two fixed criteria disagree, the
+question is \emph{not decided}. As a descriptive remark only, the successive increments of ridge are
+\nBStepsRidge, so roughly 90\% of the total gain is already reached at +50\%, and the threshold of 60\% at +25\% was a
+poor operational choice. This remark does not overturn the verdict.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Pre-registered verdicts on the new clusters. The reference marginal gain of old-region clusters is \nBaseMarginal.}\label{tab:partbverdict}
+  \input{assets/ch4/tab-partb-verdict}
+\end{table}
+
+What can be stated is limited: clusters from the region $3.0<\mathrm{PSI}_{\mathrm{WT}}\le4.0$ have a marginal value at least equal
+to that of old-region clusters, and for ridge the evidence suggests it is higher. It cannot be said that the gain is
+\emph{only} due to wider coverage, because the 83 new clusters differ from the old ones both in region and in protein.
+
+\subsubsection{Sensitivity to the Threshold}\label{sec:res-partc}
+The four thresholds 3.5, 4.0, 4.5 and 5.0 were run in one pass and are all reported (Table~\ref{tab:partc},
+Figure~\ref{fig:threshold}). The main configuration of the thesis stays at 4.0, a value fixed before this grid was
+seen and chosen then only because it roughly doubles the number of peptides; it is not re-chosen from the grid.
+Every threshold is better than the benchmark training set (all intervals above zero). The ridge gain is highest at 4.0
+(\nCFourD) and lower at 4.5 (\nCFourFiveD) and 5.0 (\nCFiveD); under the fixed rule (a drop of more than 0.002) this
+is labelled ``decline after 4.0''. That label describes the shape of the point estimates: the intervals overlap
+widely, and no interval was computed for the difference between 4.0 and 4.5. The gated network is nearly flat
+from 3.5 to 5.0, so the decline is a property of ridge. It also depends on how a positive cell is defined: with
+the positive cut at $\Delta\mathrm{PSI}\ge1.5$ the maximum for ridge moves to 5.0 (\nCAtOneFiveFive) and there is no decline.
+The share of positive cells in the added peptides falls steadily with the threshold (Table~\ref{tab:partc}),
+which is consistent with peptides that are not degrons starting to dilute the training set (an interpretation, not tested separately).
+
+\begin{table}[htbp]
+  \centering
+  \caption{Added data and gains for each degron threshold (cov80, positive cut $\Delta\mathrm{PSI}\ge1$)}\label{tab:partc}
+  \input{assets/ch4/tab-partc}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \input{assets/ch4/fig-threshold}
+  \caption{Gain in macro AUROC over the benchmark training set for each degron threshold, with 95\% cluster-bootstrap
+  intervals (horizontal offsets only separate the two models). Data: \jsonfile{learning-curve-2026-10-22/results-c.json}.}\label{fig:threshold}
+\end{figure}
+
+The gain at 4.0 survives three definitions of a positive cell and a different assignment of folds
+(Table~\ref{tab:partcrobust}); all four intervals are above zero. The last row must be read with care. The clustering at
+50\% coverage was meant to test sensitivity to the coarseness of clustering, but on this peptide set cov50 and
+cov80 produce the same number of clusters (\nCClusters{}) and, as found after the run, the same grouping of peptides; only the
+representative labels differ, which changes how clusters are assigned to the five folds (the benchmark score becomes \nCCoverFiftyBase{}
+instead of \nAucRidge). That row therefore tests a re-assignment of folds, not coarser clustering; clustering granularity is tested
+with genuinely different partitions in Section~\ref{sec:res-recluster}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Robustness of the gain at threshold 4.0 (ridge M3)}\label{tab:partcrobust}
+  \input{assets/ch4/tab-partc-robust}
+\end{table}
+
+\subsubsection{Sensitivity to the Clustering Granularity}\label{sec:res-recluster}
+Because cov50 does not change the partition on this peptide set, a grid of seven partitions of the 176 peptides
+(the \nNPep{} benchmark peptides and the 85 added ones) was fixed before running: grouping by UniProt accession
+(no clustering), the reference MMseqs2 setting (30\% identity, 80\% coverage) and five looser MMseqs2 settings. The P0
+comparison (ridge M3, relaxed threshold 4.0 against the benchmark training set, same cluster bootstrap) was repeated with the
+folds rebuilt from each partition. The reference level reproduces the earlier scores (\nAucRidge{} and \nAucRidgeExt) and the five
+folds of the earlier experiment. The criterion fixed in advance: the gain is ``robust to granularity'' if every
+partition that differs from the reference and is still informative (fewer than half of the added cells are lost because they
+share a group with a test peptide) has a bootstrap interval of the gain above zero and a positive gain in all three seeds.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Gain of the relaxed threshold 4.0 (ridge M3) under different protein partitions. ``Groups'' are the groups of the
+  91 benchmark peptides and of all 176 peptides; ``Shared'' is the number of added peptides that fall in a group of a
+  benchmark peptide; ``Excl.'' is the mean percentage of the added cells that are removed from training because their
+  group contains a test peptide.}\label{tab:recluster}
+  \input{assets/ch4/tab-recluster}
+\end{table}
+
+The seven levels give only \nRcNDistinct{} distinct partitions (Table~\ref{tab:recluster}): lowering the identity from 0.2 to 0.1
+at coverage 0.5, and from 0.1 to 0.0 at coverage 0.3, changes no group, and 30\% identity with coverage 0.5 reproduces the
+reference grouping (only the group labels, and hence the fold assignment, differ; the gain there is
+\nRcFiftyD{} \nRcFiftyCI{}, the same value as the cov50 row of Table~\ref{tab:partcrobust}). Three partitions differ from the
+reference and are informative: grouping by accession (\nRcAccD{}, \nRcAccCI{}), 20\% identity with coverage 0.5 (\nRcMidD{}, \nRcMidCI{}) and
+10\% identity with coverage 0.3 (\nRcCoarseD{}, \nRcCoarseCI{}). All intervals are above zero and the gain is positive in all
+three seeds, so under the fixed rule the gain is \emph{robust to granularity}. The point estimates are not monotone in the
+coarseness (the largest is for grouping by accession), the intervals overlap, and no test of their differences was
+planned; the absolute benchmark score also moves with the partition (\nAucRidge{} for the reference and \nRcFiftyBase{} for the same grouping with
+other folds), so absolute values must not be compared across rows.
+
+The test is weaker than its name suggests. The coarsest partition still has \nRcCoarseGroups{} groups for the 91 benchmark peptides; in
+it, \nRcCoarseShared{} added peptides share a group with a benchmark peptide and on average \nRcCoarseExcl\% of the added cells are removed
+from training, and one of the five test folds consists of a single group. Whether the gain would survive a still coarser
+split, for example by protein family, is not known.
+
+\subsubsection{Pre-Training on Tile Labels}\label{sec:res-pretrain}
+The experiment of Voutsinos et al.\ \citep{voutsinos2026} provides a degradation score for \nPtNTiles{} tiles of 30 residues,
+without substitutions. The question was whether initialising the gated network (without $\Delta$PAP) from a model
+pre-trained to predict these scores lets it learn $\Delta$PSI better under the same label budget. The design was fixed in
+advance. Pre-training treats each tile as 30 wild-type rows (the substituted-residue input is zero), predicts the tile
+as the mean over positions and regresses the sign-reversed, standardised degron score. Two branches then share the same
+initial weights, the learning-rate grid ($2\times10^{-3}$ or $5\times10^{-4}$, chosen on the inner validation set) and the
+inner validation split, and differ only in whether the network starts from the pre-trained state (\emph{pre}) or from
+random initialisation (\emph{rand}). To prevent leakage, in each outer fold every gene that has a tile similar to a protein of
+an outer-test cluster (MMseqs2 at 30\% identity with an alignment of at least 50 residues, a shared 12-mer, or the same gene
+name) is removed entirely from the pre-training data \emph{before} any learning; this removed \nPtGenesExcl{} genes in the five folds.
+The gate on the reproduction of earlier scores was passed (ridge \nAucRidge{} and \nAucRidgeExt; the gated network within \nPtGateGap{}
+of the earlier values). Two comparisons were fixed, both with the rule ``bootstrap interval above zero and a positive
+difference in every seed'': (A) \emph{pre} against \emph{rand}, and (B) \emph{pre} against ridge M3.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Macro AUROC with and without pre-training on tile labels}\label{tab:p3auroc}
+  \input{assets/ch4/tab-p3-auroc}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Pre-registered comparisons for pre-training. The main configuration is the relaxed threshold 4.0; the threshold 3.0 is
+  reported with the same criteria and was not used to choose the configuration.}\label{tab:p3verdict}
+  \input{assets/ch4/tab-p3-verdict}
+\end{table}
+
+The result is negative (Tables~\ref{tab:p3auroc} and~\ref{tab:p3verdict}). In the main configuration the pre-trained network reaches
+\nPtExtPre{}, against \nPtExtRand{} for random initialisation: difference A is \nPtExtA{} \nPtExtACI{}, an interval that contains zero,
+so pre-training cannot be distinguished from random initialisation; difference B is \nPtExtB{} \nPtExtBCI{}, so the pre-trained network
+is below ridge. At threshold 3.0 both differences are clearly negative (A: \nPtBaseA{} \nPtBaseACI{}; B: \nPtBaseB{} \nPtBaseBCI{}).
+The difference is negative in all three seeds in every comparison. By the mapping fixed in advance, the conclusion is
+``insufficient evidence for a benefit of pre-training''. The pre-training task itself was learned (Pearson correlation
+\nPtPearson{} between prediction and score on held-out genes, range \nPtPearsonLo{}--\nPtPearsonHi{} over the fifteen runs), so the failure
+is in the transfer to $\Delta$PSI and not in learning the tile scores. This result rejects only this design, in which the
+pre-training sees wild-type sequences only and the whole network is then fine-tuned; designs that pre-train with
+substitutions, freeze part of the network or train both tasks jointly were not tried, and nothing is inferred about them.
+
+\subsubsection{Calibration of the Scores and Ranking Utility}\label{sec:res-calibration}
+The score of ridge M3 is a predicted $\Delta$PSI, not a probability. To report the probability that a substitution is positive
+($\Delta\mathrm{PSI}\ge1$) the model trained at the relaxed threshold 4.0 was kept fixed and evaluated on the same \nCalNCells{}
+outer-test cells (\nNPep{} peptides, \nCalNClu{} clusters). Calibrators were fitted only on out-of-fold scores of the
+outer-training pool: the pool was split again into five inner folds by cluster, the ridge model was refitted on four of them,
+and the scores of the fifth were kept; the outer-test cells never entered a calibrator. Three conversions were fixed in
+advance: the \emph{raw} score clipped to $[0,1]$, Platt scaling (a logistic regression on the score) and isotonic regression, with a constant
+forecast of the base rate of the training pool as a reference for skill. The criteria were also fixed in advance: a conversion is
+\emph{calibrated} if the bootstrap interval of $\mathrm{Brier}(\text{raw})-\mathrm{Brier}(c)$ is above zero and the difference is positive in
+every seed; it has \emph{skill over the base rate} if the interval of $\mathrm{Brier}(\text{constant})-\mathrm{Brier}(c)$ is above zero; Platt
+is used in the prototype unless isotonic regression is better with an interval above zero; and the ranking is \emph{enriching} if the
+interval of the enrichment at 10\% is above 1. The raw scores of the three seeds reproduce the earlier AUROC values (gate passed).
+
+\begin{table}[htbp]
+  \centering
+  \caption{Probability quality on the outer-test cells (observed fraction of positive cells: \nCalObs). ECE: expected calibration
+  error over ten equal-mass bins; $\hat p$: predicted probability.}\label{tab:calmetrics}
+  \input{assets/ch4/tab-cal-metrics}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Pre-registered comparisons of the Brier score}\label{tab:calverdict}
+  \input{assets/ch4/tab-cal-verdict}
+\end{table}
+
+Platt scaling meets the criterion (Tables~\ref{tab:calmetrics} and~\ref{tab:calverdict}): the Brier score falls from \nCalBrierRaw{} to \nCalBrierPlatt{},
+a difference of \nCalDelta{} \nCalDeltaCI{}, positive in each seed (\nCalSeeds{}); isotonic regression is practically identical
+(Platt $-$ isotonic: \nCalPlattIso{}, \nCalPlattIsoCI{}), so Platt scaling, with two parameters, is used. The skill over the base rate is
+\nCalSkillPlatt{}, with the interval of \nCalConstDelta{} \nCalConstCI{} above zero. The first criterion is a low bar: the raw score read as a
+probability is \emph{worse} than a constant forecast (skill \nCalSkillRaw{}; mean value \nCalMeanRaw{} against \nCalObs{} observed; recalibration
+slope \nCalRawSlope{}), because it is a regression output. The more informative statement is the skill of about \nCalSkillPlatt{}.
+The ECE alone does not separate the methods here, since the constant forecast has an ECE (Table~\ref{tab:calmetrics}) close to that of Platt scaling.
+
+Local calibration is not perfect. The Platt probabilities are lower than the observed frequency in every bin: the mean is \nCalMeanPlatt{}
+against \nCalObs{}, and in the highest bin the mean prediction is \nCalTopPred{} against an observed \nCalTopObs{} (interval \nCalTopObsLo{}--\nCalTopObsHi{}). A likely
+cause is a shift of domain introduced by the relaxed threshold: the calibrator is fitted on a pool that includes the added peptides, in which the fraction of positive cells is lower than
+in the benchmark peptides (Table~\ref{tab:newgroup}). A sensitivity analysis that was not used for the verdict, fitting the calibrator only on benchmark-domain cells, gives a
+Brier score of \nCalDomBrier{}, an ECE of \nCalDomEce{} and a mean probability of \nCalDomMean{}. For ordering substitutions the shift is irrelevant (the transform is monotone); for absolute
+probabilities it must be kept in mind.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Ranking utility: the substitutions of each peptide (532 per 28-residue peptide) are ordered by the raw score. A random ranking has
+  enrichment 1.}\label{tab:calutility}
+  \input{assets/ch4/tab-cal-utility}
+\end{table}
+
+For prioritising substitutions (Table~\ref{tab:calutility}), choosing the top 10\% of each peptide (about \nKTen{} substitutions) gives a precision of \nPrecTen{} and
+a recall of \nRecTen{}, an enrichment of \nEnrTen{} (\nEnrTenCI{}); the criterion is met. The only reference is a random ranking: it is not known
+how much better the model is than a simple rule, for example one based on the hydrophobicity of the substituted residue. Moreover, the final model is fitted on
+all of the pool whereas the calibrator is learned from scores of models fitted on four fifths of it (a known limitation of cross-fitting), and all of this is
+still a development benchmark. The word ``calibrated'' here means that the Brier score is better than that of the raw score with an interval above zero; it does
+not mean perfect calibration.
+
+\subsubsection{External GPS Labels: Koren et al.\ Table S4}\label{sec:res-koren}
+The saturation-mutagenesis tables of Koren et al.\ \citep{koren2018} use the same endpoint (PSI) and were audited as a possible source of additional training labels.
+The supplementary tables were downloaded manually, because the automatic download is blocked by the host. The article is not in the open-access subset of the
+repository, so the tables are used internally only and are not redistributed here. The gate fixed in advance required all of four conditions (Table~\ref{tab:koren}).
+
+\begin{table}[htbp]
+  \centering
+  \caption{Gate fixed in advance for merging the labels of Koren et al.\ (Table S4) into training}\label{tab:koren}
+  \input{assets/ch4/tab-koren}
+\end{table}
+
+The data themselves are sound: PSI is reproduced from the bin counts in all rows, an internal wild-type reference can be built for all substrates, and the
+direction of the effect of the last glycine agrees with the biology. The gate nevertheless fails on the number of new clusters. Table S4 holds \nKoCells{} substitution cells for \nKoNS4{} substrates;
+the peptides are 23-residue C-terminal sequences with a stop codon in which only the last ten positions are mutated, a library different from the 28-residue internal peptides of the main
+labels; PSI is computed from 3 bins and not 6, so $\Delta$PSI values from the two sources cannot simply be added; only \nKoPos\% of the cells have $\Delta\mathrm{PSI}\ge1$ (against \nKoZhangPos\% in the benchmark),
+and the effects sit in the last one to three positions. Only \nKoMapped{} of the \nKoNSeq{} sequences could be mapped to Swiss-Prot, and one of them overlaps with the training peptides, which leaves
+\nKoNewClusters{} new clusters, against the \nKoMinClusters{} required. As a diagnostic, not part of the gate, the agreement between Tables S3 and S4 on the \nKoNOverlap{} cells they share is low (Spearman \nKoSpearman{}), so S3
+is not used as a label source.
+
+By the consequence fixed in advance, these labels are \emph{not} merged into training, and the planned merging of external labels (P4) and the repeated learning curve on the enlarged set (P5) were
+therefore not run. The table remains a possible external test set for a C-terminal degron class; this was not done in the thesis and no number is reported for it.
+
+\subsubsection{Scope Comparison with MetaDegron}
+MetaDegron \citep{zheng2024} was audited as a possible competitor and label source. Its
+labels are binary motif-level annotations of curated degrons, not $\Delta$PSI; the audit therefore compares scope
+and data, not predictive scores on the GPS matrix, because MetaDegron-D could not be run on GPS peptides
+(Table~\ref{tab:metadegron}). Among the main findings, the curated positive set has only \nMdHuman{} human rows, and
+almost no region of it coincides with the GPS peptides used here (\nMdOvScan{} scanning peptides, \nMdOvSat{} saturation peptide
+and \nMdOvCrispr{} from the CRISPR screens). Only \nMdEThreeStrict{} E3 motif group keeps at least five samples after the strictest filter, so ``21 E3
+ligases'' is a list of motif-compatible assignments, not 21 independently labelled classes. The reported
+MetaDegron-X AUC of \nMdAuc{} was recomputed from the stored trees, but only on the authors' prepared tables, and \nMdInProps{} of the \nMdTestPos{}
+positive test coordinates are in the property table of the fitting data; it is not an independent result and not a
+GPS result. A simple composition logistic baseline on the same positives, split by protein cluster at cov80,
+gives AUROC between \nCompLo{} and \nCompHi{} (core composition) and between \nCtxLo{} and \nCtxHi{} (29-residue
+context), on a reconstructed population and not on the authors' own training set. The audit therefore suggests positioning MetaDegron as a complementary tool for motif and E3 information rather than a
+head-to-head competitor on residue-level effect prediction; binary motif labels are not converted into $\Delta$PSI.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Audit of the MetaDegron data and overlap with the data of this thesis}\label{tab:metadegron}
+  \input{assets/ch4/tab-metadegron}
+\end{table}
+
+\subsubsection{Experiments Not Done}
+The following parts of the plan have no results in this version of the thesis; no number is given for them.
+\begin{itemize}
+  \item \textbf{Merging external GPS labels and repeating the learning curve on the enlarged set.} Not run: the only audited
+        source (Table~\ref{tab:koren}) did not pass its gate. Other candidate sources (for example Timms et al., Shimshon et al., Bekturova et al.\ and a recent preprint on disease mutations
+        that disrupt degrons) have not been audited, and their terms of use have not been read.
+  \item \textbf{Independent validation.} All numbers are out-of-fold on a development benchmark. Testing on labels that did not take part in any
+        design decision, including the C-terminal data of Table~\ref{tab:koren}, has not been done. \textbf{[PENDING]}
+  \item \textbf{Other pre-training designs} (with substitutions, partial freezing, joint training): not tried (Section~\ref{sec:res-pretrain}).
+  \item \textbf{Comparison of the ranking with simple rules.} Only a random ranking was used as reference (Section~\ref{sec:res-calibration}).
+  \item \textbf{Separating the region of $\mathrm{PSI}_{\mathrm{WT}}$ from the protein.} It needs pairs of peptides of the same protein on both sides
+        of the threshold, which the present data may not contain (Section~\ref{sec:res-partb}).
+  \item \textbf{Graphical prototype and its tests, and tests with users.} Not built (Section~\ref{sec:testplan}). \textbf{[PENDING]}
+\end{itemize}
+
+\subsection{Discussion}
+\paragraph{What the measurements support.} (i) A ridge regression on 180 features is a strong baseline for the
+substitution effect: it is above the frozen $\Delta$PAP baseline with an interval that excludes zero, and none of the
+five larger designs tried (the sigmoid-gated networks, FiLM, the bilinear form, the cross-product ridge and the retrained
+transformer architecture) beat it under the fixed criteria. (ii) Training labels from peptides just above the
+degron threshold improve the out-of-fold AUROC on the original test cells, and this gain is not caused by an obvious
+collapse of the label. (iii) The gain is not simply proportional to the number of clusters, but the data do not
+yet separate wider coverage from more clusters. (iv) The gain from the relaxed threshold does not depend on how proteins
+are grouped: it is above zero under every informative partition tried, including grouping by accession. (v) The score of ridge M3 can be turned into a probability with a
+Platt transform that is better than the raw score and than the base rate, and the top 10\% of the substitutions of a peptide contains about four times
+more positive cells than a random choice.
+
+\paragraph{What they do not support.} The thesis does not claim a new architecture: no architectural component
+earned a place under the fixed criteria, and the gate even changes sign between seeds. It does not claim that the
+published Degformer is worse than the models here, nor better: its checkpoint is not a held-out result, and the retrained
+architecture was run for one seed. It does not claim that more labels make a larger model win; the gated network is
+still rising, but it is below ridge at every level that was run. It does not claim that pre-training on tile labels helps: the one design tried
+was not better than random initialisation and was below ridge. It does not claim that the external labels of Koren et al.\ can be merged: they did not pass the gate. It
+makes no claim of external validation of the probabilities or of the ranking.
+
+\paragraph{Threats to validity.}
+\begin{itemize}
+  \item The benchmark is a development benchmark on a data set that has been examined several times; the
+        out-of-fold numbers are not an external validation, and the best figure (\nAucRidgeExt) must not be quoted as one.
+  \item The three seeds share one outer partition, and the confidence intervals are conditional on the stored
+        predictions. No multiple-comparison correction is applied.
+  \item The threshold of 4.0 was fixed before the sensitivity grid, but only after the benchmark and a first
+        look at the number of peptides it adds; the near coincidence with the maximum of the grid is not evidence that the way it was chosen was sound.
+  \item All labels come from one assay and one library. Whether the gain transfers to other degron classes or to
+        other assays is untested.
+  \item The added peptides pass through the same label pipeline and so inherit its assumptions (the $\mathrm{PSI}_{\mathrm{WT}}$
+        reference from synonymous cells, the average of two halves).
+  \item The coarsest partition tested still has 71 groups for 91 peptides, so robustness to a split by protein family is untested; the
+        absolute scores change with the partition.
+  \item The Platt calibrator is fitted on a pool that includes the added peptides, and its probabilities are about 13\% too low for the
+        benchmark peptides; the criterion ``better than the raw score'' is a low bar, because the raw score is worse than the base rate.
+  \item The pre-training result concerns one design and one encoder; the ranking is compared only with a random ranking.
+\end{itemize}
+
+\subsection{Provenance of the Reported Numbers}
+All numbers in this section are produced by \nolinkurl{assets/ch4/build_ch4_assets.py}, which reads the JSON files below
+(paths relative to \nolinkurl{topics/degron-footprint/research/}) and writes the tables, figures and number macros
+used here. The tables repeat their source in a note.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Source files of the tables and figures of Section~\ref{sec:experiments}}\label{tab:provenance}
+  \small
+  \begin{tabularx}{\textwidth}{lX}
+    \toprule
+    \textbf{Table / figure} & \textbf{Result files} \\
+    \midrule
+    Table~\ref{tab:funnel} & \jsonfile{next-steps-plan-2026-10-22/sat-filter-dropoff.json} \\
+    Tables~\ref{tab:g2}--\ref{tab:g2seeds} & \jsonfile{g2-saturation-2026-10-18/results.json}, \jsonfile{g2-saturation-2026-10-18/audit.json}, \jsonfile{g2-extension-2026-10-18/e1-overlap.json} \\
+    Table~\ref{tab:e2} & \jsonfile{g2-extension-2026-10-18/e2-candidates.json}, \jsonfile{g2-extension-2026-10-18/e3-degformer-arch.json} \\
+    Figure~\ref{fig:curve}, Tables~\ref{tab:curve}--\ref{tab:newgroup} & \jsonfile{learning-curve-2026-10-22/results.json} \\
+    Tables~\ref{tab:partb}, \ref{tab:partbverdict} & \jsonfile{learning-curve-2026-10-22/results-b.json} \\
+    Figure~\ref{fig:threshold}, Tables~\ref{tab:partc}, \ref{tab:partcrobust} & \jsonfile{learning-curve-2026-10-22/results-c.json} \\
+    Table~\ref{tab:metadegron} & \jsonfile{metadegron-analysis-2026-10-21/dataset-audit.json}, \jsonfile{metadegron-analysis-2026-10-21/overlap-audit.json}, \jsonfile{metadegron-analysis-2026-10-21/safe-x-reproduction.json}, \jsonfile{metadegron-analysis-2026-10-21/composition-baseline.json} \\
+    Tables~\ref{tab:recluster} & \jsonfile{recluster-sensitivity-2026-10-22/results.json} \\
+    Tables~\ref{tab:p3auroc}, \ref{tab:p3verdict} & \jsonfile{pretrain-p3-2026-10-22/results.json} \\
+    Tables~\ref{tab:calmetrics}, \ref{tab:calverdict}, \ref{tab:calutility} & \jsonfile{calibration-p6-2026-10-22/results.json} \\
+    Table~\ref{tab:koren} & \jsonfile{koren-s4-audit-2026-10-22/results.json} \\
+    Table~\ref{tab:verify} & \jsonfile{calibration-p6-2026-10-22/verify.json} \\
+    Measurement ceiling (Section~\ref{sec:experiments}) & \jsonfile{residue-task-derisk-2026-10-15/ceiling.json} \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\section{Software Testing Plan}\label{sec:testplan}
 \subsection{Functions Under Test}
+UC-01 to UC-03 of Chapter~\ref{chap:problem}. The only implemented prototype is a minimal offline command-line tool
+(\nolinkurl{predict.py} in \nolinkurl{research/calibration-p6-2026-10-22/}) built on the model of
+Section~\ref{sec:res-calibration}. It covers the functions as follows. UC-01 (effect matrix): it scores all 532 substitutions
+(28 positions $\times$ 19 amino acids) of a 28-residue tile, given as a sequence or as a tile of a UniProt accession from the
+local snapshot. UC-02 (ranking): the output gives the rank of each substitution within the tile and a flag for the top 10\%.
+UC-03 (export): the output is written as CSV with the raw score and the calibrated probability. Not implemented: JSON export, the
+model version and data source as fields of the exported file (a warning with the supported domain is printed to the error stream
+only), the graphical interface, and a block on tiles outside the supported domain.
 \subsection{Approach}
+The prototype is a thin layer over a research model, so the main risk is that it computes something different from what was
+evaluated in Section~\ref{sec:experiments}. The approach is therefore \emph{back-to-back testing}: the prototype path is compared with the
+training and evaluation path of the research runner on the \nVerCells{} cells of the 176 peptides. The 180 features are rebuilt in the
+prototype by an independent implementation (\nVerFeatures{} values are compared), so the comparison is not a code path checked against itself.
+Black-box tests of input validation (wrong length, characters outside the 20 amino acids, unknown accession, tile outside the protein) are planned
+but have not yet been written as automated tests \textbf{[PENDING]}.
 \subsection{Criteria for Test Success or Failure}
+A check passes when the largest absolute difference between the two paths is below $10^{-9}$. The check of the exported file is asserted at
+$5\times10^{-9}$ in the code, because values are written with ten significant digits; the measured differences are below $10^{-9}$ for it as well.
+A test fails when any difference exceeds its limit.
 \subsection{Suspension Criteria and Restart Requirements}
+The verification script stops at the first failed assertion and runs no later check. The command-line tool refuses to run if the model file is missing.
+Restart: rebuild the model file with \nolinkurl{build_model.py} and run the verification script again from the beginning.
 \subsection{Test Deliverables}
+The verification script (\nolinkurl{verify.py}), its machine-readable report (\nolinkurl{verify.json}), the calibration results
+(\nolinkurl{results.json}), and Table~\ref{tab:verify} of this chapter.
 
 \section{Test Management}
 \subsection{Test Activities}
+Executed: building the model and the caches, running the verification script (\nVerNChecks{} checks). Not yet executed: input-validation tests, tests of
+the interface, performance measurement, and tests with users \textbf{[PENDING]}.
 \subsection{Test Environment}
+Linux under WSL2 on one development computer, CPU only; Python 3.12.3 and NumPy 2.5.3. The verification needs about 1.2~GB of memory. The model file and the caches are generated by
+the scripts and are not stored in the repository.
 \subsection{Resources and Allocation}
+One tester, the author of the thesis, who is also the developer; there is no independent tester.
 \subsection{Risks}
+\begin{itemize}
+  \item Back-to-back tests show agreement with the research code, not that the science is right: an error shared by both paths (for example in the definition of the label) would not be found.
+  \item The probabilities are about 13\% too low for peptides of the original benchmark domain (Section~\ref{sec:res-calibration}); ranking is not affected.
+  \item The tool does not know the wild-type PSI of a user's tile, so a stable tile outside the supported domain still receives a score; only a printed warning protects the user.
+  \item The model was evaluated only on a development benchmark; no result in this chapter supports a claim of external validity.
+\end{itemize}
 
 \section{Test Scenarios and Test Cases}
 \subsection{Test Scenarios}
-% Bảng kịch bản: mã kịch bản, tên kịch bản, số trường hợp kiểm thử, tổng cộng.
+S1: score a tile given as a sequence. S2: score a tile of a protein given by its UniProt accession. S3: export the scores as CSV and read them back.
+S4: reject invalid input (planned \textbf{[PENDING]}).
 \subsection{Test Cases}
+Table~\ref{tab:verify} lists the executed cases, which cover S1 to S3 through the comparison of the scores computed by the prototype with those of the research path. The cases of S4
+(length different from 28, a character outside the 20 amino acids, an unknown accession, a tile beyond the end of the protein, a tile with a non-standard residue, a missing model file) are specified
+by the input checks in the tool but have no automated test yet \textbf{[PENDING]}.
 
-\section{Test Evaluation}
+\begin{table}[htbp]
+  \centering
+  \caption{Executed test cases: agreement of the prototype with the research runner. The tolerance is $10^{-9}$.}\label{tab:verify}
+  \input{assets/ch4/tab-verify}
+\end{table}
+
+\section{Test Evaluation}\label{sec:testeval}
+All \nVerNChecks{} executed cases passed; the largest absolute difference is \nVerMax{} (Table~\ref{tab:verify}). The prototype therefore reproduces the research model on \nVerCells{} cells,
+including the scores of the outer-test folds of all fifteen (seed, fold) pairs. This establishes consistency only. It does not show that the predictions are correct (Section~\ref{sec:experiments} addresses that, on a development
+benchmark), and it says nothing about input validation, the interface, the response time (the target of Chapter~\ref{chap:problem} has not been measured) or usability \textbf{[PENDING]}.

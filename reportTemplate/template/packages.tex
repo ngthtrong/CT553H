@@ -1,0 +1,20 @@
+\usepackage{graphicx}
+\graphicspath{{assets/figures/}{assets/diagrams/}}
+\usepackage{booktabs,longtable,tabularx,array}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage{amsmath}
+\numberwithin{equation}{chapter}
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows.meta,positioning}
+\usepackage{xcolor}
+\usepackage[hidelinks,unicode,pdfencoding=auto]{hyperref}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{}
+% Page-based anchors stay unique even where unnumbered chapters (Introduction,
+% Conclusion) reuse a chapter number for floats and equations.
+\renewcommand{\theHfigure}{\thepage.\arabic{figure}}
+\renewcommand{\theHtable}{\thepage.\arabic{table}}
+\renewcommand{\theHequation}{\thepage.\arabic{equation}}
+% Enable these only after installing texlive-science / texlive-latex-extra, when
+% content needs them (source code listings, algorithms, SI units, landscape pages):
+% \usepackage{listings,algorithm,algpseudocode,siunitx,pdflscape}

@@ -3,13 +3,76 @@
 \chapter{THEORETICAL BACKGROUND}\label{chap:background}
 
 \section{Domain Background}
-% Kiến thức nền của lĩnh vực ứng dụng (ví dụ sinh học/tin sinh học liên quan).
+\subsection{Proteins, Amino Acids and Residues}
+A protein is a chain of amino acids. A \emph{residue} is one amino acid at a specific position of the
+chain. A \emph{single amino acid substitution} replaces the residue at one position with another of the
+20 standard amino acids.
+
+\subsection{The Ubiquitin--Proteasome System and Degrons}
+In the ubiquitin--proteasome system, E3 ubiquitin ligases recognise substrate proteins and attach
+ubiquitin chains to them; ubiquitinated proteins are then degraded by the proteasome. A \emph{degron} is a
+sequence element that is part of this recognition and marks a protein for selective degradation
+\citep{varshavsky2019,koren2018}. Degrons can lie at the protein termini or inside the sequence
+\citep{zhang2023}. The activity of a peptide taken out of its protein may differ from its activity in
+the intact protein, because surface exposure, structure and cellular context matter.
+
+\subsection{Measuring Degron Activity}
+Global Protein Stability (GPS) profiling \citep{yen2008} fuses a peptide to a fluorescent reporter and sorts
+cells by fluorescence into bins. The \emph{Protein Stability Index} (PSI) summarises the distribution of
+cells over the bins; in the data of Zhang et al.\ \citep{zhang2023}, a lower PSI corresponds to a less stable
+reporter. The effect of a substitution is defined as
+\begin{equation}
+  \Delta\mathrm{PSI} = \mathrm{PSI}_{\mathrm{mutant}} - \mathrm{PSI}_{\mathrm{WT}},
+\end{equation}
+where a positive value means the reporter is more stable under the assay. This describes the measured
+reporter stability and does not by itself show direct recognition by a specific E3 ligase.
+
+\emph{Scanning} mutagenesis replaces residues in a systematic way along the peptide, whereas
+\emph{saturation} mutagenesis tests many amino acids at each position. Cells from the same peptide are
+statistically related and cannot be treated as fully independent samples. Measurement noise comes from
+read counts, replicate variation and experimental conditions.
 
 \section{Methods and Models}
-% Phương pháp, mô hình, thuật toán dùng trong giải pháp; lý do chọn.
+\subsection{Problem Formulation}
+The task is to predict $\Delta$PSI for a (peptide, position, substituted amino acid) triple. Predictions for
+all positions and amino acids form a matrix of size $L\times 20$ for a peptide of length $L$. For
+evaluation, $\Delta$PSI can also be thresholded into a binary label; the threshold and the direction of
+the effect must be fixed in the evaluation protocol before models are compared.
+
+\subsection{Baseline and Reference Models}
+\begin{itemize}
+  \item \textbf{Ridge regression} \citep{hoerl1970}: a linear model with $L_2$ regularisation, used as a simple baseline on
+        encodings of the reference and substituted amino acids, peptide composition and local context.
+  \item \textbf{PAP score difference}: PAP predicts a degron score for a whole peptide \citep{voutsinos2026}; the
+        mutation effect is taken as $\mathrm{PAP}_{\mathrm{mutant}}-\mathrm{PAP}_{\mathrm{WT}}$.
+  \item \textbf{Degformer}: a transformer-based model \citep{vaswani2017} that predicts PSI \citep{degformer}.
+\end{itemize}
+MetaDegron \citep{zheng2024} predicts degron motifs and is used to compare problem scope, not as a label source.
+
+\subsection{Transfer Learning}
+Transfer learning pre-trains a representation on peptide-level activity labels and then fine-tunes it on
+mutation-level labels. The two label types have different meanings, so they need separate prediction heads
+or a suitable transformation; binary motif labels are not converted into $\Delta$PSI values.
 
 \section{Technologies and Tools}
-% Công nghệ, thư viện, khung phần mềm nền tảng.
+Python with NumPy, pandas and scikit-learn for data handling and classical models; PyTorch for neural
+models; MMseqs2 \citep{steinegger2017} for clustering protein sequences. Versions are recorded when
+experiments are run. \textbf{[PENDING: web/API stack for the prototype.]}
 
 \section{Evaluation Methodology}
-% Chỉ số đo, cách chia dữ liệu/kiểm tra, các nguồn sai lệch cần tránh.
+\subsection{Splitting by Protein Cluster}
+Randomly splitting individual cells lets similar sequences appear in both training and test sets and
+inflates results. Proteins are therefore clustered by sequence similarity (MMseqs2, 30\% identity,
+80\% coverage as the main setting; 50\% coverage as a sensitivity check) and whole clusters are assigned to
+folds. Hyperparameters are chosen on a cluster-wise validation set inside each training fold; scaling,
+feature selection and pre-training must not use the held-out clusters.
+
+\subsection{Metrics}
+The main metric is the cell-level area under the ROC curve (AUROC), computed per peptide that contains
+both classes and then averaged. Spearman correlation or mean absolute error on continuous $\Delta$PSI
+is added when labels allow.
+
+\subsection{Statistical Comparison}
+Models are compared pairwise on the same peptides. Confidence intervals come from bootstrap resampling
+\citep{efron1979} by protein cluster, and results are reported per random seed in addition to the aggregate.
+A development benchmark is distinguished from an independent validation.

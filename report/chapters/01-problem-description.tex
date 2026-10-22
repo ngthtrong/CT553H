@@ -5,31 +5,83 @@
 \chapter{PROBLEM DESCRIPTION}\label{chap:problem}
 
 \section{Detailed Problem Description}
-% Bài toán, đầu vào/đầu ra, người dùng và quy trình nghiệp vụ/nghiên cứu.
+Researchers who study degrons want to know which substitution, at which position of a degron peptide,
+raises or lowers the degron signal. The thesis addresses two connected problems.
+
+\begin{itemize}
+  \item \textbf{Prediction.} Given a reference peptide sequence, a position and a substituted amino acid,
+        predict the effect $\Delta$PSI of the substitution. Models are trained and evaluated on
+        experimental labels with protein-cluster-aware splits.
+  \item \textbf{Analysis tool.} Provide a prototype that lets a user enter a peptide, view the predicted
+        effect matrix, rank substitutions and export the result with provenance (model version, data
+        source, supported domain).
+\end{itemize}
+
+The intended users are researchers who select mutations for follow-up experiments, and students who
+explore the relation between peptide sequence and degradation signal. The workflow is: enter a valid
+peptide, generate all substitutions, score them with a fixed model, display a matrix and ranking, and
+export CSV/JSON. Inputs that are missing, mis-positioned or outside the supported domain must be
+reported explicitly, and uncalibrated scores must not be presented as probabilities of disease.
 
 \section{Functions of the System}
-% Sơ đồ use case rồi bảng đặc tả cho từng use case chính. Sao chép khối dưới đây
-% cho mỗi use case; đổi nhãn và mã (UC-xx).
-\subsection{Function Name}
-% [Chèn sơ đồ use case: dùng hình trong assets/figures hoặc TikZ.]
-\begin{usecasespec}{Description of the function}{tab:uc-template}
-  \ucname{}{UC-01}
-  \ucactor{}{Important}{Simple}
-  \ucfull{Stakeholders and interests:}{}
-  \ucfull{Summary description:}{}
-  \ucfull{Relationships:}{Association: \newline Include: \newline Extend: \newline Generalization:}
-  \ucfull{Event handling:}{\vspace{12mm}}
-  \ucfull{Alternative / exceptional flows:}{\vspace{6mm}}
-  \ucfull{Expected outcome:}{}
+A minimal offline command-line prototype exists (Section~\ref{sec:testplan}); it covers
+scoring and CSV export only, with no web interface yet. The use cases below remain the requirements for
+the full prototype.
+
+\subsection{Predict the Effect Matrix}
+\begin{usecasespec}{Predict the effect matrix of a peptide}{tab:uc-predict}
+  \ucname{Predict effect matrix}{UC-01}
+  \ucactor{User}{Important}{Simple}
+  \ucfull{Stakeholders and interests:}{Researcher: wants predicted effect of every substitution of a peptide.}
+  \ucfull{Summary description:}{The user enters a peptide sequence; the system returns an $L\times 20$ matrix of predicted $\Delta$PSI values.}
+  \ucfull{Relationships:}{Association: User \newline Include: Validate input \newline Extend: Compare with measured data \newline Generalization: ---}
+  \ucfull{Event handling:}{1.~The user enters a peptide. \newline 2.~The system validates length, alphabet and domain. \newline 3.~The system scores all substitutions with the fixed model. \newline 4.~The system displays the matrix.}
+  \ucfull{Alternative / exceptional flows:}{Invalid or out-of-domain input: the system shows an explicit message and does not return scores.}
+  \ucfull{Expected outcome:}{A matrix of predicted effects with model version and supported domain.}
+\end{usecasespec}
+
+\subsection{Rank Substitutions}
+\begin{usecasespec}{Rank substitutions}{tab:uc-rank}
+  \ucname{Rank substitutions}{UC-02}
+  \ucactor{User}{Important}{Simple}
+  \ucfull{Stakeholders and interests:}{Researcher: wants a short list of substitutions to test.}
+  \ucfull{Summary description:}{The system orders substitutions by predicted effect.}
+  \ucfull{Relationships:}{Association: User \newline Include: Predict effect matrix \newline Extend: --- \newline Generalization: ---}
+  \ucfull{Event handling:}{1.~The user opens the ranking of a predicted peptide. \newline 2.~The system sorts substitutions by predicted effect. \newline 3.~The user filters by position or amino acid.}
+  \ucfull{Alternative / exceptional flows:}{No prediction available: the system asks the user to run UC-01 first.}
+  \ucfull{Expected outcome:}{A ranked table of substitutions.}
+\end{usecasespec}
+
+\subsection{Export Results with Provenance}
+\begin{usecasespec}{Export results with provenance}{tab:uc-export}
+  \ucname{Export results}{UC-03}
+  \ucactor{User}{Medium}{Simple}
+  \ucfull{Stakeholders and interests:}{Researcher: wants results that can be reused and traced.}
+  \ucfull{Summary description:}{The system exports matrix and ranking with model version, data source and supported domain.}
+  \ucfull{Relationships:}{Association: User \newline Include: Predict effect matrix \newline Extend: --- \newline Generalization: ---}
+  \ucfull{Event handling:}{1.~The user selects an export format (CSV or JSON). \newline 2.~The system writes the file with provenance fields.}
+  \ucfull{Alternative / exceptional flows:}{Export fails: the system reports the error and keeps the result on screen.}
+  \ucfull{Expected outcome:}{A file containing scores and provenance.}
 \end{usecasespec}
 
 \section{Non-Functional Requirements}
+These are targets for the prototype; \textbf{[PENDING: concrete thresholds to be fixed with the system design.]}
 \subsection{Performance Requirements}
+Scoring a single peptide should finish in interactive time on a standard laptop (target to be measured).
 \subsection{Information Safety Requirements}
+Only public data are used; terms of use of each source are recorded before redistribution.
 \subsection{Security Requirements}
+Input is validated; user-supplied sequences are not executed or stored beyond the session unless stated.
 \subsection{Reliability Requirements}
+The same input and model version must give the same scores; scores shown in the interface must match the
+research runner within numerical tolerance.
 \subsection{Maintainability Requirements}
+Models and data are versioned; experiments can be re-run from documented commands.
 
 \section{Implementation and Design Constraints}
 \subsection{Implementation Constraints}
+The work is done by one student within the thesis course schedule; no new wet-lab experiment is performed;
+computation runs on CPU-class hardware.
 \subsection{Design Constraints}
+Scores are reported for the assay and domain on which the model was evaluated; no claim is made on
+disease causation or treatment.
