@@ -1,15 +1,61 @@
 # Deck buổi gặp GVHD — bản dựng trong repo
 
-> **Bản rút gọn 19/10/2026: 24 slide lõi + 20 phụ lục (A1–A20)**, chữ trên slide **tiếng Anh**, ghi chú người nói **tiếng Việt**.
-> Mục đích buổi: **xin GVHD duyệt khung đề tài** ([C-5](../../../../DECISIONS.md#c-5)) — nói ý tưởng, hướng đi, tính khả thi;
-> **không** là báo cáo thực nghiệm ([D-038](../../../../DECISIONS.md#d-038)).
+> **Bản 22/10/2026: 20 slide lõi + 41 phụ lục (A1–A41)**, chữ trên slide **tiếng Anh**, bám theo
+> [đề cương](../../proposal/proposal.pdf) (`proposal/proposal.md`). Người nghe: **chỉ GVHD**, chưa phải hội đồng.
 > Mở bằng `file://`, không cần mạng, không publish artifact ([D-013](../../../../DECISIONS.md#d-013)).
-> Đây là **deck duy nhất** còn lại cho buổi này: bản `.pptx` và deck external đã xoá (D-038).
+> Sửa trực tiếp deck này, không tạo thư mục deck mới.
 
 Mở: **[index.html](index.html)**.
 
-Đọc và tập nói: **[script song ngữ Việt–Anh](speaker-script-bilingual.md)** — ⚠ soạn từ bản 26 slide ngày 15/10, **chưa đồng bộ**
-với bản 24 slide này (thứ tự và số slide đã đổi); dùng cho thuật ngữ và hỏi đáp, đừng dùng số slide trong đó.
+**Ghi chú người nói:** 20 slide lõi mới **không có** ghi chú người nói (theo yêu cầu). Các slide cũ chuyển xuống phụ lục
+(A21–A41) vẫn mang ghi chú cũ, nay **lỗi thời** về số slide. [speaker-script-bilingual.md](speaker-script-bilingual.md)
+cũng lỗi thời; không dùng số slide trong đó.
+
+<a id="ban-22102026"></a>
+## Bản 22/10/2026 — chỉnh theo đề cương, tối đa hình và sơ đồ
+
+Mỗi slide lõi có **một hình trung tâm** (SVG tự dựng, không `<marker>` nên không hỏng khi slide ẩn) và tối đa vài dòng chữ.
+Mọi hình/số trên slide mới là **tự dựng từ đề cương**; hình minh hoạ ghi rõ *schematic*. Không có số kết quả mới.
+Số duy nhất lấy từ kết quả đo: 91 peptide · 89 cụm · 47.847 ô ở slide 5
+([results.json](../../research/g2-saturation-2026-10-18/results.json), [8]).
+
+| # | Slide (mục đề cương) | Hình trung tâm |
+|---|---|---|
+| 1 | Title (tên **Nguyễn Thanh Trọng** theo đề cương) | dải peptide HIF1A (giữ) |
+| 2 | Synthesis, degradation, degron (I.1) | cán cân + chuỗi UPS: E3 → ubiquitin → proteasome |
+| 3 | The residue-level question (I.1) | điểm cả peptide so với ma trận 28 × 20 có dấu "?" |
+| 4 | Five objectives (I.2) | năm thẻ có icon, mỗi thẻ một sản phẩm |
+| 5 | Scope (I.3) | phễu 91 → 89 → 47.847 · đầu vào/ra · ngoài phạm vi |
+| 6 | GPS → PSI → ΔPSI (II.2) | reporter, FACS 6 bin, hai histogram, quy ước dấu |
+| 7 | Scanning vs saturation (II.2) | hai lưới 28 × 20 cạnh nhau |
+| 8 | HIF1A worked example (II.2) | ma trận đo thật (giữ, slide 15 cũ) |
+| 9 | Models and baselines (II.3) | ridge · ΔPAP · Degformer · ứng viên, bốn khối kiến trúc |
+| 10 | Cluster-based splits (II.4) | cụm → 5 outer fold → validation trong → 3 seed → 5.000 bootstrap |
+| 11 | Leakage gate and main metric (II.4) | cổng overlap · danh sách "fit chỉ trên train" · AUROC từng peptide |
+| 12 | Research question and decision rule (III.1) | bước A đường cong học → bước B ngẫu nhiên vs tiền huấn luyện → cây quyết định |
+| 13 | Transfer learning design (II.3, III.1) | hai làn song song, cùng fold/ngân sách |
+| 14 | Work plan (III.2) | năm chevron + sản phẩm; hàng "lịch tuần: bổ sung sau" |
+| 15 | Planned software flow (IV.1) | sáu bước + ba nhánh (lỗi, cờ, provenance) |
+| 16 | Planned prototype interface (I.2, IV.1) | **vẽ lại 22/10**: cửa sổ ứng dụng đầy đủ — nhập peptide + kiểm tra, ma trận 28 × 20 kèm tóm tắt theo hàng, chú giải ô đã chọn đối chiếu số đo, bảng xếp hạng + đối chứng, xuất CSV/JSON + provenance; năm chú thích số hiện dần theo bước |
+| 17 | Data sources and roles (IV.2) | sáu nguồn → bảng nhãn · ghim phiên bản |
+| 18 | Related projects (V) | lưới đơn vị dự đoán × loại sản phẩm; Degformer đã có ma trận 28 × 20 |
+| 19 | Expected results (VI) | ma trận truy vết 5 sản phẩm × 5 mục tiêu |
+| 20 | Limits and scope of conclusions | bốn biển báo + quy tắc báo cáo kết quả |
+
+**Kiểu khung (22/10):** slide mới dùng khung viền mảnh, không tô nền, không thanh viền đậm bên trái (đúng quy ước `deck.css`); màu chỉ ở chữ tiêu đề, viền nhạt và các ô dữ liệu/ma trận. Mọi giá trị trên slide 16 là **giá trị giữ chỗ** (ghi rõ trên slide); số duy nhất đo thật là +2,58 của ô P12→D HIF1A (slide 8).
+
+**Bỏ theo yêu cầu:** slide "bằng chứng phát triển hiện có" (ridge 0,8082 / ΔPAP 0,7693) và slide câu hỏi cho GVHD.
+Hai nội dung này **không** còn ở slide lõi; số ridge/ΔPAP vẫn nằm ở A2 và A34 (slide cũ).
+
+**Chuyển xuống phụ lục:** 21 slide lõi cũ (residue, cân bằng, degron, OR 2,148, GPS bảng, nhóm 1–2, gap, ba trụ, input/output,
+dữ liệu cho thấy gì, pipeline, hai bộ nhãn, hướng tiếp cận cố định/mở, dịch vụ trả về, kế hoạch tuần 7, bốn câu hỏi) thành **A21–A41**,
+tiêu đề đánh số lại; A1–A20 giữ nguyên số. Tham chiếu chéo `slide N` trong phụ lục đã đổi sang `appendix AN`
+(slide 5→A24, 7→A26, 11→A30, 16→A34, 18→A36, 19–20→A37–A38).
+Bảng ánh xạ đầy đủ: slide cũ 2–14 → A21–A33, 16–20 → A34–A38, 22–24 → A39–A41.
+
+**Kiểm 22/10/2026:** probe tràn/đè/cắt chữ trong SVG (xem *Cách kiểm* bên dưới, có thêm đo `getBBox` của mọi `<text>` so với `viewBox`)
+cho `OVF=none LAP=none CLIP=none` trên **cả 20 slide lõi**. Lỗi còn lại ở phụ lục (A2, A10, A11, A13, A15, A25) **đã có từ bản trước**,
+không do đợt sửa này. Hình chụp từng slide bằng Chromium headless đã xem bằng mắt; font đo bằng `vendor/inter-*.ttf`.
 
 <a id="ban-rut-gon-19102026"></a>
 ## Bản rút gọn 19/10/2026 — để xin duyệt khung
@@ -79,13 +125,13 @@ chrome --headless --no-pdf-header-footer \
 ```
 
 Đã kiểm 19/10/2026: ra đúng **44 trang** 1280×720 (24 lõi + 20 phụ lục). Thanh HUD và vạch tiến độ
-đếm theo **24 slide lõi**; slide phụ lục hiện `A8 / 20 · phụ lục`.
+đếm theo **20 slide lõi** (bản 22/10); slide phụ lục hiện `A10 / 41 · phụ lục`.
 
 ## Cấu trúc
 
 | File | Nội dung |
 |---|---|
-| [index.html](index.html) | 44 `<section class="slide">` — 24 lõi + 20 mang `data-appendix="1…20"`; mỗi slide có một `.speaker-note` (ẩn, JS chép sang panel) |
+| [index.html](index.html) | 61 `<section class="slide">` — 20 lõi + 41 mang `data-appendix="1…41"`; slide lõi mới không có `.speaker-note` |
 | [SOURCES.md](SOURCES.md) | nguồn, giấy phép và SHA-256 của mọi ảnh/GIF dùng trên slide |
 | [deck.css](deck.css) | bảng màu, bố cục, trạng thái bước animation, chế độ in |
 | [deck.js](deck.js) | engine: điều hướng, bước animation, ghi chú, tổng quan, `?all`, in |

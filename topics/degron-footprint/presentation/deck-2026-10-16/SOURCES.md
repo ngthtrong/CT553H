@@ -1,5 +1,7 @@
 # Hình và GIF dùng trong deck này — nguồn, giấy phép, băm
 
+> ⚠ **22/10/2026:** cột "Slide" bên dưới là số slide của bản cũ; deck nay có 20 slide lõi + A1–A41 (xem README, mục *Bản 22/10/2026*). Slide cũ 2–14 nay là A21–A33 và 16–20 là A34–A38 (ví dụ RING gif: A23; FACS: A25; Fig. 4: A28). Hình mới tự dựng (SVG trong `index.html`), không thêm tài nguyên ngoài.
+>
 > Cập nhật **18/10/2026**, khi rút gọn chữ trên slide và bổ sung ảnh.
 > **Deck dùng nội bộ** (báo cáo tiến độ với GVHD), repo private ([D-004](../../../../DECISIONS.md#d-004)).
 > Trọng đã chỉ đạo ngày 18/10/2026: ở phạm vi nội bộ này **không chặn theo giấy phép**, nhưng vẫn
