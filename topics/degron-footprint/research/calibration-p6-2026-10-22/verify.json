@@ -1,0 +1,58 @@
+{
+  "nhãn y: load_all vs cache": {
+    "max_abs_diff": 0.0,
+    "n": 92337,
+    "pass": true
+  },
+  "đặc trưng predict.featurize vs cache X": {
+    "max_abs_diff": 1.1102230246251565e-16,
+    "n": 16620660,
+    "pass": true
+  },
+  "điểm thô: predict vs Ridge.predict": {
+    "max_abs_diff": 4.440892098500626e-16,
+    "n": 92337,
+    "pass": true
+  },
+  "xác suất platt: predict vs sklearn": {
+    "max_abs_diff": 3.3306690738754696e-16,
+    "n": 92337,
+    "pass": true
+  },
+  "xác suất iso: predict vs sklearn": {
+    "max_abs_diff": 1.7315315847810098e-13,
+    "n": 92337,
+    "pass": true
+  },
+  "UniProt->tile->predict_tile: điểm vs đường huấn luyện": {
+    "max_abs_diff": 0.0,
+    "n": 1,
+    "pass": true
+  },
+  "UniProt->tile->predict_tile: xác suất": {
+    "max_abs_diff": 0.0,
+    "n": 1,
+    "pass": true
+  },
+  "tile_path_cells_compared": 92337,
+  "CLI CSV: điểm": {
+    "max_abs_diff": 4.401257136521508e-10,
+    "n": 532,
+    "pass": true
+  },
+  "CLI CSV: xác suất": {
+    "max_abs_diff": 4.822289789707668e-11,
+    "n": 532,
+    "pass": true
+  },
+  "đặc trưng bộ gốc: predict.featurize vs cache X0": {
+    "max_abs_diff": 1.1102230246251565e-16,
+    "n": 8612460,
+    "pass": true
+  },
+  "runner: điểm outer-test 15 (seed,fold) vs hệ số fold": {
+    "max_abs_diff": 4.440892098500626e-16,
+    "n": 1,
+    "pass": true
+  }
+}

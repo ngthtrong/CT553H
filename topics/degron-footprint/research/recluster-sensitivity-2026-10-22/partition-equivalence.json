@@ -1,0 +1,32 @@
+{
+  "n_peptides": 176,
+  "distinct_partitions": [
+    {
+      "levels": [
+        "L0"
+      ],
+      "n_groups": 176
+    },
+    {
+      "levels": [
+        "L1",
+        "L2"
+      ],
+      "n_groups": 172
+    },
+    {
+      "levels": [
+        "L3",
+        "L4"
+      ],
+      "n_groups": 163
+    },
+    {
+      "levels": [
+        "L5",
+        "L6"
+      ],
+      "n_groups": 133
+    }
+  ]
+}

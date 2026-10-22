@@ -1,0 +1,720 @@
+{
+  "thresholds": {
+    "G1_min_new_clusters": 20,
+    "R1_tol": 1e-06,
+    "R1_frac": 0.99,
+    "R2_min_identity": 8,
+    "R2_min_substrates": 7,
+    "R3_median": 0.5,
+    "R3_frac_pos": 0.9
+  },
+  "G1": {
+    "n_substrates_s4": 9,
+    "n_substrates_s4_s3_dedup": 13,
+    "n_mapped": 6,
+    "n_new_clusters": 5,
+    "n_train_accessions_176": 176,
+    "pass": false
+  },
+  "R1": {
+    "n_rows": 1827,
+    "n_within_tol": 1827,
+    "frac": 1.0,
+    "max_abs_diff": 4.998668146072305e-12,
+    "pass": true
+  },
+  "R2": {
+    "n_substrates_ge8_identity": 9,
+    "of": 9,
+    "pass": true
+  },
+  "R3": {
+    "n": 19,
+    "median_dpsi": 1.0426233032549999,
+    "frac_positive": 1.0,
+    "pass": true
+  },
+  "R4_diagnostic": {
+    "n_overlap": 12,
+    "wt_s3_row": 1.58382443444,
+    "wt_s4_identity_median": 1.680982418055,
+    "spearman": 0.0979020979020979,
+    "pairs_s3_s4": [
+      [
+        -0.195,
+        0.027
+      ],
+      [
+        0.511,
+        -0.126
+      ],
+      [
+        -0.294,
+        0.002
+      ],
+      [
+        0.538,
+        0.107
+      ],
+      [
+        0.376,
+        -0.066
+      ],
+      [
+        0.263,
+        -0.0
+      ],
+      [
+        -0.321,
+        -0.008
+      ],
+      [
+        0.03,
+        0.092
+      ],
+      [
+        0.191,
+        0.019
+      ],
+      [
+        -0.089,
+        0.03
+      ],
+      [
+        0.483,
+        -0.024
+      ],
+      [
+        0.897,
+        1.08
+      ]
+    ]
+  },
+  "gate_pass": false,
+  "role": "external_validation_only",
+  "s4_substrates": {
+    "Clone#8": {
+      "sheet": "Table S4A. Clone#8",
+      "n_rows": 238,
+      "n_identity": 10,
+      "n_mutant_cells": 228,
+      "positions": [
+        1,
+        12
+      ],
+      "wt_seq": "PHKRLLKGSQYG",
+      "wt_len": 12,
+      "has_stop": true,
+      "wt_psi_internal": 1.680982418055,
+      "identity_psi_sd": 0.06694213580816079,
+      "inconsistent_rows": 0,
+      "dpsi": {
+        "n": 228,
+        "median": 0.0004935297450001652,
+        "p05": -0.09732680023899999,
+        "p95": 1.0416203737154999,
+        "min": -0.19317311814499982,
+        "max": 1.1079460030650001
+      },
+      "frac_pos_ge1.0": 0.07894736842105263,
+      "frac_pos_ge0.4_range_equiv": 0.14035087719298245,
+      "max_dpsi": 1.1079460030650001,
+      "median_dpsi_by_pos": {
+        "1": -0.034,
+        "2": -0.027,
+        "3": -0.018,
+        "4": 0.04,
+        "5": -0.027,
+        "6": -0.0,
+        "7": -0.02,
+        "8": 0.005,
+        "9": 0.006,
+        "10": 0.085,
+        "11": -0.005,
+        "12": 1.043
+      }
+    },
+    "EPHB2": {
+      "sheet": "Table S4B. EPHB2",
+      "n_rows": 200,
+      "n_identity": 10,
+      "n_mutant_cells": 190,
+      "positions": [
+        14,
+        23
+      ],
+      "wt_seq": "REIQGIFFKEDSHKESNDCSCGG",
+      "wt_len": 23,
+      "has_stop": true,
+      "wt_psi_internal": 1.722057945245,
+      "identity_psi_sd": 0.08176551052098452,
+      "inconsistent_rows": 0,
+      "dpsi": {
+        "n": 190,
+        "median": 0.03843496821499992,
+        "p05": -0.09005627434750009,
+        "p95": 1.0843513096934998,
+        "min": -0.1670168942650001,
+        "max": 1.212204592405
+      },
+      "frac_pos_ge1.0": 0.06842105263157895,
+      "frac_pos_ge0.4_range_equiv": 0.15263157894736842,
+      "max_dpsi": 1.212204592405,
+      "median_dpsi_by_pos": {
+        "14": 0.042,
+        "15": 0.034,
+        "16": 0.002,
+        "17": 0.008,
+        "18": -0.003,
+        "19": 0.04,
+        "20": 0.033,
+        "21": 0.01,
+        "22": 0.421,
+        "23": 1.059
+      }
+    },
+    "PDGFC": {
+      "sheet": "Table S4C. PDGFC",
+      "n_rows": 200,
+      "n_identity": 10,
+      "n_mutant_cells": 190,
+      "positions": [
+        14,
+        23
+      ],
+      "wt_seq": "SLTDVALEHHEECDCVCRGSTGG",
+      "wt_len": 23,
+      "has_stop": true,
+      "wt_psi_internal": 1.71784767817,
+      "identity_psi_sd": 0.046675080279194196,
+      "inconsistent_rows": 0,
+      "dpsi": {
+        "n": 190,
+        "median": 0.0743011590649999,
+        "p05": -0.025779981867500034,
+        "p95": 1.1558041480049996,
+        "min": -0.1047198116100001,
+        "max": 1.2073676714000001
+      },
+      "frac_pos_ge1.0": 0.08421052631578947,
+      "frac_pos_ge0.4_range_equiv": 0.15789473684210525,
+      "max_dpsi": 1.2073676714000001,
+      "median_dpsi_by_pos": {
+        "14": 0.063,
+        "15": 0.037,
+        "16": 0.053,
+        "17": 0.074,
+        "18": 0.04,
+        "19": 0.08,
+        "20": 0.058,
+        "21": 0.071,
+        "22": 0.442,
+        "23": 1.12
+      }
+    },
+    "EMID1": {
+      "sheet": "Table S4D. EMID1",
+      "n_rows": 200,
+      "n_identity": 10,
+      "n_mutant_cells": 190,
+      "positions": [
+        14,
+        23
+      ],
+      "wt_seq": "RGKRGGHATNYRIVAPRSRDERG",
+      "wt_len": 23,
+      "has_stop": true,
+      "wt_psi_internal": 1.7610986149149999,
+      "identity_psi_sd": 0.07524590928031857,
+      "inconsistent_rows": 0,
+      "dpsi": {
+        "n": 190,
+        "median": 0.020983058335000138,
+        "p05": -0.09393076388049988,
+        "p95": 0.800240487908499,
+        "min": -0.1998974712349999,
+        "max": 1.135924325455
+      },
+      "frac_pos_ge1.0": 0.02631578947368421,
+      "frac_pos_ge0.4_range_equiv": 0.12105263157894737,
+      "max_dpsi": 1.135924325455,
+      "median_dpsi_by_pos": {
+        "14": 0.016,
+        "15": 0.031,
+        "16": 0.023,
+        "17": 0.009,
+        "18": -0.009,
+        "19": 0.015,
+        "20": -0.018,
+        "21": 0.006,
+        "22": 0.332,
+        "23": 0.746
+      }
+    },
+    "CHGA": {
+      "sheet": "Table S5E. CHGA",
+      "n_rows": 199,
+      "n_identity": 9,
+      "n_mutant_cells": 190,
+      "positions": [
+        14,
+        23
+      ],
+      "wt_seq": "ESLSAIEAELEKVAHQLQALRRG",
+      "wt_len": 23,
+      "has_stop": true,
+      "wt_psi_internal": 1.82347732769,
+      "identity_psi_sd": 0.055820693968544756,
+      "inconsistent_rows": 0,
+      "dpsi": {
+        "n": 190,
+        "median": -0.06733392383000003,
+        "p05": -0.19128289916149996,
+        "p95": 0.3894514593634998,
+        "min": -0.26411100585,
+        "max": 0.8418865478300002
+      },
+      "frac_pos_ge1.0": 0.0,
+      "frac_pos_ge0.4_range_equiv": 0.04736842105263158,
+      "max_dpsi": 0.8418865478300002,
+      "median_dpsi_by_pos": {
+        "14": -0.082,
+        "15": -0.102,
+        "16": -0.088,
+        "17": -0.078,
+        "18": -0.08,
+        "19": -0.11,
+        "20": -0.078,
+        "21": -0.041,
+        "22": 0.051,
+        "23": 0.381
+      }
+    },
+    "XP_211896.1": {
+      "sheet": "Table S4F. XP_211896.1",
+      "n_rows": 200,
+      "n_identity": 10,
+      "n_mutant_cells": 190,
+      "positions": [
+        14,
+        23
+      ],
+      "wt_seq": "QPVPFPLTVPTLTRGRLTRNKGP",
+      "wt_len": 23,
+      "has_stop": true,
+      "wt_psi_internal": 1.7796835508350002,
+      "identity_psi_sd": 0.07220046982356501,
+      "inconsistent_rows": 0,
+      "dpsi": {
+        "n": 190,
+        "median": 0.06392013763999982,
+        "p05": -0.07362072119350016,
+        "p95": 0.6471295105639997,
+        "min": -0.19067261193500018,
+        "max": 0.969151616535
+      },
+      "frac_pos_ge1.0": 0.0,
+      "frac_pos_ge0.4_range_equiv": 0.14210526315789473,
+      "max_dpsi": 0.969151616535,
+      "median_dpsi_by_pos": {
+        "14": 0.039,
+        "15": 0.026,
+        "16": 0.028,
+        "17": 0.063,
+        "18": 0.061,
+        "19": 0.381,
+        "20": 0.066,
+        "21": 0.092,
+        "22": 0.626,
+        "23": 0.037
+      }
+    },
+    "Peptide35": {
+      "sheet": "Table S5G. Peptide35",
+      "n_rows": 199,
+      "n_identity": 9,
+      "n_mutant_cells": 190,
+      "positions": [
+        14,
+        23
+      ],
+      "wt_seq": "YKKAGSGIPLRMNSLFRKRNKGK",
+      "wt_len": 23,
+      "has_stop": true,
+      "wt_psi_internal": 1.78783427762,
+      "identity_psi_sd": 0.10772065977815391,
+      "inconsistent_rows": 0,
+      "dpsi": {
+        "n": 190,
+        "median": 0.024110373289999987,
+        "p05": -0.09981020416250001,
+        "p95": 0.30330456231649977,
+        "min": -0.17318796194000008,
+        "max": 0.44396885399999997
+      },
+      "frac_pos_ge1.0": 0.0,
+      "frac_pos_ge0.4_range_equiv": 0.005263157894736842,
+      "max_dpsi": 0.44396885399999997,
+      "median_dpsi_by_pos": {
+        "14": 0.014,
+        "15": 0.002,
+        "16": 0.017,
+        "17": 0.029,
+        "18": 0.008,
+        "19": 0.2,
+        "20": 0.007,
+        "21": 0.017,
+        "22": 0.264,
+        "23": -0.042
+      }
+    },
+    "MAGEA3": {
+      "sheet": "Table S4H. MAGEA3",
+      "n_rows": 191,
+      "n_identity": 10,
+      "n_mutant_cells": 181,
+      "positions": [
+        14,
+        23
+      ],
+      "wt_seq": "KISGGPHISYPPLHEWVLREGEE",
+      "wt_len": 23,
+      "has_stop": true,
+      "wt_psi_internal": 1.737856478625,
+      "identity_psi_sd": 0.0701504372495948,
+      "inconsistent_rows": 0,
+      "dpsi": {
+        "n": 181,
+        "median": 0.059023280794999966,
+        "p05": -0.05507619769499983,
+        "p95": 0.46539518956500014,
+        "min": -0.11509488307499982,
+        "max": 0.6684085520150003
+      },
+      "frac_pos_ge1.0": 0.0,
+      "frac_pos_ge0.4_range_equiv": 0.08287292817679558,
+      "max_dpsi": 0.6684085520150003,
+      "median_dpsi_by_pos": {
+        "14": 0.056,
+        "15": 0.001,
+        "16": 0.031,
+        "17": -0.024,
+        "18": 0.13,
+        "19": 0.04,
+        "20": -0.0,
+        "21": 0.051,
+        "22": 0.4,
+        "23": 0.344
+      }
+    },
+    "MSRB2": {
+      "sheet": "Table S4I. MSRB2",
+      "n_rows": 200,
+      "n_identity": 10,
+      "n_mutant_cells": 190,
+      "positions": [
+        14,
+        23
+      ],
+      "wt_seq": "GPGPNGQRFCINSVALKFKPRKH",
+      "wt_len": 23,
+      "has_stop": true,
+      "wt_psi_internal": 1.827150583545,
+      "identity_psi_sd": 0.08912917352352986,
+      "inconsistent_rows": 0,
+      "dpsi": {
+        "n": 190,
+        "median": -0.000959298509999984,
+        "p05": -0.1603055166879999,
+        "p95": 0.2988503818899999,
+        "min": -0.25193644273499993,
+        "max": 0.4344422000349999
+      },
+      "frac_pos_ge1.0": 0.0,
+      "frac_pos_ge0.4_range_equiv": 0.005263157894736842,
+      "max_dpsi": 0.4344422000349999,
+      "median_dpsi_by_pos": {
+        "14": 0.022,
+        "15": -0.054,
+        "16": -0.032,
+        "17": -0.07,
+        "18": 0.046,
+        "19": -0.001,
+        "20": -0.006,
+        "21": 0.287,
+        "22": -0.026,
+        "23": -0.001
+      }
+    }
+  },
+  "s3_substrates": {
+    "Clone#3": {
+      "wt_oligo": "Clone#3",
+      "wt_seq": "VNPFLADVDKLKLDKIKECSEKVELIHGKKAGLAADKKEFKPLPGRTAASGRRWG",
+      "wt_len": 55,
+      "wt_psi": 1.53226248197,
+      "n_mutants": 49,
+      "n_rows": 56,
+      "psi_recompute_ok": "56/56"
+    },
+    "Clone#5": {
+      "wt_oligo": "Clone#5",
+      "wt_seq": "GLLKRPCLRG",
+      "wt_len": 10,
+      "wt_psi": 1.55913700432,
+      "n_mutants": 10,
+      "n_rows": 11,
+      "psi_recompute_ok": "11/11"
+    },
+    "Clone#6": {
+      "wt_oligo": "Clone#6",
+      "wt_seq": "MSATVVDAVNAAPLSGSKEMSLEEPKKMTREDWRKKKELEEQRKLQRTSRG",
+      "wt_len": 51,
+      "wt_psi": 1.54762266911,
+      "n_mutants": 46,
+      "n_rows": 51,
+      "psi_recompute_ok": "51/51"
+    },
+    "Clone#7": {
+      "wt_oligo": "Clone#7",
+      "wt_seq": "RQIISFDRMKLTNNEMDDKGHIILQSMHKYKPRVHGSNKVVVWTCPKSKVCQQRG",
+      "wt_len": 55,
+      "wt_psi": 1.6793957355,
+      "n_mutants": 55,
+      "n_rows": 56,
+      "psi_recompute_ok": "56/56"
+    },
+    "Clone#8": {
+      "wt_oligo": "Clone#8",
+      "wt_seq": "PHKRLLKGSQYG",
+      "wt_len": 12,
+      "wt_psi": 1.58382443444,
+      "n_mutants": 12,
+      "n_rows": 13,
+      "psi_recompute_ok": "13/13"
+    }
+  },
+  "mapping": {
+    "Clone#8": {
+      "seq": "PHKRLLKGSQYG",
+      "len": 12,
+      "c_terminal_match": [],
+      "internal_match": [],
+      "n_internal": 0,
+      "accessions": [],
+      "mapped": false,
+      "new_cluster": false
+    },
+    "EPHB2": {
+      "seq": "REIQGIFFKEDSHKESNDCSCGG",
+      "len": 23,
+      "c_terminal_match": [
+        "P29323"
+      ],
+      "internal_match": [],
+      "n_internal": 0,
+      "accessions": [
+        {
+          "accession": "P29323",
+          "in_zhang_6573": false,
+          "cluster_rep": "P29317",
+          "cluster_size": 12,
+          "overlap_with_176_peptides": [
+            "P29323"
+          ]
+        }
+      ],
+      "mapped": true,
+      "new_cluster": false
+    },
+    "PDGFC": {
+      "seq": "SLTDVALEHHEECDCVCRGSTGG",
+      "len": 23,
+      "c_terminal_match": [
+        "Q9NRA1"
+      ],
+      "internal_match": [],
+      "n_internal": 0,
+      "accessions": [
+        {
+          "accession": "Q9NRA1",
+          "in_zhang_6573": false,
+          "cluster_rep": "Q9NRA1",
+          "cluster_size": 1,
+          "overlap_with_176_peptides": []
+        }
+      ],
+      "mapped": true,
+      "new_cluster": true
+    },
+    "EMID1": {
+      "seq": "RGKRGGHATNYRIVAPRSRDERG",
+      "len": 23,
+      "c_terminal_match": [
+        "Q96A84"
+      ],
+      "internal_match": [],
+      "n_internal": 0,
+      "accessions": [
+        {
+          "accession": "Q96A84",
+          "in_zhang_6573": false,
+          "cluster_rep": "Q96A84",
+          "cluster_size": 1,
+          "overlap_with_176_peptides": []
+        }
+      ],
+      "mapped": true,
+      "new_cluster": true
+    },
+    "CHGA": {
+      "seq": "ESLSAIEAELEKVAHQLQALRRG",
+      "len": 23,
+      "c_terminal_match": [
+        "P10645"
+      ],
+      "internal_match": [],
+      "n_internal": 0,
+      "accessions": [
+        {
+          "accession": "P10645",
+          "in_zhang_6573": true,
+          "cluster_rep": "P10645",
+          "cluster_size": 1,
+          "overlap_with_176_peptides": []
+        }
+      ],
+      "mapped": true,
+      "new_cluster": true
+    },
+    "XP_211896.1": {
+      "seq": "QPVPFPLTVPTLTRGRLTRNKGP",
+      "len": 23,
+      "c_terminal_match": [],
+      "internal_match": [],
+      "n_internal": 0,
+      "accessions": [],
+      "mapped": false,
+      "new_cluster": false
+    },
+    "Peptide35": {
+      "seq": "YKKAGSGIPLRMNSLFRKRNKGK",
+      "len": 23,
+      "c_terminal_match": [],
+      "internal_match": [],
+      "n_internal": 0,
+      "accessions": [],
+      "mapped": false,
+      "new_cluster": false
+    },
+    "MAGEA3": {
+      "seq": "KISGGPHISYPPLHEWVLREGEE",
+      "len": 23,
+      "c_terminal_match": [
+        "P43357"
+      ],
+      "internal_match": [],
+      "n_internal": 0,
+      "accessions": [
+        {
+          "accession": "P43357",
+          "in_zhang_6573": false,
+          "cluster_rep": "P43357",
+          "cluster_size": 7,
+          "overlap_with_176_peptides": []
+        }
+      ],
+      "mapped": true,
+      "new_cluster": true
+    },
+    "MSRB2": {
+      "seq": "GPGPNGQRFCINSVALKFKPRKH",
+      "len": 23,
+      "c_terminal_match": [
+        "Q9Y3D2"
+      ],
+      "internal_match": [],
+      "n_internal": 0,
+      "accessions": [
+        {
+          "accession": "Q9Y3D2",
+          "in_zhang_6573": false,
+          "cluster_rep": "Q9Y3D2",
+          "cluster_size": 1,
+          "overlap_with_176_peptides": []
+        }
+      ],
+      "mapped": true,
+      "new_cluster": true
+    },
+    "S3:Clone#3": {
+      "seq": "VNPFLADVDKLKLDKIKECSEKVELIHGKKAGLAADKKEFKPLPGRTAASGRRWG",
+      "len": 55,
+      "c_terminal_match": [],
+      "internal_match": [],
+      "n_internal": 0,
+      "accessions": [],
+      "mapped": false,
+      "new_cluster": false
+    },
+    "S3:Clone#5": {
+      "seq": "GLLKRPCLRG",
+      "len": 10,
+      "c_terminal_match": [],
+      "internal_match": [],
+      "n_internal": 0,
+      "accessions": [],
+      "mapped": false,
+      "new_cluster": false
+    },
+    "S3:Clone#6": {
+      "seq": "MSATVVDAVNAAPLSGSKEMSLEEPKKMTREDWRKKKELEEQRKLQRTSRG",
+      "len": 51,
+      "c_terminal_match": [],
+      "internal_match": [],
+      "n_internal": 0,
+      "accessions": [],
+      "mapped": false,
+      "new_cluster": false
+    },
+    "S3:Clone#7": {
+      "seq": "RQIISFDRMKLTNNEMDDKGHIILQSMHKYKPRVHGSNKVVVWTCPKSKVCQQRG",
+      "len": 55,
+      "c_terminal_match": [],
+      "internal_match": [],
+      "n_internal": 0,
+      "accessions": [],
+      "mapped": false,
+      "new_cluster": false
+    }
+  },
+  "clustering": {
+    "n_zhang_proteins": 6573,
+    "n_added_koren": 5,
+    "n_clusters_joint": 5091
+  },
+  "description": {
+    "s4_all_mutant_cells": 1739,
+    "dpsi": {
+      "n": 1739,
+      "median": 0.02959181466000005,
+      "p05": -0.11912675815799996,
+      "p95": 0.7160084698869995,
+      "min": -0.26411100585,
+      "max": 1.212204592405
+    },
+    "frac_pos_ge1.0": 0.029902242668200116,
+    "frac_pos_ge0.4_range_equiv": 0.09603220241518114,
+    "psi_range_observed": [
+      1.48780929991,
+      2.93426253765
+    ],
+    "zhang_reference": {
+      "frac_pos_ge1.0_base91": 0.131,
+      "frac_pos_ge1.0_new85": 0.114,
+      "psi_bins": 6,
+      "koren_s4_bins": 3,
+      "source": "learning-curve-2026-10-22/README.md §3"
+    }
+  }
+}

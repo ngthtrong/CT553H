@@ -1,0 +1,173 @@
+{
+  "checked_on": "2026-10-22",
+  "note": "Chỉ HEAD/GET trang công bố. Status 200 nghĩa là endpoint trả nội dung, KHÔNG đồng nghĩa dữ liệu dùng được hay giấy phép cho phép nhập.",
+  "user_agent": "degron-footprint-thesis/1.0 (academic access check; mailto:ngthtrong204@gmail.com)",
+  "results": [
+    {
+      "key": "koren2018_cell",
+      "label": "Koren 2018 Cell — trang bài + supplementary (GPS C-degron, saturation)",
+      "url": "https://www.cell.com/cell/fulltext/S0092-8674(18)30521-X",
+      "method": "GET",
+      "status": 403,
+      "error": "HTTPError 403 Forbidden",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "key": "koren2018_pmc",
+      "label": "Koren 2018 — bản PMC (đường vòng nếu Cell chặn), PMID 29779948",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6003881/",
+      "method": "HEAD",
+      "status": 200,
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6003881/",
+      "content_type": "text/html; charset=utf-8",
+      "content_length": null
+    },
+    {
+      "key": "timms2023_cdegron",
+      "label": "Timms 2023 Mol Cell — C-degron ubiquitin-independent, PSI GPS-ORFeome",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10237035/",
+      "method": "HEAD",
+      "status": 200,
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10237035/",
+      "content_type": "text/html; charset=utf-8",
+      "content_length": null
+    },
+    {
+      "key": "ndegron_jcb2024",
+      "label": "JCB 2024 — DPP + N-degron, N24mer saturation, ΔPSI",
+      "url": "https://rupress.org/jcb/article/223/8/e202311035/276811/",
+      "method": "GET",
+      "status": 403,
+      "error": "HTTPError 403 Forbidden",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "key": "ndegron_jcb2024_pmc",
+      "label": "Shimshon 2024 JCB — bản PMC, PMID 38874443",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11178506/",
+      "method": "HEAD",
+      "status": 200,
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11178506/",
+      "content_type": "text/html; charset=utf-8",
+      "content_length": null
+    },
+    {
+      "key": "ncys_pnas2025",
+      "label": "Bekturova 2025 PNAS — N-terminal cysteine, N-terminome library",
+      "url": "https://www.pnas.org/doi/10.1073/pnas.2501681122",
+      "method": "GET",
+      "status": 403,
+      "error": "HTTPError 403 Forbidden",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "key": "ncys_pnas2025_pmc",
+      "label": "Bekturova 2025 PNAS — bản PMC, PMID 40794836",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12377780/",
+      "method": "HEAD",
+      "status": 200,
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12377780/",
+      "content_type": "text/html; charset=utf-8",
+      "content_length": null
+    },
+    {
+      "key": "glue_biorxiv2026",
+      "label": "bioRxiv 09/2026 — disease mutations as genetic glues, ZNF711 saturation",
+      "url": "https://www.biorxiv.org/content/10.64898/2026.09.17.752235v1.full",
+      "method": "HEAD",
+      "status": 200,
+      "final_url": "https://www.biorxiv.org/content/10.64898/2026.09.17.752235v1.full",
+      "content_type": "text/html; charset=utf-8",
+      "content_length": null
+    },
+    {
+      "key": "domainome_nature",
+      "label": "Human Domainome 1 — Nature 2025 (aPCA ~500 domain)",
+      "url": "https://www.nature.com/articles/s41586-024-08370-4",
+      "method": "HEAD",
+      "status": 200,
+      "final_url": "https://www.nature.com/articles/s41586-024-08370-4?error=cookies_not_supported&code=68e43a0b-f18e-4a89-9245-df724aaaa698",
+      "content_type": "text/html; charset=utf-8",
+      "content_length": null
+    },
+    {
+      "key": "mavedb_api_openapi",
+      "label": "MaveDB API — mô tả OpenAPI (để dựng truy vấn score set)",
+      "url": "https://api.mavedb.org/api/v1/openapi.json",
+      "method": "GET",
+      "status": 404,
+      "error": "HTTPError 404 Not Found",
+      "content_type": "application/json"
+    },
+    {
+      "key": "proteingym",
+      "label": "ProteinGym — benchmark DMS, trang chủ",
+      "url": "https://proteingym.org/",
+      "method": "HEAD",
+      "status": 200,
+      "final_url": "https://proteingym.org/",
+      "content_type": "text/html; charset=UTF-8",
+      "content_length": "468"
+    },
+    {
+      "key": "tsuboyama_zenodo",
+      "label": "Tsuboyama 2023 — Zenodo K50/ΔG processed datasets",
+      "url": "https://zenodo.org/records/7844779",
+      "method": "HEAD",
+      "status": 200,
+      "final_url": "https://zenodo.org/records/7844779",
+      "content_type": "text/html; charset=utf-8",
+      "content_length": "126690"
+    },
+    {
+      "key": "aspa_natcomm",
+      "label": "ASPA DMS 2024 — Nat Commun (abundance + degron tile)",
+      "url": "https://www.nature.com/articles/s41467-024-48481-0",
+      "method": "HEAD",
+      "status": 200,
+      "final_url": "https://www.nature.com/articles/s41467-024-48481-0?error=cookies_not_supported&code=dcb7029d-cba3-48d0-a534-a08114a5a811",
+      "content_type": "text/html; charset=utf-8",
+      "content_length": null
+    },
+    {
+      "key": "parkin_natcomm",
+      "label": "Parkin mutational atlas 2024 — Nat Commun (VAMP-seq + degron tile)",
+      "url": "https://www.nature.com/articles/s41467-024-45829-4",
+      "method": "HEAD",
+      "status": 200,
+      "final_url": "https://www.nature.com/articles/s41467-024-45829-4?error=cookies_not_supported&code=c4d68ff9-350c-409e-96c4-9af97f4f875d",
+      "content_type": "text/html; charset=utf-8",
+      "content_length": null
+    },
+    {
+      "key": "e3_crispr_ncb2023",
+      "label": "Nat Cell Biol 2023 — multiplex CRISPR E3–substrate",
+      "url": "https://www.nature.com/articles/s41556-023-01229-2",
+      "method": "HEAD",
+      "status": 200,
+      "final_url": "https://www.nature.com/articles/s41556-023-01229-2?error=cookies_not_supported&code=d66da362-1b96-4164-9445-f5ec01c3cf75",
+      "content_type": "text/html; charset=utf-8",
+      "content_length": null
+    },
+    {
+      "key": "degronopedia",
+      "label": "DEGRONOPEDIA — trang tài liệu (trang /download trả 404)",
+      "url": "https://degronopedia.com/degronopedia/documentation",
+      "method": "HEAD",
+      "status": 200,
+      "final_url": "https://degronopedia.com/degronopedia/documentation",
+      "content_type": "text/html; charset=utf-8",
+      "content_length": "66849"
+    },
+    {
+      "key": "elm_downloads",
+      "label": "ELM — trang downloads (motif, academic license)",
+      "url": "http://elm.eu.org/downloads.html",
+      "method": "HEAD",
+      "status": 200,
+      "final_url": "http://elm.eu.org/downloads.html",
+      "content_type": "text/html; charset=utf-8",
+      "content_length": "25489"
+    }
+  ]
+}

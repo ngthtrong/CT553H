@@ -1,0 +1,1374 @@
+{
+  "protocol": "PROTOCOL.md 22/10/2026; ridge M3; benchmark phát triển OOF, không phải kiểm chứng ngoài",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "ext_degron_psi_max": 4.0,
+  "rescue_delta": 1.0,
+  "n_boot": 5000,
+  "boot_seed": 20261022,
+  "n_base_peptides": 91,
+  "n_ext_new_peptides": 85,
+  "gate": {
+    "base": 0.8082,
+    "ext": 0.8208,
+    "tol": 0.0001
+  },
+  "levels": {
+    "L0": {
+      "n_groups_base": 91,
+      "n_groups_union": 176,
+      "macro_auroc_base": 0.8035598037579484,
+      "macro_auroc_ext": 0.8201856950467051,
+      "delta": {
+        "delta": 0.01662589128875665,
+        "ci95": [
+          0.00988362467048174,
+          0.023965213429492614
+        ],
+        "n_peptides": 91,
+        "n_clusters": 91
+      },
+      "delta_per_seed": [
+        0.023588548088070687,
+        0.014589363880647912,
+        0.01761805821318944
+      ],
+      "ext_peptides_sharing_group_with_a_base_peptide": 0,
+      "leak_per_fold": {
+        "fold0": {
+          "ext_cells_excluded": 0,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 0
+        },
+        "fold1": {
+          "ext_cells_excluded": 0,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 0
+        },
+        "fold2": {
+          "ext_cells_excluded": 0,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 0
+        },
+        "fold3": {
+          "ext_cells_excluded": 0,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 0
+        },
+        "fold4": {
+          "ext_cells_excluded": 0,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 0
+        }
+      },
+      "ext_cells_excluded_fraction_mean": 0.0,
+      "informative": true,
+      "fold_clusters": [
+        [
+          "O14792",
+          "P04040",
+          "P08253",
+          "P15848",
+          "P29536",
+          "Q08462",
+          "Q16651",
+          "Q6DN14",
+          "Q6UWU2",
+          "Q86XT9",
+          "Q8IV63",
+          "Q8N309",
+          "Q8N8W4",
+          "Q8TAB3",
+          "Q96JA1",
+          "Q9HCM2",
+          "Q9NY97",
+          "Q9Y5I3"
+        ],
+        [
+          "O00468",
+          "P00533",
+          "P13686",
+          "P13942",
+          "P27487",
+          "P57772",
+          "Q12805",
+          "Q14156",
+          "Q14562",
+          "Q16665",
+          "Q5W0V3",
+          "Q6PCB6",
+          "Q86UP3",
+          "Q8N6T7",
+          "Q92879",
+          "Q9H8Y5",
+          "Q9NR81",
+          "Q9NW64",
+          "Q9Y3Q7"
+        ],
+        [
+          "O60684",
+          "P01763",
+          "P22557",
+          "P43403",
+          "P55895",
+          "Q01814",
+          "Q13813",
+          "Q5JT25",
+          "Q7Z5S9",
+          "Q8N2Y8",
+          "Q8WXI4",
+          "Q99741",
+          "Q9BV73",
+          "Q9BZ67",
+          "Q9NSI6",
+          "Q9NX02",
+          "Q9Y2H8",
+          "Q9Y6D9"
+        ],
+        [
+          "O43521",
+          "O75594",
+          "P18084",
+          "P35749",
+          "P78314",
+          "Q13516",
+          "Q16853",
+          "Q4G0X9",
+          "Q7RTY1",
+          "Q8IYV9",
+          "Q8WWP7",
+          "Q96C23",
+          "Q96LX7",
+          "Q9BSA4",
+          "Q9NQW8",
+          "Q9UKZ4",
+          "Q9UL36",
+          "Q9Y2R9"
+        ],
+        [
+          "O15357",
+          "P10588",
+          "P17735",
+          "P32881",
+          "P60323",
+          "Q13425",
+          "Q3KRA9",
+          "Q70EL1",
+          "Q8IYB9",
+          "Q8N149",
+          "Q8NBJ5",
+          "Q8WUM9",
+          "Q96BD0",
+          "Q96NH3",
+          "Q9NQT8",
+          "Q9UDT6",
+          "Q9UKV8",
+          "Q9Y4G8"
+        ]
+      ],
+      "hyper_alpha": {
+        "base": [
+          10,
+          1000,
+          10,
+          1000,
+          1,
+          100,
+          1,
+          10,
+          100,
+          100,
+          100,
+          10,
+          100,
+          100,
+          1
+        ],
+        "ext": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          1,
+          1,
+          10,
+          1,
+          10,
+          1,
+          10,
+          1,
+          1,
+          1
+        ]
+      },
+      "description": "accession (không phân cụm)",
+      "identical_to_L1_on_176_peptides": false
+    },
+    "L1": {
+      "n_groups_base": 89,
+      "n_groups_union": 172,
+      "macro_auroc_base": 0.8081859035239345,
+      "macro_auroc_ext": 0.8208223589063638,
+      "delta": {
+        "delta": 0.012636455382429305,
+        "ci95": [
+          0.0061224785538184,
+          0.018994070078056428
+        ],
+        "n_peptides": 91,
+        "n_clusters": 89
+      },
+      "delta_per_seed": [
+        0.014176268309462343,
+        0.014163845036618198,
+        0.012848821598301178
+      ],
+      "ext_peptides_sharing_group_with_a_base_peptide": 2,
+      "leak_per_fold": {
+        "fold0": {
+          "ext_cells_excluded": 531,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 1
+        },
+        "fold1": {
+          "ext_cells_excluded": 0,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 0
+        },
+        "fold2": {
+          "ext_cells_excluded": 0,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 0
+        },
+        "fold3": {
+          "ext_cells_excluded": 532,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 1
+        },
+        "fold4": {
+          "ext_cells_excluded": 0,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 0
+        }
+      },
+      "ext_cells_excluded_fraction_mean": 0.004778601933018656,
+      "informative": true,
+      "fold_clusters": [
+        [
+          "O00505",
+          "O75594",
+          "P00533",
+          "P10588",
+          "P22557",
+          "P51151",
+          "P60323",
+          "Q13813",
+          "Q6PCB6",
+          "Q86UP3",
+          "Q8IV63",
+          "Q8N184",
+          "Q8N8W4",
+          "Q96C23",
+          "Q96JA1",
+          "Q96LX7",
+          "Q9H8Y5"
+        ],
+        [
+          "O14792",
+          "P05107",
+          "P13686",
+          "P27487",
+          "P57772",
+          "Q14562",
+          "Q5T4B2",
+          "Q6DN14",
+          "Q6UWU2",
+          "Q86XT9",
+          "Q8N309",
+          "Q8WUM9",
+          "Q96NH3",
+          "Q99741",
+          "Q9NQW8",
+          "Q9UL18",
+          "Q9UN71"
+        ],
+        [
+          "O00468",
+          "O43521",
+          "P04040",
+          "P17735",
+          "P34059",
+          "P43403",
+          "Q13516",
+          "Q5W0V3",
+          "Q6P5Q4",
+          "Q7Z5S9",
+          "Q8N149",
+          "Q8N6T7",
+          "Q92879",
+          "Q92959",
+          "Q9H1H9",
+          "Q9NY97",
+          "Q9Y3Q7",
+          "Q9Y4G8"
+        ],
+        [
+          "O15357",
+          "P01701",
+          "P12107",
+          "P17538",
+          "P35749",
+          "Q12805",
+          "Q13425",
+          "Q16665",
+          "Q16720",
+          "Q4G0X9",
+          "Q7RTY1",
+          "Q8N2Y8",
+          "Q8WXI4",
+          "Q9C0H2",
+          "Q9NR81",
+          "Q9NW64",
+          "Q9P273",
+          "Q9UL36",
+          "Q9Y6D9"
+        ],
+        [
+          "O15031",
+          "P08253",
+          "P19801",
+          "P32881",
+          "P55895",
+          "P78314",
+          "Q08462",
+          "Q3KRA9",
+          "Q70EL1",
+          "Q8IYV9",
+          "Q8WWP7",
+          "Q96P20",
+          "Q9BV73",
+          "Q9BZ67",
+          "Q9NSI6",
+          "Q9UDT6",
+          "Q9Y2G0",
+          "Q9Y2R9"
+        ]
+      ],
+      "hyper_alpha": {
+        "base": [
+          10,
+          1,
+          1,
+          100,
+          10,
+          10,
+          1,
+          10,
+          100,
+          1,
+          1,
+          1000,
+          1,
+          1,
+          1
+        ],
+        "ext": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          1,
+          1,
+          1,
+          1,
+          10,
+          10,
+          1,
+          10,
+          10,
+          1
+        ]
+      },
+      "description": "id 0,3 · cov 0,8 (tham chiếu)",
+      "identical_to_L1_on_176_peptides": true
+    },
+    "L2": {
+      "n_groups_base": 89,
+      "n_groups_union": 172,
+      "macro_auroc_base": 0.8116054824945091,
+      "macro_auroc_ext": 0.8212243166530415,
+      "delta": {
+        "delta": 0.009618834158532402,
+        "ci95": [
+          0.0032391917954384,
+          0.01585974383318643
+        ],
+        "n_peptides": 91,
+        "n_clusters": 89
+      },
+      "delta_per_seed": [
+        0.009852775505713856,
+        0.01037003198767358,
+        0.009130338019179389
+      ],
+      "ext_peptides_sharing_group_with_a_base_peptide": 2,
+      "leak_per_fold": {
+        "fold0": {
+          "ext_cells_excluded": 531,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 1
+        },
+        "fold1": {
+          "ext_cells_excluded": 0,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 0
+        },
+        "fold2": {
+          "ext_cells_excluded": 532,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 1
+        },
+        "fold3": {
+          "ext_cells_excluded": 0,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 0
+        },
+        "fold4": {
+          "ext_cells_excluded": 0,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 0
+        }
+      },
+      "ext_cells_excluded_fraction_mean": 0.004778601933018656,
+      "informative": true,
+      "fold_clusters": [
+        [
+          "O00505",
+          "O43521",
+          "O75290",
+          "O75594",
+          "P11474",
+          "P17735",
+          "P35749",
+          "P54707",
+          "Q13425",
+          "Q5TZA2",
+          "Q70EL1",
+          "Q8IYV9",
+          "Q8WWP7",
+          "Q96C23",
+          "Q96LX7",
+          "Q99986",
+          "Q9C0A1"
+        ],
+        [
+          "O14792",
+          "O75752",
+          "P13686",
+          "P22557",
+          "P51512",
+          "Q13516",
+          "Q5T4B2",
+          "Q6DN12",
+          "Q6P5Q4",
+          "Q7RTY1",
+          "Q8N2Y8",
+          "Q8N309",
+          "Q8WXI4",
+          "Q9H082",
+          "Q9NR81",
+          "Q9UL18",
+          "Q9Y5E8"
+        ],
+        [
+          "O00468",
+          "O43143",
+          "P04040",
+          "P17538",
+          "P32881",
+          "P34059",
+          "Q12756",
+          "Q4G0X9",
+          "Q5W0V3",
+          "Q6UWU2",
+          "Q8IV77",
+          "Q8N149",
+          "Q8WUM9",
+          "Q92959",
+          "Q96NH3",
+          "Q9NW64",
+          "Q9Y3Q7",
+          "Q9Y4G8"
+        ],
+        [
+          "O15357",
+          "P01624",
+          "P05107",
+          "P23142",
+          "P27487",
+          "P78314",
+          "Q08462",
+          "Q14031",
+          "Q3KRA9",
+          "Q6RI45",
+          "Q86XT9",
+          "Q8N8W4",
+          "Q96JA1",
+          "Q99741",
+          "Q9H8Y5",
+          "Q9P273",
+          "Q9UL36",
+          "Q9Y2N7",
+          "Q9Y6D9"
+        ],
+        [
+          "O15031",
+          "P00533",
+          "P19801",
+          "P22612",
+          "P55895",
+          "P57772",
+          "P60323",
+          "Q13813",
+          "Q6PCB6",
+          "Q7Z5S9",
+          "Q8N6T7",
+          "Q92879",
+          "Q96P20",
+          "Q9BZ67",
+          "Q9H313",
+          "Q9UDT6",
+          "Q9Y2G0",
+          "Q9Y2R9"
+        ]
+      ],
+      "hyper_alpha": {
+        "base": [
+          1,
+          100,
+          1,
+          1,
+          10,
+          10,
+          100,
+          1,
+          10,
+          1,
+          10,
+          1,
+          1,
+          1,
+          1
+        ],
+        "ext": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          10,
+          1,
+          1,
+          10,
+          10,
+          1,
+          1
+        ]
+      },
+      "description": "id 0,3 · cov 0,5",
+      "identical_to_L1_on_176_peptides": true
+    },
+    "L3": {
+      "n_groups_base": 87,
+      "n_groups_union": 163,
+      "macro_auroc_base": 0.8050639889002422,
+      "macro_auroc_ext": 0.8185136654138246,
+      "delta": {
+        "delta": 0.013449676513582488,
+        "ci95": [
+          0.007367647729639617,
+          0.019883637516480833
+        ],
+        "n_peptides": 91,
+        "n_clusters": 87
+      },
+      "delta_per_seed": [
+        0.01347916335639475,
+        0.02201319315917524,
+        0.009927687347929509
+      ],
+      "ext_peptides_sharing_group_with_a_base_peptide": 6,
+      "leak_per_fold": {
+        "fold0": {
+          "ext_cells_excluded": 1594,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 3
+        },
+        "fold1": {
+          "ext_cells_excluded": 532,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 1
+        },
+        "fold2": {
+          "ext_cells_excluded": 0,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 0
+        },
+        "fold3": {
+          "ext_cells_excluded": 0,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 0
+        },
+        "fold4": {
+          "ext_cells_excluded": 1061,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 2
+        }
+      },
+      "ext_cells_excluded_fraction_mean": 0.014326815014610025,
+      "informative": true,
+      "fold_clusters": [
+        [
+          "O00505",
+          "O75290",
+          "O75594",
+          "P00533",
+          "P04040",
+          "P32881",
+          "P60323",
+          "Q12756",
+          "Q4G0X9",
+          "Q6UWU2",
+          "Q8IYV9",
+          "Q8WWP7",
+          "Q96LX7",
+          "Q9BZ67",
+          "Q9H082",
+          "Q9Y2R9"
+        ],
+        [
+          "O14792",
+          "P05023",
+          "P05107",
+          "P19801",
+          "P23142",
+          "P35749",
+          "Q13425",
+          "Q14031",
+          "Q5TZA2",
+          "Q6DN12",
+          "Q70EL1",
+          "Q8N2Y8",
+          "Q8WXI4",
+          "Q99741",
+          "Q9H313",
+          "Q9NW64",
+          "Q9UL18",
+          "Q9UQB9"
+        ],
+        [
+          "O15031",
+          "O95398",
+          "P11277",
+          "P13686",
+          "P50281",
+          "Q13516",
+          "Q5T4B2",
+          "Q6P5Q4",
+          "Q7RTY1",
+          "Q8N149",
+          "Q8N6T7",
+          "Q96JA1",
+          "Q96JP9",
+          "Q9H5Z1",
+          "Q9NR81",
+          "Q9UDT6",
+          "Q9Y2G0"
+        ],
+        [
+          "O00468",
+          "O43521",
+          "O95718",
+          "P27487",
+          "P34059",
+          "Q08462",
+          "Q3KRA9",
+          "Q5W0V3",
+          "Q6RI45",
+          "Q86XT9",
+          "Q8N309",
+          "Q8WUM9",
+          "Q92959",
+          "Q96C23",
+          "Q9C0A1",
+          "Q9NUV7",
+          "Q9Y2C3",
+          "Q9Y3Q7"
+        ],
+        [
+          "O15357",
+          "P01624",
+          "P17735",
+          "P55895",
+          "P59044",
+          "P68104",
+          "P78314",
+          "Q15717",
+          "Q6PCB6",
+          "Q7Z5S9",
+          "Q8N8W4",
+          "Q96NH3",
+          "Q9H8Y5",
+          "Q9P273",
+          "Q9UL51",
+          "Q9Y2N7",
+          "Q9Y337",
+          "Q9Y6D9"
+        ]
+      ],
+      "hyper_alpha": {
+        "base": [
+          1,
+          1,
+          1,
+          10,
+          100,
+          10,
+          100,
+          1000,
+          1,
+          1000,
+          10,
+          1,
+          1,
+          10,
+          1
+        ],
+        "ext": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          1,
+          1,
+          1,
+          10,
+          100,
+          10,
+          10,
+          100,
+          10
+        ]
+      },
+      "description": "id 0,2 · cov 0,5",
+      "identical_to_L1_on_176_peptides": false
+    },
+    "L4": {
+      "n_groups_base": 87,
+      "n_groups_union": 163,
+      "macro_auroc_base": 0.8050639889002422,
+      "macro_auroc_ext": 0.8185136654138246,
+      "delta": {
+        "delta": 0.013449676513582488,
+        "ci95": [
+          0.007367647729639617,
+          0.019883637516480833
+        ],
+        "n_peptides": 91,
+        "n_clusters": 87
+      },
+      "delta_per_seed": [
+        0.01347916335639475,
+        0.02201319315917524,
+        0.009927687347929509
+      ],
+      "ext_peptides_sharing_group_with_a_base_peptide": 6,
+      "leak_per_fold": {
+        "fold0": {
+          "ext_cells_excluded": 1594,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 3
+        },
+        "fold1": {
+          "ext_cells_excluded": 532,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 1
+        },
+        "fold2": {
+          "ext_cells_excluded": 0,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 0
+        },
+        "fold3": {
+          "ext_cells_excluded": 0,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 0
+        },
+        "fold4": {
+          "ext_cells_excluded": 1061,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 2
+        }
+      },
+      "ext_cells_excluded_fraction_mean": 0.014326815014610025,
+      "informative": true,
+      "fold_clusters": [
+        [
+          "O00505",
+          "O75290",
+          "O75594",
+          "P00533",
+          "P04040",
+          "P32881",
+          "P60323",
+          "Q12756",
+          "Q4G0X9",
+          "Q6UWU2",
+          "Q8IYV9",
+          "Q8WWP7",
+          "Q96LX7",
+          "Q9BZ67",
+          "Q9H082",
+          "Q9Y2R9"
+        ],
+        [
+          "O14792",
+          "P05023",
+          "P05107",
+          "P19801",
+          "P23142",
+          "P35749",
+          "Q13425",
+          "Q14031",
+          "Q5TZA2",
+          "Q6DN12",
+          "Q70EL1",
+          "Q8N2Y8",
+          "Q8WXI4",
+          "Q99741",
+          "Q9H313",
+          "Q9NW64",
+          "Q9UL18",
+          "Q9UQB9"
+        ],
+        [
+          "O15031",
+          "O95398",
+          "P11277",
+          "P13686",
+          "P50281",
+          "Q13516",
+          "Q5T4B2",
+          "Q6P5Q4",
+          "Q7RTY1",
+          "Q8N149",
+          "Q8N6T7",
+          "Q96JA1",
+          "Q96JP9",
+          "Q9H5Z1",
+          "Q9NR81",
+          "Q9UDT6",
+          "Q9Y2G0"
+        ],
+        [
+          "O00468",
+          "O43521",
+          "O95718",
+          "P27487",
+          "P34059",
+          "Q08462",
+          "Q3KRA9",
+          "Q5W0V3",
+          "Q6RI45",
+          "Q86XT9",
+          "Q8N309",
+          "Q8WUM9",
+          "Q92959",
+          "Q96C23",
+          "Q9C0A1",
+          "Q9NUV7",
+          "Q9Y2C3",
+          "Q9Y3Q7"
+        ],
+        [
+          "O15357",
+          "P01624",
+          "P17735",
+          "P55895",
+          "P59044",
+          "P68104",
+          "P78314",
+          "Q15717",
+          "Q6PCB6",
+          "Q7Z5S9",
+          "Q8N8W4",
+          "Q96NH3",
+          "Q9H8Y5",
+          "Q9P273",
+          "Q9UL51",
+          "Q9Y2N7",
+          "Q9Y337",
+          "Q9Y6D9"
+        ]
+      ],
+      "hyper_alpha": {
+        "base": [
+          1,
+          1,
+          1,
+          10,
+          100,
+          10,
+          100,
+          1000,
+          1,
+          1000,
+          10,
+          1,
+          1,
+          10,
+          1
+        ],
+        "ext": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          1,
+          1,
+          1,
+          10,
+          100,
+          10,
+          10,
+          100,
+          10
+        ]
+      },
+      "description": "id 0,1 · cov 0,5",
+      "identical_to_L1_on_176_peptides": false
+    },
+    "L5": {
+      "n_groups_base": 71,
+      "n_groups_union": 133,
+      "macro_auroc_base": 0.8095740752642024,
+      "macro_auroc_ext": 0.8208871511387241,
+      "delta": {
+        "delta": 0.011313075874521643,
+        "ci95": [
+          0.0036741034803878334,
+          0.018350940668545673
+        ],
+        "n_peptides": 91,
+        "n_clusters": 71
+      },
+      "delta_per_seed": [
+        0.006974503991619834,
+        0.012584548261904591,
+        0.01725472297371227
+      ],
+      "ext_peptides_sharing_group_with_a_base_peptide": 22,
+      "leak_per_fold": {
+        "fold0": {
+          "ext_cells_excluded": 9517,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 18
+        },
+        "fold1": {
+          "ext_cells_excluded": 532,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 1
+        },
+        "fold2": {
+          "ext_cells_excluded": 1527,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 3
+        },
+        "fold3": {
+          "ext_cells_excluded": 0,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 0
+        },
+        "fold4": {
+          "ext_cells_excluded": 0,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 0
+        }
+      },
+      "ext_cells_excluded_fraction_mean": 0.05203866037311755,
+      "informative": true,
+      "fold_clusters": [
+        [
+          "Q9NQZ8"
+        ],
+        [
+          "O14792",
+          "O75110",
+          "P17735",
+          "P35749",
+          "P78314",
+          "Q08462",
+          "Q4G0X9",
+          "Q5W0V3",
+          "Q6RI45",
+          "Q7Z5S9",
+          "Q8WUM9",
+          "Q8WYA1",
+          "Q96NH3",
+          "Q9H313",
+          "Q9P273",
+          "Q9UN67",
+          "Q9Y226"
+        ],
+        [
+          "O43581",
+          "O43896",
+          "O95718",
+          "P32881",
+          "P55895",
+          "P60323",
+          "P68104",
+          "Q3KRA9",
+          "Q5JS13",
+          "Q6PCB6",
+          "Q7RTY1",
+          "Q8IYV9",
+          "Q96DU9",
+          "Q9BZ67",
+          "Q9H082",
+          "Q9NW64",
+          "Q9Y3Q7",
+          "Q9Y6D9"
+        ],
+        [
+          "O43521",
+          "P19801",
+          "P27487",
+          "P34059",
+          "P35250",
+          "P50281",
+          "Q13516",
+          "Q6P5Q4",
+          "Q70EL1",
+          "Q8IV77",
+          "Q8WXI4",
+          "Q96C23",
+          "Q9C0A1",
+          "Q9NUV7",
+          "Q9Y2C3",
+          "Q9Y2G0",
+          "Q9Y2R9"
+        ],
+        [
+          "O15357",
+          "O75594",
+          "P04040",
+          "P13686",
+          "P26196",
+          "P41247",
+          "Q13425",
+          "Q5W041",
+          "Q6UWU2",
+          "Q86XT9",
+          "Q8N149",
+          "Q8NBJ5",
+          "Q8WWP7",
+          "Q96LX7",
+          "Q9BVN2",
+          "Q9H8Y5",
+          "Q9NXA8",
+          "Q9UL18"
+        ]
+      ],
+      "hyper_alpha": {
+        "base": [
+          1,
+          10,
+          10,
+          1,
+          1,
+          10,
+          100,
+          100,
+          10,
+          1,
+          100,
+          1,
+          1,
+          1000,
+          10
+        ],
+        "ext": [
+          100,
+          1000,
+          1,
+          10,
+          1,
+          10,
+          10,
+          1,
+          1,
+          1,
+          10,
+          100,
+          1,
+          100,
+          10
+        ]
+      },
+      "description": "id 0,1 · cov 0,3",
+      "identical_to_L1_on_176_peptides": false
+    },
+    "L6": {
+      "n_groups_base": 71,
+      "n_groups_union": 133,
+      "macro_auroc_base": 0.8095740752642024,
+      "macro_auroc_ext": 0.8208871511387241,
+      "delta": {
+        "delta": 0.011313075874521643,
+        "ci95": [
+          0.0036741034803878334,
+          0.018350940668545673
+        ],
+        "n_peptides": 91,
+        "n_clusters": 71
+      },
+      "delta_per_seed": [
+        0.006974503991619834,
+        0.012584548261904591,
+        0.01725472297371227
+      ],
+      "ext_peptides_sharing_group_with_a_base_peptide": 22,
+      "leak_per_fold": {
+        "fold0": {
+          "ext_cells_excluded": 9517,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 18
+        },
+        "fold1": {
+          "ext_cells_excluded": 532,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 1
+        },
+        "fold2": {
+          "ext_cells_excluded": 1527,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 3
+        },
+        "fold3": {
+          "ext_cells_excluded": 0,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 0
+        },
+        "fold4": {
+          "ext_cells_excluded": 0,
+          "ext_cells_total": 44490,
+          "ext_peptides_excluded": 0
+        }
+      },
+      "ext_cells_excluded_fraction_mean": 0.05203866037311755,
+      "informative": true,
+      "fold_clusters": [
+        [
+          "Q9NQZ8"
+        ],
+        [
+          "O14792",
+          "O75110",
+          "P17735",
+          "P35749",
+          "P78314",
+          "Q08462",
+          "Q4G0X9",
+          "Q5W0V3",
+          "Q6RI45",
+          "Q7Z5S9",
+          "Q8WUM9",
+          "Q8WYA1",
+          "Q96NH3",
+          "Q9H313",
+          "Q9P273",
+          "Q9UN67",
+          "Q9Y226"
+        ],
+        [
+          "O43581",
+          "O43896",
+          "O95718",
+          "P32881",
+          "P55895",
+          "P60323",
+          "P68104",
+          "Q3KRA9",
+          "Q5JS13",
+          "Q6PCB6",
+          "Q7RTY1",
+          "Q8IYV9",
+          "Q96DU9",
+          "Q9BZ67",
+          "Q9H082",
+          "Q9NW64",
+          "Q9Y3Q7",
+          "Q9Y6D9"
+        ],
+        [
+          "O43521",
+          "P19801",
+          "P27487",
+          "P34059",
+          "P35250",
+          "P50281",
+          "Q13516",
+          "Q6P5Q4",
+          "Q70EL1",
+          "Q8IV77",
+          "Q8WXI4",
+          "Q96C23",
+          "Q9C0A1",
+          "Q9NUV7",
+          "Q9Y2C3",
+          "Q9Y2G0",
+          "Q9Y2R9"
+        ],
+        [
+          "O15357",
+          "O75594",
+          "P04040",
+          "P13686",
+          "P26196",
+          "P41247",
+          "Q13425",
+          "Q5W041",
+          "Q6UWU2",
+          "Q86XT9",
+          "Q8N149",
+          "Q8NBJ5",
+          "Q8WWP7",
+          "Q96LX7",
+          "Q9BVN2",
+          "Q9H8Y5",
+          "Q9NXA8",
+          "Q9UL18"
+        ]
+      ],
+      "hyper_alpha": {
+        "base": [
+          1,
+          10,
+          10,
+          1,
+          1,
+          10,
+          100,
+          100,
+          10,
+          1,
+          100,
+          1,
+          1,
+          1000,
+          10
+        ],
+        "ext": [
+          100,
+          1000,
+          1,
+          10,
+          1,
+          10,
+          10,
+          1,
+          1,
+          1,
+          10,
+          100,
+          1,
+          100,
+          10
+        ]
+      },
+      "description": "id 0,0 · cov 0,3",
+      "identical_to_L1_on_176_peptides": false
+    }
+  },
+  "summary": {
+    "levels_different_from_L1": [
+      "L0",
+      "L3",
+      "L4",
+      "L5",
+      "L6"
+    ],
+    "levels_different_and_informative": [
+      "L0",
+      "L3",
+      "L4",
+      "L5",
+      "L6"
+    ],
+    "levels_failing": [],
+    "levels_passing": [
+      "L0",
+      "L3",
+      "L4",
+      "L5",
+      "L6"
+    ],
+    "levels_uninformative": [],
+    "verdict": "Lợi ích P0 bền theo độ mịn"
+  },
+  "cluster_manifest": {
+    "fasta_sha256": "c02e6631ca6070c53f464bdd4308d1953419f9e6cc1996453dd92e3e7a89487a",
+    "runs": {
+      "L3": {
+        "min_seq_id": 0.2,
+        "cov": 0.5,
+        "tsv": "protein-id20-cov50_cluster.tsv",
+        "n_rows": 6573,
+        "n_clusters_all_proteome": 3823,
+        "tsv_sha256": "668f61e5955b698e7a73e8356d19f0b1749f85ac463d903b52b05c1d20137cc2",
+        "cmd": "/home/ngthtrong/.local/bin/mmseqs easy-cluster /home/ngthtrong/CT553H/topics/degron-footprint/data/processed/proteins-full.fasta /home/ngthtrong/CT553H/topics/degron-footprint/data/interim/recluster-sensitivity/protein-id20-cov50 /home/ngthtrong/CT553H/topics/degron-footprint/data/interim/recluster-sensitivity/protein-id20-cov50-tmp --min-seq-id 0.2 -c 0.5 --cov-mode 0 --seq-id-mode 0 --alignment-mode 3 --cluster-mode 1 --single-step-clustering 1 -s 7.5 --max-seqs 10000 --split-memory-limit 1500M --threads 2"
+      },
+      "L4": {
+        "min_seq_id": 0.1,
+        "cov": 0.5,
+        "tsv": "protein-id10-cov50_cluster.tsv",
+        "n_rows": 6573,
+        "n_clusters_all_proteome": 3810,
+        "tsv_sha256": "d9f4ccc158c850ac336660d61d3dd16e2ff855204c776922b2958424ea01b7ca",
+        "cmd": "/home/ngthtrong/.local/bin/mmseqs easy-cluster /home/ngthtrong/CT553H/topics/degron-footprint/data/processed/proteins-full.fasta /home/ngthtrong/CT553H/topics/degron-footprint/data/interim/recluster-sensitivity/protein-id10-cov50 /home/ngthtrong/CT553H/topics/degron-footprint/data/interim/recluster-sensitivity/protein-id10-cov50-tmp --min-seq-id 0.1 -c 0.5 --cov-mode 0 --seq-id-mode 0 --alignment-mode 3 --cluster-mode 1 --single-step-clustering 1 -s 7.5 --max-seqs 10000 --split-memory-limit 1500M --threads 2"
+      },
+      "L5": {
+        "min_seq_id": 0.1,
+        "cov": 0.3,
+        "tsv": "protein-id10-cov30_cluster.tsv",
+        "n_rows": 6573,
+        "n_clusters_all_proteome": 3038,
+        "tsv_sha256": "c3d21017f12b3139b4c13de13cb0460028bb2d3204e95a45a7394f790a86d820",
+        "cmd": "/home/ngthtrong/.local/bin/mmseqs easy-cluster /home/ngthtrong/CT553H/topics/degron-footprint/data/processed/proteins-full.fasta /home/ngthtrong/CT553H/topics/degron-footprint/data/interim/recluster-sensitivity/protein-id10-cov30 /home/ngthtrong/CT553H/topics/degron-footprint/data/interim/recluster-sensitivity/protein-id10-cov30-tmp --min-seq-id 0.1 -c 0.3 --cov-mode 0 --seq-id-mode 0 --alignment-mode 3 --cluster-mode 1 --single-step-clustering 1 -s 7.5 --max-seqs 10000 --split-memory-limit 1500M --threads 2"
+      },
+      "L6": {
+        "min_seq_id": 0.0,
+        "cov": 0.3,
+        "tsv": "protein-id00-cov30_cluster.tsv",
+        "n_rows": 6573,
+        "n_clusters_all_proteome": 3038,
+        "tsv_sha256": "5387791de04a1819f53971d88221b21c3703e2b21c874c2cc7d83a84a5aafc0a",
+        "cmd": "/home/ngthtrong/.local/bin/mmseqs easy-cluster /home/ngthtrong/CT553H/topics/degron-footprint/data/processed/proteins-full.fasta /home/ngthtrong/CT553H/topics/degron-footprint/data/interim/recluster-sensitivity/protein-id00-cov30 /home/ngthtrong/CT553H/topics/degron-footprint/data/interim/recluster-sensitivity/protein-id00-cov30-tmp --min-seq-id 0.0 -c 0.3 --cov-mode 0 --seq-id-mode 0 --alignment-mode 3 --cluster-mode 1 --single-step-clustering 1 -s 7.5 --max-seqs 10000 --split-memory-limit 1500M --threads 2"
+      }
+    }
+  },
+  "runner_sha256": "65e948f2411d9b9eb8543329f078c05e1fa84dae2199bb8d0edc0b9b9696688b"
+}

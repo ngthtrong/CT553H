@@ -1,0 +1,27 @@
+{
+  "note": "Đếm bằng cách chạy lại đúng chuỗi bộ lọc của residue_data.build_saturation, không huấn luyện lại G2. Ngưỡng hiện hành DEGRON_PSI_MAX = 3.0.",
+  "total_raw_peptides": 248,
+  "dropoff_counts": {
+    "not_degron_psi_wt_gt_3": 144,
+    "KEPT": 91,
+    "wt_refs_lt_10_cells": 10,
+    "seq_mismatch": 2,
+    "no_sequence": 1
+  },
+  "psi_wt_kept": {
+    "n": 91,
+    "median": 2.59255946875
+  },
+  "psi_wt_dropped_by_degron_threshold": {
+    "n": 144,
+    "min": 3.001656761,
+    "median": 3.833422483375,
+    "max": 5.68022886275
+  },
+  "extra_peptides_if_threshold_relaxed_to": {
+    "3.5": 50,
+    "4.0": 85,
+    "4.5": 106,
+    "5.0": 121
+  }
+}
