@@ -1,0 +1,30 @@
+erDiagram
+    direction TB
+    model_version ||--o{ prediction_run : scores
+    model_version |o--o{ tile : "predicts PSI of"
+    tile |o--o{ prediction_run : "is scored in"
+    prediction_run ||--o{ prediction_cell : contains
+
+    model_version {
+        string model_id PK
+        string role
+        string status
+        string weights_sha256
+    }
+    tile {
+        int tile_id PK
+        float psi_wt_predicted
+        string domain_status
+    }
+    prediction_run {
+        uuid run_id PK
+        string model_id FK
+        datetime expires_at
+    }
+    prediction_cell {
+        uuid run_id PK, FK
+        int position PK
+        string mut_aa PK
+        float score_raw
+        float prob_calibrated
+    }

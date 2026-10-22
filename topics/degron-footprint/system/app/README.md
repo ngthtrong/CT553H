@@ -1,0 +1,12 @@
+# system/app
+
+Code of the degron-footprint tool. Read [../README.md](../README.md) for the design first.
+
+| Part | State (22 Oct 2026) |
+|---|---|
+| [backend/](backend/README.md) | Written and tested on SQLite: API, ETL, migration, tests. PostgreSQL and Docker not run |
+| `frontend/` | Written by the frontend task; `docker-compose.yml` expects `./frontend/Dockerfile` |
+| [DEVIATIONS.md](DEVIATIONS.md) | Where the code departs from, or must choose beyond, the design documents; open items |
+
+Common tasks: `make -C topics/degron-footprint/system/app help`. Development API for the frontend:
+`make -C topics/degron-footprint/system/app dev-api` (http://127.0.0.1:8000, CORS for http://localhost:5173).

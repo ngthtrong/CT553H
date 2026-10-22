@@ -1,0 +1,75 @@
+{
+  "example": {
+    "peptide": "Q5W0V3_FAM160B1_16",
+    "sequence": "EDASAFPGKRALISFLSWFDYCDQLIKE",
+    "psi_wt_internal": 2.0700031655,
+    "n_cells": 530,
+    "spearman_oof": 0.4374613530264387,
+    "pearson_oof": 0.5498529908733132,
+    "max_dpsi": 2.4908290094999996,
+    "selection_rule": "among peptides with max dPSI>=2 and >=8 cells with dPSI>=1 (n=59), the one whose Spearman is closest to that subset median (0.437); not best-case"
+  },
+  "all_peptides": {
+    "n": 91,
+    "median_spearman": 0.43052562560406177,
+    "median_pearson": 0.517712244502991
+  },
+  "bins": {
+    "syn": {
+      "key": [
+        26,
+        "I"
+      ],
+      "psi": 2.05444911,
+      "frac": [
+        0.5335894429374091,
+        0.21102098864370009,
+        0.08187033004415485,
+        0.0646492280934644,
+        0.058610274337087015,
+        0.05025973594418462
+      ]
+    },
+    "mut": {
+      "key": [
+        15,
+        "P"
+      ],
+      "psi": 4.438160109,
+      "frac": [
+        0.006779490437156104,
+        0.012786857183190115,
+        0.1677941987147399,
+        0.2300580472709892,
+        0.5132963197204577,
+        0.069285086673467
+      ],
+      "wt": "F",
+      "dpsi": 2.4908290094999996
+    }
+  },
+  "calibration": {
+    "brier_raw": 0.12716527723389126,
+    "brier_platt": 0.09254112534496499,
+    "brier_const": 0.11393917755718022,
+    "ece_raw": 0.14365808789099196,
+    "ece_platt": 0.016314392289351765,
+    "auroc": 0.8208109788002398,
+    "enrich10": 4.0174678990386035,
+    "enrich10_ci": [
+      3.6960316532576405,
+      4.347529279003923
+    ],
+    "pos_rate": 0.13095909879407278
+  },
+  "sources": [
+    "data/processed/learning-curve-sat-base.npz",
+    "data/processed/calibration-p6-oof.npz",
+    "data/processed/psi-sat_a.tsv",
+    "research/calibration-p6-2026-10-22/results.json"
+  ],
+  "scale": {
+    "heatmap_vmax": 2.5,
+    "note": "same colour scale for measured and predicted"
+  }
+}

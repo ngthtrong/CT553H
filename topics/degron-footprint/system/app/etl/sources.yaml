@@ -1,0 +1,101 @@
+# Sources of the reference database. Hand-maintained; every file the ETL reads is pinned by SHA-256.
+# `path` is relative to the data directory (topics/degron-footprint/data). `role` tells load.py what the file is.
+# A source with redistribution_ok: false can be registered (so that the register is complete) but its files can
+# never be loaded into a table the public API serves: etl/load.py refuses (db-design.md §6, tests ETL-03).
+# Hashes marked "pinned locally" are of derived caches that have no external manifest; they were taken from the
+# local copy on 22 Oct 2026, so they detect later change, not original provenance.
+sources:
+  - source_id: uniprot-2026_03
+    name: UniProtKB/Swiss-Prot, reviewed human proteins
+    version: release 2026_03, snapshot 2026-10-12
+    citation: The UniProt Consortium, UniProt Knowledgebase, release 2026_03 (rest.uniprot.org, query organism_id:9606 AND reviewed:true)
+    url: https://rest.uniprot.org/uniprotkb/stream?compressed=true&format=fasta&query=%28organism_id%3A9606%29+AND+%28reviewed%3Atrue%29
+    license_name: CC BY 4.0
+    license_class: open
+    redistribution_ok: true
+    attribution_text: UniProtKB/Swiss-Prot release 2026_03, CC BY 4.0 (https://www.uniprot.org)
+    retrieved_on: 2026-10-12
+    files:
+      - {role: protein_fasta, path: raw/human-reviewed-2026-10-12.fasta.gz, sha256: dc8ef8cbf0fc1b857b3be9a559613533ec49824079fb057e31fdfcf578cb229a}
+  - source_id: zhang2023-geo-gse240610
+    name: Zhang et al. 2023, GPS peptidome screen (GEO GSE240610, Supplementary Table 1, sheet "I28 Control Replicate 1")
+    version: GEO GSE240610, replicate 1
+    citation: Zhang et al. 2023, Molecular Cell; GEO accession GSE240610
+    url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE240610
+    license_name: GEO data terms (public)
+    license_class: open
+    redistribution_ok: true
+    attribution_text: Zhang et al. 2023, Mol Cell; data from GEO GSE240610
+    retrieved_on: 2026-10-15
+    files:
+      # cache of the sheet, built by research/variant-coverage-2026-10-15/coverage.py; pinned locally
+      - {role: screen_psi, path: interim/gps-peptidome-rep1.tsv, sha256: 6da1186b1c873a65208c841b0210e05028ec76667a538b3fcebea13d7d4ffe2e}
+  - source_id: zhang2023-mendeley-v2
+    name: Zhang et al. 2023, saturation mutagenesis (Mendeley Data v2)
+    version: Mendeley Data v2 (doi 10.17632/32h94v2yv2.2), relaxed degron threshold 4.0
+    citation: Zhang et al. 2023, Molecular Cell; Mendeley Data doi 10.17632/32h94v2yv2.2
+    url: https://data.mendeley.com/datasets/32h94v2yv2/2
+    license_name: CC BY 4.0
+    license_class: open
+    redistribution_ok: true
+    attribution_text: Zhang et al. 2023, Mol Cell (doi 10.17632/32h94v2yv2.2)
+    retrieved_on: 2026-10-13
+    files:
+      # label cache built by research/learning-curve-2026-10-22 (run_curve.py); pinned locally
+      - {role: sat_labels, path: processed/learning-curve-sat-ext4.0.npz, sha256: 1849773763e3792b87b4119ee3d12d23c64a51076209bfa8f7c862be0ccd0302}
+  - source_id: clinvar-2026-10-12
+    name: NCBI ClinVar variant_summary.txt.gz
+    version: file Last-Modified 2026-10-12
+    citation: Landrum et al. 2018, Nucleic Acids Research (PMID 29165669)
+    url: https://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/variant_summary.txt.gz
+    license_name: ClinVar data use policy (attribution requested)
+    license_class: attribution_required
+    redistribution_ok: true
+    attribution_text: ClinVar, NCBI (Landrum et al. 2018, PMID 29165669), file of 2026-10-12
+    disclaimer_text: ClinVar information is not intended for direct diagnostic use or medical decision-making without review by a genetics professional. NIH does not independently verify the submitted information.
+    retrieved_on: 2026-10-15
+    files:
+      - {role: clinvar_summary, path: raw/clinvar/variant_summary.txt.gz, sha256: a5198a11b0e871c324fd5e800082fb1d4418301323b806cf9c98ee2421828218}
+  - source_id: own-model-m3-ext4.0-platt-v1
+    name: Frozen model m3-ext4.0-platt-v1 (this thesis, calibration-p6-2026-10-22)
+    version: v1, trained 2026-10-22
+    citation: Nguyen Thanh Trong, internal report research/calibration-p6-2026-10-22
+    url: null
+    license_name: Own work
+    license_class: open
+    redistribution_ok: true
+    attribution_text: Model m3-ext4.0-platt-v1, degron-footprint thesis project
+    retrieved_on: 2026-10-22
+    files:
+      - {role: model_weights, path: processed/calibration-p6-model.npz, sha256: 8bec0b04bdc7da698da98d91adea944dd43583f93bc67233600e6ae0075cd9c3}
+      - {role: model_results, path: ../research/calibration-p6-2026-10-22/results.json, sha256: d4cf0c9893d26201a6895888237880394872997133b1864963a15514d0349f0c}
+      - {role: curve_results, path: ../research/learning-curve-2026-10-22/results.json, sha256: 0ece460390ba9d28ed53eec8e38e3b3d9cf0ea94f7d64fa09e2472b2f6f55c43}
+
+  # ---- registered so the register is complete; their files are never loaded (db-design.md §6) ----
+  - source_id: koren2018-nihms967427
+    name: Koren et al. 2018, Cell, supplementary tables (NIHMS author manuscript)
+    version: NIHMS967427
+    citation: Koren et al. 2018, Cell 173(7), doi 10.1016/j.cell.2018.04.028
+    license_name: Not in the PMC Open Access subset; internal use only
+    license_class: internal_only
+    redistribution_ok: false
+    attribution_text: Koren et al. 2018, Cell (offline research only)
+    load: false
+  - source_id: metadegron
+    name: MetaDegron (repository and ELM-derived tables)
+    version: commit ca12c0cf
+    citation: MetaDegron, Briefings in Bioinformatics 2024, doi 10.1093/bib/bbae519
+    license_name: Repository has no LICENSE; ELM academic licence
+    license_class: unknown
+    redistribution_ok: false
+    attribution_text: MetaDegron (not served)
+    load: false
+  - source_id: larsen2025-github
+    name: Larsen et al. 2025 transcription-factor tiles
+    version: tag v1.0
+    citation: Larsen et al. 2025
+    license_name: MIT for the repository; coverage of the data files unconfirmed
+    license_class: unknown
+    redistribution_ok: false
+    attribution_text: Larsen et al. 2025 (not served)
+    load: false

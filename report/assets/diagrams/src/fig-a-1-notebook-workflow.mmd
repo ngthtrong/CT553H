@@ -1,0 +1,37 @@
+flowchart LR
+    subgraph local ["On the author machine"]
+        direction TB
+        protocol["Write PROTOCOL.md before running"]
+        pack["Build data and code packages with SHA-256"]
+        upload[/"Author uploads private datasets"/]
+        protocol --> pack
+        pack --> upload
+    end
+
+    subgraph platform ["Notebook platform"]
+        direction TB
+        compose["Compose workspace and verify manifest"]
+        gate{"Gate passes?"}
+        run["Run experiment and write results.json"]
+        stop(["Stop and report"])
+        compose --> gate
+        gate -->|"Yes"| run
+        gate -->|"No"| stop
+    end
+
+    subgraph back ["Back in the repository"]
+        direction TB
+        download[/"Author downloads results.zip"/]
+        read["Check against pre-registered criteria"]
+        record["Update README and data ledger"]
+        download --> read
+        read --> record
+    end
+
+    local --> platform
+    platform --> back
+
+    style local fill:#C2E5FF,stroke:#3DADFF
+    style platform fill:#DCCCFF,stroke:#874FFF
+    style back fill:#CDF4D3,stroke:#66D575
+    style stop fill:#FFCDC2,stroke:#FF7556

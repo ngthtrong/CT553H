@@ -1,0 +1,28 @@
+%% generate_diagram with useArchitectureLayoutCode=FIGMA_DIAGRAM_2026
+flowchart LR
+    subgraph client ["Client"]
+        browser["Browser: React SPA"]
+    end
+    subgraph gateway ["Gateway"]
+        nginx["nginx: static files and proxy"]
+    end
+    subgraph service ["Services"]
+        api["FastAPI: validate, gate, score"]
+        etl["ETL loader: one-shot job"]
+    end
+    subgraph datastore ["Data store"]
+        pg["PostgreSQL: reference data and shares"]
+    end
+    subgraph external ["Public data sources"]
+        uniprot["UniProt: Swiss-Prot sequences"]
+        geo["GEO: Zhang GPS screen"]
+        clinvar["ClinVar: missense variants"]
+    end
+
+    browser -->|"HTTPS"| nginx
+    nginx -->|"Proxies /v1"| api
+    api -->|"Reads tiles, writes shares"| pg
+    etl -->|"Loads tables"| pg
+    etl -.->|"UniProt: sequences"| uniprot
+    etl -.->|"GEO: tile PSI"| geo
+    etl -.->|"ClinVar: variants"| clinvar

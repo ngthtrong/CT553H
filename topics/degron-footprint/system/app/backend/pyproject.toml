@@ -1,0 +1,5 @@
+[project]
+name = "degron-footprint-backend"
+version = "0.1.0"
+description = "Backend of the degron-footprint tool: inference package, REST API, ETL"
+requires-python = ">=3.11"

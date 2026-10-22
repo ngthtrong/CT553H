@@ -1,0 +1,40 @@
+erDiagram
+    direction TB
+    data_source ||--o{ protein : provides
+    data_source ||--o{ tile : provides
+    data_source ||--o{ measured_cell : provides
+    data_source ||--o{ clinvar_variant : provides
+    protein ||--o{ tile : "is divided into"
+    protein ||--o{ clinvar_variant : "has"
+    tile ||--o{ measured_cell : "has measured"
+
+    data_source {
+        string source_id PK
+        string name
+        string license_name
+        string sha256
+    }
+    protein {
+        string uniprot_acc PK
+        string gene_symbol
+        int length
+    }
+    tile {
+        int tile_id PK
+        string uniprot_acc FK
+        int tile_index
+        float psi_wt_measured
+        string domain_status
+    }
+    measured_cell {
+        int tile_id PK, FK
+        int position PK
+        string mut_aa PK
+        float delta_psi
+    }
+    clinvar_variant {
+        int variation_id PK
+        string uniprot_acc FK
+        int protein_pos
+        string clinsig
+    }

@@ -1,0 +1,16 @@
+# Thresholds copied from the research code; the ETL does not recompute them.
+screen:
+  read_min: 10.0            # research/residue-task-derisk-2026-10-15/residue_data.py READ_MIN
+  psi_max: 4.0              # relaxed degron threshold of the product model (P0)
+tile:
+  length: 28
+  step: 23
+model:
+  model_id: m3-ext4.0-platt-v1
+  weights_file: m3-ext4.0-platt-v1.npz
+  frozen_at: "2026-10-22T00:00:00+00:00"
+  feature_spec: "m3-180: wt one-hot | mutant one-hot | tile composition | context -3..+3"
+  event_definition: "P(DeltaPSI >= 1.0)"
+  domain_description: "28-mer internal tiles, GPS assay (Zhang 2023), intrinsic PSI(WT) <= 4.0"
+clinvar:
+  file_date: "2026-10-12"

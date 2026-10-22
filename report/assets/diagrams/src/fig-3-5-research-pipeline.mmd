@@ -1,0 +1,43 @@
+flowchart TD
+    zhang[/"Zhang 2023 saturation scans"/]
+    uniprot[/"UniProt sequences"/]
+    voutsinos[/"Voutsinos tile labels"/]
+    peptidome[/"GPS peptidome screen"/]
+
+    labels["Build delta PSI labels: keep PSI of wild type at most 4.0, cluster proteins with MMseqs2"]
+    cv["Cluster-aware 5-fold cross-validation"]
+
+    ridge["Ridge on M3 features"]
+    baselines["Delta PAP and Degformer baselines"]
+    nets["Gated and pre-trained networks"]
+
+    compare["Cluster bootstrap CI against pre-registered criteria"]
+    freeze["Platt calibration and frozen model v1"]
+    tool["Web tool"]
+
+    zhang --> labels
+    uniprot -.->|"Peptide sequences"| labels
+    labels --> cv
+    cv --> ridge
+    cv --> baselines
+    cv --> nets
+    voutsinos -.->|"Pre-training labels"| nets
+    ridge --> compare
+    baselines --> compare
+    nets --> compare
+    compare --> freeze
+    freeze --> tool
+    peptidome -.->|"Tile PSI for the gate"| tool
+
+    style zhang fill:#C2E5FF,stroke:#3DADFF
+    style uniprot fill:#C2E5FF,stroke:#3DADFF
+    style voutsinos fill:#C2E5FF,stroke:#3DADFF
+    style peptidome fill:#C2E5FF,stroke:#3DADFF
+    style labels fill:#FFECBD,stroke:#FFC943
+    style cv fill:#CDF4D3,stroke:#66D575
+    style compare fill:#CDF4D3,stroke:#66D575
+    style ridge fill:#DCCCFF,stroke:#874FFF
+    style baselines fill:#DCCCFF,stroke:#874FFF
+    style nets fill:#DCCCFF,stroke:#874FFF
+    style freeze fill:#FFE0C2,stroke:#FF9E42
+    style tool fill:#FFE0C2,stroke:#FF9E42

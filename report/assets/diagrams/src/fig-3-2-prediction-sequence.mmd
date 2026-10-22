@@ -1,0 +1,15 @@
+sequenceDiagram
+    participant User
+    participant WebClient
+    participant API
+    participant Database
+    participant Model
+
+    User->>WebClient: Choose protein and tile
+    WebClient->>API: POST /v1/predict
+    API->>Database: Look up tile and measured PSI
+    Database-->>API: Tile sequence and domain status
+    API->>Model: Score 532 substitutions
+    Model-->>API: Scores and calibrated probabilities
+    API-->>WebClient: 200 matrix, ranking, provenance, warnings
+    WebClient-->>User: Show domain status, then heatmap
