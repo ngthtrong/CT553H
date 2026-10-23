@@ -14,14 +14,14 @@
 > **Hai kết quả âm phải nói kèm:** degron lái ung thư kinh điển **phần lớn không hiện ra**
 > trong assay này (chỉ HIF1A), và biến thể ClinVar **không** giàu lên về *vị trí* trong degron.
 >
-> Quyết định: [D-033](../../../../DECISIONS.md#d-033). Script: [`coverage.py`](coverage.py),
+> Quyết định: D-033. Script: [`coverage.py`](coverage.py),
 > [`enrichment.py`](enrichment.py). Dữ liệu: [`clinvar/SOURCE.md`](../../data/raw/clinvar/SOURCE.md).
 >
 > ✅ **Đính chính sau khi viết (cùng ngày, cuối phiên 10).** Báo cáo này viết khi hai hệ quả còn là **đề xuất**;
 > cả hai **nay đã thành quyết định**, nên đọc mục 7 và mục 10 theo đây: phạm vi **degron tự trị + biến thể
 > dòng mầm** đã được chốt, và đối chứng ngoài `CTNNB1` đã chuyển sang **không dùng** — cả hai ở
-> [D-035](../../../../DECISIONS.md#d-035) (Claude theo ủy quyền của Trọng). Ngoài ra GVHD đã xác nhận
-> **trụ phần mềm là đóng góp** ([D-034](../../../../DECISIONS.md#d-034)). Số liệu trong báo cáo **không đổi**.
+> D-035 (Claude theo ủy quyền của Trọng). Ngoài ra GVHD đã xác nhận
+> **trụ phần mềm là đóng góp** (D-034). Số liệu trong báo cáo **không đổi**.
 
 ## Nhãn bằng chứng
 
@@ -34,8 +34,8 @@ hoặc tóm tắt, **chưa** có trích dẫn trong repo.
 ## 1. Vì sao phải đo chuyện này
 
 Đề tài đã có ba trụ: nhãn thực nghiệm (G1 mạnh nhất repo), một khoảng trống đo lường đã
-chứng minh, và một con số dương +0,0289 trên trục ngữ cảnh ([D-031](../../../../DECISIONS.md#d-031)).
-Nhưng [đánh giá trung thực 15/10](../contribution-assessment-2026-10-15.md) §4 đã chỉ ra chỗ
+chứng minh, và một con số dương +0,0289 trên trục ngữ cảnh (D-031).
+Nhưng đánh giá trung thực 15/10 §4 đã chỉ ra chỗ
 hở: nhóm được lợi nhất là "nhà nghiên cứu ML khác", và **nhóm đó nhỏ**. Không tài liệu nào
 của đề tài trả lời được câu *"vì sao bài toán này đáng làm"* bằng một con số.
 
@@ -65,10 +65,10 @@ Lỗi đọc số nghiêm trọng nhất của phép kiểm này là lẫn **th�
 | `lib` toàn thư viện quét | 9.817 | 6.582 | 2,7% | **chọn lọc**, ≈1,5 tile mỗi protein |
 | `pepdome_degron_psi15` | 13.801 | 7.090 | 3,8% | tile PSI ≤ 1,5 |
 | `pepdome_degron_psi20` | 45.999 | 13.248 | 12,8% | tile PSI ≤ 2,0 |
-| **`pepdome_degron`** | **116.702** | **17.287** | **32,4%** | tile PSI ≤ 3,0 (ngưỡng [D-025](../../../../DECISIONS.md#d-025)) |
+| **`pepdome_degron`** | **116.702** | **17.287** | **32,4%** | tile PSI ≤ 3,0 (ngưỡng D-025) |
 | `pepdome_all` | 360.724 | 18.536 | 100% | mọi tile đo được (reads ≥ 10) |
 
-Ba tầng đầu **tái lập đúng** [D-031](../../../../DECISIONS.md#d-031) (91 / 2.994 peptide,
+Ba tầng đầu **tái lập đúng** D-031 (91 / 2.994 peptide,
 83.446 ô) vì dùng lại nguyên `residue_data.py` của phiên 8 — nên loader đáng tin.
 
 Bốn tầng dưới đến từ **peptidome GPS** ([GEO GSE240610](../../data/README.md) Table S1,
@@ -155,7 +155,7 @@ ngưỡng:
 trong degron đúng theo tỉ lệ nền. Điều này hợp lý: ClinVar bị chi phối bởi gene nào được
 giải trình tự nhiều, không bởi sinh học degron. **[phân tích]**
 
-Thêm một điều phải nói: ngưỡng PSI ≤ 3,0 của [D-025](../../../../DECISIONS.md#d-025) cho
+Thêm một điều phải nói: ngưỡng PSI ≤ 3,0 của D-025 cho
 **32,4% tile của toàn proteome** là degron. Ngưỡng đó được chọn cho thư viện quét; **chưa ai
 kiểm nó chặt đến đâu trên toàn peptidome**. Ở mức đó, câu "biến thể của bạn nằm trong một
 degron" gần như **không mang thông tin**, vì một phần ba proteome thoả. Giá trị phải đến từ
@@ -234,12 +234,12 @@ nhưng cần trích dẫn trước khi vào luận văn.
 
 1. **Phạm vi phải gọi là "degron tự trị"**, không phải "degron" chung và tuyệt đối không phải
    "degron lái ung thư". Đây là giới hạn của **assay**, không của mô hình.
-2. **[C-16](../../../../DECISIONS.md#c-16) bị phép đo này làm yếu đi nhiều.** Dữ liệu `CTNNB1`
+2. **C-16 bị phép đo này làm yếu đi nhiều.** Dữ liệu `CTNNB1`
    của Krishna 2026 nhắm đúng tile 24–51 — mà tile đó **có số đo tốt và nói không phải
    degron**. Dùng nó làm đối chứng hội tụ sẽ cho kết quả âm **vì lý do assay**, không vì mô
    hình sai, và sẽ không phân biệt được hai nguyên nhân. Đề xuất chuyển C-16 sang trạng thái
-   **không dùng**. ⇒ **Đã thành quyết định cuối phiên:** [D-035](../../../../DECISIONS.md#d-035) qua
-   [C-19](../../../../DECISIONS.md#c-19). ⚠ Giá phải trả: rủi ro “cả hai nguồn nhãn đều của Zhang 2023”
+   **không dùng**. ⇒ **Đã thành quyết định cuối phiên:** D-035 qua
+   C-19. ⚠ Giá phải trả: rủi ro “cả hai nguồn nhãn đều của Zhang 2023”
    **vẫn mở, chưa có ứng viên thay thế**.
 
 **Mạch soma cũng không có dữ liệu.** Cột `Oncogenicity` của ClinVar rất thưa: toàn bộ 2,56
@@ -322,7 +322,7 @@ trung bình **+0,033**, CI [−0,079; +0,141], **51,2%** peptide có hiệu dư�
    vị ΔPSI chỉ 0,13–0,27 so với ngưỡng footprint **1,0**. Biến thể ClinVar không tập trung vào ô
    footprint mạnh.
 
-**Hệ quả cho khung đề tài — đã ghi thành [D-036](../../../../DECISIONS.md#d-036):** giữ trụ 1 ở
+**Hệ quả cho khung đề tài — đã ghi thành D-036:** giữ trụ 1 ở
 **mức vùng**; **không** được nói *"residue mà đề tài dự đoán là residue mang tín hiệu bệnh"*; và
 **không** dùng ClinVar làm đích xác nhận cho mô hình. ClinVar chỉ dùng làm **động lực** (530.412 VUS
 chưa ai gán cơ chế) chứ không làm nhãn đánh giá.
@@ -347,8 +347,8 @@ chưa ai gán cơ chế) chứ không làm nhãn đánh giá.
 ## 10. Những gì tài liệu này **không** làm
 
 - **Không** quyết định *tại thời điểm viết*. Hai hệ quả ở mục 7 đã thành quyết định **cuối cùng ngày** qua
-  [D-035](../../../../DECISIONS.md#d-035) — xem ghi chú đính chính ở đầu file.
+  D-035 — xem ghi chú đính chính ở đầu file.
 - **Không** huấn luyện mô hình nào. Mục tiêu G2 (vượt AUROC 0,7693 trên ma trận bão hòa) **không
-  đổi** và **chưa đạt**; [D-027](../../../../DECISIONS.md#d-027) vẫn đòi một kiến trúc mới.
+  đổi** và **chưa đạt**; D-027 vẫn đòi một kiến trúc mới.
 - **Không** sửa `presentation/` — theo dặn dò của Trọng, chỉ sửa khi được yêu cầu.
 - **Không** chứng minh biến thể nào gây bệnh vì phá degron; xem giới hạn ở mục 6.

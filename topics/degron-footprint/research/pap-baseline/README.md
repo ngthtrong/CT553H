@@ -3,7 +3,7 @@
 > Ngày **14/10/2026**. Script: [pap_baseline.py](pap_baseline.py) → [pap-baseline.json](pap-baseline.json).
 > Phần A trả lời việc còn thiếu ghi ở [full-data-audit §12](../full-data-audit/README.md) ("chưa chạy lại
 > baseline PAP sau khi tải lại repo"). Phần B và C là **đối chứng bắt buộc** mà
-> [topic-decision §6](../topic-decision.md) yêu cầu nhưng chưa ai chạy: ΔPAP trên đúng thay thế thực nghiệm.
+> topic-decision §6 yêu cầu nhưng chưa ai chạy: ΔPAP trên đúng thay thế thực nghiệm.
 > **Không huấn luyện mô hình nào** — PAP dùng trọng số đã công bố của tác giả.
 
 ## Nhãn bằng chứng
@@ -62,10 +62,10 @@ replicate 1 (không đọc nhãn test). 2.403 peptide.
 
 **[phân tích] Ba hệ quả cho thiết kế đề tài:**
 
-1. **Mốc G2 ở [D-025](../../../../DECISIONS.md#d-025) được xác nhận là mốc khó hơn ΔPAP.** Baseline thành
+1. **Mốc G2 ở D-025 được xác nhận là mốc khó hơn ΔPAP.** Baseline thành
    phần 0,4884 **cao hơn** ΔPAP `cnn2w7` (0,4270) với p ≈ 6 × 10⁻¹⁹. Nên 0,4897 là mốc đúng để cam kết,
    không phải ΔPAP. Vẫn phải báo ΔPAP trong bảng kết quả vì đây là đối chứng mà
-   [topic-decision §6](../topic-decision.md) yêu cầu, và vì nó là mô hình degron công bố gần nhất.
+   topic-decision §6 yêu cầu, và vì nó là mô hình degron công bố gần nhất.
 2. **Khoảng cách cnn2w1 → cnn2w7 lớn hơn nhiều ở nhiệm vụ residue.** Trên thang điểm khối, cửa sổ 7 chỉ
    hơn +0,0032 Pearson (0,8690 → 0,8722) — chính tác giả đã đo. Trên nhiệm vụ footprint, nó hơn
    **+0,1311** precision@3 (0,2959 → 0,4270). **[phân tích]** Đây là **bằng chứng dương đầu tiên trong

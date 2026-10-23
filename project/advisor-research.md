@@ -9,7 +9,7 @@
 | **TS. Hồ Quang Thái (Ho Quang Thai; QT Ho), Đại học Cần Thơ** | **GVHD của đề tài này**                                                                                        | [Prof Ho/](../resources/papers/ho-quang-thai/) |
 | Prof. YY Ou (Yu-Yen Ou), Yuan Ze University                                | **Không phải GVHD.** Đồng tác giả thường xuyên với GVHD; tài liệu giữ để tham khảo bối cảnh nhóm | [Prof Ou/](../resources/papers/yu-yen-ou/)     |
 
-Hệ quả khi đánh giá **tiêu chí 1 (tính mới)** trong [năm tiêu chí ở biên bản lần 1](meetings/2026-10-02-session-01/minutes.md): công trình của Prof Ou là bối cảnh gần, nhưng công trình của **Prof Ho** mới là thứ GVHD biết rõ nhất và dễ hỏi sâu nhất.
+Hệ quả khi đánh giá **tiêu chí 1 (tính mới)** trong năm tiêu chí ở biên bản lần 1: công trình của Prof Ou là bối cảnh gần, nhưng công trình của **Prof Ho** mới là thứ GVHD biết rõ nhất và dễ hỏi sâu nhất.
 
 Hai [luận văn tham khảo](../resources/reference-theses/thesis-comparison.md) cũng ghi người hướng dẫn là **Ho Quang Thai**. Đây là các tiền lệ cùng GVHD để tham khảo về cách thực hiện và trình bày, chưa phải bảo đảm về phạm vi hoặc mức đánh giá cho đề tài hiện tại. Giữ nguyên tên thư mục `Prof Ho/` và tên tác giả viết tắt trong các trích dẫn công bố.
 
@@ -35,4 +35,4 @@ Giới hạn của nhận định này, phải nói kèm:
 
 - Danh mục chỉ là **bản scrape Google Scholar 14 bài**, trong khi Prof Ou có hơn 25 bài — **rất có thể chưa đầy đủ**. "Không có công trình cancer" nghĩa là không có **trong danh sách này**, không phải chắc chắn không có.
 - Bài ảnh y khoa đồng tác giả với NQK Le cho thấy GVHD có cộng tác ngoài nhánh trình tự protein, nên hướng cancer không phải là điều bất khả.
-- Đây là **suy luận từ danh mục công bố, chưa hỏi lại GVHD**. Câu cần hỏi đã ghi ở mục 7 của [biên bản lần 1](meetings/2026-10-02-session-01/minutes.md).
+- Đây là **suy luận từ danh mục công bố, chưa hỏi lại GVHD**. Câu cần hỏi đã ghi ở mục 7 của biên bản lần 1.

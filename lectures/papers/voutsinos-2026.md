@@ -1,4 +1,4 @@
-[← Danh mục bài báo](README.md) · [Về hub](../README.md)
+[← Danh mục bài báo](README.md) · Về hub
 
 # Voutsinos 2026 — bản đồ degron bào tương người và mô hình PAP
 
@@ -18,11 +18,11 @@
 
 ## Bài này làm gì
 
-Hai việc. **Một:** dựng bản đồ degron gần hoàn chỉnh cho protein bào tương người — cắt 5.672 protein thành 214.158 tile dài 30 acid amin, đo độ bền từng tile bằng sàng lọc GPS ([bài 2](../02-how-degrons-are-measured.md)). **Hai:** huấn luyện một mô hình dự đoán điểm degron từ trình tự, gọi là **PAP**.
+Hai việc. **Một:** dựng bản đồ degron gần hoàn chỉnh cho protein bào tương người — cắt 5.672 protein thành 214.158 tile dài 30 acid amin, đo độ bền từng tile bằng sàng lọc GPS (bài 2). **Hai:** huấn luyện một mô hình dự đoán điểm degron từ trình tự, gọi là **PAP**.
 
 ## Vì sao bài này quan trọng nhất với đề tài
 
-Vì nó cung cấp **cả bộ dữ liệu 1 lẫn baseline phải vượt**. Toàn bộ lập luận về khoảng trống ở [bài 5](../05-the-gap.md) là lập luận về điểm yếu của PAP.
+Vì nó cung cấp **cả bộ dữ liệu 1 lẫn baseline phải vượt**. Toàn bộ lập luận về khoảng trống ở bài 5 là lập luận về điểm yếu của PAP.
 
 ## Kiến trúc PAP — đã đọc hết mã nguồn [TỰ KIỂM]
 
@@ -67,7 +67,7 @@ Cả hai là lý do phải **tự tái lập** thay vì tin mã có sẵn.
 
 ## Hình của tác giả được phép dùng
 
-Sáu hình, CC BY-NC 4.0, tải ngày 11/10/2026 — ở [assets/figures/](../../degron-footprint/assets/figures/NOTICE.md):
+Sáu hình, CC BY-NC 4.0, tải ngày 11/10/2026 — ở assets/figures/:
 
 | File | Nội dung |
 |---|---|
@@ -80,13 +80,13 @@ Sáu hình, CC BY-NC 4.0, tải ngày 11/10/2026 — ở [assets/figures/](../..
 
 ## Chỗ bài này chừa lại cho đề tài
 
-Tác giả dùng cấu trúc (rASA, pLDDT) **chỉ để phân tích sau**, không đưa vào mô hình. Và mô hình của họ bất biến hoán vị ở kênh chính. Hai chỗ đó là chỗ đứng của đề tài — xem [bài 6](../06-proposed-solution.md).
+Tác giả dùng cấu trúc (rASA, pLDDT) **chỉ để phân tích sau**, không đưa vào mô hình. Và mô hình của họ bất biến hoán vị ở kênh chính. Hai chỗ đó là chỗ đứng của đề tài — xem bài 6.
 
 ## Nguồn trong repo
 
-- [voutsinos-2026-audit/](../../../topics/degron-footprint/research/voutsinos-2026-audit/README.md) — ghi chú audit, script, JSON kết quả
-- [NOTICE.md](../../degron-footprint/assets/figures/NOTICE.md) — giấy phép hình
+- [voutsinos-2026-audit/](../../topics/degron-footprint/research/voutsinos-2026-audit/README.md) — ghi chú audit, script, JSON kết quả
+- NOTICE.md — giấy phép hình
 
 ---
 
-[← Danh mục bài báo](README.md) · [Về hub](../README.md)
+[← Danh mục bài báo](README.md) · Về hub

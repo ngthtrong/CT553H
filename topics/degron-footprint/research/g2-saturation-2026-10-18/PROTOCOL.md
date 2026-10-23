@@ -1,6 +1,6 @@
 # Protocol của lần chạy 18/10/2026
 
-Đây là thí nghiệm phát triển trên bộ nhãn đã từng được khảo sát; không gọi là test ngoài chưa từng xem. Không thay ngưỡng sau khi xem kết quả. Không điều chỉnh mô hình bằng nhãn outer fold. Đối chiếu các yêu cầu hiện hành ở [D-031](../../../../DECISIONS.md#d-031), [D-028](../../../../DECISIONS.md#d-028).
+Đây là thí nghiệm phát triển trên bộ nhãn đã từng được khảo sát; không gọi là test ngoài chưa từng xem. Không thay ngưỡng sau khi xem kết quả. Không điều chỉnh mô hình bằng nhãn outer fold. Đối chiếu các yêu cầu hiện hành ở D-031, D-028.
 
 - Nhãn, lọc và cụm dùng nguyên `residue_data.py`: PSI WT nội tại ≤3, reads ≥10, trung bình ΔPSI hai nửa, ô dương ΔPSI≥1; loại ô đồng nghĩa.
 - 5 outer fold GroupKFold theo cov80; inner GroupShuffleSplit 20% cụm của phần train. Không dùng scanning trong phiên này nên không có đường rò từ scanning.

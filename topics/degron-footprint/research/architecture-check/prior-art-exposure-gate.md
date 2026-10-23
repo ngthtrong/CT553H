@@ -16,14 +16,14 @@
 
 | Công trình | Họ đã làm gì | Nhãn |
 |---|---|---|
-| **Voutsinos 2026** (*Sci Adv*), chính tác giả PAP | Fig 3: điểm degron so với rASA và pLDDT, **ρ = −0,47** trên 173 protein phơi lộ nhất. Fig 6: ΔPAP ở vùng phơi lộ, Kruskal–Wallis **P = 5,4 × 10⁻⁶**. Nói rõ: ở vùng phơi lộ và không có cấu trúc, độ mạnh degron **giải thích phần lớn** độ dồi dào của biến thể protein nguyên vẹn | **[đã đọc]** (ghi chú repo: [voutsinos-2026.md](../../../../lectures/degron-basics/papers/voutsinos-2026.md)) |
+| **Voutsinos 2026** (*Sci Adv*), chính tác giả PAP | Fig 3: điểm degron so với rASA và pLDDT, **ρ = −0,47** trên 173 protein phơi lộ nhất. Fig 6: ΔPAP ở vùng phơi lộ, Kruskal–Wallis **P = 5,4 × 10⁻⁶**. Nói rõ: ở vùng phơi lộ và không có cấu trúc, độ mạnh degron **giải thích phần lớn** độ dồi dào của biến thể protein nguyên vẹn | **[đã đọc]** (ghi chú repo: [voutsinos-2026.md](../../../../lectures/papers/voutsinos-2026.md)) |
 | **Larsen 2025** (bioRxiv, degron ở transcription factor) | Điểm degron so với rASA \|r\| = **0,41**; so pLDDT \|r\| = **0,36**, trên toàn thư viện. 6.992/21.970 degron (32%) có rASA > 0,7; 8.817 (40%) có pLDDT < 70 | **[đã đọc]** toàn văn phần kết quả |
 | **QCDPred** (Johansson 2022/2023, cùng nhóm) | Degron chất lượng-kiểm soát giàu amino acid kỵ nước, **đúng kỳ vọng rằng chúng bị chôn trong protein gấp đúng**; báo tương quan giữa độ dồi dào và tiềm năng degron **ở vùng vô định hình** | **[qua tóm tắt]** |
 | **DEGRONOPEDIA** (*NAR* 2024) | Tích hợp sẵn **mô hình hóa khả năng tiếp cận dung môi** và mô phỏng phân giải; tính cấu trúc bậc hai và rASA cho **từng motif degron** | **[qua tóm tắt]** |
 | **JoGo degron viewer** | Phân loại bối cảnh cấu trúc của biến thể bằng **đúng tổ hợp rASA + pLDDT**: "functional" nếu rASA ≥ 0,25 và (disorder hoặc pLDDT < 70); "exposed" nếu rASA ≥ 0,25 và có cấu trúc; "buried" nếu rASA < 0,25 | **[qua tóm tắt]** |
 
 **[phân tích]** Tiền đề của thành phần 4 là **kiến thức đã xác lập trong chính nhóm tác giả PAP**, không phải
-phát hiện. Ghi chú repo [larsen-2025.md](../../../../lectures/degron-basics/papers/larsen-2025.md) đã nói
+phát hiện. Ghi chú repo [larsen-2025.md](../../../../lectures/papers/larsen-2025.md) đã nói
 "họ đã dùng cấu trúc, đã tính rASA và pLDDT" — nhưng mục 1 của `README.md` vẫn viết như thể phép đo của
 phiên 14/10 là phép đo đầu tiên chứng minh tiền đề. **Câu đó sai và đã được sửa.**
 
@@ -84,7 +84,7 @@ Cùng nhóm Lindorff-Larsen với Voutsinos và QCDPred, công bố **28/05/2026
 
 ## 4. Nơi đặt cổng bên trong mô hình — **chưa tìm thấy tiền lệ**
 
-Phát biểu của đề tài ([topic-decision §5](../topic-decision.md)) là "mới ở **nơi đặt** cổng phơi lộ — tại
+Phát biểu của đề tài (topic-decision §5) là "mới ở **nơi đặt** cổng phơi lộ — tại
 bước gộp, không phải đầu vào". Tra lần này **không tìm được** tiền lệ, và tìm được bằng chứng ngược lại
 rằng các mô hình degron hiện có đều **không** làm thế:
 

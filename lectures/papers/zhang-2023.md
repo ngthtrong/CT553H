@@ -1,4 +1,4 @@
-[← Danh mục bài báo](README.md) · [Về hub](../README.md)
+[← Danh mục bài báo](README.md) · Về hub
 
 # Zhang 2023 — đột biến quét và bão hòa trên degron
 
@@ -47,7 +47,7 @@ File chính: `Replicate 1 (BAG6 genotype unclear)/I28 Scanning Mutagenesis Repli
 | Footprint **khu trú** | 2.402 |
 | **Trung vị vị trí quan trọng** | **3 trên 28** |
 
-**Bộ bão hòa:** 135.040 định danh / **249 peptide** (239 phủ ≥ 27 vị trí). Nhưng chỉ **219 footprint** được tác giả curate — xem cảnh báo ở [bài 4](../04-datasets.md).
+**Bộ bão hòa:** 135.040 định danh / **249 peptide** (239 phủ ≥ 27 vị trí). Nhưng chỉ **219 footprint** được tác giả curate — xem cảnh báo ở bài 4.
 
 **Nhãn E3 — và đây là phát hiện buộc đổi trục đề tài:**
 
@@ -83,9 +83,9 @@ Trục **"dự đoán đặc hiệu E3"** — tức dự đoán E3 nào nhận r
 
 ## Nguồn trong repo
 
-- [e3-labels-audit/](../../../topics/degron-footprint/research/e3-labels-audit/README.md) — 7 script đếm + JSON kết quả
-- [composition-context-audit.md](../../../topics/degron-footprint/research/composition-context-audit.md) — audit thành phần, cận, chia cụm
+- [e3-labels-audit/](../../topics/degron-footprint/research/e3-labels-audit/README.md) — 7 script đếm + JSON kết quả
+- [composition-context-audit.md](../../topics/degron-footprint/research/composition-context-audit.md) — audit thành phần, cận, chia cụm
 
 ---
 
-[← Danh mục bài báo](README.md) · [Về hub](../README.md)
+[← Danh mục bài báo](README.md) · Về hub

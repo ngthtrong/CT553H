@@ -1,4 +1,4 @@
-[← Danh mục bài báo](README.md) · [Về hub](../README.md)
+[← Danh mục bài báo](README.md) · Về hub
 
 # Koren 2018 — công trình nền của phương pháp sàng lọc
 
@@ -14,7 +14,7 @@
 
 Lập ra phương pháp **sàng lọc GPS peptidome** — ý tưởng gắn hàng trăm nghìn peptide vào protein phát sáng GFP rồi dùng độ sáng làm thước đo độ bền. Đây chính là phương pháp mà [Voutsinos 2026](voutsinos-2026.md) và [Zhang 2023](zhang-2023.md) dùng lại và mở rộng.
 
-Giải thích phương pháp bằng hình: [bài 2](../02-how-degrons-are-measured.md).
+Giải thích phương pháp bằng hình: bài 2.
 
 ## Vì sao có trong danh mục
 
@@ -38,4 +38,4 @@ Bài này **không** phải đối thủ và **không** phải baseline — nó 
 
 ---
 
-[← Danh mục bài báo](README.md) · [Về hub](../README.md)
+[← Danh mục bài báo](README.md) · Về hub

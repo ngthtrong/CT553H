@@ -1,4 +1,4 @@
-[← Danh mục bài báo](README.md) · [Về hub](../README.md)
+[← Danh mục bài báo](README.md) · Về hub
 
 # LeBlanc 2026 — mạng nơ-ron lý sinh giải thích được trên thư viện tile
 
@@ -34,7 +34,7 @@ Nên nó **không chiếm** claim mức residue của đề tài. Grep toàn vă
 
 → **Phải viết "theo LeBlanc et al. 2026"** khi dùng ba cách làm này, không trình bày như chọn lựa riêng của đề tài.
 
-Mặt tốt: điều này **có lợi** cho [rủi ro 6](../09-risks.md). Cách trình bày "đặt trần nhãn cạnh số của mô hình" nay có **tiền lệ công bố ở tạp chí tốt**, nên rất dễ bảo vệ trước GVHD.
+Mặt tốt: điều này **có lợi** cho rủi ro 6. Cách trình bày "đặt trần nhãn cạnh số của mô hình" nay có **tiền lệ công bố ở tạp chí tốt**, nên rất dễ bảo vệ trước GVHD.
 
 ---
 
@@ -46,11 +46,11 @@ Với **30 seed × 200 bootstrap**, họ kết luận về ma trận trọng s�
 
 > *"horizontal streaks, indicating that **composition is more important than individual positions**"*, và các filter *"are **not picking up on specific protein motifs** and instead are picking up composition patterns"* — với trọng số theo từng vị trí *"highly variable"* qua các seed.
 
-**Nếu điều đó cũng đúng cho tile degron**, thì một mô hình mức residue có thể đang **khớp nhiễu vị trí** — và đó là đe doạ trực tiếp cho [rủi ro 2](../09-risks.md), độc lập với mọi chuyện nhiễu đo.
+**Nếu điều đó cũng đúng cho tile degron**, thì một mô hình mức residue có thể đang **khớp nhiễu vị trí** — và đó là đe doạ trực tiếp cho rủi ro 2, độc lập với mọi chuyện nhiễu đo.
 
 **Nhưng họ cũng cho luôn khuôn để kiểm:** báo **độ ổn định của trọng số theo từng vị trí qua seed và bootstrap**. Đây là một phép thử đề tài **nên chạy**, và nó rẻ `[đề xuất]`.
 
-Một điểm đáng lưu: trục của đề tài **không** rơi vào bẫy đó theo bằng chứng đã đo — đổi kernel 1 → 7 cho **+0,1311** precision@3 mức residue ([bài 5](../05-the-gap.md)), tức ngữ cảnh vị trí **có** tín hiệu trên nhãn degron. Nhưng đó là bằng chứng của repo trên dữ liệu khác; **không** triệt tiêu được lo ngại, chỉ làm nó bớt nặng `[phân tích]`.
+Một điểm đáng lưu: trục của đề tài **không** rơi vào bẫy đó theo bằng chứng đã đo — đổi kernel 1 → 7 cho **+0,1311** precision@3 mức residue (bài 5), tức ngữ cảnh vị trí **có** tín hiệu trên nhãn degron. Nhưng đó là bằng chứng của repo trên dữ liệu khác; **không** triệt tiêu được lo ngại, chỉ làm nó bớt nặng `[phân tích]`.
 
 ---
 
@@ -64,8 +64,8 @@ Một điểm đáng lưu: trục của đề tài **không** rơi vào bẫy đ
 | Mô hình tốt nhất của họ | **0,555** |
 | Tập test mức tile | n = 2.521 |
 
-Chi tiết: [báo cáo 15/10](../../../topics/degron-footprint/research/larsen-nuclear-and-risks-2026-10-15/README.md) mục 6 và [ghi chép 05](../../../topics/degron-footprint/research/larsen-nuclear-and-risks-2026-10-15/notes/05-gap-close-prior-art.md).
+Chi tiết: [báo cáo 15/10](../../topics/degron-footprint/research/larsen-nuclear-and-risks-2026-10-15/README.md) mục 6 và [ghi chép 05](../../topics/degron-footprint/research/larsen-nuclear-and-risks-2026-10-15/notes/05-gap-close-prior-art.md).
 
 ---
 
-[← Danh mục bài báo](README.md) · [Về hub](../README.md)
+[← Danh mục bài báo](README.md) · Về hub

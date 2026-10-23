@@ -4,7 +4,7 @@ Ngày đọc: **05/10/2026**. Mục đích: học cách xác định đóng góp
 
 ## 1. Kết luận để sử dụng ngay
 
-**Bài peptide là mẫu tốt hơn cho phần nghiên cứu mô hình; BioFlow-Scope là mẫu tốt hơn cho phần kỹ nghệ phần mềm.** Với định hướng hiện tại, nên tham khảo cách tổ chức thực nghiệm của bài thứ nhất và chọn một số chức năng truy vết, quản lý kết quả, kiểm thử của bài thứ hai. Ghép nguyên hai phạm vi sẽ quá rộng so với khoảng 8–9 tuần thực hiện đã ghi trong [biên bản GVHD](../../project/meetings/2026-10-02-session-01/minutes.md).
+**Bài peptide là mẫu tốt hơn cho phần nghiên cứu mô hình; BioFlow-Scope là mẫu tốt hơn cho phần kỹ nghệ phần mềm.** Với định hướng hiện tại, nên tham khảo cách tổ chức thực nghiệm của bài thứ nhất và chọn một số chức năng truy vết, quản lý kết quả, kiểm thử của bài thứ hai. Ghép nguyên hai phạm vi sẽ quá rộng so với khoảng 8–9 tuần thực hiện đã ghi trong biên bản GVHD.
 
 Hai bài cho thấy hai cách làm luận văn tin sinh trong ngành Kỹ thuật phần mềm: phát triển bộ dự đoán có ứng dụng, hoặc phát triển nền tảng tích hợp công cụ. Chúng **không chứng minh** rằng chỉ cần dùng PLM, thêm XAI và làm website là đủ đóng góp cho đề tài của mình.
 
@@ -151,7 +151,7 @@ Nguồn: Bảng 4.18, PDF 198–199 (trang in 179–180). Chưa có log/mã ngu�
 
 ## 5. Đối chiếu với năm tiêu chí của GVHD hiện tại
 
-Đây là **nhận xét của người đọc**, không phải chấm điểm của GVHD. Tiêu chí lấy từ [biên bản lần 1](../../project/meetings/2026-10-02-session-01/minutes.md).
+Đây là **nhận xét của người đọc**, không phải chấm điểm của GVHD. Tiêu chí lấy từ biên bản lần 1.
 
 | Tiêu chí | Bài học từ T1 | Bài học từ T2 | Điều cần chứng minh trong đề tài của mình |
 |---|---|---|---|
@@ -165,7 +165,7 @@ Nguồn: Bảng 4.18, PDF 198–199 (trang in 179–180). Chưa có log/mã ngu�
 
 ### 6.1. Phần có thể chuyển giao
 
-Theo [khảo sát aging/cancer hiện có](../../archive/surveys/aging-cancer/aging-cancer-deep-dive.md), hai ứng viên đầu là site deacetyl hóa theo SIRT và site phosphoryl hóa theo nhóm kinase. Đây là **ngữ cảnh của repo**, không phải đánh giá mới về tính mới hay độ sẵn sàng của dữ liệu.
+Theo khảo sát aging/cancer hiện có, hai ứng viên đầu là site deacetyl hóa theo SIRT và site phosphoryl hóa theo nhóm kinase. Đây là **ngữ cảnh của repo**, không phải đánh giá mới về tính mới hay độ sẵn sàng của dữ liệu.
 
 - Từ T1: học ma trận baseline → biểu diễn → head → ablation; kiểm tra lệch dữ liệu; đo chi phí; trình bày XAI trên chuỗi.
 - Từ T2: học cách lưu mỗi lần phân tích với phiên bản model, input hash, cấu hình, kết quả và log; xuất báo cáo để người dùng kiểm lại.

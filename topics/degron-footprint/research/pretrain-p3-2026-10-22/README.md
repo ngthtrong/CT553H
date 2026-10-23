@@ -52,7 +52,7 @@ Mô tả (không dùng để quyết định):
 ## 5. Diễn giải `[DIỄN GIẢI]`
 
 - **Không có bằng chứng cho lợi ích của tiền huấn luyện nhãn tile theo thiết kế này**, và có bằng chứng nó gây hại ở bộ nhỏ (base). Cách đọc hợp lý nhất: tiền huấn luyện đưa `Gate` về một vùng trọng số tối ưu cho *"residue ở ngữ cảnh nào thì tile là degron"*, nơi `wt` và ngữ cảnh làm hầu hết việc và khối `mut` không được học. Tinh chỉnh trên ΔPSI cần phép thay là biến chính, nên điểm khởi đầu này kém điểm khởi đầu ngẫu nhiên.
-- Tiền huấn luyện không hỏng (Pearson 0,864 trên gene giữ riêng): lỗi nằm ở **chuyển giao**, không ở tiền huấn luyện. Phù hợp với khoảng cách qua assay đã đo 0,0773 AUROC ([reframe §9](../reframe-options-2026-10-15/README.md)).
+- Tiền huấn luyện không hỏng (Pearson 0,864 trên gene giữ riêng): lỗi nằm ở **chuyển giao**, không ở tiền huấn luyện. Phù hợp với khoảng cách qua assay đã đo 0,0773 AUROC (reframe §9).
 - Khoảng cách lớn hơn ở base (−0,028) so với ext (−0,008) hợp với cách đọc "điểm khởi đầu xấu thì ít nhãn càng khó sửa", nhưng đây là diễn giải, chưa có thí nghiệm tách.
 - **Không** kết luận "giám sát yếu từ tile vô ích": chỉ kết luận thiết kế *tiền huấn luyện chỉ-hoang-dã + tinh chỉnh toàn bộ* không chuyển giao. Các thiết kế khác (đóng băng encoder, tiền huấn luyện đa nhiệm với ΔPSI, dùng 17.820 trình tự dùng chung hai assay làm cầu nối) **chưa thử** và không được phép suy ra từ kết quả này.
 

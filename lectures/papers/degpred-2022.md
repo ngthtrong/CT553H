@@ -1,4 +1,4 @@
-[← Danh mục bài báo](README.md) · [Về hub](../README.md)
+[← Danh mục bài báo](README.md) · Về hub
 
 # Degpred 2022 — dự đoán degron quy mô proteome
 
@@ -16,7 +16,7 @@ Dự đoán degron ở quy mô proteome, kết hợp dự đoán motif với th�
 
 ## Liên quan đến đề tài ở đâu
 
-Nó thuộc nhóm **tiền lệ dự đoán degron từ trình tự** — nhóm công trình mà phần khảo sát nghiên cứu trước của luận văn phải xếp loại và đánh giá ưu/nhược (yêu cầu history research 3 bước của GVHD, xem [course.md](../../../project/course.md)).
+Nó thuộc nhóm **tiền lệ dự đoán degron từ trình tự** — nhóm công trình mà phần khảo sát nghiên cứu trước của luận văn phải xếp loại và đánh giá ưu/nhược (yêu cầu history research 3 bước của GVHD, xem course.md).
 
 Đơn vị dự đoán của nó là **degron ở đâu trong protein**, không phải **residue nào trong degron quan trọng**. Nên giống [MetaDegron](metadegron-2024.md), nó **không phải baseline cùng thang** với đề tài.
 
@@ -32,4 +32,4 @@ Nó thuộc nhóm **tiền lệ dự đoán degron từ trình tự** — nhóm 
 
 ---
 
-[← Danh mục bài báo](README.md) · [Về hub](../README.md)
+[← Danh mục bài báo](README.md) · Về hub

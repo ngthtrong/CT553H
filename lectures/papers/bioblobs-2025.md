@@ -1,4 +1,4 @@
-[← Danh mục bài báo](README.md) · [Về hub](../README.md)
+[← Danh mục bài báo](README.md) · Về hub
 
 # BioBlobs 2025 — bài làm hẹp tuyên bố MIL của đề tài
 
@@ -41,7 +41,7 @@ So với đề tài: túi là peptide, thể hiện là cửa sổ quanh mỗi v
 - ✅ *Mới ở **chỗ ghép** và ở **chỗ đặt cổng phơi lộ tại bước gộp***
 - ✅ ***Không mới ở cơ chế***
 
-Đây là một trong hai lần tính mới của đề tài bị thu hẹp — xem [bài 9 rủi ro 5](../09-risks.md).
+Đây là một trong hai lần tính mới của đề tài bị thu hẹp — xem bài 9 rủi ro 5.
 
 ## Mặt tốt của phát hiện này
 
@@ -51,4 +51,4 @@ Khi viết phần khảo sát nghiên cứu trước, bài này nên nằm ở n
 
 ---
 
-[← Danh mục bài báo](README.md) · [Về hub](../README.md)
+[← Danh mục bài báo](README.md) · Về hub

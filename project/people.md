@@ -6,7 +6,7 @@
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | Họ tên   | **Nguyễn Thanh Trọng**                                                                                                  |
 | MSSV       | *B2305615*                                                                                                                    |
-| Học phần | CT553H, luận văn tốt nghiệp ngành Kỹ thuật phần mềm, Đại học Cần Thơ. Làm một người. Xem[course.md](course.md) |
+| Học phần | CT553H, luận văn tốt nghiệp ngành Kỹ thuật phần mềm, Đại học Cần Thơ. Làm một người. Xemcourse.md |
 | GitHub     | `ngthtrong` (repo private từ 01/10/2026)                                                                                     |
 
 ## Giảng viên hướng dẫn (GVHD)

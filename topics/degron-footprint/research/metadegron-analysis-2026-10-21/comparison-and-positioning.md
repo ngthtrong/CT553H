@@ -31,7 +31,7 @@
 | Exposure gate ở pooling thay đầu vào | [ĐỌC-MÃ] MetaDegron X có exposure/disorder ở input; chưa thấy gate pooling như đề xuất | [DIỄN GIẢI] Khác vị trí đặt không đủ chứng minh mới/có lợi. G2 gate đảo dấu theo seed; không tuyên bố gate giải quyết peptide–protein gap |
 | Giám sát attention bằng mutation labels | [ĐỌC-MÃ] Không thấy nhánh attention-supervision đó trong MetaDegron | [DIỄN GIẢI] Chỉ chưa có trong mã được kiểm. Attention và mutation effect khác đối tượng; cần ablation fidelity và task benefit, chưa nhận là đóng góp đã có |
 
-[DIỄN GIẢI] Bài [contribution-assessment-2026-10-15.md](../contribution-assessment-2026-10-15.md) có những câu đã cũ trước benchmark 18/10: nay ridge đã vượt ΔPAP về mốc số. Điều này **không phục hồi tính mới kiến trúc**; phần cảnh báo về Degformer, nguồn nhãn và không dùng uncertainty/provenance như lời hứa đã xong vẫn có ích. Khối trạng thái 21/10 trong topic-decision được ưu tiên khi hai tài liệu mâu thuẫn. Báo cáo này không sửa quyết định hoặc nội dung lịch sử.
+[DIỄN GIẢI] Bài contribution-assessment-2026-10-15.md có những câu đã cũ trước benchmark 18/10: nay ridge đã vượt ΔPAP về mốc số. Điều này **không phục hồi tính mới kiến trúc**; phần cảnh báo về Degformer, nguồn nhãn và không dùng uncertainty/provenance như lời hứa đã xong vẫn có ích. Khối trạng thái 21/10 trong topic-decision được ưu tiên khi hai tài liệu mâu thuẫn. Báo cáo này không sửa quyết định hoặc nội dung lịch sử.
 
 ## Câu hỏi hội đồng và cách trả lời có kiểm chứng
 

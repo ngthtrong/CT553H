@@ -39,7 +39,7 @@ dồi dào về sau.
    hình degron phải bắt mà mô hình cấu trúc thuần không bắt được.
 4. **Hai lỗi của repo mà bài này phát hiện ra.** Phép đo ngày 14/10 trộn bộ **GCK** (đo bằng DHFR-PCA, không
    phải VAMP-seq) và dùng AlphaFold **monomer** cho NUDT15/ASPA là homodimer. Phải chạy lại — xem
-   [prior-art-exposure-gate §3](../../../topics/degron-footprint/research/architecture-check/prior-art-exposure-gate.md).
+   [prior-art-exposure-gate §3](../../topics/degron-footprint/research/architecture-check/prior-art-exposure-gate.md).
 
 ## Khác gì đề tài
 

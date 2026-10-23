@@ -9,7 +9,7 @@
 7. [ĐO] Seed 17/29/43 là seed huấn luyện trên cùng outer partition; bootstrap 5.000 lần theo cụm. [current-topic-evidence.json](current-topic-evidence.json); đọc lại JSON thí nghiệm cũ, không huấn luyện lại G2.
 8. [ĐO] Ridge M3 0,8082; ΔPAP 0,7693; Degformer retrain 0,7500, riêng đối chứng sau chỉ một seed. [current-topic-evidence.json](current-topic-evidence.json); đọc lại JSON thí nghiệm cũ, không huấn luyện lại G2.
 9. [ĐO] CRISPR có 31 screen, 10 E3 được gán; chỉ 1 E3 có ít nhất 5 peptide. [current-topic-evidence.json](current-topic-evidence.json); đọc lại JSON thí nghiệm cũ, không huấn luyện lại G2.
-10. [DIỄN GIẢI] G2 còn mở: lượng nhãn chưa kiểm trực tiếp, tiền huấn luyện mức túi chưa chứng minh, so pretrained Degformer sạch cụm chưa xong; định vị cần GVHD chấp thuận. [Trạng thái hiện hành](../topic-decision.md).
+10. [DIỄN GIẢI] G2 còn mở: lượng nhãn chưa kiểm trực tiếp, tiền huấn luyện mức túi chưa chứng minh, so pretrained Degformer sạch cụm chưa xong; định vị cần GVHD chấp thuận. Trạng thái hiện hành.
 
 ## Kết luận điều hành
 

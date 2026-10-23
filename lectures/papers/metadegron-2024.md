@@ -1,4 +1,4 @@
-[← Danh mục bài báo](README.md) · [Về hub](../README.md)
+[← Danh mục bài báo](README.md) · Về hub
 
 # MetaDegron 2024 — công cụ bổ sung về motif/E3, không phải đối thủ cùng bài toán
 
@@ -8,9 +8,9 @@
 | **DOI** | <https://doi.org/10.1093/bib/bbae519> · toàn văn [PMC11491831](https://pmc.ncbi.nlm.nih.gov/articles/PMC11491831/) |
 | **Giấy phép** | Bài CC BY; **repo không có LICENSE**; nhãn gốc từ ELM (Academic License). Chỉ dẫn link, chưa sao chép hình/dữ liệu |
 | **Mức kiểm** | **[ĐỌC-MÃ]/[ĐO]** — nâng từ [NGUỒN] ngày 21/10/2026 sau khi đọc toàn văn, đọc mã (commit `ca12c0cf…`) và đếm số liệu. Không kiểm mọi thí nghiệm sinh học gốc, không chạy mô hình D |
-| **Báo cáo gốc** | [metadegron-analysis-2026-10-21](../../../topics/degron-footprint/research/metadegron-analysis-2026-10-21/README.md) |
+| **Báo cáo gốc** | [metadegron-analysis-2026-10-21](../../topics/degron-footprint/research/metadegron-analysis-2026-10-21/README.md) |
 
-> **Đính chính 21/10/2026.** Bản ghi chép trước (chỉ đọc tóm tắt) gọi bài này là "đối thủ trực tiếp nhất" và mô tả "21 E3 theo từng E3", "nhãn âm là peptide ngẫu nhiên", "chia 90/10 không kiểm soát đồng dạng". Audit cho thấy các câu đó **đúng một phần hoặc sai**; bảng kiểm từng câu ở [claims-verification.md](../../../topics/degron-footprint/research/metadegron-analysis-2026-10-21/claims-verification.md). Nội dung dưới đây thay bản cũ.
+> **Đính chính 21/10/2026.** Bản ghi chép trước (chỉ đọc tóm tắt) gọi bài này là "đối thủ trực tiếp nhất" và mô tả "21 E3 theo từng E3", "nhãn âm là peptide ngẫu nhiên", "chia 90/10 không kiểm soát đồng dạng". Audit cho thấy các câu đó **đúng một phần hoặc sai**; bảng kiểm từng câu ở [claims-verification.md](../../topics/degron-footprint/research/metadegron-analysis-2026-10-21/claims-verification.md). Nội dung dưới đây thay bản cũ.
 
 ---
 
@@ -53,8 +53,8 @@ Hai con số AUC **không cùng thang** (khác nhãn, đơn vị, cách gộp). 
 
 ## Việc còn mở
 
-Chạy MetaDegron-D/X trên GPS và ma trận mutant (cần runtime hoặc xin phép dùng server); xác minh quyền dùng nhãn ELM; adjudicate nguồn thực nghiệm cho toàn bộ dòng. Xem [recommendations.md](../../../topics/degron-footprint/research/metadegron-analysis-2026-10-21/recommendations.md).
+Chạy MetaDegron-D/X trên GPS và ma trận mutant (cần runtime hoặc xin phép dùng server); xác minh quyền dùng nhãn ELM; adjudicate nguồn thực nghiệm cho toàn bộ dòng. Xem [recommendations.md](../../topics/degron-footprint/research/metadegron-analysis-2026-10-21/recommendations.md).
 
 ---
 
-[← Danh mục bài báo](README.md) · [Về hub](../README.md)
+[← Danh mục bài báo](README.md) · Về hub

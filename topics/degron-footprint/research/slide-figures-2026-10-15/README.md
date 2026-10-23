@@ -1,7 +1,7 @@
 # Hình sinh từ dữ liệu cho bộ slide 16/10/2026
 
 > Việc số 2 trong bảng "Việc phải làm trước khi dựng slide" của
-> [slide-content-2026-10-15.md](../../presentation/slide-content-2026-10-15.md): **slide 16 cần một ví dụ
+> slide-content-2026-10-15.md: **slide 16 cần một ví dụ
 > ma trận 28×20 sinh từ dữ liệu, không được đặt số minh họa vào**.
 >
 > **Nhãn bằng chứng: tự đo.** Không có mô hình nào tham gia; đây là **nhãn thực nghiệm** đã dựng lại từ
@@ -50,14 +50,14 @@ tự nhiên: ΔPSI trung bình **−0,31**.
 **tái hiện một vị trí degron kinh điển** mà assay không hề được cho biết trước. Trên slide phải gắn nhãn
 `literature cross-check`, **không** trình bày như phát hiện mới.
 
-ℹ Chọn HIF1A là có chủ ý: theo [D-035](../../../../DECISIONS.md#d-035) nó là degron **duy nhất** trong 8 degron
+ℹ Chọn HIF1A là có chủ ý: theo D-035 nó là degron **duy nhất** trong 8 degron
 lái ung thư kinh điển **hiện ra** trong assay. Dùng nó làm ví dụ **không** đồng nghĩa quay lại mạch dẫn
 "đột biến lái ung thư" — mạch đó đã bị bỏ.
 
 ## Về train/test
 
 Brief yêu cầu "chọn peptide trong tập train". Trong thiết kế hiện hành — học trục ngữ cảnh trên **bộ quét**,
-xác nhận ma trận trên **bộ bão hòa** ([D-031](../../../../DECISIONS.md#d-031)) — thì **cả 91 peptide bão hòa đều
+xác nhận ma trận trên **bộ bão hòa** (D-031) — thì **cả 91 peptide bão hòa đều
 nằm phía đánh giá**; không tồn tại peptide bão hòa "trong tập train". Script vì vậy **ghi rõ trạng thái split**
 trong JSON thay vì giả định một tập train không có thật.
 

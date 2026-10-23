@@ -4,7 +4,7 @@
 > và đo những thứ trước đây chưa đo được. **Không huấn luyện mô hình nào.** Mọi số trong tài liệu
 > này trỏ tới file JSON kết quả cùng thư mục.
 >
-> Vị trí đề tài chỉ ghi ở [DECISIONS.md](../../../../DECISIONS.md). Tài liệu này là **bằng chứng**,
+> Vị trí đề tài chỉ ghi ở DECISIONS.md. Tài liệu này là **bằng chứng**,
 > không phải quyết định. Các đề xuất nêu ở mục 8 chờ Trọng xác nhận.
 
 ## Nhãn bằng chứng dùng trong tài liệu

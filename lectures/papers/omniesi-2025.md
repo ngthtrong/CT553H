@@ -1,4 +1,4 @@
-[← Danh mục bài báo](README.md) · [Về hub](../README.md)
+[← Danh mục bài báo](README.md) · Về hub
 
 # OmniESI 2025 — tiền lệ cho điều biến có điều kiện
 
@@ -30,4 +30,4 @@ Chỉ đọc tóm tắt, **chưa đọc toàn văn**. Trước khi dẫn bài n�
 
 ---
 
-[← Danh mục bài báo](README.md) · [Về hub](../README.md)
+[← Danh mục bài báo](README.md) · Về hub

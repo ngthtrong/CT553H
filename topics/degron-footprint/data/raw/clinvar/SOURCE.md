@@ -1,7 +1,7 @@
 # Xuất xứ — ClinVar `variant_summary.txt.gz`
 
 > Sổ xuất xứ của riêng bộ này. Bản tổng hợp ở [../../README.md](../../README.md).
-> File này **được lên git** (ngoại lệ `!**/data/**/SOURCE.md`, [D-030](../../../../../DECISIONS.md#d-030) mục 3).
+> File này **được lên git** (ngoại lệ `!**/data/**/SOURCE.md`, D-030 mục 3).
 
 ## 1. Nguồn gốc
 
@@ -16,7 +16,7 @@
 | Kích thước | 455.785.525 byte |
 | SHA-256 | `a5198a11b0e871c324fd5e800082fb1d4418301323b806cf9c98ee2421828218` |
 | Lệnh tải | `curl -sS -o variant_summary.txt.gz "https://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/variant_summary.txt.gz"` |
-| Mạng | Tải được từ WSL cục bộ. ⚠ `ftp.ncbi.nlm.nih.gov` **cần thêm vào Allowed domains** ở môi trường cloud ([resources §5](../../../../../resources/README.md)) |
+| Mạng | Tải được từ WSL cục bộ. ⚠ `ftp.ncbi.nlm.nih.gov` **cần thêm vào Allowed domains** ở môi trường cloud (resources §5) |
 
 ## 2. Giấy phép và điều khoản — nguyên văn
 
@@ -41,7 +41,7 @@ mục *"Disclaimer and data use policy"*:
 2. **Câu phủ nhận chẩn đoán phải đi theo đầu ra.** Chính ClinVar nói dữ liệu của họ *"not
    intended for direct diagnostic use or medical decision-making"*. Mọi chỗ ứng dụng của đề
    tài hiển thị chú giải ClinVar phải mang câu phủ nhận tương đương. Điều này **trùng** với
-   giới hạn mà [contribution-assessment §4.2](../../../research/contribution-assessment-2026-10-15.md)
+   giới hạn mà contribution-assessment §4.2
    đã chốt: công cụ của đề tài là **công cụ sàng lọc ưu tiên**, không phải công cụ quyết định.
 
 ⚠ **Chưa xác minh:** chưa tìm được một phát biểu rõ ràng của NCBI rằng bản thân bộ

@@ -1,4 +1,4 @@
-[← Danh mục bài báo](README.md) · [Về hub](../README.md)
+[← Danh mục bài báo](README.md) · Về hub
 
 # MaveDB — bộ dữ liệu 4, kiểm trên protein nguyên vẹn
 
@@ -28,7 +28,7 @@ Vì nó giải quyết **giới hạn lớn nhất của dữ liệu chính**: n
 
 MaveDB cho phép kiểm: mô hình học từ peptide tách rời có nói được gì về protein thật không?
 
-Đây cũng là lý do thiết kế **cổng phơi lộ** ở [bài 6](../06-proposed-solution.md): peptide tách rời → đặt cổng "phơi lộ hoàn toàn"; protein nguyên vẹn → đặt rASA thật. Cùng một mô hình chạy cả hai chế độ.
+Đây cũng là lý do thiết kế **cổng phơi lộ** ở bài 6: peptide tách rời → đặt cổng "phơi lộ hoàn toàn"; protein nguyên vẹn → đặt rASA thật. Cùng một mô hình chạy cả hai chế độ.
 
 ## Giới hạn phải nói rõ
 
@@ -39,9 +39,9 @@ Và: thang đo khác (độ dồi dào protein, không phải PSI 1–6), nên k
 ## Việc cần làm
 
 1. **Tải** — chưa làm.
-2. Kiểm xem 9 gene đó có trùng với protein nào trong tập huấn luyện không. Nếu trùng thì phải giữ cùng phía khi chia tập, giống cách xử lý 130/248 peptide trùng giữa bộ quét và bộ bão hòa ([bài 4](../04-datasets.md)).
+2. Kiểm xem 9 gene đó có trùng với protein nào trong tập huấn luyện không. Nếu trùng thì phải giữ cùng phía khi chia tập, giống cách xử lý 130/248 peptide trùng giữa bộ quét và bộ bão hòa (bài 4).
 3. Đối chiếu thang đo giữa hai nguồn trước khi so sánh bất cứ con số nào.
 
 ---
 
-[← Danh mục bài báo](README.md) · [Về hub](../README.md)
+[← Danh mục bài báo](README.md) · Về hub

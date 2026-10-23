@@ -1,4 +1,4 @@
-[← Danh mục bài báo](README.md) · [Về hub](../README.md)
+[← Danh mục bài báo](README.md) · Về hub
 
 # DEGRONOPEDIA 2024 — cơ sở dữ liệu và web degron
 
@@ -30,7 +30,7 @@ Hệ quả: **ứng dụng của đề tài phải khác biệt được, không
 
 DEGRONOPEDIA là công cụ **tra cứu cái đã biết**, không phải công cụ **dự đoán ảnh hưởng đột biến ở mức residue**. Nó không xuất ra ma trận vị trí × acid amin thay vào trên nhãn thực nghiệm.
 
-Đó là chỗ đề tài nên nhắm cho ứng dụng của mình — xem [bài 3 mục 5](../03-the-problem.md).
+Đó là chỗ đề tài nên nhắm cho ứng dụng của mình — xem bài 3 mục 5.
 
 ## Việc chưa làm
 
@@ -38,4 +38,4 @@ Chưa kiểm kỹ DEGRONOPEDIA có chức năng nào liên quan đến đột bi
 
 ---
 
-[← Danh mục bài báo](README.md) · [Về hub](../README.md)
+[← Danh mục bài báo](README.md) · Về hub

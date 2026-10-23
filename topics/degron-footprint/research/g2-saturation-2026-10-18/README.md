@@ -1,6 +1,6 @@
 # G2 — học trực tiếp trên ma trận bão hòa, 18/10/2026
 
-**[ĐO] Đã vượt mốc số 0,7693, nhưng chưa đủ căn cứ ghi hoàn tất toàn bộ G2.** Ridge M3 OOF đạt **0,8082**; ứng viên mạng có gate đạt **0,8002**, song thua ridge và hiệu ứng gate đảo dấu ở một seed. Tính mới kiến trúc chưa được xác lập. Trạng thái và điều kiện chính thức: [DECISIONS.md](../../../../DECISIONS.md#hien-hanh). Đây là báo cáo thực nghiệm, không thay đổi điều kiện nghiệm thu.
+**[ĐO] Đã vượt mốc số 0,7693, nhưng chưa đủ căn cứ ghi hoàn tất toàn bộ G2.** Ridge M3 OOF đạt **0,8082**; ứng viên mạng có gate đạt **0,8002**, song thua ridge và hiệu ứng gate đảo dấu ở một seed. Tính mới kiến trúc chưa được xác lập. Trạng thái và điều kiện chính thức: DECISIONS.md. Đây là báo cáo thực nghiệm, không thay đổi điều kiện nghiệm thu.
 
 ## 1. Đã thực hiện và tái lập
 

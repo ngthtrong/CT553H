@@ -2,7 +2,7 @@
 
 Viết **trước khi chạy** bất kỳ phép đo nào của phiên này. Không sửa tiêu chí sau khi xem kết quả; nếu phải sửa thì ghi thêm mục "sửa sau khi xem" kèm ngày và lý do, không ghi đè.
 
-Căn cứ: ba việc còn mở ở [báo cáo 18/10 §5](../g2-saturation-2026-10-18/README.md), điều kiện G2 ở [D-031](../../../../DECISIONS.md#d-031), ràng buộc nguồn ngoài ở [D-028](../../../../DECISIONS.md#d-028) mục 8.
+Căn cứ: ba việc còn mở ở [báo cáo 18/10 §5](../g2-saturation-2026-10-18/README.md), điều kiện G2 ở D-031, ràng buộc nguồn ngoài ở D-028 mục 8.
 
 ## Dùng chung cho cả ba thí nghiệm
 

@@ -2,7 +2,7 @@
 
 > Ngày **14/10/2026**. Script: [architecture_check.py](architecture_check.py) →
 > [architecture-check.json](architecture-check.json).
-> Trả lời rủi ro ghi ở [thẻ đề tài](../../README.md): "kiến trúc MIL/cổng cấu trúc trong các trang cũ
+> Trả lời rủi ro ghi ở thẻ đề tài: "kiến trúc MIL/cổng cấu trúc trong các trang cũ
 > **chưa được kiểm chứng**". Kiểm **tiền đề** của hai thành phần bằng dữ liệu đã có;
 > **không huấn luyện mô hình nào**, nên đây **không** phải bằng chứng kiến trúc sẽ thắng.
 >
@@ -14,7 +14,7 @@
 
 ## Hai tiền đề được kiểm, và hai tiền đề vẫn chưa kiểm được
 
-Kiến trúc đề xuất ở [topic-decision §5](../topic-decision.md) có năm thành phần. Phiên này kiểm **tiền
+Kiến trúc đề xuất ở topic-decision §5 có năm thành phần. Phiên này kiểm **tiền
 đề** của hai thành phần — tức điều kiện phải đúng để thành phần đó có lý do tồn tại:
 
 | Thành phần | Tiền đề | Kiểm được? |

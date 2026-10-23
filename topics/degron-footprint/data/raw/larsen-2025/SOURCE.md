@@ -1,6 +1,6 @@
 # Nguồn gốc — bộ nhân Larsen 2025 (`larsen-2025/`)
 
-Tải **15/10/2026** theo [C-10, chấp nhận ở D-028 mục 6](../../../../../DECISIONS.md#d-028).
+Tải **15/10/2026** theo C-10, chấp nhận ở D-028 mục 6.
 
 ## Xuất xứ
 
@@ -16,7 +16,7 @@ Tải **15/10/2026** theo [C-10, chấp nhận ở D-028 mục 6](../../../../..
 **Thông báo MIT bắt buộc giữ kèm:** Copyright (c) 2025 Linderstrøm-Lang Centre for Protein Science,
 University of Copenhagen. Toàn văn trong [LICENSE](LICENSE).
 
-⚠ **Chỗ mơ hồ pháp lý còn lại** ([C-11a, D-028 mục 7](../../../../../DECISIONS.md#d-028)): MIT nominally là giấy
+⚠ **Chỗ mơ hồ pháp lý còn lại** (C-11a, D-028 mục 7): MIT nominally là giấy
 phép **phần mềm** và deposit Zenodo đăng ký loại `Software`, nên về nguyên tắc có thể tranh luận MIT trao cho
 script chứ không cho file `.csv.gz`. Lập luận phản lại mạnh hơn: `LICENSE` ở gốc repo **không có ngoại lệ**, và
 README của repo gọi chính các file CSV là *"the main resulting data"*. **Đang chờ** một email xác nhận của tác giả.
@@ -59,7 +59,7 @@ cổng, so với GPS 6 bin) — **không** so trực tiếp con số giữa hai 
    `degron_score` ngược chiều PAP.
 2. **Đây là chỗ duy nhất rASA/pLDDT có phương sai thật** (SD 0,2334; gần một nửa tile có rASA > 0,7), khác
    hẳn tập huấn luyện chính của đề tài, nơi mọi peptide 28-mer đều phơi lộ như nhau nên tham số cổng phơi lộ
-   **không nhận diện được** ([C-8, D-028 mục 1](../../../../../DECISIONS.md#d-028)).
+   **không nhận diện được** (C-8, D-028 mục 1).
 3. **Số 63.258 không khớp bất kỳ con số nào in trong bài** (58.781 / 58.992 / 62.992 / 63.011 / 63.230) —
    bài **không nhất quán với chính nó**. Khi trích phải dùng **số đếm được từ file**, kèm ghi chú.
 

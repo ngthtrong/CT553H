@@ -2,7 +2,7 @@
 
 > **Cập nhật 12/10/2026:** đã tải lại hai ZIP scanning/saturation vào `topics/degron-footprint/data/raw/`, pin SHA-256 và chạy [audit thành phần–ngữ cảnh](../composition-context-audit.md). **2.046/2.624** footprint có vị trí cùng cặp thay thế nhưng chênh ΔPSI ≥1,0; cận kỳ vọng P@3 của score chỉ dựa thành phần là **0,6045**, oracle không ràng buộc là **0,7792**. Với cụm protein identity 30%, coverage hai chiều 50%, test khớp tham chiếu còn **221–301 footprint** qua 5 seed. Các nhận định cũ bên dưới rằng bất biến hoán vị khiến mô hình không thể dự đoán footprint **không đúng**; đọc báo cáo mới trước khi dùng lập luận đó. Gom theo cặp (WT, replacement), không chỉ WT, vì dữ liệu có ngoại lệ ở vị trí 25–27. 135.040 là số **định danh**, chưa phải số ΔPSI đã curate.
 
-> Ngày: **11/10/2026**. Mục đích: qua **cổng chặn số 2** của đề tài [`degron-e3-specificity`](../topic-decision.md) — đếm nhãn E3/adaptor **thực sự dùng được** thay vì dẫn lại con số "16 E3" từ bài báo.
+> Ngày: **11/10/2026**. Mục đích: qua **cổng chặn số 2** của đề tài `degron-e3-specificity` — đếm nhãn E3/adaptor **thực sự dùng được** thay vì dẫn lại con số "16 E3" từ bài báo.
 >
 > Kết luận ngắn: **cổng 2 KHÔNG QUA** cho thành phần có điều kiện E3, nhưng **nhãn theo residue lớn hơn tài liệu trước của repo ghi rất nhiều**. Chi tiết ở mục 3 và 4.
 
@@ -207,4 +207,4 @@ Tiền lệ gần nhất về **phương pháp luận** nằm ngoài bài toán 
 
 **Giữ được ở quy mô nhỏ:** 23 peptide có cả nhãn E3 và bản đồ đột biến bão hòa → ca nghiên cứu; cả 13 peptide được gán KLHL15 nằm trong giao này, là lớp duy nhất đạt ngưỡng 5. Vẫn cần lọc chất lượng nhãn và chia tập trước khi chấm điểm.
 
-Quyết định thuộc về sinh viên, không phải của ghi chú này. Ba lựa chọn đã trình bày ở [nhật ký](../../../../journal/README.md).
+Quyết định thuộc về sinh viên, không phải của ghi chú này. Ba lựa chọn đã trình bày ở nhật ký.

@@ -1,4 +1,4 @@
-[← Danh mục bài báo](README.md) · [Về hub](../README.md)
+[← Danh mục bài báo](README.md) · Về hub
 
 # Larsen 2025 — degron của yếu tố phiên mã
 
@@ -13,7 +13,7 @@
 
 ## Vì sao phải đọc bài này trước mọi thứ khác
 
-Vì nó là bài **gần đề tài nhất**. Nếu nó đã làm đúng việc đề tài định làm thì đề tài hết chỗ. Đọc toàn văn là một trong ba **cổng chặn** phải qua trước khi chốt đề tài ([topic-decision.md mục 7](../../../topics/degron-footprint/research/topic-decision.md)).
+Vì nó là bài **gần đề tài nhất**. Nếu nó đã làm đúng việc đề tài định làm thì đề tài hết chỗ. Đọc toàn văn là một trong ba **cổng chặn** phải qua trước khi chốt đề tài (topic-decision.md mục 7).
 
 ## Kết quả: cổng chặn **ĐÃ QUA, theo hướng thuận**
 
@@ -36,13 +36,13 @@ Họ dùng PAP cùng ESM-1b chỉ để **so sánh biến thể CRX**. Phần nh
 
 **1. Họ đã dùng cấu trúc.** Đã tính **rASA và pLDDT** từ AlphaFold2 kèm DSSP. Điểm degron so với rASA \|r\| = **0,41**, so pLDDT \|r\| = **0,36** trên toàn thư viện; 32% degron có rASA > 0,7 và 40% có pLDDT < 70.
 
-**1b. Họ đã tìm ra hiện tượng ΔPAP đổi dấu** (bổ sung 14/10/2026, [tra y văn](../../../topics/degron-footprint/research/architecture-check/prior-art-exposure-gate.md)). Trên CRX, tách theo vùng: ΔPAP Pearson **0,54** trong vùng vô định hình so với **−0,19** trong homeodomain đã gấp (ESM-1b đi ngược: 0,31 và 0,52). Nên phép đo của repo ngày 14/10 trên 6 protein MaveDB là **xác nhận lại ở quy mô lớn hơn**, không phải phát hiện. Nhãn của họ là transactivation, không phải độ dồi dào, và chính họ ghi là khó tách hai thứ.
+**1b. Họ đã tìm ra hiện tượng ΔPAP đổi dấu** (bổ sung 14/10/2026, [tra y văn](../../topics/degron-footprint/research/architecture-check/prior-art-exposure-gate.md)). Trên CRX, tách theo vùng: ΔPAP Pearson **0,54** trong vùng vô định hình so với **−0,19** trong homeodomain đã gấp (ESM-1b đi ngược: 0,31 và 0,52). Nên phép đo của repo ngày 14/10 trên 6 protein MaveDB là **xác nhận lại ở quy mô lớn hơn**, không phải phát hiện. Nhãn của họ là transactivation, không phải độ dồi dào, và chính họ ghi là khó tách hai thứ.
 → **"Dùng cấu trúc" không còn là phần mới của đề tài.**
 
 **2. Họ đã làm bản đồ thay thế *in silico*.** Đã tính ΔPAP cho **mọi đột biến điểm** trong một vùng của HSF1.
 → **"Giải thích biến thể bằng bản đồ thay thế" không còn là phần mới.**
 
-Hệ quả cho đề tài: chỗ mới phải nằm ở **nơi đặt** cổng phơi lộ (tại bước gộp, không phải đầu vào) và ở **chỗ ghép** các cơ chế — xem [bài 6 mục 4](../06-proposed-solution.md).
+Hệ quả cho đề tài: chỗ mới phải nằm ở **nơi đặt** cổng phơi lộ (tại bước gộp, không phải đầu vào) và ở **chỗ ghép** các cơ chế — xem bài 6 mục 4.
 
 ## Một bộ dữ liệu bài này mở ra — đã kiểm giấy phép và nội dung, 15/10
 
@@ -72,7 +72,7 @@ Thư viện **nhân** (nuclear), khác khoang tế bào so với bộ bào tươ
 
 **Chỗ mơ hồ duy nhất còn lại:** MIT nominally là giấy phép *phần mềm*, và Zenodo đăng ký loại "Software". Lập luận phản lại mạnh hơn: file `LICENSE` ở gốc repo **không có ngoại lệ**, và README gọi hai file CSV là *"the main resulting data"*. Trên cân, MIT đọc ra là phủ toàn repo `[phân tích]` — nhưng **một email xác nhận xoá sạch chỗ này**, gửi `rhpetersen@bio.ku.dk` (cc `lindorff@bio.ku.dk`) `[đề xuất]`.
 
-**An toàn / rủi ro, xét trên thực tế repo đang private** ([D-004](../../../DECISIONS.md#d-004)) `[phân tích]`, **không phải tư vấn pháp lý**:
+**An toàn / rủi ro, xét trên thực tế repo đang private** (D-004) `[phân tích]`, **không phải tư vấn pháp lý**:
 
 - **An toàn:** tải CSV từ GitHub, huấn luyện trên điểm, báo chỉ số tổng hợp, trích DOI. Nếu phát hành lại bảng đã xử lý thì kèm thông báo MIT (`data/raw/SOURCE.md`) — nhưng quy ước repo đã chặn `data/` khỏi git nên câu hỏi chưa phát sinh.
 - **Rủi ro, nên tránh:** phát hành lại **chính `SupplementalDataFile.xlsx` của bioRxiv** (mang CC BY-NC-ND); **sao panel hình** rồi cắt/đổi màu/dịch chú thích — đó là bản phái sinh mà ND cấm chia sẻ, nên cách an toàn là **tự vẽ lại từ dữ liệu**; và dùng archive ERDA cho bất cứ việc gì ngoài đọc.
@@ -97,15 +97,15 @@ Thư viện **nhân** (nuclear), khác khoang tế bào so với bộ bào tươ
 Ba giá trị thật `[phân tích]`:
 
 1. **Test chuyển assay / chuyển ngăn ở mức tile, rất rẻ** — chú giải PAP/ADPred/rASA/pLDDT **đã tính sẵn**, nên không cần chạy AlphaFold hay DSSP. Mốc phải vượt: **PAP Pearson 0,79 / Spearman 0,80** trên tile TF, do chính tác giả đo (so với 0,87 trên holdout bào tương của PAP) — một **ước lượng chi phí chuyển ngăn** mà đề tài có thể trích. Phải gọi đúng tên là "test chuyển assay/chuyển ngăn", **không** phải "test trình tự chưa thấy".
-2. **Chỗ duy nhất rASA/pLDDT *có phương sai*** — và đây là phát hiện giá trị nhất. Cổng phơi lộ không huấn luyện được trên nhiệm vụ chính vì peptide 28-mer gắn GFP đều phơi lộ như nhau ([C-8](../../../DECISIONS.md)). Bộ nhân thì khác: **32%** tile degron có rASA > 0,7, **40%** có pLDDT < 70, tương quan 0,41 / 0,36 `[nguồn]`. Đó biến "cơ chế chuyển giao" từ một lời khẳng định thành một con số đo được, ở mức tile.
+2. **Chỗ duy nhất rASA/pLDDT *có phương sai*** — và đây là phát hiện giá trị nhất. Cổng phơi lộ không huấn luyện được trên nhiệm vụ chính vì peptide 28-mer gắn GFP đều phơi lộ như nhau (C-8). Bộ nhân thì khác: **32%** tile degron có rASA > 0,7, **40%** có pLDDT < 70, tương quan 0,41 / 0,36 `[nguồn]`. Đó biến "cơ chế chuyển giao" từ một lời khẳng định thành một con số đo được, ở mức tile.
 3. **Hai phép so chưa tìm thấy ai làm, đều rẻ:** QCDPred ↔ thư viện nhân (QCDPred **không xuất hiện** trong bài Larsen), và PAP tính lại trên **≈ 50.136 tile không chồng** để có con số 0,79 "sạch".
 
 **Rủi ro rò rỉ phải nêu:** 230/242 protein dùng chung với thư viện bào tương nằm trong **tập train của PAP** `[đo]`. Nhưng rò rỉ thực tế cho đề tài **thấp hơn** con số 97,4% gợi ý, vì nhãn footprint mức residue chỉ nằm trên bộ quét và bộ bão hòa — ở đó chỉ **31,2%** TF có mặt, với 688 peptide WT. Và kiểm theo tên: **ASCL1, FOXC1, TP73, KMT2A** có trong bộ quét; **HSF1, CRX, ZNF140, YBX1, NFE2L1 không có** — phần lớn ví dụ chính của bài Larsen **không** trùng nhãn footprint của đề tài `[đo]`.
 
 > **Và nó vẫn là tiền ấn phẩm chưa bình duyệt sau 17 tháng** (Crossref `relation: {}`, bioRxiv `published: "NA"`, kiểm 15/10). Phải trích là preprint. Bài **chị em** về bào tương thì **đã công bố**: Voutsinos et al., *Science Advances* 12(6), 06/02/2026, giấy phép **CC BY-NC** (không ND) `[đọc]`.
 
-Chi tiết đầy đủ: [báo cáo 15/10](../../../topics/degron-footprint/research/larsen-nuclear-and-risks-2026-10-15/README.md) mục 2–4.
+Chi tiết đầy đủ: [báo cáo 15/10](../../topics/degron-footprint/research/larsen-nuclear-and-risks-2026-10-15/README.md) mục 2–4.
 
 ---
 
-[← Danh mục bài báo](README.md) · [Về hub](../README.md)
+[← Danh mục bài báo](README.md) · Về hub

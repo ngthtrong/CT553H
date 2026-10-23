@@ -1,4 +1,4 @@
-[← Danh mục bài báo](README.md) · [Về hub](../README.md)
+[← Danh mục bài báo](README.md) · Về hub
 
 # ELITE 2025 và E3TargetPred — xếp hạng E3 cho substrate
 
@@ -38,4 +38,4 @@ Nhưng **chỉ nêu sau khi đọc toàn văn**. Hiện là [CHƯA KIỂM].
 
 ---
 
-[← Danh mục bài báo](README.md) · [Về hub](../README.md)
+[← Danh mục bài báo](README.md) · Về hub

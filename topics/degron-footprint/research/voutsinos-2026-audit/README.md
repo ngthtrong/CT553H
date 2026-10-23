@@ -1,6 +1,6 @@
 # Ghi chú audit: bản đồ degron bào tương (Voutsinos 2026)
 
-> Ngày: **11/10/2026**. Phục vụ [báo cáo ứng viên đề tài degron](../topic-report/index.html) ([bản publish](https://claude.ai/artifact/XAXzVcA6ot1eVVk4927suc)). Chỉ audit dữ liệu và mã công khai; **chưa huấn luyện mô hình nào, chưa chạy lại baseline**.
+> Ngày: **11/10/2026**. Phục vụ báo cáo ứng viên đề tài degron ([bản publish](https://claude.ai/artifact/XAXzVcA6ot1eVVk4927suc)). Chỉ audit dữ liệu và mã công khai; **chưa huấn luyện mô hình nào, chưa chạy lại baseline**.
 
 ## Nguồn dữ liệu
 
@@ -37,7 +37,7 @@ Script chỉ dùng thư viện chuẩn Python, không cần cài gì.
 
 ## Cập nhật 11/10/2026 (muộn): tái lập mô hình và ba phép đo quyết định
 
-**Đề tài đã chốt** — xem [topic-decision.md](../topic-decision.md).
+**Đề tài đã chốt** — xem topic-decision.md.
 
 ### Tái lập PAP bằng numpy, khớp cả hai con số công bố
 

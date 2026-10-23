@@ -1,6 +1,6 @@
 # G2 — mở rộng, 18/10/2026: ba câu hỏi còn mở của báo cáo bão hoà
 
-Tiếp nối [benchmark bão hoà cùng ngày](../g2-saturation-2026-10-18/README.md) §5. Tiêu chí của cả ba thí nghiệm được chốt **trước khi chạy** ở [PREREGISTRATION.md](PREREGISTRATION.md); phần này chỉ báo kết quả, không sửa tiêu chí. Trạng thái và điều kiện chính thức vẫn ở [DECISIONS.md](../../../../DECISIONS.md#hien-hanh).
+Tiếp nối [benchmark bão hoà cùng ngày](../g2-saturation-2026-10-18/README.md) §5. Tiêu chí của cả ba thí nghiệm được chốt **trước khi chạy** ở [PREREGISTRATION.md](PREREGISTRATION.md); phần này chỉ báo kết quả, không sửa tiêu chí. Trạng thái và điều kiện chính thức vẫn ở DECISIONS.md.
 
 **[ĐO] Kết quả một dòng.** Mốc số 0,7693 **đã vượt** và vẫn vững, nhưng cả ba câu hỏi còn lại đều trả lời **theo hướng bất lợi cho tuyên bố kiến trúc**: (E1) bỏ hết phần dữ liệu trùng khít, Degformer vẫn **0,9227** nên chồng khít **không** giải thích được khoảng cách; (E2) **cả ba** ứng viên tương tác tiền đăng ký đều **thua ridge thường** ở mọi seed; (E3) chính kiến trúc Degformer, huấn luyện lại dưới cov80 với cùng ngân sách nhãn, chỉ đạt **0,7500** — thua ridge **và** thua cả ΔPAP đóng băng.
 
@@ -82,7 +82,7 @@ Ghép với E2 — bốn cơ chế tương tác đều thua một mô hình tuy�
 | Đối chứng Degformer sạch | chưa | **một nửa**: kiến trúc của nó dưới cov80 cùng ngân sách nhãn đã đo (**0,7500**, E3); bản **giữ nguyên tiền huấn luyện 569k dòng nhưng loại cụm test** thì vẫn chưa — ước lượng ≈70 giờ CPU trên máy này |
 | Bằng chứng xác nhận cuối cùng | chưa | vẫn chưa; tất cả vẫn là benchmark phát triển OOF |
 
-**Việc tiếp theo mà ba kết quả này chỉ tới** (đề xuất, chưa được Trọng quyết — xem [C](../../../../DECISIONS.md#cho-xac-nhan)): đo **đường cong học theo số cụm huấn luyện** để xác nhận trực tiếp rằng nút thắt là lượng nhãn, rồi thử **tiền huấn luyện trên nhãn mức túi** (260k peptide / 212k tile) và tinh chỉnh trên bão hoà. Đây đúng là giả thuyết "giám sát yếu" mà [D-031](../../../../DECISIONS.md#d-031) đã đặt làm chỗ của tính mới; ba kết quả âm trên phiên này khiến nó thành **đường găng**, không còn là một nhánh tuỳ chọn.
+**Việc tiếp theo mà ba kết quả này chỉ tới** (đề xuất, chưa được Trọng quyết — xem C): đo **đường cong học theo số cụm huấn luyện** để xác nhận trực tiếp rằng nút thắt là lượng nhãn, rồi thử **tiền huấn luyện trên nhãn mức túi** (260k peptide / 212k tile) và tinh chỉnh trên bão hoà. Đây đúng là giả thuyết "giám sát yếu" mà D-031 đã đặt làm chỗ của tính mới; ba kết quả âm trên phiên này khiến nó thành **đường găng**, không còn là một nhánh tuỳ chọn.
 
 Không nới cổng G2. Không ghi G2 hoàn tất. Không ghi quyết định mới ở B1/B2 trong phiên này.
 
@@ -94,4 +94,4 @@ OMP_NUM_THREADS=4 .venv/bin/python -I topics/degron-footprint/research/g2-extens
 OMP_NUM_THREADS=4 .venv/bin/python -I topics/degron-footprint/research/g2-extension-2026-10-18/run_ext.py degformer_arch
 ```
 
-Dùng lại cache `data/processed/g2-saturation-input.npz` của báo cáo buổi sáng, không tạo nguồn dữ liệu mới. Checkpoint và dự đoán ghi vào `data/processed/` và bị gitignore; JSON kết quả nằm trong thư mục này. Nguồn Degformer vẫn đọc từ `data/raw/degformer-isolated/` theo commit ghim, chạy bằng `python -I`, đúng ràng buộc [D-028](../../../../DECISIONS.md#d-028) mục 8.
+Dùng lại cache `data/processed/g2-saturation-input.npz` của báo cáo buổi sáng, không tạo nguồn dữ liệu mới. Checkpoint và dự đoán ghi vào `data/processed/` và bị gitignore; JSON kết quả nằm trong thư mục này. Nguồn Degformer vẫn đọc từ `data/raw/degformer-isolated/` theo commit ghim, chạy bằng `python -I`, đúng ràng buộc D-028 mục 8.

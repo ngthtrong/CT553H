@@ -62,7 +62,7 @@ Báo thêm (mô tả, **không** quyết định): AUROC từng nhánh/từng se
 
 ## 7. Dự đoán tiền đăng ký
 
-`[ĐỀ XUẤT]` Dự đoán ban đầu: **A sẽ không đạt** (CI phủ 0). Lý do: (i) nhãn tile là assay khác, mức tile chứ không mức đột biến, nên tiền huấn luyện chỉ dạy mạng phân bố "residue ở ngữ cảnh nào gắn với degron" mà không dạy chiều của một phép thay; (ii) [learning-curve](../learning-curve-2026-10-22/README.md) cho thấy mạng đã gần tiệm cận của mình ở ext 4,0 (0,8154 so với ridge 0,8208); (iii) [cross-assay gap](../reframe-options-2026-10-15/README.md) §9 đo khoảng cách qua assay 0,0773 AUROC. Nếu dự đoán sai theo chiều A đạt, vẫn đọc theo bảng ở §6 chứ không phóng đại.
+`[ĐỀ XUẤT]` Dự đoán ban đầu: **A sẽ không đạt** (CI phủ 0). Lý do: (i) nhãn tile là assay khác, mức tile chứ không mức đột biến, nên tiền huấn luyện chỉ dạy mạng phân bố "residue ở ngữ cảnh nào gắn với degron" mà không dạy chiều của một phép thay; (ii) [learning-curve](../learning-curve-2026-10-22/README.md) cho thấy mạng đã gần tiệm cận của mình ở ext 4,0 (0,8154 so với ridge 0,8208); (iii) cross-assay gap §9 đo khoảng cách qua assay 0,0773 AUROC. Nếu dự đoán sai theo chiều A đạt, vẫn đọc theo bảng ở §6 chứ không phóng đại.
 
 ## 8. Giới hạn đã biết trước
 

@@ -2,7 +2,7 @@
 
 > Ngày **15/10/2026 (phiên 8)**. Chạy theo yêu cầu của Trọng: *tiến hành thực hiện đề xuất C-15,
 > nghiên cứu thêm để giảm thiểu rủi ro và trình bày được đóng góp rõ ràng*.
-> Quyết định chấp nhận C-15 ghi ở [D-031](../../../../DECISIONS.md#d-031).
+> Quyết định chấp nhận C-15 ghi ở D-031.
 >
 > Script: [residue_data.py](residue_data.py) (nạp nhãn) · [derisk.py](derisk.py) (sáu lệnh con).
 > Kết quả: [ladder.json](ladder.json) · [identify.json](identify.json) · [model.json](model.json) ·
@@ -32,7 +32,7 @@ Mốc M0 chỉ-thành-phần **hoà** ΔPAP `cnn2w7` (+0,0008, CI [−0,0057; 0,
 
 ## 1. Thiết kế: hai nguồn nhãn mức residue, không phải một
 
-[D-028](../../../../DECISIONS.md#d-028) mục 5 nói bộ bão hòa là nguồn **duy nhất** đỡ được mức residue.
+D-028 mục 5 nói bộ bão hòa là nguồn **duy nhất** đỡ được mức residue.
 Phép đo phiên này cho thấy phát biểu đó cần **nói chính xác hơn**: có **hai** nguồn nhãn **hiệu ứng đột
 biến**, và chúng có hai vai khác nhau. **[đo]**
 
@@ -99,7 +99,7 @@ Bộ quét để so: 1.599 cụm ⇒ SE 0,0009–0,0013, **MDE 0,0025–0,0036**
 
 ## 3. Việc chặn thứ hai: rủi ro LeBlanc, đo trên **đúng loại nhãn** **[đo]**
 
-[reframe §11.2](../reframe-options-2026-10-15/README.md) đã xác nhận rủi ro LeBlanc **là thật** — nhưng trên
+reframe §11.2 đã xác nhận rủi ro LeBlanc **là thật** — nhưng trên
 nhãn **PSI mức peptide**. Phiên này chạy **đúng khuôn đó** (bootstrap theo cụm, |μ|/SD từng hệ số, đồng
 thuận dấu) trên nhãn **hiệu ứng đột biến**, với véc-tơ trọng số **ngữ cảnh cục bộ** (6 lệch vị trí × 20 acid
 amin, cửa sổ ±3).
@@ -269,10 +269,10 @@ ngưỡng phát hiện tính trước; chỗ chưa thắng được **nói ra** 
 | Lực trên n = 91 | **việc chặn** | ✅ **Giải quyết.** MDE 0,0123; 89 cụm; 1.416 ô độc lập hiệu dụng |
 | Đơn vị suy luận là cụm | cảnh báo "dương giả > 45%" | ✅ Ở bộ bão hòa hầu như **không phạt** (91 → 89) |
 | LeBlanc "thành phần > vị trí" | **rủi ro số một, đã xác nhận là thật** | ⚠ **Khoanh được**: thật trên nhãn peptide, giảm từ 56× xuống 2,2× trên nhãn đột biến |
-| Nhãn residue chỉ lặp lại ~một nửa | Jaccard 0,4965 (bộ quét) | Giữ nguyên, nhưng trần **AUROC** là 0,9458/0,9519, và đó là thước đo đã chốt ([D-028](../../../../DECISIONS.md#d-028) mục 2) |
+| Nhãn residue chỉ lặp lại ~một nửa | Jaccard 0,4965 (bộ quét) | Giữ nguyên, nhưng trần **AUROC** là 0,9458/0,9519, và đó là thước đo đã chốt (D-028 mục 2) |
 | **Mới: thua ΔPAP trên ma trận bão hòa** | chưa biết | ⚠ **−0,0420.** Thành mục tiêu G2 có số |
 | **Mới: "MIL so với đầu theo vị trí" là lý lẽ yếu** | ghi là "chưa tìm thấy tiền lệ" | ⚠ Phải đổi lý do sang **giám sát yếu từ nhãn mức túi** (§5.1) |
-| Nguồn nhãn mức residue chỉ có một nhóm tác giả | chưa nêu | ⚠ **Mới.** Cả bộ quét và bộ bão hòa đều của Zhang 2023. Xem [C-16](../../../../DECISIONS.md) |
+| Nguồn nhãn mức residue chỉ có một nhóm tác giả | chưa nêu | ⚠ **Mới.** Cả bộ quét và bộ bão hòa đều của Zhang 2023. Xem C-16 |
 
 ---
 
@@ -300,7 +300,7 @@ Ba điều phải kiểm **trước** khi coi là việc:
    nhãn cùng loại.
 2. **Giấy phép chưa rõ.** Điểm từng biến thể nằm ở *Source data* / Supplementary của Nature Genetics; phần
    deposit công khai (GEO `GSE299075`, EGA `EGAS00001005364`) là **RNA-seq**, không phải bảng điểm. Code ở
-   Zenodo `10.5281/zenodo.17940132` — ⚠ và [resources §4](../../../../resources/README.md) ghi **Zenodo trả
+   Zenodo `10.5281/zenodo.17940132` — ⚠ và resources §4 ghi **Zenodo trả
    403 từ mạng này**.
 3. **Cỡ nhỏ:** 342 ô trên **một** degron, 18 vị trí ⇒ đủ làm **đối chứng ngoài**, **không** đủ huấn luyện.
 
@@ -309,9 +309,9 @@ Ba điều phải kiểm **trước** khi coi là việc:
 ## 8b. Mâu thuẫn với file slide viết cùng ngày — **đã ghi, chưa sửa**
 
 Trong lúc phiên này chạy, một phiên khác viết
-[`presentation/slide-content-2026-10-15.md`](../../presentation/slide-content-2026-10-15.md) (13:54). File đó
+`presentation/slide-content-2026-10-15.md` (13:54). File đó
 viết **trước khi** phiên này đo xong, nên có **năm chỗ** nay sai. Claude **không sửa** file trình bày khi chưa
-được yêu cầu; danh sách đầy đủ nằm ở [mục A của DECISIONS.md](../../../../DECISIONS.md).
+được yêu cầu; danh sách đầy đủ nằm ở mục A của DECISIONS.md.
 
 Chỗ **nghiêm trọng nhất**: file đó "cam kết trước" rằng MDE ở n = 91 là **≈ 0,071** và vì thế *"phần lớn
 ablation sẽ không phân biệt được"*. Số đo thật là **0,0123** — nếu đem bản đó trình bày thì đề tài **tự hạ
