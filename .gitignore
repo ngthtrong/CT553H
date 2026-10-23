@@ -43,3 +43,14 @@ dist/
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+
+# Ứng dụng (topics/*/system/app): CSDL sinh ra khi chạy, độ phủ, kết quả kiểm thử. Không bao giờ đưa lên git
+# (dev.db 453 MB và idem.db 122 MB đã từng lọt vào một commit vì `.data/` có dấu chấm không khớp `**/data/**`).
+**/.data/
+**/.coverage
+**/test-results/
+**/coverage/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/.hypothesis/
