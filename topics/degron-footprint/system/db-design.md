@@ -108,11 +108,13 @@ The effect model was trained only on peptides with intrinsic `PSI(WT) <= 4.0` (h
 | `measured_in_domain` | Measured tile PSI present, `reads >= 10`, `psi <= 4.0` | 1 | GPS peptidome screen, replicate 1 |
 | `measured_out_of_domain` | Measured tile PSI present, `reads >= 10`, `psi > 4.0` (stable tile) | 1 | same |
 | `measured_unreliable` | Tile is in the screen but `reads < 10` or PSI is `NA` | 1 | same |
-| `predicted_in_domain` | Gate model predicts `PSI(WT) <= 4.0` | 2 | **gate model (R3), not available yet** |
-| `predicted_out_of_domain` | Gate model predicts `PSI(WT) > 4.0` | 2 | **gate model (R3), not available yet** |
+| `predicted_in_domain` | Gate model predicts `PSI(WT) <= 4.0` | 2 | **gate model (R3): delivered, not yet loaded** |
+| `predicted_out_of_domain` | Gate model predicts `PSI(WT) > 4.0` | 2 | **gate model (R3): delivered, not yet loaded** |
 | `unknown` | No measurement and no gate model (user-typed sequence, or tile outside the screen) | — | — |
 
-Until R3 delivers a frozen gate model, no row has a `predicted_*` status and every unscreened tile and every user-typed sequence is `unknown`. The API must treat `unknown` as "score with a prominent warning" and `measured_out_of_domain` as "refuse by default" (see [api-spec.md](api-spec.md) §5, decision D-5 in [README.md](README.md)).
+**Update 23 Oct 2026:** experiment R3 has run ([report](../research/r3-domain-gate-2026-10-22/README.md)) and both tiers passed their pre-registered criteria. It also showed that the raw threshold `psi <= 4.0` must not be applied to the *screen* PSI (specificity 0.20): the screen PSI is mapped through a logistic model, with cuts x <= 2.687 (in) and x >= 3.110 (out) for tier 1, and a ridge model on residue and adjacent-pair counts with cuts x̂ <= 3.700 and x̂ >= 4.426 for typed sequences. A third state, `borderline` (0.5 <= P < 0.8), exists in both tiers. Integration into the app is **not done yet** (see `app/DEVIATIONS.md`).
+
+Until the gate model is loaded, no row has a `predicted_*` status and every unscreened tile and every user-typed sequence is `unknown`. The API must treat `unknown` as "score with a prominent warning" and `measured_out_of_domain` as "refuse by default" (see [api-spec.md](api-spec.md) §5, decision D-5 in [README.md](README.md)).
 
 `[CHƯA XÁC MINH]` The measured tile PSI comes from **one replicate** of the screen, while the training threshold applies to an *intrinsic* wild-type PSI (median of synonymous substitutions averaged over two replicates of the saturation library). The two quantities are not the same estimator. The ETL stores the measured value as is and the UI labels it "measured tile PSI (replicate 1)"; whether 4.0 is the right gate threshold for it is an open question for R3.
 

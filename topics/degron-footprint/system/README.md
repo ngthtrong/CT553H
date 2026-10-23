@@ -14,7 +14,7 @@ Design documents of the web tool that wraps the frozen research model (v1: `m3-e
 | [test-plan.md](test-plan.md) | Test levels and ids (UT, PB, RG, API, ETL, E2E, NF, SEC, A11Y, DEP), environments, mapping to Chapter 4 | Verification |
 | [chapter-sync.md](chapter-sync.md) | **Proposed** edits to thesis Chapters 1 and 3 — not applied | What the author must approve |
 
-Planned, not yet created: `app/` (code), see §4.
+The code lives in [app/](app/README.md) (backend, ETL, frontend, tests; state in §3); layout in §4.
 
 **Reading order:** this file → `srs.md` §1–3 → `db-design.md` §3–4 → `openapi.yaml` + `api-spec.md` → `ui-design.md` → `test-plan.md`. Implementers of the backend need `db-design`, `openapi.yaml`, `api-spec`; of the frontend, `openapi.yaml`, `api-spec`, `ui-design`.
 
@@ -26,8 +26,8 @@ Planned, not yet created: `app/` (code), see §4.
 | D-2 | Predictions are **stateless**; a row is stored only on an explicit share request, ≤ 30 days | Chapter 1 forbids keeping sequences beyond the session unless stated; no accounts, so no personal data |
 | D-3 | Nothing is precomputed; scores are computed per request | 116,702 degron tiles × 532 cells ≈ 62 million rows would add nothing, since a score is one dot product |
 | D-4 | A tile is 28 residues, step 23, numbered from 1 | Taken from `predict.py` and the GPS screen id convention |
-| D-5 | Domain gate in two tiers: *measured* tile PSI from the GPS screen now; *predicted* from a gate model (R3) later. `measured_out_of_domain` is **refused unless the user overrides**; `unknown` is scored with a prominent warning | The model cannot tell by itself that a tile is stable. Chapter 1 asks for a refusal. The override and the `unknown` case are additions that need approval (chapter-sync C1-3) |
-| D-6 | Typed sequences are never matched to stored tiles | Avoids the server inferring and retaining information about input; gate for typed sequences waits for R3 |
+| D-5 | Domain gate in two tiers: *measured* tile PSI from the GPS screen now; *predicted* from the R3 gate model (delivered 23 Oct, not yet integrated). `measured_out_of_domain` is **refused unless the user overrides**; `unknown` is scored with a prominent warning | The model cannot tell by itself that a tile is stable. Chapter 1 asks for a refusal. The override and the `unknown` case are additions that need approval (chapter-sync C1-3) |
+| D-6 | Typed sequences are never matched to stored tiles | Avoids the server inferring and retaining information about input; the R3 gate for typed sequences exists but is not yet wired in |
 | D-7 | Share token is returned once, stored only as SHA-256, and carried in the URL **fragment** and the `X-Share-Token` header | Keeps it out of access logs and the database |
 | D-8 | Measured ΔPSI overlay is labelled "included in the training data" | The 176 peptides are the training set; presenting them as validation would be false |
 | D-9 | The service package and `predict.py` stay two independent implementations of the features; the API test compares them | Keeps back-to-back testing meaningful |
@@ -57,13 +57,13 @@ Planned, not yet created: `app/` (code), see §4.
 | **Reference host (2 vCPU / 2 GB)** | Latency and memory were measured on a shared laptop over loopback | NF-01…NF-06 on the chosen host, over TLS |
 | **Browsers other than Chromium**, colour-blind simulation (A11Y-03) | Only Chromium 156 and axe were run | Firefox and WebKit in Playwright; a simulation tool |
 | Tile numbering of the GPS screen vs UniProt 2026_03 | ETL-04 proves it for the 176 training peptides only; 16,266 screen rows sit just after the last full window (C-terminal tile, not served) | Decide whether to serve end-aligned tiles |
-| Gate threshold: tile PSI (one replicate) ≤ 4.0 vs *intrinsic* PSI(WT) (two replicates) ≤ 4.0 | Different estimators | Experiment R3; until then the UI shows "measured tile PSI (replicate 1)" |
+| Gate threshold: tile PSI (one replicate) ≤ 4.0 vs *intrinsic* PSI(WT) (two replicates) ≤ 4.0 | Different estimators | **Answered by R3 (22 Oct): the raw 4.0 threshold is wrong on screen PSI; use the logistic cuts above.** The app still applies 4.0 — to be changed |
 | GEO Table S1 terms | Recorded as "GEO terms (public)" only | Read the GEO policy and write it into `data/README.md` before any public release |
 | Free-tier and VPS limits | Provider terms change | Read the provider's current limits when choosing |
 | Wording "weakens the degron signal" | Interpretation of ΔPSI ≥ 1 for the interface | Supervisor review |
 | Chapter 1 amendments | Not approved | `chapter-sync.md` |
 
-## 4. Planned layout of `app/`
+## 4. Layout of `app/`
 
 ```
 app/

@@ -61,7 +61,7 @@ A three-tier web application (browser SPA, REST API, relational database) around
 1. **Model domain.** The model was trained only on peptides with intrinsic wild-type PSI ≤ 4.0 and is valid only for 28-residue internal tiles of the GPS assay. It cannot detect a stable tile by itself.
 2. **Evidence level.** All reported performance (AUROC about 0.82, Brier 0.0925 against 0.1272 for the raw score) comes from a development OOF benchmark on data that have been examined many times. It is **not** an external validation, and the tool never says it is.
 3. **Probability meaning.** The calibration is somewhat low (about 13 % relative) on peptides of the original benchmark domain; ranking is unaffected. The model card states this.
-4. **Gate model.** A model that predicts the wild-type PSI of an arbitrary tile (experiment R3) does not exist yet. Until it does, domain status for typed sequences is `unknown`.
+4. **Gate model.** Experiment R3 delivered a gate model for arbitrary tiles (22 Oct 2026; tier 2 AUROC 0.815, see its report). Until it is integrated, domain status for typed sequences is `unknown`. R3 also requires a third state `borderline` and replaces the raw `psi <= 4.0` rule on screen PSI by two logistic cuts (tier 1: 2.687 / 3.110).
 5. The UniProt snapshot is release 2026_03 (file of 12 Oct 2026); the tile numbering of the GPS screen is assumed to follow it, which is checked by the ETL for the 176 training peptides only.
 6. The research repository is available to the ETL; the hosted service does not read it at run time.
 
@@ -194,7 +194,7 @@ The method per requirement is test, inspection or demonstration; the plan, envir
 |---|---|---|
 | R-1 | Back-to-back tests pass although both paths share an error (for example the label definition) | The 180 features are rebuilt independently in the tool; the evidence label stays on screen; scientific validity is addressed in Chapter 4 experiments, not in software tests |
 | R-2 | Users read the calibrated probability as a probability of disease | Event definition next to every probability, disclaimer in every export (FR-05, FR-14) |
-| R-3 | A stable tile receives a good-looking score | Domain status and warnings before scores (FR-09 to FR-11); typed sequences are always `unknown` until the gate model exists |
+| R-3 | A stable tile receives a good-looking score | Domain status and warnings before scores (FR-09 to FR-11); typed sequences are `unknown` until the R3 gate model is integrated |
 | R-4 | Free hosting limits storage or CPU | ETL `--clinvar-scope` option; SQLite fallback ([db-design.md](db-design.md) §10) |
 | R-5 | Licence breach through an import shortcut | Hard block in the ETL (NFR-13) and a test (ETL-03) |
 
