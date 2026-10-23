@@ -1,0 +1,279 @@
+{
+  "note": "LƯỢT THỬ CỤC BỘ trên CPU (23/10/2026), mã và PROTOCOL của notebook R6 (SHA-256 PROTOCOL lúc đó 9d6ed81f…); giai đoạn A và B chạy ĐỦ trên dữ liệu thật, 3 seed × 5 fold. KHÔNG phải lượt Kaggle chính thức; ridge tất định nên lượt Kaggle phải cho cùng kết quả đến sai số làm tròn. Không lưu giai đoạn C/D/E/F/G của lượt này (cỡ ESM bị gán bí danh 8M, mạng 1 seed × 1 fold × 2 epoch).",
+  "summaries": {
+    "ridge_M3": {
+      "seeds": [
+        17,
+        29,
+        43
+      ],
+      "macro_auroc_per_seed": {
+        "17": 0.8204208088793984,
+        "29": 0.8209820393457197,
+        "43": 0.8209243464238494
+      },
+      "macro_auroc_ensemble": 0.8208223589063638
+    },
+    "ridge_W10": {
+      "seeds": [
+        17,
+        29,
+        43
+      ],
+      "macro_auroc_per_seed": {
+        "17": 0.8109821870622826,
+        "29": 0.8194846723590585,
+        "43": 0.8193626965952474
+      },
+      "macro_auroc_ensemble": 0.8182309916724028
+    },
+    "ridge_W5": {
+      "seeds": [
+        17,
+        29,
+        43
+      ],
+      "macro_auroc_per_seed": {
+        "17": 0.8276364993850522,
+        "29": 0.8287625598637155,
+        "43": 0.8290653882910274
+      },
+      "macro_auroc_ensemble": 0.8286365748869535
+    },
+    "ridge_W7": {
+      "seeds": [
+        17,
+        29,
+        43
+      ],
+      "macro_auroc_per_seed": {
+        "17": 0.8243055515945046,
+        "29": 0.825704500086033,
+        "43": 0.8260141819055916
+      },
+      "macro_auroc_ensemble": 0.8254708684007406
+    },
+    "ridge_scan_pool": {
+      "seeds": [
+        17,
+        29,
+        43
+      ],
+      "macro_auroc_per_seed": {
+        "17": 0.8136326881557443,
+        "29": 0.8138227607713233,
+        "43": 0.8138227607713233
+      },
+      "macro_auroc_ensemble": 0.8137578500943983
+    },
+    "ridge_scan_pool_t3": {
+      "seeds": [
+        17,
+        29,
+        43
+      ],
+      "macro_auroc_per_seed": {
+        "17": 0.8171043393464661,
+        "29": 0.8173914587625859,
+        "43": 0.8173914587625859
+      },
+      "macro_auroc_ensemble": 0.8172912371418998
+    },
+    "ridge_scan_prior": {
+      "seeds": [
+        17,
+        29,
+        43
+      ],
+      "macro_auroc_per_seed": {
+        "17": 0.815436845963961,
+        "29": 0.8198010868780774,
+        "43": 0.8200094417603881
+      },
+      "macro_auroc_ensemble": 0.8190414714770935
+    },
+    "ridge_scan_prior_t3": {
+      "seeds": [
+        17,
+        29,
+        43
+      ],
+      "macro_auroc_per_seed": {
+        "17": 0.8155697980792257,
+        "29": 0.8198648598152248,
+        "43": 0.8200325731603374
+      },
+      "macro_auroc_ensemble": 0.8191727196719754
+    }
+  },
+  "contrasts": {
+    "A_ridge_W5_vs_W3": {
+      "a": "ridge_W5",
+      "b": "ridge_M3",
+      "family": "A",
+      "delta": 0.00781421598058976,
+      "ci95": [
+        0.0029545948551665344,
+        0.01280461691536886
+      ],
+      "ci_adj": [
+        0.002115845706725543,
+        0.013916628491401004
+      ],
+      "m": 3,
+      "n_peptides": 91,
+      "n_clusters": 89,
+      "seed_deltas": {
+        "17": 0.007215690505653933,
+        "29": 0.0077805205179958025,
+        "43": 0.008141041867177965
+      },
+      "verdict": "nhận",
+      "equivalent_within_0.01": false
+    },
+    "A_ridge_W7_vs_W3": {
+      "a": "ridge_W7",
+      "b": "ridge_M3",
+      "family": "A",
+      "delta": 0.004648509494376835,
+      "ci95": [
+        -0.0013415480949831734,
+        0.010913097725755971
+      ],
+      "ci_adj": [
+        -0.002750246864057782,
+        0.012117733157409227
+      ],
+      "m": 3,
+      "n_peptides": 91,
+      "n_clusters": 89,
+      "seed_deltas": {
+        "17": 0.0038847427151062317,
+        "29": 0.004722460740313268,
+        "43": 0.005089835481742224
+      },
+      "verdict": "chưa đủ bằng chứng (CI phủ 0)",
+      "equivalent_within_0.01": false
+    },
+    "A_ridge_W10_vs_W3": {
+      "a": "ridge_W10",
+      "b": "ridge_M3",
+      "family": "A",
+      "delta": -0.0025913672339610825,
+      "ci95": [
+        -0.010110941058607596,
+        0.004907911178048747
+      ],
+      "ci_adj": [
+        -0.011719360453483076,
+        0.006666192933543408
+      ],
+      "m": 3,
+      "n_peptides": 91,
+      "n_clusters": 89,
+      "seed_deltas": {
+        "17": -0.009438621817115725,
+        "29": -0.0014973669866611978,
+        "43": -0.0015616498286019698
+      },
+      "verdict": "chưa đủ bằng chứng (CI phủ 0)",
+      "equivalent_within_0.01": false
+    },
+    "B_ridge_scan_pool_vs_ridge": {
+      "a": "ridge_scan_pool",
+      "b": "ridge_M3",
+      "family": "B",
+      "delta": -0.007064508811965508,
+      "ci95": [
+        -0.014744276374840527,
+        0.0009220315856374528
+      ],
+      "ci_adj": [
+        -0.015708268281454517,
+        0.0020118917194008592
+      ],
+      "m": 2,
+      "n_peptides": 91,
+      "n_clusters": 89,
+      "seed_deltas": {
+        "17": -0.0067881207236540455,
+        "29": -0.0071592785743964365,
+        "43": -0.0071015856525261005
+      },
+      "verdict": "chưa đủ bằng chứng (CI phủ 0)",
+      "equivalent_within_0.01": false
+    },
+    "Bd_ridge_scan_pool_t3_vs_ridge": {
+      "a": "ridge_scan_pool_t3",
+      "b": "ridge_M3",
+      "family": "descriptive",
+      "delta": -0.0035311217644640315,
+      "ci95": [
+        -0.010293374516279253,
+        0.0036004265608117463
+      ],
+      "ci_adj": [
+        -0.010293374516279253,
+        0.0036004265608117463
+      ],
+      "m": 1,
+      "n_peptides": 91,
+      "n_clusters": 89,
+      "seed_deltas": {
+        "17": -0.0033164695329322724,
+        "29": -0.0035905805831338154,
+        "43": -0.003532887661263479
+      },
+      "verdict": "chưa đủ bằng chứng (CI phủ 0)",
+      "equivalent_within_0.01": false
+    },
+    "B_ridge_scan_prior_vs_ridge": {
+      "a": "ridge_scan_prior",
+      "b": "ridge_M3",
+      "family": "B",
+      "delta": -0.0017808874292703472,
+      "ci95": [
+        -0.0036949794368848587,
+        0.00015736086010438328
+      ],
+      "ci_adj": [
+        -0.004033279053390705,
+        0.00041728232220234813
+      ],
+      "m": 2,
+      "n_peptides": 91,
+      "n_clusters": 89,
+      "seed_deltas": {
+        "17": -0.004983962915437282,
+        "29": -0.0011809524676423418,
+        "43": -0.0009149046634612661
+      },
+      "verdict": "chưa đủ bằng chứng (CI phủ 0)",
+      "equivalent_within_0.01": true
+    },
+    "Bd_ridge_scan_prior_t3_vs_ridge": {
+      "a": "ridge_scan_prior_t3",
+      "b": "ridge_M3",
+      "family": "descriptive",
+      "delta": -0.0016496392343884612,
+      "ci95": [
+        -0.003774069203016766,
+        0.00046086824449204783
+      ],
+      "ci_adj": [
+        -0.003774069203016766,
+        0.00046086824449204783
+      ],
+      "m": 1,
+      "n_peptides": 91,
+      "n_clusters": 89,
+      "seed_deltas": {
+        "17": -0.00485101080017269,
+        "29": -0.001117179530494899,
+        "43": -0.0008917732635120027
+      },
+      "verdict": "chưa đủ bằng chứng (CI phủ 0)",
+      "equivalent_within_0.01": true
+    }
+  }
+}

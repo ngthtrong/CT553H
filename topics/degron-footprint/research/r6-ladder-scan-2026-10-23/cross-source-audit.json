@@ -1,0 +1,74 @@
+{
+  "wt_le_3.0": {
+    "n_shared_peptides": 42,
+    "n_cells": 1172,
+    "substitution_counts": {
+      "A": 318,
+      "R": 724,
+      "S": 130
+    },
+    "positive_rate_scan": 0.1697952218430034,
+    "positive_rate_sat": 0.16723549488054607,
+    "pearson": 0.7937260119643325,
+    "spearman": 0.6081717514264449,
+    "ols_slope_sat_on_scan": 0.771410239609738,
+    "mean_dpsi_scan": 0.37383170297952223,
+    "mean_dpsi_sat": 0.3816793659886945,
+    "binary_agreement": 0.9308873720136519,
+    "cohen_kappa": 0.7533798177340415,
+    "auroc_scan_dpsi_for_sat_positive_pooled": 0.9466794914687187,
+    "reference_auroc_satA_for_satB_positive_same_cells": 0.9502269088986474,
+    "wt_psi_mean_scan_mut0": 2.370667189333333,
+    "wt_psi_mean_sat_internal": 2.503841383053571,
+    "wt_psi_diff_sat_minus_scan": 0.13317419372023812,
+    "wt_psi_pearson": 0.5766601966046342
+  },
+  "wt_le_4.0": {
+    "n_shared_peptides": 88,
+    "n_cells": 2449,
+    "substitution_counts": {
+      "A": 687,
+      "R": 1474,
+      "S": 288
+    },
+    "positive_rate_scan": 0.1453654552878726,
+    "positive_rate_sat": 0.1657819518170682,
+    "pearson": 0.7431556894446845,
+    "spearman": 0.5806257349816203,
+    "ols_slope_sat_on_scan": 0.7367290127090789,
+    "mean_dpsi_scan": 0.30609195666353617,
+    "mean_dpsi_sat": 0.3398409334709065,
+    "binary_agreement": 0.9191506737443854,
+    "cohen_kappa": 0.6925290380998638,
+    "auroc_scan_dpsi_for_sat_positive_pooled": 0.9219297420725341,
+    "reference_auroc_satA_for_satB_positive_same_cells": 0.9661208428535161,
+    "wt_psi_mean_scan_mut0": 2.8295856037272724,
+    "wt_psi_mean_sat_internal": 2.859754778383522,
+    "wt_psi_diff_sat_minus_scan": 0.03016917465625002,
+    "wt_psi_pearson": 0.6285111705285306
+  },
+  "no_threshold": {
+    "n_shared_peptides": 117,
+    "n_cells": 3228,
+    "substitution_counts": {
+      "A": 866,
+      "R": 1987,
+      "S": 375
+    },
+    "positive_rate_scan": 0.1325898389095415,
+    "positive_rate_sat": 0.1496282527881041,
+    "pearson": 0.7032755652732653,
+    "spearman": 0.5533368751862411,
+    "ols_slope_sat_on_scan": 0.6993987184691844,
+    "mean_dpsi_scan": 0.2574208653004957,
+    "mean_dpsi_sat": 0.2924488025452292,
+    "binary_agreement": 0.9141883519206939,
+    "cohen_kappa": 0.6461954844376913,
+    "auroc_scan_dpsi_for_sat_positive_pooled": 0.9049753551535448,
+    "reference_auroc_satA_for_satB_positive_same_cells": 0.9684505986937064,
+    "wt_psi_mean_scan_mut0": 3.22017802442735,
+    "wt_psi_mean_sat_internal": 3.2061979234380344,
+    "wt_psi_diff_sat_minus_scan": -0.013980100989316185,
+    "wt_psi_pearson": 0.7878972640423076
+  }
+}

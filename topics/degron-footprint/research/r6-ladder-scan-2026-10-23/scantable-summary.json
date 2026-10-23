@@ -1,0 +1,10 @@
+{
+  "n_peptides": 4802,
+  "n_cells": 133764,
+  "n_clusters": 2902,
+  "n_peptides_le_3.0": 2989,
+  "n_cells_le_3.0": 83306,
+  "positive_rate": 0.0787356837415149,
+  "n_dropped_no_cluster": 7,
+  "sha256": "09e1e308146ace67e93d7da313b6361c42d930a6ae1103a2dd924168a9c30b37"
+}

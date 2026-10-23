@@ -10,6 +10,7 @@ Dành cho Trọng. Mọi bước dưới đây là **việc tay của người**
 | 2 | `r3-domain-gate-2026-10-22/r3-domain-gate.ipynb` | không | không | vài phút | R0 ĐẠT (đặt `R0_CONFIRMED = True`) |
 | 3 | `r2-esm-features-2026-10-22/r2-esm.ipynb` | có | **có** (tải trọng số) | xem README của R2 | R0 ĐẠT |
 | 4 | `r1-degformer-clean-2026-10-22/r1-degformer-clean.ipynb` | có | không | xem README của R1 | R0 ĐẠT |
+| 5 | `r6-ladder-scan-2026-10-23/r6-ladder-scan.ipynb` (**một** notebook cho mọi giai đoạn) | có | **có** (tải 4 cỡ ESM-2) | xem README của R6; ô benchmark in giờ GPU thật | R0 ĐẠT; cần **gói dữ liệu v2** (có `r6-scantable.npz`): `make_data_package.py --version v2` |
 
 R0 đỏ ⇒ **dừng, gửi `gates.json` + `env.json` cho tôi**, đừng chạy các notebook sau.
 
