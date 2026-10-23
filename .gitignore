@@ -54,3 +54,6 @@ dist/
 **/.mypy_cache/
 **/.ruff_cache/
 **/.hypothesis/
+
+# Siêu dữ liệu "đã tải từ Internet" của Windows (sinh khi chép tệp qua WSL), không có giá trị
+*:Zone.Identifier
