@@ -1,0 +1,84 @@
+{
+  "counts": {
+    "raw_peptides": 248,
+    "with_wt_baseline": 235,
+    "technical_loss": 13,
+    "le_3": 91,
+    "gt3_le4": 85,
+    "gt_4": 59
+  },
+  "excerpt": {
+    "peptide": "Q99741_CDC6_1",
+    "psi_wt": 2.59,
+    "wt_a": 2.65,
+    "wt_b": 2.54,
+    "n_cells": 529,
+    "rows": [
+      {
+        "cell": "F14A",
+        "psi_a": 5.62,
+        "psi_b": 5.47,
+        "dpsi": 2.95
+      },
+      {
+        "cell": "P15D",
+        "psi_a": 5.16,
+        "psi_b": 5.34,
+        "dpsi": 2.66
+      },
+      {
+        "cell": "Q9A",
+        "psi_a": 2.65,
+        "psi_b": 2.83,
+        "dpsi": 0.15
+      },
+      {
+        "cell": "K25M",
+        "psi_a": 1.71,
+        "psi_b": 1.78,
+        "dpsi": -0.85
+      }
+    ]
+  },
+  "folds": [
+    {
+      "fold": 0,
+      "n_clusters": 17
+    },
+    {
+      "fold": 1,
+      "n_clusters": 17
+    },
+    {
+      "fold": 2,
+      "n_clusters": 18
+    },
+    {
+      "fold": 3,
+      "n_clusters": 19
+    },
+    {
+      "fold": 4,
+      "n_clusters": 18
+    }
+  ],
+  "new_clusters": 83,
+  "extra_excluded_cells_per_fold": {
+    "fold0": 531,
+    "fold1": 0,
+    "fold2": 0,
+    "fold3": 532,
+    "fold4": 0
+  },
+  "n_base_cells": 47847,
+  "n_new_cells": 44490,
+  "psi_wt_min": 1.73,
+  "psi_wt_max": 5.68,
+  "sources": [
+    "psi-sat_a.tsv",
+    "psi-sat_b.tsv (data/processed)",
+    "sat-filter-dropoff.json",
+    "learning-curve-2026-10-22/results.json",
+    "g2-saturation-2026-10-18/results.json"
+  ]
+}

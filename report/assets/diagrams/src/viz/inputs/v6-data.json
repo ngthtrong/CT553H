@@ -1,0 +1,50 @@
+{
+  "source": "topics/degron-footprint/data/interim/gps-peptidome-rep1.tsv",
+  "min_reads": 10,
+  "n_tiles": 360724,
+  "threshold": 4.0,
+  "share_psi_le_4": 0.5457080759805281,
+  "median_psi": 3.80993864724593,
+  "example_psi": {
+    "A6NMZ7_COL6A6_28": 1.88187026524536,
+    "A6NMZ7_COL6A6_7": 5.0969738345801
+  },
+  "marker_px_in_hist_png_2x": {
+    "A6NMZ7_COL6A6_28": {
+      "x_px": 695.9093691414681,
+      "y_px_from_top": 412.5434710743802
+    },
+    "A6NMZ7_COL6A6_7": {
+      "x_px": 2428.052847327698,
+      "y_px_from_top": 322.086671675432
+    }
+  },
+  "hist_png_size": [
+    2944,
+    800
+  ],
+  "card_crop_size_2x": [
+    2170,
+    1570
+  ],
+  "highlight_boxes_in_card_2x": {
+    "in": [
+      0,
+      266,
+      2160,
+      416
+    ],
+    "unknown": [
+      0,
+      266,
+      2160,
+      413
+    ],
+    "out": [
+      10,
+      201,
+      2150,
+      687
+    ]
+  }
+}

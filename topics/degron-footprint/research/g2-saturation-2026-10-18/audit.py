@@ -3,7 +3,7 @@ import json,sys,hashlib
 from pathlib import Path
 import numpy as np
 HERE=Path(__file__).resolve().parent
-TOPIC=next(p for p in HERE.parents if (p/'log.md').exists())
+TOPIC=next(p for p in HERE.parents if (p/'data'/'README.md').exists())
 sys.path.insert(0,str(TOPIC/'research/residue-task-derisk-2026-10-15'))
 import derisk as dr
 z=np.load(TOPIC/'data/processed/g2-saturation-input.npz');r=json.loads((HERE/'results.json').read_text())

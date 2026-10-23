@@ -1,0 +1,22 @@
+{
+  "rules": {
+    "mmseqs": {
+      "min_seq_id": 0.3,
+      "evalue": "1e-3",
+      "min_alnlen": 50
+    },
+    "kmer": 12,
+    "gene_name": "biomart Gene name == UniProt GN"
+  },
+  "n_tile_rows": 212658,
+  "n_tile_dropped_controls_or_nonstandard": 42,
+  "n_genes": 5302,
+  "n_tiles_kept": 212616,
+  "n_test_clusters": 89,
+  "n_target_proteins": 298,
+  "n_genes_hit_mmseqs": 503,
+  "n_genes_hit_kmer": 182,
+  "n_genes_hit_gene_name": 55,
+  "n_genes_hit_union": 550,
+  "n_tiles_in_hit_genes_union": 31286
+}

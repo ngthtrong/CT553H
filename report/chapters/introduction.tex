@@ -1,0 +1,96 @@
+% PART 1. INTRODUCTION (Phần giới thiệu) - mục đánh số 1., 2., 3.1.
+\addchap{PART 1. INTRODUCTION}\label{chap:introduction}
+\ThesisFlatNumbering
+
+\section{Problem Statement}
+The abundance of a protein in a cell depends on both its synthesis and its degradation.
+In the ubiquitin--proteasome system, a \emph{degron} is a short sequence element that marks a protein for
+selective degradation \citep{varshavsky2019,koren2018}. A single amino acid substitution inside a degron can
+strengthen or weaken this signal, so knowing the effect of each substitution helps researchers choose
+mutations to test experimentally \citep{zhang2023,voutsinos2026}.
+
+Existing experiments score a whole peptide with one activity value. That value does not say which
+position, or which substituted amino acid, makes the degron signal stronger or weaker. Measuring every
+substitution experimentally is costly, which motivates a predictive model that shortlists substitutions.
+Such a model is only useful if it is evaluated on experimental labels and if similarity between training
+and test proteins is controlled.
+
+\section{History of Approaches to the Problem}
+\subsection{International Context}
+Large-scale stability profiling based on the Global Protein Stability (GPS) assay \citep{yen2008} has produced
+experimental degron maps, including scanning and saturation mutagenesis of human peptides
+\citep{zhang2023}, cytosolic tile maps \citep{voutsinos2026} and transcription-factor tile maps
+\citep{larsen2025}. On the
+computational side, PAP and Degformer predict peptide-level degron activity or protein stability
+\citep{voutsinos2026,degformer}, MetaDegron predicts E3-ligase-targeted degron motifs \citep{zheng2024},
+and DEGRONOPEDIA and DegronMD provide annotation resources \citep{degronopedia,degronmd}.
+
+These works address peptide- or motif-level prediction and annotation. Residue-level substitution
+effects measured on a common assay endpoint, evaluated with protein-cluster-aware splits, remain
+a question that the thesis examines rather than a gap it assumes is unfilled.
+
+\subsection{Domestic Context}
+\textbf{[PENDING: literature search on degron and protein-stability prediction work in Vietnam; to be
+written only after the search is done.]}
+
+\section{Objectives}
+\subsection{General Objective}
+To study methods that predict the effect of amino acid substitutions in degrons from experimental data,
+to evaluate generalisation across protein clusters, and to build a tool that supports analysis and
+prioritisation of mutations.
+
+\subsection{Specific Objectives}
+\begin{enumerate}
+  \item Build a reproducible pipeline that normalises data, maps coordinates and derives mutation-effect
+        labels while keeping each source and assay condition separate.
+  \item Establish baselines: amino acid composition, ridge regression, the PAP score difference and the
+        Degformer architecture, under clearly stated comparable conditions.
+  \item Test whether representations learned from peptide-level labels and fine-tuned on mutation labels
+        improve prediction, and study the learning curve before choosing a model.
+  \item Evaluate effectiveness, stability across seeds, error, and the contribution of each component.
+  \item Build a software prototype that accepts a peptide, shows the predicted effect matrix, ranks
+        substitutions and exports results with model information.
+\end{enumerate}
+
+\section{Research Subject and Scope}
+\subsection{Research Subject}
+Degron peptides, single amino acid substitutions, protein stability indices measured with a reporter
+assay, and models predicting residue-level mutation effects. A \emph{residue} is one amino acid at a
+specific position; the \emph{footprint} is the map of positions or substitutions that change degron
+activity under a given assay.
+
+\subsection{Research Scope}
+\begin{itemize}
+  \item The main label source is the human peptide data of Zhang et al.\ \citep{zhang2023}; other peptide-level
+        sources are used only for transfer learning or domain studies when their terms of use allow.
+  \item Input: reference (wild-type) sequence, position and substituted amino acid. Output: predicted
+        effect $\Delta$PSI, which can be arranged into an $L\times 20$ matrix.
+  \item Identifying the specific E3 ligase is not a main task. No new wet-lab experiments are performed,
+        and software output supports hypothesis generation; it does not establish causation, disease
+        effects or therapeutic benefit.
+\end{itemize}
+
+\section{Research Process and Technologies Used}
+\subsection{Research Process}
+The work combines a literature review, controlled computational experiments and a software prototype:
+(1) study degron biology and related methods; (2) audit data and design the evaluation; (3) train and
+compare models; (4) develop and test the prototype; (5) analyse results and write the thesis.
+
+\subsection{Technologies Used}
+Python with NumPy, pandas, scikit-learn and PyTorch for modelling, and MMseqs2 for protein clustering
+\citep{steinegger2017}. \textbf{[PENDING: prototype stack, to be fixed when the system design is chosen.]}
+
+\subsection{Development and Supporting Tools}
+Git for version control, \LaTeX{} (XeLaTeX) for this report. \textbf{[PENDING: testing and deployment tools.]}
+
+\section{Main Contributions}
+\textbf{[PENDING: to be written from achieved results at the end of the work. Planned contributions are
+a reproducible data and evaluation pipeline, a documented comparison with baselines including negative
+results, and a prototype tool.]}
+
+\section{Structure of the Thesis}
+Part~1 introduces the problem, objectives and scope. Part~2 has four chapters: Chapter~1 describes the
+problem and the system requirements; Chapter~2 gives the theoretical background; Chapter~3 presents the
+design of the data, method and system; Chapter~4 covers experimental evaluation and software testing.
+Part~3 states the results, limitations and future work. The appendices give installation and usage
+instructions and supplementary material.

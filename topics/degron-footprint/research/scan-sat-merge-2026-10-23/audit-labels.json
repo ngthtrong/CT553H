@@ -1,0 +1,360 @@
+{
+ "note": "Phần A: so nhãn quét với nhãn bão hòa trên CÙNG đột biến (peptide, vị trí, acid amin). Đọc từ psi-{rep1,rep2,wt,sat_a,sat_b}.tsv; không huấn luyện.",
+ "overlap": {
+  "saturation_after_technical_filter": 235,
+  "scanning_peptides_with_wt_in_rep1": 8831,
+  "shared_peptides": 117,
+  "shared_clusters_cov80": 111,
+  "saturation_clusters_cov80": 227
+ },
+ "shared_cells": {
+  "n_cells_with_both_assays_any_condition": 3237,
+  "mutant_aa_in_scanning": {
+   "R": 1991,
+   "A": 870,
+   "S": 376
+  }
+ },
+ "agreement": {
+  "all_shared": {
+   "n_peptides": 117,
+   "n_cells": 3237,
+   "scan_rep1_vs_sat": {
+    "n": 3228,
+    "pearson": 0.7032755652732652,
+    "spearman": 0.5533368751862411,
+    "mean_x": 0.2574208653004957,
+    "mean_y": 0.29244880254522926,
+    "mean_diff_y_minus_x": 0.035027937244733576,
+    "sd_x": 0.6995798631810785,
+    "sd_y": 0.6957233891462964,
+    "ols_slope_y_on_x": 0.6993987184691844,
+    "pos_rate_x": 0.1325898389095415,
+    "pos_rate_y": 0.1496282527881041,
+    "kappa_binary": 0.6461954844376913,
+    "auroc_x_predicts_y_label": 0.9049753551535448,
+    "auroc_y_predicts_x_label": 0.9196336782376502,
+    "within_peptide_spearman_mean": 0.5703193468774931,
+    "n_peptides_with_ge8_cells": 117
+   },
+   "scan_rep2_vs_sat": {
+    "n": 3205,
+    "pearson": 0.6800214766974264,
+    "spearman": 0.5358664200563691,
+    "mean_x": 0.24121221327550707,
+    "mean_y": 0.2904704571351014,
+    "mean_diff_y_minus_x": 0.04925824385959432,
+    "sd_x": 0.699782271159074,
+    "sd_y": 0.695804182769935,
+    "ols_slope_y_on_x": 0.6761557235163199,
+    "pos_rate_x": 0.12730109204368176,
+    "pos_rate_y": 0.14882995319812792,
+    "kappa_binary": 0.6136491890913388,
+    "auroc_x_predicts_y_label": 0.8913903182771107,
+    "auroc_y_predicts_x_label": 0.9048271257019075,
+    "within_peptide_spearman_mean": 0.5417813845977557,
+    "n_peptides_with_ge8_cells": 116
+   },
+   "scan_wt_vs_sat": {
+    "n": 3233,
+    "pearson": 0.6058106172996135,
+    "spearman": 0.486295130046407,
+    "mean_x": 1.251642614210331,
+    "mean_y": 0.2911273392002784,
+    "mean_diff_y_minus_x": -0.9605152750100525,
+    "sd_x": 0.8127812657907024,
+    "sd_y": 0.6938973031253447,
+    "ols_slope_y_on_x": 0.5171998559045906,
+    "pos_rate_x": 0.554283946798639,
+    "pos_rate_y": 0.14939684503557069,
+    "kappa_binary": 0.22796645023126771,
+    "auroc_x_predicts_y_label": 0.8944912478825522,
+    "auroc_y_predicts_x_label": 0.7289716187915138,
+    "within_peptide_spearman_mean": 0.6252851825218697,
+    "n_peptides_with_ge8_cells": 117
+   },
+   "ceiling_scan_rep1_vs_rep2": {
+    "n": 3204,
+    "pearson": 0.8084736307630453,
+    "spearman": 0.7190604689859874,
+    "mean_x": 0.25827978079151065,
+    "mean_y": 0.2409871174328964,
+    "mean_diff_y_minus_x": -0.017292663358614235,
+    "sd_x": 0.7003550731873892,
+    "sd_y": 0.6997754456646539,
+    "ols_slope_y_on_x": 0.8078045222126307,
+    "pos_rate_x": 0.133270911360799,
+    "pos_rate_y": 0.12734082397003746,
+    "kappa_binary": 0.7039590735860636,
+    "auroc_x_predicts_y_label": 0.9487073620578418,
+    "auroc_y_predicts_x_label": 0.948712196792151
+   },
+   "ceiling_sat_half_a_vs_half_b": {
+    "n": 3237,
+    "pearson": 0.8439861243819325,
+    "spearman": 0.7301489863693347,
+    "mean_x": 0.30583907178869324,
+    "mean_y": 0.27944176328405934,
+    "mean_diff_y_minus_x": -0.0263973085046339,
+    "sd_x": 0.7134610821784803,
+    "sd_y": 0.7364388078380933,
+    "ols_slope_y_on_x": 0.8711675391934508,
+    "pos_rate_x": 0.15909793018226753,
+    "pos_rate_y": 0.15724436206363918,
+    "kappa_binary": 0.8051130690814063,
+    "auroc_x_predicts_y_label": 0.9676087031670402,
+    "auroc_y_predicts_x_label": 0.9683870369445653
+   }
+  },
+  "degron_psi_wt_le_4.0": {
+   "n_peptides": 97,
+   "n_cells": 2691,
+   "scan_rep1_vs_sat": {
+    "n": 2684,
+    "pearson": 0.7162024274399151,
+    "spearman": 0.5627258737309138,
+    "mean_x": 0.27510300102794344,
+    "mean_y": 0.3364009628154806,
+    "mean_diff_y_minus_x": 0.06129796178753716,
+    "sd_x": 0.7105811722681508,
+    "sd_y": 0.7222952713947562,
+    "ols_slope_y_on_x": 0.7280091942910086,
+    "pos_rate_x": 0.13450074515648286,
+    "pos_rate_y": 0.1661698956780924,
+    "kappa_binary": 0.6579456565595213,
+    "auroc_x_predicts_y_label": 0.9029873325398639,
+    "auroc_y_predicts_x_label": 0.9371931652999095,
+    "within_peptide_spearman_mean": 0.5803921929274898,
+    "n_peptides_with_ge8_cells": 97
+   },
+   "scan_rep2_vs_sat": {
+    "n": 2661,
+    "pearson": 0.6861088973877906,
+    "spearman": 0.5397541848984636,
+    "mean_x": 0.2715932676516347,
+    "mean_y": 0.33439807016112366,
+    "mean_diff_y_minus_x": 0.06280480250948894,
+    "sd_x": 0.7073453504048809,
+    "sd_y": 0.7227482335513592,
+    "ols_slope_y_on_x": 0.701049343615612,
+    "pos_rate_x": 0.1360390830514844,
+    "pos_rate_y": 0.16535137166478767,
+    "kappa_binary": 0.6218592369745568,
+    "auroc_x_predicts_y_label": 0.8877767999672547,
+    "auroc_y_predicts_x_label": 0.9009165647326847,
+    "within_peptide_spearman_mean": 0.5589574128490337,
+    "n_peptides_with_ge8_cells": 96
+   },
+   "scan_wt_vs_sat": {
+    "n": 2688,
+    "pearson": 0.7386639822766714,
+    "spearman": 0.6007063510440168,
+    "mean_x": 1.1316836811090032,
+    "mean_y": 0.3349620582695313,
+    "mean_diff_y_minus_x": -0.7967216228394719,
+    "sd_x": 0.7826054572400553,
+    "sd_y": 0.7202944499945803,
+    "ols_slope_y_on_x": 0.6798515930634249,
+    "pos_rate_x": 0.48549107142857145,
+    "pos_rate_y": 0.16592261904761904,
+    "kappa_binary": 0.32394595198818493,
+    "auroc_x_predicts_y_label": 0.9361366572926959,
+    "auroc_y_predicts_x_label": 0.7902278072821868,
+    "within_peptide_spearman_mean": 0.6555321856438383,
+    "n_peptides_with_ge8_cells": 97
+   },
+   "ceiling_scan_rep1_vs_rep2": {
+    "n": 2660,
+    "pearson": 0.8224074396735631,
+    "spearman": 0.7298973027674279,
+    "mean_x": 0.2762971124906015,
+    "mean_y": 0.2713335586195489,
+    "mean_diff_y_minus_x": -0.004963553871052628,
+    "sd_x": 0.7115706695693511,
+    "sd_y": 0.7073514404565641,
+    "ols_slope_y_on_x": 0.8175310084764429,
+    "pos_rate_x": 0.13533834586466165,
+    "pos_rate_y": 0.13609022556390976,
+    "kappa_binary": 0.7243656167915754,
+    "auroc_x_predicts_y_label": 0.9488781981929999,
+    "auroc_y_predicts_x_label": 0.9540326086956522
+   },
+   "ceiling_sat_half_a_vs_half_b": {
+    "n": 2691,
+    "pearson": 0.8497004621358325,
+    "spearman": 0.7359105007261246,
+    "mean_x": 0.34906014526793017,
+    "mean_y": 0.3244557495416202,
+    "mean_diff_y_minus_x": -0.024604395726309958,
+    "sd_x": 0.7402305892818611,
+    "sd_y": 0.7630206428234193,
+    "ols_slope_y_on_x": 0.8758608495971903,
+    "pos_rate_x": 0.17539947974730583,
+    "pos_rate_y": 0.17577108881456707,
+    "kappa_binary": 0.8036125263119235,
+    "auroc_x_predicts_y_label": 0.9647350049660952,
+    "auroc_y_predicts_x_label": 0.9671777254985832
+   }
+  },
+  "degron_psi_wt_le_3.0": {
+   "n_peptides": 58,
+   "n_cells": 1611,
+   "scan_rep1_vs_sat": {
+    "n": 1607,
+    "pearson": 0.7132813523075421,
+    "spearman": 0.5331555163988075,
+    "mean_x": 0.25615999954013696,
+    "mean_y": 0.3537580031305227,
+    "mean_diff_y_minus_x": 0.09759800359038573,
+    "sd_x": 0.7256058390631248,
+    "sd_y": 0.7353340435954498,
+    "ols_slope_y_on_x": 0.7228443223262235,
+    "pos_rate_x": 0.13005600497822029,
+    "pos_rate_y": 0.16179215930304916,
+    "kappa_binary": 0.6536868820765174,
+    "auroc_x_predicts_y_label": 0.891833704528582,
+    "auroc_y_predicts_x_label": 0.9370460877124532,
+    "within_peptide_spearman_mean": 0.5608169012292256,
+    "n_peptides_with_ge8_cells": 58
+   },
+   "scan_rep2_vs_sat": {
+    "n": 1608,
+    "pearson": 0.6695789980612733,
+    "spearman": 0.4951047111846442,
+    "mean_x": 0.23620526593097016,
+    "mean_y": 0.3531957110432214,
+    "mean_diff_y_minus_x": 0.11699044511225123,
+    "sd_x": 0.7209015771692993,
+    "sd_y": 0.7354508674531002,
+    "ols_slope_y_on_x": 0.6830924921626215,
+    "pos_rate_x": 0.1256218905472637,
+    "pos_rate_y": 0.16169154228855723,
+    "kappa_binary": 0.5916068830582449,
+    "auroc_x_predicts_y_label": 0.8681522483451267,
+    "auroc_y_predicts_x_label": 0.8961029815641592,
+    "within_peptide_spearman_mean": 0.5236309986275934,
+    "n_peptides_with_ge8_cells": 58
+   },
+   "scan_wt_vs_sat": {
+    "n": 1609,
+    "pearson": 0.8012181700745123,
+    "spearman": 0.6201875309362033,
+    "mean_x": 0.9654871376128031,
+    "mean_y": 0.3512468593155687,
+    "mean_diff_y_minus_x": -0.6142402782972345,
+    "sd_x": 0.7569504527542669,
+    "sd_y": 0.7318562636509124,
+    "ols_slope_y_on_x": 0.774656431192218,
+    "pos_rate_x": 0.3685518955873213,
+    "pos_rate_y": 0.16096954630205096,
+    "kappa_binary": 0.45847019913621767,
+    "auroc_x_predicts_y_label": 0.9482425282425282,
+    "auroc_y_predicts_x_label": 0.8483521663502012,
+    "within_peptide_spearman_mean": 0.6339905950794599,
+    "n_peptides_with_ge8_cells": 58
+   },
+   "ceiling_scan_rep1_vs_rep2": {
+    "n": 1607,
+    "pearson": 0.8307050249140827,
+    "spearman": 0.7320966996227438,
+    "mean_x": 0.25615999954013696,
+    "mean_y": 0.23575335925575605,
+    "mean_diff_y_minus_x": -0.02040664028438091,
+    "sd_x": 0.7256058390631248,
+    "sd_y": 0.7208981175203546,
+    "ols_slope_y_on_x": 0.8253154211775343,
+    "pos_rate_x": 0.13005600497822029,
+    "pos_rate_y": 0.12570006222775357,
+    "kappa_binary": 0.7517138537013859,
+    "auroc_x_predicts_y_label": 0.9566082942813854,
+    "auroc_y_predicts_x_label": 0.9569720242862325
+   },
+   "ceiling_sat_half_a_vs_half_b": {
+    "n": 1611,
+    "pearson": 0.8513025631424129,
+    "spearman": 0.7116280268528618,
+    "mean_x": 0.36000969285009315,
+    "mean_y": 0.34821198863376784,
+    "mean_diff_y_minus_x": -0.011797704216325311,
+    "sd_x": 0.7531984465160992,
+    "sd_y": 0.777090821936196,
+    "ols_slope_y_on_x": 0.8783069210626524,
+    "pos_rate_x": 0.1719428926132837,
+    "pos_rate_y": 0.17566728739913098,
+    "kappa_binary": 0.7925133288076652,
+    "auroc_x_predicts_y_label": 0.9545851249521052,
+    "auroc_y_predicts_x_label": 0.9634388581882344
+   }
+  }
+ },
+ "wt_reference": {
+  "sat_internal_median_vs_scan_rep1_mut0": {
+   "n_peptides": 117,
+   "pearson": 0.7878972640423083,
+   "spearman": 0.717191925549611,
+   "mean_diff_scan_minus_sat": 0.01398010098931568,
+   "sd_diff": 0.5769972626954858,
+   "frac_abs_diff_gt_0.5": 0.3076923076923077
+  },
+  "sat_internal_median_vs_scan_rep2_mut0": {
+   "n_peptides": 116,
+   "pearson": 0.8104658519570549,
+   "spearman": 0.7185022873178795,
+   "mean_diff_scan_minus_sat": 0.02360164414655186,
+   "sd_diff": 0.5433188258426417,
+   "frac_abs_diff_gt_0.5": 0.29310344827586204
+  },
+  "sat_internal_median_vs_scan_wt_mut0": {
+   "n_peptides": 117,
+   "pearson": 0.7563082698341216,
+   "spearman": 0.7454255271321314,
+   "mean_diff_scan_minus_sat": -1.129492569301282,
+   "sd_diff": 0.5941080929737804,
+   "frac_abs_diff_gt_0.5": 0.8803418803418803
+  }
+ },
+ "scanning_design": {
+  "psi_wt_le_3.0": {
+   "n_peptides": 2994,
+   "n_cells": 83446,
+   "n_clusters_cov80": 1985,
+   "top_mutant_aa": "R",
+   "top_mutant_aa_fraction": 0.6475445198092179,
+   "mutant_aa_counts": {
+    "R": 54035,
+    "A": 18978,
+    "S": 10433
+   },
+   "distinct_wt_mut_pairs_observed": 20,
+   "distinct_pairs_possible_in_saturation": 380
+  },
+  "psi_wt_le_4.0": {
+   "n_peptides": 4809,
+   "n_cells": 133960,
+   "n_clusters_cov80": 2909,
+   "top_mutant_aa": "R",
+   "top_mutant_aa_fraction": 0.6437667960585249,
+   "mutant_aa_counts": {
+    "R": 86239,
+    "A": 31243,
+    "S": 16478
+   },
+   "distinct_wt_mut_pairs_observed": 20,
+   "distinct_pairs_possible_in_saturation": 380
+  }
+ },
+ "positive_rate_decomposition": {
+  "saturation_psi_wt_le_3.0_all_19_substitutions": {
+   "n": 47847,
+   "pos_rate": 0.13095909879407278
+  },
+  "saturation_psi_wt_le_3.0_only_to_R": {
+   "n": 2328,
+   "pos_rate": 0.13573883161512026
+  },
+  "scanning_psi_wt_le_3.0": {
+   "pos_rate": 0.0895,
+   "source": "ladder.json"
+  }
+ }
+}

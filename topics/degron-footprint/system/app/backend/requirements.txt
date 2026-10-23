@@ -1,0 +1,11 @@
+# runtime, pinned from the development venv of 22 Oct 2026
+fastapi==0.159.1
+starlette==1.9.0
+uvicorn[standard]==0.54.0
+pydantic==2.14.1
+pydantic-settings==2.16.1
+SQLAlchemy==2.1.6
+alembic==1.20.1
+psycopg[binary]==3.3.6
+numpy==2.5.4
+PyYAML==6.0.3

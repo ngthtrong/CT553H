@@ -1,0 +1,102 @@
+{
+  "script": "local_analysis.py",
+  "read_min": 10,
+  "peptidome": {
+    "n_rows": 475506,
+    "n_psi_na": 52377
+  },
+  "Q1_naming": {
+    "n_peptidome_names_parse_ok": 475506,
+    "n_with_accession_in_uniprot_snapshot": 474435,
+    "n_with_full_28mer_by_rule": 455819,
+    "note": "quy tắc tile (n-1)*23, dài 28 — đúng quy tắc residue_data.derive_sequence; trình tự thật của tile sàng KHÔNG có trong file (chỉ có tên) nên không đối chiếu trực tiếp được; đối chiếu gián tiếp qua Q2 (cùng tên -> cùng PSI?)"
+  },
+  "sat_pool": {
+    "n_peptides_after_technical_filters": 235,
+    "n_in_176": 176,
+    "n_176_not_in_pool": 0
+  },
+  "Q2_overlap": {
+    "n_sat_pool": 235,
+    "n_in_peptidome_file": 235,
+    "n_with_psi": 235
+  },
+  "Q2_scale": {
+    "n": 235,
+    "pearson": 0.8395600949163495,
+    "spearman": 0.8370098107205931,
+    "mean_diff_peptidome_minus_sat_internal": -0.8761583961919497,
+    "median_abs_diff": 0.8109542973827697,
+    "slope_ols_sat_on_peptidome": 1.0176252288361958,
+    "intercept_ols": 0.8313204268549085,
+    "rmse": 1.0162413111305626,
+    "vs_scanning_wt_mut0": {
+      "n": 117,
+      "pearson": 0.6085147505274969,
+      "mean_diff": -0.8785054513774372
+    },
+    "classification_agreement": {
+      "threshold_3.0": {
+        "n_in_domain_by_sat_wt": 91,
+        "accuracy": 0.6340425531914894,
+        "auroc_peptidome_psi_for_in_domain": 0.9068986568986569,
+        "sensitivity": 1.0,
+        "specificity": 0.4027777777777778
+      },
+      "threshold_4.0": {
+        "n_in_domain_by_sat_wt": 176,
+        "accuracy": 0.8,
+        "auroc_peptidome_psi_for_in_domain": 0.9157357473035439,
+        "sensitivity": 1.0,
+        "specificity": 0.2033898305084746
+      }
+    },
+    "by_reads": {
+      "10-30": {
+        "n": 12,
+        "pearson": 0.6245206481939984,
+        "rmse": 1.40891548881645
+      },
+      "30-100": {
+        "n": 123,
+        "pearson": 0.8459592364397264,
+        "rmse": 1.037175618131145
+      },
+      "100-1e+09": {
+        "n": 100,
+        "pearson": 0.857225755351349,
+        "rmse": 0.9303746502878245
+      }
+    }
+  },
+  "Q3_coverage": {
+    "n_proteins_snapshot": 20431,
+    "n_full_28mer_tiles_in_proteome_by_rule": 482216,
+    "n_peptidome_rows": 475506,
+    "n_rows_with_psi_and_reads_ge_10": 360724,
+    "n_measured_tiles_matching_full_tile_by_rule": 347806,
+    "coverage_of_proteome_tiles": 0.7212659886855682,
+    "share_psi_le_3.0": 0.323521584369213,
+    "share_psi_le_4.0": 0.5457080759805281,
+    "psi_quantiles": {
+      "0.05": 1.5692457670738915,
+      "0.25": 2.63522326609992,
+      "0.5": 3.80993864724593,
+      "0.75": 4.78716425206876,
+      "0.95": 5.555985557879458
+    },
+    "n_proteins_with_any_measured_tile": 18536,
+    "note": "tile_full = tile 28-mer đủ độ dài theo quy tắc; tile cuối ngắn hơn 28 aa bị bỏ"
+  },
+  "Q4_reads": {
+    "quantiles_reads": {
+      "0.05": 3.15915291023741,
+      "0.25": 19.0026959896887,
+      "0.5": 51.4871035484429,
+      "0.75": 117.814916175583,
+      "0.95": 320.4625510086767
+    },
+    "share_reads_ge_10": 0.8525154267374725,
+    "share_reads_ge_30": 0.648875402064146
+  }
+}

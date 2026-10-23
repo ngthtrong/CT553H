@@ -1,0 +1,105 @@
+{
+  "note": "THĂM DÒ, không tiền đăng ký. Học trên toàn bộ bão hòa ext4.0 (176 peptide), chấm trên peptide quét có cụm cov80 không thuộc bất kỳ cụm bão hòa ext4.0 nào. Nhãn quét: rep1, reads>=10, ΔPSI so với mut0.",
+  "n_sat_train_peptides": 176,
+  "n_sat_train_clusters": 172,
+  "by_threshold": {
+    "scan_psi_wt_le_3.0": {
+      "n_scan_peptides_disjoint": 2778,
+      "n_cells": 77428,
+      "n_clusters": 1887,
+      "pos_rate": 0.08773311980162216,
+      "M3_sat_to_scan": {
+        "mean": 0.821564205697484,
+        "ci95": [
+          0.8132251368943791,
+          0.8291842720778988
+        ],
+        "n_peptides": 2107,
+        "n_clusters": 1514,
+        "alpha": 10.0
+      },
+      "M0_sat_to_scan": {
+        "mean": 0.8046176401016852,
+        "ci95": [
+          0.796729235029061,
+          0.8119160984237125
+        ],
+        "n_peptides": 2107,
+        "n_clusters": 1514,
+        "alpha": 10.0
+      },
+      "M3_scan_cv_same_peptides": {
+        "mean": 0.8705138466284941,
+        "ci95": [
+          0.8619623846600268,
+          0.8782663738633497
+        ],
+        "n_peptides": 2107,
+        "n_clusters": 1514
+      },
+      "paired_M3_minus_M0_both_trained_on_sat": {
+        "delta": 0.016946565595798678,
+        "ci95": [
+          0.013490311589424224,
+          0.020373369124590857
+        ]
+      },
+      "paired_scanCV_minus_sat_to_scan": {
+        "delta": 0.04894964093101018,
+        "ci95": [
+          0.04454000845628434,
+          0.05336561394424822
+        ]
+      }
+    },
+    "scan_psi_wt_le_4.0": {
+      "n_scan_peptides_disjoint": 4448,
+      "n_cells": 123914,
+      "n_clusters": 2786,
+      "pos_rate": 0.07748922639895411,
+      "M3_sat_to_scan": {
+        "mean": 0.8317090329392495,
+        "ci95": [
+          0.8250475268660218,
+          0.8380892075273711
+        ],
+        "n_peptides": 3124,
+        "n_clusters": 2103,
+        "alpha": 10.0
+      },
+      "M0_sat_to_scan": {
+        "mean": 0.8174159287427616,
+        "ci95": [
+          0.8110867073102885,
+          0.8234787546201695
+        ],
+        "n_peptides": 3124,
+        "n_clusters": 2103,
+        "alpha": 10.0
+      },
+      "M3_scan_cv_same_peptides": {
+        "mean": 0.8700363835009233,
+        "ci95": [
+          0.8633060183611155,
+          0.8763111186584717
+        ],
+        "n_peptides": 3124,
+        "n_clusters": 2103
+      },
+      "paired_M3_minus_M0_both_trained_on_sat": {
+        "delta": 0.014293104196487843,
+        "ci95": [
+          0.011440148497831534,
+          0.01710676353143081
+        ]
+      },
+      "paired_scanCV_minus_sat_to_scan": {
+        "delta": 0.038327350561673766,
+        "ci95": [
+          0.03490485528527033,
+          0.04172210123690594
+        ]
+      }
+    }
+  }
+}

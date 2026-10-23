@@ -10,7 +10,7 @@ import csv, gzip, math, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve()
-while not (ROOT / "DECISIONS.md").exists():          # tìm gốc repo qua DECISIONS.md
+while not (ROOT / "CLAUDE.md").exists():          # tìm gốc repo qua CLAUDE.md
     if ROOT.parent == ROOT:
         sys.exit("khong tim thay goc repo")
     ROOT = ROOT.parent

@@ -1,0 +1,883 @@
+{
+  "generator": "inventory-sources.py",
+  "imports": [
+    "allennlp",
+    "argparse",
+    "calculate_AA_properties",
+    "collections",
+    "copy",
+    "datetime",
+    "glob",
+    "h5py",
+    "heapq",
+    "keras",
+    "math",
+    "matplotlib",
+    "multiprocessing",
+    "numpy",
+    "os",
+    "pandas",
+    "pathlib",
+    "pickle",
+    "random",
+    "re",
+    "scipy",
+    "seaborn",
+    "sklearn",
+    "string",
+    "sys",
+    "tempfile",
+    "tensorflow",
+    "time",
+    "torch",
+    "umap",
+    "xgboost"
+  ],
+  "notebooks": {
+    "Training_MetaDegron_Deep_learning.ipynb": {
+      "code_cells": 7,
+      "all_cells": 7,
+      "executed_by_audit": false
+    },
+    "MetaDegron_prediction.ipynb": {
+      "code_cells": 8,
+      "all_cells": 11,
+      "executed_by_audit": false
+    },
+    "Figure 3.ipynb": {
+      "code_cells": 20,
+      "all_cells": 24,
+      "executed_by_audit": false
+    },
+    "Training_MetaDegron_XGBoost.ipynb": {
+      "code_cells": 5,
+      "all_cells": 5,
+      "executed_by_audit": false
+    },
+    "Performance_benchmarking.ipynb": {
+      "code_cells": 10,
+      "all_cells": 12,
+      "executed_by_audit": false
+    },
+    "Figure 2.ipynb": {
+      "code_cells": 11,
+      "all_cells": 15,
+      "executed_by_audit": false
+    }
+  },
+  "code_reference_locations": {
+    "Training_MetaDegron-X.py": [
+      {
+        "line": 7,
+        "kind": "StratifiedKFold"
+      },
+      {
+        "line": 30,
+        "kind": "StratifiedKFold"
+      },
+      {
+        "line": 73,
+        "kind": "feature_name"
+      },
+      {
+        "line": 80,
+        "kind": "feature_name"
+      },
+      {
+        "line": 91,
+        "kind": "feature_name"
+      },
+      {
+        "line": 95,
+        "kind": "feature_name"
+      }
+    ],
+    "Training_MetaDegron-D.py": [
+      {
+        "line": 19,
+        "kind": "EarlyStopping"
+      },
+      {
+        "line": 22,
+        "kind": "StratifiedKFold"
+      },
+      {
+        "line": 26,
+        "kind": "train_test_split"
+      },
+      {
+        "line": 123,
+        "kind": "EarlyStopping"
+      },
+      {
+        "line": 153,
+        "kind": "validation_data"
+      },
+      {
+        "line": 207,
+        "kind": "allow_pickle"
+      },
+      {
+        "line": 231,
+        "kind": "train_test_split"
+      },
+      {
+        "line": 232,
+        "kind": "train_test_split"
+      },
+      {
+        "line": 235,
+        "kind": "StratifiedKFold"
+      }
+    ],
+    "Training_MetaDegron_Deep_learning.ipynb#cell-0": [
+      {
+        "line": 19,
+        "kind": "EarlyStopping"
+      },
+      {
+        "line": 22,
+        "kind": "StratifiedKFold"
+      },
+      {
+        "line": 26,
+        "kind": "train_test_split"
+      }
+    ],
+    "Training_MetaDegron_Deep_learning.ipynb#cell-3": [
+      {
+        "line": 17,
+        "kind": "EarlyStopping"
+      },
+      {
+        "line": 47,
+        "kind": "validation_data"
+      }
+    ],
+    "Training_MetaDegron_Deep_learning.ipynb#cell-4": [
+      {
+        "line": 1,
+        "kind": "allow_pickle"
+      },
+      {
+        "line": 25,
+        "kind": "train_test_split"
+      },
+      {
+        "line": 26,
+        "kind": "train_test_split"
+      }
+    ],
+    "Training_MetaDegron_Deep_learning.ipynb#cell-5": [
+      {
+        "line": 1,
+        "kind": "StratifiedKFold"
+      }
+    ],
+    "Build_deep_learning_model.py": [
+      {
+        "line": 15,
+        "kind": "EarlyStopping"
+      }
+    ],
+    "MetaDegron_prediction.ipynb#cell-1": [
+      {
+        "line": 1,
+        "kind": "dict_E3_degrons"
+      },
+      {
+        "line": 12,
+        "kind": "covariates"
+      },
+      {
+        "line": 16,
+        "kind": "allow_pickle"
+      }
+    ],
+    "MetaDegron_prediction.ipynb#cell-6": [
+      {
+        "line": 8,
+        "kind": "dict_E3_degrons"
+      },
+      {
+        "line": 24,
+        "kind": "shift, slicesize"
+      }
+    ],
+    "MetaDegron_prediction.ipynb#cell-10": [
+      {
+        "line": 6,
+        "kind": "covariates"
+      },
+      {
+        "line": 10,
+        "kind": "pickle.load"
+      },
+      {
+        "line": 11,
+        "kind": "covariates"
+      }
+    ],
+    "Figure 3.ipynb#cell-2": [
+      {
+        "line": 19,
+        "kind": "EarlyStopping"
+      },
+      {
+        "line": 22,
+        "kind": "StratifiedKFold"
+      },
+      {
+        "line": 26,
+        "kind": "train_test_split"
+      }
+    ],
+    "Figure 3.ipynb#cell-5": [
+      {
+        "line": 17,
+        "kind": "EarlyStopping"
+      },
+      {
+        "line": 47,
+        "kind": "validation_data"
+      }
+    ],
+    "Figure 3.ipynb#cell-6": [
+      {
+        "line": 1,
+        "kind": "allow_pickle"
+      },
+      {
+        "line": 25,
+        "kind": "train_test_split"
+      },
+      {
+        "line": 26,
+        "kind": "train_test_split"
+      }
+    ],
+    "Figure 3.ipynb#cell-7": [
+      {
+        "line": 1,
+        "kind": "StratifiedKFold"
+      }
+    ],
+    "Figure 3.ipynb#cell-10": [
+      {
+        "line": 1,
+        "kind": "shift, slicesize"
+      }
+    ],
+    "Figure 3.ipynb#cell-14": [
+      {
+        "line": 6,
+        "kind": "covariates"
+      },
+      {
+        "line": 14,
+        "kind": "pickle.load"
+      },
+      {
+        "line": 15,
+        "kind": "covariates"
+      }
+    ],
+    "Figure 3.ipynb#cell-19": [
+      {
+        "line": 15,
+        "kind": "EarlyStopping"
+      },
+      {
+        "line": 35,
+        "kind": "EarlyStopping"
+      },
+      {
+        "line": 42,
+        "kind": "StratifiedKFold"
+      },
+      {
+        "line": 49,
+        "kind": "train_test_split"
+      }
+    ],
+    "Figure 3.ipynb#cell-22": [
+      {
+        "line": 1,
+        "kind": "allow_pickle"
+      },
+      {
+        "line": 26,
+        "kind": "train_test_split"
+      },
+      {
+        "line": 27,
+        "kind": "train_test_split"
+      }
+    ],
+    "Training_MetaDegron_XGBoost.ipynb#cell-0": [
+      {
+        "line": 7,
+        "kind": "StratifiedKFold"
+      }
+    ],
+    "Training_MetaDegron_XGBoost.ipynb#cell-2": [
+      {
+        "line": 10,
+        "kind": "StratifiedKFold"
+      }
+    ],
+    "Training_MetaDegron_XGBoost.ipynb#cell-3": [
+      {
+        "line": 1,
+        "kind": "feature_name"
+      },
+      {
+        "line": 8,
+        "kind": "feature_name"
+      },
+      {
+        "line": 19,
+        "kind": "feature_name"
+      },
+      {
+        "line": 23,
+        "kind": "feature_name"
+      }
+    ],
+    "Performance_benchmarking.ipynb#cell-1": [
+      {
+        "line": 1,
+        "kind": "shift, slicesize"
+      }
+    ],
+    "Performance_benchmarking.ipynb#cell-7": [
+      {
+        "line": 6,
+        "kind": "covariates"
+      },
+      {
+        "line": 14,
+        "kind": "pickle.load"
+      },
+      {
+        "line": 15,
+        "kind": "covariates"
+      }
+    ],
+    "Figure 2.ipynb#cell-6": [
+      {
+        "line": 7,
+        "kind": "StratifiedKFold"
+      }
+    ],
+    "Figure 2.ipynb#cell-8": [
+      {
+        "line": 10,
+        "kind": "StratifiedKFold"
+      }
+    ],
+    "Figure 2.ipynb#cell-9": [
+      {
+        "line": 1,
+        "kind": "feature_name"
+      },
+      {
+        "line": 6,
+        "kind": "feature_name"
+      },
+      {
+        "line": 17,
+        "kind": "feature_name"
+      },
+      {
+        "line": 21,
+        "kind": "feature_name"
+      }
+    ],
+    "Figure 2.ipynb#cell-10": [
+      {
+        "line": 1,
+        "kind": "train_test_split"
+      },
+      {
+        "line": 7,
+        "kind": "train_test_split"
+      }
+    ],
+    "Figure 2.ipynb#cell-12": [
+      {
+        "line": 4,
+        "kind": "covariates"
+      },
+      {
+        "line": 11,
+        "kind": "covariates"
+      },
+      {
+        "line": 21,
+        "kind": "covariates"
+      },
+      {
+        "line": 26,
+        "kind": "covariates"
+      },
+      {
+        "line": 49,
+        "kind": "covariates"
+      }
+    ],
+    "Figure 2.ipynb#cell-14": [
+      {
+        "line": 1,
+        "kind": "covariates"
+      },
+      {
+        "line": 7,
+        "kind": "covariates"
+      }
+    ],
+    "Webserver/Degron_prediction.py": [
+      {
+        "line": 23,
+        "kind": "dict_E3_degrons"
+      },
+      {
+        "line": 34,
+        "kind": "covariates"
+      },
+      {
+        "line": 41,
+        "kind": "allow_pickle"
+      },
+      {
+        "line": 121,
+        "kind": "dict_E3_degrons"
+      },
+      {
+        "line": 137,
+        "kind": "pickle.load"
+      },
+      {
+        "line": 138,
+        "kind": "covariates"
+      },
+      {
+        "line": 159,
+        "kind": "shift, slicesize"
+      }
+    ]
+  },
+  "serialized_architecture_layers": [
+    {
+      "class": "InputLayer",
+      "name": "input_2",
+      "batch_input_shape": [
+        null,
+        29,
+        1024
+      ]
+    },
+    {
+      "class": "InputLayer",
+      "name": "input_3",
+      "batch_input_shape": [
+        null,
+        29
+      ]
+    },
+    {
+      "class": "Conv1D",
+      "name": "conv1d_2",
+      "activation": "relu",
+      "filters": 128,
+      "kernel_size": [
+        8
+      ],
+      "padding": "valid",
+      "strides": [
+        1
+      ]
+    },
+    {
+      "class": "Bidirectional",
+      "name": "bidirectional_1",
+      "wrapped_layer": {
+        "return_sequences": true,
+        "units": 20,
+        "activation": "tanh",
+        "recurrent_activation": "sigmoid",
+        "dropout": 0.5,
+        "recurrent_dropout": 0.2
+      }
+    },
+    {
+      "class": "Embedding",
+      "name": "embedding_1",
+      "batch_input_shape": [
+        null,
+        29
+      ],
+      "input_dim": 27,
+      "output_dim": 10
+    },
+    {
+      "class": "MaxPooling1D",
+      "name": "max_pooling1d_2",
+      "pool_size": [
+        2
+      ],
+      "padding": "valid",
+      "strides": [
+        2
+      ]
+    },
+    {
+      "class": "Bidirectional",
+      "name": "bidirectional_2",
+      "wrapped_layer": {
+        "return_sequences": true,
+        "units": 10,
+        "activation": "tanh",
+        "recurrent_activation": "sigmoid",
+        "dropout": 0.5,
+        "recurrent_dropout": 0.5
+      }
+    },
+    {
+      "class": "Bidirectional",
+      "name": "bidirectional_3",
+      "wrapped_layer": {
+        "return_sequences": true,
+        "units": 20,
+        "activation": "tanh",
+        "recurrent_activation": "sigmoid",
+        "dropout": 0.5,
+        "recurrent_dropout": 0.2
+      }
+    },
+    {
+      "class": "Dense",
+      "name": "dense_1",
+      "units": 20,
+      "activation": "linear"
+    },
+    {
+      "class": "Dense",
+      "name": "dense_2",
+      "units": 20,
+      "activation": "linear"
+    },
+    {
+      "class": "Dense",
+      "name": "dense_3",
+      "units": 20,
+      "activation": "linear"
+    },
+    {
+      "class": "LeakyReLU",
+      "name": "leaky_re_lu_1",
+      "alpha": 0.009999999776482582
+    },
+    {
+      "class": "LeakyReLU",
+      "name": "leaky_re_lu_2",
+      "alpha": 0.009999999776482582
+    },
+    {
+      "class": "LeakyReLU",
+      "name": "leaky_re_lu_3",
+      "alpha": 0.009999999776482582
+    },
+    {
+      "class": "Flatten",
+      "name": "flatten_1"
+    },
+    {
+      "class": "Flatten",
+      "name": "flatten_2"
+    },
+    {
+      "class": "Flatten",
+      "name": "flatten_3"
+    },
+    {
+      "class": "Concatenate",
+      "name": "concatenate_1",
+      "axis": -1
+    },
+    {
+      "class": "Dense",
+      "name": "dense_4",
+      "units": 20,
+      "activation": "linear"
+    },
+    {
+      "class": "LeakyReLU",
+      "name": "leaky_re_lu_4",
+      "alpha": 0.009999999776482582
+    },
+    {
+      "class": "Dense",
+      "name": "dense_5",
+      "units": 1,
+      "activation": "sigmoid"
+    }
+  ],
+  "hdf5": {
+    "attributes": {
+      "backend": "tensorflow",
+      "keras_version": "2.3.1"
+    },
+    "arrays": [
+      {
+        "name": "bidirectional_4/bidirectional_4/backward_lstm_4/bias:0",
+        "shape": [
+          80
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "bidirectional_4/bidirectional_4/backward_lstm_4/kernel:0",
+        "shape": [
+          1024,
+          80
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "bidirectional_4/bidirectional_4/backward_lstm_4/recurrent_kernel:0",
+        "shape": [
+          20,
+          80
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "bidirectional_4/bidirectional_4/forward_lstm_4/bias:0",
+        "shape": [
+          80
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "bidirectional_4/bidirectional_4/forward_lstm_4/kernel:0",
+        "shape": [
+          1024,
+          80
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "bidirectional_4/bidirectional_4/forward_lstm_4/recurrent_kernel:0",
+        "shape": [
+          20,
+          80
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "bidirectional_5/bidirectional_5/backward_lstm_5/bias:0",
+        "shape": [
+          40
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "bidirectional_5/bidirectional_5/backward_lstm_5/kernel:0",
+        "shape": [
+          40,
+          40
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "bidirectional_5/bidirectional_5/backward_lstm_5/recurrent_kernel:0",
+        "shape": [
+          10,
+          40
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "bidirectional_5/bidirectional_5/forward_lstm_5/bias:0",
+        "shape": [
+          40
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "bidirectional_5/bidirectional_5/forward_lstm_5/kernel:0",
+        "shape": [
+          40,
+          40
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "bidirectional_5/bidirectional_5/forward_lstm_5/recurrent_kernel:0",
+        "shape": [
+          10,
+          40
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "bidirectional_6/bidirectional_6/backward_lstm_6/bias:0",
+        "shape": [
+          80
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "bidirectional_6/bidirectional_6/backward_lstm_6/kernel:0",
+        "shape": [
+          10,
+          80
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "bidirectional_6/bidirectional_6/backward_lstm_6/recurrent_kernel:0",
+        "shape": [
+          20,
+          80
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "bidirectional_6/bidirectional_6/forward_lstm_6/bias:0",
+        "shape": [
+          80
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "bidirectional_6/bidirectional_6/forward_lstm_6/kernel:0",
+        "shape": [
+          10,
+          80
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "bidirectional_6/bidirectional_6/forward_lstm_6/recurrent_kernel:0",
+        "shape": [
+          20,
+          80
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "conv1d_2/conv1d_2/bias:0",
+        "shape": [
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "conv1d_2/conv1d_2/kernel:0",
+        "shape": [
+          8,
+          1024,
+          128
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "dense_10/dense_10/bias:0",
+        "shape": [
+          1
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "dense_10/dense_10/kernel:0",
+        "shape": [
+          20,
+          1
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "dense_6/dense_6/bias:0",
+        "shape": [
+          20
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "dense_6/dense_6/kernel:0",
+        "shape": [
+          128,
+          20
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "dense_7/dense_7/bias:0",
+        "shape": [
+          20
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "dense_7/dense_7/kernel:0",
+        "shape": [
+          20,
+          20
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "dense_8/dense_8/bias:0",
+        "shape": [
+          20
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "dense_8/dense_8/kernel:0",
+        "shape": [
+          40,
+          20
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "dense_9/dense_9/bias:0",
+        "shape": [
+          20
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "dense_9/dense_9/kernel:0",
+        "shape": [
+          1380,
+          20
+        ],
+        "dtype": "float32"
+      },
+      {
+        "name": "embedding_2/embedding_2/embeddings:0",
+        "shape": [
+          27,
+          10
+        ],
+        "dtype": "float32"
+      }
+    ]
+  },
+  "framework_reproduction_blockers": [
+    "TensorFlow 1.15 / Keras 2.3.1 / allennlp 0.9.0 unavailable in current Python environment",
+    "Object-NPY and XGBoost pickle are not safely loaded by original scripts; no unrestricted deserialization performed",
+    "Webserver source constructs 49-residue windows; bundled architecture has 29 residues; notebook uses 29",
+    "Webserver X uses 11 columns including STRAND, training X uses 10, plus missing precomputed per-protein feature files"
+  ],
+  "external_evaluation": {
+    "x_precomputed_properties": "completed by safe-predict-x.py without unpickling; see safe-x-reproduction.json",
+    "zero_shot": "blocked: D runtime not reconstructed; X protein-feature assets missing; no GPS scores generated",
+    "mutation_map": "blocked: same plus fixed-motif-window implementation required",
+    "remote_submissions": 0
+  }
+}

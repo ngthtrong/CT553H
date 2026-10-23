@@ -1,0 +1,33 @@
+flowchart TD
+    start(["Prediction request"])
+    measured{"Tile measured in the GPS screen?"}
+    gateModel{"Gate model for tiles not measured"}
+    reliable{"Reads and PSI of the measured tile"}
+
+    warnLeft["Score with warning: unknown or predicted_in_domain"]
+    outDomain["Out of domain: measured or predicted"]
+    warnRight["Score with warning: measured_unreliable"]
+    score["Score: measured_in_domain"]
+
+    override{"Override requested?"}
+    refuse["Refused: 422 OUT_OF_DOMAIN"]
+    overridden["Score with override warning"]
+
+    start --> measured
+    measured -->|"No or typed sequence"| gateModel
+    measured -->|"Yes"| reliable
+    gateModel -->|"No model or in domain"| warnLeft
+    gateModel -->|"Out of domain"| outDomain
+    reliable -->|"PSI above 4.0"| outDomain
+    reliable -->|"Too few reads"| warnRight
+    reliable -->|"PSI at most 4.0"| score
+    outDomain --> override
+    override -->|"No"| refuse
+    override -->|"Yes"| overridden
+
+    style score fill:#CDF4D3,stroke:#66D575
+    style warnLeft fill:#FFECBD,stroke:#FFC943
+    style warnRight fill:#FFECBD,stroke:#FFC943
+    style outDomain fill:#FFE0C2,stroke:#FF9E42
+    style overridden fill:#FFE0C2,stroke:#FF9E42
+    style refuse fill:#FFCDC2,stroke:#FF7556

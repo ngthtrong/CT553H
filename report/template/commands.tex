@@ -1,0 +1,78 @@
+% ---- Fixed names ---------------------------------------------------------------
+% polyglossia resets caption names, so hook the language rather than redefine them.
+\addto\captionsenglish{%
+  \renewcommand*{\chaptername}{CHAPTER}%
+  \renewcommand*{\appendixname}{APPENDIX}%
+  \renewcommand*{\contentsname}{TABLE OF CONTENTS}%
+  \renewcommand*{\listfigurename}{LIST OF FIGURES}%
+  \renewcommand*{\listtablename}{LIST OF TABLES}%
+  \renewcommand*{\figurename}{Figure}%
+  \renewcommand*{\tablename}{Table}}
+
+% ---- Covers ------------------------------------------------------------------
+\newcommand{\ThesisFrame}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \draw[line width=1.6pt] ($(current page.north west)+(20mm,-20mm)$)
+      rectangle ($(current page.south east)+(-20mm,20mm)$);
+    \draw[line width=.5pt] ($(current page.north west)+(21.8mm,-21.8mm)$)
+      rectangle ($(current page.south east)+(-21.8mm,21.8mm)$);
+  \end{tikzpicture}}
+% Covers have centred content inside the frame; body margins restored after.
+\newenvironment{thesiscover}{%
+  \clearpage\newgeometry{left=28mm,right=28mm,top=28mm,bottom=28mm,headheight=21bp,footskip=10mm}%
+  \thispagestyle{empty}\ThesisFrame\centering\setstretch{1.3}\fontsize{14bp}{18bp}\selectfont
+}{\clearpage\restoregeometry}
+\newcommand{\ThesisCoverHeading}{%
+  {\fontsize{12.5bp}{17bp}\selectfont\UniversityName\\\CollegeName\\\textbf{\FacultyName}\par}
+  \vspace{12mm}\includegraphics[width=30mm]{logo-ctu.png}\par}
+\newcommand{\ThesisCoverProgram}{%
+  \textbf{GRADUATION THESIS}\par
+  \textbf{\parbox{.62\textwidth}{\centering\setstretch{1.3}\DegreeName}}\par
+  \textbf{\ProgramName}\par}
+\newcommand{\ThesisCoverTitle}{%
+  {\fontsize{16bp}{21bp}\selectfont\bfseries\ThesisTitle\par}%
+  \ifx\ThesisSubtitle\ThesisEmpty\else
+    \vspace{3mm}{\bfseries\ThesisSubtitle\par}%
+  \fi}
+\newcommand{\ThesisCoverFooter}{\textbf{\textit{\ThesisLocation, \ThesisDate}}\par}
+
+% ---- Fixed front-matter pages -------------------------------------------------
+% Unnumbered chapter heading that also appears in the table of contents; pages
+% before the table of contents carry only the centred page number.
+\newcommand{\FrontChapter}[1]{\addchap{#1}\thispagestyle{thesisplain}}
+% Dotted writing lines for pages that are completed by hand.
+\newcommand{\DottedLines}[1]{\foreach \i in {1,...,#1}{\par\noindent\dotfill\par}}
+\newcommand{\SignatureBlock}[2]{%
+  \par\vspace{6mm}\begin{flushright}\begin{minipage}{.5\textwidth}\centering
+  \SigningDate\par\textbf{#1}\par\vspace{22mm}\textbf{#2}\par
+  \end{minipage}\end{flushright}}
+
+% ---- Numbering of the three parts -------------------------------------------
+% PART 1 and PART 3 number their sections 1., 2., 3.1.; the chapters of PART 2
+% (and the appendices) use 1.1., 1.1.1.
+\newcommand{\ThesisFlatNumbering}{%
+  \setcounter{section}{0}%
+  \renewcommand*{\thesection}{\arabic{section}}%
+  \renewcommand*{\thesubsection}{\thesection.\arabic{subsection}}%
+  \renewcommand*{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}}
+\newcommand{\ThesisChapterNumbering}{%
+  \renewcommand*{\thesection}{\thechapter.\arabic{section}}%
+  \renewcommand*{\thesubsection}{\thesection.\arabic{subsection}}%
+  \renewcommand*{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}}
+
+% ---- Use case specification (faculty template, Chapter 1) ----------------------
+% \begin{usecasespec}{Caption}{label}
+%   \ucname{Name}{UC-01}  \ucactor{Actor}{Priority}{Classification}
+%   \ucfull{Heading}{text}  ...
+% \end{usecasespec}
+\newenvironment{usecasespec}[2]{%
+  \small\setstretch{1.15}
+  \begin{longtable}{|P{.465\textwidth}|P{.465\textwidth}|}
+  \caption{#1}\label{#2}\\\hline\endfirsthead
+  \hline\endhead}{\end{longtable}}
+\newcommand{\ucname}[2]{\textbf{Use case name:} #1 & \textbf{ID:} #2 \\\hline}
+\newcommand{\ucactor}[3]{%
+  \textbf{Primary actor:} #1 &
+  \textbf{Necessity level:} #2\par\textbf{Classification:} #3 \\\hline}
+\newcommand{\ucfull}[2]{%
+  \multicolumn{2}{|P{.93\textwidth}|}{\textbf{#1}\par #2\vspace{2bp}} \\\hline}

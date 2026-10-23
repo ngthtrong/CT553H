@@ -1,0 +1,7 @@
+{
+  "elm-instances.tsv": "http://elm.eu.org/instances.tsv",
+  "elm-instances-https.tsv": "https://elm.eu.org/instances.tsv",
+  "elm-license.html": "http://elm.eu.org/infos/about.html",
+  "elm-class-ken.html": "http://elm.eu.org/elms/DEG_APCC_KENBOX_2.html",
+  "pubmed-sources.json": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:28292960%20OR%20EXT_ID:35121836%20OR%20EXT_ID:26732515%20OR%20EXT_ID:31680160&format=json"
+}

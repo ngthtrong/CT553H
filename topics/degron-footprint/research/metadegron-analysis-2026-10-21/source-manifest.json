@@ -1,0 +1,2663 @@
+{
+  "generator": "inventory-sources.py",
+  "client_date": "2026-10-21",
+  "existing_topic_inputs": [
+    {
+      "path": "topics/degron-footprint/data/processed/proteins-full.fasta",
+      "sha256": "c02e6631ca6070c53f464bdd4308d1953419f9e6cc1996453dd92e3e7a89487a",
+      "bytes": 5506496,
+      "read_only_existing_source": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/human-reviewed-2026-10-12.fasta.gz",
+      "sha256": "dc8ef8cbf0fc1b857b3be9a559613533ec49824079fb057e31fdfcf578cb229a",
+      "bytes": 7508673,
+      "read_only_existing_source": true
+    },
+    {
+      "path": "topics/degron-footprint/data/interim/protein-id30-cov50_cluster.tsv",
+      "sha256": "1040d57619273950dff6a7ef43cf0e253252016e5d6d777fc1c928389ca3ead3",
+      "bytes": 92070,
+      "read_only_existing_source": true
+    },
+    {
+      "path": "topics/degron-footprint/data/interim/protein-id30-cov80_cluster.tsv",
+      "sha256": "8cdfe9062fbc47e3a4b5eb6cca9a24a7144f52d412fe52eeceeb1cda873aba80",
+      "bytes": 92082,
+      "read_only_existing_source": true
+    },
+    {
+      "path": "topics/degron-footprint/data/processed/g2-saturation-input.npz",
+      "sha256": "b8d28174db8dcef5faa88bb9fa5fa97ea3e6d0e786b8eef54bdd7a6b80d78e0a",
+      "bytes": 1617114,
+      "read_only_existing_source": true
+    },
+    {
+      "path": "topics/degron-footprint/data/processed/psi-sat_a.tsv",
+      "sha256": "03ca50c79a5f0aa89efbde5c458bd5e283079fc88f2a265177edb5a673a193a2",
+      "bytes": 14379923,
+      "read_only_existing_source": true
+    },
+    {
+      "path": "topics/degron-footprint/data/processed/psi-sat_b.tsv",
+      "sha256": "799c7f64a8ebb578f968c76dfdf7383025bdfcb0fb1e2bc6da2b18f49414affa",
+      "bytes": 14301246,
+      "read_only_existing_source": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/larsen-2025/transfac_tiles.csv.gz",
+      "sha256": "0c31057daeaaedde4b4a8aafa5d6d03035623f197aff0f277273322e04da2a2f",
+      "bytes": 5771779,
+      "read_only_existing_source": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/voutsinos-2026/repo/score/degrons.csv.gz",
+      "sha256": "1e8cdd9d3bfe876705160b70de606129b47b786664dba9d162c4ac18a7df722e",
+      "bytes": 16487263,
+      "read_only_existing_source": true
+    },
+    {
+      "path": "topics/degron-footprint/data/interim/zhang-scanning-unzip/I28 Scanning (Completed)/Replicate 1 (BAG6 genotype unclear)/I28 Scanning Mutagenesis Replicate 1.csv",
+      "sha256": "a5937f4c9dfa082c1a4ed6efe48aa5a6b3fee6e3a3f236dfde656a241eda65bf",
+      "bytes": 67050179,
+      "read_only_existing_source": true
+    }
+  ],
+  "repository": {
+    "url": "https://github.com/BioDataStudy/MetaDegron",
+    "commit": "ca12c0cf9d2e2d76655689973ac45c6c063a899d",
+    "commit_date": "2024-06-20T20:57:29+08:00",
+    "license_files": [],
+    "license": "chưa xác nhận; absent LICENSE is not permission",
+    "tracked_files": 80
+  },
+  "article": {
+    "doi": "10.1093/bib/bbae519",
+    "pmcid": "PMC11491831",
+    "license_verbatim": "This is an Open Access article distributed under the terms of the Creative Commons Attribution License (https://creativecommons.org/licenses/by/4.0/), which permits unrestricted reuse, distribution, and reproduction in any medium, provided the original work is properly cited.",
+    "license": "CC BY 4.0"
+  },
+  "network_attempts": [
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11491831/supplementaryFiles",
+      "path": "topics/degron-footprint/data/raw/metadegron/supplementary-files.zip",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:41:16.524608+00:00",
+      "license": "article CC BY 4.0; underlying imported dataset permissions separately unresolved",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11491831/supplementaryFiles",
+      "content_type": "application/zip",
+      "bytes": 1080923,
+      "sha256": "0bbb5e35db4cae57f82994bf7e1e125e0bff6a5f337fb6f59bc119a8c84baa8e",
+      "accessible": true,
+      "receipt_file": "additional-sources-access.json"
+    },
+    {
+      "url": "http://modinfor.com/MetaDegron/Prediction.php",
+      "path": "topics/degron-footprint/data/raw/metadegron/web-prediction.html",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:41:16.526596+00:00",
+      "license": "chưa xác nhận",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://modinfor.com/MetaDegron/Prediction.php",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 16450,
+      "sha256": "11069f0acc3d89a129c47cab72b61df89115a737f3ddeae474e6e3a99b6c72f9",
+      "accessible": true,
+      "receipt_file": "additional-sources-access.json"
+    },
+    {
+      "url": "https://www.uth.edu/index/policies.htm",
+      "path": "topics/degron-footprint/data/raw/metadegron/site-policies.html",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:41:16.528104+00:00",
+      "license": "chưa xác nhận",
+      "downloaded": false,
+      "error": "HTTPError: HTTP Error 403: Forbidden",
+      "accessible": false,
+      "receipt_file": "additional-sources-access.json"
+    },
+    {
+      "url": "http://modinfor.com/MetaDegron/images/Output.png",
+      "path": "topics/degron-footprint/data/raw/metadegron/demo-output.png",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:41:16.529686+00:00",
+      "license": "chưa xác nhận",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://modinfor.com/MetaDegron/images/Output.png",
+      "content_type": "image/png",
+      "bytes": 85126,
+      "sha256": "fbe7df9e9a818ac499338e163418ccab168234529c24670bfb77d1f24f3f0360",
+      "accessible": true,
+      "receipt_file": "additional-sources-access.json"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/11491831/bin/supplementary_table_s1_bbae519.xlsx",
+      "path": "topics/degron-footprint/data/raw/metadegron/supplementary-s1.xlsx",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:41:17.001886+00:00",
+      "license": "chưa xác nhận",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/11491831/bin/supplementary_table_s1_bbae519.xlsx",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1816,
+      "sha256": "913985898dc053eaf4913fb0596c09e5e53abdf045c626540adff518aad7059e",
+      "accessible": false,
+      "receipt_file": "additional-sources-access.json",
+      "content_validation": "HTML challenge, not XLSX; HTTP 200 is not data access"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/11491831/bin/supplementary_table_s2_bbae519.xlsx",
+      "path": "topics/degron-footprint/data/raw/metadegron/supplementary-s2.xlsx",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:41:17.340193+00:00",
+      "license": "chưa xác nhận",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/11491831/bin/supplementary_table_s2_bbae519.xlsx",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1817,
+      "sha256": "fb84002145e94d250a75006363fcea680de7fd5833c6a77ac38a06d9593e998c",
+      "accessible": false,
+      "receipt_file": "additional-sources-access.json",
+      "content_validation": "HTML challenge, not XLSX; HTTP 200 is not data access"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/11491831/bin/supplementary_table_s3_bbae519.xlsx",
+      "path": "topics/degron-footprint/data/raw/metadegron/supplementary-s3.xlsx",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:41:17.367537+00:00",
+      "license": "chưa xác nhận",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/11491831/bin/supplementary_table_s3_bbae519.xlsx",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1817,
+      "sha256": "6cdf8b764295eab6a9a200fb9bec973e15613d106a6cc9ba0db82f5e7f0ec915",
+      "accessible": false,
+      "receipt_file": "additional-sources-access.json",
+      "content_validation": "HTML challenge, not XLSX; HTTP 200 is not data access"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/11491831/bin/supplementary_table_s4_bbae519.xlsx",
+      "path": "topics/degron-footprint/data/raw/metadegron/supplementary-s4.xlsx",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:41:17.581717+00:00",
+      "license": "chưa xác nhận",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/11491831/bin/supplementary_table_s4_bbae519.xlsx",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1816,
+      "sha256": "7ad7493c7f45423499ae3a627a9ced5265ab976db8c39e420374a629de27e149",
+      "accessible": false,
+      "receipt_file": "additional-sources-access.json",
+      "content_validation": "HTML challenge, not XLSX; HTTP 200 is not data access"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/11491831/bin/supplementary_table_s5_bbae519.xlsx",
+      "path": "topics/degron-footprint/data/raw/metadegron/supplementary-s5.xlsx",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:41:17.705023+00:00",
+      "license": "chưa xác nhận",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/11491831/bin/supplementary_table_s5_bbae519.xlsx",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1817,
+      "sha256": "1de1458bf7698668b6eae8f23037680c5d8d01456b63c70a1bcdae51793617df",
+      "accessible": false,
+      "receipt_file": "additional-sources-access.json",
+      "content_validation": "HTML challenge, not XLSX; HTTP 200 is not data access"
+    },
+    {
+      "url": "https://dosztanyi.web.elte.hu/CANCER/DEGRON/TP.html",
+      "path": "topics/degron-footprint/data/raw/metadegron/review-2017-table.html",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:55:53.957646+00:00",
+      "license": "chưa xác nhận",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "https://error.elte.hu/error/452.html",
+      "content_type": "text/html",
+      "bytes": 304,
+      "sha256": "6b49e90145a710aec7ec2f354ddfd2ee946796ff81cb74b94ae7fab3c4b077d0",
+      "accessible": false,
+      "receipt_file": "candidate-sources-access.json",
+      "content_validation": "HTTP 200 access-denial page: restricted to ELTEnet"
+    },
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10701100/fullTextXML",
+      "path": "topics/degron-footprint/data/raw/metadegron/degronmd-paper.xml",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:55:53.959014+00:00",
+      "license": "chưa xác nhận",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10701100/fullTextXML",
+      "content_type": "application/xml",
+      "bytes": 97379,
+      "sha256": "8a6e0cd93be3ea885129947b848f025a09795c8d8095b6fb92ed2183b499cf0a",
+      "accessible": true,
+      "receipt_file": "candidate-sources-access.json"
+    },
+    {
+      "url": "https://bioinfo.uth.edu/degronmd/download.html",
+      "path": "topics/degron-footprint/data/raw/metadegron/degronmd-download.html",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:55:53.959588+00:00",
+      "license": "chưa xác nhận",
+      "downloaded": false,
+      "error": "HTTPError: HTTP Error 403: Forbidden",
+      "accessible": false,
+      "receipt_file": "candidate-sources-access.json"
+    },
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11223883/fullTextXML",
+      "path": "topics/degron-footprint/data/raw/metadegron/degronopedia-paper.xml",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:55:53.961187+00:00",
+      "license": "chưa xác nhận",
+      "downloaded": false,
+      "error": "TimeoutError: The read operation timed out",
+      "accessible": false,
+      "receipt_file": "candidate-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/downloads.html",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-downloads.html",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:48:35.121781+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/downloads.html",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 25489,
+      "sha256": "7c0f920a66ababfd31cb8d5a12278a4755a10f369869cb1a063e04c3e0437574",
+      "accessible": true,
+      "receipt_file": "elm-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/media/Elm_academic_license.pdf",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-academic-license.pdf",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:48:35.122471+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/media/Elm_academic_license.pdf",
+      "content_type": "application/pdf",
+      "bytes": 47503,
+      "sha256": "6db35458b887e6ee24631355cfaff92fe1caeb209cae5abb2a791a37cd18f535",
+      "accessible": true,
+      "receipt_file": "elm-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?limit=10000",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-instances-all.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:48:35.124118+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?limit=10000",
+      "content_type": "text/tsv",
+      "bytes": 23680,
+      "sha256": "f178ea065ac3526d254a882e1239c2115fc680737ede6cb45859e5ca763ecb25",
+      "accessible": true,
+      "receipt_file": "elm-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-instances.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:43:53.992873+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv",
+      "content_type": "text/tsv",
+      "bytes": 23680,
+      "sha256": "944c10fe7d0a6e42f727d61b49638f1d579bc86ec2ce131b934bb4287f2391df",
+      "accessible": true,
+      "receipt_file": "label-sources-access.json"
+    },
+    {
+      "url": "https://elm.eu.org/instances.tsv",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-instances-https.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:43:53.994719+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": false,
+      "error": "URLError: <urlopen error timed out>",
+      "accessible": false,
+      "receipt_file": "label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/infos/about.html",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-license.html",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:43:53.996379+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/infos/about.html",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 51183,
+      "sha256": "63cf91d5338b418e44b584e1c0f981108c5b587d073f6bcaf9ee7083e7d8332c",
+      "accessible": true,
+      "receipt_file": "label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/elms/DEG_APCC_KENBOX_2.html",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-class-ken.html",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:43:53.998559+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/elms/DEG_APCC_KENBOX_2.html",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 141726,
+      "sha256": "7120bdbbf25147f5527ddfcaa1fc023ece71cc1c15043f6501d8669b1a39a41c",
+      "accessible": true,
+      "receipt_file": "label-sources-access.json"
+    },
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:28292960%20OR%20EXT_ID:35121836%20OR%20EXT_ID:26732515%20OR%20EXT_ID:31680160&format=json",
+      "path": "topics/degron-footprint/data/raw/metadegron/pubmed-sources.json",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:43:56.602515+00:00",
+      "license": "chưa xác nhận",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:28292960%20OR%20EXT_ID:35121836%20OR%20EXT_ID:26732515%20OR%20EXT_ID:31680160&format=json",
+      "content_type": "application/json;charset=UTF-8",
+      "bytes": 3543,
+      "sha256": "ad9ed8a2a94bc5842266e9ebf36a2ed733264c49770d5502ec8d08c461d78abf",
+      "accessible": true,
+      "receipt_file": "label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=PGFRB_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-2.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:47.268739+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=PGFRB_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 1849,
+      "sha256": "aa3018c54e63b713b9be9c50aac33ae54995e78d8df442f04e34d9d0be71060d",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=KSYK_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-4.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:47.270119+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=KSYK_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 286,
+      "sha256": "5ead143a5b4c2e7180189872198008963cd3917ad58a54a3bb2f77c8d7eac73b",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=SH2B3_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-9.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:47.271256+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=SH2B3_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 286,
+      "sha256": "459e9d7cc477d98c4fbcd12941d998dfe88d12eded2f4b86bd9964f4597c8bf0",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=PLXA3_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-10.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:47.272426+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=PLXA3_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 286,
+      "sha256": "4bef57e8dd05cacf877403ed7dbc4b803e52285f7d2b9f384d702eb616b1277c",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=MET_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-14.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:47.561067+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=MET_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 494,
+      "sha256": "72f86cbbd85bbd458bb192fd014052fa3380a9e1f790fc528466ae7bd0a1907b",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=ZAP70_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-24.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:47.561624+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=ZAP70_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 286,
+      "sha256": "2dce429ea0d55337ea0d0ffbf0514a055337fab377b1916b453ed11f6b3cc017",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=SPY1_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-25.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:47.562097+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=SPY1_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 286,
+      "sha256": "0ab94b627a1433b05e7d001b93396521232249234ab25950aca75aa95a90704d",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=CADH1_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-28.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:47.709236+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=CADH1_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 741,
+      "sha256": "b1b18314ced5642b8ad5c039e833195aa1c705b1f267faaea57cbdbf3e4395d3",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=TEX14_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-42.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:48.628184+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=TEX14_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 522,
+      "sha256": "58f6564b77ca39751206ad26df1a079edae8281f9cd6c9bccef1119b258bab41",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=FBXW5_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-44.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:48.646506+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=FBXW5_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 583,
+      "sha256": "0b1581dd7d7eb3f088638fe54f4e87287f1d25905c8d8296c82489146bcfd891",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=BUB1B_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-54.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:48.671313+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=BUB1B_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 2437,
+      "sha256": "fed6d7289f0142e3f2e13694669eaffd5dab578f1ddd3dbcdb90ce7bb97b29f9",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=CCNA2_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-58.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:48.906454+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=CCNA2_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 492,
+      "sha256": "5eac9db2d0d3217f6332b4b39f58cfd118008cc259e3c8bacd4eddfdf774ac97",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=FXRD2_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-72.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:49.793694+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=FXRD2_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 286,
+      "sha256": "fade2212ae821be0290e2919b17dfe315e1b79a05dcae9df614befe5aec1c476",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=CIN8_YEAST",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-99.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:49.794216+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=CIN8_YEAST",
+      "content_type": "text/tsv",
+      "bytes": 453,
+      "sha256": "9adf015bf0666637a4794b7fd7f3bb98e58444d383eb1505692921a4dc867617",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=BUB1_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-104.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:49.989920+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=BUB1_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 1023,
+      "sha256": "10799d63351bc8b11832e4298ba0676432265127c3ea6fda51e3cdc2f4190466",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=BUB1B_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-105.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:50.001101+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=BUB1B_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 2437,
+      "sha256": "fed6d7289f0142e3f2e13694669eaffd5dab578f1ddd3dbcdb90ce7bb97b29f9",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=Q9M7I2_MEDTR",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-118.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:50.444740+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=Q9M7I2_MEDTR",
+      "content_type": "text/tsv",
+      "bytes": 451,
+      "sha256": "352e4226f83e858269bd1f6cf598d8f9ebba3f8ae0989a65a1ef0377265d9a0f",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=CORT_DROME",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-121.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:50.871844+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=CORT_DROME",
+      "content_type": "text/tsv",
+      "bytes": 478,
+      "sha256": "8a60dba2a23b89e861a3fbc61e42f1349288d933a90cdc3ac5a7fe365b08d3e7",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=GIG1_ARATH",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-122.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:50.909556+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=GIG1_ARATH",
+      "content_type": "text/tsv",
+      "bytes": 286,
+      "sha256": "c8d5eeb4d39ce0c6e424c8c16455dc47788fc4fd2a8189b47b9174bbd38cfb57",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=CDC21_ARATH",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-124.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:51.145999+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=CDC21_ARATH",
+      "content_type": "text/tsv",
+      "bytes": 286,
+      "sha256": "15db80dabf709e9e18ef567727c3ad3addbda17c2d13575029742eb9d222c3da",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=CDN1A_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-145.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:51.619922+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=CDN1A_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 1396,
+      "sha256": "c53f0df4ee5929a327d80f1e06ff5eed251e8a7bcac76c1345ede43876bcc2cd",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=GRIK2_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-149.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:52.047081+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=GRIK2_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 286,
+      "sha256": "7ffc61cfc8b22e6a211ab142b8596bf96f6379ad7eeddccfd7b1f446be13d3ff",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=NF2L2_MOUSE",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-165.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:52.047679+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=NF2L2_MOUSE",
+      "content_type": "text/tsv",
+      "bytes": 911,
+      "sha256": "956b0356cb942d787af98e1f4c94d137b58f91662dc1ff50333561b63fbfb8ee",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=WNK1_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-167.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:52.250444+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=WNK1_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 1455,
+      "sha256": "826aa593ed6f3459f7bd1aa4711cca36d6629e92cf5f2dc3ce0f8564e71dc747",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=WNK3_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-169.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:52.901255+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=WNK3_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 513,
+      "sha256": "2582e92ea9572dc65fce7b515a21dbaca324d1d8d27859c3e25f89276fdd5a42",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=NUMB_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-172.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:53.110482+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=NUMB_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 854,
+      "sha256": "153afe50b3910300227c45e9683009978b71e4c15e3e5b3291eb06fec142ee6e",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=TACY_LISMO",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-176.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:53.278079+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=TACY_LISMO",
+      "content_type": "text/tsv",
+      "bytes": 627,
+      "sha256": "9c338685423c39b448a6c9140130b6aaa8f30875d2bdf6f7458f9d2e20563f94",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=ERF71_ARATH",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-181.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:53.400157+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=ERF71_ARATH",
+      "content_type": "text/tsv",
+      "bytes": 463,
+      "sha256": "c6e6db4e171fa8fc6ca604a48c335865a0ee24ab8c1572b53f67b32844fd6391",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=HIF1A_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-191.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:53.969734+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=HIF1A_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 2264,
+      "sha256": "99b9a8a0ba2d39976bee1a1abc2b99656cd9f4cee9d1a8f5b1b90952cfd243bf",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=EPAS1_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-194.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:54.317120+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=EPAS1_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 980,
+      "sha256": "c33cdff064b867b28abcc343ad8280c4923a39a6da7ada2884b5a8259901e0be",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=TIF7_ARATH",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-198.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:54.480975+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=TIF7_ARATH",
+      "content_type": "text/tsv",
+      "bytes": 497,
+      "sha256": "3791ade7a6596ec270d3f0ea79df33d73b3be6c29b122ffc2427ca63f0e18086",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=MYC_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-202.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:54.535663+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=MYC_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 2199,
+      "sha256": "ae993cf090c541b04edbf0cac3d0398a5db960312454ba846f72b2b06939bb1c",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=SRBP1_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-204.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:55.344722+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=SRBP1_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 1422,
+      "sha256": "ebf96c9b7f3a93f1e94f2e8db552e57af4702063f72ef86ab6eda22e58e405b5",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=JUN_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-206.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:55.469461+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=JUN_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 1884,
+      "sha256": "313e8fcf1dd570faf89708e806809d733a52c3bb98635f14a26209570346700e",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=CCNE1_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-210.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:55.643920+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=CCNE1_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 1411,
+      "sha256": "d9e206bf85c1f8f6beb2a586f06447cb706325f15f518119e6cb91efe5f1b807",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=IAA12_ARATH",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-222.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:55.891526+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=IAA12_ARATH",
+      "content_type": "text/tsv",
+      "bytes": 486,
+      "sha256": "c088af7f5672939575c6e7125114a0f204ce5e33ba53ba1f2fd30477b51bf3a6",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=IAA28_ARATH",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-223.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:56.736992+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=IAA28_ARATH",
+      "content_type": "text/tsv",
+      "bytes": 456,
+      "sha256": "03d08520ba76b3d666c45af33942e0c31ea167914015275183563da636cac6cb",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=FBX5_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-243.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:56.961724+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=FBX5_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 957,
+      "sha256": "e20090142750f31caa856dff338f643cfb698b15e0e8dd769da07081cabbbc24",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=PEG10_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-251.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:56.981371+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=PEG10_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 458,
+      "sha256": "146a37a9dea57bf78a9fc791f6f589dc9be6e8dfc32248237d80e95fe8de83ee",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "http://elm.eu.org/instances.tsv?q=CDCA3_HUMAN",
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-289.tsv",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:50:57.051881+00:00",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://elm.eu.org/instances.tsv?q=CDCA3_HUMAN",
+      "content_type": "text/tsv",
+      "bytes": 286,
+      "sha256": "b82ccc23c6fabe9089561279b1e822fda497da3520e52a1b67944f62f34433a1",
+      "accessible": true,
+      "receipt_file": "manual-label-sources-access.json"
+    },
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11491831/fullTextXML",
+      "path": "topics/degron-footprint/data/raw/metadegron/paper.xml",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:39:57.890792+00:00",
+      "license": "article CC BY 4.0; underlying imported dataset permissions separately unresolved",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11491831/fullTextXML",
+      "content_type": "application/xml",
+      "bytes": 117875,
+      "sha256": "fc4f5f759f5a170806ffa26c6d4a39dc6fb103d6c130f9f7ab10fc3b11ab351b",
+      "accessible": true,
+      "receipt_file": "source-access.json"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11491831/",
+      "path": "topics/degron-footprint/data/raw/metadegron/paper.html",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:39:57.891756+00:00",
+      "license": "article CC BY 4.0; underlying imported dataset permissions separately unresolved",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11491831/",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 214027,
+      "sha256": "977bf31134f2295d023abb5c3f670676c13bf468b0918ade04af120094da1153",
+      "accessible": true,
+      "receipt_file": "source-access.json"
+    },
+    {
+      "url": "https://academic.oup.com/bib/article/25/6/bbae519/7828723",
+      "path": "topics/degron-footprint/data/raw/metadegron/publisher.html",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:39:57.894244+00:00",
+      "license": "chưa xác nhận",
+      "downloaded": false,
+      "error": "HTTPError: HTTP Error 403: Forbidden",
+      "accessible": false,
+      "receipt_file": "source-access.json"
+    },
+    {
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/utils/oa/oa.fcgi?id=PMC11491831",
+      "path": "topics/degron-footprint/data/raw/metadegron/pmc-oa.xml",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:39:57.896008+00:00",
+      "license": "chưa xác nhận",
+      "downloaded": false,
+      "error": "HTTPError: HTTP Error 404: Not Found",
+      "accessible": false,
+      "receipt_file": "source-access.json"
+    },
+    {
+      "url": "http://modinfor.com/MetaDegron/",
+      "path": "topics/degron-footprint/data/raw/metadegron/web-home-http.html",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:39:58.227332+00:00",
+      "license": "chưa xác nhận",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://modinfor.com/MetaDegron/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 12970,
+      "sha256": "0e9d0d167242ea3b2e53ea779b747558a0ef0e20a9380b93c6ed19e0b0a96531",
+      "accessible": true,
+      "receipt_file": "source-access.json"
+    },
+    {
+      "url": "https://modinfor.com/MetaDegron/",
+      "path": "topics/degron-footprint/data/raw/metadegron/web-home-https.html",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:39:58.767678+00:00",
+      "license": "chưa xác nhận",
+      "downloaded": false,
+      "error": "URLError: <urlopen error timed out>",
+      "accessible": false,
+      "receipt_file": "source-access.json"
+    },
+    {
+      "url": "http://modinfor.com/MetaDegron/Download.php",
+      "path": "topics/degron-footprint/data/raw/metadegron/web-download.html",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:39:58.829569+00:00",
+      "license": "chưa xác nhận",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://modinfor.com/MetaDegron/Download.php",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 3527,
+      "sha256": "6818da66fa85bfb5917fbe5ce6e27cb7080e4e11fcca67e848d66e662e0e34b8",
+      "accessible": true,
+      "receipt_file": "source-access.json"
+    },
+    {
+      "url": "http://modinfor.com/MetaDegron/Tutorial.php",
+      "path": "topics/degron-footprint/data/raw/metadegron/web-tutorial.html",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:39:59.266104+00:00",
+      "license": "chưa xác nhận",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "http://modinfor.com/MetaDegron/Tutorial.php",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 17129,
+      "sha256": "cc2984eca2ad07c06a3409c85d67fc32466c6e9bc04dd7c1f3c942bdd02dba04",
+      "accessible": true,
+      "receipt_file": "source-access.json"
+    },
+    {
+      "url": "http://modinfor.com/MetaDegron/Statistics.php",
+      "path": "topics/degron-footprint/data/raw/metadegron/web-statistics.html",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:39:59.863896+00:00",
+      "license": "chưa xác nhận",
+      "downloaded": false,
+      "error": "HTTPError: HTTP Error 404: Not Found",
+      "accessible": false,
+      "receipt_file": "source-access.json"
+    },
+    {
+      "url": "http://modinfor.com/MetaDegron/Terms.php",
+      "path": "topics/degron-footprint/data/raw/metadegron/web-terms.html",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:40:00.254497+00:00",
+      "license": "chưa xác nhận",
+      "downloaded": false,
+      "error": "HTTPError: HTTP Error 404: Not Found",
+      "accessible": false,
+      "receipt_file": "source-access.json"
+    },
+    {
+      "url": "http://modinfor.com/MetaDegron/Download/weights.hdf5",
+      "path": "topics/degron-footprint/data/raw/metadegron/seqvec-weights-access.txt",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:40:00.311184+00:00",
+      "license": "chưa xác nhận",
+      "downloaded": false,
+      "status": 200,
+      "final_url": "http://modinfor.com/MetaDegron/Download/weights.hdf5",
+      "content_type": null,
+      "error": "Safety size limit 20 MB: no payload retained",
+      "accessible": false,
+      "receipt_file": "source-access.json"
+    },
+    {
+      "url": "http://modinfor.com/MetaDegron/Download/all_train_embedding.npy",
+      "path": "topics/degron-footprint/data/raw/metadegron/embedding-access.txt",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:40:00.662794+00:00",
+      "license": "chưa xác nhận",
+      "downloaded": false,
+      "status": 200,
+      "final_url": "http://modinfor.com/MetaDegron/Download/all_train_embedding.npy",
+      "content_type": null,
+      "error": "Safety size limit 20 MB: no payload retained",
+      "accessible": false,
+      "receipt_file": "source-access.json"
+    },
+    {
+      "url": "https://api.github.com/repos/BioDataStudy/MetaDegron",
+      "path": "topics/degron-footprint/data/raw/metadegron/github-metadata.json",
+      "client_date": "2026-10-21",
+      "attempted_at_utc": "2026-10-21T01:40:03.970459+00:00",
+      "license": "chưa xác nhận",
+      "downloaded": true,
+      "status": 200,
+      "final_url": "https://api.github.com/repos/BioDataStudy/MetaDegron",
+      "content_type": "application/json; charset=utf-8",
+      "bytes": 5396,
+      "sha256": "071a94804802858a63227927d34c7669283c0b3d5bad8e837e5b58ebd91e3cfa",
+      "accessible": true,
+      "receipt_file": "source-access.json"
+    }
+  ],
+  "files": [
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/degronmd-paper.xml",
+      "bytes": 97379,
+      "sha256": "8a6e0cd93be3ea885129947b848f025a09795c8d8095b6fb92ed2183b499cf0a",
+      "download_date": "2026-10-21",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10701100/fullTextXML",
+      "license": "chưa xác nhận",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/demo-output.png",
+      "bytes": 85126,
+      "sha256": "fbe7df9e9a818ac499338e163418ccab168234529c24670bfb77d1f24f3f0360",
+      "download_date": "2026-10-21",
+      "url": "http://modinfor.com/MetaDegron/images/Output.png",
+      "license": "chưa xác nhận",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/classification-records.json",
+      "bytes": 348836,
+      "sha256": "05a50644c6cc539f880fce516a669e93efd67e548177c3808442d67db22b3f33",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/combined-cov50.log",
+      "bytes": 19215,
+      "sha256": "96f318d99f3a534b5ddad30ebd8d5740e196eaeb08ac0039d050b5e957a541fc",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/combined-cov50_all_seqs.fasta",
+      "bytes": 6665777,
+      "sha256": "8bdea65b39b10cc0d88629f8f7a5d37a56a10bd55ba8ae90416d52d9219b5650",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/combined-cov50_cluster.tsv",
+      "bytes": 204969,
+      "sha256": "67b2d8f20bfaa8d5ed2916e84dc19b28c775e8e758c25f07e53a6e836aac3f77",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/combined-cov50_rep_seq.fasta",
+      "bytes": 3882949,
+      "sha256": "9d9a68c848e79e17c6714c147b6c33abe32b909a02bcb6f37c581278574f6eb1",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/combined-cov80.log",
+      "bytes": 19214,
+      "sha256": "9c5ec9920dad7f43ad674014f0dac3fc1586a3d3fe4cc87d773fa7106a1ae7a6",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/combined-cov80_all_seqs.fasta",
+      "bytes": 6676057,
+      "sha256": "000addb24e72738bc9a3c3ebe14446c4a0da95ef13ecdbb949f91a596be8ff32",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/combined-cov80_cluster.tsv",
+      "bytes": 201568,
+      "sha256": "73c0605742391b8299bbe420daa59543b4c01812b9a78eed46656c36a0464386",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/combined-cov80_rep_seq.fasta",
+      "bytes": 4511184,
+      "sha256": "edab5bfa4b754cba9b53eef729b1aa00fb614d87e88b35c69952fe07d6ae82de",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/combined-proteins.fasta",
+      "bytes": 6602877,
+      "sha256": "bc189d0f1a7ff007930232bfc188c865caec0c8ff1881053d368572f8dc2a254",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/frozen-combined-cov50_cluster.tsv",
+      "bytes": 204969,
+      "sha256": "0aea26eef5070df072b42fa28027bcf7a4f4199d2b5834a1b57c8a752f6318ba",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/frozen-combined-cov80_cluster.tsv",
+      "bytes": 201568,
+      "sha256": "0b0c9c5de67515904f42f8d8006d6da65175e6d1acfbaab16186cc06e29a73e6",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/label-sample-records.json",
+      "bytes": 15802,
+      "sha256": "15c68e548727ca4ac9c12f79e8331379c412c4e7c8ce61ca123c72fa1a2ae7da",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/manual-label-review-records.json",
+      "bytes": 39867,
+      "sha256": "82b314b80558cfb7078def0f08b0b776e7cb49dba2f6ef198173a6975c74a796",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/positive-cov50.log",
+      "bytes": 19077,
+      "sha256": "86279f8c52d9090901a06215a551dc3ddd3ccc9beb832835422c507f817f6fc8",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/positive-cov50_all_seqs.fasta",
+      "bytes": 172095,
+      "sha256": "4fa9add907d28b5fbe372ffdc52a56f91404a00fab856fb0580d8cff4d8c658d",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/positive-cov50_cluster.tsv",
+      "bytes": 10162,
+      "sha256": "81acb002047cf7cda0038f353697dcb355c51e22a881fd8929bc3aad08344f17",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/positive-cov50_rep_seq.fasta",
+      "bytes": 118120,
+      "sha256": "4e59160b816b14ef7761c560ba1f32f615c2c57958a285111a95b12239903183",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/positive-cov80.log",
+      "bytes": 19054,
+      "sha256": "3b1da6c98106bd011cfe2f5f7c06bd101a2382155b54f33f761329ea9304e6b1",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/positive-cov80_all_seqs.fasta",
+      "bytes": 172649,
+      "sha256": "24f520312d2ad8c67e5751704d076a6a58e28f59bc32fe893ad2903e6f28055c",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/positive-cov80_cluster.tsv",
+      "bytes": 10170,
+      "sha256": "dccf92234a6d903cef8f3a988e7b5e8090027afacc2e28d42b4cecef90d90d9d",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/positive-cov80_rep_seq.fasta",
+      "bytes": 131583,
+      "sha256": "36ee0a3bbc71741ce3e598a3cbc6068d4d85d0479b7342f26be10cd2b9273d84",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/positive-proteins.fasta",
+      "bytes": 168605,
+      "sha256": "cf63cd4db97410877eb675943bbe7a246b4fc771a05f2a03b30dba74c245f5da",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/positive-records.json",
+      "bytes": 122788,
+      "sha256": "84561deb71476cb3353af6ed48431946e770c4907d5cf7d870043f5fbb009d0a",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/derived/xgboost-literal-state.json",
+      "bytes": 2942318,
+      "sha256": "779abf1ff2654214303fed78c69659e16f58db3c3782e8b4043bce50bba9ca1f",
+      "download_date": "2026-10-21",
+      "url": null,
+      "license": "derived audit; source rights retained",
+      "generator": "audit_dataset.py"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-academic-license.pdf",
+      "bytes": 47503,
+      "sha256": "6db35458b887e6ee24631355cfaff92fe1caeb209cae5abb2a791a37cd18f535",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/media/Elm_academic_license.pdf",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-class-ken.html",
+      "bytes": 141726,
+      "sha256": "7120bdbbf25147f5527ddfcaa1fc023ece71cc1c15043f6501d8669b1a39a41c",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/elms/DEG_APCC_KENBOX_2.html",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-downloads.html",
+      "bytes": 25489,
+      "sha256": "7c0f920a66ababfd31cb8d5a12278a4755a10f369869cb1a063e04c3e0437574",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/downloads.html",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-instances-all.tsv",
+      "bytes": 23680,
+      "sha256": "f178ea065ac3526d254a882e1239c2115fc680737ede6cb45859e5ca763ecb25",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?limit=10000",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-instances.tsv",
+      "bytes": 23680,
+      "sha256": "944c10fe7d0a6e42f727d61b49638f1d579bc86ec2ce131b934bb4287f2391df",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-license.html",
+      "bytes": 51183,
+      "sha256": "63cf91d5338b418e44b584e1c0f981108c5b587d073f6bcaf9ee7083e7d8332c",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/infos/about.html",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-10.tsv",
+      "bytes": 286,
+      "sha256": "4bef57e8dd05cacf877403ed7dbc4b803e52285f7d2b9f384d702eb616b1277c",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=PLXA3_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-104.tsv",
+      "bytes": 1023,
+      "sha256": "10799d63351bc8b11832e4298ba0676432265127c3ea6fda51e3cdc2f4190466",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=BUB1_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-105.tsv",
+      "bytes": 2437,
+      "sha256": "fed6d7289f0142e3f2e13694669eaffd5dab578f1ddd3dbcdb90ce7bb97b29f9",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=BUB1B_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-118.tsv",
+      "bytes": 451,
+      "sha256": "352e4226f83e858269bd1f6cf598d8f9ebba3f8ae0989a65a1ef0377265d9a0f",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=Q9M7I2_MEDTR",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-121.tsv",
+      "bytes": 478,
+      "sha256": "8a60dba2a23b89e861a3fbc61e42f1349288d933a90cdc3ac5a7fe365b08d3e7",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=CORT_DROME",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-122.tsv",
+      "bytes": 286,
+      "sha256": "c8d5eeb4d39ce0c6e424c8c16455dc47788fc4fd2a8189b47b9174bbd38cfb57",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=GIG1_ARATH",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-124.tsv",
+      "bytes": 286,
+      "sha256": "15db80dabf709e9e18ef567727c3ad3addbda17c2d13575029742eb9d222c3da",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=CDC21_ARATH",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-14.tsv",
+      "bytes": 494,
+      "sha256": "72f86cbbd85bbd458bb192fd014052fa3380a9e1f790fc528466ae7bd0a1907b",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=MET_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-145.tsv",
+      "bytes": 1396,
+      "sha256": "c53f0df4ee5929a327d80f1e06ff5eed251e8a7bcac76c1345ede43876bcc2cd",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=CDN1A_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-149.tsv",
+      "bytes": 286,
+      "sha256": "7ffc61cfc8b22e6a211ab142b8596bf96f6379ad7eeddccfd7b1f446be13d3ff",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=GRIK2_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-165.tsv",
+      "bytes": 911,
+      "sha256": "956b0356cb942d787af98e1f4c94d137b58f91662dc1ff50333561b63fbfb8ee",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=NF2L2_MOUSE",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-167.tsv",
+      "bytes": 1455,
+      "sha256": "826aa593ed6f3459f7bd1aa4711cca36d6629e92cf5f2dc3ce0f8564e71dc747",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=WNK1_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-169.tsv",
+      "bytes": 513,
+      "sha256": "2582e92ea9572dc65fce7b515a21dbaca324d1d8d27859c3e25f89276fdd5a42",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=WNK3_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-172.tsv",
+      "bytes": 854,
+      "sha256": "153afe50b3910300227c45e9683009978b71e4c15e3e5b3291eb06fec142ee6e",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=NUMB_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-176.tsv",
+      "bytes": 627,
+      "sha256": "9c338685423c39b448a6c9140130b6aaa8f30875d2bdf6f7458f9d2e20563f94",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=TACY_LISMO",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-181.tsv",
+      "bytes": 463,
+      "sha256": "c6e6db4e171fa8fc6ca604a48c335865a0ee24ab8c1572b53f67b32844fd6391",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=ERF71_ARATH",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-191.tsv",
+      "bytes": 2264,
+      "sha256": "99b9a8a0ba2d39976bee1a1abc2b99656cd9f4cee9d1a8f5b1b90952cfd243bf",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=HIF1A_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-194.tsv",
+      "bytes": 980,
+      "sha256": "c33cdff064b867b28abcc343ad8280c4923a39a6da7ada2884b5a8259901e0be",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=EPAS1_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-198.tsv",
+      "bytes": 497,
+      "sha256": "3791ade7a6596ec270d3f0ea79df33d73b3be6c29b122ffc2427ca63f0e18086",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=TIF7_ARATH",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-2.tsv",
+      "bytes": 1849,
+      "sha256": "aa3018c54e63b713b9be9c50aac33ae54995e78d8df442f04e34d9d0be71060d",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=PGFRB_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-202.tsv",
+      "bytes": 2199,
+      "sha256": "ae993cf090c541b04edbf0cac3d0398a5db960312454ba846f72b2b06939bb1c",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=MYC_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-204.tsv",
+      "bytes": 1422,
+      "sha256": "ebf96c9b7f3a93f1e94f2e8db552e57af4702063f72ef86ab6eda22e58e405b5",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=SRBP1_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-206.tsv",
+      "bytes": 1884,
+      "sha256": "313e8fcf1dd570faf89708e806809d733a52c3bb98635f14a26209570346700e",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=JUN_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-210.tsv",
+      "bytes": 1411,
+      "sha256": "d9e206bf85c1f8f6beb2a586f06447cb706325f15f518119e6cb91efe5f1b807",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=CCNE1_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-222.tsv",
+      "bytes": 486,
+      "sha256": "c088af7f5672939575c6e7125114a0f204ce5e33ba53ba1f2fd30477b51bf3a6",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=IAA12_ARATH",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-223.tsv",
+      "bytes": 456,
+      "sha256": "03d08520ba76b3d666c45af33942e0c31ea167914015275183563da636cac6cb",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=IAA28_ARATH",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-24.tsv",
+      "bytes": 286,
+      "sha256": "2dce429ea0d55337ea0d0ffbf0514a055337fab377b1916b453ed11f6b3cc017",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=ZAP70_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-243.tsv",
+      "bytes": 957,
+      "sha256": "e20090142750f31caa856dff338f643cfb698b15e0e8dd769da07081cabbbc24",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=FBX5_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-25.tsv",
+      "bytes": 286,
+      "sha256": "0ab94b627a1433b05e7d001b93396521232249234ab25950aca75aa95a90704d",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=SPY1_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-251.tsv",
+      "bytes": 458,
+      "sha256": "146a37a9dea57bf78a9fc791f6f589dc9be6e8dfc32248237d80e95fe8de83ee",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=PEG10_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-28.tsv",
+      "bytes": 741,
+      "sha256": "b1b18314ced5642b8ad5c039e833195aa1c705b1f267faaea57cbdbf3e4395d3",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=CADH1_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-289.tsv",
+      "bytes": 286,
+      "sha256": "b82ccc23c6fabe9089561279b1e822fda497da3520e52a1b67944f62f34433a1",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=CDCA3_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-4.tsv",
+      "bytes": 286,
+      "sha256": "5ead143a5b4c2e7180189872198008963cd3917ad58a54a3bb2f77c8d7eac73b",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=KSYK_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-42.tsv",
+      "bytes": 522,
+      "sha256": "58f6564b77ca39751206ad26df1a079edae8281f9cd6c9bccef1119b258bab41",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=TEX14_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-44.tsv",
+      "bytes": 583,
+      "sha256": "0b1581dd7d7eb3f088638fe54f4e87287f1d25905c8d8296c82489146bcfd891",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=FBXW5_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-54.tsv",
+      "bytes": 2437,
+      "sha256": "fed6d7289f0142e3f2e13694669eaffd5dab578f1ddd3dbcdb90ce7bb97b29f9",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=BUB1B_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-58.tsv",
+      "bytes": 492,
+      "sha256": "5eac9db2d0d3217f6332b4b39f58cfd118008cc259e3c8bacd4eddfdf774ac97",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=CCNA2_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-72.tsv",
+      "bytes": 286,
+      "sha256": "fade2212ae821be0290e2919b17dfe315e1b79a05dcae9df614befe5aec1c476",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=FXRD2_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-9.tsv",
+      "bytes": 286,
+      "sha256": "459e9d7cc477d98c4fbcd12941d998dfe88d12eded2f4b86bd9964f4597c8bf0",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=SH2B3_HUMAN",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/elm-sample-99.tsv",
+      "bytes": 453,
+      "sha256": "9adf015bf0666637a4794b7fd7f3bb98e58444d383eb1505692921a4dc867617",
+      "download_date": "2026-10-21",
+      "url": "http://elm.eu.org/instances.tsv?q=CIN8_YEAST",
+      "license": "ELM academic license; noncommercial/internal academic scope; no redistribution assumed",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/github-metadata.json",
+      "bytes": 5396,
+      "sha256": "071a94804802858a63227927d34c7669283c0b3d5bad8e837e5b58ebd91e3cfa",
+      "download_date": "2026-10-21",
+      "url": "https://api.github.com/repos/BioDataStudy/MetaDegron",
+      "license": "chưa xác nhận",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/paper.html",
+      "bytes": 214027,
+      "sha256": "977bf31134f2295d023abb5c3f670676c13bf468b0918ade04af120094da1153",
+      "download_date": "2026-10-21",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11491831/",
+      "license": "article CC BY 4.0; underlying imported dataset permissions separately unresolved",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/paper.xml",
+      "bytes": 117875,
+      "sha256": "fc4f5f759f5a170806ffa26c6d4a39dc6fb103d6c130f9f7ab10fc3b11ab351b",
+      "download_date": "2026-10-21",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11491831/fullTextXML",
+      "license": "article CC BY 4.0; underlying imported dataset permissions separately unresolved",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/pubmed-sources.json",
+      "bytes": 3543,
+      "sha256": "ad9ed8a2a94bc5842266e9ebf36a2ed733264c49770d5502ec8d08c461d78abf",
+      "download_date": "2026-10-21",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:28292960%20OR%20EXT_ID:35121836%20OR%20EXT_ID:26732515%20OR%20EXT_ID:31680160&format=json",
+      "license": "chưa xác nhận",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/AA_encoding.py",
+      "bytes": 351,
+      "sha256": "674edfe508316baa29ca7c25a5251aae9b8e3a521339a528afe8685551e872c7",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/AA_encoding.py",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Build_deep_learning_model.py",
+      "bytes": 2769,
+      "sha256": "9c13648bcad27bfb749b139ebc3070fb60b7a8f83f1c40bb3121a6a50e4abdd8",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Build_deep_learning_model.py",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Calculate_metrics.py",
+      "bytes": 1054,
+      "sha256": "aa1dba654f0d243c3934b6e0a814efc24ce29036d22838f4f1f607072805ba18",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Calculate_metrics.py",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Elmo_embedder.py",
+      "bytes": 1170,
+      "sha256": "68589b9717b529569dfe1d82df0dddc258739a2ba9063a7dfa1b2cf7aae64151",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Elmo_embedder.py",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Figure 2.ipynb",
+      "bytes": 194098,
+      "sha256": "ea72087e352e66e240c0cf8234a35ffa423591a44d5ba8c69605bf18dfdb6b90",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Figure 2.ipynb",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Figure 3.ipynb",
+      "bytes": 1096293,
+      "sha256": "32dfcf7c091c2a97f6f9f433cbd198312cbefc227ae67ce02170e68e75af70c9",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Figure 3.ipynb",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/MetaDegron_prediction.ipynb",
+      "bytes": 16933,
+      "sha256": "14a7d2cf3e6f2ccb2faf01c5c44b026c89453731fc6192e3f84581abd1892102",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/MetaDegron_prediction.ipynb",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Performance_benchmarking.ipynb",
+      "bytes": 49582,
+      "sha256": "92c2b582e210b6230b197bd411875c31446947cd0c57a46b5d6602b37266226f",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Performance_benchmarking.ipynb",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/README.md",
+      "bytes": 6946,
+      "sha256": "a4b05608256dd3dea3fcbda97baa9e3874b7ec7d1f3d189cdb2bc74a24ea028f",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/README.md",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Training_MetaDegron-D.py",
+      "bytes": 8991,
+      "sha256": "981eae6df568af19ecc451a53754c46e74bdf4033c8ef51a25eedbf311733489",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Training_MetaDegron-D.py",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Training_MetaDegron-X.py",
+      "bytes": 4014,
+      "sha256": "f88e40160d21c4cec6c4cdba91223d0a5f1d3ad7aeae3a6e20dfdd93ba8c64bc",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Training_MetaDegron-X.py",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Training_MetaDegron_Deep_learning.ipynb",
+      "bytes": 97363,
+      "sha256": "547a425a0fa1e06696797061d2b267e0f89683dfb610d9bd14838e6c49f841a2",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Training_MetaDegron_Deep_learning.ipynb",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Training_MetaDegron_XGBoost.ipynb",
+      "bytes": 47274,
+      "sha256": "8e390fa49e7ec347ad8ffee99147891a2449faf788da9a20f9868591cca2b0f2",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Training_MetaDegron_XGBoost.ipynb",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/Contact.php",
+      "bytes": 4969,
+      "sha256": "1084768547ccfea9cdef635944d99f1d96e7b780ec81b772894cb764fdd25d3b",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/Contact.php",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/Degron.php",
+      "bytes": 330778,
+      "sha256": "7b0be58e554cdc9d7f11c89195e3efd732d5469c3afaa335be385c3ec432b777",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/Degron.php",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/Degron_prediction.py",
+      "bytes": 12037,
+      "sha256": "307ae5c4500fd2c8bb02c445b375560e781cc2e280b886e451372cf70be65e69",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/Degron_prediction.py",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/Download.php",
+      "bytes": 3527,
+      "sha256": "6818da66fa85bfb5917fbe5ce6e27cb7080e4e11fcca67e848d66e662e0e34b8",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/Download.php",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/File.php",
+      "bytes": 235,
+      "sha256": "1922f547321d1421a57d6a55a1de28f1d6a90f6c39d47a7c4d92fdec9d614377",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/File.php",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/Footer.php",
+      "bytes": 1018,
+      "sha256": "a01fa03a1c56430a8e0146ec529a66294af7c60ea9164c48887a535535e3c307",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/Footer.php",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/LocalStorage.php",
+      "bytes": 215,
+      "sha256": "48e6966a91d59204f725e8a422b0e320d79f3a754f127ecec48cfd1a73a58642",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/LocalStorage.php",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/Prediction.php",
+      "bytes": 14478,
+      "sha256": "05cb611c90cce8a24b08f90fdcade6bfb5788d5910e9248ec7edb18cc688bbd8",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/Prediction.php",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/Tutorial.php",
+      "bytes": 15951,
+      "sha256": "2a2055fc86949abb66f11a1e9e32da86722dd7bd8da3a9bef0057ba8e138f89f",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/Tutorial.php",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/calculate_AA_properties.py",
+      "bytes": 16619,
+      "sha256": "c14d0bc3173fbd0d9e3506f8f25af8534dd66fdf2866a831fe466f0eb968046c",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/calculate_AA_properties.py",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/check.php",
+      "bytes": 1346,
+      "sha256": "fea0bbdcffbc9e3fa9ba2309b99c8bdd5012f57511d14115e77462542f5a9e55",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/check.php",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/css/bootstrap.min.css",
+      "bytes": 121202,
+      "sha256": "e75a7efba50d75a3fe071d11911dfc9be750f2770a241c306c6ebc50dd49ee2e",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/css/bootstrap.min.css",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/css/jquery.dataTables.css",
+      "bytes": 16320,
+      "sha256": "fe74a5913d13057fe7a38572325038036f331f871f32236a88634352dbd6509d",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/css/jquery.dataTables.css",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/css/metroStyle/img/line_conn.png",
+      "bytes": 933,
+      "sha256": "0a83fe3320d2d0be2c8d36cd7bfcb39ecc0be75c15c6c223c5dab3d4d18f8bde",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/css/metroStyle/img/line_conn.png",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/css/metroStyle/img/loading.gif",
+      "bytes": 381,
+      "sha256": "f627b902dbb57bcca1ab7ccba32a015c45d2c84cae719ca5626993d7ced3c428",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/css/metroStyle/img/loading.gif",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/css/metroStyle/img/metro.gif",
+      "bytes": 4679,
+      "sha256": "1165e632373623ac0f0b0b40e09b9c814525e3b879af26b697ce91bd98ca5d60",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/css/metroStyle/img/metro.gif",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/css/metroStyle/img/metro.png",
+      "bytes": 5283,
+      "sha256": "a4d0bfedbc0f97801ea035b3cfe4137035db5ce430521a2fa57fe452bd6eb2a3",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/css/metroStyle/img/metro.png",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/css/metroStyle/metroStyle.css",
+      "bytes": 6576,
+      "sha256": "38c7f2f75d93072cbbed510bb1f2bf3d68b661e17130245069ab3734b73e1132",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/css/metroStyle/metroStyle.css",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/fonts/glyphicons-halflings-regular.woff2",
+      "bytes": 18028,
+      "sha256": "fe185d11a49676890d47bb783312a0cda5a44c4039214094e7957b4c040ef11c",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/fonts/glyphicons-halflings-regular.woff2",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/get_data.php",
+      "bytes": 379,
+      "sha256": "178faa1e57cc3b7ea5fb1e57c615ff3709ec2e7fb1f96bd50106397792d3f628",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/get_data.php",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/global.func.php",
+      "bytes": 507,
+      "sha256": "bc06b3e5eb6e00578c3a12f8ddafb6de21e09f07a7ba93527630831f598880ee",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/global.func.php",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/images/Annotation.png",
+      "bytes": 430891,
+      "sha256": "94489a25d092eb4198104d3e9e85ff3710ec5f52b3a5e2cc2267e15fb4f058e5",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/images/Annotation.png",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/images/Logo.png",
+      "bytes": 155090,
+      "sha256": "9254ca5cef25ba5885774f46afa2be488f5550a31448b1ae4855c4fa0035e828",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/images/Logo.png",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/images/MetaDegron-D.jpg",
+      "bytes": 557803,
+      "sha256": "d49b9f409c1d55805275abcaaaac261cf73b35b4e0a5d442ad8bd7829147c721",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/images/MetaDegron-D.jpg",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/images/MetaDegron-X.jpg",
+      "bytes": 405980,
+      "sha256": "2f20cbb709646e5b090b21402effd47f764b1b21cfeaac637478ec49545cd8bb",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/images/MetaDegron-X.jpg",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/images/Output.png",
+      "bytes": 85126,
+      "sha256": "fbe7df9e9a818ac499338e163418ccab168234529c24670bfb77d1f24f3f0360",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/images/Output.png",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/images/SBMI.jpg",
+      "bytes": 30473,
+      "sha256": "00421212c8928f32ca2c7d672074540f2a4e8f334a5cb95878831557d2fff086",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/images/SBMI.jpg",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/images/index_workflow.png",
+      "bytes": 647682,
+      "sha256": "61138208eee289a7b52e3f82ef82a7e0c57d63b052e48a62a2353af5c19c00f0",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/images/index_workflow.png",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/images/input.png",
+      "bytes": 366991,
+      "sha256": "2be3801f843d00cb9a7820b624b499215e319b0f35100bde3eb4540d0b5b8610",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/images/input.png",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/images/model.png",
+      "bytes": 276065,
+      "sha256": "cefaf9ba8f2950b80dc692927a7dbd7643982754d7faa78d310321226ad3c381",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/images/model.png",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/images/performances.png",
+      "bytes": 199230,
+      "sha256": "b34ca655d16054011f91088a4b3d972ef914f63e41fd5bfa4fe37bfebe74329d",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/images/performances.png",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/images/server_workflow.png",
+      "bytes": 92070,
+      "sha256": "32829a90e2466fa6843efa32fd4e9aa741021abb9d62b84e8a1483deb04c7043",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/images/server_workflow.png",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/images/transformer.png",
+      "bytes": 78370,
+      "sha256": "76893ccf48b57c35bc5481efc2f50b2a41ac94acf0037a0e115d1c8a4857bfe2",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/images/transformer.png",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/index.php",
+      "bytes": 11803,
+      "sha256": "81bd4786003ce2f3ec21355f5115b8d30eef0b32cb46767bb5807bc55bf00ff8",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/index.php",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/ipaddress.php",
+      "bytes": 1402,
+      "sha256": "5be242ca0bd7e5a2c21a79bee0d2384a8778d173729e40024ebd9f23a87f1d17",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/ipaddress.php",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/js/3Dmol-min.js",
+      "bytes": 481275,
+      "sha256": "612eedd3ad7c36537813066d04f15a6e71285b9c59b364a6ab0296e39c67b7d1",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/js/3Dmol-min.js",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/js/3Dmol.ui-min.js",
+      "bytes": 174862,
+      "sha256": "8314866e12c3bded9e5be06cba72020c6d48799d15e026034e9ca5de4986da16",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/js/3Dmol.ui-min.js",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/js/bootstrap.min.js",
+      "bytes": 60010,
+      "sha256": "5aa53525abc5c5200c70b3f6588388f86076cd699284c23cda64e92c372a1548",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/js/bootstrap.min.js",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/js/bootstrap.min.js.map",
+      "bytes": 194435,
+      "sha256": "17d2be171fae03fef1f5d7b19a59183a28a14bca0d6ea3a361f3ef860b35f54b",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/js/bootstrap.min.js.map",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/js/cytoscape.min.js",
+      "bytes": 361029,
+      "sha256": "37ed58d294f044922922bf8e01c671acfee13c91c030885af2aea9ca03c156a9",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/js/cytoscape.min.js",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/js/dataTables.rowGroup.min.js",
+      "bytes": 6815,
+      "sha256": "6e91d110063c23d5a269c1c13d248d47372a193a47afc1e0bcce6b3067414b1e",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/js/dataTables.rowGroup.min.js",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/js/fuzzysearch.js",
+      "bytes": 4970,
+      "sha256": "bb947cc3a96669a6540f3fb41fa58806e80106f3aa279117b1e2e575bfab095c",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/js/fuzzysearch.js",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/js/jquery.dataTables.js",
+      "bytes": 447929,
+      "sha256": "c58ffe00f140face199e838c2f29535cc669da29ad0612bdc001740e3e7a875f",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/js/jquery.dataTables.js",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/js/jquery.min.js",
+      "bytes": 95956,
+      "sha256": "329ab92b9276ef4e3148f69be6b208969bebdf2db3121a589caa172453fd9f10",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/js/jquery.min.js",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/js/jquery.min.map",
+      "bytes": 1771,
+      "sha256": "889164b72236f8ed4f7148fed0463b8bcb6f989bd56da565e963c309262a40c0",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/js/jquery.min.map",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/js/jquery.ztree.core.js",
+      "bytes": 75150,
+      "sha256": "04f3a72a2a1d11a14f31ab70b49e88f759fa018eb07228fc3089fc1ebdddbcf5",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/js/jquery.ztree.core.js",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/js/jquery.ztree.excheck.js",
+      "bytes": 25124,
+      "sha256": "9456ff502e04301a9476350f5645b5c61a9f5132c4576f620a288047aa652a69",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/js/jquery.ztree.excheck.js",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/js/jquery.ztree.exhide.js",
+      "bytes": 12891,
+      "sha256": "064fd5905eaee38bedd69ea7fa41f7b836d875a8788b624c36b9863f7afc0100",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/js/jquery.ztree.exhide.js",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/js/plotly-2.6.3.min.js",
+      "bytes": 284559,
+      "sha256": "6cb3b8d7cfca31c19393834d033f4655b60dc5b0a5b017184cfd947f36b0a1b6",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/js/plotly-2.6.3.min.js",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/result.php",
+      "bytes": 19977,
+      "sha256": "7a4c94245f0938c3be628747c0044d8db494f60f11d5d5ea17d3bc3583ea2700",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/result.php",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/Webserver/submit_job.php",
+      "bytes": 11376,
+      "sha256": "85708719fae42ba79ba2d4d6eca26cb9c3a498d171644495d6eb826121ff067a",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/Webserver/submit_job.php",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/data/annotated_degrons_properties.tsv",
+      "bytes": 47841,
+      "sha256": "dfd7bbd234a28d2526de9a914abac38510cb8cf3a46dc3dc3cec3763ed02ca45",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/data/annotated_degrons_properties.tsv",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/data/degron_data.txt",
+      "bytes": 225223,
+      "sha256": "e2ec9cf6a1195ae641b871e20dfe38d92891dcc393b06759dcc85637b820ad3b",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/data/degron_data.txt",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/data/simulated_degrons.tsv.gz",
+      "bytes": 94579,
+      "sha256": "bddf03455068af791da6a8513959a81f2cbbbd61210892963fe9fb05cc5bfbe5",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/data/simulated_degrons.tsv.gz",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/data/test.fasta",
+      "bytes": 984,
+      "sha256": "43cc25c8017ca5347223bb2a0180df358d6b853f60d7bcf89987820a1c09b867",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/data/test.fasta",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/data/test_properties.tsv",
+      "bytes": 2724,
+      "sha256": "740dd7dad78cfc3af76ce5de24b25fd3a41190b1a2a0b8624ec6d6a16862e4c2",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/data/test_properties.tsv",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/models/classifier_XGBoost.pickle",
+      "bytes": 1209720,
+      "sha256": "351b244019117484bccc137966ef8484a7e02cc7780b5ce41a923380d14bec9c",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/models/classifier_XGBoost.pickle",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/models/degron_DL.h5",
+      "bytes": 5081688,
+      "sha256": "09e9fd7683ab36e58243a3e1f67c31d77ef6b35f7a6bf9fb2cb1ab3f3c9f700e",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/models/degron_DL.h5",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/models/degron_DL.json",
+      "bytes": 10657,
+      "sha256": "53073408cb5d1f310b09a264cf30b14b516b6d4bd705dc5d554c3dd8036b35cb",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/models/degron_DL.json",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/models/uniref50_v2/options.json",
+      "bytes": 541,
+      "sha256": "93c6c9e910e86ee6ca327b1dab256d3f0a7f0fbd848e92d030f07f94f0a2db99",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/models/uniref50_v2/options.json",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/prediction/test",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/prediction/test",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/supporting_file/Degpred_result.csv",
+      "bytes": 8777,
+      "sha256": "ea4b958d0af78706c1490b3b3edd09650216f46f316ad74dba78764d5bbd49e6",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/supporting_file/Degpred_result.csv",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/supporting_file/elm_class_202309.txt",
+      "bytes": 6149,
+      "sha256": "2b0769be6491a7b2a1be09b0252af68b5ef79fbd3257168c91c6620687b24dba",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/supporting_file/elm_class_202309.txt",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/supporting_file/simulated_degron2.csv",
+      "bytes": 162128,
+      "sha256": "84312bba8c2605f526320fbf1334e8405e989497cded5e3dcf207a82992cc9a6",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/supporting_file/simulated_degron2.csv",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/supporting_file/simulated_degrons.tsv.gz",
+      "bytes": 94719,
+      "sha256": "9766952eec557dfdb52427d565331843df0718bb67c4929ba871ccae0db49f2b",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/supporting_file/simulated_degrons.tsv.gz",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/supporting_file/uniprot_list.npy",
+      "bytes": 327044,
+      "sha256": "482877c614a3b809caa8f0f3c772e6b50f6049e374870c4da2f02dbfc3592305",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/supporting_file/uniprot_list.npy",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/repo/supporting_file/uniprot_seq.tsv",
+      "bytes": 18090133,
+      "sha256": "d27276066df3f475d5f1a959a33815decac5cebc26d518449318a0ede2f238b7",
+      "download_date": "2026-10-21",
+      "url": "https://github.com/BioDataStudy/MetaDegron/blob/ca12c0cf9d2e2d76655689973ac45c6c063a899d/supporting_file/uniprot_seq.tsv",
+      "license": "chưa xác nhận: no LICENSE in pinned repository"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/review-2017-table.html",
+      "bytes": 304,
+      "sha256": "6b49e90145a710aec7ec2f354ddfd2ee946796ff81cb74b94ae7fab3c4b077d0",
+      "download_date": "2026-10-21",
+      "url": "https://dosztanyi.web.elte.hu/CANCER/DEGRON/TP.html",
+      "license": "chưa xác nhận",
+      "accessible": false
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/supplementary/supplementary_table_s1_bbae519.xlsx",
+      "bytes": 11905,
+      "sha256": "ce5c70ecc49d1239a14bbfd4c31a5c6ac9a8cfaf0cedf6bca07656770c8a8988",
+      "download_date": "2026-10-21",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11491831/supplementaryFiles",
+      "license": "article CC BY 4.0; upstream data rights checked separately",
+      "container_sha256": "0bbb5e35db4cae57f82994bf7e1e125e0bff6a5f337fb6f59bc119a8c84baa8e"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/supplementary/supplementary_table_s2_bbae519.xlsx",
+      "bytes": 125093,
+      "sha256": "70e35cc2bec1bef265e6baec4cdc6d7e3fdd7002147fd2950c44f414643735c1",
+      "download_date": "2026-10-21",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11491831/supplementaryFiles",
+      "license": "article CC BY 4.0; upstream data rights checked separately",
+      "container_sha256": "0bbb5e35db4cae57f82994bf7e1e125e0bff6a5f337fb6f59bc119a8c84baa8e"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/supplementary/supplementary_table_s3_bbae519.xlsx",
+      "bytes": 254204,
+      "sha256": "2ebc4298edf5f3dc5a64b51d1abff12453ca086effb0ec8398435ec80287e841",
+      "download_date": "2026-10-21",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11491831/supplementaryFiles",
+      "license": "article CC BY 4.0; upstream data rights checked separately",
+      "container_sha256": "0bbb5e35db4cae57f82994bf7e1e125e0bff6a5f337fb6f59bc119a8c84baa8e"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/supplementary/supplementary_table_s4_bbae519.xlsx",
+      "bytes": 341598,
+      "sha256": "b3dc92541210ff7fcf146585e81e540f0829b39d5618ed8cd778712da9c853af",
+      "download_date": "2026-10-21",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11491831/supplementaryFiles",
+      "license": "article CC BY 4.0; upstream data rights checked separately",
+      "container_sha256": "0bbb5e35db4cae57f82994bf7e1e125e0bff6a5f337fb6f59bc119a8c84baa8e"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/supplementary/supplementary_table_s5_bbae519.xlsx",
+      "bytes": 84214,
+      "sha256": "856331134402b27f57db981080570583fcbf62c990e3c71ded43eca9fd7f91c4",
+      "download_date": "2026-10-21",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11491831/supplementaryFiles",
+      "license": "article CC BY 4.0; upstream data rights checked separately",
+      "container_sha256": "0bbb5e35db4cae57f82994bf7e1e125e0bff6a5f337fb6f59bc119a8c84baa8e"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/supplementary-files.zip",
+      "bytes": 1080923,
+      "sha256": "0bbb5e35db4cae57f82994bf7e1e125e0bff6a5f337fb6f59bc119a8c84baa8e",
+      "download_date": "2026-10-21",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11491831/supplementaryFiles",
+      "license": "article CC BY 4.0; underlying imported dataset permissions separately unresolved",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/supplementary-s1.xlsx",
+      "bytes": 1816,
+      "sha256": "913985898dc053eaf4913fb0596c09e5e53abdf045c626540adff518aad7059e",
+      "download_date": "2026-10-21",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/11491831/bin/supplementary_table_s1_bbae519.xlsx",
+      "license": "chưa xác nhận",
+      "accessible": false
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/supplementary-s2.xlsx",
+      "bytes": 1817,
+      "sha256": "fb84002145e94d250a75006363fcea680de7fd5833c6a77ac38a06d9593e998c",
+      "download_date": "2026-10-21",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/11491831/bin/supplementary_table_s2_bbae519.xlsx",
+      "license": "chưa xác nhận",
+      "accessible": false
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/supplementary-s3.xlsx",
+      "bytes": 1817,
+      "sha256": "6cdf8b764295eab6a9a200fb9bec973e15613d106a6cc9ba0db82f5e7f0ec915",
+      "download_date": "2026-10-21",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/11491831/bin/supplementary_table_s3_bbae519.xlsx",
+      "license": "chưa xác nhận",
+      "accessible": false
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/supplementary-s4.xlsx",
+      "bytes": 1816,
+      "sha256": "7ad7493c7f45423499ae3a627a9ced5265ab976db8c39e420374a629de27e149",
+      "download_date": "2026-10-21",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/11491831/bin/supplementary_table_s4_bbae519.xlsx",
+      "license": "chưa xác nhận",
+      "accessible": false
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/supplementary-s5.xlsx",
+      "bytes": 1817,
+      "sha256": "1de1458bf7698668b6eae8f23037680c5d8d01456b63c70a1bcdae51793617df",
+      "download_date": "2026-10-21",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/11491831/bin/supplementary_table_s5_bbae519.xlsx",
+      "license": "chưa xác nhận",
+      "accessible": false
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/web-download.html",
+      "bytes": 3527,
+      "sha256": "6818da66fa85bfb5917fbe5ce6e27cb7080e4e11fcca67e848d66e662e0e34b8",
+      "download_date": "2026-10-21",
+      "url": "http://modinfor.com/MetaDegron/Download.php",
+      "license": "chưa xác nhận",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/web-home-http.html",
+      "bytes": 12970,
+      "sha256": "0e9d0d167242ea3b2e53ea779b747558a0ef0e20a9380b93c6ed19e0b0a96531",
+      "download_date": "2026-10-21",
+      "url": "http://modinfor.com/MetaDegron/",
+      "license": "chưa xác nhận",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/web-prediction.html",
+      "bytes": 16450,
+      "sha256": "11069f0acc3d89a129c47cab72b61df89115a737f3ddeae474e6e3a99b6c72f9",
+      "download_date": "2026-10-21",
+      "url": "http://modinfor.com/MetaDegron/Prediction.php",
+      "license": "chưa xác nhận",
+      "accessible": true
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/metadegron/web-tutorial.html",
+      "bytes": 17129,
+      "sha256": "cc2984eca2ad07c06a3409c85d67fc32466c6e9bc04dd7c1f3c942bdd02dba04",
+      "download_date": "2026-10-21",
+      "url": "http://modinfor.com/MetaDegron/Tutorial.php",
+      "license": "chưa xác nhận",
+      "accessible": true
+    }
+  ],
+  "environment": {
+    "numpy": true,
+    "pandas": true,
+    "scipy": true,
+    "sklearn": true,
+    "h5py": true,
+    "torch": true,
+    "tensorflow": false,
+    "keras": false,
+    "allennlp": false,
+    "xgboost": false,
+    "python": "3.12.3",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39"
+  },
+  "safety": {
+    "third_party_code_executed": false,
+    "pickle_loaded": false,
+    "torch_checkpoint_loaded": false,
+    "object_npy_loaded": false,
+    "hdf5_numeric_metadata_only": true,
+    "remote_prediction_submissions": 0,
+    "web_terms": "Terms.php 404; linked UTHealth policies 403; no prediction submitted",
+    "large_remote_files": "reachable HTTP 200; audit fetch capped at 20 MB, payload not retained; not missing weights claim"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "experiment": "R6",
+  "files": [
+    {
+      "path": "data/processed/r12-seqtable.npz",
+      "license": "CC BY 4.0 (derived)",
+      "source": "research/r2-esm-features-2026-10-22/make_seqtable.py"
+    },
+    {
+      "path": "data/processed/r6-scantable.npz",
+      "license": "CC BY 4.0 (derived)",
+      "source": "research/r6-ladder-scan-2026-10-23/make_scantable.py (Zhang 2023, Replicate 1, CC BY 4.0)"
+    },
+    {
+      "path": "data/processed/learning-curve-sat-base.npz",
+      "license": "CC BY 4.0 (derived)",
+      "source": "cache dẫn xuất từ Zhang 2023 (research/learning-curve, calibration-p6)"
+    },
+    {
+      "path": "data/processed/learning-curve-sat-ext4.0.npz",
+      "license": "CC BY 4.0 (derived)",
+      "source": "cache dẫn xuất từ Zhang 2023 (research/learning-curve, calibration-p6)"
+    }
+  ]
+}

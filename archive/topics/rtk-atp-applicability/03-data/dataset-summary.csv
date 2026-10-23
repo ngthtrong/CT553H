@@ -1,4 +1,0 @@
-dataset,proteins,unique_sequences,residues,positive,negative,positive_fraction,min_length,median_length,max_length,over_1000_aa,zero_positive_proteins
-atp-549,549,549,213537,8502,205035,0.03981511400834516,105,356,1164,2,0
-rtk-69,69,69,73981,711,73270,0.009610575688352415,488,977,2594,30,0
-rag-244,244,243,263764,,,,292,993.0,2554,115,

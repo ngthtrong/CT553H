@@ -19,8 +19,8 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 
-ROOT = next(p for p in Path(__file__).resolve().parents if (p / "DECISIONS.md").exists())
-TOPIC = next(p for p in Path(__file__).resolve().parents if (p / "log.md").exists())  # thư mục đề tài
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / "CLAUDE.md").exists())
+TOPIC = next(p for p in Path(__file__).resolve().parents if (p / "data" / "README.md").exists())  # thư mục đề tài
 PATTERN = re.compile(r"^(?P<peptide>.+)_mut(?P<position>\d+)$")
 READ_MIN = 10
 PSI_MAX = 3.0

@@ -24,7 +24,7 @@ import re
 import statistics
 from pathlib import Path
 
-TOPIC = next(p for p in Path(__file__).resolve().parents if (p / "log.md").exists())
+TOPIC = next(p for p in Path(__file__).resolve().parents if (p / "data" / "README.md").exists())
 PROC = TOPIC / "data/processed"
 RAW = TOPIC / "data/raw"
 SCAN_CSV = (TOPIC / "data/interim/zhang-scanning-unzip/I28 Scanning (Completed)"

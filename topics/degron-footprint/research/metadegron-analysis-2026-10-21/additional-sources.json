@@ -1,0 +1,11 @@
+{
+  "supplementary-files.zip": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11491831/supplementaryFiles",
+  "web-prediction.html": "http://modinfor.com/MetaDegron/Prediction.php",
+  "site-policies.html": "https://www.uth.edu/index/policies.htm",
+  "demo-output.png": "http://modinfor.com/MetaDegron/images/Output.png",
+  "supplementary-s1.xlsx": "https://pmc.ncbi.nlm.nih.gov/articles/instance/11491831/bin/supplementary_table_s1_bbae519.xlsx",
+  "supplementary-s2.xlsx": "https://pmc.ncbi.nlm.nih.gov/articles/instance/11491831/bin/supplementary_table_s2_bbae519.xlsx",
+  "supplementary-s3.xlsx": "https://pmc.ncbi.nlm.nih.gov/articles/instance/11491831/bin/supplementary_table_s3_bbae519.xlsx",
+  "supplementary-s4.xlsx": "https://pmc.ncbi.nlm.nih.gov/articles/instance/11491831/bin/supplementary_table_s4_bbae519.xlsx",
+  "supplementary-s5.xlsx": "https://pmc.ncbi.nlm.nih.gov/articles/instance/11491831/bin/supplementary_table_s5_bbae519.xlsx"
+}

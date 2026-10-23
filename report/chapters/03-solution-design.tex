@@ -1,0 +1,56 @@
+% CHAPTER 3: thiết kế và cài đặt giải pháp (hệ thống, dữ liệu, mô hình/phương pháp).
+\chapter{SOLUTION DESIGN AND IMPLEMENTATION}\label{chap:design}
+
+This chapter gives the planned structure of the solution. Details of implementation are
+\textbf{[PENDING]} until the corresponding work is done.
+
+\section{System Overview}
+\subsection{Product Context}
+The system has two parts: a research pipeline (data preparation, training, evaluation) and a prototype
+tool that uses a fixed trained model to score substitutions.
+\subsection{Functional Overview}
+Functions follow the use cases of Chapter~\ref{chap:problem}: predict an effect matrix, rank substitutions,
+export results with provenance.
+
+\section{System Architecture}
+\subsection{Architectural Components}
+\textbf{[PENDING: architecture diagram and component roles.]}
+\subsection{Interaction Between Components}
+\textbf{[PENDING]}
+\subsection{Design Rationale}
+\textbf{[PENDING: advantages and drawbacks of the chosen architecture.]}
+
+\section{Data Design}
+\subsection{Data Sources and Preprocessing}
+Table~\ref{tab:sources} lists the planned sources. Each source is pinned by version or download date,
+checksum and terms of use; labels from different assays are kept separate.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Planned data sources}\label{tab:sources}
+  \begin{tabularx}{\textwidth}{|l|X|}
+    \hline \textbf{Source} & \textbf{Role} \\ \hline
+    Zhang et al.\ 2023, Mendeley Data v2 \citep{zhang2023data} & Main labels: scanning and saturation mutagenesis \\ \hline
+    GEO GSE240610 \citep{geo240610} & Cross-check of the peptide library source \\ \hline
+    Voutsinos et al.\ \citep{voutsinos2026} & Peptide-level tiles and PAP, for baselines and transfer learning \\ \hline
+    Larsen et al.\ \citep{larsen2025} & Domain-shift study at tile level, if terms of use allow \\ \hline
+    UniProtKB/Swiss-Prot & Sequences and coordinates for mapping and clustering \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection{Data Model}
+\textbf{[PENDING]}
+\subsection{Data Dictionary}
+\textbf{[PENDING: table of fields.]}
+\subsection{Relationships Between Entities}
+\textbf{[PENDING]}
+
+\section{Method and Model Design}
+Input is the reference sequence, position and substituted amino acid; target is $\Delta$PSI. The baseline
+is ridge regression on amino acid encodings, composition and local context; the reference models are the
+PAP score difference and Degformer. Transfer learning from peptide-level labels is examined against
+random initialisation under the same folds and label budget. \textbf{[PENDING: final architecture,
+objective function and training configuration.]}
+
+\section{Functional Design}
+\textbf{[PENDING: processing flow and interface for each function.]}

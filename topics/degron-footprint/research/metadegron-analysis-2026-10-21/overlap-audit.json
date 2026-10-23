@@ -1,0 +1,3126 @@
+{
+  "generator": "audit_dataset.py --stage overlap",
+  "definitions": {
+    "footprint": "same CSV/thresholds as count_footprints.py; verified exact denominator",
+    "regional_overlap": "exact tile sequence located in source protein, annotated coordinate interval intersects tile; no free short-motif search across unrelated proteins",
+    "label_agreement": "PSI <=3; scanning CSV WT for footprint/CRISPR, native-AA median refs each half (>=10) for saturation/G2; not E3 agreement",
+    "tile_agreement": "degron_score >=0.5 operational cutoff, exploratory; not PSI conversion"
+  },
+  "datasets": {
+    "footprint": {
+      "denominator": 2624,
+      "peptides_with_mapped_sequence": 2624,
+      "same_accession_positive_rows": 34,
+      "regional_positive_rows": 2,
+      "regional_peptides": 2,
+      "available_psi_pairs": 2,
+      "psi_low_pairs": 2,
+      "psi_high_pairs": 0,
+      "pairs_with_measured_important_position": 2,
+      "pairs": [
+        {
+          "positive_row": 190,
+          "peptide": "Q9Y2N7_HIF3A_22",
+          "entry": "Q9Y2N7",
+          "psi": 2.107657,
+          "shared_important_positions": 10,
+          "n_overlap_residues": 13,
+          "footprint_available": true
+        },
+        {
+          "positive_row": 192,
+          "peptide": "Q16665_HIF1A_25",
+          "entry": "Q16665",
+          "psi": 2.315054,
+          "shared_important_positions": 8,
+          "n_overlap_residues": 13,
+          "footprint_available": true
+        }
+      ]
+    },
+    "saturation": {
+      "denominator": 249,
+      "peptides_with_mapped_sequence": 248,
+      "same_accession_positive_rows": 12,
+      "regional_positive_rows": 1,
+      "regional_peptides": 1,
+      "available_psi_pairs": 1,
+      "psi_low_pairs": 1,
+      "psi_high_pairs": 0,
+      "pairs_with_measured_important_position": 1,
+      "pairs": [
+        {
+          "positive_row": 192,
+          "peptide": "Q16665_HIF1A_25",
+          "entry": "Q16665",
+          "psi": 2.186493579,
+          "shared_important_positions": 13,
+          "n_overlap_residues": 13,
+          "footprint_available": true
+        }
+      ]
+    },
+    "crispr": {
+      "denominator": 31,
+      "peptides_with_mapped_sequence": 31,
+      "same_accession_positive_rows": 2,
+      "regional_positive_rows": 0,
+      "regional_peptides": 0,
+      "available_psi_pairs": 0,
+      "psi_low_pairs": 0,
+      "psi_high_pairs": 0,
+      "pairs_with_measured_important_position": 0,
+      "pairs": []
+    },
+    "g2": {
+      "denominator": 91,
+      "peptides_with_mapped_sequence": 91,
+      "same_accession_positive_rows": 8,
+      "regional_positive_rows": 1,
+      "regional_peptides": 1,
+      "available_psi_pairs": 1,
+      "psi_low_pairs": 1,
+      "psi_high_pairs": 0,
+      "pairs_with_measured_important_position": 1,
+      "pairs": [
+        {
+          "positive_row": 192,
+          "peptide": "Q16665_HIF1A_25",
+          "entry": "Q16665",
+          "psi": 2.186493579,
+          "shared_important_positions": 13,
+          "n_overlap_residues": 13,
+          "footprint_available": true
+        }
+      ]
+    },
+    "voutsinos": {
+      "denominator": 212658,
+      "regional_positive_rows": 146,
+      "regional_tiles": 318,
+      "source_proteins_represented_by_exact_tile": 119,
+      "pairs_score_missing": 0,
+      "pairs_score_ge_point5": 83,
+      "pairs_score_lt_point5": 252,
+      "pairs": [
+        {
+          "positive_row": 0,
+          "tile": "ENSG00000187678_tile0003",
+          "degron_score": 0.255862785573689,
+          "source_start": 54
+        },
+        {
+          "positive_row": 0,
+          "tile": "ENSG00000187678_tile0004",
+          "degron_score": 0.049756173540318,
+          "source_start": 69
+        },
+        {
+          "positive_row": 1,
+          "tile": "ENSG00000010810_tile0027",
+          "degron_score": 0.975810757509186,
+          "source_start": 391
+        },
+        {
+          "positive_row": 1,
+          "tile": "ENSG00000010810_tile0028",
+          "degron_score": 0.677021436340666,
+          "source_start": 406
+        },
+        {
+          "positive_row": 1,
+          "tile": "ENSG00000197122_tile0028",
+          "degron_score": 0.34060250166219,
+          "source_start": 407
+        },
+        {
+          "positive_row": 1,
+          "tile": "ENSG00000176105_tile0029",
+          "degron_score": 0.34689979007596,
+          "source_start": 415
+        },
+        {
+          "positive_row": 1,
+          "tile": "ENSG00000010810_tile0029",
+          "degron_score": 0.680625912238476,
+          "source_start": 421
+        },
+        {
+          "positive_row": 1,
+          "tile": "ENSG00000197122_tile0029",
+          "degron_score": 0.667767728370146,
+          "source_start": 422
+        },
+        {
+          "positive_row": 4,
+          "tile": "ENSG00000165025_tile0022",
+          "degron_score": 0.123553212287281,
+          "source_start": 293
+        },
+        {
+          "positive_row": 9,
+          "tile": "ENSG00000111252_tile0037",
+          "degron_score": 0.0154812746140031,
+          "source_start": 541
+        },
+        {
+          "positive_row": 9,
+          "tile": "ENSG00000111252_tile0038",
+          "degron_score": -0.0213170747081923,
+          "source_start": 546
+        },
+        {
+          "positive_row": 17,
+          "tile": "ENSG00000288401_tile0027",
+          "degron_score": -0.0246160329801715,
+          "source_start": 428
+        },
+        {
+          "positive_row": 17,
+          "tile": "ENSG00000085733_tile0030",
+          "degron_score": 0.656878959281146,
+          "source_start": 436
+        },
+        {
+          "positive_row": 17,
+          "tile": "ENSG00000288401_tile0028",
+          "degron_score": 0.0027189455938485,
+          "source_start": 443
+        },
+        {
+          "positive_row": 17,
+          "tile": "ENSG00000085733_tile0031",
+          "degron_score": -0.001693450557525,
+          "source_start": 451
+        },
+        {
+          "positive_row": 18,
+          "tile": "ENSG00000114554_tile0029",
+          "degron_score": 1.02852881426142,
+          "source_start": 421
+        },
+        {
+          "positive_row": 18,
+          "tile": "ENSG00000114554_tile0030",
+          "degron_score": 0.78199096207191,
+          "source_start": 436
+        },
+        {
+          "positive_row": 19,
+          "tile": "ENSG00000114554_tile0087",
+          "degron_score": 0.0146632880683355,
+          "source_start": 1291
+        },
+        {
+          "positive_row": 19,
+          "tile": "ENSG00000114554_tile0088",
+          "degron_score": 0.600129471873301,
+          "source_start": 1306
+        },
+        {
+          "positive_row": 19,
+          "tile": "ENSG00000114554_tile0089",
+          "degron_score": 1.0059344162855,
+          "source_start": 1321
+        },
+        {
+          "positive_row": 20,
+          "tile": "ENSG00000111252_tile0005",
+          "degron_score": 1.02011444068999,
+          "source_start": 61
+        },
+        {
+          "positive_row": 20,
+          "tile": "ENSG00000111252_tile0006",
+          "degron_score": -0.018616733859012,
+          "source_start": 76
+        },
+        {
+          "positive_row": 21,
+          "tile": "ENSG00000136158_tile0003",
+          "degron_score": 0.681627959775341,
+          "source_start": 31
+        },
+        {
+          "positive_row": 21,
+          "tile": "ENSG00000136158_tile0004",
+          "degron_score": 0.150500024678563,
+          "source_start": 46
+        },
+        {
+          "positive_row": 23,
+          "tile": "ENSG00000064300_tile0021",
+          "degron_score": 0.0184743949290365,
+          "source_start": 301
+        },
+        {
+          "positive_row": 23,
+          "tile": "ENSG00000064300_tile0022",
+          "degron_score": 0.0316902946448696,
+          "source_start": 316
+        },
+        {
+          "positive_row": 23,
+          "tile": "ENSG00000064300_tile0023",
+          "degron_score": 0.0603971699367258,
+          "source_start": 331
+        },
+        {
+          "positive_row": 24,
+          "tile": "ENSG00000115085_tile0019",
+          "degron_score": 0.127371152939389,
+          "source_start": 271
+        },
+        {
+          "positive_row": 24,
+          "tile": "ENSG00000115085_tile0020",
+          "degron_score": 0.372778550381837,
+          "source_start": 286
+        },
+        {
+          "positive_row": 25,
+          "tile": "ENSG00000164056_tile0003",
+          "degron_score": 0.0254949548862957,
+          "source_start": 31
+        },
+        {
+          "positive_row": 25,
+          "tile": "ENSG00000164056_tile0004",
+          "degron_score": 0.0068460386660411,
+          "source_start": 46
+        },
+        {
+          "positive_row": 26,
+          "tile": "ENSG00000164056_tile0015",
+          "degron_score": 0.358114575150244,
+          "source_start": 211
+        },
+        {
+          "positive_row": 26,
+          "tile": "ENSG00000164056_tile0016",
+          "degron_score": 0.109406215429087,
+          "source_start": 226
+        },
+        {
+          "positive_row": 26,
+          "tile": "ENSG00000164056_tile0017",
+          "degron_score": 0.708018226884646,
+          "source_start": 241
+        },
+        {
+          "positive_row": 29,
+          "tile": "ENSG00000115325_tile0023",
+          "degron_score": 0.333369379900805,
+          "source_start": 331
+        },
+        {
+          "positive_row": 29,
+          "tile": "ENSG00000115325_tile0024",
+          "degron_score": 0.0938970339419065,
+          "source_start": 346
+        },
+        {
+          "positive_row": 29,
+          "tile": "ENSG00000115325_tile0025",
+          "degron_score": 0.0312063684280749,
+          "source_start": 361
+        },
+        {
+          "positive_row": 30,
+          "tile": "ENSG00000288401_tile0029",
+          "degron_score": -0.0410953296771632,
+          "source_start": 458
+        },
+        {
+          "positive_row": 30,
+          "tile": "ENSG00000085733_tile0032",
+          "degron_score": 0.0009323199129843,
+          "source_start": 466
+        },
+        {
+          "positive_row": 30,
+          "tile": "ENSG00000288401_tile0030",
+          "degron_score": 0.0463580427406624,
+          "source_start": 473
+        },
+        {
+          "positive_row": 30,
+          "tile": "ENSG00000085733_tile0033",
+          "degron_score": -0.0138034880495868,
+          "source_start": 481
+        },
+        {
+          "positive_row": 30,
+          "tile": "ENSG00000288401_tile0031",
+          "degron_score": 0.0100992298632157,
+          "source_start": 488
+        },
+        {
+          "positive_row": 31,
+          "tile": "ENSG00000087470_tile0031",
+          "degron_score": 1.03903702986402,
+          "source_start": 451
+        },
+        {
+          "positive_row": 31,
+          "tile": "ENSG00000087470_tile0032",
+          "degron_score": 0.759939629048916,
+          "source_start": 466
+        },
+        {
+          "positive_row": 32,
+          "tile": "ENSG00000107404_tile0028",
+          "degron_score": 0.630602802951273,
+          "source_start": 381
+        },
+        {
+          "positive_row": 32,
+          "tile": "ENSG00000107404_tile0029",
+          "degron_score": 0.990526866085501,
+          "source_start": 396
+        },
+        {
+          "positive_row": 32,
+          "tile": "ENSG00000107404_tile0030",
+          "degron_score": 1.01879986952285,
+          "source_start": 411
+        },
+        {
+          "positive_row": 33,
+          "tile": "ENSG00000112312_tile0001",
+          "degron_score": 0.351036986239702,
+          "source_start": 1
+        },
+        {
+          "positive_row": 33,
+          "tile": "ENSG00000112312_tile0002",
+          "degron_score": 0.375169982773966,
+          "source_start": 16
+        },
+        {
+          "positive_row": 38,
+          "tile": "ENSG00000143384_tile0013",
+          "degron_score": 0.150405821034471,
+          "source_start": 181
+        },
+        {
+          "positive_row": 38,
+          "tile": "ENSG00000143384_tile0014",
+          "degron_score": 0.173797895248801,
+          "source_start": 196
+        },
+        {
+          "positive_row": 38,
+          "tile": "ENSG00000143384_tile0015",
+          "degron_score": 0.0470402251920996,
+          "source_start": 211
+        },
+        {
+          "positive_row": 39,
+          "tile": "ENSG00000178568_tile0066",
+          "degron_score": 0.252881394342705,
+          "source_start": 976
+        },
+        {
+          "positive_row": 39,
+          "tile": "ENSG00000178568_tile0067",
+          "degron_score": 0.0203742280332662,
+          "source_start": 991
+        },
+        {
+          "positive_row": 44,
+          "tile": "ENSG00000159069_tile0020",
+          "degron_score": 0.514980868592075,
+          "source_start": 286
+        },
+        {
+          "positive_row": 44,
+          "tile": "ENSG00000159069_tile0021",
+          "degron_score": 0.49093235045839,
+          "source_start": 301
+        },
+        {
+          "positive_row": 46,
+          "tile": "ENSG00000101255_tile0012",
+          "degron_score": 0.93085725061647,
+          "source_start": 166
+        },
+        {
+          "positive_row": 46,
+          "tile": "ENSG00000101255_tile0013",
+          "degron_score": 0.956478239637729,
+          "source_start": 181
+        },
+        {
+          "positive_row": 46,
+          "tile": "ENSG00000101255_tile0014",
+          "degron_score": 0.545408622789461,
+          "source_start": 196
+        },
+        {
+          "positive_row": 50,
+          "tile": "ENSG00000164611_tile0004",
+          "degron_score": 0.364821092332935,
+          "source_start": 46
+        },
+        {
+          "positive_row": 50,
+          "tile": "ENSG00000164611_tile0005",
+          "degron_score": 0.287050356051727,
+          "source_start": 61
+        },
+        {
+          "positive_row": 54,
+          "tile": "ENSG00000156970_tile0014",
+          "degron_score": 0.662137949821822,
+          "source_start": 196
+        },
+        {
+          "positive_row": 54,
+          "tile": "ENSG00000156970_tile0015",
+          "degron_score": -0.0220423204687288,
+          "source_start": 211
+        },
+        {
+          "positive_row": 54,
+          "tile": "ENSG00000156970_tile0016",
+          "degron_score": 0.332289099720542,
+          "source_start": 226
+        },
+        {
+          "positive_row": 55,
+          "tile": "ENSG00000072571_tile0043",
+          "degron_score": 0.664366233997836,
+          "source_start": 630
+        },
+        {
+          "positive_row": 55,
+          "tile": "ENSG00000072571_tile0044",
+          "degron_score": -0.0019484487797836,
+          "source_start": 645
+        },
+        {
+          "positive_row": 55,
+          "tile": "ENSG00000072571_tile0045",
+          "degron_score": 0.0135004297307982,
+          "source_start": 660
+        },
+        {
+          "positive_row": 56,
+          "tile": "ENSG00000072571_tile0046",
+          "degron_score": 0.260190470029208,
+          "source_start": 675
+        },
+        {
+          "positive_row": 56,
+          "tile": "ENSG00000072571_tile0047",
+          "degron_score": 0.377344526731499,
+          "source_start": 690
+        },
+        {
+          "positive_row": 56,
+          "tile": "ENSG00000072571_tile0048",
+          "degron_score": 0.237582465379576,
+          "source_start": 695
+        },
+        {
+          "positive_row": 57,
+          "tile": "ENSG00000157557_tile0001",
+          "degron_score": 0.439921832968444,
+          "source_start": 1
+        },
+        {
+          "positive_row": 57,
+          "tile": "ENSG00000157557_tile0002",
+          "degron_score": 0.348253163216863,
+          "source_start": 16
+        },
+        {
+          "positive_row": 58,
+          "tile": "ENSG00000145386_tile0003",
+          "degron_score": 1.03824738706377,
+          "source_start": 31
+        },
+        {
+          "positive_row": 58,
+          "tile": "ENSG00000145386_tile0004",
+          "degron_score": 0.971420040787228,
+          "source_start": 46
+        },
+        {
+          "positive_row": 59,
+          "tile": "ENSG00000124762_tile0005",
+          "degron_score": 0.457138508348961,
+          "source_start": 61
+        },
+        {
+          "positive_row": 59,
+          "tile": "ENSG00000124762_tile0006",
+          "degron_score": 0.404977838029849,
+          "source_start": 76
+        },
+        {
+          "positive_row": 59,
+          "tile": "ENSG00000124762_tile0007",
+          "degron_score": 0.186768616582446,
+          "source_start": 91
+        },
+        {
+          "positive_row": 62,
+          "tile": "ENSG00000117650_tile0024",
+          "degron_score": 0.691981840942314,
+          "source_start": 346
+        },
+        {
+          "positive_row": 62,
+          "tile": "ENSG00000117650_tile0025",
+          "degron_score": 0.662126327325995,
+          "source_start": 361
+        },
+        {
+          "positive_row": 63,
+          "tile": "ENSG00000138160_tile0069",
+          "degron_score": -0.0048091592710914,
+          "source_start": 1021
+        },
+        {
+          "positive_row": 63,
+          "tile": "ENSG00000138160_tile0070",
+          "degron_score": 0.317410086237929,
+          "source_start": 1027
+        },
+        {
+          "positive_row": 67,
+          "tile": "ENSG00000126787_tile0001",
+          "degron_score": 0.43902696395201,
+          "source_start": 1
+        },
+        {
+          "positive_row": 67,
+          "tile": "ENSG00000126787_tile0002",
+          "degron_score": 0.659912722394135,
+          "source_start": 16
+        },
+        {
+          "positive_row": 67,
+          "tile": "ENSG00000126787_tile0003",
+          "degron_score": 0.545350056103382,
+          "source_start": 31
+        },
+        {
+          "positive_row": 68,
+          "tile": "ENSG00000129810_tile0029",
+          "degron_score": 0.363683979585436,
+          "source_start": 421
+        },
+        {
+          "positive_row": 68,
+          "tile": "ENSG00000129810_tile0030",
+          "degron_score": 0.694535813938718,
+          "source_start": 436
+        },
+        {
+          "positive_row": 73,
+          "tile": "ENSG00000178999_tile0020",
+          "degron_score": 0.691769116029552,
+          "source_start": 286
+        },
+        {
+          "positive_row": 73,
+          "tile": "ENSG00000178999_tile0021",
+          "degron_score": 1.04992365166917,
+          "source_start": 301
+        },
+        {
+          "positive_row": 73,
+          "tile": "ENSG00000178999_tile0022",
+          "degron_score": 0.98470117003254,
+          "source_start": 315
+        },
+        {
+          "positive_row": 74,
+          "tile": "ENSG00000111665_tile0013",
+          "degron_score": 0.648608086987075,
+          "source_start": 181
+        },
+        {
+          "positive_row": 74,
+          "tile": "ENSG00000111665_tile0014",
+          "degron_score": 0.296672711161703,
+          "source_start": 196
+        },
+        {
+          "positive_row": 77,
+          "tile": "ENSG00000094804_tile0003",
+          "degron_score": 0.0609861629277317,
+          "source_start": 31
+        },
+        {
+          "positive_row": 77,
+          "tile": "ENSG00000094804_tile0004",
+          "degron_score": 0.114065467130403,
+          "source_start": 46
+        },
+        {
+          "positive_row": 77,
+          "tile": "ENSG00000094804_tile0005",
+          "degron_score": -0.0030064539208583,
+          "source_start": 61
+        },
+        {
+          "positive_row": 83,
+          "tile": "ENSG00000112029_tile0021",
+          "degron_score": 0.604509829543959,
+          "source_start": 301
+        },
+        {
+          "positive_row": 83,
+          "tile": "ENSG00000112029_tile0022",
+          "degron_score": 0.203287550579319,
+          "source_start": 316
+        },
+        {
+          "positive_row": 84,
+          "tile": "ENSG00000101004_tile0042",
+          "degron_score": 1.04878478358808,
+          "source_start": 616
+        },
+        {
+          "positive_row": 84,
+          "tile": "ENSG00000101004_tile0043",
+          "degron_score": 0.652145694445994,
+          "source_start": 631
+        },
+        {
+          "positive_row": 85,
+          "tile": "ENSG00000198690_tile0001",
+          "degron_score": 0.304246744173061,
+          "source_start": 1
+        },
+        {
+          "positive_row": 85,
+          "tile": "ENSG00000198690_tile0002",
+          "degron_score": 0.704995319995439,
+          "source_start": 16
+        },
+        {
+          "positive_row": 88,
+          "tile": "ENSG00000134057_tile0002",
+          "degron_score": 0.145874976441246,
+          "source_start": 16
+        },
+        {
+          "positive_row": 88,
+          "tile": "ENSG00000134057_tile0003",
+          "degron_score": 0.475047381419501,
+          "source_start": 31
+        },
+        {
+          "positive_row": 88,
+          "tile": "ENSG00000134057_tile0004",
+          "degron_score": -0.0101781431091188,
+          "source_start": 46
+        },
+        {
+          "positive_row": 90,
+          "tile": "ENSG00000166851_tile0022",
+          "degron_score": 0.728826016145455,
+          "source_start": 316
+        },
+        {
+          "positive_row": 90,
+          "tile": "ENSG00000166851_tile0023",
+          "degron_score": 0.613566561294864,
+          "source_start": 331
+        },
+        {
+          "positive_row": 91,
+          "tile": "ENSG00000115738_tile0006",
+          "degron_score": 0.561801892036993,
+          "source_start": 76
+        },
+        {
+          "positive_row": 91,
+          "tile": "ENSG00000115738_tile0007",
+          "degron_score": 0.482123913648904,
+          "source_start": 91
+        },
+        {
+          "positive_row": 91,
+          "tile": "ENSG00000115738_tile0008",
+          "degron_score": 0.53385349864755,
+          "source_start": 105
+        },
+        {
+          "positive_row": 92,
+          "tile": "ENSG00000145604_tile0001",
+          "degron_score": 0.0517313794106854,
+          "source_start": 1
+        },
+        {
+          "positive_row": 95,
+          "tile": "ENSG00000169679_tile0041",
+          "degron_score": 0.145016454545018,
+          "source_start": 601
+        },
+        {
+          "positive_row": 95,
+          "tile": "ENSG00000169679_tile0042",
+          "degron_score": -0.073760868697202,
+          "source_start": 616
+        },
+        {
+          "positive_row": 96,
+          "tile": "ENSG00000164611_tile0001",
+          "degron_score": 0.151150858117788,
+          "source_start": 1
+        },
+        {
+          "positive_row": 100,
+          "tile": "ENSG00000158402_tile0009",
+          "degron_score": 0.306769092339852,
+          "source_start": 121
+        },
+        {
+          "positive_row": 100,
+          "tile": "ENSG00000158402_tile0010",
+          "degron_score": -0.0171771613016316,
+          "source_start": 136
+        },
+        {
+          "positive_row": 100,
+          "tile": "ENSG00000158402_tile0011",
+          "degron_score": 0.0156513243242494,
+          "source_start": 151
+        },
+        {
+          "positive_row": 101,
+          "tile": "ENSG00000123473_tile0082",
+          "degron_score": 0.01566522467194,
+          "source_start": 1216
+        },
+        {
+          "positive_row": 101,
+          "tile": "ENSG00000123473_tile0083",
+          "degron_score": 0.0950621143330646,
+          "source_start": 1231
+        },
+        {
+          "positive_row": 101,
+          "tile": "ENSG00000123473_tile0084",
+          "degron_score": 0.0981424912557582,
+          "source_start": 1246
+        },
+        {
+          "positive_row": 102,
+          "tile": "ENSG00000146670_tile0005",
+          "degron_score": 0.306592986468551,
+          "source_start": 61
+        },
+        {
+          "positive_row": 102,
+          "tile": "ENSG00000146670_tile0006",
+          "degron_score": 0.464823651176346,
+          "source_start": 76
+        },
+        {
+          "positive_row": 102,
+          "tile": "ENSG00000146670_tile0007",
+          "degron_score": 0.0261519947138864,
+          "source_start": 91
+        },
+        {
+          "positive_row": 103,
+          "tile": "ENSG00000136108_tile0005",
+          "degron_score": -0.023349826430473,
+          "source_start": 62
+        },
+        {
+          "positive_row": 103,
+          "tile": "ENSG00000136108_tile0006",
+          "degron_score": 0.318091650800309,
+          "source_start": 77
+        },
+        {
+          "positive_row": 104,
+          "tile": "ENSG00000169679_tile0035",
+          "degron_score": 0.371778991931183,
+          "source_start": 511
+        },
+        {
+          "positive_row": 104,
+          "tile": "ENSG00000169679_tile0036",
+          "degron_score": 0.627899184003681,
+          "source_start": 526
+        },
+        {
+          "positive_row": 105,
+          "tile": "ENSG00000156970_tile0001",
+          "degron_score": -0.0252372741850464,
+          "source_start": 1
+        },
+        {
+          "positive_row": 105,
+          "tile": "ENSG00000156970_tile0002",
+          "degron_score": 0.275828275514317,
+          "source_start": 16
+        },
+        {
+          "positive_row": 106,
+          "tile": "ENSG00000156970_tile0020",
+          "degron_score": 0.0414295736069832,
+          "source_start": 286
+        },
+        {
+          "positive_row": 106,
+          "tile": "ENSG00000156970_tile0021",
+          "degron_score": 0.0185902824450328,
+          "source_start": 301
+        },
+        {
+          "positive_row": 107,
+          "tile": "ENSG00000072571_tile0046",
+          "degron_score": 0.260190470029208,
+          "source_start": 676
+        },
+        {
+          "positive_row": 107,
+          "tile": "ENSG00000072571_tile0047",
+          "degron_score": 0.377344526731499,
+          "source_start": 691
+        },
+        {
+          "positive_row": 107,
+          "tile": "ENSG00000072571_tile0048",
+          "degron_score": 0.237582465379576,
+          "source_start": 696
+        },
+        {
+          "positive_row": 109,
+          "tile": "ENSG00000117399_tile0006",
+          "degron_score": -0.0250608093841453,
+          "source_start": 76
+        },
+        {
+          "positive_row": 109,
+          "tile": "ENSG00000117399_tile0007",
+          "degron_score": 0.0447335035637153,
+          "source_start": 91
+        },
+        {
+          "positive_row": 110,
+          "tile": "ENSG00000178999_tile0001",
+          "degron_score": 0.35929425955057,
+          "source_start": 1
+        },
+        {
+          "positive_row": 111,
+          "tile": "ENSG00000094804_tile0005",
+          "degron_score": -0.0030064539208583,
+          "source_start": 61
+        },
+        {
+          "positive_row": 111,
+          "tile": "ENSG00000094804_tile0006",
+          "degron_score": 0.37860668384576,
+          "source_start": 76
+        },
+        {
+          "positive_row": 120,
+          "tile": "ENSG00000121621_tile0059",
+          "degron_score": 0.504984680104414,
+          "source_start": 869
+        },
+        {
+          "positive_row": 126,
+          "tile": "ENSG00000164162_tile0012",
+          "degron_score": 0.366164945656913,
+          "source_start": 156
+        },
+        {
+          "positive_row": 127,
+          "tile": "ENSG00000117650_tile0029",
+          "degron_score": 0.71028487036179,
+          "source_start": 416
+        },
+        {
+          "positive_row": 128,
+          "tile": "ENSG00000117399_tile0033",
+          "degron_score": 0.442773070862213,
+          "source_start": 470
+        },
+        {
+          "positive_row": 138,
+          "tile": "ENSG00000177606_tile0015",
+          "degron_score": 0.0106620225301164,
+          "source_start": 211
+        },
+        {
+          "positive_row": 138,
+          "tile": "ENSG00000177606_tile0016",
+          "degron_score": -0.0289483741737773,
+          "source_start": 226
+        },
+        {
+          "positive_row": 139,
+          "tile": "ENSG00000157557_tile0003",
+          "degron_score": 0.061795236570534,
+          "source_start": 31
+        },
+        {
+          "positive_row": 139,
+          "tile": "ENSG00000157557_tile0004",
+          "degron_score": 0.224890436985397,
+          "source_start": 46
+        },
+        {
+          "positive_row": 140,
+          "tile": "ENSG00000157557_tile0020",
+          "degron_score": 0.0295641856138371,
+          "source_start": 286
+        },
+        {
+          "positive_row": 140,
+          "tile": "ENSG00000157557_tile0021",
+          "degron_score": 0.203784440335811,
+          "source_start": 301
+        },
+        {
+          "positive_row": 144,
+          "tile": "ENSG00000183955_tile0011",
+          "degron_score": 0.0720959795826979,
+          "source_start": 192
+        },
+        {
+          "positive_row": 144,
+          "tile": "ENSG00000183955_tile0012",
+          "degron_score": 0.806338332963489,
+          "source_start": 207
+        },
+        {
+          "positive_row": 144,
+          "tile": "ENSG00000183955_tile0013",
+          "degron_score": 0.868419702792221,
+          "source_start": 222
+        },
+        {
+          "positive_row": 145,
+          "tile": "ENSG00000124762_tile0009",
+          "degron_score": -0.0205885055879098,
+          "source_start": 121
+        },
+        {
+          "positive_row": 145,
+          "tile": "ENSG00000124762_tile0010",
+          "degron_score": 0.665236469509632,
+          "source_start": 135
+        },
+        {
+          "positive_row": 150,
+          "tile": "ENSG00000104365_tile0002",
+          "degron_score": 0.323989758370785,
+          "source_start": 16
+        },
+        {
+          "positive_row": 150,
+          "tile": "ENSG00000104365_tile0003",
+          "degron_score": 0.226322363619397,
+          "source_start": 31
+        },
+        {
+          "positive_row": 151,
+          "tile": "ENSG00000187514_tile0004",
+          "degron_score": 0.0219361265641852,
+          "source_start": 45
+        },
+        {
+          "positive_row": 152,
+          "tile": "ENSG00000187514_tile0004",
+          "degron_score": 0.0219361265641852,
+          "source_start": 46
+        },
+        {
+          "positive_row": 155,
+          "tile": "ENSG00000137474_tile0106",
+          "degron_score": 0.0277400935887281,
+          "source_start": 1614
+        },
+        {
+          "positive_row": 155,
+          "tile": "ENSG00000137474_tile0107",
+          "degron_score": 0.337430506165176,
+          "source_start": 1629
+        },
+        {
+          "positive_row": 156,
+          "tile": "ENSG00000161011_tile0023",
+          "degron_score": -0.0090427634811722,
+          "source_start": 331
+        },
+        {
+          "positive_row": 156,
+          "tile": "ENSG00000161011_tile0024",
+          "degron_score": 0.0458561948992544,
+          "source_start": 346
+        },
+        {
+          "positive_row": 157,
+          "tile": "ENSG00000161011_tile0023",
+          "degron_score": -0.0090427634811722,
+          "source_start": 333
+        },
+        {
+          "positive_row": 157,
+          "tile": "ENSG00000161011_tile0024",
+          "degron_score": 0.0458561948992544,
+          "source_start": 348
+        },
+        {
+          "positive_row": 158,
+          "tile": "ENSG00000082641_tile0015",
+          "degron_score": -0.0329288956049392,
+          "source_start": 211
+        },
+        {
+          "positive_row": 158,
+          "tile": "ENSG00000082641_tile0016",
+          "degron_score": 0.404541571530651,
+          "source_start": 226
+        },
+        {
+          "positive_row": 159,
+          "tile": "ENSG00000184675_tile0019",
+          "degron_score": 0.0210396123207536,
+          "source_start": 271
+        },
+        {
+          "positive_row": 159,
+          "tile": "ENSG00000184675_tile0020",
+          "degron_score": 0.636225421686556,
+          "source_start": 286
+        },
+        {
+          "positive_row": 161,
+          "tile": "ENSG00000116044_tile0005",
+          "degron_score": 0.007135944063588,
+          "source_start": 61
+        },
+        {
+          "positive_row": 161,
+          "tile": "ENSG00000116044_tile0006",
+          "degron_score": -0.0354634232864535,
+          "source_start": 76
+        },
+        {
+          "positive_row": 164,
+          "tile": "ENSG00000116044_tile0001",
+          "degron_score": 0.0935386620852035,
+          "source_start": 1
+        },
+        {
+          "positive_row": 164,
+          "tile": "ENSG00000116044_tile0002",
+          "degron_score": 0.350835957315954,
+          "source_start": 16
+        },
+        {
+          "positive_row": 164,
+          "tile": "ENSG00000116044_tile0003",
+          "degron_score": 0.333853292248907,
+          "source_start": 31
+        },
+        {
+          "positive_row": 166,
+          "tile": "ENSG00000126562_tile0038",
+          "degron_score": -0.0007819963224924,
+          "source_start": 556
+        },
+        {
+          "positive_row": 167,
+          "tile": "ENSG00000060237_tile0041",
+          "degron_score": -0.0069489802818347,
+          "source_start": 601
+        },
+        {
+          "positive_row": 167,
+          "tile": "ENSG00000060237_tile0042",
+          "degron_score": -0.0322782761577742,
+          "source_start": 616
+        },
+        {
+          "positive_row": 167,
+          "tile": "ENSG00000060237_tile0043",
+          "degron_score": 0.0900048481111926,
+          "source_start": 631
+        },
+        {
+          "positive_row": 168,
+          "tile": "ENSG00000165238_tile0039",
+          "degron_score": 0.24127454219187,
+          "source_start": 571
+        },
+        {
+          "positive_row": 168,
+          "tile": "ENSG00000165238_tile0040",
+          "degron_score": 0.0572302726464627,
+          "source_start": 586
+        },
+        {
+          "positive_row": 169,
+          "tile": "ENSG00000196632_tile0035",
+          "degron_score": 0.351004074290085,
+          "source_start": 511
+        },
+        {
+          "positive_row": 169,
+          "tile": "ENSG00000196632_tile0036",
+          "degron_score": -0.0584651980493165,
+          "source_start": 526
+        },
+        {
+          "positive_row": 169,
+          "tile": "ENSG00000196632_tile0037",
+          "degron_score": 0.014117245485011,
+          "source_start": 541
+        },
+        {
+          "positive_row": 170,
+          "tile": "ENSG00000078900_tile0001",
+          "degron_score": -0.0089792283842884,
+          "source_start": 1
+        },
+        {
+          "positive_row": 170,
+          "tile": "ENSG00000078900_tile0002",
+          "degron_score": 0.0264624605676993,
+          "source_start": 16
+        },
+        {
+          "positive_row": 171,
+          "tile": "ENSG00000141510_tile0001",
+          "degron_score": 0.0014107117973709,
+          "source_start": 1
+        },
+        {
+          "positive_row": 171,
+          "tile": "ENSG00000141510_tile0002",
+          "degron_score": 0.16957504609114,
+          "source_start": 16
+        },
+        {
+          "positive_row": 178,
+          "tile": "ENSG00000164754_tile0011",
+          "degron_score": -0.0299867450139173,
+          "source_start": 151
+        },
+        {
+          "positive_row": 178,
+          "tile": "ENSG00000164754_tile0012",
+          "degron_score": -0.0513180412557852,
+          "source_start": 166
+        },
+        {
+          "positive_row": 190,
+          "tile": "ENSG00000124440_tile0032",
+          "degron_score": -0.0339395649100898,
+          "source_start": 466
+        },
+        {
+          "positive_row": 190,
+          "tile": "ENSG00000124440_tile0033",
+          "degron_score": 1.03535578218877,
+          "source_start": 481
+        },
+        {
+          "positive_row": 190,
+          "tile": "ENSG00000124440_tile0034",
+          "degron_score": 0.106120081928935,
+          "source_start": 496
+        },
+        {
+          "positive_row": 191,
+          "tile": "ENSG00000100644_tile0026",
+          "degron_score": 0.896186398427459,
+          "source_start": 376
+        },
+        {
+          "positive_row": 191,
+          "tile": "ENSG00000100644_tile0027",
+          "degron_score": 0.326205699116014,
+          "source_start": 391
+        },
+        {
+          "positive_row": 191,
+          "tile": "ENSG00000100644_tile0028",
+          "degron_score": -0.0017531336002434,
+          "source_start": 406
+        },
+        {
+          "positive_row": 192,
+          "tile": "ENSG00000100644_tile0037",
+          "degron_score": 0.251941845198848,
+          "source_start": 541
+        },
+        {
+          "positive_row": 192,
+          "tile": "ENSG00000100644_tile0038",
+          "degron_score": 1.00841393047745,
+          "source_start": 556
+        },
+        {
+          "positive_row": 192,
+          "tile": "ENSG00000100644_tile0039",
+          "degron_score": 0.0459207162942327,
+          "source_start": 571
+        },
+        {
+          "positive_row": 193,
+          "tile": "ENSG00000116016_tile0026",
+          "degron_score": 1.04392598000841,
+          "source_start": 376
+        },
+        {
+          "positive_row": 193,
+          "tile": "ENSG00000116016_tile0027",
+          "degron_score": -0.0009184334116354,
+          "source_start": 391
+        },
+        {
+          "positive_row": 193,
+          "tile": "ENSG00000116016_tile0028",
+          "degron_score": 0.038109497179099,
+          "source_start": 406
+        },
+        {
+          "positive_row": 194,
+          "tile": "ENSG00000116016_tile0035",
+          "degron_score": 0.295320034542741,
+          "source_start": 511
+        },
+        {
+          "positive_row": 194,
+          "tile": "ENSG00000116016_tile0036",
+          "degron_score": 0.702118406979482,
+          "source_start": 526
+        },
+        {
+          "positive_row": 194,
+          "tile": "ENSG00000116016_tile0037",
+          "degron_score": 0.0511006882827886,
+          "source_start": 541
+        },
+        {
+          "positive_row": 195,
+          "tile": "ENSG00000116016_tile0038",
+          "degron_score": 0.927988007981144,
+          "source_start": 556
+        },
+        {
+          "positive_row": 195,
+          "tile": "ENSG00000116016_tile0039",
+          "degron_score": 0.0015915186029477,
+          "source_start": 571
+        },
+        {
+          "positive_row": 204,
+          "tile": "ENSG00000072310_tile0028",
+          "degron_score": -0.0228886279252651,
+          "source_start": 406
+        },
+        {
+          "positive_row": 204,
+          "tile": "ENSG00000072310_tile0029",
+          "degron_score": -0.0016071306544218,
+          "source_start": 421
+        },
+        {
+          "positive_row": 205,
+          "tile": "ENSG00000198793_tile0020",
+          "degron_score": 0.139093748560884,
+          "source_start": 286
+        },
+        {
+          "positive_row": 205,
+          "tile": "ENSG00000198793_tile0021",
+          "degron_score": 0.333485628485316,
+          "source_start": 301
+        },
+        {
+          "positive_row": 205,
+          "tile": "ENSG00000198793_tile0022",
+          "degron_score": 0.963022363533614,
+          "source_start": 316
+        },
+        {
+          "positive_row": 206,
+          "tile": "ENSG00000177606_tile0015",
+          "degron_score": 0.0106620225301164,
+          "source_start": 211
+        },
+        {
+          "positive_row": 206,
+          "tile": "ENSG00000177606_tile0016",
+          "degron_score": -0.0289483741737773,
+          "source_start": 226
+        },
+        {
+          "positive_row": 206,
+          "tile": "ENSG00000177606_tile0017",
+          "degron_score": 0.672504025673175,
+          "source_start": 241
+        },
+        {
+          "positive_row": 207,
+          "tile": "ENSG00000105173_tile0026",
+          "degron_score": -0.009601043014779,
+          "source_start": 376
+        },
+        {
+          "positive_row": 207,
+          "tile": "ENSG00000105173_tile0027",
+          "degron_score": 0.003820249387928,
+          "source_start": 381
+        },
+        {
+          "positive_row": 208,
+          "tile": "ENSG00000105173_tile0026",
+          "degron_score": -0.009601043014779,
+          "source_start": 361
+        },
+        {
+          "positive_row": 208,
+          "tile": "ENSG00000105173_tile0027",
+          "degron_score": 0.003820249387928,
+          "source_start": 366
+        },
+        {
+          "positive_row": 210,
+          "tile": "ENSG00000105173_tile0004",
+          "degron_score": 0.33763142634766,
+          "source_start": 46
+        },
+        {
+          "positive_row": 210,
+          "tile": "ENSG00000105173_tile0005",
+          "degron_score": 0.0196950232029018,
+          "source_start": 61
+        },
+        {
+          "positive_row": 210,
+          "tile": "ENSG00000105173_tile0006",
+          "degron_score": -0.0117012742087248,
+          "source_start": 76
+        },
+        {
+          "positive_row": 213,
+          "tile": "ENSG00000148400_tile0167",
+          "degron_score": 0.284519926904693,
+          "source_start": 2491
+        },
+        {
+          "positive_row": 213,
+          "tile": "ENSG00000148400_tile0168",
+          "degron_score": 0.0541306282294781,
+          "source_start": 2506
+        },
+        {
+          "positive_row": 214,
+          "tile": "ENSG00000111276_tile0012",
+          "degron_score": -0.0365971464469104,
+          "source_start": 166
+        },
+        {
+          "positive_row": 214,
+          "tile": "ENSG00000111276_tile0013",
+          "degron_score": 0.006683782929219,
+          "source_start": 169
+        },
+        {
+          "positive_row": 224,
+          "tile": "ENSG00000146232_tile0010",
+          "degron_score": -0.0231219968505305,
+          "source_start": 136
+        },
+        {
+          "positive_row": 224,
+          "tile": "ENSG00000146232_tile0011",
+          "degron_score": -0.0257587331774876,
+          "source_start": 151
+        },
+        {
+          "positive_row": 225,
+          "tile": "ENSG00000124216_tile0006",
+          "degron_score": 0.142730220649254,
+          "source_start": 76
+        },
+        {
+          "positive_row": 225,
+          "tile": "ENSG00000124216_tile0007",
+          "degron_score": 0.0278999494597633,
+          "source_start": 91
+        },
+        {
+          "positive_row": 232,
+          "tile": "ENSG00000109320_tile0061",
+          "degron_score": -0.0319363677167743,
+          "source_start": 900
+        },
+        {
+          "positive_row": 232,
+          "tile": "ENSG00000109320_tile0062",
+          "degron_score": 0.0070260218708261,
+          "source_start": 915
+        },
+        {
+          "positive_row": 232,
+          "tile": "ENSG00000109320_tile0063",
+          "degron_score": 0.742067923106048,
+          "source_start": 930
+        },
+        {
+          "positive_row": 233,
+          "tile": "ENSG00000100906_tile0002",
+          "degron_score": -0.0535811091844418,
+          "source_start": 16
+        },
+        {
+          "positive_row": 233,
+          "tile": "ENSG00000100906_tile0003",
+          "degron_score": 0.0659616643982136,
+          "source_start": 31
+        },
+        {
+          "positive_row": 234,
+          "tile": "ENSG00000168036_tile0002",
+          "degron_score": 0.195756131380327,
+          "source_start": 16
+        },
+        {
+          "positive_row": 234,
+          "tile": "ENSG00000168036_tile0003",
+          "degron_score": 0.029610181132119,
+          "source_start": 31
+        },
+        {
+          "positive_row": 235,
+          "tile": "ENSG00000102302_tile0018",
+          "degron_score": 0.289739156060685,
+          "source_start": 256
+        },
+        {
+          "positive_row": 235,
+          "tile": "ENSG00000102302_tile0019",
+          "degron_score": -0.0014935481876652,
+          "source_start": 271
+        },
+        {
+          "positive_row": 235,
+          "tile": "ENSG00000102302_tile0020",
+          "degron_score": 0.0204411183181999,
+          "source_start": 286
+        },
+        {
+          "positive_row": 236,
+          "tile": "ENSG00000127084_tile0004",
+          "degron_score": -0.0474700512117141,
+          "source_start": 46
+        },
+        {
+          "positive_row": 236,
+          "tile": "ENSG00000127084_tile0005",
+          "degron_score": -0.0038497358453519,
+          "source_start": 61
+        },
+        {
+          "positive_row": 236,
+          "tile": "ENSG00000127084_tile0006",
+          "degron_score": -0.0063860028891764,
+          "source_start": 76
+        },
+        {
+          "positive_row": 237,
+          "tile": "ENSG00000075711_tile0039",
+          "degron_score": 0.286721548017135,
+          "source_start": 571
+        },
+        {
+          "positive_row": 237,
+          "tile": "ENSG00000075711_tile0040",
+          "degron_score": 0.617842948053491,
+          "source_start": 586
+        },
+        {
+          "positive_row": 237,
+          "tile": "ENSG00000075711_tile0041",
+          "degron_score": 0.776400822724214,
+          "source_start": 601
+        },
+        {
+          "positive_row": 238,
+          "tile": "ENSG00000104825_tile0001",
+          "degron_score": 0.861313582158936,
+          "source_start": 1
+        },
+        {
+          "positive_row": 238,
+          "tile": "ENSG00000104825_tile0002",
+          "degron_score": -0.0376344374487476,
+          "source_start": 16
+        },
+        {
+          "positive_row": 239,
+          "tile": "ENSG00000150593_tile0004",
+          "degron_score": 0.738404354236137,
+          "source_start": 46
+        },
+        {
+          "positive_row": 239,
+          "tile": "ENSG00000150593_tile0005",
+          "degron_score": 0.321337353038648,
+          "source_start": 61
+        },
+        {
+          "positive_row": 239,
+          "tile": "ENSG00000150593_tile0006",
+          "degron_score": 0.0116032581480811,
+          "source_start": 76
+        },
+        {
+          "positive_row": 240,
+          "tile": "ENSG00000136122_tile0033",
+          "degron_score": -0.0259373439905,
+          "source_start": 481
+        },
+        {
+          "positive_row": 240,
+          "tile": "ENSG00000136122_tile0034",
+          "degron_score": -0.0126765051807269,
+          "source_start": 496
+        },
+        {
+          "positive_row": 243,
+          "tile": "ENSG00000112029_tile0009",
+          "degron_score": 0.678670516810123,
+          "source_start": 121
+        },
+        {
+          "positive_row": 243,
+          "tile": "ENSG00000112029_tile0010",
+          "degron_score": -0.0164085041675017,
+          "source_start": 136
+        },
+        {
+          "positive_row": 244,
+          "tile": "ENSG00000084093_tile0068",
+          "degron_score": 0.666219998158968,
+          "source_start": 1006
+        },
+        {
+          "positive_row": 244,
+          "tile": "ENSG00000084093_tile0069",
+          "degron_score": -0.0070045749127387,
+          "source_start": 1021
+        },
+        {
+          "positive_row": 245,
+          "tile": "ENSG00000173406_tile0021",
+          "degron_score": 0.662774257961238,
+          "source_start": 336
+        },
+        {
+          "positive_row": 245,
+          "tile": "ENSG00000173406_tile0022",
+          "degron_score": 0.393309580172507,
+          "source_start": 351
+        },
+        {
+          "positive_row": 245,
+          "tile": "ENSG00000173406_tile0023",
+          "degron_score": 0.362070167658338,
+          "source_start": 366
+        },
+        {
+          "positive_row": 246,
+          "tile": "ENSG00000187323_tile0088",
+          "degron_score": 0.332101843943267,
+          "source_start": 1306
+        },
+        {
+          "positive_row": 246,
+          "tile": "ENSG00000187323_tile0089",
+          "degron_score": 0.414697750007268,
+          "source_start": 1321
+        },
+        {
+          "positive_row": 246,
+          "tile": "ENSG00000187323_tile0090",
+          "degron_score": 0.413652041814366,
+          "source_start": 1336
+        },
+        {
+          "positive_row": 250,
+          "tile": "ENSG00000154447_tile0039",
+          "degron_score": 0.593172970763282,
+          "source_start": 571
+        },
+        {
+          "positive_row": 250,
+          "tile": "ENSG00000154447_tile0040",
+          "degron_score": 0.541584736743331,
+          "source_start": 586
+        },
+        {
+          "positive_row": 250,
+          "tile": "ENSG00000154447_tile0041",
+          "degron_score": 0.275965055489619,
+          "source_start": 601
+        },
+        {
+          "positive_row": 251,
+          "tile": "ENSG00000242265_tile0016",
+          "degron_score": 0.385462309624259,
+          "source_start": 226
+        },
+        {
+          "positive_row": 251,
+          "tile": "ENSG00000242265_tile0017",
+          "degron_score": 0.0917793599360556,
+          "source_start": 241
+        },
+        {
+          "positive_row": 251,
+          "tile": "ENSG00000242265_tile0018",
+          "degron_score": 0.365323312595672,
+          "source_start": 256
+        },
+        {
+          "positive_row": 252,
+          "tile": "ENSG00000116161_tile0003",
+          "degron_score": -0.0050191226997951,
+          "source_start": 31
+        },
+        {
+          "positive_row": 252,
+          "tile": "ENSG00000116161_tile0004",
+          "degron_score": 0.147399679891231,
+          "source_start": 46
+        },
+        {
+          "positive_row": 252,
+          "tile": "ENSG00000116161_tile0005",
+          "degron_score": 0.862174107202308,
+          "source_start": 61
+        },
+        {
+          "positive_row": 254,
+          "tile": "ENSG00000091831_tile0038",
+          "degron_score": 0.0063783288396429,
+          "source_start": 556
+        },
+        {
+          "positive_row": 254,
+          "tile": "ENSG00000091831_tile0039",
+          "degron_score": 0.333715760313047,
+          "source_start": 566
+        },
+        {
+          "positive_row": 255,
+          "tile": "ENSG00000169083_tile0043",
+          "degron_score": -0.0229208726751873,
+          "source_start": 631
+        },
+        {
+          "positive_row": 255,
+          "tile": "ENSG00000169083_tile0044",
+          "degron_score": 0.164806289292951,
+          "source_start": 646
+        },
+        {
+          "positive_row": 257,
+          "tile": "ENSG00000106571_tile0010",
+          "degron_score": 0.659433851904305,
+          "source_start": 136
+        },
+        {
+          "positive_row": 257,
+          "tile": "ENSG00000106571_tile0011",
+          "degron_score": 0.50244833866863,
+          "source_start": 151
+        },
+        {
+          "positive_row": 258,
+          "tile": "ENSG00000106571_tile0028",
+          "degron_score": -0.0003126460810951,
+          "source_start": 406
+        },
+        {
+          "positive_row": 258,
+          "tile": "ENSG00000106571_tile0029",
+          "degron_score": 0.516326882870964,
+          "source_start": 421
+        },
+        {
+          "positive_row": 262,
+          "tile": "ENSG00000204209_tile0045",
+          "degron_score": 0.0224055609862602,
+          "source_start": 661
+        },
+        {
+          "positive_row": 262,
+          "tile": "ENSG00000204209_tile0046",
+          "degron_score": 0.309204446415834,
+          "source_start": 676
+        },
+        {
+          "positive_row": 266,
+          "tile": "ENSG00000204209_tile0040",
+          "degron_score": -0.0061748686984306,
+          "source_start": 586
+        },
+        {
+          "positive_row": 266,
+          "tile": "ENSG00000204209_tile0041",
+          "degron_score": -0.0095447000476454,
+          "source_start": 601
+        },
+        {
+          "positive_row": 269,
+          "tile": "ENSG00000124151_tile0006",
+          "degron_score": -0.045597244489251,
+          "source_start": 76
+        },
+        {
+          "positive_row": 269,
+          "tile": "ENSG00000124151_tile0007",
+          "degron_score": 0.0274581960318324,
+          "source_start": 91
+        },
+        {
+          "positive_row": 271,
+          "tile": "ENSG00000167900_tile0013",
+          "degron_score": 0.88375365984454,
+          "source_start": 181
+        },
+        {
+          "positive_row": 271,
+          "tile": "ENSG00000167900_tile0014",
+          "degron_score": 0.0404845986258796,
+          "source_start": 196
+        },
+        {
+          "positive_row": 271,
+          "tile": "ENSG00000167900_tile0015",
+          "degron_score": 0.563815243491131,
+          "source_start": 205
+        },
+        {
+          "positive_row": 272,
+          "tile": "ENSG00000164045_tile0009",
+          "degron_score": 0.0037259376911567,
+          "source_start": 121
+        },
+        {
+          "positive_row": 272,
+          "tile": "ENSG00000164045_tile0010",
+          "degron_score": 0.57901990201248,
+          "source_start": 136
+        },
+        {
+          "positive_row": 274,
+          "tile": "ENSG00000079616_tile0033",
+          "degron_score": 0.016546364392538,
+          "source_start": 481
+        },
+        {
+          "positive_row": 274,
+          "tile": "ENSG00000079616_tile0034",
+          "degron_score": 0.0485264410017447,
+          "source_start": 496
+        },
+        {
+          "positive_row": 276,
+          "tile": "ENSG00000170525_tile0009",
+          "degron_score": 0.682601522689143,
+          "source_start": 121
+        },
+        {
+          "positive_row": 276,
+          "tile": "ENSG00000170525_tile0010",
+          "degron_score": 0.920227388647454,
+          "source_start": 136
+        },
+        {
+          "positive_row": 277,
+          "tile": "ENSG00000156876_tile0039",
+          "degron_score": -0.0118253280033884,
+          "source_start": 571
+        },
+        {
+          "positive_row": 277,
+          "tile": "ENSG00000156876_tile0040",
+          "degron_score": 0.0999540420031952,
+          "source_start": 586
+        },
+        {
+          "positive_row": 278,
+          "tile": "ENSG00000135913_tile0052",
+          "degron_score": 0.0150214990068649,
+          "source_start": 766
+        },
+        {
+          "positive_row": 278,
+          "tile": "ENSG00000135913_tile0053",
+          "degron_score": 0.0265878942051596,
+          "source_start": 781
+        },
+        {
+          "positive_row": 280,
+          "tile": "ENSG00000107874_tile0006",
+          "degron_score": 0.080399517210068,
+          "source_start": 76
+        },
+        {
+          "positive_row": 280,
+          "tile": "ENSG00000107874_tile0007",
+          "degron_score": 0.0255214392502814,
+          "source_start": 91
+        },
+        {
+          "positive_row": 281,
+          "tile": "ENSG00000088325_tile0005",
+          "degron_score": -0.0097945923002891,
+          "source_start": 61
+        },
+        {
+          "positive_row": 281,
+          "tile": "ENSG00000088325_tile0006",
+          "degron_score": -0.0222782306742872,
+          "source_start": 76
+        },
+        {
+          "positive_row": 282,
+          "tile": "ENSG00000117650_tile0026",
+          "degron_score": -0.0470463142882191,
+          "source_start": 376
+        },
+        {
+          "positive_row": 282,
+          "tile": "ENSG00000117650_tile0027",
+          "degron_score": 0.941478955098214,
+          "source_start": 391
+        },
+        {
+          "positive_row": 283,
+          "tile": "ENSG00000138160_tile0068",
+          "degron_score": 0.228353034579783,
+          "source_start": 1006
+        },
+        {
+          "positive_row": 283,
+          "tile": "ENSG00000138160_tile0069",
+          "degron_score": -0.0048091592710914,
+          "source_start": 1021
+        },
+        {
+          "positive_row": 285,
+          "tile": "ENSG00000126787_tile0002",
+          "degron_score": 0.659912722394135,
+          "source_start": 16
+        },
+        {
+          "positive_row": 285,
+          "tile": "ENSG00000126787_tile0003",
+          "degron_score": 0.545350056103382,
+          "source_start": 31
+        },
+        {
+          "positive_row": 286,
+          "tile": "ENSG00000129810_tile0020",
+          "degron_score": 0.0435731696864563,
+          "source_start": 286
+        },
+        {
+          "positive_row": 286,
+          "tile": "ENSG00000129810_tile0021",
+          "degron_score": 0.101073174406149,
+          "source_start": 301
+        },
+        {
+          "positive_row": 288,
+          "tile": "ENSG00000101004_tile0032",
+          "degron_score": 0.329903287616569,
+          "source_start": 466
+        },
+        {
+          "positive_row": 288,
+          "tile": "ENSG00000101004_tile0033",
+          "degron_score": -0.0031437829039942,
+          "source_start": 481
+        },
+        {
+          "positive_row": 288,
+          "tile": "ENSG00000101004_tile0034",
+          "degron_score": 0.0385597504861981,
+          "source_start": 496
+        },
+        {
+          "positive_row": 289,
+          "tile": "ENSG00000111665_tile0017",
+          "degron_score": 0.159461669606636,
+          "source_start": 239
+        },
+        {
+          "positive_row": 290,
+          "tile": "ENSG00000198690_tile0014",
+          "degron_score": -0.0573510743225571,
+          "source_start": 196
+        },
+        {
+          "positive_row": 290,
+          "tile": "ENSG00000198690_tile0015",
+          "degron_score": 0.368856771854508,
+          "source_start": 211
+        },
+        {
+          "positive_row": 291,
+          "tile": "ENSG00000133101_tile0006",
+          "degron_score": -0.022203825958047,
+          "source_start": 120
+        },
+        {
+          "positive_row": 291,
+          "tile": "ENSG00000133101_tile0007",
+          "degron_score": 0.0520130478416332,
+          "source_start": 135
+        },
+        {
+          "positive_row": 292,
+          "tile": "ENSG00000169679_tile0035",
+          "degron_score": 0.371778991931183,
+          "source_start": 511
+        },
+        {
+          "positive_row": 292,
+          "tile": "ENSG00000169679_tile0036",
+          "degron_score": 0.627899184003681,
+          "source_start": 526
+        },
+        {
+          "positive_row": 293,
+          "tile": "ENSG00000156970_tile0018",
+          "degron_score": -0.0025790352458607,
+          "source_start": 256
+        },
+        {
+          "positive_row": 293,
+          "tile": "ENSG00000156970_tile0019",
+          "degron_score": 0.0331963979737325,
+          "source_start": 271
+        },
+        {
+          "positive_row": 294,
+          "tile": "ENSG00000156970_tile0022",
+          "degron_score": 0.326816982479183,
+          "source_start": 316
+        },
+        {
+          "positive_row": 294,
+          "tile": "ENSG00000156970_tile0023",
+          "degron_score": 0.335690124661408,
+          "source_start": 331
+        },
+        {
+          "positive_row": 295,
+          "tile": "ENSG00000156970_tile0035",
+          "degron_score": 0.0459922152352433,
+          "source_start": 511
+        },
+        {
+          "positive_row": 295,
+          "tile": "ENSG00000156970_tile0036",
+          "degron_score": 0.825593516990248,
+          "source_start": 526
+        },
+        {
+          "positive_row": 296,
+          "tile": "ENSG00000145386_tile0006",
+          "degron_score": 0.124449214083655,
+          "source_start": 76
+        },
+        {
+          "positive_row": 296,
+          "tile": "ENSG00000145386_tile0007",
+          "degron_score": -0.0014614352378485,
+          "source_start": 91
+        },
+        {
+          "positive_row": 298,
+          "tile": "ENSG00000087586_tile0002",
+          "degron_score": 0.332144125814386,
+          "source_start": 16
+        },
+        {
+          "positive_row": 298,
+          "tile": "ENSG00000087586_tile0003",
+          "degron_score": 0.339973557564,
+          "source_start": 31
+        },
+        {
+          "positive_row": 298,
+          "tile": "ENSG00000087586_tile0004",
+          "degron_score": 0.0064017666148457,
+          "source_start": 46
+        },
+        {
+          "positive_row": 299,
+          "tile": "ENSG00000117399_tile0010",
+          "degron_score": 0.0691166633200105,
+          "source_start": 136
+        },
+        {
+          "positive_row": 299,
+          "tile": "ENSG00000117399_tile0011",
+          "degron_score": 0.282148774188682,
+          "source_start": 151
+        },
+        {
+          "positive_row": 299,
+          "tile": "ENSG00000117399_tile0012",
+          "degron_score": 0.669388629249945,
+          "source_start": 166
+        },
+        {
+          "positive_row": 300,
+          "tile": "ENSG00000178999_tile0001",
+          "degron_score": 0.35929425955057,
+          "source_start": 1
+        },
+        {
+          "positive_row": 300,
+          "tile": "ENSG00000178999_tile0002",
+          "degron_score": 0.68297096480456,
+          "source_start": 16
+        },
+        {
+          "positive_row": 301,
+          "tile": "ENSG00000112576_tile0018",
+          "degron_score": 0.0108995774636471,
+          "source_start": 256
+        },
+        {
+          "positive_row": 301,
+          "tile": "ENSG00000112576_tile0019",
+          "degron_score": -0.0224887186132947,
+          "source_start": 263
+        }
+      ]
+    },
+    "larsen": {
+      "denominator": 63258,
+      "regional_positive_rows": 49,
+      "regional_tiles": 108,
+      "source_proteins_represented_by_exact_tile": 39,
+      "pairs_score_missing": 3,
+      "pairs_score_ge_point5": 39,
+      "pairs_score_lt_point5": 71,
+      "pairs": [
+        {
+          "positive_row": 34,
+          "tile": "ENSG00000136603_tile0010",
+          "degron_score": -0.175176189070662,
+          "source_start": 136
+        },
+        {
+          "positive_row": 34,
+          "tile": "ENSG00000136603_tile0011",
+          "degron_score": 0.837645503522126,
+          "source_start": 151
+        },
+        {
+          "positive_row": 34,
+          "tile": "ENSG00000136603_tile0012",
+          "degron_score": 1.25941771696296,
+          "source_start": 166
+        },
+        {
+          "positive_row": 35,
+          "tile": "ENSG00000067066_tile0010",
+          "degron_score": 0.170319143749871,
+          "source_start": 136
+        },
+        {
+          "positive_row": 35,
+          "tile": "ENSG00000067066_tile0011",
+          "degron_score": null,
+          "source_start": 151
+        },
+        {
+          "positive_row": 35,
+          "tile": "ENSG00000067066_tile0012",
+          "degron_score": 0.10638309518548,
+          "source_start": 166
+        },
+        {
+          "positive_row": 40,
+          "tile": "ENSG00000171532_tile0014",
+          "degron_score": 0.941463700954156,
+          "source_start": 196
+        },
+        {
+          "positive_row": 40,
+          "tile": "ENSG00000171532_tile0015",
+          "degron_score": 0.124924011346168,
+          "source_start": 211
+        },
+        {
+          "positive_row": 57,
+          "tile": "ENSG00000157557_tile0001",
+          "degron_score": 0.675883368499528,
+          "source_start": 1
+        },
+        {
+          "positive_row": 57,
+          "tile": "ENSG00000157557_tile0002",
+          "degron_score": 0.492566566629788,
+          "source_start": 16
+        },
+        {
+          "positive_row": 64,
+          "tile": "ENSG00000111206_tile0001",
+          "degron_score": 0.996004525857068,
+          "source_start": 1
+        },
+        {
+          "positive_row": 65,
+          "tile": "ENSG00000111206_tile0001",
+          "degron_score": 0.996004525857068,
+          "source_start": 1
+        },
+        {
+          "positive_row": 65,
+          "tile": "ENSG00000111206_tile0002",
+          "degron_score": 0.0274102081672958,
+          "source_start": 16
+        },
+        {
+          "positive_row": 66,
+          "tile": "ENSG00000111206_tile0001",
+          "degron_score": 0.996004525857068,
+          "source_start": 1
+        },
+        {
+          "positive_row": 66,
+          "tile": "ENSG00000111206_tile0002",
+          "degron_score": 0.0274102081672958,
+          "source_start": 16
+        },
+        {
+          "positive_row": 81,
+          "tile": "ENSG00000180818_tile0011",
+          "degron_score": null,
+          "source_start": 151
+        },
+        {
+          "positive_row": 81,
+          "tile": "ENSG00000180818_tile0012",
+          "degron_score": -0.103772656780317,
+          "source_start": 166
+        },
+        {
+          "positive_row": 81,
+          "tile": "ENSG00000180818_tile0013",
+          "degron_score": 0.214595597489598,
+          "source_start": 181
+        },
+        {
+          "positive_row": 82,
+          "tile": "ENSG00000180818_tile0021",
+          "degron_score": 1.19765220495602,
+          "source_start": 301
+        },
+        {
+          "positive_row": 130,
+          "tile": "ENSG00000134954_tile0021",
+          "degron_score": 0.601007214435059,
+          "source_start": 257
+        },
+        {
+          "positive_row": 130,
+          "tile": "ENSG00000134954_tile0022",
+          "degron_score": 0.0833434740228798,
+          "source_start": 272
+        },
+        {
+          "positive_row": 131,
+          "tile": "ENSG00000130522_tile0016",
+          "degron_score": 0.0651995821501572,
+          "source_start": 226
+        },
+        {
+          "positive_row": 131,
+          "tile": "ENSG00000130522_tile0017",
+          "degron_score": 0.0370736462287096,
+          "source_start": 241
+        },
+        {
+          "positive_row": 132,
+          "tile": "ENSG00000244405_tile0004",
+          "degron_score": 0.0456637368240728,
+          "source_start": 46
+        },
+        {
+          "positive_row": 132,
+          "tile": "ENSG00000244405_tile0005",
+          "degron_score": 0.0234358103816419,
+          "source_start": 61
+        },
+        {
+          "positive_row": 133,
+          "tile": "ENSG00000175832_tile0004",
+          "degron_score": 0.0551902929655428,
+          "source_start": 46
+        },
+        {
+          "positive_row": 133,
+          "tile": "ENSG00000175832_tile0005",
+          "degron_score": 0.326419611487675,
+          "source_start": 61
+        },
+        {
+          "positive_row": 133,
+          "tile": "ENSG00000175832_tile0006",
+          "degron_score": 0.717201797518757,
+          "source_start": 76
+        },
+        {
+          "positive_row": 134,
+          "tile": "ENSG00000006468_tile0004",
+          "degron_score": 0.325582413354019,
+          "source_start": 46
+        },
+        {
+          "positive_row": 134,
+          "tile": "ENSG00000006468_tile0005",
+          "degron_score": 0.13106543086346,
+          "source_start": 61
+        },
+        {
+          "positive_row": 138,
+          "tile": "ENSG00000177606_tile0015",
+          "degron_score": -0.0080504875408744,
+          "source_start": 211
+        },
+        {
+          "positive_row": 138,
+          "tile": "ENSG00000177606_tile0016",
+          "degron_score": 0.101663383846252,
+          "source_start": 226
+        },
+        {
+          "positive_row": 139,
+          "tile": "ENSG00000157557_tile0003",
+          "degron_score": 0.293746355191723,
+          "source_start": 31
+        },
+        {
+          "positive_row": 139,
+          "tile": "ENSG00000157557_tile0004",
+          "degron_score": 0.349730370072078,
+          "source_start": 46
+        },
+        {
+          "positive_row": 140,
+          "tile": "ENSG00000157557_tile0020",
+          "degron_score": 0.276492452371436,
+          "source_start": 286
+        },
+        {
+          "positive_row": 140,
+          "tile": "ENSG00000157557_tile0021",
+          "degron_score": 0.443131048574341,
+          "source_start": 301
+        },
+        {
+          "positive_row": 158,
+          "tile": "ENSG00000082641_tile0015",
+          "degron_score": -0.0054356682503731,
+          "source_start": 211
+        },
+        {
+          "positive_row": 158,
+          "tile": "ENSG00000082641_tile0016",
+          "degron_score": 1.01060069671356,
+          "source_start": 226
+        },
+        {
+          "positive_row": 161,
+          "tile": "ENSG00000116044_tile0005",
+          "degron_score": 0.185743629459216,
+          "source_start": 61
+        },
+        {
+          "positive_row": 161,
+          "tile": "ENSG00000116044_tile0006",
+          "degron_score": -0.0297029264502819,
+          "source_start": 76
+        },
+        {
+          "positive_row": 164,
+          "tile": "ENSG00000116044_tile0001",
+          "degron_score": 0.340483727341935,
+          "source_start": 1
+        },
+        {
+          "positive_row": 164,
+          "tile": "ENSG00000116044_tile0002",
+          "degron_score": 0.653802881905017,
+          "source_start": 16
+        },
+        {
+          "positive_row": 164,
+          "tile": "ENSG00000116044_tile0003",
+          "degron_score": 0.513485392981113,
+          "source_start": 31
+        },
+        {
+          "positive_row": 170,
+          "tile": "ENSG00000078900_tile0001",
+          "degron_score": 0.0832706335325009,
+          "source_start": 1
+        },
+        {
+          "positive_row": 170,
+          "tile": "ENSG00000078900_tile0002",
+          "degron_score": -0.002296160046459,
+          "source_start": 16
+        },
+        {
+          "positive_row": 171,
+          "tile": "ENSG00000141510_tile0001",
+          "degron_score": -0.0202896442195819,
+          "source_start": 1
+        },
+        {
+          "positive_row": 171,
+          "tile": "ENSG00000141510_tile0002",
+          "degron_score": 0.36353075618111,
+          "source_start": 16
+        },
+        {
+          "positive_row": 174,
+          "tile": "ENSG00000073282_tile0003",
+          "degron_score": 0.613972589342578,
+          "source_start": 31
+        },
+        {
+          "positive_row": 174,
+          "tile": "ENSG00000073282_tile0004",
+          "degron_score": 0.729791486005112,
+          "source_start": 46
+        },
+        {
+          "positive_row": 174,
+          "tile": "ENSG00000073282_tile0005",
+          "degron_score": -0.0394988848814639,
+          "source_start": 61
+        },
+        {
+          "positive_row": 190,
+          "tile": "ENSG00000124440_tile0032",
+          "degron_score": 0.0280859703505514,
+          "source_start": 466
+        },
+        {
+          "positive_row": 190,
+          "tile": "ENSG00000124440_tile0033",
+          "degron_score": 1.01298050565448,
+          "source_start": 481
+        },
+        {
+          "positive_row": 190,
+          "tile": "ENSG00000124440_tile0034",
+          "degron_score": 0.292059887222492,
+          "source_start": 496
+        },
+        {
+          "positive_row": 191,
+          "tile": "ENSG00000100644_tile0026",
+          "degron_score": 1.09920838087344,
+          "source_start": 376
+        },
+        {
+          "positive_row": 191,
+          "tile": "ENSG00000100644_tile0027",
+          "degron_score": 0.342158299554725,
+          "source_start": 391
+        },
+        {
+          "positive_row": 191,
+          "tile": "ENSG00000100644_tile0028",
+          "degron_score": -0.0088382774131547,
+          "source_start": 406
+        },
+        {
+          "positive_row": 192,
+          "tile": "ENSG00000100644_tile0037",
+          "degron_score": 0.357714162222422,
+          "source_start": 541
+        },
+        {
+          "positive_row": 192,
+          "tile": "ENSG00000100644_tile0038",
+          "degron_score": 1.05313352619441,
+          "source_start": 556
+        },
+        {
+          "positive_row": 192,
+          "tile": "ENSG00000100644_tile0039",
+          "degron_score": 0.0048963135949798,
+          "source_start": 571
+        },
+        {
+          "positive_row": 193,
+          "tile": "ENSG00000116016_tile0026",
+          "degron_score": 1.07346041160265,
+          "source_start": 376
+        },
+        {
+          "positive_row": 193,
+          "tile": "ENSG00000116016_tile0027",
+          "degron_score": 0.174242227236681,
+          "source_start": 391
+        },
+        {
+          "positive_row": 193,
+          "tile": "ENSG00000116016_tile0028",
+          "degron_score": 0.280171882659009,
+          "source_start": 406
+        },
+        {
+          "positive_row": 194,
+          "tile": "ENSG00000116016_tile0035",
+          "degron_score": 0.440989316337836,
+          "source_start": 511
+        },
+        {
+          "positive_row": 194,
+          "tile": "ENSG00000116016_tile0036",
+          "degron_score": 0.985844748018887,
+          "source_start": 526
+        },
+        {
+          "positive_row": 194,
+          "tile": "ENSG00000116016_tile0037",
+          "degron_score": 0.259544009284709,
+          "source_start": 541
+        },
+        {
+          "positive_row": 195,
+          "tile": "ENSG00000116016_tile0038",
+          "degron_score": 0.991693605223378,
+          "source_start": 556
+        },
+        {
+          "positive_row": 195,
+          "tile": "ENSG00000116016_tile0039",
+          "degron_score": 0.0064919748544783,
+          "source_start": 571
+        },
+        {
+          "positive_row": 202,
+          "tile": "ENSG00000136997_tile0004",
+          "degron_score": 0.478587152362283,
+          "source_start": 31
+        },
+        {
+          "positive_row": 202,
+          "tile": "ENSG00000136997_tile0005",
+          "degron_score": 0.713291369462364,
+          "source_start": 46
+        },
+        {
+          "positive_row": 202,
+          "tile": "ENSG00000136997_tile0006",
+          "degron_score": 0.977916118254568,
+          "source_start": 61
+        },
+        {
+          "positive_row": 204,
+          "tile": "ENSG00000072310_tile0028",
+          "degron_score": 0.074222561668068,
+          "source_start": 406
+        },
+        {
+          "positive_row": 204,
+          "tile": "ENSG00000072310_tile0029",
+          "degron_score": -0.0013220813031729,
+          "source_start": 421
+        },
+        {
+          "positive_row": 206,
+          "tile": "ENSG00000177606_tile0015",
+          "degron_score": -0.0080504875408744,
+          "source_start": 211
+        },
+        {
+          "positive_row": 206,
+          "tile": "ENSG00000177606_tile0016",
+          "degron_score": 0.101663383846252,
+          "source_start": 226
+        },
+        {
+          "positive_row": 206,
+          "tile": "ENSG00000177606_tile0017",
+          "degron_score": 0.654480298415852,
+          "source_start": 241
+        },
+        {
+          "positive_row": 209,
+          "tile": "ENSG00000102554_tile0019",
+          "degron_score": 0.69818172938192,
+          "source_start": 271
+        },
+        {
+          "positive_row": 209,
+          "tile": "ENSG00000102554_tile0020",
+          "degron_score": 0.503619589605574,
+          "source_start": 286
+        },
+        {
+          "positive_row": 209,
+          "tile": "ENSG00000102554_tile0021",
+          "degron_score": 0.569226767573,
+          "source_start": 301
+        },
+        {
+          "positive_row": 212,
+          "tile": "ENSG00000134323_tile0003",
+          "degron_score": 0.673438350639745,
+          "source_start": 31
+        },
+        {
+          "positive_row": 212,
+          "tile": "ENSG00000134323_tile0004",
+          "degron_score": 0.529720338956668,
+          "source_start": 46
+        },
+        {
+          "positive_row": 212,
+          "tile": "ENSG00000134323_tile0005",
+          "degron_score": 0.342323413488145,
+          "source_start": 61
+        },
+        {
+          "positive_row": 225,
+          "tile": "ENSG00000124216_tile0006",
+          "degron_score": 0.333661987264122,
+          "source_start": 76
+        },
+        {
+          "positive_row": 225,
+          "tile": "ENSG00000124216_tile0007",
+          "degron_score": 0.294113664782547,
+          "source_start": 91
+        },
+        {
+          "positive_row": 231,
+          "tile": "ENSG00000128272_tile0014",
+          "degron_score": 0.830703014142192,
+          "source_start": 196
+        },
+        {
+          "positive_row": 231,
+          "tile": "ENSG00000128272_tile0015",
+          "degron_score": 1.03430222224822,
+          "source_start": 211
+        },
+        {
+          "positive_row": 232,
+          "tile": "ENSG00000109320_tile0061",
+          "degron_score": 0.0365612866169872,
+          "source_start": 900
+        },
+        {
+          "positive_row": 232,
+          "tile": "ENSG00000109320_tile0062",
+          "degron_score": 0.116336582113304,
+          "source_start": 915
+        },
+        {
+          "positive_row": 232,
+          "tile": "ENSG00000109320_tile0063",
+          "degron_score": 0.639719521017118,
+          "source_start": 930
+        },
+        {
+          "positive_row": 242,
+          "tile": "ENSG00000152217_tile0057",
+          "degron_score": 0.367580965432045,
+          "source_start": 841
+        },
+        {
+          "positive_row": 242,
+          "tile": "ENSG00000152217_tile0058",
+          "degron_score": 0.0179950354083148,
+          "source_start": 856
+        },
+        {
+          "positive_row": 242,
+          "tile": "ENSG00000152217_tile0059",
+          "degron_score": -0.0091288889100635,
+          "source_start": 871
+        },
+        {
+          "positive_row": 244,
+          "tile": "ENSG00000084093_tile0068",
+          "degron_score": 0.708480020761282,
+          "source_start": 1006
+        },
+        {
+          "positive_row": 244,
+          "tile": "ENSG00000084093_tile0069",
+          "degron_score": -0.0571123910820948,
+          "source_start": 1021
+        },
+        {
+          "positive_row": 247,
+          "tile": "ENSG00000155090_tile0013",
+          "degron_score": 0.370479980189643,
+          "source_start": 181
+        },
+        {
+          "positive_row": 247,
+          "tile": "ENSG00000155090_tile0014",
+          "degron_score": 0.155557673290384,
+          "source_start": 196
+        },
+        {
+          "positive_row": 248,
+          "tile": "ENSG00000110777_tile0003",
+          "degron_score": 0.746343507390287,
+          "source_start": 31
+        },
+        {
+          "positive_row": 248,
+          "tile": "ENSG00000110777_tile0004",
+          "degron_score": 0.370938582760105,
+          "source_start": 46
+        },
+        {
+          "positive_row": 254,
+          "tile": "ENSG00000091831_tile0038",
+          "degron_score": -0.0300379214619968,
+          "source_start": 556
+        },
+        {
+          "positive_row": 255,
+          "tile": "ENSG00000169083_tile0043",
+          "degron_score": -0.0380890290730578,
+          "source_start": 631
+        },
+        {
+          "positive_row": 255,
+          "tile": "ENSG00000169083_tile0044",
+          "degron_score": 0.384008380191126,
+          "source_start": 646
+        },
+        {
+          "positive_row": 257,
+          "tile": "ENSG00000106571_tile0010",
+          "degron_score": 0.681088288308324,
+          "source_start": 136
+        },
+        {
+          "positive_row": 257,
+          "tile": "ENSG00000106571_tile0011",
+          "degron_score": 0.514018726760633,
+          "source_start": 151
+        },
+        {
+          "positive_row": 258,
+          "tile": "ENSG00000106571_tile0028",
+          "degron_score": 0.0196582817295765,
+          "source_start": 406
+        },
+        {
+          "positive_row": 258,
+          "tile": "ENSG00000106571_tile0029",
+          "degron_score": 0.69539637598199,
+          "source_start": 421
+        },
+        {
+          "positive_row": 260,
+          "tile": "ENSG00000157554_tile0002",
+          "degron_score": 0.122940656671738,
+          "source_start": 23
+        },
+        {
+          "positive_row": 260,
+          "tile": "ENSG00000157554_tile0003",
+          "degron_score": 0.0763137282977455,
+          "source_start": 38
+        },
+        {
+          "positive_row": 269,
+          "tile": "ENSG00000124151_tile0006",
+          "degron_score": 0.0862426723591777,
+          "source_start": 76
+        },
+        {
+          "positive_row": 269,
+          "tile": "ENSG00000124151_tile0007",
+          "degron_score": 0.264187420899244,
+          "source_start": 91
+        },
+        {
+          "positive_row": 270,
+          "tile": "ENSG00000073282_tile0035",
+          "degron_score": null,
+          "source_start": 511
+        },
+        {
+          "positive_row": 270,
+          "tile": "ENSG00000073282_tile0036",
+          "degron_score": 0.6792776480776,
+          "source_start": 526
+        },
+        {
+          "positive_row": 270,
+          "tile": "ENSG00000073282_tile0037",
+          "degron_score": 1.04535280381553,
+          "source_start": 541
+        },
+        {
+          "positive_row": 284,
+          "tile": "ENSG00000111206_tile0013",
+          "degron_score": 0.265023316291638,
+          "source_start": 181
+        },
+        {
+          "positive_row": 284,
+          "tile": "ENSG00000111206_tile0014",
+          "degron_score": -0.0600234789204128,
+          "source_start": 196
+        }
+      ]
+    }
+  },
+  "e3_after_filter": {
+    "80": {
+      "motif_mapped_unique": {
+        "CBL": 28,
+        "CDC20": 125,
+        "COP1": 12,
+        "DTL": 7,
+        "CUL3": 6,
+        "KLHL3": 4,
+        "KLHL2": 4,
+        "KEAP1": 16,
+        "KLHL17": 2,
+        "MDM2": 5,
+        "VHL": 8,
+        "FBXW7": 12,
+        "SKP2": 3,
+        "BTRC": 21,
+        "SIAH2": 9,
+        "SIAH1": 9,
+        "SPOP": 16,
+        "FBXL2": 0,
+        "FBXO31": 1,
+        "NEDD4": 1,
+        "ITCH": 1
+      },
+      "human_unique": {
+        "CBL": 25,
+        "CDC20": 104,
+        "COP1": 9,
+        "DTL": 4,
+        "CUL3": 5,
+        "KLHL3": 4,
+        "KLHL2": 4,
+        "KEAP1": 11,
+        "KLHL17": 1,
+        "MDM2": 5,
+        "VHL": 6,
+        "FBXW7": 11,
+        "SKP2": 2,
+        "BTRC": 18,
+        "SIAH2": 8,
+        "SIAH1": 8,
+        "SPOP": 10,
+        "FBXL2": 0,
+        "FBXO31": 1,
+        "NEDD4": 1,
+        "ITCH": 1
+      },
+      "human_no_regional_overlap": {
+        "CBL": 12,
+        "CDC20": 29,
+        "COP1": 1,
+        "DTL": 2,
+        "CUL3": 1,
+        "KLHL3": 0,
+        "KLHL2": 0,
+        "KEAP1": 3,
+        "KLHL17": 1,
+        "MDM2": 2,
+        "VHL": 0,
+        "FBXW7": 1,
+        "SKP2": 1,
+        "BTRC": 3,
+        "SIAH2": 1,
+        "SIAH1": 1,
+        "SPOP": 2,
+        "FBXL2": 0,
+        "FBXO31": 0,
+        "NEDD4": 0,
+        "ITCH": 0
+      },
+      "human_no_g2_clusters_no_regional_overlap": {
+        "CBL": 10,
+        "CDC20": 27,
+        "COP1": 1,
+        "DTL": 2,
+        "CUL3": 1,
+        "KLHL3": 0,
+        "KLHL2": 0,
+        "KEAP1": 3,
+        "KLHL17": 1,
+        "MDM2": 2,
+        "VHL": 0,
+        "FBXW7": 1,
+        "SKP2": 1,
+        "BTRC": 3,
+        "SIAH2": 1,
+        "SIAH1": 1,
+        "SPOP": 2,
+        "FBXL2": 0,
+        "FBXO31": 0,
+        "NEDD4": 0,
+        "ITCH": 0
+      },
+      "human_no_topic_cluster_no_regional_overlap": {
+        "CBL": 1,
+        "CDC20": 13,
+        "COP1": 1,
+        "DTL": 1,
+        "CUL3": 0,
+        "KLHL3": 0,
+        "KLHL2": 0,
+        "KEAP1": 1,
+        "KLHL17": 0,
+        "MDM2": 0,
+        "VHL": 0,
+        "FBXW7": 0,
+        "SKP2": 1,
+        "BTRC": 2,
+        "SIAH2": 0,
+        "SIAH1": 0,
+        "SPOP": 1,
+        "FBXL2": 0,
+        "FBXO31": 0,
+        "NEDD4": 0,
+        "ITCH": 0
+      },
+      "e3_ge5_before": 13,
+      "e3_ge5_human": 12,
+      "e3_ge5_no_region": 2,
+      "e3_ge5_no_g2_cluster_no_region": 2,
+      "e3_ge5_strict": 1,
+      "strict_rows_union": 21,
+      "warning": "motif-compatible assignment, NOT 21 independently experimentally verified E3 classes"
+    },
+    "50": {
+      "motif_mapped_unique": {
+        "CBL": 28,
+        "CDC20": 125,
+        "COP1": 12,
+        "DTL": 7,
+        "CUL3": 6,
+        "KLHL3": 4,
+        "KLHL2": 4,
+        "KEAP1": 16,
+        "KLHL17": 2,
+        "MDM2": 5,
+        "VHL": 8,
+        "FBXW7": 12,
+        "SKP2": 3,
+        "BTRC": 21,
+        "SIAH2": 9,
+        "SIAH1": 9,
+        "SPOP": 16,
+        "FBXL2": 0,
+        "FBXO31": 1,
+        "NEDD4": 1,
+        "ITCH": 1
+      },
+      "human_unique": {
+        "CBL": 25,
+        "CDC20": 104,
+        "COP1": 9,
+        "DTL": 4,
+        "CUL3": 5,
+        "KLHL3": 4,
+        "KLHL2": 4,
+        "KEAP1": 11,
+        "KLHL17": 1,
+        "MDM2": 5,
+        "VHL": 6,
+        "FBXW7": 11,
+        "SKP2": 2,
+        "BTRC": 18,
+        "SIAH2": 8,
+        "SIAH1": 8,
+        "SPOP": 10,
+        "FBXL2": 0,
+        "FBXO31": 1,
+        "NEDD4": 1,
+        "ITCH": 1
+      },
+      "human_no_regional_overlap": {
+        "CBL": 12,
+        "CDC20": 29,
+        "COP1": 1,
+        "DTL": 2,
+        "CUL3": 1,
+        "KLHL3": 0,
+        "KLHL2": 0,
+        "KEAP1": 3,
+        "KLHL17": 1,
+        "MDM2": 2,
+        "VHL": 0,
+        "FBXW7": 1,
+        "SKP2": 1,
+        "BTRC": 3,
+        "SIAH2": 1,
+        "SIAH1": 1,
+        "SPOP": 2,
+        "FBXL2": 0,
+        "FBXO31": 0,
+        "NEDD4": 0,
+        "ITCH": 0
+      },
+      "human_no_g2_clusters_no_regional_overlap": {
+        "CBL": 10,
+        "CDC20": 27,
+        "COP1": 0,
+        "DTL": 2,
+        "CUL3": 1,
+        "KLHL3": 0,
+        "KLHL2": 0,
+        "KEAP1": 3,
+        "KLHL17": 1,
+        "MDM2": 2,
+        "VHL": 0,
+        "FBXW7": 1,
+        "SKP2": 1,
+        "BTRC": 3,
+        "SIAH2": 1,
+        "SIAH1": 1,
+        "SPOP": 2,
+        "FBXL2": 0,
+        "FBXO31": 0,
+        "NEDD4": 0,
+        "ITCH": 0
+      },
+      "human_no_topic_cluster_no_regional_overlap": {
+        "CBL": 1,
+        "CDC20": 12,
+        "COP1": 0,
+        "DTL": 1,
+        "CUL3": 0,
+        "KLHL3": 0,
+        "KLHL2": 0,
+        "KEAP1": 1,
+        "KLHL17": 0,
+        "MDM2": 0,
+        "VHL": 0,
+        "FBXW7": 0,
+        "SKP2": 1,
+        "BTRC": 1,
+        "SIAH2": 0,
+        "SIAH1": 0,
+        "SPOP": 1,
+        "FBXL2": 0,
+        "FBXO31": 0,
+        "NEDD4": 0,
+        "ITCH": 0
+      },
+      "e3_ge5_before": 13,
+      "e3_ge5_human": 12,
+      "e3_ge5_no_region": 2,
+      "e3_ge5_no_g2_cluster_no_region": 2,
+      "e3_ge5_strict": 1,
+      "strict_rows_union": 18,
+      "warning": "motif-compatible assignment, NOT 21 independently experimentally verified E3 classes"
+    }
+  },
+  "internal_positive_homology": {
+    "80": {
+      "clusters": 183,
+      "random90_10_sensitivity": [
+        {
+          "seed": 17,
+          "train": 271,
+          "test": 31,
+          "test_rows_with_train_homolog": 12,
+          "cross_split_positive_row_pairs_same_cluster": 37,
+          "all_cross_split_pairs": 8401,
+          "pair_fraction": 0.004404237590763005
+        },
+        {
+          "seed": 29,
+          "train": 271,
+          "test": 31,
+          "test_rows_with_train_homolog": 11,
+          "cross_split_positive_row_pairs_same_cluster": 23,
+          "all_cross_split_pairs": 8401,
+          "pair_fraction": 0.0027377693131770027
+        },
+        {
+          "seed": 43,
+          "train": 271,
+          "test": 31,
+          "test_rows_with_train_homolog": 20,
+          "cross_split_positive_row_pairs_same_cluster": 51,
+          "all_cross_split_pairs": 8401,
+          "pair_fraction": 0.0060707058683490064
+        }
+      ],
+      "author_actual_dl_partition": "not identifiable without object-NPY row order and labels; this simulation is NOT the published split"
+    },
+    "50": {
+      "clusters": 158,
+      "random90_10_sensitivity": [
+        {
+          "seed": 17,
+          "train": 271,
+          "test": 31,
+          "test_rows_with_train_homolog": 16,
+          "cross_split_positive_row_pairs_same_cluster": 68,
+          "all_cross_split_pairs": 8401,
+          "pair_fraction": 0.008094274491132009
+        },
+        {
+          "seed": 29,
+          "train": 271,
+          "test": 31,
+          "test_rows_with_train_homolog": 14,
+          "cross_split_positive_row_pairs_same_cluster": 35,
+          "all_cross_split_pairs": 8401,
+          "pair_fraction": 0.004166170693965004
+        },
+        {
+          "seed": 43,
+          "train": 271,
+          "test": 31,
+          "test_rows_with_train_homolog": 20,
+          "cross_split_positive_row_pairs_same_cluster": 65,
+          "all_cross_split_pairs": 8401,
+          "pair_fraction": 0.0077371741459350074
+        }
+      ],
+      "author_actual_dl_partition": "not identifiable without object-NPY row order and labels; this simulation is NOT the published split"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "experiment": "R1",
+  "files": [
+    {
+      "path": "data/raw/degformer-isolated/training_data.csv",
+      "license": "Apache-2.0",
+      "source": "Degformer repo @49ee5246 (Apache-2.0); dữ liệu gốc Zhang 2023 S1/S4/S7 (CC BY 4.0)"
+    },
+    {
+      "path": "data/raw/degformer-isolated/predict.py",
+      "license": "Apache-2.0",
+      "source": "Degformer repo @49ee5246 (Apache-2.0); chỉ đọc AST để dựng class"
+    },
+    {
+      "path": "data/raw/degformer-isolated/train_v2.py",
+      "license": "Apache-2.0",
+      "source": "Degformer repo @49ee5246 (Apache-2.0); chỉ đọc hằng số bằng AST"
+    },
+    {
+      "path": "data/processed/r1-row-exclusion.npz",
+      "license": "Apache-2.0 (derived)",
+      "source": "research/r1-degformer-clean-2026-10-22/build_exclusion_r1.py"
+    },
+    {
+      "path": "data/processed/r12-seqtable.npz",
+      "license": "CC BY 4.0 (derived)",
+      "source": "research/r2-esm-features-2026-10-22/make_seqtable.py"
+    }
+  ]
+}

@@ -22,7 +22,7 @@ from pathlib import Path
 
 import requests
 
-TOPIC = next(p for p in Path(__file__).resolve().parents if (p / "log.md").exists())
+TOPIC = next(p for p in Path(__file__).resolve().parents if (p / "data" / "README.md").exists())
 RAW = TOPIC / "data/raw"
 UA = {"User-Agent": "Mozilla/5.0 (CT553H thesis data audit)"}
 

@@ -1,0 +1,46 @@
+[
+  {
+    "url": "https://dosztanyi.web.elte.hu/CANCER/DEGRON/TP.html",
+    "path": "topics/degron-footprint/data/raw/metadegron/review-2017-table.html",
+    "client_date": "2026-10-21",
+    "attempted_at_utc": "2026-10-21T01:55:53.957646+00:00",
+    "license": "chưa xác nhận",
+    "downloaded": true,
+    "status": 200,
+    "final_url": "https://error.elte.hu/error/452.html",
+    "content_type": "text/html",
+    "bytes": 304,
+    "sha256": "6b49e90145a710aec7ec2f354ddfd2ee946796ff81cb74b94ae7fab3c4b077d0"
+  },
+  {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10701100/fullTextXML",
+    "path": "topics/degron-footprint/data/raw/metadegron/degronmd-paper.xml",
+    "client_date": "2026-10-21",
+    "attempted_at_utc": "2026-10-21T01:55:53.959014+00:00",
+    "license": "chưa xác nhận",
+    "downloaded": true,
+    "status": 200,
+    "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10701100/fullTextXML",
+    "content_type": "application/xml",
+    "bytes": 97379,
+    "sha256": "8a6e0cd93be3ea885129947b848f025a09795c8d8095b6fb92ed2183b499cf0a"
+  },
+  {
+    "url": "https://bioinfo.uth.edu/degronmd/download.html",
+    "path": "topics/degron-footprint/data/raw/metadegron/degronmd-download.html",
+    "client_date": "2026-10-21",
+    "attempted_at_utc": "2026-10-21T01:55:53.959588+00:00",
+    "license": "chưa xác nhận",
+    "downloaded": false,
+    "error": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11223883/fullTextXML",
+    "path": "topics/degron-footprint/data/raw/metadegron/degronopedia-paper.xml",
+    "client_date": "2026-10-21",
+    "attempted_at_utc": "2026-10-21T01:55:53.961187+00:00",
+    "license": "chưa xác nhận",
+    "downloaded": false,
+    "error": "TimeoutError: The read operation timed out"
+  }
+]

@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-22T12:58:59+00:00",
+  "host": {
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "cpu_model": "AMD Ryzen 5 5500U with Radeon Graphics",
+    "logical_cpus": 12,
+    "mem_total_mb": 7619,
+    "python": "3.12.3",
+    "load_average_1_5_15": [
+      0.9921875,
+      1.27734375,
+      1.21044921875
+    ],
+    "note": "WSL2 on the author laptop; other processes may share the CPU"
+  },
+  "server_rss_after_warmup_mb": 94.1,
+  "predict_typed_sequence_sequential": {
+    "n": 300,
+    "p50_ms": 7.87,
+    "p95_ms": 9.15,
+    "p99_ms": 10.78,
+    "mean_ms": 7.98,
+    "max_ms": 11.48,
+    "non_200": 0
+  },
+  "predict_uniprot_tile_sequential": {
+    "n": 300,
+    "p50_ms": 10.15,
+    "p95_ms": 12.36,
+    "p99_ms": 16.09,
+    "mean_ms": 10.38,
+    "max_ms": 19.79,
+    "non_200": 0
+  },
+  "predict_10_way_concurrent": {
+    "n": 600,
+    "p50_ms": 197.11,
+    "p95_ms": 273.92,
+    "p99_ms": 312.75,
+    "mean_ms": 194.79,
+    "max_ms": 353.73,
+    "non_200": 0,
+    "throughput_req_per_s": 50.3
+  },
+  "server_rss_after_load_mb": 113.2,
+  "tiles_list_1028_aa_protein": {
+    "n": 300,
+    "p50_ms": 6.71,
+    "p95_ms": 9.01,
+    "p99_ms": 14.9,
+    "mean_ms": 7.02,
+    "max_ms": 19.9,
+    "non_200": 0,
+    "tiles": 44
+  },
+  "protein_search": {
+    "n": 300,
+    "p50_ms": 20.37,
+    "p95_ms": 26.69,
+    "p99_ms": 30.5,
+    "mean_ms": 21.12,
+    "max_ms": 31.35
+  },
+  "thresholds_proposed": {
+    "NFR-01_predict_p95_le_300ms": true,
+    "NFR-02_tiles_list_p95_le_200ms": true,
+    "NFR-18_server_rss_le_512mb": true
+  },
+  "caveats": [
+    "loopback HTTP, no TLS, no reverse proxy; SQLite database on local disk",
+    "server time plus loopback; the browser time of NFR-03 is not measured here",
+    "host shared with other processes; rerun on the reference host (2 vCPU / 2 GB) for NF-01..03"
+  ]
+}

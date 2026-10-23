@@ -1,0 +1,836 @@
+openapi: 3.1.0
+info:
+  title: Degron Footprint API
+  version: 1.0.0-draft
+  summary: Predict the effect of every amino-acid substitution in a 28-residue degron tile.
+  description: |
+    Contract draft v0.1 (22 Oct 2026). The service scores the 532 substitutions of a 28-residue
+    tile with a fixed, versioned model and returns a calibrated probability of the event
+    `DeltaPSI >= 1.0` together with the provenance needed to reuse the result.
+
+    **Scope and limits that every client must show.** The model was trained on the GPS assay of
+    Zhang et al. 2023 and only on peptides with intrinsic wild-type PSI <= 4.0. Reported
+    performance is a development out-of-fold benchmark, not an external validation. The
+    probability is not a probability of disease and must not be presented as one.
+
+    The service has no accounts. Predictions are stateless unless the caller requests a share
+    link (`POST /v1/runs`), which stores the result for at most 30 days.
+  license:
+    name: Documentation of the thesis project
+    identifier: LicenseRef-thesis-draft
+servers:
+  - url: http://localhost:8000
+    description: Local Docker Compose
+tags:
+  - name: prediction
+  - name: reference
+  - name: models
+  - name: sharing
+  - name: operations
+paths:
+  /v1/predict:
+    post:
+      tags: [prediction]
+      operationId: predict
+      summary: Score all substitutions of one tile (UC-01, UC-02)
+      description: |
+        Give either `sequence` (exactly 28 standard amino acids) or `uniprot_id` with
+        `tile_index`. A tile whose measured domain status is `measured_out_of_domain` is refused
+        with `OUT_OF_DOMAIN` unless `override_domain` is true. A tile whose status is `unknown`
+        is scored and the response carries the warning `DOMAIN_UNKNOWN`.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PredictRequest'
+            examples:
+              bySequence:
+                summary: A tile typed by the user
+                value:
+                  sequence: DIMFLVDSSGSIGPENFSKMKTFMKNLV
+              byUniprot:
+                summary: Tile 28 of A6NMZ7 (COL6A6)
+                value:
+                  uniprot_id: A6NMZ7
+                  tile_index: 28
+      responses:
+        '200':
+          description: Prediction for the 532 substitutions
+          headers:
+            X-Request-Id:
+              $ref: '#/components/headers/RequestId'
+            Cache-Control:
+              schema: {type: string, const: no-store}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PredictionResult'
+              examples:
+                firstCells:
+                  summary: Excerpt, tile 28 of A6NMZ7 (cells truncated to three)
+                  description: Cell values copied from calibration-p6-2026-10-22/example-output.csv; sequence from UniProt 2026_03. `data_sources` lists the training source of the model plus every source used for this request (UniProt for the tile, the GEO screen for the measured domain status); tile PSI and reads from data/interim/gps-peptidome-rep1.tsv (id A6NMZ7_COL6A6_28). weights_sha256 is that of the current calibration-p6-model.npz and will change when the weights are repackaged. Tile 28 is one of the 176 training peptides, so the response also carries the warning TRAINING_PEPTIDE in a real call.
+                  value:
+                    provenance:
+                      model_id: m3-ext4.0-platt-v1
+                      model_kind: ridge_platt
+                      weights_sha256: '8bec0b04bdc7da698da98d91adea944dd43583f93bc67233600e6ae0075cd9c3'
+                      feature_spec: 'm3-180: wt one-hot | mutant one-hot | tile composition | context -3..+3'
+                      event_definition: P(DeltaPSI >= 1.0)
+                      evidence_label: development OOF benchmark, not external validation
+                      domain_description: 28-mer internal tiles, GPS assay (Zhang 2023), intrinsic PSI(WT) <= 4.0
+                      data_sources:
+                        - source_id: zhang2023-mendeley-v2
+                          name: Zhang et al. 2023, saturation mutagenesis (Mendeley Data v2)
+                          version: Mendeley Data v2 (doi 10.17632/32h94v2yv2.2), relaxed degron threshold 4.0
+                          license_name: CC BY 4.0
+                          attribution_text: Zhang et al. 2023, Mol Cell (doi 10.17632/32h94v2yv2.2)
+                        - source_id: uniprot-2026_03
+                          name: UniProtKB/Swiss-Prot, reviewed human proteins
+                          version: release 2026_03, snapshot 2026-10-12
+                          license_name: CC BY 4.0
+                          attribution_text: UniProtKB/Swiss-Prot release 2026_03, CC BY 4.0 (https://www.uniprot.org)
+                        - source_id: zhang2023-geo-gse240610
+                          name: Zhang et al. 2023, GPS peptidome screen (GEO GSE240610, Supplementary Table 1, sheet "I28 Control Replicate 1")
+                          version: GEO GSE240610, replicate 1
+                          license_name: GEO data terms (public)
+                          attribution_text: Zhang et al. 2023, Mol Cell; data from GEO GSE240610
+                      code_version: 0.1.0
+                      generated_at: '2026-10-22T12:00:00Z'
+                      disclaimers:
+                        - Scores are for the assay and domain on which the model was evaluated. They are not probabilities of disease.
+                    tile:
+                      uniprot_id: A6NMZ7
+                      tile_index: 28
+                      start_pos: 622
+                      end_pos: 649
+                      sequence: DIMFLVDSSGSIGPENFSKMKTFMKNLV
+                    domain:
+                      status: measured_in_domain
+                      psi_wt_measured: 1.88187026524536
+                      reads_measured: 38.380389871414
+                      gate_model_id: null
+                      message: Tile PSI measured in the GPS peptidome screen (replicate 1).
+                    warnings:
+                      - {code: TRAINING_PEPTIDE, message: This tile is among the peptides the model was trained on; its scores are not an out-of-sample estimate.}
+                    cells:
+                      - {position: 1, wt_aa: D, mut_aa: A, score_dpsi_raw: -0.04768813161, p_dpsi_ge_1_calibrated: 0.02801670181, rank_in_tile: 410, top10pct_in_tile: false}
+                      - {position: 1, wt_aa: D, mut_aa: C, score_dpsi_raw: -0.1650532933, p_dpsi_ge_1_calibrated: 0.01836623325, rank_in_tile: 468, top10pct_in_tile: false}
+                      - {position: 1, wt_aa: D, mut_aa: E, score_dpsi_raw: 0.1907540759, p_dpsi_ge_1_calibrated: 0.06485567777, rank_in_tile: 253, top10pct_in_tile: false}
+        '400': {$ref: '#/components/responses/Error'}
+        '404': {$ref: '#/components/responses/Error'}
+        '413': {$ref: '#/components/responses/Error'}
+        '422': {$ref: '#/components/responses/Error'}
+        '429': {$ref: '#/components/responses/Error'}
+        '503': {$ref: '#/components/responses/Error'}
+  /v1/export:
+    post:
+      tags: [prediction]
+      operationId: exportStateless
+      summary: Predict and download as CSV or JSON without storing anything (UC-03)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExportRequest'
+      responses:
+        '200':
+          description: File with provenance
+          content:
+            text/csv:
+              schema: {type: string}
+              examples:
+                csv:
+                  summary: Provenance in leading '#' lines, then the 9-column table of the command-line prototype
+                  value: |
+                    # model_id=m3-ext4.0-platt-v1
+                    # weights_sha256=8bec0b04bdc7da698da98d91adea944dd43583f93bc67233600e6ae0075cd9c3
+                    # event_definition=P(DeltaPSI >= 1.0)
+                    # evidence_label=development OOF benchmark, not external validation
+                    # domain_status=measured_in_domain
+                    # data_sources=zhang2023-mendeley-v2,uniprot-2026_03,zhang2023-geo-gse240610
+                    # generated_at=2026-10-22T12:00:00Z
+                    # disclaimer=Not a probability of disease; not for diagnostic use.
+                    peptide,tile,position,wt_aa,mut_aa,score_dpsi_raw,p_dpsi_ge_1_calibrated,rank_in_tile,top10pct_in_tile
+                    A6NMZ7_28,28,1,D,A,-0.04768813161,0.02801670181,410,0
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PredictionResult'
+        '400': {$ref: '#/components/responses/Error'}
+        '404': {$ref: '#/components/responses/Error'}
+        '413': {$ref: '#/components/responses/Error'}
+        '422': {$ref: '#/components/responses/Error'}
+        '429': {$ref: '#/components/responses/Error'}
+  /v1/proteins:
+    get:
+      tags: [reference]
+      operationId: searchProteins
+      summary: Find proteins by gene symbol or accession prefix (UC-04)
+      parameters:
+        - name: query
+          in: query
+          required: true
+          schema: {type: string, minLength: 2, maxLength: 32}
+        - name: limit
+          in: query
+          schema: {type: integer, minimum: 1, maximum: 50, default: 10}
+      responses:
+        '200':
+          description: Matches, best first
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ProteinSummary'
+        '400': {$ref: '#/components/responses/Error'}
+        '422': {$ref: '#/components/responses/Error'}
+        '429': {$ref: '#/components/responses/Error'}
+  /v1/proteins/{uniprot_id}/tiles:
+    get:
+      tags: [reference]
+      operationId: listTiles
+      summary: Tiles of one protein with their domain status (UC-04)
+      parameters:
+        - $ref: '#/components/parameters/UniprotId'
+      responses:
+        '200':
+          description: All tiles
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TileList'
+        '404': {$ref: '#/components/responses/Error'}
+        '422': {$ref: '#/components/responses/Error'}
+        '429': {$ref: '#/components/responses/Error'}
+  /v1/proteins/{uniprot_id}/tiles/{tile_index}/measured:
+    get:
+      tags: [reference]
+      operationId: getMeasured
+      summary: Measured DeltaPSI of the tile, if it is one of the 176 training peptides (UC-05)
+      description: |
+        Measured data are part of the training set of the product model. The response says so
+        (`in_training_set`) and clients must not present the overlay as validation.
+      parameters:
+        - $ref: '#/components/parameters/UniprotId'
+        - $ref: '#/components/parameters/TileIndex'
+      responses:
+        '200':
+          description: Measured cells, possibly empty
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeasuredOverlay'
+        '404':
+          description: Unknown accession (`UNKNOWN_ACCESSION`), or a tile number outside the protein (`TILE_OUT_OF_RANGE`; here 404 because the tile is the addressed resource, whereas `predict`, `export` and `runs` answer 422 because it is a field of the request body).
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Error'}
+        '422': {$ref: '#/components/responses/Error'}
+        '429': {$ref: '#/components/responses/Error'}
+  /v1/proteins/{uniprot_id}/tiles/{tile_index}/clinvar:
+    get:
+      tags: [reference]
+      operationId: getClinvar
+      summary: ClinVar missense variants inside the tile (UC-06)
+      description: |
+        Every response carries the ClinVar attribution and the diagnostic disclaimer in
+        `provenance.disclaimers`. Clients must display it next to the variants.
+      parameters:
+        - $ref: '#/components/parameters/UniprotId'
+        - $ref: '#/components/parameters/TileIndex'
+      responses:
+        '200':
+          description: Variants, possibly empty
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClinvarOverlay'
+        '404':
+          description: Unknown accession (`UNKNOWN_ACCESSION`), or a tile number outside the protein (`TILE_OUT_OF_RANGE`; here 404 because the tile is the addressed resource, whereas `predict`, `export` and `runs` answer 422 because it is a field of the request body).
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Error'}
+        '422': {$ref: '#/components/responses/Error'}
+        '429': {$ref: '#/components/responses/Error'}
+        '503': {$ref: '#/components/responses/Error'}
+  /v1/models:
+    get:
+      tags: [models]
+      operationId: listModels
+      summary: Registered models (UC-07)
+      responses:
+        '200':
+          description: All models, default first
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ModelSummary'
+  /v1/models/{model_id}:
+    get:
+      tags: [models]
+      operationId: getModel
+      summary: Model card (UC-07)
+      parameters:
+        - name: model_id
+          in: path
+          required: true
+          schema: {type: string, pattern: '^[a-z0-9][a-z0-9.\-]{1,63}$'}
+      responses:
+        '200':
+          description: Model card
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelCard'
+        '404': {$ref: '#/components/responses/Error'}
+  /v1/sources:
+    get:
+      tags: [reference]
+      operationId: listSources
+      summary: Data sources, licences and attribution texts (About page)
+      responses:
+        '200':
+          description: Sources that the public service serves data from
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DataSource'
+  /v1/runs:
+    post:
+      tags: [sharing]
+      operationId: createRun
+      summary: Predict and store the result behind a share link (optional)
+      description: |
+        The only operation that stores a user sequence. The plain `share_token` is returned
+        once and never stored (only its SHA-256). Clients should put it in the URL fragment, not
+        in the query string, so that it is not sent to servers or logged.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunRequest'
+      responses:
+        '201':
+          description: Run stored
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunCreated'
+        '400': {$ref: '#/components/responses/Error'}
+        '404': {$ref: '#/components/responses/Error'}
+        '413': {$ref: '#/components/responses/Error'}
+        '422': {$ref: '#/components/responses/Error'}
+        '429': {$ref: '#/components/responses/Error'}
+  /v1/runs/{run_id}:
+    get:
+      tags: [sharing]
+      operationId: getRun
+      summary: Read a shared run
+      parameters:
+        - $ref: '#/components/parameters/RunId'
+        - $ref: '#/components/parameters/ShareToken'
+      responses:
+        '200':
+          description: The stored result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PredictionResult'
+        '401': {$ref: '#/components/responses/Error'}
+        '404': {$ref: '#/components/responses/Error'}
+        '410': {$ref: '#/components/responses/Error'}
+        '422': {$ref: '#/components/responses/Error'}
+  /v1/runs/{run_id}/export:
+    get:
+      tags: [sharing]
+      operationId: exportRun
+      summary: Download a shared run as CSV or JSON (UC-03)
+      parameters:
+        - $ref: '#/components/parameters/RunId'
+        - $ref: '#/components/parameters/ShareToken'
+        - name: format
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/ExportFormat'
+      responses:
+        '200':
+          description: File with provenance
+          content:
+            text/csv:
+              schema: {type: string}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PredictionResult'
+        '400': {$ref: '#/components/responses/Error'}
+        '401': {$ref: '#/components/responses/Error'}
+        '404': {$ref: '#/components/responses/Error'}
+        '410': {$ref: '#/components/responses/Error'}
+        '422': {$ref: '#/components/responses/Error'}
+  /healthz:
+    get:
+      tags: [operations]
+      operationId: health
+      summary: Liveness and readiness
+      responses:
+        '200':
+          description: Ready
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+        '503':
+          description: Not ready (model or database unavailable)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+components:
+  headers:
+    RequestId:
+      description: Opaque id for support. Never derived from the input.
+      schema: {type: string}
+  parameters:
+    UniprotId:
+      name: uniprot_id
+      in: path
+      required: true
+      schema: {$ref: '#/components/schemas/UniprotId'}
+    TileIndex:
+      name: tile_index
+      in: path
+      required: true
+      schema: {type: integer, minimum: 1}
+    RunId:
+      name: run_id
+      in: path
+      required: true
+      schema: {type: string, format: uuid}
+    ShareToken:
+      name: X-Share-Token
+      in: header
+      required: true
+      description: Plain share token returned by `POST /v1/runs`.
+      schema: {type: string, minLength: 22, maxLength: 64}
+  responses:
+    Error:
+      description: Error. The `code` is stable; the `message` is for humans.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            length:
+              summary: Sequence of the wrong length
+              value:
+                code: INVALID_LENGTH
+                message: 'The sequence must have exactly 28 amino acids; it has 27.'
+                field: sequence
+            outOfDomain:
+              summary: Stable tile
+              value:
+                code: OUT_OF_DOMAIN
+                message: 'The measured wild-type PSI of this tile (4.8) is above the 4.0 limit of the training domain. Set override_domain to true to score it anyway.'
+                field: null
+  schemas:
+    UniprotId:
+      type: string
+      pattern: '^([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})$'
+      examples: [P60484, A6NMZ7]
+    AminoAcid:
+      type: string
+      pattern: '^[ACDEFGHIKLMNPQRSTVWY]$'
+    TileSequence:
+      type: string
+      pattern: '^[ACDEFGHIKLMNPQRSTVWY]{28}$'
+      description: Exactly 28 standard amino acids, upper case.
+    ExportFormat:
+      type: string
+      enum: [csv, json]
+    DomainStatus:
+      type: string
+      enum:
+        - measured_in_domain
+        - measured_out_of_domain
+        - measured_unreliable
+        - predicted_in_domain
+        - predicted_out_of_domain
+        - unknown
+    RequestTarget:
+      description: |
+        Exactly one of `sequence` or the pair `uniprot_id` + `tile_index`. This schema only states that rule;
+        the property lists are in `PredictRequest`, `ExportRequest` and `RunRequest`, each of which is closed
+        (`additionalProperties: false`) so that an unknown field is a 422.
+      oneOf:
+        - required: [sequence]
+          not: {anyOf: [{required: [uniprot_id]}, {required: [tile_index]}]}
+        - required: [uniprot_id, tile_index]
+          not: {required: [sequence]}
+    RequestSequence:
+      type: string
+      maxLength: 64
+      description: |
+        The server upper-cases and trims it, then requires `TileSequence`. The loose
+        `maxLength` only exists so that an over-long input gets `INVALID_LENGTH` rather than
+        a schema error.
+    RequestTileIndex:
+      type: integer
+      minimum: 1
+    RequestModelId:
+      type: string
+      description: Defaults to the frozen default model.
+    RequestCalibrator:
+      type: string
+      enum: [platt, iso]
+      description: Defaults to the one stored with the model.
+    RequestOverrideDomain:
+      type: boolean
+      default: false
+      description: Score a tile that is measured to be outside the training domain. The result then carries the warning `OUT_OF_DOMAIN_OVERRIDDEN`.
+    PredictRequest:
+      type: object
+      description: Exactly one of `sequence` or the pair `uniprot_id` + `tile_index`.
+      additionalProperties: false
+      properties:
+        sequence: {$ref: '#/components/schemas/RequestSequence'}
+        uniprot_id: {$ref: '#/components/schemas/UniprotId'}
+        tile_index: {$ref: '#/components/schemas/RequestTileIndex'}
+        model_id: {$ref: '#/components/schemas/RequestModelId'}
+        calibrator: {$ref: '#/components/schemas/RequestCalibrator'}
+        override_domain: {$ref: '#/components/schemas/RequestOverrideDomain'}
+      allOf:
+        - $ref: '#/components/schemas/RequestTarget'
+    ExportRequest:
+      type: object
+      description: A `PredictRequest` plus the file format. Written out in full because a closed schema cannot be extended with `allOf`.
+      additionalProperties: false
+      required: [format]
+      properties:
+        sequence: {$ref: '#/components/schemas/RequestSequence'}
+        uniprot_id: {$ref: '#/components/schemas/UniprotId'}
+        tile_index: {$ref: '#/components/schemas/RequestTileIndex'}
+        model_id: {$ref: '#/components/schemas/RequestModelId'}
+        calibrator: {$ref: '#/components/schemas/RequestCalibrator'}
+        override_domain: {$ref: '#/components/schemas/RequestOverrideDomain'}
+        format: {$ref: '#/components/schemas/ExportFormat'}
+      allOf:
+        - $ref: '#/components/schemas/RequestTarget'
+    RunRequest:
+      type: object
+      description: A `PredictRequest` plus the lifetime of the share link. Written out in full for the same reason as `ExportRequest`.
+      additionalProperties: false
+      properties:
+        sequence: {$ref: '#/components/schemas/RequestSequence'}
+        uniprot_id: {$ref: '#/components/schemas/UniprotId'}
+        tile_index: {$ref: '#/components/schemas/RequestTileIndex'}
+        model_id: {$ref: '#/components/schemas/RequestModelId'}
+        calibrator: {$ref: '#/components/schemas/RequestCalibrator'}
+        override_domain: {$ref: '#/components/schemas/RequestOverrideDomain'}
+        ttl_days:
+          type: integer
+          minimum: 1
+          maximum: 30
+          default: 7
+      allOf:
+        - $ref: '#/components/schemas/RequestTarget'
+    Warning:
+      type: object
+      required: [code, message]
+      properties:
+        code:
+          type: string
+          enum:
+            - DOMAIN_UNKNOWN
+            - DOMAIN_UNRELIABLE
+            - OUT_OF_DOMAIN_OVERRIDDEN
+            - PREDICTED_DOMAIN
+            - TRAINING_PEPTIDE
+        message: {type: string}
+    Cell:
+      type: object
+      required: [position, wt_aa, mut_aa, score_dpsi_raw, p_dpsi_ge_1_calibrated, rank_in_tile, top10pct_in_tile]
+      properties:
+        position:
+          type: integer
+          minimum: 1
+          maximum: 28
+          description: 1-based within the tile.
+        wt_aa: {$ref: '#/components/schemas/AminoAcid'}
+        mut_aa: {$ref: '#/components/schemas/AminoAcid'}
+        score_dpsi_raw:
+          type: number
+          description: Raw regression output of the ridge model. Not a probability and not clipped.
+        p_dpsi_ge_1_calibrated:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: Calibrated probability of the event `DeltaPSI >= 1.0` for this assay and domain.
+        rank_in_tile:
+          type: integer
+          minimum: 1
+          maximum: 532
+          description: 1 is the highest raw score within the tile.
+        top10pct_in_tile:
+          type: boolean
+    DataSourceRef:
+      type: object
+      required: [source_id, name, version, license_name, attribution_text]
+      properties:
+        source_id: {type: string}
+        name: {type: string}
+        version: {type: string}
+        license_name: {type: string}
+        attribution_text: {type: string}
+    Provenance:
+      type: object
+      description: Present in every 200 response that carries scores or overlays and written into every export.
+      required: [model_id, weights_sha256, event_definition, evidence_label, domain_description, data_sources, code_version, generated_at, disclaimers]
+      properties:
+        model_id: {type: string}
+        model_kind: {type: string}
+        weights_sha256: {type: string, pattern: '^[0-9a-f]{64}$'}
+        feature_spec: {type: string}
+        event_definition: {type: string, examples: ['P(DeltaPSI >= 1.0)']}
+        evidence_label: {type: string}
+        domain_description: {type: string}
+        data_sources:
+          type: array
+          items: {$ref: '#/components/schemas/DataSourceRef'}
+        code_version: {type: string}
+        generated_at: {type: string, format: date-time}
+        disclaimers:
+          type: array
+          minItems: 1
+          items: {type: string}
+    TileInfo:
+      type: object
+      required: [sequence]
+      properties:
+        uniprot_id: {oneOf: [{$ref: '#/components/schemas/UniprotId'}, {type: 'null'}]}
+        tile_index: {type: [integer, 'null']}
+        start_pos: {type: [integer, 'null']}
+        end_pos: {type: [integer, 'null']}
+        sequence: {$ref: '#/components/schemas/TileSequence'}
+    DomainInfo:
+      type: object
+      required: [status, message]
+      properties:
+        status: {$ref: '#/components/schemas/DomainStatus'}
+        psi_wt_measured: {type: [number, 'null']}
+        reads_measured: {type: [number, 'null']}
+        gate_model_id: {type: [string, 'null']}
+        message: {type: string}
+    PredictionResult:
+      type: object
+      required: [provenance, tile, domain, warnings, cells]
+      properties:
+        provenance: {$ref: '#/components/schemas/Provenance'}
+        tile: {$ref: '#/components/schemas/TileInfo'}
+        domain: {$ref: '#/components/schemas/DomainInfo'}
+        warnings:
+          type: array
+          items: {$ref: '#/components/schemas/Warning'}
+        cells:
+          type: array
+          minItems: 532
+          maxItems: 532
+          items: {$ref: '#/components/schemas/Cell'}
+    ProteinSummary:
+      type: object
+      required: [uniprot_id, length, n_tiles]
+      properties:
+        uniprot_id: {$ref: '#/components/schemas/UniprotId'}
+        gene_symbol: {type: [string, 'null']}
+        protein_name: {type: [string, 'null']}
+        length: {type: integer}
+        n_tiles: {type: integer}
+    TileSummary:
+      type: object
+      required: [tile_index, start_pos, end_pos, sequence, scorable, domain_status]
+      properties:
+        tile_index: {type: integer, minimum: 1}
+        start_pos: {type: integer}
+        end_pos: {type: integer}
+        sequence: {type: string, minLength: 28, maxLength: 28}
+        scorable: {type: boolean}
+        domain_status: {$ref: '#/components/schemas/DomainStatus'}
+        psi_wt_measured: {type: [number, 'null']}
+        reads_measured: {type: [number, 'null']}
+    TileList:
+      type: object
+      required: [protein, tiles, provenance]
+      properties:
+        protein: {$ref: '#/components/schemas/ProteinSummary'}
+        tiles:
+          type: array
+          items: {$ref: '#/components/schemas/TileSummary'}
+        provenance:
+          $ref: '#/components/schemas/Provenance'
+    MeasuredCell:
+      type: object
+      required: [position, mut_aa, delta_psi, in_training_set]
+      properties:
+        position: {type: integer, minimum: 1, maximum: 28}
+        mut_aa: {$ref: '#/components/schemas/AminoAcid'}
+        delta_psi: {type: number}
+        in_training_set: {type: boolean}
+    MeasuredOverlay:
+      type: object
+      required: [tile, cells, provenance]
+      properties:
+        tile: {$ref: '#/components/schemas/TileInfo'}
+        cells:
+          type: array
+          items: {$ref: '#/components/schemas/MeasuredCell'}
+        provenance:
+          $ref: '#/components/schemas/Provenance'
+    ClinvarVariant:
+      type: object
+      required: [variation_id, protein_pos, position, ref_aa, alt_aa, clinsig]
+      properties:
+        variation_id: {type: integer}
+        protein_pos: {type: integer}
+        position: {type: integer, minimum: 1, maximum: 28, description: Position inside the tile.}
+        ref_aa: {$ref: '#/components/schemas/AminoAcid'}
+        alt_aa: {$ref: '#/components/schemas/AminoAcid'}
+        clinsig:
+          type: string
+          enum: [pathogenic, likely_pathogenic, vus, likely_benign, benign, conflicting, other]
+        review_status: {type: [string, 'null']}
+        last_evaluated: {type: [string, 'null'], format: date}
+    ClinvarOverlay:
+      type: object
+      required: [tile, variants, clinvar_file_date, provenance]
+      properties:
+        tile: {$ref: '#/components/schemas/TileInfo'}
+        variants:
+          type: array
+          items: {$ref: '#/components/schemas/ClinvarVariant'}
+        clinvar_file_date: {type: string, format: date}
+        provenance:
+          $ref: '#/components/schemas/Provenance'
+    ModelSummary:
+      type: object
+      required: [model_id, role, status, is_default]
+      properties:
+        model_id: {type: string}
+        role: {type: string, enum: [effect, gate]}
+        kind: {type: string}
+        status: {type: string, enum: [candidate, frozen, retired]}
+        is_default: {type: boolean}
+    ModelCard:
+      allOf:
+        - $ref: '#/components/schemas/ModelSummary'
+        - type: object
+          required: [weights_sha256, event_definition, domain_description, evidence_label, metrics, trained_on_sources, card_markdown, not_used_sources]
+          properties:
+            weights_sha256: {type: string}
+            event_definition: {type: string}
+            domain_description: {type: string}
+            evidence_label: {type: string}
+            metrics:
+              type: object
+              additionalProperties: true
+              description: Copied from the experiment results file named in `metrics_source_file`.
+            metrics_source_file: {type: string}
+            calibration:
+              type:
+                - object
+                - 'null'
+              additionalProperties: true
+            trained_on_sources:
+              type: array
+              items: {$ref: '#/components/schemas/DataSourceRef'}
+            card_markdown: {type: string}
+            not_used_sources:
+              type: array
+              description: |
+                Sources that were examined and are deliberately not served and not used to train this model
+                (licence, scale or coverage reasons). Clients show this list on the model card (ui-design §3.5).
+              items: {$ref: '#/components/schemas/NotUsedSource'}
+            frozen_at: {type: [string, 'null'], format: date-time}
+    NotUsedSource:
+      type: object
+      required: [source_id, name, reason]
+      properties:
+        source_id: {type: string}
+        name: {type: string}
+        reason: {type: string}
+    DataSource:
+      type: object
+      required: [source_id, name, version, citation, license_name, attribution_text]
+      properties:
+        source_id: {type: string}
+        name: {type: string}
+        version: {type: string}
+        citation: {type: string}
+        url: {type: [string, 'null']}
+        license_name: {type: string}
+        attribution_text: {type: string}
+        disclaimer_text: {type: [string, 'null']}
+    RunCreated:
+      type: object
+      required: [run_id, share_token, expires_at, result]
+      properties:
+        run_id: {type: string, format: uuid}
+        share_token:
+          type: string
+          description: Shown once. Put it in the URL fragment.
+        expires_at: {type: string, format: date-time}
+        result:
+          $ref: '#/components/schemas/PredictionResult'
+    Health:
+      type: object
+      required: [status, version, model_loaded, database]
+      properties:
+        status: {type: string, enum: [ok, degraded]}
+        version: {type: string}
+        model_loaded: {type: boolean}
+        default_model_id: {type: [string, 'null']}
+        database: {type: string, enum: [ok, unavailable]}
+    Error:
+      type: object
+      required: [code, message]
+      properties:
+        code:
+          type: string
+          enum:
+            - INVALID_REQUEST
+            - INVALID_LENGTH
+            - INVALID_CHARACTER
+            - INVALID_FORMAT
+            - UNKNOWN_ACCESSION
+            - TILE_OUT_OF_RANGE
+            - TILE_NOT_SCORABLE
+            - OUT_OF_DOMAIN
+            - MODEL_NOT_FOUND
+            - RUN_NOT_FOUND
+            - RUN_EXPIRED
+            - TOKEN_REQUIRED
+            - PAYLOAD_TOO_LARGE
+            - RATE_LIMITED
+            - SERVICE_UNAVAILABLE
+            - INTERNAL_ERROR
+        message: {type: string}
+        field:
+          type: [string, 'null']
+          description: Name of the offending request field, when there is one.

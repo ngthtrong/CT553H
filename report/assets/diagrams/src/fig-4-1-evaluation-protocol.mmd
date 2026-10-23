@@ -1,0 +1,25 @@
+flowchart TD
+    base["91 base peptides: PSI of wild type at most 3.0"]
+    extra["85 extra peptides: PSI of wild type 3.0 to 4.0"]
+
+    test["Outer-test: base peptides of the held-out clusters"]
+    train["Outer-train: base and extra peptides minus test clusters"]
+
+    fit["Tune on inner validation by cluster, fit, score the outer-test"]
+    stats["Pool seeds 17, 29, 43: AUROC per peptide, cluster bootstrap CI"]
+    crit{"CI above 0 and all 3 seeds positive?"}
+    accept["Gain accepted"]
+    report["Reported as not supported"]
+
+    base -->|"5 folds grouped by protein cluster"| test
+    base --> train
+    extra --> train
+    test --> fit
+    train --> fit
+    fit --> stats
+    stats --> crit
+    crit -->|"Yes"| accept
+    crit -->|"No"| report
+
+    style accept fill:#CDF4D3,stroke:#66D575
+    style report fill:#FFECBD,stroke:#FFC943

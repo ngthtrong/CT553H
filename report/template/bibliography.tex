@@ -1,0 +1,31 @@
+% One IEEE reference list, numbered in order of first citation.
+\newif\ifThesisBiblatex
+\ifdefined\UseBibtex
+  \ThesisBiblatexfalse
+\else
+  \ThesisBiblatextrue
+\fi
+\providecommand{\ThesisBibDatabase}{bibliography/references}
+\ifThesisBiblatex
+  \usepackage[backend=biber,style=ieee,sorting=none]{biblatex}
+  \addbibresource{\ThesisBibDatabase.bib}
+  \DeclareLanguageMapping{vietnamese}{english}
+  \let\citep\cite
+  \let\citet\textcite
+  \newcommand{\PrintThesisBibliography}{%
+    \addchap{REFERENCES}
+    \ifdefined\TemplateHasReferences
+      \printbibliography[heading=none]
+    \fi}
+\else
+  \usepackage[numbers,square,sort&compress]{natbib}
+  \renewcommand{\bibsection}{\addchap{REFERENCES}}
+  \newcommand{\PrintThesisBibliography}{%
+    \bibliographystyle{ieeetr}
+    \ifdefined\TemplateHasReferences
+      \bibliography{\ThesisBibDatabase}
+    \else
+      \addchap{REFERENCES}
+    \fi}
+\fi
+% scripts/build.py detects citations and enables TemplateHasReferences.

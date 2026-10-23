@@ -1,0 +1,31 @@
+{
+  "preregistration": "PREREGISTRATION.md",
+  "preregistration_sha256": "08b8e0e712e0784174c66e0b5036c7e0ff13e47d9a33de0cbfa5bf312a0dd626",
+  "x_precomputed_properties": {
+    "status": "completed",
+    "result": "safe-x-reproduction.json"
+  },
+  "zero_shot_gps": {
+    "status": "blocked",
+    "scores": null,
+    "reasons": [
+      "Exact D legacy runtime/SeqVec not reconstructed",
+      "X requires per-protein feature assets missing from source snapshot",
+      "49-vs-29 window discrepancy must be resolved before transfer"
+    ]
+  },
+  "mutant_map_g2": {
+    "status": "blocked",
+    "auroc": null,
+    "n_scored_cells": null,
+    "reasons": [
+      "Same inference prerequisites as zero_shot_gps",
+      "Need fixed WT-motif window and directional -DeltaScore evaluation"
+    ]
+  },
+  "remote_server": {
+    "submitted_sequences": 0,
+    "reason": "Terms not clarified: Terms.php404; linked site policies403"
+  },
+  "important": "PLM weights and embedding endpoints reachable; not fully downloaded due fetch cap. No claim that authors failed to provide them."
+}

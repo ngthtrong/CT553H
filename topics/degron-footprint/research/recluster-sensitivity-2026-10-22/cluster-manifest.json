@@ -1,0 +1,41 @@
+{
+  "fasta_sha256": "c02e6631ca6070c53f464bdd4308d1953419f9e6cc1996453dd92e3e7a89487a",
+  "runs": {
+    "L3": {
+      "min_seq_id": 0.2,
+      "cov": 0.5,
+      "tsv": "protein-id20-cov50_cluster.tsv",
+      "n_rows": 6573,
+      "n_clusters_all_proteome": 3823,
+      "tsv_sha256": "668f61e5955b698e7a73e8356d19f0b1749f85ac463d903b52b05c1d20137cc2",
+      "cmd": "/home/ngthtrong/.local/bin/mmseqs easy-cluster /home/ngthtrong/CT553H/topics/degron-footprint/data/processed/proteins-full.fasta /home/ngthtrong/CT553H/topics/degron-footprint/data/interim/recluster-sensitivity/protein-id20-cov50 /home/ngthtrong/CT553H/topics/degron-footprint/data/interim/recluster-sensitivity/protein-id20-cov50-tmp --min-seq-id 0.2 -c 0.5 --cov-mode 0 --seq-id-mode 0 --alignment-mode 3 --cluster-mode 1 --single-step-clustering 1 -s 7.5 --max-seqs 10000 --split-memory-limit 1500M --threads 2"
+    },
+    "L4": {
+      "min_seq_id": 0.1,
+      "cov": 0.5,
+      "tsv": "protein-id10-cov50_cluster.tsv",
+      "n_rows": 6573,
+      "n_clusters_all_proteome": 3810,
+      "tsv_sha256": "d9f4ccc158c850ac336660d61d3dd16e2ff855204c776922b2958424ea01b7ca",
+      "cmd": "/home/ngthtrong/.local/bin/mmseqs easy-cluster /home/ngthtrong/CT553H/topics/degron-footprint/data/processed/proteins-full.fasta /home/ngthtrong/CT553H/topics/degron-footprint/data/interim/recluster-sensitivity/protein-id10-cov50 /home/ngthtrong/CT553H/topics/degron-footprint/data/interim/recluster-sensitivity/protein-id10-cov50-tmp --min-seq-id 0.1 -c 0.5 --cov-mode 0 --seq-id-mode 0 --alignment-mode 3 --cluster-mode 1 --single-step-clustering 1 -s 7.5 --max-seqs 10000 --split-memory-limit 1500M --threads 2"
+    },
+    "L5": {
+      "min_seq_id": 0.1,
+      "cov": 0.3,
+      "tsv": "protein-id10-cov30_cluster.tsv",
+      "n_rows": 6573,
+      "n_clusters_all_proteome": 3038,
+      "tsv_sha256": "c3d21017f12b3139b4c13de13cb0460028bb2d3204e95a45a7394f790a86d820",
+      "cmd": "/home/ngthtrong/.local/bin/mmseqs easy-cluster /home/ngthtrong/CT553H/topics/degron-footprint/data/processed/proteins-full.fasta /home/ngthtrong/CT553H/topics/degron-footprint/data/interim/recluster-sensitivity/protein-id10-cov30 /home/ngthtrong/CT553H/topics/degron-footprint/data/interim/recluster-sensitivity/protein-id10-cov30-tmp --min-seq-id 0.1 -c 0.3 --cov-mode 0 --seq-id-mode 0 --alignment-mode 3 --cluster-mode 1 --single-step-clustering 1 -s 7.5 --max-seqs 10000 --split-memory-limit 1500M --threads 2"
+    },
+    "L6": {
+      "min_seq_id": 0.0,
+      "cov": 0.3,
+      "tsv": "protein-id00-cov30_cluster.tsv",
+      "n_rows": 6573,
+      "n_clusters_all_proteome": 3038,
+      "tsv_sha256": "5387791de04a1819f53971d88221b21c3703e2b21c874c2cc7d83a84a5aafc0a",
+      "cmd": "/home/ngthtrong/.local/bin/mmseqs easy-cluster /home/ngthtrong/CT553H/topics/degron-footprint/data/processed/proteins-full.fasta /home/ngthtrong/CT553H/topics/degron-footprint/data/interim/recluster-sensitivity/protein-id00-cov30 /home/ngthtrong/CT553H/topics/degron-footprint/data/interim/recluster-sensitivity/protein-id00-cov30-tmp --min-seq-id 0.0 -c 0.3 --cov-mode 0 --seq-id-mode 0 --alignment-mode 3 --cluster-mode 1 --single-step-clustering 1 -s 7.5 --max-seqs 10000 --split-memory-limit 1500M --threads 2"
+    }
+  }
+}

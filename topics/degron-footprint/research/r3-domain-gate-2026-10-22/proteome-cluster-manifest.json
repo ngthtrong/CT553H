@@ -1,0 +1,10 @@
+{
+  "input": "human-reviewed-2026-10-12.fasta.gz",
+  "input_fasta_sha256": "fcb4225f034e3d7e406d456496f1cce1657f9358828cd98a0fb5637e966f287d",
+  "n_proteins": 20431,
+  "n_clusters": 12918,
+  "largest_cluster": 430,
+  "cluster_file_sha256": "5746b60e804bdc4c32888de84a53a6c7de48e0af3fedcfc6569336ea607965a5",
+  "command": "mmseqs easy-cluster <fasta> <out> <tmp> --min-seq-id 0.3 -c 0.8 --cov-mode 0 --seq-id-mode 0 --alignment-mode 3 --cluster-mode 1 --single-step-clustering 1 -s 7.5 --max-seqs 10000 --split-memory-limit 2G --threads 2",
+  "mmseqs_version": "6f45232ac8daca14e354ae320a4359056ec524c2"
+}

@@ -1,0 +1,20 @@
+% Inner cover (bìa phụ): same block as the outer cover, student and advisor in two columns.
+\begin{thesiscover}
+\ThesisCoverHeading
+\vspace{12mm}\ThesisCoverProgram
+\vspace{12mm}\ThesisCoverTitle
+\vfill
+\noindent\begin{minipage}[t]{.5\textwidth}\raggedright
+\textbf{Student:}\par
+\StudentName\par
+\textbf{Student ID:} \StudentId\par
+\textbf{Class:} \StudentClassCode, \StudentCourse
+\end{minipage}\hfill
+\begin{minipage}[t]{.46\textwidth}\raggedright
+\textbf{Advisor:}\par
+\AdvisorName\par
+\ifx\AdvisorTwoName\ThesisEmpty\else\AdvisorTwoName\par\fi
+\end{minipage}
+\vfill
+\ThesisCoverFooter
+\end{thesiscover}

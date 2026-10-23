@@ -1,0 +1,63 @@
+[
+  {
+    "url": "http://elm.eu.org/instances.tsv",
+    "path": "topics/degron-footprint/data/raw/metadegron/elm-instances.tsv",
+    "client_date": "2026-10-21",
+    "attempted_at_utc": "2026-10-21T01:43:53.992873+00:00",
+    "license": "chưa xác nhận",
+    "downloaded": true,
+    "status": 200,
+    "final_url": "http://elm.eu.org/instances.tsv",
+    "content_type": "text/tsv",
+    "bytes": 23680,
+    "sha256": "944c10fe7d0a6e42f727d61b49638f1d579bc86ec2ce131b934bb4287f2391df"
+  },
+  {
+    "url": "https://elm.eu.org/instances.tsv",
+    "path": "topics/degron-footprint/data/raw/metadegron/elm-instances-https.tsv",
+    "client_date": "2026-10-21",
+    "attempted_at_utc": "2026-10-21T01:43:53.994719+00:00",
+    "license": "chưa xác nhận",
+    "downloaded": false,
+    "error": "URLError: <urlopen error timed out>"
+  },
+  {
+    "url": "http://elm.eu.org/infos/about.html",
+    "path": "topics/degron-footprint/data/raw/metadegron/elm-license.html",
+    "client_date": "2026-10-21",
+    "attempted_at_utc": "2026-10-21T01:43:53.996379+00:00",
+    "license": "chưa xác nhận",
+    "downloaded": true,
+    "status": 200,
+    "final_url": "http://elm.eu.org/infos/about.html",
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 51183,
+    "sha256": "63cf91d5338b418e44b584e1c0f981108c5b587d073f6bcaf9ee7083e7d8332c"
+  },
+  {
+    "url": "http://elm.eu.org/elms/DEG_APCC_KENBOX_2.html",
+    "path": "topics/degron-footprint/data/raw/metadegron/elm-class-ken.html",
+    "client_date": "2026-10-21",
+    "attempted_at_utc": "2026-10-21T01:43:53.998559+00:00",
+    "license": "chưa xác nhận",
+    "downloaded": true,
+    "status": 200,
+    "final_url": "http://elm.eu.org/elms/DEG_APCC_KENBOX_2.html",
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 141726,
+    "sha256": "7120bdbbf25147f5527ddfcaa1fc023ece71cc1c15043f6501d8669b1a39a41c"
+  },
+  {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:28292960%20OR%20EXT_ID:35121836%20OR%20EXT_ID:26732515%20OR%20EXT_ID:31680160&format=json",
+    "path": "topics/degron-footprint/data/raw/metadegron/pubmed-sources.json",
+    "client_date": "2026-10-21",
+    "attempted_at_utc": "2026-10-21T01:43:56.602515+00:00",
+    "license": "chưa xác nhận",
+    "downloaded": true,
+    "status": 200,
+    "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:28292960%20OR%20EXT_ID:35121836%20OR%20EXT_ID:26732515%20OR%20EXT_ID:31680160&format=json",
+    "content_type": "application/json;charset=UTF-8",
+    "bytes": 3543,
+    "sha256": "ad9ed8a2a94bc5842266e9ebf36a2ed733264c49770d5502ec8d08c461d78abf"
+  }
+]

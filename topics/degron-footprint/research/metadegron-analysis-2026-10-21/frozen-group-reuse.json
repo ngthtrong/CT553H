@@ -1,0 +1,22 @@
+{
+  "generator": "audit_dataset.py groups()",
+  "meaning": "new union clusters additionally constrained to preserve every original topic cluster",
+  "80": {
+    "original_tsv": "topics/degron-footprint/data/interim/protein-id30-cov80_cluster.tsv",
+    "original_sha256": "8cdfe9062fbc47e3a4b5eb6cca9a24a7144f52d412fe52eeceeb1cda873aba80",
+    "original_groups_represented": 5088,
+    "old_groups_fragmented_before_constraint": 0,
+    "union_cluster_count": 5793,
+    "effective_frozen_extended_cluster_count": 5793,
+    "all_original_groups_preserved": true
+  },
+  "50": {
+    "original_tsv": "topics/degron-footprint/data/interim/protein-id30-cov50_cluster.tsv",
+    "original_sha256": "1040d57619273950dff6a7ef43cf0e253252016e5d6d777fc1c928389ca3ead3",
+    "original_groups_represented": 4418,
+    "old_groups_fragmented_before_constraint": 0,
+    "union_cluster_count": 4969,
+    "effective_frozen_extended_cluster_count": 4969,
+    "all_original_groups_preserved": true
+  }
+}

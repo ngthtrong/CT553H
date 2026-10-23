@@ -1,0 +1,10 @@
+{
+  "experiment": "R2",
+  "files": [
+    {
+      "path": "data/processed/r12-seqtable.npz",
+      "license": "CC BY 4.0 (derived)",
+      "source": "research/r2-esm-features-2026-10-22/make_seqtable.py"
+    }
+  ]
+}

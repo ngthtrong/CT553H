@@ -15,7 +15,7 @@ from sklearn.model_selection import GroupKFold,GroupShuffleSplit
 from sklearn.linear_model import Ridge
 HERE=Path(__file__).resolve().parent
 BASE=HERE.parent/'g2-saturation-2026-10-18'
-TOPIC=next(p for p in HERE.parents if (p/'log.md').exists())
+TOPIC=next(p for p in HERE.parents if (p/'data'/'README.md').exists())
 sys.path.insert(0,str(TOPIC/'research/residue-task-derisk-2026-10-15'))
 import residue_data as rd
 import derisk as dr

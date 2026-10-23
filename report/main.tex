@@ -1,0 +1,42 @@
+\documentclass{template/ctu-thesis}
+\input{config/metadata}
+\input{template/typography}
+\input{template/packages}
+\input{template/commands}
+\input{template/bibliography}
+\hypersetup{pdftitle={\ThesisTitle},pdfauthor={\StudentName}}
+\begin{document}
+% Covers: no page number and not counted.
+\pagestyle{empty}\hypersetup{pageanchor=false}
+\input{frontmatter/cover}
+\input{frontmatter/title-page}
+% Front matter: roman numerals, starting at the revision confirmation.
+\clearpage\pagenumbering{roman}\pagestyle{thesisplain}
+\hypersetup{pageanchor=true}
+\input{frontmatter/revision-confirmation}
+\input{frontmatter/advisor-comments}
+\input{frontmatter/acknowledgements}
+\input{frontmatter/commitment}
+\input{frontmatter/abstract}
+\input{frontmatter/abstract-vi}
+\pagestyle{thesis}
+\clearpage\phantomsection\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}
+\tableofcontents
+\listoffigures
+\listoftables
+\input{frontmatter/glossary}
+% Body: Arabic numerals from 1.
+\clearpage\pagenumbering{arabic}
+\include{chapters/introduction}
+\include{chapters/01-problem-description}
+\include{chapters/02-theoretical-background}
+\include{chapters/03-solution-design}
+\include{chapters/04-testing-evaluation}
+\include{chapters/conclusion}
+\clearpage
+\begingroup\sloppy\PrintThesisBibliography\endgroup
+\appendix
+\ThesisChapterNumbering
+\include{appendices/a-installation-user-guide}
+\include{appendices/b-supplementary-materials}
+\end{document}
