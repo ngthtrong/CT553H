@@ -7,14 +7,20 @@ Repo luận văn tốt nghiệp CT553H (Kỹ thuật phần mềm, ĐH Cần Th�
 ## Bố cục
 
 - `topics/degron-footprint/` — toàn bộ nghiên cứu của đề tài.
-  - `research/<chủ-đề>[-YYYY-MM-DD]/` — mỗi thư mục là một thí nghiệm/audit tự chứa: `README.md` (kết quả, có nhãn bằng chứng), script `.py`, và kết quả nhỏ dạng `.json` do script ghi ra. Thí nghiệm lớn có thêm `PROTOCOL.md`/`PREREGISTRATION.md`, `VALIDATION.md`, `audit.py`, `source-manifest.json`.
+  - `research/<chủ-đề>[-YYYY-MM-DD]/` — mỗi thư mục là một thí nghiệm/audit tự chứa: `README.md` (kết quả, có nhãn bằng chứng), script `.py`, và kết quả nhỏ dạng `.json` do script ghi ra. Thí nghiệm lớn có thêm `PROTOCOL.md`/`PREREGISTRATION.md`, `VALIDATION.md`, `audit.py`, `source-manifest.json`. Kế hoạch đang hiệu lực: `next-phase-plan-2026-10-22/`. Huấn luyện nặng chạy trên Kaggle qua notebook (`notebook-kit-2026-10-22/RUN.md`: dựng gói mã/dữ liệu, chạy, mang kết quả về); kết quả đặt vào `run-<nền-tảng>-<ngày>/` cạnh README. Thí nghiệm hiện có: R0–R3 (đã chạy 22/10), R6 (chuỗi đối chứng ngữ cảnh/scanning/ESM-2/CNN, chờ chạy), `scan-sat-merge` (trộn nhãn scanning).
   - `data/{raw,interim,processed}/` — dữ liệu thật (~2,3 GB), **không lên git** trừ `data/README.md` và `SOURCE.md`. `data/README.md` là sổ nguồn gốc: nguồn/phiên bản ghim/giấy phép/SHA-256, script nào tạo file nào, nhật ký xử lý. Khi tải, xử lý lại hay xoá file trong `data/` thì cập nhật sổ này trong cùng phiên.
-  - `presentation/` — deck reveal.js (`deck-*/index.html`), nội dung trang Notion và `figures.py`/`visuals.py` sinh PNG.
-- `lectures/` — bài tự học (HTML mở bằng `file://`, notebook CS535, `degron-basics/` gồm bài giảng + ghi chép từng paper trong `papers/`).
+  - `presentation/` — deck reveal.js (`deck-*/index.html`), nội dung trang Notion và `figures.py`/`visuals.py` sinh PNG. Không tự sửa khi chưa được yêu cầu.
+  - `proposal/` — đề cương (`proposal.md` → pdf/docx bằng `build.py`).
+  - `system/` — công cụ web: tài liệu thiết kế (`srs.md`, `db-design.md`, `api-spec.md`, `ui-design.md`, `test-plan.md`) và `app/` (FastAPI + React + ETL + test). CSDL và tệp sinh ra khi chạy (`app/.data/`, `.coverage`, `test-results/`) **không lên git**.
+- `lectures/` — `papers/` (ghi chép từng bài báo về degron/hiệu ứng đột biến) và `dataset-guide.md` (hướng dẫn hiểu dữ liệu). Các bài giảng HTML và notebook CS535 đã gỡ.
 - `project/` — thông tin người liên quan, công bố của GVHD, biên bản gặp.
 - `resources/` — PDF bài báo, luận văn tham khảo, đề cương học phần (repo private nên được chứa PDF).
 - `report/` — **bản làm việc** của luận văn (bản sao từ `reportTemplate/`, đã điền thông tin SV/GVHD, khung và lý thuyết cơ bản; phần chưa làm đánh dấu `[PENDING]`). Luận văn viết tiếng Anh, kèm Tóm tắt tiếng Việt.
 - `reportTemplate/` — **bản gốc sạch** của template LaTeX luận văn (Khoa Kỹ thuật phần mềm, ĐHCT), không điền nội dung vào đây (xem `reportTemplate/README.md`); `guideline-thesis/` trong đó là mẫu/hướng dẫn gốc của Khoa. Template NCKH cũ nằm ở commit `30c20ef`.
+
+## Nhánh git
+
+`main` là nhánh làm việc (bố cục gọn như trên). `backup-before-clean` giữ nguyên bố cục trước khi dọn (`archive/`, `journal/`, `surveys/`, `tools/`, `DECISIONS.md`, các tài liệu chọn đề tài và phân tích đã thay thế); lấy lại tài liệu cũ bằng `git show backup-before-clean:<đường-dẫn>`.
 
 ## Chạy script nghiên cứu
 

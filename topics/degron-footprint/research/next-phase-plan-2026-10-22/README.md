@@ -4,6 +4,22 @@ Nối tiếp [next-steps-plan](../next-steps-plan-2026-10-22/README.md) (§0 là
 
 **Mốc thời gian dùng để lập lịch** `[CHƯA XÁC MINH]`: buổi gặp 02/10 là tuần 4, nên tuần 1 bắt đầu 14/09 và hôm nay (22/10) là tuần 6. Giả định học kỳ 15 tuần thì tuần 15 là 21–27/12/2026. Ngày nộp thật chưa có trong repo (`resources/course/CT553H.pdf` không có lịch; đề cương cũng ghi "sẽ bổ sung"). Nếu ngày thật khác, chỉ cần dịch §5.
 
+## Cập nhật trạng thái — 23/10/2026
+
+Phần còn lại của file là **kế hoạch gốc (22/10), giữ làm bản ghi lịch sử**. Bảng dưới là kết quả thật; mọi số dẫn `results.json` của từng thí nghiệm.
+
+| # | Trạng thái | Kết quả `[ĐO]` |
+|---|---|---|
+| R0 | **Đã chạy, đạt 12/12 cổng** (Kaggle CPU) | Ridge và `predict.py` tái lập bit-bit trên nền tảng khác — [R0](../r0-reproduce-notebook-2026-10-22/README.md) |
+| R3 | **Đã chạy, cả hai tầng dùng được** | Tầng (i) AUROC 0,911; tầng (ii) AUROC 0,815; cần trạng thái `borderline`; luật `PSI ≤ 4,0` thô sai trên PSI sàng; ~65% tile sàng "out-of-domain" — [R3](../r3-domain-gate-2026-10-22/README.md) |
+| R2 | **Đã chạy, chưa đủ bằng chứng** | ESM-2 650M + ridge: Δ +0,0022, CI [−0,0033; +0,0082], do hai peptide — [R2](../r2-esm-features-2026-10-22/README.md) |
+| R1 | **Đã chạy, không phân biệt được** | Degformer sạch cụm 0,8068 so với ridge 0,8208 (Δ −0,0140, CI [−0,0283; +0,0010]); rò rỉ làm phồng checkpoint công bố 0,118 — [R1](../r1-degformer-clean-2026-10-22/README.md). Trạng thái G2 do Trọng và GVHD quyết |
+| R4 | Chưa làm | Kiểm chứng ngoài (Koren S4 chỉ ở mức thăm dò) |
+| R5 | Chưa làm | Quy tắc ghi trước: giữ ridge + Platt, trừ khi một thí nghiệm đạt tiêu chí. Xem thêm R6 §12: nếu ridge ngữ cảnh ±5 được xác nhận thì đối chứng tuyến tính là `ridge_W5` |
+| R6 (mới) | **Notebook đã dựng, chưa chạy trên Kaggle** | Một notebook cho: ngữ cảnh rộng, scanning, ESM-2 bốn cỡ, CNN/mCNN. Lượt thử CPU cho thấy ridge ±5 = 0,8286 (+0,0078) — [R6](../r6-ladder-scan-2026-10-23/README.md) |
+| `scan-sat-merge` | Đã chạy (phiên khác) | Trộn scanning không giúp ridge (0,8189–0,8203 so với 0,8208) — [báo cáo](../scan-sat-merge-2026-10-23/PROTOCOL.md) |
+| Hệ thống | App có mã và test; **chưa tích hợp cổng R3** | [system/](../../system/README.md), [DEVIATIONS §7](../../system/app/DEVIATIONS.md) |
+
 ## 0. Tóm tắt
 
 - `[ĐO]` Mô hình hiện tại là **ridge M3 + Platt**, AUROC 0,8208 trên benchmark phát triển OOF (outer-test 91 peptide), đã hiệu chuẩn (Brier 0,0925 so với 0,1272). Suy luận chỉ cần `numpy`, nên **hệ thống không cần GPU để chạy**; GPU chỉ phục vụ phần nghiên cứu.

@@ -1,5 +1,7 @@
 # Kế hoạch nghiên cứu và thử nghiệm tiếp theo — 22/10/2026
 
+> **Đã hoàn tất và thay thế (23/10/2026):** kế hoạch P0–P6 dưới đây đã chạy xong; kết quả ở §0. Kế hoạch đang hiệu lực: [next-phase-plan](../next-phase-plan-2026-10-22/README.md).
+
 Kế hoạch này nối tiếp [G2 bão hòa](../g2-saturation-2026-10-18/README.md), [G2 mở rộng](../g2-extension-2026-10-18/README.md) và [audit MetaDegron](../metadegron-analysis-2026-10-21/README.md). Nó **không** đổi trạng thái G2/G3, không chốt kiến trúc, không thay tiêu chí nghiệm thu của bất kỳ thí nghiệm đã tiền đăng ký. Mọi mục đánh `[ĐỀ XUẤT]` cần Trọng duyệt trước khi chạy.
 
 Phần tìm dataset bổ sung nằm riêng ở [dataset-search.md](dataset-search.md); kết quả kiểm truy cập `[ĐO]` ở [candidate-access.json](candidate-access.json), sinh bởi [check_candidate_access.py](check_candidate_access.py). Phép đếm bộ lọc bão hòa `[ĐO]` ở [sat-filter-dropoff.json](sat-filter-dropoff.json), sinh bởi [sat_filter_dropoff.py](sat_filter_dropoff.py).
