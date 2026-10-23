@@ -1,0 +1,21 @@
+{
+  "all_pass": true,
+  "gates": [
+    {
+      "name": "param_count",
+      "observed": 545025.0,
+      "expected": 545025.0,
+      "abs_diff": 0.0,
+      "tol": 0.0,
+      "pass": true
+    },
+    {
+      "name": "ridge_ext_reference_macro",
+      "observed": 0.8208223589063639,
+      "expected": 0.8208223589063638,
+      "abs_diff": 1.1102230246251565e-16,
+      "tol": 1e-09,
+      "pass": true
+    }
+  ]
+}

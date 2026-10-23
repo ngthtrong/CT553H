@@ -1,0 +1,9 @@
+{
+  "n_tiles_reads_ge_10": 360724,
+  "x_cut_in": 2.686975930164537,
+  "x_cut_out": 3.1102183258194955,
+  "share_in_domain": 0.25960845410895866,
+  "share_borderline": 0.08807010345859989,
+  "share_out_of_domain": 0.6523214424324414,
+  "note": "tile của sàng peptidome (mọi độ dài), PSI sàng thô; mô tả, không phải kết quả mô hình"
+}

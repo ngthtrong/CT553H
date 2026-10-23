@@ -1,0 +1,61 @@
+{
+  "all_pass": true,
+  "gates": [
+    {
+      "name": "embedding_determinism_relmax",
+      "observed": 0.0,
+      "expected": 0.0,
+      "abs_diff": 0.0,
+      "tol": 0.01,
+      "pass": true
+    },
+    {
+      "name": "n_cells",
+      "observed": 92337.0,
+      "expected": 92337.0,
+      "abs_diff": 0.0,
+      "tol": 0.0,
+      "pass": true
+    },
+    {
+      "name": "finite",
+      "observed": 1.0,
+      "expected": 1.0,
+      "abs_diff": 0.0,
+      "tol": 0.0,
+      "pass": true
+    },
+    {
+      "name": "M3_ensemble_vs_P0",
+      "observed": 0.8208223589063638,
+      "expected": 0.8208223589063638,
+      "abs_diff": 0.0,
+      "tol": 0.0001,
+      "pass": true
+    },
+    {
+      "name": "M3_seed17_vs_P0",
+      "observed": 0.8204208088793984,
+      "expected": 0.8204208088793984,
+      "abs_diff": 0.0,
+      "tol": 0.0002,
+      "pass": true
+    },
+    {
+      "name": "M3_seed29_vs_P0",
+      "observed": 0.8209820393457197,
+      "expected": 0.8209820393457197,
+      "abs_diff": 0.0,
+      "tol": 0.0002,
+      "pass": true
+    },
+    {
+      "name": "M3_seed43_vs_P0",
+      "observed": 0.8209243464238494,
+      "expected": 0.8209243464238494,
+      "abs_diff": 0.0,
+      "tol": 0.0002,
+      "pass": true
+    }
+  ]
+}

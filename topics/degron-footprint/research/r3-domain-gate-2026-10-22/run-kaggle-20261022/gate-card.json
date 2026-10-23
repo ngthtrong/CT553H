@@ -1,0 +1,51 @@
+{
+  "name": "degron-domain-gate-r3",
+  "protocol": "research/r3-domain-gate-2026-10-22/PROTOCOL.md",
+  "smoke": false,
+  "domain_definition": "PSI(WT) nội tại (trung vị ô đồng nghĩa, thí nghiệm bão hòa Zhang 2023) <= 4,0",
+  "tier1": {
+    "auroc_oof": 0.911113251155624,
+    "bss_oof": 0.5159760582707551,
+    "frac_d0_in_domain": 0.1694915254237288,
+    "precision_in_domain": 0.9342105263157895,
+    "status_share": {
+      "in": 0.6468085106382979,
+      "borderline": 0.13191489361702127,
+      "out": 0.22127659574468084
+    },
+    "x_cut_for_P_in": 2.686975930164537,
+    "x_cut_for_P_out": 3.1102183258194955
+  },
+  "tier2": {
+    "spearman_stage_A": 0.8690903726556194,
+    "auroc_oof": 0.8153890600924499,
+    "bss_oof": 0.24159809930967957,
+    "frac_d0_in_domain": 0.2033898305084746,
+    "precision_in_domain": 0.9076923076923077,
+    "status_share": {
+      "in": 0.5531914893617021,
+      "borderline": 0.28936170212765955,
+      "out": 0.1574468085106383
+    },
+    "x_cut_for_P_in": 3.700384617367295,
+    "x_cut_for_P_out": 4.425872177869241
+  },
+  "usable_tier1": true,
+  "usable_tier2": true,
+  "status_levels": {
+    "in-domain": "P>=0.8",
+    "borderline": "0.5<=P<0.8",
+    "out-of-domain": "P<0.5",
+    "unknown": "tầng (ii) không dùng được"
+  },
+  "limits": [
+    "cổng chỉ nói tile giống miền huấn luyện đến đâu; không nói điểm ΔPSI chính xác",
+    "hai thang PSI (sàng vs bão hòa) lệch ≈ 0,9; ngưỡng thô 4,0 trên PSI sàng bị cấm",
+    "pool 235 peptide thiên về PSI sàng thấp; ngoại suy cho PSI cao chưa kiểm trực tiếp"
+  ],
+  "sources": [
+    "Zhang et al. 2023 GEO GSE240610 (Control Replicate 1) — citation bắt buộc",
+    "Zhang et al. 2023 Mendeley Data 10.17632/32h94v2yv2.2 (CC BY 4.0)",
+    "UniProtKB/Swiss-Prot 2026_03 (CC BY 4.0)"
+  ]
+}

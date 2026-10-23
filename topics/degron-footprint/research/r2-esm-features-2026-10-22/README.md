@@ -1,8 +1,24 @@
 # R2 — Đặc trưng ESM-2 đóng băng cộng vào ridge M3 — 22/10/2026
 
-**Trạng thái: CHƯA CHẠY.** Đã dựng xong dữ liệu, mã, PROTOCOL chốt trước và notebook; trích đặc trưng (GPU) và khớp ridge do Trọng chạy trên Kaggle/Colab rồi tải kết quả về. Tới khi có `results.json` từ lượt chạy thật, **không có con số R2 nào** trong repo, và README này không nêu kết quả nào.
+**Trạng thái: ĐÃ CHẠY trên Kaggle (2×T4, 22/10/2026).** Tiêu chí và dự đoán ghi trước ở [PROTOCOL.md](PROTOCOL.md) (SHA-256 nhúng trong notebook). Kết quả: [run-kaggle-20261022/](run-kaggle-20261022/) (gốc: [r2-results.zip](r2-results.zip), gồm điểm OOF). Kế hoạch gốc: [next-phase-plan §3.2](../next-phase-plan-2026-10-22/README.md). Tiếp nối ở [R6](../r6-ladder-scan-2026-10-23/README.md) (đổi cỡ ESM-2, đưa ESM vào CNN/mCNN).
 
 Tiêu chí, công thức đặc trưng và dự đoán ghi trước: [PROTOCOL.md](PROTOCOL.md) (SHA-256 nhúng trong notebook). Kế hoạch gốc: [next-phase-plan §3.2](../next-phase-plan-2026-10-22/README.md).
+
+## Kết quả `[ĐO]` — [results.json](run-kaggle-20261022/results.json), [r2-stage1.json](run-kaggle-20261022/r2-stage1.json)
+
+ESM-2 650M đóng băng, Δ embedding PCA-64 (khớp chỉ trên outer-train), ridge, ba seed:
+
+| Biến thể | AUROC ensemble | Từng seed |
+|---|---:|---|
+| M3 (đối chứng, tái lập 0,8208) | 0,8208 | 0,8204 · 0,8210 · 0,8209 |
+| **M3 + ESM** | **0,8230** | 0,8228 · 0,8231 · 0,8233 |
+| ESM-only (chỉ mô tả) | 0,7853 | 0,7853 · 0,7853 · 0,7853 |
+
+**M3+ESM − M3 = +0,0022, CI 95% [−0,0033; +0,0082]**, Δ từng seed +0,0024 · +0,0021 · +0,0024. **Kết luận theo PROTOCOL §3: "chưa đủ bằng chứng (CI phủ 0)".** ESM-only − M3 = −0,0355 [−0,0495; −0,0211] (mô tả). Cả ba dự đoán ghi trước (§7) đều đúng.
+
+- `[ĐO]` Từ `per_peptide_ensemble`: M3+ESM thắng M3 ở 44/91 peptide (thua 47), trung vị Δ −0,0011; **bỏ hai peptide hưởng lợi nhiều nhất thì Δ trung bình = −0,0004**. Nên "ba seed đều dương" không phải bằng chứng độc lập: ba seed dùng chung dữ liệu và fold, ridge gần như tất định.
+- `[DIỄN GIẢI]` ESM-only đạt 0,7853 chỉ với 64 chiều tuyến tính (cao hơn ΔPAP 0,7693 và E3 0,7500), nhưng thêm vào M3 hầu như không đổi: ở mức tuyến tính, thông tin pLM phần lớn trùng với one-hot cộng ngữ cảnh. Trần lợi ích tuyến tính của ESM-650M khoảng +0,008.
+- Chi phí đo thật: giai đoạn 1 (trích 92.337 ô × 2.560 chiều) 384 giây trên T4; giai đoạn 2 (PCA + ridge, 15 lượt × 3 biến thể) 95 giây. PCA-64 giữ ~80% phương sai. α của ESM-only luôn nằm ở biên lưới (1 hoặc 1000), nên con số ESM-only chỉ để mô tả.
 
 ## Câu hỏi
 
@@ -29,14 +45,14 @@ Tiêu chí, công thức đặc trưng và dự đoán ghi trước: [PROTOCOL.m
 | [data-needs.json](data-needs.json) | File dữ liệu notebook cần |
 | [selftest_r2.py](selftest_r2.py) | Kiểm đường code, không phải thí nghiệm |
 
-## Việc Trọng làm tay
+## Cách chạy lại (đã làm một lần ngày 22/10/2026)
 
 1. Dựng và upload hai gói như R1 (xem `notebook-kit-2026-10-22/RUN.md`).
 2. Import `r2-esm.ipynb`, bật GPU. **Bật Internet** để tải trọng số ESM-2 từ Hugging Face (Kaggle đòi tài khoản xác minh điện thoại); nếu không bật được, thêm ESM-2 650M làm dataset/model — ô 5 tự dò thư mục chứa `config.json` có tên `esm2_t33_650M`.
 3. *Run All*. Cache đặc trưng (~0,5 GB) nằm ngoài gói kết quả. Tải `r2-results.zip`, giải nén vào `run-<phiên>/` cạnh README này.
 4. Cập nhật README với kết quả sau khi có `results.json`, báo trung thực kể cả khi âm; kiểm lại ngày đọc giấy phép trọng số trong `r2-stage1.json`.
 
-## Chi phí `[ƯỚC LƯỢNG]`, chưa benchmark
+## Chi phí (ước lượng ban đầu; số đo thật ở mục Kết quả)
 
 Giai đoạn 1 (T4, fp16): 10–30 phút. Giai đoạn 2 (CPU): 10–20 phút. Ít hơn nhiều so với R1.
 

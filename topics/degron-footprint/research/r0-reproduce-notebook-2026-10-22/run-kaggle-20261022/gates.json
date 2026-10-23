@@ -1,0 +1,101 @@
+{
+  "all_pass": true,
+  "gates": [
+    {
+      "name": "ridge_base_ensemble",
+      "observed": 0.8081859035239345,
+      "expected": 0.8081859035239345,
+      "abs_diff": 0.0,
+      "tol": 0.0001,
+      "pass": true
+    },
+    {
+      "name": "ridge_base_ensemble_seed17",
+      "observed": 0.806244540569936,
+      "expected": 0.806244540569936,
+      "abs_diff": 0.0,
+      "tol": 0.0001,
+      "pass": true
+    },
+    {
+      "name": "ridge_base_ensemble_seed29",
+      "observed": 0.8068181943091015,
+      "expected": 0.8068181943091015,
+      "abs_diff": 0.0,
+      "tol": 0.0001,
+      "pass": true
+    },
+    {
+      "name": "ridge_base_ensemble_seed43",
+      "observed": 0.8080755248255482,
+      "expected": 0.8080755248255482,
+      "abs_diff": 0.0,
+      "tol": 0.0001,
+      "pass": true
+    },
+    {
+      "name": "ridge_ext4.0_ensemble",
+      "observed": 0.8208223589063638,
+      "expected": 0.8208223589063638,
+      "abs_diff": 0.0,
+      "tol": 0.0001,
+      "pass": true
+    },
+    {
+      "name": "ridge_ext4.0_ensemble_seed17",
+      "observed": 0.8204208088793984,
+      "expected": 0.8204208088793984,
+      "abs_diff": 0.0,
+      "tol": 0.0001,
+      "pass": true
+    },
+    {
+      "name": "ridge_ext4.0_ensemble_seed29",
+      "observed": 0.8209820393457197,
+      "expected": 0.8209820393457197,
+      "abs_diff": 0.0,
+      "tol": 0.0001,
+      "pass": true
+    },
+    {
+      "name": "ridge_ext4.0_ensemble_seed43",
+      "observed": 0.8209243464238494,
+      "expected": 0.8209243464238494,
+      "abs_diff": 0.0,
+      "tol": 0.0001,
+      "pass": true
+    },
+    {
+      "name": "P0_delta_ext_minus_100",
+      "observed": 0.012636455382429305,
+      "expected": 0.012636455382429305,
+      "abs_diff": 0.0,
+      "tol": 0.0001,
+      "pass": true
+    },
+    {
+      "name": "P0_ci_low",
+      "observed": 0.0061224785538184,
+      "expected": 0.0061224785538184,
+      "abs_diff": 0.0,
+      "tol": 0.0005,
+      "pass": true
+    },
+    {
+      "name": "P0_ci_high",
+      "observed": 0.018994070078056428,
+      "expected": 0.018994070078056428,
+      "abs_diff": 0.0,
+      "tol": 0.0005,
+      "pass": true
+    },
+    {
+      "name": "verify_max_abs_diff",
+      "observed": 4.401257136521508e-10,
+      "expected": 0.0,
+      "abs_diff": 4.401257136521508e-10,
+      "tol": 1e-09,
+      "pass": true
+    }
+  ]
+}

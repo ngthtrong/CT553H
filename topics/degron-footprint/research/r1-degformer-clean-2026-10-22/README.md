@@ -1,8 +1,35 @@
 # R1 — Degformer sạch cụm (điều kiện G2 còn thiếu) — 22/10/2026
 
-**Trạng thái: CHƯA CHẠY.** Đã dựng xong dữ liệu, mã, PROTOCOL chốt trước và notebook; huấn luyện do Trọng chạy trên Kaggle/Colab rồi tải kết quả về. Tới khi có `results.json` từ lượt chạy thật, **không có con số R1 nào** trong repo, và README này không nêu kết quả nào.
+**Trạng thái: ĐÃ CHẠY trên Kaggle (2×T4, 22–23/10/2026), đủ ba seed × năm fold.** Tiêu chí, luật loại hàng và dự đoán ghi trước ở [PROTOCOL.md](PROTOCOL.md) (SHA-256 nhúng trong notebook). Kết quả: [run-kaggle-20261022/](run-kaggle-20261022/) (gốc: [r1-results.zip](r1-results.zip), gồm cả điểm dự đoán từng seed). Kế hoạch gốc: [next-phase-plan §3.2](../next-phase-plan-2026-10-22/README.md). Không đổi trạng thái G2: ghi trạng thái là quyết định của Trọng và GVHD.
 
 Tiêu chí, luật loại hàng, độ lệch so với script tác giả và dự đoán ghi trước: [PROTOCOL.md](PROTOCOL.md) (SHA-256 nhúng trong notebook). Kế hoạch gốc: [next-phase-plan §3.2](../next-phase-plan-2026-10-22/README.md). Không đổi trạng thái G2: kết quả chỉ đi vào báo cáo.
+
+## Kết quả `[ĐO]` — [results.json](run-kaggle-20261022/results.json)
+
+Degformer sạch cụm (PeptideTransformer 545.025 tham số; bảng huấn luyện 569.270 dòng, mỗi fold loại 3,4–8,1% dòng chạm cụm outer-test), AUROC mức ô, macro theo peptide, outer-test 47.847 ô của G2:
+
+| Mô hình | AUROC |
+|---|---:|
+| **R1, ensemble ba seed** (từng seed 0,8012 · 0,8054 · 0,8004) | **0,8068** |
+| ridge M3 ext 4,0 (đối chiếu chính) | 0,8208 |
+| ridge base | 0,8082 |
+| ΔPAP `cnn2w1` | 0,7693 |
+| Degformer huấn luyện chỉ trên nhãn bão hòa (E3) | 0,7500 |
+| checkpoint công bố (bị rò) | 0,9248 |
+
+| So sánh ghép cặp theo cụm | Δ | CI 95% |
+|---|---:|---|
+| **R1 − ridge ext 4,0 (CHÍNH)** | **−0,0140** | [−0,0283; +0,0010] |
+| R1 − ridge base | −0,0014 | [−0,0192; +0,0161] |
+| R1 − ΔPAP | +0,0375 | [+0,0249; +0,0507] |
+| R1 − checkpoint bị rò | −0,1180 | [−0,1387; −0,0979] |
+
+Δ từng seed so với ridge ext: −0,0196 · −0,0154 · −0,0204. **Kết luận theo PROTOCOL §6: "không phân biệt được"** (CI phủ 0). Cả ba dự đoán ghi trước (§10) đều đúng: chênh với checkpoint rò ≥ 0,05 (thực tế 0,118); R1 nằm trong 0,75–0,88; kết luận không phải "R1 hơn".
+
+- `[DIỄN GIẢI]` Rò rỉ làm phồng AUROC của checkpoint công bố 0,118; 0,9248 bằng 97% trần nhãn (0,9519), phù hợp với việc đã thuộc lòng ma trận từng peptide.
+- `[DIỄN GIẢI]` Thêm 569K dòng tiền huấn luyện nâng transformer từ 0,7500 (E3) lên 0,8068 nhưng **không vượt** ridge chỉ học từ 92K ô. Cả ba seed đều âm so với ridge ext, CI chỉ chạm 0 từ phía dưới: nghiêng về "ridge ≥ Degformer" dù quy tắc không cho kết luận chắc hơn.
+- `[ĐO]` Từng peptide (từ `per_peptide_ensemble`): R1 thắng ridge ext ở 43/91 peptide; tương quan AUROC từng peptide giữa R1 và ridge r = 0,82, tức các peptide khó là chung.
+- Ghi chú huấn luyện: ~28–31 giây/epoch trên T4; epoch tốt nhất từ 5 đến 50; **một lượt (seed 29, fold 0) chạm trần 50 epoch** ([r1-train-log-seed29.json](run-kaggle-20261022/r1-train-log-seed29.json)). Mặt nạ loại hàng loại 3,4–8,1% dòng mỗi fold ([r1-exclusion-check.json](run-kaggle-20261022/r1-exclusion-check.json)).
 
 ## Câu hỏi
 
@@ -30,14 +57,14 @@ Kiến trúc Degformer đã công bố, huấn luyện lại bằng công thức
 | [data-needs.json](data-needs.json) | File dữ liệu notebook cần, cho `make_data_package.py` |
 | [selftest_r1.py](selftest_r1.py) | Kiểm đường code, không phải thí nghiệm |
 
-## Việc Trọng làm tay
+## Cách chạy lại (đã làm một lần ngày 22/10/2026)
 
 1. Dựng gói bằng `notebook-kit-2026-10-22/make_data_package.py` và `make_code_package.py`, xem danh sách, **tự upload** làm hai dataset riêng tư (`degron-data-v1`, `degron-code-*`) — hướng dẫn: `notebook-kit-2026-10-22/RUN.md`.
 2. Import `r1-degformer-clean.ipynb`, bật GPU, gắn hai dataset, *Run All*. Đọc dòng **benchmark** ở ô 5 (giờ GPU ước lượng theo số đo thật) **trước** khi để chạy hết; quá hạn mức thì đặt `SEEDS = [17]` và chạy seed khác ở phiên sau.
 3. Tải `r1-results.zip` (có ngay sau fold đầu tiên), giải nén vào `run-<phiên>/` cạnh README này.
 4. `python -I aggregate_r1.py run-*/...` (hoặc dùng `results.json` do ô 5 ghi), rồi mới cập nhật README với kết quả, nhãn `[ĐO]`/`[DIỄN GIẢI]`, và báo trung thực kể cả khi âm.
 
-## Chi phí `[ƯỚC LƯỢNG]`, chưa benchmark
+## Chi phí (ước lượng ban đầu; số đo thật ở mục Kết quả)
 
 Vài chục giây/epoch trên T4 với AMP, ≤ 50 epoch/fold (dừng sớm sau 10 epoch không cải thiện): ≲ 2 giờ/seed, ≲ 6 giờ cho ba seed. Ô benchmark thay ước lượng này bằng số đo trước khi chạy thật. So với E3 trên CPU (~17 phút/epoch), đây là lý do E3 từng hoãn R1.
 

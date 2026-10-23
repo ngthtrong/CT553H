@@ -1,0 +1,10 @@
+{
+  "source": "facebook/esm2_t33_650M_UR50D",
+  "shape": [
+    92337,
+    2560
+  ],
+  "seconds": 384.4357213973999,
+  "features_sha256": "c8db5fa75288ec7cef8652dea2bdd1ddac0de198815cd890602be925339c4c96",
+  "model": "facebook/esm2_t33_650M_UR50D"
+}

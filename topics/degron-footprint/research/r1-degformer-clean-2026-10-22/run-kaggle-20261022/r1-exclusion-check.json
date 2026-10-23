@@ -1,0 +1,27 @@
+[
+  {
+    "fold": 0,
+    "remaining_rows": 523118,
+    "excluded_rows": 46152
+  },
+  {
+    "fold": 1,
+    "remaining_rows": 541713,
+    "excluded_rows": 27557
+  },
+  {
+    "fold": 2,
+    "remaining_rows": 538236,
+    "excluded_rows": 31034
+  },
+  {
+    "fold": 3,
+    "remaining_rows": 524333,
+    "excluded_rows": 44937
+  },
+  {
+    "fold": 4,
+    "remaining_rows": 550028,
+    "excluded_rows": 19242
+  }
+]
