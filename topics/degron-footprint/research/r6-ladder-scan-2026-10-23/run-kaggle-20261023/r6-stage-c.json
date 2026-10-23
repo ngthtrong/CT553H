@@ -1,0 +1,22 @@
+{
+  "esm8": {
+    "model": "facebook/esm2_t6_8M_UR50D",
+    "source": "facebook/esm2_t6_8M_UR50D",
+    "seconds": 38.138060331344604
+  },
+  "esm35": {
+    "model": "facebook/esm2_t12_35M_UR50D",
+    "source": "facebook/esm2_t12_35M_UR50D",
+    "seconds": 110.50163078308105
+  },
+  "esm150": {
+    "model": "facebook/esm2_t30_150M_UR50D",
+    "source": "facebook/esm2_t30_150M_UR50D",
+    "seconds": 129.66274976730347
+  },
+  "esm650": {
+    "model": "facebook/esm2_t33_650M_UR50D",
+    "source": "facebook/esm2_t33_650M_UR50D",
+    "seconds": 383.1573452949524
+  }
+}

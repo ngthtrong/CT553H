@@ -1,0 +1,101 @@
+{
+  "all_pass": true,
+  "gates": [
+    {
+      "name": "n_sat_cells",
+      "observed": 92337.0,
+      "expected": 92337.0,
+      "abs_diff": 0.0,
+      "tol": 0.0,
+      "pass": true
+    },
+    {
+      "name": "featurizer_equals_cache_maxabs",
+      "observed": 0.0,
+      "expected": 0.0,
+      "abs_diff": 0.0,
+      "tol": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "M3_ensemble_vs_P0",
+      "observed": 0.8208223589063638,
+      "expected": 0.8208223589063638,
+      "abs_diff": 0.0,
+      "tol": 0.0001,
+      "pass": true
+    },
+    {
+      "name": "M3_seed17_vs_P0",
+      "observed": 0.8204208088793984,
+      "expected": 0.8204208088793984,
+      "abs_diff": 0.0,
+      "tol": 0.0002,
+      "pass": true
+    },
+    {
+      "name": "M3_seed29_vs_P0",
+      "observed": 0.8209820393457197,
+      "expected": 0.8209820393457197,
+      "abs_diff": 0.0,
+      "tol": 0.0002,
+      "pass": true
+    },
+    {
+      "name": "M3_seed43_vs_P0",
+      "observed": 0.8209243464238494,
+      "expected": 0.8209243464238494,
+      "abs_diff": 0.0,
+      "tol": 0.0002,
+      "pass": true
+    },
+    {
+      "name": "scan_rows_in_test_clusters",
+      "observed": 0.0,
+      "expected": 0.0,
+      "abs_diff": 0.0,
+      "tol": 0.0,
+      "pass": true
+    },
+    {
+      "name": "embedding_determinism_relmax_esm8",
+      "observed": 0.0044667781330645084,
+      "expected": 0.0,
+      "abs_diff": 0.0044667781330645084,
+      "tol": 0.01,
+      "pass": true
+    },
+    {
+      "name": "embedding_determinism_relmax_esm35",
+      "observed": 0.00872600357979536,
+      "expected": 0.0,
+      "abs_diff": 0.00872600357979536,
+      "tol": 0.01,
+      "pass": true
+    },
+    {
+      "name": "embedding_determinism_relmax_esm150",
+      "observed": 0.0,
+      "expected": 0.0,
+      "abs_diff": 0.0,
+      "tol": 0.01,
+      "pass": true
+    },
+    {
+      "name": "embedding_determinism_relmax_esm650",
+      "observed": 0.0,
+      "expected": 0.0,
+      "abs_diff": 0.0,
+      "tol": 0.01,
+      "pass": true
+    },
+    {
+      "name": "ridge_esm650_vs_R2",
+      "observed": 0.823038120252195,
+      "expected": 0.8230390437782314,
+      "abs_diff": 9.235260364226505e-07,
+      "tol": 0.001,
+      "pass": true
+    }
+  ]
+}

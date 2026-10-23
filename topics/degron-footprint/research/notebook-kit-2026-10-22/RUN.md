@@ -12,7 +12,7 @@ Dành cho Trọng. Mọi bước dưới đây là **việc tay của người**
 | 4 | `r1-degformer-clean-2026-10-22/r1-degformer-clean.ipynb` | có | không | xem README của R1 | R0 ĐẠT |
 | 5 | `r6-ladder-scan-2026-10-23/r6-ladder-scan.ipynb` (**một** notebook cho mọi giai đoạn) | có | **có** (tải 4 cỡ ESM-2) | xem README của R6; ô benchmark in giờ GPU thật | R0 ĐẠT; cần **gói dữ liệu v2** (có `r6-scantable.npz`): `make_data_package.py --version v2` |
 
-**Trạng thái 23/10/2026:** R0, R3, R2, R1 đã chạy xong ngày 22/10 (kết quả trong `run-kaggle-20261022/` của từng thư mục); R6 chờ chạy.
+**Trạng thái 23/10/2026:** R0, R3, R2, R1 đã chạy xong ngày 22/10 (kết quả trong `run-kaggle-20261022/` của từng thư mục); R6 chạy xong ngày 23/10 (`r6-ladder-scan-2026-10-23/run-kaggle-20261023/`; ≈ 1 giờ 25 phút trên 2×T4).
 
 R0 đỏ ⇒ **dừng, gửi `gates.json` + `env.json` cho tôi**, đừng chạy các notebook sau.
 

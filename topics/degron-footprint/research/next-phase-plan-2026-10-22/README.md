@@ -16,7 +16,7 @@ Phần còn lại của file là **kế hoạch gốc (22/10), giữ làm bản 
 | R1 | **Đã chạy, không phân biệt được** | Degformer sạch cụm 0,8068 so với ridge 0,8208 (Δ −0,0140, CI [−0,0283; +0,0010]); rò rỉ làm phồng checkpoint công bố 0,118 — [R1](../r1-degformer-clean-2026-10-22/README.md). Trạng thái G2 do Trọng và GVHD quyết |
 | R4 | Chưa làm | Kiểm chứng ngoài (Koren S4 chỉ ở mức thăm dò) |
 | R5 | Chưa làm | Quy tắc ghi trước: giữ ridge + Platt, trừ khi một thí nghiệm đạt tiêu chí. Xem thêm R6 §12: nếu ridge ngữ cảnh ±5 được xác nhận thì đối chứng tuyến tính là `ridge_W5` |
-| R6 (mới) | **Notebook đã dựng, chưa chạy trên Kaggle** | Một notebook cho: ngữ cảnh rộng, scanning, ESM-2 bốn cỡ, CNN/mCNN. Lượt thử CPU cho thấy ridge ±5 = 0,8286 (+0,0078) — [R6](../r6-ladder-scan-2026-10-23/README.md) |
+| R6 (mới) | **Đã chạy 23/10 (Kaggle, 12/12 cổng); phép xác nhận P chưa đạt** | `esm35_mcnn` − ridge M3 = +0,0097, CI [−0,0025; +0,0233], hai trong ba seed âm; phần lớn Δ là hiệu ứng ensemble (mạng đơn so `ridge_W5`: −0,0063). Được nhận ở mức họ: **ridge ±5 = 0,8286 (+0,0078)**. Đề xuất bước tiếp: R7 kiểm chứng ngoài mức peptide trên scanning ngoài cụm bão hòa (4.441 peptide / 2.779 cụm), rồi R5 chốt sớm — [R6 §3](../r6-ladder-scan-2026-10-23/README.md) |
 | `scan-sat-merge` | Đã chạy (phiên khác) | Trộn scanning không giúp ridge (0,8189–0,8203 so với 0,8208) — [báo cáo](../scan-sat-merge-2026-10-23/PROTOCOL.md) |
 | Hệ thống | App có mã và test; **chưa tích hợp cổng R3** | [system/](../../system/README.md), [DEVIATIONS §7](../../system/app/DEVIATIONS.md) |
 

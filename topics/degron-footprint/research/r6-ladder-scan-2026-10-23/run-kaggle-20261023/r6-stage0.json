@@ -1,0 +1,58 @@
+{
+  "gates_info": {
+    "summary_M3": {
+      "macro_auroc_per_seed": {
+        "17": 0.8204208088793984,
+        "29": 0.8209820393457197,
+        "43": 0.8209243464238494
+      },
+      "macro_auroc_ensemble": 0.8208223589063638
+    },
+    "scan_clusters_overlapping_test_per_fold": [
+      15,
+      13,
+      15,
+      13,
+      16
+    ],
+    "scan_cells_excluded_per_fold": [
+      1700,
+      2021,
+      783,
+      975,
+      1173
+    ],
+    "scan_cells_total": 133764
+  },
+  "cross_source_audit_descriptive": {
+    "all_shared_wt_le_4.0": {
+      "n_peptides": 88,
+      "n_cells": 2449,
+      "pearson": 0.7431556894446845,
+      "spearman": 0.5806257349816203,
+      "ols_slope_sat_on_scan": 0.7367290127090789,
+      "mean_dpsi_scan": 0.30609195666353617,
+      "mean_dpsi_sat": 0.3398409334709065,
+      "positive_rate_scan": 0.1453654552878726,
+      "positive_rate_sat": 0.1657819518170682,
+      "binary_agreement": 0.9191506737443854,
+      "cohen_kappa": 0.6925290380998638,
+      "auroc_scan_dpsi_for_sat_positive": 0.9219297420725341
+    },
+    "base91_shared_wt_le_3.0": {
+      "n_peptides": 54,
+      "n_cells": 1506,
+      "pearson": 0.7367188230095051,
+      "spearman": 0.5430414539036578,
+      "ols_slope_sat_on_scan": 0.7248670346747478,
+      "mean_dpsi_scan": 0.27955116045816736,
+      "mean_dpsi_sat": 0.35497663058930945,
+      "positive_rate_scan": 0.13678618857901725,
+      "positive_rate_sat": 0.16135458167330677,
+      "binary_agreement": 0.9183266932270916,
+      "cohen_kappa": 0.6784497932571628,
+      "auroc_scan_dpsi_for_sat_positive": 0.9039128862301203
+    }
+  },
+  "seconds": 18.140495777130127
+}
