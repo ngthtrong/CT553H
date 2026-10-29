@@ -1,0 +1,535 @@
+{
+  "schema_version": 1,
+  "scope": "Extraction of saved development results; no new training or bootstrap.",
+  "sources": {
+    "r6": {
+      "path": "../r6-ladder-scan-2026-10-23/run-kaggle-20261023/results.json",
+      "sha256": "7c49b4c9822f74f1e52f6d511558006ef6f8c4742a83d5d4e6c2b2e51a418782"
+    },
+    "r6_posthoc": {
+      "path": "../r6-ladder-scan-2026-10-23/posthoc-r6.json",
+      "sha256": "6b33d667a35ca2b9744a9c36b6e69601ea725f45e8170ff735c3211aee481442"
+    },
+    "r2": {
+      "path": "../r2-esm-features-2026-10-22/run-kaggle-20261022/results.json",
+      "sha256": "60a2fa497aa5059a44c87aa0666e9ed9e0aec61ddaee884c8874b5a4f56ee5c7"
+    },
+    "linear_history": {
+      "path": "../residue-task-derisk-2026-10-15/model.json",
+      "sha256": "aeb8f5310de3c76fa23da2dc8911a9089472f40527167c3da53fc1aba949c9a4"
+    },
+    "r6_protocol": {
+      "path": "../r6-ladder-scan-2026-10-23/PROTOCOL.md",
+      "sha256": "2c20d05a43d9e28589343b9c5703c2e9b22793b2d38d66808780e7f5b31dd2e9"
+    },
+    "r6_data": {
+      "path": "../r6-ladder-scan-2026-10-23/r6data.py",
+      "sha256": "8104ae7bae510b9d51a7bcc704919539ccd0c99f223677daa97591e30cbe553e"
+    },
+    "r6_nn": {
+      "path": "../r6-ladder-scan-2026-10-23/r6nn.py",
+      "sha256": "9dac727b250a6f2a340af4282779ec3000697d6d8dd5b251e57469afe34453ea"
+    },
+    "r6_runner": {
+      "path": "../r6-ladder-scan-2026-10-23/run_r6.py",
+      "sha256": "0f850c0c5b62a613c2fd814760a1f853ff0c6c5ecd1e1b8b120d07c37862d5b9"
+    },
+    "r2_common": {
+      "path": "../r2-esm-features-2026-10-22/common.py",
+      "sha256": "963747125a090c20bc38c2dc6e82b9cbbf128762f42ff2b648c3a8b7c51ece58"
+    },
+    "linear_features": {
+      "path": "../residue-task-derisk-2026-10-15/derisk.py",
+      "sha256": "c4441ba16e824d93673473c65fe66ad5f8fcc5d6a21b1ee6ec52b08776fd4d61"
+    }
+  },
+  "r6": {
+    "metric": "cell AUROC, macro across peptides",
+    "summaries": {
+      "ridge_M3": {
+        "per_seed": {
+          "17": 0.8204208088793984,
+          "29": 0.8209820393457197,
+          "43": 0.8209243464238494
+        },
+        "mean_seed_auroc": 0.8207757315496558,
+        "ensemble_auroc": 0.8208223589063638
+      },
+      "ridge_W5": {
+        "per_seed": {
+          "17": 0.8276364993850522,
+          "29": 0.8287625598637155,
+          "43": 0.8290653882910274
+        },
+        "mean_seed_auroc": 0.8284881491799316,
+        "ensemble_auroc": 0.8286365748869535
+      },
+      "oh_cnn1": {
+        "per_seed": {
+          "17": 0.8102042673367995,
+          "29": 0.8014580999629359,
+          "43": 0.8036392958056273
+        },
+        "mean_seed_auroc": 0.8051005543684543,
+        "ensemble_auroc": 0.8127472580239251
+      },
+      "oh_mcnn": {
+        "per_seed": {
+          "17": 0.8116844588896746,
+          "29": 0.8058150321459645,
+          "43": 0.8083075955905565
+        },
+        "mean_seed_auroc": 0.8086023622087319,
+        "ensemble_auroc": 0.8168054270170244
+      },
+      "ridge_esm35": {
+        "per_seed": {
+          "17": 0.8233845547490481,
+          "29": 0.8226207644200096,
+          "43": 0.8239595622194197
+        },
+        "mean_seed_auroc": 0.8233216271294924,
+        "ensemble_auroc": 0.8233872024229536
+      },
+      "esm35_cnn1": {
+        "per_seed": {
+          "17": 0.8238907289275634,
+          "29": 0.8180711723462046,
+          "43": 0.8124865054352861
+        },
+        "mean_seed_auroc": 0.8181494689030181,
+        "ensemble_auroc": 0.826394498156343
+      },
+      "esm35_mcnn": {
+        "per_seed": {
+          "17": 0.8280010563664515,
+          "29": 0.8202250668465968,
+          "43": 0.8183090390579848
+        },
+        "mean_seed_auroc": 0.8221783874236777,
+        "ensemble_auroc": 0.8304902658208564
+      }
+    },
+    "contrasts": {
+      "A_ridge_W5_vs_W3": {
+        "a": "ridge_W5",
+        "b": "ridge_M3",
+        "family": "A",
+        "delta": 0.00781421598058976,
+        "ci95": [
+          0.0029545948551665344,
+          0.01280461691536886
+        ],
+        "ci_adj": [
+          0.002115845706725543,
+          0.013916628491401004
+        ],
+        "m": 3,
+        "n_peptides": 91,
+        "n_clusters": 89,
+        "seed_deltas": {
+          "17": 0.007215690505653933,
+          "29": 0.0077805205179958025,
+          "43": 0.008141041867177965
+        },
+        "verdict": "nhận",
+        "equivalent_within_0.01": false
+      },
+      "P_esm35_mcnn_vs_ridge": {
+        "a": "esm35_mcnn",
+        "b": "ridge_M3",
+        "family": "primary",
+        "delta": 0.009667906914492616,
+        "ci95": [
+          -0.002516055448689216,
+          0.023257891963861504
+        ],
+        "ci_adj": [
+          -0.002516055448689216,
+          0.023257891963861504
+        ],
+        "m": 1,
+        "n_peptides": 91,
+        "n_clusters": 89,
+        "seed_deltas": {
+          "17": 0.007580247487053089,
+          "29": -0.0007569724991229302,
+          "43": -0.002615307365864585
+        },
+        "verdict": "chưa đủ bằng chứng (CI phủ 0)",
+        "equivalent_within_0.01": false
+      },
+      "S1_esm35_mcnn_vs_oh_mcnn": {
+        "a": "esm35_mcnn",
+        "b": "oh_mcnn",
+        "family": "secondary",
+        "delta": 0.013684838803832049,
+        "ci95": [
+          0.0025258289819930983,
+          0.026171561573293717
+        ],
+        "ci_adj": [
+          0.0025258289819930983,
+          0.026171561573293717
+        ],
+        "m": 1,
+        "n_peptides": 91,
+        "n_clusters": 89,
+        "seed_deltas": {
+          "17": 0.016316597476776863,
+          "29": 0.014410034700632329,
+          "43": 0.010001443467428234
+        },
+        "verdict": "nhận",
+        "equivalent_within_0.01": false
+      },
+      "S5_oh_mcnn_vs_oh_cnn1": {
+        "a": "oh_mcnn",
+        "b": "oh_cnn1",
+        "family": "secondary",
+        "delta": 0.004058168993099258,
+        "ci95": [
+          -0.003062771904532625,
+          0.010894558273231806
+        ],
+        "ci_adj": [
+          -0.003062771904532625,
+          0.010894558273231806
+        ],
+        "m": 1,
+        "n_peptides": 91,
+        "n_clusters": 89,
+        "seed_deltas": {
+          "17": 0.001480191552875028,
+          "29": 0.004356932183028542,
+          "43": 0.00466829978492925
+        },
+        "verdict": "chưa đủ bằng chứng (CI phủ 0)",
+        "equivalent_within_0.01": false
+      },
+      "S6_esm35_mcnn_vs_esm35_cnn1": {
+        "a": "esm35_mcnn",
+        "b": "esm35_cnn1",
+        "family": "secondary",
+        "delta": 0.0040957676645133395,
+        "ci95": [
+          -0.0005035205343934178,
+          0.008679481880667328
+        ],
+        "ci_adj": [
+          -0.0005035205343934178,
+          0.008679481880667328
+        ],
+        "m": 1,
+        "n_peptides": 91,
+        "n_clusters": 89,
+        "seed_deltas": {
+          "17": 0.004110327438888003,
+          "29": 0.002153894500392183,
+          "43": 0.005822533622698659
+        },
+        "verdict": "chưa đủ bằng chứng (CI phủ 0)",
+        "equivalent_within_0.01": true
+      },
+      "S7_esm35_mcnn_vs_ridge_W5": {
+        "a": "esm35_mcnn",
+        "b": "ridge_W5",
+        "family": "secondary",
+        "delta": 0.0018536909339028562,
+        "ci95": [
+          -0.011532945434247256,
+          0.016448876881142598
+        ],
+        "ci_adj": [
+          -0.011532945434247256,
+          0.016448876881142598
+        ],
+        "m": 1,
+        "n_peptides": 91,
+        "n_clusters": 89,
+        "seed_deltas": {
+          "17": 0.0003645569813991561,
+          "29": -0.008537493017118734,
+          "43": -0.010756349233042549
+        },
+        "verdict": "chưa đủ bằng chứng (CI phủ 0)",
+        "equivalent_within_0.01": false
+      }
+    }
+  },
+  "r2": {
+    "model": "facebook/esm2_t33_650M_UR50D",
+    "pca_k": 64,
+    "macro_auroc": {
+      "M3": {
+        "macro_auroc_per_seed": {
+          "17": 0.8204208088793984,
+          "29": 0.8209820393457197,
+          "43": 0.8209243464238494
+        },
+        "macro_auroc_ensemble": 0.8208223589063638
+      },
+      "M3+ESM": {
+        "macro_auroc_per_seed": {
+          "17": 0.822776743750238,
+          "29": 0.8231016798181735,
+          "43": 0.8233279853972476
+        },
+        "macro_auroc_ensemble": 0.8230390437782314
+      },
+      "ESM": {
+        "macro_auroc_per_seed": {
+          "17": 0.7853464452522673,
+          "29": 0.7853466438213388,
+          "43": 0.7853466438213388
+        },
+        "macro_auroc_ensemble": 0.7853466438213388
+      }
+    },
+    "paired_M3+ESM_minus_M3": {
+      "delta": 0.0022166848718676666,
+      "ci95": [
+        -0.003313628748219099,
+        0.008155450964275482
+      ],
+      "n_peptides": 91,
+      "n_clusters": 89
+    },
+    "verdict": "chưa đủ bằng chứng (CI phủ 0)"
+  },
+  "linear_history": {
+    "window": 3,
+    "n_seeds": 5,
+    "n_folds": 5,
+    "metric": "AUROC mức ô, trung bình macro theo peptide",
+    "scanning": {
+      "n_peptides": 2994,
+      "n_cells": 83446,
+      "n_clusters": 1985,
+      "n_features": {
+        "M0_composition_only": 60,
+        "M1_plus_position_index": 88,
+        "M2_plus_window_composition": 80,
+        "M3_plus_ordered_context": 180,
+        "M4_context_and_position": 208
+      },
+      "macro_auroc": {
+        "M0_composition_only": {
+          "mean": 0.8393,
+          "sd_across_seeds": 0.0002
+        },
+        "M1_plus_position_index": {
+          "mean": 0.8445,
+          "sd_across_seeds": 0.0002
+        },
+        "M2_plus_window_composition": {
+          "mean": 0.8625,
+          "sd_across_seeds": 0.0002
+        },
+        "M3_plus_ordered_context": {
+          "mean": 0.8682,
+          "sd_across_seeds": 0.0003
+        },
+        "M4_context_and_position": {
+          "mean": 0.8684,
+          "sd_across_seeds": 0.0001
+        }
+      },
+      "paired_vs_M0": {
+        "M1_plus_position_index": {
+          "mean": 0.0052,
+          "ci95": [
+            0.0035,
+            0.007
+          ],
+          "sd_cluster_bootstrap": 0.0009,
+          "n_clusters": 1599,
+          "wilcoxon_p": 8.175541857077052e-20,
+          "n_peptides": 2288,
+          "win_rate": 0.5625
+        },
+        "M2_plus_window_composition": {
+          "mean": 0.0232,
+          "ci95": [
+            0.0211,
+            0.0251
+          ],
+          "sd_cluster_bootstrap": 0.001,
+          "n_clusters": 1599,
+          "wilcoxon_p": 5.256177564822737e-123,
+          "n_peptides": 2288,
+          "win_rate": 0.7115
+        },
+        "M3_plus_ordered_context": {
+          "mean": 0.0289,
+          "ci95": [
+            0.0264,
+            0.0313
+          ],
+          "sd_cluster_bootstrap": 0.0013,
+          "n_clusters": 1599,
+          "wilcoxon_p": 7.921888680731486e-129,
+          "n_peptides": 2288,
+          "win_rate": 0.7251
+        },
+        "M4_context_and_position": {
+          "mean": 0.0291,
+          "ci95": [
+            0.0266,
+            0.0317
+          ],
+          "sd_cluster_bootstrap": 0.0013,
+          "n_clusters": 1599,
+          "wilcoxon_p": 2.2369916346792204e-129,
+          "n_peptides": 2288,
+          "win_rate": 0.7277
+        }
+      }
+    },
+    "saturation_transfer": {
+      "n_scanning_peptides_kept_for_training": 2849,
+      "n_scanning_peptides_dropped_cluster_overlap": 145,
+      "n_saturation_peptides": 91,
+      "n_saturation_cells": 47847,
+      "note": "Huấn luyện CHỈ trên bộ quét, chấm trên bộ bão hòa. Mọi peptide quét có cụm protein cov80 trùng với bộ bão hòa đã bị loại khỏi tập huấn luyện. Thay thế của bộ quét gần như toàn bộ là ->R, nên đây là phép chuyển sang 19 thay thế CHƯA THẤY.",
+      "macro_auroc": {
+        "M0_composition_only": {
+          "value": 0.7071,
+          "alpha": 0.1,
+          "position_level_spearman": 0.4368
+        },
+        "M1_plus_position_index": {
+          "value": 0.7194,
+          "alpha": 0.1,
+          "position_level_spearman": 0.4524
+        },
+        "M2_plus_window_composition": {
+          "value": 0.7241,
+          "alpha": 0.1,
+          "position_level_spearman": 0.446
+        },
+        "M3_plus_ordered_context": {
+          "value": 0.7273,
+          "alpha": 0.1,
+          "position_level_spearman": 0.444
+        },
+        "M4_context_and_position": {
+          "value": 0.7253,
+          "alpha": 0.1,
+          "position_level_spearman": 0.4456
+        }
+      },
+      "paired_vs_M0": {
+        "M1_plus_position_index": {
+          "mean": 0.0123,
+          "ci95": [
+            0.0046,
+            0.0199
+          ],
+          "sd_cluster_bootstrap": 0.004,
+          "n_clusters": 89,
+          "n_peptides": 91,
+          "win_rate": 0.6923,
+          "wilcoxon_p": 0.000897974473086553
+        },
+        "M2_plus_window_composition": {
+          "mean": 0.017,
+          "ci95": [
+            0.0087,
+            0.0255
+          ],
+          "sd_cluster_bootstrap": 0.0042,
+          "n_clusters": 89,
+          "n_peptides": 91,
+          "win_rate": 0.7143,
+          "wilcoxon_p": 0.00017815301123888055
+        },
+        "M3_plus_ordered_context": {
+          "mean": 0.0201,
+          "ci95": [
+            0.0117,
+            0.0285
+          ],
+          "sd_cluster_bootstrap": 0.0044,
+          "n_clusters": 89,
+          "n_peptides": 91,
+          "win_rate": 0.6484,
+          "wilcoxon_p": 4.195655290231862e-05
+        },
+        "M4_context_and_position": {
+          "mean": 0.0182,
+          "ci95": [
+            0.0096,
+            0.0265
+          ],
+          "sd_cluster_bootstrap": 0.0044,
+          "n_clusters": 89,
+          "n_peptides": 91,
+          "win_rate": 0.6484,
+          "wilcoxon_p": 0.0001403756238722381
+        }
+      }
+    }
+  },
+  "ensemble_posthoc": {
+    "ridge_M3": {
+      "mean_seed": 0.8207757315496558,
+      "ensemble": 0.8208223589063638,
+      "gain": 4.6627356708017764e-05
+    },
+    "ridge_W5": {
+      "mean_seed": 0.8284881491799316,
+      "ensemble": 0.8286365748869535,
+      "gain": 0.00014842570702189306
+    },
+    "oh_cnn1": {
+      "mean_seed": 0.8051005543684543,
+      "ensemble": 0.8127472580239251,
+      "gain": 0.007646703655470821
+    },
+    "oh_mcnn": {
+      "mean_seed": 0.8086023622087319,
+      "ensemble": 0.8168054270170244,
+      "gain": 0.00820306480829247
+    },
+    "ridge_esm35": {
+      "mean_seed": 0.8233216271294924,
+      "ensemble": 0.8233872024229536,
+      "gain": 6.557529346118418e-05
+    },
+    "esm35_cnn1": {
+      "mean_seed": 0.8181494689030181,
+      "ensemble": 0.826394498156343,
+      "gain": 0.008245029253324931
+    },
+    "esm35_mcnn": {
+      "mean_seed": 0.8221783874236778,
+      "ensemble": 0.8304902658208564,
+      "gain": 0.008311878397178618
+    }
+  },
+  "scan_inventory_posthoc_cov80": {
+    "sat_peptides": 176,
+    "sat_clusters": 172,
+    "scan_cells": 133764,
+    "scan_peptides": 4802,
+    "scan_clusters": 2902,
+    "cells_in_sat_clusters": 10046,
+    "disjoint_cells": 123718,
+    "disjoint_peptides": 4441,
+    "disjoint_clusters": 2779,
+    "disjoint_peptides_both_classes": 3120,
+    "positive_rate_dpsi_ge_1": 0.07749882797976042,
+    "aa_counts": {
+      "R": 79758,
+      "A": 28727,
+      "S": 15233
+    }
+  },
+  "missing_matched_arms": [
+    "pair-only ridge",
+    "pair+composition ridge",
+    "unordered-local-context ridge",
+    "ESM pointwise head matched to R6 CNN"
+  ]
+}
