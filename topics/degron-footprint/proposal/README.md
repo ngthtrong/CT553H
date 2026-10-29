@@ -10,14 +10,14 @@ Bản dự thảo ngày **21/10/2026**, soạn theo mẫu tiếng Việt của h
 
 ## Bám mẫu
 
-Mẫu gốc: [Đề cương LV Mau.pdf](../../../reportTemplate/guideline-thesis/Đề%20cương%20LV%20Mau.pdf) và [DOCX đi kèm](../../../reportTemplate/guideline-thesis/Đề%20cương%20LV%20Mau%20(1).docx).
+Mẫu gốc: [Đề cương LV Mau.pdf](../../../reportTemplate/guideline-thesis/Đề%20cương%20LV%20Mau.pdf) và [DOCX đi kèm](../../../reportTemplate/guideline-thesis/Đề%20cương%20LV%20Mau%20%281%29.docx).
 Giữ 7 phần I–VII, các mục con và ba bảng quy trình/nguồn dữ liệu/dự án. Nội dung mở rộng theo bài toán sinh học và đánh giá mô hình nên dài hơn mẫu trống. Giữ khổ **Letter 612 × 792 pt**, lề 1 inch theo chính mẫu (không suy khổ A4 từ template báo cáo NCKH), phông Times New Roman.
 
-Thông tin sinh viên/GVHD lấy từ [project/people.md](../../../project/people.md): Nguyễn Thanh Trọng, B2305615, TS. Hồ Quang Thái. File này có tên sinh viên khác phần tóm tắt CLAUDE.md; bản thảo dùng hồ sơ người tham gia có MSSV cụ thể. Chỗ cần điền: MSCB của GVHD; lịch tuần chưa tự đặt khi chưa có lịch học phần.
+Thông tin sinh viên/GVHD lấy từ [resources/people.md](../../../resources/people.md): Nguyễn Thanh Trọng, B2305615, TS. Hồ Quang Thái. File này có tên sinh viên khác phần tóm tắt CLAUDE.md; bản thảo dùng hồ sơ người tham gia có MSSV cụ thể. Chỗ cần điền: MSCB của GVHD; lịch tuần chưa tự đặt khi chưa có lịch học phần.
 
 ## Bằng chứng và giới hạn
 
-Nguồn hiện hành được đọc trực tiếp: CLAUDE.md; data/README.md; báo cáo G2 saturation và extension 18/10; phân tích/khuyến nghị MetaDegron 21/10; ghi chép bài báo trong lectures/papers/. Không dùng DECISIONS.md hay log.md đã bị xoá, không khôi phục chúng.
+Nguồn hiện hành được đọc trực tiếp: CLAUDE.md; data/README.md; báo cáo G2 saturation và extension 18/10; phân tích/khuyến nghị MetaDegron 21/10; ghi chép bài báo trong [resources/papers/analyzed-papers/](../../../resources/papers/analyzed-papers/README.md). Không dùng DECISIONS.md hay log.md đã bị xoá, không khôi phục chúng.
 
 Số mẫu 91/89/47.847 và AUROC 0,8082/0,7693 khớp [results.json](../research/g2-saturation-2026-10-18/results.json). Đối chứng Degformer huấn luyện lại cùng ngân sách nhãn đã có ở extension; bản có đầy đủ tiền huấn luyện nhưng loại cụm test vẫn là việc khác chưa hoàn tất. Không ghi G2 hoàn tất, không tự chốt kiến trúc; học chuyển tiếp/đường cong học là phương án đề xuất. MetaDegron đã được audit mã nguồn ngày 21/10; không dùng trạng thái cũ “chưa audit”.
 

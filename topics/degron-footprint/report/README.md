@@ -1,19 +1,16 @@
-# Template luận văn tốt nghiệp LaTeX (CTU – Kỹ thuật phần mềm, CTTT chất lượng cao)
+# Luận văn degron-footprint
 
-Template độc lập cho báo cáo luận văn tốt nghiệp, dựng lại từ template báo
-cáo NCKH cũ theo:
+Bản luận văn đang viết của **Nguyễn Thanh Trọng** (B2305615), GVHD **TS. Hồ Quang Thái**. Thư mục này đã chuyển từ `report/` ở gốc vào `topics/degron-footprint/report/`, cạnh mã nghiên cứu và ứng dụng của đề tài.
 
-- **Hướng dẫn của Khoa** trong `guideline-thesis/` (`Thesis template_SE_English`:
-  lề, đầu/chân trang, thứ tự phần Giới thiệu – Nội dung – Kết luận, đặc tả use
-  case, bảng từ điển dữ liệu, kế hoạch kiểm thử).
-- **Ba luận văn tin sinh học** trong `resources/reference-theses/` (Thạch Thanh
-  Nhi, Hồ Quốc Bảo, Nguyễn Duy Khánh): hai bìa, xác nhận chỉnh sửa theo hội
-  đồng, nhận xét GVHD, lời cảm ơn, cam đoan, Abstract/Tóm tắt, mục lục – danh
-  mục hình – bảng – thuật ngữ, tiêu đề chương viết hoa, phụ lục.
+Bản làm việc được tạo từ [template sạch](../../../reportTemplate/README.md), đã điền metadata và nội dung đề tài. Các mục `[PENDING]` hoặc ô trong ngoặc vuông còn lại cần được hoàn thiện; không dùng thư mục template gốc để viết luận văn.
 
-Chỉ có khung và hướng dẫn (comment `%`, không hiện trong PDF); chưa điền thông
-tin đề tài. Ô trong ngoặc vuông (`[THESIS TITLE]`, `[Student Name]`…) là chủ ý,
-để không bỏ sót khi điền `config/metadata.tex`.
+- [main.tex](main.tex): điểm vào LaTeX.
+- [config/metadata.tex](config/metadata.tex): thông tin bìa, sinh viên và GVHD.
+- [assets/README.md](assets/README.md): hình, sơ đồ và tài sản trình bày.
+- [VALIDATION.md](VALIDATION.md): bản ghi kiểm tra trước đây; không phải xác nhận đã build lại sau khi di chuyển.
+- Mẫu của Khoa nằm trong `guideline-thesis/`; luận văn tham khảo nằm ở [resources/reference-theses/](../../../resources/reference-theses/).
+
+Các hướng dẫn định dạng bên dưới kế thừa từ template.
 
 ## Quyết định thiết kế
 
@@ -89,8 +86,8 @@ Chạy `make doctor` để kiểm tra thực tế.
 
 ## Biên dịch
 
-Từ gốc repository dùng `make -C reportTemplate <lệnh>`, hoặc vào
-`reportTemplate/` và bỏ `-C reportTemplate`.
+Từ gốc repository dùng `make -C topics/degron-footprint/report <lệnh>`, hoặc vào
+`topics/degron-footprint/report/` và dùng trực tiếp các lệnh dưới đây.
 
 | Lệnh | PDF |
 | --- | --- |

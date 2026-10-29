@@ -19,6 +19,7 @@ archive/topics/*/models/
 
 # Python
 __pycache__/
+*.py[cod]
 .venv/
 venv/
 .ipynb_checkpoints/
@@ -27,12 +28,15 @@ venv/
 node_modules/
 target/
 build/
+# Cho phép .gitignore riêng của hai bản LaTeX chọn PDF cần giữ.
+!/reportTemplate/build/
+!/topics/degron-footprint/report/build/
 dist/
 
 # Bí mật
 .env
 
-# LaTeX (chỉ giữ .tex, .bib và .pdf)
+# LaTeX: bỏ qua tệp trung gian, giữ nguồn và tài sản trình bày
 *.aux
 *.bbl
 *.blg
@@ -43,6 +47,13 @@ dist/
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+*.bcf
+*.run.xml
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
 
 # Ứng dụng (topics/*/system/app): CSDL sinh ra khi chạy, độ phủ, kết quả kiểm thử. Không bao giờ đưa lên git
 # (dev.db 453 MB và idem.db 122 MB đã từng lọt vào một commit vì `.data/` có dấu chấm không khớp `**/data/**`).

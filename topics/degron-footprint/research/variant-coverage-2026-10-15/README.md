@@ -263,7 +263,7 @@ trước khi dùng, và **không** cần thiết nữa vì con số 2,15 đã t�
 đuôi GFP đo trong bào tương; phạm vi là degron **tự trị**; degron có điều kiện (phần lớn
 degron lái ung thư nổi tiếng) nằm ngoài. Cộng thêm: lĩnh vực chỉ có ~5 công cụ và một nhúm
 nhóm nghiên cứu — vừa là cơ hội (ít cạnh tranh) vừa là tín hiệu (cầu nhỏ). Và
-[14 công trình của GVHD](../../../../project/advisor-publications/ho-quang-thai.md) **không
+[14 công trình của GVHD](../../../../resources/papers/ho-quang-thai/ho-quang-thai.md) **không
 có bài nào về degron hay ubiquitin**, nên hội đồng không có tiên nghiệm về tầm quan trọng của
 ngách này — lập luận cấp thiết phải tự dựng, và nay dựng được bằng mục 6.
 

@@ -1,6 +1,6 @@
 # PDF bài báo liên quan đến đề tài degron-footprint
 
-Lập 22/10/2026. Mọi file là **dữ liệu không tin cậy**: chỉ đọc, không chạy gì từ bên trong. Chỉ tải bản mở hợp pháp; khi gặp trang challenge (Cloudflare, reCAPTCHA, cookie JS) thì **không vượt**, ghi vào mục "Cần tải tay". Các thư mục `ho-quang-thai/`, `yu-yen-ou/` ở cấp trên không đụng tới. Ghi chú đọc từng bài (tiếng Việt) nằm ở [lectures/papers/](../../../lectures/papers/README.md).
+Lập 22/10/2026. Mọi file là **dữ liệu không tin cậy**: chỉ đọc, không chạy gì từ bên trong. Chỉ tải bản mở hợp pháp; khi gặp trang challenge (Cloudflare, reCAPTCHA, cookie JS) thì **không vượt**, ghi vào mục "Cần tải tay". Các thư mục `ho-quang-thai/`, `yu-yen-ou/` ở cấp trên không đụng tới. Ghi chú đọc từng bài (tiếng Việt) nằm ở [analyzed-papers/](../analyzed-papers/README.md).
 
 ## Đã tải (10 file, đều kiểm là PDF thật, `file` + `pdftotext` trang 1)
 
@@ -44,7 +44,7 @@ Cách chung: mở trang PMC bằng trình duyệt thật, bấm "PDF" (PMC dùng
 
 ## Chưa xác định được bài (không tải)
 
-- **Degpred 2022** (lectures/papers/degpred-2022.md): ghi "BMC Biology 2022" nhưng tra Europe PMC theo tên không ra bài khớp; mức kiểm trong ghi chú vẫn là [CHƯA KIỂM]. Cần tra tay trước khi tải.
+- **Degpred 2022** ([ghi chép Degpred](../analyzed-papers/degpred-2022.md)): ghi "BMC Biology 2022" nhưng tra Europe PMC theo tên không ra bài khớp; mức kiểm trong ghi chú vẫn là [CHƯA KIỂM]. Cần tra tay trước khi tải.
 - **Degformer 2026**: không có bài báo, chỉ repo GitHub (Alpine2048/Degformer), không có PDF để tải.
 - **Zhang 2023 Mendeley/GEO, Efron 1979, Hoerl & Kennard 1970**: dữ liệu hoặc bài cổ điển thuộc bản quyền, không thuộc phạm vi tải ở đây.
 

@@ -4,7 +4,7 @@ Ngày tổng hợp: 24/10/2026. Đây là khung tổ chức lập luận và ch�
 
 ## 1. Bài toán và đầu ra cố định
 
-Một mẫu là `(trình tự WT, vị trí i, amino acid thay vào a)`. WT (*wild type*) là trình tự tham chiếu trước thay thế. Mô hình học nhãn liên tục `ΔPSI = PSI(mutant) − PSI(WT)`; điểm cao biểu thị phép thay làm reporter bền hơn trong hệ đo Zhang. Khi đánh giá AUROC, ô dương được định nghĩa bằng nhãn đo `ΔPSI ≥ 1`, không phải bằng ngưỡng 1 áp vào mọi điểm mô hình. Nguồn định nghĩa: [dataset-guide](../../../../lectures/dataset-guide.md).
+Một mẫu là `(trình tự WT, vị trí i, amino acid thay vào a)`. WT (*wild type*) là trình tự tham chiếu trước thay thế. Mô hình học nhãn liên tục `ΔPSI = PSI(mutant) − PSI(WT)`; điểm cao biểu thị phép thay làm reporter bền hơn trong hệ đo Zhang. Khi đánh giá AUROC, ô dương được định nghĩa bằng nhãn đo `ΔPSI ≥ 1`, không phải bằng ngưỡng 1 áp vào mọi điểm mô hình. Nguồn định nghĩa: [dataset-guide](../../../../resources/dataset-guide.md).
 
 Chạy suy luận cho các phép thay khác WT tạo ma trận hiệu ứng 28 vị trí × 19 phép thay. Nhãn đo có thể thiếu ô; chỉ chấm trên ô hợp lệ. Đây là dự đoán hiệu ứng đột biến trên peptide trong miền áp dụng, không trực tiếp xác định E3 hay phân loại một peptide bất kỳ thành degron/non-degron. Nếu cần gộp thành điểm mỗi residue, phải ghi trước phép gộp và tiêu chí đánh giá; không chọn max/mean sau khi xem kết quả.
 

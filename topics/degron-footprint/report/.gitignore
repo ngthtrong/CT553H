@@ -1,3 +1,4 @@
+# Chỉ giữ ba PDF đầu ra chính; bỏ qua tệp trung gian trong build/.
 /build/*
 !/build/content/
 !/build/content-twoside/

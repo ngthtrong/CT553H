@@ -1,4 +1,4 @@
-← Về hub
+[← Về README repository](../../../README.md)
 
 # Các công trình liên quan — mỗi bài một file
 
@@ -46,7 +46,7 @@
 
 ## Hình của tác giả: được dùng bài nào
 
-Chỉ **Voutsinos 2026** có giấy phép cho phép sao chép hình (CC BY-NC 4.0, xác minh qua PMC ngày 11/10/2026). Sáu hình đã tải nằm ở lectures/degron-footprint/assets/figures/.
+Chỉ **Voutsinos 2026** có giấy phép cho phép sao chép hình (CC BY-NC 4.0, xác minh qua PMC ngày 11/10/2026). Đường dẫn cũ `lectures/degron-footprint/assets/figures/` đã được gỡ khỏi cây làm việc; tài sản lịch sử còn trong nhánh `backup-before-clean`.
 
 > **Phân biệt quan trọng (rõ ra ngày 15/10):** giấy phép của **bài báo** và giấy phép của **dữ liệu** có thể khác nhau. Larsen 2025 là ví dụ: bài CC BY-NC-ND nhưng dữ liệu mức tile nằm trong repo GitHub dưới **MIT**. Nên khi đánh giá một nguồn mới, **kiểm cả hai**, và nhớ rằng điều khoản ND cấm *chia sẻ* bản phái sinh, không cấm *tạo ra* nó ([CC FAQ](https://creativecommons.org/faq/)).
 
@@ -62,8 +62,8 @@ Các bài khác **chỉ được dẫn link, không sao chép hình**:
 | Koren 2018, Tokheim 2021, AlphaMissense 2023 | không mở | chỉ dẫn link |
 | Degpred 2022, DEGRONOPEDIA 2024, MetaDegron 2024 | mở nhưng **chưa kiểm từng bài** | chỉ dẫn link cho tới khi kiểm |
 
-Lý do đầy đủ ở NOTICE.md.
+`NOTICE.md` thuộc bộ tài sản lịch sử, hiện không nằm trong thư mục này.
 
 ---
 
-← Về hub
+[← Về README repository](../../../README.md)
