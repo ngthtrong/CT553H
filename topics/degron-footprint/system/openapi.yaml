@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: Degron Footprint API
-  version: 1.0.0-draft
+  version: 1.1.0-design
   summary: Predict the effect of every amino-acid substitution in a 28-residue degron tile.
   description: |
-    Contract draft v0.1 (22 Oct 2026). The service scores the 532 substitutions of a 28-residue
+    Local release-1 design v0.2 (29 Oct 2026); new operations are planned, not implemented. The service scores the 532 substitutions of a 28-residue
     tile with a fixed, versioned model and returns a calibrated probability of the event
     `DeltaPSI >= 1.0` together with the provenance needed to reuse the result.
 
@@ -13,23 +13,28 @@ info:
     performance is a development out-of-fold benchmark, not an external validation. The
     probability is not a probability of disease and must not be presented as one.
 
-    The service has no accounts. Predictions are stateless unless the caller requests a share
-    link (`POST /v1/runs`), which stores the result for at most 30 days.
+    One loopback-only workspace, no accounts. Unsaved previews are transient; explicit project
+    saves, job submissions and import commits persist locally until deletion. Public sharing
+    is retired. Baseline routes remain documented; x-implementation-status marks additions
+    that still require backend/frontend implementation and tests. See api-spec.md for behaviour.
   license:
     name: Documentation of the thesis project
     identifier: LicenseRef-thesis-draft
 servers:
   - url: http://localhost:8000
-    description: Local Docker Compose
+    description: Single local instance (loopback only)
 tags:
   - name: prediction
   - name: reference
   - name: models
   - name: sharing
+    description: Legacy only; excluded from v0.2 acceptance
+  - name: workspace
   - name: operations
 paths:
   /v1/predict:
     post:
+      x-implementation-status: baseline
       tags: [prediction]
       operationId: predict
       summary: Score all substitutions of one tile (UC-01, UC-02)
@@ -125,6 +130,7 @@ paths:
         '503': {$ref: '#/components/responses/Error'}
   /v1/export:
     post:
+      x-implementation-status: baseline
       tags: [prediction]
       operationId: exportStateless
       summary: Predict and download as CSV or JSON without storing anything (UC-03)
@@ -164,6 +170,7 @@ paths:
         '429': {$ref: '#/components/responses/Error'}
   /v1/proteins:
     get:
+      x-implementation-status: baseline
       tags: [reference]
       operationId: searchProteins
       summary: Find proteins by gene symbol or accession prefix (UC-04)
@@ -193,6 +200,7 @@ paths:
         '429': {$ref: '#/components/responses/Error'}
   /v1/proteins/{uniprot_id}/tiles:
     get:
+      x-implementation-status: baseline
       tags: [reference]
       operationId: listTiles
       summary: Tiles of one protein with their domain status (UC-04)
@@ -210,6 +218,7 @@ paths:
         '429': {$ref: '#/components/responses/Error'}
   /v1/proteins/{uniprot_id}/tiles/{tile_index}/measured:
     get:
+      x-implementation-status: baseline
       tags: [reference]
       operationId: getMeasured
       summary: Measured DeltaPSI of the tile, if it is one of the 176 training peptides (UC-05)
@@ -235,6 +244,7 @@ paths:
         '429': {$ref: '#/components/responses/Error'}
   /v1/proteins/{uniprot_id}/tiles/{tile_index}/clinvar:
     get:
+      x-implementation-status: baseline
       tags: [reference]
       operationId: getClinvar
       summary: ClinVar missense variants inside the tile (UC-06)
@@ -261,6 +271,7 @@ paths:
         '503': {$ref: '#/components/responses/Error'}
   /v1/models:
     get:
+      x-implementation-status: baseline
       tags: [models]
       operationId: listModels
       summary: Registered models (UC-07)
@@ -279,6 +290,7 @@ paths:
                       $ref: '#/components/schemas/ModelSummary'
   /v1/models/{model_id}:
     get:
+      x-implementation-status: baseline
       tags: [models]
       operationId: getModel
       summary: Model card (UC-07)
@@ -297,6 +309,7 @@ paths:
         '404': {$ref: '#/components/responses/Error'}
   /v1/sources:
     get:
+      x-implementation-status: baseline
       tags: [reference]
       operationId: listSources
       summary: Data sources, licences and attribution texts (About page)
@@ -315,6 +328,8 @@ paths:
                       $ref: '#/components/schemas/DataSource'
   /v1/runs:
     post:
+      x-implementation-status: legacy
+      deprecated: true
       tags: [sharing]
       operationId: createRun
       summary: Predict and store the result behind a share link (optional)
@@ -342,6 +357,8 @@ paths:
         '429': {$ref: '#/components/responses/Error'}
   /v1/runs/{run_id}:
     get:
+      x-implementation-status: legacy
+      deprecated: true
       tags: [sharing]
       operationId: getRun
       summary: Read a shared run
@@ -361,6 +378,8 @@ paths:
         '422': {$ref: '#/components/responses/Error'}
   /v1/runs/{run_id}/export:
     get:
+      x-implementation-status: legacy
+      deprecated: true
       tags: [sharing]
       operationId: exportRun
       summary: Download a shared run as CSV or JSON (UC-03)
@@ -388,6 +407,7 @@ paths:
         '422': {$ref: '#/components/responses/Error'}
   /healthz:
     get:
+      x-implementation-status: baseline
       tags: [operations]
       operationId: health
       summary: Liveness and readiness
@@ -404,6 +424,827 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Health'
+  /v1/projects:
+    get:
+      tags:
+      - workspace
+      operationId: listProjects
+      summary: List local projects
+      x-implementation-status: planned
+      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      responses:
+        '200':
+          description: Planned successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectPage'
+        '404':
+          $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
+        '413':
+          $ref: '#/components/responses/Error'
+        '422':
+          $ref: '#/components/responses/Error'
+        '503':
+          $ref: '#/components/responses/Error'
+      parameters:
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 200
+          default: 50
+    post:
+      tags:
+      - workspace
+      operationId: createProject
+      summary: Create a project
+      x-implementation-status: planned
+      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      responses:
+        '201':
+          description: Planned successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        '404':
+          $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
+        '413':
+          $ref: '#/components/responses/Error'
+        '422':
+          $ref: '#/components/responses/Error'
+        '503':
+          $ref: '#/components/responses/Error'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectWrite'
+  /v1/projects/{project_id}:
+    get:
+      tags:
+      - workspace
+      operationId: getProject
+      summary: Read project
+      x-implementation-status: planned
+      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      responses:
+        '200':
+          description: Planned successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        '404':
+          $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
+        '413':
+          $ref: '#/components/responses/Error'
+        '422':
+          $ref: '#/components/responses/Error'
+        '503':
+          $ref: '#/components/responses/Error'
+    patch:
+      tags:
+      - workspace
+      operationId: renameProject
+      summary: Rename project
+      x-implementation-status: planned
+      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      responses:
+        '200':
+          description: Planned successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        '404':
+          $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
+        '413':
+          $ref: '#/components/responses/Error'
+        '422':
+          $ref: '#/components/responses/Error'
+        '503':
+          $ref: '#/components/responses/Error'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectWrite'
+    delete:
+      tags:
+      - workspace
+      operationId: deleteProject
+      summary: Delete project and owned work
+      x-implementation-status: planned
+      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      responses:
+        '204':
+          description: Deleted after explicit confirmation
+        '404':
+          $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
+        '413':
+          $ref: '#/components/responses/Error'
+        '422':
+          $ref: '#/components/responses/Error'
+        '503':
+          $ref: '#/components/responses/Error'
+      parameters:
+      - name: confirm
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: False/absent returns 409 with dependency summary, without deleting.
+    parameters:
+    - name: project_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  /v1/projects/{project_id}/analyses:
+    get:
+      tags:
+      - workspace
+      operationId: listAnalyses
+      summary: Read saved history
+      x-implementation-status: planned
+      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      responses:
+        '200':
+          description: Planned successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SavedAnalysisPage'
+        '404':
+          $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
+        '413':
+          $ref: '#/components/responses/Error'
+        '422':
+          $ref: '#/components/responses/Error'
+        '503':
+          $ref: '#/components/responses/Error'
+      parameters:
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 200
+          default: 50
+    post:
+      tags:
+      - workspace
+      operationId: saveAnalysis
+      summary: Explicitly compute and save immutable analysis
+      x-implementation-status: planned
+      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      responses:
+        '201':
+          description: Planned successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SavedAnalysis'
+        '404':
+          $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
+        '413':
+          $ref: '#/components/responses/Error'
+        '422':
+          $ref: '#/components/responses/Error'
+        '503':
+          $ref: '#/components/responses/Error'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SaveAnalysisRequest'
+    parameters:
+    - name: project_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  /v1/analyses/{analysis_id}:
+    get:
+      tags:
+      - workspace
+      operationId: getAnalysis
+      summary: Reopen immutable analysis
+      x-implementation-status: planned
+      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      responses:
+        '200':
+          description: Planned successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SavedAnalysis'
+        '404':
+          $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
+        '413':
+          $ref: '#/components/responses/Error'
+        '422':
+          $ref: '#/components/responses/Error'
+        '503':
+          $ref: '#/components/responses/Error'
+    delete:
+      tags:
+      - workspace
+      operationId: deleteAnalysis
+      summary: Delete analysis and dependent comparisons
+      x-implementation-status: planned
+      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      responses:
+        '204':
+          description: Deleted after explicit confirmation
+        '404':
+          $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
+        '413':
+          $ref: '#/components/responses/Error'
+        '422':
+          $ref: '#/components/responses/Error'
+        '503':
+          $ref: '#/components/responses/Error'
+      parameters:
+      - name: confirm
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: False/absent returns 409 with dependency summary, without deleting.
+    parameters:
+    - name: analysis_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  /v1/analyses/{analysis_id}/export:
+    get:
+      tags:
+      - workspace
+      operationId: exportAnalysis
+      summary: Export saved analysis
+      x-implementation-status: planned
+      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      responses:
+        '200':
+          description: Complete snapshot export with provenance and per-item manifest, not just the current page.
+          content:
+            text/csv:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+                description: Versioned structured snapshot; required semantic fields are specified in api-spec.md.
+                  Never filled from mutable current sources when reopening history.
+        '404':
+          $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
+        '413':
+          $ref: '#/components/responses/Error'
+        '422':
+          $ref: '#/components/responses/Error'
+        '503':
+          $ref: '#/components/responses/Error'
+      parameters:
+      - name: comparison_id
+        in: query
+        schema:
+          type: string
+          format: uuid
+      - name: format
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/ExportFormat'
+    parameters:
+    - name: analysis_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  /v1/projects/{project_id}/jobs:
+    get:
+      tags:
+      - workspace
+      operationId: listProjectJobs
+      x-implementation-status: planned
+      summary: Read persisted local records (planned)
+      parameters:
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 200
+          default: 50
+      responses:
+        '200':
+          description: Paginated immutable history
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobPage'
+        '404':
+          $ref: '#/components/responses/Error'
+    post:
+      tags:
+      - workspace
+      operationId: submitJob
+      summary: Persist and submit peptide/protein job
+      x-implementation-status: planned
+      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      responses:
+        '202':
+          description: Planned successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '404':
+          $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
+        '413':
+          $ref: '#/components/responses/Error'
+        '422':
+          $ref: '#/components/responses/Error'
+        '503':
+          $ref: '#/components/responses/Error'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobRequest'
+    parameters:
+    - name: project_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  /v1/jobs/{job_id}:
+    get:
+      tags:
+      - workspace
+      operationId: getJob
+      summary: Read progress, counts and coverage
+      x-implementation-status: planned
+      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      responses:
+        '200':
+          description: Planned successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '404':
+          $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
+        '413':
+          $ref: '#/components/responses/Error'
+        '422':
+          $ref: '#/components/responses/Error'
+        '503':
+          $ref: '#/components/responses/Error'
+    parameters:
+    - name: job_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  /v1/jobs/{job_id}/items:
+    get:
+      tags:
+      - workspace
+      operationId: listJobItems
+      summary: Page through all job outcomes
+      x-implementation-status: planned
+      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      responses:
+        '200':
+          description: Planned successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobItemPage'
+        '404':
+          $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
+        '413':
+          $ref: '#/components/responses/Error'
+        '422':
+          $ref: '#/components/responses/Error'
+        '503':
+          $ref: '#/components/responses/Error'
+      parameters:
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 200
+          default: 50
+    parameters:
+    - name: job_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  /v1/jobs/{job_id}/cancel:
+    post:
+      tags:
+      - workspace
+      operationId: cancelJob
+      summary: Idempotently request cancellation
+      x-implementation-status: planned
+      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      responses:
+        '202':
+          description: Planned successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '404':
+          $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
+        '413':
+          $ref: '#/components/responses/Error'
+        '422':
+          $ref: '#/components/responses/Error'
+        '503':
+          $ref: '#/components/responses/Error'
+    parameters:
+    - name: job_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  /v1/jobs/{job_id}/export:
+    get:
+      tags:
+      - workspace
+      operationId: exportJob
+      summary: Export complete job and failures
+      x-implementation-status: planned
+      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      responses:
+        '200':
+          description: Complete snapshot export with provenance and per-item manifest, not just the current page.
+          content:
+            text/csv:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+                description: Versioned structured snapshot; required semantic fields are specified in api-spec.md.
+                  Never filled from mutable current sources when reopening history.
+        '404':
+          $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
+        '413':
+          $ref: '#/components/responses/Error'
+        '422':
+          $ref: '#/components/responses/Error'
+        '503':
+          $ref: '#/components/responses/Error'
+      parameters:
+      - name: format
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/ExportFormat'
+    parameters:
+    - name: job_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  /v1/projects/{project_id}/datasets:
+    get:
+      tags:
+      - workspace
+      operationId: listDatasets
+      summary: List staged/committed project datasets
+      x-implementation-status: planned
+      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      responses:
+        '200':
+          description: Planned successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasetPage'
+        '404':
+          $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
+        '413':
+          $ref: '#/components/responses/Error'
+        '422':
+          $ref: '#/components/responses/Error'
+        '503':
+          $ref: '#/components/responses/Error'
+      parameters:
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 200
+          default: 50
+    post:
+      tags:
+      - workspace
+      operationId: previewImport
+      summary: Stage and validate CSV/TSV import
+      x-implementation-status: planned
+      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      responses:
+        '201':
+          description: Planned successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+        '404':
+          $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
+        '413':
+          $ref: '#/components/responses/Error'
+        '422':
+          $ref: '#/components/responses/Error'
+        '503':
+          $ref: '#/components/responses/Error'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ImportUpload'
+    parameters:
+    - name: project_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  /v1/datasets/{dataset_id}:
+    get:
+      tags:
+      - workspace
+      operationId: getDataset
+      summary: Read dataset revision/validation report
+      x-implementation-status: planned
+      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      responses:
+        '200':
+          description: Planned successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+        '404':
+          $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
+        '413':
+          $ref: '#/components/responses/Error'
+        '422':
+          $ref: '#/components/responses/Error'
+        '503':
+          $ref: '#/components/responses/Error'
+    post:
+      tags:
+      - workspace
+      operationId: commitDataset
+      summary: Explicitly commit a valid preview
+      x-implementation-status: planned
+      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      responses:
+        '200':
+          description: Planned successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+        '404':
+          $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
+        '413':
+          $ref: '#/components/responses/Error'
+        '422':
+          $ref: '#/components/responses/Error'
+        '503':
+          $ref: '#/components/responses/Error'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommitDataset'
+    delete:
+      tags:
+      - workspace
+      operationId: deleteDataset
+      summary: Delete dataset and dependent comparisons
+      x-implementation-status: planned
+      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      responses:
+        '204':
+          description: Deleted after explicit confirmation
+        '404':
+          $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
+        '413':
+          $ref: '#/components/responses/Error'
+        '422':
+          $ref: '#/components/responses/Error'
+        '503':
+          $ref: '#/components/responses/Error'
+      parameters:
+      - name: confirm
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: False/absent returns 409 with dependency summary, without deleting.
+    parameters:
+    - name: dataset_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  /v1/analyses/{analysis_id}/comparisons:
+    get:
+      tags:
+      - workspace
+      operationId: listComparisons
+      x-implementation-status: planned
+      summary: Read persisted local records (planned)
+      parameters:
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 200
+          default: 50
+      responses:
+        '200':
+          description: Paginated immutable history
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComparisonPage'
+        '404':
+          $ref: '#/components/responses/Error'
+    post:
+      tags:
+      - workspace
+      operationId: compareDataset
+      summary: Compare one saved analysis and committed dataset
+      x-implementation-status: planned
+      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      responses:
+        '201':
+          description: Planned successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comparison'
+        '404':
+          $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
+        '413':
+          $ref: '#/components/responses/Error'
+        '422':
+          $ref: '#/components/responses/Error'
+        '503':
+          $ref: '#/components/responses/Error'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ComparisonRequest'
+    parameters:
+    - name: analysis_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  /v1/comparisons/{comparison_id}:
+    parameters:
+    - name: comparison_id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    get:
+      tags:
+      - workspace
+      operationId: getComparison
+      x-implementation-status: planned
+      summary: Reopen stored comparison snapshot
+      responses:
+        '200':
+          description: Immutable saved comparison
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comparison'
+        '404':
+          $ref: '#/components/responses/Error'
 components:
   headers:
     RequestId:
@@ -474,6 +1315,7 @@ components:
         - measured_unreliable
         - predicted_in_domain
         - predicted_out_of_domain
+        - borderline  # planned R3 integration; not returned by the baseline
         - unknown
     RequestTarget:
       description: |
@@ -638,6 +1480,8 @@ components:
         psi_wt_measured: {type: [number, 'null']}
         reads_measured: {type: [number, 'null']}
         gate_model_id: {type: [string, 'null']}
+        gate_weights_sha256: {type: [string, 'null'], description: Planned v0.2 frozen gate provenance.}
+        measurement_estimator: {type: [string, 'null'], description: Planned v0.2 distinction between screen and intrinsic estimators.}
         message: {type: string}
     PredictionResult:
       type: object
@@ -718,9 +1562,11 @@ components:
         review_status: {type: [string, 'null']}
         last_evaluated: {type: [string, 'null'], format: date}
     ClinvarOverlay:
+      description: Baseline payload; optional annotation_status is a planned v0.2 addition.
       type: object
       required: [tile, variants, clinvar_file_date, provenance]
       properties:
+        annotation_status: {$ref: '#/components/schemas/AnnotationState'}
         tile: {$ref: '#/components/schemas/TileInfo'}
         variants:
           type: array
@@ -830,7 +1676,640 @@ components:
             - RATE_LIMITED
             - SERVICE_UNAVAILABLE
             - INTERNAL_ERROR
+            - PROJECT_NOT_FOUND
+            - ANALYSIS_NOT_FOUND
+            - JOB_NOT_FOUND
+            - DATASET_NOT_FOUND
+            - CONFIRMATION_REQUIRED
+            - IMPORT_INVALID
+            - DATASET_NOT_COMMITTED
+            - INCOMPATIBLE_ENDPOINT
+            - JOB_STATE_CONFLICT
+            - SNAPSHOT_UNAVAILABLE
         message: {type: string}
+        dependencies:
+          type: object
+          description: Planned 409 CONFIRMATION_REQUIRED dependency counts; no deletion performed.
+          additionalProperties: {type: integer, minimum: 0}
         field:
           type: [string, 'null']
           description: Name of the offending request field, when there is one.
+
+    ProjectWrite:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 200
+        description:
+          type: string
+      required:
+      - name
+    Project:
+      type: object
+      additionalProperties: false
+      properties:
+        project_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      required:
+      - project_id
+      - name
+      - created_at
+      - updated_at
+    SaveAnalysisRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        request:
+          $ref: '#/components/schemas/PredictRequest'
+        parent_analysis_id:
+          type: string
+          format: uuid
+      required:
+      - request
+    SavedAnalysis:
+      type: object
+      additionalProperties: false
+      properties:
+        analysis_id:
+          type: string
+          format: uuid
+        project_id:
+          type: string
+          format: uuid
+        parent_analysis_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+        result:
+          $ref: '#/components/schemas/PredictionResult'
+        snapshot:
+          type: object
+          additionalProperties: true
+          description: Versioned structured snapshot; required semantic fields are specified in api-spec.md. Never filled
+            from mutable current sources when reopening history.
+      required:
+      - analysis_id
+      - project_id
+      - created_at
+      - result
+      - snapshot
+    BatchPeptide:
+      type: object
+      additionalProperties: false
+      properties:
+        input_id:
+          type: string
+          minLength: 1
+          maxLength: 200
+        sequence:
+          type: string
+          maxLength: 64
+      required:
+      - input_id
+      - sequence
+    ProteinInput:
+      type: object
+      additionalProperties: false
+      properties:
+        input_id:
+          type: string
+        uniprot_id:
+          $ref: '#/components/schemas/UniprotId'
+        sequence:
+          type: string
+          minLength: 1
+          maxLength: 10000
+        reference_release:
+          type: string
+      description: Exactly one of uniprot_id or sequence; optional mapping must be verified.
+      oneOf:
+      - required:
+        - uniprot_id
+        not:
+          required:
+          - sequence
+      - required:
+        - input_id
+        - sequence
+        not:
+          required:
+          - uniprot_id
+    JobRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        mode:
+          type: string
+          enum:
+          - peptides
+          - protein
+        peptides:
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            $ref: '#/components/schemas/BatchPeptide'
+        protein:
+          $ref: '#/components/schemas/ProteinInput'
+        model_id:
+          type: string
+        calibrator:
+          $ref: '#/components/schemas/RequestCalibrator'
+        override_domain:
+          type: boolean
+          default: false
+      required:
+      - mode
+      oneOf:
+      - properties:
+          mode:
+            const: peptides
+        required:
+        - peptides
+        not:
+          required:
+          - protein
+      - properties:
+          mode:
+            const: protein
+        required:
+        - protein
+        not:
+          required:
+          - peptides
+    Job:
+      type: object
+      additionalProperties: false
+      properties:
+        job_id:
+          type: string
+          format: uuid
+        project_id:
+          type: string
+          format: uuid
+        mode:
+          type: string
+          enum:
+          - peptides
+          - protein
+        state:
+          type: string
+          enum:
+          - pending
+          - running
+          - completed
+          - partial
+          - failed
+          - cancelled
+        total:
+          type: integer
+          minimum: 0
+        counts:
+          type: object
+          additionalProperties:
+            type: integer
+            minimum: 0
+        coverage:
+          type: object
+          additionalProperties: true
+          description: Versioned structured snapshot; required semantic fields are specified in api-spec.md. Never filled
+            from mutable current sources when reopening history.
+        configuration_snapshot:
+          type: object
+          additionalProperties: true
+          description: Versioned structured snapshot; required semantic fields are specified in api-spec.md. Never filled
+            from mutable current sources when reopening history.
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      required:
+      - job_id
+      - project_id
+      - mode
+      - state
+      - total
+      - counts
+      - configuration_snapshot
+      - created_at
+      - updated_at
+    JobItem:
+      type: object
+      additionalProperties: false
+      properties:
+        item_id:
+          type: string
+        input_id:
+          type: string
+        tile_index:
+          type: integer
+          minimum: 1
+        start_pos:
+          type: integer
+          minimum: 1
+        end_pos:
+          type: integer
+          minimum: 1
+        state:
+          type: string
+          enum:
+          - pending
+          - running
+          - succeeded
+          - refused
+          - failed
+          - cancelled
+        analysis_id:
+          type: string
+          format: uuid
+        error:
+          $ref: '#/components/schemas/Error'
+        domain_status:
+          $ref: '#/components/schemas/DomainStatus'
+      required:
+      - item_id
+      - input_id
+      - state
+    ImportMetadata:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        assay:
+          type: string
+        assay_version:
+          type: string
+        endpoint:
+          type: string
+        units:
+          type: string
+        source:
+          type: string
+        reference_description:
+          type: string
+        compatibility:
+          type: string
+          enum:
+          - zhang_gps_dpsi
+          - other
+        rights_note:
+          type: string
+      required:
+      - name
+      - assay
+      - endpoint
+      - units
+      - source
+      - reference_description
+      - compatibility
+    ImportUpload:
+      type: object
+      additionalProperties: false
+      properties:
+        file:
+          type: string
+          format: binary
+        metadata:
+          type: string
+          description: JSON-encoded ImportMetadata; CSV/TSV observations use the columns in api-spec.md §6.
+      required:
+      - file
+      - metadata
+    ValidationIssue:
+      type: object
+      additionalProperties: false
+      properties:
+        row:
+          type: integer
+          minimum: 1
+        severity:
+          type: string
+          enum:
+          - error
+          - warning
+        code:
+          type: string
+        message:
+          type: string
+      required:
+      - severity
+      - code
+      - message
+    Dataset:
+      type: object
+      additionalProperties: false
+      properties:
+        dataset_id:
+          type: string
+          format: uuid
+        project_id:
+          type: string
+          format: uuid
+        revision:
+          type: integer
+          minimum: 1
+        state:
+          type: string
+          enum:
+          - staged
+          - committed
+          - expired
+        sha256:
+          type: string
+          pattern: ^[a-f0-9]{64}$
+        metadata:
+          $ref: '#/components/schemas/ImportMetadata'
+        committable:
+          type: boolean
+        counts:
+          type: object
+          additionalProperties:
+            type: integer
+            minimum: 0
+        issues:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationIssue'
+        created_at:
+          type: string
+          format: date-time
+        committed_at:
+          type: string
+          format: date-time
+      required:
+      - dataset_id
+      - project_id
+      - revision
+      - state
+      - sha256
+      - metadata
+      - committable
+      - counts
+      - issues
+      - created_at
+    CommitDataset:
+      type: object
+      additionalProperties: false
+      properties:
+        action:
+          type: string
+          const: commit
+        acknowledge_warnings:
+          type: boolean
+      required:
+      - action
+      - acknowledge_warnings
+    ComparisonRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        dataset_id:
+          type: string
+          format: uuid
+        replicate_id:
+          type: string
+        aggregation:
+          type: string
+          enum:
+          - mean
+          - median
+      required:
+      - dataset_id
+      oneOf:
+      - required:
+        - replicate_id
+        not:
+          required:
+          - aggregation
+      - required:
+        - aggregation
+        not:
+          required:
+          - replicate_id
+    Comparison:
+      type: object
+      additionalProperties: false
+      properties:
+        comparison_id:
+          type: string
+          format: uuid
+        analysis_id:
+          type: string
+          format: uuid
+        dataset_id:
+          type: string
+          format: uuid
+        compatible:
+          type: boolean
+        matched:
+          type: integer
+          minimum: 0
+        counts:
+          type: object
+          additionalProperties:
+            type: integer
+            minimum: 0
+        mae:
+          type:
+          - number
+          - 'null'
+        spearman:
+          type:
+          - number
+          - 'null'
+        metric_unavailable_reason:
+          type:
+          - string
+          - 'null'
+        rows:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+            description: Versioned structured snapshot; required semantic fields are specified in api-spec.md. Never
+              filled from mutable current sources when reopening history.
+        provenance:
+          type: object
+          additionalProperties: true
+          description: Versioned structured snapshot; required semantic fields are specified in api-spec.md. Never filled
+            from mutable current sources when reopening history.
+      required:
+      - comparison_id
+      - analysis_id
+      - dataset_id
+      - compatible
+      - matched
+      - counts
+      - mae
+      - spearman
+      - rows
+      - provenance
+    ProjectPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
+        total:
+          type: integer
+          minimum: 0
+        offset:
+          type: integer
+          minimum: 0
+        limit:
+          type: integer
+          minimum: 1
+          maximum: 200
+      required:
+      - items
+      - total
+      - offset
+      - limit
+    SavedAnalysisPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/SavedAnalysis'
+        total:
+          type: integer
+          minimum: 0
+        offset:
+          type: integer
+          minimum: 0
+        limit:
+          type: integer
+          minimum: 1
+          maximum: 200
+      required:
+      - items
+      - total
+      - offset
+      - limit
+    JobItemPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobItem'
+        total:
+          type: integer
+          minimum: 0
+        offset:
+          type: integer
+          minimum: 0
+        limit:
+          type: integer
+          minimum: 1
+          maximum: 200
+      required:
+      - items
+      - total
+      - offset
+      - limit
+    DatasetPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dataset'
+        total:
+          type: integer
+          minimum: 0
+        offset:
+          type: integer
+          minimum: 0
+        limit:
+          type: integer
+          minimum: 1
+          maximum: 200
+      required:
+      - items
+      - total
+      - offset
+      - limit
+
+    JobPage:
+      type: object
+      additionalProperties: false
+      required:
+      - items
+      - total
+      - offset
+      - limit
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
+        total:
+          type: integer
+          minimum: 0
+        offset:
+          type: integer
+          minimum: 0
+        limit:
+          type: integer
+          minimum: 1
+          maximum: 200
+    ComparisonPage:
+      type: object
+      additionalProperties: false
+      required:
+      - items
+      - total
+      - offset
+      - limit
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comparison'
+        total:
+          type: integer
+          minimum: 0
+        offset:
+          type: integer
+          minimum: 0
+        limit:
+          type: integer
+          minimum: 1
+          maximum: 200
+    AnnotationState:
+      type: string
+      enum:
+      - available
+      - no_match
+      - mapping_unavailable
+      - source_unavailable
+      - mapping_conflict
+      description: Planned v0.2 distinction, not returned by the baseline.

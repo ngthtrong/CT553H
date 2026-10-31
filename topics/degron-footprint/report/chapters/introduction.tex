@@ -48,8 +48,8 @@ prioritisation of mutations.
   \item Test whether representations learned from peptide-level labels and fine-tuned on mutation labels
         improve prediction, and study the learning curve before choosing a model.
   \item Evaluate effectiveness, stability across seeds, error, and the contribution of each component.
-  \item Build a software prototype that accepts a peptide, shows the predicted effect matrix, ranks
-        substitutions and exports results with model information.
+  \item Build one local React/FastAPI application for single-peptide and batch/whole-protein tile analysis,
+        ClinVar/reference annotation, experimental-data comparison, project history and traceable export.
 \end{enumerate}
 
 \section{Research Subject and Scope}
@@ -65,6 +65,12 @@ activity under a given assay.
         sources are used only for transfer learning or domain studies when their terms of use allow.
   \item Input: reference (wild-type) sequence, position and substituted amino acid. Output: predicted
         effect $\Delta$PSI, which can be arranged into an $L\times 20$ matrix.
+  \item The first software release includes peptide batches, whole-protein tiling, ClinVar and approved
+        reference annotations, CSV/TSV experimental import for comparison, and persistent local projects
+        and analysis history. Each scored tile remains a 28-residue peptide; whole-protein processing
+        does not validate intact-protein effects. Imported observations do not automatically enter training.
+  \item One local application is required; public hosting, public sharing, account management and
+        remote deployment are outside acceptance. Saved project work persists until user deletion.
   \item Identifying the specific E3 ligase is not a main task. No new wet-lab experiments are performed,
         and software output supports hypothesis generation; it does not establish causation, disease
         effects or therapeutic benefit.
@@ -78,10 +84,13 @@ compare models; (4) develop and test the prototype; (5) analyse results and writ
 
 \subsection{Technologies Used}
 Python with NumPy, pandas, scikit-learn and PyTorch for modelling, and MMseqs2 for protein clustering
-\citep{steinegger2017}. \textbf{[PENDING: prototype stack, to be fixed when the system design is chosen.]}
+\citep{steinegger2017}. The application uses React with TypeScript (Vite), FastAPI and local PostgreSQL,
+with a local worker for durable CPU inference jobs; SQLite supports isolated tests and baseline development.
 
 \subsection{Development and Supporting Tools}
-Git for version control, \LaTeX{} (XeLaTeX) for this report. \textbf{[PENDING: testing and deployment tools.]}
+Git for version control and \LaTeX{} (XeLaTeX) for this report. The local software test plan uses pytest,
+API/schema checks and browser tests. Docker may package the same local components; a public-host
+deployment is not required.
 
 \section{Main Contributions}
 \textbf{[PENDING: to be written from achieved results at the end of the work. Planned contributions are

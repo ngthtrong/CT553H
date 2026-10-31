@@ -1,56 +1,164 @@
-% CHAPTER 3: thiết kế và cài đặt giải pháp (hệ thống, dữ liệu, mô hình/phương pháp).
+% System design aligned with local first-release scope v0.2, 29 Oct 2026.
 \chapter{SOLUTION DESIGN AND IMPLEMENTATION}\label{chap:design}
 
-This chapter gives the planned structure of the solution. Details of implementation are
-\textbf{[PENDING]} until the corresponding work is done.
+This chapter describes the target design confirmed on 29 October 2026. Baseline API/frontend code
+exists, but the workspace, durable jobs and import extensions below are planned. A design element is
+not a completed implementation or a passing test. The design follows the requirements in
+Chapter~\ref{chap:problem}; existing implementation evidence is distinguished from planned work.
 
 \section{System Overview}
 \subsection{Product Context}
-The system has two parts: a research pipeline (data preparation, training, evaluation) and a prototype
-tool that uses a fixed trained model to score substitutions.
+The research pipeline prepares data, trains and evaluates models offline. One local web application
+loads a frozen model and reference snapshots; it supports researchers choosing substitutions for
+follow-up experiments. Runtime input and project observations stay on the local computer.
 \subsection{Functional Overview}
-Functions follow the use cases of Chapter~\ref{chap:problem}: predict an effect matrix, rank substitutions,
-export results with provenance.
+The first release covers UC-01 to UC-10 of Chapter~\ref{chap:problem}: prediction, ranking, export,
+protein/tile lookup, experimental comparison, ClinVar/reference annotations, evidence pages,
+peptide/protein jobs, experimental import and persistent project history. There is one product
+configuration with local operation; public hosting and public sharing are excluded.
 
 \section{System Architecture}
 \subsection{Architectural Components}
-\textbf{[PENDING: architecture diagram and component roles.]}
+Figure~\ref{fig:local-architecture} shows the target components. All application listeners use loopback;
+reference downloads and training are preparation activities outside the runtime workflow.
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[box/.style={draw,rounded corners,align=center,text width=3.25cm,
+      minimum height=1.1cm,font=\small},flow/.style={-{Latex[length=2mm]}}]
+    \node[box] (ui) {Local browser\\React + TypeScript};
+    \node[box,right=0.7cm of ui] (api) {Local API\\FastAPI + inference};
+    \node[box,below=0.8cm of api] (db) {Local PostgreSQL\\Reference + workspace};
+    \node[box,left=0.7cm of db] (worker) {Local worker\\Shared inference package};
+    \node[box,below=0.8cm of db] (files) {Local files\\Imports + frozen artefacts};
+    \draw[flow] (ui) -- node[above,font=\footnotesize]{REST} (api);
+    \draw[flow] (api) -- (db);
+    \draw[flow] (worker) -- (db);
+    \draw[flow] (worker.south) |- (files.west);
+    \draw[flow] (api.east) -- ++(0.6,0) |- (files.east);
+  \end{tikzpicture}
+  \caption{Planned components of the single local application; arrows denote data interactions.}
+  \label{fig:local-architecture}
+\end{figure}
+
+The React client owns input, matrix/ranking interaction and project/job/import screens. FastAPI
+validates input, applies domain rules, serves reference annotations and stores snapshots. A local
+worker uses the same inference package for jobs; PostgreSQL stores job state and project-owned
+records. Generated local file paths hold committed imports and versioned artefacts. Reference ETL
+never writes user observations into research data.
+
 \subsection{Interaction Between Components}
-\textbf{[PENDING]}
+A single-tile preview is validated and scored without persistence. Explicit Save creates an immutable
+analysis in a selected project. Batch submission pins model, calibrator, gate and source versions,
+returns a job ID, then the worker claims items transactionally. The client polls progress and opens
+per-tile results. Expired worker leases are recovered after restart; completed items are not duplicated.
+Cancellation and project deletion prevent late writes.
+
+An import first produces a validation preview. Only a valid, explicitly committed dataset becomes
+available for comparison. A comparison selects a saved analysis and dataset revision, checks assay
+and mutation alignment, and stores its own result/provenance. Reading history uses saved snapshots,
+not a new inference call or the latest ClinVar release.
+
 \subsection{Design Rationale}
-\textbf{[PENDING: advantages and drawbacks of the chosen architecture.]}
+React supports the interactive matrix, filtered tables and long-running-task states. FastAPI keeps the
+model computation in Python and provides an explicit REST contract. A local worker separates job
+execution from interactive requests without introducing a cloud service. Persistent projects require
+a database and snapshot lifecycle beyond the baseline transient preview. The trade-offs are local
+resource limits, file/database consistency and additional recovery/deletion tests. SQLite remains
+useful for isolated tests, while local PostgreSQL integration is an acceptance task. The OpenAPI
+contract marks new operations as planned; generating a schema does not implement them.
 
 \section{Data Design}
 \subsection{Data Sources and Preprocessing}
-Table~\ref{tab:sources} lists the planned sources. Each source is pinned by version or download date,
-checksum and terms of use; labels from different assays are kept separate.
-
+Reference snapshots have version/date, checksum and terms of use. Research-only sources and
+project-imported observations are kept distinct from served reference data (Table~\ref{tab:sources}).
 \begin{table}[htbp]
   \centering
-  \caption{Planned data sources}\label{tab:sources}
-  \begin{tabularx}{\textwidth}{|l|X|}
-    \hline \textbf{Source} & \textbf{Role} \\ \hline
-    Zhang et al.\ 2023, Mendeley Data v2 \citep{zhang2023data} & Main labels: scanning and saturation mutagenesis \\ \hline
-    GEO GSE240610 \citep{geo240610} & Cross-check of the peptide library source \\ \hline
-    Voutsinos et al.\ \citep{voutsinos2026} & Peptide-level tiles and PAP, for baselines and transfer learning \\ \hline
-    Larsen et al.\ \citep{larsen2025} & Domain-shift study at tile level, if terms of use allow \\ \hline
-    UniProtKB/Swiss-Prot & Sequences and coordinates for mapping and clustering \\ \hline
+  \caption{Data roles in research and the first local release}\label{tab:sources}
+  \small
+  \begin{tabularx}{\textwidth}{|P{4.0cm}|X|}
+    \hline \textbf{Source} & \textbf{Role and boundary} \\ \hline
+    Zhang Mendeley v2 \citep{zhang2023data} & Mutation labels and reference observations; training use labelled. \\ \hline
+    GEO GSE240610 \citep{geo240610} & GPS screen context; preserve estimator and source provenance. \\ \hline
+    UniProtKB/Swiss-Prot & Pinned human reference sequences, accessions and coordinate/WT checks. \\ \hline
+    ClinVar & First-release missense annotation; source/review/conflict state, attribution and diagnostic disclaimer. \\ \hline
+    Project CSV/TSV & User observations for assay-aware comparison only; preserve source, units and replicates. \\ \hline
+    Voutsinos/PAP \citep{voutsinos2026} & Research baselines and transfer-learning studies; not a replacement for mutation labels. \\ \hline
+    Larsen \citep{larsen2025} and other restricted sources & Research-only consideration subject to rights; not automatically imported into the service. \\ \hline
   \end{tabularx}
 \end{table}
 
 \subsection{Data Model}
-\textbf{[PENDING]}
+Reference entities are source, protein, tile, measured cell, ClinVar variant and model version.
+The planned workspace adds project, analysis job, job item, analysis run/cell, imported dataset/observation
+and comparison. Legacy expiring share tables are not reused as persistent project history.
+
 \subsection{Data Dictionary}
-\textbf{[PENDING: table of fields.]}
+\begin{table}[htbp]
+  \centering
+  \caption{Key workspace fields and invariants}\label{tab:workspace-fields}
+  \small
+  \begin{tabularx}{\textwidth}{|P{3.5cm}|X|}
+    \hline \textbf{Entity} & \textbf{Required information} \\ \hline
+    Project & UUID, name, description, creation/update time; one local workspace. \\ \hline
+    Job and item & Mode/input IDs, pinned configuration, states/counts, item errors, coverage and worker lease; unique completed result per item. \\ \hline
+    Analysis run/cell & Input and coordinate context; model/gate hashes; scores, rank, warnings, annotation/source snapshot and parent rerun ID. \\ \hline
+    Dataset/observation & File hash/revision, assay/endpoint/units/source, WT sequence, position, WT/replacement, value/missing reason and replicate. \\ \hline
+    Comparison & Run/dataset IDs, explicit replicate/aggregation, compatibility decision, alignment counts and metric/result snapshot. \\ \hline
+  \end{tabularx}
+\end{table}
+
 \subsection{Relationships Between Entities}
-\textbf{[PENDING]}
+A project owns jobs, runs and datasets. A job contains input items; each successful tile item produces
+one immutable run with 532 cells. Dataset observations retain unique mutation/replicate keys.
+A comparison joins one run and one committed dataset from the same project. Source/model artefacts
+are versioned independently; changing active reference data must not change an old analysis.
+Deletion shows dependencies, stops related work and removes owned files/results with retryable cleanup;
+shared references and weights remain intact. Committed history has no automatic 30-day expiry.
 
 \section{Method and Model Design}
-Input is the reference sequence, position and substituted amino acid; target is $\Delta$PSI. The baseline
-is ridge regression on amino acid encodings, composition and local context; the reference models are the
-PAP score difference and Degformer. Transfer learning from peptide-level labels is examined against
-random initialisation under the same folds and label budget. \textbf{[PENDING: final architecture,
-objective function and training configuration.]}
+Input remains the reference peptide, position and replacement; target is $\Delta$PSI. The existing
+service baseline is the frozen ridge/Platt model from Section~\ref{sec:res-calibration}. This scope
+update does not choose a replacement model or change the research comparisons with PAP/Degformer.
+Raw effect and calibrated $P(\Delta\mathrm{PSI}\geq1)$ remain separate fields.
+
+\paragraph{Domain integration.}
+The effect model's intrinsic-WT training threshold must not be applied directly to the GPS screen
+estimator. The R3 research provides a two-tier gate with an intermediate borderline state; integrating
+its frozen rules and provenance into the baseline remains pending. Every tile has domain evidence;
+known out-of-domain scoring requires an explicit warned override. Whole-protein mode is a collection
+of peptide-context predictions, not a validated intact-protein model.
 
 \section{Functional Design}
-\textbf{[PENDING: processing flow and interface for each function.]}
+\subsection{Batch and Protein Processing}
+Peptide mode accepts a bounded list or multi-record FASTA of 28-residue inputs. Protein mode accepts
+one reference accession or one FASTA record. Tile $n$ starts at $(n-1)\cdot23+1$ and ends 27 residues
+later; only full windows are generated. Report uncovered intervals, invalid windows and domain
+refusals. Overlapping protein substitutions retain their tile contexts without averaging.
+Job states are pending, running, completed, partial, failed or cancelled; per-item states and counts
+explain partial results. Browser tables are paginated; exports include every outcome.
+
+\subsection{Import and Comparison}
+CSV/TSV rows contain peptide ID, WT sequence, 1-based position, WT/replacement, observed value and
+replicate. Optional accession/release/start coordinates are checked together. Metadata identify assay,
+endpoint, units, source and reference. Duplicate/conflicting mutation-replicate keys, nonfinite values
+and WT mismatches block commit. Empty observations retain a missing reason.
+
+Comparison requires exact mutation alignment and explicit replicate selection or aggregation.
+Comparable GPS $\Delta$PSI supports residuals (prediction minus observation), MAE and Spearman with
+sample counts; insufficient/constant pairs have no reported correlation. Different assay endpoints
+remain separate without pooled metrics. Imported observations do not automatically constitute
+independent validation or become training labels.
+
+\subsection{Annotations and Project Screens}
+The first release shows ClinVar alongside approved UniProt/GPS context. Show classification,
+review/conflict state, source release and WT-coordinate agreement; distinguish no match from
+unavailable/ambiguous mapping. Attribution and diagnostic disclaimer travel with saved/exported
+annotations. Custom unmapped sequences have explicit annotation-unavailable states.
+The project workspace exposes history, jobs and datasets; users can reopen snapshots, create reruns
+as new entries and confirm deletions. New screens and API routes remain pending implementation.
+
+\section{Local Execution View}
+One computer hosts the browser, API, worker, PostgreSQL and workspace files. Application listeners
+bind to loopback; the frontend origin is explicitly allowed. Docker may package the same components,
+but no remote host, public URL, TLS deployment or separate product edition is required.
+Appendix~\ref{app:installation} separates baseline startup from the pending first-release workflow.

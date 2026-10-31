@@ -1,16 +1,19 @@
 # Database Design
 
-Part of the system documents of the degron-footprint tool. Read [README.md](README.md) first for scope and decisions. Status of this document: **design draft v0.1 (22 Oct 2026)**, not yet implemented; every size is a planning estimate marked *to be measured*.
+**v0.2 design, 29 Oct 2026.** Read [README.md](README.md) for the accepted local scope. Reference tables and the DDL in §4 describe the baseline; the project/job/import extension in §11 is **planned and not migrated by this task**. Legacy expiring share tables remain documented for code compatibility, not as project history. Sizes are planning estimates unless a dated ETL result is named.
 
 ## 1. Design principles
 
-1. **Read-mostly reference data, stateless predictions.** Scores are computed on request from a 180-feature ridge model (a dot product); nothing is precomputed. Precomputing all 116,702 degron tiles × 532 substitutions would be about 62 million rows and buys nothing.
-2. **No user accounts.** A prediction is returned to the caller and not stored. A row is written to `prediction_run` only when the user explicitly asks for a share link, and it always has an expiry (SRS FR-20, NFR-12).
-3. **Every reference row points to a `data_source`** that carries version, licence, redistribution flag and SHA-256. Provenance fields in exports (UC-03) are read from there, never typed by hand.
-4. **Licence is a column, not a convention.** The ETL refuses to load a source whose `redistribution_ok` is false into a table that the public API can serve (§6).
-5. **Two-tier domain gate stored in the data model** (§3.3): tier 1 is the *measured* wild-type PSI of the tile in the GPS peptidome screen; tier 2 is a *predicted* wild-type PSI from a gate model that does **not exist yet** (experiment R3). The schema must work with tier 2 empty.
+1. **Read-mostly reference data and explicit persistent workspace.** Compute on demand; save immutable completed analyses, never precompute all reference substitutions.
+2. **One local operator, no accounts.** Projects own runs, jobs and imported datasets. A preview is transient until explicit save; job/import actions disclose local persistence.
+3. **Reference provenance.** Each reference row points to a versioned/licensed/hash-checked `data_source`; snapshots retain the versions used.
+4. **Separate user observations.** Project imports never write reference/training tables or weights; source rights and assay metadata remain attached.
+5. **Per-tile domain.** Freeze the model/gate evidence, including unknown/borderline, for each analysis; R3 integration is still pending in the baseline.
+6. **Retention and integrity.** Saved work survives restart until explicit deletion; transactional job claims and unique item keys prevent duplicate completed analyses.
 
-## 2. Entity-relationship diagram
+## 2. Baseline reference and legacy-share entity diagram
+
+The first-release workspace relationships are added in §11; `prediction_run`/`prediction_cell` below are legacy sharing tables, not the new history schema.
 
 ```mermaid
 erDiagram
@@ -103,24 +106,17 @@ A tile is a window of **28 residues** with step **23**: tile *n* (1-based) cover
 
 The effect model was trained only on peptides with intrinsic `PSI(WT) <= 4.0` (hyper-parameter `DEGRON_PSI_MAX = 4.0`). It cannot know whether a tile is in that domain, so the system attaches a `domain_status` to every tile and every prediction.
 
-| `domain_status` | Meaning | Tier | Source |
-|---|---|---|---|
-| `measured_in_domain` | Measured tile PSI present, `reads >= 10`, `psi <= 4.0` | 1 | GPS peptidome screen, replicate 1 |
-| `measured_out_of_domain` | Measured tile PSI present, `reads >= 10`, `psi > 4.0` (stable tile) | 1 | same |
-| `measured_unreliable` | Tile is in the screen but `reads < 10` or PSI is `NA` | 1 | same |
-| `predicted_in_domain` | Gate model predicts `PSI(WT) <= 4.0` | 2 | **gate model (R3): delivered, not yet loaded** |
-| `predicted_out_of_domain` | Gate model predicts `PSI(WT) > 4.0` | 2 | **gate model (R3): delivered, not yet loaded** |
-| `unknown` | No measurement and no gate model (user-typed sequence, or tile outside the screen) | — | — |
+The **baseline implementation** assigns `measured_in_domain`/`measured_out_of_domain` by directly comparing screen PSI with 4.0, has unreliable/unknown and reserved predicted states, and lacks `borderline`. This is not the accepted target rule.
 
-**Update 23 Oct 2026:** experiment R3 has run ([report](../research/r3-domain-gate-2026-10-22/README.md)) and both tiers passed their pre-registered criteria. It also showed that the raw threshold `psi <= 4.0` must not be applied to the *screen* PSI (specificity 0.20): the screen PSI is mapped through a logistic model, with cuts x <= 2.687 (in) and x >= 3.110 (out) for tier 1, and a ridge model on residue and adjacent-pair counts with cuts x̂ <= 3.700 and x̂ >= 4.426 for typed sequences. A third state, `borderline` (0.5 <= P < 0.8), exists in both tiers. Integration into the app is **not done yet** (see `app/DEVIATIONS.md`).
+The **target** uses the frozen R3 gate artefacts ([research report](../research/r3-domain-gate-2026-10-22/README.md)). Screen PSI is mapped through the logistic gate rather than equated with intrinsic PSI(WT); the reported tier-1 cuts are 2.687 / 3.110, and the typed-sequence tier-2 cuts are 3.700 / 4.426. A `borderline` region is retained. These figures are taken from the R3 report, not new measurements. Store raw measurement, estimator/source, gate ID/hash and final status separately. Add `borderline` to tile/run constraints and API types in the implementation migration; do not relabel historical snapshots under a newer gate.
 
-Until the gate model is loaded, no row has a `predicted_*` status and every unscreened tile and every user-typed sequence is `unknown`. The API must treat `unknown` as "score with a prominent warning" and `measured_out_of_domain` as "refuse by default" (see [api-spec.md](api-spec.md) §5, decision D-5 in [README.md](README.md)).
-
-`[CHƯA XÁC MINH]` The measured tile PSI comes from **one replicate** of the screen, while the training threshold applies to an *intrinsic* wild-type PSI (median of synonymous substitutions averaged over two replicates of the saturation library). The two quantities are not the same estimator. The ETL stores the measured value as is and the UI labels it "measured tile PSI (replicate 1)"; whether 4.0 is the right gate threshold for it is an open question for R3.
+Known out-of-domain tiles are refused by default; unknown/unreliable/borderline/predicted results carry warnings. An explicit override stays in the run snapshot. Typed sequences are not silently assigned canonical accessions.
 
 `[CHƯA XÁC MINH]` The screen identifies tiles as `<UniProt>_<gene>_<n>` (for example `P00387_CYB5R3_5`). The mapping `n → residues (n-1)*23+1…+28` of **UniProt release 2026_03** assumes the library was built on the same sequences. It is supported for the 176 training peptides (the verification run compares the UniProt-derived tile with the training peptide for every cell and the difference is 0) but has **not** been checked for the other tiles. The ETL therefore records, for every `tile` row with a screen id, whether the derived sequence matches wherever the screen or labels give an independent sequence, and reports the count (§7).
 
-## 4. DDL (PostgreSQL 16)
+## 4. Baseline DDL (PostgreSQL 16)
+
+This retained baseline is not a complete v0.2 migration: expiring `prediction_run` rows belong to deprecated sharing; new persistent `analysis_run` rows are defined in §11. Domain constraints below require the R3 migration described in §3.3.
 
 Portable subset: `text`, `integer`, `double precision`, `boolean`, `CHECK` and plain/partial indexes work in both PostgreSQL and SQLite. PostgreSQL-only constructs are marked `-- PG`. §8 lists the SQLite substitutions.
 
@@ -300,7 +296,7 @@ CREATE TABLE etl_input (
 
 Notes on the DDL.
 
-* `prediction_run` holds the sequence the user typed. That is the only place a user sequence can persist, and only after an explicit share request. `input_sequence` is deleted with the row at `expires_at`.
+* `prediction_run` holds the sequence the user typed. In the baseline share schema this requires an explicit share request; the new project/job/import schema in §11 persists its own inputs separately. `input_sequence` is deleted with the row at `expires_at`.
 * `tile.psi_wt_predicted_by` references `model_version`, which must therefore be created first (or the constraint added afterwards). The migration order is: `data_source`, `model_version`, `protein`, `tile`, then the rest.
 * `measured_cell.in_training_set` is `true` for every row in v1, because the product model is fitted on all 176 peptides. The overlay (UC-05) must say "measured data, included in the training of this model" and must never be presented as validation.
 * `clinvar_variant` carries `clinvar_file_date` because ClinVar publishes no version number and the file is overwritten weekly.
@@ -362,7 +358,7 @@ Notes on the DDL.
 
 ### 5.7 `prediction_run` / `prediction_cell`
 
-Written only for share links. `share_token_hash` is the SHA-256 of a random 128-bit token. `warnings` is the list of warning codes active at creation. `prediction_cell` holds the 532 rows of the run.
+Legacy only: written for the baseline share links, outside v0.2 acceptance. `share_token_hash` is the SHA-256 of a random 128-bit token. `warnings` is the list of warning codes active at creation. `prediction_cell` holds the 532 rows of the run.
 
 ### 5.8 Operational tables
 
@@ -395,11 +391,11 @@ One script, `app/etl/load.py`, run by `make etl` (outside the web process). **Id
 | 1 | `README.md` / `sources.yaml` | `data_source` | Expected hashes come from the manifests below |
 | 2 | `raw/human-reviewed-2026-10-12.fasta.gz` (manifest `…fasta.manifest.json`) | `protein` | Parse headers `>sp|ACC|GENE_HUMAN`; reject duplicate accessions. 17 accessions from older releases (`raw/uniprot-additional/`) are **not** loaded in v1 |
 | 3 | `protein.sequence` | `tile` | Generate all tiles by §3.1; set `scorable`; `domain_status = 'unknown'`. About 490 thousand rows *(to be measured)* |
-| 4 | `interim/gps-peptidome-rep1.tsv` (21 MB, 475,506 lines; columns `peptide reads psi`) | `tile.screen_peptide_id`, `psi_wt_measured`, `reads_measured`, `domain_status` | Parse `<acc>_<gene>_<n>`; match `(acc, n)`; unmatched ids are counted, not inserted. `reads >= 10` ⇒ `measured_in_domain` if `psi <= 4.0` else `measured_out_of_domain`; otherwise `measured_unreliable`. Thresholds are read from `etl/params.yaml`, copied from `residue_data.py` |
+| 4 | `interim/gps-peptidome-rep1.tsv` (21 MB, 475,506 lines; columns `peptide reads psi`) | `tile.screen_peptide_id`, `psi_wt_measured`, `reads_measured`, `domain_status` | Parse `<acc>_<gene>_<n>`; match `(acc, n)`; unmatched ids are counted, not inserted. Baseline only: direct 4.0 rule. Target: preserve raw screen values and apply the frozen R3 gate (§3.3), with gate provenance and borderline state |
 | 5 | Saturation label cache (`processed/learning-curve-sat-ext4.0.npz` plus the peptide index) | `measured_cell` | Peptide id → `tile`; the ETL asserts that the UniProt-derived tile sequence equals the training peptide sequence for all 176 peptides and writes the count of mismatches (expected 0) |
-| 6 | `raw/clinvar/variant_summary.txt.gz` (455,785,525 bytes, SHA-256 `a5198a11…28218`) | `clinvar_variant` | Reuse the parsing rules of `research/variant-coverage-2026-10-15/coverage.py`: missense, assembly-independent protein change, reference residue must equal the UniProt residue. Option `--clinvar-scope` = `all`, `in-tiles` or `degron-only` (default `in-tiles`) to fit small hosted databases |
+| 6 | `raw/clinvar/variant_summary.txt.gz` (455,785,525 bytes, SHA-256 `a5198a11…28218`) | `clinvar_variant` | Reuse the parsing rules of `research/variant-coverage-2026-10-15/coverage.py`: missense, assembly-independent protein change, reference residue must equal the UniProt residue. Option `--clinvar-scope` = `all`, `in-tiles` or `degron-only` (default `in-tiles`) to control local reference-data size; record the loaded scope |
 | 7 | `processed/calibration-p6-model.npz` and `calibration-p6-2026-10-22/results.json` | `model_version` | `model_id = m3-ext4.0-platt-v1`, `status = frozen`, `is_default = true`. Weights are copied to `app/models/` with their SHA-256 |
-| 8 | (later) frozen gate model | `tile.psi_wt_predicted*`, `domain_status` | Only for tiles with `domain_status = 'unknown'`; never overwrites a measured status |
+| 8 | (pending integration) frozen gate model | `tile.psi_wt_predicted*`, `domain_status` | Only for tiles with `domain_status = 'unknown'`; never overwrites a measured status |
 
 **Report.** `etl_run.report` records: rows read, inserted, updated, skipped by reason; number of screen ids that did not match a tile; number of tiles whose derived sequence disagreed with an independent sequence; ClinVar rows rejected for reference mismatch; elapsed time. A run with any non-zero mismatch of step 5 fails.
 
@@ -414,17 +410,20 @@ One script, `app/etl/load.py`, run by `make etl` (outside the web process). **Id
 | `ALTER TABLE … ADD CONSTRAINT … CHECK` | Declare in the `CREATE TABLE` |
 | partial unique index on `is_default` | Supported as is |
 
-Alembic migrations are written with SQLAlchemy 2 constructs so both back-ends use the same revision files. CI runs the unit and contract suites on SQLite and the ETL and integration suites on PostgreSQL in a container.
+Alembic migrations are written with SQLAlchemy 2 constructs so both back-ends use the same revision files. The test plan calls for isolated SQLite tests and local PostgreSQL integration; no CI or PostgreSQL run is claimed by this document. SQLite is not a second accepted product edition.
 
 ## 9. Retention and privacy
 
-| Data | Kept? | Rule |
-|---|---|---|
-| Sequence typed by a user | No | Processed in memory and returned. Never written to logs |
-| Result of a prediction | No by default | Persisted only if the caller asks for a share link; `expires_at` ≤ 30 days, default 7 days |
-| Share token | Hash only | Plain token appears once in the response |
-| Purge | Hourly job and opportunistic delete on read | `DELETE FROM prediction_run WHERE expires_at < now()`; cells cascade |
-| Request log | Counters only | `usage_daily`; web-server access logs are configured to drop query strings and bodies |
+| Data | Retention |
+|---|---|
+| Unsaved single-tile preview | Memory only; no input in logs/URLs |
+| Saved analysis, job input/result, committed observations | Explicit local save/submit/commit; retained until deletion, no 30-day project expiry |
+| Staged import | Proposed 24-hour expiry if not committed; purge staged files/rows |
+| Deleted project/dataset/run | Confirm dependencies; remove owned rows/files and comparisons, prevent late worker writes; retain shared reference/model data |
+| Legacy share record | Its original ≤30-day rule, solely for baseline compatibility; not used for new project storage |
+| Logs | Route templates, status/counts and timing only, no sequences/observations |
+
+The database and workspace files must be copied together for local recovery. Application deletion does not erase external backups. Reference ETL remains rebuildable; user-imported observations and saved history are not rebuildable from reference ETL alone.
 
 ## 10. Size estimates *(to be measured by the ETL report)*
 
@@ -437,4 +436,41 @@ Alembic migrations are written with SQLAlchemy 2 constructs so both back-ends us
 | `model_version` | 1–4 | < 1 MB | — |
 | `prediction_run`/`cell` | transient | < 10 MB | 532 cells per run, 7-day expiry |
 
-A free-tier hosted PostgreSQL often caps storage at a few hundred MB; the `--clinvar-scope` option and the ETL size report exist so that this limit is checked rather than assumed. If the cap is too low the fallback is a SQLite file inside the API container (read-only reference data plus a small writable share table), which needs no hosted database.
+Local sizing must include persistent projects, job snapshots, imports and annotations. Measure rows/bytes per representative job and report disk growth separately from reference tables. There is no free-hosting cap or hosted-database fallback acceptance target. The old transient-share estimate above does not size the new workspace.
+
+## 11. Planned first-release workspace migration
+
+**Design only; no migration or database writes were made in the scope-update task.** Keep the existing reference schema and introduce project-owned tables rather than overloading the legacy share-token/expiry schema.
+
+```mermaid
+erDiagram
+    project ||--o{ analysis_job : owns
+    project ||--o{ analysis_run : owns
+    project ||--o{ import_dataset : owns
+    analysis_job ||--o{ job_item : contains
+    job_item ||--o| analysis_run : produces
+    analysis_run ||--o{ analysis_cell : contains
+    analysis_run ||--o{ comparison : compared
+    import_dataset ||--o{ import_observation : contains
+    import_dataset ||--o{ comparison : supplies
+    model_version ||--o{ analysis_run : pins
+```
+
+| Entity | Keys and required fields | Invariants |
+|---|---|---|
+| `project` | UUID PK, name, description, created/updated UTC, deletion state | Local owner is the workspace; no account FK |
+| `analysis_job` | UUID PK, project FK, mode, immutable input/config/source snapshot, model/calibrator/gate hashes, state, timestamps, cancel flag | Mode peptides/protein; pending/running/completed/partial/failed/cancelled; pin configuration on submission |
+| `job_item` | PK `(job_id,item_id)`, input ID, normalised peptide, optional verified protein mapping, tile/coverage metadata, state/error, lease owner/expiry | Transactional claim; interrupted unfinished leases are reclaimable; completed items are not recomputed |
+| `analysis_run` | UUID PK, project FK, nullable job/item FK, parent run FK, model FK, normalised input, frozen result/provenance/annotation snapshot, created UTC | Unique `(job_id,item_id)` when non-null; immutable; no share token or expiry |
+| `analysis_cell` | PK `(analysis_id,position,mut_aa)`, WT, raw/probability/rank/top10 | 532 cells per scored analysis; WT matches saved sequence; values and ordering match the snapshot |
+| `import_dataset` | UUID PK, project FK, revision, display name, state, generated file path, file SHA-256, assay/units/source/rights/reference metadata, validation report, created/committed UTC | staged/committed; immutable after commit; new file = new revision, not overwrite; temporary expiry only for staged records |
+| `import_observation` | UUID PK, dataset FK, row number, peptide ID/WT sequence, position, WT/mutant, replicate, nullable observed value/missing reason, optional accession/release/start | Unique `(dataset_id,wt_sequence,position,mut_aa,replicate_id)`; validate sequence/coordinate/WT and finite values before commit |
+| `comparison` | UUID PK, analysis FK, dataset FK, aggregation/replicate/compatibility selection, alignment/exclusion counts, result/metric snapshot, created UTC | Same project; endpoints/units checked; no update to trained weights or original analysis |
+
+Indexes: projects by update time; analyses `(project_id,created_at,analysis_id)`; jobs `(state,created_at)`; job items `(job_id,state)` and lease expiry; datasets `(project_id,state)`; observations by dataset and mutation key. Paginate history/item results with a stable ID tie-breaker.
+
+Reference and annotation versions used in a saved analysis must remain retrievable, either as immutable versioned artefacts or included snapshots. Replacing the active ClinVar/UniProt load must not change old results. Do not make a saved analysis depend only on mutable current `tile`/`clinvar_variant` rows.
+
+Project deletion first marks deletion/cancellation and prevents worker commits, then deletes comparisons, observations, cells, analyses, job items/jobs and staged/committed owned files in a recoverable transaction/file-cleanup workflow. Run deletion removes its comparisons; dataset deletion removes its observations and comparisons. File-cleanup failures are surfaced and retried rather than reported as complete deletion. Foreign-key constraints must also prevent cross-project job/run/dataset associations. Reference rows, weights and other projects are never cascaded away.
+
+Migration acceptance: local PostgreSQL upgrade from the baseline; create/save/restart/read; interrupted job recovery without duplicate runs; failed import leaves reference tables unchanged; cascade/file cleanup; all checked by HIST/IMP/BATCH tests. No executable DDL for these additions is claimed here.

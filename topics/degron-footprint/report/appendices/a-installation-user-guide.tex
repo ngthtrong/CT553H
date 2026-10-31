@@ -1,15 +1,49 @@
-% APPENDIX A: hướng dẫn cài đặt và sử dụng (yêu cầu phần cứng/phần mềm, triển khai).
+% Local-only guide; distinguish executable baseline from planned scope.
 \chapter{INSTALLATION AND USER GUIDE}\label{app:installation}
 
 \section{Installation Requirements}
 \subsection{Hardware Requirements}
-\textbf{[PENDING: measured requirements for the research runner and the prototype.]}
+CPU inference runs on one local computer. Record actual OS, CPU, RAM and free disk in the local test
+report; batch/import/project storage requirements remain to be measured. A GPU is not required by the
+runtime application. Offline research training has separate requirements.
 \subsection{Software Requirements}
-Python with the packages listed in the project's requirements file, a CPU build of PyTorch, and MMseqs2 for
-clustering. \textbf{[PENDING: exact versions.]}
+The baseline uses a Python virtual environment and pinned backend dependencies, Node/npm with the
+frontend lockfile, and locally prepared reference data/model weights. The target adds local PostgreSQL
+and a job worker. Exact versions are recorded by the implementation's requirements/lockfiles;
+PostgreSQL/job integration is still pending. The research runner additionally uses its own packages
+and MMseqs2; these are not all required for serving predictions.
 
-\section{System Deployment}
-\textbf{[PENDING]}
+\section{Local System Execution}
+There is one local web application. Public hosting, VPS, domain and TLS deployment are outside the
+required workflow. All application listeners must be bound to loopback.
+
+\subsection{Existing Baseline Commands}
+From the repository root, create/install the baseline backend environment with
+\nolinkurl{make -C topics/degron-footprint/system/app venv}, then run
+\nolinkurl{make -C topics/degron-footprint/system/app dev-api}.
+The API listens on \nolinkurl{http://127.0.0.1:8000}. On first run this command prepares a SQLite
+development database from the local research checkout; it does not start the planned PostgreSQL
+workspace or durable worker. The existing development ETL's default ClinVar subset must be recorded
+when interpreting annotations.
+
+In a second terminal enter \nolinkurl{topics/degron-footprint/system/app/frontend}, run
+\nolinkurl{npm ci}, then \nolinkurl{npm run dev -- --host 127.0.0.1}. Open
+\nolinkurl{http://127.0.0.1:5173}. Use the real backend; mock mode contains synthetic scores.
+These commands are read from the baseline guides and were not executed as application acceptance
+in this document-update task.
+
+\subsection{Target Local Workflow}
+\textbf{[PENDING: implemented migrations and startup commands for the local PostgreSQL workspace,
+worker and new screens.]}
+The final guide must reproduce reference preparation, local startup, a saved project, a peptide/protein
+job, a committed observation dataset, comparison/export, shutdown and reopening on the same machine.
+Copy database and workspace files together for recovery. Docker may package these same components;
+it is not a separate public/internal edition.
 
 \section{User Guide}
-\textbf{[PENDING: after the prototype exists.]}
+The target sequence is: create/open a project; choose single peptide, peptide batch or whole protein;
+review syntax/domain/coverage; submit and inspect per-tile results; view ClinVar/reference evidence;
+import CSV/TSV with assay/units/replicates and fix validation errors; explicitly commit; compare compatible
+observations; export scores and provenance; reopen history. Unsaved single-tile previews are transient;
+saved work persists until deletion. Deletion presents dependencies and requires confirmation.
+\textbf{[PENDING: screenshots and an executed local walkthrough after implementation.]}

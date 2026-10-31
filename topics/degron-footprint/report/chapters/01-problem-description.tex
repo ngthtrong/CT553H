@@ -1,87 +1,197 @@
-% PART 2. CONTENT, CHAPTER 1: mô tả bài toán và yêu cầu. Nhãn PART 2 in phía trên
-% chương đầu tiên và có dòng riêng trong mục lục.
+% Software scope v0.2 confirmed by the author, 29 Oct 2026.
 \ThesisChapterNumbering
 \ThesisPart{PART 2. CONTENT}
 \chapter{PROBLEM DESCRIPTION}\label{chap:problem}
 
 \section{Detailed Problem Description}
-Researchers who study degrons want to know which substitution, at which position of a degron peptide,
-raises or lowers the degron signal. The thesis addresses two connected problems.
+Researchers selecting degron mutations for follow-up experiments face a limited experimental budget.
+A 28-residue peptide has 532 possible single-amino-acid substitutions. The software must help the
+researcher inspect these candidates, choose a shortlist and retain the evidence needed to revisit
+that choice. Its primary deliverable is a traceable prioritisation workflow.
 
-\begin{itemize}
-  \item \textbf{Prediction.} Given a reference peptide sequence, a position and a substituted amino acid,
-        predict the effect $\Delta$PSI of the substitution. Models are trained and evaluated on
-        experimental labels with protein-cluster-aware splits.
-  \item \textbf{Analysis tool.} Provide a prototype that lets a user enter a peptide, view the predicted
-        effect matrix, rank substitutions and export the result with provenance (model version, data
-        source, supported domain).
-\end{itemize}
+The thesis connects two problems. The research pipeline predicts the effect $\Delta$PSI of a
+substitution from a reference peptide, position and replacement amino acid, using experimental
+labels and protein-cluster-aware evaluation. The application uses a frozen model to support
+analysis, annotation and comparison. The model task remains mutation-level prediction; annotation
+and project management do not change its scientific endpoint.
 
-The intended users are researchers who select mutations for follow-up experiments, and students who
-explore the relation between peptide sequence and degradation signal. The workflow is: enter a valid
-peptide, generate all substitutions, score them with a fixed model, display a matrix and ranking, and
-export CSV/JSON. Inputs that are missing, mis-positioned or outside the supported domain must be
-reported explicitly, and uncalibrated scores must not be presented as probabilities of disease.
+\paragraph{First-release scope.}
+The software scope confirmed on 29 October 2026 is one local web application using React with
+TypeScript and FastAPI. It includes single-peptide analysis, peptide batches, whole-protein tiling,
+ClinVar and approved reference annotations, import of experimental observations for comparison,
+CSV/JSON export, and persistent projects and analysis history. The browser, API, local worker and
+database belong to the same local workspace. Public hosting, remote deployment and public sharing
+are outside acceptance; no separate public and internal editions are required.
+
+The main actor is the researcher operating this local workspace. Account management, multi-user
+collaboration, wet-lab/sample management, automatic retraining and clinical diagnosis are outside
+scope. Imported measurements remain project data and are not added automatically to training or
+benchmark labels. No new biological experiment is required by this thesis.
 
 \section{Functions of the System}
-A minimal offline command-line prototype exists (Section~\ref{sec:testplan}); it covers
-scoring and CSV export only, with no web interface yet. The use cases below remain the requirements for
-the full prototype.
+The following use cases describe the target first release, not completed implementation.
+Baseline single-tile API/frontend code and a CLI already exist; the added project, job and import
+flows still require implementation and verification. The requirements below define the target
+behaviour; Chapter~\ref{chap:evaluation} specifies the corresponding acceptance scenarios.
 
 \subsection{Predict the Effect Matrix}
-\begin{usecasespec}{Predict the effect matrix of a peptide}{tab:uc-predict}
+\begin{usecasespec}{Predict the effect matrix}{tab:uc-predict}
   \ucname{Predict effect matrix}{UC-01}
-  \ucactor{User}{Important}{Simple}
-  \ucfull{Stakeholders and interests:}{Researcher: wants predicted effect of every substitution of a peptide.}
-  \ucfull{Summary description:}{The user enters a peptide sequence; the system returns an $L\times 20$ matrix of predicted $\Delta$PSI values.}
-  \ucfull{Relationships:}{Association: User \newline Include: Validate input \newline Extend: Compare with measured data \newline Generalization: ---}
-  \ucfull{Event handling:}{1.~The user enters a peptide. \newline 2.~The system validates length, alphabet and domain. \newline 3.~The system scores all substitutions with the fixed model. \newline 4.~The system displays the matrix.}
-  \ucfull{Alternative / exceptional flows:}{Invalid or out-of-domain input: the system shows an explicit message and does not return scores.}
-  \ucfull{Expected outcome:}{A matrix of predicted effects with model version and supported domain.}
+  \ucactor{Researcher}{Important}{Simple}
+  \ucfull{Stakeholders and interests:}{Researcher: inspect the effect of every single substitution of a peptide.}
+  \ucfull{Summary description:}{Enter a 28-residue WT peptide or select a reference tile; obtain 532 scores in a position-by-amino-acid grid with WT cells masked.}
+  \ucfull{Relationships:}{Include: validate input and assess domain. \newline Extend: compare observations, view annotations, save analysis.}
+  \ucfull{Event handling:}{1.~Enter/select the peptide. \newline 2.~Validate syntax, coordinates and domain. \newline 3.~Score with a frozen model. \newline 4.~Show domain and warnings before the matrix.}
+  \ucfull{Alternative / exceptional flows:}{Invalid input: no scores. Known out-of-domain tile: refuse by default; explicit override records a warning. Unknown, unreliable or borderline domain: score only with a prominent limitation label.}
+  \ucfull{Expected outcome:}{A transient preview with raw $\Delta$PSI score, calibrated $P(\Delta\mathrm{PSI}\geq1)$, model identity and domain evidence; explicit save invokes UC-10.}
 \end{usecasespec}
 
 \subsection{Rank Substitutions}
 \begin{usecasespec}{Rank substitutions}{tab:uc-rank}
   \ucname{Rank substitutions}{UC-02}
-  \ucactor{User}{Important}{Simple}
-  \ucfull{Stakeholders and interests:}{Researcher: wants a short list of substitutions to test.}
-  \ucfull{Summary description:}{The system orders substitutions by predicted effect.}
-  \ucfull{Relationships:}{Association: User \newline Include: Predict effect matrix \newline Extend: --- \newline Generalization: ---}
-  \ucfull{Event handling:}{1.~The user opens the ranking of a predicted peptide. \newline 2.~The system sorts substitutions by predicted effect. \newline 3.~The user filters by position or amino acid.}
-  \ucfull{Alternative / exceptional flows:}{No prediction available: the system asks the user to run UC-01 first.}
-  \ucfull{Expected outcome:}{A ranked table of substitutions.}
+  \ucactor{Researcher}{Important}{Simple}
+  \ucfull{Stakeholders and interests:}{Researcher: choose a shortlist within an experimental budget.}
+  \ucfull{Summary description:}{Sort/filter substitutions within each tile and select candidates.}
+  \ucfull{Relationships:}{Include: UC-01 or a completed tile of UC-08.}
+  \ucfull{Event handling:}{1.~Open ranking. \newline 2.~Sort by effect/probability and filter by position or replacement. \newline 3.~Select candidates; inspect the top-10\% flag.}
+  \ucfull{Alternative / exceptional flows:}{No result: request an analysis first. Empty filter: show an explicit empty state.}
+  \ucfull{Expected outcome:}{A tile-specific shortlist retaining coordinates and warnings; no implied cross-protein biological ranking.}
 \end{usecasespec}
 
 \subsection{Export Results with Provenance}
 \begin{usecasespec}{Export results with provenance}{tab:uc-export}
   \ucname{Export results}{UC-03}
-  \ucactor{User}{Medium}{Simple}
-  \ucfull{Stakeholders and interests:}{Researcher: wants results that can be reused and traced.}
-  \ucfull{Summary description:}{The system exports matrix and ranking with model version, data source and supported domain.}
-  \ucfull{Relationships:}{Association: User \newline Include: Predict effect matrix \newline Extend: --- \newline Generalization: ---}
-  \ucfull{Event handling:}{1.~The user selects an export format (CSV or JSON). \newline 2.~The system writes the file with provenance fields.}
-  \ucfull{Alternative / exceptional flows:}{Export fails: the system reports the error and keeps the result on screen.}
-  \ucfull{Expected outcome:}{A file containing scores and provenance.}
+  \ucactor{Researcher}{Important}{Simple}
+  \ucfull{Stakeholders and interests:}{Researcher: reuse results in an experimental or computational workflow.}
+  \ucfull{Summary description:}{Export a single analysis or complete job as CSV/JSON, including selected annotations/comparisons.}
+  \ucfull{Relationships:}{Uses: UC-01, UC-05, UC-06, UC-08 and UC-10.}
+  \ucfull{Event handling:}{1.~Choose scope and format. \newline 2.~Write scores, per-item outcomes, coordinates, model/data versions and warnings.}
+  \ucfull{Alternative / exceptional flows:}{Export failure preserves the result for retry. Failed/skipped job items remain in the manifest.}
+  \ucfull{Expected outcome:}{Complete traceable files, including rows beyond the current page; no public share link.}
+\end{usecasespec}
+
+\subsection{Select a Protein and Tiles}
+\begin{usecasespec}{Select a protein and tiles}{tab:uc-tile}
+  \ucname{Select protein and tiles}{UC-04}
+  \ucactor{Researcher}{Important}{Simple}
+  \ucfull{Stakeholders and interests:}{Researcher: locate a known protein region without manually copying coordinates.}
+  \ucfull{Summary description:}{Search the loaded human UniProt release; choose a tile or analyse the complete protein through tiling.}
+  \ucfull{Relationships:}{Continues to UC-01 or UC-08.}
+  \ucfull{Event handling:}{1.~Search accession/gene. \newline 2.~Select the reference sequence. \newline 3.~Inspect tiles, domain states and coverage. \newline 4.~Choose the analysis scope.}
+  \ucfull{Alternative / exceptional flows:}{No accession, sequence shorter than 28, non-standard residues or unverified mapping: state the reason and affected coverage.}
+  \ucfull{Expected outcome:}{Selected reference release and explicit 1-based peptide/protein coordinates.}
+\end{usecasespec}
+
+\subsection{Compare with Measured Data}
+\begin{usecasespec}{Compare with measured data}{tab:uc-measured}
+  \ucname{Compare observations}{UC-05}
+  \ucactor{Researcher}{Important}{Simple}
+  \ucfull{Stakeholders and interests:}{Researcher: inspect where prediction agrees or disagrees with measurements.}
+  \ucfull{Summary description:}{Choose reference observations or a committed project dataset; align exact WT, position and replacement.}
+  \ucfull{Relationships:}{Uses: UC-01/08 and UC-09.}
+  \ucfull{Event handling:}{1.~Select dataset and replicate/aggregation. \newline 2.~Check mapping, endpoint and units. \newline 3.~Display matched values, exclusions and applicable residuals/metrics.}
+  \ucfull{Alternative / exceptional flows:}{Missing/unmatched values are not zero. Different assays remain separate without pooled $\Delta$PSI metrics. Insufficient/constant pairs have explicit undefined-metric states.}
+  \ucfull{Expected outcome:}{Comparable prediction/observation views with sample counts and provenance; training observations labelled and imports not automatically called independent validation.}
+\end{usecasespec}
+
+\subsection{View ClinVar and Reference Annotations}
+\begin{usecasespec}{View ClinVar and reference annotations}{tab:uc-clinvar}
+  \ucname{View annotations}{UC-06}
+  \ucactor{Researcher}{Important}{Simple}
+  \ucfull{Stakeholders and interests:}{Researcher: relate candidate substitutions to published variant and reference evidence.}
+  \ucfull{Summary description:}{Show ClinVar missense records, UniProt mapping and approved GPS evidence in release 1.}
+  \ucfull{Relationships:}{Extends: UC-01/08; provenance from UC-07.}
+  \ucfull{Event handling:}{1.~Enable a layer. \newline 2.~Verify accession/release/WT residue. \newline 3.~Show classification, review/conflict state, source version, attribution and disclaimer.}
+  \ucfull{Alternative / exceptional flows:}{Distinguish no match, unmapped custom input, unavailable source and conflicting mapping. Do not guess canonical mappings.}
+  \ucfull{Expected outcome:}{Traceable annotations separate from effect predictions; annotation absence does not mean benign.}
+\end{usecasespec}
+
+\subsection{View Model and Data Provenance}
+\begin{usecasespec}{View model and data provenance}{tab:uc-card}
+  \ucname{View model and sources}{UC-07}
+  \ucactor{Researcher}{Important}{Simple}
+  \ucfull{Stakeholders and interests:}{Researcher and examiner: understand the predicted event, evidence and limitations.}
+  \ucfull{Summary description:}{Read frozen model identity, domain, development metrics and source licences/versions.}
+  \ucfull{Relationships:}{Supplies evidence to all result/export views.}
+  \ucfull{Event handling:}{1.~Open model/data information. \newline 2.~Inspect current metadata or the snapshot associated with a saved run.}
+  \ucfull{Alternative / exceptional flows:}{Missing historical artefact: report an integrity problem instead of silently substituting a newer source.}
+  \ucfull{Expected outcome:}{Explicit distinction between development evidence, imported comparison and independent validation.}
+\end{usecasespec}
+
+\subsection{Analyse Peptide Batches or a Whole Protein}
+\begin{usecasespec}{Analyse peptide batches or a whole protein}{tab:uc-batch}
+  \ucname{Batch/protein analysis}{UC-08}
+  \ucactor{Researcher}{Important}{Complex}
+  \ucfull{Stakeholders and interests:}{Researcher: analyse many candidates while retaining item-level failures and context.}
+  \ucfull{Summary description:}{Submit bounded peptide records/FASTA or one protein accession/FASTA to a persistent local job.}
+  \ucfull{Relationships:}{Uses UC-01/04/10; exports through UC-03.}
+  \ucfull{Event handling:}{1.~Choose a project and input mode. \newline 2.~Preview validation, tiling and coverage. \newline 3.~Confirm local persistence and submit. \newline 4.~Track progress and open per-tile results.}
+  \ucfull{Alternative / exceptional flows:}{Item failures/refusals preserve successes. Cancellation/restart retain completed results without duplicates. Limits and uncovered residues are explicit.}
+  \ucfull{Expected outcome:}{A durable job with reconciled outcome counts, pinned model/source versions and distinct overlapping tile contexts.}
+\end{usecasespec}
+
+\subsection{Import Experimental Observations}
+\begin{usecasespec}{Import experimental observations}{tab:uc-import}
+  \ucname{Import observations}{UC-09}
+  \ucactor{Researcher}{Important}{Complex}
+  \ucfull{Stakeholders and interests:}{Researcher: compare predictions with locally supplied measurements.}
+  \ucfull{Summary description:}{Validate CSV/TSV plus assay, units, source, replicate and reference metadata; commit a dataset revision.}
+  \ucfull{Relationships:}{Uses UC-10; supplies UC-05.}
+  \ucfull{Event handling:}{1.~Upload into a project. \newline 2.~Preview row-level errors, duplicates, missingness and mapping. \newline 3.~Correct blocking errors and acknowledge warnings. \newline 4.~Explicitly commit.}
+  \ucfull{Alternative / exceptional flows:}{Malformed/nonfinite/WT-conflicting records block commit; conflicting duplicates never overwrite. Other endpoints remain separately labelled.}
+  \ucfull{Expected outcome:}{An immutable project dataset with file hash and provenance; no update to training data or weights.}
+\end{usecasespec}
+
+\subsection{Manage Projects and Analysis History}
+\begin{usecasespec}{Manage projects and analysis history}{tab:uc-history}
+  \ucname{Manage projects/history}{UC-10}
+  \ucactor{Researcher}{Important}{Complex}
+  \ucfull{Stakeholders and interests:}{Researcher: revisit the exact analysis used for an earlier experimental decision.}
+  \ucfull{Summary description:}{Create/rename/reopen/delete local projects; save and reopen immutable runs and datasets.}
+  \ucfull{Relationships:}{Supports UC-01/03/05/08/09.}
+  \ucfull{Event handling:}{1.~Create/select project. \newline 2.~Explicitly save a preview or submit/commit work. \newline 3.~Reopen history after restart. \newline 4.~Rerun as a new entry or confirm deletion after a dependency summary.}
+  \ucfull{Alternative / exceptional flows:}{Missing snapshot or failed cleanup is explicit; deletion cannot remove shared reference/model data or other projects.}
+  \ucfull{Expected outcome:}{Saved input, configuration, results and provenance retained locally until deletion; no account or public-sharing requirement.}
 \end{usecasespec}
 
 \section{Non-Functional Requirements}
-These are targets for the prototype; \textbf{[PENDING: concrete thresholds to be fixed with the system design.]}
+The detailed identifiers and cases are in the system SRS. The targets below are proposed until measured
+on the recorded local computer; no external-host performance or availability result is required.
 \subsection{Performance Requirements}
-Scoring a single peptide should finish in interactive time on a standard laptop (target to be measured).
+Proposed p95 targets are 300~ms for one tile, 200~ms for listing a 1,000-residue protein's tiles and
+1.5~s from click to rendered heatmap. Batch/import resource use is measured separately; bounded jobs,
+pagination and cancellation keep the interface usable. Proposed initial bounds are 100 peptides or
+one protein of at most 10,000 residues per job, and 10~MiB/100,000 rows per import; these are
+configurable design defaults, not measured capacities.
 \subsection{Information Safety Requirements}
-Only public data are used; terms of use of each source are recorded before redistribution.
+Serve only approved reference data with source versions and required attribution. ClinVar retains its
+review/conflict information and diagnostic disclaimer. Imported observations stay in a project-specific
+store with assay/units/replicates and are not automatically pooled into reference or training data.
 \subsection{Security Requirements}
-Input is validated; user-supplied sequences are not executed or stored beyond the session unless stated.
+Bind application services to loopback and restrict browser origins. Validate all input and uploaded files;
+never execute their contents or use supplied names as paths. Unsaved previews are transient. Explicit
+saves, job submissions and import commits persist locally until deletion; no sequences or observations
+appear in logs, URLs or third-party telemetry. Project history has no automatic 30-day expiry.
 \subsection{Reliability Requirements}
-The same input and model version must give the same scores; scores shown in the interface must match the
-research runner within numerical tolerance.
+Score arrays are deterministic for the same normalised input and frozen configuration. Numerical
+agreement with the runner must be below $10^{-9}$ for JSON and $5\times10^{-9}$ for ten-digit CSV.
+Saved snapshots survive restart; job recovery does not duplicate completed results. Missing data,
+partial failures and invalid mappings remain visible.
 \subsection{Maintainability Requirements}
-Models and data are versioned; experiments can be re-run from documented commands.
+Version models, source snapshots and schema migrations. Document local API/worker/frontend startup and
+workspace recovery. Test the clean local workflow rather than cloud installation.
+\subsection{Usability and Accessibility Requirements}
+Provide keyboard workflows, accessible tables and text/patterns in addition to colour, with WCAG~2.1~AA
+as the accessibility target. Desktop use is primary; smaller screens use a scrollable matrix/table fallback.
 
 \section{Implementation and Design Constraints}
 \subsection{Implementation Constraints}
-The work is done by one student within the thesis course schedule; no new wet-lab experiment is performed;
-computation runs on CPU-class hardware.
+One student implements the system within the thesis schedule. React with TypeScript and FastAPI are
+fixed choices; PostgreSQL is local project/reference storage and SQLite supports isolated tests/baseline
+development. A local worker runs CPU inference. Training and research notebooks remain separate.
+Docker may package the same local application; public deployment is not a deliverable.
 \subsection{Design Constraints}
-Scores are reported for the assay and domain on which the model was evaluated; no claim is made on
-disease causation or treatment.
+Whole-protein analysis retains full 28-residue windows at step 23 and reports uncovered positions.
+It does not establish the behaviour of the intact protein. Every result carries assay/domain evidence;
+raw $\Delta$PSI, calibrated event probability and clinical annotation are separate quantities. The scope
+update does not establish clinical validity, an E3 mechanism or completion of research gates.

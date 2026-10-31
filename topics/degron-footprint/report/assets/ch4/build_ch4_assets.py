@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Generate the tables, numbers and figures of Chapter 4 from the result JSON files.
 
-Run from anywhere:  python3 -I report/assets/ch4/build_ch4_assets.py
+Run from anywhere:  python3 -I topics/degron-footprint/report/assets/ch4/build_ch4_assets.py
 Every number in the generated files is read from a JSON file under
-topics/degron-footprint/research/ (the file name is printed in each table's source line).
+topics/degron-footprint/research/. Source paths are retained only in LaTeX comments;
+they must not be printed as evidence in the thesis.
 The script only reads those JSON files and writes into its own directory.
 """
 import json
@@ -56,8 +57,8 @@ def dci(d):
     return f'{sg(d["delta"])} {ci(d["ci95"])}'
 
 def src(*files):
-    names = ', '.join(r'\nolinkurl{' + f + '}' for f in files)
-    return r'\par\smallskip{\footnotesize Source: ' + names + r'.}'
+    # Internal provenance is metadata, not a file-path citation in the printed thesis.
+    return '% Internal provenance (not printed): ' + ', '.join(files)
 
 def table(name, spec, head, rows, files, size=r'\small', tabsep=None):
     lines = [r'\begingroup' + size + (r'\setlength{\tabcolsep}{%s}' % tabsep if tabsep else ''), r'\renewcommand{\arraystretch}{1.15}',
@@ -486,7 +487,7 @@ M('KoCells', f'{ds["s4_all_mutant_cells"]:,}'.replace(',', r'\,')); M('KoPos', f
 M('KoZhangPos', f'{100 * ds["zhang_reference"]["frac_pos_ge1.0_base91"]:.1f}')
 M('KoNewClusters', str(g1['n_new_clusters'])); M('KoMapped', str(g1['n_mapped'])); M('KoNSeq', str(g1['n_substrates_s4_s3_dedup']))
 M('KoMinClusters', str(th['G1_min_new_clusters'])); M('KoSpearman', f'{r4["spearman"]:.2f}'); M('KoNOverlap', str(r4['n_overlap']))
-M('KoNS4', str(g1['n_substrates_s4']))
+M('KoNSubstrates', str(g1['n_substrates_s4']))
 assert not KO['gate_pass'] and KO['role'] == 'external_validation_only'
 
 # ------------------------------------------------------------------- numbers

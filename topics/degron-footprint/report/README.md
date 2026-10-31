@@ -10,7 +10,28 @@ Bản làm việc được tạo từ [template sạch](../../../reportTemplate/
 - [VALIDATION.md](VALIDATION.md): bản ghi kiểm tra trước đây; không phải xác nhận đã build lại sau khi di chuyển.
 - Mẫu của Khoa nằm trong `guideline-thesis/`; luận văn tham khảo nằm ở [resources/reference-theses/](../../../resources/reference-theses/).
 
+## Phạm vi phần mềm đã chốt — 29/10/2026
+
+Một ứng dụng **local duy nhất bằng React + TypeScript và FastAPI**. Bản đầu gồm phân tích peptide đơn,
+xử lý lô peptide/toàn protein bằng cửa sổ 28 residue, chú giải ClinVar và nguồn tham chiếu được phép,
+nhập dữ liệu thí nghiệm để đối chiếu, lưu dự án/lịch sử và xuất kết quả có nguồn gốc. Không yêu cầu
+triển khai công khai/VPS hay hai phiên bản vận hành. Dữ liệu đã lưu tồn tại đến khi người dùng xóa.
+
+Nội dung liên quan đã đồng bộ ở phần mở đầu, Chương 1/3/4, hai tóm tắt và phụ lục A; chức năng mới
+vẫn là yêu cầu/thiết kế, chưa được coi là đã triển khai hay nghiệm thu. Nguồn phạm vi hiện hành:
+[system/README.md](../system/README.md); bản ghi thay đổi: [chapter-sync.md](../system/chapter-sync.md).
+Kết quả build/kiểm tra của lần cập nhật: [scope-validation-2026-10-29.md](../system/scope-validation-2026-10-29.md).
+Không cập nhật đề cương hoặc template gốc trong lần này.
+
 Các hướng dẫn định dạng bên dưới kế thừa từ template.
+
+## Quy tắc trình bày dẫn chứng
+
+Không chèn đường dẫn hoặc tên tệp nội bộ để làm dẫn chứng trong nội dung, bảng, chú thích hình
+hay danh mục bảng/hình của luận văn. Dùng trích dẫn học thuật và tham chiếu tới chương/mục/bảng/hình
+phù hợp; kết quả tự thực nghiệm phải được trình bày theo thiết kế, số liệu và giới hạn đã mô tả.
+Thông tin truy vết tới tệp kết quả được giữ trong mã sinh tài sản và comment LaTeX, không in ra PDF.
+Lệnh cài đặt/chạy ứng dụng trong phụ lục là hướng dẫn thao tác, không phải trích dẫn bằng chứng.
 
 ## Quyết định thiết kế
 

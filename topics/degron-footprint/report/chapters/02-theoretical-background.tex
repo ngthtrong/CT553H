@@ -57,7 +57,8 @@ or a suitable transformation; binary motif labels are not converted into $\Delta
 \section{Technologies and Tools}
 Python with NumPy, pandas and scikit-learn for data handling and classical models; PyTorch for neural
 models; MMseqs2 \citep{steinegger2017} for clustering protein sequences. Versions are recorded when
-experiments are run. \textbf{[PENDING: web/API stack for the prototype.]}
+experiments are run. The local application uses React with TypeScript, FastAPI and PostgreSQL,
+with a local worker for batch inference. This runtime design is separate from the research toolchain.
 
 \section{Evaluation Methodology}
 \subsection{Splitting by Protein Cluster}

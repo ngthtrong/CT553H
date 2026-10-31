@@ -1,6 +1,6 @@
 # User Interface Design
 
-Status: **draft v0.1, 22 Oct 2026.** Wireframes are ASCII and show structure, not final styling. Values inside the wireframes (ranks, scores, probabilities, the out-of-domain PSI of 4.8) are **placeholders**, not model output; only the A6NMZ7 tile sequence and tile PSI come from the repository data. They realise UC-01 to UC-07 of [srs.md](srs.md) against the endpoints of [api-spec.md](api-spec.md). Stack: React + TypeScript (Vite), heatmap with Plotly.js or D3 *(to be chosen on a spike; the requirement is §7, not the library)*.
+Status: **v0.2 local design, 29 Oct 2026.** Baseline single-tile screens below are retained; workspace/job/import additions in §12 are planned. Public sharing is retired.  Wireframes are ASCII and show structure, not final styling. Values inside the wireframes (ranks, scores, probabilities, the out-of-domain PSI of 4.8) are **placeholders**, not model output; only the A6NMZ7 tile sequence and tile PSI come from the repository data. They realise the baseline UC-01 to UC-07 of [srs.md](srs.md) against the endpoints of [api-spec.md](api-spec.md). Stack: React + TypeScript (Vite); the baseline uses custom SVG with D3 colour scales, as recorded in app/frontend/README.md. New screens remain planned.
 
 ## 1. Principles
 
@@ -8,7 +8,7 @@ Status: **draft v0.1, 22 Oct 2026.** Wireframes are ASCII and show structure, no
 2. **Warnings come before scores** in reading order and in the DOM, so that screen-reader users hear them first.
 3. **Do not decorate uncertainty away.** The evidence label ("development OOF benchmark, not external validation") is visible on the result page without scrolling or clicking.
 4. **Colour is never the only carrier** of information (text, pattern or position repeats it).
-5. **One task per page, URL as state.** Every result is reproducible from its URL (tile or sequence in the query for typed sequences is **not** allowed; see §3.1 on privacy).
+5. **Saved results use IDs, never sequences in URLs.** Reopen immutable project snapshots; unsaved previews remain in memory. The browser is a local client of one trusted workspace.
 
 Direction of the quantity, to be written in the interface wherever needed: ΔPSI ≥ 1.0 means the substitution **raises the stability index by at least one bin of the assay**, i.e. it is predicted to **weaken the degron signal** of the tile in this assay. Higher is therefore "more disrupting".
 
@@ -18,8 +18,12 @@ Direction of the quantity, to be written in the interface wherever needed: ΔPSI
 /                      Input         (UC-01, UC-04)
 /protein/:acc          Tile picker   (UC-04)
 /result                Result        (UC-01, UC-02, UC-05, UC-06, UC-03)   state in memory, not in the URL for typed sequences
-/result/uniprot/:acc/:n   Result for a stored tile (shareable URL, no sequence)
-/shared/:run_id#t=TOKEN   Shared run (UC-03b)
+/result/uniprot/:acc/:n   Reference-tile preview (no sequence in URL)
+/projects               Project list (UC-10)
+/projects/:project_id   Workspace and history (UC-10)
+/jobs/:job_id           Batch/protein progress and outcomes (UC-08)
+/datasets/:dataset_id   Import preview and dataset details (UC-09)
+/analyses/:analysis_id  Saved analysis and comparison (UC-05, UC-10)
 /model                 Model card    (UC-07)
 /about                 About, data sources and licences (UC-07)
 ```
@@ -53,7 +57,7 @@ Two tabs. The default tab is the one the user used last in the session.
 *Protein tab*: an autocomplete field (`GET /v1/proteins?query=`, debounce 250 ms) lists `GENE — name — accession — n tiles`. Choosing a protein goes to the tile picker.
 
 * **Live validation** (no round trip for what the client can check): count of characters `n / 28`; characters outside the 20 letters are underlined and named: "Position 7: 'B' is not a standard amino acid." Submit is disabled only while the sequence is empty; an invalid sequence is submitted-blocked with the message focused.
-* **Privacy:** a typed sequence is sent in a POST body and kept only in memory (React state), never in the URL, `localStorage` or analytics. A stored tile is addressed by accession and index, so its URL contains no user input.
+* **Privacy:** a typed sequence is sent in a POST body and the unsaved preview stays in memory, never in the URL, `localStorage` or analytics. Explicit Save to project persists it in the local workspace. A stored tile is addressed by accession and index, so its URL contains no user input.
 
 ### 3.2 Tile picker (`/protein/:acc`)
 
@@ -64,7 +68,7 @@ Two tabs. The default tab is the one the user used last in the session.
 |  [##][##][..][##][??][..][##]...   legend: ## in domain  .. outside  ?? unreliable|
 |                                           -- unknown: no marker, grey dotted   |
 |  Selected: tile 28  (residues 622-649)  DIMFLVDSSGSIGPENFSKMKTFMKNLV          |
-|  Status: in domain (measured tile PSI 1.88, replicate 1)                       |
+|  Status: in domain (measured tile PSI 1.88, replicate 1; gate status requires R3 integration) |
 |                                                                                |
 |  [ Predict this tile ]                                                         |
 +--------------------------------------------------------------------------------+
@@ -98,7 +102,7 @@ Two tabs. The default tab is the one the user used last in the session.
 |  | rank | pos | wt | mut | raw score  | P(dPSI>=1)    | top 10 %     |        |
 |  | 1    | 14  | D  | W   | 1.42       | 0.58          | yes          |        |
 |  +------+-----+----+-----+------------+---------------+--------------+        |
-|  [ Export CSV ] [ Export JSON ] [ Create share link ]                          |
+|  [ Export CSV ] [ Export JSON ] [ Save to project ]                          |
 +--------------------------------------------------------------------------------+
 |  Provenance: model m3-ext4.0-platt-v1 | weights 8bec0b04... | data: Zhang 2023  |
 |  (CC BY 4.0) | generated 2026-10-22T12:00Z | Not a probability of disease.     |
@@ -111,8 +115,8 @@ Two tabs. The default tab is the one the user used last in the session.
 * **Overlay layers** are off by default and appear only when data exist (otherwise a disabled control with the reason, not a hidden control):
   * *Measured ΔPSI* — outlined cell with measured value on hover; a persistent caption: "Measured values are part of the training data of this model; they are not a validation."
   * *ClinVar* — a marker glyph (diamond) on the cell, different shape per significance class in addition to colour; the ClinVar attribution and the diagnostic disclaimer sit directly under the layer toggle and in the hover card.
-* **Ranking table:** all 532 rows, virtualised, sortable columns, filters for position and amino acid; the top-10 % flag is text ("yes"), not only colour; row focus syncs with the heatmap cell.
-* **Actions:** CSV/JSON download (FR-12, FR-13); *Create share link* is secondary and explains that the sequence will be stored for up to 7 days (selectable 1–30) before the first request.
+* **Ranking table:** all 532 rows (baseline native table; paginate job-level results), sortable columns, filters for position and amino acid; the top-10 % flag is text ("yes"), not only colour; row focus syncs with the heatmap cell.
+* **Actions:** CSV/JSON download (FR-12, FR-13); *Save to project* selects a local project and explains that input/results persist until deletion; no share token or 7/30-day project expiry.
 
 ### 3.4 States of the result page
 
@@ -121,44 +125,24 @@ Two tabs. The default tab is the one the user used last in the session.
 | Loading | Skeleton of the heatmap, text "Scoring 532 substitutions…" (`aria-live=polite`) | Cancel button; request aborted on navigation |
 | Success | §3.3 | — |
 | Success with warning (`unknown`, `unreliable`, predicted, training peptide) | Warning block (amber, icon, text) above the heatmap | Cannot be dismissed; reappears on every view |
-| **Refused: out of domain** (`OUT_OF_DOMAIN`) | Page replaced by a notice: "This tile is outside the domain of the model. Its measured wild-type PSI is 4.8; the model was trained on tiles with PSI ≤ 4.0, so a score would not be meaningful." Buttons: *Choose another tile*, *Score anyway* | *Score anyway* re-sends with `override_domain=true`; the result then shows a red banner "Out-of-domain override" and the warning stays in every export |
+| **Refused: out of domain** (`OUT_OF_DOMAIN`) | Page replaced by a notice: "This tile is outside the domain of the model. The frozen domain gate classifies this tile outside the supported range; inspect its source and estimator before overriding." Buttons: *Choose another tile*, *Score anyway* | *Score anyway* re-sends with `override_domain=true`; the result then shows a red banner "Out-of-domain override" and the warning stays in every export |
 | Validation error (`INVALID_*`) | Inline on the input, message from the API (never a generic "error") | Focus moves to the field |
 | Not found (`UNKNOWN_ACCESSION`, `TILE_OUT_OF_RANGE`) | Message with the valid range, link back to search | — |
 | Empty overlay | "No ClinVar missense variant in this tile." / "No measured data for this tile." | — |
-| Export error | Toast and inline message "The file could not be created. Your result is still here." | Result unchanged (FR-23) |
+| Export error | Inline message "The file could not be created. Your result is still here." | Result unchanged (FR-23) |
 | Rate limited (`RATE_LIMITED`) | "Too many requests. Try again in N seconds." using `Retry-After` | Button disabled with countdown |
 | Service unavailable (503) | "The service is not ready (model or database unavailable)." with a retry link | `/healthz` polled every 10 s |
-| Share link expired (`RUN_EXPIRED`) | "This shared result has expired." | — |
 
-### 3.5 Model card (`/model`)
+### 3.5 Local save and reopen
 
-```
-+--------------------------------------------------------------------------------+
-|  Model m3-ext4.0-platt-v1   status: frozen (default)   weights 8bec0b04...     |
-|  What it predicts: P(DeltaPSI >= 1.0) in the GPS assay (Zhang 2023)            |
-|  Domain: 28-mer internal tiles, intrinsic PSI(WT) <= 4.0                        |
-|  Evidence: development OOF benchmark - NOT external validation                 |
-|  Performance (with 95 % CI by protein cluster; source file shown):              |
-|     AUROC 0.8208 [..]   Brier 0.0925 vs 0.1272 raw   Top-10 % enrichment 4.02x  |
-|  Known limitations: probabilities about 13 % low on the original domain; ...    |
-|  Trained on: Zhang 2023 saturation mutagenesis (176 peptides, 92,337 cells)     |
-|  Not used: [list of excluded sources and the reason]                            |
-|  Version history: (table)                                                      |
-+--------------------------------------------------------------------------------+
-```
-
-Numbers are read from `metrics` of the API, never typed into the frontend. The card links the experiment reports of the research repository.
-
-### 3.6 About, data sources and licences (`/about`)
-
-A table from `GET /v1/sources`: name, version, licence, attribution text, disclaimer. Fixed text blocks: what the tool is not (no diagnosis, no disease-causation claim), privacy statement (sequences are not stored unless a share link is requested), how to cite, contact.
+Choose a project and explicitly save the current analysis. Show that input, output and provenance will persist locally until deletion. Saved URLs contain only an analysis ID; there is no public sharing/token screen. Reopening reads the frozen snapshot; “Run again” creates a new history entry.
 
 ## 4. Mandatory warning rules
 
 | ID | Rule |
 |---|---|
 | W-1 | Domain banner is present on every result view, with the status in words. |
-| W-2 | For `unknown`, `measured_unreliable`, `predicted_*`: an amber warning block above the heatmap, not dismissible. |
+| W-2 | For `unknown`, `measured_unreliable`, `borderline`, `predicted_*`: an amber warning block above the heatmap, not dismissible. |
 | W-3 | For an overridden out-of-domain result: a red banner on the page and the warning in every export. |
 | W-4 | Every probability is accompanied by the event `P(ΔPSI ≥ 1.0)` in the column header, legend or tooltip. |
 | W-5 | The evidence label appears on the result page and in exports. |
@@ -172,11 +156,11 @@ A table from `GET /v1/sources`: name, version, licence, attribution text, discla
 |---|---|---|
 | Probability 0–1 (sequential) | Viridis, light (low) to dark (high) reversed so that high probability is darkest | Numeric value on focus/hover; legend with ticks |
 | Raw score (diverging, centre at 0) | ColorBrewer PuOr 11-class: `#7f3b08 #b35806 #e08214 #fdb863 #fee0b6 #f7f7f7 #d8daeb #b2abd2 #8073ac #542788 #2d004b` (orange = negative, purple = positive); blue–orange/purple family chosen for colour-vision deficiency | Sign shown in tooltip |
-| Domain status | Four fills tested in a deuteranopia/protanopia/tritanopia simulation | Pattern (solid / hatched / dotted / empty) and text |
+| Domain status | Distinct fills targeted for colour-vision simulation (verification pending) | Pattern (solid / hatched / dotted / empty) and text |
 | Warning levels | Amber (notice), red (override) | Icon and the word "Warning"/"Override" |
 | ClinVar classes | Marker shapes per class | Shape and text in hover card |
 
-Text contrast ≥ 4.5 : 1, large text and UI components ≥ 3 : 1 (WCAG 2.1 AA). Light and dark themes both meet these; theme follows the system preference with a manual switch.
+Text contrast ≥ 4.5 : 1, large text and UI components ≥ 3 : 1 (WCAG 2.1 AA). Light and dark themes target these levels; theme follows the system preference with a manual switch.
 
 ## 6. Keyboard and ARIA
 
@@ -209,15 +193,15 @@ Render 532 cells + 28 wild-type cells in one SVG or canvas; cell size ≥ 24 × 
 | `ScaleToggle` | `mode; onChange` | Probability / raw score |
 | `LayerToggles` | `measuredAvailable: boolean; clinvarAvailable: boolean; state; onChange` | Overlay controls; disabled with reason |
 | `ClinvarNotice` | `disclaimer: string; attribution: string` | Rule W-6 |
-| `RankTable` | `cells: Cell[]; filter; onFilter; selected?; onSelect` | Sort, filter, virtualised rows |
-| `ExportMenu` | `request: PredictRequest; onError(e)` | CSV/JSON download, share link |
+| `RankTable` | `cells: Cell[]; filter; onFilter; selected?; onSelect` | Sort/filter tile rows; job tables paginate |
+| `ExportMenu` | `request: PredictRequest; onError(e)` | CSV/JSON download; explicit Save to project action |
 | `ProvenanceFooter` | `provenance: Provenance` | Always visible provenance line |
 | `RefusalNotice` | `error: ApiError; onOverride(); onBack()` | Out-of-domain flow |
 | `ModelCardPage` | — | Reads `/v1/models/{id}` |
 | `AboutPage` | — | Reads `/v1/sources` |
 | `ErrorBanner` | `error: ApiError` | Maps error codes to messages (§3.4) |
 
-Types are generated from `openapi.yaml` (for example with `openapi-typescript`) so that the frontend cannot drift from the contract.
+The baseline uses generated OpenAPI types. Regenerate and reconcile the client when implementing the planned v0.2 operations; this documentation update does not claim that baseline types already cover them.
 
 ## 9. State and data flow
 
@@ -239,6 +223,38 @@ idle --submit--> validating(client) --ok--> loading(POST /v1/predict)
 
 ## 11. Open points
 
-* Heatmap library (Plotly.js vs D3) — decide on a half-day spike against §7 and NFR-03.
+* Baseline heatmap uses custom SVG/D3 scales; recheck rendering/accessibility under expanded job views.
 * Whether a mock-up in HTML or Figma is wanted for the thesis figures; not part of this design.
 * Wording review of the direction note ("weaken the degron signal") with the supervisor before release.
+
+## 12. First-release workspace, batch and import screens (planned)
+
+These screens and state changes are mandatory release-1 scope, not implemented by this document change. Use the same React application and loopback FastAPI service.
+
+### 12.1 Project list and history — UC-10
+
+Navigation: Projects, New analysis, Model, About/data. Project cards show name, updated time, analysis/job/dataset counts. Create/rename acts on the local workspace; no login/account menu. A project has Analysis history, Jobs and Experimental datasets tabs. History rows show immutable run ID, input label, tile/protein context, model/version, date, status and warning badges. Reopen reads saved data; “Run again” visibly creates a new entry. Delete first displays a dependency summary and asks for confirmation; show cleanup errors and retry states. No automatic 30-day expiry for project data.
+
+### 12.2 New analysis and job progress — UC-08
+
+Input modes: Single peptide, Peptide batch, Whole protein. Batch accepts pasted peptide records or multi-record FASTA parsed into stable IDs. Whole protein accepts a loaded human accession or one FASTA record, with optional verified mapping metadata. Select a project before batch submission; clearly state that job inputs/results are persisted locally.
+
+Before submit: preview item count, expected full windows, supported-domain warning, invalid entries, estimated work and configured limits. Do not replace the 28-residue model by a whole-protein prediction. Job page shows terminal/pending/running counts, progress, cancellation, per-item errors/refusals and partial completion. After application restart the same page resumes from durable state. Table pagination avoids rendering every substitution at once; open one tile's matrix on demand.
+
+Protein view: show covered/uncovered intervals including termini, unscorable windows and per-tile domain. Repeated protein positions in overlapping windows keep their tile/context; no silent averaging or global disease ranking. Export all outcomes, not only the current page.
+
+### 12.3 Import validation — UC-09
+
+Choose CSV/TSV, dataset name, assay/endpoint/units, source/reference and replicate metadata. Display a validation preview with file hash and counts for valid, missing, duplicate/conflicting, unmatched and rejected rows. List row-specific corrections. Blocking errors disable Commit; warnings require acknowledgement. State “comparison only; not used to retrain the model”. Staged and committed states are visually distinct. Committing stores a new immutable dataset revision in the selected project.
+
+### 12.4 Comparison and annotations — UC-05/06
+
+Saved-analysis view selects a committed dataset and replicate or explicit aggregation. Show prediction, measurement, residual and units only for comparable endpoints. Display matched/missing/unmatched counts, n and undefined-metric reasons. Different assays appear in separate labelled views. Training-reference observations carry the training caption; imported observations carry their dataset revision and no automatic independent-validation label.
+
+ClinVar and approved supplementary evidence are release-1 layers. Show classification, review/conflict state, accession/release/reference-residue mapping and snapshot date; retain source links, attribution and diagnostic disclaimer. Distinguish no matching variant, mapping unavailable, source unavailable and mapping conflict. Custom unmapped sequences do not acquire guessed annotations.
+
+### 12.5 Component/state additions
+
+`ProjectList`, `ProjectWorkspace`, `HistoryTable`, `SaveAnalysisDialog`, `BatchInput`, `ProteinCoverage`, `JobProgress`, `JobItemTable`, `ImportWizard`, `ValidationReport`, `DatasetList`, `ComparisonPanel`, `AnnotationStatus` and `DeleteConfirmation` extend the baseline components. New server state is keyed by project/job/analysis/dataset ID; no biological payload is persisted in browser URLs or localStorage.
+
+Job: pending → running → completed/partial/failed/cancelled. Import: staged → validation errors or committable → committed; expired preview is explicit. Save/delete/restart have pending/success/error states. Keyboard focus, accessible tables, status text and polite progress announcements apply to all new screens. Figures/wireframes for these additions remain pending until implementation.

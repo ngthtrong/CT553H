@@ -1,5 +1,8 @@
 # Deviations from the design documents
 
+> Scope update 29 Oct 2026: this file documents the **baseline implementation/historical checks**. The accepted first local release now includes projects/history, peptide/protein jobs, ClinVar/reference annotations and experimental import/comparison; those extensions are not implemented by this documentation change. See [current scope](../README.md). The expanded OpenAPI design contains planned operations; old contract/type-check results apply to the baseline only. Public sharing and hosting examples below are legacy, outside current acceptance.
+
+
 Where the backend differs from, or had to choose beyond, `../openapi.yaml`, `../api-spec.md`, `../db-design.md`,
 `../srs.md` and `../test-plan.md`. Nothing in `../` was edited. Written 22 Oct 2026 with the backend.
 

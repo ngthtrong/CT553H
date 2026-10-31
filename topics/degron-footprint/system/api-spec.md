@@ -1,152 +1,112 @@
 # API Specification
 
-Machine-readable contract: [openapi.yaml](openapi.yaml) (OpenAPI 3.1, checked with `openapi-spec-validator`: valid, 13 paths, 26 schemas). This file explains the rules the schema cannot express. Status: **draft v0.1 (22 Oct 2026)**; backend and frontend are both written against it. Where this text and `openapi.yaml` disagree, fix both in the same change.
+**v0.2 design, 29 Oct 2026.** One loopback-only local application. [openapi.yaml](openapi.yaml) preserves baseline operations and adds planned project/job/import operations with `x-implementation-status: planned`. The baseline backend has not gained these operations in this documentation update. Public sharing is deprecated and outside acceptance. See [srs.md](srs.md) for the accepted scope.
 
-## 1. Conventions
+## 1. Conventions and local access
 
-| Topic | Rule |
-|---|---|
-| Base path | `/v1`; a breaking change creates `/v2`. `/healthz` is unversioned |
-| Format | JSON in and out (`application/json`), UTF-8. Exports may be `text/csv` |
-| Naming | `snake_case` fields. Column names of the cells (`score_dpsi_raw`, `p_dpsi_ge_1_calibrated`, `rank_in_tile`, `top10pct_in_tile`) are identical to the command-line prototype and to its CSV, so a golden file serves both |
-| Positions | `position` is 1-based **inside the tile** (1…28). `start_pos`/`end_pos` are protein coordinates |
-| Cell count | Always exactly **532** cells per prediction (28 × 19), in the order position ascending, then amino acid in the alphabet `ACDEFGHIKLMNPQRSTVWY` without the wild-type letter |
-| Time | RFC 3339 UTC |
-| Headers | Every response has `X-Request-Id`. Predictions have `Cache-Control: no-store`. No cookies are set |
-| Auth | None. Share links use a bearer-style token in the `X-Share-Token` header |
-| CORS | Allow-list of the web origin set by configuration; no wildcard in production |
+* Base `/v1`, JSON UTF-8, `snake_case`, RFC 3339 UTC. Exports support CSV/JSON.
+* Bind API/worker/frontend services to loopback. One trusted local workspace, no login/accounts. Require JSON content type and exact configured loopback origin for browser mutations; no permissive CORS. The absence of accounts is not permission to expose the API remotely.
+* `position` is 1-based within a tile; protein coordinates are separate. A scored tile contains 532 non-WT cells, position ascending then alphabet `ACDEFGHIKLMNPQRSTVWY` excluding WT.
+* `X-Request-Id` on responses. `Cache-Control: no-store` for input/results. IDs, not biological sequences, appear in project/job routes. No user data in URLs, access logs or third-party requests.
+* Preview requests are transient. Saving a preview, submitting a job and committing an import are explicit local-persistence operations, shown as such in the UI.
+* Proposed limits are SRS NFR-07. Single-tile limits do not apply to imports/batches. Settings and actual accepted sizes are recorded with the local test environment.
 
-## 2. Endpoints
+## 2. Operations and implementation boundary
 
-| Method | Path | Use case | Stores data? |
+| Method | Path | Role | Status |
 |---|---|---|---|
-| `POST` | `/v1/predict` | UC-01, UC-02 | No |
-| `POST` | `/v1/export` | UC-03 | No |
-| `GET` | `/v1/proteins?query=` | UC-04 | No |
-| `GET` | `/v1/proteins/{uniprot_id}/tiles` | UC-04 | No |
-| `GET` | `/v1/proteins/{uniprot_id}/tiles/{tile_index}/measured` | UC-05 | No |
-| `GET` | `/v1/proteins/{uniprot_id}/tiles/{tile_index}/clinvar` | UC-06 | No |
-| `GET` | `/v1/models`, `/v1/models/{model_id}` | UC-07 | No |
-| `GET` | `/v1/sources` | About / licences | No |
-| `POST` | `/v1/runs` | optional share (UC-03 variant) | **Yes**, ≤ 30 days |
-| `GET` | `/v1/runs/{run_id}`, `/v1/runs/{run_id}/export?format=` | share | reads |
-| `GET` | `/healthz` | operations | No |
+| POST | `/v1/predict`, `/v1/export` | Single-tile preview/export, UC-01…03 | Baseline |
+| GET | `/v1/proteins`, `/v1/proteins/{uniprot_id}/tiles` | Search and tile selection, UC-04 | Baseline |
+| GET | `/v1/proteins/{uniprot_id}/tiles/{tile_index}/measured` | Reference observations, UC-05 | Baseline |
+| GET | `/v1/proteins/{uniprot_id}/tiles/{tile_index}/clinvar` | ClinVar, UC-06 | Baseline; v0.2 mapping states pending |
+| GET | `/v1/models`, `/v1/models/{model_id}`, `/v1/sources` | Model/source evidence, UC-07 | Baseline |
+| GET | `/healthz` | Local health/readiness | Baseline |
+| GET, POST | `/v1/projects` | List/create local projects, UC-10 | Planned |
+| GET, PATCH, DELETE | `/v1/projects/{project_id}` | Read/rename/delete project, UC-10 | Planned |
+| GET, POST | `/v1/projects/{project_id}/analyses` | Paginated history; explicitly save single-tile snapshot | Planned |
+| GET, DELETE | `/v1/analyses/{analysis_id}` | Reopen/delete immutable analysis | Planned |
+| GET | `/v1/analyses/{analysis_id}/export` | Export saved prediction/comparison, `format=csv|json` | Planned |
+| GET, POST | `/v1/projects/{project_id}/jobs` | List/submit peptide/protein jobs, UC-08 | Planned |
+| GET | `/v1/jobs/{job_id}` | Progress, coverage and outcome counts | Planned |
+| GET | `/v1/jobs/{job_id}/items` | Paginated tile outcomes/results | Planned |
+| POST | `/v1/jobs/{job_id}/cancel` | Request cancellation | Planned |
+| GET | `/v1/jobs/{job_id}/export` | Combined CSV/JSON with per-item manifest | Planned |
+| GET, POST | `/v1/projects/{project_id}/datasets` | List datasets / validate import preview, UC-09 | Planned |
+| GET, POST | `/v1/datasets/{dataset_id}` | Read preview/revision / commit validated preview | Planned |
+| DELETE | `/v1/datasets/{dataset_id}` | Remove project-owned dataset and dependent comparisons | Planned |
+| GET, POST | `/v1/analyses/{analysis_id}/comparisons` | List/compute comparisons with a committed dataset, UC-05 | Planned |
+| GET | `/v1/comparisons/{comparison_id}` | Reopen immutable comparison | Planned |
+| POST/GET | `/v1/runs` and `/v1/runs/{run_id}…` | Legacy expiring share links | Deprecated; excluded |
 
-**Differences from the first plan** (`next-phase-plan §4.6`), made because the UI needs them: added `GET /v1/proteins?query=` (search by gene or accession), added `GET /v1/sources` (About page) and stateless `POST /v1/export` (so that exporting does not force the server to store the sequence), and the overlay endpoints use `(uniprot_id, tile_index)` instead of a surrogate `tile_id`, which clients cannot know.
+Deletion accepts `confirm=true`; without it return `409 CONFIRMATION_REQUIRED` with dependency counts, without deleting. All list operations use `offset`/`limit` with `limit` ≤ 200; exports include all rows rather than only the current page. Endpoints below are design contracts, not claims of code availability.
 
-## 3. Request validation (`POST /v1/predict`, `/v1/export`, `/v1/runs`)
+## 3. Single-tile validation and domain
 
-Validation runs in this order and stops at the first failure.
+Normalise case and surrounding whitespace. Require exactly one of `sequence` or (`uniprot_id`, `tile_index`). Validate standard alphabet, length, accession/index, scorable window and frozen model in this order. Invalid items produce no scores.
 
-1. Body is JSON, at most **4 KiB** ⇒ else `400 INVALID_REQUEST` / `413 PAYLOAD_TOO_LARGE`.
-2. Unknown fields are rejected ⇒ `422 INVALID_REQUEST` (`field` is `null`: the unknown name is not echoed). The three request schemas (`PredictRequest`, `ExportRequest`, `RunRequest`) are closed and written out in full in `openapi.yaml`; they share only the rule of rule 3 (`RequestTarget`). `POST /v1/export` needs `format` (`csv`|`json`): missing is `422 INVALID_REQUEST` with `field: format`, a wrong value is `400 INVALID_FORMAT`.
-3. **Exactly one** of `sequence` or (`uniprot_id` + `tile_index`) ⇒ else `422 INVALID_REQUEST`.
-4. `sequence`: trim whitespace, upper-case. Length must be exactly 28 ⇒ else `422 INVALID_LENGTH` (message states the actual length). Every character must be one of the 20 standard letters ⇒ else `422 INVALID_CHARACTER` (message names the first offending character and its position; `B`, `J`, `O`, `U`, `X`, `Z`, digits, gaps and `*` are rejected).
-5. `uniprot_id`: must match the accession pattern ⇒ else `422 INVALID_REQUEST`; must exist ⇒ else `404 UNKNOWN_ACCESSION`.
-6. `tile_index`: integer ≥ 1 and ≤ `n_max` of the protein ⇒ else `422 TILE_OUT_OF_RANGE` (message gives `n_max`). The tile must be scorable ⇒ else `422 TILE_NOT_SCORABLE`.
-7. `model_id`, if given, must exist and be `frozen` and have role `effect` ⇒ else `404 MODEL_NOT_FOUND`.
-8. Domain gate (§4).
+The baseline implements `unknown`, measured/predicted in/out and unreliable states, but its direct screen-PSI threshold is stale. The v0.2 target must use the frozen R3 gate rules and include `borderline`; it must not equate screen PSI with intrinsic PSI(WT). Preserve the measured estimator and gate identity in provenance. Exact research cuts live in the R3 artefacts and [db-design.md](db-design.md) §3.3; integrate and test them before declaring this requirement met.
 
-## 4. Domain handling: the rule that protects the user
+* In-domain: score with evidence label; add `TRAINING_PEPTIDE` when applicable.
+* Unknown, unreliable, predicted or borderline: prominent warning before scores.
+* Known out-of-domain: `422 OUT_OF_DOMAIN` unless explicitly overridden; record `OUT_OF_DOMAIN_OVERRIDDEN` in the snapshot/export.
+* Typed sequence: no silent canonical mapping. Without verified accession/release, ClinVar is `mapping_unavailable` rather than an empty annotation set.
 
-| `domain.status` | Source of the status | Behaviour of `predict` | Warning code in response |
-|---|---|---|---|
-| `measured_in_domain` | tile measured, PSI ≤ 4.0 | Scores returned | none (or `TRAINING_PEPTIDE`) |
-| `measured_unreliable` | in the screen, too few reads | Scores returned | `DOMAIN_UNRELIABLE` |
-| `unknown` | user sequence, or tile not in the screen, no gate model | Scores returned | `DOMAIN_UNKNOWN` |
-| `predicted_in_domain` | gate model (R3), when it exists | Scores returned | `PREDICTED_DOMAIN` |
-| `predicted_out_of_domain` | gate model | **Refused** (`422 OUT_OF_DOMAIN`) unless `override_domain = true` | `PREDICTED_DOMAIN`, plus `OUT_OF_DOMAIN_OVERRIDDEN` if overridden |
-| `measured_out_of_domain` | tile measured, PSI > 4.0 | **Refused** (`422 OUT_OF_DOMAIN`) unless `override_domain = true` | `OUT_OF_DOMAIN_OVERRIDDEN` if overridden |
+The legacy single-tile request/response shapes remain in `openapi.yaml`. Adding `borderline` and gate provenance is a planned compatibility extension, not evidence that the baseline server returns it.
 
-`TRAINING_PEPTIDE` is added whenever the tile is one of the 176 training peptides, in any status.
+## 4. Projects and immutable analyses
 
-A user-typed `sequence` that happens to equal a stored tile is **not** looked up: the status stays `unknown`. Sequence matching would let the server infer and keep information about the input, and the gate for typed sequences is the job of the future gate model.
+`POST /projects` creates a named project; `PATCH` changes only name/description. `POST /projects/{id}/analyses` accepts a prediction request and explicit save action, computes the result and transactionally stores its snapshot. Reading history never recomputes. A rerun uses the saved input but produces a new analysis ID linked through `parent_analysis_id`.
 
-Chapter 1 (UC-01 alternative flow) says an out-of-domain input gets an explicit message and no scores. The refusal above implements that for the *measured* case; the `override_domain` escape hatch and the `unknown` case are additions that need the author's approval (see `chapter-sync.md`, item C1-3).
+Snapshot: normalised input, tile/protein coordinates and mapping release, frozen model/calibrator/gate IDs and hashes, raw/calibrated arrays, rank/shortlist, domain and warning states, source/annotation versions and data or a versioned local artefact reference, code/configuration version and creation time. Imports/comparison revisions are recorded independently. Missing artefacts produce an explicit integrity error; do not silently substitute today's reference data.
 
-## 5. Error model
+Projects, runs and committed observations have no automatic expiry. Delete only after the dependency summary is confirmed. Project deletion cancels jobs, prevents late worker writes, and removes owned files/results; reference tables, shared weights and other projects remain intact. The local filesystem and database are one workspace; document copying both for recovery. Backups/OS copies are outside the application's deletion guarantee.
 
-Every non-2xx response has this body, with a stable `code`:
+## 5. Peptide and whole-protein jobs
 
-```json
-{ "code": "INVALID_LENGTH", "message": "The sequence must have exactly 28 amino acids; it has 27.", "field": "sequence" }
-```
+`POST /projects/{id}/jobs` accepts a mode and exactly its input:
 
-| HTTP | `code` | When |
-|---:|---|---|
-| 400 | `INVALID_REQUEST` | Body is not valid JSON; missing required query parameter (`GET /v1/proteins` without `query`; `GET /v1/runs/{id}/export` without `format`) |
-| 400 | `INVALID_FORMAT` | `format` is neither `csv` nor `json` |
-| 401 | `TOKEN_REQUIRED` | Share link read without a valid `X-Share-Token` |
-| 404 | `UNKNOWN_ACCESSION` · `MODEL_NOT_FOUND` · `RUN_NOT_FOUND` · `TILE_OUT_OF_RANGE` (overlay endpoints only) | Unknown resource. A wrong token on an existing run also returns `RUN_NOT_FOUND`, so that run ids cannot be probed. A `model_id` that does not match the id pattern is `MODEL_NOT_FOUND`, not 422 |
-| 404 / 405 | `INVALID_REQUEST` | Unknown route or wrong method. Not listed per operation in `openapi.yaml` (no operation exists to attach it to); the body is the usual `Error` |
-| 410 | `RUN_EXPIRED` | Shared run past `expires_at` |
-| 413 | `PAYLOAD_TOO_LARGE` | Body above 4 KiB |
-| 422 | `INVALID_REQUEST` · `INVALID_LENGTH` · `INVALID_CHARACTER` · `TILE_OUT_OF_RANGE` · `TILE_NOT_SCORABLE` · `OUT_OF_DOMAIN` | Validation and domain gate (§3, §4), and malformed path or query parameters of the GET endpoints (accession pattern, non-integer `tile_index`, `query` shorter than 2 characters, `limit` out of range, run id that is not a UUID). A field that the contract does not know is a 422 with `field: null`: the name is attacker-controlled text and is not echoed |
-| 429 | `RATE_LIMITED` | Over the rate limit; `Retry-After` header set |
-| 500 | `INTERNAL_ERROR` | Unexpected; the message never contains input or stack traces |
-| 503 | `SERVICE_UNAVAILABLE` | Model file missing or hash mismatch; database unavailable; no model serving (reference endpoints); no ClinVar rows loaded (ClinVar overlay) |
+* `peptides`: a bounded array of `{input_id, sequence}` entries. The UI may parse multi-record FASTA into this array; preserve headers as data and never file paths. Stable unique `input_id`s keep duplicates distinguishable.
+* `protein`: exactly one `uniprot_id` or `{input_id, sequence}` for one protein FASTA. An optional explicit accession/release mapping must be verified before using reference annotations.
 
-The messages are written for the person who typed the input and name the problem and the fix.
+Submission pins model/calibrator/gate/source versions and persists input. `202` returns the job ID; a local worker executes it. States: `pending → running → completed|partial|failed|cancelled`; cancellation also allowed from pending. Each item is `pending|running|succeeded|refused|failed|cancelled`. Counts must reconcile with the manifest. Completed means every item succeeded; partial means terminal mixed outcomes with at least one success; no successful item means failed unless cancelled. Repeated cancellation is idempotent. The worker claims items transactionally; a lease expires after a crash and unfinished work is reclaimed. Completed snapshots are unique by `(job_id,item_id)` and never duplicated.
 
-## 6. Provenance (mandatory)
+Generate only full windows: `start=(tile_index−1)*23+1`, `end=start+27`. Keep the reference sequence hash and uncovered residue intervals, including terminal gaps; proteins shorter than 28 have zero tiles and an explicit error. Do not pad, silently end-align or average repeated protein substitutions across tile contexts. A non-standard residue makes its window unscorable, not the entire job. Each tile keeps domain/override status; partial failures do not discard other results. Ranking stays per tile.
 
-Every 200 response that carries scores or overlays has a `provenance` object, and every export contains the same information (UC-03):
+## 6. Experimental import schema and lifecycle
 
-| Field | Source |
+Upload CSV/TSV by multipart to `POST /projects/{id}/datasets`, with file and JSON metadata string. It creates only a staged validation preview (`201`), not a committed observation dataset. A JSON commit `{action: commit, acknowledge_warnings: true}` to `/datasets/{id}` succeeds only with no blocking errors; preview/file hash is immutable. Abandoned previews expire after a proposed 24 h; committed datasets are retained until deletion.
+
+Metadata: dataset name, assay name/version, endpoint, units, source/citation, reference description, and declared comparison compatibility (`zhang_gps_dpsi` or `other`). Declaring compatibility does not bypass checks. Record provenance/rights supplied by the operator; no redistribution or model use is implied.
+
+| Column | Rule |
 |---|---|
-| `model_id`, `model_kind`, `weights_sha256`, `feature_spec` | `model_version` |
-| `event_definition` | `model_version` — what the probability is of (`P(ΔPSI ≥ 1.0)`) |
-| `evidence_label` | `model_version` — "development OOF benchmark, not external validation" |
-| `domain_description` | `model_version` |
-| `data_sources[]` | `data_source` rows for the model's training sources and for any overlay used |
-| `code_version`, `generated_at` | Build and request time |
-| `disclaimers[]` | At least: scores are not probabilities of disease. Adds the ClinVar diagnostic disclaimer when `data_sources` contains ClinVar |
+| `peptide_id` | Required stable row-group identifier |
+| `wt_sequence` | Required 28 standard amino acids for this import version |
+| `position` | Required integer 1…28, within peptide |
+| `wt_aa`, `mut_aa` | Required standard letters; WT must equal sequence[position]; mutant must differ |
+| `observed_value` | Required column; finite numeric value or empty with missing reason, never silently zero |
+| `replicate_id` | Required; use a declared single-replicate identifier when appropriate |
+| `uniprot_id`, `reference_release`, `start_pos` | Optional together; accession/release/sequence must match before protein-coordinate alignment |
+| `missing_reason` | Required when value is empty |
 
-The server refuses to start (`SERVICE_UNAVAILABLE` on `/healthz`) if `weights_sha256` of the loaded file differs from the registered value.
+Validation reports row numbers and counts for valid, missing, unmatched, duplicate, conflicting and rejected records. Duplicate keys `(wt_sequence,position,mut_aa,replicate_id)` block commit; conflicting values never overwrite earlier values. Preserve replicates; any aggregation is a separate explicit comparison operation with its method recorded. Unsupported coordinate conventions, nonfinite values, incorrect WT and inconsistent PSI/ΔPSI declarations are blocking errors. File names are sanitised display metadata; storage paths are generated IDs. CSV formula text is not executed and is neutralised in exports.
 
-## 7. Export formats
+## 7. Comparison and annotation semantics
 
-**JSON.** The `PredictionResult` object plus `exported_at`.
+Comparison selects one committed dataset, one analysis and either a named replicate or an explicit mean/median aggregation. Match exact WT sequence + position + mutant; if protein mapping is supplied also check accession/release/start. Report matched/unmatched/conflicting and missing counts. For compatible GPS ΔPSI return observed value, raw predicted ΔPSI and residual `predicted − observed`; MAE and Spearman include n, aggregation and exclusions. Spearman is unavailable for insufficient/constant pairs. Other endpoints retain separate units and get no pooled ΔPSI residual/metric. Never compare a raw ΔPSI measurement directly to the calibrated probability as if units matched.
 
-**CSV.** UTF-8, `\n` line ends. Provenance first as comment lines starting with `# key=value`, one per line, then a header row and 532 data rows with the same nine columns as the command-line prototype:
+ClinVar is mandatory in release 1. Annotation status is `available|no_match|mapping_unavailable|source_unavailable|mapping_conflict`. Source not loaded must not appear as “no variants”. Include source/release IDs, accession/residue check, clinical classification, review/conflict status and diagnostic disclaimer. UniProt sequence/coordinate mapping and approved GPS measurements are the initial supplementary sources; additional integrations require an explicit source contract. Absence of an annotation is not evidence of benignity. Save annotation snapshots/source revisions for historical runs, and copy attribution to exports.
 
-```
-# model_id=m3-ext4.0-platt-v1
-# weights_sha256=8bec0b04…cd9c3
-# event_definition=P(DeltaPSI >= 1.0)
-# evidence_label=development OOF benchmark, not external validation
-# domain_status=measured_in_domain
-# data_sources=zhang2023-mendeley-v2,uniprot-2026_03,zhang2023-geo-gse240610
-# generated_at=2026-10-22T12:00:00Z
-# disclaimer=Not a probability of disease; not for diagnostic use.
-peptide,tile,position,wt_aa,mut_aa,score_dpsi_raw,p_dpsi_ge_1_calibrated,rank_in_tile,top10pct_in_tile
-A6NMZ7_28,28,1,D,A,-0.04768813161,0.02801670181,410,0
-```
+## 8. Exports and provenance
 
-Readers that understand a comment prefix (`pandas.read_csv(..., comment='#')`) ignore the provenance lines. Numbers are written with ten significant digits (`%.10g`), as the prototype does, so a client can compare to the runner at 5e-9. For a typed sequence `peptide` is `user_seq` and `tile` is `0`. File names: `degron-footprint_<model_id>_<uniprot_id>-t<n>_<date>.csv` or `…_user-seq_<date>.csv`; the sequence itself is never part of a file name.
+Preserve the baseline nine single-tile score columns: `peptide,tile,position,wt_aa,mut_aa,score_dpsi_raw,p_dpsi_ge_1_calibrated,rank_in_tile,top10pct_in_tile`. Prefix single-tile CSV with provenance comments; ten significant digits gives the existing 5e-9 tolerance.
 
-## 8. Limits (proposed, *to be measured and fixed with the NFRs*)
+Job CSV adds `project_id,job_id,item_id,input_id,uniprot_id,reference_release,start_pos,end_pos,protein_position,status,error_code,domain_status`. Write a manifest record for unscored items (score fields empty); JSON separates manifest and successful analyses. Annotated/comparison exports add namespaced annotation/measurement columns plus source/dataset revision, replicate/aggregation and units. Do not multiply score rows silently for multiple clinical submissions: represent one-to-many annotations explicitly in JSON or in a separate named table.
 
-| Limit | Proposed value |
-|---|---|
-| Request body | 4 KiB |
-| Rate limit | 60 requests per minute per client address on prediction endpoints; 120 on reference endpoints |
-| `ttl_days` | 1–30, default 7 |
-| `GET /v1/proteins` | `query` 2–32 characters; `limit` ≤ 50 |
-| Response size | one prediction ≈ 70 KB uncompressed; gzip enabled |
-| Latency target | in SRS NFR-01 / NFR-02 |
+Every result/export contains model and weight hash, event definition, development-evidence label, gate/domain, source versions/attribution, input/configuration/code identity, timestamps, and the disclaimer that the output is not a disease probability. Historical exports use their stored snapshots. Filenames never include input sequences. Paginated screens do not truncate exports.
 
-## 9. Privacy rules for implementers
+## 9. Errors, limits and tests
 
-* Do not log request bodies, the `sequence`, `uniprot_id`, `tile_index` or share tokens. Log method, route template (`/v1/proteins/{uniprot_id}/tiles`), status, duration and `X-Request-Id`.
-* `usage_daily` counters are keyed by endpoint and model only.
-* A share token is returned once; the database stores its SHA-256. The web client puts it in the URL **fragment** and sends it in `X-Share-Token`, so it does not reach access logs.
-* The frontend must not call third-party services with user input (no analytics that receive sequences).
+Baseline coded errors remain documented in `openapi.yaml`. Planned operations additionally use `PROJECT_NOT_FOUND`, `ANALYSIS_NOT_FOUND`, `JOB_NOT_FOUND`, `DATASET_NOT_FOUND`, `CONFIRMATION_REQUIRED`, `IMPORT_INVALID`, `DATASET_NOT_COMMITTED`, `INCOMPATIBLE_ENDPOINT`, `JOB_STATE_CONFLICT` and `SNAPSHOT_UNAVAILABLE`. Use 404 for missing resources, 409 for confirmation/state conflicts, 413 for configured size limits, 422 for schema/coordinate/compatibility problems and 503 for unavailable dependencies. Item errors remain in a successful job-status response; they do not make the whole HTTP response a 500.
 
-## 9a. Model card and sources not used
-
-`GET /v1/models/{model_id}` returns, besides metrics and `trained_on_sources`, the array `not_used_sources` (`source_id`, `name`, `reason`): the sources that were examined and are deliberately neither served nor used for training (Koren 2018 Table S4, MetaDegron/ELM, Larsen 2025). The list is generated by the server from the same constant as the ETL's blocked-source list, so the page cannot disagree with what the code enforces; the model card page of the web client shows it (E2E-07). `GET /v1/sources` lists only the sources that are served.
-
-## 10. Contract tests derived from this file
-
-`schemathesis` runs against `openapi.yaml` for every endpoint and error code (test ids in [test-plan.md](test-plan.md), group API). Since the contract was reconciled with the implementation (22 Oct 2026) the status check is the one documented **per operation** in `openapi.yaml`. The `firstCells` example in `openapi.yaml` is an excerpt (three of 532 cells) and is therefore excluded from response validation.
+Machine schema validity, baseline implementation agreement and new-operation acceptance are separate checks. Test new operations only after implementation; planned cases are in [test-plan.md](test-plan.md). This task validates documents, not the new runtime behaviour.

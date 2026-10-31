@@ -2,7 +2,6 @@
 % Bảng, hình và các con số trong §4.2 được sinh từ các tệp JSON kết quả bằng
 % assets/ch4/build_ch4_assets.py; không sửa tay các tệp đã sinh trong assets/ch4/.
 \input{assets/ch4/numbers}
-\newcommand{\jsonfile}[1]{\nolinkurl{#1}}
 \chapter{TESTING AND EVALUATION}\label{chap:evaluation}
 
 \section{Testing Objectives}
@@ -12,9 +11,10 @@ exports data consistently with the research runner.
 
 This chapter has two parts. Section~\ref{sec:experiments} reports the experimental evaluation of the
 research pipeline; these experiments have been run. Sections~\ref{sec:testplan} to~\ref{sec:testeval} follow
-the test-plan outline of the Faculty for the prototype tool. Only a minimal offline command-line prototype
-exists (no graphical interface); its consistency checks against the research runner have been run and are
-reported there, while the parts of the plan that need the full prototype are still \textbf{[PENDING]}.
+the test-plan outline of the Faculty for the prototype tool. The numerical results retained here come
+from the recorded CLI verification artefacts. Baseline web/API code and historical local checks also
+exist, but the first-release extensions confirmed on 29 October 2026 require implementation and new
+local acceptance evidence; no passing result for those additions is claimed here.
 
 \section{Experimental Evaluation}\label{sec:experiments}
 \subsection{Experimental Setup}
@@ -185,8 +185,7 @@ were fixed in advance: ridge M3 and the gated network without $\Delta$PAP.
   \centering
   \input{assets/ch4/fig-learning-curve}
   \caption{Macro AUROC against the mean number of training clusters (nested cluster subsets of 25, 50, 75 and 100\%
-  of the outer-training data; the dashed segment is the relaxed-threshold training set). Data:
-  \jsonfile{learning-curve-2026-10-22/results.json}.}\label{fig:curve}
+  of the outer-training data; the dashed segment is the relaxed-threshold training set).}\label{fig:curve}
 \end{figure}
 
 \begin{table}[htbp]
@@ -286,7 +285,7 @@ which is consistent with peptides that are not degrons starting to dilute the tr
   \centering
   \input{assets/ch4/fig-threshold}
   \caption{Gain in macro AUROC over the benchmark training set for each degron threshold, with 95\% cluster-bootstrap
-  intervals (horizontal offsets only separate the two models). Data: \jsonfile{learning-curve-2026-10-22/results-c.json}.}\label{fig:threshold}
+  intervals (horizontal offsets only separate the two models).}\label{fig:threshold}
 \end{figure}
 
 The gain at 4.0 survives three definitions of a positive cell and a different assignment of folds
@@ -444,7 +443,7 @@ repository, so the tables are used internally only and are not redistributed her
 \end{table}
 
 The data themselves are sound: PSI is reproduced from the bin counts in all rows, an internal wild-type reference can be built for all substrates, and the
-direction of the effect of the last glycine agrees with the biology. The gate nevertheless fails on the number of new clusters. Table S4 holds \nKoCells{} substitution cells for \nKoNS4{} substrates;
+direction of the effect of the last glycine agrees with the biology. The gate nevertheless fails on the number of new clusters. Table S4 holds \nKoCells{} substitution cells for \nKoNSubstrates{} substrates;
 the peptides are 23-residue C-terminal sequences with a stop codon in which only the last ten positions are mutated, a library different from the 28-residue internal peptides of the main
 labels; PSI is computed from 3 bins and not 6, so $\Delta$PSI values from the two sources cannot simply be added; only \nKoPos\% of the cells have $\Delta\mathrm{PSI}\ge1$ (against \nKoZhangPos\% in the benchmark),
 and the effects sit in the last one to three positions. Only \nKoMapped{} of the \nKoNSeq{} sequences could be mapped to Swiss-Prot, and one of them overlaps with the training peptides, which leaves
@@ -487,7 +486,9 @@ The following parts of the plan have no results in this version of the thesis; n
   \item \textbf{Comparison of the ranking with simple rules.} Only a random ranking was used as reference (Section~\ref{sec:res-calibration}).
   \item \textbf{Separating the region of $\mathrm{PSI}_{\mathrm{WT}}$ from the protein.} It needs pairs of peptides of the same protein on both sides
         of the threshold, which the present data may not contain (Section~\ref{sec:res-partb}).
-  \item \textbf{Graphical prototype and its tests, and tests with users.} Not built (Section~\ref{sec:testplan}). \textbf{[PENDING]}
+  \item \textbf{Expanded local software acceptance and tests with users.} Baseline web/API code exists,
+        but project/history, batch/protein and import/comparison extensions and their acceptance remain
+        pending (Section~\ref{sec:testplan}); historical checks do not verify this expanded scope.
 \end{itemize}
 
 \subsection{Discussion}
@@ -529,68 +530,62 @@ makes no claim of external validation of the probabilities or of the ranking.
   \item The pre-training result concerns one design and one encoder; the ranking is compared only with a random ranking.
 \end{itemize}
 
-\subsection{Provenance of the Reported Numbers}
-All numbers in this section are produced by \nolinkurl{assets/ch4/build_ch4_assets.py}, which reads the JSON files below
-(paths relative to \nolinkurl{topics/degron-footprint/research/}) and writes the tables, figures and number macros
-used here. The tables repeat their source in a note.
+\subsection{Reproducibility of the Reported Results}
+Tables, figures and numerical summaries are generated from the recorded experimental outputs using
+consistent filtering, aggregation and rounding rules. The experimental setup specifies the data,
+protein-cluster partitions, seeds and evaluation metrics; each result is interpreted with the controls
+and limitations of its experiment. The underlying records retain the configurations and input identities
+needed for computational reproduction. These internal records support traceability, while the thesis
+presents the scientific methods, results and their interpretation.
 
-\begin{table}[htbp]
-  \centering
-  \caption{Source files of the tables and figures of Section~\ref{sec:experiments}}\label{tab:provenance}
-  \small
-  \begin{tabularx}{\textwidth}{lX}
-    \toprule
-    \textbf{Table / figure} & \textbf{Result files} \\
-    \midrule
-    Table~\ref{tab:funnel} & \jsonfile{next-steps-plan-2026-10-22/sat-filter-dropoff.json} \\
-    Tables~\ref{tab:g2}--\ref{tab:g2seeds} & \jsonfile{g2-saturation-2026-10-18/results.json}, \jsonfile{g2-saturation-2026-10-18/audit.json}, \jsonfile{g2-extension-2026-10-18/e1-overlap.json} \\
-    Table~\ref{tab:e2} & \jsonfile{g2-extension-2026-10-18/e2-candidates.json}, \jsonfile{g2-extension-2026-10-18/e3-degformer-arch.json} \\
-    Figure~\ref{fig:curve}, Tables~\ref{tab:curve}--\ref{tab:newgroup} & \jsonfile{learning-curve-2026-10-22/results.json} \\
-    Tables~\ref{tab:partb}, \ref{tab:partbverdict} & \jsonfile{learning-curve-2026-10-22/results-b.json} \\
-    Figure~\ref{fig:threshold}, Tables~\ref{tab:partc}, \ref{tab:partcrobust} & \jsonfile{learning-curve-2026-10-22/results-c.json} \\
-    Table~\ref{tab:metadegron} & \jsonfile{metadegron-analysis-2026-10-21/dataset-audit.json}, \jsonfile{metadegron-analysis-2026-10-21/overlap-audit.json}, \jsonfile{metadegron-analysis-2026-10-21/safe-x-reproduction.json}, \jsonfile{metadegron-analysis-2026-10-21/composition-baseline.json} \\
-    Tables~\ref{tab:recluster} & \jsonfile{recluster-sensitivity-2026-10-22/results.json} \\
-    Tables~\ref{tab:p3auroc}, \ref{tab:p3verdict} & \jsonfile{pretrain-p3-2026-10-22/results.json} \\
-    Tables~\ref{tab:calmetrics}, \ref{tab:calverdict}, \ref{tab:calutility} & \jsonfile{calibration-p6-2026-10-22/results.json} \\
-    Table~\ref{tab:koren} & \jsonfile{koren-s4-audit-2026-10-22/results.json} \\
-    Table~\ref{tab:verify} & \jsonfile{calibration-p6-2026-10-22/verify.json} \\
-    Measurement ceiling (Section~\ref{sec:experiments}) & \jsonfile{residue-task-derisk-2026-10-15/ceiling.json} \\
-    \bottomrule
-  \end{tabularx}
-\end{table}
+% Internal traceability (not printed): next-steps-plan-2026-10-22/sat-filter-dropoff.json
+% Internal traceability (not printed): g2-saturation-2026-10-18/results.json, g2-saturation-2026-10-18/audit.json, g2-extension-2026-10-18/e1-overlap.json
+% Internal traceability (not printed): g2-extension-2026-10-18/e2-candidates.json, g2-extension-2026-10-18/e3-degformer-arch.json
+% Internal traceability (not printed): learning-curve-2026-10-22/results.json
+% Internal traceability (not printed): learning-curve-2026-10-22/results-b.json
+% Internal traceability (not printed): learning-curve-2026-10-22/results-c.json
+% Internal traceability (not printed): metadegron-analysis-2026-10-21/dataset-audit.json, metadegron-analysis-2026-10-21/overlap-audit.json, metadegron-analysis-2026-10-21/safe-x-reproduction.json, metadegron-analysis-2026-10-21/composition-baseline.json
+% Internal traceability (not printed): recluster-sensitivity-2026-10-22/results.json
+% Internal traceability (not printed): pretrain-p3-2026-10-22/results.json
+% Internal traceability (not printed): calibration-p6-2026-10-22/results.json
+% Internal traceability (not printed): koren-s4-audit-2026-10-22/results.json
+% Internal traceability (not printed): calibration-p6-2026-10-22/verify.json
+% Internal traceability (not printed): residue-task-derisk-2026-10-15/ceiling.json
 
 \section{Software Testing Plan}\label{sec:testplan}
 \subsection{Functions Under Test}
-UC-01 to UC-03 of Chapter~\ref{chap:problem}. The only implemented prototype is a minimal offline command-line tool
-(\nolinkurl{predict.py} in \nolinkurl{research/calibration-p6-2026-10-22/}) built on the model of
-Section~\ref{sec:res-calibration}. It covers the functions as follows. UC-01 (effect matrix): it scores all 532 substitutions
-(28 positions $\times$ 19 amino acids) of a 28-residue tile, given as a sequence or as a tile of a UniProt accession from the
-local snapshot. UC-02 (ranking): the output gives the rank of each substitution within the tile and a flag for the top 10\%.
-UC-03 (export): the output is written as CSV with the raw score and the calibrated probability. Not implemented: JSON export, the
-model version and data source as fields of the exported file (a warning with the supported domain is printed to the error stream
-only), the graphical interface, and a block on tiles outside the supported domain.
+The target covers UC-01 to UC-10 of Chapter~\ref{chap:problem}. Functions include scoring, ranking
+and export; protein selection and ClinVar annotations; model and reference evidence; batch and
+protein jobs; experimental import and comparison; and persistent projects and history. The recorded CLI verification below
+covers numerical consistency for the original scoring and export path only. Baseline web/API code
+and historical test records exist, but these tests have not been rerun here and do not verify the new
+workflows. The expanded local acceptance scenarios are specified later in this chapter.
 \subsection{Approach}
 The prototype is a thin layer over a research model, so the main risk is that it computes something different from what was
 evaluated in Section~\ref{sec:experiments}. The approach is therefore \emph{back-to-back testing}: the prototype path is compared with the
 training and evaluation path of the research runner on the \nVerCells{} cells of the 176 peptides. The 180 features are rebuilt in the
 prototype by an independent implementation (\nVerFeatures{} values are compared), so the comparison is not a code path checked against itself.
-Black-box tests of input validation (wrong length, characters outside the 20 amino acids, unknown accession, tile outside the protein) are planned
-but have not yet been written as automated tests \textbf{[PENDING]}.
+Baseline input-validation tests exist in the application source. Their historical results are not
+new execution evidence in this chapter. New domain, job, import, annotation and history cases below
+remain pending implementation and execution.
 \subsection{Criteria for Test Success or Failure}
 A check passes when the largest absolute difference between the two paths is below $10^{-9}$. The check of the exported file is asserted at
 $5\times10^{-9}$ in the code, because values are written with ten significant digits; the measured differences are below $10^{-9}$ for it as well.
-A test fails when any difference exceeds its limit.
+A test fails when any difference exceeds its limit. For the new workflows, a functional case also
+requires the specified item states, aligned counts, warnings and durable/deleted records. A skipped
+or pending case is not a pass; compatible-metric fixtures need independently calculated answers.
 \subsection{Suspension Criteria and Restart Requirements}
 The verification script stops at the first failed assertion and runs no later check. The command-line tool refuses to run if the model file is missing.
-Restart: rebuild the model file with \nolinkurl{build_model.py} and run the verification script again from the beginning.
+Restart: rebuild the frozen model artefact and run the verification procedure again from the beginning.
 \subsection{Test Deliverables}
-The verification script (\nolinkurl{verify.py}), its machine-readable report (\nolinkurl{verify.json}), the calibration results
-(\nolinkurl{results.json}), and Table~\ref{tab:verify} of this chapter.
+The verification procedure, its machine-readable execution report, the calibration results and
+Table~\ref{tab:verify} of this chapter form the recorded numerical-consistency evidence. The pending
+local acceptance work additionally requires dated functional, recovery and resource-use reports.
 
 \section{Test Management}
 \subsection{Test Activities}
-Executed: building the model and the caches, running the verification script (\nVerNChecks{} checks). Not yet executed: input-validation tests, tests of
-the interface, performance measurement, and tests with users \textbf{[PENDING]}.
+Executed: building the model and the caches, running the verification script (\nVerNChecks{} checks). Not executed for the expanded first-release scope: local integration, job/import/history tests,
+resource measurement and user evaluation. Historical baseline web/API checks are a separate record.
 \subsection{Test Environment}
 Linux under WSL2 on one development computer, CPU only; Python 3.12.3 and NumPy 2.5.3. The verification needs about 1.2~GB of memory. The model file and the caches are generated by
 the scripts and are not stored in the repository.
@@ -600,18 +595,40 @@ One tester, the author of the thesis, who is also the developer; there is no ind
 \begin{itemize}
   \item Back-to-back tests show agreement with the research code, not that the science is right: an error shared by both paths (for example in the definition of the label) would not be found.
   \item The probabilities are about 13\% too low for peptides of the original benchmark domain (Section~\ref{sec:res-calibration}); ranking is not affected.
-  \item The tool does not know the wild-type PSI of a user's tile, so a stable tile outside the supported domain still receives a score; only a printed warning protects the user.
+  \item The historical CLI has only a printed domain warning. The baseline web gate still needs R3
+        integration; whole-protein processing must not hide unknown, borderline or out-of-domain tiles.
+  \item User imports can mix endpoints or mis-map residues; validation and separate assay comparisons
+        are required. Persistent jobs/history add crash recovery and file-cleanup risks.
   \item The model was evaluated only on a development benchmark; no result in this chapter supports a claim of external validity.
 \end{itemize}
 
 \section{Test Scenarios and Test Cases}
 \subsection{Test Scenarios}
 S1: score a tile given as a sequence. S2: score a tile of a protein given by its UniProt accession. S3: export the scores as CSV and read them back.
-S4: reject invalid input (planned \textbf{[PENDING]}).
+S4: reject invalid input; the retained CLI verification report does not cover this scenario.
+\subsection{Expanded Local Acceptance Scenarios}
+Table~\ref{tab:local-acceptance} defines the additional scenarios. All are pending; test IDs map to
+the system SRS and test plan. No public-host deployment is required.
+\begin{table}[htbp]
+  \centering
+  \caption{Planned first-release local acceptance scenarios; no execution result claimed}
+  \label{tab:local-acceptance}
+  \small
+  \begin{tabularx}{\textwidth}{|P{3.4cm}|X|}
+    \hline \textbf{Case group} & \textbf{Expected evidence} \\ \hline
+    DOM-01, ANN-01 & Correct gate estimator/borderline handling; ClinVar and reference mapping, source states and attribution. \\ \hline
+    BATCH-01 to 06 & Bounds, single-tile equivalence, coverage/overlapping contexts, partial failures, cancellation, restart without duplicates and complete exports. \\ \hline
+    IMP-01 to 04 & CSV/TSV validation/commit, WT/replicate alignment, missing/conflicting data and hand-checked assay-compatible metrics. \\ \hline
+    HIST-01 to 03 & Explicit local persistence, immutable reopen/rerun after source changes, confirmed dependency/file deletion. \\ \hline
+    NF-07, DEP-01/02 & Recorded local resource use, clean local installation and restart of the same instance. \\ \hline
+  \end{tabularx}
+\end{table}
+
 \subsection{Test Cases}
 Table~\ref{tab:verify} lists the executed cases, which cover S1 to S3 through the comparison of the scores computed by the prototype with those of the research path. The cases of S4
 (length different from 28, a character outside the 20 amino acids, an unknown accession, a tile beyond the end of the protein, a tile with a non-standard residue, a missing model file) are specified
-by the input checks in the tool but have no automated test yet \textbf{[PENDING]}.
+by the CLI checks; application source contains baseline tests, but no new execution report is added
+for them here. Expanded first-release cases are specified in Table~\ref{tab:local-acceptance}.
 
 \begin{table}[htbp]
   \centering
@@ -623,3 +640,9 @@ by the input checks in the tool but have no automated test yet \textbf{[PENDING]
 All \nVerNChecks{} executed cases passed; the largest absolute difference is \nVerMax{} (Table~\ref{tab:verify}). The prototype therefore reproduces the research model on \nVerCells{} cells,
 including the scores of the outer-test folds of all fifteen (seed, fold) pairs. This establishes consistency only. It does not show that the predictions are correct (Section~\ref{sec:experiments} addresses that, on a development
 benchmark), and it says nothing about input validation, the interface, the response time (the target of Chapter~\ref{chap:problem} has not been measured) or usability \textbf{[PENDING]}.
+
+
+The first-release software acceptance remains pending. Existing CLI measurements cannot verify
+project persistence, experimental-data comparison, ClinVar mapping states, whole-protein coverage or
+job recovery. Local acceptance must report these cases and the actual computer/resource conditions;
+public deployment, Internet availability and hosted performance are outside the required scope.

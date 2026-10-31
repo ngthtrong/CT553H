@@ -1,106 +1,81 @@
 # System: Degron Footprint Tool
 
-Design documents of the web tool that wraps the frozen research model (v1: `m3-ext4.0-platt-v1`, ridge M3 trained with the relaxed threshold 4.0, Platt calibration). Written in English because they feed Chapters 1, 3 and 4 of the thesis directly. Status: **design draft v0.1, 22 Oct 2026. Nothing here is implemented**, no requirement is verified, and every threshold marked *(to be measured)* is a proposal. Origin: [next-phase plan §4](../research/next-phase-plan-2026-10-22/README.md).
+**Current software scope: v0.2, 29 Oct 2026, confirmed by the author in this session.** One local web application, React + TypeScript and FastAPI, for researchers prioritising single-amino-acid substitutions for experimental follow-up. The first release includes single-peptide analysis, peptide batches, whole-protein tiling, ClinVar and approved reference annotations, experimental-data import for comparison, and persistent projects and analysis history.
 
-## 1. Contents
+This is a requirements and design update, **not an implementation or acceptance report**. The baseline service wraps the frozen `m3-ext4.0-platt-v1` model; changing the software scope does not select a new research model, retrain it or close G2/G3. The proposal files are deliberately unchanged. The working thesis is [../report/](../report/README.md).
 
-| File | What it is | Read it for |
+## 1. Scope confirmed on 29 Oct 2026
+
+| Topic | First-release scope | Boundary |
 |---|---|---|
-| [srs.md](srs.md) | Software requirements (ISO/IEC/IEEE 29148): scope, use cases UC-01…07, FR-01…23, NFR-01…20, constraints, traceability | What the tool must do and may not do |
-| [db-design.md](db-design.md) | ER diagram, PostgreSQL DDL, data dictionary, licence per table, idempotent ETL, retention, sizes | Data model and loading |
-| [openapi.yaml](openapi.yaml) | OpenAPI 3.1 contract (validated) | What backend and frontend both code against |
-| [api-spec.md](api-spec.md) | Rules the schema cannot express: validation order, domain gate, errors, provenance, exports, privacy | Behaviour of each endpoint |
-| [ui-design.md](ui-design.md) | Site map, wireframes, states, mandatory warnings, colours, ARIA, React components, state flow | Frontend |
-| [test-plan.md](test-plan.md) | Test levels and ids (UT, PB, RG, API, ETL, E2E, NF, SEC, A11Y, DEP), environments, mapping to Chapter 4 | Verification |
-| [chapter-sync.md](chapter-sync.md) | **Proposed** edits to thesis Chapters 1 and 3 — not applied | What the author must approve |
+| Platform | React + TypeScript (Vite), FastAPI, local PostgreSQL 16; SQLite remains a test/baseline-development backend | One product and one local workspace; no account system or multi-tenant deployment |
+| Operation | Browser and backend on the same computer, bound to loopback; CPU inference | No public website, hosting/VPS, domain, TLS or Internet availability acceptance requirement; reference downloads are a separate preparation step |
+| Single peptide | 28 standard amino acids; 532 substitutions, matrix, ranking, CSV/JSON | Same mutation-level ΔPSI task and assay domain |
+| Batch | A list/FASTA of 28-residue peptides; a background job with per-item outcomes | Configurable bounded input, cancellation, restart recovery and partial-failure reporting |
+| Whole protein | One loaded human UniProt accession or one supplied protein FASTA; full 28-residue windows, step 23 | Report uncovered residues and unsuitable tiles; no full-protein biological-effect claim; keep overlapping tile contexts separate |
+| Annotations | ClinVar missense, UniProt mapping and approved GPS reference evidence | Source version, attribution, reference-residue checks; unavailable/ambiguous mappings are explicit; no disease-probability inference |
+| Experimental comparison | CSV/TSV import, validation preview, explicit commit into a project, aligned prediction/measurement comparison | Keep assay, units, replicates and provenance; no automatic relabelling, pooling or retraining |
+| Projects and history | Create, rename, reopen, delete; save immutable analysis snapshots and imported datasets locally | Explicit save/submit consent; retain until deleted, no 30-day expiry for project history; no public sharing |
+| Evidence | Model card, domain assessment and provenance in results and exports | Development benchmark is not independent validation; training-data overlays are labelled |
 
-The code lives in [app/](app/README.md) (backend, ETL, frontend, tests; state in §3); layout in §4.
+Whole-protein mode changes the number of inference tiles, not the model's 28-residue prediction unit. Imported observations are project data, not new training labels or proof of external validation.
 
-**Reading order:** this file → `srs.md` §1–3 → `db-design.md` §3–4 → `openapi.yaml` + `api-spec.md` → `ui-design.md` → `test-plan.md`. Implementers of the backend need `db-design`, `openapi.yaml`, `api-spec`; of the frontend, `openapi.yaml`, `api-spec`, `ui-design`.
+## 2. Documents and status
 
-## 2. Decisions taken and why
-
-| # | Decision | Reason |
-|---|---|---|
-| D-1 | Stack: FastAPI (Python 3.11) · React + TypeScript (Vite) · PostgreSQL 16 (SQLite for dev and unit tests) · Docker Compose | Chosen by the author (22 Oct). OpenAPI comes free from FastAPI; Playwright and axe fit React; inference needs only numpy |
-| D-2 | Predictions are **stateless**; a row is stored only on an explicit share request, ≤ 30 days | Chapter 1 forbids keeping sequences beyond the session unless stated; no accounts, so no personal data |
-| D-3 | Nothing is precomputed; scores are computed per request | 116,702 degron tiles × 532 cells ≈ 62 million rows would add nothing, since a score is one dot product |
-| D-4 | A tile is 28 residues, step 23, numbered from 1 | Taken from `predict.py` and the GPS screen id convention |
-| D-5 | Domain gate in two tiers: *measured* tile PSI from the GPS screen now; *predicted* from the R3 gate model (delivered 23 Oct, not yet integrated). `measured_out_of_domain` is **refused unless the user overrides**; `unknown` is scored with a prominent warning | The model cannot tell by itself that a tile is stable. Chapter 1 asks for a refusal. The override and the `unknown` case are additions that need approval (chapter-sync C1-3) |
-| D-6 | Typed sequences are never matched to stored tiles | Avoids the server inferring and retaining information about input; the R3 gate for typed sequences exists but is not yet wired in |
-| D-7 | Share token is returned once, stored only as SHA-256, and carried in the URL **fragment** and the `X-Share-Token` header | Keeps it out of access logs and the database |
-| D-8 | Measured ΔPSI overlay is labelled "included in the training data" | The 176 peptides are the training set; presenting them as validation would be false |
-| D-9 | The service package and `predict.py` stay two independent implementations of the features; the API test compares them | Keeps back-to-back testing meaningful |
-| D-10 | The ClinVar table is loaded with `--clinvar-scope` = `all`, `in-tiles` or `degron-only` | Free hosted databases have small storage caps |
-| D-11 | Blocked sources (Koren, MetaDegron/ELM, Larsen) are enforced in the ETL and tested | A licence breach must be impossible by shortcut, not just discouraged |
-| D-12 | Frontend types are generated from `openapi.yaml` | The contract cannot drift silently |
-
-## 3. Status of the implementation (22 Oct 2026) and what is not yet verified
-
-### 3.1 Built and run on the development machine
-
-| Part | Evidence (command, result) |
+| File | Current role |
 |---|---|
-| Contract | `openapi.yaml` validates with `openapi-spec-validator`; reconciled with the implementation (D-1…D-6 of `app/DEVIATIONS.md` closed); the three request schemas are closed and written out in full |
-| Backend (`app/backend`) | 149 pytest tests passed, including agreement with the research runner (< 1e-9 on 92,337 cells) and schemathesis over all 13 endpoints with the statuses documented **per operation**; `ruff` and `mypy` clean; SQLite only |
-| ETL | Ran on the real data into SQLite: 20,431 proteins, 482,216 tiles, 92,337 training cells, 2,338,863 ClinVar variants; second run changes 0 rows |
-| Frontend (`app/frontend`) | `tsc`, `eslint`, `check:api` clean; vitest 131 tests passed; build 380 kB; Playwright (Chromium 156): 12 tests on the mock, 12 on the production build under the CSP, 11 against the real backend (`make -C app dev-api`) |
-| Model card "sources not used" (E2E-07) | Served by the API (`ModelCard.not_used_sources`, generated from the same constant as the ETL's blocked-source list); rendered by the web client; tested on both sides |
+| [srs.md](srs.md) | v0.2 scope, UC-01…10, FR-01…36 (FR-20 retired), NFR-01…20 and traceability |
+| [db-design.md](db-design.md) | Baseline DDL plus explicitly planned workspace/job/import migration (§11) |
+| [openapi.yaml](openapi.yaml) | Baseline contract plus planned v0.2 operations marked `x-implementation-status`; legacy sharing deprecated |
+| [api-spec.md](api-spec.md) | Validation, domain, batch, import, persistence and export behaviour |
+| [ui-design.md](ui-design.md) | Existing single-tile screens plus first-release workspace, job and import screens |
+| [test-plan.md](test-plan.md) | Local acceptance plan, including pending v0.2 cases |
+| [chapter-sync.md](chapter-sync.md) | Record of the scope changes applied to the thesis; remaining implementation work |
+| [app/](app/README.md) | Baseline implementation, not changed in this documentation task |
 
-### 3.2 Not verified (do not rely on these)
+Read this README, SRS, data design, API contract/specification, UI design, then test plan. English design documents feed the English thesis; its Vietnamese abstract states the same scope.
 
-| Item | Why open | How to settle |
+## 3. Design decisions
+
+| ID | Decision | Reason |
 |---|---|---|
-| **PostgreSQL** | Migration, ETL and API ran on SQLite only; the 30-day `CHECK` and `psycopg` binding are untested | Run `docker compose up` (or a local PostgreSQL) and the same suite with `DF_DATABASE_URL` set |
-| **Docker Compose and the images** | No Docker on the development machine | `docker compose build && up`; then `nginx -t` in the `web` image |
-| **nginx** (`frontend/nginx.conf`) and the proxy path (`DF_TRUST_PROXY`) | Never executed | Same run; check the CSP header and `/v1` proxying |
-| **Reference host (2 vCPU / 2 GB)** | Latency and memory were measured on a shared laptop over loopback | NF-01…NF-06 on the chosen host, over TLS |
-| **Browsers other than Chromium**, colour-blind simulation (A11Y-03) | Only Chromium 156 and axe were run | Firefox and WebKit in Playwright; a simulation tool |
-| Tile numbering of the GPS screen vs UniProt 2026_03 | ETL-04 proves it for the 176 training peptides only; 16,266 screen rows sit just after the last full window (C-terminal tile, not served) | Decide whether to serve end-aligned tiles |
-| Gate threshold: tile PSI (one replicate) ≤ 4.0 vs *intrinsic* PSI(WT) (two replicates) ≤ 4.0 | Different estimators | **Answered by R3 (22 Oct): the raw 4.0 threshold is wrong on screen PSI; use the logistic cuts above.** The app still applies 4.0 — to be changed |
-| GEO Table S1 terms | Recorded as "GEO terms (public)" only | Read the GEO policy and write it into `data/README.md` before any public release |
-| Free-tier and VPS limits | Provider terms change | Read the provider's current limits when choosing |
-| Wording "weakens the degron signal" | Interpretation of ΔPSI ≥ 1 for the interface | Supervisor review |
-| Chapter 1 amendments | Not approved | `chapter-sync.md` |
+| D-1 | React + TypeScript and FastAPI, one local instance with PostgreSQL | Confirmed stack; interactive matrix and reusable Python inference |
+| D-2 | Unsaved single-tile previews are transient; project saves, batch submissions and committed imports are persisted explicitly | Reopening projects and history requires durable storage and clear retention |
+| D-3 | Compute scores on demand; save completed run snapshots, not all possible reference predictions | Traceability without precomputing the reference proteome |
+| D-4 | 28-residue tiles, step 23, 1-based coordinates | Preserve the baseline feature domain and coordinate convention |
+| D-5 | Domain status is attached to every tile; refuse known out-of-domain tiles by default, allow explicit warned override; unknown/borderline results carry warnings | Gate evidence and implementation must agree; R3 integration remains open |
+| D-6 | Custom sequences are not silently matched to a canonical protein | Protein mapping requires an explicit, validated accession/release; annotations can be unavailable |
+| D-7 | Public sharing and its expiring token flow are outside the accepted release | A local project workspace replaces sharing as the persistence use case |
+| D-8 | Distinguish training observations, imported observations and predictions | Comparison does not itself establish independent validation |
+| D-9 | Keep independent inference/runner calculations for numerical checks | Avoid checking one implementation against itself |
+| D-10 | ClinVar is mandatory in release 1; record the loaded scope and snapshot | Show empty, unavailable and mapping-conflict states separately |
+| D-11 | Licence/source gates apply to reference ETL; private project imports remain segregated | Import does not grant permission to redistribute or train |
+| D-12 | Generate frontend types from the contract when implementing v0.2 | Documentation alone does not make the baseline client support new routes |
+| D-13 | Durable jobs, run snapshots, dataset hashes and local deletion | Batch recovery and reproducible history require more than browser state |
 
-## 4. Layout of `app/`
+## 4. Baseline evidence and outstanding work
 
-```
-app/
-  backend/
-    degron_footprint/      # inference package: features, model, calibration, tiles, domain, provenance, export
-    api/                   # FastAPI routers, schemas, error mapping, rate limit
-    migrations/            # Alembic
-    models/                # frozen weights (.npz) with SHA-256 files; not in git if large
-  etl/                     # sources.yaml, params.yaml, load.py
-  frontend/                # Vite + React + TypeScript
-  tests/                   # unit, property, regression, api, etl, e2e, nf, a11y
-  docker-compose.yml       # api, db, web (nginx); optional caddy for VPS
-  Makefile                 # make test | etl | up
-```
+The following are **historical records from the 22–23 Oct documents, not re-executed tests for v0.2**:
 
-## 5. Deployment guidance (both targets are in scope; the choice is the author's)
+| Part | Recorded baseline evidence |
+|---|---|
+| Backend | 149 pytest cases; runner agreement on 92,337 cells; SQLite, ruff and mypy checks |
+| Reference ETL | SQLite load: 20,431 proteins, 482,216 tiles, 92,337 training cells and 2,338,863 ClinVar variants; reported idempotence |
+| Frontend | 131 vitest cases; Chromium mock/build/backend runs; single-tile UI and source/model pages |
+| Contract | Baseline 13-path contract was reconciled with the code; new planned paths are not part of those results |
 
-**Common.** One `docker compose up` starts `api`, `db` and `web`. Configuration by environment variables only: database URL, allowed web origin (CORS), rate limit, share-link maximum lifetime, model directory. The image never contains `data/`; the ETL runs once against the database. Health: `/healthz`; the container restart policy is `unless-stopped`.
+**Pending first-release implementation/verification:** projects/history, durable batch jobs, whole-protein web flow, experimental import/comparison, expanded exports and local PostgreSQL integration. Existing single-tile/ClinVar functionality must be rechecked under the new scope. Historical counts must not be presented as passing the new requirements.
 
-**Local Docker (development, demonstration, defence).** `docker compose up -d`, `make etl`, open `http://localhost:8080`. Needs about 2 GB of free RAM and the research repository checkout for the ETL. This is the baseline all tests must pass on.
+**Scientific integration gap:** R3 showed that raw screen PSI and intrinsic PSI(WT) are different estimators. The baseline app still compares screen PSI directly with 4.0 and does not load the delivered gate model or represent `borderline`. Correct integration is required; merely changing a document is insufficient. Tile/reference mapping outside the training peptides and source terms remain data-quality checks, not hosting tasks.
 
-**Free hosting service.**
-* Run the database as the host's managed PostgreSQL if its storage cap fits the ETL size report (`db-design.md` §10), otherwise use the SQLite fallback inside the API container and `--clinvar-scope degron-only`.
-* Expect cold starts and small CPU/RAM; measure NF-01…NF-06 on it and record the plan name and date. Provider limits are not assumed here; read the current terms when choosing.
-* Load the database from a laptop through the provider's connection string (ETL needs the research data), never ship `data/` to the host.
-* HTTPS and a domain are normally provided; set the allowed CORS origin to it.
+## 5. Local operation and acceptance
 
-**Rented VPS.**
-* Reference size 2 vCPU / 2 GB RAM; Docker Engine and the compose plugin; firewall opens 80/443 only.
-* Add a reverse proxy container (for example Caddy) in front of `web` for automatic TLS on a domain name; the API and database stay on the internal network.
-* Run the ETL on the VPS from a copy of the needed files, or load locally and restore a dump; backups are optional because everything is rebuildable by the ETL; if wanted, schedule `pg_dump`.
-* Keep the OS and images updated; rerun `pip-audit`/`npm audit` before each release.
+There is one local application, not separate public/internal editions. Target components are the browser frontend, FastAPI, a local job worker using the same inference package, PostgreSQL and a local workspace file directory. Bind application listeners to `127.0.0.1`; allow only the configured loopback frontend origin. No third-party API receives user sequences.
 
-Deployment tests: DEP-01 (clean checkout) and DEP-02 (the target actually used).
+Docker Compose may package these same local components; it is not a second deployment target and is not required for public hosting. Existing VPS/Caddy configuration is legacy code outside this release's acceptance scope. Current development commands in [app/Makefile](app/Makefile) start only the baseline: they do not implement jobs or project persistence.
 
-## 6. Rules for anyone editing these documents
+Acceptance is a clean local installation and execution of UC-01…10, close/reopen recovery of saved work, numerical agreement, import/annotation correctness and measured local resource use. Record the actual OS, CPU, RAM, dataset sizes and dependency versions; the old VPS sizing is not a requirement. Performance and input-limit defaults in the SRS are proposed until measured locally.
 
-* Keep the five sources of truth in agreement: `srs.md` (what), `db-design.md` (data), `openapi.yaml` (interface), `ui-design.md` (screens), `test-plan.md` (checks). A change to a requirement id, an error code or a domain status must be made in all that mention it in the same change.
-* Every number taken from research must name its source file; do not retype results from memory.
-* Do not edit `report/` from here; propose changes in `chapter-sync.md`.
+## 6. Documentation maintenance
+
+Keep requirements, data design, API, screens and tests consistent. New routes and migrations are labelled planned until implemented and tested. The author explicitly requested the thesis update in this session; [chapter-sync.md](chapter-sync.md) records the applied changes. Do not edit the proposal or unrelated experimental results as part of this scope update.
