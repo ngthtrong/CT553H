@@ -1,0 +1,85 @@
+{
+  "scope": "Local design review only; no Figma-native or application acceptance claimed",
+  "screens": 47,
+  "by_group": {
+    "desktop": 19,
+    "state": 23,
+    "mobile": 3,
+    "direction": 2
+  },
+  "node_types": {
+    "FRAME": 1820,
+    "SVG": 140,
+    "TEXT": 1839,
+    "RECTANGLE": 3555
+  },
+  "matrix_counts": {
+    "DF09": {
+      "scored": 532,
+      "wt": 28,
+      "rows": 28
+    },
+    "DF18": {
+      "scored": 532,
+      "wt": 28,
+      "rows": 28
+    },
+    "DF19": {
+      "scored": 532,
+      "wt": 28,
+      "rows": 28
+    },
+    "ST12": {
+      "scored": 532,
+      "wt": 28,
+      "rows": 28
+    },
+    "ST08": {
+      "scored": 532,
+      "wt": 28,
+      "rows": 28
+    },
+    "M03": {
+      "scored": 532,
+      "wt": 28,
+      "rows": 28
+    }
+  },
+  "console_errors": [],
+  "geometry_issues": [],
+  "unresolved_targets": [],
+  "button_targets_below_44px": [],
+  "custom_input_route": "DF18 · Custom peptide · effects",
+  "matrix_keyboard_arrow": true,
+  "fonts_loaded": true,
+  "screenshots": [
+    "previews/df01.png",
+    "previews/df03.png",
+    "previews/df04.png",
+    "previews/df07.png",
+    "previews/df09.png",
+    "previews/df11.png",
+    "previews/df13.png",
+    "previews/df15.png",
+    "previews/df19.png",
+    "previews/m02.png",
+    "previews/m03.png",
+    "previews/ux01.png"
+  ],
+  "contrast": {
+    "scope": "Solid foreground/background pairs in the design spec; not a full WCAG audit",
+    "text_failures": [],
+    "minimum_text_ratio": 5.36,
+    "control_border_vs_surface": {
+      "light": 3.27,
+      "dark": 4.16
+    }
+  },
+  "file_uri_review": {
+    "console_errors": [],
+    "fonts_loaded": true
+  },
+  "native_plugin_syntax": true,
+  "native_plugin_execution": "NOT_PERFORMED",
+  "browser": "156.0.8078.4"
+}

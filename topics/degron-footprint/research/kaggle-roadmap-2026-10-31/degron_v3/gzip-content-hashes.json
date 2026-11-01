@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "source_archive_sha256": "f4a6542f3786de420108861975eae0c58534e5f60a529bce315de9d00bd872a8",
+  "data_manifest_sha256": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738",
+  "files": [
+    {
+      "path": "references/proteins.fasta.gz",
+      "gzip_sha256": "dc8ef8cbf0fc1b857b3be9a559613533ec49824079fb057e31fdfcf578cb229a",
+      "content_bytes": 13671780,
+      "content_sha256": "bf1bc7e188e55199a2447fc20d25834db5f7f798daa818432370deb4a6b0df5e"
+    },
+    {
+      "path": "source-snapshots/psi-rep1.tsv.gz",
+      "gzip_sha256": "c0c884e7f3c19ddcc632284eaba0276501b7e0581b5980237255971daea584c0",
+      "content_bytes": 26981949,
+      "content_sha256": "e8b6261b570147613a7e30593f77a7effcaac392aa6296ece564274a937b1c99"
+    },
+    {
+      "path": "source-snapshots/psi-rep2.tsv.gz",
+      "gzip_sha256": "2913b2d77d76f856e5bb2878f8d0091428b3cd55e4359ff0ae14b6bd57e69e33",
+      "content_bytes": 26806630,
+      "content_sha256": "2372aa69aebd2292479a4c2285e149151df5fd4bd48df69d78fa86c099132ce1"
+    },
+    {
+      "path": "source-snapshots/psi-sat_a.tsv.gz",
+      "gzip_sha256": "3099a9cd5fc38ef2ce5c298cd39ff65aa1c4c87029da9a0e0a584c379eba05a5",
+      "content_bytes": 14379923,
+      "content_sha256": "03ca50c79a5f0aa89efbde5c458bd5e283079fc88f2a265177edb5a673a193a2"
+    },
+    {
+      "path": "source-snapshots/psi-sat_b.tsv.gz",
+      "gzip_sha256": "e75b3c7188660230ddc9e24b2f794346a78d37a30d18ba3e72058bdf2270dba7",
+      "content_bytes": 14301246,
+      "content_sha256": "799c7f64a8ebb578f968c76dfdf7383025bdfcb0fb1e2bc6da2b18f49414affa"
+    },
+    {
+      "path": "source-snapshots/scanning-sequence-map.tsv.gz",
+      "gzip_sha256": "9123ad4d6c0c2eb19216425b0ca86989206b6efa5b35568766efde9483a5afce",
+      "content_bytes": 441130,
+      "content_sha256": "a26a65c85312249e8a60df9f647ae0557c64bc9c43b96de9a2ba47c0899ce4b4"
+    }
+  ]
+}

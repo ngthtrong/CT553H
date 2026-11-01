@@ -1,0 +1,5330 @@
+{
+  "status": "ILLUSTRATIVE DESIGN FIXTURE; NOT MODEL OUTPUT OR MEASUREMENTS",
+  "sequence": "DIMFLVDSSGSIGPENFSKMKTFMKNLV",
+  "accession": "A6NMZ7",
+  "tile": 28,
+  "start": 622,
+  "end": 649,
+  "cells": [
+    {
+      "position": 3,
+      "wt": "M",
+      "mut": "C",
+      "raw": 1.596,
+      "prob": 0.852,
+      "protein_position": 624,
+      "rank": 1,
+      "top10": true
+    },
+    {
+      "position": 24,
+      "wt": "M",
+      "mut": "P",
+      "raw": 1.593,
+      "prob": 0.852,
+      "protein_position": 645,
+      "rank": 2,
+      "top10": true
+    },
+    {
+      "position": 10,
+      "wt": "G",
+      "mut": "P",
+      "raw": 1.579,
+      "prob": 0.849,
+      "protein_position": 631,
+      "rank": 3,
+      "top10": true
+    },
+    {
+      "position": 18,
+      "wt": "S",
+      "mut": "C",
+      "raw": 1.568,
+      "prob": 0.847,
+      "protein_position": 639,
+      "rank": 4,
+      "top10": true
+    },
+    {
+      "position": 17,
+      "wt": "F",
+      "mut": "C",
+      "raw": 1.556,
+      "prob": 0.844,
+      "protein_position": 638,
+      "rank": 5,
+      "top10": true
+    },
+    {
+      "position": 9,
+      "wt": "S",
+      "mut": "P",
+      "raw": 1.548,
+      "prob": 0.842,
+      "protein_position": 630,
+      "rank": 6,
+      "top10": true
+    },
+    {
+      "position": 7,
+      "wt": "D",
+      "mut": "T",
+      "raw": 1.542,
+      "prob": 0.841,
+      "protein_position": 628,
+      "rank": 7,
+      "top10": true
+    },
+    {
+      "position": 27,
+      "wt": "L",
+      "mut": "K",
+      "raw": 1.542,
+      "prob": 0.841,
+      "protein_position": 648,
+      "rank": 8,
+      "top10": true
+    },
+    {
+      "position": 21,
+      "wt": "K",
+      "mut": "T",
+      "raw": 1.535,
+      "prob": 0.84,
+      "protein_position": 642,
+      "rank": 9,
+      "top10": true
+    },
+    {
+      "position": 25,
+      "wt": "K",
+      "mut": "P",
+      "raw": 1.518,
+      "prob": 0.836,
+      "protein_position": 646,
+      "rank": 10,
+      "top10": true
+    },
+    {
+      "position": 12,
+      "wt": "I",
+      "mut": "K",
+      "raw": 1.509,
+      "prob": 0.834,
+      "protein_position": 633,
+      "rank": 11,
+      "top10": true
+    },
+    {
+      "position": 13,
+      "wt": "G",
+      "mut": "K",
+      "raw": 1.509,
+      "prob": 0.834,
+      "protein_position": 634,
+      "rank": 12,
+      "top10": true
+    },
+    {
+      "position": 19,
+      "wt": "K",
+      "mut": "Y",
+      "raw": 1.505,
+      "prob": 0.833,
+      "protein_position": 640,
+      "rank": 13,
+      "top10": true
+    },
+    {
+      "position": 15,
+      "wt": "E",
+      "mut": "G",
+      "raw": 1.503,
+      "prob": 0.833,
+      "protein_position": 636,
+      "rank": 14,
+      "top10": true
+    },
+    {
+      "position": 5,
+      "wt": "L",
+      "mut": "Y",
+      "raw": 1.483,
+      "prob": 0.828,
+      "protein_position": 626,
+      "rank": 15,
+      "top10": true
+    },
+    {
+      "position": 2,
+      "wt": "I",
+      "mut": "C",
+      "raw": 1.478,
+      "prob": 0.827,
+      "protein_position": 623,
+      "rank": 16,
+      "top10": true
+    },
+    {
+      "position": 6,
+      "wt": "V",
+      "mut": "T",
+      "raw": 1.478,
+      "prob": 0.827,
+      "protein_position": 627,
+      "rank": 17,
+      "top10": true
+    },
+    {
+      "position": 4,
+      "wt": "F",
+      "mut": "Y",
+      "raw": 1.465,
+      "prob": 0.824,
+      "protein_position": 625,
+      "rank": 18,
+      "top10": true
+    },
+    {
+      "position": 14,
+      "wt": "P",
+      "mut": "G",
+      "raw": 1.459,
+      "prob": 0.823,
+      "protein_position": 635,
+      "rank": 19,
+      "top10": true
+    },
+    {
+      "position": 4,
+      "wt": "F",
+      "mut": "C",
+      "raw": 1.441,
+      "prob": 0.818,
+      "protein_position": 625,
+      "rank": 20,
+      "top10": true
+    },
+    {
+      "position": 28,
+      "wt": "V",
+      "mut": "K",
+      "raw": 1.435,
+      "prob": 0.817,
+      "protein_position": 649,
+      "rank": 21,
+      "top10": true
+    },
+    {
+      "position": 20,
+      "wt": "M",
+      "mut": "Y",
+      "raw": 1.417,
+      "prob": 0.813,
+      "protein_position": 641,
+      "rank": 22,
+      "top10": true
+    },
+    {
+      "position": 1,
+      "wt": "D",
+      "mut": "G",
+      "raw": 1.396,
+      "prob": 0.807,
+      "protein_position": 622,
+      "rank": 23,
+      "top10": true
+    },
+    {
+      "position": 23,
+      "wt": "F",
+      "mut": "P",
+      "raw": 1.396,
+      "prob": 0.807,
+      "protein_position": 644,
+      "rank": 24,
+      "top10": true
+    },
+    {
+      "position": 1,
+      "wt": "D",
+      "mut": "F",
+      "raw": 1.39,
+      "prob": 0.806,
+      "protein_position": 622,
+      "rank": 25,
+      "top10": true
+    },
+    {
+      "position": 15,
+      "wt": "E",
+      "mut": "F",
+      "raw": 1.378,
+      "prob": 0.803,
+      "protein_position": 636,
+      "rank": 26,
+      "top10": true
+    },
+    {
+      "position": 26,
+      "wt": "N",
+      "mut": "K",
+      "raw": 1.376,
+      "prob": 0.802,
+      "protein_position": 647,
+      "rank": 27,
+      "top10": true
+    },
+    {
+      "position": 12,
+      "wt": "I",
+      "mut": "L",
+      "raw": 1.352,
+      "prob": 0.796,
+      "protein_position": 633,
+      "rank": 28,
+      "top10": true
+    },
+    {
+      "position": 16,
+      "wt": "N",
+      "mut": "F",
+      "raw": 1.345,
+      "prob": 0.794,
+      "protein_position": 637,
+      "rank": 29,
+      "top10": true
+    },
+    {
+      "position": 22,
+      "wt": "T",
+      "mut": "S",
+      "raw": 1.343,
+      "prob": 0.794,
+      "protein_position": 643,
+      "rank": 30,
+      "top10": true
+    },
+    {
+      "position": 11,
+      "wt": "S",
+      "mut": "P",
+      "raw": 1.341,
+      "prob": 0.793,
+      "protein_position": 632,
+      "rank": 31,
+      "top10": true
+    },
+    {
+      "position": 26,
+      "wt": "N",
+      "mut": "L",
+      "raw": 1.338,
+      "prob": 0.793,
+      "protein_position": 647,
+      "rank": 32,
+      "top10": true
+    },
+    {
+      "position": 8,
+      "wt": "S",
+      "mut": "T",
+      "raw": 1.334,
+      "prob": 0.792,
+      "protein_position": 629,
+      "rank": 33,
+      "top10": true
+    },
+    {
+      "position": 18,
+      "wt": "S",
+      "mut": "Y",
+      "raw": 1.321,
+      "prob": 0.788,
+      "protein_position": 639,
+      "rank": 34,
+      "top10": true
+    },
+    {
+      "position": 7,
+      "wt": "D",
+      "mut": "S",
+      "raw": 1.315,
+      "prob": 0.787,
+      "protein_position": 628,
+      "rank": 35,
+      "top10": true
+    },
+    {
+      "position": 19,
+      "wt": "K",
+      "mut": "C",
+      "raw": 1.312,
+      "prob": 0.786,
+      "protein_position": 640,
+      "rank": 36,
+      "top10": true
+    },
+    {
+      "position": 20,
+      "wt": "M",
+      "mut": "T",
+      "raw": 1.309,
+      "prob": 0.785,
+      "protein_position": 641,
+      "rank": 37,
+      "top10": true
+    },
+    {
+      "position": 28,
+      "wt": "V",
+      "mut": "G",
+      "raw": 1.3,
+      "prob": 0.782,
+      "protein_position": 649,
+      "rank": 38,
+      "top10": true
+    },
+    {
+      "position": 16,
+      "wt": "N",
+      "mut": "C",
+      "raw": 1.278,
+      "prob": 0.776,
+      "protein_position": 637,
+      "rank": 39,
+      "top10": true
+    },
+    {
+      "position": 16,
+      "wt": "N",
+      "mut": "G",
+      "raw": 1.277,
+      "prob": 0.776,
+      "protein_position": 637,
+      "rank": 40,
+      "top10": true
+    },
+    {
+      "position": 11,
+      "wt": "S",
+      "mut": "L",
+      "raw": 1.276,
+      "prob": 0.776,
+      "protein_position": 632,
+      "rank": 41,
+      "top10": true
+    },
+    {
+      "position": 8,
+      "wt": "S",
+      "mut": "P",
+      "raw": 1.253,
+      "prob": 0.769,
+      "protein_position": 629,
+      "rank": 42,
+      "top10": true
+    },
+    {
+      "position": 11,
+      "wt": "S",
+      "mut": "K",
+      "raw": 1.243,
+      "prob": 0.767,
+      "protein_position": 632,
+      "rank": 43,
+      "top10": true
+    },
+    {
+      "position": 14,
+      "wt": "P",
+      "mut": "K",
+      "raw": 1.241,
+      "prob": 0.766,
+      "protein_position": 635,
+      "rank": 44,
+      "top10": true
+    },
+    {
+      "position": 6,
+      "wt": "V",
+      "mut": "Y",
+      "raw": 1.234,
+      "prob": 0.764,
+      "protein_position": 627,
+      "rank": 45,
+      "top10": true
+    },
+    {
+      "position": 23,
+      "wt": "F",
+      "mut": "S",
+      "raw": 1.224,
+      "prob": 0.761,
+      "protein_position": 644,
+      "rank": 46,
+      "top10": true
+    },
+    {
+      "position": 2,
+      "wt": "I",
+      "mut": "F",
+      "raw": 1.192,
+      "prob": 0.752,
+      "protein_position": 623,
+      "rank": 47,
+      "top10": true
+    },
+    {
+      "position": 18,
+      "wt": "S",
+      "mut": "A",
+      "raw": 1.19,
+      "prob": 0.751,
+      "protein_position": 639,
+      "rank": 48,
+      "top10": true
+    },
+    {
+      "position": 21,
+      "wt": "K",
+      "mut": "S",
+      "raw": 1.19,
+      "prob": 0.751,
+      "protein_position": 642,
+      "rank": 49,
+      "top10": true
+    },
+    {
+      "position": 23,
+      "wt": "F",
+      "mut": "T",
+      "raw": 1.186,
+      "prob": 0.75,
+      "protein_position": 644,
+      "rank": 50,
+      "top10": true
+    },
+    {
+      "position": 26,
+      "wt": "N",
+      "mut": "P",
+      "raw": 1.184,
+      "prob": 0.749,
+      "protein_position": 647,
+      "rank": 51,
+      "top10": true
+    },
+    {
+      "position": 4,
+      "wt": "F",
+      "mut": "A",
+      "raw": 1.183,
+      "prob": 0.749,
+      "protein_position": 625,
+      "rank": 52,
+      "top10": true
+    },
+    {
+      "position": 3,
+      "wt": "M",
+      "mut": "Y",
+      "raw": 1.181,
+      "prob": 0.748,
+      "protein_position": 624,
+      "rank": 53,
+      "top10": true
+    },
+    {
+      "position": 13,
+      "wt": "G",
+      "mut": "L",
+      "raw": 1.156,
+      "prob": 0.741,
+      "protein_position": 634,
+      "rank": 54,
+      "top10": true
+    },
+    {
+      "position": 5,
+      "wt": "L",
+      "mut": "T",
+      "raw": 1.155,
+      "prob": 0.74,
+      "protein_position": 626,
+      "rank": 55,
+      "top10": false
+    },
+    {
+      "position": 9,
+      "wt": "S",
+      "mut": "Q",
+      "raw": 1.155,
+      "prob": 0.74,
+      "protein_position": 630,
+      "rank": 56,
+      "top10": false
+    },
+    {
+      "position": 3,
+      "wt": "M",
+      "mut": "A",
+      "raw": 1.141,
+      "prob": 0.736,
+      "protein_position": 624,
+      "rank": 57,
+      "top10": false
+    },
+    {
+      "position": 14,
+      "wt": "P",
+      "mut": "F",
+      "raw": 1.141,
+      "prob": 0.736,
+      "protein_position": 635,
+      "rank": 58,
+      "top10": false
+    },
+    {
+      "position": 25,
+      "wt": "K",
+      "mut": "N",
+      "raw": 1.14,
+      "prob": 0.736,
+      "protein_position": 646,
+      "rank": 59,
+      "top10": false
+    },
+    {
+      "position": 19,
+      "wt": "K",
+      "mut": "A",
+      "raw": 1.126,
+      "prob": 0.731,
+      "protein_position": 640,
+      "rank": 60,
+      "top10": false
+    },
+    {
+      "position": 10,
+      "wt": "G",
+      "mut": "N",
+      "raw": 1.125,
+      "prob": 0.731,
+      "protein_position": 631,
+      "rank": 61,
+      "top10": false
+    },
+    {
+      "position": 24,
+      "wt": "M",
+      "mut": "Q",
+      "raw": 1.123,
+      "prob": 0.73,
+      "protein_position": 645,
+      "rank": 62,
+      "top10": false
+    },
+    {
+      "position": 23,
+      "wt": "F",
+      "mut": "Q",
+      "raw": 1.121,
+      "prob": 0.73,
+      "protein_position": 644,
+      "rank": 63,
+      "top10": false
+    },
+    {
+      "position": 1,
+      "wt": "D",
+      "mut": "C",
+      "raw": 1.108,
+      "prob": 0.726,
+      "protein_position": 622,
+      "rank": 64,
+      "top10": false
+    },
+    {
+      "position": 25,
+      "wt": "K",
+      "mut": "L",
+      "raw": 1.099,
+      "prob": 0.723,
+      "protein_position": 646,
+      "rank": 65,
+      "top10": false
+    },
+    {
+      "position": 17,
+      "wt": "F",
+      "mut": "D",
+      "raw": 1.093,
+      "prob": 0.721,
+      "protein_position": 638,
+      "rank": 66,
+      "top10": false
+    },
+    {
+      "position": 2,
+      "wt": "I",
+      "mut": "D",
+      "raw": 1.092,
+      "prob": 0.721,
+      "protein_position": 623,
+      "rank": 67,
+      "top10": false
+    },
+    {
+      "position": 11,
+      "wt": "S",
+      "mut": "N",
+      "raw": 1.079,
+      "prob": 0.716,
+      "protein_position": 632,
+      "rank": 68,
+      "top10": false
+    },
+    {
+      "position": 21,
+      "wt": "K",
+      "mut": "Y",
+      "raw": 1.073,
+      "prob": 0.714,
+      "protein_position": 642,
+      "rank": 69,
+      "top10": false
+    },
+    {
+      "position": 6,
+      "wt": "V",
+      "mut": "S",
+      "raw": 1.061,
+      "prob": 0.71,
+      "protein_position": 627,
+      "rank": 70,
+      "top10": false
+    },
+    {
+      "position": 8,
+      "wt": "S",
+      "mut": "Q",
+      "raw": 1.047,
+      "prob": 0.706,
+      "protein_position": 629,
+      "rank": 71,
+      "top10": false
+    },
+    {
+      "position": 5,
+      "wt": "L",
+      "mut": "C",
+      "raw": 1.042,
+      "prob": 0.704,
+      "protein_position": 626,
+      "rank": 72,
+      "top10": false
+    },
+    {
+      "position": 2,
+      "wt": "I",
+      "mut": "G",
+      "raw": 1.021,
+      "prob": 0.697,
+      "protein_position": 623,
+      "rank": 73,
+      "top10": false
+    },
+    {
+      "position": 24,
+      "wt": "M",
+      "mut": "N",
+      "raw": 1.018,
+      "prob": 0.696,
+      "protein_position": 645,
+      "rank": 74,
+      "top10": false
+    },
+    {
+      "position": 28,
+      "wt": "V",
+      "mut": "L",
+      "raw": 1.013,
+      "prob": 0.694,
+      "protein_position": 649,
+      "rank": 75,
+      "top10": false
+    },
+    {
+      "position": 3,
+      "wt": "M",
+      "mut": "D",
+      "raw": 1.012,
+      "prob": 0.694,
+      "protein_position": 624,
+      "rank": 76,
+      "top10": false
+    },
+    {
+      "position": 16,
+      "wt": "N",
+      "mut": "D",
+      "raw": 1.005,
+      "prob": 0.692,
+      "protein_position": 637,
+      "rank": 77,
+      "top10": false
+    },
+    {
+      "position": 10,
+      "wt": "G",
+      "mut": "Q",
+      "raw": 0.99,
+      "prob": 0.687,
+      "protein_position": 631,
+      "rank": 78,
+      "top10": false
+    },
+    {
+      "position": 17,
+      "wt": "F",
+      "mut": "A",
+      "raw": 0.983,
+      "prob": 0.684,
+      "protein_position": 638,
+      "rank": 79,
+      "top10": false
+    },
+    {
+      "position": 22,
+      "wt": "T",
+      "mut": "P",
+      "raw": 0.964,
+      "prob": 0.678,
+      "protein_position": 643,
+      "rank": 80,
+      "top10": false
+    },
+    {
+      "position": 5,
+      "wt": "L",
+      "mut": "A",
+      "raw": 0.955,
+      "prob": 0.674,
+      "protein_position": 626,
+      "rank": 81,
+      "top10": false
+    },
+    {
+      "position": 28,
+      "wt": "V",
+      "mut": "I",
+      "raw": 0.949,
+      "prob": 0.672,
+      "protein_position": 649,
+      "rank": 82,
+      "top10": false
+    },
+    {
+      "position": 13,
+      "wt": "G",
+      "mut": "I",
+      "raw": 0.946,
+      "prob": 0.671,
+      "protein_position": 634,
+      "rank": 83,
+      "top10": false
+    },
+    {
+      "position": 21,
+      "wt": "K",
+      "mut": "V",
+      "raw": 0.946,
+      "prob": 0.671,
+      "protein_position": 642,
+      "rank": 84,
+      "top10": false
+    },
+    {
+      "position": 10,
+      "wt": "G",
+      "mut": "L",
+      "raw": 0.942,
+      "prob": 0.67,
+      "protein_position": 631,
+      "rank": 85,
+      "top10": false
+    },
+    {
+      "position": 14,
+      "wt": "P",
+      "mut": "H",
+      "raw": 0.92,
+      "prob": 0.662,
+      "protein_position": 635,
+      "rank": 86,
+      "top10": false
+    },
+    {
+      "position": 20,
+      "wt": "M",
+      "mut": "V",
+      "raw": 0.913,
+      "prob": 0.659,
+      "protein_position": 641,
+      "rank": 87,
+      "top10": false
+    },
+    {
+      "position": 18,
+      "wt": "S",
+      "mut": "D",
+      "raw": 0.91,
+      "prob": 0.658,
+      "protein_position": 639,
+      "rank": 88,
+      "top10": false
+    },
+    {
+      "position": 20,
+      "wt": "M",
+      "mut": "W",
+      "raw": 0.907,
+      "prob": 0.657,
+      "protein_position": 641,
+      "rank": 89,
+      "top10": false
+    },
+    {
+      "position": 9,
+      "wt": "S",
+      "mut": "N",
+      "raw": 0.9,
+      "prob": 0.655,
+      "protein_position": 630,
+      "rank": 90,
+      "top10": false
+    },
+    {
+      "position": 5,
+      "wt": "L",
+      "mut": "W",
+      "raw": 0.897,
+      "prob": 0.654,
+      "protein_position": 626,
+      "rank": 91,
+      "top10": false
+    },
+    {
+      "position": 17,
+      "wt": "F",
+      "mut": "Y",
+      "raw": 0.897,
+      "prob": 0.654,
+      "protein_position": 638,
+      "rank": 92,
+      "top10": false
+    },
+    {
+      "position": 9,
+      "wt": "S",
+      "mut": "T",
+      "raw": 0.892,
+      "prob": 0.652,
+      "protein_position": 630,
+      "rank": 93,
+      "top10": false
+    },
+    {
+      "position": 28,
+      "wt": "V",
+      "mut": "F",
+      "raw": 0.88,
+      "prob": 0.647,
+      "protein_position": 649,
+      "rank": 94,
+      "top10": false
+    },
+    {
+      "position": 28,
+      "wt": "V",
+      "mut": "H",
+      "raw": 0.878,
+      "prob": 0.647,
+      "protein_position": 649,
+      "rank": 95,
+      "top10": false
+    },
+    {
+      "position": 12,
+      "wt": "I",
+      "mut": "P",
+      "raw": 0.877,
+      "prob": 0.646,
+      "protein_position": 633,
+      "rank": 96,
+      "top10": false
+    },
+    {
+      "position": 14,
+      "wt": "P",
+      "mut": "I",
+      "raw": 0.869,
+      "prob": 0.643,
+      "protein_position": 635,
+      "rank": 97,
+      "top10": false
+    },
+    {
+      "position": 27,
+      "wt": "L",
+      "mut": "G",
+      "raw": 0.858,
+      "prob": 0.639,
+      "protein_position": 648,
+      "rank": 98,
+      "top10": false
+    },
+    {
+      "position": 27,
+      "wt": "L",
+      "mut": "I",
+      "raw": 0.858,
+      "prob": 0.639,
+      "protein_position": 648,
+      "rank": 99,
+      "top10": false
+    },
+    {
+      "position": 25,
+      "wt": "K",
+      "mut": "Q",
+      "raw": 0.857,
+      "prob": 0.639,
+      "protein_position": 646,
+      "rank": 100,
+      "top10": false
+    },
+    {
+      "position": 19,
+      "wt": "K",
+      "mut": "T",
+      "raw": 0.853,
+      "prob": 0.638,
+      "protein_position": 640,
+      "rank": 101,
+      "top10": false
+    },
+    {
+      "position": 22,
+      "wt": "T",
+      "mut": "Q",
+      "raw": 0.853,
+      "prob": 0.638,
+      "protein_position": 643,
+      "rank": 102,
+      "top10": false
+    },
+    {
+      "position": 24,
+      "wt": "M",
+      "mut": "S",
+      "raw": 0.853,
+      "prob": 0.638,
+      "protein_position": 645,
+      "rank": 103,
+      "top10": false
+    },
+    {
+      "position": 6,
+      "wt": "V",
+      "mut": "W",
+      "raw": 0.839,
+      "prob": 0.632,
+      "protein_position": 627,
+      "rank": 104,
+      "top10": false
+    },
+    {
+      "position": 2,
+      "wt": "I",
+      "mut": "A",
+      "raw": 0.837,
+      "prob": 0.632,
+      "protein_position": 623,
+      "rank": 105,
+      "top10": false
+    },
+    {
+      "position": 20,
+      "wt": "M",
+      "mut": "C",
+      "raw": 0.835,
+      "prob": 0.631,
+      "protein_position": 641,
+      "rank": 106,
+      "top10": false
+    },
+    {
+      "position": 7,
+      "wt": "D",
+      "mut": "V",
+      "raw": 0.832,
+      "prob": 0.63,
+      "protein_position": 628,
+      "rank": 107,
+      "top10": false
+    },
+    {
+      "position": 16,
+      "wt": "N",
+      "mut": "E",
+      "raw": 0.828,
+      "prob": 0.628,
+      "protein_position": 637,
+      "rank": 108,
+      "top10": false
+    },
+    {
+      "position": 5,
+      "wt": "L",
+      "mut": "V",
+      "raw": 0.827,
+      "prob": 0.628,
+      "protein_position": 626,
+      "rank": 109,
+      "top10": false
+    },
+    {
+      "position": 17,
+      "wt": "F",
+      "mut": "G",
+      "raw": 0.822,
+      "prob": 0.626,
+      "protein_position": 638,
+      "rank": 110,
+      "top10": false
+    },
+    {
+      "position": 11,
+      "wt": "S",
+      "mut": "M",
+      "raw": 0.815,
+      "prob": 0.623,
+      "protein_position": 632,
+      "rank": 111,
+      "top10": false
+    },
+    {
+      "position": 8,
+      "wt": "S",
+      "mut": "R",
+      "raw": 0.807,
+      "prob": 0.62,
+      "protein_position": 629,
+      "rank": 112,
+      "top10": false
+    },
+    {
+      "position": 23,
+      "wt": "F",
+      "mut": "R",
+      "raw": 0.805,
+      "prob": 0.62,
+      "protein_position": 644,
+      "rank": 113,
+      "top10": false
+    },
+    {
+      "position": 20,
+      "wt": "M",
+      "mut": "A",
+      "raw": 0.802,
+      "prob": 0.619,
+      "protein_position": 641,
+      "rank": 114,
+      "top10": false
+    },
+    {
+      "position": 26,
+      "wt": "N",
+      "mut": "M",
+      "raw": 0.8,
+      "prob": 0.618,
+      "protein_position": 647,
+      "rank": 115,
+      "top10": false
+    },
+    {
+      "position": 13,
+      "wt": "G",
+      "mut": "H",
+      "raw": 0.799,
+      "prob": 0.617,
+      "protein_position": 634,
+      "rank": 116,
+      "top10": false
+    },
+    {
+      "position": 19,
+      "wt": "K",
+      "mut": "W",
+      "raw": 0.798,
+      "prob": 0.617,
+      "protein_position": 640,
+      "rank": 117,
+      "top10": false
+    },
+    {
+      "position": 1,
+      "wt": "D",
+      "mut": "E",
+      "raw": 0.796,
+      "prob": 0.616,
+      "protein_position": 622,
+      "rank": 118,
+      "top10": false
+    },
+    {
+      "position": 2,
+      "wt": "I",
+      "mut": "E",
+      "raw": 0.794,
+      "prob": 0.615,
+      "protein_position": 623,
+      "rank": 119,
+      "top10": false
+    },
+    {
+      "position": 20,
+      "wt": "M",
+      "mut": "S",
+      "raw": 0.791,
+      "prob": 0.614,
+      "protein_position": 641,
+      "rank": 120,
+      "top10": false
+    },
+    {
+      "position": 15,
+      "wt": "E",
+      "mut": "C",
+      "raw": 0.785,
+      "prob": 0.612,
+      "protein_position": 636,
+      "rank": 121,
+      "top10": false
+    },
+    {
+      "position": 12,
+      "wt": "I",
+      "mut": "N",
+      "raw": 0.772,
+      "prob": 0.607,
+      "protein_position": 633,
+      "rank": 122,
+      "top10": false
+    },
+    {
+      "position": 15,
+      "wt": "E",
+      "mut": "H",
+      "raw": 0.767,
+      "prob": 0.605,
+      "protein_position": 636,
+      "rank": 123,
+      "top10": false
+    },
+    {
+      "position": 7,
+      "wt": "D",
+      "mut": "Y",
+      "raw": 0.761,
+      "prob": 0.603,
+      "protein_position": 628,
+      "rank": 124,
+      "top10": false
+    },
+    {
+      "position": 3,
+      "wt": "M",
+      "mut": "F",
+      "raw": 0.759,
+      "prob": 0.602,
+      "protein_position": 624,
+      "rank": 125,
+      "top10": false
+    },
+    {
+      "position": 10,
+      "wt": "G",
+      "mut": "K",
+      "raw": 0.759,
+      "prob": 0.602,
+      "protein_position": 631,
+      "rank": 126,
+      "top10": false
+    },
+    {
+      "position": 15,
+      "wt": "E",
+      "mut": "K",
+      "raw": 0.756,
+      "prob": 0.601,
+      "protein_position": 636,
+      "rank": 127,
+      "top10": false
+    },
+    {
+      "position": 25,
+      "wt": "K",
+      "mut": "M",
+      "raw": 0.754,
+      "prob": 0.6,
+      "protein_position": 646,
+      "rank": 128,
+      "top10": false
+    },
+    {
+      "position": 7,
+      "wt": "D",
+      "mut": "P",
+      "raw": 0.748,
+      "prob": 0.598,
+      "protein_position": 628,
+      "rank": 129,
+      "top10": false
+    },
+    {
+      "position": 21,
+      "wt": "K",
+      "mut": "W",
+      "raw": 0.744,
+      "prob": 0.596,
+      "protein_position": 642,
+      "rank": 130,
+      "top10": false
+    },
+    {
+      "position": 22,
+      "wt": "T",
+      "mut": "R",
+      "raw": 0.727,
+      "prob": 0.59,
+      "protein_position": 643,
+      "rank": 131,
+      "top10": false
+    },
+    {
+      "position": 14,
+      "wt": "P",
+      "mut": "L",
+      "raw": 0.724,
+      "prob": 0.589,
+      "protein_position": 635,
+      "rank": 132,
+      "top10": false
+    },
+    {
+      "position": 17,
+      "wt": "F",
+      "mut": "E",
+      "raw": 0.719,
+      "prob": 0.587,
+      "protein_position": 638,
+      "rank": 133,
+      "top10": false
+    },
+    {
+      "position": 9,
+      "wt": "S",
+      "mut": "R",
+      "raw": 0.717,
+      "prob": 0.586,
+      "protein_position": 630,
+      "rank": 134,
+      "top10": false
+    },
+    {
+      "position": 22,
+      "wt": "T",
+      "mut": "V",
+      "raw": 0.71,
+      "prob": 0.583,
+      "protein_position": 643,
+      "rank": 135,
+      "top10": false
+    },
+    {
+      "position": 12,
+      "wt": "I",
+      "mut": "M",
+      "raw": 0.693,
+      "prob": 0.577,
+      "protein_position": 633,
+      "rank": 136,
+      "top10": false
+    },
+    {
+      "position": 7,
+      "wt": "D",
+      "mut": "Q",
+      "raw": 0.686,
+      "prob": 0.574,
+      "protein_position": 628,
+      "rank": 137,
+      "top10": false
+    },
+    {
+      "position": 2,
+      "wt": "I",
+      "mut": "Y",
+      "raw": 0.684,
+      "prob": 0.573,
+      "protein_position": 623,
+      "rank": 138,
+      "top10": false
+    },
+    {
+      "position": 4,
+      "wt": "F",
+      "mut": "W",
+      "raw": 0.684,
+      "prob": 0.573,
+      "protein_position": 625,
+      "rank": 139,
+      "top10": false
+    },
+    {
+      "position": 13,
+      "wt": "G",
+      "mut": "F",
+      "raw": 0.678,
+      "prob": 0.571,
+      "protein_position": 634,
+      "rank": 140,
+      "top10": false
+    },
+    {
+      "position": 4,
+      "wt": "F",
+      "mut": "D",
+      "raw": 0.675,
+      "prob": 0.57,
+      "protein_position": 625,
+      "rank": 141,
+      "top10": false
+    },
+    {
+      "position": 24,
+      "wt": "M",
+      "mut": "T",
+      "raw": 0.674,
+      "prob": 0.569,
+      "protein_position": 645,
+      "rank": 142,
+      "top10": false
+    },
+    {
+      "position": 10,
+      "wt": "G",
+      "mut": "M",
+      "raw": 0.664,
+      "prob": 0.565,
+      "protein_position": 631,
+      "rank": 143,
+      "top10": false
+    },
+    {
+      "position": 15,
+      "wt": "E",
+      "mut": "D",
+      "raw": 0.66,
+      "prob": 0.564,
+      "protein_position": 636,
+      "rank": 144,
+      "top10": false
+    },
+    {
+      "position": 27,
+      "wt": "L",
+      "mut": "P",
+      "raw": 0.653,
+      "prob": 0.561,
+      "protein_position": 648,
+      "rank": 145,
+      "top10": false
+    },
+    {
+      "position": 23,
+      "wt": "F",
+      "mut": "N",
+      "raw": 0.645,
+      "prob": 0.558,
+      "protein_position": 644,
+      "rank": 146,
+      "top10": false
+    },
+    {
+      "position": 12,
+      "wt": "I",
+      "mut": "G",
+      "raw": 0.64,
+      "prob": 0.556,
+      "protein_position": 633,
+      "rank": 147,
+      "top10": false
+    },
+    {
+      "position": 24,
+      "wt": "M",
+      "mut": "L",
+      "raw": 0.635,
+      "prob": 0.554,
+      "protein_position": 645,
+      "rank": 148,
+      "top10": false
+    },
+    {
+      "position": 4,
+      "wt": "F",
+      "mut": "T",
+      "raw": 0.631,
+      "prob": 0.552,
+      "protein_position": 625,
+      "rank": 149,
+      "top10": false
+    },
+    {
+      "position": 7,
+      "wt": "D",
+      "mut": "R",
+      "raw": 0.625,
+      "prob": 0.55,
+      "protein_position": 628,
+      "rank": 150,
+      "top10": false
+    },
+    {
+      "position": 19,
+      "wt": "K",
+      "mut": "V",
+      "raw": 0.616,
+      "prob": 0.546,
+      "protein_position": 640,
+      "rank": 151,
+      "top10": false
+    },
+    {
+      "position": 24,
+      "wt": "M",
+      "mut": "R",
+      "raw": 0.611,
+      "prob": 0.544,
+      "protein_position": 645,
+      "rank": 152,
+      "top10": false
+    },
+    {
+      "position": 27,
+      "wt": "L",
+      "mut": "H",
+      "raw": 0.598,
+      "prob": 0.539,
+      "protein_position": 648,
+      "rank": 153,
+      "top10": false
+    },
+    {
+      "position": 27,
+      "wt": "L",
+      "mut": "N",
+      "raw": 0.593,
+      "prob": 0.537,
+      "protein_position": 648,
+      "rank": 154,
+      "top10": false
+    },
+    {
+      "position": 5,
+      "wt": "L",
+      "mut": "S",
+      "raw": 0.585,
+      "prob": 0.534,
+      "protein_position": 626,
+      "rank": 155,
+      "top10": false
+    },
+    {
+      "position": 11,
+      "wt": "S",
+      "mut": "Q",
+      "raw": 0.582,
+      "prob": 0.533,
+      "protein_position": 632,
+      "rank": 156,
+      "top10": false
+    },
+    {
+      "position": 27,
+      "wt": "L",
+      "mut": "M",
+      "raw": 0.576,
+      "prob": 0.53,
+      "protein_position": 648,
+      "rank": 157,
+      "top10": false
+    },
+    {
+      "position": 1,
+      "wt": "D",
+      "mut": "H",
+      "raw": 0.549,
+      "prob": 0.52,
+      "protein_position": 622,
+      "rank": 158,
+      "top10": false
+    },
+    {
+      "position": 16,
+      "wt": "N",
+      "mut": "A",
+      "raw": 0.543,
+      "prob": 0.517,
+      "protein_position": 637,
+      "rank": 159,
+      "top10": false
+    },
+    {
+      "position": 18,
+      "wt": "S",
+      "mut": "F",
+      "raw": 0.543,
+      "prob": 0.517,
+      "protein_position": 639,
+      "rank": 160,
+      "top10": false
+    },
+    {
+      "position": 22,
+      "wt": "T",
+      "mut": "Y",
+      "raw": 0.535,
+      "prob": 0.514,
+      "protein_position": 643,
+      "rank": 161,
+      "top10": false
+    },
+    {
+      "position": 15,
+      "wt": "E",
+      "mut": "I",
+      "raw": 0.534,
+      "prob": 0.514,
+      "protein_position": 636,
+      "rank": 162,
+      "top10": false
+    },
+    {
+      "position": 10,
+      "wt": "G",
+      "mut": "S",
+      "raw": 0.529,
+      "prob": 0.512,
+      "protein_position": 631,
+      "rank": 163,
+      "top10": false
+    },
+    {
+      "position": 3,
+      "wt": "M",
+      "mut": "E",
+      "raw": 0.525,
+      "prob": 0.51,
+      "protein_position": 624,
+      "rank": 164,
+      "top10": false
+    },
+    {
+      "position": 7,
+      "wt": "D",
+      "mut": "W",
+      "raw": 0.52,
+      "prob": 0.508,
+      "protein_position": 628,
+      "rank": 165,
+      "top10": false
+    },
+    {
+      "position": 26,
+      "wt": "N",
+      "mut": "I",
+      "raw": 0.512,
+      "prob": 0.505,
+      "protein_position": 647,
+      "rank": 166,
+      "top10": false
+    },
+    {
+      "position": 6,
+      "wt": "V",
+      "mut": "A",
+      "raw": 0.499,
+      "prob": 0.5,
+      "protein_position": 627,
+      "rank": 167,
+      "top10": false
+    },
+    {
+      "position": 19,
+      "wt": "K",
+      "mut": "D",
+      "raw": 0.487,
+      "prob": 0.495,
+      "protein_position": 640,
+      "rank": 168,
+      "top10": false
+    },
+    {
+      "position": 6,
+      "wt": "V",
+      "mut": "C",
+      "raw": 0.47,
+      "prob": 0.488,
+      "protein_position": 627,
+      "rank": 169,
+      "top10": false
+    },
+    {
+      "position": 3,
+      "wt": "M",
+      "mut": "G",
+      "raw": 0.465,
+      "prob": 0.486,
+      "protein_position": 624,
+      "rank": 170,
+      "top10": false
+    },
+    {
+      "position": 8,
+      "wt": "S",
+      "mut": "V",
+      "raw": 0.449,
+      "prob": 0.48,
+      "protein_position": 629,
+      "rank": 171,
+      "top10": false
+    },
+    {
+      "position": 8,
+      "wt": "S",
+      "mut": "N",
+      "raw": 0.446,
+      "prob": 0.478,
+      "protein_position": 629,
+      "rank": 172,
+      "top10": false
+    },
+    {
+      "position": 4,
+      "wt": "F",
+      "mut": "V",
+      "raw": 0.44,
+      "prob": 0.476,
+      "protein_position": 625,
+      "rank": 173,
+      "top10": false
+    },
+    {
+      "position": 18,
+      "wt": "S",
+      "mut": "W",
+      "raw": 0.435,
+      "prob": 0.474,
+      "protein_position": 639,
+      "rank": 174,
+      "top10": false
+    },
+    {
+      "position": 12,
+      "wt": "I",
+      "mut": "H",
+      "raw": 0.428,
+      "prob": 0.471,
+      "protein_position": 633,
+      "rank": 175,
+      "top10": false
+    },
+    {
+      "position": 9,
+      "wt": "S",
+      "mut": "L",
+      "raw": 0.411,
+      "prob": 0.464,
+      "protein_position": 630,
+      "rank": 176,
+      "top10": false
+    },
+    {
+      "position": 21,
+      "wt": "K",
+      "mut": "R",
+      "raw": 0.391,
+      "prob": 0.457,
+      "protein_position": 642,
+      "rank": 177,
+      "top10": false
+    },
+    {
+      "position": 24,
+      "wt": "M",
+      "mut": "K",
+      "raw": 0.391,
+      "prob": 0.457,
+      "protein_position": 645,
+      "rank": 178,
+      "top10": false
+    },
+    {
+      "position": 1,
+      "wt": "D",
+      "mut": "K",
+      "raw": 0.388,
+      "prob": 0.455,
+      "protein_position": 622,
+      "rank": 179,
+      "top10": false
+    },
+    {
+      "position": 21,
+      "wt": "K",
+      "mut": "P",
+      "raw": 0.374,
+      "prob": 0.45,
+      "protein_position": 642,
+      "rank": 180,
+      "top10": false
+    },
+    {
+      "position": 26,
+      "wt": "N",
+      "mut": "Q",
+      "raw": 0.373,
+      "prob": 0.449,
+      "protein_position": 647,
+      "rank": 181,
+      "top10": false
+    },
+    {
+      "position": 10,
+      "wt": "G",
+      "mut": "R",
+      "raw": 0.371,
+      "prob": 0.449,
+      "protein_position": 631,
+      "rank": 182,
+      "top10": false
+    },
+    {
+      "position": 16,
+      "wt": "N",
+      "mut": "H",
+      "raw": 0.369,
+      "prob": 0.448,
+      "protein_position": 637,
+      "rank": 183,
+      "top10": false
+    },
+    {
+      "position": 21,
+      "wt": "K",
+      "mut": "Q",
+      "raw": 0.367,
+      "prob": 0.447,
+      "protein_position": 642,
+      "rank": 184,
+      "top10": false
+    },
+    {
+      "position": 18,
+      "wt": "S",
+      "mut": "E",
+      "raw": 0.357,
+      "prob": 0.443,
+      "protein_position": 639,
+      "rank": 185,
+      "top10": false
+    },
+    {
+      "position": 22,
+      "wt": "T",
+      "mut": "W",
+      "raw": 0.338,
+      "prob": 0.436,
+      "protein_position": 643,
+      "rank": 186,
+      "top10": false
+    },
+    {
+      "position": 1,
+      "wt": "D",
+      "mut": "A",
+      "raw": 0.325,
+      "prob": 0.43,
+      "protein_position": 622,
+      "rank": 187,
+      "top10": false
+    },
+    {
+      "position": 13,
+      "wt": "G",
+      "mut": "M",
+      "raw": 0.321,
+      "prob": 0.429,
+      "protein_position": 634,
+      "rank": 188,
+      "top10": false
+    },
+    {
+      "position": 11,
+      "wt": "S",
+      "mut": "I",
+      "raw": 0.32,
+      "prob": 0.428,
+      "protein_position": 632,
+      "rank": 189,
+      "top10": false
+    },
+    {
+      "position": 27,
+      "wt": "L",
+      "mut": "F",
+      "raw": 0.317,
+      "prob": 0.427,
+      "protein_position": 648,
+      "rank": 190,
+      "top10": false
+    },
+    {
+      "position": 16,
+      "wt": "N",
+      "mut": "Y",
+      "raw": 0.313,
+      "prob": 0.426,
+      "protein_position": 637,
+      "rank": 191,
+      "top10": false
+    },
+    {
+      "position": 10,
+      "wt": "G",
+      "mut": "T",
+      "raw": 0.298,
+      "prob": 0.42,
+      "protein_position": 631,
+      "rank": 192,
+      "top10": false
+    },
+    {
+      "position": 25,
+      "wt": "K",
+      "mut": "S",
+      "raw": 0.298,
+      "prob": 0.42,
+      "protein_position": 646,
+      "rank": 193,
+      "top10": false
+    },
+    {
+      "position": 21,
+      "wt": "K",
+      "mut": "A",
+      "raw": 0.277,
+      "prob": 0.412,
+      "protein_position": 642,
+      "rank": 194,
+      "top10": false
+    },
+    {
+      "position": 13,
+      "wt": "G",
+      "mut": "P",
+      "raw": 0.272,
+      "prob": 0.41,
+      "protein_position": 634,
+      "rank": 195,
+      "top10": false
+    },
+    {
+      "position": 9,
+      "wt": "S",
+      "mut": "M",
+      "raw": 0.267,
+      "prob": 0.408,
+      "protein_position": 630,
+      "rank": 196,
+      "top10": false
+    },
+    {
+      "position": 26,
+      "wt": "N",
+      "mut": "G",
+      "raw": 0.264,
+      "prob": 0.407,
+      "protein_position": 647,
+      "rank": 197,
+      "top10": false
+    },
+    {
+      "position": 13,
+      "wt": "G",
+      "mut": "N",
+      "raw": 0.259,
+      "prob": 0.405,
+      "protein_position": 634,
+      "rank": 198,
+      "top10": false
+    },
+    {
+      "position": 14,
+      "wt": "P",
+      "mut": "E",
+      "raw": 0.257,
+      "prob": 0.404,
+      "protein_position": 635,
+      "rank": 199,
+      "top10": false
+    },
+    {
+      "position": 18,
+      "wt": "S",
+      "mut": "T",
+      "raw": 0.252,
+      "prob": 0.402,
+      "protein_position": 639,
+      "rank": 200,
+      "top10": false
+    },
+    {
+      "position": 23,
+      "wt": "F",
+      "mut": "V",
+      "raw": 0.247,
+      "prob": 0.4,
+      "protein_position": 644,
+      "rank": 201,
+      "top10": false
+    },
+    {
+      "position": 3,
+      "wt": "M",
+      "mut": "W",
+      "raw": 0.239,
+      "prob": 0.397,
+      "protein_position": 624,
+      "rank": 202,
+      "top10": false
+    },
+    {
+      "position": 1,
+      "wt": "D",
+      "mut": "I",
+      "raw": 0.226,
+      "prob": 0.392,
+      "protein_position": 622,
+      "rank": 203,
+      "top10": false
+    },
+    {
+      "position": 21,
+      "wt": "K",
+      "mut": "C",
+      "raw": 0.224,
+      "prob": 0.391,
+      "protein_position": 642,
+      "rank": 204,
+      "top10": false
+    },
+    {
+      "position": 18,
+      "wt": "S",
+      "mut": "G",
+      "raw": 0.221,
+      "prob": 0.39,
+      "protein_position": 639,
+      "rank": 205,
+      "top10": false
+    },
+    {
+      "position": 19,
+      "wt": "K",
+      "mut": "S",
+      "raw": 0.22,
+      "prob": 0.39,
+      "protein_position": 640,
+      "rank": 206,
+      "top10": false
+    },
+    {
+      "position": 6,
+      "wt": "V",
+      "mut": "R",
+      "raw": 0.203,
+      "prob": 0.383,
+      "protein_position": 627,
+      "rank": 207,
+      "top10": false
+    },
+    {
+      "position": 25,
+      "wt": "K",
+      "mut": "R",
+      "raw": 0.18,
+      "prob": 0.375,
+      "protein_position": 646,
+      "rank": 208,
+      "top10": false
+    },
+    {
+      "position": 14,
+      "wt": "P",
+      "mut": "C",
+      "raw": 0.167,
+      "prob": 0.37,
+      "protein_position": 635,
+      "rank": 209,
+      "top10": false
+    },
+    {
+      "position": 8,
+      "wt": "S",
+      "mut": "Y",
+      "raw": 0.151,
+      "prob": 0.364,
+      "protein_position": 629,
+      "rank": 210,
+      "top10": false
+    },
+    {
+      "position": 9,
+      "wt": "S",
+      "mut": "K",
+      "raw": 0.144,
+      "prob": 0.361,
+      "protein_position": 630,
+      "rank": 211,
+      "top10": false
+    },
+    {
+      "position": 5,
+      "wt": "L",
+      "mut": "D",
+      "raw": 0.142,
+      "prob": 0.361,
+      "protein_position": 626,
+      "rank": 212,
+      "top10": false
+    },
+    {
+      "position": 16,
+      "wt": "N",
+      "mut": "K",
+      "raw": 0.141,
+      "prob": 0.36,
+      "protein_position": 637,
+      "rank": 213,
+      "top10": false
+    },
+    {
+      "position": 6,
+      "wt": "V",
+      "mut": "Q",
+      "raw": 0.138,
+      "prob": 0.359,
+      "protein_position": 627,
+      "rank": 214,
+      "top10": false
+    },
+    {
+      "position": 15,
+      "wt": "E",
+      "mut": "L",
+      "raw": 0.134,
+      "prob": 0.358,
+      "protein_position": 636,
+      "rank": 215,
+      "top10": false
+    },
+    {
+      "position": 6,
+      "wt": "V",
+      "mut": "P",
+      "raw": 0.125,
+      "prob": 0.354,
+      "protein_position": 627,
+      "rank": 216,
+      "top10": false
+    },
+    {
+      "position": 14,
+      "wt": "P",
+      "mut": "D",
+      "raw": 0.122,
+      "prob": 0.353,
+      "protein_position": 635,
+      "rank": 217,
+      "top10": false
+    },
+    {
+      "position": 28,
+      "wt": "V",
+      "mut": "M",
+      "raw": 0.122,
+      "prob": 0.353,
+      "protein_position": 649,
+      "rank": 218,
+      "top10": false
+    },
+    {
+      "position": 18,
+      "wt": "S",
+      "mut": "V",
+      "raw": 0.11,
+      "prob": 0.349,
+      "protein_position": 639,
+      "rank": 219,
+      "top10": false
+    },
+    {
+      "position": 26,
+      "wt": "N",
+      "mut": "H",
+      "raw": 0.104,
+      "prob": 0.347,
+      "protein_position": 647,
+      "rank": 220,
+      "top10": false
+    },
+    {
+      "position": 22,
+      "wt": "T",
+      "mut": "N",
+      "raw": 0.089,
+      "prob": 0.341,
+      "protein_position": 643,
+      "rank": 221,
+      "top10": false
+    },
+    {
+      "position": 12,
+      "wt": "I",
+      "mut": "F",
+      "raw": 0.072,
+      "prob": 0.335,
+      "protein_position": 633,
+      "rank": 222,
+      "top10": false
+    },
+    {
+      "position": 1,
+      "wt": "D",
+      "mut": "Y",
+      "raw": 0.065,
+      "prob": 0.333,
+      "protein_position": 622,
+      "rank": 223,
+      "top10": false
+    },
+    {
+      "position": 25,
+      "wt": "K",
+      "mut": "T",
+      "raw": 0.049,
+      "prob": 0.327,
+      "protein_position": 646,
+      "rank": 224,
+      "top10": false
+    },
+    {
+      "position": 4,
+      "wt": "F",
+      "mut": "E",
+      "raw": 0.038,
+      "prob": 0.323,
+      "protein_position": 625,
+      "rank": 225,
+      "top10": false
+    },
+    {
+      "position": 2,
+      "wt": "I",
+      "mut": "H",
+      "raw": 0.034,
+      "prob": 0.322,
+      "protein_position": 623,
+      "rank": 226,
+      "top10": false
+    },
+    {
+      "position": 23,
+      "wt": "F",
+      "mut": "L",
+      "raw": 0.029,
+      "prob": 0.32,
+      "protein_position": 644,
+      "rank": 227,
+      "top10": false
+    },
+    {
+      "position": 28,
+      "wt": "V",
+      "mut": "N",
+      "raw": 0.023,
+      "prob": 0.318,
+      "protein_position": 649,
+      "rank": 228,
+      "top10": false
+    },
+    {
+      "position": 28,
+      "wt": "V",
+      "mut": "P",
+      "raw": 0.022,
+      "prob": 0.318,
+      "protein_position": 649,
+      "rank": 229,
+      "top10": false
+    },
+    {
+      "position": 11,
+      "wt": "S",
+      "mut": "G",
+      "raw": 0.015,
+      "prob": 0.315,
+      "protein_position": 632,
+      "rank": 230,
+      "top10": false
+    },
+    {
+      "position": 12,
+      "wt": "I",
+      "mut": "Q",
+      "raw": 0.005,
+      "prob": 0.312,
+      "protein_position": 633,
+      "rank": 231,
+      "top10": false
+    },
+    {
+      "position": 3,
+      "wt": "M",
+      "mut": "T",
+      "raw": 0.002,
+      "prob": 0.311,
+      "protein_position": 624,
+      "rank": 232,
+      "top10": false
+    },
+    {
+      "position": 16,
+      "wt": "N",
+      "mut": "I",
+      "raw": 0.002,
+      "prob": 0.311,
+      "protein_position": 637,
+      "rank": 233,
+      "top10": false
+    },
+    {
+      "position": 8,
+      "wt": "S",
+      "mut": "W",
+      "raw": -0.001,
+      "prob": 0.31,
+      "protein_position": 629,
+      "rank": 234,
+      "top10": false
+    },
+    {
+      "position": 4,
+      "wt": "F",
+      "mut": "S",
+      "raw": -0.026,
+      "prob": 0.301,
+      "protein_position": 625,
+      "rank": 235,
+      "top10": false
+    },
+    {
+      "position": 25,
+      "wt": "K",
+      "mut": "I",
+      "raw": -0.028,
+      "prob": 0.301,
+      "protein_position": 646,
+      "rank": 236,
+      "top10": false
+    },
+    {
+      "position": 15,
+      "wt": "E",
+      "mut": "A",
+      "raw": -0.051,
+      "prob": 0.293,
+      "protein_position": 636,
+      "rank": 237,
+      "top10": false
+    },
+    {
+      "position": 23,
+      "wt": "F",
+      "mut": "M",
+      "raw": -0.068,
+      "prob": 0.287,
+      "protein_position": 644,
+      "rank": 238,
+      "top10": false
+    },
+    {
+      "position": 19,
+      "wt": "K",
+      "mut": "F",
+      "raw": -0.08,
+      "prob": 0.283,
+      "protein_position": 640,
+      "rank": 239,
+      "top10": false
+    },
+    {
+      "position": 28,
+      "wt": "V",
+      "mut": "E",
+      "raw": -0.081,
+      "prob": 0.283,
+      "protein_position": 649,
+      "rank": 240,
+      "top10": false
+    },
+    {
+      "position": 20,
+      "wt": "M",
+      "mut": "D",
+      "raw": -0.097,
+      "prob": 0.278,
+      "protein_position": 641,
+      "rank": 241,
+      "top10": false
+    },
+    {
+      "position": 23,
+      "wt": "F",
+      "mut": "Y",
+      "raw": -0.099,
+      "prob": 0.277,
+      "protein_position": 644,
+      "rank": 242,
+      "top10": false
+    },
+    {
+      "position": 7,
+      "wt": "D",
+      "mut": "A",
+      "raw": -0.103,
+      "prob": 0.276,
+      "protein_position": 628,
+      "rank": 243,
+      "top10": false
+    },
+    {
+      "position": 9,
+      "wt": "S",
+      "mut": "V",
+      "raw": -0.113,
+      "prob": 0.273,
+      "protein_position": 630,
+      "rank": 244,
+      "top10": false
+    },
+    {
+      "position": 17,
+      "wt": "F",
+      "mut": "W",
+      "raw": -0.114,
+      "prob": 0.272,
+      "protein_position": 638,
+      "rank": 245,
+      "top10": false
+    },
+    {
+      "position": 3,
+      "wt": "M",
+      "mut": "V",
+      "raw": -0.124,
+      "prob": 0.269,
+      "protein_position": 624,
+      "rank": 246,
+      "top10": false
+    },
+    {
+      "position": 11,
+      "wt": "S",
+      "mut": "H",
+      "raw": -0.127,
+      "prob": 0.268,
+      "protein_position": 632,
+      "rank": 247,
+      "top10": false
+    },
+    {
+      "position": 20,
+      "wt": "M",
+      "mut": "R",
+      "raw": -0.141,
+      "prob": 0.264,
+      "protein_position": 641,
+      "rank": 248,
+      "top10": false
+    },
+    {
+      "position": 7,
+      "wt": "D",
+      "mut": "N",
+      "raw": -0.155,
+      "prob": 0.26,
+      "protein_position": 628,
+      "rank": 249,
+      "top10": false
+    },
+    {
+      "position": 11,
+      "wt": "S",
+      "mut": "R",
+      "raw": -0.168,
+      "prob": 0.256,
+      "protein_position": 632,
+      "rank": 250,
+      "top10": false
+    },
+    {
+      "position": 7,
+      "wt": "D",
+      "mut": "C",
+      "raw": -0.17,
+      "prob": 0.255,
+      "protein_position": 628,
+      "rank": 251,
+      "top10": false
+    },
+    {
+      "position": 4,
+      "wt": "F",
+      "mut": "G",
+      "raw": -0.173,
+      "prob": 0.254,
+      "protein_position": 625,
+      "rank": 252,
+      "top10": false
+    },
+    {
+      "position": 19,
+      "wt": "K",
+      "mut": "E",
+      "raw": -0.192,
+      "prob": 0.248,
+      "protein_position": 640,
+      "rank": 253,
+      "top10": false
+    },
+    {
+      "position": 17,
+      "wt": "F",
+      "mut": "H",
+      "raw": -0.202,
+      "prob": 0.245,
+      "protein_position": 638,
+      "rank": 254,
+      "top10": false
+    },
+    {
+      "position": 8,
+      "wt": "S",
+      "mut": "L",
+      "raw": -0.221,
+      "prob": 0.24,
+      "protein_position": 629,
+      "rank": 255,
+      "top10": false
+    },
+    {
+      "position": 28,
+      "wt": "V",
+      "mut": "C",
+      "raw": -0.225,
+      "prob": 0.239,
+      "protein_position": 649,
+      "rank": 256,
+      "top10": false
+    },
+    {
+      "position": 14,
+      "wt": "P",
+      "mut": "M",
+      "raw": -0.234,
+      "prob": 0.236,
+      "protein_position": 635,
+      "rank": 257,
+      "top10": false
+    },
+    {
+      "position": 23,
+      "wt": "F",
+      "mut": "W",
+      "raw": -0.238,
+      "prob": 0.235,
+      "protein_position": 644,
+      "rank": 258,
+      "top10": false
+    },
+    {
+      "position": 27,
+      "wt": "L",
+      "mut": "Q",
+      "raw": -0.242,
+      "prob": 0.234,
+      "protein_position": 648,
+      "rank": 259,
+      "top10": false
+    },
+    {
+      "position": 20,
+      "wt": "M",
+      "mut": "Q",
+      "raw": -0.248,
+      "prob": 0.232,
+      "protein_position": 641,
+      "rank": 260,
+      "top10": false
+    },
+    {
+      "position": 23,
+      "wt": "F",
+      "mut": "K",
+      "raw": -0.249,
+      "prob": 0.232,
+      "protein_position": 644,
+      "rank": 261,
+      "top10": false
+    },
+    {
+      "position": 2,
+      "wt": "I",
+      "mut": "K",
+      "raw": -0.252,
+      "prob": 0.231,
+      "protein_position": 623,
+      "rank": 262,
+      "top10": false
+    },
+    {
+      "position": 1,
+      "wt": "D",
+      "mut": "L",
+      "raw": -0.259,
+      "prob": 0.229,
+      "protein_position": 622,
+      "rank": 263,
+      "top10": false
+    },
+    {
+      "position": 28,
+      "wt": "V",
+      "mut": "D",
+      "raw": -0.262,
+      "prob": 0.228,
+      "protein_position": 649,
+      "rank": 264,
+      "top10": false
+    },
+    {
+      "position": 20,
+      "wt": "M",
+      "mut": "P",
+      "raw": -0.266,
+      "prob": 0.227,
+      "protein_position": 641,
+      "rank": 265,
+      "top10": false
+    },
+    {
+      "position": 10,
+      "wt": "G",
+      "mut": "I",
+      "raw": -0.269,
+      "prob": 0.226,
+      "protein_position": 631,
+      "rank": 266,
+      "top10": false
+    },
+    {
+      "position": 8,
+      "wt": "S",
+      "mut": "M",
+      "raw": -0.304,
+      "prob": 0.216,
+      "protein_position": 629,
+      "rank": 267,
+      "top10": false
+    },
+    {
+      "position": 13,
+      "wt": "G",
+      "mut": "E",
+      "raw": -0.318,
+      "prob": 0.213,
+      "protein_position": 634,
+      "rank": 268,
+      "top10": false
+    },
+    {
+      "position": 26,
+      "wt": "N",
+      "mut": "F",
+      "raw": -0.321,
+      "prob": 0.212,
+      "protein_position": 647,
+      "rank": 269,
+      "top10": false
+    },
+    {
+      "position": 15,
+      "wt": "E",
+      "mut": "Y",
+      "raw": -0.327,
+      "prob": 0.21,
+      "protein_position": 636,
+      "rank": 270,
+      "top10": false
+    },
+    {
+      "position": 26,
+      "wt": "N",
+      "mut": "S",
+      "raw": -0.339,
+      "prob": 0.207,
+      "protein_position": 647,
+      "rank": 271,
+      "top10": false
+    },
+    {
+      "position": 11,
+      "wt": "S",
+      "mut": "T",
+      "raw": -0.341,
+      "prob": 0.207,
+      "protein_position": 632,
+      "rank": 272,
+      "top10": false
+    },
+    {
+      "position": 22,
+      "wt": "T",
+      "mut": "A",
+      "raw": -0.353,
+      "prob": 0.203,
+      "protein_position": 643,
+      "rank": 273,
+      "top10": false
+    },
+    {
+      "position": 2,
+      "wt": "I",
+      "mut": "W",
+      "raw": -0.357,
+      "prob": 0.202,
+      "protein_position": 623,
+      "rank": 274,
+      "top10": false
+    },
+    {
+      "position": 24,
+      "wt": "M",
+      "mut": "V",
+      "raw": -0.358,
+      "prob": 0.202,
+      "protein_position": 645,
+      "rank": 275,
+      "top10": false
+    },
+    {
+      "position": 14,
+      "wt": "P",
+      "mut": "N",
+      "raw": -0.367,
+      "prob": 0.2,
+      "protein_position": 635,
+      "rank": 276,
+      "top10": false
+    },
+    {
+      "position": 25,
+      "wt": "K",
+      "mut": "G",
+      "raw": -0.375,
+      "prob": 0.198,
+      "protein_position": 646,
+      "rank": 277,
+      "top10": false
+    },
+    {
+      "position": 5,
+      "wt": "L",
+      "mut": "R",
+      "raw": -0.381,
+      "prob": 0.196,
+      "protein_position": 626,
+      "rank": 278,
+      "top10": false
+    },
+    {
+      "position": 17,
+      "wt": "F",
+      "mut": "T",
+      "raw": -0.386,
+      "prob": 0.195,
+      "protein_position": 638,
+      "rank": 279,
+      "top10": false
+    },
+    {
+      "position": 26,
+      "wt": "N",
+      "mut": "R",
+      "raw": -0.408,
+      "prob": 0.19,
+      "protein_position": 647,
+      "rank": 280,
+      "top10": false
+    },
+    {
+      "position": 22,
+      "wt": "T",
+      "mut": "C",
+      "raw": -0.411,
+      "prob": 0.189,
+      "protein_position": 643,
+      "rank": 281,
+      "top10": false
+    },
+    {
+      "position": 19,
+      "wt": "K",
+      "mut": "G",
+      "raw": -0.417,
+      "prob": 0.187,
+      "protein_position": 640,
+      "rank": 282,
+      "top10": false
+    },
+    {
+      "position": 13,
+      "wt": "G",
+      "mut": "C",
+      "raw": -0.464,
+      "prob": 0.176,
+      "protein_position": 634,
+      "rank": 283,
+      "top10": false
+    },
+    {
+      "position": 5,
+      "wt": "L",
+      "mut": "F",
+      "raw": -0.471,
+      "prob": 0.175,
+      "protein_position": 626,
+      "rank": 284,
+      "top10": false
+    },
+    {
+      "position": 9,
+      "wt": "S",
+      "mut": "Y",
+      "raw": -0.484,
+      "prob": 0.172,
+      "protein_position": 630,
+      "rank": 285,
+      "top10": false
+    },
+    {
+      "position": 8,
+      "wt": "S",
+      "mut": "K",
+      "raw": -0.489,
+      "prob": 0.17,
+      "protein_position": 629,
+      "rank": 286,
+      "top10": false
+    },
+    {
+      "position": 6,
+      "wt": "V",
+      "mut": "D",
+      "raw": -0.49,
+      "prob": 0.17,
+      "protein_position": 627,
+      "rank": 287,
+      "top10": false
+    },
+    {
+      "position": 17,
+      "wt": "F",
+      "mut": "K",
+      "raw": -0.492,
+      "prob": 0.17,
+      "protein_position": 638,
+      "rank": 288,
+      "top10": false
+    },
+    {
+      "position": 5,
+      "wt": "L",
+      "mut": "Q",
+      "raw": -0.498,
+      "prob": 0.168,
+      "protein_position": 626,
+      "rank": 289,
+      "top10": false
+    },
+    {
+      "position": 5,
+      "wt": "L",
+      "mut": "P",
+      "raw": -0.502,
+      "prob": 0.168,
+      "protein_position": 626,
+      "rank": 290,
+      "top10": false
+    },
+    {
+      "position": 16,
+      "wt": "N",
+      "mut": "L",
+      "raw": -0.505,
+      "prob": 0.167,
+      "protein_position": 637,
+      "rank": 291,
+      "top10": false
+    },
+    {
+      "position": 13,
+      "wt": "G",
+      "mut": "D",
+      "raw": -0.512,
+      "prob": 0.165,
+      "protein_position": 634,
+      "rank": 292,
+      "top10": false
+    },
+    {
+      "position": 17,
+      "wt": "F",
+      "mut": "V",
+      "raw": -0.514,
+      "prob": 0.165,
+      "protein_position": 638,
+      "rank": 293,
+      "top10": false
+    },
+    {
+      "position": 25,
+      "wt": "K",
+      "mut": "H",
+      "raw": -0.515,
+      "prob": 0.165,
+      "protein_position": 646,
+      "rank": 294,
+      "top10": false
+    },
+    {
+      "position": 21,
+      "wt": "K",
+      "mut": "N",
+      "raw": -0.549,
+      "prob": 0.157,
+      "protein_position": 642,
+      "rank": 295,
+      "top10": false
+    },
+    {
+      "position": 11,
+      "wt": "S",
+      "mut": "F",
+      "raw": -0.564,
+      "prob": 0.154,
+      "protein_position": 632,
+      "rank": 296,
+      "top10": false
+    },
+    {
+      "position": 26,
+      "wt": "N",
+      "mut": "T",
+      "raw": -0.576,
+      "prob": 0.152,
+      "protein_position": 647,
+      "rank": 297,
+      "top10": false
+    },
+    {
+      "position": 5,
+      "wt": "L",
+      "mut": "E",
+      "raw": -0.578,
+      "prob": 0.151,
+      "protein_position": 626,
+      "rank": 298,
+      "top10": false
+    },
+    {
+      "position": 3,
+      "wt": "M",
+      "mut": "H",
+      "raw": -0.593,
+      "prob": 0.148,
+      "protein_position": 624,
+      "rank": 299,
+      "top10": false
+    },
+    {
+      "position": 22,
+      "wt": "T",
+      "mut": "L",
+      "raw": -0.608,
+      "prob": 0.145,
+      "protein_position": 643,
+      "rank": 300,
+      "top10": false
+    },
+    {
+      "position": 2,
+      "wt": "I",
+      "mut": "T",
+      "raw": -0.618,
+      "prob": 0.143,
+      "protein_position": 623,
+      "rank": 301,
+      "top10": false
+    },
+    {
+      "position": 9,
+      "wt": "S",
+      "mut": "W",
+      "raw": -0.629,
+      "prob": 0.141,
+      "protein_position": 630,
+      "rank": 302,
+      "top10": false
+    },
+    {
+      "position": 17,
+      "wt": "F",
+      "mut": "I",
+      "raw": -0.63,
+      "prob": 0.141,
+      "protein_position": 638,
+      "rank": 303,
+      "top10": false
+    },
+    {
+      "position": 13,
+      "wt": "G",
+      "mut": "Q",
+      "raw": -0.634,
+      "prob": 0.14,
+      "protein_position": 634,
+      "rank": 304,
+      "top10": false
+    },
+    {
+      "position": 3,
+      "wt": "M",
+      "mut": "S",
+      "raw": -0.661,
+      "prob": 0.135,
+      "protein_position": 624,
+      "rank": 305,
+      "top10": false
+    },
+    {
+      "position": 24,
+      "wt": "M",
+      "mut": "I",
+      "raw": -0.662,
+      "prob": 0.135,
+      "protein_position": 645,
+      "rank": 306,
+      "top10": false
+    },
+    {
+      "position": 14,
+      "wt": "P",
+      "mut": "A",
+      "raw": -0.69,
+      "prob": 0.13,
+      "protein_position": 635,
+      "rank": 307,
+      "top10": false
+    },
+    {
+      "position": 22,
+      "wt": "T",
+      "mut": "M",
+      "raw": -0.694,
+      "prob": 0.129,
+      "protein_position": 643,
+      "rank": 308,
+      "top10": false
+    },
+    {
+      "position": 20,
+      "wt": "M",
+      "mut": "F",
+      "raw": -0.707,
+      "prob": 0.127,
+      "protein_position": 641,
+      "rank": 309,
+      "top10": false
+    },
+    {
+      "position": 27,
+      "wt": "L",
+      "mut": "E",
+      "raw": -0.71,
+      "prob": 0.126,
+      "protein_position": 648,
+      "rank": 310,
+      "top10": false
+    },
+    {
+      "position": 24,
+      "wt": "M",
+      "mut": "Y",
+      "raw": -0.712,
+      "prob": 0.126,
+      "protein_position": 645,
+      "rank": 311,
+      "top10": false
+    },
+    {
+      "position": 12,
+      "wt": "I",
+      "mut": "S",
+      "raw": -0.72,
+      "prob": 0.124,
+      "protein_position": 633,
+      "rank": 312,
+      "top10": false
+    },
+    {
+      "position": 21,
+      "wt": "K",
+      "mut": "D",
+      "raw": -0.737,
+      "prob": 0.121,
+      "protein_position": 642,
+      "rank": 313,
+      "top10": false
+    },
+    {
+      "position": 8,
+      "wt": "S",
+      "mut": "A",
+      "raw": -0.741,
+      "prob": 0.121,
+      "protein_position": 629,
+      "rank": 314,
+      "top10": false
+    },
+    {
+      "position": 10,
+      "wt": "G",
+      "mut": "V",
+      "raw": -0.751,
+      "prob": 0.119,
+      "protein_position": 631,
+      "rank": 315,
+      "top10": false
+    },
+    {
+      "position": 16,
+      "wt": "N",
+      "mut": "W",
+      "raw": -0.751,
+      "prob": 0.119,
+      "protein_position": 637,
+      "rank": 316,
+      "top10": false
+    },
+    {
+      "position": 8,
+      "wt": "S",
+      "mut": "C",
+      "raw": -0.761,
+      "prob": 0.117,
+      "protein_position": 629,
+      "rank": 317,
+      "top10": false
+    },
+    {
+      "position": 2,
+      "wt": "I",
+      "mut": "V",
+      "raw": -0.763,
+      "prob": 0.117,
+      "protein_position": 623,
+      "rank": 318,
+      "top10": false
+    },
+    {
+      "position": 10,
+      "wt": "G",
+      "mut": "H",
+      "raw": -0.764,
+      "prob": 0.117,
+      "protein_position": 631,
+      "rank": 319,
+      "top10": false
+    },
+    {
+      "position": 19,
+      "wt": "K",
+      "mut": "R",
+      "raw": -0.773,
+      "prob": 0.115,
+      "protein_position": 640,
+      "rank": 320,
+      "top10": false
+    },
+    {
+      "position": 5,
+      "wt": "L",
+      "mut": "G",
+      "raw": -0.775,
+      "prob": 0.115,
+      "protein_position": 626,
+      "rank": 321,
+      "top10": false
+    },
+    {
+      "position": 6,
+      "wt": "V",
+      "mut": "N",
+      "raw": -0.793,
+      "prob": 0.112,
+      "protein_position": 627,
+      "rank": 322,
+      "top10": false
+    },
+    {
+      "position": 12,
+      "wt": "I",
+      "mut": "R",
+      "raw": -0.801,
+      "prob": 0.111,
+      "protein_position": 633,
+      "rank": 323,
+      "top10": false
+    },
+    {
+      "position": 27,
+      "wt": "L",
+      "mut": "C",
+      "raw": -0.807,
+      "prob": 0.11,
+      "protein_position": 648,
+      "rank": 324,
+      "top10": false
+    },
+    {
+      "position": 20,
+      "wt": "M",
+      "mut": "E",
+      "raw": -0.828,
+      "prob": 0.107,
+      "protein_position": 641,
+      "rank": 325,
+      "top10": false
+    },
+    {
+      "position": 22,
+      "wt": "T",
+      "mut": "K",
+      "raw": -0.836,
+      "prob": 0.105,
+      "protein_position": 643,
+      "rank": 326,
+      "top10": false
+    },
+    {
+      "position": 3,
+      "wt": "M",
+      "mut": "K",
+      "raw": -0.838,
+      "prob": 0.105,
+      "protein_position": 624,
+      "rank": 327,
+      "top10": false
+    },
+    {
+      "position": 7,
+      "wt": "D",
+      "mut": "L",
+      "raw": -0.838,
+      "prob": 0.105,
+      "protein_position": 628,
+      "rank": 328,
+      "top10": false
+    },
+    {
+      "position": 19,
+      "wt": "K",
+      "mut": "P",
+      "raw": -0.839,
+      "prob": 0.105,
+      "protein_position": 640,
+      "rank": 329,
+      "top10": false
+    },
+    {
+      "position": 18,
+      "wt": "S",
+      "mut": "H",
+      "raw": -0.841,
+      "prob": 0.105,
+      "protein_position": 639,
+      "rank": 330,
+      "top10": false
+    },
+    {
+      "position": 2,
+      "wt": "I",
+      "mut": "L",
+      "raw": -0.871,
+      "prob": 0.1,
+      "protein_position": 623,
+      "rank": 331,
+      "top10": false
+    },
+    {
+      "position": 15,
+      "wt": "E",
+      "mut": "M",
+      "raw": -0.872,
+      "prob": 0.1,
+      "protein_position": 636,
+      "rank": 332,
+      "top10": false
+    },
+    {
+      "position": 28,
+      "wt": "V",
+      "mut": "Q",
+      "raw": -0.875,
+      "prob": 0.1,
+      "protein_position": 649,
+      "rank": 333,
+      "top10": false
+    },
+    {
+      "position": 24,
+      "wt": "M",
+      "mut": "W",
+      "raw": -0.878,
+      "prob": 0.099,
+      "protein_position": 645,
+      "rank": 334,
+      "top10": false
+    },
+    {
+      "position": 19,
+      "wt": "K",
+      "mut": "Q",
+      "raw": -0.881,
+      "prob": 0.099,
+      "protein_position": 640,
+      "rank": 335,
+      "top10": false
+    },
+    {
+      "position": 27,
+      "wt": "L",
+      "mut": "D",
+      "raw": -0.897,
+      "prob": 0.097,
+      "protein_position": 648,
+      "rank": 336,
+      "top10": false
+    },
+    {
+      "position": 14,
+      "wt": "P",
+      "mut": "Y",
+      "raw": -0.906,
+      "prob": 0.095,
+      "protein_position": 635,
+      "rank": 337,
+      "top10": false
+    },
+    {
+      "position": 9,
+      "wt": "S",
+      "mut": "I",
+      "raw": -0.908,
+      "prob": 0.095,
+      "protein_position": 630,
+      "rank": 338,
+      "top10": false
+    },
+    {
+      "position": 12,
+      "wt": "I",
+      "mut": "T",
+      "raw": -0.909,
+      "prob": 0.095,
+      "protein_position": 633,
+      "rank": 339,
+      "top10": false
+    },
+    {
+      "position": 15,
+      "wt": "E",
+      "mut": "P",
+      "raw": -0.917,
+      "prob": 0.094,
+      "protein_position": 636,
+      "rank": 340,
+      "top10": false
+    },
+    {
+      "position": 25,
+      "wt": "K",
+      "mut": "F",
+      "raw": -0.92,
+      "prob": 0.093,
+      "protein_position": 646,
+      "rank": 341,
+      "top10": false
+    },
+    {
+      "position": 7,
+      "wt": "D",
+      "mut": "M",
+      "raw": -0.943,
+      "prob": 0.09,
+      "protein_position": 628,
+      "rank": 342,
+      "top10": false
+    },
+    {
+      "position": 24,
+      "wt": "M",
+      "mut": "G",
+      "raw": -0.943,
+      "prob": 0.09,
+      "protein_position": 645,
+      "rank": 343,
+      "top10": false
+    },
+    {
+      "position": 27,
+      "wt": "L",
+      "mut": "S",
+      "raw": -0.943,
+      "prob": 0.09,
+      "protein_position": 648,
+      "rank": 344,
+      "top10": false
+    },
+    {
+      "position": 16,
+      "wt": "N",
+      "mut": "T",
+      "raw": -0.945,
+      "prob": 0.09,
+      "protein_position": 637,
+      "rank": 345,
+      "top10": false
+    },
+    {
+      "position": 23,
+      "wt": "F",
+      "mut": "C",
+      "raw": -0.953,
+      "prob": 0.089,
+      "protein_position": 644,
+      "rank": 346,
+      "top10": false
+    },
+    {
+      "position": 12,
+      "wt": "I",
+      "mut": "E",
+      "raw": -0.958,
+      "prob": 0.088,
+      "protein_position": 633,
+      "rank": 347,
+      "top10": false
+    },
+    {
+      "position": 23,
+      "wt": "F",
+      "mut": "A",
+      "raw": -0.973,
+      "prob": 0.087,
+      "protein_position": 644,
+      "rank": 348,
+      "top10": false
+    },
+    {
+      "position": 20,
+      "wt": "M",
+      "mut": "G",
+      "raw": -0.976,
+      "prob": 0.086,
+      "protein_position": 641,
+      "rank": 349,
+      "top10": false
+    },
+    {
+      "position": 15,
+      "wt": "E",
+      "mut": "N",
+      "raw": -0.992,
+      "prob": 0.084,
+      "protein_position": 636,
+      "rank": 350,
+      "top10": false
+    },
+    {
+      "position": 12,
+      "wt": "I",
+      "mut": "C",
+      "raw": -0.993,
+      "prob": 0.084,
+      "protein_position": 633,
+      "rank": 351,
+      "top10": false
+    },
+    {
+      "position": 25,
+      "wt": "K",
+      "mut": "V",
+      "raw": -0.995,
+      "prob": 0.084,
+      "protein_position": 646,
+      "rank": 352,
+      "top10": false
+    },
+    {
+      "position": 1,
+      "wt": "D",
+      "mut": "W",
+      "raw": -0.996,
+      "prob": 0.084,
+      "protein_position": 622,
+      "rank": 353,
+      "top10": false
+    },
+    {
+      "position": 17,
+      "wt": "F",
+      "mut": "S",
+      "raw": -1.011,
+      "prob": 0.082,
+      "protein_position": 638,
+      "rank": 354,
+      "top10": false
+    },
+    {
+      "position": 3,
+      "wt": "M",
+      "mut": "I",
+      "raw": -1.017,
+      "prob": 0.081,
+      "protein_position": 624,
+      "rank": 355,
+      "top10": false
+    },
+    {
+      "position": 4,
+      "wt": "F",
+      "mut": "P",
+      "raw": -1.02,
+      "prob": 0.081,
+      "protein_position": 625,
+      "rank": 356,
+      "top10": false
+    },
+    {
+      "position": 4,
+      "wt": "F",
+      "mut": "R",
+      "raw": -1.021,
+      "prob": 0.081,
+      "protein_position": 625,
+      "rank": 357,
+      "top10": false
+    },
+    {
+      "position": 7,
+      "wt": "D",
+      "mut": "K",
+      "raw": -1.025,
+      "prob": 0.08,
+      "protein_position": 628,
+      "rank": 358,
+      "top10": false
+    },
+    {
+      "position": 18,
+      "wt": "S",
+      "mut": "K",
+      "raw": -1.027,
+      "prob": 0.08,
+      "protein_position": 639,
+      "rank": 359,
+      "top10": false
+    },
+    {
+      "position": 10,
+      "wt": "G",
+      "mut": "Y",
+      "raw": -1.03,
+      "prob": 0.08,
+      "protein_position": 631,
+      "rank": 360,
+      "top10": false
+    },
+    {
+      "position": 6,
+      "wt": "V",
+      "mut": "F",
+      "raw": -1.044,
+      "prob": 0.078,
+      "protein_position": 627,
+      "rank": 361,
+      "top10": false
+    },
+    {
+      "position": 27,
+      "wt": "L",
+      "mut": "R",
+      "raw": -1.048,
+      "prob": 0.078,
+      "protein_position": 648,
+      "rank": 362,
+      "top10": false
+    },
+    {
+      "position": 28,
+      "wt": "V",
+      "mut": "A",
+      "raw": -1.054,
+      "prob": 0.077,
+      "protein_position": 649,
+      "rank": 363,
+      "top10": false
+    },
+    {
+      "position": 17,
+      "wt": "F",
+      "mut": "L",
+      "raw": -1.079,
+      "prob": 0.074,
+      "protein_position": 638,
+      "rank": 364,
+      "top10": false
+    },
+    {
+      "position": 27,
+      "wt": "L",
+      "mut": "T",
+      "raw": -1.087,
+      "prob": 0.073,
+      "protein_position": 648,
+      "rank": 365,
+      "top10": false
+    },
+    {
+      "position": 4,
+      "wt": "F",
+      "mut": "Q",
+      "raw": -1.106,
+      "prob": 0.071,
+      "protein_position": 625,
+      "rank": 366,
+      "top10": false
+    },
+    {
+      "position": 1,
+      "wt": "D",
+      "mut": "T",
+      "raw": -1.117,
+      "prob": 0.07,
+      "protein_position": 622,
+      "rank": 367,
+      "top10": false
+    },
+    {
+      "position": 10,
+      "wt": "G",
+      "mut": "F",
+      "raw": -1.117,
+      "prob": 0.07,
+      "protein_position": 631,
+      "rank": 368,
+      "top10": false
+    },
+    {
+      "position": 9,
+      "wt": "S",
+      "mut": "G",
+      "raw": -1.12,
+      "prob": 0.07,
+      "protein_position": 630,
+      "rank": 369,
+      "top10": false
+    },
+    {
+      "position": 12,
+      "wt": "I",
+      "mut": "D",
+      "raw": -1.126,
+      "prob": 0.069,
+      "protein_position": 633,
+      "rank": 370,
+      "top10": false
+    },
+    {
+      "position": 16,
+      "wt": "N",
+      "mut": "V",
+      "raw": -1.141,
+      "prob": 0.068,
+      "protein_position": 637,
+      "rank": 371,
+      "top10": false
+    },
+    {
+      "position": 24,
+      "wt": "M",
+      "mut": "H",
+      "raw": -1.145,
+      "prob": 0.067,
+      "protein_position": 645,
+      "rank": 372,
+      "top10": false
+    },
+    {
+      "position": 20,
+      "wt": "M",
+      "mut": "N",
+      "raw": -1.152,
+      "prob": 0.066,
+      "protein_position": 641,
+      "rank": 373,
+      "top10": false
+    },
+    {
+      "position": 21,
+      "wt": "K",
+      "mut": "L",
+      "raw": -1.16,
+      "prob": 0.066,
+      "protein_position": 642,
+      "rank": 374,
+      "top10": false
+    },
+    {
+      "position": 1,
+      "wt": "D",
+      "mut": "P",
+      "raw": -1.169,
+      "prob": 0.065,
+      "protein_position": 622,
+      "rank": 375,
+      "top10": false
+    },
+    {
+      "position": 28,
+      "wt": "V",
+      "mut": "Y",
+      "raw": -1.184,
+      "prob": 0.063,
+      "protein_position": 649,
+      "rank": 376,
+      "top10": false
+    },
+    {
+      "position": 25,
+      "wt": "K",
+      "mut": "Y",
+      "raw": -1.195,
+      "prob": 0.062,
+      "protein_position": 646,
+      "rank": 377,
+      "top10": false
+    },
+    {
+      "position": 9,
+      "wt": "S",
+      "mut": "C",
+      "raw": -1.196,
+      "prob": 0.062,
+      "protein_position": 630,
+      "rank": 378,
+      "top10": false
+    },
+    {
+      "position": 2,
+      "wt": "I",
+      "mut": "S",
+      "raw": -1.204,
+      "prob": 0.061,
+      "protein_position": 623,
+      "rank": 379,
+      "top10": false
+    },
+    {
+      "position": 6,
+      "wt": "V",
+      "mut": "E",
+      "raw": -1.211,
+      "prob": 0.061,
+      "protein_position": 627,
+      "rank": 380,
+      "top10": false
+    },
+    {
+      "position": 4,
+      "wt": "F",
+      "mut": "H",
+      "raw": -1.217,
+      "prob": 0.06,
+      "protein_position": 625,
+      "rank": 381,
+      "top10": false
+    },
+    {
+      "position": 14,
+      "wt": "P",
+      "mut": "Q",
+      "raw": -1.221,
+      "prob": 0.06,
+      "protein_position": 635,
+      "rank": 382,
+      "top10": false
+    },
+    {
+      "position": 26,
+      "wt": "N",
+      "mut": "C",
+      "raw": -1.224,
+      "prob": 0.06,
+      "protein_position": 647,
+      "rank": 383,
+      "top10": false
+    },
+    {
+      "position": 21,
+      "wt": "K",
+      "mut": "F",
+      "raw": -1.225,
+      "prob": 0.06,
+      "protein_position": 642,
+      "rank": 384,
+      "top10": false
+    },
+    {
+      "position": 6,
+      "wt": "V",
+      "mut": "G",
+      "raw": -1.233,
+      "prob": 0.059,
+      "protein_position": 627,
+      "rank": 385,
+      "top10": false
+    },
+    {
+      "position": 18,
+      "wt": "S",
+      "mut": "P",
+      "raw": -1.241,
+      "prob": 0.058,
+      "protein_position": 639,
+      "rank": 386,
+      "top10": false
+    },
+    {
+      "position": 18,
+      "wt": "S",
+      "mut": "I",
+      "raw": -1.247,
+      "prob": 0.058,
+      "protein_position": 639,
+      "rank": 387,
+      "top10": false
+    },
+    {
+      "position": 13,
+      "wt": "G",
+      "mut": "S",
+      "raw": -1.248,
+      "prob": 0.057,
+      "protein_position": 634,
+      "rank": 388,
+      "top10": false
+    },
+    {
+      "position": 10,
+      "wt": "G",
+      "mut": "W",
+      "raw": -1.251,
+      "prob": 0.057,
+      "protein_position": 631,
+      "rank": 389,
+      "top10": false
+    },
+    {
+      "position": 1,
+      "wt": "D",
+      "mut": "M",
+      "raw": -1.253,
+      "prob": 0.057,
+      "protein_position": 622,
+      "rank": 390,
+      "top10": false
+    },
+    {
+      "position": 13,
+      "wt": "G",
+      "mut": "A",
+      "raw": -1.258,
+      "prob": 0.057,
+      "protein_position": 634,
+      "rank": 391,
+      "top10": false
+    },
+    {
+      "position": 4,
+      "wt": "F",
+      "mut": "K",
+      "raw": -1.264,
+      "prob": 0.056,
+      "protein_position": 625,
+      "rank": 392,
+      "top10": false
+    },
+    {
+      "position": 23,
+      "wt": "F",
+      "mut": "I",
+      "raw": -1.275,
+      "prob": 0.055,
+      "protein_position": 644,
+      "rank": 393,
+      "top10": false
+    },
+    {
+      "position": 16,
+      "wt": "N",
+      "mut": "P",
+      "raw": -1.284,
+      "prob": 0.054,
+      "protein_position": 637,
+      "rank": 394,
+      "top10": false
+    },
+    {
+      "position": 9,
+      "wt": "S",
+      "mut": "A",
+      "raw": -1.299,
+      "prob": 0.053,
+      "protein_position": 630,
+      "rank": 395,
+      "top10": false
+    },
+    {
+      "position": 13,
+      "wt": "G",
+      "mut": "T",
+      "raw": -1.302,
+      "prob": 0.053,
+      "protein_position": 634,
+      "rank": 396,
+      "top10": false
+    },
+    {
+      "position": 24,
+      "wt": "M",
+      "mut": "C",
+      "raw": -1.304,
+      "prob": 0.053,
+      "protein_position": 645,
+      "rank": 397,
+      "top10": false
+    },
+    {
+      "position": 22,
+      "wt": "T",
+      "mut": "D",
+      "raw": -1.316,
+      "prob": 0.052,
+      "protein_position": 643,
+      "rank": 398,
+      "top10": false
+    },
+    {
+      "position": 13,
+      "wt": "G",
+      "mut": "Y",
+      "raw": -1.318,
+      "prob": 0.052,
+      "protein_position": 634,
+      "rank": 399,
+      "top10": false
+    },
+    {
+      "position": 21,
+      "wt": "K",
+      "mut": "M",
+      "raw": -1.319,
+      "prob": 0.052,
+      "protein_position": 642,
+      "rank": 400,
+      "top10": false
+    },
+    {
+      "position": 15,
+      "wt": "E",
+      "mut": "T",
+      "raw": -1.321,
+      "prob": 0.051,
+      "protein_position": 636,
+      "rank": 401,
+      "top10": false
+    },
+    {
+      "position": 1,
+      "wt": "D",
+      "mut": "N",
+      "raw": -1.324,
+      "prob": 0.051,
+      "protein_position": 622,
+      "rank": 402,
+      "top10": false
+    },
+    {
+      "position": 11,
+      "wt": "S",
+      "mut": "C",
+      "raw": -1.324,
+      "prob": 0.051,
+      "protein_position": 632,
+      "rank": 403,
+      "top10": false
+    },
+    {
+      "position": 6,
+      "wt": "V",
+      "mut": "L",
+      "raw": -1.328,
+      "prob": 0.051,
+      "protein_position": 627,
+      "rank": 404,
+      "top10": false
+    },
+    {
+      "position": 26,
+      "wt": "N",
+      "mut": "E",
+      "raw": -1.331,
+      "prob": 0.051,
+      "protein_position": 647,
+      "rank": 405,
+      "top10": false
+    },
+    {
+      "position": 3,
+      "wt": "M",
+      "mut": "P",
+      "raw": -1.334,
+      "prob": 0.05,
+      "protein_position": 624,
+      "rank": 406,
+      "top10": false
+    },
+    {
+      "position": 23,
+      "wt": "F",
+      "mut": "G",
+      "raw": -1.335,
+      "prob": 0.05,
+      "protein_position": 644,
+      "rank": 407,
+      "top10": false
+    },
+    {
+      "position": 11,
+      "wt": "S",
+      "mut": "V",
+      "raw": -1.35,
+      "prob": 0.049,
+      "protein_position": 632,
+      "rank": 408,
+      "top10": false
+    },
+    {
+      "position": 3,
+      "wt": "M",
+      "mut": "L",
+      "raw": -1.351,
+      "prob": 0.049,
+      "protein_position": 624,
+      "rank": 409,
+      "top10": false
+    },
+    {
+      "position": 5,
+      "wt": "L",
+      "mut": "N",
+      "raw": -1.352,
+      "prob": 0.049,
+      "protein_position": 626,
+      "rank": 410,
+      "top10": false
+    },
+    {
+      "position": 21,
+      "wt": "K",
+      "mut": "G",
+      "raw": -1.353,
+      "prob": 0.049,
+      "protein_position": 642,
+      "rank": 411,
+      "top10": false
+    },
+    {
+      "position": 15,
+      "wt": "E",
+      "mut": "W",
+      "raw": -1.358,
+      "prob": 0.049,
+      "protein_position": 636,
+      "rank": 412,
+      "top10": false
+    },
+    {
+      "position": 1,
+      "wt": "D",
+      "mut": "V",
+      "raw": -1.36,
+      "prob": 0.049,
+      "protein_position": 622,
+      "rank": 413,
+      "top10": false
+    },
+    {
+      "position": 6,
+      "wt": "V",
+      "mut": "K",
+      "raw": -1.367,
+      "prob": 0.048,
+      "protein_position": 627,
+      "rank": 414,
+      "top10": false
+    },
+    {
+      "position": 9,
+      "wt": "S",
+      "mut": "H",
+      "raw": -1.368,
+      "prob": 0.048,
+      "protein_position": 630,
+      "rank": 415,
+      "top10": false
+    },
+    {
+      "position": 24,
+      "wt": "M",
+      "mut": "F",
+      "raw": -1.37,
+      "prob": 0.048,
+      "protein_position": 645,
+      "rank": 416,
+      "top10": false
+    },
+    {
+      "position": 11,
+      "wt": "S",
+      "mut": "Y",
+      "raw": -1.386,
+      "prob": 0.047,
+      "protein_position": 632,
+      "rank": 417,
+      "top10": false
+    },
+    {
+      "position": 2,
+      "wt": "I",
+      "mut": "P",
+      "raw": -1.387,
+      "prob": 0.047,
+      "protein_position": 623,
+      "rank": 418,
+      "top10": false
+    },
+    {
+      "position": 18,
+      "wt": "S",
+      "mut": "R",
+      "raw": -1.39,
+      "prob": 0.046,
+      "protein_position": 639,
+      "rank": 419,
+      "top10": false
+    },
+    {
+      "position": 28,
+      "wt": "V",
+      "mut": "T",
+      "raw": -1.39,
+      "prob": 0.046,
+      "protein_position": 649,
+      "rank": 420,
+      "top10": false
+    },
+    {
+      "position": 10,
+      "wt": "G",
+      "mut": "C",
+      "raw": -1.395,
+      "prob": 0.046,
+      "protein_position": 631,
+      "rank": 421,
+      "top10": false
+    },
+    {
+      "position": 17,
+      "wt": "F",
+      "mut": "P",
+      "raw": -1.399,
+      "prob": 0.046,
+      "protein_position": 638,
+      "rank": 422,
+      "top10": false
+    },
+    {
+      "position": 25,
+      "wt": "K",
+      "mut": "C",
+      "raw": -1.4,
+      "prob": 0.046,
+      "protein_position": 646,
+      "rank": 423,
+      "top10": false
+    },
+    {
+      "position": 28,
+      "wt": "V",
+      "mut": "S",
+      "raw": -1.404,
+      "prob": 0.045,
+      "protein_position": 649,
+      "rank": 424,
+      "top10": false
+    },
+    {
+      "position": 13,
+      "wt": "G",
+      "mut": "R",
+      "raw": -1.415,
+      "prob": 0.045,
+      "protein_position": 634,
+      "rank": 425,
+      "top10": false
+    },
+    {
+      "position": 18,
+      "wt": "S",
+      "mut": "Q",
+      "raw": -1.416,
+      "prob": 0.045,
+      "protein_position": 639,
+      "rank": 426,
+      "top10": false
+    },
+    {
+      "position": 8,
+      "wt": "S",
+      "mut": "G",
+      "raw": -1.423,
+      "prob": 0.044,
+      "protein_position": 629,
+      "rank": 427,
+      "top10": false
+    },
+    {
+      "position": 19,
+      "wt": "K",
+      "mut": "H",
+      "raw": -1.433,
+      "prob": 0.043,
+      "protein_position": 640,
+      "rank": 428,
+      "top10": false
+    },
+    {
+      "position": 21,
+      "wt": "K",
+      "mut": "E",
+      "raw": -1.435,
+      "prob": 0.043,
+      "protein_position": 642,
+      "rank": 429,
+      "top10": false
+    },
+    {
+      "position": 26,
+      "wt": "N",
+      "mut": "D",
+      "raw": -1.443,
+      "prob": 0.043,
+      "protein_position": 647,
+      "rank": 430,
+      "top10": false
+    },
+    {
+      "position": 7,
+      "wt": "D",
+      "mut": "F",
+      "raw": -1.445,
+      "prob": 0.043,
+      "protein_position": 628,
+      "rank": 431,
+      "top10": false
+    },
+    {
+      "position": 16,
+      "wt": "N",
+      "mut": "S",
+      "raw": -1.447,
+      "prob": 0.042,
+      "protein_position": 637,
+      "rank": 432,
+      "top10": false
+    },
+    {
+      "position": 14,
+      "wt": "P",
+      "mut": "T",
+      "raw": -1.448,
+      "prob": 0.042,
+      "protein_position": 635,
+      "rank": 433,
+      "top10": false
+    },
+    {
+      "position": 5,
+      "wt": "L",
+      "mut": "K",
+      "raw": -1.451,
+      "prob": 0.042,
+      "protein_position": 626,
+      "rank": 434,
+      "top10": false
+    },
+    {
+      "position": 20,
+      "wt": "M",
+      "mut": "K",
+      "raw": -1.451,
+      "prob": 0.042,
+      "protein_position": 641,
+      "rank": 435,
+      "top10": false
+    },
+    {
+      "position": 27,
+      "wt": "L",
+      "mut": "Y",
+      "raw": -1.454,
+      "prob": 0.042,
+      "protein_position": 648,
+      "rank": 436,
+      "top10": false
+    },
+    {
+      "position": 26,
+      "wt": "N",
+      "mut": "Y",
+      "raw": -1.458,
+      "prob": 0.042,
+      "protein_position": 647,
+      "rank": 437,
+      "top10": false
+    },
+    {
+      "position": 7,
+      "wt": "D",
+      "mut": "G",
+      "raw": -1.463,
+      "prob": 0.041,
+      "protein_position": 628,
+      "rank": 438,
+      "top10": false
+    },
+    {
+      "position": 25,
+      "wt": "K",
+      "mut": "W",
+      "raw": -1.465,
+      "prob": 0.041,
+      "protein_position": 646,
+      "rank": 439,
+      "top10": false
+    },
+    {
+      "position": 24,
+      "wt": "M",
+      "mut": "A",
+      "raw": -1.471,
+      "prob": 0.041,
+      "protein_position": 645,
+      "rank": 440,
+      "top10": false
+    },
+    {
+      "position": 16,
+      "wt": "N",
+      "mut": "M",
+      "raw": -1.475,
+      "prob": 0.041,
+      "protein_position": 637,
+      "rank": 441,
+      "top10": false
+    },
+    {
+      "position": 22,
+      "wt": "T",
+      "mut": "G",
+      "raw": -1.48,
+      "prob": 0.04,
+      "protein_position": 643,
+      "rank": 442,
+      "top10": false
+    },
+    {
+      "position": 8,
+      "wt": "S",
+      "mut": "I",
+      "raw": -1.482,
+      "prob": 0.04,
+      "protein_position": 629,
+      "rank": 443,
+      "top10": false
+    },
+    {
+      "position": 18,
+      "wt": "S",
+      "mut": "L",
+      "raw": -1.482,
+      "prob": 0.04,
+      "protein_position": 639,
+      "rank": 444,
+      "top10": false
+    },
+    {
+      "position": 9,
+      "wt": "S",
+      "mut": "F",
+      "raw": -1.485,
+      "prob": 0.04,
+      "protein_position": 630,
+      "rank": 445,
+      "top10": false
+    },
+    {
+      "position": 12,
+      "wt": "I",
+      "mut": "Y",
+      "raw": -1.488,
+      "prob": 0.04,
+      "protein_position": 633,
+      "rank": 446,
+      "top10": false
+    },
+    {
+      "position": 20,
+      "wt": "M",
+      "mut": "L",
+      "raw": -1.526,
+      "prob": 0.038,
+      "protein_position": 641,
+      "rank": 447,
+      "top10": false
+    },
+    {
+      "position": 27,
+      "wt": "L",
+      "mut": "A",
+      "raw": -1.526,
+      "prob": 0.038,
+      "protein_position": 648,
+      "rank": 448,
+      "top10": false
+    },
+    {
+      "position": 6,
+      "wt": "V",
+      "mut": "M",
+      "raw": -1.535,
+      "prob": 0.037,
+      "protein_position": 627,
+      "rank": 449,
+      "top10": false
+    },
+    {
+      "position": 22,
+      "wt": "T",
+      "mut": "F",
+      "raw": -1.537,
+      "prob": 0.037,
+      "protein_position": 643,
+      "rank": 450,
+      "top10": false
+    },
+    {
+      "position": 11,
+      "wt": "S",
+      "mut": "E",
+      "raw": -1.546,
+      "prob": 0.036,
+      "protein_position": 632,
+      "rank": 451,
+      "top10": false
+    },
+    {
+      "position": 26,
+      "wt": "N",
+      "mut": "V",
+      "raw": -1.548,
+      "prob": 0.036,
+      "protein_position": 647,
+      "rank": 452,
+      "top10": false
+    },
+    {
+      "position": 1,
+      "wt": "D",
+      "mut": "S",
+      "raw": -1.556,
+      "prob": 0.036,
+      "protein_position": 622,
+      "rank": 453,
+      "top10": false
+    },
+    {
+      "position": 4,
+      "wt": "F",
+      "mut": "I",
+      "raw": -1.568,
+      "prob": 0.035,
+      "protein_position": 625,
+      "rank": 454,
+      "top10": false
+    },
+    {
+      "position": 3,
+      "wt": "M",
+      "mut": "Q",
+      "raw": -1.575,
+      "prob": 0.035,
+      "protein_position": 624,
+      "rank": 455,
+      "top10": false
+    },
+    {
+      "position": 14,
+      "wt": "P",
+      "mut": "S",
+      "raw": -1.578,
+      "prob": 0.035,
+      "protein_position": 635,
+      "rank": 456,
+      "top10": false
+    },
+    {
+      "position": 8,
+      "wt": "S",
+      "mut": "D",
+      "raw": -1.594,
+      "prob": 0.034,
+      "protein_position": 629,
+      "rank": 457,
+      "top10": false
+    },
+    {
+      "position": 3,
+      "wt": "M",
+      "mut": "R",
+      "raw": -1.6,
+      "prob": 0.034,
+      "protein_position": 624,
+      "rank": 458,
+      "top10": false
+    },
+    {
+      "position": 8,
+      "wt": "S",
+      "mut": "F",
+      "raw": -1.602,
+      "prob": 0.033,
+      "protein_position": 629,
+      "rank": 459,
+      "top10": false
+    },
+    {
+      "position": 11,
+      "wt": "S",
+      "mut": "D",
+      "raw": -1.607,
+      "prob": 0.033,
+      "protein_position": 632,
+      "rank": 460,
+      "top10": false
+    },
+    {
+      "position": 4,
+      "wt": "F",
+      "mut": "L",
+      "raw": -1.611,
+      "prob": 0.033,
+      "protein_position": 625,
+      "rank": 461,
+      "top10": false
+    },
+    {
+      "position": 19,
+      "wt": "K",
+      "mut": "N",
+      "raw": -1.611,
+      "prob": 0.033,
+      "protein_position": 640,
+      "rank": 462,
+      "top10": false
+    },
+    {
+      "position": 28,
+      "wt": "V",
+      "mut": "R",
+      "raw": -1.623,
+      "prob": 0.032,
+      "protein_position": 649,
+      "rank": 463,
+      "top10": false
+    },
+    {
+      "position": 19,
+      "wt": "K",
+      "mut": "L",
+      "raw": -1.64,
+      "prob": 0.032,
+      "protein_position": 640,
+      "rank": 464,
+      "top10": false
+    },
+    {
+      "position": 15,
+      "wt": "E",
+      "mut": "Q",
+      "raw": -1.648,
+      "prob": 0.031,
+      "protein_position": 636,
+      "rank": 465,
+      "top10": false
+    },
+    {
+      "position": 15,
+      "wt": "E",
+      "mut": "S",
+      "raw": -1.648,
+      "prob": 0.031,
+      "protein_position": 636,
+      "rank": 466,
+      "top10": false
+    },
+    {
+      "position": 12,
+      "wt": "I",
+      "mut": "A",
+      "raw": -1.652,
+      "prob": 0.031,
+      "protein_position": 633,
+      "rank": 467,
+      "top10": false
+    },
+    {
+      "position": 15,
+      "wt": "E",
+      "mut": "V",
+      "raw": -1.658,
+      "prob": 0.031,
+      "protein_position": 636,
+      "rank": 468,
+      "top10": false
+    },
+    {
+      "position": 23,
+      "wt": "F",
+      "mut": "H",
+      "raw": -1.673,
+      "prob": 0.03,
+      "protein_position": 644,
+      "rank": 469,
+      "top10": false
+    },
+    {
+      "position": 10,
+      "wt": "G",
+      "mut": "A",
+      "raw": -1.674,
+      "prob": 0.03,
+      "protein_position": 631,
+      "rank": 470,
+      "top10": false
+    },
+    {
+      "position": 2,
+      "wt": "I",
+      "mut": "N",
+      "raw": -1.715,
+      "prob": 0.028,
+      "protein_position": 623,
+      "rank": 471,
+      "top10": false
+    },
+    {
+      "position": 5,
+      "wt": "L",
+      "mut": "H",
+      "raw": -1.725,
+      "prob": 0.028,
+      "protein_position": 626,
+      "rank": 472,
+      "top10": false
+    },
+    {
+      "position": 23,
+      "wt": "F",
+      "mut": "D",
+      "raw": -1.729,
+      "prob": 0.027,
+      "protein_position": 644,
+      "rank": 473,
+      "top10": false
+    },
+    {
+      "position": 4,
+      "wt": "F",
+      "mut": "N",
+      "raw": -1.731,
+      "prob": 0.027,
+      "protein_position": 625,
+      "rank": 474,
+      "top10": false
+    },
+    {
+      "position": 19,
+      "wt": "K",
+      "mut": "I",
+      "raw": -1.736,
+      "prob": 0.027,
+      "protein_position": 640,
+      "rank": 475,
+      "top10": false
+    },
+    {
+      "position": 7,
+      "wt": "D",
+      "mut": "E",
+      "raw": -1.745,
+      "prob": 0.027,
+      "protein_position": 628,
+      "rank": 476,
+      "top10": false
+    },
+    {
+      "position": 11,
+      "wt": "S",
+      "mut": "W",
+      "raw": -1.752,
+      "prob": 0.027,
+      "protein_position": 632,
+      "rank": 477,
+      "top10": false
+    },
+    {
+      "position": 17,
+      "wt": "F",
+      "mut": "Q",
+      "raw": -1.755,
+      "prob": 0.026,
+      "protein_position": 638,
+      "rank": 478,
+      "top10": false
+    },
+    {
+      "position": 22,
+      "wt": "T",
+      "mut": "I",
+      "raw": -1.755,
+      "prob": 0.026,
+      "protein_position": 643,
+      "rank": 479,
+      "top10": false
+    },
+    {
+      "position": 25,
+      "wt": "K",
+      "mut": "A",
+      "raw": -1.755,
+      "prob": 0.026,
+      "protein_position": 646,
+      "rank": 480,
+      "top10": false
+    },
+    {
+      "position": 26,
+      "wt": "N",
+      "mut": "A",
+      "raw": -1.775,
+      "prob": 0.026,
+      "protein_position": 647,
+      "rank": 481,
+      "top10": false
+    },
+    {
+      "position": 2,
+      "wt": "I",
+      "mut": "M",
+      "raw": -1.78,
+      "prob": 0.025,
+      "protein_position": 623,
+      "rank": 482,
+      "top10": false
+    },
+    {
+      "position": 1,
+      "wt": "D",
+      "mut": "Q",
+      "raw": -1.796,
+      "prob": 0.025,
+      "protein_position": 622,
+      "rank": 483,
+      "top10": false
+    },
+    {
+      "position": 25,
+      "wt": "K",
+      "mut": "D",
+      "raw": -1.798,
+      "prob": 0.025,
+      "protein_position": 646,
+      "rank": 484,
+      "top10": false
+    },
+    {
+      "position": 11,
+      "wt": "S",
+      "mut": "A",
+      "raw": -1.8,
+      "prob": 0.025,
+      "protein_position": 632,
+      "rank": 485,
+      "top10": false
+    },
+    {
+      "position": 12,
+      "wt": "I",
+      "mut": "V",
+      "raw": -1.801,
+      "prob": 0.025,
+      "protein_position": 633,
+      "rank": 486,
+      "top10": false
+    },
+    {
+      "position": 17,
+      "wt": "F",
+      "mut": "N",
+      "raw": -1.803,
+      "prob": 0.024,
+      "protein_position": 638,
+      "rank": 487,
+      "top10": false
+    },
+    {
+      "position": 2,
+      "wt": "I",
+      "mut": "Q",
+      "raw": -1.82,
+      "prob": 0.024,
+      "protein_position": 623,
+      "rank": 488,
+      "top10": false
+    },
+    {
+      "position": 14,
+      "wt": "P",
+      "mut": "W",
+      "raw": -1.826,
+      "prob": 0.024,
+      "protein_position": 635,
+      "rank": 489,
+      "top10": false
+    },
+    {
+      "position": 8,
+      "wt": "S",
+      "mut": "H",
+      "raw": -1.828,
+      "prob": 0.024,
+      "protein_position": 629,
+      "rank": 490,
+      "top10": false
+    },
+    {
+      "position": 25,
+      "wt": "K",
+      "mut": "E",
+      "raw": -1.832,
+      "prob": 0.023,
+      "protein_position": 646,
+      "rank": 491,
+      "top10": false
+    },
+    {
+      "position": 16,
+      "wt": "N",
+      "mut": "Q",
+      "raw": -1.838,
+      "prob": 0.023,
+      "protein_position": 637,
+      "rank": 492,
+      "top10": false
+    },
+    {
+      "position": 18,
+      "wt": "S",
+      "mut": "N",
+      "raw": -1.842,
+      "prob": 0.023,
+      "protein_position": 639,
+      "rank": 493,
+      "top10": false
+    },
+    {
+      "position": 3,
+      "wt": "M",
+      "mut": "N",
+      "raw": -1.859,
+      "prob": 0.022,
+      "protein_position": 624,
+      "rank": 494,
+      "top10": false
+    },
+    {
+      "position": 9,
+      "wt": "S",
+      "mut": "D",
+      "raw": -1.865,
+      "prob": 0.022,
+      "protein_position": 630,
+      "rank": 495,
+      "top10": false
+    },
+    {
+      "position": 10,
+      "wt": "G",
+      "mut": "D",
+      "raw": -1.87,
+      "prob": 0.022,
+      "protein_position": 631,
+      "rank": 496,
+      "top10": false
+    },
+    {
+      "position": 20,
+      "wt": "M",
+      "mut": "H",
+      "raw": -1.87,
+      "prob": 0.022,
+      "protein_position": 641,
+      "rank": 497,
+      "top10": false
+    },
+    {
+      "position": 17,
+      "wt": "F",
+      "mut": "R",
+      "raw": -1.879,
+      "prob": 0.022,
+      "protein_position": 638,
+      "rank": 498,
+      "top10": false
+    },
+    {
+      "position": 7,
+      "wt": "D",
+      "mut": "I",
+      "raw": -1.886,
+      "prob": 0.022,
+      "protein_position": 628,
+      "rank": 499,
+      "top10": false
+    },
+    {
+      "position": 26,
+      "wt": "N",
+      "mut": "W",
+      "raw": -1.894,
+      "prob": 0.021,
+      "protein_position": 647,
+      "rank": 500,
+      "top10": false
+    },
+    {
+      "position": 14,
+      "wt": "P",
+      "mut": "R",
+      "raw": -1.896,
+      "prob": 0.021,
+      "protein_position": 635,
+      "rank": 501,
+      "top10": false
+    },
+    {
+      "position": 24,
+      "wt": "M",
+      "mut": "D",
+      "raw": -1.9,
+      "prob": 0.021,
+      "protein_position": 645,
+      "rank": 502,
+      "top10": false
+    },
+    {
+      "position": 22,
+      "wt": "T",
+      "mut": "E",
+      "raw": -1.904,
+      "prob": 0.021,
+      "protein_position": 643,
+      "rank": 503,
+      "top10": false
+    },
+    {
+      "position": 27,
+      "wt": "L",
+      "mut": "V",
+      "raw": -1.917,
+      "prob": 0.02,
+      "protein_position": 648,
+      "rank": 504,
+      "top10": false
+    },
+    {
+      "position": 5,
+      "wt": "L",
+      "mut": "I",
+      "raw": -1.933,
+      "prob": 0.02,
+      "protein_position": 626,
+      "rank": 505,
+      "top10": false
+    },
+    {
+      "position": 17,
+      "wt": "F",
+      "mut": "M",
+      "raw": -1.935,
+      "prob": 0.02,
+      "protein_position": 638,
+      "rank": 506,
+      "top10": false
+    },
+    {
+      "position": 14,
+      "wt": "P",
+      "mut": "V",
+      "raw": -1.97,
+      "prob": 0.019,
+      "protein_position": 635,
+      "rank": 507,
+      "top10": false
+    },
+    {
+      "position": 5,
+      "wt": "L",
+      "mut": "M",
+      "raw": -1.973,
+      "prob": 0.019,
+      "protein_position": 626,
+      "rank": 508,
+      "top10": false
+    },
+    {
+      "position": 10,
+      "wt": "G",
+      "mut": "E",
+      "raw": -1.974,
+      "prob": 0.019,
+      "protein_position": 631,
+      "rank": 509,
+      "top10": false
+    },
+    {
+      "position": 22,
+      "wt": "T",
+      "mut": "H",
+      "raw": -2.002,
+      "prob": 0.018,
+      "protein_position": 643,
+      "rank": 510,
+      "top10": false
+    },
+    {
+      "position": 28,
+      "wt": "V",
+      "mut": "W",
+      "raw": -2.005,
+      "prob": 0.018,
+      "protein_position": 649,
+      "rank": 511,
+      "top10": false
+    },
+    {
+      "position": 20,
+      "wt": "M",
+      "mut": "I",
+      "raw": -2.009,
+      "prob": 0.018,
+      "protein_position": 641,
+      "rank": 512,
+      "top10": false
+    },
+    {
+      "position": 2,
+      "wt": "I",
+      "mut": "R",
+      "raw": -2.014,
+      "prob": 0.018,
+      "protein_position": 623,
+      "rank": 513,
+      "top10": false
+    },
+    {
+      "position": 21,
+      "wt": "K",
+      "mut": "I",
+      "raw": -2.016,
+      "prob": 0.018,
+      "protein_position": 642,
+      "rank": 514,
+      "top10": false
+    },
+    {
+      "position": 13,
+      "wt": "G",
+      "mut": "V",
+      "raw": -2.02,
+      "prob": 0.017,
+      "protein_position": 634,
+      "rank": 515,
+      "top10": false
+    },
+    {
+      "position": 6,
+      "wt": "V",
+      "mut": "H",
+      "raw": -2.025,
+      "prob": 0.017,
+      "protein_position": 627,
+      "rank": 516,
+      "top10": false
+    },
+    {
+      "position": 12,
+      "wt": "I",
+      "mut": "W",
+      "raw": -2.043,
+      "prob": 0.017,
+      "protein_position": 633,
+      "rank": 517,
+      "top10": false
+    },
+    {
+      "position": 6,
+      "wt": "V",
+      "mut": "I",
+      "raw": -2.046,
+      "prob": 0.017,
+      "protein_position": 627,
+      "rank": 518,
+      "top10": false
+    },
+    {
+      "position": 7,
+      "wt": "D",
+      "mut": "H",
+      "raw": -2.061,
+      "prob": 0.016,
+      "protein_position": 628,
+      "rank": 519,
+      "top10": false
+    },
+    {
+      "position": 13,
+      "wt": "G",
+      "mut": "W",
+      "raw": -2.069,
+      "prob": 0.016,
+      "protein_position": 634,
+      "rank": 520,
+      "top10": false
+    },
+    {
+      "position": 21,
+      "wt": "K",
+      "mut": "H",
+      "raw": -2.072,
+      "prob": 0.016,
+      "protein_position": 642,
+      "rank": 521,
+      "top10": false
+    },
+    {
+      "position": 8,
+      "wt": "S",
+      "mut": "E",
+      "raw": -2.083,
+      "prob": 0.016,
+      "protein_position": 629,
+      "rank": 522,
+      "top10": false
+    },
+    {
+      "position": 27,
+      "wt": "L",
+      "mut": "W",
+      "raw": -2.085,
+      "prob": 0.016,
+      "protein_position": 648,
+      "rank": 523,
+      "top10": false
+    },
+    {
+      "position": 24,
+      "wt": "M",
+      "mut": "E",
+      "raw": -2.122,
+      "prob": 0.015,
+      "protein_position": 645,
+      "rank": 524,
+      "top10": false
+    },
+    {
+      "position": 19,
+      "wt": "K",
+      "mut": "M",
+      "raw": -2.128,
+      "prob": 0.015,
+      "protein_position": 640,
+      "rank": 525,
+      "top10": false
+    },
+    {
+      "position": 23,
+      "wt": "F",
+      "mut": "E",
+      "raw": -2.147,
+      "prob": 0.014,
+      "protein_position": 644,
+      "rank": 526,
+      "top10": false
+    },
+    {
+      "position": 16,
+      "wt": "N",
+      "mut": "R",
+      "raw": -2.151,
+      "prob": 0.014,
+      "protein_position": 637,
+      "rank": 527,
+      "top10": false
+    },
+    {
+      "position": 15,
+      "wt": "E",
+      "mut": "R",
+      "raw": -2.157,
+      "prob": 0.014,
+      "protein_position": 636,
+      "rank": 528,
+      "top10": false
+    },
+    {
+      "position": 9,
+      "wt": "S",
+      "mut": "E",
+      "raw": -2.165,
+      "prob": 0.014,
+      "protein_position": 630,
+      "rank": 529,
+      "top10": false
+    },
+    {
+      "position": 18,
+      "wt": "S",
+      "mut": "M",
+      "raw": -2.166,
+      "prob": 0.014,
+      "protein_position": 639,
+      "rank": 530,
+      "top10": false
+    },
+    {
+      "position": 4,
+      "wt": "F",
+      "mut": "M",
+      "raw": -2.176,
+      "prob": 0.014,
+      "protein_position": 625,
+      "rank": 531,
+      "top10": false
+    },
+    {
+      "position": 1,
+      "wt": "D",
+      "mut": "R",
+      "raw": -2.186,
+      "prob": 0.013,
+      "protein_position": 622,
+      "rank": 532,
+      "top10": false
+    }
+  ]
+}

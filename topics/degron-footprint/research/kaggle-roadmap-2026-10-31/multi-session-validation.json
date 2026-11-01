@@ -1,0 +1,22 @@
+{
+  "status": "pass",
+  "original_campaign_id": "e9f820b75a1212ac9b23c3a9274a0f53bd926222239d4a9182c5cd0c7303b1a8",
+  "notebook_sha256": "1a74621d74f840146b5e1dd88eba6dd434600dfacab615996e310989f678f80a",
+  "rounds": [
+    {
+      "plan_id": "e9f820b75a1212ac9b23c3a9274a0f53bd926222239d4a9182c5cd0c7303b1a8",
+      "single_fresh_snapshot_index": true,
+      "feature_arrays_retained": true,
+      "tasks_retained": 11,
+      "training_jobs_executed": 0
+    },
+    {
+      "plan_id": "e9f820b75a1212ac9b23c3a9274a0f53bd926222239d4a9182c5cd0c7303b1a8",
+      "single_fresh_snapshot_index": true,
+      "feature_arrays_retained": true,
+      "tasks_retained": 11,
+      "training_jobs_executed": 0
+    }
+  ],
+  "note": "Actual notebook bootstrap tested with extracted snapshot directories; no retraining required."
+}

@@ -1,0 +1,46 @@
+{
+  "mode": "CPU_smoke_only",
+  "notebook_sha256": "1f2bfab010eccf98ccae0b68eba7184c0468c761ff5d3d9c181355b8f918a7bf",
+  "runs": [
+    {
+      "run": "budget-stop",
+      "status": "pass",
+      "seconds": 29.0,
+      "error": null
+    },
+    {
+      "run": "resume-all",
+      "status": "pass",
+      "seconds": 27.3,
+      "error": null
+    }
+  ],
+  "official_GPU": "not_run",
+  "execution_engine": "direct",
+  "jupyter_kernel_execution": "not_run_sandbox_socket_permission",
+  "tasks": 11,
+  "stage_routes_including_aggregation": 12,
+  "cached_tasks_on_resume": [
+    "00",
+    "01"
+  ],
+  "actual_plm_smoke": "ESM2-8M features and frozen/LoRA task training",
+  "pending_sources": [
+    "external",
+    "structure"
+  ],
+  "checkpoint_zip": "topics/degron-footprint/data/processed/v3-validation/gzip-fix-all-in-one/working/smoke/abb74a70839d4b29-checkpoint.zip",
+  "exported_png": "topics/degron-footprint/data/processed/v3-validation/gzip-fix-all-in-one/working/smoke/abb74a70839d4b29/summary.png",
+  "missing_feature_arrays_recomputed": true,
+  "downstream_models_reused": true,
+  "weights_checked_before_reextraction": true,
+  "changed_plan_resume_rejected": true,
+  "final_export": {
+    "status": "exported",
+    "archive": "topics/degron-footprint/data/processed/v3-validation/gzip-fix-all-in-one/working/smoke/abb74a70839d4b29-checkpoint.zip",
+    "sha256": "c1999f80e8cba2141887ad4f1fd5cf9cafc35226bbfaa4ce956e3f57d89b1726",
+    "include_features": false,
+    "note": "Without feature arrays, stage03 is recomputed on ZIP restore; model/checkpoint tasks remain reusable."
+  },
+  "status": "pass"
+}

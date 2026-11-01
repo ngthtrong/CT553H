@@ -1,0 +1,59 @@
+{
+  "status": "pass",
+  "scientific_performance_claim": false,
+  "model": "esm2_8m",
+  "mode": "CPU smoke only",
+  "seed": 17,
+  "fold": 0,
+  "arms": [
+    "B",
+    "D"
+  ],
+  "modes": [
+    "frozen",
+    "lora"
+  ],
+  "labels": "real Zhang2023 deltaPSI",
+  "new_checkpoints": [
+    {
+      "recipe": "esm2_8m-frozen-B-17-0",
+      "trainable_parameters": 44929,
+      "changed_parameter_tensors": 4,
+      "changed_lora_tensors": 0,
+      "base_revision": "c731040fcd8d73dceaa04b0a8e6329b345b0f5df",
+      "model_sha256": "5439b4b56239e6fed884842afd6492606de7a1910567e8d8da7cb22e909b3487",
+      "model_bytes": 182757,
+      "model": "topics/degron-footprint/data/processed/v3-validation/verified/results/smoke/11-55ae24ebce28/esm2_8m-frozen-B-17-0-model.pt"
+    },
+    {
+      "recipe": "esm2_8m-frozen-D-17-0",
+      "trainable_parameters": 44929,
+      "changed_parameter_tensors": 4,
+      "changed_lora_tensors": 0,
+      "base_revision": "c731040fcd8d73dceaa04b0a8e6329b345b0f5df",
+      "model_sha256": "ababf6091798dfd1d859b40c5e303f227bb554e5f773170984ae321a62544691",
+      "model_bytes": 182757,
+      "model": "topics/degron-footprint/data/processed/v3-validation/verified/results/smoke/11-55ae24ebce28/esm2_8m-frozen-D-17-0-model.pt"
+    },
+    {
+      "recipe": "esm2_8m-lora-B-17-0",
+      "trainable_parameters": 106369,
+      "changed_parameter_tensors": 28,
+      "changed_lora_tensors": 24,
+      "base_revision": "c731040fcd8d73dceaa04b0a8e6329b345b0f5df",
+      "model_sha256": "b73fe7b323b5d7858a1afda522bcad4301f957d7a5ace0d55ead897bacd3ca6f",
+      "model_bytes": 436723,
+      "model": "topics/degron-footprint/data/processed/v3-validation/verified/results/smoke/11-55ae24ebce28/esm2_8m-lora-B-17-0-model.pt"
+    },
+    {
+      "recipe": "esm2_8m-lora-D-17-0",
+      "trainable_parameters": 106369,
+      "changed_parameter_tensors": 28,
+      "changed_lora_tensors": 24,
+      "base_revision": "c731040fcd8d73dceaa04b0a8e6329b345b0f5df",
+      "model_sha256": "ca2eeaf7d33fbf8b5c930c0f1aec203fdaf2e6d4d14834ba07d2b13b418b8c67",
+      "model_bytes": 436723,
+      "model": "topics/degron-footprint/data/processed/v3-validation/verified/results/smoke/11-55ae24ebce28/esm2_8m-lora-D-17-0-model.pt"
+    }
+  ]
+}

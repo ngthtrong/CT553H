@@ -1,0 +1,115 @@
+{
+  "mode": "smoke_only",
+  "notebooks": [
+    {
+      "stage": "00",
+      "notebook": "00-data-audit-and-splits.ipynb",
+      "status": "pass",
+      "error": null,
+      "notebook_sha256": "27bbc0771ec6c12b05993069dd0ee22719bdc303e8313b91e1c933a6ea29cd7a",
+      "seconds": 26.53,
+      "rendered_png_outputs": 1
+    },
+    {
+      "stage": "01",
+      "notebook": "01-full-psi-and-linear-controls.ipynb",
+      "status": "pass",
+      "error": null,
+      "notebook_sha256": "8d13034170a5603e1b45bec723c04b63505da32adbe0598306ad48fd51d752db",
+      "seconds": 7.61,
+      "rendered_png_outputs": 1
+    },
+    {
+      "stage": "02",
+      "notebook": "02-plm-preflight.ipynb",
+      "status": "pass",
+      "error": null,
+      "notebook_sha256": "f5ce175b24113291e5c59fd14507413b684c27051f50f23ba675bda8f4a84456",
+      "seconds": 9.79,
+      "rendered_png_outputs": 1
+    },
+    {
+      "stage": "03",
+      "notebook": "03-frozen-plm-features.ipynb",
+      "status": "pass",
+      "error": null,
+      "notebook_sha256": "7a8e45578d3bfd3cbd5574a3db13ae4e65e19032a9ba38b3e5b11d00413f6bf7",
+      "seconds": 12.7,
+      "rendered_png_outputs": 1
+    },
+    {
+      "stage": "04",
+      "notebook": "04-plm-family-and-scale.ipynb",
+      "status": "pass",
+      "error": null,
+      "notebook_sha256": "b1de7e1064f4ea096a2a3c09048cce518f95ef80d16d6b5a82addfa600ca3935",
+      "seconds": 6.91,
+      "rendered_png_outputs": 1
+    },
+    {
+      "stage": "05",
+      "notebook": "05-matched-heads-and-data-regime.ipynb",
+      "status": "pass",
+      "error": null,
+      "notebook_sha256": "7a4b20d2956b92df28bcb64384cc926f37204923ed4b150554ad2551a2098135",
+      "seconds": 7.91,
+      "rendered_png_outputs": 1
+    },
+    {
+      "stage": "06",
+      "notebook": "06-scanning-quality-and-transfer.ipynb",
+      "status": "pass",
+      "error": null,
+      "notebook_sha256": "0a14098d85b04a9076099ffa65345558f296b50a0945eb5d13f10a649ae64fa5",
+      "seconds": 11.74,
+      "rendered_png_outputs": 1
+    },
+    {
+      "stage": "07",
+      "notebook": "07-locked-transfer-and-calibration.ipynb",
+      "status": "pass",
+      "error": null,
+      "notebook_sha256": "9918c96ee3aa57e45a25e55c082f015de60c09fbe67234c9e4367d498b548675",
+      "seconds": 7.92,
+      "rendered_png_outputs": 1
+    },
+    {
+      "stage": "08",
+      "notebook": "08-external-source-audit-and-evaluation.ipynb",
+      "status": "pass",
+      "error": null,
+      "notebook_sha256": "09356ef61a729c1c0120ae20a3619785294e42650394e09214ec73619547515a",
+      "seconds": 9.92,
+      "rendered_png_outputs": 0
+    },
+    {
+      "stage": "09",
+      "notebook": "09-saprot-structure-controls.ipynb",
+      "status": "pass",
+      "error": null,
+      "notebook_sha256": "c173d39ad09e1916858082c85fdaeb1c3f2d31d18c504d064233b9535f840f52",
+      "seconds": 7.97,
+      "rendered_png_outputs": 0
+    },
+    {
+      "stage": "10",
+      "notebook": "10-evidence-aggregation.ipynb",
+      "status": "pass",
+      "error": null,
+      "notebook_sha256": "c4e6f8020a374948433c7aae095270b57d7d7616f613cea6a0cea5296d1437ae",
+      "seconds": 8.83,
+      "rendered_png_outputs": 1
+    },
+    {
+      "stage": "11",
+      "notebook": "11-plm-finetune.ipynb",
+      "status": "pass",
+      "error": null,
+      "notebook_sha256": "ed4c359d2d903aa854f5ecab639337aaa36839d62f1d0962dd22df9edf68d286",
+      "seconds": 18.14,
+      "rendered_png_outputs": 1
+    }
+  ],
+  "official_gpu_training": "not_run",
+  "note": "Saved executed notebooks and HTML; figure files require visual inspection separately."
+}

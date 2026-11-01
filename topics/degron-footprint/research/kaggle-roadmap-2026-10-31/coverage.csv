@@ -1,0 +1,50 @@
+work_id,work,notebooks,scope,status_or_condition
+A1,Contribution benchmark-method-evaluation sufficient,README,current_decision,confirmed_by_user_no_architecture_novelty_gate
+A2,Current evidence and history map,00|10,core,implemented_smoke_verified_official_pending
+A3,Finite expanded checkpoint registry,02|04,core,20_checkpoints_7_families_listed
+A4,Protocol hypotheses budgets stop rules,00|01|04|05|06|07,core,execution_protocol_hashed_not_preregistration
+A5,Data exposure history,00|07|08,core,scanning_previously_explored_disclosed
+A6,Matched splits preprocessing and final fit,00|01|04|05,core,implemented_smoke_verified_official_pending
+B1,Pair composition unordered ordered controls,01,core,implemented_smoke_verified_official_pending
+B2,ESM35 pointwise versus CNN,05,core,implemented_smoke_verified_official_pending
+B3,W5 validation on held groups,01|07,core,implemented_smoke_verified_official_pending
+B4,ESM head versus W5,04|05|07,core,implemented_smoke_verified_official_pending
+B5,One prespecified W5 neural blend,05|07,secondary,not_implemented_lock_before_T
+B6,Multikernel value,05,secondary,capacity_and_tuning_budget_disclosed
+B7,Error and stability analysis,04|05|10,secondary,development_data_only
+C1,Shared data manifest and dropoff,00,core,implemented_smoke_verified_official_pending
+C2,Scanning held group assignment,00|07,core,split_before_any_scanning_training
+C3,Two replicate scanning labels,00|06,core,intersection_and_rep1_cohorts_separate
+C4,Label reliability audit,00|06,core,not_exact_variance_from_two_replicates
+C5,Quality weighting,06,secondary,fit_rule_on_train_only
+C6,20 seen versus 360 unseen substitution pairs,06|07,core_for_scan_transfer,pair_ids_exported_detailed_20_360_analysis_pending
+C7,Regression event and topk metrics,01|04|05|06|07|10,core,undefined_event_metrics_not_imputed
+C8,Sequence accession stop and terminal mapping,00|08|09,core_for_used_data,unmapped_not_singleton
+D1,Genetic glues source audit,08,conditional,processed_table_access_and_rights_pending
+D2,Makaros Timms S2 source audit,08,conditional,raw_table_and_cohort_pending
+D3,Shimshon S1 source audit,08,conditional,N_degron_domain_separate
+D4,Bekturova SI S2 source audit,08,conditional,Cys_N_degron_domain_separate
+D5,CTLH ZMYND19 source audit,08,conditional,single_protein_case_study_possible
+D6,Koren S4 transfer feasibility,08,conditional,input_length_and_assay_adapter_required
+D7,Zhang 219 list overlap,08,secondary,list_IDs_need_confirmation_not_219_new_samples
+D8,Source schema units clusters provenance,00|08|09,core_for_used_source,core_bundle_does_not_relax_external_source_gates
+E1,Context-only scanning transfer,06,conditional,new_arm_lock_budget_before_run
+E2,Source-specific heads,06|08,conditional,enough_compatible_new_clusters_needed
+E3,Residual correction over W5,05,conditional,not_default_no_open_ended_architecture_sweep
+E4,Structural information,09,conditional,WT_structure_mapping_same_cohort_controls
+E5,New wet-lab saturation,none,outside_notebooks,requires_collaboration_and_experimental_resources
+E6,Separate PSI distribution from protein identity,01,conditional,requires_enough_matched_peptides_no_causal_claim_from_curve
+F1,Final model selection,07,core,no_neural_win_requirement
+F2,Refit and evaluate calibration,07,core,nested_calibration_implemented_final_refit_W5_only
+F3,Inference correctness and cost,02|07,core,measure_actual_Kaggle_and_local_resources
+F4,Frozen reproducible model research bundle,07|10,core,weights_config_hash_modelcard
+NEW_Q1,No PSI limit plus full-balanced train,01|05,core,new_question_not_assumed_improvement
+NEW_W,Wide grouped development CV,00|01|04|05|06,core,all235_no_claim_of_new_independent_data
+NEW_SCALE,ESM2 3B and 15B and ESMC 6B,02|03|04,requested_resource_conditional,pinned_download_queued_preflight_gate_no_automatic_sharding
+NEW_FAMILY,ESM1b ESM1v ESMC ProtT5 Ankh,02|03|04,requested,at_least_one_per_family_and_report_all_missing_runs
+NEW_SAPROT,SaProt35M and650M,09,conditional,structure_bundle_required
+OUTSIDE,Ask authors BAG6 genotype and unpublished data,none,outside_notebooks,no_messages_sent
+OUTSIDE,Official scientific gate closure,none,outside_notebooks,user_and_advisor_decision_not_automatic
+EXCLUDED,Application UX Figma thesis tasks G H I,none,out_of_scope,excluded_by_user
+NEW_FINETUNE,Train new pretrained-pLM task model with frozen LoRA or full tuning,11,core_requested,implemented_real_ESM8M_update_smoke_official_GPU_pending
+MASTER,One self-contained notebook orchestration download cache budget and resume,12,core_requested,CPU_IPython_smoke_and_ZIP_resume_pass_GPU_not_run

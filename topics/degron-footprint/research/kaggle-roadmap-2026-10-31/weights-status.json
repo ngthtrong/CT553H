@@ -1,0 +1,538 @@
+{
+  "schema_version": 2,
+  "snapshot_utc": "2026-10-31T16:44:08Z",
+  "status_counts": {
+    "complete": 4,
+    "downloading": 8,
+    "metadata_ready": 8
+  },
+  "requested_models": 20,
+  "total_expected_bytes": 135597222169,
+  "verified_complete_bytes": 2913773559,
+  "partial_bytes": 1493172224,
+  "note": "Snapshot only. Only complete models can load. Metadata_ready means queued/resolved, not downloaded. Download log/job/status files live under data/raw/plm-weights-v3; rerun this script to refresh.",
+  "models": [
+    {
+      "model_id": "esm2_8m",
+      "repo": "facebook/esm2_t6_8M_UR50D",
+      "revision": "c731040fcd8d73dceaa04b0a8e6329b345b0f5df",
+      "source": "https://huggingface.co/facebook/esm2_t6_8M_UR50D/tree/c731040fcd8d73dceaa04b0a8e6329b345b0f5df",
+      "status": "complete",
+      "bytes_expected": 31387085,
+      "license_metadata": "mit",
+      "files": [
+        {
+          "path": "README.md",
+          "bytes": 1705,
+          "sha256": "462a2f24724e19c6be0efab926315c294a863c9a9770e2c8b3d859b2d81a07de",
+          "verified": true,
+          "reused": true
+        },
+        {
+          "path": "config.json",
+          "bytes": 775,
+          "sha256": "facb9355e8252149f6f99dff5fd1e32e890c3c655362b261d0c81cd6b5839c85",
+          "verified": true,
+          "reused": true
+        },
+        {
+          "path": "model.safetensors",
+          "bytes": 31384292,
+          "sha256": "24c5fa474c48f3b754b86efe752d5f189d2bcd88190fa2270fc92b2ef3034189",
+          "verified": true,
+          "reused": true
+        },
+        {
+          "path": "special_tokens_map.json",
+          "bytes": 125,
+          "sha256": "3aedcd4211c0d43aec4e607ff60a63255f3174ead795e997350f09a5f8cd9ee1",
+          "verified": true,
+          "reused": true
+        },
+        {
+          "path": "tokenizer_config.json",
+          "bytes": 95,
+          "sha256": "7e9161ecdb548ec45a41cbc6b24aa4476fdd418461f491c4207baa99419a29ad",
+          "verified": true,
+          "reused": true
+        },
+        {
+          "path": "vocab.txt",
+          "bytes": 93,
+          "sha256": "0b82cc0a7c7cf9e567b1e5892d793285b9fbae822c964ca48696f7db44598e03",
+          "verified": true,
+          "reused": true
+        }
+      ],
+      "partial_bytes": 0,
+      "bytes_verified_complete": 31387085,
+      "verification": "sha256_rechecked"
+    },
+    {
+      "model_id": "esm2_35m",
+      "repo": "facebook/esm2_t12_35M_UR50D",
+      "revision": "6fbf070e65b0b7291e7bbcd451118c216cff79d8",
+      "source": "https://huggingface.co/facebook/esm2_t12_35M_UR50D/tree/6fbf070e65b0b7291e7bbcd451118c216cff79d8",
+      "status": "complete",
+      "bytes_expected": 136011594,
+      "license_metadata": "mit",
+      "files": [
+        {
+          "path": "README.md",
+          "bytes": 1705,
+          "sha256": "462a2f24724e19c6be0efab926315c294a863c9a9770e2c8b3d859b2d81a07de",
+          "verified": true,
+          "reused": true
+        },
+        {
+          "path": "config.json",
+          "bytes": 778,
+          "sha256": "ae07364efa51e0fa1d81da3fe608f6d948abdbbb69785ba6e1df379a458e58ee",
+          "verified": true,
+          "reused": true
+        },
+        {
+          "path": "model.safetensors",
+          "bytes": 136008798,
+          "sha256": "e35647818e0e064351d4531ed480d225a002567b4b2b93ad3a9246d753150fc0",
+          "verified": true,
+          "reused": true
+        },
+        {
+          "path": "special_tokens_map.json",
+          "bytes": 125,
+          "sha256": "3aedcd4211c0d43aec4e607ff60a63255f3174ead795e997350f09a5f8cd9ee1",
+          "verified": true,
+          "reused": true
+        },
+        {
+          "path": "tokenizer_config.json",
+          "bytes": 95,
+          "sha256": "7e9161ecdb548ec45a41cbc6b24aa4476fdd418461f491c4207baa99419a29ad",
+          "verified": true,
+          "reused": true
+        },
+        {
+          "path": "vocab.txt",
+          "bytes": 93,
+          "sha256": "0b82cc0a7c7cf9e567b1e5892d793285b9fbae822c964ca48696f7db44598e03",
+          "verified": true,
+          "reused": true
+        }
+      ],
+      "partial_bytes": 0,
+      "bytes_verified_complete": 136011594,
+      "verification": "sha256_rechecked"
+    },
+    {
+      "model_id": "esm2_150m",
+      "repo": "facebook/esm2_t30_150M_UR50D",
+      "revision": "a695f6045e2e32885fa60af20c13cb35398ce30c",
+      "source": "https://huggingface.co/facebook/esm2_t30_150M_UR50D/tree/a695f6045e2e32885fa60af20c13cb35398ce30c",
+      "status": "downloading",
+      "bytes_expected": 595260503,
+      "license_metadata": "mit",
+      "files": [
+        {
+          "path": "README.md",
+          "bytes": 1705,
+          "sha256": "462a2f24724e19c6be0efab926315c294a863c9a9770e2c8b3d859b2d81a07de",
+          "verified": true,
+          "reused": true
+        },
+        {
+          "path": "config.json",
+          "bytes": 779,
+          "sha256": "e512f68ec444d99477703a9806639ca83da3dbc19f6c5fe428d6e5b7460972dc",
+          "verified": true,
+          "reused": true
+        }
+      ],
+      "partial_bytes": 343932928
+    },
+    {
+      "model_id": "esm2_650m",
+      "repo": "facebook/esm2_t33_650M_UR50D",
+      "revision": "08e4846e537177426273712802403f7ba8261b6c",
+      "source": "https://huggingface.co/facebook/esm2_t33_650M_UR50D/tree/08e4846e537177426273712802403f7ba8261b6c",
+      "status": "complete",
+      "bytes_expected": 2609509134,
+      "license_metadata": "mit",
+      "files": [
+        {
+          "path": "README.md",
+          "bytes": 1705,
+          "sha256": "462a2f24724e19c6be0efab926315c294a863c9a9770e2c8b3d859b2d81a07de",
+          "verified": true,
+          "reused": true
+        },
+        {
+          "path": "config.json",
+          "bytes": 724,
+          "sha256": "539095c22efc52a09d6147074ba4ca119f76a890df5901213b2b55f7d2f96b2b",
+          "verified": true,
+          "reused": true
+        },
+        {
+          "path": "model.safetensors",
+          "bytes": 2609506392,
+          "sha256": "a08adabb949fa67ad3c14b509d04fd60368b35007b0095e3358f81200c4f4db0",
+          "verified": true,
+          "reused": true
+        },
+        {
+          "path": "special_tokens_map.json",
+          "bytes": 125,
+          "sha256": "3aedcd4211c0d43aec4e607ff60a63255f3174ead795e997350f09a5f8cd9ee1",
+          "verified": true,
+          "reused": true
+        },
+        {
+          "path": "tokenizer_config.json",
+          "bytes": 95,
+          "sha256": "7e9161ecdb548ec45a41cbc6b24aa4476fdd418461f491c4207baa99419a29ad",
+          "verified": true,
+          "reused": true
+        },
+        {
+          "path": "vocab.txt",
+          "bytes": 93,
+          "sha256": "0b82cc0a7c7cf9e567b1e5892d793285b9fbae822c964ca48696f7db44598e03",
+          "verified": true,
+          "reused": true
+        }
+      ],
+      "partial_bytes": 0,
+      "bytes_verified_complete": 2609509134,
+      "verification": "sha256_rechecked"
+    },
+    {
+      "model_id": "esm2_3b",
+      "repo": "facebook/esm2_t36_3B_UR50D",
+      "revision": "476b639933c8baad5ad09a60ac1a87f987b656fc",
+      "source": "https://huggingface.co/facebook/esm2_t36_3B_UR50D/tree/476b639933c8baad5ad09a60ac1a87f987b656fc",
+      "status": "metadata_ready",
+      "bytes_expected": 11367209092,
+      "license_metadata": "mit",
+      "files": [],
+      "partial_bytes": 155189248
+    },
+    {
+      "model_id": "esm2_15b",
+      "repo": "facebook/esm2_t48_15B_UR50D",
+      "revision": "5fbca39631164edc1d402a5aa369f982f72ee282",
+      "source": "https://huggingface.co/facebook/esm2_t48_15B_UR50D/tree/5fbca39631164edc1d402a5aa369f982f72ee282",
+      "status": "metadata_ready",
+      "bytes_expected": 60538453702,
+      "license_metadata": "mit",
+      "files": [],
+      "partial_bytes": 121634816
+    },
+    {
+      "model_id": "esm1b_650m",
+      "repo": "facebook/esm1b_t33_650M_UR50S",
+      "revision": "7b37824baec4d3658e1df7479222a7c79b465b76",
+      "source": "https://huggingface.co/facebook/esm1b_t33_650M_UR50S/tree/7b37824baec4d3658e1df7479222a7c79b465b76",
+      "status": "metadata_ready",
+      "bytes_expected": 2609623125,
+      "license_metadata": "mit",
+      "files": [],
+      "partial_bytes": 0
+    },
+    {
+      "model_id": "esm1v_650m_1",
+      "repo": "facebook/esm1v_t33_650M_UR90S_1",
+      "revision": "8bfdb1892536cc77bd0760b9c25ddced2cd0b4c8",
+      "source": "https://huggingface.co/facebook/esm1v_t33_650M_UR90S_1/tree/8bfdb1892536cc77bd0760b9c25ddced2cd0b4c8",
+      "status": "downloading",
+      "bytes_expected": 2609604384,
+      "license_metadata": null,
+      "files": [
+        {
+          "path": "config.json",
+          "bytes": 785,
+          "sha256": "6c4b576e2e73ad85fc51a4fa75d4e350532b773e04551307a74643c3fc3c5d59",
+          "verified": true,
+          "reused": true
+        }
+      ],
+      "partial_bytes": 159383552
+    },
+    {
+      "model_id": "esm1v_650m_2",
+      "repo": "facebook/esm1v_t33_650M_UR90S_2",
+      "revision": "3c1e9e64480f069b163e456c361bfd80a8bab04c",
+      "source": "https://huggingface.co/facebook/esm1v_t33_650M_UR90S_2/tree/3c1e9e64480f069b163e456c361bfd80a8bab04c",
+      "status": "downloading",
+      "bytes_expected": 2609604384,
+      "license_metadata": null,
+      "files": [
+        {
+          "path": "config.json",
+          "bytes": 785,
+          "sha256": "6d5521715eec9d9a94ca69d961c8498dcd5a09a3b1a0c2b4bf7d902f1a69a0e2",
+          "verified": true,
+          "reused": true
+        }
+      ],
+      "partial_bytes": 163577856
+    },
+    {
+      "model_id": "esm1v_650m_3",
+      "repo": "facebook/esm1v_t33_650M_UR90S_3",
+      "revision": "0b00fd112e63f6b5e70a9cd8484d4e660312ce70",
+      "source": "https://huggingface.co/facebook/esm1v_t33_650M_UR90S_3/tree/0b00fd112e63f6b5e70a9cd8484d4e660312ce70",
+      "status": "downloading",
+      "bytes_expected": 2609604384,
+      "license_metadata": null,
+      "files": [
+        {
+          "path": "config.json",
+          "bytes": 785,
+          "sha256": "07413894c75f074dfc591cfd37aab1273b9a7562749fe74deab945a0b350a5ff",
+          "verified": true,
+          "reused": true
+        }
+      ],
+      "partial_bytes": 20971520
+    },
+    {
+      "model_id": "esm1v_650m_4",
+      "repo": "facebook/esm1v_t33_650M_UR90S_4",
+      "revision": "443968f644da132d323bbc6321a6d443149fa57b",
+      "source": "https://huggingface.co/facebook/esm1v_t33_650M_UR90S_4/tree/443968f644da132d323bbc6321a6d443149fa57b",
+      "status": "metadata_ready",
+      "bytes_expected": 2609604384,
+      "license_metadata": null,
+      "files": [],
+      "partial_bytes": 0
+    },
+    {
+      "model_id": "esm1v_650m_5",
+      "repo": "facebook/esm1v_t33_650M_UR90S_5",
+      "revision": "fb2e51cb0f605cbad2c4ca3bb784be7bc8e2f4a8",
+      "source": "https://huggingface.co/facebook/esm1v_t33_650M_UR90S_5/tree/fb2e51cb0f605cbad2c4ca3bb784be7bc8e2f4a8",
+      "status": "metadata_ready",
+      "bytes_expected": 2609604384,
+      "license_metadata": null,
+      "files": [],
+      "partial_bytes": 0
+    },
+    {
+      "model_id": "esmc_300m",
+      "repo": "biohub/ESMC-300M",
+      "revision": "e4bac860f0c502cd80f3aeac3d0ce6524c6627cb",
+      "source": "https://huggingface.co/biohub/ESMC-300M/tree/e4bac860f0c502cd80f3aeac3d0ce6524c6627cb",
+      "status": "downloading",
+      "bytes_expected": 1332051986,
+      "license_metadata": [
+        "mit",
+        "other"
+      ],
+      "files": [
+        {
+          "path": "README.md",
+          "bytes": 14960,
+          "sha256": "64096baa2f7345c1badd5be2c97c0998fc46d4c3d017c2a3f3ce83418a20f147",
+          "hf_lfs_sha256": null,
+          "verified": true,
+          "reused": false
+        },
+        {
+          "path": "config.json",
+          "bytes": 1113,
+          "sha256": "c8487869f71707ba55baf82470861ef12d35a5b679dd73033df33cbbe3375b65",
+          "hf_lfs_sha256": null,
+          "verified": true,
+          "reused": false
+        }
+      ],
+      "partial_bytes": 130023424
+    },
+    {
+      "model_id": "esmc_600m",
+      "repo": "biohub/ESMC-600M",
+      "revision": "fcc9d36f5fff97d9bb69a36e3252de61cc78c968",
+      "source": "https://huggingface.co/biohub/ESMC-600M/tree/fcc9d36f5fff97d9bb69a36e3252de61cc78c968",
+      "status": "downloading",
+      "bytes_expected": 2300220803,
+      "license_metadata": [
+        "mit",
+        "other"
+      ],
+      "files": [
+        {
+          "path": "README.md",
+          "bytes": 14960,
+          "sha256": "64096baa2f7345c1badd5be2c97c0998fc46d4c3d017c2a3f3ce83418a20f147",
+          "hf_lfs_sha256": null,
+          "verified": true,
+          "reused": false
+        },
+        {
+          "path": "config.json",
+          "bytes": 1114,
+          "sha256": "2494562385804f86db4ba04cba57e4453b1c080ce9eb758443df67ee852bfd31",
+          "hf_lfs_sha256": null,
+          "verified": true,
+          "reused": false
+        }
+      ],
+      "partial_bytes": 134217728
+    },
+    {
+      "model_id": "esmc_6b",
+      "repo": "biohub/ESMC-6B",
+      "revision": "af1602ba7406f521b11bf8f81d52af378cde09e4",
+      "source": "https://huggingface.co/biohub/ESMC-6B/tree/af1602ba7406f521b11bf8f81d52af378cde09e4",
+      "status": "metadata_ready",
+      "bytes_expected": 25408244321,
+      "license_metadata": [
+        "mit",
+        "other"
+      ],
+      "files": [],
+      "partial_bytes": 0
+    },
+    {
+      "model_id": "prott5_encoder",
+      "repo": "Rostlab/prot_t5_xl_half_uniref50-enc",
+      "revision": "94a6abc029ae13029317b140b7424e012bf8dfbf",
+      "source": "https://huggingface.co/Rostlab/prot_t5_xl_half_uniref50-enc/tree/94a6abc029ae13029317b140b7424e012bf8dfbf",
+      "status": "downloading",
+      "bytes_expected": 2416620088,
+      "license_metadata": null,
+      "files": [
+        {
+          "path": "README.md",
+          "bytes": 6579,
+          "sha256": "394f9eb133ca4e88bb7bfa51ebe858e6a45de480f6ddf11cdf135c50ed1cfe7b",
+          "hf_lfs_sha256": null,
+          "verified": true,
+          "reused": false
+        },
+        {
+          "path": "config.json",
+          "bytes": 656,
+          "sha256": "c93cc8c31433fb062cad1825a9c16cde962a2015c8a3b10cfdc5f76a85128db3",
+          "hf_lfs_sha256": null,
+          "verified": true,
+          "reused": false
+        }
+      ],
+      "partial_bytes": 142606336
+    },
+    {
+      "model_id": "ankh_base",
+      "repo": "ElnaggarLab/ankh-base",
+      "revision": "d99cb6b966530dfc2ae96bc69d9255c2a07308b0",
+      "source": "https://huggingface.co/ElnaggarLab/ankh-base/tree/d99cb6b966530dfc2ae96bc69d9255c2a07308b0",
+      "status": "metadata_ready",
+      "bytes_expected": 2946104235,
+      "license_metadata": "cc-by-nc-sa-4.0",
+      "files": [],
+      "partial_bytes": 0
+    },
+    {
+      "model_id": "ankh_large",
+      "repo": "ElnaggarLab/ankh-large",
+      "revision": "74b371dbfa3ee0a05d32ae74df0c2e0b82d6b9a6",
+      "source": "https://huggingface.co/ElnaggarLab/ankh-large/tree/74b371dbfa3ee0a05d32ae74df0c2e0b82d6b9a6",
+      "status": "metadata_ready",
+      "bytes_expected": 7515114970,
+      "license_metadata": "cc-by-nc-sa-4.0",
+      "files": [],
+      "partial_bytes": 0
+    },
+    {
+      "model_id": "saprot_35m",
+      "repo": "westlake-repl/SaProt_35M_AF2",
+      "revision": "316cd4017d29f4657b959365f24b57f1ee278912",
+      "source": "https://huggingface.co/westlake-repl/SaProt_35M_AF2/tree/316cd4017d29f4657b959365f24b57f1ee278912",
+      "status": "complete",
+      "bytes_expected": 136865746,
+      "license_metadata": "mit",
+      "files": [
+        {
+          "path": "README.md",
+          "bytes": 1521,
+          "sha256": "173be04cb2935b1a0e1e44e91eb08477d84ad59df1dcaa22a8f5bb11dc8661a1",
+          "hf_lfs_sha256": null,
+          "verified": true,
+          "reused": false
+        },
+        {
+          "path": "config.json",
+          "bytes": 645,
+          "sha256": "ce15e3349c3a6fa2ebb0297682df36b8c468bf0ca6cf69d043fe4b093e39678f",
+          "hf_lfs_sha256": null,
+          "verified": true,
+          "reused": false
+        },
+        {
+          "path": "pytorch_model.bin",
+          "bytes": 136862061,
+          "sha256": "612d676d22c52953e27e923f8d402cd412548965539516d0c3ec98248e612f7f",
+          "hf_lfs_sha256": "612d676d22c52953e27e923f8d402cd412548965539516d0c3ec98248e612f7f",
+          "verified": true,
+          "reused": false
+        },
+        {
+          "path": "special_tokens_map.json",
+          "bytes": 125,
+          "sha256": "3aedcd4211c0d43aec4e607ff60a63255f3174ead795e997350f09a5f8cd9ee1",
+          "hf_lfs_sha256": null,
+          "verified": true,
+          "reused": false
+        },
+        {
+          "path": "tokenizer_config.json",
+          "bytes": 40,
+          "sha256": "bfd8a81f4215e59174634eec71eea99aa1841d8692bdf5c60e9ecaa12904fde8",
+          "hf_lfs_sha256": null,
+          "verified": true,
+          "reused": false
+        },
+        {
+          "path": "vocab.txt",
+          "bytes": 1354,
+          "sha256": "d4289b3ff55d50b1aa33a3141ec344fc2a69cb3dca43aeefe9fccfee371ffd28",
+          "hf_lfs_sha256": null,
+          "verified": true,
+          "reused": false
+        }
+      ],
+      "partial_bytes": 0,
+      "bytes_verified_complete": 136865746,
+      "verification": "sha256_rechecked"
+    },
+    {
+      "model_id": "saprot_650m",
+      "repo": "westlake-repl/SaProt_650M_AF2",
+      "revision": "d9b9ad00ef61c0990e611b2b43f2231c7de24b38",
+      "source": "https://huggingface.co/westlake-repl/SaProt_650M_AF2/tree/d9b9ad00ef61c0990e611b2b43f2231c7de24b38",
+      "status": "downloading",
+      "bytes_expected": 2606523865,
+      "license_metadata": "mit",
+      "files": [
+        {
+          "path": "README.md",
+          "bytes": 3926,
+          "sha256": "5e1caf488de1e32d0b45637e5a755d0aae37a5830853123917572dcf7a46cbe5",
+          "hf_lfs_sha256": null,
+          "verified": true,
+          "reused": false
+        },
+        {
+          "path": "config.json",
+          "bytes": 647,
+          "sha256": "927bf8961c93e0667cecb6f928aa7077e1a7f55c8483ae58173f155261f1c3b3",
+          "hf_lfs_sha256": null,
+          "verified": true,
+          "reused": false
+        }
+      ],
+      "partial_bytes": 121634816
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "status": "pass",
+  "code_zip_sha256": "bd7048a90d1d9fc3a44caee470ed41ffdc14504824a5e297c5924c46419fbb1e",
+  "code_files": 46,
+  "notebooks": 12,
+  "code_manifest_hashes": "pass",
+  "code_bundle_relative_doc_links": "pass",
+  "core_zip_previously_verified": true,
+  "portable_audit_from_extracted_zip": "pass",
+  "code_and_data_root_markers_not_required": true,
+  "portable_audit_reference_zip_sha256": "fc2df962b752773dedd41101503c2afebdd67307a578fb74f726dd9cc10ebc20",
+  "executable_files_unchanged_since_portable_audit": true
+}

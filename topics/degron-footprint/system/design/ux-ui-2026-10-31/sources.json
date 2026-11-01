@@ -1,0 +1,270 @@
+{
+  "checked_on": "2026-10-31",
+  "scope": "design proposal; no runtime or scientific acceptance",
+  "repository": [
+    {
+      "path": "../../README.md",
+      "sha256": "598d604b8236b9b94b34ef0b83d86ad8cdb065ed17d34849a4c8d946758c69c2"
+    },
+    {
+      "path": "../../srs.md",
+      "sha256": "fe5f24acefa7ca3b6ad4acf66498d4dc12fbceb8fda121539944231258c56b45"
+    },
+    {
+      "path": "../../db-design.md",
+      "sha256": "64a69f472d84b87e330188068a8b3598d9193311b52e3efacb931815b30eff43"
+    },
+    {
+      "path": "../../api-spec.md",
+      "sha256": "6e520c1ac5aae55ece53180404437e75448f92c2bcf8a8c0a930688e7893f12b"
+    },
+    {
+      "path": "../../openapi.yaml",
+      "sha256": "760b5b34a9afd1d30eee587304a7817ed53cae021509f819432fe8e1f568e5e4"
+    },
+    {
+      "path": "../../ui-design.md",
+      "sha256": "e4cd9f81541585db25cbeee0db1746bcf0a8d81924c9a56705323302f43aca81"
+    },
+    {
+      "path": "../../test-plan.md",
+      "sha256": "767ec6ecc794bed9a7293369b2af7a73d198826289eb48a399d9ef6af3f871f3"
+    },
+    {
+      "path": "../../scope-validation-2026-10-29.md",
+      "sha256": "aabd4aa947aa8b43cc857a71ebe913e5300fa535b895b2573a5a9099ab6ce051"
+    },
+    {
+      "path": "../../chapter-sync.md",
+      "sha256": "7d15c03a444da74f476c1a3054be9f0f4b25d19a119913746bdab7c20bb97c7b"
+    },
+    {
+      "path": "../../app/DEVIATIONS.md",
+      "sha256": "6528ab2f2cbb1ed113d8afe80a8ed31533ed8b5da1673a02cf3dfaacaa54c586"
+    },
+    {
+      "path": "../../app/frontend/src/styles.css",
+      "sha256": "4a5be2d3fc43797986c4fbf92d37519dd2c1da31f63e46e2293872d91925eb22"
+    },
+    {
+      "path": "../../app/frontend/src/App.tsx",
+      "sha256": "522e5dd282940b1c732abeeb4c090df8de00cfb4bcd426a5a7014131e19f622a"
+    },
+    {
+      "path": "../../../proposal/proposal.md",
+      "sha256": "2c5f597e7514caa4c49fc290f2e5454390fbac0eac95e5bb394e707054d84203"
+    }
+  ],
+  "external": [
+    {
+      "url": "https://linear.app/now/behind-the-latest-design-refresh",
+      "use": "Information hierarchy and navigation reference",
+      "asset_reuse": "None"
+    },
+    {
+      "url": "https://www.radix-ui.com/themes/docs/theme/overview",
+      "use": "Token and theme reference",
+      "asset_reuse": "None"
+    },
+    {
+      "url": "https://spline.design/",
+      "use": "3D accent direction reference",
+      "asset_reuse": "None; abstract SVG authored for this design"
+    },
+    {
+      "url": "https://github.com/figma/sds",
+      "use": "Figma primitive library",
+      "asset_reuse": "Imported native component instances; MIT source licence recorded"
+    },
+    {
+      "url": "https://lucide.dev/license",
+      "use": "Vector icon licence",
+      "asset_reuse": "Official SVGs; ISC and Feather-derived MIT notices retained"
+    },
+    {
+      "url": "https://github.com/google/fonts/tree/main/ofl/roboto",
+      "use": "Bundled Roboto review font",
+      "asset_reuse": "Unmodified font; SIL Open Font License notice retained and embedded"
+    },
+    {
+      "url": "https://github.com/google/fonts/tree/main/ofl/robotomono",
+      "use": "Bundled Roboto Mono review font",
+      "asset_reuse": "Unmodified font; SIL Open Font License notice retained and embedded"
+    },
+    {
+      "url": "https://developers.figma.com/docs/plugins/manifest/",
+      "use": "Native plugin manifest requirements",
+      "asset_reuse": "No document assets copied"
+    }
+  ],
+  "assets": [
+    {
+      "path": "assets/abstract-ribbon.svg",
+      "sha256": "69e894702c7c06c3096f1837d96eddaf4c27250ec8f64f81252e83855a903e1f"
+    },
+    {
+      "path": "assets/activity.svg",
+      "sha256": "050fbcda05e13c2051cf857683645e19c6b180861ef4d0cc28a6f09ba1ea1666"
+    },
+    {
+      "path": "assets/arrow-left.svg",
+      "sha256": "c5f4b88076108eb1a0d95336e1aa7e7bb1419a3a92af96f6247d88cd3456f933"
+    },
+    {
+      "path": "assets/arrow-right.svg",
+      "sha256": "288397fdb73bb4f783cf9eabb726ff47357df1d4e3f1201dd748090579f108b9"
+    },
+    {
+      "path": "assets/ban.svg",
+      "sha256": "2eba67f86d70bbd5d22e4211d44d7dda86c3397410f714765a12c3cd3ca0ebe3"
+    },
+    {
+      "path": "assets/check-circle-2.svg",
+      "sha256": "9711e045a5999f8a3b0782eb88e09b04e0559bc7b379dcc0a4ae645223e10345"
+    },
+    {
+      "path": "assets/check.svg",
+      "sha256": "7f33acc9a77a61659531044525fc008edebe215bf4dcf1c789c8674ad3277db0"
+    },
+    {
+      "path": "assets/chevron-down.svg",
+      "sha256": "66ea878e72ed3488bb3b464c39dfdccee8d1f78e560dccea40e5e12da0e87e87"
+    },
+    {
+      "path": "assets/circle-alert.svg",
+      "sha256": "ce3e98b7a03b78c0071131df42466e4e1ff5187fccad30e739ec9ce951cf685a"
+    },
+    {
+      "path": "assets/clock.svg",
+      "sha256": "e9d3e3acf4d1c280fcf8092293439dc0a4756a908ceb859de144b12451cd1cb9"
+    },
+    {
+      "path": "assets/database.svg",
+      "sha256": "471eb14bc8d144896a82dfc4aa9daf350f769f0896f4bef33e50aabdbb51130d"
+    },
+    {
+      "path": "assets/dna.svg",
+      "sha256": "fb1e39ad72394a4090aaaeb620fc8057d72e3df9497cbbbd26247ba57e747431"
+    },
+    {
+      "path": "assets/download.svg",
+      "sha256": "3daeee13ded5a3afa2198b1bb4e2262d163922f97d96ac6ff9953e8ed4fe039d"
+    },
+    {
+      "path": "assets/external-link.svg",
+      "sha256": "3891241b8c3bfc3a8a930078f26ffc5a7e9763da6d0162ace2050b28d4c1d1fe"
+    },
+    {
+      "path": "assets/file-text.svg",
+      "sha256": "52ca55846c202335fb870c8aa23e9345630ec10489303756d62e750f7109605c"
+    },
+    {
+      "path": "assets/flask-conical.svg",
+      "sha256": "a2ce857c159bef4c128a6d9f0b6dcbd6504ecf1a2a670ee220efd14fd032b561"
+    },
+    {
+      "path": "assets/folder.svg",
+      "sha256": "f0d92b94b797a8ab7d4c4ae33c3236c47f64068351b4e14bdb5014ee42898a39"
+    },
+    {
+      "path": "assets/grid-2x2.svg",
+      "sha256": "dc1896d3b22e88e0ba45a77bc8e947b7a01d0c9fb5ff77d07d24a5589816bb84"
+    },
+    {
+      "path": "assets/info.svg",
+      "sha256": "bc977a64eb96f3e9c1041ffd09a3fceb70e3e65c02b571f76064062ed31f3cb9"
+    },
+    {
+      "path": "assets/layers.svg",
+      "sha256": "ce16d0a955e3581cda17f6b2fd5c5bc2034b405f9cecc31c8ebb8495b4afc1bb"
+    },
+    {
+      "path": "assets/loader.svg",
+      "sha256": "54b6eeae749a70379df86e6360670a838d0f98f00d5a887d50bd76ca62cbf0d4"
+    },
+    {
+      "path": "assets/lucide-license.txt",
+      "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57"
+    },
+    {
+      "path": "assets/menu.svg",
+      "sha256": "af6491988ac1ba30dc5414f485bc48713e957e1edb0fbef4a0dd8691c3c21598"
+    },
+    {
+      "path": "assets/moon.svg",
+      "sha256": "205b959e940d5841f0ce1d09c933153da9d9c94130a54d5cc0c68c2af1d403da"
+    },
+    {
+      "path": "assets/more-horizontal.svg",
+      "sha256": "4f495cc72013ffdfec677f03b33a150f7b4dd741979283fd6853a09024bca112"
+    },
+    {
+      "path": "assets/play.svg",
+      "sha256": "d7c34786135922a92b6896f6c2384ceeb0346afbf6041dc79982011411409833"
+    },
+    {
+      "path": "assets/plus.svg",
+      "sha256": "7f6af73bf1ff6c4bca3f18351c8d1bdec6749c0c2530c4de5da85d520c21df17"
+    },
+    {
+      "path": "assets/refresh-cw.svg",
+      "sha256": "2e10dd403c85a24f163d59fc6151aa21147fe9402e1305dfc8979208caee8944"
+    },
+    {
+      "path": "assets/roboto-license.txt",
+      "sha256": "061402327a96aadb0bfb694a960ed289ecd38d383e396243831ab81feb109c41"
+    },
+    {
+      "path": "assets/roboto-mono-license.txt",
+      "sha256": "50ab8dd54680d3473f649c9db86fece88434d097c7834475c1c72d2f8c429215"
+    },
+    {
+      "path": "assets/roboto-mono.ttf",
+      "sha256": "66a80e79d17e4c7cabd162e2916578a4cc08fd19eef6e2a643305eae9c567b2b"
+    },
+    {
+      "path": "assets/roboto.ttf",
+      "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134"
+    },
+    {
+      "path": "assets/save.svg",
+      "sha256": "ee9d56a7fec4b20dd6689546d41f68219ea8cbd67f99bd17a1bdaff5be6edb53"
+    },
+    {
+      "path": "assets/sds-license.txt",
+      "sha256": "570f1f1c07d32e2cdc7da3eea40f9c772e584782db15cbf455a72a19de36b7bc"
+    },
+    {
+      "path": "assets/search.svg",
+      "sha256": "283d371c2e433817bb9c0c8310caa6c77fa4177c0f4f1168d9c83b97af7389dc"
+    },
+    {
+      "path": "assets/shield-check.svg",
+      "sha256": "8d4fcdbde5bba4abb1a2f6fe53e37ceb6343a1d5449a9d88f6f97c1971d26c4e"
+    },
+    {
+      "path": "assets/square.svg",
+      "sha256": "bd979354f0ab184b95cecf03eedefe40c2dc65830ac6d7e60017b2b25a354acb"
+    },
+    {
+      "path": "assets/sun.svg",
+      "sha256": "a3955c8b0425fcc5c9ba12d2bdd77fe53b2cd5dd05e7742a56f342e996fb2ef8"
+    },
+    {
+      "path": "assets/table-2.svg",
+      "sha256": "7b1808e170670d644af828bed77022fc8baba27a654e0805f3fb98e0bec62077"
+    },
+    {
+      "path": "assets/trash-2.svg",
+      "sha256": "27299f69ad7c6272be64b1b8e2d48cbd6dcf0ef0d4f92827a1affa945c91700e"
+    },
+    {
+      "path": "assets/upload.svg",
+      "sha256": "42816ee1fa0e9d3b82272a97615c1e562b0e9de64780ebf21963bc1db0ceffd1"
+    },
+    {
+      "path": "assets/x.svg",
+      "sha256": "4a9cdab38fbb96162e7dace28e33f4ca0e49d8963a6162abc3d4691b7d675117"
+    }
+  ]
+}

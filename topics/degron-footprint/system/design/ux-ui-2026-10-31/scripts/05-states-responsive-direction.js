@@ -1,0 +1,92 @@
+function standalone(id,title,subtitle,width=760){theme='light';const root=card(id+' · '+title,width);pad(root,32);root.isScreen=true;root.screenId=id;root.x=80+(screensCreated.length%4)*1540;root.y=160+Math.floor(screensCreated.length/4)*1900;add(figma.currentPage,root);add(root,tag('Design sample'),txt(title,'Title',width-64),txt(subtitle,'Body',width-64,'muted'));screensCreated.push({id,root:root.id,title,content:root.id,width,minHeight:0,kind:'state'});return root;}
+function smallActions(parent,width,...nodes){const r=row('Actions',width,12);add(r,...nodes);add(parent,r);}
+{
+const n=standalone('ST01','Save analysis to project','This preview is currently transient.');add(n,field('Project','COL6A6 pilot',696),field('Analysis label','COL6A6 · tile 28',696),banner('Save input, scores and provenance locally','The snapshot persists in this project until explicit deletion. No public link is created.','info',696));smallActions(n,696,btn('Save snapshot','primary','DF10'),btn('Cancel','secondary','DF09'));
+}
+{
+const n=standalone('ST02','Export a frozen result','Choose a format. The current screen page does not limit the export.');add(n,check('All 532 substitutions, or all job items if exporting a job',true,696),check('Model, gate, domain, source versions and warnings',true,696),check('Selected measurement / annotation snapshot and units',true,696),banner('Include all item outcomes','Refused/failed/cancelled items remain in a job manifest with empty score fields.','info',696));smallActions(n,696,btn('Export CSV','primary','ST14'),btn('Export JSON','secondary','ST14'),btn('Failure example','subtle','ST13'));
+}
+{
+const n=standalone('ST03','Delete COL6A6 pilot?','Review the dependency summary before confirming.');add(n,table(['Owned content','Will be removed'],[['Saved analyses','5 snapshots and their score cells'],['Jobs','1 job; unfinished work is cancelled'],['Imported datasets','1 revision and its owned file'],['Comparisons','2 dependent comparisons']],696,[260,436]),banner('This removes the project from this local workspace','Shared reference sources, model weights and other projects remain available.','danger',696));smallActions(n,696,btn('Delete project','danger','ST15'),btn('Keep project','secondary','DF02'));
+}
+{
+const n=standalone('ST04','Scoring refused: outside the model domain','Custom peptide · predicted out-of-domain · no substitution scores generated.');add(n,banner('OUT_OF_DOMAIN · frozen gate evidence','The tile is outside the supported domain. Inspect the source and estimator before overriding.','danger',696),check('I understand scores outside the domain may be unreliable.',true,696),txt('An override remains visible on the result and in every saved/exported snapshot.','Body',696,'muted'));smallActions(n,696,btn('Choose another tile','primary','DF04'),btn('Score anyway','secondary','ST12'));
+}
+{
+const n=standalone('ST05','Annotation availability states','Five meanings; a missing annotation never implies benignity.',920);
+for(const [title,body,kind]of [['Available','Mapped missense evidence exists; inspect classification, review status and source revision.','success'],['No match','Mapping was verified and the source loaded, but there is no matching missense record.','info'],['Mapping unavailable','The input has no verified accession/release mapping. A custom sequence is not silently matched.','warning'],['Source unavailable','The snapshot is not loaded. This is not an empty result; prepare the source and retry.','warning'],['Mapping conflict','The supplied accession, release or WT residue disagrees. Resolve it before using an annotation.','danger']])add(n,banner(title,body,kind,856));smallActions(n,856,btn('Back to annotations','secondary','DF11'),btn('Back to custom result','secondary','DF18'));
+}
+{
+const n=standalone('ST06','Cancel this job?','Completed results will remain in the project.');add(n,txt('The worker will stop claiming new items and keep terminal outcomes. A completed snapshot is not rolled back.','Large',696),banner('Cancellation is a request until the worker acknowledges it','Reopening the job shows the same ID and its final item counts.','warning',696));smallActions(n,696,btn('Request cancellation','danger','ST18'),btn('Keep running','secondary','DF07'));
+}
+{
+const n=standalone('ST07','Different endpoint · separate view','Prediction and observation use different units; pooled ΔPSI metrics are unavailable.',1080);add(n,banner('INCOMPATIBLE_ENDPOINT','The selected observations measure fluorescence intensity in arbitrary units. They are not GPS ΔPSI.','warning',1016),table(['Substitution','Predicted ΔPSI (bins)','Observation (a.u.)','Residual'],[[cells[0].wt+cells[0].position+cells[0].mut,'+'+cells[0].raw.toFixed(3),'152.0','Unavailable'],[cells[1].wt+cells[1].position+cells[1].mut,'+'+cells[1].raw.toFixed(3),'97.0','Unavailable']],1016,[220,300,280,216]),txt('MAE: — · Spearman: —\nReason: endpoints/units are not comparable. Separate labelled values may be inspected and exported with their units.','Body',1016,'muted'));smallActions(n,1016,btn('Choose a compatible dataset','primary','DF15'),btn('Back to dataset','secondary','DF14'));
+}
+{
+const s=shell('ST08','Raw ΔPSI score','Signed regression score · PuOr centred at zero · model m3-ext4.0-platt-v1.',{index:30,active:'New analysis',height:1510});resultNotices(s.content);const c=card('Raw effect matrix',1152);const m=matrix();const pal=['#7f3b08','#b35806','#e08214','#fdb863','#fee0b6','#f7f7f7','#d8daeb','#b2abd2','#8073ac','#542788','#2d004b'];for(const r of m.findAll(n=>n.type==='RECTANGLE'&&n.name.startsWith('Cell / '))){const d=cells.find(x=>r.name.startsWith('Cell / '+x.position+' '+x.wt+'→'+x.mut+' /'));const idx=Math.max(0,Math.min(10,Math.round((d.raw+2.1)/4.2*10)));r.fills=[{type:'SOLID',color:hex(pal[idx])}];}add(c,sectionTitle('Raw predicted ΔPSI','Orange: negative · neutral: 0 · purple: positive; signs are repeated in numeric values.'),m,txt('−2.1                              0                              +2.1 PSI bins','Mono',648,'muted'));add(s.content,c,actionRow(btn('Probability view','primary','DF09'),btn('Ranking table','secondary','DF10')));finish(s);
+}
+{
+const n=standalone('ST09','Create a local project','A project keeps saved analyses, jobs and imported observations.');add(n,field('Project name','COL6A6 pilot',696),field('Description','Peptide exploration and assay comparison',696),txt('Only explicit saves, job submissions and import commits persist data.','Body',696,'muted'));smallActions(n,696,btn('Create project','primary','DF02'),btn('Cancel','secondary','DF01'));
+}
+{
+const n=standalone('ST10','Rename project','Existing runs and dataset revisions retain their identity.');add(n,field('Project name','COL6A6 pilot',696));smallActions(n,696,btn('Save name','primary','DF02'),btn('Cancel','secondary','DF02'));
+}
+{
+const n=standalone('ST11','Ready to commit · review warnings','Corrected staged preview · 5 rows · no blocking issues.');add(n,banner('Warnings remain: 1 missing value, 1 unmatched row','Missing values retain their reason; unmatched rows will not be used in paired metrics.','warning',696),txt('File hash, assay, units, source and replicate metadata will be pinned to the new revision. Staged previews can expire; committed revisions do not expire automatically.','Body',696),check('I acknowledge the warnings and want to store this revision locally.',true,696));smallActions(n,696,btn('Commit revision 1','primary','DF14'),btn('Back to preview','secondary','DF13'));
+}
+{
+const n=standalone('ST13','Export could not be created','Your result is still available.');add(n,banner('Download failed · retry is safe','The saved/on-screen analysis has not been removed or recomputed.','warning',696));smallActions(n,696,btn('Retry export','primary','ST02'),btn('Return to snapshot','secondary','DF10'));
+}
+{
+const n=standalone('ST14','Export prepared · prototype state','CSV/JSON includes the frozen result and provenance.');add(n,txt('This is an interaction example. The review prototype does not call the application export endpoint.','Body',696,'muted'));smallActions(n,696,btn('Return to result','primary','DF10'),btn('Export options','secondary','ST02'));
+}
+{
+const n=standalone('ST15','Deletion and cleanup states','Success is reported only after owned database rows and files are removed.');add(n,banner('Pending cleanup','The project is marked for deletion and late worker writes are blocked.','info',696),banner('Cleanup failed · retry required','Some owned files could not be removed. Keep the failure visible and retry cleanup.','danger',696),banner('Deleted','Owned data and files are removed. Shared reference/model data are retained.','success',696));smallActions(n,696,btn('Retry cleanup','primary','ST15'),btn('Projects','secondary','DF01'));
+}
+{
+const n=standalone('ST16','Delete dataset revision 1?','GPS pilot · project-owned data only.');add(n,txt('Removes this dataset file, its 5 observation rows and 1 dependent comparison. The saved prediction itself remains.','Large',696),banner('Reference/training data and model weights remain','Deleting a private dataset does not modify shared sources.','info',696));smallActions(n,696,btn('Delete dataset','danger','ST15'),btn('Keep dataset','secondary','DF14'));
+}
+{
+const n=standalone('ST17','Delete saved analysis run-028?','This removes one immutable snapshot.');add(n,txt('Removes 1 analysis, 532 score cells and 1 dependent comparison. The project dataset and shared model remain.','Large',696));smallActions(n,696,btn('Delete analysis','danger','ST15'),btn('Keep analysis','secondary','DF10'));
+}
+{
+const n=standalone('ST18','Job cancelled · results retained','job-098 · terminal outcome counts reconcile to 98 items.');add(n,table(['Outcome','Count'],[['Succeeded','62'],['Refused','3'],['Failed','1'],['Cancelled','32']],696,[400,296]),txt('62 + 3 + 1 + 32 = 98. Cancellation does not delete completed snapshots or imply completed scoring. A new submission is a new job.','Body',696,'muted'));smallActions(n,696,btn('Export all outcomes','primary','ST02'),btn('Back to project','secondary','DF02'));
+}
+{
+const n=standalone('ST19','Local service is not ready','Model or database readiness check failed.');add(n,banner('No scores generated','Inspect local readiness and retry. Never replace a missing model with a different one silently.','danger',696));smallActions(n,696,btn('Retry readiness','primary','DF03'),btn('Model & evidence','secondary','DF16'));
+}
+{
+const n=standalone('ST20','Import preview expired','The staged file is no longer available for commit.');add(n,txt('Upload and validate the source file again to obtain a fresh preview. Already committed datasets are retained until you delete them.','Large',696));smallActions(n,696,btn('Create a new preview','primary','DF12'),btn('Project datasets','secondary','DF14'));
+}
+{
+const n=standalone('ST21','No substitutions match this filter','The complete 532-cell result remains available.');add(n,field('Position / mutant filter','Position 3 / WT amino acid M',696),txt('WT cells are masked, not scored substitutions. Clear the filter to return to the ranking.','Body',696));smallActions(n,696,btn('Clear filters','primary','DF10'));
+}
+{
+const n=standalone('ST22','Domain states and evidence source','The status and its measured/predicted source are separate fields.',920);
+for(const [label,body,kind]of [['In-domain · measured','Measured evidence passes the frozen gate. Training overlap is still labelled separately.','success'],['In-domain · predicted','Gate-derived status: retain prediction uncertainty and gate identity.','warning'],['Borderline','Near the frozen gate boundary. Scoring is allowed with a persistent warning.','warning'],['Unknown','Insufficient domain evidence. Do not invent a canonical mapping.','warning'],['Unreliable','Source evidence is unreliable. Explain the reason before showing scores.','warning'],['Out-of-domain','Refuse by default; an explicit warned override is a separate action.','danger']])add(n,banner(label,body,kind,856));smallActions(n,856,btn('Out-of-domain flow','secondary','ST04'),btn('Custom sequence','secondary','DF18'));
+}
+{
+const n=standalone('ST23','Saved snapshot unavailable','A required pinned artefact is missing or its integrity check failed.');add(n,banner('Original result cannot be reconstructed safely','Do not substitute today’s model or annotation release. A new run must be a separate history entry.','danger',696));smallActions(n,696,btn('Back to history','primary','DF02'),btn('New analysis','secondary','DF03'));
+}
+function mobile(id,title){theme='light';const root=al(id+' · '+title,360,'VERTICAL',0,'bg');root.isScreen=true;root.screenId=id;root.x=0;root.y=0;add(figma.currentPage,root);const head=row('Compact navigation',360,16,'surface');pad(head,16);add(head,txt('Degron Footprint','BodyStrong',224),icon('menu',24));const body=al('Mobile content',360,'VERTICAL',16);pad(body,16);add(root,head,body);screensCreated.push({id,root:root.id,title,content:body.id,width:360,minHeight:0,kind:'mobile'});add(body,tag('Design sample'),txt(title,'Title',328));return{root,body};}
+{
+const {body}=mobile('M01','New analysis');add(body,tabs(['Single','Batch','Protein'],'Single',328,{'Batch':'DF05','Protein':'DF06'}),txt('A 28-residue tile, all substitutions.','Body',328,'muted'),sequence(CONFIG.fixture.sequence,328),tag('28 / 28 residues','success'),banner('Domain unknown','No verified protein mapping. No canonical accession is inferred from pasted text.','warning',328),banner('Development benchmark','P(ΔPSI ≥ 1.0) is the assay event. Not a probability of disease.','info',328),btn('Predict 532 substitutions','primary','M02'),txt('Transient preview · save later to keep it locally.','Caption',328,'muted'),btn('Choose a protein','secondary','DF04'));
+}
+{
+const {body}=mobile('M02','Substitution effects');add(body,txt('Custom peptide · 28 residues','Body',328,'muted'),txt('m3-ext4.0-platt-v1','MonoSmall',328,'muted'),banner('Domain unknown','No verified domain or protein mapping.','warning',328),banner('Development OOF benchmark','Not external validation. Not a probability of disease.','info',328),tabs(['Ranking','Matrix'],'Ranking',328,{'Matrix':'M03'}),txt('Probability P(ΔPSI ≥ 1.0)','BodyStrong',328),txt('PSI increase ≥ 1 bin; weaker degron signal in this assay.','Caption',328,'muted'),table(['#','Change','P(ΔPSI ≥ 1)','Raw ΔPSI'],cells.slice(0,5).map(c=>[String(c.rank),c.wt+c.position+c.mut,c.prob.toFixed(3),'+'+c.raw.toFixed(3)]),328,[44,68,120,96]),txt('532 rows available · table is the narrow-screen default. Illustrative values.','Caption',328,'muted'));smallActions(body,328,btn('Export','primary','ST02'),btn('Save to project','secondary','ST01'));add(body,btn('View matrix','secondary','M03'));
+}
+{
+const {body}=mobile('M03','Matrix view');add(body,txt('m3-ext4.0-platt-v1','MonoSmall',328,'muted'),banner('Domain unknown','Custom sequence; no verified protein mapping.','warning',328),txt('Development OOF benchmark, not external validation.','Caption',328,'muted'),tabs(['Ranking','Matrix'],'Matrix',328,{'Ranking':'M02'}),txt('P(ΔPSI ≥ 1.0) · scroll horizontally →','BodyStrong',328));const viewport=al('Horizontally scrollable matrix',328,'VERTICAL',0);viewport.clip=true;viewport.scrollX=true;add(viewport,matrix());add(body,viewport,legend(328),btn('Accessible ranking table','primary','M02'));
+}
+// Review boards live outside product interaction routes.
+{
+const n=standalone('UX01','Design direction / 31 October 2026','Design proposal based on BA v0.2; runtime/scientific acceptance remain separate.',1440);n.kind='direction';
+const r=row('Theme exploration',1376,24);r.counterAxisAlignItems='MIN';
+const a=card('01 · Light research workspace',442);add(a,tag('SELECTED','brand'),txt('Quiet surfaces.\nClear evidence.','Display',394),txt('Off-white + ink + teal\nFlat data surfaces\nAbstract 3D at entry points','Large',394,'muted'),art(394,224));
+const b=card('02 · Dark focus',442);fill(b,'surface','dark');const bt=txt('Graphite / sage','Heading',394);fill(bt,'ink','dark');add(b,bt);for(const [v,c]of [['Dark workspace','bg'],['Muted chrome','sidebar'],['Readable accent','accent']]){const sw=row(v,394,12);const box=track(figma.createRectangle());box.resize(48,48);fill(box,c,'dark');radius(box,8);add(sw,box,txt(v,'Body',320));for(const t of sw.findAll(x=>x.type==='TEXT'))fill(t,'ink','dark');add(b,sw);}const darkCaption=txt('Secondary mode for long sessions.\nScientific palettes retain their meaning.','Body',394,'muted');fill(darkCaption,'muted','dark');add(b,darkCaption);
+const c=card('03 · Expressive 3D',444);add(c,art(396,224),txt('Depth as an accent','Heading',396),txt('Abstract illustration only. A 3D form does not imply measured/predicted structure.','Body',396,'muted'),txt('No autoplay; reduced motion respected.','Caption',396,'muted'));
+add(r,a,b,c);add(n,r,rule(1376),txt('References: Linear visual hierarchy · Radix theme tokens · Spline 3D direction · Figma SDS primitives. Original SVG artwork; Lucide icons with retained licences.','Body',1376,'muted'),banner('Scientific encoding is separate from brand colour','Probability: reversed Viridis. Raw ΔPSI: PuOr, centred at zero. Domain and annotation meaning is repeated in text.','info',1376),txt('Roboto / Roboto Mono · 8/16/24/32 spacing · 12 px cards · 44 px controls','Mono',1376));
+}
+{
+const n=standalone('UX02','Research workflow / evidence map','Every first-release use case is represented; additions remain implementation targets.',1440);n.kind='direction';add(n,table(['Task','Flow','UC / requirements'],[['Explore one peptide','Input → gate → matrix/ranking → shortlist → export/save','UC-01/02/03 · FR-01…14'],['Explore a protein','Search → tile/coverage → preview → durable job → tile result','UC-04/08 · FR-15/16/24…27'],['Compare observations','Metadata → staged validation → commit → endpoint-aware comparison','UC-05/09 · FR-17/28…30'],['Inspect annotations','Mapped evidence + source/review/conflict states','UC-06 · FR-18/35'],['Explain and reproduce','Model/source card + pinned provenance','UC-07 · FR-14/19/21/22'],['Keep and remove work','Project/history → reopen/rerun → dependency-aware delete','UC-10 · FR-31…34']],1376,[300,656,420]),banner('Critical reading order','Domain → warnings → development-evidence label → scores → actions → provenance.','info',1376),txt('Design fixtures are illustrative. No new model results, user-study findings or runtime acceptance are claimed.','Body',1376,'muted'));
+}

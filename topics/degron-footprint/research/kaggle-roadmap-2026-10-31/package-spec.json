@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "status": "implemented_core_data_and_code_notebooks",
+  "date": "2026-11-01",
+  "bundles": [
+    {
+      "id": "degron-data-v3-fullpsi",
+      "role": "core_data",
+      "proposed_zip": "degron-data-v3-fullpsi.zip",
+      "required_by": [
+        "00",
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "10",
+        "11"
+      ],
+      "normalized_tables": [
+        "peptides",
+        "saturation-cells",
+        "scanning-cells",
+        "observations",
+        "wt-references",
+        "sequence-table",
+        "exclusion-log"
+      ],
+      "source_inputs": [
+        {
+          "path": "data/processed/psi-sat_a.tsv",
+          "source": "Zhang2023",
+          "license_record": "data/README.md"
+        },
+        {
+          "path": "data/processed/psi-sat_b.tsv",
+          "source": "Zhang2023",
+          "license_record": "data/README.md"
+        },
+        {
+          "path": "data/processed/psi-rep1.tsv",
+          "source": "Zhang2023",
+          "license_record": "data/README.md"
+        },
+        {
+          "path": "data/processed/psi-rep2.tsv",
+          "source": "Zhang2023",
+          "license_record": "data/README.md"
+        },
+        {
+          "path": "data/interim/zhang-scanning-unzip/I28 Scanning (Completed)/Replicate 1 (BAG6 genotype unclear)/I28 Scanning Mutagenesis Replicate 1.csv",
+          "source": "Zhang2023_sequence_mapping",
+          "license_record": "data/README.md"
+        },
+        {
+          "path": "data/raw/human-reviewed-2026-10-12.fasta.gz",
+          "source": "UniProt_pinned_snapshot",
+          "license_record": "data/README.md"
+        },
+        {
+          "path": "data/interim/protein-id30-cov80_cluster.tsv",
+          "role": "legacy_only"
+        },
+        {
+          "path": "data/interim/protein-id30-cov80-proteome_cluster.tsv",
+          "role": "wide_grouping_start"
+        },
+        {
+          "path": "data/interim/protein-id30-cov50_cluster.tsv",
+          "role": "sensitivity_scope_must_be_audited"
+        }
+      ],
+      "expected_existing_saturation": {
+        "peptides": 235,
+        "cells": 122412,
+        "proteome_clusters_before_duplicate_hit_union": 222
+      },
+      "new_artifacts_required": [
+        "normalized_tables",
+        "wide_group_map",
+        "wide_outer_assignments",
+        "inner_assignments_by_seed",
+        "scan_dev_T_partition",
+        "cross_split_audit",
+        "data_manifest"
+      ],
+      "model_weights_included": false,
+      "embedding_included": false,
+      "external_sources_included": false,
+      "actual_saturation_groups": 221,
+      "actual_scanning_cells": 224470
+    },
+    {
+      "id": "degron-code-v3",
+      "role": "trusted_code",
+      "required_by": [
+        "00",
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11"
+      ],
+      "contents": [
+        "trusted_stage_runners",
+        "thin_notebooks",
+        "protocol_and_config",
+        "model_registry",
+        "dependency_locks",
+        "reviewed_adapters",
+        "reference_small_results",
+        "source_stubs"
+      ],
+      "status": "implemented",
+      "bootstrap_rule": "select_exact_bundle_ids_and_sha_do_not_take_first_glob_match"
+    },
+    {
+      "id": "degron-features-v3",
+      "role": "model_specific_shards",
+      "required_by": [
+        "04",
+        "05",
+        "07"
+      ],
+      "contents": [
+        "pooled_delta_shards",
+        "optional_shortlist_crop_shards",
+        "row_ids",
+        "completion_bitmaps",
+        "model_lock",
+        "feature_manifest"
+      ],
+      "must_pin": [
+        "core_data_sha",
+        "sequence_order_sha",
+        "checkpoint_commit",
+        "tokenizer_commit",
+        "extractor_sha",
+        "dtype",
+        "input_scope",
+        "hidden_layer",
+        "feature_kind"
+      ]
+    },
+    {
+      "id": "degron-external-v1",
+      "role": "optional_external",
+      "required_by": [
+        "08"
+      ],
+      "status": "source_audit_pending",
+      "core_deny_relaxation": false
+    },
+    {
+      "id": "degron-structure-v1",
+      "role": "optional_structure",
+      "required_by": [
+        "09"
+      ],
+      "status": "coverage_mapping_and_rights_pending"
+    }
+  ],
+  "storage_policy": {
+    "keep_raw_data_gitignored": true,
+    "weights_gitignored": true,
+    "features_gitignored": true,
+    "small_audit_results_versioned": true,
+    "no_upload_in_this_design": true
+  },
+  "manifest_fields": [
+    "schema_version",
+    "bundle_id",
+    "role",
+    "created_utc",
+    "builder_sha",
+    "source_version",
+    "files_with_path_bytes_sha_license_source",
+    "row_count_by_source_stratum",
+    "split_id",
+    "protocol_sha"
+  ],
+  "unsupported_assumption": "Existing make_data_package --version v3 changes name, not file coverage.",
+  "master_notebook": {
+    "file": "notebooks/12-all-in-one.ipynb",
+    "self_contained_code": true,
+    "only_required_dataset": "degron-data-v3-fullpsi",
+    "runtime_weights_download": true,
+    "multi_version_resume": true,
+    "GPU_official_verified": false
+  }
+}

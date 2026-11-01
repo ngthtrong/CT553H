@@ -1,0 +1,22 @@
+{
+  "zip": "topics/degron-footprint/data/processed/packages/degron-weights-v3-fd5593922ec4.zip",
+  "bytes": 2776937300,
+  "sha256": "3cfba44bebfc12c8f424437ac1846f18c8b8737b77528d7701c8ac12c5ba5193",
+  "models": [
+    {
+      "model_id": "esm2_8m",
+      "revision": "c731040fcd8d73dceaa04b0a8e6329b345b0f5df",
+      "status_sha256": "af9a590fca1334b6d4e9905b88d25cc7f437f933b8d3356f87bba5ef3e014121"
+    },
+    {
+      "model_id": "esm2_35m",
+      "revision": "6fbf070e65b0b7291e7bbcd451118c216cff79d8",
+      "status_sha256": "37eedb2ff63efc38931ed59fd936147903700d7dff498bc108e2b0fee3ddd0af"
+    },
+    {
+      "model_id": "esm2_650m",
+      "revision": "08e4846e537177426273712802403f7ba8261b6c",
+      "status_sha256": "664a74921967b4c4683f632bf42a9bf9ce6cfdb46a38cb518f14e180e30e7ff3"
+    }
+  ]
+}

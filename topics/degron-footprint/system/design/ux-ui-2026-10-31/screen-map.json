@@ -1,0 +1,1217 @@
+[
+  {
+    "id": "DF01",
+    "title": "Projects",
+    "width": 1440,
+    "height": 1156,
+    "use_cases": [
+      "UC-10"
+    ],
+    "requirements": [
+      "FR-14",
+      "FR-27",
+      "FR-31",
+      "FR-32",
+      "FR-33"
+    ],
+    "acceptance_references": [
+      "HIST-01",
+      "HIST-02",
+      "HIST-03"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#DF01",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "DF02",
+    "title": "COL6A6 pilot",
+    "width": 1440,
+    "height": 1084,
+    "use_cases": [
+      "UC-10"
+    ],
+    "requirements": [
+      "FR-14",
+      "FR-27",
+      "FR-31",
+      "FR-32",
+      "FR-33"
+    ],
+    "acceptance_references": [
+      "HIST-01",
+      "HIST-02",
+      "HIST-03"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#DF02",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "DF03",
+    "title": "New analysis",
+    "width": 1440,
+    "height": 1060,
+    "use_cases": [
+      "UC-01"
+    ],
+    "requirements": [
+      "FR-01",
+      "FR-03",
+      "FR-04",
+      "FR-05",
+      "FR-06",
+      "FR-09",
+      "FR-10",
+      "FR-11",
+      "FR-14"
+    ],
+    "acceptance_references": [
+      "DOM-01",
+      "E2E-01",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#DF03",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "DF04",
+    "title": "Protein explorer",
+    "width": 1440,
+    "height": 1420,
+    "use_cases": [
+      "UC-04"
+    ],
+    "requirements": [
+      "FR-02",
+      "FR-15",
+      "FR-16",
+      "FR-25"
+    ],
+    "acceptance_references": [
+      "BATCH-04",
+      "E2E-04"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#DF04",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "DF05",
+    "title": "Peptide batch",
+    "width": 1440,
+    "height": 1328,
+    "use_cases": [
+      "UC-08"
+    ],
+    "requirements": [
+      "FR-24",
+      "FR-25",
+      "FR-26",
+      "FR-27",
+      "FR-36"
+    ],
+    "acceptance_references": [
+      "BATCH-01",
+      "BATCH-02",
+      "BATCH-03",
+      "BATCH-04",
+      "BATCH-05",
+      "BATCH-06"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#DF05",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "DF06",
+    "title": "Whole-protein preview",
+    "width": 1440,
+    "height": 1244,
+    "use_cases": [
+      "UC-04",
+      "UC-08"
+    ],
+    "requirements": [
+      "FR-02",
+      "FR-15",
+      "FR-16",
+      "FR-24",
+      "FR-25",
+      "FR-26",
+      "FR-27",
+      "FR-36"
+    ],
+    "acceptance_references": [
+      "BATCH-01",
+      "BATCH-02",
+      "BATCH-03",
+      "BATCH-04",
+      "BATCH-05",
+      "BATCH-06",
+      "E2E-04"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#DF06",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "DF07",
+    "title": "Processing protein tiles",
+    "width": 1440,
+    "height": 1374,
+    "use_cases": [
+      "UC-08"
+    ],
+    "requirements": [
+      "FR-24",
+      "FR-25",
+      "FR-26",
+      "FR-27",
+      "FR-36"
+    ],
+    "acceptance_references": [
+      "BATCH-01",
+      "BATCH-02",
+      "BATCH-03",
+      "BATCH-04",
+      "BATCH-05",
+      "BATCH-06"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#DF07",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "DF08",
+    "title": "Job results · partial",
+    "width": 1440,
+    "height": 1374,
+    "use_cases": [
+      "UC-08"
+    ],
+    "requirements": [
+      "FR-24",
+      "FR-25",
+      "FR-26",
+      "FR-27",
+      "FR-36"
+    ],
+    "acceptance_references": [
+      "BATCH-01",
+      "BATCH-02",
+      "BATCH-03",
+      "BATCH-04",
+      "BATCH-05",
+      "BATCH-06"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#DF08",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "DF09",
+    "title": "Substitution effects",
+    "width": 1440,
+    "height": 1743,
+    "use_cases": [
+      "UC-01",
+      "UC-02",
+      "UC-03"
+    ],
+    "requirements": [
+      "FR-01",
+      "FR-03",
+      "FR-04",
+      "FR-05",
+      "FR-06",
+      "FR-07",
+      "FR-08",
+      "FR-09",
+      "FR-10",
+      "FR-11",
+      "FR-12",
+      "FR-13",
+      "FR-14",
+      "FR-23",
+      "FR-34"
+    ],
+    "acceptance_references": [
+      "API-31",
+      "BATCH-06",
+      "DOM-01",
+      "E2E-01",
+      "E2E-02",
+      "E2E-08",
+      "E2E-09",
+      "E2E-10",
+      "E2E-12",
+      "RG-02",
+      "UT-04"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#DF09",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "DF10",
+    "title": "Saved analysis · run-028",
+    "width": 1440,
+    "height": 1425,
+    "use_cases": [
+      "UC-02",
+      "UC-10"
+    ],
+    "requirements": [
+      "FR-07",
+      "FR-08",
+      "FR-14",
+      "FR-27",
+      "FR-31",
+      "FR-32",
+      "FR-33"
+    ],
+    "acceptance_references": [
+      "E2E-02",
+      "HIST-01",
+      "HIST-02",
+      "HIST-03",
+      "UT-04"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#DF10",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "DF11",
+    "title": "Annotations & mapping",
+    "width": 1440,
+    "height": 1408,
+    "use_cases": [
+      "UC-06"
+    ],
+    "requirements": [
+      "FR-18",
+      "FR-35"
+    ],
+    "acceptance_references": [
+      "ANN-01",
+      "E2E-06"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#DF11",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "DF12",
+    "title": "Import observations",
+    "width": 1440,
+    "height": 1240,
+    "use_cases": [
+      "UC-09"
+    ],
+    "requirements": [
+      "FR-28",
+      "FR-29",
+      "FR-30",
+      "FR-36"
+    ],
+    "acceptance_references": [
+      "IMP-01",
+      "IMP-02",
+      "IMP-03",
+      "IMP-04"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#DF12",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "DF13",
+    "title": "Resolve import issues",
+    "width": 1440,
+    "height": 1160,
+    "use_cases": [
+      "UC-09"
+    ],
+    "requirements": [
+      "FR-28",
+      "FR-29",
+      "FR-30",
+      "FR-36"
+    ],
+    "acceptance_references": [
+      "IMP-01",
+      "IMP-02",
+      "IMP-03",
+      "IMP-04"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#DF13",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "DF14",
+    "title": "GPS pilot · revision 1",
+    "width": 1440,
+    "height": 1180,
+    "use_cases": [
+      "UC-09",
+      "UC-10"
+    ],
+    "requirements": [
+      "FR-14",
+      "FR-27",
+      "FR-28",
+      "FR-29",
+      "FR-30",
+      "FR-31",
+      "FR-32",
+      "FR-33",
+      "FR-36"
+    ],
+    "acceptance_references": [
+      "HIST-01",
+      "HIST-02",
+      "HIST-03",
+      "IMP-01",
+      "IMP-02",
+      "IMP-03",
+      "IMP-04"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#DF14",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "DF15",
+    "title": "Compare measurements",
+    "width": 1440,
+    "height": 1473,
+    "use_cases": [
+      "UC-05"
+    ],
+    "requirements": [
+      "FR-17",
+      "FR-29",
+      "FR-30",
+      "FR-34"
+    ],
+    "acceptance_references": [
+      "IMP-03",
+      "IMP-04"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#DF15",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "DF16",
+    "title": "Model & evidence",
+    "width": 1440,
+    "height": 1220,
+    "use_cases": [
+      "UC-07"
+    ],
+    "requirements": [
+      "FR-19",
+      "FR-21",
+      "FR-22"
+    ],
+    "acceptance_references": [
+      "E2E-07"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#DF16",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "DF17",
+    "title": "Data & sources",
+    "width": 1440,
+    "height": 1240,
+    "use_cases": [
+      "UC-07"
+    ],
+    "requirements": [
+      "FR-19",
+      "FR-21",
+      "FR-22"
+    ],
+    "acceptance_references": [
+      "E2E-07"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#DF17",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "DF18",
+    "title": "Custom peptide · effects",
+    "width": 1440,
+    "height": 1771,
+    "use_cases": [
+      "UC-01"
+    ],
+    "requirements": [
+      "FR-01",
+      "FR-03",
+      "FR-04",
+      "FR-05",
+      "FR-06",
+      "FR-09",
+      "FR-10",
+      "FR-11",
+      "FR-14"
+    ],
+    "acceptance_references": [
+      "DOM-01",
+      "E2E-01",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#DF18",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "DF19",
+    "title": "Substitution effects · dark",
+    "width": 1440,
+    "height": 1675,
+    "use_cases": [
+      "UC-01"
+    ],
+    "requirements": [
+      "FR-01",
+      "FR-03",
+      "FR-04",
+      "FR-05",
+      "FR-06",
+      "FR-09",
+      "FR-10",
+      "FR-11",
+      "FR-14"
+    ],
+    "acceptance_references": [
+      "DOM-01",
+      "E2E-01",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#DF19",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "ST12",
+    "title": "Out-of-domain override",
+    "width": 1440,
+    "height": 1675,
+    "use_cases": [
+      "UC-01"
+    ],
+    "requirements": [
+      "FR-01",
+      "FR-03",
+      "FR-04",
+      "FR-05",
+      "FR-06",
+      "FR-09",
+      "FR-10",
+      "FR-11",
+      "FR-14"
+    ],
+    "acceptance_references": [
+      "DOM-01",
+      "E2E-01",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#ST12",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "ST01",
+    "title": "Save analysis to project",
+    "width": 760,
+    "height": 504,
+    "use_cases": [
+      "UC-10"
+    ],
+    "requirements": [
+      "FR-14",
+      "FR-27",
+      "FR-31",
+      "FR-32",
+      "FR-33"
+    ],
+    "acceptance_references": [
+      "HIST-01",
+      "HIST-02",
+      "HIST-03"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#ST01",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "ST02",
+    "title": "Export a frozen result",
+    "width": 760,
+    "height": 508,
+    "use_cases": [
+      "UC-03"
+    ],
+    "requirements": [
+      "FR-12",
+      "FR-13",
+      "FR-23",
+      "FR-34"
+    ],
+    "acceptance_references": [
+      "API-31",
+      "BATCH-06",
+      "E2E-10",
+      "RG-02"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#ST02",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "ST03",
+    "title": "Delete COL6A6 pilot?",
+    "width": 760,
+    "height": 596,
+    "use_cases": [
+      "UC-10"
+    ],
+    "requirements": [
+      "FR-14",
+      "FR-27",
+      "FR-31",
+      "FR-32",
+      "FR-33"
+    ],
+    "acceptance_references": [
+      "HIST-01",
+      "HIST-02",
+      "HIST-03"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#ST03",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "ST04",
+    "title": "Scoring refused: outside the model domain",
+    "width": 760,
+    "height": 424,
+    "use_cases": [
+      "UC-01"
+    ],
+    "requirements": [
+      "FR-01",
+      "FR-03",
+      "FR-04",
+      "FR-05",
+      "FR-06",
+      "FR-09",
+      "FR-10",
+      "FR-11",
+      "FR-14"
+    ],
+    "acceptance_references": [
+      "DOM-01",
+      "E2E-01",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#ST04",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "ST05",
+    "title": "Annotation availability states",
+    "width": 920,
+    "height": 680,
+    "use_cases": [
+      "UC-06"
+    ],
+    "requirements": [
+      "FR-18",
+      "FR-35"
+    ],
+    "acceptance_references": [
+      "ANN-01",
+      "E2E-06"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#ST05",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "ST06",
+    "title": "Cancel this job?",
+    "width": 760,
+    "height": 392,
+    "use_cases": [
+      "UC-08"
+    ],
+    "requirements": [
+      "FR-24",
+      "FR-25",
+      "FR-26",
+      "FR-27",
+      "FR-36"
+    ],
+    "acceptance_references": [
+      "BATCH-01",
+      "BATCH-02",
+      "BATCH-03",
+      "BATCH-04",
+      "BATCH-05",
+      "BATCH-06"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#ST06",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "ST07",
+    "title": "Different endpoint · separate view",
+    "width": 1080,
+    "height": 546,
+    "use_cases": [
+      "UC-05"
+    ],
+    "requirements": [
+      "FR-17",
+      "FR-29",
+      "FR-30",
+      "FR-34"
+    ],
+    "acceptance_references": [
+      "IMP-03",
+      "IMP-04"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#ST07",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "ST08",
+    "title": "Raw ΔPSI score",
+    "width": 1440,
+    "height": 1553,
+    "use_cases": [
+      "UC-01"
+    ],
+    "requirements": [
+      "FR-01",
+      "FR-03",
+      "FR-04",
+      "FR-05",
+      "FR-06",
+      "FR-09",
+      "FR-10",
+      "FR-11",
+      "FR-14"
+    ],
+    "acceptance_references": [
+      "DOM-01",
+      "E2E-01",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#ST08",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "ST09",
+    "title": "Create a local project",
+    "width": 760,
+    "height": 452,
+    "use_cases": [
+      "UC-10"
+    ],
+    "requirements": [
+      "FR-14",
+      "FR-27",
+      "FR-31",
+      "FR-32",
+      "FR-33"
+    ],
+    "acceptance_references": [
+      "HIST-01",
+      "HIST-02",
+      "HIST-03"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#ST09",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "ST10",
+    "title": "Rename project",
+    "width": 760,
+    "height": 328,
+    "use_cases": [
+      "UC-10"
+    ],
+    "requirements": [
+      "FR-14",
+      "FR-27",
+      "FR-31",
+      "FR-32",
+      "FR-33"
+    ],
+    "acceptance_references": [
+      "HIST-01",
+      "HIST-02",
+      "HIST-03"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#ST10",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "ST11",
+    "title": "Ready to commit · review warnings",
+    "width": 760,
+    "height": 444,
+    "use_cases": [
+      "UC-09"
+    ],
+    "requirements": [
+      "FR-28",
+      "FR-29",
+      "FR-30",
+      "FR-36"
+    ],
+    "acceptance_references": [
+      "IMP-01",
+      "IMP-02",
+      "IMP-03",
+      "IMP-04"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#ST11",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "ST13",
+    "title": "Export could not be created",
+    "width": 760,
+    "height": 328,
+    "use_cases": [
+      "UC-03"
+    ],
+    "requirements": [
+      "FR-12",
+      "FR-13",
+      "FR-23",
+      "FR-34"
+    ],
+    "acceptance_references": [
+      "API-31",
+      "BATCH-06",
+      "E2E-10",
+      "RG-02"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#ST13",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "ST14",
+    "title": "Export prepared · prototype state",
+    "width": 760,
+    "height": 276,
+    "use_cases": [
+      "UC-03"
+    ],
+    "requirements": [
+      "FR-12",
+      "FR-13",
+      "FR-23",
+      "FR-34"
+    ],
+    "acceptance_references": [
+      "API-31",
+      "BATCH-06",
+      "E2E-10",
+      "RG-02"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#ST14",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "ST15",
+    "title": "Deletion and cleanup states",
+    "width": 760,
+    "height": 504,
+    "use_cases": [
+      "UC-10"
+    ],
+    "requirements": [
+      "FR-14",
+      "FR-27",
+      "FR-31",
+      "FR-32",
+      "FR-33"
+    ],
+    "acceptance_references": [
+      "HIST-01",
+      "HIST-02",
+      "HIST-03"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#ST15",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "ST16",
+    "title": "Delete dataset revision 1?",
+    "width": 760,
+    "height": 392,
+    "use_cases": [
+      "UC-09",
+      "UC-10"
+    ],
+    "requirements": [
+      "FR-14",
+      "FR-27",
+      "FR-28",
+      "FR-29",
+      "FR-30",
+      "FR-31",
+      "FR-32",
+      "FR-33",
+      "FR-36"
+    ],
+    "acceptance_references": [
+      "HIST-01",
+      "HIST-02",
+      "HIST-03",
+      "IMP-01",
+      "IMP-02",
+      "IMP-03",
+      "IMP-04"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#ST16",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "ST17",
+    "title": "Delete saved analysis run-028?",
+    "width": 760,
+    "height": 304,
+    "use_cases": [
+      "UC-10"
+    ],
+    "requirements": [
+      "FR-14",
+      "FR-27",
+      "FR-31",
+      "FR-32",
+      "FR-33"
+    ],
+    "acceptance_references": [
+      "HIST-01",
+      "HIST-02",
+      "HIST-03"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#ST17",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "ST18",
+    "title": "Job cancelled · results retained",
+    "width": 760,
+    "height": 564,
+    "use_cases": [
+      "UC-08"
+    ],
+    "requirements": [
+      "FR-24",
+      "FR-25",
+      "FR-26",
+      "FR-27",
+      "FR-36"
+    ],
+    "acceptance_references": [
+      "BATCH-01",
+      "BATCH-02",
+      "BATCH-03",
+      "BATCH-04",
+      "BATCH-05",
+      "BATCH-06"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#ST18",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "ST19",
+    "title": "Local service is not ready",
+    "width": 760,
+    "height": 328,
+    "use_cases": [
+      "UC-01"
+    ],
+    "requirements": [
+      "FR-01",
+      "FR-03",
+      "FR-04",
+      "FR-05",
+      "FR-06",
+      "FR-09",
+      "FR-10",
+      "FR-11",
+      "FR-14"
+    ],
+    "acceptance_references": [
+      "DOM-01",
+      "E2E-01",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#ST19",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "ST20",
+    "title": "Import preview expired",
+    "width": 760,
+    "height": 304,
+    "use_cases": [
+      "UC-09"
+    ],
+    "requirements": [
+      "FR-28",
+      "FR-29",
+      "FR-30",
+      "FR-36"
+    ],
+    "acceptance_references": [
+      "IMP-01",
+      "IMP-02",
+      "IMP-03",
+      "IMP-04"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#ST20",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "ST21",
+    "title": "No substitutions match this filter",
+    "width": 760,
+    "height": 364,
+    "use_cases": [
+      "UC-02"
+    ],
+    "requirements": [
+      "FR-07",
+      "FR-08"
+    ],
+    "acceptance_references": [
+      "E2E-02",
+      "UT-04"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#ST21",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "ST22",
+    "title": "Domain states and evidence source",
+    "width": 920,
+    "height": 768,
+    "use_cases": [
+      "UC-01"
+    ],
+    "requirements": [
+      "FR-01",
+      "FR-03",
+      "FR-04",
+      "FR-05",
+      "FR-06",
+      "FR-09",
+      "FR-10",
+      "FR-11",
+      "FR-14"
+    ],
+    "acceptance_references": [
+      "DOM-01",
+      "E2E-01",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#ST22",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "ST23",
+    "title": "Saved snapshot unavailable",
+    "width": 760,
+    "height": 328,
+    "use_cases": [
+      "UC-10"
+    ],
+    "requirements": [
+      "FR-14",
+      "FR-27",
+      "FR-31",
+      "FR-32",
+      "FR-33"
+    ],
+    "acceptance_references": [
+      "HIST-01",
+      "HIST-02",
+      "HIST-03"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#ST23",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "M01",
+    "title": "New analysis",
+    "width": 360,
+    "height": 760,
+    "use_cases": [
+      "UC-01"
+    ],
+    "requirements": [
+      "FR-01",
+      "FR-03",
+      "FR-04",
+      "FR-05",
+      "FR-06",
+      "FR-09",
+      "FR-10",
+      "FR-11",
+      "FR-14"
+    ],
+    "acceptance_references": [
+      "DOM-01",
+      "E2E-01",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#M01",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "M02",
+    "title": "Substitution effects",
+    "width": 360,
+    "height": 1029,
+    "use_cases": [
+      "UC-01",
+      "UC-02"
+    ],
+    "requirements": [
+      "FR-01",
+      "FR-03",
+      "FR-04",
+      "FR-05",
+      "FR-06",
+      "FR-07",
+      "FR-08",
+      "FR-09",
+      "FR-10",
+      "FR-11",
+      "FR-14"
+    ],
+    "acceptance_references": [
+      "DOM-01",
+      "E2E-01",
+      "E2E-02",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12",
+      "UT-04"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#M02",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "M03",
+    "title": "Matrix view",
+    "width": 360,
+    "height": 1326,
+    "use_cases": [
+      "UC-01"
+    ],
+    "requirements": [
+      "FR-01",
+      "FR-03",
+      "FR-04",
+      "FR-05",
+      "FR-06",
+      "FR-09",
+      "FR-10",
+      "FR-11",
+      "FR-14"
+    ],
+    "acceptance_references": [
+      "DOM-01",
+      "E2E-01",
+      "E2E-08",
+      "E2E-09",
+      "E2E-12"
+    ],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#M03",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "UX01",
+    "title": "Design direction / 31 October 2026",
+    "width": 1440,
+    "height": 889,
+    "use_cases": [],
+    "requirements": [],
+    "acceptance_references": [],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#UX01",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  },
+  {
+    "id": "UX02",
+    "title": "Research workflow / evidence map",
+    "width": 1440,
+    "height": 678,
+    "use_cases": [],
+    "requirements": [],
+    "acceptance_references": [],
+    "relation_scope": "Related UC-level requirements and planned acceptance references; not implementation verification",
+    "review_url": "review.html#UX02",
+    "figma_screen_status": "NOT_CREATED_BY_MCP; available in reviewed native import spec"
+  }
+]

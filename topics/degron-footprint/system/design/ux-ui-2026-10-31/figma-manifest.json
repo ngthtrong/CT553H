@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-31",
+  "file_key": "MdMLYZQfXqGcL3br3JMunM",
+  "url": "https://www.figma.com/design/MdMLYZQfXqGcL3br3JMunM",
+  "session_id": "7adc2284-a51a-431e-93cb-a109bc19fce3",
+  "live_figma": {
+    "status": "FOUNDATIONS_ONLY; SCREEN_CREATION_BLOCKED_BY_STARTER_MCP_QUOTA",
+    "pages": {
+      "cover": "0:1",
+      "screens": "3:2",
+      "kit": "3:3"
+    },
+    "local_variable_count": 41,
+    "local_text_style_count": 10,
+    "local_component_count": 8,
+    "components": {
+      "Stat": "4:365",
+      "Domain": "4:369",
+      "Evidence": "4:372",
+      "Warning": "4:375",
+      "Danger": "4:378",
+      "Sidebar": "4:381",
+      "SequenceStrip": "4:424",
+      "JobProgress": "4:427"
+    },
+    "screen_count": 0,
+    "last_canvas_check": "Screens page inventory was empty after the failed transport call.",
+    "native_screens_visual_check": "NOT_PERFORMED"
+  },
+  "local_review": {
+    "status": "REVIEWED; ILLUSTRATIVE FIXTURES",
+    "file": "review.html",
+    "screen_count": 47,
+    "groups": {
+      "desktop": 19,
+      "state": 23,
+      "mobile": 3,
+      "direction": 2
+    },
+    "validation": "review-validation.json",
+    "traceability": "screen-map.json",
+    "validation_passed": true,
+    "minimum_text_contrast": 5.36
+  },
+  "native_import": {
+    "status": "PACKAGED; NOT_EXECUTED_IN_FIGMA",
+    "package": "figma-import-package.zip",
+    "guide": "figma-plugin/README.md",
+    "screen_count": 47,
+    "requires": "Figma Desktop; edit access; development manifest ID assigned by Figma; required fonts",
+    "uses_mcp": false,
+    "ui_is_complete_raster": false
+  },
+  "runtime_application_changed": false,
+  "scientific_result_or_acceptance_claim": false,
+  "component_page_url": "https://www.figma.com/design/MdMLYZQfXqGcL3br3JMunM?node-id=4-381"
+}

@@ -1,0 +1,12 @@
+{
+  "status": "pass",
+  "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738",
+  "checks": {
+    "all_15_grouped_split_roles_and_scan_T": "pass",
+    "features_ignore_labels_PSI_counts_groups_folds": "pass",
+    "balanced_weights_equal_strata_and_peptides": "pass",
+    "zip_crc_manifest_hash_and_portable_metadata": "pass",
+    "uneven_shards_mapping_overlap_and_smoke_rejection": "pass",
+    "resume_rejects_changed_config": "pass"
+  }
+}

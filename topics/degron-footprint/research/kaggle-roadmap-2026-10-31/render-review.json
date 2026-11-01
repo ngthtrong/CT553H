@@ -1,0 +1,79 @@
+{
+  "html_structure": "pass",
+  "full_browser_preview": "not_available",
+  "image_review": "PNG viewed separately",
+  "notebooks": [
+    {
+      "stage": "00",
+      "html_sha256": "05e73295642c8b1c91c13a550307989ba48fbe3ea4f401b16055cfea14aa24c2",
+      "tables": 1,
+      "inline_images": 1
+    },
+    {
+      "stage": "01",
+      "html_sha256": "1b010442666d4026d734a4b49aac5fd79e1fc8ffa780a761f994a1959f887e7b",
+      "tables": 1,
+      "inline_images": 1
+    },
+    {
+      "stage": "02",
+      "html_sha256": "54c6dd631e303652abd40c822ad7d7534b09d18d5ac6e0eace189e1af9bd06ae",
+      "tables": 1,
+      "inline_images": 1
+    },
+    {
+      "stage": "03",
+      "html_sha256": "6b27044b9f93cdfb037cb52b05251790c275b930309b76587c86e52a2c40cae4",
+      "tables": 1,
+      "inline_images": 1
+    },
+    {
+      "stage": "04",
+      "html_sha256": "fbe88e1746161f8994aba5a61bc3fea88922a4533fee807dd7a3b3771af4b981",
+      "tables": 1,
+      "inline_images": 1
+    },
+    {
+      "stage": "05",
+      "html_sha256": "84ee72a978f593e7bac1e8dde197fa225cb77c7b5b8de77a896a6a8599eaa2ce",
+      "tables": 1,
+      "inline_images": 1
+    },
+    {
+      "stage": "06",
+      "html_sha256": "a1a8021b51ae1beb26dfab34bd81e0e68d99b78ebe647c85c1924603c0e8f649",
+      "tables": 1,
+      "inline_images": 1
+    },
+    {
+      "stage": "07",
+      "html_sha256": "81dc0d5762e31db4fad8b845e0a1805b8d15526e4671c1528f49dee4e1129955",
+      "tables": 1,
+      "inline_images": 1
+    },
+    {
+      "stage": "08",
+      "html_sha256": "a19d93e9f6762b808813f9cd468060a0d33c48caada0f3cd2a777332f31ddb73",
+      "tables": 1,
+      "inline_images": 0
+    },
+    {
+      "stage": "09",
+      "html_sha256": "97191cc3879df063a9b155421dbb6c1cd30ee95c8cd43f0cd7c8a5b60b952b08",
+      "tables": 1,
+      "inline_images": 0
+    },
+    {
+      "stage": "10",
+      "html_sha256": "b7d6f5db21d71bc1162fc428900c6cf0ac10e3136a34cbf710e4afaa248889bf",
+      "tables": 1,
+      "inline_images": 1
+    },
+    {
+      "stage": "11",
+      "html_sha256": "562c94d6b048f223fde302cb0de3d9446ed65041da234e197bef111226f48e73",
+      "tables": 1,
+      "inline_images": 1
+    }
+  ]
+}

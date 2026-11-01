@@ -1,0 +1,18 @@
+{
+  "status": "pass",
+  "notebook_sha256": "1f2bfab010eccf98ccae0b68eba7184c0468c761ff5d3d9c181355b8f918a7bf",
+  "embedded_sha256": "302988f37d839f2f701012a180da506269fe1c5929dc3fc34d70d5528ef997c9",
+  "compatibility": "runner changed; start a new campaign rather than resuming a campaign from older code",
+  "code_zip": "topics/degron-footprint/data/processed/packages/degron-code-v3-e9aa71586c0b.zip",
+  "code_zip_sha256": "6dd5114d52d30d1a83ee2f0d0fc21e7d66e987fce800b3528253b3887e800eff",
+  "notebooks": 13,
+  "code_and_embedded_manifest_hashes": "pass",
+  "embedded_sources_match_checkout": true,
+  "original_core_zip_unchanged": true,
+  "clean_notebook_schema_and_cell_syntax": "pass",
+  "full_CPU_cells_and_resume": "pass via IPython",
+  "expanded_input_bootstrap_and_stage00": "pass",
+  "missing_corrupt_unpinned_input_rejected": "pass",
+  "GPU_official": "not_run",
+  "kaggle_rerun": "not_run"
+}

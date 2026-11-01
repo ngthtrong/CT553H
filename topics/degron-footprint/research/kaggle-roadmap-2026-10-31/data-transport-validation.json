@@ -1,0 +1,19 @@
+{
+  "status": "pass",
+  "mode": "local_CPU_transport_regression",
+  "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738",
+  "notebook_sha256": "1f2bfab010eccf98ccae0b68eba7184c0468c761ff5d3d9c181355b8f918a7bf",
+  "gzip_hash_registry_sha256": "71bfcb22ba9305ba12e511affdd3c40d6b287964a39e1cee74c2cd163dbc12c7",
+  "checks": [
+    "original_gzip_bundle_verified",
+    "all_6_expanded_members_same_identity_labels_splits",
+    "tampered_expanded_bytes_rejected",
+    "missing_expanded_member_rejected",
+    "missing_parquet_rejected",
+    "unknown_manifest_cannot_reuse_pinned_content_hashes",
+    "corrupt_gzip_cannot_fall_back_to_expanded_copy",
+    "mixed_gzip_and_expanded_input_verified",
+    "actual_notebook_embedded_bootstrap_and_stage00_with_expanded_input"
+  ],
+  "kaggle_execution": "not_run"
+}

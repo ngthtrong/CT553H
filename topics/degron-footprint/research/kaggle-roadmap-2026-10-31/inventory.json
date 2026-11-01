@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-31",
+  "status": "read_only_inventory_not_a_new_training_experiment",
+  "saturation": {
+    "peptides": 235,
+    "proteins": 233,
+    "cells": 122412,
+    "strata": [
+      {
+        "stratum": "le3",
+        "peptides": 91,
+        "cells": 47847,
+        "positive_ge1": 6266,
+        "negative_le_minus1": 56,
+        "eligible_positive_auroc_min3_per_class": 89,
+        "eligible_negative_auroc_min3_per_class": 6
+      },
+      {
+        "stratum": "gt3_le4",
+        "peptides": 85,
+        "cells": 44490,
+        "positive_ge1": 5073,
+        "negative_le_minus1": 561,
+        "eligible_positive_auroc_min3_per_class": 78,
+        "eligible_negative_auroc_min3_per_class": 53
+      },
+      {
+        "stratum": "gt4_le5",
+        "peptides": 36,
+        "cells": 18519,
+        "positive_ge1": 714,
+        "negative_le_minus1": 586,
+        "eligible_positive_auroc_min3_per_class": 17,
+        "eligible_negative_auroc_min3_per_class": 33
+      },
+      {
+        "stratum": "gt5",
+        "peptides": 23,
+        "cells": 11556,
+        "positive_ge1": 0,
+        "negative_le_minus1": 374,
+        "eligible_positive_auroc_min3_per_class": 0,
+        "eligible_negative_auroc_min3_per_class": 18
+      }
+    ]
+  },
+  "mapping": {
+    "sat": {
+      "peptides": 235,
+      "cells": 122412,
+      "missing_legacy_cluster": 45,
+      "legacy_missing_resolved_by_proteome": 45,
+      "missing_proteome_cluster": 0,
+      "strict_proteome_clusters": 222
+    },
+    "scan": {
+      "peptides": 8063,
+      "cells": 224239,
+      "missing_legacy_cluster": 8,
+      "legacy_missing_resolved_by_proteome": 0,
+      "missing_proteome_cluster": 17,
+      "strict_proteome_clusters": 4262
+    }
+  },
+  "legacy_base_proteome_groups": 89,
+  "legacy_base_proteome_groups_crossing_old_folds": 0,
+  "note": "Cluster inventory precedes new exact-sequence/hit union and fold assignment. Scanning counts precede new full-proteome mapping QC; no singleton imputation.",
+  "sources": [
+    {
+      "path": "topics/degron-footprint/research/residue-task-derisk-2026-10-15/residue_data.py",
+      "bytes": 8999,
+      "sha256": "3735e46c686ac27048dfc127fafdc70c0e06fff324e1bc81fd92ecbb9c45043b"
+    },
+    {
+      "path": "topics/degron-footprint/data/interim/protein-id30-cov80-proteome_cluster.tsv",
+      "bytes": 289486,
+      "sha256": "5746b60e804bdc4c32888de84a53a6c7de48e0af3fedcfc6569336ea607965a5"
+    },
+    {
+      "path": "topics/degron-footprint/data/interim/protein-id30-cov80_cluster.tsv",
+      "bytes": 92082,
+      "sha256": "8cdfe9062fbc47e3a4b5eb6cca9a24a7144f52d412fe52eeceeb1cda873aba80"
+    },
+    {
+      "path": "topics/degron-footprint/data/interim/zhang-scanning-unzip/I28 Scanning (Completed)/Replicate 1 (BAG6 genotype unclear)/I28 Scanning Mutagenesis Replicate 1.csv",
+      "bytes": 67050179,
+      "sha256": "a5937f4c9dfa082c1a4ed6efe48aa5a6b3fee6e3a3f236dfde656a241eda65bf"
+    },
+    {
+      "path": "topics/degron-footprint/research/g2-saturation-2026-10-18/results.json",
+      "bytes": 32814,
+      "sha256": "22aa9a42de6dec18568c332c9464bf9424b76602eed5dc7c1b84c7e7e30ce79d"
+    },
+    {
+      "path": "topics/degron-footprint/data/raw/human-reviewed-2026-10-12.fasta.gz",
+      "bytes": 7508673,
+      "sha256": "dc8ef8cbf0fc1b857b3be9a559613533ec49824079fb057e31fdfcf578cb229a"
+    },
+    {
+      "path": "topics/degron-footprint/data/processed/psi-sat_a.tsv",
+      "bytes": 14379923,
+      "sha256": "03ca50c79a5f0aa89efbde5c458bd5e283079fc88f2a265177edb5a673a193a2"
+    },
+    {
+      "path": "topics/degron-footprint/data/processed/psi-sat_b.tsv",
+      "bytes": 14301246,
+      "sha256": "799c7f64a8ebb578f968c76dfdf7383025bdfcb0fb1e2bc6da2b18f49414affa"
+    },
+    {
+      "path": "topics/degron-footprint/data/processed/psi-rep1.tsv",
+      "bytes": 26981949,
+      "sha256": "e8b6261b570147613a7e30593f77a7effcaac392aa6296ece564274a937b1c99"
+    },
+    {
+      "path": "topics/degron-footprint/data/processed/psi-rep2.tsv",
+      "bytes": 26806630,
+      "sha256": "2372aa69aebd2292479a4c2285e149151df5fd4bd48df69d78fa86c099132ce1"
+    }
+  ]
+}

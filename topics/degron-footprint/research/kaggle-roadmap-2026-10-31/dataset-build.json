@@ -1,0 +1,51 @@
+{
+  "zip": "topics/degron-footprint/data/processed/packages/degron-data-v3-fullpsi.zip",
+  "bytes": 98748031,
+  "sha256": "f4a6542f3786de420108861975eae0c58534e5f60a529bce315de9d00bd872a8",
+  "status": "pass",
+  "protein_hit_edges": 12863,
+  "exact_sequence_union_edges": 0,
+  "protein_hit_rule": "MMseqs2 id>=0.30 cov50 bidirectional alnlen>=50 on used canonical proteins",
+  "saturation_groups": 221,
+  "saturation_peptides": 235,
+  "saturation_cells": 122412,
+  "scan_cells": 224470,
+  "scanning_partition_counts": {
+    "sat_overlap": 1278,
+    "scan_T": 1414,
+    "scan_dev": 5489
+  },
+  "folds": {
+    "0": {
+      "gt3_le4": 17,
+      "gt4_le5": 8,
+      "gt5": 4,
+      "le3": 18
+    },
+    "1": {
+      "gt3_le4": 17,
+      "gt4_le5": 7,
+      "gt5": 5,
+      "le3": 18
+    },
+    "2": {
+      "gt3_le4": 17,
+      "gt4_le5": 7,
+      "gt5": 5,
+      "le3": 18
+    },
+    "3": {
+      "gt3_le4": 17,
+      "gt4_le5": 7,
+      "gt5": 4,
+      "le3": 19
+    },
+    "4": {
+      "gt3_le4": 17,
+      "gt4_le5": 7,
+      "gt5": 5,
+      "le3": 18
+    }
+  },
+  "note": "Full-proteome cov80 plus local cov50 hits and exact WT/mutant unions. Still heuristic homology control."
+}
