@@ -1,0 +1,312 @@
+{
+  "scope": "Interactive UI design review only; synthetic data, no model/backend acceptance",
+  "date": "2026-11-01",
+  "checks": [
+    {
+      "name": "matrix cell contract",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "domain warning precedes scores",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "axe result-light",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "matrix keyboard navigation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "shortlist adds selected substitution",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "WT substitution is excluded",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "export is complete and labelled",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "save creates a separate snapshot",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "rerun leaves saved history intact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "axe project-history",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "snapshot restores its own project context",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "project creation and empty state",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "invalid alphabet blocks result",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "case and surrounding whitespace normalize",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unmapped input has mapping unavailable",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "input is absent from URL and browser storage",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "axe new-analysis",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "reference tile geometry",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "batch requires a project",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "batch preview retains invalid records",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "partial job manifest reconciles",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "whole protein retains terminal gap",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "job cancellation is terminal",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "duplicate import blocks commit",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "source-file hash is correct",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "axe import-validation",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "commit creates one dataset",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "comparison distinguishes missing observations",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "axe comparison",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "refusal hides all scores",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "explicit override carries warning",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ClinVar source unavailable is explicit",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "axe result-dark",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "no page overflow at 360px",
+      "passed": true,
+      "detail": {
+        "scrollWidth": 360,
+        "viewport": 360
+      }
+    },
+    {
+      "name": "mobile starts with ranking",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile exposes substitution identity without scrolling",
+      "passed": true,
+      "detail": {
+        "x": 106.34375,
+        "y": 922.25,
+        "width": 44.8125,
+        "height": 44
+      }
+    },
+    {
+      "name": "mobile navigation opens",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no page overflow at 768px",
+      "passed": true,
+      "detail": {
+        "scrollWidth": 768,
+        "viewport": 768
+      }
+    },
+    {
+      "name": "no page overflow at 1280px",
+      "passed": true,
+      "detail": {
+        "scrollWidth": 1280,
+        "viewport": 1280
+      }
+    },
+    {
+      "name": "matrix cells at least 24px at 1280px",
+      "passed": true,
+      "detail": {
+        "x": 338.062744140625,
+        "y": 611.2094116210938,
+        "width": 26.701080322265625,
+        "height": 26.70111083984375
+      }
+    },
+    {
+      "name": "opens directly as a local file",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "bundled fonts load offline",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "no JavaScript exceptions",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "console_errors": [],
+  "screenshots": [
+    "previews/result-light.png",
+    "previews/ranking.png",
+    "previews/project-history.png",
+    "previews/projects.png",
+    "previews/new-analysis.png",
+    "previews/protein-tiles.png",
+    "previews/batch-preview.png",
+    "previews/job-partial.png",
+    "previews/import-errors.png",
+    "previews/import-validation.png",
+    "previews/comparison.png",
+    "previews/domain-override.png",
+    "previews/clinvar-unavailable.png",
+    "previews/result-dark.png",
+    "previews/mobile-ranking.png"
+  ],
+  "accessibility": [
+    {
+      "page": "result-light",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "page": "project-history",
+      "violations": [],
+      "incomplete": 1
+    },
+    {
+      "page": "new-analysis",
+      "violations": [],
+      "incomplete": 0
+    },
+    {
+      "page": "import-validation",
+      "violations": [],
+      "incomplete": 0
+    },
+    {
+      "page": "comparison",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "page": "result-dark",
+      "violations": [],
+      "incomplete": 2
+    }
+  ],
+  "passed": true,
+  "environment": {
+    "browser": "Google Chrome for Testing 156.0.8078.4",
+    "engine": "Chromium",
+    "desktop_viewport": {
+      "width": 1440,
+      "height": 1050
+    },
+    "responsive_widths": [
+      360,
+      768,
+      1280
+    ],
+    "local_only": true
+  },
+  "tested_ui_sha256": {
+    "index.html": "d2fda42e53b77dea2702604e13fa8ab4da8794da98850962aa3bb50164d28841",
+    "tokens.css": "de84784cbd40864552febc04d963f0de6435a9ffcfa19fc32604bb0490cf79b7",
+    "styles.css": "ae77b76a58e62c849dc1b719bd49d9ea55cecfb8e93da76fffb489f02466002f",
+    "fixtures.js": "263f349450b8d80abe45b6b09f981ea4df49d586cb01ebff2864efbda5c3bf91",
+    "app.js": "56aac88284959b3bcf9873cc154addcdfd600ef779d201b2837f3b90ca7678c4"
+  }
+}

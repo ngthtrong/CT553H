@@ -1,0 +1,881 @@
+[
+  {
+    "id": "mavedb",
+    "requested_url": "https://mavedb.org/score-sets/urn:mavedb:00000050-a-1",
+    "inspected_on": "2026-11-01",
+    "kind": "live public page",
+    "url": "https://mavedb.org/score-sets/urn:mavedb:00000050-a-1",
+    "title": "MaveDB | Jia X et al. MSH2 2021",
+    "status": 200,
+    "visible_text": "Skip to content\nMaveMD\nSearch\nAbout\nHelp\nSign in\nSCORE SET\nMSH2 LOF scores (HAP1)\nurn:mavedb:00000050-a-1\nMSH2 loss-of-function (LOF) scores in human HAP1 cells.\nCreated Oct 16, 2020 by \nJacob Kitzman· Updated Oct 22, 2026 by \nJacob Kitzman· Published Nov 25, 2020\nJump to details ↓\nMaveMD\nLoading variants...\nDOWNLOAD FILES\nScores\nVariant Details\nAnnotated Variants\nCustom CSV\nDetails and Metadata\nASSAY FACTS\nJia X et al. MSH2 2021\nMSH2 · 17,746 variants\nAssay type\nCell fitness\nMolecular mechanism\nDNA and Mismatch repair\nVariant consequences\nLoss of function\nModel system\nImmortalized human cells\nAssay level\nNot mapped\nDetects splicing variants\nNo\nDetects NMD variants\nNo\nASSAY ODDSPATH\nOddsPath Normal\n0.043BS3 Strong\nOddsPath Abnormal\n24.900PS3 Strong\nATTRIBUTION\nCreated\nOct 16, 2020\nby\nJacob Kitzman\nUpdated\nOct 22, 2026\nby\nJacob Kitzman\nPublished\nNov 25, 2020\nContributors\nJeremy Stone\nLicense\nCC0 (Public domain)\nData policy\nNo special data usage policies.\nVersion\nCurrent version\nParent experiment\nurn:mavedb:00000050-a\nMETADATA\nAbstract\n\nLoss-of-function scores for MSH2 variants in human MSH2- HAP1 cells.\n\nMethod\n\nScores represent the log2-scaled enrichment of each MSH2 variant after selection with 6-TG compared with mock selection, averaged over three replicates. Positive scores correspond to loss-of-function and negative scores correspond to functionally neutral variants.\n\nPrimary References\nJia X, et al. Massively parallel functional testing of MSH2 missense variants conferring Lynch syndrome risk. Am J Hum Genet. 2021; 108:163-175. 10.1016/j.ajhg.2020.12.003\n33357406\n·\nView article on the web\nSecondary References\n\nNo associated secondary references.\n\nTARGETS\nMSH2\nPROTEIN CODING\nTaxonomy\n9606 — Homo sapiens (human)\nExternal IDs\nRefSeq: NP_000242.1 (offset 0)\nUniProt: P43246 (offset 0)\nSequence\n2,805 residues\nCopy\nATGGCGGTGCAGCCGAAGGAGACGCTGCAGTTGGAGAGCGCGGCCGAGGTCGGCTTCGTGCGCTTCTTTCAGGGCATGCCGGAGAAGCCGACCACCACAGTGCGCCTTTTCGACCGGGGCGACTTCTATACGGCGCACGGCGAGGACGCGCTGCTGGCCGCCCGGGAGGTGTTCAAGACCCAGGGGGTGATCAAGTACATGGGGCCGGCAGGAGCAAAGAATCTGCAGAGTGTTGTGCTTAGTAAAATGAATTTTGAATCTTTTGTAAAAGATCTTCTTCTGGTTCGTCAGTATAGAGTTGAAGTTTATAAGAATAGAGCTGGAAATAAGGCATCCAAGGAGAATGATTGGTATTTGGCATATAAGGCTTCTCCTGGCAATCTCTCTCAGTTTGAAGACATTCTCTTTGGTAACAATGATATGTCAGCTTCCATTGGTGTTGTGGGTGTTAAAATGTCCGCAGTTGATGGCCAGAGACAGGTTGGAGTTGGGTATGTGGATTCCATACAGAGGAAACTAGGACTGTGTGAATTCCCTGATAATGATCAGTTCTCCAATCTTGAGGCTCTCCTCATCCAGATTGGACCAAAGGAATGTGTTTTACCCGGAGGAGAGACTGCTGGAGACATGGGGAAACTGAGACAGATAATTCAAAGAGGAGGAATTCTGATCACAGAAAGAAAAAAAGCTGACTTTTCCACAAAAGACATTTATCAGGACCTCAACCGGTTGTTGAAAGGCAAAAAGGGAGAGCAGATGAATAGTGCTGTATTGCCAGAAATGGAGAATCAGGTTGCAGTTTCATCACTGTCTGCGGTAATCAAGTTTTTAGAACTCTTATCAGATGATTCCAACTTTGGACAGTTTGAACTGACTACTTTTGACTTCAGCCAGTATATGAAATTGGATATTGCAGCAGTCAGAGCCCTTAACCTTTTTCAGGGTTCTGTTGAAGATACCACTGGCTCTCAGTCTCTGGCTGCCTTGCTGAATAAGTGTAAAACCCCTCAAGGACAAAGACTTGTTAACCAGTGGATTAAGCAGCCTCTCATGGATAAGAACAGAATAGAGGAGAGATTGAATTTAGTGGAAGCTTTTGTAGAAGATGCAGAATTGAGGCAGACTTTACAAGAAGATTTACTTCGTCGATTCCCAGATCTTAACCGACTTGCCAAGAAGTTTCAAAGACAAGCAGCAAACTTACAAGATTGTTACCGACTCTATCAGGGTATAAATCAACTACCTAATGTTATACAGGCTCTGGAAAAACATGAAGGAAAACACCAGAAATTATTGTTGGCAGTTTTTGTGACTCCTCTTACTGATCTTCGTTCTGACTTCTCCAAGTTTCAGGAAATGATAGAAACAACTTTAGATATGGATCAGGTGGAAAACCATGAATTCCTTGTAAAACCTTCATTTGATCCTAATCTCAGTGAATTAAGAGAAATAATGAATGACTTGGAAAAGAAGATGCAGTCAACATTAATAAGTGCAGCCAGAGATCTTGGCTTGGACCCTGGCAAACAGATTAAACTGGATTCCAGTGCACAGTTTGGATATTACTTTCGTGTAACCTGTAAGGAAGAAAAAGTCCTTCGTAACAATAAAAACTTTAGTACTGTAGATATCCAGAAGAATGGTGTTAAATTTACCAACAGCAAATTGACTTCTTTAAATGAAGAGTATACCAAAAATAAAACAGAATATGAAGAAGCCCAGGATGCCATTGTTAAAGAAATTGTCAATATTTCTTCAGGCTATGTAGAACCAATGCAGACACTCAATGATGTGTTAGCTCAGCTAGATGCTGTTGTCAGCTTTGCTCACGTGTCAAATGGAGCACCTGTTCCATATGTACGACCAGCCATTTTGGAGAAAGGACAAGGAAGAATTATATTAAAAGCATCCAGGCATGCTTGTGTTGAAGTTCAAGATGAAATTGCATTTATTCCTAATGACGTATACTTTGAAAAAGATAAACAGATGTTCCACATCATTACTGGCCCCAATATGGGAGGTAAATCAACATATATTCGACAAACTGGGGTGATAGTACTCATGGCCCAAATTGGGTGTTTTGTGCCATGTGAGTCAGCAGAAGTGTCCATTGTGGACTGCATCTTAGCCCGAGTAGGGGCTGGTGACAGTCAATTGAAAGGAGTCTCCACGTTCATGGCTGAAATGTTGGAAACTGCTTCTATCCTCAGGTCTGCAACCAAAGATTCATTAATAATCATAGATGAATTGGGAAGAGGAACTTCTACCTACGATGGATTTGGGTTAGCATGGGCTATATCAGAATACATTGCAACAAAGATTGGTGCTTTTTGCATGTTTGCAACCCATTTTCATGAACTTACTGCCTTGGCCAATCAGATACCAACTGTTAATAATCTACATGTCACAGCACTCACCACTGAAGAGACCTTAACTATGCTTTATCAGGTGAAGAAAGGTGTCTGTGATCAAAGTTTTGGGATTCATGTTGCAGAGCTTGCTAATTTCCCTAAGCATGTAATAGAGTGTGCTAAACAGAAAGCCCTGGAACTTGAGGAGTTTCAGTATATTGGAGAATCGCAAGGATATGATATCATGGAACCAGCAGCAAAGAAGTGCTATCTGGAAAGAGAGCAAGGTGAAAAAATTATTCAGGAGTTCCTGTCCAAGGTGAAACAAATGCCCTTTACTGAAATGTCAGAAGAAAACATCACAATAAAGTTAAAACAGCTAAAAGCTGAAGTAATAGCAAAGAATAATAGCTTTGTAAATGAAATCATTTCACGAATAAAAGTTACTACGTGA\nEXTERNAL IDENTIFIERS\nDOIs\n\nNo associated DOIs\n\nRaw reads\n\nNo associated raw reads\n\nVARIANTS PREVIEW (17,746)\nScores\nCustom Data\nSCORES\nShowing 5 of 17,746\nHGVS_NT\tHGVS_SPLICE\tHGVS_PRO\tSCORE\tMAVEDB_CLNSIG\tMAVEDB_CLNREVSTAT\nNA\tNA\tp.Met1Ala\t-0.080\tNA\tNA\nNA\tNA\tp.Met1Cys\tNA\tNA\tNA\nNA\tNA\tp.Met1Tyr\t-2.871\tNA\tNA\nNA\tNA\tp.Met1Trp\t-3.992\tNA\tNA\nNA\tNA\tp.Met1Val\t-1.395\tUncertain_significance\treviewed_by_expert_panel\nNo count data available for this score set.\nChat\nDocumentation\nReport a Dataset issue\n© 2026 MaveDB — AGPLv3 License — Hosted by the University of Washington",
+    "links": [
+      {
+        "text": "Skip to content",
+        "url": "https://mavedb.org/score-sets/urn:mavedb:00000050-a-1#main-content"
+      },
+      {
+        "text": "MaveMD",
+        "url": "https://mavedb.org/mavemd"
+      },
+      {
+        "text": "Search",
+        "url": "https://mavedb.org/search"
+      },
+      {
+        "text": "About",
+        "url": "https://mavedb.org/about"
+      },
+      {
+        "text": "Help",
+        "url": "https://mavedb.org/help"
+      },
+      {
+        "text": "Sign in",
+        "url": "https://mavedb.org/score-sets/urn:mavedb:00000050-a-1#"
+      },
+      {
+        "text": "Jacob Kitzman",
+        "url": "https://orcid.org/0000-0002-6145-882X"
+      },
+      {
+        "text": "Jacob Kitzman",
+        "url": "https://orcid.org/0000-0002-6145-882X"
+      },
+      {
+        "text": "MaveMD",
+        "url": "https://mavedb.org/collections/urn:mavedb:collection-603dafbf-4a3f-4d70-ab8c-aafb226fbff4"
+      },
+      {
+        "text": "Jacob Kitzman",
+        "url": "https://orcid.org/0000-0002-6145-882X"
+      },
+      {
+        "text": "Jacob Kitzman",
+        "url": "https://orcid.org/0000-0002-6145-882X"
+      },
+      {
+        "text": "Jeremy Stone",
+        "url": "https://orcid.org/0000-0002-7565-2463"
+      },
+      {
+        "text": "CC0 (Public domain)",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+      },
+      {
+        "text": "urn:mavedb:00000050-a",
+        "url": "https://mavedb.org/experiments/urn:mavedb:00000050-a"
+      },
+      {
+        "text": "33357406",
+        "url": "https://mavedb.org/publication-identifiers/PubMed/33357406"
+      },
+      {
+        "text": "View article on the web",
+        "url": "http://www.ncbi.nlm.nih.gov/pubmed/33357406"
+      },
+      {
+        "text": "MSH2",
+        "url": "https://mavedb.org/genes/MSH2"
+      },
+      {
+        "text": "9606",
+        "url": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=info&id=9606"
+      },
+      {
+        "text": "Chat",
+        "url": "https://mavedb.zulipchat.com/"
+      },
+      {
+        "text": "Documentation",
+        "url": "https://mavedb.org/docs"
+      },
+      {
+        "text": "Report a Dataset issue",
+        "url": "https://mavedb.zulipchat.com/#narrow/channel/511832-dataset-issues/topic/urn:mavedb:00000050-a-1"
+      }
+    ],
+    "images": [
+      {
+        "alt": "MaveDB",
+        "url": "https://mavedb.org/assets/logo-mavedb-fsQtIYfm.png",
+        "width": 253,
+        "height": 169
+      }
+    ],
+    "screenshot": "references/mavedb.png",
+    "verification_limit": "Metadata visible; variants still loading at capture. Heatmap analysis uses the separately attributed official documentation image."
+  },
+  {
+    "id": "alphafold",
+    "requested_url": "https://alphafold.ebi.ac.uk/entry/P04637",
+    "inspected_on": "2026-11-01",
+    "kind": "live public page",
+    "url": "https://alphafold.ebi.ac.uk/entry/P04637",
+    "title": "AlphaFold Protein Structure Database",
+    "status": 200,
+    "visible_text": "EMBL-EBI\nAbout us\nTraining\nResearch\nServices\nEMBL-EBI home\nAlphaFold Protein Structure Database\nHome\nAbout\nFAQs\nDownloads\nAPI\nCollaborators\nSearch\nSearch\nExamples: MENFQKVEKIGEGTYGV...Free fatty acid receptor 2At1g58602Q9I1F6E. coli\nSee search help\nGo to online course\nDeveloped by\nThis website requires cookies, and the limited processing of your personal data in order to function. By using the site you are agreeing to this as outlined in our Privacy Notice and Terms of Use.\nI agree, dismiss this banner\n\nEMBL-EBI is the home for big data in biology. We help scientists exploit complex information to make discoveries that benefit humankind.\n\nSERVICES\nData resources and tools\nData submission\nSupport and feedback\nLicensing\nRESEARCH\nPublications\nResearch groups\nPostdocs and PhDs\nTRAINING\nLive training\nOn-demand training\nSupport for trainers\nContact organisers\nINDUSTRY\nMembers Area\nContact Industry team\nABOUT\nContact us\nEvents\nJobs\nNews\nPeople and groups\nIntranet for staff\n\nEMBL-EBI, Wellcome Genome Campus, Hinxton, Cambridgeshire, CB10 1SD, UK.\nTel: +44 (0)1223 49 44 44\nFull contact details\n\nCopyright © EMBL 2023\nEMBL-EBI is part of the European Molecular Biology Laboratory\nTerms of use",
+    "links": [
+      {
+        "text": "EMBL-EBI",
+        "url": "https://www.ebi.ac.uk/"
+      },
+      {
+        "text": "About us",
+        "url": "https://www.ebi.ac.uk/about"
+      },
+      {
+        "text": "Training",
+        "url": "https://www.ebi.ac.uk/training"
+      },
+      {
+        "text": "Research",
+        "url": "https://www.ebi.ac.uk/research"
+      },
+      {
+        "text": "Services",
+        "url": "https://www.ebi.ac.uk/services"
+      },
+      {
+        "text": "EMBL-EBI home",
+        "url": "https://www.ebi.ac.uk/"
+      },
+      {
+        "text": "AlphaFold Protein Structure Database",
+        "url": "https://alphafold.ebi.ac.uk/"
+      },
+      {
+        "text": "AlphaFoldProtein Structure Database",
+        "url": "https://alphafold.ebi.ac.uk/"
+      },
+      {
+        "text": "Home",
+        "url": "https://alphafold.ebi.ac.uk/"
+      },
+      {
+        "text": "About",
+        "url": "https://alphafold.ebi.ac.uk/about"
+      },
+      {
+        "text": "FAQs",
+        "url": "https://alphafold.ebi.ac.uk/faq"
+      },
+      {
+        "text": "Downloads",
+        "url": "https://alphafold.ebi.ac.uk/download"
+      },
+      {
+        "text": "API",
+        "url": "https://alphafold.ebi.ac.uk/api-docs"
+      },
+      {
+        "text": "Collaborators",
+        "url": "https://alphafold.ebi.ac.uk/collaborators"
+      },
+      {
+        "text": "MENFQKVEKIGEGTYGV...",
+        "url": "https://alphafold.ebi.ac.uk/search/sequence/MENFQKVEKIGEGTYGVVYKARNKLTGEVVALKKIRLDTETEGVPSTAIREIS"
+      },
+      {
+        "text": "Free fatty acid receptor 2",
+        "url": "https://alphafold.ebi.ac.uk/search/uniprotDescription/Free%20fatty%20acid%20receptor%202"
+      },
+      {
+        "text": "At1g58602",
+        "url": "https://alphafold.ebi.ac.uk/search/text/At1g58602"
+      },
+      {
+        "text": "Q9I1F6",
+        "url": "https://alphafold.ebi.ac.uk/search/text/Q9I1F6"
+      },
+      {
+        "text": "E. coli",
+        "url": "https://alphafold.ebi.ac.uk/search/text/Escherichia%20coli"
+      },
+      {
+        "text": "See search help",
+        "url": "https://alphafold.ebi.ac.uk/faq#faq-9"
+      },
+      {
+        "text": "Go to online course",
+        "url": "https://www.ebi.ac.uk/training/online/courses/alphafold/"
+      },
+      {
+        "text": "EMBL-EBI",
+        "url": "https://www.ebi.ac.uk/"
+      },
+      {
+        "text": "About us",
+        "url": "https://www.ebi.ac.uk/about"
+      },
+      {
+        "text": "Training",
+        "url": "https://www.ebi.ac.uk/training"
+      },
+      {
+        "text": "Research",
+        "url": "https://www.ebi.ac.uk/research"
+      },
+      {
+        "text": "Services",
+        "url": "https://www.ebi.ac.uk/services"
+      },
+      {
+        "text": "EMBL-EBI home",
+        "url": "https://www.ebi.ac.uk/"
+      },
+      {
+        "text": "Privacy Notice",
+        "url": "https://alphafold.ebi.ac.uk/assets/alphafold-privacy-notice.pdf"
+      },
+      {
+        "text": "Terms of Use",
+        "url": "https://www.ebi.ac.uk/data-protection/privacy-notice/embl-ebi-public-website"
+      },
+      {
+        "text": "EMBL-EBI is the home for big data in biology. We help scientists exploit complex",
+        "url": "https://www.ebi.ac.uk/about/our-impact"
+      },
+      {
+        "text": "SERVICES",
+        "url": "https://www.ebi.ac.uk/services"
+      },
+      {
+        "text": "Data resources and tools",
+        "url": "https://www.ebi.ac.uk/services/data-resources-and-tools"
+      },
+      {
+        "text": "Data submission",
+        "url": "https://www.ebi.ac.uk/submission"
+      },
+      {
+        "text": "Support and feedback",
+        "url": "https://www.ebi.ac.uk/support"
+      },
+      {
+        "text": "Licensing",
+        "url": "https://www.ebi.ac.uk/licencing"
+      },
+      {
+        "text": "RESEARCH",
+        "url": "https://www.ebi.ac.uk/research"
+      },
+      {
+        "text": "Publications",
+        "url": "https://www.ebi.ac.uk/research/publications"
+      },
+      {
+        "text": "Research groups",
+        "url": "https://www.ebi.ac.uk/research/groups"
+      },
+      {
+        "text": "Postdocs",
+        "url": "https://www.ebi.ac.uk/research/postdocs"
+      },
+      {
+        "text": "PhDs",
+        "url": "https://www.ebi.ac.uk/research/eipp"
+      },
+      {
+        "text": "TRAINING",
+        "url": "https://www.ebi.ac.uk/training"
+      },
+      {
+        "text": "Live training",
+        "url": "https://www.ebi.ac.uk/training/live-events"
+      },
+      {
+        "text": "On-demand training",
+        "url": "https://www.ebi.ac.uk/training/on-demand"
+      },
+      {
+        "text": "Support for trainers",
+        "url": "https://www.ebi.ac.uk/training/trainer-support"
+      },
+      {
+        "text": "Contact organisers",
+        "url": "https://www.ebi.ac.uk/training/contact-us"
+      },
+      {
+        "text": "INDUSTRY",
+        "url": "https://www.ebi.ac.uk/industry"
+      },
+      {
+        "text": "Members Area",
+        "url": "https://www.ebi.ac.uk/industry/private/members-area/"
+      },
+      {
+        "text": "Contact Industry team",
+        "url": "https://www.ebi.ac.uk/industry/contact-us"
+      },
+      {
+        "text": "ABOUT",
+        "url": "https://www.ebi.ac.uk/about"
+      },
+      {
+        "text": "Contact us",
+        "url": "https://www.ebi.ac.uk/about/contact"
+      },
+      {
+        "text": "Events",
+        "url": "https://www.ebi.ac.uk/about/events"
+      },
+      {
+        "text": "Jobs",
+        "url": "https://www.ebi.ac.uk/about/jobs"
+      },
+      {
+        "text": "News",
+        "url": "https://www.ebi.ac.uk/about/news"
+      },
+      {
+        "text": "People and groups",
+        "url": "https://www.ebi.ac.uk/about/people"
+      },
+      {
+        "text": "Intranet for staff",
+        "url": "https://intranet.ebi.ac.uk/"
+      },
+      {
+        "text": "EMBL-EBI, Wellcome Genome Campus, Hinxton, Cambridgeshire, CB10 1SD, UK.",
+        "url": "https://www.google.co.uk/maps/place/Hinxton,+Saffron+Walden+CB10+1SD/@52.0815334,0.1891518,17z/data=!3m1!4b1!4m5!3m4!1s0x47d87ccbfbd2538b:0x7bbdb4cde2779ff3!8m2!3d52.0800838!4d0.186415"
+      },
+      {
+        "text": "Tel: +44 (0)1223 49 44 44",
+        "url": "tel:00441223494444"
+      },
+      {
+        "text": "Full contact details",
+        "url": "https://www.ebi.ac.uk/about/contact"
+      },
+      {
+        "text": "European Molecular Biology Laboratory",
+        "url": "https://www.embl.org/"
+      },
+      {
+        "text": "Terms of use",
+        "url": "https://www.ebi.ac.uk/about/terms-of-use"
+      }
+    ],
+    "images": [
+      {
+        "alt": "Google Deepmind",
+        "url": "https://alphafold.ebi.ac.uk/assets/img/Google_DeepMind_Logo_new.webp",
+        "width": 3810,
+        "height": 512
+      },
+      {
+        "alt": "EMBL-EBI",
+        "url": "https://alphafold.ebi.ac.uk/assets/img/ebi-logo.webp",
+        "width": 568,
+        "height": 175
+      },
+      {
+        "alt": "EMBL-EBI",
+        "url": "https://alphafold.ebi.ac.uk/assets/img/ebi-logo.webp",
+        "width": 568,
+        "height": 175
+      }
+    ],
+    "screenshot": "references/alphafold.png",
+    "verification_limit": "Only the page shell rendered. Entry annotations analysis uses the separately attributed official EMBL-EBI training image."
+  },
+  {
+    "id": "uniprot",
+    "requested_url": "https://www.uniprot.org/uniprotkb/P04637/entry",
+    "inspected_on": "2026-11-01",
+    "kind": "live public page",
+    "url": "https://www.uniprot.org/uniprotkb/P04637/entry",
+    "title": "TP53 - Cellular tumor antigen p53 - Homo sapiens (Human) | UniProtKB",
+    "status": 200,
+    "visible_text": "BLASTAlignPeptide searchID mappingSPARQL\nUniProtKB\nAdvanced\n|\nList\nSearch\nHelp\nFunction\nNames & Taxonomy\nSubcellular Location\nDisease & Variants\nPTM/Processing\nExpression\nInteraction\nStructure\nFamily & Domains\nSequence & Isoforms\nSimilar Proteins\nHomologs\nP04637 · P53_HUMAN\nProtein\nCellular tumor antigen p53\nGene\nTP53\nStatus\nUniProtKB reviewed (Swiss-Prot)\nOrganism\nHomo sapiens (Human)\nAmino acids\n393 (go to sequence)\nProtein existence\nEvidence at protein level\nAnnotation score\n5/5\nTools\nDownload\nAdd\n Community curated (2)\nAdd a publication\nEntry feedback\nEntry\nVariant viewer\nFeature viewer\nGenomic coordinates\nPublications\nExternal links\nHistory\nAn unexpected issue occurred\n\nYou can try to reload the page, use the rest of this page, or go back to the previous page.\nMake sure that your browser is up to date as older versions might not work with the new website.\n\nIf the error persists, please report this bug here.\n\nNames & Taxonomy\nProtein names\nRecommended name\nCellular tumor antigen p53\nAlternative names\nAntigen NY-CO-13\nPhosphoprotein p53\nTumor suppressor p53\nGene names\nName\nTP53\nSynonyms\nP53\nOrganism names\nTaxonomic identifier\n9606 (NCBI)\nOrganism\nHomo sapiens (Human)\nTaxonomic lineage\nEukaryota > Metazoa > Chordata > Craniata > Vertebrata > Euteleostomi > Mammalia > Eutheria > Euarchontoglires > Primates > Haplorrhini > Catarrhini > Hominidae > Homo\nAccessions\nPrimary accession\nP04637\nSecondary accessions\nQ15086\nQ15087\nQ15088\nQ16535\nQ16807\nMore accessions\nProteomes\nIdentifier\nUP000005640\nComponent\nChromosome 17\nOrganism-specific databases\nAGR\nHGNC:11998\nHGNC\nHGNC:11998TP53\nMIM\n133239phenotype\n151623phenotype\n191170gene+phenotype\n202300phenotype\n211980phenotype\nMore MIM links\nVEuPathDB\nHostDB:ENSG00000141510\nSubcellular Location\nUniProt Annotation\nGO Annotation\nCytoplasm \n9 Publications\nNucleus \n9 Publications\nNucleus, PML body \n3 Publications\nEndoplasmic reticulum \n1 Publication\nMitochondrion matrix \n3 Publications\nCytoplasm, cytoskeleton, microtubule organizing center, centrosome \n1 Publication\nNote: Recruited into PML bodies together with CHEK2 (PubMed:12810724).\nTranslocates to mitochondria upon oxidative stress (PubMed:22726440).\nTranslocates to mitochondria in response to mitomycin C treatment (PubMed:27323408).\nCompetitive inhibition of TP53 interaction with HSPA9/MOT-2 by UBXN2A results in increased protein abundance and subsequent translocation of TP53 to the nucleus (PubMed:24625977).\n4 Publications\nIsoform 1\nNucleus \n1 Publication\nCytoplasm\nNote: Predominantly nuclear but localizes to the cytoplasm when expressed with isoform 4.\nIsoform 2\nNucleus\nCytoplasm\nNote: Localized mainly in the nucleus with minor staining in the cytoplasm.\nIsoform 3\nNucleus\nCytoplasm\nNote: Localized in the nucleus in most cells but found in the cytoplasm in some cells.\nIsoform 4\nNucleus\nCytoplasm\nNote: Predominantly nuclear but translocates to the cytoplasm following cell stress.\nIsoform 7\nNucleus\nCytoplasm\nNote: Localized mainly in the nucleus with minor staining in the cytoplasm.\nIsoform 8\nNucleus\nCytoplasm\nNote: Localized in both nucleus and cytoplasm in most cells. In some cells, forms foci in the nucleus that are different from nucleoli.\nIsoform 9\nCytoplasm\nKeywords\nCellular component\n#Cytoplasm\n#Cytoskeleton\n#Endoplasmic reticulum\n#Mitochondrion\n#Nucleus\nMiscellaneous\nCD-CODE\n1A18FFC4Paraspeckle\n8C2F96EDCentrosome\n91857CE7Nucleolus\nA1A97FABSynthetic Condensate 000191\nB5B9A610PML body\nE11B6BABSynthetic Condensate 000195\nDisease & Variants\nInvolvement in disease\nTP53 is found in increased amounts in a wide variety of transformed cells. TP53 is frequently mutated or inactivated in about 60% of cancers. TP53 defects are found in Barrett metaplasia a condition in which the normally stratified squamous epithelium of the lower esophagus is replaced by a metaplastic columnar epithelium. The condition develops as a complication in approximately 10% of patients with chronic gastroesophageal reflux disease and predisposes to the development of esophageal adenocarcinoma\nEsophageal cancer (ESCR)\nNote\nThe disease is caused by variants affecting the gene represented in this entry\nDescription\nA malignancy of the esophagus. The most common types are esophageal squamous cell carcinoma and adenocarcinoma. Cancer of the esophagus remains a devastating disease because it is usually not detected until it has progressed to an advanced incurable stage.\nSee also\nMIM:133239\nLi-Fraumeni syndrome (LFS)\n10 Publications\nNote\nThe disease is caused by variants affecting the gene represented in this entry\nDescription\nAn autosomal dominant familial cancer syndrome that in its classic form is defined by the existence of a proband affected by a sarcoma before 45 years with a first degree relative affected by any tumor before 45 years and another first degree relative with any tumor before 45 years or a sarcoma at any age. Other clinical definitions for LFS have been proposed and called Li-Fraumeni like syndrome (LFL). In these families affected relatives develop a diverse set of malignancies at unusually early ages. Four types of cancers account for 80% of tumors occurring in TP53 germline mutation carriers: breast cancers, soft tissue and bone sarcomas, brain tumors (astrocytomas) and adrenocortical carcinomas. Less frequent tumors include choroid plexus carcinoma or papilloma before the age of 15, rhabdomyosarcoma before the age of 5, leukemia, Wilms tumor, malignant phyllodes tumor, colorectal and gastric cancers.\nSee also\nMIM:151623\nNatural variants in LFS\n\tVARIANT ID\tPOSITION(S)\tCHANGE\tDESCRIPTION\n\tVAR_044621\t82\tP>L\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs534447939\n\tVAR_044650\t97\tV>I\tin familial cancer not matching LFS; germline mutation and in a sporadic cancer; somatic mutation; dbSNP:rs730882023\n\tVAR_044661\t105\tG>C\tin LFS; germline mutation and in sporadic cancers; somatic mutation\n\tVAR_044667\t106\tS>R\tin a familial cancer not matching LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs1555526581\n\tVAR_005861\t110\tR>L\tin a familial cancer not matching LFS; germline mutation and in sporadic cancers; somatic mutation; does not induce SNAI1 degradation; dbSNP:rs11540654\n1 Publication\n\tVAR_044716\t126\tY>C\tin a familial cancer not matching LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs1555526335\n\tVAR_044740\t132\tK>E\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs747342068\n\tVAR_044747\t133\tM>R\tin LFS; germline mutation and in sporadic cancers; somatic mutation\n\tVAR_005875\t133\tM>T\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs28934873\n1 Publication\n\tVAR_005881\t138\tA>P\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs28934875\n\tVAR_044764\t138\tA>S\tin LFS; germline mutation\n\tVAR_005886\t141\tC>Y\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs587781288\n\tVAR_044790\t144\tQ>L\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs786203071\n\tVAR_005895\t151\tP>S\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs28934874\n1 Publication\n\tVAR_005896\t151\tP>T\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs28934874\n\tVAR_005897\t152\tP>L\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs587782705\n1 Publication\n\tVAR_044836\t155\tT>N\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs786202752\n\tVAR_044841\t156\tR>H\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs371524413\n\tVAR_005906\t158\tR>G\tin LFS; germline mutation and in sporadic cancers; somatic mutation\n\tVAR_005907\t158\tR>H\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs587782144\n\tVAR_033035\t163\tY>C\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs148924904\n2 Publications\n\tVAR_044885\t167\tQ>K\tin LFS; germline mutation and in a sporadic cancer; somatic mutation\n\tVAR_044906\t172\tV>F\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs1131691043\n\tVAR_005926\t173\tV>M\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs876660754\n\tVAR_044911\t174\tR>G\tin LFS; germline mutation and in a sporadic cancer; somatic mutation; dbSNP:rs864622115\n\tVAR_005929\t175\tR>G\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs138729528\n\tVAR_005932\t175\tR>H\tin LFS; germline mutation and in sporadic cancers; somatic mutation; does not induce SNAI1 degradation; reduces interaction with ZNF385A; dbSNP:rs28934578\n7 Publications\n\tVAR_005930\t175\tR>L\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs28934578\n\tVAR_044939\t179\tH>Y\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs587780070\n\tVAR_044943\t180\tE>K\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs879253911\n\tVAR_044946\t181\tR>C\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs587782596\n\tVAR_044948\t181\tR>H\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs397514495\n\tVAR_005937\t181\tR>L\tin a familial cancer not matching LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs397514495\n\tVAR_044949\t181\tR>P\tin a familial cancer not matching LFS; germline mutation and in sporadic cancers; somatic mutation\n\tVAR_044978\t189\tA>V\tin a familial cancer not matching LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs121912665\n\tVAR_005948\t193\tH>R\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs786201838\n2 Publications\n\tVAR_045007\t196\tR>P\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs483352697\n\tVAR_045010\t197\tV>E\tin a familial cancer not matching LFS; germline mutation and in sporadic cancers; somatic mutation\n\tVAR_045013\t197\tV>M\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs786204041\n\tVAR_045073\t210\tN>Y\tin a familial cancer not matching LFS; germline mutation; dbSNP:rs1060501200\n\tVAR_036506\t213\tR>P\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs587778720\n1 Publication\n\tVAR_005955\t213\tR>Q\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs587778720\n\tVAR_045114\t219\tP>S\tin a familial cancer not matching LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs879253894\n\tVAR_005957\t220\tY>C\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs121912666\n2 Publications\n\tVAR_045151\t227\tS>T\tin LFS; germline mutation and in a sporadic cancer; somatic mutation\n\tVAR_045175\t233\tH>D\tin LFS; germline mutation and in a sporadic cancer; somatic mutation\n\tVAR_005963\t234\tY>C\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs587780073\n\tVAR_045186\t235\tN>S\tin LFS; germline mutation and in sporadic cancers; somatic mutation; dbSNP:rs144340710\n\tVAR_045189\t",
+    "links": [
+      {
+        "text": "BLAST",
+        "url": "https://www.uniprot.org/blast"
+      },
+      {
+        "text": "Align",
+        "url": "https://www.uniprot.org/align"
+      },
+      {
+        "text": "Peptide search",
+        "url": "https://www.uniprot.org/peptide-search"
+      },
+      {
+        "text": "ID mapping",
+        "url": "https://www.uniprot.org/id-mapping"
+      },
+      {
+        "text": "SPARQL",
+        "url": "https://sparql.uniprot.org/"
+      },
+      {
+        "text": "Help",
+        "url": "https://www.uniprot.org/help"
+      },
+      {
+        "text": "Function",
+        "url": "https://www.uniprot.org/uniprotkb/P04637/entry#function"
+      },
+      {
+        "text": "Names & Taxonomy",
+        "url": "https://www.uniprot.org/uniprotkb/P04637/entry#names_and_taxonomy"
+      },
+      {
+        "text": "Subcellular Location",
+        "url": "https://www.uniprot.org/uniprotkb/P04637/entry#subcellular_location"
+      },
+      {
+        "text": "Disease & Variants",
+        "url": "https://www.uniprot.org/uniprotkb/P04637/entry#disease_variants"
+      },
+      {
+        "text": "PTM/Processing",
+        "url": "https://www.uniprot.org/uniprotkb/P04637/entry#ptm_processing"
+      },
+      {
+        "text": "Expression",
+        "url": "https://www.uniprot.org/uniprotkb/P04637/entry#expression"
+      },
+      {
+        "text": "Interaction",
+        "url": "https://www.uniprot.org/uniprotkb/P04637/entry#interaction"
+      },
+      {
+        "text": "Structure",
+        "url": "https://www.uniprot.org/uniprotkb/P04637/entry#structure"
+      },
+      {
+        "text": "Family & Domains",
+        "url": "https://www.uniprot.org/uniprotkb/P04637/entry#family_and_domains"
+      },
+      {
+        "text": "Sequence & Isoforms",
+        "url": "https://www.uniprot.org/uniprotkb/P04637/entry#sequences"
+      },
+      {
+        "text": "Similar Proteins",
+        "url": "https://www.uniprot.org/uniprotkb/P04637/entry#similar_proteins"
+      },
+      {
+        "text": "Homologs",
+        "url": "https://www.uniprot.org/uniprotkb/P04637/entry#homologs"
+      },
+      {
+        "text": "Homo sapiens (Human)",
+        "url": "https://www.uniprot.org/taxonomy/9606"
+      },
+      {
+        "text": "(go to sequence)",
+        "url": "https://www.uniprot.org/uniprotkb/P04637/entry#sequences"
+      },
+      {
+        "text": " Community curated (2)",
+        "url": "https://www.uniprot.org/uniprotkb/P04637/publications?facets=types%3A0"
+      },
+      {
+        "text": "Add a publication",
+        "url": "https://community.uniprot.org/bbsub/bbsub.html?accession=P04637"
+      },
+      {
+        "text": "Entry feedback",
+        "url": "https://www.uniprot.org/update?entry=P04637&entryType=Reviewed+%28Swiss-Prot%29"
+      },
+      {
+        "text": "Entry",
+        "url": "https://www.uniprot.org/uniprotkb/P04637/entry"
+      },
+      {
+        "text": "Variant viewer",
+        "url": "https://www.uniprot.org/uniprotkb/P04637/entry"
+      },
+      {
+        "text": "Feature viewer",
+        "url": "https://www.uniprot.org/uniprotkb/P04637/feature-viewer"
+      },
+      {
+        "text": "Genomic coordinates",
+        "url": "https://www.uniprot.org/uniprotkb/P04637/entry"
+      },
+      {
+        "text": "Publications",
+        "url": "https://www.uniprot.org/uniprotkb/P04637/publications"
+      },
+      {
+        "text": "External links",
+        "url": "https://www.uniprot.org/uniprotkb/P04637/external-links"
+      },
+      {
+        "text": "History",
+        "url": "https://www.uniprot.org/uniprotkb/P04637/history"
+      },
+      {
+        "text": "your browser is up to date",
+        "url": "https://www.uniprot.org/help/browser_support"
+      },
+      {
+        "text": "report this bug here",
+        "url": "https://www.uniprot.org/contact"
+      },
+      {
+        "text": "9606 ",
+        "url": "https://www.uniprot.org/taxonomy/9606"
+      },
+      {
+        "text": "NCBI",
+        "url": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?lvl=0&id=9606"
+      },
+      {
+        "text": "Homo sapiens (Human)",
+        "url": "https://www.uniprot.org/taxonomy/9606"
+      },
+      {
+        "text": "cellular organisms",
+        "url": "https://www.uniprot.org/taxonomy/131567"
+      },
+      {
+        "text": "Eukaryota (eukaryotes)",
+        "url": "https://www.uniprot.org/taxonomy/2759"
+      },
+      {
+        "text": "Opisthokonta",
+        "url": "https://www.uniprot.org/taxonomy/33154"
+      },
+      {
+        "text": "Metazoa (animals)",
+        "url": "https://www.uniprot.org/taxonomy/33208"
+      },
+      {
+        "text": "Eumetazoa",
+        "url": "https://www.uniprot.org/taxonomy/6072"
+      },
+      {
+        "text": "Bilateria",
+        "url": "https://www.uniprot.org/taxonomy/33213"
+      },
+      {
+        "text": "Deuterostomia",
+        "url": "https://www.uniprot.org/taxonomy/33511"
+      },
+      {
+        "text": "Chordata (chordates)",
+        "url": "https://www.uniprot.org/taxonomy/7711"
+      },
+      {
+        "text": "Craniata",
+        "url": "https://www.uniprot.org/taxonomy/89593"
+      },
+      {
+        "text": "Vertebrata (vertebrates)",
+        "url": "https://www.uniprot.org/taxonomy/7742"
+      },
+      {
+        "text": "Gnathostomata (jawed vertebrates)",
+        "url": "https://www.uniprot.org/taxonomy/7776"
+      },
+      {
+        "text": "Teleostomi",
+        "url": "https://www.uniprot.org/taxonomy/117570"
+      },
+      {
+        "text": "Euteleostomi (bony vertebrates)",
+        "url": "https://www.uniprot.org/taxonomy/117571"
+      },
+      {
+        "text": "Sarcopterygii",
+        "url": "https://www.uniprot.org/taxonomy/8287"
+      },
+      {
+        "text": "Dipnotetrapodomorpha",
+        "url": "https://www.uniprot.org/taxonomy/1338369"
+      },
+      {
+        "text": "Tetrapoda (tetrapods)",
+        "url": "https://www.uniprot.org/taxonomy/32523"
+      },
+      {
+        "text": "Amniota (amniotes)",
+        "url": "https://www.uniprot.org/taxonomy/32524"
+      },
+      {
+        "text": "Mammalia (mammals)",
+        "url": "https://www.uniprot.org/taxonomy/40674"
+      },
+      {
+        "text": "Theria",
+        "url": "https://www.uniprot.org/taxonomy/32525"
+      },
+      {
+        "text": "Eutheria (placentals)",
+        "url": "https://www.uniprot.org/taxonomy/9347"
+      },
+      {
+        "text": "Boreoeutheria",
+        "url": "https://www.uniprot.org/taxonomy/1437010"
+      },
+      {
+        "text": "Euarchontoglires",
+        "url": "https://www.uniprot.org/taxonomy/314146"
+      },
+      {
+        "text": "Primates (primates)",
+        "url": "https://www.uniprot.org/taxonomy/9443"
+      },
+      {
+        "text": "Haplorrhini",
+        "url": "https://www.uniprot.org/taxonomy/376913"
+      },
+      {
+        "text": "Simiiformes",
+        "url": "https://www.uniprot.org/taxonomy/314293"
+      },
+      {
+        "text": "Catarrhini",
+        "url": "https://www.uniprot.org/taxonomy/9526"
+      },
+      {
+        "text": "Hominoidea (apes)",
+        "url": "https://www.uniprot.org/taxonomy/314295"
+      },
+      {
+        "text": "Hominidae (great apes)",
+        "url": "https://www.uniprot.org/taxonomy/9604"
+      },
+      {
+        "text": "Homininae",
+        "url": "https://www.uniprot.org/taxonomy/207598"
+      },
+      {
+        "text": "Homo",
+        "url": "https://www.uniprot.org/taxonomy/9605"
+      },
+      {
+        "text": "UP000005640",
+        "url": "https://www.uniprot.org/proteomes/UP000005640"
+      },
+      {
+        "text": "AGR",
+        "url": "https://www.uniprot.org/database?query=(name:AGR)&direct"
+      },
+      {
+        "text": "HGNC:11998",
+        "url": "https://alliancegenome.org/gene/HGNC:11998"
+      },
+      {
+        "text": "HGNC",
+        "url": "https://www.uniprot.org/database?query=(name:HGNC)&direct"
+      },
+      {
+        "text": "HGNC:11998",
+        "url": "https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/HGNC:11998"
+      },
+      {
+        "text": "MIM",
+        "url": "https://www.uniprot.org/database?query=(name:MIM)&direct"
+      },
+      {
+        "text": "133239",
+        "url": "https://www.omim.org/entry/133239"
+      },
+      {
+        "text": "151623",
+        "url": "https://www.omim.org/entry/151623"
+      },
+      {
+        "text": "191170",
+        "url": "https://www.omim.org/entry/191170"
+      },
+      {
+        "text": "202300",
+        "url": "https://www.omim.org/entry/202300"
+      },
+      {
+        "text": "211980",
+        "url": "https://www.omim.org/entry/211980"
+      },
+      {
+        "text": "VEuPathDB",
+        "url": "https://www.uniprot.org/database?query=(name:VEuPathDB)&direct"
+      },
+      {
+        "text": "HostDB:ENSG00000141510",
+        "url": "https://www.veupathdb.org/gene/HostDB:ENSG00000141510"
+      },
+      {
+        "text": "Cytoplasm",
+        "url": "https://www.uniprot.org/locations/SL-0086"
+      },
+      {
+        "text": "Nucleus",
+        "url": "https://www.uniprot.org/locations/SL-0191"
+      },
+      {
+        "text": "Nucleus, PML body",
+        "url": "https://www.uniprot.org/locations/SL-0465"
+      },
+      {
+        "text": "Endoplasmic reticulum",
+        "url": "https://www.uniprot.org/locations/SL-0095"
+      },
+      {
+        "text": "Mitochondrion matrix",
+        "url": "https://www.uniprot.org/locations/SL-0170"
+      },
+      {
+        "text": "Cytoplasm, cytoskeleton, microtubule organizing center, centrosome",
+        "url": "https://www.uniprot.org/locations/SL-0048"
+      },
+      {
+        "text": "12810724",
+        "url": "https://www.uniprot.org/citations/12810724"
+      },
+      {
+        "text": "22726440",
+        "url": "https://www.uniprot.org/citations/22726440"
+      },
+      {
+        "text": "27323408",
+        "url": "https://www.uniprot.org/citations/27323408"
+      },
+      {
+        "text": "24625977",
+        "url": "https://www.uniprot.org/citations/24625977"
+      },
+      {
+        "text": "Nucleus",
+        "url": "https://www.uniprot.org/locations/SL-0191"
+      },
+      {
+        "text": "Cytoplasm",
+        "url": "https://www.uniprot.org/locations/SL-0086"
+      }
+    ],
+    "images": [],
+    "screenshot": "references/uniprot.png",
+    "verification_limit": "Entry navigation and metadata visible; one content panel reported an error. Feature viewer analysis uses the official EMBL-EBI training image."
+  },
+  {
+    "id": "proteingym",
+    "requested_url": "https://proteingym.org/",
+    "inspected_on": "2026-11-01",
+    "kind": "live public page",
+    "url": "https://proteingym.org/",
+    "title": "ProteinGym",
+    "status": 200,
+    "visible_text": "  ProteinGym\nHome\nBenchmarks\nDownload\nProteinGym\n\nProteinGym is a collection of benchmarks aiming at comparing the ability of models to predict the effects of protein mutations. The benchmarks in ProteinGym are divided according to mutation type (substitutions vs. indels), ground truth source (DMS assay vs. clinical annotation), and training regime (zero-shot vs. supervised).\n\nDMS Benchmarks\nDMS Substitutions (217 assays, 2.5M mutants)\nDMS Substitutions (217 assays, 2.5M mutants)\nDMS Substitutions (217 assays, 2.5M mutants)\nDMS Substitutions (217 assays, 2.5M mutants)\nDMS Substitutions (217 assays, 2.5M mutants)\nDMS Indels (66 assays, 300K mutants)\nDMS Indels (66 assays, 300K mutants)\nDMS Indels (66 assays, 300K mutants)\nDMS Indels (66 assays, 300K mutants)\nDMS Indels (66 assays, 300K mutants)\nClinical Benchmarks\nClinical Substitutions (2.5K genes, 63K mutants)\nClinical Substitutions (2.5K genes, 63K mutants)\nClinical Substitutions (2.5K genes, 63K mutants)\nClinical Substitutions (2.5K genes, 63K mutants)\nClinical Substitutions (2.5K genes, 63K mutants)\nClinical Indels (1.5K genes, 3K mutants)\nClinical Indels (1.5K genes, 3K mutants)\nClinical Indels (1.5K genes, 3K mutants)\nClinical Indels (1.5K genes, 3K mutants)\nClinical Indels (1.5K genes, 3K mutants)\n\nFind the github repository for the benchmark here\n\nFind the ProteinGym paper here\n\nThis project has been developed and maintained by:\n\nPascal Notin, Aaron Kollasch, Daniel Ritter, Lood Van Niekerk, Steffanie Paul, Han Spinner, Nathan Rollins, Ada Shaw, Rose Orenbuch, Ruben Weitzman, Jonathan Frazer, Mafalda Dias, Dinko Franceschi, Yarin Gal, Debora Marks, Peter Groth and Artem Gazizov.\n\n\n\n\n\nOATML - Oxford Applied and Theoretical Machine Learning Group\n\nMarks Lab - Harvard Medical School",
+    "links": [
+      {
+        "text": "  ProteinGym",
+        "url": "https://proteingym.org/"
+      },
+      {
+        "text": "Home",
+        "url": "https://proteingym.org/"
+      },
+      {
+        "text": "Benchmarks",
+        "url": "https://proteingym.org/benchmarks"
+      },
+      {
+        "text": "Download",
+        "url": "https://proteingym.org/download"
+      },
+      {
+        "text": "here",
+        "url": "https://github.com/OATML-Markslab/ProteinGym"
+      },
+      {
+        "text": "here",
+        "url": "https://papers.nips.cc/paper_files/paper/2023/hash/cac723e5ff29f65e3fcbb0739ae91bee-Abstract-Datasets_and_Benchmarks.html"
+      }
+    ],
+    "images": [
+      {
+        "alt": "",
+        "url": "https://proteingym.org/assets/proteingymlogo.png",
+        "width": 1266,
+        "height": 1130
+      },
+      {
+        "alt": "",
+        "url": "https://proteingym.org/assets/oxfordcslogo.png",
+        "width": 382,
+        "height": 131
+      },
+      {
+        "alt": "",
+        "url": "https://proteingym.org/assets/hmslogo.png",
+        "width": 390,
+        "height": 128
+      }
+    ],
+    "screenshot": "references/proteingym.png"
+  },
+  {
+    "id": "cbioportal",
+    "requested_url": "https://www.cbioportal.org/oncoprinter",
+    "inspected_on": "2026-11-01",
+    "kind": "live public page",
+    "url": "https://www.cbioportal.org/oncoprinter",
+    "title": "Just a moment...",
+    "status": 403,
+    "visible_text": "www.cbioportal.org\nPerforming security verification\n\nThis website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.\n\nRay ID: a538db171c15b2f8\nPerformance and Security by Cloudflare\nPrivacy",
+    "links": [
+      {
+        "text": "Cloudflare",
+        "url": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m"
+      },
+      {
+        "text": "Privacy",
+        "url": "https://www.cloudflare.com/privacypolicy/"
+      }
+    ],
+    "images": [],
+    "screenshot": "references/cbioportal.png",
+    "verification_limit": "403 bot verification. This capture is not evidence of the product interface."
+  },
+  {
+    "id": "benchling-docs",
+    "requested_url": "https://help.benchling.com/hc/en-us/articles/9684234496013-The-Basics-of-Benchling",
+    "inspected_on": "2026-11-01",
+    "kind": "live public page",
+    "url": "https://help.benchling.com/hc/en-us/articles/9684234496013-The-Basics-of-Benchling",
+    "title": "Just a moment...",
+    "status": 403,
+    "visible_text": "help.benchling.com\nPerforming security verification\n\nThis website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.\n\nRay ID: a538db18d9244a5d\nPerformance and Security by Cloudflare\nPrivacy",
+    "links": [
+      {
+        "text": "Cloudflare",
+        "url": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m"
+      },
+      {
+        "text": "Privacy",
+        "url": "https://www.cloudflare.com/privacypolicy/"
+      }
+    ],
+    "images": [],
+    "screenshot": "references/benchling-docs.png",
+    "verification_limit": "403 bot verification. This capture is not evidence of the product interface."
+  },
+  {
+    "id": "alphamissense-search",
+    "url": "https://alphamissense.hegelab.org/search",
+    "kind": "live public page",
+    "inspected_on": "2026-11-01",
+    "status": 200,
+    "title": "AlphaMissense",
+    "visible_text": " Home\n Search\n Hotspot\n Download\n News\n Help\n Contact\nAlphaMissense\nSearch AlphaMissense data\nIdentifier: \nFilter by pathogenicity:\n Likely benign  Likely pathogenic  Ambigous\nHigh-pass cutoff for pathogenicity score: \nLow-pass cutoff for pathogenicity score: \nSubmit",
+    "screenshot": "references/alphamissense-search.png",
+    "interaction": "Rejected optional cookies before capturing the search form; no query submitted"
+  },
+  {
+    "id": "proteingym-benchmarks",
+    "url": "https://proteingym.org/benchmarks",
+    "kind": "live public page",
+    "inspected_on": "2026-11-01",
+    "status": 200,
+    "title": "ProteinGym",
+    "visible_text": "  ProteinGym\nHome\nBenchmarks\nDownload\nBenchmark Scores\nIndividual View\nAggregate View\n\n\nRank▲\tModel name▲\tInput Modalities▲\tAvg. Spearman▲\tStd. Error of Diff. to Best Score*▲\tSpearman by Function\tSpearman by MSA Depth\tSpearman by Taxon\tSpearman by Mutation Depth\tModel Details\nActivity▲\tBinding▲\tExpression▲\tOrganismal Fitness▲\tStability▲\tLow depth▲\tMedium depth▲\tHigh depth▲\tHuman▲\tOther Eukaryote▲\tProkaryote▲\tVirus▲\t1▲\t2▲\t3▲\t4▲\t5+▲\tDescription▲\tReferences▲\n1\tAIDO Protein-RAG (16B)\tStructure & MSA\t0.518\t0.0\t0.517\t0.426\t0.522\t0.491\t0.635\t0.498\t0.534\t0.585\t0.531\t0.587\t0.558\t0.522\t0.527\t0.414\t0.419\t0.394\t0.414\tAIDO Protein-RAG (16B)\tSun, N., Zou, S., Tao, T., Mahbub, S., Li, D., Zhuang, Y., Wang, H., Cheng, X., Song, L., & Xing, E.P. (2024). Mixture of Experts Enable Efficient and Effective Protein Understanding and Design. bioRxiv.\n2\tVenusREM\tStructure & MSA\t0.518\t0.005\t0.495\t0.454\t0.533\t0.459\t0.65\t0.495\t0.524\t0.577\t0.529\t0.582\t0.549\t0.492\t0.534\t0.397\t0.355\t0.322\t0.368\tVenusREM\tYang Tan, Ruilin Wang, Banghao Wu, Liang Hong, Bingxin Zhou. (2024). Retrieval-Enhanced Mutation Mastery: Augmenting Zero-Shot Prediction of Protein Language Model. ArXiv, abs/2410.21127.\n3\tProSST (K=2048)\tSingle sequence & Structure\t0.507\t0.006\t0.476\t0.445\t0.53\t0.431\t0.653\t0.465\t0.507\t0.58\t0.516\t0.573\t0.549\t0.454\t0.521\t0.394\t0.317\t0.277\t0.332\tProSST (K=2048)\tMingchen Li, Yang Tan, Xinzhu Ma, Bozitao Zhong, Ziyi Zhou, Huiqun Yu, Wanli Ouyang, Liang Hong, Bingxin Zhou, Pan Tan. (2024). ProSST: Protein language modeling with quantizied structure and disentangled attention. bioRxiv.\n4\tProSST (K=4096)\tSingle sequence & Structure\t0.498\t0.009\t0.444\t0.472\t0.507\t0.416\t0.652\t0.472\t0.481\t0.583\t0.497\t0.574\t0.547\t0.44\t0.505\t0.426\t0.388\t0.342\t0.408\tProSST (K=4096)\tMingchen Li, Yang Tan, Xinzhu Ma, Bozitao Zhong, Ziyi Zhou, Huiqun Yu, Wanli Ouyang, Liang Hong, Bingxin Zhou, Pan Tan. (2024). ProSST: Protein language modeling with quantizied structure and disentangled attention. bioRxiv.\n5\tS3F-MSA\tStructure & MSA\t0.496\t0.007\t0.502\t0.44\t0.479\t0.477\t0.581\t0.469\t0.509\t0.547\t0.502\t0.558\t0.521\t0.502\t0.499\t0.333\t0.378\t0.346\t0.383\tS3F with MSA retrieval\tZuobai Zhang, Pascal Notin, Yining Huang, Aurelie C. Lozano, Vijil Chenthamarakshan, Debora Marks, Payel Das, Jian Tang. (2024). Multi-Scale Representation Learning for Protein Fitness Prediction. NeurIPS.\n6\tS2F-MSA\tStructure & MSA\t0.488\t0.007\t0.498\t0.432\t0.472\t0.472\t0.567\t0.463\t0.502\t0.536\t0.495\t0.546\t0.513\t0.493\t0.491\t0.303\t0.346\t0.318\t0.362\tS2F with MSA ret",
+    "screenshot": "references/proteingym-benchmarks.png"
+  }
+]

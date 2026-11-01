@@ -1,0 +1,16 @@
+@font-face{font-family:Roboto;src:url('assets/roboto.ttf') format('truetype');font-weight:100 900;font-display:swap}
+@font-face{font-family:'Roboto Mono';src:url('assets/roboto-mono.ttf') format('truetype');font-weight:100 900;font-display:swap}
+/* Primitives → purpose → component. Data scales have independent semantics. */
+:root{
+ --white:#ffffff;--gray-25:#fafbfb;--gray-50:#f5f7f7;--gray-100:#edf0ef;--gray-200:#dce3e0;--gray-400:#77877f;--gray-500:#5e6c66;--gray-700:#35463e;--gray-950:#192b23;
+ --green-50:#eaf4ee;--green-100:#d7ebdd;--green-600:#12634f;--green-700:#0a4c3c;--amber-50:#fff7e6;--amber-700:#78530a;--red-50:#fff0ed;--red-700:#9c352b;--blue-50:#edf2fa;--blue-700:#335e91;
+ --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-8:32px;--space-10:40px;--space-12:48px;
+ --bg:var(--gray-50);--surface:var(--white);--subtle:var(--gray-25);--soft:var(--gray-100);--text:var(--gray-950);--muted:var(--gray-500);--line:var(--gray-200);--control-line:var(--gray-400);
+ --accent:var(--green-600);--accent-hover:var(--green-700);--accent-soft:var(--green-50);--accent-ink:var(--green-700);--on-accent:var(--white);--warning-bg:var(--amber-50);--warning-ink:var(--amber-700);--danger-bg:var(--red-50);--danger:var(--red-700);--info-bg:var(--blue-50);--info-ink:var(--blue-700);--focus:var(--green-600);
+ --font:Roboto,Arial,sans-serif;--mono:'Roboto Mono',monospace;--radius:10px;--radius-sm:6px;--duration:140ms;
+ --sidebar-width:216px;--header-height:64px;--button-bg:var(--accent);--button-fg:var(--on-accent);--panel-bg:var(--surface);--panel-border:var(--line);--field-bg:var(--surface);--field-border:var(--control-line);
+ --wt:var(--gray-100);--wt-ink:var(--gray-500);--preview-bg:#f3eee1;--preview-ink:#665225;--shadow:0 12px 40px #192b2314;
+}
+html[data-theme='dark']{
+ color-scheme:dark;--bg:#151d19;--surface:#1b2720;--subtle:#202f26;--soft:#293a2f;--text:#edf4ee;--muted:#b0c2b5;--line:#3b4f41;--control-line:#83958a;--accent:#a5dfbc;--accent-hover:#c3ecd2;--on-accent:#173b29;--accent-soft:#284433;--accent-ink:#c3ecd2;--warning-bg:#382d16;--warning-ink:#f3d79c;--danger-bg:#3f2522;--danger:#ffb4aa;--info-bg:#233243;--info-ink:#b7d3f4;--focus:#b5e4c7;--wt:#293a2f;--wt-ink:#b0c2b5;--preview-bg:#322e22;--preview-ink:#e4d6af;
+}

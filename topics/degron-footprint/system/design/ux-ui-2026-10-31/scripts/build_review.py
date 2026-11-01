@@ -25,6 +25,8 @@ def main():
         html=html.replace(f'url(assets/{name}.ttf)',f'url(data:font/ttf;base64,{data})')
     notices='\n\n'.join((ROOT/'assets'/n).read_text() for n in ['lucide-license.txt','roboto-license.txt','roboto-mono-license.txt'])
     html=html.replace('</html>','<!-- Third-party licence notices\n'+notices.replace('--','- -')+'\n--></html>')
+    # This archived review must not be confused with the approved replacement.
+    html = html.replace('<header class="review-bar">', '<div role="note" style="background:#fff0d2;color:#543b00;padding:12px 20px;font:14px/1.5 Arial,sans-serif;border-bottom:1px solid #9e7a23">BẢN CŨ — Không dùng để duyệt UI hiện tại. <a style="color:#174f40;font-weight:bold" href="../workspace-ui-v2/index.html">Mở Workspace UI v2 (hướng B đã chọn ngày 01/11/2026)</a>.</div>' + '<header class="review-bar">', 1)
     (ROOT / 'review.html').write_text(html)
     print('Built', ROOT / 'review.html')
 

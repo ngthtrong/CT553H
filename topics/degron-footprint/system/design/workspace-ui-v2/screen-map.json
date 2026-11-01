@@ -1,0 +1,116 @@
+{
+  "scope": "prototype routes, not backend acceptance",
+  "screens": [
+    {
+      "view": "Projects",
+      "route": "/projects",
+      "use_cases": [
+        "UC-10"
+      ]
+    },
+    {
+      "view": "Project workspace / history",
+      "route": "/projects/:id",
+      "use_cases": [
+        "UC-10"
+      ]
+    },
+    {
+      "view": "Single / batch / protein input",
+      "route": "/new",
+      "use_cases": [
+        "UC-01",
+        "UC-08"
+      ]
+    },
+    {
+      "view": "Protein tile picker",
+      "route": "/protein/A6NMZ7",
+      "use_cases": [
+        "UC-04"
+      ]
+    },
+    {
+      "view": "Matrix / ranking / shortlist",
+      "route": "/result",
+      "use_cases": [
+        "UC-01",
+        "UC-02"
+      ]
+    },
+    {
+      "view": "Saved snapshot / rerun / export",
+      "route": "/analyses/:id",
+      "use_cases": [
+        "UC-03",
+        "UC-10"
+      ]
+    },
+    {
+      "view": "Comparison",
+      "route": "result tab: comparison",
+      "use_cases": [
+        "UC-05"
+      ]
+    },
+    {
+      "view": "ClinVar status",
+      "route": "result tab: annotations",
+      "use_cases": [
+        "UC-06"
+      ]
+    },
+    {
+      "view": "Job progress / cancellation / manifest",
+      "route": "/jobs/:id",
+      "use_cases": [
+        "UC-08",
+        "UC-03"
+      ]
+    },
+    {
+      "view": "Import / validation / commit",
+      "route": "/import",
+      "use_cases": [
+        "UC-09"
+      ]
+    },
+    {
+      "view": "Dataset / deletion",
+      "route": "/datasets/:id",
+      "use_cases": [
+        "UC-09",
+        "UC-10"
+      ]
+    },
+    {
+      "view": "Model & evidence",
+      "route": "/model",
+      "use_cases": [
+        "UC-07"
+      ]
+    },
+    {
+      "view": "Data & sources",
+      "route": "/sources",
+      "use_cases": [
+        "UC-07"
+      ]
+    }
+  ],
+  "result_states": [
+    "unknown",
+    "borderline",
+    "unreliable",
+    "refused",
+    "override",
+    "loading",
+    "unavailable"
+  ],
+  "annotation_states": [
+    "source_unavailable",
+    "mapping_unavailable",
+    "no_match",
+    "mapping_conflict"
+  ]
+}

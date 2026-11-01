@@ -1,0 +1,68 @@
+[
+  {
+    "file": "references/mavedb-heatmap.png",
+    "url": "https://raw.githubusercontent.com/VariantEffect/mavedb-ui/main/docs/content/images/msh2_heatmap.png",
+    "source_page": "https://github.com/VariantEffect/mavedb-ui/blob/main/docs/content/finding-data/visualizations.md",
+    "retrieved_on": "2026-11-01",
+    "kind": "publisher-provided product image; not a live-session screenshot",
+    "use": "local design research reference only; not a new UI asset",
+    "status": 200,
+    "bytes": 169763,
+    "sha256": "8b468310552e7cc0d3771366b5d7a7efb35529c40042eee43fa23c2ee4544500"
+  },
+  {
+    "file": "references/alphafold-annotations.png",
+    "url": "https://www.ebi.ac.uk/training/online/courses/navigating-alphafold-database/wp-content/uploads/sites/303/2025/10/Screenshot-2025-10-03-at-11.36.16-1024x990.png",
+    "source_page": "https://www.ebi.ac.uk/training/online/courses/navigating-alphafold-database/understanding-the-structure-prediction-page/annotations-tab/",
+    "retrieved_on": "2026-11-01",
+    "kind": "publisher-provided product image; not a live-session screenshot",
+    "use": "local design research reference only; not a new UI asset",
+    "status": 200,
+    "bytes": 117932,
+    "sha256": "c8be878ffd8d295f380629496cc92fbed337f03d9c778534fafc41bfa930c4a6"
+  },
+  {
+    "file": "references/uniprot-feature-viewer.jpg",
+    "url": "https://www.ebi.ac.uk/training/online/courses/uniprot-exploring-protein-sequence-and-functional-info/wp-content/uploads/sites/100/2025/02/fig35_feature_viewer-1024x644.jpg",
+    "source_page": "https://www.ebi.ac.uk/training/online/courses/uniprot-exploring-protein-sequence-and-functional-info/exploring-a-uniprotkb-entry/exploring-the-protein-feature-viewer/",
+    "retrieved_on": "2026-11-01",
+    "kind": "publisher-provided product image; not a live-session screenshot",
+    "use": "local design research reference only; not a new UI asset",
+    "status": 200,
+    "bytes": 89236,
+    "sha256": "33784eedd4262c4603dfdb8be2531de45ae117d1b266d4e0bcf2fed31c5ee0ef"
+  },
+  {
+    "file": "references/benchling-notebook.png",
+    "url": "https://images.ctfassets.net/kzeezny59h5p/6kkGeiq3KSTowDdU7GBl1B/3f2af3eb16361210edd7d874615085fa/ELN_01.png",
+    "source_page": "https://www.benchling.com/notebook",
+    "retrieved_on": "2026-11-01",
+    "kind": "publisher-provided product image; not a live-session screenshot",
+    "use": "local design research reference only; not a new UI asset",
+    "status": 200,
+    "bytes": 495723,
+    "sha256": "11179f2920d15222e55ce5cc5a2775482355c1b2f49c3dbe0ad8e19bdcebd0d8"
+  },
+  {
+    "file": "references/benchling-registry.png",
+    "url": "https://images.ctfassets.net/kzeezny59h5p/7EKu8boXtPmCTkgyamoxE3/265478a765b833dbc2ae34aba29745ab/Registry.png",
+    "source_page": "https://www.benchling.com/registry",
+    "retrieved_on": "2026-11-01",
+    "kind": "publisher-provided molecular illustration; excluded from interface comparisons",
+    "use": "local design research reference only; not a new UI asset",
+    "status": 200,
+    "bytes": 874563,
+    "sha256": "b774e0ddade380369d6d5285280aa70d54d50d4085b6f26a870d4e6df842703f"
+  },
+  {
+    "file": "references/benchling-registry-interface.png",
+    "url": "https://images.ctfassets.net/kzeezny59h5p/6t3fZ15lLRg0RQwB0xRcnt/f425ffcefe758d9f8770727c4c77c545/Registry_03.png",
+    "source_page": "https://www.benchling.com/registry",
+    "retrieved_on": "2026-11-01",
+    "kind": "publisher-provided product image; not a live-session screenshot",
+    "status": 200,
+    "bytes": 806937,
+    "sha256": "5251f925b380ed398512984ffb887e3db2ef9c7126c04ce1f184ce4507f9a3d4",
+    "use": "local design research reference only"
+  }
+]

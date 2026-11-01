@@ -1,5 +1,7 @@
 # Phân tích UX/UI và thiết kế Figma — 31/10/2026
 
+> **Bản cũ — không dùng để duyệt UI hiện tại.** Người dùng đã yêu cầu thiết kế lại và chọn hướng B ngày 01/11/2026. Mở [Workspace UI v2](../workspace-ui-v2/index.html). Gói và bản ghi Figma bên dưới chỉ giữ làm lịch sử; không tiếp tục import bản này.
+
 **Trạng thái:** thiết kế đề xuất dựa trên phạm vi BA v0.2 ngày 29/10/2026. Đây là bộ thiết kế và prototype để review; không phải chức năng đã triển khai, kết quả nghiên cứu mới hay nghiệm thu G2/G3.
 
 **Bản review đầy đủ:** [review.html](review.html) — mở trực tiếp bằng trình duyệt; đã nhúng font, icon và artwork, không cần mạng. Có 47 khung: 19 desktop, 23 trạng thái/hộp thoại, 3 mobile, 2 bảng định hướng. Menu và hotspot chuyển giữa các ví dụ cố định; không thực thi nghiệp vụ thật.
