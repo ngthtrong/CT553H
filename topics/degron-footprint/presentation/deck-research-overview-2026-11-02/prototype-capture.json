@@ -4,6 +4,12 @@
   "status": "design prototype; synthetic fixtures; no backend",
   "viewport": {
     "width": 1600,
-    "height": 1000
+    "height": 1200
+  },
+  "clip": {
+    "x": 261,
+    "y": 408.75,
+    "width": 1310,
+    "height": 500
   }
 }

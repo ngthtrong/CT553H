@@ -55,12 +55,13 @@ plt.rcParams.update({'font.family':['Be Vietnam Pro','DejaVu Sans'],'font.size':
     'axes.spines.right':False,'axes.spines.left':False,'axes.edgecolor':'#D6DFD3',
     'text.color':'#193A2B','axes.labelcolor':'#617267','xtick.color':'#617267',
     'ytick.color':'#193A2B','savefig.transparent':True,'svg.fonttype':'path',
-    'axes.titleweight':'semibold','axes.grid':False})
+    'axes.titleweight':'semibold','axes.grid':False,'svg.hashsalt':'degron-research-overview-2026-11-02'})
 GREEN='#18974C'; DARK='#0A5032'; CORAL='#C76242'; BLUE='#477CA7'; MUTED='#A9B7A8'
 files=[]
 
 def save(fig, name):
-    p=ASSETS/(name+'.svg');fig.savefig(p, bbox_inches='tight', pad_inches=.16);plt.close(fig)
+    p=ASSETS/(name+'.svg');fig.savefig(p, bbox_inches='tight', pad_inches=.16, metadata={'Date':None});plt.close(fig)
+    p.write_text('\n'.join(line.rstrip() for line in p.read_text(encoding='utf8').splitlines())+'\n',encoding='utf8')
     files.append(p.name)
 
 def bars(name, labels, values, xlabel, colors=None, max_x=None, fmt='.3f'):
@@ -195,6 +196,8 @@ human_names={
 explorer=[dict(name=human_names[k],mae=metric(k),auroc=metric(k,'auroc_plus'),ap=metric(k,'auprc_plus')) for k in human_names]
 (HERE/'data.js').write_text('window.DECK_DATA='+json.dumps(dict(explorer=explorer,hif=hif),ensure_ascii=False)+';\n',encoding='utf8')
 evidence=dict(source_hashes=source_hashes,assets=downloads,figures=files,
+    figure_sha256={name:digest(ASSETS/name) for name in files},
+    prototype_sha256=digest(ASSETS/'workspace-prototype.png') if (ASSETS/'workspace-prototype.png').exists() else None,
     dataset_identity=analysis['data_identity'],source_manifest_sha256=analysis['source_manifest_sha256'],
     scientific_status='development; no automatic model promotion or gate closure',
     main_population=dict(peptides=235,protein_groups=221,cells=122412),

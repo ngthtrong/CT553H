@@ -3,7 +3,9 @@ const fs=require('fs'),path=require('path'),{pathToFileURL}=require('url');
 (async()=>{
  const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
  const page=await browser.newPage({viewport:{width:1440,height:900},deviceScaleFactor:1});
- const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.context().setOffline(true);
+ const errors=[],networkRequests=[];page.on('pageerror',e=>errors.push(e.message));
+ page.on('request',r=>{if(/^https?:/.test(r.url()))networkRequests.push(r.url())});
  const out=path.join(__dirname,'previews');fs.mkdirSync(out,{recursive:true});
  await page.goto(pathToFileURL(path.join(__dirname,'index.html')).href);await page.evaluate(()=>document.fonts.ready);
  const results=[];
@@ -44,10 +46,12 @@ const fs=require('fs'),path=require('path'),{pathToFileURL}=require('url');
  }
  const links=await page.evaluate(()=>[...document.querySelectorAll('a[href]')].map(e=>e.getAttribute('href')).filter(u=>!/^https?:|^#/.test(u)));
  const brokenLinks=[...new Set(links)].filter(u=>!fs.existsSync(path.resolve(__dirname,u)));
- const report={slides:results,scriptErrors:errors,motion:{running:motionBefore,afterPause:motionAfter,reducedMotion},overviewCount,hasNotes,keyboardIndex,chartWorks,screens,brokenLinks};
+ await page.emulateMedia({media:'print'});
+ const printSlideCount=await page.evaluate(()=>[...document.querySelectorAll('.slide')].filter(s=>getComputedStyle(s).display==='flex').length);
+ const report={slides:results,scriptErrors:errors,offline:true,networkRequests,printSlideCount,motion:{running:motionBefore,afterPause:motionAfter,reducedMotion},overviewCount,hasNotes,keyboardIndex,chartWorks,screens,brokenLinks};
  const bad=results.filter(r=>r.overflow.length||r.brokenImages.length||r.forbiddenLabels.length);
- report.pass=!bad.length&&!errors.length&&!brokenLinks.length&&overviewCount===50&&hasNotes&&keyboardIndex===1&&chartWorks&&motionAfter===0&&reducedMotion&&!screens.some(s=>s.documentOverflow);
+ report.pass=!bad.length&&!errors.length&&!brokenLinks.length&&overviewCount===50&&printSlideCount===50&&!networkRequests.length&&hasNotes&&keyboardIndex===1&&chartWorks&&motionAfter===0&&reducedMotion&&!screens.some(s=>s.documentOverflow);
  fs.writeFileSync(path.join(__dirname,'validation.json'),JSON.stringify(report,null,2));await browser.close();
- console.log(JSON.stringify({pass:report.pass,problemSlides:bad,scriptErrors:errors,brokenLinks,motion:report.motion,overviewCount,chartWorks},null,2));
+ console.log(JSON.stringify({pass:report.pass,problemSlides:bad,scriptErrors:errors,brokenLinks,motion:report.motion,overviewCount,chartWorks,offline:true,networkRequests,printSlideCount},null,2));
  if(!report.pass)process.exitCode=1;
 })().catch(e=>{console.error(e);process.exit(1)});

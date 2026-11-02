@@ -1,0 +1,489 @@
+{
+  "slides": [
+    {
+      "title": "Degron mutation effects at residue level",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 43,
+      "forbiddenLabels": [],
+      "slide": 1
+    },
+    {
+      "title": "Degrons participate in protein degradation",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 24,
+      "forbiddenLabels": [],
+      "slide": 2
+    },
+    {
+      "title": "One substitution corresponds to one cell in the effect map",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 63,
+      "forbiddenLabels": [],
+      "slide": 3
+    },
+    {
+      "title": "GPS converts reporter measurements into ΔPSI labels",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 39,
+      "forbiddenLabels": [],
+      "slide": 4
+    },
+    {
+      "title": "HIF1A illustrates position-specific mutation effects",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 34,
+      "forbiddenLabels": [],
+      "slide": 5
+    },
+    {
+      "title": "The practical goal is to prioritize mutations for experiments",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 28,
+      "forbiddenLabels": [],
+      "slide": 6
+    },
+    {
+      "title": "Related approaches address different questions",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 62,
+      "forbiddenLabels": [],
+      "slide": 7
+    },
+    {
+      "title": "Three objectives connect research to an analysis tool",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 37,
+      "forbiddenLabels": [],
+      "slide": 8
+    },
+    {
+      "title": "Questions guiding the current research",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 46,
+      "forbiddenLabels": [],
+      "slide": 9
+    },
+    {
+      "title": "Each data source serves a defined role",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 31,
+      "forbiddenLabels": [],
+      "slide": 10
+    },
+    {
+      "title": "The two mutation designs provide complementary coverage",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 35,
+      "forbiddenLabels": [],
+      "slide": 11
+    },
+    {
+      "title": "Each assay needs the correct WT reference",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 40,
+      "forbiddenLabels": [],
+      "slide": 12
+    },
+    {
+      "title": "Label reproducibility constrains how results should be interpreted",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 46,
+      "forbiddenLabels": [],
+      "slide": 13
+    },
+    {
+      "title": "Split by protein group to assess generalization",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 38,
+      "forbiddenLabels": [],
+      "slide": 14
+    },
+    {
+      "title": "Prediction error, ranking and experimental budget are distinct goals",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 32,
+      "forbiddenLabels": [],
+      "slide": 15
+    },
+    {
+      "title": "Local context adds information beyond the substitution itself",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 39,
+      "forbiddenLabels": [],
+      "slide": 16
+    },
+    {
+      "title": "Training across the PSI range reduces Ridge regression error",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 47,
+      "forbiddenLabels": [],
+      "slide": 17
+    },
+    {
+      "title": "Full-range training benefits high-PSI peptides most",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 37,
+      "forbiddenLabels": [],
+      "slide": 18
+    },
+    {
+      "title": "ESM adds signal to the context baseline",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 38,
+      "forbiddenLabels": [],
+      "slide": 19
+    },
+    {
+      "title": "A CNN adds value after the ESM representation",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 37,
+      "forbiddenLabels": [],
+      "slide": 20
+    },
+    {
+      "title": "Multiple windows have not shown a clear advantage over one",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 33,
+      "forbiddenLabels": [],
+      "slide": 21
+    },
+    {
+      "title": "Learning tile scores well does not guarantee mutation-effect transfer",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 58,
+      "forbiddenLabels": [],
+      "slide": 22
+    },
+    {
+      "title": "Scanning pretraining helps beyond the observed substitution types",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 43,
+      "forbiddenLabels": [],
+      "slide": 23
+    },
+    {
+      "title": "Degformer comparisons require overlap and training-data audits",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 41,
+      "forbiddenLabels": [],
+      "slide": 24
+    },
+    {
+      "title": "Ranking focuses the experimental budget on promising substitutions",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 36,
+      "forbiddenLabels": [],
+      "slide": 25
+    },
+    {
+      "title": "Model selection also depends on stability and cost",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 51,
+      "forbiddenLabels": [],
+      "slide": 26
+    },
+    {
+      "title": "Calibration maps regression scores to event probabilities",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 30,
+      "forbiddenLabels": [],
+      "slide": 27
+    },
+    {
+      "title": "Assess the applicability domain alongside predictions",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 31,
+      "forbiddenLabels": [],
+      "slide": 28
+    },
+    {
+      "title": "The tool combines the effect map and shortlist in one workflow",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 36,
+      "forbiddenLabels": [],
+      "slide": 29
+    },
+    {
+      "title": "A local application keeps results with their provenance",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 46,
+      "forbiddenLabels": [],
+      "slide": 30
+    },
+    {
+      "title": "The software baseline provides a foundation for extension",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 70,
+      "forbiddenLabels": [],
+      "slide": 31
+    },
+    {
+      "title": "Completed work provides a foundation for the next research steps",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 48,
+      "forbiddenLabels": [],
+      "slide": 32
+    },
+    {
+      "title": "Next priorities: lock the model choice and evaluate transfer",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 46,
+      "forbiddenLabels": [],
+      "slide": 33
+    },
+    {
+      "title": "Discussion: research direction and next steps",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 33,
+      "forbiddenLabels": [],
+      "slide": 34
+    },
+    {
+      "title": "Terminology and how to read the metrics",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 32,
+      "forbiddenLabels": [],
+      "slide": 35
+    },
+    {
+      "title": "Label construction and quality-control details",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 41,
+      "forbiddenLabels": [],
+      "slide": 36
+    },
+    {
+      "title": "Reliability depends on the level of analysis",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 48,
+      "forbiddenLabels": [],
+      "slide": 37
+    },
+    {
+      "title": "Composition models cannot distinguish every position",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 45,
+      "forbiddenLabels": [],
+      "slide": 38
+    },
+    {
+      "title": "Learning curves must distinguish individual models from ensembles",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 39,
+      "forbiddenLabels": [],
+      "slide": 39
+    },
+    {
+      "title": "The tested interaction designs did not consistently beat the baseline",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 62,
+      "forbiddenLabels": [],
+      "slide": 40
+    },
+    {
+      "title": "Removing duplicate cells does not remove peptide-level overlap",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 38,
+      "forbiddenLabels": [],
+      "slide": 41
+    },
+    {
+      "title": "ESM scale comparisons belong to a separate evaluation design",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 57,
+      "forbiddenLabels": [],
+      "slide": 42
+    },
+    {
+      "title": "Inspect several metrics for the same candidates",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 25,
+      "forbiddenLabels": [],
+      "slide": 43
+    },
+    {
+      "title": "Scanning transfer: assess observed and remaining substitution types",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 26,
+      "forbiddenLabels": [],
+      "slide": 44
+    },
+    {
+      "title": "ClinVar supports region-level motivation, not residue-level validation",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 48,
+      "forbiddenLabels": [],
+      "slide": 45
+    },
+    {
+      "title": "E3 labels are too sparse for an E3-conditioned task",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 49,
+      "forbiddenLabels": [],
+      "slide": 46
+    },
+    {
+      "title": "External sources need endpoint and usability audits",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 57,
+      "forbiddenLabels": [],
+      "slide": 47
+    },
+    {
+      "title": "Calibration and domain assessment answer different questions",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 39,
+      "forbiddenLabels": [],
+      "slide": 48
+    },
+    {
+      "title": "Reproducibility connects data, models and served results",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 46,
+      "forbiddenLabels": [],
+      "slide": 49
+    },
+    {
+      "title": "References and evidence are organized by topic",
+      "overflow": [],
+      "brokenImages": [],
+      "words": 85,
+      "forbiddenLabels": [],
+      "slide": 50
+    }
+  ],
+  "scriptErrors": [],
+  "offline": true,
+  "networkRequests": [],
+  "printSlideCount": 50,
+  "motion": {
+    "running": 12,
+    "afterPause": 0,
+    "reducedMotion": true
+  },
+  "overviewCount": 50,
+  "hasNotes": true,
+  "keyboardIndex": 1,
+  "chartWorks": true,
+  "screens": [
+    {
+      "size": {
+        "width": 1280,
+        "height": 720
+      },
+      "documentOverflow": false,
+      "deckRect": {
+        "x": 49.77777099609375,
+        "y": 0,
+        "width": 1180.4443359375,
+        "height": 664,
+        "top": 0,
+        "right": 1230.2221069335938,
+        "bottom": 664,
+        "left": 49.77777099609375
+      }
+    },
+    {
+      "size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "documentOverflow": false,
+      "deckRect": {
+        "x": 49.77777099609375,
+        "y": 0,
+        "width": 1820.4443359375,
+        "height": 1024,
+        "top": 0,
+        "right": 1870.2221069335938,
+        "bottom": 1024,
+        "left": 49.77777099609375
+      }
+    },
+    {
+      "size": {
+        "width": 390,
+        "height": 844
+      },
+      "documentOverflow": false,
+      "deckRect": {
+        "x": 0,
+        "y": 284.3125,
+        "width": 390,
+        "height": 219.375,
+        "top": 284.3125,
+        "right": 390,
+        "bottom": 503.6875,
+        "left": 0
+      }
+    },
+    {
+      "size": {
+        "width": 844,
+        "height": 390
+      },
+      "documentOverflow": false,
+      "deckRect": {
+        "x": 125.11111450195312,
+        "y": 0,
+        "width": 593.77783203125,
+        "height": 334,
+        "top": 0,
+        "right": 718.8889465332031,
+        "bottom": 334,
+        "left": 125.11111450195312
+      }
+    }
+  ],
+  "brokenLinks": [],
+  "pass": true
+}

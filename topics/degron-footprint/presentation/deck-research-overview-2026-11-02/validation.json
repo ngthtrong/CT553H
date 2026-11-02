@@ -12,7 +12,7 @@
       "title": "Degron tham gia quá trình phân hủy protein",
       "overflow": [],
       "brokenImages": [],
-      "words": 41,
+      "words": 36,
       "forbiddenLabels": [],
       "slide": 2
     },
@@ -76,7 +76,7 @@
       "title": "Nguồn dữ liệu được dùng đúng vai trò",
       "overflow": [],
       "brokenImages": [],
-      "words": 44,
+      "words": 40,
       "forbiddenLabels": [],
       "slide": 10
     },
@@ -100,7 +100,7 @@
       "title": "Độ lặp lại của nhãn đặt giới hạn cho cách đọc kết quả",
       "overflow": [],
       "brokenImages": [],
-      "words": 74,
+      "words": 70,
       "forbiddenLabels": [],
       "slide": 13
     },
@@ -402,6 +402,9 @@
     }
   ],
   "scriptErrors": [],
+  "offline": true,
+  "networkRequests": [],
+  "printSlideCount": 50,
   "motion": {
     "running": 12,
     "afterPause": 0,

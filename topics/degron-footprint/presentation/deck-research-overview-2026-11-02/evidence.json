@@ -78,6 +78,28 @@
     "learning-curve.svg",
     "tradeoff.svg"
   ],
+  "figure_sha256": {
+    "context.svg": "e5f786bc43e47a32831fc3f94e4333206787f6c3fe731029a17f4dec6236c438",
+    "training-range.svg": "2a2fe8acf0a866754a37a9acbd1ad3843cec72243576a69da51ca8fbc115a826",
+    "training-ci.svg": "9c948b39d644fe7b7bec0af4300bce8b8dff44a6faaaea63bbcfcc6674279007",
+    "strata.svg": "155854ebe67db220b2d73ffe1ed9bc45b87f01e359d5df687d91380c98e8420a",
+    "esm-linear.svg": "afcc6c21335cd3c03e6369d75a5ff3de6a5758988508fedca5d5e46ce6c4248a",
+    "heads.svg": "81a0490ce01d1794644f805dfb175de441fd1b23b53724da7e87f989c6de3732",
+    "cnn-ci.svg": "210cee95580a393d8c9baa7feaa97005eda445d73fe3660e46600a89b663b0bf",
+    "mcnn-ci.svg": "b86ff6f00dbf9ff8c7f79fcedf067c4d6bb5ed3e498857ddc12d1078f6f71ba1",
+    "transfer.svg": "80f92bb65a7866badd8c50c20d7a5e12408a0040cdb98c8036ec364a4a24f8df",
+    "transfer-pairs.svg": "f9a5fd486bac05ba17b1e89a79f881f0d16bcb834aec5ec9656392b2f20f1d12",
+    "degformer.svg": "62a08dc72f59319012eb1d1cb19029c74bd78af57771827d7543760e50f15434",
+    "utility.svg": "154a8c8a6367fd02668863d3ea6c11325ec94b7751073900fc8d0f46f8b06ebc",
+    "folds.svg": "82cb9ee2e0499cca891fe5bdc24ef7e90655b97c9abc31ed0379ef2785226bc2",
+    "calibration.svg": "3ab91e4efa68c46d92bdd75a308696b504b5ceec6e1d832628ecf15a180bde14",
+    "hif-measured.svg": "acd2cf77d0a72449ef3815058fb46c43a82fe4f508063e7aa424e6b84f203c6c",
+    "seed-ensemble.svg": "01c86bbca56f419cfe26f744038b7cc95ade52a7ff00033fc2228940a5d6824c",
+    "brier.svg": "478ac7de3b7e961f33ce83001ca2a9e1f3dd8e2e744a46e5d502a40b161f34e5",
+    "learning-curve.svg": "d23ff89f951a57ae75d8fddd4f510a942ecc79eb2a2a14a173b8efc0178fab7d",
+    "tradeoff.svg": "0546be88ec3286b573869b328796eaca9bbf810e2f1207aee08b6e218b2e6328"
+  },
+  "prototype_sha256": "4953015b9b55df6c0a130616140392e842c864ddcaae0b49b2385612604d237e",
   "dataset_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738",
   "source_manifest_sha256": "0948005d569a5285805399c3ece38238a23b7f1b989a889efcef93fc93f074d0",
   "scientific_status": "development; no automatic model promotion or gate closure",
@@ -161,5 +183,5 @@
     "ci": "Q1 two contrasts: adjusted 97.5%; other added comparisons descriptive 95% protein-group bootstrap",
     "plotting": "standalone SVG figures generated with Matplotlib; no external test predictions computed"
   },
-  "generation_script_sha256": "f32f581d0b564b80684ce4f1fb5e13183236eb282d4f6b1ec387186444034305"
+  "generation_script_sha256": "c7ca678d1544ec4ac7d488e9d69ae8968b32f759456145fd22715f19decdf370"
 }

@@ -98,103 +98,103 @@ Nguồn: residue-task-derisk-2026-10-15/model.json
 
 ## 17. Học toàn dải PSI giảm sai số hồi quy của Ridge
 
-Cùng235peptide test,221nhóm. Hai contrast Q1 dùng CI97.5% Bonferroni. Arm hẹp vẫn dùng validation toàn dải. Không đưa PSI(WT) vào feature hoặc dùng nó clip dự đoán.
+So sánh trên cùng 235 peptide và 221 nhóm protein. Học toàn dải giảm MAE 5,94% so với chỉ học PSI ≤ 4. Hai phép so chính dùng khoảng tin cậy 97,5% đã điều chỉnh; cận gần 0 chưa bảo đảm mức giảm tối thiểu 0,02 PSI. Nhánh train hẹp vẫn dùng validation toàn dải. PSI(WT) chỉ là metadata, không phải feature.
 
 Nguồn: kaggle-roadmap-2026-10-31/output-analysis.json
 
 ## 18. Lợi ích toàn dải tập trung ở miền PSI cao
 
-Các strata có91/85/36/23peptide. Ridge full ở miền≤3 không thấy giảm quáguardrail. Cân bằng có cận CI AUROC hơi vượt−.01. >5 không có eventdươngΔ≥1 nên AUROC dươngnull đúng. Khi soCNN toàn dải/chỉ≤4, miền≤3 MAE tăng.00870 CI[.00329,.01411], không suy guardrailRidge sangCNN.
+Bốn miền test có 91, 85, 36 và 23 peptide. Cân bằng dữ liệu giúp miền PSI cao nhưng có đánh đổi ở miền thấp. Miền PSI > 5 không có hiệu ứng dương ΔPSI ≥ 1, vì vậy AUROC dương không xác định. Guardrail của Ridge không tự chuyển sang CNN: so với CNN chỉ học PSI ≤ 4, CNN toàn dải tăng MAE miền PSI ≤ 3 khoảng 0,00870; khoảng tin cậy AUROC cũng chưa bảo đảm mức giảm dưới 0,01.
 
 Nguồn: kaggle-roadmap-2026-10-31/output-analysis.json, kaggle-roadmap-2026-10-31/output-analysis-details.json
 
 ## 19. ESM bổ sung tín hiệu cho baseline ngữ cảnh
 
-W5+ESM−W5 AUROC+.012548 CI95[.006216,.019670]. Nested selection MAE.397525 vsW5.407803, AUROC improvementCIphủ0. Không lấy fixedrecipe tốt nhất thay cho nested procedure. Bảng nhiều cỡ ESM trên thiết kế khác để phụ lục.
+Thêm ESM vào Ridge ngữ cảnh tăng AUROC dương khoảng 0,01255, với khoảng tin cậy 95% mô tả từ 0,00622 đến 0,01967. Quy trình chọn recipe bằng validation đạt MAE 0,397525; cải thiện AUROC của quy trình này còn chưa phân giải. Không lấy điểm của một fixed recipe thay cho kết quả nested selection. Benchmark toàn dải hiện chỉ có ESM2-35M.
 
 Nguồn: kaggle-roadmap-2026-10-31/output-analysis.json
 
 ## 20. CNN cải thiện thêm sau representation ESM
 
-ESMCNN−pointwise MAE CI95[−.010173,−.000899], AUROC+.011289CI[.003434,.019133]. Head parameter36833vs57185 nên chưa cô lập sức chứa. CI khácQ1 là mô tả, chưa điều chỉnh toàn khảo sát.
+Cùng representation và train toàn dải, CNN giảm MAE 0,00534 so với pointwise; khoảng tin cậy 95% mô tả từ −0,01017 đến −0,00090. AUROC dương tăng khoảng 0,01129. Pointwise và CNN có 36.833 và 57.185 tham số head, nên phép so chưa cô lập hoàn toàn tác động trộn vị trí khỏi sức chứa.
 
 Nguồn: kaggle-roadmap-2026-10-31/output-analysis.json
 
 ## 21. Nhiều cửa sổ chưa chứng minh vượt một cửa sổ
 
-mCNNE MAE.383846vsCNND.384354, chênh−.000508CI95[−.003157,+.002223]. CùngD mCNN−CNN +.000639CIphủ0. B/D/E là lựa chọn phân bốtrain nội bộ, màn chiếu dùng tên đầy đủ. CNN chỉPSI≤4 đánggiữ nếuưu tiênmiềnthấp; toàn dải so nó chưađảm bảoguardrail.
+Nhiều cửa sổ trên train cân bằng có MAE 0,383846, so với 0,384354 của CNN toàn dải. Chênh lệch −0,000508 có khoảng tin cậy 95% mô tả từ −0,003157 đến +0,002223. Đây còn là hai phân bố train khác nhau. Khi giữ cùng train toàn dải, nhiều cửa sổ cũng chưa chứng minh vượt CNN. CNN chỉ học PSI ≤ 4 vẫn đáng giữ nếu ưu tiên miền PSI thấp.
 
 Nguồn: kaggle-roadmap-2026-10-31/output-analysis.json, kaggle-roadmap-2026-10-31/output-analysis-details.json
 
 ## 22. Học tốt nhãn tile chưa bảo đảm chuyển sang mutation effect
 
-Cùngthiếtkế ext4 trên91peptide. Nguồn212616tile; encoderpretrainPearson.864 nhưng downstreampre−rand−.0077CI[−.0163,+.0006]. Nhánhpre−ridge−.011CIâm. Không so thẳng với số v3 hoặc quy thành pretraining pLM vô ích.
+Phép so dùng cùng encoder, cùng cách fine-tune và cùng miền đánh giá 91 peptide. Tiền huấn luyện trên 212.616 tile học tốt nhiệm vụ riêng (Pearson khoảng 0,864), nhưng sau fine-tune đạt AUROC 0,8098 so với 0,8175 của khởi tạo ngẫu nhiên. Chênh lệch có khoảng tin cậy còn chứa 0. Kết luận chỉ giới hạn thiết kế tiền huấn luyện nhãn tile đã thử, không áp cho mọi pLM hay mọi cách chuyển giao.
 
 Nguồn: pretrain-p3-2026-10-22/results.json
 
 ## 23. Scanning pretrain có lợi cả ngoài các kiểu thay đã thấy
 
-Transfer onehotCNN, không làESM+scanning. Cohort20 có6433ô;360 có115979ô,cùng235peptide221nhóm. Mean12−rep1CIphủ0. Quality−satonly +.004010. Scan_T không thamgiafit; kếtquả ởsaturationOOF khônglàtransferT.
+Đây là CNN đầu vào one-hot, không phải thí nghiệm kết hợp ESM với scanning. Nhóm 20 kiểu thay có 6.433 ô; 360 kiểu còn lại có 115.979 ô, cùng phủ 235 peptide và 221 nhóm. Cả hai khoảng tin cậy MAE đều ở phía cải thiện nhưng là phân tích hậu nghiệm mô tả. Mean của hai replicate chưa hơn rep1 rõ ràng; quality weighting làm MAE tăng khoảng 0,00401. Kết quả này là saturation OOF, chưa phải đánh giá trên tập T.
 
 Nguồn: kaggle-roadmap-2026-10-31/output-analysis.json, kaggle-roadmap-2026-10-31/output-analysis-details.json
 
 ## 24. Đối chiếu Degformer cần kiểm cả chồng mẫu và ngân sách nhãn
 
-Checkpoint.9248có88.12%ôtrùng. Retrainsạch.806775, Ridgeext.820822, delta−.014CI[−.0283,+.0010]=>khôngphânbiệtđược. Retrainkiếntrúcchỉ47knhãn.749978làthiếtkếriêng. Không coi chênhcheckpoint/retrain là causal leakage-only effect vì các điều kiện thay đổi.
+Checkpoint công bố có 42.163 trên 47.847 ô mutation và WT của cả 91 peptide trong train. Loại ô trùng chưa tạo một peptide holdout. Retrain sạch cụm đạt AUROC 0,806775 so với 0,820822 của Ridge mở rộng train. Khoảng tin cậy chênh lệch còn chứa 0. Không đọc chênh lệch checkpoint/retrain thành tác động nhân quả chỉ do leakage vì các điều kiện huấn luyện cũng thay đổi.
 
 Nguồn: r1-degformer-clean-2026-10-22/run-kaggle-20261022/results.json
 
 ## 25. Xếp hạng giúp tập trung ngân sách vào đột biến đáng thử
 
-Precision macro trong184peptideeligibleplus. Top10CNN49.04%vsRidge44.29%. AP+.50947,rate+.124697 trêncùngcohort. AP−.213667,rate−.027336trên110peptide;precisiontop5−16.77%. Không dùngtopkzero-scorephụthuộctiebreaklàmrandom.
+Precision dương được tính macro trong 184 peptide đủ điều kiện. Top 5% đạt 58,24% với CNN và 51,89% với Ridge; top 10% tương ứng 49,04% và 44,29%. AP dương 0,50947 đi cùng tần suất dương macro 0,124697. Phía âm có AP 0,213667 trên 110 peptide, precision top 5% khoảng 16,77%. Đây là ranking utility, không là accuracy toàn tập hoặc xác suất đã calibration.
 
 Nguồn: kaggle-roadmap-2026-10-31/output-analysis.json
 
 ## 26. Độ ổn định và chi phí cùng tham gia lựa chọn mô hình
 
-Tổngtaskseconds9.3265h,77.52%stage11frozen; chưa gồmLoRAdở. Chỉseed17frozenB/D. 35taskcomplete,1runningtrongsnapshotkhôngchứngminhremotecònsống. Frozenstage11chạybackbonemỗibatch; cache làhướngtốiưucầnparity, không cóbenchmarktăngtốc. Nguồn chốt ởsnapshotKaggle, khônggộpjoblocalđangchuẩnbị.
+CNN có MAE tốt hơn Ridge ở 156 trên 235 peptide và ở cả năm fold. Tổng thời gian task hoàn tất là 9,3265 giờ; hai task frozen stage11 chiếm 7,23 giờ. Nhánh frozen mới có seed17 và đủ năm fold; LoRA chưa có OOF hoàn chỉnh. Một trạng thái running trong snapshot không xác nhận tiến trình từ xa còn sống. Không gộp kết quả runtime local đang chuẩn bị vào snapshot Kaggle này.
 
 Nguồn: kaggle-roadmap-2026-10-31/output-analysis.json, kaggle-roadmap-2026-10-31/output-analysis-details.json
 
 ## 27. Hiệu chuẩn nối điểm hồi quy với xác suất sự kiện
 
-RidgeM3ext4PlattBrier.0925vsconst.1139,BSS.188. ScoreΔPSIclippedkhôngtựlàprobability. Reliabilitythiênthấpdo fitpoolkhácmiềntest; khônggọicalibrationhoànhảo. Protocolv3crossfitcalibrationkhácchitiếtP6, khôngmangnguyêncalibratorsangCNN.
+Bằng chứng trên slide thuộc Ridge đã hiệu chuẩn, đánh giá OOF trên 91 peptide. Brier của Platt khoảng 0,0925 so với 0,1139 của tần suất nền. Điểm hồi quy ΔPSI không tự là xác suất. Reliability còn thiên thấp do khác phân bố giữa pool calibration và miền test; chưa gọi là hiệu chuẩn hoàn hảo. CNN cần calibrator và quy trình đánh giá riêng.
 
 Nguồn: calibration-p6-2026-10-22/results.json
 
 ## 28. Miền áp dụng cần được đánh giá cùng với dự đoán
 
-CổngR3khảosátchomiềntrainPSI≤4. PSIpeptidomescreenlệchWTintrinsic~.9,khôngdùngrawthreshold4trực tiếp. ÁpquaR3khoảng26%in9%border65%out. FullPSIkhôngtựchocổngđộcậymớivàkhôngchứngminhphục vụmọiprotein. Tíchhợpgateappcònmở.
+Cổng được khảo sát cho miền train PSI ≤ 4. PSI của peptidome screen lệch WT nội tại khoảng 0,9 nên không áp ngưỡng thô 4 trực tiếp. Phân loại trong miền, giáp ranh, ngoài miền nói về sự phù hợp dữ liệu, không bảo đảm độ chính xác ΔPSI. Full-PSI cũng không tự chứng minh áp dụng được cho mọi protein. Tích hợp cổng này vào ứng dụng nền còn cần hoàn thiện.
 
 Nguồn: r3-domain-gate-2026-10-22/run-kaggle-20261022/results.json
 
 ## 29. Công cụ đưa ma trận và danh sách ưu tiên vào cùng một luồng
 
-Ảnhchụpprototypeworkspaceuiv2hiệnhành. Tấtcảscore/probabilitydemo làsyntheticfixture; khônglàmodeloutput. BaselineReact/FastAPIđãcómãriêng; prototypekhôngnghiệmthubatchprojectsimports. Chỉdùngảnhthiếtkếđểminhhọaluồng.
+Ảnh chụp prototype Workspace UI v2 hiện hành, lấy đúng vùng ma trận và inspector. Mọi score và xác suất trong prototype là fixture tổng hợp; không có model inference hoặc backend. Mã React/FastAPI nền là một phần riêng. Ảnh dùng để giới thiệu luồng sử dụng, không phải nghiệm thu chức năng mở rộng.
 
 Nguồn: ../system/design/workspace-ui-v2/README.md
 
 ## 30. Một ứng dụng local giữ kết quả cùng nguồn gốc
 
-StackđãchốtReactTypeScriptFastAPIlocal. SQLiteđãdùngchobaseline; PostgreSQLvàdurableworkspacelàphạmvicầntriểnkhaikiểm. KhôngcóyêucầupublishVPS. Sơđồkiếntrúcđịnhhướng, khônglàxácnhậnmọimoduleđãhoànthành.
+Stack đã chọn là React/TypeScript và FastAPI chạy local. SQLite đã dùng cho baseline; PostgreSQL và lưu workspace bền vững thuộc phạm vi cần triển khai, kiểm chứng. Không yêu cầu public hosting. Sơ đồ giới thiệu kiến trúc và provenance, không xác nhận mọi module đã hoàn tất.
 
 Nguồn: ../system/README.md
 
 ## 31. Phần mềm có nền tảng để tiếp tục mở rộng
 
-Baselinebackend149pytest/frontend131vitestlàbằngchứnglịchsửghiởsystemREADME,chưachạylạitrongphiêndựngslide. Scopev0.2đãthiếtkếchưatriểnkhaixong; R3gatechưaloadđúngtrongapp. Tránhtrìnhtấtcảplannedendpointlàđãcó.
+Các kiểm thử ghi trong tài liệu thuộc baseline và không được chạy lại trong phiên dựng slide. Project/history, durable batch jobs, whole-protein web flow và nhập dữ liệu đo vẫn cần triển khai theo phạm vi mở rộng. Domain gate mới chưa được tích hợp đúng trong baseline. Không coi endpoint đã thiết kế là chức năng đã nghiệm thu.
 
 Nguồn: ../system/README.md
 
 ## 32. Những gì đã thực hiện tạo nền tảng cho hướng nghiên cứu
 
-KhôngtựđóngG2/G3hoặctuyênbốhoàntấtluậnvăn. Đónggópđangxâydựnggồmbenchmark/phươngpháp/đánhgiá/phầnmềm,khôngbắtbuộckiếntrúcmới. Các kết quả âm có vai trò thu hẹp hướng nghiên cứu.
+Tổng hợp những sản phẩm và hiểu biết đã có, gắn với ba mục tiêu đầu deck. Đóng góp đang phát triển gồm dữ liệu/benchmark, phương pháp thực nghiệm, đánh giá và phần mềm. Không cần khẳng định kiến trúc mới để trình bày giá trị của nghiên cứu. Đây vẫn là buổi trao đổi tiến độ, chưa kết luận hoàn tất đề tài.
 
 Nguồn: kaggle-roadmap-2026-10-31/output-analysis.json, model-selection-pipeline-2026-10-24/README.md
 
 ## 33. Ưu tiên tiếp theo là khóa lựa chọn và kiểm chứng khả năng chuyển giao
 
-FinalpromotiontựđộnghiệnchỉW5; CNNcầnmodel-specificrefitexport. Khóarecipe/calibrationtrướckhiđọcT. Nguồnscanningđãthăm dòtronglịchsử,khônggọiđộclậphoàntoàn. KhôngcầnchờLoRAđểhoànthiệnbenchmarklõi.
+Final promotion tự động hiện hỗ trợ Ridge ngữ cảnh; CNN cần final refit và export riêng. Khóa recipe và calibration trước khi đọc tập T. Scanning đã từng được thăm dò trong lịch sử, nên tập T cần mô tả đúng phạm vi held-source và lịch sử tiếp xúc. Nghiên cứu mô hình và hoàn thiện công cụ có thể tiến hành song song. LoRA không phải điều kiện bắt buộc để hoàn thiện benchmark lõi.
 
 Nguồn: kaggle-roadmap-2026-10-31/EXECUTION-PROTOCOL.md
 
@@ -218,13 +218,13 @@ Nguồn: full-data-audit/psi-build.json, full-data-audit/saturation-matrix.json
 
 ## 37. Độ tin cậy phụ thuộc mức phân tích
 
-SốpsiAgreement0.9239trongREADMEfullauditlàmốcsoWTkhôngphảiđúngrep1rep2; dùngđúngtrườngΔPSI. Khônggọi75.9%phầndưnhiễuvà16.7%tổngphươngsailàcùngmẫusố.
+Pearson ΔPSI scanning là 0,7229; saturation là 0,8335. Jaccard scanning tính theo vị trí, còn saturation tính theo ô. Các cohort và mẫu số khác nhau, nên đây là mô tả độ tin cậy chứ không là phép so ghép cặp hai nguồn. Không so phần nhiễu trên phương sai dư với phần nhiễu trên tổng phương sai như cùng đại lượng.
 
 Nguồn: full-data-audit/replicate-audit.json, full-data-audit/saturation-matrix.json
 
 ## 38. Mô hình composition không phân biệt mọi vị trí
 
-Bấtbiếnápdụngchocompositionthuầntúy; khônggánchotoànPAPcókênhCterminal. M0thực tếcó40chiềupair+20composition. Oracleđọctestkhôngphảitestperformance.
+Bất biến áp cho mô hình chỉ dựa thành phần trong cùng peptide và cùng cặp thay thế. Không gán nó cho toàn bộ PAP có kênh đầu C hoặc mô hình có ngữ cảnh. Baseline được gọi composition trong tài liệu thực tế còn có one-hot WT và mutant. Oracle đọc nhãn test chỉ mô tả giới hạn biểu diễn, không là hiệu năng test của mô hình học được.
 
 Nguồn: composition-context-audit.md, residue-task-derisk-2026-10-15/model.json
 
@@ -248,7 +248,7 @@ Nguồn: g2-saturation-2026-10-18/results.json, r1-degformer-clean-2026-10-22/ru
 
 ## 42. Khảo sát cỡ ESM thuộc các thiết kế riêng
 
-SốlấytừR6D,bổsungchoM3ext4. Cáccheckpointkháctrongregistrykhôngđồngnghĩađãđánhgiá. V3fullWchỉESM235M. 35Mpreflightforwardshape2x28x480vàfinite/repeatpass.
+Bảng dùng các Ridge bổ sung ESM trên thiết kế miền 91 peptide, không cùng population với benchmark toàn dải. Các cỡ ESM trong bảng đều chưa cho lợi ích phân giải được theo phép so đã định. Registry nhiều checkpoint không đồng nghĩa mọi checkpoint đã được đánh giá. Trong output toàn dải hiện chỉ ESM2-35M có kết quả.
 
 Nguồn: r6-ladder-scan-2026-10-23/run-kaggle-20261023/results.json
 
@@ -260,13 +260,13 @@ Nguồn: kaggle-roadmap-2026-10-31/output-analysis.json
 
 ## 44. Scanning transfer: tách các kiểu thay thế để kiểm chuyển giao
 
-Mỗi peptidechỉtínhôtrongcohort. AUROCdươngeligible114và184nênkhôngsotrực tiếpmacrogiữahai cohort. HaiCIởhìnhlàhậukiểmmôtảkhôngđiềuchỉnhđa kiểmđịnh.
+Mỗi peptide chỉ tính các ô thuộc cohort đang xét. Nhóm 20 kiểu thay có 114 peptide đủ điều kiện AUROC dương; nhóm 360 có 184. Không so trực tiếp hai macro AUROC như cùng population. Hai khoảng tin cậy MAE trên hình là hậu nghiệm mô tả, lấy mẫu lại 5.000 lần theo nhóm protein.
 
 Nguồn: kaggle-roadmap-2026-10-31/output-analysis-details.json
 
 ## 45. ClinVar hỗ trợ động lực ở mức vùng, chưa xác nhận mức residue
 
-ORmh2.14783CI[2.07193,2.22651],3114tầng. Khôngliênhệnhânquả. Sat_exactAUC.6738CI[.489,.831]n51chưađạt; scan_posAUC.5166CIphủ.5. NguồnClinicalkhôngdùngchọnmodel.
+Odds ratio Mantel–Haenszel theo protein khoảng 2,14783, khoảng tin cậy 95% từ 2,07193 đến 2,22651, trên 3.114 tầng có thông tin. Đây là liên hệ mức vùng, chưa là quan hệ nhân quả. Phân tích khớp đúng mutation ở saturation còn ít biến thể có phân loại và khoảng tin cậy AUC vẫn chứa 0,5. ClinVar không được dùng làm nhãn chọn model ΔPSI.
 
 Nguồn: variant-coverage-2026-10-15/enrichment.json, variant-coverage-2026-10-15/README.md
 
@@ -278,7 +278,7 @@ Nguồn: e3-labels-audit/README.md
 
 ## 47. Nguồn ngoài cần được đánh giá theo endpoint và khả năng sử dụng
 
-Korenchưađánhgiámôhình,vaitròcandidatetestnhỏvàquyềnsửdụngnộibộ. MaveDBexposureexploratorycònGCKassay/dimerconfound,cầnchạylạitrướckếtluậnmạnh. SaProttrue3Di chưaoutput; weightskhôngthaymappingstructure.
+Koren chưa có kết quả đánh giá model; dữ liệu khác thang, độ dài và chỉ có năm nhóm mới nên không đưa vào train. Larsen cung cấp nhãn tile, không có mutation ΔPSI đầy đủ. Phân tích cấu trúc trên MaveDB là thăm dò, còn vấn đề endpoint và cấu trúc dimer cần kiểm lại. SaProt true-3Di chưa có output; có weights không thay được mapping cấu trúc.
 
 Nguồn: koren-s4-audit-2026-10-22/results.json, larsen-nuclear-and-risks-2026-10-15/README.md, architecture-check/README.md
 
@@ -290,13 +290,13 @@ Nguồn: calibration-p6-2026-10-22/results.json, r3-domain-gate-2026-10-22/run-k
 
 ## 49. Tính tái lập nối dữ liệu, model và kết quả phục vụ
 
-Integrity2986files3065290891bytes83OOF47recipes; reproducedanalysisexact. Những con sốtestapp149backend131frontendlàhistoricalbaselinekhôngchạylạitrongtaskslides. SnapshotKaggleupdated2026-11-01T11:18:07Z,khônggộplocalruntimekhác.
+Đã kiểm hash và kích thước 2.986 file trong snapshot, gồm 83 OOF thuộc 47 recipe. Phân tích tính lại khớp số đã lưu. Các bằng chứng kiểm thử app nền trong tài liệu là lịch sử, không phải kết quả kiểm thử lại trong phiên tạo deck. Không gộp runtime local khác môi trường vào cùng kết quả Kaggle.
 
 Nguồn: kaggle-roadmap-2026-10-31/output-analysis.json, ../system/README.md
 
 ## 50. Tài liệu và bằng chứng có thể tra cứu theo chủ đề
 
-Khônggắnfootnotelênmọislidetheoyêucầu. Toànbộnguồnđượctậptrungtạiphụlục,notevàJSON. Websiteđượcdùngkhảosátdesigntrướckhidựng,khôngbổsungclaimhiệunăngmodel.
+Nguồn không đặt thành footnote trên từng slide theo yêu cầu. Có thể mở Ghi chú để xem nguồn và phạm vi của slide đang trình chiếu. Phụ lục, slide-sources.json và evidence.json giữ chuỗi truy vết. Các website được dùng khảo sát template/style, không bổ sung số hiệu năng mô hình.
 
 Nguồn: kaggle-roadmap-2026-10-31/output-analysis.json
 
