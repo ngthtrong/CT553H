@@ -1,0 +1,13 @@
+{
+  "job": "import-kaggle",
+  "started_unix": 1793615492.0293584,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/import-kaggle/import.json",
+      "bytes": 1057,
+      "sha256": "2df7a9672c450fffb43771b96f5144a54074d9b05c97835a27aa596c2eb06627"
+    }
+  ],
+  "seconds": 6.343740940093994
+}

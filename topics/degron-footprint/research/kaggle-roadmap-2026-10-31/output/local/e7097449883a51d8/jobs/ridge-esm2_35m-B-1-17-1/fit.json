@@ -1,0 +1,11 @@
+{
+  "recipe": "esm2_35m-context-B",
+  "model": "esm2_35m",
+  "arm": "B",
+  "context": true,
+  "seed": 17,
+  "fold": 1,
+  "alpha": 1000.0,
+  "validation_mse": 0.2675972296872302,
+  "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738"
+}

@@ -1,0 +1,11 @@
+{
+  "recipe": "esm1b_650m-context-D",
+  "model": "esm1b_650m",
+  "arm": "D",
+  "context": true,
+  "seed": 43,
+  "fold": 0,
+  "alpha": 1000.0,
+  "validation_mse": 0.29996677688630635,
+  "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738"
+}

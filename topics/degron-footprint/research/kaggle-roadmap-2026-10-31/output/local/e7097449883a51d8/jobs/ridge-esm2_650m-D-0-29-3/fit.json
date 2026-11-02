@@ -1,0 +1,11 @@
+{
+  "recipe": "esm2_650m-only-D",
+  "model": "esm2_650m",
+  "arm": "D",
+  "context": false,
+  "seed": 29,
+  "fold": 3,
+  "alpha": 1000.0,
+  "validation_mse": 0.31299709489472805,
+  "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738"
+}

@@ -1,0 +1,18 @@
+{
+  "job": "probe-esm1v_650m_1",
+  "started_unix": 1793631299.424749,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/probe-esm1v_650m_1/esm1v_650m_1-lock.json",
+      "bytes": 1371,
+      "sha256": "6cfda310fa70860036518cab5c5c59bdad89fc710d7533efa7dfea14d93df9ed"
+    },
+    {
+      "path": "jobs/probe-esm1v_650m_1/preflight.json",
+      "bytes": 707,
+      "sha256": "f278e3d9d9e0257b2f7bf82dde8ef246d771241724c52d4d1ae67f56a7d06fdb"
+    }
+  ],
+  "seconds": 5.60732102394104
+}

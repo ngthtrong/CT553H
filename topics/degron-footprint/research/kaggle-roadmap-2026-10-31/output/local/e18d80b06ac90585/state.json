@@ -1,0 +1,296 @@
+{
+  "plan_id": "e18d80b06ac90585eef17f0611a0c1b89cc1b8960da45768d63978812c01f651",
+  "jobs": {
+    "import-kaggle": {
+      "job": "import-kaggle",
+      "started_unix": 1793615492.0293584,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/import-kaggle/import.json",
+          "bytes": 1057,
+          "sha256": "2df7a9672c450fffb43771b96f5144a54074d9b05c97835a27aa596c2eb06627"
+        }
+      ],
+      "seconds": 6.343740940093994
+    },
+    "weights-esm2_8m": {
+      "job": "weights-esm2_8m",
+      "started_unix": 1793615501.545297,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/weights-esm2_8m/weights.json",
+          "bytes": 228,
+          "sha256": "6f081d3211c1c0398edc3dab2d721868f835e37579e5c825ce57803ab206ab86"
+        }
+      ],
+      "seconds": 2.118950128555298
+    },
+    "probe-esm2_8m": {
+      "job": "probe-esm2_8m",
+      "started_unix": 1793615506.8511772,
+      "status": "adapter_blocked",
+      "reason": "ZeroDivisionError: float division by zero",
+      "seconds": 2.9274678230285645
+    },
+    "extract-esm2_8m": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-0-17-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-0-17-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-0-17-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-0-17-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-0-17-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-0-29-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-0-29-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-0-29-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-0-29-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-0-29-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-0-43-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-0-43-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-0-43-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-0-43-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-0-43-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-1-17-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-1-17-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-1-17-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-1-17-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-1-17-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-1-29-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-1-29-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-1-29-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-1-29-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-1-29-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-1-43-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-1-43-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-1-43-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-1-43-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-B-1-43-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-0-17-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-0-17-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-0-17-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-0-17-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-0-17-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-0-29-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-0-29-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-0-29-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-0-29-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-0-29-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-0-43-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-0-43-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-0-43-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-0-43-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-0-43-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-1-17-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-1-17-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-1-17-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-1-17-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-1-17-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-1-29-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-1-29-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-1-29-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-1-29-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-1-29-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-1-43-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-1-43-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-1-43-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-1-43-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-esm2_8m-D-1-43-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "weights-esm2_35m": {
+      "job": "weights-esm2_35m",
+      "started_unix": 1793615512.9911327,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/weights-esm2_35m/weights.json",
+          "bytes": 223,
+          "sha256": "bcdd3a044a5d95dc608703dc887e592f2e413d476e6fcd44f2cec6dd36a5067b"
+        }
+      ],
+      "seconds": 0.42638325691223145
+    }
+  },
+  "scientific_status": "development_expansion_after_Kaggle_results"
+}

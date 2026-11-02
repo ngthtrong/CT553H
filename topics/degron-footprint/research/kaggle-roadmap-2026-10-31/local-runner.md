@@ -43,6 +43,39 @@ output/local/
 
 `complete` chỉ ghi sau khi worker xong và hash artifact được lưu. Khởi động lại kiểm file hoàn tất; artifact thay đổi khiến hệ thống dừng để kiểm tra. Code/data/registry/protocol/runtime (kể cả driver) đổi tạo campaign khác; không sửa manifest để ép nhận checkpoint. Output cũ được giữ nguyên. Job failed chỉ thử lại khi gọi `run-local.cmd --retry-failed`, sau khi kiểm nguyên nhân. Không có retry vô hạn.
 
+**Lưu kết quả trên GitHub:** `.gitignore` ở gốc repo chỉ cho phép các bằng chứng nhỏ trong `output/local/`:
+
+- Mỗi campaign: `plan.json`, `queue.json`, `state.json`, `superseded.json` nếu có; trạng thái lỗi/blocked và hash artifact được giữ để giải thích phạm vi kết quả.
+- JSON ngay dưới từng job: metadata fit/preflight, revision lock, manifest feature, `worker-result.json`, kết quả đánh giá, collection/comparisons và evidence/pending. `collect-*/summary.csv` và `report/benchmark.csv` được giữ khi các bước tổng hợp hoàn tất.
+- Trong recipe của `calibrate-core` và `locked-transfer-w5`: `selection-lock.json`, `model-card.json`; weights dùng chung chỉ giữ `SOURCE.md` và `status.json` chứa revision/SHA.
+
+Weights, checkpoint (kể cả `.previous`/`.tmp`), feature NumPy, bảng OOF/calibration/held-scanning Parquet, download `.partial`, log, khóa, STOP, `latest.json`, `session.json` và progress cấp campaign vẫn ở local. Output Kaggle `output/official/` tiếp tục bị bỏ qua; các bản phân tích nhỏ `output-analysis*.json`/`.md` bên cạnh runner vẫn được Git theo dõi như trước. File mới ngoài danh sách cho phép mặc định bị bỏ qua. Không dùng `git add -f output/` vì sẽ vượt các quy tắc này.
+
+GitHub chỉ lưu bằng chứng và báo cáo; clone repo không đủ để resume hay tính lại metric từ OOF. Cần giữ bản sao đầy đủ output ở nơi lưu trữ riêng. `state.json`/`worker-result.json` có thể tham chiếu các artifact không nằm trong Git. Commit kết quả sau khi terminal báo PAUSED/SESSION ENDED để snapshot trạng thái nhất quán; campaign đang dở có thể chưa có bảng tổng hợp.
+
+`.gitignore` không kiểm tra kích thước và không tác động lên file đã tracked hoặc lịch sử commit. Trước khi commit, sau khi stage các file cần lưu, chạy kiểm tra sau từ gốc repo trong PowerShell. Ngân sách chủ động là tối đa 10 MiB/file và 25 MiB tổng file staged (kích thước chưa nén, không phải kích thước gói push); script dừng nếu vượt để xem lại thay vì tự thêm file nặng:
+
+```powershell
+@'
+import subprocess
+
+names = subprocess.check_output(
+    ['git', 'diff', '--cached', '--name-only', '--diff-filter=ACMRT', '-z']
+).split(b'\0')
+sizes = []
+for raw in filter(None, names):
+    name = raw.decode('utf-8')
+    size = int(subprocess.check_output(['git', 'cat-file', '-s', ':' + name]))
+    sizes.append((size, name))
+total = sum(size for size, _ in sizes)
+large = [(size, name) for size, name in sizes if size > 10 * 2**20]
+for size, name in sorted(large, reverse=True):
+    print(f'OVER BUDGET: {size / 2**20:.2f} MiB {name}')
+print(f'Staged: {len(sizes)} files, {total / 2**20:.2f} MiB')
+raise SystemExit(1 if large or total > 25 * 2**20 else 0)
+'@ | .venv\Scripts\python.exe -I -
+```
+
 Thứ tự: kiểm output Kaggle → weights/preflight/features/Ridge từng pLM → frozen/LoRA 35M → tổng hợp → calibration CV → locked transfer W5-D → bảng benchmark chung. Profile `models`/`core` chỉ chọn việc chạy trong phiên, không thu nhỏ kế hoạch khoa học. Transfer T chờ cả hai nhánh development; kết quả T không dùng chọn model. Nguồn ngoài và cấu trúc ghi pending khi chưa có đầu vào.
 
 `collect-family` tổng hợp OOF đầy đủ và nested selection; `collect-core` có paired bootstrap 5000 theo nhóm cho LoRA−frozen. `report/benchmark.csv` giữ platform và seed, không đếm lại output như dữ liệu độc lập. Calibration mạng hiện là CV; final refit/export CNN/LoRA/family để phục vụ vẫn riêng. Held-source evaluation tự động là recipe **W5-D đã chốt trước**, không phải T cho mọi pLM mới.

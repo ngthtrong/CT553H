@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "config": {
+    "data": "topics/degron-footprint/data/processed/degron-data-v3-fullpsi",
+    "models": [
+      "esm2_8m",
+      "esm2_35m",
+      "esm2_150m",
+      "esm2_650m",
+      "esm1b_650m",
+      "esm1v_650m_1",
+      "esmc_300m",
+      "prott5_encoder",
+      "ankh_base"
+    ],
+    "arms": [
+      "B",
+      "D"
+    ],
+    "seeds": [
+      17,
+      29,
+      43
+    ],
+    "note": "Fixed development expansion. Family models use frozen features/Ridge; matched frozen and LoRA tuning only for ESM2-35M. W5-D held-source recipe is fixed before T."
+  },
+  "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738",
+  "code_sha256": "78c7261903776468cdbd549dab51a4946b3daf0d29430da126748ae9ff81f9b9",
+  "registry_sha256": "e3a4e5e8a273023ac8cee963edd70af82ed78dbce1afed2ba79d0c37661d23cb",
+  "protocol_sha256": "1a8ea21acf522a3d717122a1314f8c581cf7e467c9ec729d6cca2c25938418e9",
+  "runtime": {
+    "python": "3.11.9",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "versions": {
+      "numpy": "2.1.3",
+      "pandas": "2.3.3",
+      "pyarrow": "23.0.1",
+      "scipy": "1.16.3",
+      "scikit-learn": "1.6.1",
+      "torch": "2.13.0+cu130",
+      "transformers": "5.17.0",
+      "peft": null,
+      "accelerate": "1.15.0",
+      "sentencepiece": "0.2.2",
+      "safetensors": "0.8.0"
+    },
+    "cuda": true,
+    "devices": [
+      {
+        "name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+        "bytes": 8546484224
+      }
+    ],
+    "driver_version": "582.05"
+  },
+  "scientific_status": "development_expansion_after_Kaggle_results",
+  "training": {
+    "epochs": 20,
+    "batch": 8,
+    "dtype": "float32",
+    "lr": 0.0001,
+    "patience": 4,
+    "refit": "selected_inner_epoch"
+  },
+  "features": {
+    "dtype": "float16",
+    "batch": 8,
+    "view": "delta_site_and_mean",
+    "pca": 64
+  },
+  "selection": "inner MSE only; no family selection from outer OOF; T locked to prespecified W5-D",
+  "source_campaign": "369cb2fe6a1e31e0"
+}

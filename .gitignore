@@ -17,8 +17,39 @@ archive/topics/*/models/
 *.pt
 *.safetensors
 
-# Output Kaggle: snapshot đầy đủ, feature, OOF và weights giữ ở local/Dataset.
-/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/
+# Output Kaggle/local: mặc định chặn mọi file, chỉ mở metadata/báo cáo local.
+# Phải mở từng thư mục cha để Git xét các ngoại lệ bên dưới.
+# Không mở toàn bộ *.json/CSV trong output: weights/tokenizer và dữ liệu vẫn ở local.
+/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/**
+!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/
+!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/
+
+# Bằng chứng theo campaign: kế hoạch, DAG, trạng thái/hash và lý do thay thế.
+# latest/session/progress, khóa, STOP và log không được mở ngoại lệ.
+!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/plan.json
+!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/queue.json
+!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/state.json
+!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/superseded.json
+!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/
+!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/
+# JSON ngay dưới job: fit, worker-result, preflight/lock, manifest, results,
+# collection/comparisons, pending và evidence; không cho tensor/OOF đi kèm.
+!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/*.json
+!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/collect-*/summary.csv
+!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/report/benchmark.csv
+
+# Calibration và locked transfer ghi model-card/selection-lock trong thư mục recipe.
+!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/calibrate-core/*/
+!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/calibrate-core/*/model-card.json
+!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/calibrate-core/*/selection-lock.json
+!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/locked-transfer-w5/*/
+!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/locked-transfer-w5/*/model-card.json
+!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/locked-transfer-w5/*/selection-lock.json
+
+# Nguồn/revision/SHA của weights dùng chung; không mở thư mục snapshot revision.
+!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/weights/*/
+!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/weights/*/SOURCE.md
+!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/weights/*/status.json
 
 # Python
 __pycache__/

@@ -1,0 +1,22 @@
+{
+  "status": "complete",
+  "identity": "577f4d88850fb683c0d87f4220b726811e0ac3c63a1cd695ea4e4d3ae04b9dcb",
+  "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738",
+  "model_id": "esm2_150m",
+  "rows": 122412,
+  "mode": "official",
+  "scope": "sat",
+  "revision": "a695f6045e2e32885fa60af20c13cb35398ce30c",
+  "dtype": "float16",
+  "feature_kind": "delta_site_and_mean",
+  "files": [
+    {
+      "path": "pool.npy",
+      "sha256": "1a17e7994d6db0d514274100a30bc8b461db6f708342b8ee3ba3674f2c69b743"
+    },
+    {
+      "path": "rows.parquet",
+      "sha256": "b90c28d510247b720f7a20d72722ea6b354386d2a510609783d9a5f33f2a0d1b"
+    }
+  ]
+}

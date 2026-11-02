@@ -1,0 +1,265 @@
+{
+  "model_id": "esm2_8m",
+  "requested_repo": "facebook/esm2_t6_8M_UR50D",
+  "status": "complete",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 1705,
+      "sha256": "462a2f24724e19c6be0efab926315c294a863c9a9770e2c8b3d859b2d81a07de",
+      "verified": true,
+      "reused": true
+    },
+    {
+      "path": "config.json",
+      "bytes": 775,
+      "sha256": "facb9355e8252149f6f99dff5fd1e32e890c3c655362b261d0c81cd6b5839c85",
+      "verified": true,
+      "reused": true
+    },
+    {
+      "path": "model.safetensors",
+      "bytes": 31384292,
+      "sha256": "24c5fa474c48f3b754b86efe752d5f189d2bcd88190fa2270fc92b2ef3034189",
+      "verified": true,
+      "reused": true
+    },
+    {
+      "path": "special_tokens_map.json",
+      "bytes": 125,
+      "sha256": "3aedcd4211c0d43aec4e607ff60a63255f3174ead795e997350f09a5f8cd9ee1",
+      "verified": true,
+      "reused": true
+    },
+    {
+      "path": "tokenizer_config.json",
+      "bytes": 95,
+      "sha256": "7e9161ecdb548ec45a41cbc6b24aa4476fdd418461f491c4207baa99419a29ad",
+      "verified": true,
+      "reused": true
+    },
+    {
+      "path": "vocab.txt",
+      "bytes": 93,
+      "sha256": "0b82cc0a7c7cf9e567b1e5892d793285b9fbae822c964ca48696f7db44598e03",
+      "verified": true,
+      "reused": true
+    }
+  ],
+  "repo": "facebook/esm2_t6_8M_UR50D",
+  "revision": "c731040fcd8d73dceaa04b0a8e6329b345b0f5df",
+  "bytes_expected": 31387085,
+  "path": "topics/degron-footprint/data/raw/plm-weights-v3/esm2_8m/c731040fcd8d73dceaa04b0a8e6329b345b0f5df",
+  "license_metadata": "mit",
+  "remote_metadata": {
+    "_id": "6331f32718711776b46adfd4",
+    "id": "facebook/esm2_t6_8M_UR50D",
+    "private": false,
+    "pipeline_tag": "fill-mask",
+    "library_name": "transformers",
+    "tags": [
+      "transformers",
+      "pytorch",
+      "tf",
+      "safetensors",
+      "esm",
+      "fill-mask",
+      "license:mit",
+      "endpoints_compatible",
+      "deploy:azure",
+      "region:us"
+    ],
+    "downloads": 664919,
+    "likes": 52,
+    "modelId": "facebook/esm2_t6_8M_UR50D",
+    "author": "facebook",
+    "sha": "c731040fcd8d73dceaa04b0a8e6329b345b0f5df",
+    "lastModified": "2023-03-21T15:05:17.000Z",
+    "gated": false,
+    "disabled": false,
+    "widgetData": [
+      {
+        "text": "MQIFVKTLTGKTITLEVEPS<mask>TIENVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGG"
+      }
+    ],
+    "model-index": null,
+    "config": {
+      "architectures": [
+        "EsmForMaskedLM"
+      ],
+      "model_type": "esm",
+      "tokenizer_config": {}
+    },
+    "cardData": {
+      "license": "mit",
+      "widget": [
+        {
+          "text": "MQIFVKTLTGKTITLEVEPS<mask>TIENVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGG"
+        }
+      ]
+    },
+    "transformersInfo": {
+      "auto_model": "AutoModelForMaskedLM",
+      "pipeline_tag": "fill-mask",
+      "processor": "AutoTokenizer"
+    },
+    "siblings": [
+      {
+        "rfilename": ".gitattributes",
+        "blobId": "3476589a58942b0e9ef94ae0efb29355707f95bb",
+        "size": 1438
+      },
+      {
+        "rfilename": "README.md",
+        "blobId": "78b8e54d14b2ccb65a6f3456cc72e603ddd8658d",
+        "size": 1705
+      },
+      {
+        "rfilename": "config.json",
+        "blobId": "c2c6e65a87d9d20d47699ae236d605b80c741dd3",
+        "size": 775
+      },
+      {
+        "rfilename": "model.safetensors",
+        "blobId": "c1cb7ba1caea0812b34cc09d7e1653633babb4a7",
+        "size": 31384292,
+        "lfs": {
+          "sha256": "24c5fa474c48f3b754b86efe752d5f189d2bcd88190fa2270fc92b2ef3034189",
+          "size": 31384292,
+          "pointerSize": 133
+        }
+      },
+      {
+        "rfilename": "pytorch_model.bin",
+        "blobId": "bc366801febae7e4cb71447e5f8532661b1bc09c",
+        "size": 31406877,
+        "lfs": {
+          "sha256": "9edcf393212f3a26684cd68ca8095ec43c2c341ee0fcc3ba7a4d3a47c5dc138f",
+          "size": 31406877,
+          "pointerSize": 133
+        }
+      },
+      {
+        "rfilename": "special_tokens_map.json",
+        "blobId": "ba0f9b53dbbf27934f7555e5d31e37bdea9317f1",
+        "size": 125
+      },
+      {
+        "rfilename": "tf_model.h5",
+        "blobId": "ea3f45a2ab2064a6db877a3da8f4141fb67d0285",
+        "size": 30256864,
+        "lfs": {
+          "sha256": "bbb600f469925d93572cb238a475914a2d0846fb8a7814a98028a7a2e21a05a3",
+          "size": 30256864,
+          "pointerSize": 133
+        }
+      },
+      {
+        "rfilename": "tokenizer_config.json",
+        "blobId": "3f0d47e841e1cb75257aeaf76d156802899a217e",
+        "size": 95
+      },
+      {
+        "rfilename": "vocab.txt",
+        "blobId": "6b946952cc35537226f07fd70957ee2f848880d2",
+        "size": 93
+      }
+    ],
+    "spaces": [
+      "venusri1/AI_Based_Protein_Sequence_Alignment",
+      "bsamudrala/AI_Based_Protein_Sequence_Alignment",
+      "hardiksood21/variantllm",
+      "thaidaev/zsp",
+      "gelnesr/Dyna-1",
+      "tattabio/DGEB",
+      "oucgc1996/Antimicrobial-peptide-generation",
+      "AmelieSchreiber/variant_effects_llr",
+      "build-small-hackathon/storybear",
+      "arshian/linearepitopemodels",
+      "savakholin/esm-2",
+      "amirhallaji/StructureFree-DTA",
+      "Bhadralab/B3PPs_Predict",
+      "miyuiu/microbe-model",
+      "Malghafri/esm2-drug-target-predictor",
+      "glassofwine/peptide-design-lab-api",
+      "gravelcompbio/Phosformer-ST",
+      "basilboy/test3",
+      "oucgc1996/DeepAngio_classification_model",
+      "wangjin2000/ESM2Bind",
+      "oucgc1996/ConotoxinFinder-regression",
+      "wangjin2000/ESM2PPI",
+      "clvizcarra/zsp",
+      "Huaigu/ESM_Demo",
+      "Youzefnia/ESM",
+      "Javady77/abc",
+      "etemadism/zspali",
+      "801lzl/ESMscan",
+      "Bhanushray/WebAppPTS",
+      "hmr1211/test",
+      "openfree/BIOseq",
+      "xushijie/DELM",
+      "shannextribe/moleculeforge_full",
+      "Nilsparrow1920/KEMP-PIP",
+      "sudhir2016/Missense_Demo",
+      "akshayaparida/ProteinPredictor_ML",
+      "sudhir2016/PPP_Demo",
+      "luky1111/zsp",
+      "Jerry1030/esm2-secstruct-pred",
+      "nemo1130/ESM",
+      "markgs/zsp",
+      "rdonegan/zsp",
+      "mariem22/bioscout",
+      "vignt97867896/bioflow",
+      "ZumerM/Enzyme-Thermo-Stability-Predictor",
+      "hugging-science/ESM2",
+      "IsmailEfe00/Saglikta-Yapay-Zeka",
+      "SaiTejaSrivilli/molecularml-platform",
+      "vibe-paglu/protein-env",
+      "yushize/Embedding-predictor",
+      "ALwinJJJJ/PEPGEN",
+      "omshrivastava/Omnibimol",
+      "omshrivastava/Omnibimol-Worker",
+      "Donttalk123/web",
+      "ilkhamfy/peppareto-api",
+      "dipayanskr/Plant-PLM",
+      "knoxel/esm2-protein-structure-demo",
+      "hananachmad/antibiotic-resistance-detection",
+      "SVVS007/mhc-model",
+      "gbmotta/pepmem-ai",
+      "space-pc/multiampred",
+      "H9kkk/protein-music",
+      "somiya-khan01/protein-function-prediction",
+      "mreplicater/microbe-intelligence",
+      "miyuiu/microbe-intelligence",
+      "Fb56816/protein-classifier-v2",
+      "asmaslah/proteinai-backend",
+      "cankarakoc/protein-embedding-workbench-api",
+      "LIU-Huihui-CUHK/zsp_ESM_Scan",
+      "andreamena/Peptide_MVP_Discovery2",
+      "VL-in/Assistente-de-Laboratorio",
+      "andreamena/AI_Peptide_Discovery",
+      "cellverse/hf-dms-substitution-demo",
+      "joduor/alphafold-adaptive-api",
+      "rustambekurokov/esm2-protein-localization",
+      "Amt11cdr/peptidelocator2",
+      "latticetower/bgc-domain-playground",
+      "ANTARA-oss/bioknot-core",
+      "Aksh10/bioknot-core",
+      "GamerLegend10000/UNPHLTERED",
+      "TheaSylBek/extremoenzyme-ai",
+      "PypCoder/seraph-api",
+      "humansplicefinder/mtl-isoform-overview",
+      "hugging-apps/matcha-molecular-docking"
+    ],
+    "createdAt": "2022-09-26T18:44:55.000Z",
+    "safetensors": {
+      "parameters": {
+        "I64": 1026,
+        "F32": 7840842
+      },
+      "total": 7841868
+    },
+    "usedStorage": 310591522
+  },
+  "bytes_verified": 31387085
+}

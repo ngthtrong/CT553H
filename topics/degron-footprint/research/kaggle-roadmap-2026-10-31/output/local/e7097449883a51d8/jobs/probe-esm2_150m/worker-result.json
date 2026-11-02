@@ -1,0 +1,18 @@
+{
+  "job": "probe-esm2_150m",
+  "started_unix": 1793617595.5239658,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/probe-esm2_150m/esm2_150m-lock.json",
+      "bytes": 1509,
+      "sha256": "b6be6039a19ea8f31db444daed8778b1cf7c103b06fa7d6144c62bdbf39a43a0"
+    },
+    {
+      "path": "jobs/probe-esm2_150m/preflight.json",
+      "bytes": 697,
+      "sha256": "e5fc20b58e5f145cfd89089da2629044ee46c80f4d3e63933828d1f373a83df2"
+    }
+  ],
+  "seconds": 3.7987563610076904
+}

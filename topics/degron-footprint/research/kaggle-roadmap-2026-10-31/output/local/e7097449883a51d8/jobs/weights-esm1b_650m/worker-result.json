@@ -1,0 +1,13 @@
+{
+  "job": "weights-esm1b_650m",
+  "started_unix": 1793619857.4143562,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/weights-esm1b_650m/weights.json",
+      "bytes": 238,
+      "sha256": "6fc11ba88a962ca6187221bb1dea14c080401e134f44552575c5583f753a7f38"
+    }
+  ],
+  "seconds": 2498.926349401474
+}

@@ -1,0 +1,7 @@
+{
+  "job": "weights-esmc_300m",
+  "started_unix": 1793632553.8401742,
+  "status": "paused",
+  "reason": "Session deadline or pause request; committed work retained",
+  "seconds": 1070.7775950431824
+}

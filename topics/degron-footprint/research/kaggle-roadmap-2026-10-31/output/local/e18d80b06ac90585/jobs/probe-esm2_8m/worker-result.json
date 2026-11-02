@@ -1,0 +1,7 @@
+{
+  "job": "probe-esm2_8m",
+  "started_unix": 1793615506.8511772,
+  "status": "adapter_blocked",
+  "reason": "ZeroDivisionError: float division by zero",
+  "seconds": 2.9274678230285645
+}

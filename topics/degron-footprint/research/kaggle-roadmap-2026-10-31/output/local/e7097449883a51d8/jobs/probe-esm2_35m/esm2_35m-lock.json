@@ -1,0 +1,78 @@
+{
+  "model_id": "esm2_35m",
+  "status": "feasible",
+  "mode": "official",
+  "revision": "6fbf070e65b0b7291e7bbcd451118c216cff79d8",
+  "repo": "facebook/esm2_t12_35M_UR50D",
+  "hidden_size": 480,
+  "shape": [
+    2,
+    28,
+    480
+  ],
+  "device": "cuda",
+  "dtype": "float16",
+  "batch": 2,
+  "sequences_per_second": 121.26503706909124,
+  "repeat_max_abs": 0.0,
+  "peak_vram_bytes": 102664192,
+  "residue_alignment_positions": [
+    1,
+    2,
+    14,
+    27,
+    28
+  ],
+  "wt_identity_max_abs": 0.0,
+  "parameters": 33269521,
+  "weights": [
+    {
+      "path": "README.md",
+      "bytes": 1705,
+      "sha256": "462a2f24724e19c6be0efab926315c294a863c9a9770e2c8b3d859b2d81a07de",
+      "hf_lfs_sha256": null,
+      "verified": true,
+      "reused": false
+    },
+    {
+      "path": "config.json",
+      "bytes": 778,
+      "sha256": "ae07364efa51e0fa1d81da3fe608f6d948abdbbb69785ba6e1df379a458e58ee",
+      "hf_lfs_sha256": null,
+      "verified": true,
+      "reused": false
+    },
+    {
+      "path": "model.safetensors",
+      "bytes": 136008798,
+      "sha256": "e35647818e0e064351d4531ed480d225a002567b4b2b93ad3a9246d753150fc0",
+      "hf_lfs_sha256": "e35647818e0e064351d4531ed480d225a002567b4b2b93ad3a9246d753150fc0",
+      "verified": true,
+      "reused": false
+    },
+    {
+      "path": "special_tokens_map.json",
+      "bytes": 125,
+      "sha256": "3aedcd4211c0d43aec4e607ff60a63255f3174ead795e997350f09a5f8cd9ee1",
+      "hf_lfs_sha256": null,
+      "verified": true,
+      "reused": false
+    },
+    {
+      "path": "tokenizer_config.json",
+      "bytes": 95,
+      "sha256": "7e9161ecdb548ec45a41cbc6b24aa4476fdd418461f491c4207baa99419a29ad",
+      "hf_lfs_sha256": null,
+      "verified": true,
+      "reused": false
+    },
+    {
+      "path": "vocab.txt",
+      "bytes": 93,
+      "sha256": "0b82cc0a7c7cf9e567b1e5892d793285b9fbae822c964ca48696f7db44598e03",
+      "hf_lfs_sha256": null,
+      "verified": true,
+      "reused": false
+    }
+  ]
+}

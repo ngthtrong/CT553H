@@ -1,0 +1,4 @@
+{
+  "reason": "Windows preflight timer software bug; no local scientific OOF completed",
+  "replacement": "New code fingerprint after perf_counter fix"
+}

@@ -1,0 +1,28 @@
+{
+  "job": "extract-esm2_35m",
+  "started_unix": 1793616257.8876107,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/extract-esm2_35m/feature-manifest.json",
+      "bytes": 688,
+      "sha256": "ce03d2a6b7e56356097c16a53c368e2b1bdc8db11f1500c41273422de035b848"
+    },
+    {
+      "path": "jobs/extract-esm2_35m/pool.npy",
+      "bytes": 235031168,
+      "sha256": "5148c63a426c0177633e6e11ffd210b0dda039007ad125bd3ea0b36bdcf29374"
+    },
+    {
+      "path": "jobs/extract-esm2_35m/progress.json",
+      "bytes": 200,
+      "sha256": "126c7dfdb39e72d8feece391ff6f10013fb76620b9ff60c357df38db6fe86ce2"
+    },
+    {
+      "path": "jobs/extract-esm2_35m/rows.parquet",
+      "bytes": 672849,
+      "sha256": "b90c28d510247b720f7a20d72722ea6b354386d2a510609783d9a5f33f2a0d1b"
+    }
+  ],
+  "seconds": 150.27652740478516
+}

@@ -1,0 +1,60 @@
+{
+  "model_id": "esm1b_650m",
+  "status": "feasible",
+  "mode": "official",
+  "revision": "7b37824baec4d3658e1df7479222a7c79b465b76",
+  "repo": "facebook/esm1b_t33_650M_UR50S",
+  "hidden_size": 1280,
+  "shape": [
+    2,
+    28,
+    1280
+  ],
+  "device": "cuda",
+  "dtype": "float16",
+  "batch": 2,
+  "sequences_per_second": 74.26468661498774,
+  "repeat_max_abs": 0.0,
+  "peak_vram_bytes": 1338071040,
+  "residue_alignment_positions": [
+    1,
+    2,
+    14,
+    27,
+    28
+  ],
+  "wt_identity_max_abs": 0.0,
+  "parameters": 650716821,
+  "weights": [
+    {
+      "path": "README.md",
+      "bytes": 4617,
+      "sha256": "2afa2d976e4b1ef58ceda519ab93f3f984a1b28f8e2d254a2494f6f947f2df57"
+    },
+    {
+      "path": "config.json",
+      "bytes": 782,
+      "sha256": "e6296f876d44faeb9f4d206386af6db5e834763b14eb9a1c2539a3fb9a43edf5"
+    },
+    {
+      "path": "pytorch_model.bin",
+      "bytes": 2609617413,
+      "sha256": "ebb8a35768179581f91fc01b93cf78facba2821c3bab1452abb38ef2a7f6e7b1"
+    },
+    {
+      "path": "special_tokens_map.json",
+      "bytes": 125,
+      "sha256": "3aedcd4211c0d43aec4e607ff60a63255f3174ead795e997350f09a5f8cd9ee1"
+    },
+    {
+      "path": "tokenizer_config.json",
+      "bytes": 95,
+      "sha256": "7e9161ecdb548ec45a41cbc6b24aa4476fdd418461f491c4207baa99419a29ad"
+    },
+    {
+      "path": "vocab.txt",
+      "bytes": 93,
+      "sha256": "0b82cc0a7c7cf9e567b1e5892d793285b9fbae822c964ca48696f7db44598e03"
+    }
+  ]
+}
