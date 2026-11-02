@@ -1,0 +1,11 @@
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+const path=require('path');const {pathToFileURL}=require('url');const fs=require('fs');
+(async()=>{const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
+ const page=await browser.newPage({viewport:{width:1600,height:1200},deviceScaleFactor:1,colorScheme:'light'});
+ const source=path.resolve(__dirname,'../../system/design/workspace-ui-v2/index.html');
+ await page.goto(pathToFileURL(source).href);await page.evaluate(()=>document.fonts.ready);await page.waitForTimeout(700);
+ const clip=await page.locator('.panel').first().evaluate(e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,width:1310,height:500}});
+ await page.screenshot({path:path.join(__dirname,'assets/workspace-prototype.png'),clip});
+ fs.writeFileSync(path.join(__dirname,'prototype-capture.json'),JSON.stringify({source:path.relative(__dirname,source),title:await page.title(),status:'design prototype; synthetic fixtures; no backend',viewport:{width:1600,height:1200},clip},null,2));
+ await browser.close();console.log('Captured current design prototype, labelled as synthetic UI illustration.');
+})().catch(e=>{console.error(e);process.exit(1)});

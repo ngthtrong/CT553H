@@ -1,0 +1,8 @@
+{
+  "status": "pass",
+  "test": "local_work_unit_matches_original_train_oof_in_same_runtime",
+  "rows": 24919,
+  "max_abs_prediction_difference": 0.0,
+  "cross_platform_max_abs_prediction_difference": 2.6166439056396484e-05,
+  "note": "Linux/Kaggle versus Windows BLAS is not bitwise identical; this is an implementation parity test, not a change to scientific thresholds."
+}

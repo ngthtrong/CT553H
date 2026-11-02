@@ -1,0 +1,422 @@
+{
+  "generated_utc": "2026-11-02T09:13:32.300092+00:00",
+  "source_manifest_sha256": "0948005d569a5285805399c3ece38238a23b7f1b989a889efcef93fc93f074d0",
+  "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738",
+  "script_sha256": "b37f0171df638d5877f529d206be8b69cb78c620d2c4b3a4c9cbd207461325c0",
+  "saturation_table_sha256": "cb8c9de32dd71d0524c3bfe362ad89afb0b8ef4d7ce5736d1f1ed4a0c1e8aded",
+  "oof_sha256": {
+    "tasks/01-78cc356ba4f4/ordered-w5-D-oof.parquet": "cab4af07afb373ea86ae4c20bbd9cfdeadcf0d9b2c68460668fa25682460cae3",
+    "tasks/05-cnn-B-s17-40a5607755c9/esm2_35m-cnn-B-oof.parquet": "ff33bcfc0e22c430bb98611e6248007746e3a4286979f7a834cc2165e84e73ea",
+    "tasks/05-cnn-B-s29-13099c62911c/esm2_35m-cnn-B-oof.parquet": "262e746d09cf8550f761c87ad3ef58878724256e452c30e8ac9a0fcd6ae20278",
+    "tasks/05-cnn-B-s43-952ed50126e9/esm2_35m-cnn-B-oof.parquet": "b28d496efbdacfd85c54bffd857294f738876649a8ff0285eb389d29215fb899",
+    "tasks/05-cnn-D-s17-04c49d5c53f4/esm2_35m-cnn-D-oof.parquet": "c19c3524e063c907496e61e4f87b037adc276af9915c7962f9ef4f7372b9fc1b",
+    "tasks/05-cnn-D-s29-90821c00f6cb/esm2_35m-cnn-D-oof.parquet": "731e85dce5c4939cfdf76b04bf758e94639a2c9581e110ba9c58ada595667345",
+    "tasks/05-cnn-D-s43-0a53125743c1/esm2_35m-cnn-D-oof.parquet": "9c819224dc3993efab477d621db3aff3c16afc0e8fc01ed41688c78f35b34f1b",
+    "tasks/05-mcnn-E-s17-c22df3851670/esm2_35m-mcnn-E-oof.parquet": "2c185f566dd8b6f70ebaec1d3911126b179e4ed4983a76f08f962f60a441869e",
+    "tasks/05-mcnn-E-s29-0815f6208612/esm2_35m-mcnn-E-oof.parquet": "af6b0d231618b936f827928521e67dba25ed60fd7c8c336965d6487c04dbf2b5",
+    "tasks/05-mcnn-E-s43-928b33fb2f93/esm2_35m-mcnn-E-oof.parquet": "ce8e5044a1709d366dd7e3fd5d1304937e9eef1ce7c2e013fa8e5be5dbb3e3a3",
+    "tasks/06-78cc356ba4f4/cnn-transfer-scratch-D-oof.parquet": "a840c56b586b57c6e38b9a627fe7fc384c3f72661a42b4ff9f759cb6ece1d163",
+    "tasks/06-78cc356ba4f4/cnn-transfer-dpsi_rep1-D-oof.parquet": "8d20fcb339888168b9ac20d6fbc3cf09988f38068b79d85a756a65fffc3e0d22"
+  },
+  "purpose": "Additional posthoc development diagnostics; no held-source test access",
+  "methods": {
+    "predictions": "mean per cell of seeds 17,29,43",
+    "metric": "peptide-macro",
+    "bootstrap": "5000 paired protein-group resamples, seed1729",
+    "intervals": "descriptive CI95, no multiplicity adjustment",
+    "pair_cohorts": "20 directed scanning substitution types vs remaining 360; no identity substitutions",
+    "learning_curve": "Seed-specific training subsets differ; ensemble union exceeds each subset"
+  },
+  "fold_mae": {
+    "ordered-w5-D": {
+      "0": 0.4192718103693115,
+      "1": 0.40900669688124686,
+      "2": 0.42517400649428816,
+      "3": 0.3975174659680022,
+      "4": 0.38804318449808906
+    },
+    "esm2_35m-cnn-B": {
+      "0": 0.40254466830764185,
+      "1": 0.3888291467427007,
+      "2": 0.4110049284398721,
+      "3": 0.3687508496956983,
+      "4": 0.368693772758255
+    },
+    "esm2_35m-cnn-D": {
+      "0": 0.39991708199454185,
+      "1": 0.37979411808404856,
+      "2": 0.4047566120291373,
+      "3": 0.3675609708019659,
+      "4": 0.36974035313541187
+    },
+    "esm2_35m-mcnn-E": {
+      "0": 0.3987519056743413,
+      "1": 0.3828081287689872,
+      "2": 0.40608694149290386,
+      "3": 0.3633031934795993,
+      "4": 0.3682808100310127
+    },
+    "cnn-transfer-scratch-D": {
+      "0": 0.40575562305834073,
+      "1": 0.39653042405309813,
+      "2": 0.4145913057934422,
+      "3": 0.3728814257120443,
+      "4": 0.3782967511456407
+    },
+    "cnn-transfer-dpsi_rep1-D": {
+      "0": 0.40263438567742516,
+      "1": 0.39131078570900407,
+      "2": 0.4053587884355638,
+      "3": 0.36604948711617863,
+      "4": 0.3707766721828122
+    }
+  },
+  "pair_diagnostics": {
+    "ordered-w5-D": {
+      "scan20": {
+        "cells": 6433,
+        "pairs": 20,
+        "peptides": 235,
+        "clusters": 221,
+        "mae": 0.4126251041557265,
+        "auroc_plus": 0.8035642353398359,
+        "eligible_plus": 114
+      },
+      "other360": {
+        "cells": 115979,
+        "pairs": 360,
+        "peptides": 235,
+        "clusters": 221,
+        "mae": 0.4075226645723068,
+        "auroc_plus": 0.8334351247656416,
+        "eligible_plus": 184
+      }
+    },
+    "esm2_35m-cnn-D": {
+      "scan20": {
+        "cells": 6433,
+        "pairs": 20,
+        "peptides": 235,
+        "clusters": 221,
+        "mae": 0.3900999038783344,
+        "auroc_plus": 0.8330439476902471,
+        "eligible_plus": 114
+      },
+      "other360": {
+        "cells": 115979,
+        "pairs": 360,
+        "peptides": 235,
+        "clusters": 221,
+        "mae": 0.3840212833872119,
+        "auroc_plus": 0.8506762348426625,
+        "eligible_plus": 184
+      }
+    },
+    "cnn-transfer-scratch-D": {
+      "scan20": {
+        "cells": 6433,
+        "pairs": 20,
+        "peptides": 235,
+        "clusters": 221,
+        "mae": 0.39906536368546724,
+        "auroc_plus": 0.807465214836009,
+        "eligible_plus": 114
+      },
+      "other360": {
+        "cells": 115979,
+        "pairs": 360,
+        "peptides": 235,
+        "clusters": 221,
+        "mae": 0.39329633655900886,
+        "auroc_plus": 0.8309836381944085,
+        "eligible_plus": 184
+      }
+    },
+    "cnn-transfer-dpsi_rep1-D": {
+      "scan20": {
+        "cells": 6433,
+        "pairs": 20,
+        "peptides": 235,
+        "clusters": 221,
+        "mae": 0.39134218013963806,
+        "auroc_plus": 0.8302400824098091,
+        "eligible_plus": 114
+      },
+      "other360": {
+        "cells": 115979,
+        "pairs": 360,
+        "peptides": 235,
+        "clusters": 221,
+        "mae": 0.38698484660918786,
+        "auroc_plus": 0.8437874891618226,
+        "eligible_plus": 184
+      }
+    }
+  },
+  "contrasts": {
+    "esm2_35m-mcnn-E minus esm2_35m-cnn-D; mae": {
+      "delta": -0.0005076313196522603,
+      "ci95": [
+        -0.003157472974124294,
+        0.0022234273088492414
+      ],
+      "ci_adjusted": [
+        -0.003157472974124294,
+        0.0022234273088492414
+      ],
+      "multiplicity": 1,
+      "peptides": 235,
+      "clusters": 221,
+      "bootstrap": 5000
+    },
+    "esm2_35m-mcnn-E minus esm2_35m-cnn-D; mae; le3": {
+      "delta": 0.0008865484136344317,
+      "ci95": [
+        -0.002890546648940625,
+        0.0047365749861966325
+      ],
+      "ci_adjusted": [
+        -0.002890546648940625,
+        0.0047365749861966325
+      ],
+      "multiplicity": 1,
+      "peptides": 91,
+      "clusters": 89,
+      "bootstrap": 5000
+    },
+    "esm2_35m-mcnn-E minus esm2_35m-cnn-D; auroc_plus": {
+      "delta": -0.001812119531503875,
+      "ci95": [
+        -0.0063727351071435605,
+        0.0027386476377875067
+      ],
+      "ci_adjusted": [
+        -0.0063727351071435605,
+        0.0027386476377875067
+      ],
+      "multiplicity": 1,
+      "peptides": 184,
+      "clusters": 176,
+      "bootstrap": 5000
+    },
+    "esm2_35m-mcnn-E minus esm2_35m-cnn-D; auroc_plus; le3": {
+      "delta": 0.004536302144862516,
+      "ci95": [
+        -0.0018729409441086396,
+        0.010948959194310487
+      ],
+      "ci_adjusted": [
+        -0.0018729409441086396,
+        0.010948959194310487
+      ],
+      "multiplicity": 1,
+      "peptides": 89,
+      "clusters": 87,
+      "bootstrap": 5000
+    },
+    "esm2_35m-cnn-D minus esm2_35m-cnn-B; mae": {
+      "delta": -0.003610845979812495,
+      "ci95": [
+        -0.007738662328910263,
+        0.00042013076814368126
+      ],
+      "ci_adjusted": [
+        -0.007738662328910263,
+        0.00042013076814368126
+      ],
+      "multiplicity": 1,
+      "peptides": 235,
+      "clusters": 221,
+      "bootstrap": 5000
+    },
+    "esm2_35m-cnn-D minus esm2_35m-cnn-B; mae; le3": {
+      "delta": 0.008700410528818528,
+      "ci95": [
+        0.003292819889980617,
+        0.014106552866775006
+      ],
+      "ci_adjusted": [
+        0.003292819889980617,
+        0.014106552866775006
+      ],
+      "multiplicity": 1,
+      "peptides": 91,
+      "clusters": 89,
+      "bootstrap": 5000
+    },
+    "esm2_35m-cnn-D minus esm2_35m-cnn-B; auroc_plus": {
+      "delta": -0.0018124476678904628,
+      "ci95": [
+        -0.006964235993350965,
+        0.0033005103274802304
+      ],
+      "ci_adjusted": [
+        -0.006964235993350965,
+        0.0033005103274802304
+      ],
+      "multiplicity": 1,
+      "peptides": 184,
+      "clusters": 176,
+      "bootstrap": 5000
+    },
+    "esm2_35m-cnn-D minus esm2_35m-cnn-B; auroc_plus; le3": {
+      "delta": -0.00640709816461163,
+      "ci95": [
+        -0.013334075627797082,
+        0.0007597293649445321
+      ],
+      "ci_adjusted": [
+        -0.013334075627797082,
+        0.0007597293649445321
+      ],
+      "multiplicity": 1,
+      "peptides": 89,
+      "clusters": 87,
+      "bootstrap": 5000
+    },
+    "cnn-transfer-dpsi_rep1-D minus cnn-transfer-scratch-D; mae; scan20": {
+      "delta": -0.007723183545829193,
+      "ci95": [
+        -0.01210408801350223,
+        -0.00339910951861322
+      ],
+      "ci_adjusted": [
+        -0.01210408801350223,
+        -0.00339910951861322
+      ],
+      "multiplicity": 1,
+      "peptides": 235,
+      "clusters": 221,
+      "bootstrap": 5000
+    },
+    "esm2_35m-cnn-D minus ordered-w5-D; mae; scan20": {
+      "delta": -0.022525200277392077,
+      "ci95": [
+        -0.029988398590739703,
+        -0.015527203312531459
+      ],
+      "ci_adjusted": [
+        -0.029988398590739703,
+        -0.015527203312531459
+      ],
+      "multiplicity": 1,
+      "peptides": 235,
+      "clusters": 221,
+      "bootstrap": 5000
+    },
+    "cnn-transfer-dpsi_rep1-D minus cnn-transfer-scratch-D; mae; other360": {
+      "delta": -0.0063114899498209415,
+      "ci95": [
+        -0.009840859575161749,
+        -0.002942074466666909
+      ],
+      "ci_adjusted": [
+        -0.009840859575161749,
+        -0.002942074466666909
+      ],
+      "multiplicity": 1,
+      "peptides": 235,
+      "clusters": 221,
+      "bootstrap": 5000
+    },
+    "esm2_35m-cnn-D minus ordered-w5-D; mae; other360": {
+      "delta": -0.023501381185094893,
+      "ci95": [
+        -0.030245511571422114,
+        -0.017269866719324862
+      ],
+      "ci_adjusted": [
+        -0.030245511571422114,
+        -0.017269866719324862
+      ],
+      "multiplicity": 1,
+      "peptides": 235,
+      "clusters": 221,
+      "bootstrap": 5000
+    }
+  },
+  "win_counts": {
+    "cnn_better_peptides": 156,
+    "total_peptides": 235,
+    "cnn_better_groups": 150,
+    "total_groups": 221
+  },
+  "selected_epochs": {
+    "esm2_35m-pointwise-D": {
+      "count": 15,
+      "min": 1,
+      "max": 5,
+      "median": 1.0,
+      "histogram": {
+        "1": 9,
+        "3": 1,
+        "2": 4,
+        "5": 1
+      }
+    },
+    "esm2_35m-cnn-D": {
+      "count": 15,
+      "min": 1,
+      "max": 7,
+      "median": 1.0,
+      "histogram": {
+        "1": 9,
+        "7": 2,
+        "5": 1,
+        "2": 2,
+        "3": 1
+      }
+    },
+    "esm2_35m-mcnn-D": {
+      "count": 15,
+      "min": 1,
+      "max": 5,
+      "median": 3.0,
+      "histogram": {
+        "5": 2,
+        "3": 2,
+        "1": 6,
+        "4": 4,
+        "2": 1
+      }
+    }
+  },
+  "learning_curve": {
+    "ordered-w5-D-fraction0.25": {
+      "seed_mae": {
+        "17": 0.4449391075377913,
+        "29": 0.44102715897830835,
+        "43": 0.4379906912916669
+      },
+      "mean_seed_mae": 0.44131898593592217,
+      "ensemble_mae": 0.41540302751662195
+    },
+    "ordered-w5-D-fraction0.5": {
+      "seed_mae": {
+        "17": 0.4161077105691152,
+        "29": 0.41650175775657083,
+        "43": 0.4240130912409331
+      },
+      "mean_seed_mae": 0.41887418652220637,
+      "ensemble_mae": 0.41133527595060926
+    },
+    "ordered-w5-D-fraction0.75": {
+      "seed_mae": {
+        "17": 0.41302239086421977,
+        "29": 0.4091860256679578,
+        "43": 0.40987911406178545
+      },
+      "mean_seed_mae": 0.410695843531321,
+      "ensemble_mae": 0.40832726152222026
+    },
+    "ordered-w5-D": {
+      "seed_mae": {
+        "17": 0.40780263284218754,
+        "29": 0.40780263284218754,
+        "43": 0.40780263284218754
+      },
+      "mean_seed_mae": 0.40780263284218754,
+      "ensemble_mae": 0.40780263284218754
+    }
+  }
+}

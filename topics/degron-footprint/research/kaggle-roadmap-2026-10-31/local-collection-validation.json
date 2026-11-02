@@ -1,0 +1,8 @@
+{
+  "status": "pass",
+  "test": "full_cohort_nested_selection_matches_Kaggle_given_identical_fold_artifacts",
+  "rows": 367236,
+  "max_abs_prediction_difference": 0.0,
+  "recipes": 4,
+  "fold_artifacts": 60
+}

@@ -1,0 +1,53 @@
+{
+  "checked_utc": "2026-11-02T09:34:15.497511+00:00",
+  "scope": "reuse_environment_inspection_only",
+  "official_jobs_started": false,
+  "downloads_stopped_at_user_request": true,
+  "paused_torch_download_percent": 54.8,
+  "repo_environment_status": "pip_and_setuptools_only_dependencies_pending",
+  "data_core": {
+    "status": "pass",
+    "files_verified": 32,
+    "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738"
+  },
+  "esm35_weights": {
+    "status": "pass",
+    "files_verified": 6,
+    "revision": "6fbf070e65b0b7291e7bbcd451118c216cff79d8"
+  },
+  "environments": [
+    {
+      "root": "D:\\ctut_chatbox_kiot_main\\.venv",
+      "python": "3.11.9",
+      "torch": "2.13.0+cu130",
+      "cuda": "13.0",
+      "cuda_available": true,
+      "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+      "matrix_forward_backward": "pass",
+      "recommended_for_reuse": true
+    },
+    {
+      "root": "D:\\Taiwan Cat and Dog\\From-CNN-to-Bioinformatic\\1.Explore_CNN\\.venv",
+      "python": "3.11.9",
+      "torch": "2.7.1+cu128",
+      "cuda": "12.8",
+      "cuda_available": true,
+      "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+      "matrix_forward_backward": "pass",
+      "recommended_for_reuse": false
+    }
+  ],
+  "cached_wheel": {
+    "status": "verified",
+    "filename": "torch-2.13.0+cu130-cp311-cp311-win_amd64.whl",
+    "cache_path": "C:\\Users\\LENOVO\\AppData\\Local\\pip\\Cache\\http-v2\\b\\b\\2\\6\\f\\bb26fcaa76fbe791f658f00a3c7587ce417f7359931880ee01ca5a55.body",
+    "bytes": 1915488103,
+    "sha256": "45e97bd9bc0416f4f4190b5098c55119a389fa5a7c8bbf2639f08f1d04e0a0dc",
+    "official_url": "https://download-r2.pytorch.org/whl/cu130/torch-2.13.0%2Bcu130-cp311-cp311-win_amd64.whl",
+    "official_index": "https://download.pytorch.org/whl/cu130/torch/",
+    "wheel_tag": "cp311-cp311-win_amd64",
+    "copy_and_install_executed": false
+  },
+  "full_esm35_readiness_in_repo": "not_run_pending_installation",
+  "source_environments_modified": false
+}

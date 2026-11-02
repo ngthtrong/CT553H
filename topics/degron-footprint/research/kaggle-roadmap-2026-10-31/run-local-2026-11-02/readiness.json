@@ -1,0 +1,338 @@
+{
+  "scope": "local_readiness_only",
+  "official_jobs_started": false,
+  "generated_utc": "2026-11-02T09:48:45.696782+00:00",
+  "interpreter": "D:\\thanhtrong\\CT553H\\.venv\\Scripts\\python.exe",
+  "data_root": "D:\\thanhtrong\\CT553H\\topics\\degron-footprint\\data\\processed\\degron-data-v3-fullpsi",
+  "requirements": "D:\\thanhtrong\\CT553H\\topics\\degron-footprint\\research\\kaggle-roadmap-2026-10-31\\requirements-local-cuda-reuse.txt",
+  "checks": {
+    "requirements": {
+      "numpy<3,>=1.26": "2.1.3",
+      "pandas<4,>=2.2": "2.3.3",
+      "pyarrow<27,>=15": "23.0.1",
+      "scipy<2,>=1.12": "1.16.3",
+      "scikit-learn<2,>=1.5": "1.6.1",
+      "joblib<2,>=1.4": "1.6.0",
+      "matplotlib<4,>=3.8": "3.11.2",
+      "transformers==5.17.0": "5.17.0",
+      "sentencepiece==0.2.2": "0.2.2",
+      "accelerate==1.15.0": "1.15.0",
+      "safetensors<1,>=0.5": "0.8.0",
+      "huggingface-hub<2,>=1.0": "1.33.0",
+      "requests<3,>=2.31": "2.34.2",
+      "nbformat<6,>=5.10": "5.11.1",
+      "torch==2.13.0+cu130": "2.13.0+cu130",
+      "numpy==2.1.3": "2.1.3",
+      "pandas==2.3.3": "2.3.3",
+      "pyarrow==23.0.1": "23.0.1",
+      "scipy==1.16.3": "1.16.3",
+      "scikit-learn==1.6.1": "1.6.1",
+      "safetensors==0.8.0": "0.8.0"
+    },
+    "pip_check": "No broken requirements found.",
+    "cuda": {
+      "torch_version": "2.13.0+cu130",
+      "runtime": "13.0",
+      "name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+      "capability": [
+        12,
+        0
+      ],
+      "compiled_architectures": [
+        "sm_75",
+        "sm_80",
+        "sm_86",
+        "sm_90",
+        "sm_100",
+        "sm_120"
+      ],
+      "vram_bytes": 8546484224,
+      "matrix_forward_backward": "pass"
+    },
+    "data": {
+      "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738",
+      "manifest_files_verified": 32,
+      "saturation_cells": 122412,
+      "saturation_peptides": 235,
+      "groups": 221,
+      "scanning_cells": 224470,
+      "scanning_partition_cells": {
+        "scan_dev": 152820,
+        "scan_T": 39380,
+        "sat_overlap": 32270
+      },
+      "held_source_labels_used_for_training_or_evaluation": false,
+      "group_disjointness": "pass",
+      "splits": [
+        {
+          "seed": 17,
+          "fold": 0,
+          "groups": {
+            "train": 142,
+            "validation": 35,
+            "test": 44
+          }
+        },
+        {
+          "seed": 17,
+          "fold": 1,
+          "groups": {
+            "train": 142,
+            "validation": 35,
+            "test": 44
+          }
+        },
+        {
+          "seed": 17,
+          "fold": 2,
+          "groups": {
+            "train": 142,
+            "validation": 35,
+            "test": 44
+          }
+        },
+        {
+          "seed": 17,
+          "fold": 3,
+          "groups": {
+            "train": 141,
+            "validation": 35,
+            "test": 45
+          }
+        },
+        {
+          "seed": 17,
+          "fold": 4,
+          "groups": {
+            "train": 142,
+            "validation": 35,
+            "test": 44
+          }
+        },
+        {
+          "seed": 29,
+          "fold": 0,
+          "groups": {
+            "train": 142,
+            "validation": 35,
+            "test": 44
+          }
+        },
+        {
+          "seed": 29,
+          "fold": 1,
+          "groups": {
+            "train": 142,
+            "validation": 35,
+            "test": 44
+          }
+        },
+        {
+          "seed": 29,
+          "fold": 2,
+          "groups": {
+            "train": 142,
+            "validation": 35,
+            "test": 44
+          }
+        },
+        {
+          "seed": 29,
+          "fold": 3,
+          "groups": {
+            "train": 141,
+            "validation": 35,
+            "test": 45
+          }
+        },
+        {
+          "seed": 29,
+          "fold": 4,
+          "groups": {
+            "train": 142,
+            "validation": 35,
+            "test": 44
+          }
+        },
+        {
+          "seed": 43,
+          "fold": 0,
+          "groups": {
+            "train": 142,
+            "validation": 35,
+            "test": 44
+          }
+        },
+        {
+          "seed": 43,
+          "fold": 1,
+          "groups": {
+            "train": 142,
+            "validation": 35,
+            "test": 44
+          }
+        },
+        {
+          "seed": 43,
+          "fold": 2,
+          "groups": {
+            "train": 142,
+            "validation": 35,
+            "test": 44
+          }
+        },
+        {
+          "seed": 43,
+          "fold": 3,
+          "groups": {
+            "train": 141,
+            "validation": 35,
+            "test": 45
+          }
+        },
+        {
+          "seed": 43,
+          "fold": 4,
+          "groups": {
+            "train": 142,
+            "validation": 35,
+            "test": 44
+          }
+        }
+      ]
+    },
+    "ridge_artifact": {
+      "status": "pass",
+      "model": "topics\\degron-footprint\\research\\kaggle-roadmap-2026-10-31\\output\\official\\369cb2fe6a1e31e0\\tasks\\01-78cc356ba4f4\\ordered-w5-D-seed17-fold0.joblib",
+      "max_abs_prediction_difference": 0.0,
+      "rows": 8
+    },
+    "esm35_preflight": {
+      "model_id": "esm2_35m",
+      "status": "feasible",
+      "mode": "smoke",
+      "revision": "6fbf070e65b0b7291e7bbcd451118c216cff79d8",
+      "repo": "facebook/esm2_t12_35M_UR50D",
+      "hidden_size": 480,
+      "shape": [
+        2,
+        28,
+        480
+      ],
+      "device": "cuda",
+      "dtype": "float16",
+      "batch": 2,
+      "sequences_per_second": 125.0000004292815,
+      "repeat_max_abs": 0.0,
+      "peak_vram_bytes": 136218624,
+      "residue_alignment_positions": [
+        1,
+        2,
+        14,
+        27,
+        28
+      ],
+      "wt_identity_max_abs": 0.0,
+      "parameters": 33269521
+    },
+    "partial_checkpoint": {
+      "path": "topics\\degron-footprint\\research\\kaggle-roadmap-2026-10-31\\output\\official\\369cb2fe6a1e31e0\\tasks\\11-lora-B-s17-8e4225129038\\esm2_35m-lora-B-17-0-inner.pt",
+      "sha256": "0198bb7ee2cd188b19fdf16c68c58d09c7b381393699bae159047e7b2e4306e1",
+      "matching_model_arm_seed_and_data": true
+    },
+    "training_diagnostics": [
+      {
+        "mode": "frozen",
+        "resumed": false,
+        "resumed_epoch": null,
+        "batch_size": 8,
+        "dtype": "float32",
+        "sequence_length": 28,
+        "trainable_parameters": 65409,
+        "changed_parameters": 4,
+        "changed_lora_parameters": 0,
+        "peak_allocated_bytes": 212916736,
+        "peak_reserved_bytes": 228589568,
+        "single_batch_seconds": 0.16790840006433427,
+        "finite_forward_backward_update": "pass",
+        "checkpoint_written": false
+      },
+      {
+        "mode": "lora",
+        "resumed": false,
+        "resumed_epoch": null,
+        "batch_size": 8,
+        "dtype": "float32",
+        "sequence_length": 28,
+        "trainable_parameters": 249729,
+        "changed_parameters": 52,
+        "changed_lora_parameters": 48,
+        "peak_allocated_bytes": 429875200,
+        "peak_reserved_bytes": 461373440,
+        "single_batch_seconds": 0.1120183999883011,
+        "finite_forward_backward_update": "pass",
+        "checkpoint_written": false
+      },
+      {
+        "mode": "lora",
+        "resumed": true,
+        "resumed_epoch": 12,
+        "batch_size": 8,
+        "dtype": "float32",
+        "sequence_length": 28,
+        "trainable_parameters": 249729,
+        "changed_parameters": 52,
+        "changed_lora_parameters": 48,
+        "peak_allocated_bytes": 431875072,
+        "peak_reserved_bytes": 461373440,
+        "single_batch_seconds": 0.07014349999371916,
+        "finite_forward_backward_update": "pass",
+        "checkpoint_written": false
+      }
+    ],
+    "diagnostic_training_cell_ids": [
+      "sat:A6NMZ7_COL6A6_28:1:A",
+      "sat:A6NMZ7_COL6A6_28:1:C",
+      "sat:A6NMZ7_COL6A6_28:1:E",
+      "sat:A6NMZ7_COL6A6_28:1:F",
+      "sat:A6NMZ7_COL6A6_28:1:G",
+      "sat:A6NMZ7_COL6A6_28:1:H",
+      "sat:A6NMZ7_COL6A6_28:1:I",
+      "sat:A6NMZ7_COL6A6_28:1:K"
+    ]
+  },
+  "environment": {
+    "python": "3.11.9",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "versions": {
+      "numpy": "2.1.3",
+      "pandas": "2.3.3",
+      "pyarrow": "23.0.1",
+      "scipy": "1.16.3",
+      "scikit-learn": "1.6.1",
+      "torch": "2.13.0+cu130",
+      "transformers": "5.17.0",
+      "peft": null,
+      "accelerate": "1.15.0",
+      "sentencepiece": "0.2.2",
+      "safetensors": "0.8.0"
+    },
+    "cuda": true,
+    "devices": [
+      {
+        "name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+        "bytes": 8546484224
+      }
+    ]
+  },
+  "source_campaign_plan_id": "369cb2fe6a1e31e08312b2cae1438b4c7e730849d96f103529cfa8e176fb6cd9",
+  "ready_for_esm35_training": true,
+  "status": "pass",
+  "limitations": [
+    "One-batch diagnostics validate functionality and memory on this sample; full-run throughput is unmeasured.",
+    "Local Python/OS/GPU differ from Kaggle; bitwise continuation is not guaranteed.",
+    "Windows paths and raw code line-ending hashes differ; campaign resume needs explicit local configuration.",
+    "External and structure experiments still require their own reviewed inputs.",
+    "CNN final refit/export is a separate implementation task from environment readiness."
+  ]
+}

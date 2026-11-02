@@ -1,0 +1,567 @@
+[
+  {
+    "number": 1,
+    "title": "Hiệu ứng đột biến degron ở mức residue",
+    "section": "Giới thiệu",
+    "insight": "",
+    "notes": "Buổi giới thiệu đề tài và trao đổi tiến độ; không phải bảo vệ hoàn tất. Hình mở đầu dùng ma trận nhãn đo HIF1A. Mục tiêu: người nghe hiểu bài toán, thấy bằng chứng và góp ý hướng tiếp theo.",
+    "sources": [
+      "slide-figures-2026-10-15/example-matrix.json"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 2,
+    "title": "Degron tham gia quá trình phân hủy protein",
+    "section": "Giới thiệu",
+    "insight": "Một phép thay amino acid có thể làm thay đổi tín hiệu nhận diện.",
+    "notes": "Sơ đồ là nguyên lý đơn giản hóa UPS. GIF Fam188a của Nikolakhs, CC BY-SA 3.0, chỉ minh họa một protein gấp cuộn, không phải HIF1A/degron đã đo. Hoạt tính của đoạn peptide tách rời có thể khác trong protein nguyên vẹn.",
+    "sources": [],
+    "appendix": false
+  },
+  {
+    "number": 3,
+    "title": "Một phép thay tạo một ô trong bản đồ hiệu ứng",
+    "section": "Giới thiệu",
+    "insight": "Đầu vào: trình tự WT, vị trí và amino acid thay vào. Đầu ra: ΔPSI.",
+    "notes": "WT là trình tự tham chiếu. Ma trận hiển thị 28 vị trí và 20 amino acid; ô WT→WT được mask, có 532 phép thay thật khi đủ dữ liệu. Đây là sơ đồ đầu ra, không phải dự đoán mô hình.",
+    "sources": [
+      "model-selection-pipeline-2026-10-24/README.md"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 4,
+    "title": "GPS chuyển tín hiệu reporter thành nhãn ΔPSI",
+    "section": "Giới thiệu",
+    "insight": "<strong>ΔPSI = PSI(mutant) − PSI(WT).</strong> Dương: reporter bền hơn trong assay.",
+    "notes": "Histogram là minh họa cách đo, không phải số liệu thực nghiệm. PSI của Zhang dùng sáu bin, thang 1–6; thấp là reporter kém bền. Không tự suy dấu ΔPSI thành cơ chế E3 hay khả năng gây bệnh.",
+    "sources": [
+      "full-data-audit/psi-build.json"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 5,
+    "title": "Ví dụ HIF1A cho thấy hiệu ứng tập trung theo vị trí",
+    "section": "Giới thiệu",
+    "insight": "Cùng một peptide, những vị trí khác nhau phản ứng rất khác với đột biến.",
+    "notes": "Peptide Q16665_HIF1A_25, vị trí protein 553–580. WT nội tại PSI2.1865; 186 ô ΔPSI≥1. Ví dụ được chọn theo ≥500 ô, nhiều ô dương nhất, hòa lấy ID nhỏ nhất. Đối chiếu motif HIF1A/VHL là y văn, không phải phát hiện cơ chế mới. Ô WT và ô thiếu đều được mask.",
+    "sources": [
+      "slide-figures-2026-10-15/example-matrix.json"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 6,
+    "title": "Giá trị sử dụng là ưu tiên đột biến để kiểm chứng",
+    "section": "Giới thiệu",
+    "insight": "Ma trận → danh sách ưu tiên → thí nghiệm xác nhận.",
+    "notes": "Không coi xếp hạng dự đoán là thay thế thực nghiệm. ClinVar là annotation và động lực nghiên cứu; liên hệ bệnh ở mức residue chưa thiết lập. Các ô trong hình chỉ mô tả lựa chọn, không phải điểm mô hình.",
+    "sources": [
+      "variant-coverage-2026-10-15/README.md"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 7,
+    "title": "Công trình liên quan trả lời các câu hỏi khác nhau",
+    "section": "Cơ sở và mục tiêu",
+    "insight": "Trọng tâm: bằng chứng dự đoán và đánh giá, cùng công cụ hỗ trợ phân tích.",
+    "notes": "Không nhận ma trận hoặc web là tính mới độc quyền. Khác endpoint thì không so trực tiếp AUROC. MetaDegron có một classifier dùng chung với lựa chọn motif/E3; không phải mọi menu là một lớp E3 học độc lập.",
+    "sources": [
+      "metadegron-analysis-2026-10-21/comparison-and-positioning.md"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 8,
+    "title": "Ba mục tiêu nối nghiên cứu với công cụ",
+    "section": "Cơ sở và mục tiêu",
+    "insight": "Phạm vi chính: hiệu ứng đột biến đơn trên reporter peptide 28 amino acid.",
+    "notes": "Không đặt dự đoán E3 hay chẩn đoán biến thể gây bệnh làm nhiệm vụ chính. Không có phép đo sinh học mới. Công cụ phục vụ hình thành giả thuyết và lựa chọn thí nghiệm.",
+    "sources": [
+      "model-selection-pipeline-2026-10-24/README.md"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 9,
+    "title": "Các câu hỏi đang dẫn dắt hướng nghiên cứu",
+    "section": "Cơ sở và mục tiêu",
+    "insight": "Mỗi câu hỏi được kiểm bằng phép so phù hợp và giới hạn suy luận rõ ràng.",
+    "notes": "Sơ đồ là quan hệ nghiên cứu, không là lịch chạy. Các kết quả được tổ chức theo câu hỏi, không theo mã phiên hay thứ tự thời gian.",
+    "sources": [
+      "kaggle-roadmap-2026-10-31/EXECUTION-PROTOCOL.md"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 10,
+    "title": "Nguồn dữ liệu được dùng đúng vai trò",
+    "section": "Dữ liệu và cách tiếp cận",
+    "insight": "Nguồn mức tile và annotation không tự trở thành nhãn mutation.",
+    "notes": "Core v3 chỉ chứa Zhang và UniProt, không chứa ClinVar/Koren/Larsen/MetaDegron hoặc weights. Larsen/MaveDB là nguồn khảo sát với endpoint khác. Phân biệt nguồn đã tải, đã audit và đã dùng fit.",
+    "sources": [
+      "kaggle-roadmap-2026-10-31/DATASET.md",
+      "full-data-audit/README.md"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 11,
+    "title": "Hai thiết kế đột biến có độ phủ bổ sung",
+    "section": "Dữ liệu và cách tiếp cận",
+    "insight": "Scanning mở rộng ngữ cảnh; saturation kiểm được đầy đủ các kiểu thay thế.",
+    "notes": "Scanning có phép thay là hàm của WT: hướng R/A/S, tổng20 cặp có hướng trong380 cặp không đồng nghĩa. Hình biểu thị thiết kế lý tưởng, không khẳng định mọi ô đều qua QC.",
+    "sources": [
+      "scan-sat-merge-2026-10-23/README.md"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 12,
+    "title": "Mốc WT phải phù hợp với từng thí nghiệm",
+    "section": "Dữ liệu và cách tiếp cận",
+    "insight": "Giữ riêng nguồn, điều kiện và replicate trước khi tạo nhãn hiệu ứng.",
+    "notes": "Saturation không có mut0; dùng trung vị ô đồng nghĩa từng nửa. Scanning dùng mut0 đúng replicate. Không lấy BAG6 WT làm mốc saturation. PSI dựng lại261865 giá trị khớp tác giả trong5e-7 khi mô phỏng điều kiện tái lập.",
+    "sources": [
+      "full-data-audit/psi-build.json",
+      "full-data-audit/saturation-matrix.json"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 13,
+    "title": "Độ lặp lại của nhãn đặt giới hạn cho cách đọc kết quả",
+    "section": "Dữ liệu và cách tiếp cận",
+    "insight": "Phần dư sau mô hình có thể chứa cả tín hiệu và nhiễu đo.",
+    "notes": "0.8335 là Pearson giữa hai nửa trên cohort saturation theo audit. Không so noise_share của tổng phương sai với noise_share của phần dư như cùng đại lượng. Replicate là mốc độ tin cậy của phép đo, không phải trần tuyệt đối cho mọi estimator.",
+    "sources": [
+      "full-data-audit/saturation-matrix.json",
+      "full-data-audit/replicate-audit.json"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 14,
+    "title": "Chia theo nhóm protein để kiểm khả năng tổng quát hóa",
+    "section": "Dữ liệu và cách tiếp cận",
+    "insight": "Miền hẹp: 91 peptide. Toàn dải: 235 peptide thuộc 221 nhóm protein.",
+    "notes": "Hai thiết kế có population, eligibility và preprocessing khác, không nối AUROC thành một đường tiến bộ. V3 dùng5outer folds và3seed inner-validation; các transform chỉ fit trong train, epoch chọn rồi khởi tạo lại refit. Nhóm có homology heuristic, không chứng minh độc lập sinh học tuyệt đối.",
+    "sources": [
+      "kaggle-roadmap-2026-10-31/EXECUTION-PROTOCOL.md"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 15,
+    "title": "Sai số, xếp hạng và ngân sách thí nghiệm là các mục tiêu riêng",
+    "section": "Dữ liệu và cách tiếp cận",
+    "insight": "Tính theo peptide; khoảng tin cậy lấy mẫu lại theo nhóm protein.",
+    "notes": "V3 MAE có235 peptide; event dương Δ≥1 có184peptide đủ điều kiện, âm Δ≤−1 có110. Mỗi lớp phải có≥3ô. Bootstrap5000 theo nhóm, không theo122412ô. AUROC không là accuracy; AP cần đọc với tần suất event.",
+    "sources": [
+      "kaggle-roadmap-2026-10-31/output-analysis.json"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 16,
+    "title": "Ngữ cảnh cục bộ bổ sung thông tin ngoài phép thay",
+    "section": "Kết quả và phân tích",
+    "insight": "Đây là lý do cần baseline ngữ cảnh trước khi thử mô hình phức tạp.",
+    "notes": "M0 pair+composition0.8393; unordered0.8625; ordered±3 0.8682. Ordered−M0 +.0289 CI[.0264,.0313]. Trung bình AUROC các seed trong nguồn này, không gán là ensemble v3. Mô hình tuyến tính composition hằng trong peptide không tự đổi thứ hạng giữa vị trí có cùng phép thay.",
+    "sources": [
+      "residue-task-derisk-2026-10-15/model.json"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 17,
+    "title": "Học toàn dải PSI giảm sai số hồi quy của Ridge",
+    "section": "Kết quả và phân tích",
+    "insight": "Cải thiện có bằng chứng; mức giảm tối thiểu 0,02 PSI chưa được bảo đảm trên toàn CI.",
+    "notes": "Cùng235peptide test,221nhóm. Hai contrast Q1 dùng CI97.5% Bonferroni. Arm hẹp vẫn dùng validation toàn dải. Không đưa PSI(WT) vào feature hoặc dùng nó clip dự đoán.",
+    "sources": [
+      "kaggle-roadmap-2026-10-31/output-analysis.json"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 18,
+    "title": "Lợi ích toàn dải tập trung ở miền PSI cao",
+    "section": "Kết quả và phân tích",
+    "insight": "Chọn phân bố train cần xét cả mục tiêu toàn tập và miền sử dụng.",
+    "notes": "Các strata có91/85/36/23peptide. Ridge full ở miền≤3 không thấy giảm quáguardrail. Cân bằng có cận CI AUROC hơi vượt−.01. >5 không có eventdươngΔ≥1 nên AUROC dươngnull đúng. Khi soCNN toàn dải/chỉ≤4, miền≤3 MAE tăng.00870 CI[.00329,.01411], không suy guardrailRidge sangCNN.",
+    "sources": [
+      "kaggle-roadmap-2026-10-31/output-analysis.json",
+      "kaggle-roadmap-2026-10-31/output-analysis-details.json"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 19,
+    "title": "ESM bổ sung tín hiệu cho baseline ngữ cảnh",
+    "section": "Kết quả và phân tích",
+    "insight": "Trong benchmark toàn dải, mới ESM2-35M có kết quả; chưa kết luận được họ pLM tốt nhất.",
+    "notes": "W5+ESM−W5 AUROC+.012548 CI95[.006216,.019670]. Nested selection MAE.397525 vsW5.407803, AUROC improvementCIphủ0. Không lấy fixedrecipe tốt nhất thay cho nested procedure. Bảng nhiều cỡ ESM trên thiết kế khác để phụ lục.",
+    "sources": [
+      "kaggle-roadmap-2026-10-31/output-analysis.json"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 20,
+    "title": "CNN cải thiện thêm sau representation ESM",
+    "section": "Kết quả và phân tích",
+    "insight": "Phép so cùng đầu vào hỗ trợ giá trị trộn vị trí; kết quả one-hot còn chưa phân giải.",
+    "notes": "ESMCNN−pointwise MAE CI95[−.010173,−.000899], AUROC+.011289CI[.003434,.019133]. Head parameter36833vs57185 nên chưa cô lập sức chứa. CI khácQ1 là mô tả, chưa điều chỉnh toàn khảo sát.",
+    "sources": [
+      "kaggle-roadmap-2026-10-31/output-analysis.json"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 21,
+    "title": "Nhiều cửa sổ chưa chứng minh vượt một cửa sổ",
+    "section": "Kết quả và phân tích",
+    "insight": "Đứng đầu MAE trong bảng development chưa đủ để chốt ứng viên.",
+    "notes": "mCNNE MAE.383846vsCNND.384354, chênh−.000508CI95[−.003157,+.002223]. CùngD mCNN−CNN +.000639CIphủ0. B/D/E là lựa chọn phân bốtrain nội bộ, màn chiếu dùng tên đầy đủ. CNN chỉPSI≤4 đánggiữ nếuưu tiênmiềnthấp; toàn dải so nó chưađảm bảoguardrail.",
+    "sources": [
+      "kaggle-roadmap-2026-10-31/output-analysis.json",
+      "kaggle-roadmap-2026-10-31/output-analysis-details.json"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 22,
+    "title": "Học tốt nhãn tile chưa bảo đảm chuyển sang mutation effect",
+    "section": "Kết quả và phân tích",
+    "insight": "Kết quả âm giới hạn một thiết kế chuyển giao cụ thể, không bác bỏ mọi cách tiền huấn luyện.",
+    "notes": "Cùngthiếtkế ext4 trên91peptide. Nguồn212616tile; encoderpretrainPearson.864 nhưng downstreampre−rand−.0077CI[−.0163,+.0006]. Nhánhpre−ridge−.011CIâm. Không so thẳng với số v3 hoặc quy thành pretraining pLM vô ích.",
+    "sources": [
+      "pretrain-p3-2026-10-22/results.json"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 23,
+    "title": "Scanning pretrain có lợi cả ngoài các kiểu thay đã thấy",
+    "section": "Kết quả và phân tích",
+    "insight": "Quality weighting hiện làm tăng sai số; trung bình replicate chưa hơn rep1 rõ ràng.",
+    "notes": "Transfer onehotCNN, không làESM+scanning. Cohort20 có6433ô;360 có115979ô,cùng235peptide221nhóm. Mean12−rep1CIphủ0. Quality−satonly +.004010. Scan_T không thamgiafit; kếtquả ởsaturationOOF khônglàtransferT.",
+    "sources": [
+      "kaggle-roadmap-2026-10-31/output-analysis.json",
+      "kaggle-roadmap-2026-10-31/output-analysis-details.json"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 24,
+    "title": "Đối chiếu Degformer cần kiểm cả chồng mẫu và ngân sách nhãn",
+    "section": "Kết quả và phân tích",
+    "insight": "Retrain sạch cụm đạt AUROC 0,8068; chưa có bằng chứng vượt Ridge trên phép so này.",
+    "notes": "Checkpoint.9248có88.12%ôtrùng. Retrainsạch.806775, Ridgeext.820822, delta−.014CI[−.0283,+.0010]=>khôngphânbiệtđược. Retrainkiếntrúcchỉ47knhãn.749978làthiếtkếriêng. Không coi chênhcheckpoint/retrain là causal leakage-only effect vì các điều kiện thay đổi.",
+    "sources": [
+      "r1-degformer-clean-2026-10-22/run-kaggle-20261022/results.json"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 25,
+    "title": "Xếp hạng giúp tập trung ngân sách vào đột biến đáng thử",
+    "section": "Kết quả và phân tích",
+    "insight": "Đây là khả năng ưu tiên thí nghiệm, chưa phải xác suất đã được hiệu chuẩn.",
+    "notes": "Precision macro trong184peptideeligibleplus. Top10CNN49.04%vsRidge44.29%. AP+.50947,rate+.124697 trêncùngcohort. AP−.213667,rate−.027336trên110peptide;precisiontop5−16.77%. Không dùngtopkzero-scorephụthuộctiebreaklàmrandom.",
+    "sources": [
+      "kaggle-roadmap-2026-10-31/output-analysis.json"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 26,
+    "title": "Độ ổn định và chi phí cùng tham gia lựa chọn mô hình",
+    "section": "Kết quả và phân tích",
+    "insight": "Ensemble giúp giảm phương sai; seed và fold không phải các bộ dữ liệu độc lập.",
+    "notes": "Tổngtaskseconds9.3265h,77.52%stage11frozen; chưa gồmLoRAdở. Chỉseed17frozenB/D. 35taskcomplete,1runningtrongsnapshotkhôngchứngminhremotecònsống. Frozenstage11chạybackbonemỗibatch; cache làhướngtốiưucầnparity, không cóbenchmarktăngtốc. Nguồn chốt ởsnapshotKaggle, khônggộpjoblocalđangchuẩnbị.",
+    "sources": [
+      "kaggle-roadmap-2026-10-31/output-analysis.json",
+      "kaggle-roadmap-2026-10-31/output-analysis-details.json"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 27,
+    "title": "Hiệu chuẩn nối điểm hồi quy với xác suất sự kiện",
+    "section": "Kết quả và phân tích",
+    "insight": "Bằng chứng hiệu chuẩn thuộc model đã kiểm; CNN mới cần quy trình hiệu chuẩn riêng.",
+    "notes": "RidgeM3ext4PlattBrier.0925vsconst.1139,BSS.188. ScoreΔPSIclippedkhôngtựlàprobability. Reliabilitythiênthấpdo fitpoolkhácmiềntest; khônggọicalibrationhoànhảo. Protocolv3crossfitcalibrationkhácchitiếtP6, khôngmangnguyêncalibratorsangCNN.",
+    "sources": [
+      "calibration-p6-2026-10-22/results.json"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 28,
+    "title": "Miền áp dụng cần được đánh giá cùng với dự đoán",
+    "section": "Kết quả và phân tích",
+    "insight": "PSI giữa các nguồn đo khác nhau; mô hình học peptide chưa xác nhận hiệu ứng protein nguyên vẹn.",
+    "notes": "CổngR3khảosátchomiềntrainPSI≤4. PSIpeptidomescreenlệchWTintrinsic~.9,khôngdùngrawthreshold4trực tiếp. ÁpquaR3khoảng26%in9%border65%out. FullPSIkhôngtựchocổngđộcậymớivàkhôngchứngminhphục vụmọiprotein. Tíchhợpgateappcònmở.",
+    "sources": [
+      "r3-domain-gate-2026-10-22/run-kaggle-20261022/results.json"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 29,
+    "title": "Công cụ đưa ma trận và danh sách ưu tiên vào cùng một luồng",
+    "section": "Công cụ hỗ trợ phân tích",
+    "insight": "Nhập peptide → xem ma trận → chọn phép thay → chú giải → xuất kết quả.",
+    "notes": "Ảnhchụpprototypeworkspaceuiv2hiệnhành. Tấtcảscore/probabilitydemo làsyntheticfixture; khônglàmodeloutput. BaselineReact/FastAPIđãcómãriêng; prototypekhôngnghiệmthubatchprojectsimports. Chỉdùngảnhthiếtkếđểminhhọaluồng.",
+    "sources": [
+      "../system/design/workspace-ui-v2/README.md"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 30,
+    "title": "Một ứng dụng local giữ kết quả cùng nguồn gốc",
+    "section": "Công cụ hỗ trợ phân tích",
+    "insight": "Mỗi kết quả đi cùng phiên bản model, nguồn dữ liệu và phạm vi sử dụng.",
+    "notes": "StackđãchốtReactTypeScriptFastAPIlocal. SQLiteđãdùngchobaseline; PostgreSQLvàdurableworkspacelàphạmvicầntriểnkhaikiểm. KhôngcóyêucầupublishVPS. Sơđồkiếntrúcđịnhhướng, khônglàxácnhậnmọimoduleđãhoànthành.",
+    "sources": [
+      "../system/README.md"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 31,
+    "title": "Phần mềm có nền tảng để tiếp tục mở rộng",
+    "section": "Công cụ hỗ trợ phân tích",
+    "insight": "Các kiểm thử baseline được giữ đúng phạm vi; chức năng mở rộng cần kiểm chứng riêng.",
+    "notes": "Baselinebackend149pytest/frontend131vitestlàbằngchứnglịchsửghiởsystemREADME,chưachạylạitrongphiêndựngslide. Scopev0.2đãthiếtkếchưatriểnkhaixong; R3gatechưaloadđúngtrongapp. Tránhtrìnhtấtcảplannedendpointlàđãcó.",
+    "sources": [
+      "../system/README.md"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 32,
+    "title": "Những gì đã thực hiện tạo nền tảng cho hướng nghiên cứu",
+    "section": "Tiến độ và hướng tiếp theo",
+    "insight": "Đã có kết quả development đáng chú ý và các giới hạn đủ rõ để chọn bước tiếp theo.",
+    "notes": "KhôngtựđóngG2/G3hoặctuyênbốhoàntấtluậnvăn. Đónggópđangxâydựnggồmbenchmark/phươngpháp/đánhgiá/phầnmềm,khôngbắtbuộckiếntrúcmới. Các kết quả âm có vai trò thu hẹp hướng nghiên cứu.",
+    "sources": [
+      "kaggle-roadmap-2026-10-31/output-analysis.json",
+      "model-selection-pipeline-2026-10-24/README.md"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 33,
+    "title": "Ưu tiên tiếp theo là khóa lựa chọn và kiểm chứng khả năng chuyển giao",
+    "section": "Tiến độ và hướng tiếp theo",
+    "insight": "LoRA và cấu trúc là các nhánh cân nhắc theo câu hỏi và nguồn lực.",
+    "notes": "FinalpromotiontựđộnghiệnchỉW5; CNNcầnmodel-specificrefitexport. Khóarecipe/calibrationtrướckhiđọcT. Nguồnscanningđãthăm dòtronglịchsử,khônggọiđộclậphoàntoàn. KhôngcầnchờLoRAđểhoànthiệnbenchmarklõi.",
+    "sources": [
+      "kaggle-roadmap-2026-10-31/EXECUTION-PROTOCOL.md"
+    ],
+    "appendix": false
+  },
+  {
+    "number": 34,
+    "title": "Trao đổi về hướng nghiên cứu và bước tiếp theo",
+    "section": "Trao đổi với giảng viên",
+    "insight": "",
+    "notes": "Mời giảng viên góp ý mục tiêu và hướng ưu tiên. Đây là buổi giới thiệu/tiến độ, không phải nghiệm thu toàn bộ đề tài. Có thể mở overview hoặc phụ lục để trao đổi chi tiết.",
+    "sources": [],
+    "appendix": false
+  },
+  {
+    "number": 35,
+    "title": "Cách đọc các thuật ngữ trong bài toán",
+    "section": "Phụ lục tra cứu",
+    "insight": "Residue: amino acid tại một vị trí. WT: trình tự tham chiếu. OOF: dự đoán ngoài fold.",
+    "notes": "Residue: amino acid tại một vị trí. WT: trình tự tham chiếu. OOF: dự đoán ngoài fold.",
+    "sources": [
+      "model-selection-pipeline-2026-10-24/README.md"
+    ],
+    "appendix": true
+  },
+  {
+    "number": 36,
+    "title": "Chi tiết tạo nhãn và kiểm chất lượng",
+    "section": "Phụ lục tra cứu",
+    "insight": "Đồng nghĩa dùng làm WT nội tại; ô thiếu được mask; điều kiện đo được giữ riêng.",
+    "notes": "Đồng nghĩa dùng làm WT nội tại; ô thiếu được mask; điều kiện đo được giữ riêng.",
+    "sources": [
+      "full-data-audit/psi-build.json",
+      "full-data-audit/saturation-matrix.json"
+    ],
+    "appendix": true
+  },
+  {
+    "number": 37,
+    "title": "Độ tin cậy phụ thuộc mức phân tích",
+    "section": "Phụ lục tra cứu",
+    "insight": "Các cohort và mức vị trí/ô khác nhau; không diễn giải như phép so ghép cặp.",
+    "notes": "SốpsiAgreement0.9239trongREADMEfullauditlàmốcsoWTkhôngphảiđúngrep1rep2; dùngđúngtrườngΔPSI. Khônggọi75.9%phầndưnhiễuvà16.7%tổngphươngsailàcùngmẫusố.",
+    "sources": [
+      "full-data-audit/replicate-audit.json",
+      "full-data-audit/saturation-matrix.json"
+    ],
+    "appendix": true
+  },
+  {
+    "number": 38,
+    "title": "Mô hình composition không phân biệt mọi vị trí",
+    "section": "Phụ lục tra cứu",
+    "insight": "Trong cùng peptide, cùng cặp thay thế nhận cùng score nếu đầu vào chỉ có thành phần.",
+    "notes": "Bấtbiếnápdụngchocompositionthuầntúy; khônggánchotoànPAPcókênhCterminal. M0thực tếcó40chiềupair+20composition. Oracleđọctestkhôngphảitestperformance.",
+    "sources": [
+      "composition-context-audit.md",
+      "residue-task-derisk-2026-10-15/model.json"
+    ],
+    "appendix": true
+  },
+  {
+    "number": 39,
+    "title": "Learning curve cần tách model đơn và ensemble",
+    "section": "Phụ lục tra cứu",
+    "insight": "Độ nhạy phân cụm là phép kiểm riêng; không đếm phân hoạch trùng nhau như bằng chứng mới.",
+    "notes": "Độ nhạy phân cụm là phép kiểm riêng; không đếm phân hoạch trùng nhau như bằng chứng mới.",
+    "sources": [
+      "kaggle-roadmap-2026-10-31/output-analysis-details.json",
+      "recluster-sensitivity-2026-10-22/results.json"
+    ],
+    "appendix": true
+  },
+  {
+    "number": 40,
+    "title": "Các thiết kế tương tác chưa vượt baseline ổn định",
+    "section": "Phụ lục tra cứu",
+    "insight": "Đây là những thiết kế đã thử, không phải phủ định mọi tương tác phi tuyến.",
+    "notes": "Đây là những thiết kế đã thử, không phải phủ định mọi tương tác phi tuyến.",
+    "sources": [
+      "g2-saturation-2026-10-18/results.json",
+      "g2-extension-2026-10-18/e2-candidates.json"
+    ],
+    "appendix": true
+  },
+  {
+    "number": 41,
+    "title": "Lọc trùng mức ô chưa loại được chồng mức peptide",
+    "section": "Phụ lục tra cứu",
+    "insight": "Cần đánh giá theo peptide/nhóm protein được giữ riêng.",
+    "notes": "Cần đánh giá theo peptide/nhóm protein được giữ riêng.",
+    "sources": [
+      "g2-saturation-2026-10-18/results.json",
+      "r1-degformer-clean-2026-10-22/run-kaggle-20261022/results.json"
+    ],
+    "appendix": true
+  },
+  {
+    "number": 42,
+    "title": "Khảo sát cỡ ESM thuộc các thiết kế riêng",
+    "section": "Phụ lục tra cứu",
+    "insight": "Không so trực tiếp bảng này với AUROC của benchmark toàn dải.",
+    "notes": "SốlấytừR6D,bổsungchoM3ext4. Cáccheckpointkháctrongregistrykhôngđồngnghĩađãđánhgiá. V3fullWchỉESM235M. 35Mpreflightforwardshape2x28x480vàfinite/repeatpass.",
+    "sources": [
+      "r6-ladder-scan-2026-10-23/run-kaggle-20261023/results.json"
+    ],
+    "appendix": true
+  },
+  {
+    "number": 43,
+    "title": "Đọc nhiều tiêu chí trên cùng các ứng viên",
+    "section": "Phụ lục tra cứu",
+    "insight": "Các điểm là ensemble dự đoán ba seed; vẫn là phân tích development.",
+    "notes": "Các điểm là ensemble dự đoán ba seed; vẫn là phân tích development.",
+    "sources": [
+      "kaggle-roadmap-2026-10-31/output-analysis.json"
+    ],
+    "appendix": true
+  },
+  {
+    "number": 44,
+    "title": "Scanning transfer: tách các kiểu thay thế để kiểm chuyển giao",
+    "section": "Phụ lục tra cứu",
+    "insight": "Cohort 20 có 6.433 ô; cohort 360 có 115.979 ô. Cùng 235 peptide.",
+    "notes": "Mỗi peptidechỉtínhôtrongcohort. AUROCdươngeligible114và184nênkhôngsotrực tiếpmacrogiữahai cohort. HaiCIởhìnhlàhậukiểmmôtảkhôngđiềuchỉnhđa kiểmđịnh.",
+    "sources": [
+      "kaggle-roadmap-2026-10-31/output-analysis-details.json"
+    ],
+    "appendix": true
+  },
+  {
+    "number": 45,
+    "title": "ClinVar hỗ trợ động lực ở mức vùng, chưa xác nhận mức residue",
+    "section": "Phụ lục tra cứu",
+    "insight": "ClinVar phục vụ bối cảnh và annotation, không là ground truth ΔPSI.",
+    "notes": "ORmh2.14783CI[2.07193,2.22651],3114tầng. Khôngliênhệnhânquả. Sat_exactAUC.6738CI[.489,.831]n51chưađạt; scan_posAUC.5166CIphủ.5. NguồnClinicalkhôngdùngchọnmodel.",
+    "sources": [
+      "variant-coverage-2026-10-15/enrichment.json",
+      "variant-coverage-2026-10-15/README.md"
+    ],
+    "appendix": true
+  },
+  {
+    "number": 46,
+    "title": "Nhãn E3 chưa đủ cho nhiệm vụ có điều kiện E3",
+    "section": "Phụ lục tra cứu",
+    "insight": "Chỉ một nhóm có ít nhất năm peptide; không dùng số E3 trong menu thay cho số lớp có thể học.",
+    "notes": "Chỉ một nhóm có ít nhất năm peptide; không dùng số E3 trong menu thay cho số lớp có thể học.",
+    "sources": [
+      "e3-labels-audit/README.md"
+    ],
+    "appendix": true
+  },
+  {
+    "number": 47,
+    "title": "Nguồn ngoài cần được đánh giá theo endpoint và khả năng sử dụng",
+    "section": "Phụ lục tra cứu",
+    "insight": "Khảo sát nguồn không đồng nghĩa đã có kết quả kiểm chứng ngoài cho model hiện tại.",
+    "notes": "Korenchưađánhgiámôhình,vaitròcandidatetestnhỏvàquyềnsửdụngnộibộ. MaveDBexposureexploratorycònGCKassay/dimerconfound,cầnchạylạitrướckếtluậnmạnh. SaProttrue3Di chưaoutput; weightskhôngthaymappingstructure.",
+    "sources": [
+      "koren-s4-audit-2026-10-22/results.json",
+      "larsen-nuclear-and-risks-2026-10-15/README.md",
+      "architecture-check/README.md"
+    ],
+    "appendix": true
+  },
+  {
+    "number": 48,
+    "title": "Calibration và domain gate trả lời hai câu hỏi khác nhau",
+    "section": "Phụ lục tra cứu",
+    "insight": "Cả hai cần được kiểm lại khi đổi model hoặc thay phạm vi dữ liệu.",
+    "notes": "Cả hai cần được kiểm lại khi đổi model hoặc thay phạm vi dữ liệu.",
+    "sources": [
+      "calibration-p6-2026-10-22/results.json",
+      "r3-domain-gate-2026-10-22/run-kaggle-20261022/results.json"
+    ],
+    "appendix": true
+  },
+  {
+    "number": 49,
+    "title": "Tính tái lập nối dữ liệu, model và kết quả phục vụ",
+    "section": "Phụ lục tra cứu",
+    "insight": "Đã đối chiếu 2.986 file theo manifest; kiểm thử app nền không nghiệm thu chức năng mới.",
+    "notes": "Integrity2986files3065290891bytes83OOF47recipes; reproducedanalysisexact. Những con sốtestapp149backend131frontendlàhistoricalbaselinekhôngchạylạitrongtaskslides. SnapshotKaggleupdated2026-11-01T11:18:07Z,khônggộplocalruntimekhác.",
+    "sources": [
+      "kaggle-roadmap-2026-10-31/output-analysis.json",
+      "../system/README.md"
+    ],
+    "appendix": true
+  },
+  {
+    "number": 50,
+    "title": "Tài liệu và bằng chứng có thể tra cứu theo chủ đề",
+    "section": "Phụ lục tra cứu",
+    "insight": "Mở “Ghi chú” để xem nguồn và giới hạn của slide đang trình bày.",
+    "notes": "Khônggắnfootnotelênmọislidetheoyêucầu. Toànbộnguồnđượctậptrungtạiphụlục,notevàJSON. Websiteđượcdùngkhảosátdesigntrướckhidựng,khôngbổsungclaimhiệunăngmodel.",
+    "sources": [
+      "kaggle-roadmap-2026-10-31/output-analysis.json"
+    ],
+    "appendix": true
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "status": "pass",
+  "campaign": "D:\\thanhtrong\\CT553H\\topics\\degron-footprint\\research\\kaggle-roadmap-2026-10-31\\output\\local\\e7097449883a51d8",
+  "initial_committed_rows": 45648,
+  "resumed_committed_rows": 46080,
+  "same_campaign_reused": true,
+  "session": {
+    "pid": 30164,
+    "session": "20261102-183459",
+    "deadline_unix": 1793622899.3057559,
+    "status": "running",
+    "profile": "all"
+  },
+  "observed_visible_terminal": true,
+  "note": "Launched with Start-Process WindowStyle Normal; actual WindowsTerminal title inspected; pause command checkpointed the real ESM8 feature job."
+}

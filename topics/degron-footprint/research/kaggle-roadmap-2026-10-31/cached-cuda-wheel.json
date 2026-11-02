@@ -1,0 +1,13 @@
+{
+  "status": "verified",
+  "filename": "torch-2.13.0+cu130-cp311-cp311-win_amd64.whl",
+  "cache_path": "C:\\Users\\LENOVO\\AppData\\Local\\pip\\Cache\\http-v2\\b\\b\\2\\6\\f\\bb26fcaa76fbe791f658f00a3c7587ce417f7359931880ee01ca5a55.body",
+  "bytes": 1915488103,
+  "sha256": "45e97bd9bc0416f4f4190b5098c55119a389fa5a7c8bbf2639f08f1d04e0a0dc",
+  "official_url": "https://download-r2.pytorch.org/whl/cu130/torch-2.13.0%2Bcu130-cp311-cp311-win_amd64.whl",
+  "official_index": "https://download.pytorch.org/whl/cu130/torch/",
+  "wheel_tag": "cp311-cp311-win_amd64",
+  "copy_and_install_executed": true,
+  "installed_interpreter": "D:\\thanhtrong\\CT553H\\.venv\\Scripts\\python.exe",
+  "readiness_report": "run-local-2026-11-02/readiness.json"
+}

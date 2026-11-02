@@ -1,0 +1,39 @@
+{
+  "status": "pass",
+  "scope": "software_and_real_GPU_resume_not_scientific_results",
+  "torch": "2.13.0+cu130",
+  "cuda": "13.0",
+  "device": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "tests": [
+    {
+      "test": "real_cuda_pause_resume_frozen",
+      "status": "pass",
+      "max_abs_parameter_difference": 0.0,
+      "same_best_epoch_and_validation_loss": true
+    },
+    {
+      "test": "real_cuda_pause_resume_lora",
+      "status": "pass",
+      "max_abs_parameter_difference": 0.0,
+      "same_best_epoch_and_validation_loss": true
+    },
+    {
+      "test": "corrupt_latest_checkpoint_falls_back_to_previous",
+      "status": "pass"
+    },
+    {
+      "test": "duplicate_session_rejected_and_lock_released",
+      "status": "pass"
+    },
+    {
+      "test": "real_cuda_feature_prefix_resume",
+      "status": "pass",
+      "rows": 32
+    },
+    {
+      "test": "queue_complete_unique_and_topologically_ordered",
+      "status": "pass",
+      "work_units": 635
+    }
+  ]
+}

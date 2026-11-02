@@ -115,8 +115,12 @@ def preflight(model_ids, roots, out, smoke=False):
             encoder = Encoder(model_id, roots, device, dtype)
             inputs = [''.join(a+'#' for a in s) for s in probe] if encoder.spec['family'] == 'saprot' else probe
             encoder(inputs[:1])
-            start = time.monotonic(); h = encoder(inputs)
-            seconds = time.monotonic()-start
+            if device == 'cuda':
+                torch.cuda.synchronize()
+            start = time.perf_counter(); h = encoder(inputs)
+            if device == 'cuda':
+                torch.cuda.synchronize()
+            seconds = max(time.perf_counter()-start, 1e-9)
             again = encoder(inputs)
             token_checks = []
             base_tokens, base_mask = encoder.encode_input(inputs[:1])

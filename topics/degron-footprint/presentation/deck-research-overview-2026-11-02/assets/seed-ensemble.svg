@@ -1,0 +1,1542 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="782.10125pt" height="319.68pt" viewBox="0 0 782.10125 319.68" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-02T18:41:16.090989</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 319.68 
+L 782.10125 319.68 
+L 782.10125 0 
+L 0 0 
+L 0 319.68 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 172.5725 248.68 
+L 770.58125 248.68 
+L 770.58125 11.52 
+L 172.5725 11.52 
+L 172.5725 248.68 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 172.5725 248.68 
+L 172.5725 11.52 
+" clip-path="url(#pe1a4a08446)" style="fill: none; stroke: #e3e8df; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2">
+      <defs>
+       <path id="m40f539175a" d="M 0 0 
+L 0 3.5 
+" style="stroke: #617267; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m40f539175a" x="172.5725" y="248.68" style="fill: #617267; stroke: #617267; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <!-- 0.0 -->
+      <g style="fill: #617267" transform="translate(159.47 271.68) scale(0.16 -0.16)">
+       <defs>
+        <path id="BeVietnamPro-Regular-153" d="M 2163 -58 
+Q 1722 -58 1382 137 
+Q 1043 333 816 669 
+Q 589 1005 470 1446 
+Q 352 1888 352 2374 
+Q 352 2867 470 3305 
+Q 589 3744 816 4083 
+Q 1043 4422 1382 4614 
+Q 1722 4806 2163 4806 
+Q 2605 4806 2944 4614 
+Q 3283 4422 3510 4083 
+Q 3738 3744 3856 3305 
+Q 3974 2867 3974 2374 
+Q 3974 1888 3856 1446 
+Q 3738 1005 3510 669 
+Q 3283 333 2944 137 
+Q 2605 -58 2163 -58 
+z
+M 2163 518 
+Q 2669 518 2998 988 
+Q 3328 1459 3328 2374 
+Q 3328 3290 2998 3757 
+Q 2669 4224 2163 4224 
+Q 1658 4224 1328 3757 
+Q 998 3290 998 2374 
+Q 998 1466 1328 992 
+Q 1658 518 2163 518 
+z
+" transform="scale(0.015625)"/>
+        <path id="BeVietnamPro-Regular-196" d="M 915 -64 
+Q 736 -64 617 61 
+Q 499 186 499 352 
+Q 499 525 617 646 
+Q 736 768 915 768 
+Q 1094 768 1212 646 
+Q 1331 525 1331 352 
+Q 1331 179 1212 57 
+Q 1094 -64 915 -64 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#BeVietnamPro-Regular-153"/>
+       <use xlink:href="#BeVietnamPro-Regular-196" transform="translate(67.59375 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-153" transform="translate(96.1875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 302.574402 248.68 
+L 302.574402 11.52 
+" clip-path="url(#pe1a4a08446)" style="fill: none; stroke: #e3e8df; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m40f539175a" x="302.574402" y="248.68" style="fill: #617267; stroke: #617267; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <!-- 0.1 -->
+      <g style="fill: #617267" transform="translate(291.799402 271.68) scale(0.16 -0.16)">
+       <defs>
+        <path id="BeVietnamPro-Regular-154" d="M 1760 4736 
+L 1760 0 
+L 1146 0 
+L 1146 3674 
+L 256 3667 
+L 256 4026 
+L 416 4077 
+Q 755 4186 963 4314 
+Q 1171 4442 1350 4666 
+L 1408 4736 
+L 1760 4736 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#BeVietnamPro-Regular-153"/>
+       <use xlink:href="#BeVietnamPro-Regular-196" transform="translate(67.59375 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-154" transform="translate(96.1875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 432.576304 248.68 
+L 432.576304 11.52 
+" clip-path="url(#pe1a4a08446)" style="fill: none; stroke: #e3e8df; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m40f539175a" x="432.576304" y="248.68" style="fill: #617267; stroke: #617267; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <!-- 0.2 -->
+      <g style="fill: #617267" transform="translate(419.673804 271.68) scale(0.16 -0.16)">
+       <defs>
+        <path id="BeVietnamPro-Regular-155" d="M 518 0 
+L 518 442 
+L 1555 1402 
+Q 1990 1805 2320 2109 
+Q 2650 2413 2835 2701 
+Q 3021 2989 3021 3334 
+Q 3021 3622 2883 3820 
+Q 2746 4019 2531 4124 
+Q 2317 4230 2086 4230 
+Q 1786 4230 1594 4128 
+Q 1402 4026 1299 3875 
+Q 1197 3725 1152 3574 
+Q 1107 3424 1100 3321 
+Q 1094 3219 1094 3219 
+L 493 3219 
+Q 493 3219 499 3334 
+Q 506 3450 547 3629 
+Q 589 3808 685 4009 
+Q 781 4211 957 4390 
+Q 1133 4570 1411 4685 
+Q 1690 4800 2093 4800 
+Q 2502 4800 2857 4630 
+Q 3213 4461 3430 4137 
+Q 3648 3814 3648 3347 
+Q 3648 2918 3433 2569 
+Q 3219 2221 2867 1888 
+Q 2515 1555 2099 1171 
+L 1446 570 
+L 3750 570 
+L 3750 0 
+L 518 0 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#BeVietnamPro-Regular-153"/>
+       <use xlink:href="#BeVietnamPro-Regular-196" transform="translate(67.59375 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-155" transform="translate(96.1875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 562.578207 248.68 
+L 562.578207 11.52 
+" clip-path="url(#pe1a4a08446)" style="fill: none; stroke: #e3e8df; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m40f539175a" x="562.578207" y="248.68" style="fill: #617267; stroke: #617267; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <!-- 0.3 -->
+      <g style="fill: #617267" transform="translate(549.603207 271.68) scale(0.16 -0.16)">
+       <defs>
+        <path id="BeVietnamPro-Regular-156" d="M 2080 -64 
+Q 1664 -64 1289 96 
+Q 915 256 681 585 
+Q 448 915 448 1421 
+L 1043 1421 
+Q 1043 1094 1193 883 
+Q 1344 672 1584 569 
+Q 1824 467 2080 467 
+Q 2355 467 2585 572 
+Q 2816 678 2957 883 
+Q 3098 1088 3098 1376 
+Q 3098 1754 2848 1974 
+Q 2598 2195 2182 2195 
+L 1542 2195 
+L 1542 2688 
+L 2182 2688 
+Q 2528 2688 2774 2893 
+Q 3021 3098 3021 3450 
+Q 3021 3706 2889 3888 
+Q 2758 4070 2544 4172 
+Q 2330 4275 2080 4275 
+Q 1843 4275 1622 4169 
+Q 1402 4064 1261 3853 
+Q 1120 3642 1120 3315 
+L 538 3315 
+Q 538 3814 765 4144 
+Q 992 4474 1347 4637 
+Q 1702 4800 2093 4800 
+Q 2490 4800 2838 4643 
+Q 3187 4486 3404 4195 
+Q 3622 3904 3622 3501 
+Q 3622 3117 3430 2851 
+Q 3238 2586 2944 2470 
+L 2944 2438 
+Q 3283 2323 3500 2048 
+Q 3718 1773 3718 1357 
+Q 3718 915 3488 595 
+Q 3258 275 2886 105 
+Q 2515 -64 2080 -64 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#BeVietnamPro-Regular-153"/>
+       <use xlink:href="#BeVietnamPro-Regular-196" transform="translate(67.59375 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-156" transform="translate(96.1875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 692.580109 248.68 
+L 692.580109 11.52 
+" clip-path="url(#pe1a4a08446)" style="fill: none; stroke: #e3e8df; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m40f539175a" x="692.580109" y="248.68" style="fill: #617267; stroke: #617267; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <!-- 0.4 -->
+      <g style="fill: #617267" transform="translate(679.205109 271.68) scale(0.16 -0.16)">
+       <defs>
+        <path id="BeVietnamPro-Regular-157" d="M 2669 0 
+L 2669 1101 
+L 352 1107 
+L 352 1677 
+L 2528 4736 
+L 3296 4736 
+L 3296 1645 
+L 4122 1645 
+L 4122 1101 
+L 3296 1101 
+L 3296 0 
+L 2669 0 
+z
+M 998 1645 
+L 2669 1645 
+L 2669 4000 
+L 998 1645 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#BeVietnamPro-Regular-153"/>
+       <use xlink:href="#BeVietnamPro-Regular-196" transform="translate(67.59375 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-157" transform="translate(96.1875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="text_6">
+     <!-- MAE (PSI) -->
+     <g style="fill: #617267" transform="translate(692.91625 303.92) scale(0.16 -0.16)">
+      <defs>
+       <path id="BeVietnamPro-Regular-4c" d="M 512 0 
+L 512 4736 
+L 1338 4736 
+L 2733 1920 
+L 4122 4736 
+L 4947 4736 
+L 4947 0 
+L 4333 0 
+L 4333 3814 
+L 3027 1216 
+L 2432 1216 
+L 1126 3827 
+L 1126 0 
+L 512 0 
+z
+" transform="scale(0.015625)"/>
+       <path id="BeVietnamPro-Regular-1" d="M 288 0 
+L 1958 4736 
+L 2746 4736 
+L 4422 0 
+L 3757 0 
+L 3360 1133 
+L 1350 1133 
+L 954 0 
+L 288 0 
+z
+M 1542 1696 
+L 3168 1696 
+L 2355 4019 
+L 1542 1696 
+z
+" transform="scale(0.015625)"/>
+       <path id="BeVietnamPro-Regular-22" d="M 512 0 
+L 512 4736 
+L 3520 4736 
+L 3520 4186 
+L 1139 4186 
+L 1139 2688 
+L 3226 2688 
+L 3226 2138 
+L 1139 2138 
+L 1139 550 
+L 3552 550 
+L 3552 0 
+L 512 0 
+z
+" transform="scale(0.015625)"/>
+       <path id="BeVietnamPro-Regular-191" transform="scale(0.015625)"/>
+       <path id="BeVietnamPro-Regular-1ab" d="M 2522 -1280 
+Q 1978 -1197 1571 -889 
+Q 1165 -582 893 -118 
+Q 621 346 486 902 
+Q 352 1459 352 2035 
+Q 352 2618 486 3171 
+Q 621 3725 893 4189 
+Q 1165 4653 1571 4960 
+Q 1978 5267 2522 5350 
+L 2522 4794 
+Q 2138 4704 1846 4441 
+Q 1555 4179 1360 3798 
+Q 1165 3418 1069 2963 
+Q 973 2509 973 2035 
+Q 973 1562 1069 1107 
+Q 1165 653 1360 272 
+Q 1555 -109 1846 -371 
+Q 2138 -634 2522 -723 
+L 2522 -1280 
+z
+" transform="scale(0.015625)"/>
+       <path id="BeVietnamPro-Regular-68" d="M 512 0 
+L 512 4736 
+L 2202 4736 
+Q 2746 4736 3107 4512 
+Q 3469 4288 3651 3933 
+Q 3834 3578 3834 3194 
+Q 3834 2803 3651 2448 
+Q 3469 2093 3107 1865 
+Q 2746 1638 2202 1638 
+L 1139 1638 
+L 1139 0 
+L 512 0 
+z
+M 2202 4186 
+L 1139 4186 
+L 1139 2189 
+L 2202 2189 
+Q 2541 2189 2765 2336 
+Q 2989 2483 3101 2710 
+Q 3213 2938 3213 3187 
+Q 3213 3437 3101 3667 
+Q 2989 3898 2765 4042 
+Q 2541 4186 2202 4186 
+z
+" transform="scale(0.015625)"/>
+       <path id="BeVietnamPro-Regular-6e" d="M 2099 -64 
+Q 1690 -64 1398 41 
+Q 1107 147 915 316 
+Q 723 486 608 672 
+Q 493 858 435 1027 
+Q 378 1197 362 1302 
+Q 346 1408 346 1408 
+L 986 1408 
+Q 986 1408 1005 1318 
+Q 1024 1229 1085 1094 
+Q 1146 960 1267 822 
+Q 1389 685 1593 595 
+Q 1798 506 2112 506 
+Q 2586 506 2861 733 
+Q 3136 960 3136 1325 
+Q 3136 1638 2928 1811 
+Q 2720 1984 2336 2080 
+L 1709 2234 
+Q 1376 2317 1091 2467 
+Q 806 2618 636 2864 
+Q 467 3110 467 3482 
+Q 467 3898 672 4192 
+Q 877 4486 1229 4643 
+Q 1581 4800 2029 4800 
+Q 2464 4800 2752 4665 
+Q 3040 4531 3213 4336 
+Q 3386 4141 3469 3945 
+Q 3552 3750 3577 3616 
+Q 3603 3482 3603 3482 
+L 2989 3482 
+Q 2989 3482 2963 3597 
+Q 2938 3712 2842 3862 
+Q 2746 4013 2547 4128 
+Q 2349 4243 2010 4243 
+Q 1549 4243 1315 4025 
+Q 1082 3808 1082 3526 
+Q 1082 3270 1267 3113 
+Q 1453 2957 1779 2874 
+L 2458 2707 
+Q 2822 2618 3116 2448 
+Q 3411 2278 3584 2012 
+Q 3757 1747 3757 1363 
+Q 3757 979 3568 652 
+Q 3379 326 3011 131 
+Q 2643 -64 2099 -64 
+z
+" transform="scale(0.015625)"/>
+       <path id="BeVietnamPro-Regular-3b" d="M 512 0 
+L 512 4736 
+L 1139 4736 
+L 1139 0 
+L 512 0 
+z
+" transform="scale(0.015625)"/>
+       <path id="BeVietnamPro-Regular-1ac" d="M 288 5350 
+Q 832 5267 1238 4960 
+Q 1645 4653 1917 4189 
+Q 2189 3725 2323 3168 
+Q 2458 2611 2458 2035 
+Q 2458 1453 2323 899 
+Q 2189 346 1917 -118 
+Q 1645 -582 1238 -889 
+Q 832 -1197 288 -1280 
+L 288 -723 
+Q 672 -634 963 -371 
+Q 1254 -109 1449 272 
+Q 1645 653 1741 1107 
+Q 1837 1562 1837 2035 
+Q 1837 2509 1741 2963 
+Q 1645 3418 1449 3798 
+Q 1254 4179 963 4441 
+Q 672 4704 288 4794 
+L 288 5350 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#BeVietnamPro-Regular-4c"/>
+      <use xlink:href="#BeVietnamPro-Regular-1" transform="translate(85.296875 0)"/>
+      <use xlink:href="#BeVietnamPro-Regular-22" transform="translate(158.890625 0)"/>
+      <use xlink:href="#BeVietnamPro-Regular-191" transform="translate(220.890625 0)"/>
+      <use xlink:href="#BeVietnamPro-Regular-1ab" transform="translate(243.890625 0)"/>
+      <use xlink:href="#BeVietnamPro-Regular-68" transform="translate(287.796875 0)"/>
+      <use xlink:href="#BeVietnamPro-Regular-6e" transform="translate(352.203125 0)"/>
+      <use xlink:href="#BeVietnamPro-Regular-3b" transform="translate(415.703125 0)"/>
+      <use xlink:href="#BeVietnamPro-Regular-1ac" transform="translate(441.5 0)"/>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_11"/>
+     <g id="text_7">
+      <!-- Khởi tạo 17 -->
+      <g style="fill: #193a2b" transform="translate(75.45 45.168966) scale(0.16 -0.16)">
+       <defs>
+        <path id="BeVietnamPro-Regular-47" d="M 512 0 
+L 512 4736 
+L 1139 4736 
+L 1139 2598 
+L 3187 4730 
+L 4006 4730 
+L 1792 2458 
+L 4102 0 
+L 3258 0 
+L 1139 2259 
+L 1139 0 
+L 512 0 
+z
+" transform="scale(0.015625)"/>
+        <path id="BeVietnamPro-Regular-d4" d="M 512 0 
+L 512 4864 
+L 1120 4864 
+L 1120 2899 
+L 1158 2899 
+Q 1203 2976 1308 3110 
+Q 1414 3245 1612 3350 
+Q 1811 3456 2112 3456 
+Q 2483 3456 2745 3286 
+Q 3008 3117 3145 2829 
+Q 3283 2541 3283 2182 
+L 3283 0 
+L 2675 0 
+L 2675 2144 
+Q 2675 2483 2486 2707 
+Q 2298 2931 1939 2931 
+Q 1651 2931 1472 2787 
+Q 1293 2643 1206 2409 
+Q 1120 2176 1120 1914 
+L 1120 0 
+L 512 0 
+z
+" transform="scale(0.015625)"/>
+        <path id="BeVietnamPro-Regular-fd" d="M 1882 3859 
+L 1882 4064 
+Q 1882 4128 1907 4192 
+Q 1933 4256 2010 4294 
+L 2099 4339 
+Q 2394 4486 2394 4666 
+Q 2394 4755 2326 4828 
+Q 2259 4902 2112 4902 
+Q 1984 4902 1923 4848 
+Q 1862 4794 1843 4730 
+Q 1824 4666 1824 4627 
+L 1402 4627 
+Q 1402 4787 1475 4934 
+Q 1549 5082 1705 5178 
+Q 1862 5274 2106 5274 
+Q 2445 5274 2640 5098 
+Q 2835 4922 2835 4678 
+Q 2835 4499 2713 4342 
+Q 2592 4186 2323 4058 
+L 2298 4045 
+L 2298 3859 
+L 1882 3859 
+z
+M 2086 -64 
+Q 1542 -64 1171 189 
+Q 800 442 608 845 
+Q 416 1248 416 1696 
+Q 416 2150 608 2550 
+Q 800 2950 1171 3203 
+Q 1542 3456 2086 3456 
+L 2957 3456 
+Q 3206 3456 3206 3718 
+L 3206 4102 
+L 3744 4102 
+L 3744 3718 
+Q 3744 3437 3603 3261 
+Q 3462 3085 3181 3066 
+Q 3462 2816 3609 2454 
+Q 3757 2093 3757 1696 
+Q 3757 1248 3565 845 
+Q 3373 442 3001 189 
+Q 2630 -64 2086 -64 
+z
+M 2086 467 
+Q 2432 467 2665 643 
+Q 2899 819 3017 1100 
+Q 3136 1382 3136 1696 
+Q 3136 2016 3017 2294 
+Q 2899 2573 2665 2749 
+Q 2432 2925 2086 2925 
+Q 1747 2925 1510 2749 
+Q 1274 2573 1155 2294 
+Q 1037 2016 1037 1696 
+Q 1037 1382 1155 1100 
+Q 1274 819 1510 643 
+Q 1747 467 2086 467 
+z
+" transform="scale(0.015625)"/>
+        <path id="BeVietnamPro-Regular-d6" d="M 845 4038 
+Q 672 4038 560 4153 
+Q 448 4269 448 4429 
+Q 448 4595 560 4710 
+Q 672 4826 845 4826 
+Q 1011 4826 1126 4710 
+Q 1242 4595 1242 4429 
+Q 1242 4269 1126 4153 
+Q 1011 4038 845 4038 
+z
+M 544 0 
+L 544 3392 
+L 1152 3392 
+L 1152 0 
+L 544 0 
+z
+" transform="scale(0.015625)"/>
+        <path id="BeVietnamPro-Regular-10f" d="M 1888 -64 
+Q 1363 -64 1097 205 
+Q 832 474 832 960 
+L 832 2893 
+L 224 2893 
+L 224 3392 
+L 832 3392 
+L 832 4243 
+L 1440 4243 
+L 1440 3392 
+L 2266 3392 
+L 2266 2893 
+L 1440 2893 
+L 1440 960 
+Q 1440 704 1581 585 
+Q 1722 467 1990 467 
+Q 2131 467 2259 486 
+Q 2387 506 2387 506 
+L 2387 -13 
+Q 2387 -13 2240 -38 
+Q 2093 -64 1888 -64 
+z
+" transform="scale(0.015625)"/>
+        <path id="BeVietnamPro-Regular-ab" d="M 1952 3456 
+Q 2272 3456 2489 3353 
+Q 2707 3251 2841 3113 
+Q 2976 2976 3046 2854 
+L 3085 2854 
+L 3085 3392 
+L 3693 3392 
+L 3693 0 
+L 3085 0 
+L 3085 538 
+L 3046 538 
+Q 2976 416 2841 275 
+Q 2707 134 2489 35 
+Q 2272 -64 1952 -64 
+Q 1568 -64 1280 86 
+Q 992 237 800 489 
+Q 608 742 512 1056 
+Q 416 1370 416 1696 
+Q 416 2022 512 2336 
+Q 608 2650 800 2902 
+Q 992 3155 1280 3305 
+Q 1568 3456 1952 3456 
+z
+M 2054 2938 
+Q 1715 2938 1484 2755 
+Q 1254 2573 1142 2291 
+Q 1030 2010 1030 1696 
+Q 1030 1389 1142 1104 
+Q 1254 819 1484 636 
+Q 1715 454 2054 454 
+Q 2394 454 2621 636 
+Q 2848 819 2960 1104 
+Q 3072 1389 3072 1696 
+Q 3072 2010 2960 2291 
+Q 2848 2573 2621 2755 
+Q 2394 2938 2054 2938 
+z
+M 2093 -1453 
+Q 1914 -1453 1795 -1328 
+Q 1677 -1203 1677 -1037 
+Q 1677 -864 1795 -742 
+Q 1914 -621 2093 -621 
+Q 2272 -621 2390 -742 
+Q 2509 -864 2509 -1037 
+Q 2509 -1210 2390 -1331 
+Q 2272 -1453 2093 -1453 
+z
+" transform="scale(0.015625)"/>
+        <path id="BeVietnamPro-Regular-ed" d="M 2054 -64 
+Q 1510 -64 1139 189 
+Q 768 442 576 845 
+Q 384 1248 384 1696 
+Q 384 2150 576 2550 
+Q 768 2950 1139 3203 
+Q 1510 3456 2054 3456 
+Q 2598 3456 2969 3203 
+Q 3341 2950 3533 2550 
+Q 3725 2150 3725 1696 
+Q 3725 1248 3533 845 
+Q 3341 442 2969 189 
+Q 2598 -64 2054 -64 
+z
+M 2054 467 
+Q 2400 467 2633 643 
+Q 2867 819 2985 1100 
+Q 3104 1382 3104 1696 
+Q 3104 2016 2985 2294 
+Q 2867 2573 2633 2749 
+Q 2400 2925 2054 2925 
+Q 1715 2925 1478 2749 
+Q 1242 2573 1123 2294 
+Q 1005 2016 1005 1696 
+Q 1005 1382 1123 1100 
+Q 1242 819 1478 643 
+Q 1715 467 2054 467 
+z
+" transform="scale(0.015625)"/>
+        <path id="BeVietnamPro-Regular-15a" d="M 1158 0 
+Q 1178 614 1318 1168 
+Q 1459 1722 1670 2202 
+Q 1882 2682 2112 3069 
+Q 2342 3456 2550 3737 
+Q 2758 4019 2893 4179 
+L 352 4179 
+L 352 4736 
+L 3610 4736 
+L 3610 4269 
+Q 3610 4269 3482 4125 
+Q 3354 3981 3152 3712 
+Q 2950 3443 2723 3062 
+Q 2496 2682 2288 2205 
+Q 2080 1728 1939 1174 
+Q 1798 621 1773 0 
+L 1158 0 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#BeVietnamPro-Regular-47"/>
+       <use xlink:href="#BeVietnamPro-Regular-d4" transform="translate(67.90625 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-fd" transform="translate(126.203125 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-d6" transform="translate(191.40625 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-191" transform="translate(217.8125 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-10f" transform="translate(240.8125 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-ab" transform="translate(281.609375 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-ed" transform="translate(346.90625 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-191" transform="translate(411.109375 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-154" transform="translate(434.109375 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-15a" transform="translate(472.609375 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_12"/>
+     <g id="text_8">
+      <!-- Khởi tạo 29 -->
+      <g style="fill: #193a2b" transform="translate(69.82 107.122989) scale(0.16 -0.16)">
+       <defs>
+        <path id="BeVietnamPro-Regular-15c" d="M 2099 4800 
+Q 2554 4800 2890 4627 
+Q 3226 4454 3443 4150 
+Q 3661 3846 3766 3459 
+Q 3872 3072 3872 2637 
+Q 3872 2285 3795 1907 
+Q 3718 1530 3555 1178 
+Q 3392 826 3120 547 
+Q 2848 269 2461 102 
+Q 2074 -64 1555 -64 
+Q 1357 -64 1184 -38 
+Q 1011 -13 908 9 
+Q 806 32 806 32 
+L 806 608 
+Q 806 608 921 585 
+Q 1037 563 1213 537 
+Q 1389 512 1568 512 
+Q 1958 512 2236 630 
+Q 2515 749 2704 944 
+Q 2893 1139 3005 1366 
+Q 3117 1594 3168 1814 
+Q 3219 2035 3226 2195 
+Q 3181 2118 3046 1984 
+Q 2912 1850 2669 1741 
+Q 2426 1632 2048 1632 
+Q 1530 1632 1181 1859 
+Q 832 2086 656 2448 
+Q 480 2810 480 3200 
+Q 480 3603 659 3968 
+Q 838 4333 1200 4566 
+Q 1562 4800 2099 4800 
+z
+M 2112 4262 
+Q 1856 4262 1622 4147 
+Q 1389 4032 1238 3801 
+Q 1088 3571 1088 3219 
+Q 1088 2867 1238 2633 
+Q 1389 2400 1622 2285 
+Q 1856 2170 2112 2170 
+Q 2368 2170 2601 2285 
+Q 2835 2400 2985 2633 
+Q 3136 2867 3136 3219 
+Q 3136 3571 2985 3801 
+Q 2835 4032 2601 4147 
+Q 2368 4262 2112 4262 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#BeVietnamPro-Regular-47"/>
+       <use xlink:href="#BeVietnamPro-Regular-d4" transform="translate(67.90625 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-fd" transform="translate(126.203125 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-d6" transform="translate(191.40625 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-191" transform="translate(217.8125 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-10f" transform="translate(240.8125 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-ab" transform="translate(281.609375 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-ed" transform="translate(346.90625 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-191" transform="translate(411.109375 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-155" transform="translate(434.109375 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-15c" transform="translate(499.203125 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_13"/>
+     <g id="text_9">
+      <!-- Khởi tạo 43 -->
+      <g style="fill: #193a2b" transform="translate(69.195 169.077011) scale(0.16 -0.16)">
+       <use xlink:href="#BeVietnamPro-Regular-47"/>
+       <use xlink:href="#BeVietnamPro-Regular-d4" transform="translate(67.90625 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-fd" transform="translate(126.203125 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-d6" transform="translate(191.40625 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-191" transform="translate(217.8125 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-10f" transform="translate(240.8125 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-ab" transform="translate(281.609375 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-ed" transform="translate(346.90625 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-191" transform="translate(411.109375 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-157" transform="translate(434.109375 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-156" transform="translate(505.109375 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_14"/>
+     <g id="text_10">
+      <!-- Trung bình dự đoán -->
+      <g style="fill: #193a2b" transform="translate(11.52 231.031034) scale(0.16 -0.16)">
+       <defs>
+        <path id="BeVietnamPro-Regular-73" d="M 1766 0 
+L 1766 4186 
+L 288 4186 
+L 288 4736 
+L 3872 4736 
+L 3872 4186 
+L 2394 4186 
+L 2394 0 
+L 1766 0 
+z
+" transform="scale(0.015625)"/>
+        <path id="BeVietnamPro-Regular-107" d="M 448 0 
+L 448 3392 
+L 1056 3392 
+L 1056 2970 
+L 1082 2970 
+Q 1190 3162 1401 3309 
+Q 1613 3456 1997 3456 
+Q 2106 3456 2195 3446 
+Q 2285 3437 2285 3437 
+L 2285 2854 
+Q 2285 2854 2185 2864 
+Q 2086 2874 1978 2874 
+Q 1536 2874 1296 2621 
+Q 1056 2368 1056 1798 
+L 1056 0 
+L 448 0 
+z
+" transform="scale(0.015625)"/>
+        <path id="BeVietnamPro-Regular-113" d="M 1555 -64 
+Q 1050 -64 749 249 
+Q 448 563 448 1120 
+L 448 3392 
+L 1056 3392 
+L 1056 1152 
+Q 1056 819 1238 640 
+Q 1421 461 1722 461 
+Q 2029 461 2214 621 
+Q 2400 781 2483 1030 
+Q 2566 1280 2566 1542 
+L 2566 3392 
+L 3174 3392 
+L 3174 0 
+L 2566 0 
+L 2566 486 
+L 2528 486 
+Q 2490 410 2381 278 
+Q 2272 147 2073 41 
+Q 1875 -64 1555 -64 
+z
+" transform="scale(0.015625)"/>
+        <path id="BeVietnamPro-Regular-e9" d="M 448 0 
+L 448 3392 
+L 1056 3392 
+L 1056 2899 
+L 1094 2899 
+Q 1139 2976 1244 3110 
+Q 1350 3245 1548 3350 
+Q 1747 3456 2048 3456 
+Q 2419 3456 2681 3286 
+Q 2944 3117 3081 2829 
+Q 3219 2541 3219 2182 
+L 3219 0 
+L 2611 0 
+L 2611 2144 
+Q 2611 2483 2422 2707 
+Q 2234 2931 1875 2931 
+Q 1587 2931 1408 2787 
+Q 1229 2643 1142 2409 
+Q 1056 2176 1056 1914 
+L 1056 0 
+L 448 0 
+z
+" transform="scale(0.015625)"/>
+        <path id="BeVietnamPro-Regular-cf" d="M 2080 -1344 
+Q 1658 -1344 1376 -1232 
+Q 1094 -1120 924 -950 
+Q 755 -781 672 -614 
+Q 589 -448 563 -336 
+Q 538 -224 538 -224 
+L 1146 -224 
+Q 1146 -224 1178 -313 
+Q 1210 -403 1302 -518 
+Q 1395 -634 1580 -723 
+Q 1766 -813 2080 -813 
+Q 2451 -813 2662 -669 
+Q 2874 -525 2966 -294 
+Q 3059 -64 3059 192 
+L 3059 582 
+L 3027 582 
+Q 2963 474 2825 336 
+Q 2688 198 2464 99 
+Q 2240 0 1914 0 
+Q 1530 0 1242 147 
+Q 954 294 765 544 
+Q 576 794 480 1101 
+Q 384 1408 384 1728 
+Q 384 2048 480 2355 
+Q 576 2662 765 2912 
+Q 954 3162 1242 3309 
+Q 1530 3456 1914 3456 
+Q 2240 3456 2464 3357 
+Q 2688 3258 2825 3123 
+Q 2963 2989 3027 2874 
+L 3059 2874 
+L 3059 3392 
+L 3667 3392 
+L 3667 198 
+Q 3667 -512 3254 -928 
+Q 2842 -1344 2080 -1344 
+z
+M 2029 518 
+Q 2368 518 2595 694 
+Q 2822 870 2934 1145 
+Q 3046 1421 3046 1728 
+Q 3046 2035 2934 2313 
+Q 2822 2592 2595 2765 
+Q 2368 2938 2029 2938 
+Q 1690 2938 1459 2765 
+Q 1229 2592 1117 2313 
+Q 1005 2035 1005 1728 
+Q 1005 1421 1117 1145 
+Q 1229 870 1459 694 
+Q 1690 518 2029 518 
+z
+" transform="scale(0.015625)"/>
+        <path id="BeVietnamPro-Regular-b3" d="M 2253 -64 
+Q 1933 -64 1715 38 
+Q 1498 141 1366 281 
+Q 1235 422 1158 538 
+L 1120 538 
+L 1120 0 
+L 512 0 
+L 512 4864 
+L 1120 4864 
+L 1120 2854 
+L 1158 2854 
+Q 1235 2976 1366 3117 
+Q 1498 3258 1715 3357 
+Q 1933 3456 2253 3456 
+Q 2637 3456 2925 3305 
+Q 3213 3155 3405 2902 
+Q 3597 2650 3693 2336 
+Q 3789 2022 3789 1696 
+Q 3789 1370 3693 1056 
+Q 3597 742 3405 489 
+Q 3213 237 2925 86 
+Q 2637 -64 2253 -64 
+z
+M 2150 454 
+Q 2496 454 2723 636 
+Q 2950 819 3062 1104 
+Q 3174 1389 3174 1696 
+Q 3174 2010 3062 2291 
+Q 2950 2573 2723 2755 
+Q 2496 2938 2150 2938 
+Q 1811 2938 1584 2755 
+Q 1357 2573 1245 2291 
+Q 1133 2010 1133 1696 
+Q 1133 1389 1245 1104 
+Q 1357 819 1584 636 
+Q 1811 454 2150 454 
+z
+" transform="scale(0.015625)"/>
+        <path id="BeVietnamPro-Regular-dd" d="M 653 3904 
+L -6 5062 
+L 621 5062 
+L 1171 3910 
+L 653 3904 
+z
+M 582 0 
+L 582 3392 
+L 1190 3392 
+L 1190 0 
+L 582 0 
+z
+" transform="scale(0.015625)"/>
+        <path id="BeVietnamPro-Regular-b9" d="M 1920 -64 
+Q 1536 -64 1248 86 
+Q 960 237 768 489 
+Q 576 742 480 1056 
+Q 384 1370 384 1696 
+Q 384 2022 480 2336 
+Q 576 2650 768 2902 
+Q 960 3155 1248 3305 
+Q 1536 3456 1920 3456 
+Q 2240 3456 2457 3353 
+Q 2675 3251 2809 3113 
+Q 2944 2976 3014 2854 
+L 3053 2854 
+L 3053 4864 
+L 3661 4864 
+L 3661 0 
+L 3053 0 
+L 3053 538 
+L 3014 538 
+Q 2944 416 2809 275 
+Q 2675 134 2457 35 
+Q 2240 -64 1920 -64 
+z
+M 2022 454 
+Q 2362 454 2589 636 
+Q 2816 819 2928 1104 
+Q 3040 1389 3040 1696 
+Q 3040 2010 2928 2291 
+Q 2816 2573 2589 2755 
+Q 2362 2938 2022 2938 
+Q 1683 2938 1452 2755 
+Q 1222 2573 1110 2291 
+Q 998 2010 998 1696 
+Q 998 1389 1110 1104 
+Q 1222 819 1452 636 
+Q 1683 454 2022 454 
+z
+" transform="scale(0.015625)"/>
+        <path id="BeVietnamPro-Regular-11c" d="M 1651 -64 
+Q 1146 -64 845 249 
+Q 544 563 544 1120 
+L 544 3392 
+L 1152 3392 
+L 1152 1152 
+Q 1152 819 1334 640 
+Q 1517 461 1818 461 
+Q 2125 461 2310 621 
+Q 2496 781 2579 1030 
+Q 2662 1280 2662 1542 
+L 2662 3392 
+L 3181 3392 
+Q 3430 3392 3430 3654 
+L 3430 4038 
+L 3968 4038 
+L 3968 3654 
+Q 3968 3360 3814 3181 
+Q 3661 3002 3347 3002 
+L 3270 3002 
+L 3270 0 
+L 2662 0 
+L 2662 486 
+L 2624 486 
+Q 2586 410 2477 278 
+Q 2368 147 2169 41 
+Q 1971 -64 1651 -64 
+z
+M 1843 -1453 
+Q 1664 -1453 1545 -1328 
+Q 1427 -1203 1427 -1037 
+Q 1427 -864 1545 -742 
+Q 1664 -621 1843 -621 
+Q 2022 -621 2140 -742 
+Q 2259 -864 2259 -1037 
+Q 2259 -1210 2140 -1331 
+Q 2022 -1453 1843 -1453 
+z
+" transform="scale(0.015625)"/>
+        <path id="BeVietnamPro-Regular-bc" d="M 1920 -64 
+Q 1536 -64 1248 86 
+Q 960 237 768 489 
+Q 576 742 480 1056 
+Q 384 1370 384 1696 
+Q 384 2022 480 2336 
+Q 576 2650 768 2902 
+Q 960 3155 1248 3305 
+Q 1536 3456 1920 3456 
+Q 2240 3456 2457 3353 
+Q 2675 3251 2809 3113 
+Q 2944 2976 3014 2854 
+L 3053 2854 
+L 3053 3763 
+L 2163 3763 
+L 2163 4250 
+L 3053 4250 
+L 3053 4864 
+L 3661 4864 
+L 3661 4250 
+L 4243 4250 
+L 4243 3763 
+L 3661 3763 
+L 3661 0 
+L 3053 0 
+L 3053 538 
+L 3014 538 
+Q 2944 416 2809 275 
+Q 2675 134 2457 35 
+Q 2240 -64 1920 -64 
+z
+M 2022 454 
+Q 2362 454 2589 636 
+Q 2816 819 2928 1104 
+Q 3040 1389 3040 1696 
+Q 3040 2010 2928 2291 
+Q 2816 2573 2589 2755 
+Q 2362 2938 2022 2938 
+Q 1683 2938 1452 2755 
+Q 1222 2573 1110 2291 
+Q 998 2010 998 1696 
+Q 998 1389 1110 1104 
+Q 1222 819 1452 636 
+Q 1683 454 2022 454 
+z
+" transform="scale(0.015625)"/>
+        <path id="BeVietnamPro-Regular-9d" d="M 2349 3904 
+L 1830 3910 
+L 2381 5062 
+L 3008 5062 
+L 2349 3904 
+z
+M 1952 3456 
+Q 2272 3456 2489 3353 
+Q 2707 3251 2841 3113 
+Q 2976 2976 3046 2854 
+L 3085 2854 
+L 3085 3392 
+L 3693 3392 
+L 3693 0 
+L 3085 0 
+L 3085 538 
+L 3046 538 
+Q 2976 416 2841 275 
+Q 2707 134 2489 35 
+Q 2272 -64 1952 -64 
+Q 1568 -64 1280 86 
+Q 992 237 800 489 
+Q 608 742 512 1056 
+Q 416 1370 416 1696 
+Q 416 2022 512 2336 
+Q 608 2650 800 2902 
+Q 992 3155 1280 3305 
+Q 1568 3456 1952 3456 
+z
+M 2054 2938 
+Q 1715 2938 1484 2755 
+Q 1254 2573 1142 2291 
+Q 1030 2010 1030 1696 
+Q 1030 1389 1142 1104 
+Q 1254 819 1484 636 
+Q 1715 454 2054 454 
+Q 2394 454 2621 636 
+Q 2848 819 2960 1104 
+Q 3072 1389 3072 1696 
+Q 3072 2010 2960 2291 
+Q 2848 2573 2621 2755 
+Q 2394 2938 2054 2938 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#BeVietnamPro-Regular-73"/>
+       <use xlink:href="#BeVietnamPro-Regular-107" transform="translate(58 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-113" transform="translate(97.203125 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-e9" transform="translate(153.796875 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-cf" transform="translate(211.09375 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-191" transform="translate(275.390625 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-b3" transform="translate(298.390625 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-dd" transform="translate(363.59375 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-e9" transform="translate(391.1875 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-d4" transform="translate(448.484375 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-191" transform="translate(506.78125 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-b9" transform="translate(529.78125 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-11c" transform="translate(594.984375 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-191" transform="translate(654.078125 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-bc" transform="translate(677.078125 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-ed" transform="translate(745.28125 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-9d" transform="translate(808.984375 0)"/>
+       <use xlink:href="#BeVietnamPro-Regular-e9" transform="translate(874.28125 0)"/>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 172.5725 22.3 
+L 681.101335 22.3 
+L 681.101335 52.037931 
+L 172.5725 52.037931 
+z
+" clip-path="url(#pe1a4a08446)" style="fill: #a9b7a8"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 172.5725 84.254023 
+L 679.599355 84.254023 
+L 679.599355 113.991954 
+L 172.5725 113.991954 
+z
+" clip-path="url(#pe1a4a08446)" style="fill: #a9b7a8"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 172.5725 146.208046 
+L 681.265365 146.208046 
+L 681.265365 175.945977 
+L 172.5725 175.945977 
+z
+" clip-path="url(#pe1a4a08446)" style="fill: #a9b7a8"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 172.5725 208.162069 
+L 672.239786 208.162069 
+L 672.239786 237.9 
+L 172.5725 237.9 
+z
+" clip-path="url(#pe1a4a08446)" style="fill: #18974c"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 172.5725 248.68 
+L 770.58125 248.68 
+" style="fill: none; stroke: #d6dfd3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_11">
+    <!-- 0,3912 -->
+    <g style="fill: #193a2b" transform="translate(691.865492 43.416466) scale(0.17 -0.17)">
+     <defs>
+      <path id="BeVietnamPro-SemiBold-153" d="M 2214 -58 
+Q 1754 -58 1392 134 
+Q 1030 326 787 662 
+Q 544 998 416 1436 
+Q 288 1875 288 2374 
+Q 288 2867 416 3308 
+Q 544 3750 787 4086 
+Q 1030 4422 1392 4614 
+Q 1754 4806 2214 4806 
+Q 2675 4806 3036 4614 
+Q 3398 4422 3641 4086 
+Q 3885 3750 4013 3308 
+Q 4141 2867 4141 2374 
+Q 4141 1875 4013 1436 
+Q 3885 998 3641 662 
+Q 3398 326 3036 134 
+Q 2675 -58 2214 -58 
+z
+M 2214 717 
+Q 2662 717 2953 1133 
+Q 3245 1549 3245 2374 
+Q 3245 3194 2953 3606 
+Q 2662 4019 2214 4019 
+Q 1766 4019 1475 3606 
+Q 1184 3194 1184 2374 
+Q 1184 1555 1475 1136 
+Q 1766 717 2214 717 
+z
+" transform="scale(0.015625)"/>
+      <path id="BeVietnamPro-SemiBold-197" d="M 525 -877 
+L 1030 -51 
+Q 832 -38 704 102 
+Q 576 243 576 448 
+Q 576 666 723 803 
+Q 870 941 1082 941 
+Q 1306 941 1456 803 
+Q 1606 666 1606 422 
+Q 1606 218 1452 -51 
+Q 1299 -320 947 -813 
+L 896 -877 
+L 525 -877 
+z
+" transform="scale(0.015625)"/>
+      <path id="BeVietnamPro-SemiBold-156" d="M 2144 -64 
+Q 1658 -64 1325 83 
+Q 992 230 790 460 
+Q 589 691 499 953 
+Q 410 1216 410 1440 
+L 1229 1440 
+Q 1229 1248 1328 1065 
+Q 1427 883 1632 771 
+Q 1837 659 2138 659 
+Q 2509 659 2761 854 
+Q 3014 1050 3014 1395 
+Q 3014 1702 2800 1894 
+Q 2586 2086 2208 2086 
+L 1568 2086 
+L 1568 2758 
+L 2214 2758 
+Q 2534 2758 2739 2937 
+Q 2944 3117 2944 3398 
+Q 2944 3706 2710 3894 
+Q 2477 4083 2138 4083 
+Q 1862 4083 1676 3964 
+Q 1491 3846 1395 3660 
+Q 1299 3475 1299 3277 
+L 499 3277 
+Q 499 3507 585 3769 
+Q 672 4032 867 4265 
+Q 1062 4499 1379 4649 
+Q 1696 4800 2150 4800 
+Q 2573 4800 2947 4643 
+Q 3322 4486 3555 4188 
+Q 3789 3891 3789 3482 
+Q 3789 3206 3683 2995 
+Q 3578 2784 3414 2649 
+Q 3251 2515 3072 2451 
+L 3072 2413 
+Q 3405 2298 3641 2035 
+Q 3878 1773 3878 1350 
+Q 3878 902 3638 585 
+Q 3398 269 3001 102 
+Q 2605 -64 2144 -64 
+z
+" transform="scale(0.015625)"/>
+      <path id="BeVietnamPro-SemiBold-15c" d="M 2144 4800 
+Q 2624 4800 2979 4624 
+Q 3334 4448 3564 4147 
+Q 3795 3846 3907 3456 
+Q 4019 3066 4019 2637 
+Q 4019 2272 3932 1891 
+Q 3846 1510 3664 1161 
+Q 3482 813 3187 534 
+Q 2893 256 2483 96 
+Q 2074 -64 1536 -64 
+Q 1248 -64 1033 -25 
+Q 819 13 819 13 
+L 819 794 
+Q 819 794 931 774 
+Q 1043 755 1206 736 
+Q 1370 717 1536 717 
+Q 1946 717 2240 851 
+Q 2534 986 2720 1206 
+Q 2906 1427 3005 1683 
+Q 3104 1939 3117 2176 
+Q 3059 2080 2928 1945 
+Q 2797 1811 2563 1708 
+Q 2330 1606 1971 1606 
+Q 1453 1606 1107 1830 
+Q 762 2054 589 2409 
+Q 416 2765 416 3155 
+Q 416 3462 525 3753 
+Q 634 4045 848 4281 
+Q 1062 4518 1385 4659 
+Q 1709 4800 2144 4800 
+z
+M 2144 4077 
+Q 1779 4077 1520 3837 
+Q 1261 3597 1261 3181 
+Q 1261 2765 1520 2525 
+Q 1779 2285 2144 2285 
+Q 2509 2285 2771 2525 
+Q 3034 2765 3034 3181 
+Q 3034 3597 2771 3837 
+Q 2509 4077 2144 4077 
+z
+" transform="scale(0.015625)"/>
+      <path id="BeVietnamPro-SemiBold-154" d="M 2029 4736 
+L 2029 0 
+L 1171 0 
+L 1171 3482 
+L 269 3482 
+L 269 4000 
+L 416 4045 
+Q 794 4154 1030 4294 
+Q 1267 4435 1478 4678 
+L 1536 4736 
+L 2029 4736 
+z
+" transform="scale(0.015625)"/>
+      <path id="BeVietnamPro-SemiBold-155" d="M 422 0 
+L 422 602 
+L 1312 1389 
+Q 1798 1805 2150 2109 
+Q 2502 2413 2694 2681 
+Q 2886 2950 2886 3270 
+Q 2886 3514 2768 3686 
+Q 2650 3859 2464 3948 
+Q 2278 4038 2080 4038 
+Q 1805 4038 1635 3929 
+Q 1466 3821 1379 3667 
+Q 1293 3514 1261 3370 
+Q 1229 3226 1229 3155 
+L 397 3155 
+Q 397 3296 445 3504 
+Q 493 3712 608 3936 
+Q 723 4160 915 4358 
+Q 1107 4557 1401 4678 
+Q 1696 4800 2099 4800 
+Q 2547 4800 2921 4621 
+Q 3296 4442 3523 4109 
+Q 3750 3776 3750 3309 
+Q 3750 2880 3536 2528 
+Q 3322 2176 2950 1840 
+Q 2579 1504 2106 1120 
+L 1709 762 
+L 3834 762 
+L 3834 0 
+L 422 0 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#BeVietnamPro-SemiBold-153"/>
+     <use xlink:href="#BeVietnamPro-SemiBold-197" transform="translate(69.203125 0)"/>
+     <use xlink:href="#BeVietnamPro-SemiBold-156" transform="translate(102.40625 0)"/>
+     <use xlink:href="#BeVietnamPro-SemiBold-15c" transform="translate(169.8125 0)"/>
+     <use xlink:href="#BeVietnamPro-SemiBold-154" transform="translate(239.109375 0)"/>
+     <use xlink:href="#BeVietnamPro-SemiBold-155" transform="translate(280.609375 0)"/>
+    </g>
+   </g>
+   <g id="text_12">
+    <!-- 0,3900 -->
+    <g style="fill: #193a2b" transform="translate(690.363513 105.370489) scale(0.17 -0.17)">
+     <use xlink:href="#BeVietnamPro-SemiBold-153"/>
+     <use xlink:href="#BeVietnamPro-SemiBold-197" transform="translate(69.203125 0)"/>
+     <use xlink:href="#BeVietnamPro-SemiBold-156" transform="translate(102.40625 0)"/>
+     <use xlink:href="#BeVietnamPro-SemiBold-15c" transform="translate(169.8125 0)"/>
+     <use xlink:href="#BeVietnamPro-SemiBold-153" transform="translate(239.109375 0)"/>
+     <use xlink:href="#BeVietnamPro-SemiBold-153" transform="translate(308.3125 0)"/>
+    </g>
+   </g>
+   <g id="text_13">
+    <!-- 0,3913 -->
+    <g style="fill: #193a2b" transform="translate(692.029522 167.324511) scale(0.17 -0.17)">
+     <use xlink:href="#BeVietnamPro-SemiBold-153"/>
+     <use xlink:href="#BeVietnamPro-SemiBold-197" transform="translate(69.203125 0)"/>
+     <use xlink:href="#BeVietnamPro-SemiBold-156" transform="translate(102.40625 0)"/>
+     <use xlink:href="#BeVietnamPro-SemiBold-15c" transform="translate(169.8125 0)"/>
+     <use xlink:href="#BeVietnamPro-SemiBold-154" transform="translate(239.109375 0)"/>
+     <use xlink:href="#BeVietnamPro-SemiBold-156" transform="translate(280.609375 0)"/>
+    </g>
+   </g>
+   <g id="text_14">
+    <!-- 0,3844 -->
+    <g style="fill: #193a2b" transform="translate(683.003944 229.278534) scale(0.17 -0.17)">
+     <defs>
+      <path id="BeVietnamPro-SemiBold-15b" d="M 2099 -64 
+Q 1606 -64 1212 105 
+Q 819 275 588 582 
+Q 358 890 358 1306 
+Q 358 1638 483 1865 
+Q 608 2093 771 2224 
+Q 934 2355 1062 2412 
+Q 1190 2470 1197 2470 
+L 1197 2509 
+Q 1190 2509 1081 2557 
+Q 973 2605 832 2720 
+Q 691 2835 582 3027 
+Q 474 3219 474 3507 
+Q 474 3891 685 4182 
+Q 896 4474 1264 4637 
+Q 1632 4800 2099 4800 
+Q 2566 4800 2934 4637 
+Q 3302 4474 3510 4182 
+Q 3718 3891 3718 3514 
+Q 3718 3226 3612 3030 
+Q 3507 2835 3363 2720 
+Q 3219 2605 3110 2557 
+Q 3002 2509 3002 2509 
+L 3002 2470 
+Q 3002 2470 3130 2412 
+Q 3258 2355 3424 2224 
+Q 3590 2093 3715 1865 
+Q 3840 1638 3840 1306 
+Q 3840 890 3609 582 
+Q 3379 275 2985 105 
+Q 2592 -64 2099 -64 
+z
+M 2099 2790 
+Q 2464 2790 2681 2988 
+Q 2899 3187 2899 3462 
+Q 2899 3738 2681 3936 
+Q 2464 4134 2099 4134 
+Q 1734 4134 1516 3936 
+Q 1299 3738 1299 3456 
+Q 1299 3187 1516 2988 
+Q 1734 2790 2099 2790 
+z
+M 2099 621 
+Q 2400 621 2601 733 
+Q 2803 845 2908 1024 
+Q 3014 1203 3014 1395 
+Q 3014 1587 2912 1760 
+Q 2810 1933 2605 2041 
+Q 2400 2150 2099 2150 
+Q 1792 2150 1590 2041 
+Q 1389 1933 1286 1760 
+Q 1184 1587 1184 1395 
+Q 1184 1203 1286 1024 
+Q 1389 845 1593 733 
+Q 1798 621 2099 621 
+z
+" transform="scale(0.015625)"/>
+      <path id="BeVietnamPro-SemiBold-157" d="M 2598 0 
+L 2598 1011 
+L 301 1018 
+L 301 1779 
+L 2394 4736 
+L 3462 4736 
+L 3462 1747 
+L 4230 1747 
+L 4230 1011 
+L 3462 1011 
+L 3462 0 
+L 2598 0 
+z
+M 1158 1747 
+L 2598 1747 
+L 2598 3782 
+L 1158 1747 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#BeVietnamPro-SemiBold-153"/>
+     <use xlink:href="#BeVietnamPro-SemiBold-197" transform="translate(69.203125 0)"/>
+     <use xlink:href="#BeVietnamPro-SemiBold-156" transform="translate(102.40625 0)"/>
+     <use xlink:href="#BeVietnamPro-SemiBold-15b" transform="translate(169.8125 0)"/>
+     <use xlink:href="#BeVietnamPro-SemiBold-157" transform="translate(235.40625 0)"/>
+     <use xlink:href="#BeVietnamPro-SemiBold-157" transform="translate(307 0)"/>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pe1a4a08446">
+   <rect x="172.5725" y="11.52" width="598.00875" height="237.16"/>
+  </clipPath>
+ </defs>
+</svg>

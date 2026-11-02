@@ -1,0 +1,11 @@
+# Install together with the verified cached cp311 Windows wheel; no CUDA download index.
+# python -m pip install <local-torch-2.13.0+cu130.whl> -r requirements-local-cuda-reuse.txt
+# This is a different runtime from the original Kaggle torch==2.11.0+cu128.
+torch==2.13.0+cu130
+-r requirements-kaggle.txt
+numpy==2.1.3
+pandas==2.3.3
+pyarrow==23.0.1
+scipy==1.16.3
+scikit-learn==1.6.1
+safetensors==0.8.0
