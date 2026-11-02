@@ -17,6 +17,9 @@ archive/topics/*/models/
 *.pt
 *.safetensors
 
+# Output Kaggle: snapshot đầy đủ, feature, OOF và weights giữ ở local/Dataset.
+/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/
+
 # Python
 __pycache__/
 *.py[cod]
