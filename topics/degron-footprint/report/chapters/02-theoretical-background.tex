@@ -50,9 +50,15 @@ the effect must be fixed in the evaluation protocol before models are compared.
 MetaDegron \citep{zheng2024} predicts degron motifs and is used to compare problem scope, not as a label source.
 
 \subsection{Transfer Learning}
-Transfer learning pre-trains a representation on peptide-level activity labels and then fine-tunes it on
+One transfer-learning design pre-trains a representation on peptide-level activity labels and then fine-tunes it on
 mutation-level labels. The two label types have different meanings, so they need separate prediction heads
 or a suitable transformation; binary motif labels are not converted into $\Delta$PSI values.
+
+Protein language models such as ESM2 \citep{lin2023esm} provide pretrained sequence representations.
+In frozen-feature experiments their weights stay fixed while a task-specific head is trained.
+Convolutional heads mix nearby positions; a pointwise head is a control without that mixing.
+LoRA \citep{hu2022lora} instead learns low-rank parameter updates and a task head while retaining
+the pretrained weights. Frozen features, tile-label pre-training and LoRA are distinct experiments.
 
 \section{Technologies and Tools}
 Python with NumPy, pandas and scikit-learn for data handling and classical models; PyTorch for neural
@@ -69,9 +75,11 @@ folds. Hyperparameters are chosen on a cluster-wise validation set inside each t
 feature selection and pre-training must not use the held-out clusters.
 
 \subsection{Metrics}
-The main metric is the cell-level area under the ROC curve (AUROC), computed per peptide that contains
-both classes and then averaged. Spearman correlation or mean absolute error on continuous $\Delta$PSI
-is added when labels allow.
+For the initial restricted-PSI benchmark, the main metric is the cell-level area under the ROC curve
+(AUROC), computed per eligible peptide and then averaged. The full-PSI study primarily measures
+peptide-macro mean absolute error on continuous $\Delta$PSI, with Spearman and positive/negative-event
+ranking as secondary measures. Eligibility and sample counts are reported separately: a peptide
+without both event classes can contribute to regression even when its AUROC is undefined.
 
 \subsection{Statistical Comparison}
 Models are compared pairwise on the same peptides. Confidence intervals come from bootstrap resampling

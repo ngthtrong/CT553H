@@ -2,15 +2,26 @@
 % giới hạn. Không dùng hình, bảng hay trích dẫn.
 \FrontChapter{ABSTRACT}
 
-A degron is a sequence element that marks a protein for selective degradation, and a single amino acid
-substitution within it can change its activity. Experiments score whole peptides, while measuring every
-substitution is costly. This thesis studies how to predict the effect of single amino acid substitutions in
-degron peptides at residue level from experimental stability data, evaluates generalisation with
-protein-cluster-aware splits against ridge, PAP-difference and Degformer baselines, and builds a prototype
-local React/FastAPI tool whose first-release scope includes predicted effect matrices, substitution ranking,
-peptide batches and whole-protein tiling, ClinVar/reference annotations, experimental-data comparison,
-persistent projects/history and export with provenance. These are software requirements; the expanded
-workflows remain pending implementation and verification.
-\textbf{[PENDING: main results and limitations, to be written when the work is complete.]}
+A single amino acid substitution can alter the activity of a degron, a sequence element involved in
+selective protein degradation. This thesis predicts substitution effects as changes in the Protein
+Stability Index ($\Delta$PSI) measured by a peptide reporter assay and develops a local analysis tool.
+The computational work reconstructs labels, controls sequence overlap and evaluates models with
+protein-group-aware folds, inner model selection and group-bootstrap confidence intervals.
+
+The full-PSI development set contains \nVthreeNPeptides{} peptides, \nVthreeNCells{} mutation cells
+and \nVthreeNGroups{} protein groups. Expanding ridge training from WT PSI at most 4 to the full
+range reduces peptide-macro mean absolute error from \nVthreeRidgeB{} to \nVthreeRidgeD{} PSI.
+Frozen ESM2-35M with a convolutional head reaches \nVthreeCnnD{} MAE; its matched pointwise
+control reaches \nVthreePointwiseD{}. Scanning-label pre-training improves a one-hot CNN under
+the tested design, whereas quality weighting worsens ridge. The lowest selected MAE does not
+establish an architecture winner. Earlier restricted-domain experiments also provide a calibrated
+ridge baseline and numerical agreement between its inference and research paths.
+
+As of 3 November 2026, a React/FastAPI baseline exists, while persistent projects, batch/protein
+jobs and experimental-data comparison remain incomplete. The newer workspace is a synthetic-data
+review prototype. The local pLM and LoRA expansion, full-PSI calibration and locked held-source
+evaluation are unfinished; the serving model has not been replaced. All predictive findings are
+development evidence from the assay, with no claim of independent external validation, intact-protein
+effects, E3-specific recognition or clinical interpretation.
 
 \par\vspace{6bp}\noindent\textbf{Keywords:} degron, protein stability, mutation effect prediction, ubiquitin--proteasome system, machine learning.

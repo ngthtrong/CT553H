@@ -2,6 +2,8 @@
 """Build editable Word and a stable, checked PDF from one Markdown source."""
 from pathlib import Path
 from zipfile import ZipFile, ZIP_DEFLATED
+from collections import Counter
+from datetime import datetime, timezone
 import hashlib
 import json
 import re
@@ -11,11 +13,59 @@ import xml.etree.ElementTree as ET
 
 HERE = Path(__file__).resolve().parent
 ROOT = next(p for p in HERE.parents if (p / 'CLAUDE.md').exists())
-SAMPLE = ROOT / 'report/guideline-thesis/Đề cương LV Mau (1).docx'
+SAMPLE = ROOT / 'reportTemplate/guideline-thesis/Đề cương LV Mau (1).docx'
 PDF_SAMPLE = SAMPLE.with_name('Đề cương LV Mau.pdf')
 BUILD = HERE / 'build'
 NS = {'w': 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
 W = '{' + NS['w'] + '}'
+AS_OF = '2026-11-03'
+RESEARCH = ROOT / 'topics/degron-footprint/research'
+LOCAL = 'kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/'
+EVIDENCE = [
+    'g2-saturation-2026-10-18/results.json',
+    'r1-degformer-clean-2026-10-22/run-kaggle-20261022/results.json',
+    'r6-ladder-scan-2026-10-23/run-kaggle-20261023/results.json',
+    'kaggle-roadmap-2026-10-31/dataset-build.json',
+    'kaggle-roadmap-2026-10-31/output-analysis.json',
+    LOCAL + 'plan.json', LOCAL + 'queue.json', LOCAL + 'state.json',
+]
+
+def current_evidence_checks(text):
+    """Check printed numerical claims against the dated, controlling outputs."""
+    load = lambda name: json.loads((RESEARCH / name).read_text())
+    data = load('kaggle-roadmap-2026-10-31/dataset-build.json')
+    analysis = load('kaggle-roadmap-2026-10-31/output-analysis.json')
+    plan, queue, state = (load(LOCAL + name) for name in ['plan.json', 'queue.json', 'state.json'])
+    assert plan['data_identity'] == analysis['data_identity']
+    assert analysis['scientific_status'] == 'development_not_gate_closure'
+    expected = ['03/11/2026', f"{data['saturation_peptides']} peptide",
+                f"{data['saturation_cells']:,}".replace(',', '.'),
+                f"{data['scan_cells']:,}".replace(',', '.'), f"{data['saturation_groups']} nhóm"]
+    for recipe in ['ordered-w5-B', 'ordered-w5-D', 'esm2_35m-cnn-D', 'esm2_35m-pointwise-D',
+                   'esm2_35m-mcnn-E', 'cnn-transfer-scratch-D', 'cnn-transfer-dpsi_rep1-D']:
+        result = analysis['recipes'][recipe]
+        assert result['seeds'] == [17, 29, 43]
+        expected.append(f"{result['ensemble']['all']['mae']:.5f}".replace('.', ','))
+    rone = load('r1-degformer-clean-2026-10-22/run-kaggle-20261022/results.json')
+    expected.append(f"{rone['macro_auroc_ensemble']:.4f}".replace('.', ','))
+    rsix = load('r6-ladder-scan-2026-10-23/run-kaggle-20261023/results.json')
+    expected.append(f"{rsix['summaries']['ridge_W5']['macro_auroc_ensemble']:.4f}".replace('.', ','))
+    for first, second, interval in [
+        ('ordered-w5-D', 'ordered-w5-B', 'ci_adjusted'),
+        ('esm2_35m-cnn-D', 'esm2_35m-pointwise-D', 'ci95'),
+    ]:
+        comparison = next(v for v in analysis['contrasts'].values() if v['a'] == first and v['b'] == second
+                          and v['metric'] == 'mae' and v['stratum'] is None)
+        expected.extend(f'{abs(bound):.5f}'.replace('.', ',') for bound in comparison[interval])
+    expected.append(f"{analysis['recipes']['ordered-w5-D']['ensemble']['all']['auroc_plus_eligible_peptides']} peptide đủ điều kiện")
+    count = Counter(j['status'] for j in state['jobs'].values())
+    complete = [j for j in queue if state['jobs'].get(j['id'], {}).get('status') == 'complete']
+    expected += [f"{count['complete']}/{len(queue)}", f"{sum(j['kind'] == 'ridge' for j in complete)} Ridge fold"]
+    for claim in expected:
+        assert claim in text, f'Missing/source-mismatched current claim: {claim}'
+    assert 'fixture tổng hợp' in text and 'chưa đổi serving model' in text
+    assert not re.search(r'research/|\.json\b|\.py\b', text), 'Printed internal evidence path'
+    return expected
 
 def run(args):
     result = subprocess.run([str(a) for a in args], cwd=HERE,
@@ -99,6 +149,8 @@ def validate():
     assert (result['n_peptides'], result['n_clusters'], result['n_cells']) == (91, 89, 47847)
     assert round(result['macro_auroc']['ridge'], 4) == .8082
     assert round(result['macro_auroc']['DeltaPAP'], 4) == .7693
+    current_claims = current_evidence_checks(flat)
+    current_evidence_checks(' '.join(word_text.split()))
     fonts = run(['pdffonts', pdf])
     assert 'TimesNewRoman' in fonts
     # Every font row must be embedded (emb column follows encoding).
@@ -108,10 +160,15 @@ def validate():
     for forbidden in ['Overfull \\hbox', 'Overfull \\vbox', 'Missing character:', 'undefined references', 'multiply defined']:
         assert forbidden not in log, forbidden
     manifest = {
-        'date': '2026-10-21', 'format': 'Letter, 1-inch margins, Times New Roman; geometry follows supplied sample',
+        'date': AS_OF, 'generated_utc': datetime.now(timezone.utc).isoformat(),
+        'format': 'Letter, 1-inch margins, Times New Roman; geometry follows supplied sample',
         'pages': int(re.search(r'Pages:\s+(\d+)', info).group(1)),
         'checks': ['seven required sections in Word and PDF', 'student metadata', 'Letter page size',
-                   'embedded fonts', 'no LaTeX overflow or missing glyphs', 'preliminary metrics match results.json'],
+                   'embedded fonts', 'no LaTeX overflow or missing glyphs', 'historical and full-PSI metrics match source JSON',
+                   'dated local progress and unfinished software scope', 'no printed internal evidence paths'],
+        'current_claims_checked': current_claims,
+        'evidence_sources': {str((RESEARCH / name).relative_to(ROOT)): hashlib.sha256((RESEARCH / name).read_bytes()).hexdigest()
+                             for name in EVIDENCE},
         'files': {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
                   for p in [PDF_SAMPLE, SAMPLE, HERE/'proposal.md', HERE/'proposal.pdf', HERE/'proposal.docx', HERE/'references.bib', HERE/'header.tex', HERE/'layout.lua', HERE/'build.py']},
     }

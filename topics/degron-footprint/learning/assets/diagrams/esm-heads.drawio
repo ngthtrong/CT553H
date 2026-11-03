@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="drawio" version="32.6.1">
+  <diagram id="esm-heads" name="esm-heads">
+    <mxGraphModel grid="1" gridSize="10" page="0" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="wtmut" value="WT và mutant&#10;cùng mutation key" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;convertToSvg=1;fillColor=#E7F2F4;strokeColor=#167D8D;strokeWidth=2;fontColor=#243C46;fontFamily=DejaVu Sans;fontSize=24;spacing=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="430" y="20" width="400" height="110" />
+        </mxCell>
+        <mxCell id="esm" value="ESM2-35M đóng băng&#10;biểu diễn từng residue" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;convertToSvg=1;fillColor=#E7F2F4;strokeColor=#167D8D;strokeWidth=2;fontColor=#243C46;fontFamily=DejaVu Sans;fontSize=24;spacing=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="430" y="240" width="400" height="120" />
+        </mxCell>
+        <mxCell id="point" value="Pointwise&#10;kernel 1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;convertToSvg=1;fillColor=#E7F2F4;strokeColor=#167D8D;strokeWidth=2;fontColor=#243C46;fontFamily=DejaVu Sans;fontSize=24;spacing=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="490" width="330" height="120" />
+        </mxCell>
+        <mxCell id="cnn" value="CNN&#10;kernel 5" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;convertToSvg=1;fillColor=#E7F2F4;strokeColor=#167D8D;strokeWidth=2;fontColor=#243C46;fontFamily=DejaVu Sans;fontSize=24;spacing=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="465" y="490" width="330" height="120" />
+        </mxCell>
+        <mxCell id="mcnn" value="mCNN&#10;kernel 3 / 5 / 7" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;convertToSvg=1;fillColor=#E7F2F4;strokeColor=#167D8D;strokeWidth=2;fontColor=#243C46;fontFamily=DejaVu Sans;fontSize=24;spacing=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="910" y="490" width="330" height="120" />
+        </mxCell>
+        <mxCell id="score" value="Đầu hồi quy → ΔPSI&#10;Cùng cohort, fold, seed" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;convertToSvg=1;fillColor=#E7F2F4;strokeColor=#167D8D;strokeWidth=2;fontColor=#243C46;fontFamily=DejaVu Sans;fontSize=24;spacing=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="430" y="760" width="400" height="130" />
+        </mxCell>
+        <mxCell id="edge-0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endSize=10;endFill=1;strokeWidth=2;strokeColor=#36545D;fontSize=20;fontFamily=DejaVu Sans;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="wtmut" target="esm">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endSize=10;endFill=1;strokeWidth=2;strokeColor=#36545D;fontSize=20;fontFamily=DejaVu Sans;labelBackgroundColor=#ffffff;exitX=0.15;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="esm" target="point">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endSize=10;endFill=1;strokeWidth=2;strokeColor=#36545D;fontSize=20;fontFamily=DejaVu Sans;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="esm" target="cnn">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endSize=10;endFill=1;strokeWidth=2;strokeColor=#36545D;fontSize=20;fontFamily=DejaVu Sans;labelBackgroundColor=#ffffff;exitX=0.85;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="esm" target="mcnn">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endSize=10;endFill=1;strokeWidth=2;strokeColor=#36545D;fontSize=20;fontFamily=DejaVu Sans;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.15;entryY=0;" edge="1" parent="1" source="point" target="score">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endSize=10;endFill=1;strokeWidth=2;strokeColor=#36545D;fontSize=20;fontFamily=DejaVu Sans;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="cnn" target="score">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endSize=10;endFill=1;strokeWidth=2;strokeColor=#36545D;fontSize=20;fontFamily=DejaVu Sans;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.85;entryY=0;" edge="1" parent="1" source="mcnn" target="score">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

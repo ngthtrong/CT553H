@@ -8,6 +8,7 @@ they must not be printed as evidence in the thesis.
 The script only reads those JSON files and writes into its own directory.
 """
 import json
+from collections import Counter
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -490,8 +491,102 @@ M('KoMinClusters', str(th['G1_min_new_clusters'])); M('KoSpearman', f'{r4["spear
 M('KoNSubstrates', str(g1['n_substrates_s4']))
 assert not KO['gate_pass'] and KO['role'] == 'external_validation_only'
 
+# -------------------------------------- 13. dated follow-up and full-PSI evidence
+# These sources describe separate development populations. Do not overwrite the
+# original restricted-PSI numbers or mix local and Kaggle predictions.
+F_V3 = 'kaggle-roadmap-2026-10-31/output-analysis.json'
+F_V3_DATA = 'kaggle-roadmap-2026-10-31/dataset-build.json'
+F_LOCAL = 'kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/'
+F_R1 = 'r1-degformer-clean-2026-10-22/run-kaggle-20261022/results.json'
+F_R2 = 'r2-esm-features-2026-10-22/run-kaggle-20261022/results.json'
+F_R6 = 'r6-ladder-scan-2026-10-23/run-kaggle-20261023/results.json'
+F_R3 = 'r3-domain-gate-2026-10-22/run-kaggle-20261022/gate-card.json'
+v3, v3data, localplan, localstate, localqueue, rone, rtwo, rsix, rthree = (
+    load(f) for f in (F_V3, F_V3_DATA, F_LOCAL + 'plan.json', F_LOCAL + 'state.json',
+                     F_LOCAL + 'queue.json', F_R1, F_R2, F_R6, F_R3))
+assert v3['data_identity'] == localplan['data_identity']
+assert v3['scientific_status'] == 'development_not_gate_closure'
+assert localplan['scientific_status'] == 'development_expansion_after_Kaggle_results'
+
+def v3metric(recipe, metric='mae'):
+    record = v3['recipes'][recipe]
+    assert record['seeds'] == [17, 29, 43]
+    values = record['ensemble']['all']
+    assert (values['peptides'], values['clusters'], values['cells']) == (
+        v3data['saturation_peptides'], v3data['saturation_groups'], v3data['saturation_cells'])
+    return values[metric]
+
+def v3contrast(a, b):
+    matches = [v for v in v3['contrasts'].values() if v['a'] == a and v['b'] == b
+               and v['metric'] == 'mae' and v['stratum'] is None]
+    assert len(matches) == 1, (a, b)
+    return matches[0]
+
+for name, key in [('NPeptides', 'saturation_peptides'), ('NGroups', 'saturation_groups'),
+                  ('NCells', 'saturation_cells'), ('NScanCells', 'scan_cells')]:
+    M('Vthree' + name, f'{v3data[key]:,}'.replace(',', r'\,'))
+v3recipes = [
+    ('RidgeB', 'ordered-w5-B', r'Ridge W5, train $\mathrm{PSI}_{\mathrm{WT}}\le4$'),
+    ('RidgeD', 'ordered-w5-D', 'Ridge W5, full range'),
+    ('RidgeE', 'ordered-w5-E', 'Ridge W5, balanced full range'),
+    ('CnnScratch', 'cnn-transfer-scratch-D', 'One-hot CNN, full range'),
+    ('PointwiseD', 'esm2_35m-pointwise-D', 'Frozen ESM2-35M + pointwise, full range'),
+    ('CnnD', 'esm2_35m-cnn-D', 'Frozen ESM2-35M + CNN, full range'),
+    ('McnnE', 'esm2_35m-mcnn-E', 'Frozen ESM2-35M + multi-window CNN, balanced'),
+    ('CnnTransfer', 'cnn-transfer-dpsi_rep1-D', 'One-hot CNN, scanning pre-training, full range'),
+]
+rows = []
+for name, recipe, label in v3recipes:
+    M('Vthree' + name, f'{v3metric(recipe):.5f}')
+    rows.append([label, f'{v3metric(recipe):.5f}', f'{v3metric(recipe, "auroc_plus"):.5f}'])
+table('tab-v3-results', 'Xrr', ['Configuration', 'Macro MAE', 'Positive AUROC'], rows,
+      [F_V3, F_V3_DATA], size=r'\footnotesize')
+M('VthreePlusEligible', str(v3metric('ordered-w5-D', 'auroc_plus_eligible_peptides')))
+M('VthreeRidgeGain', f'{100 * (1 - v3metric("ordered-w5-D") / v3metric("ordered-w5-B")):.2f}')
+M('VthreeCnnTopFive', f'{100 * v3metric("esm2_35m-cnn-D", "precision_plus_0.05_eligible_macro"):.2f}')
+M('VthreeMcnnGap', f'{v3metric("esm2_35m-cnn-D") - v3metric("esm2_35m-mcnn-E"):.5f}')
+comparisons = [
+    ('Ridge full range minus restricted', 'ordered-w5-D', 'ordered-w5-B'),
+    ('Ridge balanced minus restricted', 'ordered-w5-E', 'ordered-w5-B'),
+    ('ESM CNN minus ESM pointwise, full range', 'esm2_35m-cnn-D', 'esm2_35m-pointwise-D'),
+    ('Scanning-pretrained CNN minus scratch', 'cnn-transfer-dpsi_rep1-D', 'cnn-transfer-scratch-D'),
+    ('Quality-weighted ridge minus unweighted', 'sat-quality-D', 'sat-only-D'),
+]
+rows = []
+for label, a, b in comparisons:
+    comparison = v3contrast(a, b)
+    interval = comparison['ci_adjusted'] if comparison['multiplicity'] > 1 else comparison['ci95']
+    rows.append([label, sg(comparison['delta'], 5), ci(interval)])
+table('tab-v3-comparisons', 'Xrr', ['Paired comparison', r'$\Delta$MAE', 'Cluster-bootstrap CI'],
+      rows, [F_V3], size=r'\footnotesize')
+cnncomparison = v3contrast('esm2_35m-cnn-D', 'esm2_35m-pointwise-D')
+M('VthreeCnnDelta', sg(cnncomparison['delta'], 5))
+M('VthreeCnnCI', ci(cnncomparison['ci95']))
+M('RoneAuc', f4(rone['macro_auroc_ensemble']))
+M('RtwoAuc', f4(rtwo['macro_auroc']['M3+ESM']['macro_auroc_ensemble']))
+M('RsixWfive', f4(rsix['summaries']['ridge_W5']['macro_auroc_ensemble']))
+M('RsixMcnn', f4(rsix['summaries']['esm35_mcnn']['macro_auroc_ensemble']))
+M('RsixWfiveCI', ci(rsix['contrasts']['A_ridge_W5_vs_W3']['ci_adj']))
+M('RsixPrimaryCI', ci(rsix['contrasts']['P_esm35_mcnn_vs_ridge']['ci_adj']))
+M('RthreeLookupAuc', f4(rthree['tier1']['auroc_oof']))
+M('RthreeSequenceAuc', f4(rthree['tier2']['auroc_oof']))
+jobs = localstate['jobs']
+localcounts = Counter(v['status'] for v in jobs.values())
+complete = [j for j in localqueue if jobs.get(j['id'], {}).get('status') == 'complete']
+M('VthreeLocalModels', str(sum(j['kind'] == 'extract' for j in complete)))
+M('VthreeLocalRidge', str(sum(j['kind'] == 'ridge' for j in complete)))
+for mode in ['frozen', 'lora']:
+    M('VthreeLocal' + mode.capitalize(), str(sum(j['kind'] == 'tune' and j['mode'] == mode for j in complete)))
+M('VthreeLocalComplete', str(localcounts['complete']))
+M('VthreeLocalTotal', str(len(localqueue)))
+M('VthreeLocalBlocked', str(localcounts['adapter_blocked']))
+assert all(jobs.get(j, {}).get('status') != 'complete' for j in (
+    'collect-family', 'collect-core', 'calibrate-core', 'locked-transfer-w5', 'report'))
+
 # ------------------------------------------------------------------- numbers
-out = ['% Generated by build_ch4_assets.py - do not edit. One macro per number quoted in the text of Chapter 4.']
+out = ['% Generated by build_ch4_assets.py - do not edit. Numerical evidence for the thesis.',
+       src(F_V3, F_V3_DATA, F_LOCAL + 'plan.json', F_LOCAL + 'state.json', F_LOCAL + 'queue.json',
+           F_R1, F_R2, F_R6, F_R3)]
 for k, v in macros.items():
     out.append(r'\providecommand{\n' + k + '}{' + str(v) + '}')
 (HERE / 'numbers.tex').write_text('\n'.join(out) + '\n')
