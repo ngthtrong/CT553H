@@ -1,7 +1,6 @@
 % CHAPTER 4: kiểm thử phần mềm và đánh giá thực nghiệm.
 % Bảng, hình và các con số trong §4.2 được sinh từ các tệp JSON kết quả bằng
 % assets/ch4/build_ch4_assets.py; không sửa tay các tệp đã sinh trong assets/ch4/.
-\input{assets/ch4/numbers}
 \chapter{TESTING AND EVALUATION}\label{chap:evaluation}
 
 \section{Testing Objectives}
@@ -17,6 +16,11 @@ exist, but the first-release extensions confirmed on 29 October 2026 require imp
 local acceptance evidence; no passing result for those additions is claimed here.
 
 \section{Experimental Evaluation}\label{sec:experiments}
+This section preserves the initial restricted-PSI experiments and then reports the important
+follow-up findings available on 3 November 2026 (Section~\ref{sec:res-fullpsi}). The original
+91-peptide test and the full-PSI evaluation have different populations and primary metrics;
+their scores must not be read as a single improvement curve. All remain development evidence.
+
 \subsection{Experimental Setup}
 
 \paragraph{Data and labels.}
@@ -25,7 +29,7 @@ For each peptide, the effect of a substitution is $\Delta\mathrm{PSI}=\mathrm{PS
 (Chapter~\ref{chap:background}). The data set contains two replicate halves of each peptide. The
 $\mathrm{PSI}_{\mathrm{WT}}$ reference of a half is the median PSI of the synonymous cells of that half,
 and at least ten such cells are required. The cell label is the mean $\Delta\mathrm{PSI}$ of the two halves;
-a cell is \emph{positive} when $\Delta\mathrm{PSI}\ge 1$. A peptide is accepted as a degron only if
+a cell is \emph{positive} when $\Delta\mathrm{PSI}\ge 1$. In the initial restricted benchmark, a peptide is accepted only if
 $\mathrm{PSI}_{\mathrm{WT}}\le 3.0$. Table~\ref{tab:funnel} shows how the \nNRaw{} raw saturation peptides reduce to
 the \nNKept{} peptides of the benchmark. The single largest cause of loss is the degron threshold, which
 removes \nNDropDegron{} peptides; the technical causes together remove only
@@ -77,18 +81,20 @@ Observations made after seeing the numbers are labelled as descriptive. The firs
 (Table~\ref{tab:g2}) has a protocol file but is treated as exploratory.
 
 \paragraph{Environment.}
-All experiments ran on CPU with Python 3.12.3, NumPy 2.5.3 and PyTorch 2.14.0 (CPU build); each result file
+The initial experiments described below ran on CPU with Python 3.12.3, NumPy 2.5.3 and PyTorch 2.14.0 (CPU build); each result file
 records the SHA-256 of its input and of its runner. Large caches and checkpoints are generated again by the
-runners and are not kept in the repository.
+runners. The subsequent notebook runs used Kaggle GPUs, and the local expansion uses a separate
+Windows CUDA runtime (Section~\ref{sec:res-fullpsi}); checkpoints and feature arrays require separate storage.
 
 \subsection{Evaluation Metrics}
-The main metric is the cell-level AUROC (positive: $\Delta\mathrm{PSI}\ge1$), computed per peptide that has both
+For the initial restricted benchmark, the main metric is the cell-level AUROC (positive: $\Delta\mathrm{PSI}\ge1$), computed per peptide that has both
 classes and then averaged over peptides (macro AUROC). Paired differences between two models are computed on
 the same peptides. The 95\% confidence intervals come from 5,000 bootstrap resamples of protein clusters
 \citep{efron1979}; every peptide of a sampled cluster is kept, so cells and peptides are not treated as
 independent. These intervals are conditional on the stored out-of-fold predictions and do not include the
 variance of retraining. No correction is made for the many comparisons, so a single interval is a
-development-stage indication and not a confirmation.
+development-stage indication and not a confirmation. The full-PSI follow-up instead uses peptide-macro
+MAE as its primary metric and identifies the two adjusted primary intervals separately.
 
 Probabilities are assessed with the Brier score (the mean squared difference between the predicted
 probability and the 0/1 label over the cells), the Brier skill score against a constant forecast of the base rate,
@@ -374,7 +380,8 @@ The difference is negative in all three seeds in every comparison. By the mappin
 \nPtPearson{} between prediction and score on held-out genes, range \nPtPearsonLo{}--\nPtPearsonHi{} over the fifteen runs), so the failure
 is in the transfer to $\Delta$PSI and not in learning the tile scores. This result rejects only this design, in which the
 pre-training sees wild-type sequences only and the whole network is then fine-tuned; designs that pre-train with
-substitutions, freeze part of the network or train both tasks jointly were not tried, and nothing is inferred about them.
+substitutions, freeze part of this tile-label encoder or train both tasks jointly were not tried.
+The later frozen-ESM and LoRA experiments use different pretrained representations and are reported separately.
 
 \subsubsection{Calibration of the Scores and Ranking Utility}\label{sec:res-calibration}
 The score of ridge M3 is a predicted $\Delta$PSI, not a probability. To report the probability that a substitution is positive
@@ -474,15 +481,23 @@ head-to-head competitor on residue-level effect prediction; binary motif labels 
   \input{assets/ch4/tab-metadegron}
 \end{table}
 
-\subsubsection{Experiments Not Done}
+\input{chapters/sections/current-evidence}
+
+\subsubsection{Remaining Evaluation}
 The following parts of the plan have no results in this version of the thesis; no number is given for them.
 \begin{itemize}
   \item \textbf{Merging external GPS labels and repeating the learning curve on the enlarged set.} Not run: the only audited
         source (Table~\ref{tab:koren}) did not pass its gate. Other candidate sources (for example Timms et al., Shimshon et al., Bekturova et al.\ and a recent preprint on disease mutations
         that disrupt degrons) have not been audited, and their terms of use have not been read.
   \item \textbf{Independent validation.} All numbers are out-of-fold on a development benchmark. Testing on labels that did not take part in any
-        design decision, including the C-terminal data of Table~\ref{tab:koren}, has not been done. \textbf{[PENDING]}
-  \item \textbf{Other pre-training designs} (with substitutions, partial freezing, joint training): not tried (Section~\ref{sec:res-pretrain}).
+        design decision, including the C-terminal data of Table~\ref{tab:koren}, has not been done.
+        The current held-source route is locked to the prespecified W5 full-range recipe and has not
+        completed; it is not a test for selecting among all new pLMs. The source was explored historically,
+        so it is not a wholly untouched external assay.
+  \item \textbf{Completed fine-tuning and final artefacts.} The local LoRA comparison is incomplete.
+        Full-PSI calibration and locked-transfer results are not yet available; CNN, LoRA and family
+        candidates require a model-specific final refit/export before serving. Alternative tile-label
+        pre-training or joint-training designs remain separate untested questions.
   \item \textbf{Comparison of the ranking with simple rules.} Only a random ranking was used as reference (Section~\ref{sec:res-calibration}).
   \item \textbf{Separating the region of $\mathrm{PSI}_{\mathrm{WT}}$ from the protein.} It needs pairs of peptides of the same protein on both sides
         of the threshold, which the present data may not contain (Section~\ref{sec:res-partb}).
@@ -492,7 +507,7 @@ The following parts of the plan have no results in this version of the thesis; n
 \end{itemize}
 
 \subsection{Discussion}
-\paragraph{What the measurements support.} (i) A ridge regression on 180 features is a strong baseline for the
+\paragraph{What the initial measurements support.} (i) A ridge regression on 180 features is a strong baseline for the
 substitution effect: it is above the frozen $\Delta$PAP baseline with an interval that excludes zero, and none of the
 five larger designs tried (the sigmoid-gated networks, FiLM, the bilinear form, the cross-product ridge and the retrained
 transformer architecture) beat it under the fixed criteria. (ii) Training labels from peptides just above the
@@ -503,10 +518,16 @@ are grouped: it is above zero under every informative partition tried, including
 Platt transform that is better than the raw score and than the base rate, and the top 10\% of the substitutions of a peptide contains about four times
 more positive cells than a random choice.
 
-\paragraph{What they do not support.} The thesis does not claim a new architecture: no architectural component
-earned a place under the fixed criteria, and the gate even changes sign between seeds. It does not claim that the
-published Degformer is worse than the models here, nor better: its checkpoint is not a held-out result, and the retrained
-architecture was run for one seed. It does not claim that more labels make a larger model win; the gated network is
+\paragraph{What the follow-up adds.} The subsequent studies establish a wider-context ridge improvement
+on the original test and useful frozen-ESM positional mixing on the new full-PSI task. They do not
+turn the earlier inconclusive architecture tests into positive confirmations. Full-range training,
+matched representation/head controls and negative transfer/weighting results are the main new
+contributions (Section~\ref{sec:res-fullpsi}).
+
+\paragraph{What remains unsupported.} The thesis does not claim a novel architecture or an independently
+validated architecture winner. The initial interaction gate changes sign between seeds. The published
+Degformer checkpoint is not held out; the later three-seed clean-cluster retraining is a distinct
+comparison and did not establish an advantage over ridge. The thesis does not claim that more labels make a larger model win; the gated network is
 still rising, but it is below ridge at every level that was run. It does not claim that pre-training on tile labels helps: the one design tried
 was not better than random initialisation and was below ridge. It does not claim that the external labels of Koren et al.\ can be merged: they did not pass the gate. It
 makes no claim of external validation of the probabilities or of the ranking.
@@ -514,9 +535,11 @@ makes no claim of external validation of the probabilities or of the ranking.
 \paragraph{Threats to validity.}
 \begin{itemize}
   \item The benchmark is a development benchmark on a data set that has been examined several times; the
-        out-of-fold numbers are not an external validation, and the best figure (\nAucRidgeExt) must not be quoted as one.
+        out-of-fold numbers are not an external validation. The original AUROC and the full-PSI MAE
+        describe different populations and cannot be combined into a single progress score.
   \item The three seeds share one outer partition, and the confidence intervals are conditional on the stored
-        predictions. No multiple-comparison correction is applied.
+        predictions. Most comparisons are exploratory; adjusted families are identified explicitly.
+        There is no global correction covering the entire sequence of development studies.
   \item The threshold of 4.0 was fixed before the sensitivity grid, but only after the benchmark and a first
         look at the number of peptides it adds; the near coincidence with the maximum of the grid is not evidence that the way it was chosen was sound.
   \item All labels come from one assay and one library. Whether the gain transfers to other degron classes or to

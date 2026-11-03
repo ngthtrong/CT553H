@@ -9,8 +9,8 @@ selective degradation \citep{varshavsky2019,koren2018}. A single amino acid subs
 strengthen or weaken this signal, so knowing the effect of each substitution helps researchers choose
 mutations to test experimentally \citep{zhang2023,voutsinos2026}.
 
-Existing experiments score a whole peptide with one activity value. That value does not say which
-position, or which substituted amino acid, makes the degron signal stronger or weaker. Measuring every
+A whole-peptide activity score alone does not say which position, or which substituted amino acid,
+makes the degron signal stronger or weaker. Mutation assays provide such labels, but measuring every
 substitution experimentally is costly, which motivates a predictive model that shortlists substitutions.
 Such a model is only useful if it is evaluated on experimental labels and if similarity between training
 and test proteins is controlled.
@@ -45,8 +45,8 @@ prioritisation of mutations.
         labels while keeping each source and assay condition separate.
   \item Establish baselines: amino acid composition, ridge regression, the PAP score difference and the
         Degformer architecture, under clearly stated comparable conditions.
-  \item Test whether representations learned from peptide-level labels and fine-tuned on mutation labels
-        improve prediction, and study the learning curve before choosing a model.
+  \item Study training-label coverage, ordered local context and pretrained protein representations
+        with matched model controls; evaluate transfer and fine-tuning without assuming an advantage.
   \item Evaluate effectiveness, stability across seeds, error, and the contribution of each component.
   \item Build one local React/FastAPI application for single-peptide and batch/whole-protein tile analysis,
         ClinVar/reference annotation, experimental-data comparison, project history and traceable export.
@@ -63,6 +63,9 @@ activity under a given assay.
 \begin{itemize}
   \item The main label source is the human peptide data of Zhang et al.\ \citep{zhang2023}; other peptide-level
         sources are used only for transfer learning or domain studies when their terms of use allow.
+        The current full-PSI study uses \nVthreeNPeptides{} saturation peptides in
+        \nVthreeNGroups{} protein groups. The initial restricted benchmark is retained separately;
+        expanding the population does not create an independent validation set.
   \item Input: reference (wild-type) sequence, position and substituted amino acid. Output: predicted
         effect $\Delta$PSI, which can be arranged into an $L\times 20$ matrix.
   \item The first software release includes peptide batches, whole-protein tiling, ClinVar and approved
@@ -93,9 +96,18 @@ API/schema checks and browser tests. Docker may package the same local component
 deployment is not required.
 
 \section{Main Contributions}
-\textbf{[PENDING: to be written from achieved results at the end of the work. Planned contributions are
-a reproducible data and evaluation pipeline, a documented comparison with baselines including negative
-results, and a prototype tool.]}
+As of 3 November 2026, the achieved contributions are:
+\begin{enumerate}
+  \item A traceable pipeline for experimental mutation-effect labels, technical quality control,
+        sequence mapping and protein-group-aware evaluation, including a full-PSI development set.
+  \item Evidence that broader training-label coverage and ordered context improve appropriate
+        baselines, together with matched frozen-ESM pointwise/CNN comparisons. Negative findings
+        on tile-label pre-training and quality weighting are retained with their scope.
+  \item Calibrated restricted-domain baseline inference, numerical agreement with the research
+        runner, and a local web/API baseline with source-aware result presentation.
+\end{enumerate}
+The expanded workspace remains under implementation. The current findings do not establish a new
+architecture, independent external validity or completion of the first software release.
 
 \section{Structure of the Thesis}
 Part~1 introduces the problem, objectives and scope. Part~2 has four chapters: Chapter~1 describes the

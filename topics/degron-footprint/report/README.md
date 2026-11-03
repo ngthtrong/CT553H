@@ -4,7 +4,9 @@ Bản luận văn đang viết của **Nguyễn Thanh Trọng** (B2305615), GVHD
 
 Bản làm việc được tạo từ [template sạch](../../../reportTemplate/README.md), đã điền metadata và nội dung đề tài. Các mục `[PENDING]` hoặc ô trong ngoặc vuông còn lại cần được hoàn thiện; không dùng thư mục template gốc để viết luận văn.
 
-**Đối chiếu trạng thái 03/11/2026:** bản ghi đồng bộ phạm vi phần mềm gần nhất ở đây là ngày 29/10. Nghiên cứu [v3 full-PSI](../research/README.md) đã có output Kaggle và campaign local đang dở; prototype [Workspace UI v2](../system/design/workspace-ui-v2/README.md) đã có bản review. Các mốc này chưa đồng nghĩa đã cập nhật kết quả nghiên cứu, hình giao diện hoặc nghiệm thu phần mềm vào nội dung luận văn. Lần đồng bộ README này không sửa LaTeX hay dựng lại PDF.
+**Cập nhật chọn lọc 03/11/2026:** đã bổ sung các kết quả quan trọng của [v3 full-PSI](../research/README.md), đối chứng R1/R2/R6, snapshot local 10:17 (UTC+8), đóng góp và giới hạn vào tóm tắt, phần mở đầu, Chương 4 và kết luận. Chương 2/3 được sửa ngắn để đồng bộ phương pháp và trạng thái tích hợp. Giữ nguyên số liệu benchmark lịch sử và phân biệt population/metrics. Baseline web/API và prototype [Workspace UI v2](../system/design/workspace-ui-v2/README.md) không đồng nghĩa đã nghiệm thu phạm vi phần mềm mở rộng; serving model chưa đổi. Các phần chưa có bằng chứng vẫn được ghi chưa hoàn tất.
+
+Nguồn số và bảng mới được bổ sung vào generator tài sản; PDF một mặt/hai mặt được dựng lại và kiểm theo [current-state-validation-2026-11-03.md](current-state-validation-2026-11-03.md). Chỉ trình bày kết quả quan trọng, không chuyển toàn bộ log/thứ hạng development vào luận văn. Không in đường dẫn nội bộ để làm dẫn chứng.
 
 - [main.tex](main.tex): điểm vào LaTeX.
 - [config/metadata.tex](config/metadata.tex): thông tin bìa, sinh viên và GVHD.

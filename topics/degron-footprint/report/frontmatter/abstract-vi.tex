@@ -1,16 +1,26 @@
 % Tóm tắt (tiếng Việt, một trang): nội dung tương ứng Abstract.
 \FrontChapter{TÓM TẮT}
 \begin{otherlanguage}{vietnamese}
-Degron là đoạn trình tự đánh dấu protein để bị phân hủy có chọn lọc; một phép thay thế amino acid trong
-degron có thể làm thay đổi hoạt tính này. Thực nghiệm thường chấm điểm cả peptide, trong khi đo mọi
-phép thay thế rất tốn kém. Luận văn nghiên cứu cách dự đoán hiệu ứng của phép thay thế đơn amino acid
-trong peptide degron ở mức residue từ dữ liệu độ bền protein thực nghiệm, đánh giá khả năng tổng quát hóa
-khi chia dữ liệu theo cụm protein so với các đối chứng ridge, chênh lệch điểm PAP và Degformer, đồng
-thời xây dựng ứng dụng local bằng React/FastAPI. Phạm vi bản đầu gồm ma trận hiệu ứng, xếp hạng phép
-thay thế, xử lý theo lô peptide và chia cửa sổ trên toàn protein, chú giải ClinVar/nguồn tham chiếu, nhập
-dữ liệu đo để đối chiếu, lưu dự án/lịch sử và xuất kết quả kèm nguồn gốc. Đây là yêu cầu phần mềm; các
-luồng mở rộng còn chờ triển khai và kiểm chứng.
-\textbf{[CHỜ BỔ SUNG: kết quả chính và giới hạn, viết khi hoàn thành công việc.]}
+Một phép thay thế amino acid có thể làm thay đổi hoạt tính degron, tín hiệu trình tự liên quan đến
+phân hủy protein có chọn lọc. Luận văn dự đoán hiệu ứng đột biến bằng độ thay đổi chỉ số ổn định
+protein ($\Delta$PSI) trong thí nghiệm reporter peptide và xây dựng công cụ phân tích local.
+Quy trình dựng lại nhãn, kiểm soát chồng lặp trình tự và đánh giá theo nhóm protein, với lựa chọn
+mô hình ở tập trong và khoảng tin cậy bootstrap theo nhóm.
+
+Bộ phát triển toàn dải PSI có \nVthreeNPeptides{} peptide, \nVthreeNCells{} ô đột biến và
+\nVthreeNGroups{} nhóm protein. Mở rộng train ridge từ PSI hoang dã không quá 4 sang toàn dải
+giảm MAE trung bình theo peptide từ \nVthreeRidgeB{} xuống \nVthreeRidgeD{} PSI.
+ESM2-35M đóng băng kết hợp CNN đạt MAE \nVthreeCnnD{}, so với \nVthreePointwiseD{} của
+đầu pointwise đối chứng. Tiền huấn luyện bằng nhãn scanning cải thiện CNN one-hot trong thiết kế
+đã thử; trọng số chất lượng làm ridge kém hơn. Thứ hạng MAE chưa xác lập kiến trúc thắng.
+Các thí nghiệm miền hạn chế trước đó cung cấp baseline ridge đã hiệu chuẩn và kiểm khớp giữa
+đường suy luận với runner nghiên cứu.
+
+Đến ngày 03/11/2026, đã có baseline React/FastAPI; lưu dự án, job peptide/protein và đối chiếu dữ
+liệu đo còn dở. Workspace mới là prototype duyệt giao diện dùng dữ liệu tổng hợp. Mở rộng pLM và
+LoRA local, hiệu chuẩn toàn dải và đánh giá nguồn giữ lại chưa xong; mô hình phục vụ chưa đổi.
+Các kết quả dự đoán là bằng chứng phát triển trong assay, chưa xác nhận độc lập ngoài nguồn,
+hiệu ứng trên protein nguyên vẹn, nhận diện E3 cụ thể hoặc ý nghĩa lâm sàng.
 
 \par\vspace{6bp}\noindent\textbf{Từ khóa:} degron, độ bền protein, dự đoán hiệu ứng đột biến, hệ ubiquitin--proteasome, học máy.
 \end{otherlanguage}

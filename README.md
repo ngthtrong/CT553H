@@ -12,7 +12,7 @@ Kho nghiên cứu và báo cáo luận văn của **Nguyễn Thanh Trọng** (B2
 | Dữ liệu | Bundle v3 giữ saturation toàn dải PSI và scanning sau QC; nguồn, giấy phép, hash và nhật ký nằm trong [sổ dữ liệu](topics/degron-footprint/data/README.md), quy tắc dựng bundle ở [DATASET.md](topics/degron-footprint/research/kaggle-roadmap-2026-10-31/DATASET.md). Dữ liệu và artifact nặng nằm local. |
 | Ứng dụng | [Baseline FastAPI + React](topics/degron-footprint/system/app/README.md) có mã và kiểm thử lịch sử, dùng `m3-ext4.0-platt-v1`. [Phạm vi v0.2](topics/degron-footprint/system/README.md) gồm dự án/lịch sử, jobs peptide/protein, import/comparison; các phần mở rộng chưa được nghiệm thu. |
 | Giao diện | [Workspace UI v2](topics/degron-footprint/system/design/workspace-ui-v2/README.md) là prototype tương tác hiện hành; dữ liệu minh hoạ, lưu trong bộ nhớ tab, chưa nối backend. |
-| Luận văn / đề cương | [Luận văn](topics/degron-footprint/report/README.md) đã đồng bộ phạm vi phần mềm ngày 29/10, còn `[PENDING]`; [đề cương](topics/degron-footprint/proposal/README.md) là bản dự thảo cập nhật đến 22/10. Các kết quả v3 mới chưa tự động được đưa vào hai bản này. |
+| Luận văn / đề cương | [Luận văn](topics/degron-footprint/report/README.md) và [đề cương](topics/degron-footprint/proposal/README.md) cập nhật chọn lọc ngày 03/11: kết quả quan trọng v3, snapshot local và trạng thái phần mềm; PDF/DOCX được dựng lại. Còn các phần chưa hoàn tất và `[PENDING]`; cập nhật tài liệu không phải nghiệm thu G2/G3. |
 
 Trạng thái trên đối chiếu tài liệu, mã và metadata có sẵn; số test lịch sử không phải kết quả kiểm lại ngày 03/11. Snapshot campaign có mốc riêng vì tiến trình có thể tiếp tục chạy.
 

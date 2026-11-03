@@ -1,0 +1,226 @@
+{
+  "date": "2026-11-03",
+  "generated_utc": "2026-11-03T03:17:12.546369+00:00",
+  "status": "pass",
+  "scope": "Selective thesis and proposal update; no scientific rerun or software acceptance",
+  "local_snapshot": "2026-11-03 10:17 UTC+8; saved metadata, not live worker verification",
+  "checks": {
+    "report_make_all_and_check": true,
+    "proposal_make_and_check": true,
+    "git_diff_check": true,
+    "historical_tables_unchanged": 22,
+    "historical_figures_unchanged": 2,
+    "historical_numerical_macros_unchanged": 166,
+    "one_two_sided_text_match": true,
+    "research_worktree_unchanged": true,
+    "report_pdfs": {
+      "content": {
+        "pages": 80,
+        "paper": "A4",
+        "pending_markers": 7,
+        "internal_evidence_paths_printed": 0,
+        "new_values_present": true,
+        "abstract_physical_pages": [
+          7,
+          8
+        ]
+      },
+      "content-twoside": {
+        "pages": 80,
+        "paper": "A4",
+        "pending_markers": 7,
+        "internal_evidence_paths_printed": 0,
+        "new_values_present": true,
+        "abstract_physical_pages": [
+          7,
+          8
+        ]
+      }
+    },
+    "proposal_pages": 10,
+    "proposal_docx_structural_and_numeric_checks": true
+  },
+  "visual_review": {
+    "report_and_twoside_physical_pages": [
+      7,
+      8,
+      19,
+      20,
+      21,
+      22,
+      34,
+      35,
+      36,
+      39,
+      42,
+      43,
+      44,
+      58,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      74,
+      75,
+      77
+    ],
+    "proposal_physical_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "findings": "Readable tables, one-page bilingual abstracts, no observed clipping or overlap; final changed text inspected"
+  },
+  "method_reference_verification": {
+    "ESM2": "https://pubmed.ncbi.nlm.nih.gov/36927031/",
+    "LoRA": "https://openreview.net/pdf?id=nZeVKeeFYf9"
+  },
+  "evidence_sources": {
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/dataset-build.json": {
+      "bytes": 1181,
+      "sha256": "ac338d21d3f24f60c91bd00598dcb62508dbb19b2c3b3b5bb951176220913c20"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output-analysis.json": {
+      "bytes": 570381,
+      "sha256": "ecd7f61bb3fbf8083a382da975eb7bc7539613a415fa332debe89536843d5bc3"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/plan.json": {
+      "bytes": 2004,
+      "sha256": "c51c10eab9aaa487db21ac99253d599f05f575cfb59279cff3545da125c0588c"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/queue.json": {
+      "bytes": 149821,
+      "sha256": "2c56b6832b64a0478db3434262c5827e237a48897c2bc4a9651b61d6a41e3e3d"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/state.json": {
+      "bytes": 502386,
+      "sha256": "0847b3945108961254f09bcb1da65d25d89dae446f6c87c7b9c71c9b40b01a63"
+    },
+    "topics/degron-footprint/research/r0-reproduce-notebook-2026-10-22/run-kaggle-20261022/results.json": {
+      "bytes": 2652,
+      "sha256": "1b1f4cb0963c5e8507a8a5e0cb124e21f1e2fd10aa2082fe2c241a615011a489"
+    },
+    "topics/degron-footprint/research/r1-degformer-clean-2026-10-22/run-kaggle-20261022/results.json": {
+      "bytes": 4455,
+      "sha256": "27fa02aad2243fabaf215059af2dd64208eabf21742d9031be9469f8673f0e09"
+    },
+    "topics/degron-footprint/research/r2-esm-features-2026-10-22/run-kaggle-20261022/results.json": {
+      "bytes": 10104,
+      "sha256": "60a2fa497aa5059a44c87aa0666e9ed9e0aec61ddaee884c8874b5a4f56ee5c7"
+    },
+    "topics/degron-footprint/research/r3-domain-gate-2026-10-22/run-kaggle-20261022/gate-card.json": {
+      "bytes": 1862,
+      "sha256": "7019c6058ea562c5487f84329d909902eabbdd2a8f12eda5d37a28721257bc72"
+    },
+    "topics/degron-footprint/research/r6-ladder-scan-2026-10-23/run-kaggle-20261023/results.json": {
+      "bytes": 83181,
+      "sha256": "7c49b4c9822f74f1e52f6d511558006ef6f8c4742a83d5d4e6c2b2e51a418782"
+    }
+  },
+  "authored_sources": {
+    "topics/degron-footprint/report/main.tex": {
+      "bytes": 1453,
+      "sha256": "1d17a0678d65aa2e4586c76c6e47f3980492a9fe29f326bb8b0ecc3d12684100"
+    },
+    "topics/degron-footprint/report/assets/ch4/build_ch4_assets.py": {
+      "bytes": 42771,
+      "sha256": "11406493a653a3bfbb1041ee923e85edcb910e50fba6cd7382da9a983c494736"
+    },
+    "topics/degron-footprint/report/assets/ch4/numbers.tex": {
+      "bytes": 8576,
+      "sha256": "1756ddc346c048b838d77ce3d2b870591c55ea99b119668aed6152655231c092"
+    },
+    "topics/degron-footprint/report/assets/ch4/tab-v3-results.tex": {
+      "bytes": 879,
+      "sha256": "bba08f93be44d5622c722cbaf7d374c10931884fcf5dfe2f922d1101daa03a8f"
+    },
+    "topics/degron-footprint/report/assets/ch4/tab-v3-comparisons.tex": {
+      "bytes": 754,
+      "sha256": "9aa01963d09cba7813bc790f18a378fcc70d326fcf1db8954b91e703c2bb7516"
+    },
+    "topics/degron-footprint/report/bibliography/references.bib": {
+      "bytes": 5428,
+      "sha256": "51f205f4fd44697eeee1b73da5503a26f2fcacc032cff57320a550c3b90f3122"
+    },
+    "topics/degron-footprint/proposal/proposal.md": {
+      "bytes": 32881,
+      "sha256": "859f478d5b02e2e7a9e6cbe9567df628bbdd71f4fbebea4bc582592d8842cdb8"
+    },
+    "topics/degron-footprint/proposal/build.py": {
+      "bytes": 12086,
+      "sha256": "219ff7b05e1686483ea6f7d8200e370a3e4733b6a96f15ddfdd1c741010b0f4e"
+    },
+    "topics/degron-footprint/proposal/references.bib": {
+      "bytes": 5146,
+      "sha256": "1f44e7d318a55fa67d7d6ad3d74273f0526e9eaf5d8800dcd5c3af55525ddef3"
+    },
+    "topics/degron-footprint/report/chapters/introduction.tex": {
+      "bytes": 7901,
+      "sha256": "1ea9a8b74d457587d007d79e1b37c0444810f581caea04f5cafbb0cdb09f1e8f"
+    },
+    "topics/degron-footprint/report/chapters/02-theoretical-background.tex": {
+      "bytes": 6133,
+      "sha256": "ec28b632f17f3129c47f3e70d405304a02b48b3b2e599037d92e175f60c5de4b"
+    },
+    "topics/degron-footprint/report/chapters/03-solution-design.tex": {
+      "bytes": 11775,
+      "sha256": "72c7522eaacb37230694bf9f04e53dd62dc522734cf7e3274710c3265436b1f2"
+    },
+    "topics/degron-footprint/report/chapters/04-testing-evaluation.tex": {
+      "bytes": 54780,
+      "sha256": "18643582587b237a87b6983929c257f0e16c0172e3da9981a366cd8d042f914a"
+    },
+    "topics/degron-footprint/report/chapters/sections/current-evidence.tex": {
+      "bytes": 8801,
+      "sha256": "32c357bfe446850c12361402bc228b21c1767aee0d77d6ca07d898a72e8eef3d"
+    },
+    "topics/degron-footprint/report/chapters/conclusion.tex": {
+      "bytes": 4071,
+      "sha256": "2d08125d76e492f6f6fcc6bb8ae7dc829434bed03240a641af806a533511bd84"
+    },
+    "topics/degron-footprint/report/frontmatter/abstract.tex": {
+      "bytes": 2123,
+      "sha256": "8ebf6f3f9b8f799d8b8ce53dbf5ea867fe5ddf5ef667730bb4467af339c7d1c0"
+    },
+    "topics/degron-footprint/report/frontmatter/abstract-vi.tex": {
+      "bytes": 2280,
+      "sha256": "2c5bb9ed7c9ef94340590b038fd850c850bd922859503c89a635c825ef0b9f41"
+    }
+  },
+  "outputs": {
+    "topics/degron-footprint/report/build/content/content.pdf": {
+      "bytes": 366313,
+      "sha256": "292189b8451fa7bd478e5cda8da7eedef4c3a44cd82309015573ec76f1e05d34"
+    },
+    "topics/degron-footprint/report/build/content-twoside/content.pdf": {
+      "bytes": 366614,
+      "sha256": "129fb166d73e0c3ad5cfbf71d41d597c47140a81e519c2d7f27bd777940a5a01"
+    },
+    "topics/degron-footprint/proposal/proposal.pdf": {
+      "bytes": 156714,
+      "sha256": "5de025a833f3798e2e6b500354c0a8149d204beeca3bfe25de58a0b94f49e578"
+    },
+    "topics/degron-footprint/proposal/proposal.docx": {
+      "bytes": 30720,
+      "sha256": "1102d3aafac34d91ca740d716c33844ad8c9df3b6b160c1fa7db3da926d7bc99"
+    }
+  },
+  "not_run": [
+    "GPU training",
+    "fresh benchmark or OOF metric recomputation",
+    "application tests or acceptance",
+    "live Windows worker verification",
+    "native Microsoft Word render"
+  ],
+  "remaining_scope": "Development evidence only; LoRA, calibration, held-source evaluation, final candidate export and expanded local application acceptance remain incomplete."
+}
