@@ -1,6 +1,6 @@
 # Ghi chú người trình bày
 
-## 1. Dự đoán hiệu ứng đột biến degron ở mức residue và xây dựng công cụ hỗ trợ phân tích
+## 1. DỰ ĐOÁN HIỆU ỨNG ĐỘT BIẾN DEGRON Ở MỨC RESIDUE VÀ XÂY DỰNG CÔNG CỤ HỖ TRỢ PHÂN TÍCH
 
 Đây là deck giải thích đề tài từ nền tảng sinh học tới nghiên cứu học máy và phần mềm. Ma trận mở đầu minh họa thiết kế, không là kết quả inference. Mục tiêu là dự đoán hiệu ứng một thay thế amino acid đơn trên độ bền reporter.
 

@@ -31,4 +31,6 @@
 
 ## Cập nhật tên đề tài
 
+Ngày 04/11/2026: bộ dựng đọc tên trực tiếp từ trường `subtitle` của đề cương, giữ nguyên cách viết trong tài liệu. Tiêu đề trang mở đầu, tab trình duyệt và PDF được dựng lại từ cùng nguồn tên này.
+
 Theo yêu cầu đổi tên cả hai bản slide, tiêu đề được đồng bộ với tên trong `proposal/proposal.md`: “Dự đoán hiệu ứng đột biến degron ở mức residue và xây dựng công cụ hỗ trợ phân tích”. Trang mở đầu, tiêu đề trình duyệt/PDF, mục đầu của mục lục và ghi chú dùng cùng tên. Cỡ chữ trang mở đầu được căn lại cho tiêu đề đầy đủ. HTML/PDF và ảnh preview đã được dựng lại; các slide từ 2 đến 36, tài sản và số liệu được đối chiếu với bản trước khi đổi tên.

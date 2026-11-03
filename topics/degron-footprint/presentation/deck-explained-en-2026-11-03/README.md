@@ -1,4 +1,4 @@
-# Residue-Level Degron Mutation Effect Prediction and Analysis Tool
+# RESIDUE-LEVEL DEGRON MUTATION EFFECT PREDICTION AND ANALYSIS TOOL
 
 Open [index.html](index.html) directly in Chrome or Edge. This English edition contains **31 main slides and 5 appendices**, matching the Vietnamese deck. It includes the same GIF, proteasome video, step-by-step diagrams and interactive metric chart, with English text, labels, controls and speaker notes.
 

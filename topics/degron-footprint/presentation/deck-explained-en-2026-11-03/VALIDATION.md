@@ -32,4 +32,6 @@ See `previews/`, `figure-data.json`, `slide-sources.json`, `speaker-notes.md` an
 
 ## Thesis-title update
 
+4 November 2026: the builder now reads the title directly from `ThesisTitle` in the thesis metadata, preserving its exact wording and case. Slide 1, browser/PDF metadata and the overview are regenerated from that canonical title. The previous source manifest is retained as `reuse-manifest-before-canonical-titles-2026-11-04.json`.
+
 The opening slide, browser/PDF title, overview entry and speaker-note heading now use “Residue-Level Degron Mutation Effect Prediction and Analysis Tool”, matching the thesis title in `report/config/metadata.tex`. The Vietnamese source received the corresponding authorized title update. The previous source-hash manifest is retained as `reuse-manifest-before-title-update.json`; `reuse-manifest.json` records the refreshed Vietnamese source after that update. Both editions were rebuilt and validated, with the remaining slides, scientific values and assets checked against their pre-update snapshots.

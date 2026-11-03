@@ -1,4 +1,4 @@
-# Dự đoán hiệu ứng đột biến degron ở mức residue và xây dựng công cụ hỗ trợ phân tích
+# DỰ ĐOÁN HIỆU ỨNG ĐỘT BIẾN DEGRON Ở MỨC RESIDUE VÀ XÂY DỰNG CÔNG CỤ HỖ TRỢ PHÂN TÍCH
 
 Mở [index.html](index.html) trực tiếp bằng Chrome hoặc Edge. Deck tiếng Việt gồm **31 slide chính và 5 phụ lục**, có GIF, video proteasome, sơ đồ chuyển động, các bước hiện dần và biểu đồ đổi metric. Tất cả tài sản chạy offline, không cần backend hoặc Node.
 

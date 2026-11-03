@@ -8,6 +8,7 @@
     "research/kaggle-roadmap-2026-10-31/degron_v3/features.py": "b2266c6b6dc402a2d6c2a466e23cdc6f39700af45ebbc87707b337bf6d96f771",
     "research/README.md": "0234aea19fdc7540d822c54d0a7027ba08477f9d2464fd70ce4388483909e380",
     "system/README.md": "c544ea955a2c60665b8bf1947fba28ff65f3644dc51290f4cea923aa685d3cf5",
+    "proposal/proposal.md": "859f478d5b02e2e7a9e6cbe9567df628bbdd71f4fbebea4bc582592d8842cdb8",
     "research/kaggle-roadmap-2026-10-31/EXECUTION-PROTOCOL.md": "9d2376bd115bf5934c4ebfc82031dcc30dc012eb94997959e6cd0f59c4f00f9c",
     "research/full-data-audit/psi-build.json": "85cc4fd78c948559439eb18d040c978a879c9f23149c7e900c9ce895d960d9b5"
   },
@@ -133,5 +134,5 @@
     "bootstrap": 5000
   },
   "scientific_scope": "Saved development results; no training, locked-T access or serving-model promotion",
-  "generator_sha256": "6ede4b73c772c6043991dca872943f1505fe1d0bfafeeed4ef49f19619fe1ea1"
+  "generator_sha256": "1d8ff33c942e15dfb7120109add4186e8b5fa87b9f10887b5ba9fc9f5f22e44c"
 }

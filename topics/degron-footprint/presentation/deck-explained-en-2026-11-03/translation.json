@@ -1,10 +1,5 @@
 {
-  "Dự đoán hiệu ứng đột biến degron ở mức residue và xây dựng công cụ hỗ trợ phân tích": "Residue-Level Degron Mutation Effect Prediction and Analysis Tool",
-  "Degron footprint · Từ một thay thế đến bản đồ hiệu ứng": "Degron footprint · From one substitution to an effect map",
   "CT553H · Giải thích đề tài": "CT553H · Research explained",
-  "Từ một thay thế": "From one",
-  "amino acid đến": "amino acid change",
-  "bản đồ hiệu ứng": "to an effect map",
   "Học máy dự đoán ΔPSI": "Machine learning to predict ΔPSI",
   "Công cụ hỗ trợ ưu tiên thí nghiệm": "A tool for prioritizing experiments",
   "GVHD: TS. Hồ Quang Thái": "Supervisor: Dr. Hồ Quang Thái",
@@ -357,7 +352,6 @@
   "Chạm nút hoặc vuốt ngang trên điện thoại.": "Tap the controls or swipe horizontally on mobile.",
   "PDF hiển thị đủ mọi bước với hình tĩnh thay thế video.": "The PDF shows every step, with still images replacing video.",
   "Bộ slide giải thích đề tài Degron": "Presentation explaining the Degron project",
-  "Từ một thay thế amino acid đến bản đồ hiệu ứng": "From one amino acid substitution to an effect map",
   "Mô hình protein Fam188a quay minh họa cấu trúc gấp cuộn": "Rotating Fam188a model illustrating a folded protein",
   "Ảnh tĩnh của mô hình protein Fam188a": "Still image of the Fam188a protein model",
   "Mô phỏng proteasome xử lý protein gắn ubiquitin": "Simulation of a proteasome processing a ubiquitinated protein",

@@ -1,6 +1,6 @@
 # Speaker notes
 
-## 1. Residue-Level Degron Mutation Effect Prediction and Analysis Tool
+## 1. RESIDUE-LEVEL DEGRON MUTATION EFFECT PREDICTION AND ANALYSIS TOOL
 
 This presentation explains the project from biological foundations to machine learning research and software. The opening matrix illustrates the experimental design; it is not an inference result. The target is the effect of a single amino acid substitution on reporter stability.
 

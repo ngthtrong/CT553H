@@ -1,7 +1,7 @@
 [
   {
     "number": 1,
-    "title": "Residue-Level Degron Mutation Effect Prediction and Analysis Tool",
+    "title": "RESIDUE-LEVEL DEGRON MUTATION EFFECT PREDICTION AND ANALYSIS TOOL",
     "section": "Degron footprint",
     "insight": "",
     "notes": "This presentation explains the project from biological foundations to machine learning research and software. The opening matrix illustrates the experimental design; it is not an inference result. The target is the effect of a single amino acid substitution on reporter stability.",

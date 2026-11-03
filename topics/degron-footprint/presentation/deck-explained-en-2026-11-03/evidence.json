@@ -8,8 +8,10 @@
     "research/kaggle-roadmap-2026-10-31/degron_v3/features.py": "b2266c6b6dc402a2d6c2a466e23cdc6f39700af45ebbc87707b337bf6d96f771",
     "research/README.md": "0234aea19fdc7540d822c54d0a7027ba08477f9d2464fd70ce4388483909e380",
     "system/README.md": "c544ea955a2c60665b8bf1947fba28ff65f3644dc51290f4cea923aa685d3cf5",
+    "proposal/proposal.md": "859f478d5b02e2e7a9e6cbe9567df628bbdd71f4fbebea4bc582592d8842cdb8",
     "research/kaggle-roadmap-2026-10-31/EXECUTION-PROTOCOL.md": "9d2376bd115bf5934c4ebfc82031dcc30dc012eb94997959e6cd0f59c4f00f9c",
-    "research/full-data-audit/psi-build.json": "85cc4fd78c948559439eb18d040c978a879c9f23149c7e900c9ce895d960d9b5"
+    "research/full-data-audit/psi-build.json": "85cc4fd78c948559439eb18d040c978a879c9f23149c7e900c9ce895d960d9b5",
+    "report/config/metadata.tex": "bf9429e857d8bd15e51681b0fd16f7ab2de9781e58de34f5e2af3d2be8e53c34"
   },
   "asset_sha256": {
     "assets/zhang-graphical-abstract.png": "f171902cdc1d27343a7e527733231e997cfd55f73b12f71939d65aeb05d1fbb3",
@@ -133,12 +135,12 @@
     "bootstrap": 5000
   },
   "scientific_scope": "Saved development results; no training, locked-T access or serving-model promotion",
-  "generator_sha256": "765c7a80b496160d1c1f84a92bd264f80aec1eaf91b967cff5213644f1a55a4a",
+  "generator_sha256": "6e26e976181a1894500429faf1d8c707b362399e3f5c917c866fa4b221cfb9d2",
   "language": "en",
   "localization_sources": {
-    "translation.json": "cf1dc9bba7c70f693c3fab5001fb9bc0ca0f064a4963c2045ec4016232cc7789",
+    "translation.json": "916538fab04d1521a8f7addeb2034883b25226c0f3ab2a6fbf9e24542690a0e0",
     "notes-en.json": "afa895c2adc3bf245e25d34cfb978b50e11857686304ba219bb9698418daa452",
     "prepare-figures.py": "f23a101cf44ecdee97cd02c5ebdbfd74ddacced721a68732fdbaddd74c62ddd7"
   },
-  "vietnamese_source_html_sha256": "e77802ae97d055304789d0bfd5bab70b98618bc5f914b486054dc6e800617eab"
+  "vietnamese_source_html_sha256": "a6fef549d401eead2918c699fe3a3a98ef70acad2d98457f8816fe9a148f1112"
 }

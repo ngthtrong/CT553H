@@ -8,10 +8,16 @@ import re
 
 HERE=Path(__file__).resolve().parent
 SOURCE=HERE.parent/'deck-explained-2026-11-03'
+TOPIC=next(p for p in HERE.parents if (p/'data/README.md').exists())
+title_source=TOPIC/'report/config/metadata.tex'
+title_match=re.search(r'\\newcommand\{\\ThesisTitle\}\{([^}]+)\}',title_source.read_text(encoding='utf8'))
+assert title_match, 'The thesis metadata must declare its English title'
+PROJECT_TITLE=title_match[1]
 translations=json.loads((HERE/'translation.json').read_text(encoding='utf8'))
 notes=json.loads((HERE/'notes-en.json').read_text(encoding='utf8'))
 metadata=json.loads((SOURCE/'slide-sources.json').read_text(encoding='utf8'))
 assert len(notes)==len(metadata)==36
+translations[metadata[0]['title']]=PROJECT_TITLE
 for row,note in zip(metadata,notes):translations[row['notes']]=note
 
 def tr(value):
@@ -40,6 +46,7 @@ html=''.join(parser.parts)
 # The same wrapped Vietnamese suffix occurs in two road-map captions.
 html=re.sub(r'(Numerical and workflow</text><text[^>]*>)of applicability',r'\1checks',html)
 html=re.sub(r'>Model(</text><text[^>]*>)trained</text>',r'>Trained\1model</text>',html)
+assert '<h1>'+escape(PROJECT_TITLE)+'</h1>' in html, 'Slide 1 must show the thesis title'
 (HERE/'index.html').write_text(html,encoding='utf8')
 
 english_rows=[]
@@ -65,6 +72,7 @@ js=js.replace(".toFixed(4).replace('.',',')",'.toFixed(4)')
 (HERE/'deck.js').write_text(js,encoding='utf8')
 
 evidence=json.loads((SOURCE/'evidence.json').read_text(encoding='utf8'))
+evidence['source_sha256']['report/config/metadata.tex']=hashlib.sha256(title_source.read_bytes()).hexdigest()
 for row in evidence['compared_recipes']:row['name']=tr(row['name'])
 evidence['asset_sha256']={str(p.relative_to(HERE)):hashlib.sha256(p.read_bytes()).hexdigest() for folder in ['assets','vendor'] for p in (HERE/folder).rglob('*') if p.is_file()}
 evidence['generator_sha256']=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()

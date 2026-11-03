@@ -15,7 +15,10 @@ RESEARCH = TOPIC / 'research'
 OLD = HERE.parent / 'deck-research-overview-2026-11-02'
 PAPER = 'https://pubmed.ncbi.nlm.nih.gov/37738965/'
 NIGMS = 'https://www.nigms.nih.gov/image-gallery/3764'
-PROJECT_TITLE = 'Dự đoán hiệu ứng đột biến degron ở mức residue và xây dựng công cụ hỗ trợ phân tích'
+title_source = TOPIC / 'proposal/proposal.md'
+title_match = re.search(r'(?m)^subtitle:\s*\|\n((?:[ \t]+[^\n]+\n)+)', title_source.read_text(encoding='utf8'))
+assert title_match, 'The proposal must declare the Vietnamese thesis title'
+PROJECT_TITLE = ' '.join(line.strip() for line in title_match[1].splitlines())
 sources = {}
 
 def read(relative):
@@ -32,7 +35,7 @@ analysis = read(ANALYSIS_PATH)
 details = read(DETAILS_PATH)
 dataset = read(DATA_PATH)
 hif = read('research/slide-figures-2026-10-15/example-matrix.json')
-for name in [NEURAL_PATH, FEATURE_PATH, 'research/README.md', 'system/README.md',
+for name in [NEURAL_PATH, FEATURE_PATH, 'research/README.md', 'system/README.md', 'proposal/proposal.md',
              'research/kaggle-roadmap-2026-10-31/EXECUTION-PROTOCOL.md',
              'research/full-data-audit/psi-build.json']:
     sources[name] = hashlib.sha256((TOPIC / name).read_bytes()).hexdigest()
