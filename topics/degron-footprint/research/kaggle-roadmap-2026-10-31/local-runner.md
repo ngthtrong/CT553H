@@ -57,7 +57,7 @@ Trong successor đã kiểm, job complete có `artifact_campaign` trong state: f
 **Lưu kết quả trên GitHub:** `.gitignore` ở gốc repo chỉ cho phép các bằng chứng nhỏ trong `output/local/`:
 
 - Mỗi campaign: `plan.json`, `queue.json`, `state.json`, `superseded.json`/`inheritance.json` nếu có; trạng thái lỗi/blocked, nguồn kế thừa và hash artifact được giữ để giải thích phạm vi kết quả.
-- JSON ngay dưới từng job: metadata fit/preflight, revision lock, manifest feature, `worker-result.json`, kết quả đánh giá, collection/comparisons và evidence/pending. `collect-*/summary.csv` và `report/benchmark.csv` được giữ khi các bước tổng hợp hoàn tất.
+- JSON ngay dưới từng job theo danh sách tên trong `.gitignore`: metadata fit/preflight, revision lock, manifest feature, weights/import, `worker-result.json`, progress extraction, inner-validation/calibration/test, `*-results.json`, collection/comparisons và evidence/pending. Không mở mọi `*.json`; tokenizer/config hoặc dữ liệu JSON mới vẫn bị bỏ qua. `collect-*/summary.csv` và `report/benchmark.csv` được giữ khi các bước tổng hợp hoàn tất.
 - Trong recipe của `calibrate-core` và `locked-transfer-w5`: `selection-lock.json`, `model-card.json`; weights dùng chung chỉ giữ `SOURCE.md` và `status.json` chứa revision/SHA.
 
 Weights, checkpoint (kể cả `.previous`/`.tmp`), feature NumPy, bảng OOF/calibration/held-scanning Parquet, download `.partial`, log, khóa, STOP, `latest.json`, `session.json` và progress cấp campaign vẫn ở local. Output Kaggle `output/official/` tiếp tục bị bỏ qua; các bản phân tích nhỏ `output-analysis*.json`/`.md` bên cạnh runner vẫn được Git theo dõi như trước. File mới ngoài danh sách cho phép mặc định bị bỏ qua. Không dùng `git add -f output/` vì sẽ vượt các quy tắc này.
