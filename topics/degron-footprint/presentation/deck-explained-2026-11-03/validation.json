@@ -1,0 +1,574 @@
+{
+  "counts": {
+    "main": 31,
+    "total": 36
+  },
+  "slides": [
+    {
+      "title": "Dự đoán hiệu ứng đột biến degron ở mức residue và xây dựng công cụ hỗ trợ phân tích",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 274,
+      "slide": 1
+    },
+    {
+      "title": "Protein được tạo từ một chuỗi amino acid",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 316,
+      "slide": 2
+    },
+    {
+      "title": "Degron tham gia quá trình phân hủy protein",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 361,
+      "slide": 3
+    },
+    {
+      "title": "Một phép thay có thể làm thay đổi tín hiệu",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 272,
+      "slide": 4
+    },
+    {
+      "title": "532 phép thay tạo nhu cầu ưu tiên thí nghiệm",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 215,
+      "slide": 5
+    },
+    {
+      "title": "GPS chuyển tín hiệu huỳnh quang thành PSI",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 344,
+      "slide": 6
+    },
+    {
+      "title": "ΔPSI là hiệu ứng mà mô hình cần dự đoán",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 219,
+      "slide": 7
+    },
+    {
+      "title": "Saturation và scanning có độ phủ bổ sung",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 298,
+      "slide": 8
+    },
+    {
+      "title": "Mỗi ô đột biến trở thành một bản ghi có nhãn",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 279,
+      "slide": 9
+    },
+    {
+      "title": "Dữ liệu sau QC giữ toàn dải PSI",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 379,
+      "slide": 10
+    },
+    {
+      "title": "Pipeline nối dữ liệu, mô hình và công cụ",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 323,
+      "slide": 11
+    },
+    {
+      "title": "Trình tự là đầu vào; PSI dùng để tạo nhãn",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 311,
+      "slide": 12
+    },
+    {
+      "title": "Giữ cùng nhóm protein khi chia dữ liệu",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 285,
+      "slide": 13
+    },
+    {
+      "title": "Ridge là đối chứng cho giá trị của ngữ cảnh",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 296,
+      "slide": 14
+    },
+    {
+      "title": "One-hot CNN học các mẫu trình tự cục bộ",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 293,
+      "slide": 15
+    },
+    {
+      "title": "ESM2 biến trình tự thành biểu diễn số",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 252,
+      "slide": 16
+    },
+    {
+      "title": "Pointwise và CNN khác cách trộn vị trí",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 233,
+      "slide": 17
+    },
+    {
+      "title": "mCNN khảo sát nhiều độ rộng ngữ cảnh",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 198,
+      "slide": 18
+    },
+    {
+      "title": "Frozen và LoRA học những tham số khác nhau",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 292,
+      "slide": 19
+    },
+    {
+      "title": "Sai số, xếp hạng và CI trả lời các câu hỏi riêng",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 325,
+      "slide": 20
+    },
+    {
+      "title": "Thí nghiệm A: nên học trên phạm vi PSI nào?",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 242,
+      "slide": 21
+    },
+    {
+      "title": "Học toàn dải giúp Ridge giảm sai số hồi quy",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 186,
+      "slide": 22
+    },
+    {
+      "title": "Thí nghiệm B: ESM2 và CNN có ích đến đâu?",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 155,
+      "slide": 23
+    },
+    {
+      "title": "Chênh lệch nhỏ cần được đọc cùng khoảng tin cậy",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 198,
+      "slide": 24
+    },
+    {
+      "title": "Thí nghiệm C: chuyển giao còn những câu hỏi mở",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 298,
+      "slide": 25
+    },
+    {
+      "title": "Ma trận hỗ trợ lựa chọn đột biến để kiểm chứng",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 302,
+      "slide": 26
+    },
+    {
+      "title": "Phân biệt baseline phục vụ và prototype giao diện",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 329,
+      "slide": 27
+    },
+    {
+      "title": "Những phần đã có và những phần cần hoàn thiện",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 520,
+      "slide": 28
+    },
+    {
+      "title": "Đóng góp gắn với các bằng chứng có thể kiểm tra",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 366,
+      "slide": 29
+    },
+    {
+      "title": "Khóa lựa chọn rồi kiểm chứng trước khi tích hợp",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 451,
+      "slide": 30
+    },
+    {
+      "title": "Từ trình tự đến một giả thuyết có thể kiểm chứng",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 301,
+      "slide": 31
+    },
+    {
+      "title": "Các thuật ngữ dùng trong deck",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 499,
+      "slide": 32
+    },
+    {
+      "title": "Từ read counts đến ΔPSI cần đúng mốc WT",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 313,
+      "slide": 33
+    },
+    {
+      "title": "Ví dụ HIF1A: đọc ma trận nhãn thực nghiệm",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 249,
+      "slide": 34
+    },
+    {
+      "title": "Bảng kết quả và đơn vị đánh giá",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 501,
+      "slide": 35
+    },
+    {
+      "title": "Nguồn và bằng chứng có thể tra cứu theo chủ đề",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 577,
+      "slide": 36
+    }
+  ],
+  "script_errors": [],
+  "failed_requests": [],
+  "cancelled_media_requests": [
+    {
+      "url": "file:///home/ngthtrong/CT553H/topics/degron-footprint/presentation/deck-explained-2026-11-03/assets/proteasome.mp4",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "external_requests": [],
+  "broken_links": [],
+  "step_navigation": true,
+  "skip_navigation": true,
+  "overview_count": 36,
+  "overview_jump": true,
+  "notes": true,
+  "chart": true,
+  "video": {
+    "readyState": 4,
+    "width": 1820,
+    "height": 1080,
+    "duration": 12.32,
+    "time": 1.114306,
+    "error": null
+  },
+  "media_paused": true,
+  "css_paused": true,
+  "reduced_media": true,
+  "reduced_gif": true,
+  "screens": [
+    {
+      "width": 1280,
+      "height": 720,
+      "documentOverflow": false,
+      "deckFits": true
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "documentOverflow": false,
+      "deckFits": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "documentOverflow": false,
+      "deckFits": true
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "documentOverflow": false,
+      "deckFits": true
+    }
+  ],
+  "pdf_pages": [
+    {
+      "page": 1,
+      "characters": 270,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 2,
+      "characters": 312,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 3,
+      "characters": 339,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 4,
+      "characters": 271,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 5,
+      "characters": 214,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 6,
+      "characters": 343,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 7,
+      "characters": 218,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 8,
+      "characters": 297,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 9,
+      "characters": 278,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 10,
+      "characters": 370,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 11,
+      "characters": 322,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 12,
+      "characters": 310,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 13,
+      "characters": 284,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 14,
+      "characters": 296,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 15,
+      "characters": 293,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 16,
+      "characters": 252,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 17,
+      "characters": 233,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 18,
+      "characters": 198,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 19,
+      "characters": 292,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 20,
+      "characters": 323,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 21,
+      "characters": 242,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 22,
+      "characters": 185,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 23,
+      "characters": 284,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 24,
+      "characters": 195,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 25,
+      "characters": 296,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 26,
+      "characters": 321,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 27,
+      "characters": 325,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 28,
+      "characters": 519,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 29,
+      "characters": 360,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 30,
+      "characters": 448,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 31,
+      "characters": 300,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 32,
+      "characters": 498,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 33,
+      "characters": 311,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 34,
+      "characters": 245,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 35,
+      "characters": 501,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 36,
+      "characters": 565,
+      "width": 960.0,
+      "height": 540.0
+    }
+  ],
+  "print_canvas_hidden": true,
+  "print_fragments_visible": true,
+  "old_deck_unchanged": true,
+  "evidence_hashes_match": true,
+  "asset_hashes_match": true,
+  "pass": true
+}

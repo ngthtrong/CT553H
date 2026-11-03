@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="710.34625pt" height="233.28pt" viewBox="0 0 710.34625 233.28" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 233.28
+L 710.34625 233.28
+L 710.34625 0
+L 0 0
+L 0 233.28
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 189.31 164.28
+L 698.82625 164.28
+L 698.82625 11.52
+L 189.31 11.52
+L 189.31 164.28
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 226.025358 164.28
+L 226.025358 11.52
+" clip-path="url(#p0845ff18ce)" style="fill: none; stroke: #e3e8df; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2">
+      <defs>
+       <path id="md24601c10e" d="M 0 0
+L 0 3.5
+" style="stroke: #617267; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#md24601c10e" x="226.025358" y="164.28" style="fill: #617267; stroke: #617267; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 16px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #617267" x="226.025358" y="187.28" transform="rotate(-0 226.025358 187.28)">−0.003</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 312.106973 164.28
+L 312.106973 11.52
+" clip-path="url(#p0845ff18ce)" style="fill: none; stroke: #e3e8df; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#md24601c10e" x="312.106973" y="164.28" style="fill: #617267; stroke: #617267; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 16px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #617267" x="312.106973" y="187.28" transform="rotate(-0 312.106973 187.28)">−0.002</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 398.188589 164.28
+L 398.188589 11.52
+" clip-path="url(#p0845ff18ce)" style="fill: none; stroke: #e3e8df; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#md24601c10e" x="398.188589" y="164.28" style="fill: #617267; stroke: #617267; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 16px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #617267" x="398.188589" y="187.28" transform="rotate(-0 398.188589 187.28)">−0.001</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 484.270205 164.28
+L 484.270205 11.52
+" clip-path="url(#p0845ff18ce)" style="fill: none; stroke: #e3e8df; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#md24601c10e" x="484.270205" y="164.28" style="fill: #617267; stroke: #617267; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 16px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #617267" x="484.270205" y="187.28" transform="rotate(-0 484.270205 187.28)">0.000</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 570.351821 164.28
+L 570.351821 11.52
+" clip-path="url(#p0845ff18ce)" style="fill: none; stroke: #e3e8df; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#md24601c10e" x="570.351821" y="164.28" style="fill: #617267; stroke: #617267; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 16px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #617267" x="570.351821" y="187.28" transform="rotate(-0 570.351821 187.28)">0.001</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_11">
+      <path d="M 656.433437 164.28
+L 656.433437 11.52
+" clip-path="url(#p0845ff18ce)" style="fill: none; stroke: #e3e8df; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#md24601c10e" x="656.433437" y="164.28" style="fill: #617267; stroke: #617267; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 16px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #617267" x="656.433437" y="187.28" transform="rotate(-0 656.433437 187.28)">0.002</text>
+     </g>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 16px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; text-anchor: middle; fill: #617267" x="444.068125" y="217.52" transform="rotate(-0 444.068125 217.52)">Difference in MAE · descriptive 95% CI</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_13"/>
+     <g id="text_8">
+      <text style="font-size: 16px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; fill: #193a2b" transform="translate(49.195 85.78)">Balanced mCNN</text>
+      <text style="font-size: 16px; font-family: 'Be Vietnam Pro', 'DejaVu Sans'; fill: #193a2b" transform="translate(11.52 106.02)">minus full-range CNN</text>
+     </g>
+    </g>
+   </g>
+   <g id="LineCollection_1">
+    <path d="M 212.46983 87.9
+L 675.66642 87.9
+" clip-path="url(#p0845ff18ce)" style="fill: none; stroke: #c76242; stroke-width: 3"/>
+   </g>
+   <g id="line2d_14">
+    <defs>
+     <path id="m3c32c2c807" d="M 0 6
+L 0 -6
+" style="stroke: #c76242"/>
+    </defs>
+    <g clip-path="url(#p0845ff18ce)">
+     <use xlink:href="#m3c32c2c807" x="212.46983" y="87.9" style="fill: #c76242; stroke: #c76242"/>
+    </g>
+   </g>
+   <g id="line2d_15">
+    <g clip-path="url(#p0845ff18ce)">
+     <use xlink:href="#m3c32c2c807" x="675.66642" y="87.9" style="fill: #c76242; stroke: #c76242"/>
+    </g>
+   </g>
+   <g id="line2d_16">
+    <path d="M 484.270205 164.28
+L 484.270205 11.52
+" clip-path="url(#p0845ff18ce)" style="fill: none; stroke-dasharray: 5.18,2.24; stroke-dashoffset: 0; stroke: #a9b7a8; stroke-width: 1.4"/>
+   </g>
+   <g id="line2d_17">
+    <defs>
+     <path id="mb260026d3d" d="M 0 5
+C 1.326016 5 2.597899 4.473168 3.535534 3.535534
+C 4.473168 2.597899 5 1.326016 5 0
+C 5 -1.326016 4.473168 -2.597899 3.535534 -3.535534
+C 2.597899 -4.473168 1.326016 -5 0 -5
+C -1.326016 -5 -2.597899 -4.473168 -3.535534 -3.535534
+C -4.473168 -2.597899 -5 -1.326016 -5 0
+C -5 1.326016 -4.473168 2.597899 -3.535534 3.535534
+C -2.597899 4.473168 -1.326016 5 0 5
+z
+" style="stroke: #c76242"/>
+    </defs>
+    <g clip-path="url(#p0845ff18ce)">
+     <use xlink:href="#mb260026d3d" x="440.572481" y="87.9" style="fill: #c76242; stroke: #c76242"/>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 189.31 164.28
+L 698.82625 164.28
+" style="fill: none; stroke: #d6dfd3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p0845ff18ce">
+   <rect x="189.31" y="11.52" width="509.51625" height="152.76"/>
+  </clipPath>
+ </defs>
+</svg>

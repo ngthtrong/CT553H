@@ -1,0 +1,583 @@
+{
+  "counts": {
+    "main": 31,
+    "total": 36
+  },
+  "slides": [
+    {
+      "title": "Residue-Level Degron Mutation Effect Prediction and Analysis Tool",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 286,
+      "slide": 1
+    },
+    {
+      "title": "A protein is built from an amino acid sequence",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 367,
+      "slide": 2
+    },
+    {
+      "title": "Degrons help direct protein degradation",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 423,
+      "slide": 3
+    },
+    {
+      "title": "One substitution can change the signal",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 284,
+      "slide": 4
+    },
+    {
+      "title": "532 substitutions motivate experimental prioritization",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 255,
+      "slide": 5
+    },
+    {
+      "title": "GPS converts fluorescence signals into PSI",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 385,
+      "slide": 6
+    },
+    {
+      "title": "ΔPSI is the effect the model aims to predict",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 254,
+      "slide": 7
+    },
+    {
+      "title": "Saturation and scanning provide complementary coverage",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 328,
+      "slide": 8
+    },
+    {
+      "title": "Each mutation cell becomes a labeled data record",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 308,
+      "slide": 9
+    },
+    {
+      "title": "The QC-filtered data retain the full PSI range",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 420,
+      "slide": 10
+    },
+    {
+      "title": "The pipeline connects data, models and the analysis tool",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 349,
+      "slide": 11
+    },
+    {
+      "title": "Sequences are inputs; PSI measurements define the labels",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 363,
+      "slide": 12
+    },
+    {
+      "title": "Keep protein groups intact when splitting the data",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 318,
+      "slide": 13
+    },
+    {
+      "title": "Ridge tests the predictive value of sequence context",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 309,
+      "slide": 14
+    },
+    {
+      "title": "A one-hot CNN learns local sequence patterns",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 314,
+      "slide": 15
+    },
+    {
+      "title": "ESM2 converts sequences into numeric representations",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 298,
+      "slide": 16
+    },
+    {
+      "title": "Pointwise and CNN heads differ in position mixing",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 265,
+      "slide": 17
+    },
+    {
+      "title": "mCNN explores multiple context widths",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 202,
+      "slide": 18
+    },
+    {
+      "title": "Frozen and LoRA update different parameters",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 289,
+      "slide": 19
+    },
+    {
+      "title": "Error, ranking and confidence intervals answer different questions",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 370,
+      "slide": 20
+    },
+    {
+      "title": "Experiment A: which PSI range should be used for training?",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 279,
+      "slide": 21
+    },
+    {
+      "title": "Full-range training reduces Ridge regression error",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 228,
+      "slide": 22
+    },
+    {
+      "title": "Experiment B: what do ESM2 and CNN add?",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 176,
+      "slide": 23
+    },
+    {
+      "title": "Small differences need confidence intervals",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 212,
+      "slide": 24
+    },
+    {
+      "title": "Experiment C: open questions about transfer learning",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 333,
+      "slide": 25
+    },
+    {
+      "title": "The effect map supports experimental prioritization",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 305,
+      "slide": 26
+    },
+    {
+      "title": "The serving baseline and UI prototype have different roles",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 345,
+      "slide": 27
+    },
+    {
+      "title": "What is available and what remains unfinished",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 547,
+      "slide": 28
+    },
+    {
+      "title": "Contributions should be grounded in inspectable evidence",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 387,
+      "slide": 29
+    },
+    {
+      "title": "Lock and validate the model before integration",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 485,
+      "slide": 30
+    },
+    {
+      "title": "From a sequence to a testable hypothesis",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 327,
+      "slide": 31
+    },
+    {
+      "title": "Key terms used in this presentation",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 548,
+      "slide": 32
+    },
+    {
+      "title": "From read counts to ΔPSI: use the correct WT reference",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 342,
+      "slide": 33
+    },
+    {
+      "title": "HIF1A example: reading an experimental effect map",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 284,
+      "slide": 34
+    },
+    {
+      "title": "Results and units of evaluation",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 552,
+      "slide": 35
+    },
+    {
+      "title": "Sources and evidence can be explored by topic",
+      "layoutIssues": [],
+      "brokenImages": [],
+      "forbidden": false,
+      "visibleTextLength": 610,
+      "slide": 36
+    }
+  ],
+  "script_errors": [],
+  "failed_requests": [],
+  "cancelled_media_requests": [
+    {
+      "url": "file:///home/ngthtrong/CT553H/topics/degron-footprint/presentation/deck-explained-en-2026-11-03/assets/proteasome.mp4",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "external_requests": [],
+  "broken_links": [],
+  "step_navigation": true,
+  "skip_navigation": true,
+  "overview_count": 36,
+  "overview_jump": true,
+  "notes": true,
+  "chart": true,
+  "video": {
+    "readyState": 4,
+    "width": 1820,
+    "height": 1080,
+    "duration": 12.32,
+    "time": 1.082575,
+    "error": null
+  },
+  "media_paused": true,
+  "css_paused": true,
+  "reduced_media": true,
+  "reduced_gif": true,
+  "screens": [
+    {
+      "width": 1280,
+      "height": 720,
+      "documentOverflow": false,
+      "deckFits": true
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "documentOverflow": false,
+      "deckFits": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "documentOverflow": false,
+      "deckFits": true
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "documentOverflow": false,
+      "deckFits": true
+    }
+  ],
+  "pdf_pages": [
+    {
+      "page": 1,
+      "characters": 286,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 2,
+      "characters": 364,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 3,
+      "characters": 401,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 4,
+      "characters": 284,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 5,
+      "characters": 255,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 6,
+      "characters": 388,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 7,
+      "characters": 257,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 8,
+      "characters": 327,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 9,
+      "characters": 307,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 10,
+      "characters": 411,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 11,
+      "characters": 350,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 12,
+      "characters": 364,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 13,
+      "characters": 319,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 14,
+      "characters": 312,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 15,
+      "characters": 317,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 16,
+      "characters": 301,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 17,
+      "characters": 268,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 18,
+      "characters": 205,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 19,
+      "characters": 292,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 20,
+      "characters": 369,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 21,
+      "characters": 282,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 22,
+      "characters": 497,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 23,
+      "characters": 289,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 24,
+      "characters": 324,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 25,
+      "characters": 493,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 26,
+      "characters": 325,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 27,
+      "characters": 342,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 28,
+      "characters": 546,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 29,
+      "characters": 381,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 30,
+      "characters": 489,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 31,
+      "characters": 330,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 32,
+      "characters": 549,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 33,
+      "characters": 342,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 34,
+      "characters": 458,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 35,
+      "characters": 553,
+      "width": 960.0,
+      "height": 540.0
+    },
+    {
+      "page": 36,
+      "characters": 600,
+      "width": 960.0,
+      "height": 540.0
+    }
+  ],
+  "print_canvas_hidden": true,
+  "print_fragments_visible": true,
+  "language": "en",
+  "remaining_vietnamese": [],
+  "html_language": true,
+  "numeric_parity": true,
+  "source_parity": true,
+  "notes_complete": true,
+  "figure_parity": true,
+  "media_parity": true,
+  "localization_hashes_match": true,
+  "old_deck_unchanged": true,
+  "evidence_hashes_match": true,
+  "asset_hashes_match": true,
+  "pass": true
+}
