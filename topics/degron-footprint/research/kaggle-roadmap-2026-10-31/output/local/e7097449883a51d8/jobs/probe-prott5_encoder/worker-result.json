@@ -1,0 +1,7 @@
+{
+  "job": "probe-prott5_encoder",
+  "started_unix": 1793644170.7093275,
+  "status": "adapter_blocked",
+  "reason": "ValueError: `tiktoken` is required to read a `tiktoken` file. Install it with `pip install tiktoken`.",
+  "seconds": 4.077773094177246
+}

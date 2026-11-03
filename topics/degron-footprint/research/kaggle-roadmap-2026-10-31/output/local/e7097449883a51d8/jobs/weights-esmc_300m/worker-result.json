@@ -1,7 +1,13 @@
 {
   "job": "weights-esmc_300m",
-  "started_unix": 1793632553.8401742,
-  "status": "paused",
-  "reason": "Session deadline or pause request; committed work retained",
-  "seconds": 1070.7775950431824
+  "started_unix": 1793640594.3620236,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/weights-esmc_300m/weights.json",
+      "bytes": 236,
+      "sha256": "717741911cab12c7ed4dab5566c836b5324cb9eafe27674c957b0465f206203c"
+    }
+  ],
+  "seconds": 81.65356349945068
 }

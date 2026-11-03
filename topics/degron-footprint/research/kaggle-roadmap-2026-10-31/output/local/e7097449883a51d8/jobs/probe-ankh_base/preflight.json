@@ -1,0 +1,10 @@
+{
+  "models": [
+    {
+      "model_id": "ankh_base",
+      "status": "blocked",
+      "mode": "official",
+      "reason": "AssertionError: Tokenizer must return exactly 28 residue tokens"
+    }
+  ]
+}

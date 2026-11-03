@@ -1,0 +1,7 @@
+{
+  "job": "probe-ankh_base",
+  "started_unix": 1793646830.9483752,
+  "status": "adapter_blocked",
+  "reason": "AssertionError: Tokenizer must return exactly 28 residue tokens",
+  "seconds": 4.986813068389893
+}

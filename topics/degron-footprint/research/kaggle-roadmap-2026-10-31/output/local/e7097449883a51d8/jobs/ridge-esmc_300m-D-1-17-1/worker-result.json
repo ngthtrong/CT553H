@@ -1,0 +1,28 @@
+{
+  "job": "ridge-esmc_300m-D-1-17-1",
+  "started_unix": 1793641595.4630754,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/ridge-esmc_300m-D-1-17-1/calibration.parquet",
+      "bytes": 425501,
+      "sha256": "9c3fe9d8597177b3433e3de88a544563ac134e0abfcca86eda096e93d2c78757"
+    },
+    {
+      "path": "jobs/ridge-esmc_300m-D-1-17-1/fit.json",
+      "bytes": 277,
+      "sha256": "0cec55cbb6800f6aa1b82c763ac802dac0476ca379b150f8524c2df30e4904dd"
+    },
+    {
+      "path": "jobs/ridge-esmc_300m-D-1-17-1/model.joblib",
+      "bytes": 555502,
+      "sha256": "e8ff87d33f9b61ce209dc8377964fd90403e403f528526fbc72dd71425b6abf2"
+    },
+    {
+      "path": "jobs/ridge-esmc_300m-D-1-17-1/oof.parquet",
+      "bytes": 544488,
+      "sha256": "36f72478db8ec47c52708d535529cce890438c25cf1afba17784f88319af907d"
+    }
+  ],
+  "seconds": 14.040432929992676
+}

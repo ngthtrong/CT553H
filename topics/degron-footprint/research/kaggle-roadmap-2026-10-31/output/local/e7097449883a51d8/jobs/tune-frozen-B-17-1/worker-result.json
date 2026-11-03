@@ -1,0 +1,118 @@
+{
+  "job": "tune-frozen-B-17-1",
+  "started_unix": 1793648027.2809908,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/tune-frozen-B-17-1/calibration.json",
+      "bytes": 199,
+      "sha256": "e2b1e0cfae799fb7a6c4750d84ac70167f9795fd24b98b597c678e957e60b74a"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-1/calibration.npy",
+      "bytes": 75152,
+      "sha256": "7779ad99ade43d452b2c8327afd691159eb5d25b8116cc921ac99e5c1a838f29"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-1/calibration.parquet",
+      "bytes": 425505,
+      "sha256": "6535ff8a31eae9bc0f0cc0c19d99299a5f3746fb089fef255503cbcc647d854c"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-1/fit.json",
+      "bytes": 373,
+      "sha256": "f9bb73ace6c55fbac8a1a62018142ca6c04c490f2d838a09aa24ec0d5f91dc2c"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-1/inner-validation-1.json",
+      "bytes": 199,
+      "sha256": "34830f3e609eb395ba7c3d7bff253c621603b07f6ad282f13250b1b2c857cd66"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-1/inner-validation-1.npy",
+      "bytes": 75152,
+      "sha256": "15cf61e5166e151982073eab263f7528ad184d1de3116775b8ad4073f3700e01"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-1/inner-validation-2.json",
+      "bytes": 199,
+      "sha256": "e2b1e0cfae799fb7a6c4750d84ac70167f9795fd24b98b597c678e957e60b74a"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-1/inner-validation-2.npy",
+      "bytes": 75152,
+      "sha256": "7779ad99ade43d452b2c8327afd691159eb5d25b8116cc921ac99e5c1a838f29"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-1/inner-validation-3.json",
+      "bytes": 199,
+      "sha256": "105efd535f20c5b45ae6f9e7d99bee0f0c006abb336b3edc7ed231c1549ceb52"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-1/inner-validation-3.npy",
+      "bytes": 75152,
+      "sha256": "79a7728764225c031e9fe8ac9283595d3070a031c7ea9b40ce1e35cdd4bc2e5d"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-1/inner-validation-4.json",
+      "bytes": 199,
+      "sha256": "822a9d9ed9181cacf4a6c68a9b9258028f3076cf139235c4abe1b3983b37cc48"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-1/inner-validation-4.npy",
+      "bytes": 75152,
+      "sha256": "d8bb264bbb1699cd26eddc9e28c8d344bdbd9857281ff66abd887bfba70b3e4b"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-1/inner-validation-5.json",
+      "bytes": 199,
+      "sha256": "480dd7603a690f1c485554a674179250dfee40e4f737f4913105e05c4a58ed2e"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-1/inner-validation-5.npy",
+      "bytes": 75152,
+      "sha256": "b93dfd0f48361441cc248a6092461c170f1160fc45363a0a3a315511970b9d47"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-1/inner-validation-6.json",
+      "bytes": 199,
+      "sha256": "a8c7783236a4f6d3d5a99ecff7e23b0bab29083f0bf3ec29037d6ab356824706"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-1/inner-validation-6.npy",
+      "bytes": 75152,
+      "sha256": "dfc46df84f423ce4509dc559f3c0aa48b5ccaac8307711bb058f34ffdd098392"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-1/inner.pt",
+      "bytes": 1066337,
+      "sha256": "e660e54d719b0cfb3069fac09e6071b5d3c6d996d5970c6904bbdb6b3a12a23b"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-1/model.pt",
+      "bytes": 264093,
+      "sha256": "666b390db01616c1beac5a99a57a7c7cd8b2206e8d0996483e9ac028ce3695bd"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-1/oof.parquet",
+      "bytes": 544458,
+      "sha256": "a5188eb71e052b889ac578eb918ff8f2201f37adc0055838a059612bd58b254a"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-1/refit.pt",
+      "bytes": 1066337,
+      "sha256": "16d308763d6ddc2747dce5a156b82b002c9831cfd3f257047ccd5e4f75664171"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-1/test.json",
+      "bytes": 199,
+      "sha256": "4417252a6d17c02335c874ecbcbc6796b29b0d51d6ac791e7964545e0602a232"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-1/test.npy",
+      "bytes": 95336,
+      "sha256": "8b515e49905a22fd50c5d5b4221226e97a50ca22778766605178131579377fa8"
+    }
+  ],
+  "seconds": 1699.712093114853
+}

@@ -1,0 +1,13 @@
+{
+  "job": "weights-prott5_encoder",
+  "started_unix": 1793641833.339488,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/weights-prott5_encoder/weights.json",
+      "bytes": 246,
+      "sha256": "306149759ee6788a681b24e8fa67687abbc0542255a93a0c77d9cd09f95a7706"
+    }
+  ],
+  "seconds": 2334.201317548752
+}

@@ -1,0 +1,18 @@
+{
+  "job": "probe-esmc_300m",
+  "started_unix": 1793640679.0350661,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/probe-esmc_300m/esmc_300m-lock.json",
+      "bytes": 1508,
+      "sha256": "94f18849913a1dddfb31e02d870985e686bbac15da37775c206254227708bf01"
+    },
+    {
+      "path": "jobs/probe-esmc_300m/preflight.json",
+      "bytes": 685,
+      "sha256": "ee1f0a8cb7cca15838888a9a90c75ab857c7d032685c78ec6cbae75285d2f470"
+    }
+  ],
+  "seconds": 4.441220045089722
+}

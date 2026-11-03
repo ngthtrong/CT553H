@@ -1,0 +1,32 @@
+{
+  "models": [
+    {
+      "model_id": "esmc_300m",
+      "status": "feasible",
+      "mode": "official",
+      "revision": "e4bac860f0c502cd80f3aeac3d0ce6524c6627cb",
+      "repo": "biohub/ESMC-300M",
+      "hidden_size": 960,
+      "shape": [
+        2,
+        28,
+        960
+      ],
+      "device": "cuda",
+      "dtype": "float16",
+      "batch": 2,
+      "sequences_per_second": 70.30519465303561,
+      "repeat_max_abs": 0.0,
+      "peak_vram_bytes": 716360704,
+      "residue_alignment_positions": [
+        1,
+        2,
+        14,
+        27,
+        28
+      ],
+      "wt_identity_max_abs": 0.0,
+      "parameters": 332011200
+    }
+  ]
+}

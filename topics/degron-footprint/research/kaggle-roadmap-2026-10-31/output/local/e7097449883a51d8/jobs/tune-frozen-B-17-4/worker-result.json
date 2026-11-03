@@ -1,0 +1,118 @@
+{
+  "job": "tune-frozen-B-17-4",
+  "started_unix": 1793652691.823982,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/tune-frozen-B-17-4/calibration.json",
+      "bytes": 199,
+      "sha256": "9ade8bb6b734b6fecfbe55e9687e7dd4bb690f48e342af39e209bd677127cd28"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-4/calibration.npy",
+      "bytes": 73492,
+      "sha256": "0ce771c208bc130ec77fcc45b6a6b63319d1bcfc151c4794c318788ac0755b70"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-4/calibration.parquet",
+      "bytes": 416047,
+      "sha256": "87f82dd2276aba13a70387fc5e167fec0cbe090fe04a94ed33b1fdd40efca21c"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-4/fit.json",
+      "bytes": 373,
+      "sha256": "381a59aadd91e29c6f7293468f002a43e6255d0356738087c2d6e43b20e532c7"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-4/inner-validation-1.json",
+      "bytes": 199,
+      "sha256": "bfc25e6a3a4f51ac55d96f8dd0b351a624b17566d3da13721c4e5bc2f993e91f"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-4/inner-validation-1.npy",
+      "bytes": 73492,
+      "sha256": "90169699badc879ff1929f40752180b57e7ae8f50d6e8d6f1f6d7909ea909538"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-4/inner-validation-2.json",
+      "bytes": 199,
+      "sha256": "9ade8bb6b734b6fecfbe55e9687e7dd4bb690f48e342af39e209bd677127cd28"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-4/inner-validation-2.npy",
+      "bytes": 73492,
+      "sha256": "0ce771c208bc130ec77fcc45b6a6b63319d1bcfc151c4794c318788ac0755b70"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-4/inner-validation-3.json",
+      "bytes": 199,
+      "sha256": "e897d06bfe01b028860dcf421119cbfa75524bf45f8ce299cfe07019c2e0ff87"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-4/inner-validation-3.npy",
+      "bytes": 73492,
+      "sha256": "732b83dddd15deaebf7e9ab0a8d9fd0fcbe2a25f49489cc0d4da940ae009ecf4"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-4/inner-validation-4.json",
+      "bytes": 199,
+      "sha256": "0022d387e8a10b47785190b0bf872a16f1efa40c88fca7f8e876d9197edcd3a2"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-4/inner-validation-4.npy",
+      "bytes": 73492,
+      "sha256": "23244f477db816d3dad62de0527332899fa0a082fa42bc4ff3eb9b54fa34df7b"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-4/inner-validation-5.json",
+      "bytes": 199,
+      "sha256": "db01e6f32e825d737c69ca36ebc0561494d1c4d47cd6b32fd3e04b03ef824801"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-4/inner-validation-5.npy",
+      "bytes": 73492,
+      "sha256": "33aaffcff178b74d094ca2abbb8f693713e8e11f1e43ab33a385502d78115d2b"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-4/inner-validation-6.json",
+      "bytes": 199,
+      "sha256": "b8cf42556588a0390955671930ec1e6253f5b3050e29a057d1668267232f3023"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-4/inner-validation-6.npy",
+      "bytes": 73492,
+      "sha256": "a161f849342ef663231e37880081c9248bc394f1d4c8dadb54c15f6d24d915ed"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-4/inner.pt",
+      "bytes": 1066337,
+      "sha256": "91031fdab68ea58b302113ca7d90ab0ca2f074165106d378ba36e72e8c5d9324"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-4/model.pt",
+      "bytes": 264093,
+      "sha256": "9c65758967e56bc6a7e7389047a082d5e226fa592bd3007abec7a158259e919a"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-4/oof.parquet",
+      "bytes": 559416,
+      "sha256": "834ad9d04e5e16734a2ffe5f17c868df2db7484fdd33828d663dd84c4645330b"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-4/refit.pt",
+      "bytes": 1066337,
+      "sha256": "1ba1736fdd83a24182b135424aeeea35d0ea269fa7ee5333029b872311450c79"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-4/test.json",
+      "bytes": 199,
+      "sha256": "4045a6956e1aa6567bd39ac02ab6317a185189951c1ea090ec3ddc1c87b0ecd4"
+    },
+    {
+      "path": "jobs/tune-frozen-B-17-4/test.npy",
+      "bytes": 98080,
+      "sha256": "973cf530aaa4bdedae18448a3158f34e40501e09a264ea0aeff411cc970765ac"
+    }
+  ],
+  "seconds": 1677.8405268192291
+}

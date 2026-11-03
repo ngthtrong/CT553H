@@ -1,0 +1,10 @@
+{
+  "models": [
+    {
+      "model_id": "prott5_encoder",
+      "status": "blocked",
+      "mode": "official",
+      "reason": "ValueError: `tiktoken` is required to read a `tiktoken` file. Install it with `pip install tiktoken`."
+    }
+  ]
+}

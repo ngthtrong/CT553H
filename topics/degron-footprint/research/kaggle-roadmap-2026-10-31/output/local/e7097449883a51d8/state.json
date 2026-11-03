@@ -10450,10 +10450,3515 @@
     },
     "weights-esmc_300m": {
       "job": "weights-esmc_300m",
-      "started_unix": 1793632553.8401742,
+      "started_unix": 1793640594.3620236,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/weights-esmc_300m/weights.json",
+          "bytes": 236,
+          "sha256": "717741911cab12c7ed4dab5566c836b5324cb9eafe27674c957b0465f206203c"
+        }
+      ],
+      "seconds": 81.65356349945068
+    },
+    "weights-prott5_encoder": {
+      "job": "weights-prott5_encoder",
+      "started_unix": 1793641833.339488,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/weights-prott5_encoder/weights.json",
+          "bytes": 246,
+          "sha256": "306149759ee6788a681b24e8fa67687abbc0542255a93a0c77d9cd09f95a7706"
+        }
+      ],
+      "seconds": 2334.201317548752
+    },
+    "weights-ankh_base": {
+      "job": "weights-ankh_base",
+      "started_unix": 1793644178.345974,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/weights-ankh_base/weights.json",
+          "bytes": 236,
+          "sha256": "b0fad709014f2674ea51eab890637d4299df116237edccd9deec85222aa94b37"
+        }
+      ],
+      "seconds": 2649.566431760788
+    },
+    "tune-frozen-B-17-0": {
+      "job": "tune-frozen-B-17-0",
+      "started_unix": 1793646839.5590765,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/tune-frozen-B-17-0/calibration.json",
+          "bytes": 199,
+          "sha256": "7d2cf044404fd997f546cc423c29d051086e576b30ed701b2cac101ab0e58901"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-0/calibration.npy",
+          "bytes": 73900,
+          "sha256": "4497142fa818290b33c8977fddcaa02125e42aceb2e4eb39ad9a6c017141d96f"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-0/calibration.parquet",
+          "bytes": 418661,
+          "sha256": "2fed5773ae18a2cb8d7dbaab017c9f74b8ad932fd9302c312e2ec30499a1a3b3"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-0/fit.json",
+          "bytes": 374,
+          "sha256": "76ebd86c502564fbd8241404bd9f18d562c29d7d07691d1730e1fb2ebbac32b6"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-0/inner-validation-1.json",
+          "bytes": 199,
+          "sha256": "7d2cf044404fd997f546cc423c29d051086e576b30ed701b2cac101ab0e58901"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-0/inner-validation-1.npy",
+          "bytes": 73900,
+          "sha256": "4497142fa818290b33c8977fddcaa02125e42aceb2e4eb39ad9a6c017141d96f"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-0/inner-validation-2.json",
+          "bytes": 199,
+          "sha256": "e2211c543fbb1f763271c0bcda8899b644b32e9bddf96dfb50401106502eb5a4"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-0/inner-validation-2.npy",
+          "bytes": 73900,
+          "sha256": "8e493e3544fcb79945f17a8aee4b9a76e99a4ad4659cb63bd63a477a4bfa89d7"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-0/inner-validation-3.json",
+          "bytes": 199,
+          "sha256": "7933d71f14f35dcbc52d3dd8a423becdcc557f4cadb9dff4a959dec19b4d7952"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-0/inner-validation-3.npy",
+          "bytes": 73900,
+          "sha256": "6a22e3dfdd89dcbb22fad702771a7276d4b56f221e445e7a8b7ea3f1edd768e2"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-0/inner-validation-4.json",
+          "bytes": 199,
+          "sha256": "1349fb4152f57998eb2dcd0032eefbb5830aef48307fadd9a2de9bc09d1b6ef2"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-0/inner-validation-4.npy",
+          "bytes": 73900,
+          "sha256": "c2f54a429973de85b10eea52b70bdaddea3e9dfdb64aeacddaa437e7962731c5"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-0/inner-validation-5.json",
+          "bytes": 199,
+          "sha256": "11396f139c972fa19946e07729b50d56ae340893fad6633ca1eedb79a96768f6"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-0/inner-validation-5.npy",
+          "bytes": 73900,
+          "sha256": "57e40da803de3f77b24ba2f60208b6d60aae9d5ae1938321c7aa89f0e754f431"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-0/inner.pt",
+          "bytes": 1066401,
+          "sha256": "3ce2d72a6891d3177ad58b2c39ee804426dcfcf4dd47382b305230c64500b628"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-0/model.pt",
+          "bytes": 264093,
+          "sha256": "e2f6377fd91183c86baa05db9d822cab443ab34f6b156bbed1e4a6b69bff63d2"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-0/oof.parquet",
+          "bytes": 569596,
+          "sha256": "b8f438b91090234a7f8a780271698cbb562241f1471155bd27ec94d6437523fc"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-0/refit.pt",
+          "bytes": 1066273,
+          "sha256": "9ed5e2b3ca9f1666da77bb1196ea9076b5c04ec30fa29f3f9c420e8d46840776"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-0/test.json",
+          "bytes": 199,
+          "sha256": "6c14bba6cc643cd1f9fdb762a9c658b69a3f65bb22a488adb695cce7e90993f2"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-0/test.npy",
+          "bytes": 99804,
+          "sha256": "85b7115a66ea84430a1a0dfc4c3ce636f77a32e7c92853030d9eeb960d745a70"
+        }
+      ],
+      "seconds": 1184.5073940753937
+    },
+    "probe-esmc_300m": {
+      "job": "probe-esmc_300m",
+      "started_unix": 1793640679.0350661,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/probe-esmc_300m/esmc_300m-lock.json",
+          "bytes": 1508,
+          "sha256": "94f18849913a1dddfb31e02d870985e686bbac15da37775c206254227708bf01"
+        },
+        {
+          "path": "jobs/probe-esmc_300m/preflight.json",
+          "bytes": 685,
+          "sha256": "ee1f0a8cb7cca15838888a9a90c75ab857c7d032685c78ec6cbae75285d2f470"
+        }
+      ],
+      "seconds": 4.441220045089722
+    },
+    "extract-esmc_300m": {
+      "job": "extract-esmc_300m",
+      "started_unix": 1793640686.4873927,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/extract-esmc_300m/feature-manifest.json",
+          "bytes": 689,
+          "sha256": "bf77a230f8be8249938d222df80fdba842e38b088183cf299c8acdafc6095380"
+        },
+        {
+          "path": "jobs/extract-esmc_300m/pool.npy",
+          "bytes": 470062208,
+          "sha256": "156a7c22fe851b157c0017b40207cb74c99e369c847922b6063d34f57d42e785"
+        },
+        {
+          "path": "jobs/extract-esmc_300m/progress.json",
+          "bytes": 200,
+          "sha256": "cfbbfa933efc7fe8d1d70121a3f97b1e1a451a52968cce199632829248f06dc5"
+        },
+        {
+          "path": "jobs/extract-esmc_300m/rows.parquet",
+          "bytes": 672849,
+          "sha256": "b90c28d510247b720f7a20d72722ea6b354386d2a510609783d9a5f33f2a0d1b"
+        }
+      ],
+      "seconds": 301.86279225349426
+    },
+    "ridge-esmc_300m-B-0-17-0": {
+      "job": "ridge-esmc_300m-B-0-17-0",
+      "started_unix": 1793640991.8186276,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-17-0/calibration.parquet",
+          "bytes": 418665,
+          "sha256": "34423beee7fc7e6233f1b45128e20534439c631af620c245476613564f411c78"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-17-0/fit.json",
+          "bytes": 278,
+          "sha256": "f65e3971a2b0b66c00da71161144db4c94e0792e0ffe4bccae07525794dd2d29"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-17-0/model.joblib",
+          "bytes": 547966,
+          "sha256": "da99a7f9a692de982a77ece1d0540848e9a89830ec7e18e9c814bef76be113ee"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-17-0/oof.parquet",
+          "bytes": 569581,
+          "sha256": "53230324f680cdd673a57218a264077b79a673bbcc0d25551e75e65772af94f1"
+        }
+      ],
+      "seconds": 9.21101999282837
+    },
+    "ridge-esmc_300m-B-0-17-1": {
+      "job": "ridge-esmc_300m-B-0-17-1",
+      "started_unix": 1793641004.4972718,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-17-1/calibration.parquet",
+          "bytes": 425505,
+          "sha256": "4480c4e569de9dbd205e4e9b93d384ad6a50a35260f91f0bd24c5975d61c48f4"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-17-1/fit.json",
+          "bytes": 277,
+          "sha256": "368b13d593e94462e09151540b3311faa2faf7291cc5fa573d36d762c69a070a"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-17-1/model.joblib",
+          "bytes": 547966,
+          "sha256": "bc9cb13eca65b736e178ef07dd42885137a51b51a759a8c733d25855e52169f2"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-17-1/oof.parquet",
+          "bytes": 544467,
+          "sha256": "bebacaa3aab46995be0dffbe78ab5f75dbf6cab59bb945f8bb2e0ed02c1d4dc6"
+        }
+      ],
+      "seconds": 8.40212869644165
+    },
+    "ridge-esmc_300m-B-0-17-2": {
+      "job": "ridge-esmc_300m-B-0-17-2",
+      "started_unix": 1793641016.4515164,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-17-2/calibration.parquet",
+          "bytes": 432661,
+          "sha256": "a8fd54ccf0e862a502ac126aa314486bf2f52a266f0bae88e808daaacb6ea882"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-17-2/fit.json",
+          "bytes": 278,
+          "sha256": "98990dc38aab460b9eb222d3613ee8a3405debda6ca0a7033413b4f50694216d"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-17-2/model.joblib",
+          "bytes": 547966,
+          "sha256": "d1191520d3f130cdd88cb7f460c0fd9fccdba834a7fb556c3838b1a8f1eda2a1"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-17-2/oof.parquet",
+          "bytes": 559925,
+          "sha256": "0f6c13b0068828bc547658e704be645d3dd2cbb451438dc0ed1cab51da016bf7"
+        }
+      ],
+      "seconds": 8.622071266174316
+    },
+    "ridge-esmc_300m-B-0-17-3": {
+      "job": "ridge-esmc_300m-B-0-17-3",
+      "started_unix": 1793641028.666137,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-17-3/calibration.parquet",
+          "bytes": 407982,
+          "sha256": "0d7ac057e9bca9c24eb325a75e58ed4c26ccdc3360417af5b6d608c08a70348a"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-17-3/fit.json",
+          "bytes": 274,
+          "sha256": "d0aa2512fce4c6119dfc6d20e9b80368fc7400b12f65dfa9ae78fdf3372bcadd"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-17-3/model.joblib",
+          "bytes": 547966,
+          "sha256": "2e1d04b4a9bede13a5475d48b7c071714eadf21440f8bedc30677089c2b580e7"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-17-3/oof.parquet",
+          "bytes": 563948,
+          "sha256": "d298ef25643eb7760d9fe1a57e4bea65ec6e1003a5b459f76cf4fc2a066d67fb"
+        }
+      ],
+      "seconds": 8.664988994598389
+    },
+    "ridge-esmc_300m-B-0-17-4": {
+      "job": "ridge-esmc_300m-B-0-17-4",
+      "started_unix": 1793641040.6765358,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-17-4/calibration.parquet",
+          "bytes": 416055,
+          "sha256": "8650e7c8be17fb52306f944ccc90771b0a243562f6862d2dd8dd0fc7fe4fef97"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-17-4/fit.json",
+          "bytes": 278,
+          "sha256": "b05466b28bead68e794a04be8cb8546cb046932cb24daf31accff425f1266368"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-17-4/model.joblib",
+          "bytes": 547966,
+          "sha256": "84d54d7935bd5ce40bf7f076a9671b4591ead9df1972bf8f863422fecd624ff6"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-17-4/oof.parquet",
+          "bytes": 559413,
+          "sha256": "1d21e28d3b8eee3bd56ef9a08a4f9b58e0267bc1a2490a52d3a2e99b01161a56"
+        }
+      ],
+      "seconds": 7.628214597702026
+    },
+    "ridge-esmc_300m-B-0-29-0": {
+      "job": "ridge-esmc_300m-B-0-29-0",
+      "started_unix": 1793641051.629318,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-29-0/calibration.parquet",
+          "bytes": 444839,
+          "sha256": "bf83f79eeb035f9d629c7ca8b1e0947333da29d3c6906de98b38e35a241ba167"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-29-0/fit.json",
+          "bytes": 278,
+          "sha256": "99a798d0b41d272c4f5aceb58f6beaeba6928b9b135b7195727cff03a25f6a00"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-29-0/model.joblib",
+          "bytes": 547966,
+          "sha256": "63fcf60789b3cf2475982ac7fc5ec1311a06bbe10e1792df934f3c97dc9a933a"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-29-0/oof.parquet",
+          "bytes": 569593,
+          "sha256": "2369a1db914d2f3e2319c18d5a994baeeb0090983e1ec7a772cf8eab2f991313"
+        }
+      ],
+      "seconds": 7.57500147819519
+    },
+    "ridge-esmc_300m-B-0-29-1": {
+      "job": "ridge-esmc_300m-B-0-29-1",
+      "started_unix": 1793641062.5487354,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-29-1/calibration.parquet",
+          "bytes": 430972,
+          "sha256": "e94f9b01d8e70b4776a7dc39ebb7eee11dc11e882693bb62600da1e457f7bc29"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-29-1/fit.json",
+          "bytes": 278,
+          "sha256": "e6fb5632c02dfb75c432ec3dcb07150ee8f75e7ec15e93c6dc011396a1f22bfe"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-29-1/model.joblib",
+          "bytes": 547966,
+          "sha256": "533056487b67af23b7d40589db782623852e86aca767bc58ca081a6e7deb4bc2"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-29-1/oof.parquet",
+          "bytes": 544471,
+          "sha256": "b193dafa88c6b5492ab0d909141d1c176321f2f54d25b4cb4f7366e17f8cffc5"
+        }
+      ],
+      "seconds": 7.720303058624268
+    },
+    "ridge-esmc_300m-B-0-29-2": {
+      "job": "ridge-esmc_300m-B-0-29-2",
+      "started_unix": 1793641073.607221,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-29-2/calibration.parquet",
+          "bytes": 435215,
+          "sha256": "d9f605866a45c38628f6ebf989b671ff85760dac39495f3599e62176e9686107"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-29-2/fit.json",
+          "bytes": 277,
+          "sha256": "9b287c85078f81484c1bfdb7d5af9f25110c84519f96071fa794065eb7e089c0"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-29-2/model.joblib",
+          "bytes": 547966,
+          "sha256": "8c31b8e8ea90d320608ff6703c73f21d1fd15de50ba521cd5623f6208e87f91d"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-29-2/oof.parquet",
+          "bytes": 559929,
+          "sha256": "1d83e0f36582a0afcee5fc241b7e1521aebf22721def6eedd779571a24977568"
+        }
+      ],
+      "seconds": 7.664291143417358
+    },
+    "ridge-esmc_300m-B-0-29-3": {
+      "job": "ridge-esmc_300m-B-0-29-3",
+      "started_unix": 1793641084.571887,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-29-3/calibration.parquet",
+          "bytes": 493938,
+          "sha256": "09a7bf47ee01791b6a4b591e8a2ac6c36f96819131b71a8e3ebef80fee4edc00"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-29-3/fit.json",
+          "bytes": 277,
+          "sha256": "505d3afe9b00393b411f513eeba7f28415fbc7401e70dfc53e974c5a40f54c62"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-29-3/model.joblib",
+          "bytes": 547966,
+          "sha256": "a18523a622949258fe592d996687a8501719905feda4200f13f61dc114db48f7"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-29-3/oof.parquet",
+          "bytes": 563916,
+          "sha256": "b846beb827f36342f4d70ec67d8c15bf1454048c4160d0fa5ed5dcae910b49c9"
+        }
+      ],
+      "seconds": 7.540671348571777
+    },
+    "ridge-esmc_300m-B-0-29-4": {
+      "job": "ridge-esmc_300m-B-0-29-4",
+      "started_unix": 1793641095.425326,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-29-4/calibration.parquet",
+          "bytes": 415219,
+          "sha256": "f2f92890a64f454b4e240c9d341027ad1bca73a5deab32c307aafd240f49f137"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-29-4/fit.json",
+          "bytes": 277,
+          "sha256": "694a8b572c0b492b818b2f086b1aac8531a9c4874c2d08635981b5a058f629d1"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-29-4/model.joblib",
+          "bytes": 547966,
+          "sha256": "909a103adc50c266eded895fac8a313f4309513cd54e71a02958a0d8b0f6b3c4"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-29-4/oof.parquet",
+          "bytes": 559417,
+          "sha256": "3ea93fd624387d1b19b88164b69fe7c8d3e77bca14cc4d73d4ffb84b18763e6e"
+        }
+      ],
+      "seconds": 7.663958311080933
+    },
+    "ridge-esmc_300m-B-0-43-0": {
+      "job": "ridge-esmc_300m-B-0-43-0",
+      "started_unix": 1793641106.4248922,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-43-0/calibration.parquet",
+          "bytes": 444902,
+          "sha256": "c3e578f4575ecd930e668bbec5d203c96af555754ee7dfd26a46a56c345419f6"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-43-0/fit.json",
+          "bytes": 274,
+          "sha256": "01418978fd640f2aee044eecdde7fa8f2a24170c7aff3b83d5668153eb080318"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-43-0/model.joblib",
+          "bytes": 547966,
+          "sha256": "438dafa3feffa2b22790de0e136cd3a15015a4d61515aa804126307db1bf8b41"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-43-0/oof.parquet",
+          "bytes": 569549,
+          "sha256": "29571e1d4b0ce0b9b61c0539292472f2609b1e00bc044643a6a145a8c3716427"
+        }
+      ],
+      "seconds": 7.580214023590088
+    },
+    "ridge-esmc_300m-B-0-43-1": {
+      "job": "ridge-esmc_300m-B-0-43-1",
+      "started_unix": 1793641117.316765,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-43-1/calibration.parquet",
+          "bytes": 415098,
+          "sha256": "51ccca54e7468dce7eaca1db6329d4b9f8918b662bf56db96e89076fc95ee0c3"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-43-1/fit.json",
+          "bytes": 278,
+          "sha256": "d14a3c5a004e3f8f804bc65e4f180c366ecd844513e61543c27bef70378a2352"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-43-1/model.joblib",
+          "bytes": 547966,
+          "sha256": "d9f7e96a429c260c6b491dbb193df084d131e70d650feca1def500f5444969ff"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-43-1/oof.parquet",
+          "bytes": 544435,
+          "sha256": "bd74e4d62b0cefb6edf873d14bdac1ecfc29db04a03fc7b260cfdc25ec688a92"
+        }
+      ],
+      "seconds": 7.656489849090576
+    },
+    "ridge-esmc_300m-B-0-43-2": {
+      "job": "ridge-esmc_300m-B-0-43-2",
+      "started_unix": 1793641128.264174,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-43-2/calibration.parquet",
+          "bytes": 480824,
+          "sha256": "133d3d17ab408fab1b1ffdb3106e750b1d2771f4244f5621ef52dda552d95486"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-43-2/fit.json",
+          "bytes": 276,
+          "sha256": "ad393583d7454aa5341e54f61aa3c1a6c7776cc41c78fde52f75407a111ee1dc"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-43-2/model.joblib",
+          "bytes": 547966,
+          "sha256": "abc00ecc690806aed9053f600a72a36d45d68e09c37fc8dc1d88f92966903159"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-43-2/oof.parquet",
+          "bytes": 559925,
+          "sha256": "3ab128e428960d8d841bcfcd998c17b9123d668c82a3586fa54fa36d8f3f6ecf"
+        }
+      ],
+      "seconds": 7.633376121520996
+    },
+    "ridge-esmc_300m-B-0-43-3": {
+      "job": "ridge-esmc_300m-B-0-43-3",
+      "started_unix": 1793641139.1906657,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-43-3/calibration.parquet",
+          "bytes": 436968,
+          "sha256": "97f61be89bfc3ba27dd119b7910a8fe578189b43165aca501b9c0ba0c87eacf2"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-43-3/fit.json",
+          "bytes": 277,
+          "sha256": "165b44828207e3d99a25d509331836f772e5ea206423328e09e614196d7388f7"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-43-3/model.joblib",
+          "bytes": 547966,
+          "sha256": "c750fad39f4200fbdb65b52a0a9c2a7a9081d83160e7f81c1b01ae1c4e79bb30"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-43-3/oof.parquet",
+          "bytes": 563932,
+          "sha256": "07c4c12790804eaacaa0b800a3b97588fa9e5052990ccfb90b5df6d574729e39"
+        }
+      ],
+      "seconds": 7.651478052139282
+    },
+    "ridge-esmc_300m-B-0-43-4": {
+      "job": "ridge-esmc_300m-B-0-43-4",
+      "started_unix": 1793641150.1590018,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-43-4/calibration.parquet",
+          "bytes": 418947,
+          "sha256": "28ff640edb4a3a916345bd66b48f31e8433e64ebc6be1fd1c77dbaa01e5ee725"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-43-4/fit.json",
+          "bytes": 274,
+          "sha256": "a888e1a41e62767f8063f8a8cc50169f921c2d69bdcfba3c9e93b4a3e9072940"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-43-4/model.joblib",
+          "bytes": 547966,
+          "sha256": "45f9463842307f1a6e1e39b8c3939280fd6dcee1c0d763f04b0784dc596582d5"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-0-43-4/oof.parquet",
+          "bytes": 559413,
+          "sha256": "2bb2cdac4c55e751df2e1c562a19cf40df2bcc9bf00a816507b7d37675b4d2af"
+        }
+      ],
+      "seconds": 7.679570913314819
+    },
+    "ridge-esmc_300m-B-1-17-0": {
+      "job": "ridge-esmc_300m-B-1-17-0",
+      "started_unix": 1793641161.1543114,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-17-0/calibration.parquet",
+          "bytes": 418661,
+          "sha256": "dbce54f52ef7935c5b4220eb5af481a8318ecbb9ada50fd90ed72f1eefa77480"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-17-0/fit.json",
+          "bytes": 280,
+          "sha256": "5d4b4887b17b66ff4f1c2bf2d18cfffd5f12e6e7fd07395879284a9d2aa572ea"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-17-0/model.joblib",
+          "bytes": 555502,
+          "sha256": "467800f6c67bfcbd982acdc4c25d83a621681964d291aeed1a552ae681340318"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-17-0/oof.parquet",
+          "bytes": 569590,
+          "sha256": "1d83ed808d70864378d1f65af6fdc3643a1473b906717f04929025bac59ffcb0"
+        }
+      ],
+      "seconds": 11.900881052017212
+    },
+    "ridge-esmc_300m-B-1-17-1": {
+      "job": "ridge-esmc_300m-B-1-17-1",
+      "started_unix": 1793641176.3744023,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-17-1/calibration.parquet",
+          "bytes": 425509,
+          "sha256": "ff69175f86f8ef9c949da728c1195110cce2724f7071498e97ca14c9cb7bc10e"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-17-1/fit.json",
+          "bytes": 278,
+          "sha256": "6d3321754ee2998869a00af7605c1e8c06f1edc18f1960299d82969b28207a2b"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-17-1/model.joblib",
+          "bytes": 555502,
+          "sha256": "13e0943daef1b1ae47280d885c962232a382f2d04e883ba49f875c988f27eeb9"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-17-1/oof.parquet",
+          "bytes": 544484,
+          "sha256": "da3f68b4b942f17935b19a04f62e91be09c9633a7d44a599dc74478360f0796f"
+        }
+      ],
+      "seconds": 10.83770751953125
+    },
+    "ridge-esmc_300m-B-1-17-2": {
+      "job": "ridge-esmc_300m-B-1-17-2",
+      "started_unix": 1793641190.334222,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-17-2/calibration.parquet",
+          "bytes": 432649,
+          "sha256": "82fc2338458fd243fc22f627563a0577d1d2afd04b64d4b6b571be5208a6b59f"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-17-2/fit.json",
+          "bytes": 279,
+          "sha256": "b6543e65c142f9afb87bdac10833896e2d1304a286a164752ed9dcce2e11e977"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-17-2/model.joblib",
+          "bytes": 555502,
+          "sha256": "be62b0e6097bbb008a644fe6fb32e0543e2129966120851689fbfb87dd143be8"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-17-2/oof.parquet",
+          "bytes": 559950,
+          "sha256": "a5d61e68f59f3bf8e65031f542e46ae032ea722d6f90842ea747890bb0a3230c"
+        }
+      ],
+      "seconds": 10.48472785949707
+    },
+    "ridge-esmc_300m-B-1-17-3": {
+      "job": "ridge-esmc_300m-B-1-17-3",
+      "started_unix": 1793641203.985264,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-17-3/calibration.parquet",
+          "bytes": 407990,
+          "sha256": "b745df7da04e644e84a3cad74fb6b981692fe1e26375ce67c8b9e7cb766891f2"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-17-3/fit.json",
+          "bytes": 279,
+          "sha256": "1f4ae66b2b6d8f6102afe0eba2d82213c7029a68ab2267228b738162856f169d"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-17-3/model.joblib",
+          "bytes": 555502,
+          "sha256": "cbe2691d44fe8d9e3682203a96ef872127113e9bc30dd067a701e9ebda3216ad"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-17-3/oof.parquet",
+          "bytes": 563965,
+          "sha256": "964ae47358e30a8b44706d4ddad41e9aa55b79cc109db4aba5f435bb81a0aaf6"
+        }
+      ],
+      "seconds": 10.509786128997803
+    },
+    "ridge-esmc_300m-B-1-17-4": {
+      "job": "ridge-esmc_300m-B-1-17-4",
+      "started_unix": 1793641217.6956992,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-17-4/calibration.parquet",
+          "bytes": 416039,
+          "sha256": "48a74cc6ceeefcc290cda852f3d7280e640915ec6c7510eda83245ef4bc71911"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-17-4/fit.json",
+          "bytes": 278,
+          "sha256": "6ac120fae79d97e296ea2af3e7d4aa000caefb5c6e0896bf66e87ba5c1b4d47e"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-17-4/model.joblib",
+          "bytes": 555502,
+          "sha256": "bd5f5511b1d83c3f6c967464146905f167d9847b1328dc0cb27f25ac2926ef3a"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-17-4/oof.parquet",
+          "bytes": 559446,
+          "sha256": "4609e5ab96b7303986507373e90d2a81b7b2fc8bc7057b304657e5f4859c749c"
+        }
+      ],
+      "seconds": 11.083677768707275
+    },
+    "ridge-esmc_300m-B-1-29-0": {
+      "job": "ridge-esmc_300m-B-1-29-0",
+      "started_unix": 1793641232.1622267,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-29-0/calibration.parquet",
+          "bytes": 444851,
+          "sha256": "498383c68a5701078ceb85740a1e056ef2dcf67ca248d5d88edf451d5fb4e138"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-29-0/fit.json",
+          "bytes": 279,
+          "sha256": "f9345a94915bc53e0707f4c9bd3b2a337bacd31c20893e76cde2c11ab6d115a5"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-29-0/model.joblib",
+          "bytes": 555502,
+          "sha256": "7d13a509e4e78664e4aa31648e8c29e1639c1a219940689f3a99f7bff57e8db9"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-29-0/oof.parquet",
+          "bytes": 569586,
+          "sha256": "f0e09606ef4de80f34204798ea004ac92701af22221290b9e4ab38458f5ce302"
+        }
+      ],
+      "seconds": 11.240321397781372
+    },
+    "ridge-esmc_300m-B-1-29-1": {
+      "job": "ridge-esmc_300m-B-1-29-1",
+      "started_unix": 1793641246.7811825,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-29-1/calibration.parquet",
+          "bytes": 430968,
+          "sha256": "b8cb9acea2db394996a59b4bad991fd873f0ce3bbf6a7fabc26355dc51fe9d92"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-29-1/fit.json",
+          "bytes": 279,
+          "sha256": "370a471c44b35d3227003c43d682cc1a5d8dbbe70e9ac7256bce550f80f98d1e"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-29-1/model.joblib",
+          "bytes": 555502,
+          "sha256": "f108e447ed3f99135f5c9a5ec4c4708ceba7b5a484fb0217beffbdafec70abe9"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-29-1/oof.parquet",
+          "bytes": 544500,
+          "sha256": "5f85fe5fb02432c13c8302fa0f06826a53e166f979d1c688d169ca8b979c3a80"
+        }
+      ],
+      "seconds": 11.230155944824219
+    },
+    "ridge-esmc_300m-B-1-29-2": {
+      "job": "ridge-esmc_300m-B-1-29-2",
+      "started_unix": 1793641261.3520854,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-29-2/calibration.parquet",
+          "bytes": 435223,
+          "sha256": "cb47517bdf0b18e924dd5f30e23c93958afb57ff18f78ffe542d88ef8db0968b"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-29-2/fit.json",
+          "bytes": 280,
+          "sha256": "9656db224b95737b0f744c5b523751a0402c71b3badcc5093e90c9c0bee64516"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-29-2/model.joblib",
+          "bytes": 555502,
+          "sha256": "5a20544512e04b664e9461fbade93c5ea09a8166d2c0fb4faf4c62e25a9dde6b"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-29-2/oof.parquet",
+          "bytes": 559930,
+          "sha256": "555c1897348452eed6eb4c2062d64a977a75e00b8b98fc0f9270cde8f227d305"
+        }
+      ],
+      "seconds": 11.140378952026367
+    },
+    "ridge-esmc_300m-B-1-29-3": {
+      "job": "ridge-esmc_300m-B-1-29-3",
+      "started_unix": 1793641275.8462837,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-29-3/calibration.parquet",
+          "bytes": 493922,
+          "sha256": "380ff8d2c490fd014fe4cf7f4ffad313b12fe85bab58d3f16ad27de282b1a2c1"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-29-3/fit.json",
+          "bytes": 280,
+          "sha256": "7ab749ad18e40a00338f47b8b2d014b15bef06d877f2e6e9a63c762ce56c25ec"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-29-3/model.joblib",
+          "bytes": 555502,
+          "sha256": "d3a351167802768ca3b4938ee4e8e5bc3a44c530f9263d22bdd38afb4e49ee64"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-29-3/oof.parquet",
+          "bytes": 563957,
+          "sha256": "3b42d13b049aedd4c41a55def9da60c98b448bfb9e8065c46d996c0d8c0a67c9"
+        }
+      ],
+      "seconds": 10.986014604568481
+    },
+    "ridge-esmc_300m-B-1-29-4": {
+      "job": "ridge-esmc_300m-B-1-29-4",
+      "started_unix": 1793641290.2463598,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-29-4/calibration.parquet",
+          "bytes": 415207,
+          "sha256": "912d7b6cac3bc70141bbf282534885a843fbef9dd542a33cf1dad1bbdfed0c86"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-29-4/fit.json",
+          "bytes": 279,
+          "sha256": "b72760722434f09504a49068173562b2ce269c73214024955f326f93d471afaa"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-29-4/model.joblib",
+          "bytes": 555502,
+          "sha256": "b3eabf8d48933b8848b7caac2afab1d83a63977f5734a0143ec04f785b1953fb"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-29-4/oof.parquet",
+          "bytes": 559422,
+          "sha256": "ff7ac1770f0b1e8ed79d461af2520ffc94510f9c4c01b5cb7f6222f5b1ba64cf"
+        }
+      ],
+      "seconds": 11.392513513565063
+    },
+    "ridge-esmc_300m-B-1-43-0": {
+      "job": "ridge-esmc_300m-B-1-43-0",
+      "started_unix": 1793641305.053039,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-43-0/calibration.parquet",
+          "bytes": 444910,
+          "sha256": "51cd8c8f6657d84bc58b841b11eeb5de1b136217a2743f16067f2f2777242342"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-43-0/fit.json",
+          "bytes": 278,
+          "sha256": "253285f715aa9c2fbb2bd7675cba4a89f6198eccc99f88413a9d11a33cdffd89"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-43-0/model.joblib",
+          "bytes": 555502,
+          "sha256": "5178898596b72255b9b0b4ccfb88955f14a98bf476c3de9569ddb2a4dedd6572"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-43-0/oof.parquet",
+          "bytes": 569586,
+          "sha256": "efa64aed5d1e3c060a994edfa975a494d1de814b9900badf3e6993a462482fff"
+        }
+      ],
+      "seconds": 11.175476312637329
+    },
+    "ridge-esmc_300m-B-1-43-1": {
+      "job": "ridge-esmc_300m-B-1-43-1",
+      "started_unix": 1793641319.6304195,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-43-1/calibration.parquet",
+          "bytes": 415102,
+          "sha256": "05004546c5532e83d8c5c10ccf657b566e40c205da8256c5a5921ba85356b566"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-43-1/fit.json",
+          "bytes": 280,
+          "sha256": "bdbe38c45fadc355eb19214593d003cf3faa6331327f7ff126fd9d5ee9ec16d2"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-43-1/model.joblib",
+          "bytes": 555502,
+          "sha256": "8d104f059e93fc62e4d66796b59325056e5ac0d832da2a44803a8291318b99c1"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-43-1/oof.parquet",
+          "bytes": 544476,
+          "sha256": "f5e31e71228b934d3c2ee7c0cc9c7864eab85127a09994f64ea9a62bc564097c"
+        }
+      ],
+      "seconds": 11.171967267990112
+    },
+    "ridge-esmc_300m-B-1-43-2": {
+      "job": "ridge-esmc_300m-B-1-43-2",
+      "started_unix": 1793641334.2293086,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-43-2/calibration.parquet",
+          "bytes": 480836,
+          "sha256": "02183cb65d916fd5978d885c15887cb0b3496134403569406a1cb8307005255b"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-43-2/fit.json",
+          "bytes": 280,
+          "sha256": "65cb987bec6d5931fc5ba727282c5dab6592742ce291d5d761abf6fb68c7a491"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-43-2/model.joblib",
+          "bytes": 555502,
+          "sha256": "31b0a0b2182d973d8d3de4583859cb1233c526c2170a3efeca835e2b58f86d63"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-43-2/oof.parquet",
+          "bytes": 559966,
+          "sha256": "cd1d780c43876936fa063886d0c00437c297307a9c0cc2479bf6e601b221a47c"
+        }
+      ],
+      "seconds": 11.454871892929077
+    },
+    "ridge-esmc_300m-B-1-43-3": {
+      "job": "ridge-esmc_300m-B-1-43-3",
+      "started_unix": 1793641349.1554916,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-43-3/calibration.parquet",
+          "bytes": 436980,
+          "sha256": "9e8fd28174f90780d1ec71b363ec1d33a2d80059c79ee457fd10ace7127514b6"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-43-3/fit.json",
+          "bytes": 280,
+          "sha256": "b4cfb113f6ce9c73692e71d10426eb4646dc0acf1aecfc10fdaab2053d90da61"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-43-3/model.joblib",
+          "bytes": 555502,
+          "sha256": "284c974ca2ab17fc8fe390b2918bc6b5041615af0f008dee4b1f6ca05bc347eb"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-43-3/oof.parquet",
+          "bytes": 563941,
+          "sha256": "32c626059ea81b930e94f45226b598537ff63b9deda8431e19da2645db9448b6"
+        }
+      ],
+      "seconds": 11.705907106399536
+    },
+    "ridge-esmc_300m-B-1-43-4": {
+      "job": "ridge-esmc_300m-B-1-43-4",
+      "started_unix": 1793641364.380205,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-43-4/calibration.parquet",
+          "bytes": 418983,
+          "sha256": "810c9cd82b4e0fd4e833e1bc99c31f76758b92e56ae0e0bc7feebfb29ec75555"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-43-4/fit.json",
+          "bytes": 279,
+          "sha256": "42718905e09e49014fa4acdcdf5ca76209475bc1e2ecd16c47d75edc09b37475"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-43-4/model.joblib",
+          "bytes": 555502,
+          "sha256": "c4cfaac4dc81838be8571efa2116f544389ee7e6255354d7bf399b159db1f23c"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-B-1-43-4/oof.parquet",
+          "bytes": 559426,
+          "sha256": "29eec6e5bfcd690b91d1d687a4e4c7d17fae91be900e25f763be27ba77b6b192"
+        }
+      ],
+      "seconds": 11.521288871765137
+    },
+    "ridge-esmc_300m-D-0-17-0": {
+      "job": "ridge-esmc_300m-D-0-17-0",
+      "started_unix": 1793641379.383516,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-17-0/calibration.parquet",
+          "bytes": 418653,
+          "sha256": "b572bcf0315d9e55f10deb96ae600f03e6f89e676b27c14e7956d81b27078704"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-17-0/fit.json",
+          "bytes": 278,
+          "sha256": "53ec31f7dec4043a29647860a38ea50b03a8ae89f3a5aea992feb33f5677f782"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-17-0/model.joblib",
+          "bytes": 547966,
+          "sha256": "e02897abea4f3b8b13c0c7996080afd6f071e38d7e1dee1b36a8309b0aee9b8a"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-17-0/oof.parquet",
+          "bytes": 569569,
+          "sha256": "12746f906501c38002d71ba019148e80c873ae9eaa00e506afd55172b374c177"
+        }
+      ],
+      "seconds": 9.909004926681519
+    },
+    "ridge-esmc_300m-D-0-17-1": {
+      "job": "ridge-esmc_300m-D-0-17-1",
+      "started_unix": 1793641392.721251,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-17-1/calibration.parquet",
+          "bytes": 425505,
+          "sha256": "405f944e67b9c23d5059701768e3d80fbb277edf41d2e4078a815a700f4d9054"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-17-1/fit.json",
+          "bytes": 277,
+          "sha256": "90afede95deb2e080ef9401613fdf2f151639774fff82d96f41e1bcc50ddaaca"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-17-1/model.joblib",
+          "bytes": 547966,
+          "sha256": "71c0430a3a3097462bb7959658dfb534b75a5a05a6cad29530f5b8780c0ba9e7"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-17-1/oof.parquet",
+          "bytes": 544471,
+          "sha256": "bcd601a88ce69fadbc54030939a2f77b945052cde676746e1ee010fcb84b6473"
+        }
+      ],
+      "seconds": 10.064151048660278
+    },
+    "ridge-esmc_300m-D-0-17-2": {
+      "job": "ridge-esmc_300m-D-0-17-2",
+      "started_unix": 1793641406.2121856,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-17-2/calibration.parquet",
+          "bytes": 432657,
+          "sha256": "2e02d3fb9878c0d2b2ead5a78f60edc7efa71359f1c7162a839c55b59008359f"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-17-2/fit.json",
+          "bytes": 277,
+          "sha256": "c0d7cc8b6c59c0265250e0b25c106a1205ad36cc164611cb3727b3aea46f2e68"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-17-2/model.joblib",
+          "bytes": 547966,
+          "sha256": "5938fe8741dc1aee24601b70d4691ca59c53ee246643b49c9e8e476b8f112e0e"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-17-2/oof.parquet",
+          "bytes": 559929,
+          "sha256": "d835d00346cd5a8c1c7558d5e4f3444f87ef599caa4b5f1f7c71a61125e66496"
+        }
+      ],
+      "seconds": 9.861514568328857
+    },
+    "ridge-esmc_300m-D-0-17-3": {
+      "job": "ridge-esmc_300m-D-0-17-3",
+      "started_unix": 1793641419.5349765,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-17-3/calibration.parquet",
+          "bytes": 407998,
+          "sha256": "81dbedfae9de5a8a33ae31480c07e97ba664cba64ea35d30cf66f28c6220d979"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-17-3/fit.json",
+          "bytes": 274,
+          "sha256": "f468322ac351a868f849b401b35e447957c1f34ca50887352d3f37a0fc7e7cd5"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-17-3/model.joblib",
+          "bytes": 547966,
+          "sha256": "6c5556ab7410f61e99774dffb30b8afd4c3f4e29cac8016ddb49489e773af40c"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-17-3/oof.parquet",
+          "bytes": 563944,
+          "sha256": "a95a24b4184ad1cbcb6654c93f125ed7828a314d7b453e8e2ec314471ab9e7d3"
+        }
+      ],
+      "seconds": 9.658148288726807
+    },
+    "ridge-esmc_300m-D-0-17-4": {
+      "job": "ridge-esmc_300m-D-0-17-4",
+      "started_unix": 1793641432.6332293,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-17-4/calibration.parquet",
+          "bytes": 416055,
+          "sha256": "7c544acf3b438c2ce8d46214878a5896e2c6d657a7280eaef88db6e3e9b12a7e"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-17-4/fit.json",
+          "bytes": 277,
+          "sha256": "3d5a59a732881f0dabe3eded68911e1758e932b054a804128c65af6ad83b125c"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-17-4/model.joblib",
+          "bytes": 547966,
+          "sha256": "df0041cc46b7e09bcf7e9cfa9ca19bfdb94a57321e797be6ca1b100ac6f27bd1"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-17-4/oof.parquet",
+          "bytes": 559397,
+          "sha256": "c1a09cc4516368a8b39ad729c02761a68075bbd766c2e73a1e00f7c56570fb2b"
+        }
+      ],
+      "seconds": 9.680139541625977
+    },
+    "ridge-esmc_300m-D-0-29-0": {
+      "job": "ridge-esmc_300m-D-0-29-0",
+      "started_unix": 1793641445.734742,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-29-0/calibration.parquet",
+          "bytes": 444859,
+          "sha256": "701f59e30af5834ec439ed0b34a513d9d0022c9c0d4206d179046b2c4a84eef9"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-29-0/fit.json",
+          "bytes": 278,
+          "sha256": "f478160cbfd1cc54edc790eaf9210698f75023275a9c0324a251a78d65ed0d25"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-29-0/model.joblib",
+          "bytes": 547966,
+          "sha256": "cac289d28deb225321c7b6db9bba63a469030d8d347982d49f8e2e22098079ba"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-29-0/oof.parquet",
+          "bytes": 569573,
+          "sha256": "9a22b2a90958c299687d6d974aaf7dc07f6253327d8110c0d50aab1be7d6c5ca"
+        }
+      ],
+      "seconds": 9.703439474105835
+    },
+    "ridge-esmc_300m-D-0-29-1": {
+      "job": "ridge-esmc_300m-D-0-29-1",
+      "started_unix": 1793641458.8776524,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-29-1/calibration.parquet",
+          "bytes": 430972,
+          "sha256": "51361f48d93e9b6850f09d39ead2b8f18d431a144f213e4eb7e894c3d1d637d5"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-29-1/fit.json",
+          "bytes": 278,
+          "sha256": "392c90fb4808a4a8bace3552f23e2b2bc21db38b6452b997e1c83d0804063311"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-29-1/model.joblib",
+          "bytes": 547966,
+          "sha256": "efb6a4ea00dde6c4f86c5d6eaf213cfbc9e4dba398f4a3634303dcc6630a4832"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-29-1/oof.parquet",
+          "bytes": 544479,
+          "sha256": "ac59b6b60632e96a735c4b8b1dda172ebf0ceac62698540f2b718b06682ee3f6"
+        }
+      ],
+      "seconds": 10.065146684646606
+    },
+    "ridge-esmc_300m-D-0-29-2": {
+      "job": "ridge-esmc_300m-D-0-29-2",
+      "started_unix": 1793641472.356832,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-29-2/calibration.parquet",
+          "bytes": 435219,
+          "sha256": "fdb0bff359ccebac0450401a10e4bc328b5ef0f7096753e1fe1217803a8e33e0"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-29-2/fit.json",
+          "bytes": 278,
+          "sha256": "1f3621d1acf075fd897cc0690b88c76b4d334afc4f671443b423192e78c0de49"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-29-2/model.joblib",
+          "bytes": 547966,
+          "sha256": "602911416044f5d0691e319be8114e8249156ad495c8c8cc33a4e214773b893b"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-29-2/oof.parquet",
+          "bytes": 559933,
+          "sha256": "31c63a4cd560355e031ee4bd9198723df6e5dffab6c058108b77a4a31977bb0b"
+        }
+      ],
+      "seconds": 10.013890266418457
+    },
+    "ridge-esmc_300m-D-0-29-3": {
+      "job": "ridge-esmc_300m-D-0-29-3",
+      "started_unix": 1793641485.7359488,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-29-3/calibration.parquet",
+          "bytes": 493934,
+          "sha256": "8f352284b31b63c511f14739fd962d41a4a930c51a27fb4301f766355b3d5749"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-29-3/fit.json",
+          "bytes": 278,
+          "sha256": "8013c144b77a12b8f1b2097da8a2270691d13926e1b3c2dd74c98a93ec33660d"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-29-3/model.joblib",
+          "bytes": 547966,
+          "sha256": "d05681e85612f1c5316976f48aa52fdebe36458ebccf480f50765d09e8e18952"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-29-3/oof.parquet",
+          "bytes": 563936,
+          "sha256": "34ea7361d48598d45580f863f05183b3ac8f2e8dae8c7451ecd0d495821755bf"
+        }
+      ],
+      "seconds": 9.563359022140503
+    },
+    "ridge-esmc_300m-D-0-29-4": {
+      "job": "ridge-esmc_300m-D-0-29-4",
+      "started_unix": 1793641498.781187,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-29-4/calibration.parquet",
+          "bytes": 415219,
+          "sha256": "ad77b429b33035ec1982c8517dc5263b442ae7f7d818015256b8a470d2928485"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-29-4/fit.json",
+          "bytes": 277,
+          "sha256": "562a9e80ac7ea14d60edf5a71a459a5897c65ae3292545dd73c4bf2455822546"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-29-4/model.joblib",
+          "bytes": 547966,
+          "sha256": "ea0dd0bf858bc1843e849ae0d5fd9639be7eafced73ba92269cc738608d39e14"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-29-4/oof.parquet",
+          "bytes": 559433,
+          "sha256": "8ef828f3ac0b7135b170c064b3182561f1395217b2f3d18569e083c291c05a53"
+        }
+      ],
+      "seconds": 9.87330436706543
+    },
+    "ridge-esmc_300m-D-0-43-0": {
+      "job": "ridge-esmc_300m-D-0-43-0",
+      "started_unix": 1793641512.13454,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-43-0/calibration.parquet",
+          "bytes": 444918,
+          "sha256": "50f33fb9e3a8b650d67351d41bd13ae6f167d2c59d69c66e23011f6ea1970331"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-43-0/fit.json",
+          "bytes": 274,
+          "sha256": "f9abddafbd505839869eac5ceb0ded29d1dbeedd3363a494e9756e5a76a25c98"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-43-0/model.joblib",
+          "bytes": 547966,
+          "sha256": "b5bef2ff395f9b8b5879915663c846784255e4b31192f5b60ff76cb2f86882e6"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-43-0/oof.parquet",
+          "bytes": 569589,
+          "sha256": "120d4ada18addf7f7a1104f6d94659ae7e0e3b56091d9a87cbcd8365d7bd317a"
+        }
+      ],
+      "seconds": 9.779958724975586
+    },
+    "ridge-esmc_300m-D-0-43-1": {
+      "job": "ridge-esmc_300m-D-0-43-1",
+      "started_unix": 1793641525.3392127,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-43-1/calibration.parquet",
+          "bytes": 415118,
+          "sha256": "345e0e01aacda13328450a5294a0104c243226be7f6ceb19faa1ad48b2f9d7f6"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-43-1/fit.json",
+          "bytes": 278,
+          "sha256": "7d30e646e376d0265a61b28fc3bf58f0d249939435a9903c83fc73f4142667ca"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-43-1/model.joblib",
+          "bytes": 547966,
+          "sha256": "2183c97bb3fd9669ceb0939f6d9812767733a21fb344238a1ced75e0607643ae"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-43-1/oof.parquet",
+          "bytes": 544451,
+          "sha256": "94cccd309b4f79929832b8369786f2f7c93eb01753c8e51223a7d235bcbd57db"
+        }
+      ],
+      "seconds": 9.985939025878906
+    },
+    "ridge-esmc_300m-D-0-43-2": {
+      "job": "ridge-esmc_300m-D-0-43-2",
+      "started_unix": 1793641538.7501774,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-43-2/calibration.parquet",
+          "bytes": 480832,
+          "sha256": "a8e6c9ed619b59bb864e4cff13c71d3285ff753cf78760849fedbafe10bb0392"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-43-2/fit.json",
+          "bytes": 274,
+          "sha256": "31d2501a341a6d1fd6b4c06ace7b9322e3db88c3a55b72683cefcf6e297bd3f2"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-43-2/model.joblib",
+          "bytes": 547966,
+          "sha256": "845e077b02bd661b93cbcc0b53abbaf6123947f974ad419ed3b74f69c0371648"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-43-2/oof.parquet",
+          "bytes": 559921,
+          "sha256": "f06404d415f92a4a369d7c6499f528c214916af9ba0fea87d4ed53ce1499551f"
+        }
+      ],
+      "seconds": 9.64560842514038
+    },
+    "ridge-esmc_300m-D-0-43-3": {
+      "job": "ridge-esmc_300m-D-0-43-3",
+      "started_unix": 1793641551.8075018,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-43-3/calibration.parquet",
+          "bytes": 436980,
+          "sha256": "045736d47b5b9cf675f92037dfd2e973f61d46b977ebfb050b88f72e23254452"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-43-3/fit.json",
+          "bytes": 277,
+          "sha256": "9a839d9262b15c3c169186482d19c1c68c7263a96323cad63735d1d84e9dd9fd"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-43-3/model.joblib",
+          "bytes": 547966,
+          "sha256": "c5819d6b813a834f473ea247a6113b0a6e7f3e7f3d32e354c214fd461be16ea4"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-43-3/oof.parquet",
+          "bytes": 563940,
+          "sha256": "9d00f641516e16ca0fc8fc396506b65884578335757914eedd4752ec426cd513"
+        }
+      ],
+      "seconds": 9.66541862487793
+    },
+    "ridge-esmc_300m-D-0-43-4": {
+      "job": "ridge-esmc_300m-D-0-43-4",
+      "started_unix": 1793641564.8771508,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-43-4/calibration.parquet",
+          "bytes": 418979,
+          "sha256": "d50ee679d772c7c6c92697fed87f1f092b239ecfd6e64fa10b917ff3aa77e2f9"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-43-4/fit.json",
+          "bytes": 274,
+          "sha256": "6ea90ca8af80a4543c2546c2537245c78afff69d1a4342d0e35bb2489f24dc49"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-43-4/model.joblib",
+          "bytes": 547966,
+          "sha256": "4ea845a1b872f986d228239e7d8a67117eaf1569227da831b81a71779be84926"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-0-43-4/oof.parquet",
+          "bytes": 559409,
+          "sha256": "df36044ffd65c75cc110f8148612b62f0a1e2eba06a5e2391f4bb6c86b8388af"
+        }
+      ],
+      "seconds": 9.98895263671875
+    },
+    "ridge-esmc_300m-D-1-17-0": {
+      "job": "ridge-esmc_300m-D-1-17-0",
+      "started_unix": 1793641578.286434,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-17-0/calibration.parquet",
+          "bytes": 418661,
+          "sha256": "e72bcc8a265835cdfcb44909c736fcb3a8d470944a79205a7584ef29ca2084ae"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-17-0/fit.json",
+          "bytes": 280,
+          "sha256": "d40a99b18b389b49217f5264c46a07f4397dfc96cc2a48d95e1b0439fd6d2f82"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-17-0/model.joblib",
+          "bytes": 555502,
+          "sha256": "9d93df0146193e888f8169de5535b683ec795824156fff0cc3eb1a6c34996694"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-17-0/oof.parquet",
+          "bytes": 569598,
+          "sha256": "63b85d699f0037c6852c3f83026ed5a7c7125d3e51e7130b2ad52c3b119524e1"
+        }
+      ],
+      "seconds": 13.686886072158813
+    },
+    "ridge-esmc_300m-D-1-17-1": {
+      "job": "ridge-esmc_300m-D-1-17-1",
+      "started_unix": 1793641595.4630754,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-17-1/calibration.parquet",
+          "bytes": 425501,
+          "sha256": "9c3fe9d8597177b3433e3de88a544563ac134e0abfcca86eda096e93d2c78757"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-17-1/fit.json",
+          "bytes": 277,
+          "sha256": "0cec55cbb6800f6aa1b82c763ac802dac0476ca379b150f8524c2df30e4904dd"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-17-1/model.joblib",
+          "bytes": 555502,
+          "sha256": "e8ff87d33f9b61ce209dc8377964fd90403e403f528526fbc72dd71425b6abf2"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-17-1/oof.parquet",
+          "bytes": 544488,
+          "sha256": "36f72478db8ec47c52708d535529cce890438c25cf1afba17784f88319af907d"
+        }
+      ],
+      "seconds": 14.040432929992676
+    },
+    "ridge-esmc_300m-D-1-17-2": {
+      "job": "ridge-esmc_300m-D-1-17-2",
+      "started_unix": 1793641612.932129,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-17-2/calibration.parquet",
+          "bytes": 432653,
+          "sha256": "7d9b4050507dc326b0cde48688443e5318e4286769363925a9a7b522de470666"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-17-2/fit.json",
+          "bytes": 279,
+          "sha256": "1bbd6f05d624a4284e5d823fd7f848d4355e59965897e2420c484e519dd7d989"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-17-2/model.joblib",
+          "bytes": 555502,
+          "sha256": "926421601edf6f4271ab36dc632d66f1f2ec934572a52744a80409a2e341b1b2"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-17-2/oof.parquet",
+          "bytes": 559938,
+          "sha256": "9f1ccf41ec9198fb07ed47175461289ecab7a92bd61f02314e5f9de427e2d39d"
+        }
+      ],
+      "seconds": 13.74037766456604
+    },
+    "ridge-esmc_300m-D-1-17-3": {
+      "job": "ridge-esmc_300m-D-1-17-3",
+      "started_unix": 1793641630.0892346,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-17-3/calibration.parquet",
+          "bytes": 407982,
+          "sha256": "3224370b0811fbacac2afea8849a7d7ce45034feae33165b9854e5777fd7fd48"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-17-3/fit.json",
+          "bytes": 280,
+          "sha256": "4d35a64ed5016149600f29939549815f8a187da616917b167f303cb620d52907"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-17-3/model.joblib",
+          "bytes": 555502,
+          "sha256": "0e4c8c8166530f4b1edd516d0bf9942a4ab130afb68359ed1710b8f68a4bb901"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-17-3/oof.parquet",
+          "bytes": 563961,
+          "sha256": "40ca32cad797df2ddebdb944f64bdcd6cf0d86a1649a4e4c0d1a0ddaed8cb14b"
+        }
+      ],
+      "seconds": 13.522170543670654
+    },
+    "ridge-esmc_300m-D-1-17-4": {
+      "job": "ridge-esmc_300m-D-1-17-4",
+      "started_unix": 1793641647.0509138,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-17-4/calibration.parquet",
+          "bytes": 416055,
+          "sha256": "fcd523c0961a30b7149c616b914b0ac1bb5a2aa64a1fa0615200d0d06c35df9a"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-17-4/fit.json",
+          "bytes": 279,
+          "sha256": "f6cb35b5ccefed96c07057800943e5d68b6d600ccd6ad302c4e3f55f586af59a"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-17-4/model.joblib",
+          "bytes": 555502,
+          "sha256": "d2ef8b3097df18c350c2e96239ce3d5fc0e368ce2cd5b821943b32e3bf53b502"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-17-4/oof.parquet",
+          "bytes": 559434,
+          "sha256": "3b480d6c8ffd5f608547a813b235d814d070c613ead2da179a17880f910e3fe5"
+        }
+      ],
+      "seconds": 13.664332151412964
+    },
+    "ridge-esmc_300m-D-1-29-0": {
+      "job": "ridge-esmc_300m-D-1-29-0",
+      "started_unix": 1793641664.1724026,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-29-0/calibration.parquet",
+          "bytes": 444843,
+          "sha256": "90831486b7fddeca677734001e25a8a5c56d20b12b2b774b220c5b73e1aa912f"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-29-0/fit.json",
+          "bytes": 279,
+          "sha256": "02c7470f295779167409f7e3c9688e1144ebc57f8525faade3fd6c6f35bd2ec0"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-29-0/model.joblib",
+          "bytes": 555502,
+          "sha256": "fbd86419c2c710804ffbf7c6b4ada9bdb223b600bc6b0dd14d0e712169c46ce4"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-29-0/oof.parquet",
+          "bytes": 569594,
+          "sha256": "9b3cbee8e90e02afa30827eb0adfc708b27cf51512b9157c8d0edeef6a26f41f"
+        }
+      ],
+      "seconds": 13.689416885375977
+    },
+    "ridge-esmc_300m-D-1-29-1": {
+      "job": "ridge-esmc_300m-D-1-29-1",
+      "started_unix": 1793641681.2581527,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-29-1/calibration.parquet",
+          "bytes": 430952,
+          "sha256": "f408f19aaa4893d2fe64c68d2af890a819c59240ee490b03c03945fb0d0bda0f"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-29-1/fit.json",
+          "bytes": 280,
+          "sha256": "2f1312b842d9c9da94f2f5b0e40639fb0f08569787582d8534a86c5ed3caa580"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-29-1/model.joblib",
+          "bytes": 555502,
+          "sha256": "c52835cf665f1e91b1842bf141f5ec1d0cb0d7b94e1f035adce3a124531a5265"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-29-1/oof.parquet",
+          "bytes": 544480,
+          "sha256": "dabe0b4061c7ceb276fcf10d6b020bebf0d93c28c5e4556a1a20ce897133942d"
+        }
+      ],
+      "seconds": 13.594180583953857
+    },
+    "ridge-esmc_300m-D-1-29-2": {
+      "job": "ridge-esmc_300m-D-1-29-2",
+      "started_unix": 1793641698.2589557,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-29-2/calibration.parquet",
+          "bytes": 435219,
+          "sha256": "450784dd20c8c03617c27102051b026dad7f8922d73b637adb7ddde3ceb2da30"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-29-2/fit.json",
+          "bytes": 279,
+          "sha256": "26889157e761ebe0722c15ab7018741d25e5fdf1c9bc60b90a9209eb98c06a15"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-29-2/model.joblib",
+          "bytes": 555502,
+          "sha256": "b43b1c636e9db217958b85c824f35fc16e8f54d7c670c1cd83d630ff0c48cd71"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-29-2/oof.parquet",
+          "bytes": 559938,
+          "sha256": "0420deb8b6c84e7e7d668b3149c05130de8caf211ee0798e829f008a8cc2d2fe"
+        }
+      ],
+      "seconds": 13.52625846862793
+    },
+    "ridge-esmc_300m-D-1-29-3": {
+      "job": "ridge-esmc_300m-D-1-29-3",
+      "started_unix": 1793641715.194009,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-29-3/calibration.parquet",
+          "bytes": 493930,
+          "sha256": "83658b1aeac96d4a4cf885bd03165230d0e401d80a90d59d4a244dfbd88c5955"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-29-3/fit.json",
+          "bytes": 279,
+          "sha256": "97a110254ebb7b4408813b4bd088dedcdaf160c1f4bfe86d41f3abd5651feb47"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-29-3/model.joblib",
+          "bytes": 555502,
+          "sha256": "b6d9128426176fd0744d415fab6b06a6fb012e2d9d852eb38c06a6afd47da08b"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-29-3/oof.parquet",
+          "bytes": 563949,
+          "sha256": "40bdb1890a664f37ebc7b0894272c910f3a4e7b571c3cfceaaa4bbc121a2c550"
+        }
+      ],
+      "seconds": 13.294896841049194
+    },
+    "ridge-esmc_300m-D-1-29-4": {
+      "job": "ridge-esmc_300m-D-1-29-4",
+      "started_unix": 1793641731.9208064,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-29-4/calibration.parquet",
+          "bytes": 415203,
+          "sha256": "029169f01d47f16b5a814000fb2cd61bd212fd0675b117637b8d73008d65c5ae"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-29-4/fit.json",
+          "bytes": 279,
+          "sha256": "f3848e071b0d07b36026c3178a14b8a20264cb5d5dfead43974f52c1717887d5"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-29-4/model.joblib",
+          "bytes": 555502,
+          "sha256": "3e2060fb0213d732e59340d7979d1b4382bbd2d464e11edd1bc14e4932926c73"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-29-4/oof.parquet",
+          "bytes": 559442,
+          "sha256": "2ca0a961ecceb5143852266ffe3e38dc6e50b6d70e281b142af78536fa818362"
+        }
+      ],
+      "seconds": 13.706493139266968
+    },
+    "ridge-esmc_300m-D-1-43-0": {
+      "job": "ridge-esmc_300m-D-1-43-0",
+      "started_unix": 1793641749.0822198,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-43-0/calibration.parquet",
+          "bytes": 444906,
+          "sha256": "895d5c98070aa58a51c656dd65da391f22326aeb62f066df971cd1325ccef518"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-43-0/fit.json",
+          "bytes": 280,
+          "sha256": "e9e245893c5192a211c72d27aa9a1d2e5a25e4e453385119afbb8467bef66809"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-43-0/model.joblib",
+          "bytes": 555502,
+          "sha256": "9bf5dba4f4b698a4bba47ab73ff7ff0080f476e5d41286729e7bed446bf5d5c7"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-43-0/oof.parquet",
+          "bytes": 569622,
+          "sha256": "a8c40a90f45ffaa1d76ec4aa36a93137d996f580721595a001d2175fefea1ec7"
+        }
+      ],
+      "seconds": 13.312988519668579
+    },
+    "ridge-esmc_300m-D-1-43-1": {
+      "job": "ridge-esmc_300m-D-1-43-1",
+      "started_unix": 1793641765.803087,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-43-1/calibration.parquet",
+          "bytes": 415102,
+          "sha256": "17c52b061d45c5876668ed152c09ec45115a1779812ed03796c5c5f8b754e71e"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-43-1/fit.json",
+          "bytes": 279,
+          "sha256": "7dc3bb04732d9654474b4cee83729cf8b085979ed0b2d2d474fb5e9c8f2c98b3"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-43-1/model.joblib",
+          "bytes": 555502,
+          "sha256": "2ca15c5c48eb04087edb5e90d53d06964d8bcdb06661a1398b9d63c4ceb06e4d"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-43-1/oof.parquet",
+          "bytes": 544496,
+          "sha256": "7267e7bdace8bef006699d6b6448a14867aec2645c011847fa120145cbd57b4f"
+        }
+      ],
+      "seconds": 13.599782943725586
+    },
+    "ridge-esmc_300m-D-1-43-2": {
+      "job": "ridge-esmc_300m-D-1-43-2",
+      "started_unix": 1793641782.8360763,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-43-2/calibration.parquet",
+          "bytes": 480836,
+          "sha256": "b4b5414d15eba2eb7d123ed6a1c8d2fd00130f1fe7cbd931ead30c6cb72f102f"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-43-2/fit.json",
+          "bytes": 278,
+          "sha256": "310f640ac6c49f07450af0faac64f9727c33dc6b5567494979eea33368cb10a2"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-43-2/model.joblib",
+          "bytes": 555502,
+          "sha256": "d304903419b56c13d26f6146afeb4d22c54f7d3795cad47ac7266b23747f2848"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-43-2/oof.parquet",
+          "bytes": 559962,
+          "sha256": "3699d54d0e8d7609979b80d6207153e5e1968c762316fed3089da80a4205f5f7"
+        }
+      ],
+      "seconds": 13.327897071838379
+    },
+    "ridge-esmc_300m-D-1-43-3": {
+      "job": "ridge-esmc_300m-D-1-43-3",
+      "started_unix": 1793641799.5673761,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-43-3/calibration.parquet",
+          "bytes": 436980,
+          "sha256": "f389b637dabcc616f47e14149367403f9bd4f3f71ee8d991b12665dbf6649390"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-43-3/fit.json",
+          "bytes": 280,
+          "sha256": "b5a751d9687109f9d5be866aae5461aa3f788e949be5d33d996b978dec847b92"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-43-3/model.joblib",
+          "bytes": 555502,
+          "sha256": "971350099f93c376efdf739da7c7d72a86491ecbdb4c382a7ad2809a61b0736c"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-43-3/oof.parquet",
+          "bytes": 563961,
+          "sha256": "558326f5590d16259acf6663f7213958a173c5db07542f46762f4206473af186"
+        }
+      ],
+      "seconds": 13.432099342346191
+    },
+    "ridge-esmc_300m-D-1-43-4": {
+      "job": "ridge-esmc_300m-D-1-43-4",
+      "started_unix": 1793641816.4130507,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-43-4/calibration.parquet",
+          "bytes": 418971,
+          "sha256": "7e74d4c80bcd47af331c014b63c498bee79934af990fcb4f918619bedd46771c"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-43-4/fit.json",
+          "bytes": 279,
+          "sha256": "ff4ab7bc9041882d6d6caefe18fd79e24153a1b6b620b54e9516de5323427006"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-43-4/model.joblib",
+          "bytes": 555502,
+          "sha256": "be91eef92cec817d3d9c6623e0256c95dfa57f85c12e168fe13621ba5bad6168"
+        },
+        {
+          "path": "jobs/ridge-esmc_300m-D-1-43-4/oof.parquet",
+          "bytes": 559418,
+          "sha256": "c9e62c590b2d25fe6c4e16d285c26382808c6b03e240f5260795f141342a0637"
+        }
+      ],
+      "seconds": 13.508732080459595
+    },
+    "probe-prott5_encoder": {
+      "job": "probe-prott5_encoder",
+      "started_unix": 1793644170.7093275,
+      "status": "adapter_blocked",
+      "reason": "ValueError: `tiktoken` is required to read a `tiktoken` file. Install it with `pip install tiktoken`.",
+      "seconds": 4.077773094177246
+    },
+    "extract-prott5_encoder": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-0-17-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-0-17-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-0-17-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-0-17-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-0-17-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-0-29-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-0-29-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-0-29-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-0-29-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-0-29-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-0-43-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-0-43-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-0-43-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-0-43-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-0-43-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-1-17-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-1-17-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-1-17-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-1-17-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-1-17-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-1-29-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-1-29-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-1-29-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-1-29-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-1-29-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-1-43-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-1-43-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-1-43-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-1-43-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-B-1-43-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-0-17-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-0-17-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-0-17-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-0-17-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-0-17-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-0-29-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-0-29-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-0-29-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-0-29-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-0-29-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-0-43-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-0-43-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-0-43-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-0-43-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-0-43-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-1-17-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-1-17-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-1-17-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-1-17-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-1-17-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-1-29-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-1-29-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-1-29-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-1-29-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-1-29-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-1-43-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-1-43-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-1-43-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-1-43-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-prott5_encoder-D-1-43-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "probe-ankh_base": {
+      "job": "probe-ankh_base",
+      "started_unix": 1793646830.9483752,
+      "status": "adapter_blocked",
+      "reason": "AssertionError: Tokenizer must return exactly 28 residue tokens",
+      "seconds": 4.986813068389893
+    },
+    "extract-ankh_base": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-0-17-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-0-17-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-0-17-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-0-17-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-0-17-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-0-29-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-0-29-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-0-29-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-0-29-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-0-29-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-0-43-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-0-43-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-0-43-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-0-43-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-0-43-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-1-17-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-1-17-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-1-17-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-1-17-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-1-17-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-1-29-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-1-29-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-1-29-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-1-29-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-1-29-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-1-43-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-1-43-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-1-43-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-1-43-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-B-1-43-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-0-17-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-0-17-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-0-17-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-0-17-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-0-17-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-0-29-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-0-29-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-0-29-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-0-29-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-0-29-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-0-43-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-0-43-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-0-43-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-0-43-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-0-43-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-1-17-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-1-17-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-1-17-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-1-17-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-1-17-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-1-29-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-1-29-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-1-29-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-1-29-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-1-29-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-1-43-0": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-1-43-1": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-1-43-2": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-1-43-3": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "ridge-ankh_base-D-1-43-4": {
+      "status": "skipped_resource",
+      "reason": "Dependency excluded before scoring"
+    },
+    "tune-frozen-B-17-1": {
+      "job": "tune-frozen-B-17-1",
+      "started_unix": 1793648027.2809908,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/tune-frozen-B-17-1/calibration.json",
+          "bytes": 199,
+          "sha256": "e2b1e0cfae799fb7a6c4750d84ac70167f9795fd24b98b597c678e957e60b74a"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-1/calibration.npy",
+          "bytes": 75152,
+          "sha256": "7779ad99ade43d452b2c8327afd691159eb5d25b8116cc921ac99e5c1a838f29"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-1/calibration.parquet",
+          "bytes": 425505,
+          "sha256": "6535ff8a31eae9bc0f0cc0c19d99299a5f3746fb089fef255503cbcc647d854c"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-1/fit.json",
+          "bytes": 373,
+          "sha256": "f9bb73ace6c55fbac8a1a62018142ca6c04c490f2d838a09aa24ec0d5f91dc2c"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-1/inner-validation-1.json",
+          "bytes": 199,
+          "sha256": "34830f3e609eb395ba7c3d7bff253c621603b07f6ad282f13250b1b2c857cd66"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-1/inner-validation-1.npy",
+          "bytes": 75152,
+          "sha256": "15cf61e5166e151982073eab263f7528ad184d1de3116775b8ad4073f3700e01"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-1/inner-validation-2.json",
+          "bytes": 199,
+          "sha256": "e2b1e0cfae799fb7a6c4750d84ac70167f9795fd24b98b597c678e957e60b74a"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-1/inner-validation-2.npy",
+          "bytes": 75152,
+          "sha256": "7779ad99ade43d452b2c8327afd691159eb5d25b8116cc921ac99e5c1a838f29"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-1/inner-validation-3.json",
+          "bytes": 199,
+          "sha256": "105efd535f20c5b45ae6f9e7d99bee0f0c006abb336b3edc7ed231c1549ceb52"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-1/inner-validation-3.npy",
+          "bytes": 75152,
+          "sha256": "79a7728764225c031e9fe8ac9283595d3070a031c7ea9b40ce1e35cdd4bc2e5d"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-1/inner-validation-4.json",
+          "bytes": 199,
+          "sha256": "822a9d9ed9181cacf4a6c68a9b9258028f3076cf139235c4abe1b3983b37cc48"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-1/inner-validation-4.npy",
+          "bytes": 75152,
+          "sha256": "d8bb264bbb1699cd26eddc9e28c8d344bdbd9857281ff66abd887bfba70b3e4b"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-1/inner-validation-5.json",
+          "bytes": 199,
+          "sha256": "480dd7603a690f1c485554a674179250dfee40e4f737f4913105e05c4a58ed2e"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-1/inner-validation-5.npy",
+          "bytes": 75152,
+          "sha256": "b93dfd0f48361441cc248a6092461c170f1160fc45363a0a3a315511970b9d47"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-1/inner-validation-6.json",
+          "bytes": 199,
+          "sha256": "a8c7783236a4f6d3d5a99ecff7e23b0bab29083f0bf3ec29037d6ab356824706"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-1/inner-validation-6.npy",
+          "bytes": 75152,
+          "sha256": "dfc46df84f423ce4509dc559f3c0aa48b5ccaac8307711bb058f34ffdd098392"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-1/inner.pt",
+          "bytes": 1066337,
+          "sha256": "e660e54d719b0cfb3069fac09e6071b5d3c6d996d5970c6904bbdb6b3a12a23b"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-1/model.pt",
+          "bytes": 264093,
+          "sha256": "666b390db01616c1beac5a99a57a7c7cd8b2206e8d0996483e9ac028ce3695bd"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-1/oof.parquet",
+          "bytes": 544458,
+          "sha256": "a5188eb71e052b889ac578eb918ff8f2201f37adc0055838a059612bd58b254a"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-1/refit.pt",
+          "bytes": 1066337,
+          "sha256": "16d308763d6ddc2747dce5a156b82b002c9831cfd3f257047ccd5e4f75664171"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-1/test.json",
+          "bytes": 199,
+          "sha256": "4417252a6d17c02335c874ecbcbc6796b29b0d51d6ac791e7964545e0602a232"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-1/test.npy",
+          "bytes": 95336,
+          "sha256": "8b515e49905a22fd50c5d5b4221226e97a50ca22778766605178131579377fa8"
+        }
+      ],
+      "seconds": 1699.712093114853
+    },
+    "tune-frozen-B-17-2": {
+      "job": "tune-frozen-B-17-2",
+      "started_unix": 1793649730.0711925,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/tune-frozen-B-17-2/calibration.json",
+          "bytes": 199,
+          "sha256": "6df9b25807f1e5629f9cf0c3410850084a193f3246e64e42d7fbf0170609a3eb"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-2/calibration.npy",
+          "bytes": 76444,
+          "sha256": "7549c98d1bd53b26bd68410b549482256f999022e4c58bcddd8a78da42a7b0c5"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-2/calibration.parquet",
+          "bytes": 432665,
+          "sha256": "27ab7c9953189da26fa7845c77f67670970359206d004840ac3344a8942782b2"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-2/fit.json",
+          "bytes": 374,
+          "sha256": "2fb9066890c49cdcb605f0f56155058cbff86cdef29bcd206a32f62be8f80937"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-2/inner-validation-1.json",
+          "bytes": 199,
+          "sha256": "6df9b25807f1e5629f9cf0c3410850084a193f3246e64e42d7fbf0170609a3eb"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-2/inner-validation-1.npy",
+          "bytes": 76444,
+          "sha256": "7549c98d1bd53b26bd68410b549482256f999022e4c58bcddd8a78da42a7b0c5"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-2/inner-validation-2.json",
+          "bytes": 199,
+          "sha256": "fe6182963dee50a8c4ceffe7170ce8532030f610219b8ee0aae692a5559d0c22"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-2/inner-validation-2.npy",
+          "bytes": 76444,
+          "sha256": "12b56e4d19a7cf68f648fd1e5aa4c7cd9bba8cc3b3ccfe7cdae4324b4bb37329"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-2/inner-validation-3.json",
+          "bytes": 199,
+          "sha256": "1c8ccb57191f3dc5019195e2a33f4b2a046ba9b99d019f9e893ef8bc3c041548"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-2/inner-validation-3.npy",
+          "bytes": 76444,
+          "sha256": "17722be8a7da378353dab8b82c889e5e7471f9e4d35ccaa6e5a0028a56ea0ef1"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-2/inner-validation-4.json",
+          "bytes": 199,
+          "sha256": "8efc2acbdf48769a5d43baeea39afdb2e38192d28aca027ae33c568a2ca30ab0"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-2/inner-validation-4.npy",
+          "bytes": 76444,
+          "sha256": "0c20d2811b43922fac35f68bbf62babc29ff295fa52e637afc65537bf190ee99"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-2/inner-validation-5.json",
+          "bytes": 199,
+          "sha256": "6af98c789964b9c2c6ae0d7ab5a70b5459bc9d717fa41232dc5ecb892ff63447"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-2/inner-validation-5.npy",
+          "bytes": 76444,
+          "sha256": "c7a1fe96cfe9302434e4a62d72d2fab2be8acae09973862b0a430cf12007978b"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-2/inner.pt",
+          "bytes": 1066401,
+          "sha256": "0cb304653839fbc6f32ed71278782e957920417397d9c41089bf4dab06628a28"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-2/model.pt",
+          "bytes": 264093,
+          "sha256": "80ae9e344ff94a7303ca1daadb408854906d7fc6f6c35c94493ba629afc001d0"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-2/oof.parquet",
+          "bytes": 559952,
+          "sha256": "0084ce204cc0f24cf729b35f0a1faa56440df08692f4dd237388ed3de132c30a"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-2/refit.pt",
+          "bytes": 1066273,
+          "sha256": "a2ee5a336f6a7895cd37e65157c582da3353a611855df60ccd0866e30da67529"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-2/test.json",
+          "bytes": 199,
+          "sha256": "302c68930adfa1f503904533205a70c21c4a17f7976432e1221f72d0031e9266"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-2/test.npy",
+          "bytes": 98224,
+          "sha256": "89f4d25ff429a469ad6cd7c323bb3405d3a01479bb5bc19dd772154f3b130c52"
+        }
+      ],
+      "seconds": 1257.5568783283234
+    },
+    "tune-frozen-B-17-3": {
+      "job": "tune-frozen-B-17-3",
+      "started_unix": 1793650997.1360567,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/tune-frozen-B-17-3/calibration.json",
+          "bytes": 199,
+          "sha256": "7512d2873ea4e4a1d908f9b9fcd2b51503a7389ef124ba306edadce9ef04fd5f"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-3/calibration.npy",
+          "bytes": 72024,
+          "sha256": "9fd6b790e50ec2d2cabfc125cce4598d31ac6a1d424a8928a523a418c5291116"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-3/calibration.parquet",
+          "bytes": 407990,
+          "sha256": "cae9697f84614df811e5d5de4fc65d5dc2acac6aec7b06311c55b279909d4093"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-3/fit.json",
+          "bytes": 374,
+          "sha256": "6a4861069f3bc2c1e64d82f1a1788558570533573c886cd4215a3cf4fd710fc5"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-3/inner-validation-1.json",
+          "bytes": 199,
+          "sha256": "89a28d6dbe7b1cd735b41f20125cfcd290f530c5069c74cf1690bc0f61f50b0b"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-3/inner-validation-1.npy",
+          "bytes": 72024,
+          "sha256": "e240048e168a09bb26a7057decc2043cddb11d4a038f291c740af2c85a1546e6"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-3/inner-validation-2.json",
+          "bytes": 199,
+          "sha256": "7512d2873ea4e4a1d908f9b9fcd2b51503a7389ef124ba306edadce9ef04fd5f"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-3/inner-validation-2.npy",
+          "bytes": 72024,
+          "sha256": "9fd6b790e50ec2d2cabfc125cce4598d31ac6a1d424a8928a523a418c5291116"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-3/inner-validation-3.json",
+          "bytes": 199,
+          "sha256": "920a7ca14ce8f6a2de8fed3444ea62e4707a4efd49b8409b127865eca2505c9e"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-3/inner-validation-3.npy",
+          "bytes": 72024,
+          "sha256": "2034d9794fba1aa82196ab82ee30402513c519dc24a9d49ddf569deafd0bcad8"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-3/inner-validation-4.json",
+          "bytes": 199,
+          "sha256": "45f4faf2bcdeb3930f577df4aae7b48f6b9efe2ee88a52f389e4a70538d22583"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-3/inner-validation-4.npy",
+          "bytes": 72024,
+          "sha256": "974dcd2a66af9aedcab888e9aa04674fd7a09e98124e889e1d195f7584f73942"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-3/inner-validation-5.json",
+          "bytes": 199,
+          "sha256": "9d97bed261f1a634f9d7bef1fcada8397eee42e02f948015fecbf103bd96c527"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-3/inner-validation-5.npy",
+          "bytes": 72024,
+          "sha256": "7f23516e87f5383d223b01076c3ce5786d359ef798acc2a179ad2671f4fa7b47"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-3/inner-validation-6.json",
+          "bytes": 199,
+          "sha256": "649b489c46c65506f48942d743c4a0237a2c594c4787f87d851c891fcde9c613"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-3/inner-validation-6.npy",
+          "bytes": 72024,
+          "sha256": "71da1eadb40e642eed505526595b7924588ff6cb82ebb19bc28ef83f891fadd4"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-3/inner.pt",
+          "bytes": 1066337,
+          "sha256": "66c5541017e89a79b0e2704eb222482f43773c3ce7187fc28edede2becc52101"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-3/model.pt",
+          "bytes": 264093,
+          "sha256": "c9d94e8b62ca6fcfcbbc6c64091ec4dcb08a30688cbec0af8aa2ea84dbd418c3"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-3/oof.parquet",
+          "bytes": 563935,
+          "sha256": "e8b14f8d8f156d653a1f3e3157c9dc5a88109398d8b8e35d9b5f4419f03a0ec0"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-3/refit.pt",
+          "bytes": 1066337,
+          "sha256": "8b9473f67636aff06a4e9ad38b4ee121f216c384bb04ef9c64b332d84aae579e"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-3/test.json",
+          "bytes": 199,
+          "sha256": "4f010742aeea9acebd1682ab73bf0a7bb3cd0f6b41bc1d00b9dcb285168227b2"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-3/test.npy",
+          "bytes": 98844,
+          "sha256": "6372c3d2a23533d112e0b449a636208d7611e6b67f1e3e8615bb832f92186e79"
+        }
+      ],
+      "seconds": 1691.531615972519
+    },
+    "tune-frozen-B-17-4": {
+      "job": "tune-frozen-B-17-4",
+      "started_unix": 1793652691.823982,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/tune-frozen-B-17-4/calibration.json",
+          "bytes": 199,
+          "sha256": "9ade8bb6b734b6fecfbe55e9687e7dd4bb690f48e342af39e209bd677127cd28"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-4/calibration.npy",
+          "bytes": 73492,
+          "sha256": "0ce771c208bc130ec77fcc45b6a6b63319d1bcfc151c4794c318788ac0755b70"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-4/calibration.parquet",
+          "bytes": 416047,
+          "sha256": "87f82dd2276aba13a70387fc5e167fec0cbe090fe04a94ed33b1fdd40efca21c"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-4/fit.json",
+          "bytes": 373,
+          "sha256": "381a59aadd91e29c6f7293468f002a43e6255d0356738087c2d6e43b20e532c7"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-4/inner-validation-1.json",
+          "bytes": 199,
+          "sha256": "bfc25e6a3a4f51ac55d96f8dd0b351a624b17566d3da13721c4e5bc2f993e91f"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-4/inner-validation-1.npy",
+          "bytes": 73492,
+          "sha256": "90169699badc879ff1929f40752180b57e7ae8f50d6e8d6f1f6d7909ea909538"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-4/inner-validation-2.json",
+          "bytes": 199,
+          "sha256": "9ade8bb6b734b6fecfbe55e9687e7dd4bb690f48e342af39e209bd677127cd28"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-4/inner-validation-2.npy",
+          "bytes": 73492,
+          "sha256": "0ce771c208bc130ec77fcc45b6a6b63319d1bcfc151c4794c318788ac0755b70"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-4/inner-validation-3.json",
+          "bytes": 199,
+          "sha256": "e897d06bfe01b028860dcf421119cbfa75524bf45f8ce299cfe07019c2e0ff87"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-4/inner-validation-3.npy",
+          "bytes": 73492,
+          "sha256": "732b83dddd15deaebf7e9ab0a8d9fd0fcbe2a25f49489cc0d4da940ae009ecf4"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-4/inner-validation-4.json",
+          "bytes": 199,
+          "sha256": "0022d387e8a10b47785190b0bf872a16f1efa40c88fca7f8e876d9197edcd3a2"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-4/inner-validation-4.npy",
+          "bytes": 73492,
+          "sha256": "23244f477db816d3dad62de0527332899fa0a082fa42bc4ff3eb9b54fa34df7b"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-4/inner-validation-5.json",
+          "bytes": 199,
+          "sha256": "db01e6f32e825d737c69ca36ebc0561494d1c4d47cd6b32fd3e04b03ef824801"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-4/inner-validation-5.npy",
+          "bytes": 73492,
+          "sha256": "33aaffcff178b74d094ca2abbb8f693713e8e11f1e43ab33a385502d78115d2b"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-4/inner-validation-6.json",
+          "bytes": 199,
+          "sha256": "b8cf42556588a0390955671930ec1e6253f5b3050e29a057d1668267232f3023"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-4/inner-validation-6.npy",
+          "bytes": 73492,
+          "sha256": "a161f849342ef663231e37880081c9248bc394f1d4c8dadb54c15f6d24d915ed"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-4/inner.pt",
+          "bytes": 1066337,
+          "sha256": "91031fdab68ea58b302113ca7d90ab0ca2f074165106d378ba36e72e8c5d9324"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-4/model.pt",
+          "bytes": 264093,
+          "sha256": "9c65758967e56bc6a7e7389047a082d5e226fa592bd3007abec7a158259e919a"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-4/oof.parquet",
+          "bytes": 559416,
+          "sha256": "834ad9d04e5e16734a2ffe5f17c868df2db7484fdd33828d663dd84c4645330b"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-4/refit.pt",
+          "bytes": 1066337,
+          "sha256": "1ba1736fdd83a24182b135424aeeea35d0ea269fa7ee5333029b872311450c79"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-4/test.json",
+          "bytes": 199,
+          "sha256": "4045a6956e1aa6567bd39ac02ab6317a185189951c1ea090ec3ddc1c87b0ecd4"
+        },
+        {
+          "path": "jobs/tune-frozen-B-17-4/test.npy",
+          "bytes": 98080,
+          "sha256": "973cf530aaa4bdedae18448a3158f34e40501e09a264ea0aeff411cc970765ac"
+        }
+      ],
+      "seconds": 1677.8405268192291
+    },
+    "tune-frozen-D-17-0": {
+      "job": "tune-frozen-D-17-0",
+      "started_unix": 1793654372.7397819,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/tune-frozen-D-17-0/calibration.json",
+          "bytes": 199,
+          "sha256": "b3bddb09b81f426e9b4d1989f9e0d8b09871723e76cc9af928e2465317f0f623"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-0/calibration.npy",
+          "bytes": 73900,
+          "sha256": "5d356e57d0c5e026feed4ab9eea0e85d32c25c13b4aef5d006ad35ce28e8a63d"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-0/calibration.parquet",
+          "bytes": 418653,
+          "sha256": "6fafd52446fa5d485a4d4d15e9da14bab624ef8ead5e69265b859155b591a43c"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-0/fit.json",
+          "bytes": 373,
+          "sha256": "6c7b924040b6c56e6f57f5109f9990b196fbff545d329faa211f1ed887c7bfcf"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-0/inner-validation-1.json",
+          "bytes": 199,
+          "sha256": "b3bddb09b81f426e9b4d1989f9e0d8b09871723e76cc9af928e2465317f0f623"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-0/inner-validation-1.npy",
+          "bytes": 73900,
+          "sha256": "5d356e57d0c5e026feed4ab9eea0e85d32c25c13b4aef5d006ad35ce28e8a63d"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-0/inner-validation-2.json",
+          "bytes": 199,
+          "sha256": "df9b6681780e38e894f0429d822b820481136b3b9afa57860ebb4eca0092550e"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-0/inner-validation-2.npy",
+          "bytes": 73900,
+          "sha256": "a564aa560b35de536c453a65c2de64fae2e7ff7f00ffd91f21af6cc525784a59"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-0/inner-validation-3.json",
+          "bytes": 199,
+          "sha256": "2c171c966fd5a07da2cc41b9d1b5dfb5a2ca6de47d62208335ccf99c82f3490d"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-0/inner-validation-3.npy",
+          "bytes": 73900,
+          "sha256": "493e4df87edb21b674355716cf6840fbfe5f8e7a024fb5cc458f63c89b5c64b0"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-0/inner-validation-4.json",
+          "bytes": 199,
+          "sha256": "275e4363713d4cb8c65fb48f4309f413944071e053c5ad6b9eb94fbb966954b1"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-0/inner-validation-4.npy",
+          "bytes": 73900,
+          "sha256": "03e4ec0908df8556cc5c8403ff6fadcd65f6ff52d688328811a641bff629f923"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-0/inner-validation-5.json",
+          "bytes": 199,
+          "sha256": "9553c40bc9b0d0852cd8f61bb1962547a694d7df0a9537716fa923dd48bcc3ec"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-0/inner-validation-5.npy",
+          "bytes": 73900,
+          "sha256": "bf89c7fe3ac39f9e19534522cfde88d176af4bbd6b3ebc59af2f50863bbd64ee"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-0/inner.pt",
+          "bytes": 1066401,
+          "sha256": "08900604e267956e7a03b5edb57a09e78528cec4d7a54ed5f4451e6b875b87cf"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-0/model.pt",
+          "bytes": 264093,
+          "sha256": "c09350a942b9e885e2a8f8ba89c023008c5cfe0e9761b205cc1782aff1c9a978"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-0/oof.parquet",
+          "bytes": 569596,
+          "sha256": "6c7acde9b8d05df4b80e0494f49e9fc0afdad2c2b7eb8a9ae9859832d340f833"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-0/refit.pt",
+          "bytes": 1066273,
+          "sha256": "b2e85d28ae3a7e8b9c748ca1620dbcc16adc94ea19f88d367593d93c3c1a8a91"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-0/test.json",
+          "bytes": 199,
+          "sha256": "093be3b63db2fae4639538a2a726f900b8444cd2745212e123fba706e95fcacb"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-0/test.npy",
+          "bytes": 99804,
+          "sha256": "fc4bcb9451e33f33346bfe2b277f17f1f8813edfe0d09ef9654011eb9f781214"
+        }
+      ],
+      "seconds": 1599.392323255539
+    },
+    "tune-frozen-D-17-1": {
+      "job": "tune-frozen-D-17-1",
+      "started_unix": 1793655975.1963358,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/tune-frozen-D-17-1/calibration.json",
+          "bytes": 199,
+          "sha256": "2321a255df812e36e4a7f673b2d46379407d5186ab4e16bacc70d53ef45dd049"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-1/calibration.npy",
+          "bytes": 75152,
+          "sha256": "bf024c93035230d704389f70a75d67ffa16ef6552d542de461c3e5e6e4698394"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-1/calibration.parquet",
+          "bytes": 425489,
+          "sha256": "6cc1dbf9f4d18b35ab2924e605a8e5913cfce772b4c27e977e64c872de65e52a"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-1/fit.json",
+          "bytes": 373,
+          "sha256": "17e844aacb3470acacbfb27bf40b6ca7e62a376ecfb3add5fc8e3d2dca86a7d0"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-1/inner-validation-1.json",
+          "bytes": 199,
+          "sha256": "2321a255df812e36e4a7f673b2d46379407d5186ab4e16bacc70d53ef45dd049"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-1/inner-validation-1.npy",
+          "bytes": 75152,
+          "sha256": "bf024c93035230d704389f70a75d67ffa16ef6552d542de461c3e5e6e4698394"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-1/inner-validation-2.json",
+          "bytes": 199,
+          "sha256": "b0e84adcdb959556a3059f99c414a1fc2b6261d03e78befbd9ca294583fa1715"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-1/inner-validation-2.npy",
+          "bytes": 75152,
+          "sha256": "25b34319040913c8cdc1aeb5f4a894e58e62288dbcb321f09e11f7353dee1d1b"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-1/inner-validation-3.json",
+          "bytes": 199,
+          "sha256": "7124120e20557766711567ad13e088c3f1c897df2f7888d1cfd8581eea7c56d0"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-1/inner-validation-3.npy",
+          "bytes": 75152,
+          "sha256": "bfae4a58bad250523172b5452badfa79e758f276764f3959b0435ac7b637ff09"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-1/inner-validation-4.json",
+          "bytes": 199,
+          "sha256": "15157d7ec367b00cb8da771e139e4517f82583e3dc9c842caeee4f693cb9bd9b"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-1/inner-validation-4.npy",
+          "bytes": 75152,
+          "sha256": "4baba61b7fd64feaca89016c47e429d3433b62d190a2dd1abf6d39f9a5633086"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-1/inner-validation-5.json",
+          "bytes": 199,
+          "sha256": "23c61773dc9c8ca5d45da421046d41a755d21bcda137c62098d569f7f0be8efd"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-1/inner-validation-5.npy",
+          "bytes": 75152,
+          "sha256": "8ad4d32cada07c4ca30aa14b543e078be6c67dfbe1b3cf288b2e376d775210b7"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-1/inner.pt",
+          "bytes": 1066401,
+          "sha256": "d6af32c581469335e168a786a5acab116f16ca13019a420c0a6185687dad8bb9"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-1/model.pt",
+          "bytes": 264093,
+          "sha256": "a20a2a954e98c91d65487ab6f9c1ee46ace52dfe52b28c35599d49fc8677bba5"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-1/oof.parquet",
+          "bytes": 544470,
+          "sha256": "87c8ebe5f15fdafe8e5767a5d33dcdb0609f24e1fa0c44200bb525c70c6def3d"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-1/refit.pt",
+          "bytes": 1066273,
+          "sha256": "8452b860f17a6f66204c2aa717777322265dace8d0fc5ef9cb2cae1827fba410"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-1/test.json",
+          "bytes": 199,
+          "sha256": "435c9fe5600874546a5b51501458c973095558a22c1add8131d1d97249c92747"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-1/test.npy",
+          "bytes": 95336,
+          "sha256": "bc2e20c79ed3e86e5276a18c1c71342c1dc3a877ae761887946865bb20663f0d"
+        }
+      ],
+      "seconds": 1665.7969644069672
+    },
+    "tune-frozen-D-17-2": {
+      "job": "tune-frozen-D-17-2",
+      "started_unix": 1793657644.1454356,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/tune-frozen-D-17-2/calibration.json",
+          "bytes": 199,
+          "sha256": "b5dc74fb3590ddc806534e69cad14d434d5157098459f32383b92c5b67bce667"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-2/calibration.npy",
+          "bytes": 76444,
+          "sha256": "54a8e07c4e7ded033ae781fc4f853e502462786135865ef9fb96014a666a262f"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-2/calibration.parquet",
+          "bytes": 432661,
+          "sha256": "7f8666c742fe6f616874254d259c5b4001d1f203469e4370497f2c8ce5b621ad"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-2/fit.json",
+          "bytes": 374,
+          "sha256": "1f8446a965e2b8a29dbad0b9e23503da0b9051c3dd913005e9c47ea0cec876ce"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-2/inner-validation-1.json",
+          "bytes": 199,
+          "sha256": "b5dc74fb3590ddc806534e69cad14d434d5157098459f32383b92c5b67bce667"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-2/inner-validation-1.npy",
+          "bytes": 76444,
+          "sha256": "54a8e07c4e7ded033ae781fc4f853e502462786135865ef9fb96014a666a262f"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-2/inner-validation-2.json",
+          "bytes": 199,
+          "sha256": "f8d5dc3c373455b706b489ddc06edf619f07553f8d35558e9a47bb73bd947029"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-2/inner-validation-2.npy",
+          "bytes": 76444,
+          "sha256": "c7c39eef561fb64c2be6baa1e16456c44e73eff5f0688b8c87a2c8216696f9cf"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-2/inner-validation-3.json",
+          "bytes": 199,
+          "sha256": "23280e76d330521ac98d04f8b7e030eb3ee92e46e3ed571be40bd77b0201c8d2"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-2/inner-validation-3.npy",
+          "bytes": 76444,
+          "sha256": "94129da1744eda1ef53b180e1b015997087f6a258adb885bfa94ec93fc0cc9b4"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-2/inner-validation-4.json",
+          "bytes": 199,
+          "sha256": "9cc08c7fc2817cd45d163fad8e40d0d454d1d0cc4fa54dfdbee4b0e1cae9d52f"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-2/inner-validation-4.npy",
+          "bytes": 76444,
+          "sha256": "ba78761958c3ede932ef6f15d5517ba1c783ecb160d6f77dd8500ea9a94a8f3d"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-2/inner-validation-5.json",
+          "bytes": 199,
+          "sha256": "a4f7ea229cd8e44fb0a484a7faf9161e4db483d62206f8a4e75affc68874ffa5"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-2/inner-validation-5.npy",
+          "bytes": 76444,
+          "sha256": "6e0baf1881fef47c4e94bb3e3da9c8084caa7a99197b1388ce737cc2143981eb"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-2/inner.pt",
+          "bytes": 1066401,
+          "sha256": "2382c26140e490269f73b26d490220095111251c91c5f4d554a43941f0f4b985"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-2/model.pt",
+          "bytes": 264093,
+          "sha256": "774d0ecb60c897de4ff83b930a46c138ecfb2d7caf5aae410613613e86be4dcb"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-2/oof.parquet",
+          "bytes": 559916,
+          "sha256": "59a80f3cfb96a79f0dce9984a48d6d2dd7cac51be910588665c6f62922dfc25a"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-2/refit.pt",
+          "bytes": 1066273,
+          "sha256": "83c65dba0818eed6a8a8b53cba33245ea659e4bdeafd4e0059635fb1d95374bb"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-2/test.json",
+          "bytes": 199,
+          "sha256": "136c2dfdfd447ddf7c705ab84f08ca7c7c634351bbf8e6b2fcf7f3c8a53fa171"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-2/test.npy",
+          "bytes": 98224,
+          "sha256": "42cb40de1e77a98034538859bcdc789b90f78ff3c75151ed5d4e2d8fa32b740f"
+        }
+      ],
+      "seconds": 1607.5691323280334
+    },
+    "tune-frozen-D-17-3": {
+      "job": "tune-frozen-D-17-3",
+      "started_unix": 1793659254.819613,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/tune-frozen-D-17-3/calibration.json",
+          "bytes": 199,
+          "sha256": "3925b68af38dcf4f29aa70de2c3b31198c841e8522167a7b538ca1cd0a59b383"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-3/calibration.npy",
+          "bytes": 72024,
+          "sha256": "857549a13457ef89527690833e99a69508039ba445e3abca246fe57f3d587480"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-3/calibration.parquet",
+          "bytes": 407966,
+          "sha256": "8a74fa7a3b8307f1bb7f2d427dc9bdf614bdb7459eb7a3955cf379b6084afee4"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-3/fit.json",
+          "bytes": 374,
+          "sha256": "d844d25194152aa2307496d0c268ca17ae75ad8b3e5a773f894c4acad9bad8bc"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-3/inner-validation-1.json",
+          "bytes": 199,
+          "sha256": "02716cc169fd032f23a9958692a531b3c4f11c7b0eef7c04b48c4ca4830bcbec"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-3/inner-validation-1.npy",
+          "bytes": 72024,
+          "sha256": "d87ffbc08600340312b05e0cf7b2984f4266798c6e4c32037f75a2b41cf7a633"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-3/inner-validation-2.json",
+          "bytes": 199,
+          "sha256": "3925b68af38dcf4f29aa70de2c3b31198c841e8522167a7b538ca1cd0a59b383"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-3/inner-validation-2.npy",
+          "bytes": 72024,
+          "sha256": "857549a13457ef89527690833e99a69508039ba445e3abca246fe57f3d587480"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-3/inner-validation-3.json",
+          "bytes": 199,
+          "sha256": "16de17d219acc2a326c61548702e93f306683c399c05544b21ed45732c47d2e3"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-3/inner-validation-3.npy",
+          "bytes": 72024,
+          "sha256": "0c0a9b2c30f6b20b26f5278f88e31f897af00c3896db24e44621e7f34141f61d"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-3/inner-validation-4.json",
+          "bytes": 199,
+          "sha256": "a8624667e35648cd075ffe9b20b9e430706e2d87a90a45e56600f5e5d2fbc29f"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-3/inner-validation-4.npy",
+          "bytes": 72024,
+          "sha256": "a9e1f4719bb89427189d11144d850c5515f64b9148880f083c28e659e42a564e"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-3/inner-validation-5.json",
+          "bytes": 199,
+          "sha256": "c4dcf894853e5c1d1dafa309baf5b6b9bcb94b2eeb36ed5a2dad325f1bd9ba9b"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-3/inner-validation-5.npy",
+          "bytes": 72024,
+          "sha256": "2753f45f1182a1dab33c83261afdebdfbd2064135e454c013008602674a7bcaf"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-3/inner-validation-6.json",
+          "bytes": 199,
+          "sha256": "b0c17c2f189982d033deb48ce753cf97832580efa35b587b4c59a509dd3459fc"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-3/inner-validation-6.npy",
+          "bytes": 72024,
+          "sha256": "a9189da14db9fb23334dde9fcc8eeb25731ef442f98e8df45dc31d727f826b13"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-3/inner.pt",
+          "bytes": 1066337,
+          "sha256": "0a127ee5df4f84d6f777d48a55df58318841e9e59669442de97a59c2938fa76f"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-3/model.pt",
+          "bytes": 264093,
+          "sha256": "f817e8c69128a2efaac4412f0a2a8be9ea7938f1a0e5d0d3c58dd444d1f62d82"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-3/oof.parquet",
+          "bytes": 563951,
+          "sha256": "e751b717e711fa9be9e92208a52b3515658c3a24835816713eb735fa0f258731"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-3/refit.pt",
+          "bytes": 1066337,
+          "sha256": "2254f8e69c218f09a889bc1b3ef8641257f9408cd1381898260d50cd49d9c041"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-3/test.json",
+          "bytes": 199,
+          "sha256": "96374f9991e200b16fafa2c3e74a8b85ad977d52389830b37fc29968ef50cf54"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-3/test.npy",
+          "bytes": 98844,
+          "sha256": "a4c216b684dd2f5a673cc3cbe25b3174ac88983aac52ad02b4f1e5e63642dce8"
+        }
+      ],
+      "seconds": 2093.905625104904
+    },
+    "tune-frozen-D-17-4": {
+      "job": "tune-frozen-D-17-4",
+      "started_unix": 1793661351.910566,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/tune-frozen-D-17-4/calibration.json",
+          "bytes": 199,
+          "sha256": "ef1b8ff4d06bf2fe5534e799b27ba347752cead13b2049f85c509ecbcd7dfbfb"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-4/calibration.npy",
+          "bytes": 73492,
+          "sha256": "58563185026cedcb7e034a815098a1432753e7920447dc315b5b17c81d46f3e2"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-4/calibration.parquet",
+          "bytes": 416059,
+          "sha256": "1c167aab96854c80bac0d6497689354b84e4a4023d536935cb0a1fbcb72f2c33"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-4/fit.json",
+          "bytes": 374,
+          "sha256": "ae22194e4cf6cbf4ba94b3ca849708ed16231103b311601fc11ba339fa5d57ff"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-4/inner-validation-1.json",
+          "bytes": 199,
+          "sha256": "ef1b8ff4d06bf2fe5534e799b27ba347752cead13b2049f85c509ecbcd7dfbfb"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-4/inner-validation-1.npy",
+          "bytes": 73492,
+          "sha256": "58563185026cedcb7e034a815098a1432753e7920447dc315b5b17c81d46f3e2"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-4/inner-validation-2.json",
+          "bytes": 199,
+          "sha256": "add17cd8f41cf7d572440d5dbfb0196683981b5d73184a760ec14629430ab927"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-4/inner-validation-2.npy",
+          "bytes": 73492,
+          "sha256": "6987c7bf7a71afdb607b08292a3cea813c82e2c233560e2001c20f6f93cd5a90"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-4/inner-validation-3.json",
+          "bytes": 199,
+          "sha256": "0a393066e5fe3b4edd673cde624519222dce2cc28834e112f8c4a8b1f71be083"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-4/inner-validation-3.npy",
+          "bytes": 73492,
+          "sha256": "a859b931fa2b4a5131b68c04355a70a6f1cb9fc65f62624b7469bc78f6c230fa"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-4/inner-validation-4.json",
+          "bytes": 199,
+          "sha256": "515eef3b2487293b55f4fde8770589a52c4d569d5666d3b3c5ef730c12bd03e8"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-4/inner-validation-4.npy",
+          "bytes": 73492,
+          "sha256": "7ba990bb0459f36c8caac98bf6aa50ab46268ee25fb90f6337f94ae5421fcd21"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-4/inner-validation-5.json",
+          "bytes": 199,
+          "sha256": "4a29d276aa3dbfb78ca7f82d341c2c56b4a960f40e912e483c7010ee6f0b98b4"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-4/inner-validation-5.npy",
+          "bytes": 73492,
+          "sha256": "90fa123bff446d9e883ce3e4eb20c1ba8351437a7381224f6befc4d99b307582"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-4/inner.pt",
+          "bytes": 1066401,
+          "sha256": "3358b10ad1e5289b716d6a9c3869b8efb6e08f63ab50b6acb9d6f93dccd3eb70"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-4/model.pt",
+          "bytes": 264093,
+          "sha256": "23c3b6a124c2da0e785f92b3c1cc34c1ad6a69b64a25e179005d7e3c172ed1ef"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-4/oof.parquet",
+          "bytes": 559396,
+          "sha256": "c8a186f553148de14756b543429d84bed2775f82a2d9b84d67d9d0c418077ef5"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-4/refit.pt",
+          "bytes": 1066273,
+          "sha256": "292f6f1f52b548be404eb14e6670a6fcf48dbb0be61aadd6ebc08772a600fa61"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-4/test.json",
+          "bytes": 199,
+          "sha256": "96cdf65fc30529da3e20255005c466afea96b3025284556b800e890639ecc341"
+        },
+        {
+          "path": "jobs/tune-frozen-D-17-4/test.npy",
+          "bytes": 98080,
+          "sha256": "f4823d5e2b0bb857d8009546ba6cf123836d7791f9e5ee23099d909303648af1"
+        }
+      ],
+      "seconds": 1605.8001539707184
+    },
+    "tune-lora-B-17-0": {
+      "job": "tune-lora-B-17-0",
+      "started_unix": 1793662960.8518956,
+      "status": "complete",
+      "files": [
+        {
+          "path": "jobs/tune-lora-B-17-0/calibration.json",
+          "bytes": 199,
+          "sha256": "d13ec9bff11c9574efb08b9c5d9938fda37b62ed8ba4212ec021ee4fe36da557"
+        },
+        {
+          "path": "jobs/tune-lora-B-17-0/calibration.npy",
+          "bytes": 73900,
+          "sha256": "813428dce9ef9c8360a5c46e699945a05578988a265f90931bace9b98fdccbbc"
+        },
+        {
+          "path": "jobs/tune-lora-B-17-0/calibration.parquet",
+          "bytes": 418653,
+          "sha256": "faeedb6dfc896d3639a8aaa09a8876a7b4ef058fb10339734c52ea42e3d25063"
+        },
+        {
+          "path": "jobs/tune-lora-B-17-0/fit.json",
+          "bytes": 3305,
+          "sha256": "e171caf0ddec34b8e4c65571ff956297ec572ad904009fa0e060b910b6580dc6"
+        },
+        {
+          "path": "jobs/tune-lora-B-17-0/inner-validation-1.json",
+          "bytes": 199,
+          "sha256": "f4090547ca8e854c0277d8c39213f48a3f0274201caca9cca25cf481d233c51d"
+        },
+        {
+          "path": "jobs/tune-lora-B-17-0/inner-validation-1.npy",
+          "bytes": 73900,
+          "sha256": "ce42854958db275cae2af4eeef6395939fe6afc902e423bd5b5029940601f523"
+        },
+        {
+          "path": "jobs/tune-lora-B-17-0/inner-validation-2.json",
+          "bytes": 199,
+          "sha256": "d13ec9bff11c9574efb08b9c5d9938fda37b62ed8ba4212ec021ee4fe36da557"
+        },
+        {
+          "path": "jobs/tune-lora-B-17-0/inner-validation-2.npy",
+          "bytes": 73900,
+          "sha256": "813428dce9ef9c8360a5c46e699945a05578988a265f90931bace9b98fdccbbc"
+        },
+        {
+          "path": "jobs/tune-lora-B-17-0/inner-validation-3.json",
+          "bytes": 199,
+          "sha256": "8096d5a32ac2cf1dfe3c04a9e7797aae95b6b0087b4137f3688eadb9f0273678"
+        },
+        {
+          "path": "jobs/tune-lora-B-17-0/inner-validation-3.npy",
+          "bytes": 73900,
+          "sha256": "5a6db112cb56edd7acdfc9d7a3b27759d71340ad159787647db0fb71d809d926"
+        },
+        {
+          "path": "jobs/tune-lora-B-17-0/inner-validation-4.json",
+          "bytes": 199,
+          "sha256": "161d4bf38174a49bc2657ee932eb62826864901ecf96ce8c920b17cf5ee19fa8"
+        },
+        {
+          "path": "jobs/tune-lora-B-17-0/inner-validation-4.npy",
+          "bytes": 73900,
+          "sha256": "d09aad22c784c805aee5f1ceaa37ada5f4108fb8ad19aba33132c43ec1126226"
+        },
+        {
+          "path": "jobs/tune-lora-B-17-0/inner-validation-5.json",
+          "bytes": 199,
+          "sha256": "555e363752e6deaa963cacc9a897c5bcedae45be733ea3270382f00cb8ce01e5"
+        },
+        {
+          "path": "jobs/tune-lora-B-17-0/inner-validation-5.npy",
+          "bytes": 73900,
+          "sha256": "4fc379e1ed952b2f332637b307b6fdcb4c86d2b865c7bae22f63220923d2d9fd"
+        },
+        {
+          "path": "jobs/tune-lora-B-17-0/inner-validation-6.json",
+          "bytes": 199,
+          "sha256": "a74ae02e90f144f8b5d278300187d67a967b40e5c8ee4e9caceec5e4c737d76c"
+        },
+        {
+          "path": "jobs/tune-lora-B-17-0/inner-validation-6.npy",
+          "bytes": 73900,
+          "sha256": "41bbb6cfc36a6d5d1fc5d9b15d14bce957c8a4b70cf3cf6f08fe1fa2ed0baa10"
+        },
+        {
+          "path": "jobs/tune-lora-B-17-0/inner.pt",
+          "bytes": 4087091,
+          "sha256": "14580fa91604cffa9ef5d0de39e198d29f9f9452773b6f1a0835d67b3c3a452d"
+        },
+        {
+          "path": "jobs/tune-lora-B-17-0/model.pt",
+          "bytes": 1016199,
+          "sha256": "262bde73768ca67d8e0bfea5620175d3315a7f6ee33c5b5282c7d038ffb5cfce"
+        },
+        {
+          "path": "jobs/tune-lora-B-17-0/oof.parquet",
+          "bytes": 569578,
+          "sha256": "5501777615184cf5584ef81214c2f26ce7e4fdc112ce9d4e2dcecc18841192c7"
+        },
+        {
+          "path": "jobs/tune-lora-B-17-0/refit.pt",
+          "bytes": 4087155,
+          "sha256": "3d29a79b430fd906c48d5fa95d117073d085547089de0cc9ece241ce99e7d7c5"
+        },
+        {
+          "path": "jobs/tune-lora-B-17-0/test.json",
+          "bytes": 199,
+          "sha256": "7af5cd863112e1f58963e664e9c9c7044f03de853818355871198f39157a95de"
+        },
+        {
+          "path": "jobs/tune-lora-B-17-0/test.npy",
+          "bytes": 99804,
+          "sha256": "1ee810fa46da544980b6011eb3ede0511b48774ca7e898431e2f3ab3a3767e52"
+        }
+      ],
+      "seconds": 3457.3704278469086
+    },
+    "tune-lora-B-17-1": {
+      "job": "tune-lora-B-17-1",
+      "started_unix": 1793666421.4040484,
       "status": "paused",
       "reason": "Session deadline or pause request; committed work retained",
-      "seconds": 1070.7775950431824
+      "seconds": 1650.2128224372864
     }
   },
   "scientific_status": "development_expansion_after_Kaggle_results"

@@ -1,0 +1,22 @@
+{
+  "status": "complete",
+  "identity": "f8650afb7a4348321a07e4a853361116326c6db51fcd4c5ee435a0bac9a62c58",
+  "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738",
+  "model_id": "esmc_300m",
+  "rows": 122412,
+  "mode": "official",
+  "scope": "sat",
+  "revision": "e4bac860f0c502cd80f3aeac3d0ce6524c6627cb",
+  "dtype": "float16",
+  "feature_kind": "delta_site_and_mean",
+  "files": [
+    {
+      "path": "pool.npy",
+      "sha256": "156a7c22fe851b157c0017b40207cb74c99e369c847922b6063d34f57d42e785"
+    },
+    {
+      "path": "rows.parquet",
+      "sha256": "b90c28d510247b720f7a20d72722ea6b354386d2a510609783d9a5f33f2a0d1b"
+    }
+  ]
+}

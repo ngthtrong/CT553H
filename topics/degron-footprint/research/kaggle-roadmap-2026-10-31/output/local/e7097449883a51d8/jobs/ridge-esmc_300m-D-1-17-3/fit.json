@@ -1,0 +1,11 @@
+{
+  "recipe": "esmc_300m-context-D",
+  "model": "esmc_300m",
+  "arm": "D",
+  "context": true,
+  "seed": 17,
+  "fold": 3,
+  "alpha": 1000.0,
+  "validation_mse": 0.34222534904655794,
+  "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738"
+}

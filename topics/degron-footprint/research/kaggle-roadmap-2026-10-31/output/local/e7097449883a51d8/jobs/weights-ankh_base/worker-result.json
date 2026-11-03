@@ -1,0 +1,13 @@
+{
+  "job": "weights-ankh_base",
+  "started_unix": 1793644178.345974,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/weights-ankh_base/weights.json",
+      "bytes": 236,
+      "sha256": "b0fad709014f2674ea51eab890637d4299df116237edccd9deec85222aa94b37"
+    }
+  ],
+  "seconds": 2649.566431760788
+}

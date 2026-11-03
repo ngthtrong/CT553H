@@ -1,0 +1,118 @@
+{
+  "job": "tune-lora-B-17-0",
+  "started_unix": 1793662960.8518956,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/tune-lora-B-17-0/calibration.json",
+      "bytes": 199,
+      "sha256": "d13ec9bff11c9574efb08b9c5d9938fda37b62ed8ba4212ec021ee4fe36da557"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-0/calibration.npy",
+      "bytes": 73900,
+      "sha256": "813428dce9ef9c8360a5c46e699945a05578988a265f90931bace9b98fdccbbc"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-0/calibration.parquet",
+      "bytes": 418653,
+      "sha256": "faeedb6dfc896d3639a8aaa09a8876a7b4ef058fb10339734c52ea42e3d25063"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-0/fit.json",
+      "bytes": 3305,
+      "sha256": "e171caf0ddec34b8e4c65571ff956297ec572ad904009fa0e060b910b6580dc6"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-0/inner-validation-1.json",
+      "bytes": 199,
+      "sha256": "f4090547ca8e854c0277d8c39213f48a3f0274201caca9cca25cf481d233c51d"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-0/inner-validation-1.npy",
+      "bytes": 73900,
+      "sha256": "ce42854958db275cae2af4eeef6395939fe6afc902e423bd5b5029940601f523"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-0/inner-validation-2.json",
+      "bytes": 199,
+      "sha256": "d13ec9bff11c9574efb08b9c5d9938fda37b62ed8ba4212ec021ee4fe36da557"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-0/inner-validation-2.npy",
+      "bytes": 73900,
+      "sha256": "813428dce9ef9c8360a5c46e699945a05578988a265f90931bace9b98fdccbbc"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-0/inner-validation-3.json",
+      "bytes": 199,
+      "sha256": "8096d5a32ac2cf1dfe3c04a9e7797aae95b6b0087b4137f3688eadb9f0273678"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-0/inner-validation-3.npy",
+      "bytes": 73900,
+      "sha256": "5a6db112cb56edd7acdfc9d7a3b27759d71340ad159787647db0fb71d809d926"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-0/inner-validation-4.json",
+      "bytes": 199,
+      "sha256": "161d4bf38174a49bc2657ee932eb62826864901ecf96ce8c920b17cf5ee19fa8"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-0/inner-validation-4.npy",
+      "bytes": 73900,
+      "sha256": "d09aad22c784c805aee5f1ceaa37ada5f4108fb8ad19aba33132c43ec1126226"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-0/inner-validation-5.json",
+      "bytes": 199,
+      "sha256": "555e363752e6deaa963cacc9a897c5bcedae45be733ea3270382f00cb8ce01e5"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-0/inner-validation-5.npy",
+      "bytes": 73900,
+      "sha256": "4fc379e1ed952b2f332637b307b6fdcb4c86d2b865c7bae22f63220923d2d9fd"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-0/inner-validation-6.json",
+      "bytes": 199,
+      "sha256": "a74ae02e90f144f8b5d278300187d67a967b40e5c8ee4e9caceec5e4c737d76c"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-0/inner-validation-6.npy",
+      "bytes": 73900,
+      "sha256": "41bbb6cfc36a6d5d1fc5d9b15d14bce957c8a4b70cf3cf6f08fe1fa2ed0baa10"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-0/inner.pt",
+      "bytes": 4087091,
+      "sha256": "14580fa91604cffa9ef5d0de39e198d29f9f9452773b6f1a0835d67b3c3a452d"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-0/model.pt",
+      "bytes": 1016199,
+      "sha256": "262bde73768ca67d8e0bfea5620175d3315a7f6ee33c5b5282c7d038ffb5cfce"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-0/oof.parquet",
+      "bytes": 569578,
+      "sha256": "5501777615184cf5584ef81214c2f26ce7e4fdc112ce9d4e2dcecc18841192c7"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-0/refit.pt",
+      "bytes": 4087155,
+      "sha256": "3d29a79b430fd906c48d5fa95d117073d085547089de0cc9ece241ce99e7d7c5"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-0/test.json",
+      "bytes": 199,
+      "sha256": "7af5cd863112e1f58963e664e9c9c7044f03de853818355871198f39157a95de"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-0/test.npy",
+      "bytes": 99804,
+      "sha256": "1ee810fa46da544980b6011eb3ede0511b48774ca7e898431e2f3ab3a3767e52"
+    }
+  ],
+  "seconds": 3457.3704278469086
+}
