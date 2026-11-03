@@ -3,5 +3,6 @@
   "models": ["esm2_8m", "esm2_35m", "esm2_150m", "esm2_650m", "esm1b_650m", "esm1v_650m_1", "esmc_300m", "prott5_encoder", "ankh_base"],
   "arms": ["B", "D"],
   "seeds": [17, 29, 43],
+  "inherit_completed_from": "e7097449883a51d8",
   "note": "Fixed development expansion. Family models use frozen features/Ridge; matched frozen and LoRA tuning only for ESM2-35M. W5-D held-source recipe is fixed before T."
 }

@@ -1,0 +1,80 @@
+{
+  "generated_local": "2026-11-03T14:51:11+08:00",
+  "campaign": "ef138c84579c842e",
+  "status": "estimate_not_guarantee",
+  "remaining_tune": {
+    "lora": 27,
+    "frozen": 20
+  },
+  "active_job": "tune-lora-B-17-3",
+  "progress": {
+    "job": "tune-lora-B-17-3",
+    "message": "EPOCH DONE epoch=6 validation_mse=0.32521434 best_epoch=2 seconds=421.6",
+    "updated_unix": 1793688654.3172472
+  },
+  "observed_frozen_mean_minutes": {
+    "B": 25.03716169436773,
+    "D": 28.574880663553873
+  },
+  "observed_lora": [
+    {
+      "job": "tune-lora-B-17-0",
+      "selected_epoch": 2,
+      "train_rows": 60364,
+      "refit_rows": 73755,
+      "inner_seconds_per_epoch": 406.0,
+      "refit_seconds_per_epoch": 446.85,
+      "sum_logged_epoch_seconds": 3345.0
+    },
+    {
+      "job": "tune-lora-B-17-1",
+      "selected_epoch": 7,
+      "train_rows": 60685,
+      "refit_rows": 74471,
+      "inner_seconds_per_epoch": 474.4,
+      "refit_seconds_per_epoch": 452.4,
+      "sum_logged_epoch_seconds": 8289.1
+    },
+    {
+      "job": "tune-lora-B-17-2",
+      "selected_epoch": 2,
+      "train_rows": 58402,
+      "refit_rows": 73794,
+      "inner_seconds_per_epoch": 412.55,
+      "refit_seconds_per_epoch": 444.5,
+      "sum_logged_epoch_seconds": 3425.6000000000004
+    }
+  ],
+  "inner_seconds_per_training_row": 0.007063970411972193,
+  "refit_seconds_per_training_row": 0.006058572300183039,
+  "scenarios": [
+    {
+      "scenario": "fast_like_epoch2",
+      "assumed_selected_epoch": 2,
+      "frozen_hours": 8.935340392986935,
+      "lora_hours": 30.400514007003604,
+      "postprocessing_hours": 1.0,
+      "total_hours": 40.335854399990545,
+      "finish_local": "2026-11-05T07:11+08:00"
+    },
+    {
+      "scenario": "central_observed_mean",
+      "assumed_selected_epoch": 3.6666666666666665,
+      "frozen_hours": 8.935340392986935,
+      "lora_hours": 42.79254089345405,
+      "postprocessing_hours": 1.0,
+      "total_hours": 52.72788128644098,
+      "finish_local": "2026-11-05T19:34+08:00"
+    },
+    {
+      "scenario": "slow_like_epoch7",
+      "assumed_selected_epoch": 7,
+      "frozen_hours": 8.935340392986935,
+      "lora_hours": 67.57659466635495,
+      "postprocessing_hours": 1.0,
+      "total_hours": 77.5119350593419,
+      "finish_local": "2026-11-06T20:21+08:00"
+    }
+  ],
+  "method": "Log epoch durations across source and successor, scaled by remaining train/refit rows. Frozen means from completed seed17 arms. LoRA selected epochs 2/7/2; no completed LoRA-D yet. Postprocessing allowance is a planning assumption. Assumes continuous unchanged GPU throughput; not a confidence interval."
+}

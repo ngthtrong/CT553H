@@ -1,0 +1,28 @@
+{
+  "job": "ridge-ankh_base-B-0-17-1",
+  "started_unix": 1793683308.721057,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/ridge-ankh_base-B-0-17-1/calibration.parquet",
+      "bytes": 425489,
+      "sha256": "3a6d20cf755c680556ff3875488943c579b5b7be7168061ae11a240b3669468a"
+    },
+    {
+      "path": "jobs/ridge-ankh_base-B-0-17-1/fit.json",
+      "bytes": 278,
+      "sha256": "e35fd0bc8c904446bd76065dc567e18047391edeb9f7d61de4a95c71ce0c3dde"
+    },
+    {
+      "path": "jobs/ridge-ankh_base-B-0-17-1/model.joblib",
+      "bytes": 438910,
+      "sha256": "718fa10226644569e11bf38d21b4ac3d18cc345fcf0484973c869afe19f1dded"
+    },
+    {
+      "path": "jobs/ridge-ankh_base-B-0-17-1/oof.parquet",
+      "bytes": 544471,
+      "sha256": "0d744c5e319131af682e631251cc14a0f067de37491f7960a21425e7468978f2"
+    }
+  ],
+  "seconds": 6.120544672012329
+}

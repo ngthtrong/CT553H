@@ -10,6 +10,10 @@ import pandas as pd
 
 from .common import atomic_json, sha256
 
+# Reviewed after Ankh base produced nonfinite activations in FP16 on this
+# runtime. This is a declared model-specific policy, never an OOM fallback.
+INFERENCE_DTYPES = {'ankh_base': 'float32'}
+
 
 def registry():
     return json.loads((Path(__file__).resolve().parents[1] / 'model-registry.json').read_text())
@@ -45,16 +49,25 @@ def resolve_snapshot(model_id, roots):
     raise FileNotFoundError(f'No COMPLETE pinned local weights for {model_id}; attach that model asset and its status.json')
 
 
+def load_tokenizer(spec, snapshot):
+    from transformers import AutoTokenizer, PreTrainedTokenizerFast
+    if spec['family'] == 'ankh':
+        # Transformers 5's T5 class installs a Metaspace pre-tokenizer, whereas
+        # this checkpoint's tokenizer.json intentionally has no pre-tokenizer.
+        return PreTrainedTokenizerFast(tokenizer_file=str(Path(snapshot) / 'tokenizer.json'),
+                                       eos_token='</s>', unk_token='<unk>', pad_token='<pad>')
+    return AutoTokenizer.from_pretrained(str(snapshot), local_files_only=True, trust_remote_code=False)
+
+
 class Encoder:
     def __init__(self, model_id, roots, device='cuda', dtype='float16', trainable=False):
         import torch
-        from transformers import AutoTokenizer, AutoModel, T5EncoderModel
+        from transformers import AutoModel, T5EncoderModel
         self.spec = specification(model_id)
         self.path, self.lock = resolve_snapshot(model_id, roots)
         self.device = torch.device(device)
-        self.dtype = getattr(torch, dtype)
-        self.tokenizer = AutoTokenizer.from_pretrained(str(self.path), local_files_only=True,
-                                                        trust_remote_code=False)
+        self.dtype = getattr(torch, INFERENCE_DTYPES.get(model_id, dtype))
+        self.tokenizer = load_tokenizer(self.spec, self.path)
         factory = T5EncoderModel if self.spec['family'] in ('prott5', 'ankh') else AutoModel
         kwargs = {'add_pooling_layer': False} if self.spec['family'] in ('esm2', 'esm1b', 'esm1v', 'saprot') else {}
         self.model = factory.from_pretrained(str(self.path), local_files_only=True,
@@ -64,15 +77,21 @@ class Encoder:
 
     def encode_input(self, sequences):
         import torch
-        if self.spec['family'] in ('prott5', 'ankh'):
+        kwargs = {}
+        if self.spec['family'] == 'ankh':
+            texts = [list(s) for s in sequences]
+            kwargs['is_split_into_words'] = True
+        elif self.spec['family'] == 'prott5':
             texts = [' '.join(s) for s in sequences]
         else:
             texts = list(sequences)
         encoded = self.tokenizer(texts, return_tensors='pt', padding=True,
-                                 return_special_tokens_mask=True, truncation=False)
+                                 return_special_tokens_mask=True, truncation=False, **kwargs)
         special = encoded.pop('special_tokens_mask').bool()
         mask = encoded['attention_mask'].bool() & ~special
         assert torch.all(mask.sum(1) == 28), 'Tokenizer must return exactly 28 residue tokens'
+        if self.spec['family'] in ('prott5', 'ankh'):
+            assert not torch.any(encoded['input_ids'][mask] == self.tokenizer.unk_token_id), 'Unknown residue token'
         encoded = {k: v.to(self.device) for k, v in encoded.items()}
         return encoded, mask.to(self.device)
 
@@ -102,14 +121,14 @@ def preflight(model_ids, roots, out, smoke=False):
             for f in lock['files']:
                 assert sha256(snapshot / f['path']) == f['sha256'], f['path']
             device = 'cuda' if torch.cuda.is_available() else 'cpu'
-            dtype = 'float16' if device == 'cuda' else 'float32'
+            dtype = INFERENCE_DTYPES.get(model_id, 'float16' if device == 'cuda' else 'float32')
             bytes_weight = sum(f['bytes'] for f in lock['files'] if f['path'].endswith(('.bin', '.safetensors')))
             if device == 'cpu' and bytes_weight > (1 << 30):
                 raise MemoryError('Large-model CPU preflight is disabled; use GPU Kaggle runtime')
             if device == 'cuda':
                 # Downloaded files can be fp32; this is a conservative load headroom check.
                 capacity = torch.cuda.get_device_properties(0).total_memory
-                if bytes_weight / 2 + (2 << 30) > capacity:
+                if bytes_weight / (2 if dtype == 'float16' else 1) + (2 << 30) > capacity:
                     raise MemoryError('Needs explicit model sharding/offload; automatic precision/quantization substitution forbidden')
                 torch.cuda.reset_peak_memory_stats()
             encoder = Encoder(model_id, roots, device, dtype)
@@ -134,6 +153,7 @@ def preflight(model_ids, roots, out, smoke=False):
                 assert changed == [p], f'Token/substitution alignment failed at {position}: {changed}'
                 token_checks.append(position)
             report.update(status='feasible', revision=lock['revision'], repo=lock['repo'],
+                tokenizer_class=type(encoder.tokenizer).__name__,
                 hidden_size=h.shape[2], shape=list(h.shape), device=device, dtype=dtype,
                 batch=2, sequences_per_second=2/seconds,
                 repeat_max_abs=float(np.max(np.abs(h-again))),

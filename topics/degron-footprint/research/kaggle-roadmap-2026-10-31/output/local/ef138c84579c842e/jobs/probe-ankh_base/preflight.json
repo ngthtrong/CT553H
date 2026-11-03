@@ -1,0 +1,33 @@
+{
+  "models": [
+    {
+      "model_id": "ankh_base",
+      "status": "feasible",
+      "mode": "official",
+      "revision": "d99cb6b966530dfc2ae96bc69d9255c2a07308b0",
+      "repo": "ElnaggarLab/ankh-base",
+      "tokenizer_class": "TokenizersBackend",
+      "hidden_size": 768,
+      "shape": [
+        2,
+        28,
+        768
+      ],
+      "device": "cuda",
+      "dtype": "float32",
+      "batch": 2,
+      "sequences_per_second": 60.61193807286876,
+      "repeat_max_abs": 0.0,
+      "peak_vram_bytes": 1849842688,
+      "residue_alignment_positions": [
+        1,
+        2,
+        14,
+        27,
+        28
+      ],
+      "wt_identity_max_abs": 0.0,
+      "parameters": 453170688
+    }
+  ]
+}

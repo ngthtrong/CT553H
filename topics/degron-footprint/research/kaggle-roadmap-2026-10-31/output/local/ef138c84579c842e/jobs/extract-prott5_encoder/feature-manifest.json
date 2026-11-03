@@ -1,0 +1,23 @@
+{
+  "status": "complete",
+  "identity": "542ba465d1f0d50e1d3899edd22c74632150d49f3bf5aa4d0678e56c17ef344f",
+  "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738",
+  "model_id": "prott5_encoder",
+  "rows": 122412,
+  "mode": "official",
+  "scope": "sat",
+  "revision": "94a6abc029ae13029317b140b7424e012bf8dfbf",
+  "dtype": "float16",
+  "feature_kind": "delta_site_and_mean",
+  "encoder_dtype": "torch.float16",
+  "files": [
+    {
+      "path": "pool.npy",
+      "sha256": "4f31f76572267b45725da59934ceecd4f75e9565dd27ebc1777345e3cec74e30"
+    },
+    {
+      "path": "rows.parquet",
+      "sha256": "b90c28d510247b720f7a20d72722ea6b354386d2a510609783d9a5f33f2a0d1b"
+    }
+  ]
+}

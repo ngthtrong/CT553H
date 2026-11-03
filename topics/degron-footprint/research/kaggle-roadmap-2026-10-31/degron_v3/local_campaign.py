@@ -28,6 +28,7 @@ HERE = work.HERE
 ROOT = next(p for p in HERE.parents if (p/'CLAUDE.md').exists())
 TERMINAL = {'complete','resource_blocked','adapter_blocked','skipped_resource','source_pending','structure_pending'}
 EXCLUDED = TERMINAL-{'complete'}
+TOKENIZER_REPAIR_SOURCE = 'a794922b58f9c0792905b962b06a9f47444c5ca146232737662b58512ed14db0'
 
 
 def implementation_hash():
@@ -92,9 +93,18 @@ def initialize(config_path):
         protocol_sha256=sha256(HERE/'EXECUTION-PROTOCOL.md'),runtime=runtime,
         scientific_status='development_expansion_after_Kaggle_results',
         training=dict(epochs=20,batch=8,dtype='float32',lr=.0001,patience=4,refit='selected_inner_epoch'),
-        features=dict(dtype='float16',batch=8,view='delta_site_and_mean',pca=64),
+        features=dict(dtype='float16',batch=8,view='delta_site_and_mean',pca=64,
+                      encoder_dtypes=dict(work.INFERENCE_DTYPES)),
         selection='inner MSE only; no family selection from outer OOF; T locked to prespecified W5-D',
         source_campaign='369cb2fe6a1e31e0')
+    source_name = config.get('inherit_completed_from')
+    source = None
+    if source_name:
+        assert Path(source_name).name == source_name, 'Use a campaign ID, not a path'
+        source = HERE/'output/local'/source_name
+        plan['inheritance_source'] = dict(campaign=source_name,
+            plan_sha256=sha256(source/'plan.json'), state_sha256=sha256(source/'state.json'),
+            policy='tokenizer_repair_reuse_unaffected_complete_and_paused_esm35_v1')
     identity = fingerprint(plan)
     campaign = HERE/'output/local'/identity[:16]; campaign.mkdir(parents=True,exist_ok=True)
     if (campaign/'plan.json').exists():
@@ -102,6 +112,10 @@ def initialize(config_path):
     else:
         atomic_json(campaign/'plan.json',plan); atomic_json(campaign/'queue.json',jobs(config))
         atomic_json(campaign/'state.json',dict(plan_id=identity,jobs={},scientific_status=plan['scientific_status']))
+    if source is not None and (not (campaign/'inheritance.json').exists() or
+                               not json.loads((campaign/'state.json').read_text())['jobs']):
+        validation = json.loads((HERE/'tokenizer-repair-validation.json').read_text())
+        inherit_unaffected(source, campaign, validation)
     atomic_json(campaign.parent/'latest.json',dict(campaign=str(campaign),plan_id=identity))
     return campaign
 
@@ -114,10 +128,78 @@ def latest():
 
 def complete_valid(campaign, record):
     if record.get('status')!='complete': return False
+    origin = Path(record.get('artifact_campaign', campaign)).resolve()
+    if origin != Path(campaign).resolve():
+        if origin.parent != Path(campaign).resolve().parent: return False
+        if sha256(origin/'plan.json') != record['source_plan_sha256']: return False
     for entry in record.get('files',[]):
-        path=campaign/entry['path']
+        path=(origin/entry['path']).resolve()
+        if not path.is_relative_to(origin): return False
         if not path.exists() or path.stat().st_size!=entry['bytes'] or sha256(path)!=entry['sha256']: return False
     return bool(record.get('files'))
+
+
+def inherit_unaffected(source, target, validation):
+    """Narrow, audited repair migration; never overwrite the source campaign."""
+    source, target = Path(source).resolve(), Path(target).resolve()
+    assert source.parent == target.parent and source != target
+    old = json.loads((source/'plan.json').read_text())
+    new = json.loads((target/'plan.json').read_text())
+    state = json.loads((source/'state.json').read_text())
+    assert validation['status'] == 'pass' and validation['target_code_sha256'] == implementation_hash()
+    assert old['code_sha256'] == TOKENIZER_REPAIR_SOURCE, 'Source code has not been reviewed for this repair'
+    assert state['plan_id'] == fingerprint(old) and source.name == fingerprint(old)[:16]
+    assert new['code_sha256'] == implementation_hash()
+    assert new['inheritance_source']['plan_sha256'] == sha256(source/'plan.json')
+    assert new['inheritance_source']['state_sha256'] == sha256(source/'state.json')
+    assert not any(v['status']=='running' for v in state['jobs'].values()), 'Source must be stopped'
+    for key in ('data_identity','registry_sha256','protocol_sha256','training','selection','source_campaign'):
+        assert old[key] == new[key], f'Cannot inherit changed scientific setting: {key}'
+    assert old['features'] == {k:v for k,v in new['features'].items() if k!='encoder_dtypes'}
+    assert new['features']['encoder_dtypes'] == {'ankh_base':'float32'}
+    assert old['config'] == {k:v for k,v in new['config'].items() if k!='inherit_completed_from'}
+    previous_runtime = old['runtime']
+    runtime = {**new['runtime'], 'versions': {k:v for k,v in new['runtime']['versions'].items() if k!='protobuf'}}
+    assert previous_runtime == runtime, 'Only the added protobuf dependency may differ'
+    assert new['runtime']['versions']['protobuf'] == '6.33.5'
+    allowed = {j['id']: j for j in jobs(new['config'])}
+    inherited, paused, copies = {}, {}, []
+    for job_id, record in state['jobs'].items():
+        job = allowed.get(job_id)
+        if job is None: continue
+        affected = job.get('model') in ('prott5_encoder','ankh_base') and job['kind']!='weights'
+        if affected or job['kind'] not in ('import','weights','probe','extract','ridge','tune'): continue
+        assert 'artifact_campaign' not in record, 'Chained inheritance needs a separate review'
+        if record['status']=='complete':
+            assert complete_valid(source, record), f'Changed completed artifact: {job_id}'
+            inherited[job_id] = {**record, 'artifact_campaign': str(source),
+                                 'source_plan_sha256': sha256(source/'plan.json')}
+        elif record['status']=='paused' and job['kind']=='tune':
+            # ESM35 numerical/training code is unchanged; preserve checkpoint
+            # identity and RNG via explicit lineage, not by rewriting tensors.
+            paused[job_id] = source.name
+            for path in sorted((source/'jobs'/job_id).rglob('*')):
+                if not path.is_file() or path.name=='worker-result.json' or path.name.endswith('.tmp'): continue
+                copies.append(dict(path=path.relative_to(source).as_posix(), bytes=path.stat().st_size, sha256=sha256(path)))
+            inherited[job_id] = dict(status='paused', reason='Audited ESM35 checkpoint inherited; source retained')
+    target_state = json.loads((target/'state.json').read_text())
+    assert not target_state['jobs'], 'Inheritance only initializes an empty successor'
+    for entry in copies:
+        src, dst = source/entry['path'], target/entry['path']
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        assert not dst.exists() or sha256(dst)==entry['sha256']
+        if not dst.exists(): shutil.copyfile(src,dst)
+        assert sha256(dst)==entry['sha256']
+    manifest = dict(source_campaign=str(source), source_plan_sha256=sha256(source/'plan.json'),
+        source_state_sha256=sha256(source/'state.json'), source_code_sha256=old['code_sha256'],
+        target_code_sha256=new['code_sha256'], validation_sha256=fingerprint(validation),
+        inherited_complete=sum(v['status']=='complete' for v in inherited.values()),
+        checkpoint_campaigns=paused, checkpoint_files=copies,
+        reset_models=['prott5_encoder','ankh_base'], source_immutable=True)
+    # Write lineage before state; a failure never marks unverified work complete.
+    atomic_json(target/'inheritance.json', manifest)
+    target_state['jobs']=inherited
+    atomic_json(target/'state.json', target_state)
 
 
 def collect(ds,campaign,out,control,group):
@@ -125,7 +207,7 @@ def collect(ds,campaign,out,control,group):
     buckets={}
     for item in planned:
         if item['kind']!=group or state.get(item['id'],{}).get('status')!='complete':continue
-        folder=campaign/'jobs'/item['id']; info=json.loads((folder/'fit.json').read_text())
+        folder=work.artifact_directory(campaign,item['id']); info=json.loads((folder/'fit.json').read_text())
         buckets.setdefault(info['recipe'],[]).append(folder)
     reports={}; tables=[]; pp={}
     for recipe,folders in buckets.items():

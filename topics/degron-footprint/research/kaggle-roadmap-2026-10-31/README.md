@@ -2,6 +2,8 @@
 
 **Trạng thái 03/11/2026:** đã có output Kaggle full-data được nhập và [phân tích ngày 02/11](output-analysis.md); campaign CUDA Windows mở rộng pLM/frozen–LoRA đang dở. [Chỉ mục nghiên cứu](../README.md) ghi snapshot local và phần còn thiếu. Chưa hoàn tất pipeline hoặc đóng G2/G3. Bộ công cụ có 12 notebook đơn và notebook tổng; 12/12 notebook đơn từng qua smoke CPU. Bằng chứng dựng/kiểm gói: [dataset-build.json](dataset-build.json), [notebook-validation.json](notebook-validation.json), [weights-status.json](weights-status.json), [code-build.json](code-build.json); các file này có mốc riêng, không thay trạng thái campaign.
 
+**Cập nhật tokenizer local lúc 12:38 (UTC+8):** ProtT5 và Ankh đã qua kiểm tokenizer/GPU/batch 8 sau sửa lỗi. ProtT5 dùng FP16; Ankh base khai báo encoder FP32 vì FP16 tạo embedding không hữu hạn. Campaign successor `ef138c84579c842e` giữ 456 job hoàn tất và checkpoint LoRA của nguồn, đưa hai nhánh bị chặn trở lại hàng đợi. Xem [hướng dẫn kế thừa/resume](local-runner.md), [kiểm chứng](tokenizer-repair-validation.json) và [inheritance.json](output/local/ef138c84579c842e/inheritance.json). Chưa có kết quả chất lượng dự đoán mới của hai model tại mốc tạo successor. Notebook embedded/code ZIP cũ chưa được dựng lại trong lượt sửa local này.
+
 Mục tiêu là benchmark/phương pháp/đánh giá/phần mềm. Không cần kiến trúc mới hoặc bắt buộc mạng thắng Ridge. Dữ liệu saturation dự đoán **ΔPSI của đột biến đơn mức residue**, không đổi thành phân loại peptide. Phạm vi chỉ dữ liệu, model và thực nghiệm; không triển khai app/UX hay phần luận văn trong gói này.
 
 ## Bắt đầu

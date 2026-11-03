@@ -1,0 +1,33 @@
+{
+  "models": [
+    {
+      "model_id": "prott5_encoder",
+      "status": "feasible",
+      "mode": "official",
+      "revision": "94a6abc029ae13029317b140b7424e012bf8dfbf",
+      "repo": "Rostlab/prot_t5_xl_half_uniref50-enc",
+      "tokenizer_class": "T5Tokenizer",
+      "hidden_size": 1024,
+      "shape": [
+        2,
+        28,
+        1024
+      ],
+      "device": "cuda",
+      "dtype": "float16",
+      "batch": 2,
+      "sequences_per_second": 80.42755268006191,
+      "repeat_max_abs": 0.0,
+      "peak_vram_bytes": 3263968256,
+      "residue_alignment_positions": [
+        1,
+        2,
+        14,
+        27,
+        28
+      ],
+      "wt_identity_max_abs": 0.0,
+      "parameters": 1208141824
+    }
+  ]
+}

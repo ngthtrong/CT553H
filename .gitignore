@@ -30,6 +30,7 @@ archive/topics/*/models/
 !/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/queue.json
 !/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/state.json
 !/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/superseded.json
+!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/inheritance.json
 !/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/
 !/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/
 # JSON ngay dưới job: fit, worker-result, preflight/lock, manifest, results,

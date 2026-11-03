@@ -1,0 +1,23 @@
+{
+  "status": "complete",
+  "identity": "3aa8234b3b36004bc480407f5d33895f27a71bff773d0dfb8ed0f2e2101e3bde",
+  "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738",
+  "model_id": "ankh_base",
+  "rows": 122412,
+  "mode": "official",
+  "scope": "sat",
+  "revision": "d99cb6b966530dfc2ae96bc69d9255c2a07308b0",
+  "dtype": "float16",
+  "feature_kind": "delta_site_and_mean",
+  "encoder_dtype": "torch.float32",
+  "files": [
+    {
+      "path": "pool.npy",
+      "sha256": "a68c9aa2cc4033fea4655e4168406043f79db02d1bccae11bc3b742d09706989"
+    },
+    {
+      "path": "rows.parquet",
+      "sha256": "b90c28d510247b720f7a20d72722ea6b354386d2a510609783d9a5f33f2a0d1b"
+    }
+  ]
+}

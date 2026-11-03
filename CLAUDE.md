@@ -34,6 +34,8 @@ Campaign CUDA Windows dùng `.venv` ở gốc repo (Python 3.11.9, Torch 2.13.0+
 
 Đọc `local-runner.md` trước khi chạy/resume; script `.cmd` mở terminal riêng. Code/data/protocol/runtime đổi sẽ đổi campaign identity; không sửa manifest để ép checkpoint vào run khác. Không tự dừng hoặc khởi chạy campaign chỉ để cập nhật tài liệu.
 
+Lượt sửa tokenizer 03/11 thêm protobuf, nạp tokenizer Ankh gốc và khai báo encoder Ankh FP32 (ProtT5 FP16). `local-plan.json` đang chỉ nguồn kế thừa `e7097449883a51d8`; successor giữ artifact complete tại nguồn và sao chép checkpoint paused qua `inheritance.json`, sau kiểm tương thích/hash và CUDA resume. Đây là cơ chế giới hạn cho source fingerprint đã được review, không cho phép bỏ qua identity với thay đổi bất kỳ. Giữ cả output nguồn và successor; xem `tokenizer-repair-validation.json`/`local-runner.md` trước khi đổi cấu hình hoặc xóa output.
+
 Các script nghiên cứu cũ dùng `requirements.txt` ở gốc; nếu cần tái lập trên Linux/WSL thì tạo môi trường riêng (ví dụ `.venv-legacy`) rồi cài dependency tương ứng. Chạy từ gốc repo. Nghiên cứu có các script `audit.py`/`validate_*.py`; v3 có kiểm invariants, notebook, transport và local runner. App có pytest, Vitest và Playwright riêng; xem `system/app/README.md` và Makefile/package scripts. Không gọi kết quả smoke hoặc test lịch sử là benchmark/acceptance mới. Một số script cần `mmseqs` (phân cụm protein cov50/cov80).
 
 Script import lẫn nhau qua `sys.path` (ví dụ `g2-saturation` dùng `residue-task-derisk-2026-10-15/residue_data.py`, `derisk.py` và `pap-baseline/pap_baseline.py`), nên đổi tên/chuyển thư mục `research/` sẽ làm hỏng script khác.

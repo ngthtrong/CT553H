@@ -1,0 +1,28 @@
+{
+  "job": "extract-ankh_base",
+  "started_unix": 1793682441.714927,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/extract-ankh_base/feature-manifest.json",
+      "bytes": 726,
+      "sha256": "b5ff72aa1fb73f39ef7df4bc196ab44e6b109e5ea3263f565ead65a94e01788a"
+    },
+    {
+      "path": "jobs/extract-ankh_base/pool.npy",
+      "bytes": 376049792,
+      "sha256": "a68c9aa2cc4033fea4655e4168406043f79db02d1bccae11bc3b742d09706989"
+    },
+    {
+      "path": "jobs/extract-ankh_base/progress.json",
+      "bytes": 200,
+      "sha256": "058c683a4ad0228dc7030e51bbbb3b0580041a8243b0f578af88274f5fa984c5"
+    },
+    {
+      "path": "jobs/extract-ankh_base/rows.parquet",
+      "bytes": 672849,
+      "sha256": "b90c28d510247b720f7a20d72722ea6b354386d2a510609783d9a5f33f2a0d1b"
+    }
+  ],
+  "seconds": 853.4436795711517
+}

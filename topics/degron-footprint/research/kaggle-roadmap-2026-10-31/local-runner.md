@@ -2,6 +2,12 @@
 
 Đối chiếu tiến độ 03/11/2026 tại [chỉ mục/snapshot nghiên cứu](../README.md). Hướng dẫn này mô tả cách vận hành; số job complete/blocked và job đang dở phải đọc từ campaign hiện tại, không suy từ các kiểm thử phần mềm ở cuối file.
 
+**Sửa tokenizer 03/11/2026:** ProtT5 cần `protobuf==6.33.5` để đọc/chuyển SentencePiece; Ankh dùng `tokenizer.json` gốc qua `PreTrainedTokenizerFast`, đầu vào tách residue. Ankh base có activation không hữu hạn ở FP16 trong lượt preflight sửa lỗi, nên chính sách đã khai báo là **encoder FP32**, lưu feature FP16; các model khác giữ precision trước đây. Cả hai đã đạt preflight CUDA, alignment 532 phép thay và batch 8; bằng chứng ở [tokenizer-repair-validation.json](tokenizer-repair-validation.json). Đây chưa phải metric benchmark.
+
+Campaign kế tiếp **`ef138c84579c842e`** được tạo lúc 12:38 ngày 03/11 (UTC+8), từ cấu hình `inherit_completed_from` trong [local-plan.json](local-plan.json). Nó kế thừa **456 job hoàn tất** bằng tham chiếu artifact có kiểm SHA, và sao chép checkpoint của `tune-lora-B-17-2` đang paused. Campaign nguồn `e7097449883a51d8` giữ nguyên; không sửa identity trong tensor/checkpoint. `inheritance.json` ghi nguồn, hash plan/state, phạm vi kiểm tương thích và namespace checkpoint. Hai model sửa lỗi được reset probe/extract/Ridge; các bước tổng hợp sẽ chạy lại với tập ứng viên đầy đủ.
+
+Chỉ lượt sửa lỗi đã được kiểm này được phép kế thừa; dữ liệu, protocol, cấu hình train/selection và runtime số học phải khớp (chỉ thêm protobuf). Bộ kiểm từ chối thay đổi khoa học hoặc artifact hỏng. Không dùng cơ chế này như cách bỏ qua fingerprint cho thay đổi bất kỳ. Để resume/tổng hợp, phải giữ **cả thư mục campaign nguồn và campaign mới**, cùng weights; không xóa nguồn sau khi thấy campaign mới có state.
+
 **02/11/2026:** Bộ điều phối dùng `.venv` Python3.11/Torch2.13+cu130 của repo. Nó giữ output Kaggle làm tham chiếu chỉ đọc, chạy chiến dịch local riêng cho khảo sát pLM và đối chứng frozen–LoRA cùng runtime. Kiểm phần mềm dùng mẫu nhỏ không phải scientific benchmark.
 
 Từ thư mục gốc repo, double-click **`run-local.cmd`** hoặc gọi trong PowerShell:
@@ -41,13 +47,16 @@ output/local/
     sessions/<session>.log        log từng phiên
     logs/<job>.log                log tích lũy theo công việc
     jobs/<job>/                  checkpoint, feature, OOF và metadata
+    inheritance.json             nguồn artifact/checkpoint nếu là successor đã kiểm
 ```
 
 `complete` chỉ ghi sau khi worker xong và hash artifact được lưu. Khởi động lại kiểm file hoàn tất; artifact thay đổi khiến hệ thống dừng để kiểm tra. Code/data/registry/protocol/runtime (kể cả driver) đổi tạo campaign khác; không sửa manifest để ép nhận checkpoint. Output cũ được giữ nguyên. Job failed chỉ thử lại khi gọi `run-local.cmd --retry-failed`, sau khi kiểm nguyên nhân. Không có retry vô hạn.
 
+Trong successor đã kiểm, job complete có `artifact_campaign` trong state: file thật nằm ở campaign nguồn, không được sao chép và đếm thành kết quả mới. Chỉ checkpoint đang paused được sao chép để tiếp tục ghi riêng trong successor. `run-local.cmd` dùng kế hoạch hiện hành và tự tiếp tục successor; không cần thêm cờ retry để khôi phục hai nhánh tokenizer đã reset.
+
 **Lưu kết quả trên GitHub:** `.gitignore` ở gốc repo chỉ cho phép các bằng chứng nhỏ trong `output/local/`:
 
-- Mỗi campaign: `plan.json`, `queue.json`, `state.json`, `superseded.json` nếu có; trạng thái lỗi/blocked và hash artifact được giữ để giải thích phạm vi kết quả.
+- Mỗi campaign: `plan.json`, `queue.json`, `state.json`, `superseded.json`/`inheritance.json` nếu có; trạng thái lỗi/blocked, nguồn kế thừa và hash artifact được giữ để giải thích phạm vi kết quả.
 - JSON ngay dưới từng job: metadata fit/preflight, revision lock, manifest feature, `worker-result.json`, kết quả đánh giá, collection/comparisons và evidence/pending. `collect-*/summary.csv` và `report/benchmark.csv` được giữ khi các bước tổng hợp hoàn tất.
 - Trong recipe của `calibrate-core` và `locked-transfer-w5`: `selection-lock.json`, `model-card.json`; weights dùng chung chỉ giữ `SOURCE.md` và `status.json` chứa revision/SHA.
 

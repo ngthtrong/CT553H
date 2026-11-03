@@ -1,0 +1,28 @@
+{
+  "job": "ridge-prott5_encoder-D-1-29-2",
+  "started_unix": 1793682303.0113,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/ridge-prott5_encoder-D-1-29-2/calibration.parquet",
+      "bytes": 435215,
+      "sha256": "f6f34bea3cd376baa2333ba2b7aeeed8f621e1eb87492d0a6c198822fcc7a006"
+    },
+    {
+      "path": "jobs/ridge-prott5_encoder-D-1-29-2/fit.json",
+      "bytes": 288,
+      "sha256": "91217c259a3c8b3500887898f3e7210c831ab726d51d9d6834e33459816378f8"
+    },
+    {
+      "path": "jobs/ridge-prott5_encoder-D-1-29-2/model.joblib",
+      "bytes": 591854,
+      "sha256": "62d8b7b16e6b06158a7505d0c14ed8b42735e454b273ac0e09bd86319146f99d"
+    },
+    {
+      "path": "jobs/ridge-prott5_encoder-D-1-29-2/oof.parquet",
+      "bytes": 559989,
+      "sha256": "72245c976a1e061ad16734bb4f258016e296a52a1cde666457d61c9ded4bcd88"
+    }
+  ],
+  "seconds": 13.004501581192017
+}

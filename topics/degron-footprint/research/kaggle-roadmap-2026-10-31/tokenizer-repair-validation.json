@@ -1,0 +1,122 @@
+{
+  "status": "pass",
+  "scope": "tokenizer_and_cuda_and_reuse_safety_not_benchmark_efficacy",
+  "target_code_sha256": "b401f4659d9d0dc308607ac4f9823b81f6ff7d6e1b786cee429a32431268f768",
+  "script_sha256": "88f8613087d57d16dfd0fa2e7b4ab078bf76564511644f2434cf2caa29c6582f",
+  "tests": [
+    {
+      "test": "inherited_numerical_code_unchanged",
+      "status": "pass"
+    },
+    {
+      "test": "tokenizer_prott5_encoder",
+      "status": "pass",
+      "substitutions": 532,
+      "residue_tokens": 28,
+      "unknown_tokens": 0,
+      "original_artifact_ids_equal": true,
+      "invalid_lengths_rejected": true
+    },
+    {
+      "test": "tokenizer_ankh_base",
+      "status": "pass",
+      "substitutions": 532,
+      "residue_tokens": 28,
+      "unknown_tokens": 0,
+      "original_artifact_ids_equal": true,
+      "invalid_lengths_rejected": true
+    },
+    {
+      "test": "audited_inheritance",
+      "status": "pass",
+      "source_unchanged": true,
+      "checkpoint_bytes_and_identity_preserved": true,
+      "changed_science_and_corrupt_artifact_rejected": true
+    },
+    {
+      "test": "real_cuda_lora_checkpoint_successor_resume",
+      "status": "pass",
+      "max_abs_parameter_difference": 0.0
+    },
+    {
+      "test": "cuda_preflight_prott5_encoder",
+      "status": "pass",
+      "report": {
+        "model_id": "prott5_encoder",
+        "status": "feasible",
+        "mode": "official",
+        "revision": "94a6abc029ae13029317b140b7424e012bf8dfbf",
+        "repo": "Rostlab/prot_t5_xl_half_uniref50-enc",
+        "tokenizer_class": "T5Tokenizer",
+        "hidden_size": 1024,
+        "shape": [
+          2,
+          28,
+          1024
+        ],
+        "device": "cuda",
+        "dtype": "float16",
+        "batch": 2,
+        "sequences_per_second": 71.87160851800678,
+        "repeat_max_abs": 0.0,
+        "peak_vram_bytes": 3297522688,
+        "residue_alignment_positions": [
+          1,
+          2,
+          14,
+          27,
+          28
+        ],
+        "wt_identity_max_abs": 0.0,
+        "parameters": 1208141824
+      }
+    },
+    {
+      "test": "cuda_batch8_delta_prott5_encoder",
+      "status": "pass",
+      "encoder_dtype": "torch.float16",
+      "float16_storage_finite": true,
+      "peak_vram_bytes": 3326974464
+    },
+    {
+      "test": "cuda_preflight_ankh_base",
+      "status": "pass",
+      "report": {
+        "model_id": "ankh_base",
+        "status": "feasible",
+        "mode": "official",
+        "revision": "d99cb6b966530dfc2ae96bc69d9255c2a07308b0",
+        "repo": "ElnaggarLab/ankh-base",
+        "tokenizer_class": "TokenizersBackend",
+        "hidden_size": 768,
+        "shape": [
+          2,
+          28,
+          768
+        ],
+        "device": "cuda",
+        "dtype": "float32",
+        "batch": 2,
+        "sequences_per_second": 29.41038069031859,
+        "repeat_max_abs": 0.0,
+        "peak_vram_bytes": 1883397120,
+        "residue_alignment_positions": [
+          1,
+          2,
+          14,
+          27,
+          28
+        ],
+        "wt_identity_max_abs": 0.0,
+        "parameters": 453170688
+      }
+    },
+    {
+      "test": "cuda_batch8_delta_ankh_base",
+      "status": "pass",
+      "encoder_dtype": "torch.float32",
+      "float16_storage_finite": true,
+      "peak_vram_bytes": 1894090752
+    }
+  ]
+}

@@ -77,6 +77,11 @@ def restore_rng(state):
 class Control:
     def __init__(self, campaign, job, deadline=0, checkpoint_seconds=120, log_seconds=20):
         self.campaign, self.job = Path(campaign), job
+        # An audited successor may copy a paused checkpoint without rewriting
+        # its identity/RNG/optimizer. The new campaign itself keeps a new ID.
+        lineage = self.campaign / 'inheritance.json'
+        inherited = json.loads(lineage.read_text(encoding='utf8')) if lineage.exists() else {}
+        self.identity_campaign = inherited.get('checkpoint_campaigns', {}).get(job, self.campaign.name)
         self.deadline, self.interval, self.log_interval = deadline, checkpoint_seconds, log_seconds
         self.stop_file = self.campaign / 'STOP'
         self.requested = False

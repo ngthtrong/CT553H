@@ -21,7 +21,7 @@ from .learning import CombinedRidge
 from .local_control import atomic_torch, fingerprint
 from .local_training import fit, predict
 from .metrics import summarize, per_peptide, paired_ci
-from .plm import Encoder, preflight, resolve_snapshot, specification, prefix_hash
+from .plm import Encoder, preflight, resolve_snapshot, specification, prefix_hash, INFERENCE_DTYPES
 
 HERE = Path(__file__).resolve().parents[1]
 TOPIC = next(p for p in HERE.parents if (p/'data/README.md').exists())
@@ -33,6 +33,18 @@ MODELS = ['esm2_8m', 'esm2_35m', 'esm2_150m', 'esm2_650m', 'esm1b_650m',
 class Blocked(Exception):
     def __init__(self, message, kind='resource_blocked'):
         super().__init__(message); self.kind = kind
+
+
+def artifact_directory(campaign, job):
+    campaign = Path(campaign)
+    state = json.loads((campaign/'state.json').read_text())['jobs']
+    record = state.get(job, {})
+    origin = Path(record.get('artifact_campaign', campaign)).resolve()
+    if origin != campaign.resolve():
+        assert origin.parent == campaign.resolve().parent, 'Inherited artifact outside campaign root'
+        assert record['status'] == 'complete', 'Only completed artifacts can be referenced'
+        assert sha256(origin/'plan.json') == record['source_plan_sha256'], 'Inherited source plan changed'
+    return origin/'jobs'/job
 
 
 def roots(campaign):
@@ -167,7 +179,7 @@ def extract(ds, model, campaign, out, control, frame=None, scope='sat'):
     dim = encoder.tensor([frame.wt_sequence.iloc[0]]).shape[-1]
     identity = fingerprint(dict(data=ds.identity, model=model, revision=encoder.lock['revision'],
         cells=frame.cell_id.tolist(), scope=scope, dtype='float16', feature='delta_site_and_mean',
-        runtime=json.loads((campaign/'plan.json').read_text())['runtime']))
+        runtime=json.loads((campaign/'plan.json').read_text())['runtime'], encoder_dtype=str(encoder.dtype)))
     path = out/'pool.npy'; progress = out/'progress.json'
     if path.exists() and progress.exists():
         saved = json.loads(progress.read_text()); assert saved['identity'] == identity
@@ -195,6 +207,7 @@ def extract(ds, model, campaign, out, control, frame=None, scope='sat'):
     atomic_json(out/'feature-manifest.json', dict(status='complete', identity=identity,
         data_identity=ds.identity, model_id=model, rows=len(frame), mode='official', scope=scope,
         revision=encoder.lock['revision'], dtype='float16', feature_kind='delta_site_and_mean',
+        encoder_dtype=str(encoder.dtype),
         files=[dict(path=p.name,sha256=sha256(p)) for p in [path,out/'rows.parquet']]))
 
 
@@ -208,7 +221,7 @@ def oof_rows(frame, prediction, recipe, seed, identity):
 
 def ridge_fold(ds, job, campaign, out, control):
     model, arm, context, seed, fold = [job[k] for k in ['model','arm','context','seed','fold']]
-    delta = np.asarray(np.load(campaign/'jobs'/f'extract-{model}'/'pool.npy', mmap_mode='r'), dtype='float32')
+    delta = np.asarray(np.load(artifact_directory(campaign, f'extract-{model}')/'pool.npy', mmap_mode='r'), dtype='float32')
     ctx = features(ds.sat, 'ordered', 5) if context else None
     X = np.concatenate([ctx, delta],1) if context else delta
     role = ds.role(ds.sat, fold, seed); chosen = arm_mask(ds.sat, arm)

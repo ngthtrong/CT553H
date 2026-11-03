@@ -1,0 +1,11 @@
+{
+  "recipe": "prott5_encoder-only-D",
+  "model": "prott5_encoder",
+  "arm": "D",
+  "context": false,
+  "seed": 43,
+  "fold": 3,
+  "alpha": 1000.0,
+  "validation_mse": 0.27653037069871605,
+  "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738"
+}

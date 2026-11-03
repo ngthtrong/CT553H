@@ -1,0 +1,7 @@
+{
+  "job": "tune-lora-B-17-2",
+  "started_unix": 1793678734.372887,
+  "status": "paused",
+  "reason": "Session deadline or pause request; committed work retained",
+  "seconds": 1362.7422029972076
+}

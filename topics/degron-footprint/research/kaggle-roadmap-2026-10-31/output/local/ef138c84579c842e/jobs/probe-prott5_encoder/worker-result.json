@@ -1,0 +1,18 @@
+{
+  "job": "probe-prott5_encoder",
+  "started_unix": 1793680855.8314614,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/probe-prott5_encoder/preflight.json",
+      "bytes": 755,
+      "sha256": "59bf2420ba0e4afda2851dd208731104201ea0b184f8f6bec1d4c53a8a7d7f22"
+    },
+    {
+      "path": "jobs/probe-prott5_encoder/prott5_encoder-lock.json",
+      "bytes": 1572,
+      "sha256": "9e9a8495ece2fea6e0760089b965dfb334ab1d040b34410c3f47fd653ca105b2"
+    }
+  ],
+  "seconds": 5.530511856079102
+}

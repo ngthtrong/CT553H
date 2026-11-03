@@ -1,0 +1,18 @@
+{
+  "job": "probe-ankh_base",
+  "started_unix": 1793682433.0686445,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/probe-ankh_base/ankh_base-lock.json",
+      "bytes": 1557,
+      "sha256": "33c7ab2cc46b647244a3ecf1e0291bce8fa6f8ac7ff92aee2027ba41c55d74d3"
+    },
+    {
+      "path": "jobs/probe-ankh_base/preflight.json",
+      "bytes": 738,
+      "sha256": "e98dda91111902035fab9ae63e767b5f9f907fabe99716d683131c6990fd8ebb"
+    }
+  ],
+  "seconds": 5.483753204345703
+}

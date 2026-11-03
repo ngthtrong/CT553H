@@ -6,6 +6,8 @@ Chạy thí nghiệm nhiều phiên với terminal Windows: [local-runner.md](lo
 
 **Cập nhật trạng thái 03/11:** sau lượt readiness, campaign local đã chạy công việc full-data. `official_jobs_started=false` chỉ thuộc lần kiểm môi trường ngày 02/11; xem [snapshot campaign](../README.md) và [local-runner.md](local-runner.md) cho trạng thái/điều phối hiện hành. Không cài lại dependency trong môi trường khi worker đang chạy.
 
+Sau khi dừng an toàn ngày 03/11, đã thêm `protobuf==6.33.5` (ghim qua `requirements-kaggle.txt`) và sửa Ankh tokenizer. [Kiểm chứng sửa lỗi](tokenizer-repair-validation.json) xác nhận ProtT5 FP16/Ankh FP32 chạy được trên GPU ở batch 8. Runtime identity hiện ghi cả protobuf; campaign mới kế thừa có kiểm các kết quả không chịu ảnh hưởng, xem `local-runner.md`. Readiness ngày 02/11 là bản ghi trước thay đổi này.
+
 Môi trường riêng ở `.venv/` của repository, Python 3.11.9 trên Windows. Runtime đang dùng được ghim tại [requirements-local-cuda-reuse.txt](requirements-local-cuda-reuse.txt); phương án Torch gốc của Kaggle ở [requirements-local-cuda.txt](requirements-local-cuda.txt). Các dependency còn lại kế thừa [requirements-kaggle.txt](requirements-kaggle.txt). Không dùng Python toàn cục để chạy tiếp campaign.
 
 **Đầu vào đã khôi phục:**

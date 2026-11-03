@@ -55,7 +55,7 @@ def seeds(seed):
 def environment():
     import importlib.metadata
     names = ['numpy', 'pandas', 'pyarrow', 'scipy', 'scikit-learn', 'torch',
-             'transformers', 'peft', 'accelerate', 'sentencepiece', 'safetensors']
+             'transformers', 'peft', 'accelerate', 'sentencepiece', 'safetensors', 'protobuf']
     versions = {}
     for name in names:
         try:

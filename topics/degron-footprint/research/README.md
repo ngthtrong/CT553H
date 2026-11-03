@@ -17,7 +17,15 @@
 
 **[DIỄN GIẢI đã lưu]** Kết quả development hỗ trợ khảo sát train toàn dải PSI và frozen ESM kết hợp CNN; thứ hạng trong snapshot chưa phải lựa chọn sản phẩm. Chưa có output Kaggle stage07 calibration/locked T, stage08 external, stage09 structure hoặc stage10 aggregate cuối trong snapshot đã phân tích. Cần refit/export riêng nếu chọn CNN/LoRA/family để phục vụ.
 
-## Snapshot campaign local — 03/11/2026, 10:17 (UTC+8)
+## Campaign local sau sửa tokenizer — 03/11/2026, 12:38 (UTC+8)
+
+**[ĐO kiểm phần mềm]** ProtT5 đã nạp được SentencePiece sau khi thêm protobuf; Ankh dùng tokenizer JSON gốc và đầu vào tách residue. Hai model đạt alignment đủ 532 phép thay, preflight CUDA, batch 8 và lưu feature FP16 hữu hạn theo [tokenizer-repair-validation.json](kaggle-roadmap-2026-10-31/tokenizer-repair-validation.json). Ankh base dùng encoder FP32 sau khi FP16 không qua kiểm hữu hạn; ProtT5 giữ FP16. Chưa suy ra chất lượng benchmark từ các kiểm tra này.
+
+Successor **`ef138c84579c842e`** được tạo với [plan.json](kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/plan.json), [state.json](kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/state.json) và [inheritance.json](kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/inheritance.json). Tại mốc tạo: **456 complete kế thừa, 178 pending, một checkpoint LoRA paused**, tổng 635 đơn vị. Các trạng thái blocked/skipped của ProtT5/Ankh ở nguồn được reset để chạy probe/extract/120 Ridge fold. Campaign nguồn giữ nguyên để truy vết; artifact complete nằm ở nguồn, checkpoint paused được sao chép và kiểm hash. Kiểm CUDA trên mẫu nhỏ xác nhận tiếp tục LoRA qua successor khớp lượt liên tục, sai lệch tham số tối đa 0.
+
+Dùng các lệnh `.cmd` như trước; [local-runner.md](kaggle-roadmap-2026-10-31/local-runner.md) mô tả phạm vi kế thừa được phép và yêu cầu giữ cả hai thư mục output. Snapshot cũ bên dưới được giữ theo mốc ban đầu, không còn là hàng đợi hiện tại.
+
+## Snapshot lịch sử — 03/11/2026, 10:17 (UTC+8)
 
 **[ĐỌC TRẠNG THÁI]** Campaign `e7097449883a51d8`, theo [plan.json](kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/plan.json), [queue.json](kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/queue.json) và [state.json](kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/state.json) tại thời điểm đọc. Đây là ảnh chụp tiến độ, không phải bảng đánh giá mô hình; tiến trình có thể cập nhật file sau mốc này.
 

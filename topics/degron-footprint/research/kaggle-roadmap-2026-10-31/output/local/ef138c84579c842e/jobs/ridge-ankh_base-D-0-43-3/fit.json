@@ -1,0 +1,11 @@
+{
+  "recipe": "ankh_base-only-D",
+  "model": "ankh_base",
+  "arm": "D",
+  "context": false,
+  "seed": 43,
+  "fold": 3,
+  "alpha": 1000.0,
+  "validation_mse": 0.2702898863269279,
+  "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738"
+}

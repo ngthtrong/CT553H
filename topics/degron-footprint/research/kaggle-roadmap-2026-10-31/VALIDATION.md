@@ -2,6 +2,10 @@
 
 ## Trạng thái đối chiếu ngày 03/11/2026
 
+**Sửa tokenizer local sau khi dừng an toàn:** [validate-tokenizer-repair.py](validate-tokenizer-repair.py) và [tokenizer-repair-validation.json](tokenizer-repair-validation.json) ghi kiểm alignment 532 phép thay/model, token ID khớp artifact gốc, không token lạ, từ chối chiều dài sai; preflight CUDA và delta embedding batch 8 đạt cho ProtT5 FP16/Ankh FP32. FP16 của Ankh từng tạo hidden state không hữu hạn trong preflight, nên FP32 là cấu hình khai báo riêng, không phải fallback âm thầm sau OOM. Hai phép kiểm này không đánh giá hiệu năng ΔPSI.
+
+Kiểm kế thừa từ chối thay dữ liệu/protocol/train hoặc artifact hỏng; giữ nguyên source và byte checkpoint. LoRA CUDA trên mẫu nhỏ tiếp tục qua thư mục successor cho tham số khớp lượt liên tục (max abs 0). Đã chạy lại [local-runner-validation.json](local-runner-validation.json): frozen/LoRA pause–resume, khôi phục checkpoint dự phòng, khóa tiến trình, feature prefix và DAG đều đạt. Successor `ef138c84579c842e` kế thừa 456 job và một checkpoint paused qua manifest riêng; không đổi model sản phẩm/G2/G3. Các notebook embedded và code ZIP cũ chưa được dựng lại.
+
 Các mục bên dưới giữ **bản ghi kiểm thử CPU ngày 01/11**, trước khi nhập/phân tích output GPU. Những câu “chưa chạy official/Kaggle GPU” chỉ áp dụng tại mốc kiểm thử đó.
 
 - Output Kaggle full-data đã được nhập: [output-analysis.json](output-analysis.json) và [output-analysis.md](output-analysis.md) ghi kiểm artifact/OOF và giới hạn snapshot, không thay bằng chứng smoke.

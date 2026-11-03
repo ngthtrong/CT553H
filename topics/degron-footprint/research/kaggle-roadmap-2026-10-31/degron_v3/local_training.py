@@ -22,7 +22,7 @@ def model_digest(model):
 def predict(model, frame, path, control, batch=8):
     path = Path(path); path.parent.mkdir(parents=True, exist_ok=True)
     identity = fingerprint(dict(model=model_digest(model),
-        cells=frame.cell_id.tolist(), batch=batch, campaign=control.campaign.name))
+        cells=frame.cell_id.tolist(), batch=batch, campaign=control.identity_campaign))
     progress = path.with_suffix('.json')
     done = 0
     if path.exists() and progress.exists():
@@ -53,7 +53,7 @@ def predict(model, frame, path, control, batch=8):
 def fit(model, train, validation, seed, path, control, epochs=20, batch=8,
         lr=.0001, refit=False, balanced=False):
     path = Path(path)
-    identity = fingerprint(dict(job=control.job, campaign=control.campaign.name,
+    identity = fingerprint(dict(job=control.job, campaign=control.identity_campaign,
         train=train.cell_id.tolist(), validation=validation.cell_id.tolist(),
         seed=seed, epochs=epochs, batch=batch, lr=lr, refit=refit, balanced=balanced))
     parameters = [p for p in model.parameters() if p.requires_grad]

@@ -1,0 +1,59 @@
+{
+  "source_campaign": "D:\\thanhtrong\\CT553H\\topics\\degron-footprint\\research\\kaggle-roadmap-2026-10-31\\output\\local\\e7097449883a51d8",
+  "source_plan_sha256": "176883d411ab43ebd1709dbc780f16e6622ed3ae867b128c9191c7fb91b016a2",
+  "source_state_sha256": "1e4fcdeab4772a8b0fae96b25587909ceacf69f168d4c2051f4ecaa596bb7c54",
+  "source_code_sha256": "a794922b58f9c0792905b962b06a9f47444c5ca146232737662b58512ed14db0",
+  "target_code_sha256": "b401f4659d9d0dc308607ac4f9823b81f6ff7d6e1b786cee429a32431268f768",
+  "validation_sha256": "573abd2d54807c5494f16fde77259d8aaf10a3814c84b02ff882d4c39c3122cb",
+  "inherited_complete": 456,
+  "checkpoint_campaigns": {
+    "tune-lora-B-17-2": "e7097449883a51d8"
+  },
+  "checkpoint_files": [
+    {
+      "path": "jobs/tune-lora-B-17-2/inner-validation-1.json",
+      "bytes": 199,
+      "sha256": "31739e7783ca17c5fd3ac207e96f66a4f740f54bfbe141d65efe05dd5165982a"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-2/inner-validation-1.npy",
+      "bytes": 76444,
+      "sha256": "06630a4b548952e653c2da866810e5be9ed29f1954e09b68c29aa6fb10a8ffdf"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-2/inner-validation-2.json",
+      "bytes": 199,
+      "sha256": "8bc5a32e919b3b313714f28ece8966c3b773595a54c8c60116a4643175888923"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-2/inner-validation-2.npy",
+      "bytes": 76444,
+      "sha256": "33c7dfe697db2a1cee02409174e1a3708747f84f6a67cad31d81ec2dde8ef3bc"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-2/inner-validation-3.json",
+      "bytes": 199,
+      "sha256": "cc290099605d832a291e59285707b06c2dc03639cda360e0b3143489a841ef6e"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-2/inner-validation-3.npy",
+      "bytes": 76444,
+      "sha256": "66d84f7d1f680a3e48d0a7e26e808851f07ea77348b52023bff3c280b0ce1945"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-2/inner.pt",
+      "bytes": 4087091,
+      "sha256": "c1279a0f28c5ff5ea0d9afb65100dfc7d5097c3c0f7d14b0e3065fec7ea581c8"
+    },
+    {
+      "path": "jobs/tune-lora-B-17-2/inner.pt.previous",
+      "bytes": 4087027,
+      "sha256": "5adb3377af6e1253c14ae2962476b5a6229c6e7761866c5565ba9a52d88732c3"
+    }
+  ],
+  "reset_models": [
+    "prott5_encoder",
+    "ankh_base"
+  ],
+  "source_immutable": true
+}

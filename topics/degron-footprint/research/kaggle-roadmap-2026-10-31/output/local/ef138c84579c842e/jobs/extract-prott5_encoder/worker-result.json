@@ -1,0 +1,28 @@
+{
+  "job": "extract-prott5_encoder",
+  "started_unix": 1793680864.5043714,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/extract-prott5_encoder/feature-manifest.json",
+      "bytes": 731,
+      "sha256": "f0c6eabf861419c908e44720d44d8a2dc2af461f65ad99247af848dcf440b338"
+    },
+    {
+      "path": "jobs/extract-prott5_encoder/pool.npy",
+      "bytes": 501399680,
+      "sha256": "4f31f76572267b45725da59934ceecd4f75e9565dd27ebc1777345e3cec74e30"
+    },
+    {
+      "path": "jobs/extract-prott5_encoder/progress.json",
+      "bytes": 200,
+      "sha256": "ef73af35cdf960dac0f19b0260d231f650b303aa52c1548b7d848579faa8a209"
+    },
+    {
+      "path": "jobs/extract-prott5_encoder/rows.parquet",
+      "bytes": 672849,
+      "sha256": "b90c28d510247b720f7a20d72722ea6b354386d2a510609783d9a5f33f2a0d1b"
+    }
+  ],
+  "seconds": 750.4349222183228
+}
