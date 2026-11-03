@@ -1,5 +1,7 @@
 # Pipeline lựa chọn mô hình degron-footprint theo từng câu hỏi
 
+> **Vai trò đối chiếu 03/11/2026:** đây là lập luận/bằng chứng R2/R6 tại mốc 24/10. Nghiên cứu mới và snapshot campaign nằm trong [chỉ mục hiện hành](../README.md); [v3 full-PSI](../kaggle-roadmap-2026-10-31/README.md) có thiết kế và population riêng. Không gộp các số ở đây với metric W v3 thành một benchmark, hoặc coi chúng là quyết định chọn model mới.
+
 Ngày tổng hợp: 24/10/2026. Đây là khung tổ chức lập luận và chỉ mục bằng chứng cho sáu điểm Trọng đã chọn; không phải một thí nghiệm mới hay bản thay thế protocol R2/R6. Phiên này chỉ đọc mã/kết quả và sinh bảng tổng hợp, không huấn luyện hoặc chọn lại mô hình sản phẩm. Trạng thái G2/G3 giữ nguyên.
 
 ## 1. Bài toán và đầu ra cố định

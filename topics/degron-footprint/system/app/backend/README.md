@@ -18,6 +18,8 @@ tests/                      pytest: unit, property, ETL, API, security, contract
 
 ## Run it (development, SQLite)
 
+The Makefile commands below require Bash/Linux or WSL and an app-specific `.venv`; they do not use the root Windows CUDA research environment. This README's test counts and timings are historical baseline records, not a 3 Nov rerun or acceptance of the planned v0.2 API.
+
 ```bash
 make -C topics/degron-footprint/system/app venv         # once: .venv with pinned requirements
 make -C topics/degron-footprint/system/app dev-api      # http://127.0.0.1:8000, CORS for http://localhost:5173
@@ -30,7 +32,7 @@ contract itself, is at `/docs` in `dev-api`. A reload on code change is on.
 
 | Task | Command (from `topics/degron-footprint/system/app`) |
 |---|---|
-| All tests with coverage | `make test` (about 90 s; 148 tests) |
+| All tests with coverage | `make test` (historical duration about 90 s; see [system evidence](../../README.md) for recorded counts) |
 | Without the research data and the slow suites | `make test-fast` |
 | Lint, types | `make lint`, `make typecheck` |
 | Contract file valid | `make contract` |

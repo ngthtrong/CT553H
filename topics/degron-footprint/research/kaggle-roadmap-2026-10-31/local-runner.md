@@ -1,5 +1,7 @@
 # Chạy local nhiều phiên, terminal Windows
 
+Đối chiếu tiến độ 03/11/2026 tại [chỉ mục/snapshot nghiên cứu](../README.md). Hướng dẫn này mô tả cách vận hành; số job complete/blocked và job đang dở phải đọc từ campaign hiện tại, không suy từ các kiểm thử phần mềm ở cuối file.
+
 **02/11/2026:** Bộ điều phối dùng `.venv` Python3.11/Torch2.13+cu130 của repo. Nó giữ output Kaggle làm tham chiếu chỉ đọc, chạy chiến dịch local riêng cho khảo sát pLM và đối chứng frozen–LoRA cùng runtime. Kiểm phần mềm dùng mẫu nhỏ không phải scientific benchmark.
 
 Từ thư mục gốc repo, double-click **`run-local.cmd`** hoặc gọi trong PowerShell:

@@ -2,35 +2,39 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+Đồng bộ với mã nguồn và bằng chứng trong repo ngày **03/11/2026**. Chỉ mục trạng thái: [README.md](README.md) và [research/README.md](topics/degron-footprint/research/README.md). `AGENTS.md` chỉ dẫn chiếu file này; duy trì quy tắc chung tại đây.
+
 Repo luận văn tốt nghiệp CT553H (Kỹ thuật phần mềm, ĐH Cần Thơ) của Nguyễn Thanh Trọng, GVHD TS. Hồ Quang Thái. Đề tài duy nhất còn lại: **degron-footprint** — dự đoán footprint / hiệu ứng đột biến degron mức residue trên nhãn thực nghiệm (Zhang 2023, Voutsinos 2026, Larsen 2025, MaveDB, ClinVar). Tài liệu viết bằng tiếng Việt; tên file/thư mục chữ thường, tiếng Anh, nối gạch ngang.
 
 ## Bố cục
 
 - `topics/degron-footprint/` — toàn bộ nghiên cứu của đề tài.
-  - `research/<chủ-đề>[-YYYY-MM-DD]/` — mỗi thư mục là một thí nghiệm/audit tự chứa: `README.md` (kết quả, có nhãn bằng chứng), script `.py`, và kết quả nhỏ dạng `.json` do script ghi ra. Thí nghiệm lớn có thêm `PROTOCOL.md`/`PREREGISTRATION.md`, `VALIDATION.md`, `audit.py`, `source-manifest.json`. Kế hoạch đang hiệu lực: `next-phase-plan-2026-10-22/`. Huấn luyện nặng chạy trên Kaggle qua notebook (`notebook-kit-2026-10-22/RUN.md`: dựng gói mã/dữ liệu, chạy, mang kết quả về); kết quả đặt vào `run-<nền-tảng>-<ngày>/` cạnh README. Thí nghiệm hiện có: R0–R3 (đã chạy 22/10), R6 (chuỗi đối chứng ngữ cảnh/scanning/ESM-2/CNN, đã chạy 23/10: phép xác nhận P chưa đạt, ridge ±5 được nhận ở mức họ), `scan-sat-merge` (trộn nhãn scanning).
-  - `data/{raw,interim,processed}/` — dữ liệu thật (~2,3 GB), **không lên git** trừ `data/README.md` và `SOURCE.md`. `data/README.md` là sổ nguồn gốc: nguồn/phiên bản ghim/giấy phép/SHA-256, script nào tạo file nào, nhật ký xử lý. Khi tải, xử lý lại hay xoá file trong `data/` thì cập nhật sổ này trong cùng phiên.
+  - `research/<chủ-đề>[-YYYY-MM-DD]/` — mỗi thư mục là một thí nghiệm/audit tự chứa: `README.md` (kết quả, có nhãn bằng chứng), script `.py`, và kết quả nhỏ dạng `.json` do script ghi ra. Thí nghiệm lớn có thêm protocol, validation và manifest. Luồng hiện hành là **`kaggle-roadmap-2026-10-31/` (v3 full-PSI)**: `EXECUTION-PROTOCOL.md` cho lựa chọn thực thi; `local-plan.json` cho campaign Windows; `local-runner.md` cho chạy/resume; `RUN.md` cho Kaggle. Output Kaggle đã được nhập và phân tích trong `output-analysis*.{json,md}`; campaign local mở rộng development đang dở. `next-phase-plan-2026-10-22/`, notebook-kit v1/v2 và R0–R6 là hồ sơ lịch sử, không thay protocol v3. Không tự đóng G2/G3 hay đổi mô hình sản phẩm từ thứ hạng development.
+  - `data/{raw,interim,processed}/` — dữ liệu thật và các gói tái tạo, **không lên git** trừ `data/README.md` và `SOURCE.md`. Con số ~2,3 GB trong sổ là mốc trước G2, không phải dung lượng hiện tại. `data/README.md` là sổ nguồn gốc: nguồn/phiên bản ghim/giấy phép/SHA-256, script nào tạo file nào, nhật ký xử lý. Khi tải, xử lý lại hay xoá file trong `data/` thì cập nhật sổ này trong cùng phiên.
   - `presentation/` — deck reveal.js (`deck-*/index.html`), nội dung trang Notion và `figures.py`/`visuals.py` sinh PNG. Không tự sửa khi chưa được yêu cầu.
   - `proposal/` — đề cương (`proposal.md` → pdf/docx bằng `build.py`).
-  - `system/` — công cụ web: tài liệu thiết kế (`srs.md`, `db-design.md`, `api-spec.md`, `ui-design.md`, `test-plan.md`) và `app/` (FastAPI + React + ETL + test). CSDL và tệp sinh ra khi chạy (`app/.data/`, `.coverage`, `test-results/`) **không lên git**.
-- `lectures/` — `papers/` (ghi chép từng bài báo về degron/hiệu ứng đột biến) và `dataset-guide.md` (hướng dẫn hiểu dữ liệu). Các bài giảng HTML và notebook CS535 đã gỡ.
-- `project/` — thông tin người liên quan, công bố của GVHD, biên bản gặp.
-- `resources/` — PDF bài báo, luận văn tham khảo, đề cương học phần (repo private nên được chứa PDF).
-- `report/` — **bản làm việc** của luận văn (bản sao từ `reportTemplate/`, đã điền thông tin SV/GVHD, khung và lý thuyết cơ bản; phần chưa làm đánh dấu `[PENDING]`). Luận văn viết tiếng Anh, kèm Tóm tắt tiếng Việt.
+  - `system/` — công cụ web: thiết kế v0.2 ngày 29/10 và `app/` baseline (FastAPI + React + ETL + test, mô hình `m3-ext4.0-platt-v1`). Projects/history, jobs peptide/protein, import/comparison và PostgreSQL local còn cần triển khai/kiểm chứng; cổng R3 chưa tích hợp đúng. `design/workspace-ui-v2/` là prototype review hiện hành ngày 01/11, fixture tổng hợp, bộ nhớ tab, chưa nối backend. CSDL và tệp sinh ra khi chạy (`app/.data/`, `.coverage`, `test-results/`) **không lên git**.
+  - `report/` — **bản làm việc** của luận văn, đã chuyển từ gốc repo vào đề tài. Luận văn viết tiếng Anh, kèm Tóm tắt tiếng Việt; còn các mục `[PENDING]`. Phạm vi phần mềm đã đồng bộ ngày 29/10, không mặc định nội dung nghiên cứu v3 đã được đưa vào luận văn.
+- `resources/` — `people.md`, `dataset-guide.md`, `papers/analyzed-papers/`, PDF bài báo, luận văn tham khảo, đề cương học phần (repo private nên được chứa PDF). Nội dung `lectures/` và `project/` cũ đã gom vào đây.
 - `reportTemplate/` — **bản gốc sạch** của template LaTeX luận văn (Khoa Kỹ thuật phần mềm, ĐHCT), không điền nội dung vào đây (xem `reportTemplate/README.md`); `guideline-thesis/` trong đó là mẫu/hướng dẫn gốc của Khoa. Template NCKH cũ nằm ở commit `30c20ef`.
 
 ## Nhánh git
 
-`main` là nhánh làm việc (bố cục gọn như trên). `backup-before-clean` giữ nguyên bố cục trước khi dọn (`archive/`, `journal/`, `surveys/`, `tools/`, `DECISIONS.md`, các tài liệu chọn đề tài và phân tích đã thay thế); lấy lại tài liệu cũ bằng `git show backup-before-clean:<đường-dẫn>`.
+`main` là nhánh làm việc. Hồ sơ dọn repo ghi nhánh lưu trữ `backup-before-clean` (`archive/`, `journal/`, `surveys/`, `tools/`, `DECISIONS.md` và tài liệu đã thay thế); checkout hiện tại chỉ có nhánh local `main`. Chỉ dùng `git show backup-before-clean:<đường-dẫn>` khi ref lưu trữ thực sự có ở máy hoặc remote; không mặc định nhánh đó sẵn có.
 
 ## Chạy script nghiên cứu
 
-```bash
-python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
-.venv/bin/pip install torch --index-url https://download.pytorch.org/whl/cpu   # torch bản CPU
-.venv/bin/python topics/degron-footprint/research/g2-saturation-2026-10-18/run.py
+Campaign CUDA Windows dùng `.venv` ở gốc repo (Python 3.11.9, Torch 2.13.0+cu130); dependency ở `research/kaggle-roadmap-2026-10-31/requirements-local-cuda-reuse.txt`. Không cài đè Torch CPU hoặc requirements lịch sử vào môi trường đang chạy. Từ PowerShell ở gốc repo:
+
+```powershell
+.\run-local.cmd --hours 2
+.\status-local.cmd
+.\pause-local.cmd
 ```
 
-Chạy từ thư mục gốc repo. Không có test suite; kiểm tính đúng bằng các script `audit.py`/`validate_*.py` đi kèm từng thí nghiệm. Một số script cần `mmseqs` (phân cụm protein cov50/cov80).
+Đọc `local-runner.md` trước khi chạy/resume; script `.cmd` mở terminal riêng. Code/data/protocol/runtime đổi sẽ đổi campaign identity; không sửa manifest để ép checkpoint vào run khác. Không tự dừng hoặc khởi chạy campaign chỉ để cập nhật tài liệu.
+
+Các script nghiên cứu cũ dùng `requirements.txt` ở gốc; nếu cần tái lập trên Linux/WSL thì tạo môi trường riêng (ví dụ `.venv-legacy`) rồi cài dependency tương ứng. Chạy từ gốc repo. Nghiên cứu có các script `audit.py`/`validate_*.py`; v3 có kiểm invariants, notebook, transport và local runner. App có pytest, Vitest và Playwright riêng; xem `system/app/README.md` và Makefile/package scripts. Không gọi kết quả smoke hoặc test lịch sử là benchmark/acceptance mới. Một số script cần `mmseqs` (phân cụm protein cov50/cov80).
 
 Script import lẫn nhau qua `sys.path` (ví dụ `g2-saturation` dùng `residue-task-derisk-2026-10-15/residue_data.py`, `derisk.py` và `pap-baseline/pap_baseline.py`), nên đổi tên/chuyển thư mục `research/` sẽ làm hỏng script khác.
 
@@ -47,13 +51,14 @@ Script mới viết dùng đúng hai marker này; đừng khôi phục `log.md`/
 - Thí nghiệm cố định seed (thường `17, 29, 43`), chia fold theo cụm protein (cov80/cov50), bootstrap theo cụm chứ không theo ô. Số liệu đưa vào tài liệu phải trỏ tới file `.json` kết quả tương ứng.
 - Nhãn bằng chứng trong README thí nghiệm: `[ĐO]` (tự đo), `[DIỄN GIẢI]`, nguồn tác giả, đề xuất, chưa xác minh. Không nói "chưa ai làm" khi mới tra qua tóm tắt; không biến một kết quả dương cục bộ thành "hoàn tất G2".
 - Mô hình/checkpoint (`*.pt`, `*.pkl`, `models/`) không lên git; chúng sinh lại được bằng runner.
+- Output v3 theo `.gitignore`: `output/official/` và artifact nặng ở local; chỉ metadata/báo cáo nhỏ của campaign và weights được mở ngoại lệ. Xem `local-runner.md` trước khi thêm file; không dùng `git add -f output/`. Clone Git không đủ để resume vì thiếu checkpoint/feature/OOF. Campaign đang chạy có thể tự sửa `state.json`; không ghi đè thay đổi đó khi làm tài liệu.
 
-## Report template (`reportTemplate/`, bản làm việc `report/`)
+## Report template (`reportTemplate/`, bản làm việc `topics/degron-footprint/report/`)
 
 Cần Python 3.9+ (chỉ thư viện chuẩn), GNU Make, XeLaTeX, Biber/BibTeX, Poppler và phông Times New Roman (trên WSL đọc từ `/mnt/c/Windows/Fonts/`).
 
 ```bash
-# Cùng lệnh cho bản làm việc: thay reportTemplate bằng report
+# Cùng lệnh cho bản làm việc: thay reportTemplate bằng topics/degron-footprint/report
 make -C reportTemplate doctor     # kiểm môi trường
 make -C reportTemplate content    # build/content/content.pdf (hoặc content-twoside, smoke, all)
 make -C reportTemplate check      # kiểm PDF, log, A4, phông nhúng

@@ -2,7 +2,9 @@
 
 Chạy thí nghiệm nhiều phiên với terminal Windows: [local-runner.md](local-runner.md).
 
-**[ĐO] Cập nhật 02/11/2026:** Đã cài wheel Torch `2.13.0+cu130` từ cache vào `.venv` riêng của repo và cài dependency theo `requirements-local-cuda-reuse.txt`. [readiness.json](run-local-2026-11-02/readiness.json) đạt `status=pass`, `ready_for_esm35_training=true`, `official_jobs_started=false`. CUDA, dữ liệu/splits, Ridge, inference ESM35 và update frozen/LoRA/checkpoint resume đều qua kiểm tra. Hai môi trường nguồn không bị sửa; lượt tải Torch2.11 dở vẫn được giữ nguyên. Xem [reuse-local-cuda.md](reuse-local-cuda.md); các lệnh Torch2.11 bên dưới chỉ dành cho phương án giữ đúng phiên bản Torch gốc của Kaggle.
+**[ĐO] Cập nhật 02/11/2026:** Đã cài wheel Torch `2.13.0+cu130` từ cache vào `.venv` riêng của repo và cài dependency theo `requirements-local-cuda-reuse.txt`. [readiness.json](run-local-2026-11-02/readiness.json) đạt `status=pass`, `ready_for_esm35_training=true`, `official_jobs_started=false`. CUDA, dữ liệu/splits, Ridge, inference ESM35 và update frozen/LoRA/checkpoint resume đều qua kiểm tra. Hai môi trường nguồn không bị sửa; lượt tải Torch2.11 dở vẫn được giữ nguyên. Cách chuẩn bị wheel và kiểm SHA ở [reuse-local-cuda.md](reuse-local-cuda.md).
+
+**Cập nhật trạng thái 03/11:** sau lượt readiness, campaign local đã chạy công việc full-data. `official_jobs_started=false` chỉ thuộc lần kiểm môi trường ngày 02/11; xem [snapshot campaign](../README.md) và [local-runner.md](local-runner.md) cho trạng thái/điều phối hiện hành. Không cài lại dependency trong môi trường khi worker đang chạy.
 
 Môi trường riêng ở `.venv/` của repository, Python 3.11.9 trên Windows. Runtime đang dùng được ghim tại [requirements-local-cuda-reuse.txt](requirements-local-cuda-reuse.txt); phương án Torch gốc của Kaggle ở [requirements-local-cuda.txt](requirements-local-cuda.txt). Các dependency còn lại kế thừa [requirements-kaggle.txt](requirements-kaggle.txt). Không dùng Python toàn cục để chạy tiếp campaign.
 
@@ -14,12 +16,16 @@ Môi trường riêng ở `.venv/` của repository, Python 3.11.9 trên Windows
 - Weights ESM2-35M: `output/weights/esm2_35m/6fbf070e65b0b7291e7bbcd451118c216cff79d8/`, có `status.json` complete và đủ checksum; không cần tải lại.
 - Output/checkpoint cũ: `output/official/369cb2fe6a1e31e0/`. Không ghi đè để chạy kiểm môi trường.
 
-Lệnh từ gốc repository (PowerShell), khi cần dựng lại môi trường:
+Lệnh từ gốc repository (PowerShell), khi cần dựng lại môi trường CUDA local hiện hành trên một checkout mới; không chạy đè môi trường đang phục vụ campaign:
 
 ```powershell
 py -3.11 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r topics/degron-footprint/research/kaggle-roadmap-2026-10-31/requirements-local-cuda.txt
+# Chuẩn bị wheel local đã kiểm SHA theo reuse-local-cuda.md trước lệnh pip.
+$taskWheel = '.venv/wheelhouse/torch-2.13.0+cu130-cp311-cp311-win_amd64.whl'
+.\.venv\Scripts\python.exe -m pip install "$taskWheel" -r topics/degron-footprint/research/kaggle-roadmap-2026-10-31/requirements-local-cuda-reuse.txt
 ```
+
+Phương án Torch 2.11 theo Kaggle dùng `requirements-local-cuda.txt` trong môi trường riêng; đổi runtime tạo campaign identity khác. Chi tiết kiểm wheel cache và nguồn dependency ở [reuse-local-cuda.md](reuse-local-cuda.md).
 
 Chạy kiểm tra sẵn sàng:
 
@@ -39,6 +45,6 @@ Sau khi chạy, kết quả sẽ ở `run-local-2026-11-02/readiness.json`. Ch�
 
 Các phép đo là kiểm chức năng/tài nguyên với một batch, không phải hiệu năng dự đoán, thời gian full run hay hoàn tất một official job. Báo cáo ghi rõ `official_jobs_started=false`.
 
-**Khi chuẩn bị chạy tiếp:** Dùng các đường dẫn local trên thay `/kaggle/...`, chạy preflight trên runtime hiện tại và giữ nguyên các tham số khoa học nếu tiếp tục recipe cũ. Python/OS/GPU khác Kaggle nên không bảo đảm tiếp diễn giống từng bit. Nội dung runner hiện tại khớp bản embedded Kaggle khi chuẩn hóa newline, nhưng hash byte CRLF/LF và đường dẫn trong config khác nhau; orchestration cần cấu hình resume riêng để tái sử dụng artifact có kiểm chứng, tránh vô tình chạy lại job đã xong hoặc giả cùng signature.
+**Chạy tiếp hiện nay:** dùng các script `.cmd` ở gốc và [local-runner.md](local-runner.md); orchestration đã có campaign local riêng, kiểm fingerprint và artifact. Các đường dẫn `/kaggle/...` thuộc run nguồn; không sửa identity để giả cùng run. Python/OS/GPU khác Kaggle nên không bảo đảm tiếp diễn giống từng bit. Đối chứng frozen–LoRA được chạy cùng runtime local theo `local-plan.json`.
 
-Môi trường này phục vụ nhánh ESM2-35M. Stage08/09 vẫn cần nguồn ngoài/mapping cấu trúc thật; CNN final refit/export vẫn là phần triển khai riêng. Không suy từ readiness của 35M sang khả năng chạy mọi checkpoint lớn. Nhật ký giải nén dữ liệu nằm trong [data/README.md](../../data/README.md).
+Readiness ngày 02/11 kiểm nhánh ESM2-35M; campaign mở rộng pLM có preflight riêng cho từng adapter. Stage08/09 vẫn cần nguồn ngoài/mapping cấu trúc thật; CNN final refit/export vẫn là phần triển khai riêng. Không suy từ readiness của 35M sang khả năng chạy mọi checkpoint lớn. Nhật ký giải nén dữ liệu nằm trong [data/README.md](../../data/README.md).

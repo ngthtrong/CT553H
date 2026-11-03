@@ -13954,11 +13954,8 @@
       "seconds": 3457.3704278469086
     },
     "tune-lora-B-17-1": {
-      "job": "tune-lora-B-17-1",
-      "started_unix": 1793666421.4040484,
-      "status": "paused",
-      "reason": "Session deadline or pause request; committed work retained",
-      "seconds": 1650.2128224372864
+      "status": "running",
+      "session": "20261103-101229"
     }
   },
   "scientific_status": "development_expansion_after_Kaggle_results"

@@ -10,6 +10,10 @@ Nguyên tắc `[ĐỀ XUẤT]` đã áp dụng:
 - **Cổng tự kiểm trước khi chạy** (R0 tái lập mốc; từng notebook tự dựng lại mốc của riêng nó nếu có).
 - **Giấy phép quyết định cái gì được lên dịch vụ ngoài.** Gói dữ liệu từ chối cứng Koren 2018, MetaDegron, Larsen 2025, ClinVar thô (theo tên đường dẫn và theo trường giấy phép).
 
+## Phạm vi hiện hành
+
+Bộ này giữ cách dựng gói v1/v2 cho R0–R6 lịch sử. Đối chiếu 03/11/2026: luồng mới dùng [v3 full-PSI](../kaggle-roadmap-2026-10-31/README.md), [hướng dẫn Kaggle v3](../kaggle-roadmap-2026-10-31/RUN.md) hoặc [campaign Windows](../kaggle-roadmap-2026-10-31/local-runner.md). Xem [chỉ mục nghiên cứu](../README.md) để chọn đúng protocol, dữ liệu và run trước khi tái lập.
+
 ## File trong thư mục
 
 | File | Việc |

@@ -1,8 +1,10 @@
 # System: Degron Footprint Tool
 
-**Current software scope: v0.2, 29 Oct 2026, confirmed by the author in this session.** One local web application, React + TypeScript and FastAPI, for researchers prioritising single-amino-acid substitutions for experimental follow-up. The first release includes single-peptide analysis, peptide batches, whole-protein tiling, ClinVar and approved reference annotations, experimental-data import for comparison, and persistent projects and analysis history.
+**Current software scope: v0.2, confirmed on 29 Oct 2026; status reconciled on 3 Nov 2026.** One local web application, React + TypeScript and FastAPI, for researchers prioritising single-amino-acid substitutions for experimental follow-up. The first-release requirements include single-peptide analysis, peptide batches, whole-protein tiling, ClinVar and approved reference annotations, experimental-data import for comparison, and persistent projects and analysis history.
 
-This is a requirements and design update, **not an implementation or acceptance report**. The baseline service wraps the frozen `m3-ext4.0-platt-v1` model; changing the software scope does not select a new research model, retrain it or close G2/G3. The proposal files are deliberately unchanged. The working thesis is [../report/](../report/README.md).
+This directory records requirements and design, **not acceptance of the planned extensions**. The baseline service wraps the frozen `m3-ext4.0-platt-v1` model. The [v3 research campaign](../research/README.md) has Kaggle development results and an unfinished local expansion; it has not promoted a replacement serving model or closed G2/G3. The working thesis is [../report/](../report/README.md); the proposal remains a historical draft.
+
+The current visual review is [Workspace UI v2, 1 Nov](design/workspace-ui-v2/README.md), replacing the 31 Oct design direction. It is a separate HTML/CSS/JavaScript prototype with synthetic fixtures and tab-memory state, not the React baseline or an implemented persistent workspace. It is not connected to the backend or Figma.
 
 ## 1. Scope confirmed on 29 Oct 2026
 
@@ -31,7 +33,8 @@ Whole-protein mode changes the number of inference tiles, not the model's 28-res
 | [ui-design.md](ui-design.md) | Existing single-tile screens plus first-release workspace, job and import screens |
 | [test-plan.md](test-plan.md) | Local acceptance plan, including pending v0.2 cases |
 | [chapter-sync.md](chapter-sync.md) | Record of the scope changes applied to the thesis; remaining implementation work |
-| [app/](app/README.md) | Baseline implementation, not changed in this documentation task |
+| [app/](app/README.md) | Baseline implementation and its historical checks; planned v0.2 extensions remain open |
+| [design/](design/README.md) | Current Workspace UI v2 review prototype and earlier design research |
 
 Read this README, SRS, data design, API contract/specification, UI design, then test plan. English design documents feed the English thesis; its Vietnamese abstract states the same scope.
 
@@ -78,4 +81,4 @@ Acceptance is a clean local installation and execution of UC-01…10, close/reop
 
 ## 6. Documentation maintenance
 
-Keep requirements, data design, API, screens and tests consistent. New routes and migrations are labelled planned until implemented and tested. The author explicitly requested the thesis update in this session; [chapter-sync.md](chapter-sync.md) records the applied changes. Do not edit the proposal or unrelated experimental results as part of this scope update.
+Keep requirements, data design, API, screens and tests consistent. New routes and migrations are labelled planned until implemented and tested. [chapter-sync.md](chapter-sync.md) records the thesis scope update on 29 Oct; it does not imply that later v3 research or the review prototype has been integrated. Historical checks below and in the app READMEs were not rerun for the 3 Nov documentation reconciliation.

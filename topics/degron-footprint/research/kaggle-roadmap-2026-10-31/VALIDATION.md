@@ -1,5 +1,16 @@
 # Kiểm chứng v3 — 01/11/2026
 
+## Trạng thái đối chiếu ngày 03/11/2026
+
+Các mục bên dưới giữ **bản ghi kiểm thử CPU ngày 01/11**, trước khi nhập/phân tích output GPU. Những câu “chưa chạy official/Kaggle GPU” chỉ áp dụng tại mốc kiểm thử đó.
+
+- Output Kaggle full-data đã được nhập: [output-analysis.json](output-analysis.json) và [output-analysis.md](output-analysis.md) ghi kiểm artifact/OOF và giới hạn snapshot, không thay bằng chứng smoke.
+- CUDA local đã qua readiness ngày 02/11: [readiness.json](run-local-2026-11-02/readiness.json). `official_jobs_started=false` trong file này mô tả riêng lượt chẩn đoán môi trường.
+- Campaign Windows sau readiness đã có các job Ridge/frozen/LoRA hoàn tất và job còn dở; xem [snapshot 03/11 và nguồn state/queue](../README.md). [local-runner-validation.json](local-runner-validation.json), [local-ridge-validation.json](local-ridge-validation.json), [local-collection-validation.json](local-collection-validation.json) là kiểm phần mềm bằng mẫu nhỏ, không phải benchmark full-data.
+- Chưa hoàn tất tổng hợp/calibration/locked-transfer của campaign local; chưa có nguồn ngoài/mapping cấu trúc thật hoặc final promotion tự động cho CNN/LoRA/family. G2/G3 vẫn mở.
+
+## Bản ghi smoke CPU ngày 01/11
+
 **[ĐO] 12/12 notebook đã execute từ đầu tới cuối trên CPU ở SMOKE mode**, bằng nbclient/kernel `.venv`, output được lưu và export HTML. Notebook gốc sạch, notebook đã execute/HTML/model/PNG tại `data/processed/v3-validation/verified/`. [notebook-validation.json](notebook-validation.json) ghim SHA của từng file gốc, trạng thái, thời gian và số PNG inline. Stage08/09 pass là nhánh pending được xử lý đúng khi thiếu nguồn/cấu trúc.
 
 ## Bằng chứng đã có

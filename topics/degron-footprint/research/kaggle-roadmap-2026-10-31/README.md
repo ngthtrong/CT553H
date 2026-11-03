@@ -1,10 +1,14 @@
 # Kaggle v3 — full-PSI, khảo sát pLM và huấn luyện model mới
 
-**Trạng thái 01/11/2026: đã triển khai 12 notebook và runner, đã dựng dataset v3; 12/12 notebook đơn đã qua kiểm thử smoke CPU; đã bổ sung notebook tổng tự chứa và kiểm CPU/resume. Trạng thái weights ghi riêng theo snapshot.** Kết quả chính thức trên Kaggle chưa chạy. File số liệu: [dataset-build.json](dataset-build.json), [notebook-validation.json](notebook-validation.json), [weights-status.json](weights-status.json), [code-build.json](code-build.json).
+**Trạng thái 03/11/2026:** đã có output Kaggle full-data được nhập và [phân tích ngày 02/11](output-analysis.md); campaign CUDA Windows mở rộng pLM/frozen–LoRA đang dở. [Chỉ mục nghiên cứu](../README.md) ghi snapshot local và phần còn thiếu. Chưa hoàn tất pipeline hoặc đóng G2/G3. Bộ công cụ có 12 notebook đơn và notebook tổng; 12/12 notebook đơn từng qua smoke CPU. Bằng chứng dựng/kiểm gói: [dataset-build.json](dataset-build.json), [notebook-validation.json](notebook-validation.json), [weights-status.json](weights-status.json), [code-build.json](code-build.json); các file này có mốc riêng, không thay trạng thái campaign.
 
 Mục tiêu là benchmark/phương pháp/đánh giá/phần mềm. Không cần kiến trúc mới hoặc bắt buộc mạng thắng Ridge. Dữ liệu saturation dự đoán **ΔPSI của đột biến đơn mức residue**, không đổi thành phân loại peptide. Phạm vi chỉ dữ liệu, model và thực nghiệm; không triển khai app/UX hay phần luận văn trong gói này.
 
 ## Bắt đầu
+
+**Máy Windows đang dùng:** xem [local-runner.md](local-runner.md), [local-cuda.md](local-cuda.md) và [local-plan.json](local-plan.json). Từ gốc repo gọi `run-local.cmd`, `status-local.cmd`, `pause-local.cmd`; dùng `.venv` CUDA hiện có. Campaign local ghi `output/local/<campaign-id>/`, giữ output Kaggle `output/official/369cb2fe6a1e31e0/` làm tham chiếu chỉ đọc. Không gộp OOF giữa hai runtime thành mẫu độc lập.
+
+**Chạy trên Kaggle:** các hướng dẫn notebook dưới đây vẫn dùng để dựng/chạy lại; xem [MULTI-SESSION.md](MULTI-SESSION.md) nếu cần chia phiên và resume.
 
 **Có thể dùng một notebook duy nhất:** [12-all-in-one.ipynb](notebooks/12-all-in-one.ipynb) chứa sẵn runner, chỉ cần core data v3 + Internet để tải weights. Tự nối các bước, chia job/cache/resume qua Save Versions; xem [ALL-IN-ONE.md](ALL-IN-ONE.md). Các notebook đơn bên dưới vẫn được giữ.
 
@@ -31,4 +35,8 @@ Pretrained pLM được dùng làm khởi tạo; gói này không pretrain pLM t
 
 Nguồn ngoài/cấu trúc thiếu thì stage08/09 ghi `source_pending`/`structure_pending`; weights SaProt không thay mapping 3Di. Final promotion tự động hiện hỗ trợ W5; CNN/LoRA/family có model từng fold và calibration CV, cần final refit/export riêng trước phục vụ. Learning curve mạng và chẩn đoán sâu 20/360 cặp còn là bước bổ sung. Không gọi tạo notebook/smoke là hoàn tất G2/G3; không dùng số smoke để chọn model hay báo hiệu năng.
 
-Chưa upload lên Kaggle, chưa thực hiện official GPU experiment. Các thay đổi presentation/system đang có sẵn được giữ nguyên.
+## Kết quả đã có và phần tiếp theo
+
+[output-analysis.json](output-analysis.json) ghi snapshot Kaggle `369cb2fe6a1e31e0`: 35 task complete, một task dở, 47 recipe từ 83 file OOF. [Phân tích chi tiết](output-analysis-details.md) tách fold, cặp thay thế và learning curve; không dùng số smoke để báo hiệu năng. Snapshot chưa có stage07/08/09/10 cuối, LoRA chưa đủ OOF.
+
+Campaign local là mở rộng development sau khi biết kết quả Kaggle, theo kế hoạch 9 pLM và đối chứng ESM2-35M frozen–LoRA cùng runtime. Một số adapter bị chặn; số hoàn tất/blocked và job đang dở ở [snapshot hiện hành](../README.md). Chờ tổng hợp, calibration và locked-transfer theo DAG; T được chốt cho W5-D, không dùng T chọn mọi pLM mới. CNN/LoRA/family cần final refit/export riêng trước phục vụ. Phạm vi phần mềm vẫn ở [system/](../../system/README.md).

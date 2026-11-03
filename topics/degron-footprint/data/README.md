@@ -2,7 +2,7 @@
 
 > File này là **sổ nguồn gốc** của thư mục `data/`: mỗi file đến từ đâu, phiên bản nào, giấy phép gì, ai/script nào tạo ra, và đã xử lý qua những bước nào. Nội dung `data/` bị `.gitignore` chặn; **riêng file này được lên git** (ngoại lệ `!**/data/README.md`).
 >
-> Cập nhật lần cuối: **01/11/2026** (dataset full-PSI v3, notebook huấn luyện và tải weights pLM; trạng thái tải được ghi riêng). Dung lượng trước phiên G2 ≈ **2,3 GB** (`raw/` 1,2 GB · `interim/` 1,1 GB · `processed/` 123 MB).
+> Thao tác dữ liệu ghi nhận gần nhất: **02/11/2026** (khôi phục bundle v3 và kiểm checksum; nhật ký bên dưới). Đối chiếu tài liệu **03/11/2026**, không tải/xử lý lại dữ liệu. Trạng thái nghiên cứu/campaign nằm ở [research/README.md](../research/README.md), trạng thái tải weights ghi riêng theo snapshot. Dung lượng trước phiên G2 ≈ **2,3 GB** (`raw/` 1,2 GB · `interim/` 1,1 GB · `processed/` 123 MB), không phải kiểm kê dung lượng hiện tại.
 >
 > **Khi thêm, xử lý lại hoặc xoá file trong `data/`:** sửa bảng ở mục 3 (và mục 4 nếu đổi định dạng tập huấn luyện), rồi thêm một dòng vào nhật ký mục 5.
 

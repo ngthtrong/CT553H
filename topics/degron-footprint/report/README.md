@@ -4,6 +4,8 @@ Bản luận văn đang viết của **Nguyễn Thanh Trọng** (B2305615), GVHD
 
 Bản làm việc được tạo từ [template sạch](../../../reportTemplate/README.md), đã điền metadata và nội dung đề tài. Các mục `[PENDING]` hoặc ô trong ngoặc vuông còn lại cần được hoàn thiện; không dùng thư mục template gốc để viết luận văn.
 
+**Đối chiếu trạng thái 03/11/2026:** bản ghi đồng bộ phạm vi phần mềm gần nhất ở đây là ngày 29/10. Nghiên cứu [v3 full-PSI](../research/README.md) đã có output Kaggle và campaign local đang dở; prototype [Workspace UI v2](../system/design/workspace-ui-v2/README.md) đã có bản review. Các mốc này chưa đồng nghĩa đã cập nhật kết quả nghiên cứu, hình giao diện hoặc nghiệm thu phần mềm vào nội dung luận văn. Lần đồng bộ README này không sửa LaTeX hay dựng lại PDF.
+
 - [main.tex](main.tex): điểm vào LaTeX.
 - [config/metadata.tex](config/metadata.tex): thông tin bìa, sinh viên và GVHD.
 - [assets/README.md](assets/README.md): hình, sơ đồ và tài sản trình bày.

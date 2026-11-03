@@ -1,5 +1,7 @@
 # Chạy notebook Kaggle v3
 
+**Điểm vào cập nhật 03/11/2026:** output Kaggle đã có [phân tích](output-analysis.md); hướng dẫn này dùng cho chạy lại hoặc chạy tiếp trên Kaggle. Campaign Windows đang thực hiện dùng [local-runner.md](local-runner.md), không chạy qua notebook. Xem [chỉ mục/snapshot](../README.md) trước khi chọn run/output để tránh chạy lặp hoặc ghép checkpoint khác identity.
+
 Hướng dẫn từng phiên, snapshot dataset, Save Version và resume: [MULTI-SESSION.md](MULTI-SESSION.md).
 
 **Muốn dùng một notebook thay cho12 file đơn:** import [12-all-in-one.ipynb](notebooks/12-all-in-one.ipynb), chỉ gắn core data v3, bật Internet/GPU. Runner đã đóng kèm, không cần code/weights dataset riêng. Hướng dẫn cấu hình, soft budget và resume: [ALL-IN-ONE.md](ALL-IN-ONE.md). Các mục dưới đây mô tả cách dùng notebook đơn.

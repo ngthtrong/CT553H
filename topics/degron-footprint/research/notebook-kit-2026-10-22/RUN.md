@@ -1,5 +1,7 @@
 # RUN — chạy notebook trên Kaggle / Colab và mang kết quả về
 
+> Hướng dẫn v1/v2 cho R0–R6 lịch sử. Từ 03/11/2026, luồng mới được chỉ mục tại [research/README.md](../README.md), dùng [RUN v3](../kaggle-roadmap-2026-10-31/RUN.md) cho Kaggle hoặc [local-runner.md](../kaggle-roadmap-2026-10-31/local-runner.md) cho Windows. Giữ các bước và mốc kết quả bên dưới để tái lập đúng thí nghiệm cũ.
+
 Dành cho Trọng. Mọi bước dưới đây là **việc tay của người**; tôi (Claude) không upload gì lên dịch vụ ngoài. Giao diện Kaggle/Colab thay đổi theo thời gian: tên nút ghi dưới đây là **mô tả, chưa kiểm** — đối chiếu với giao diện thực.
 
 ## 0. Thứ tự chạy

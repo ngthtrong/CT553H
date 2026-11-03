@@ -2,6 +2,8 @@
 
 Đối chiếu ngày **21/10/2026** với file dữ liệu đang có, code nạp dữ liệu và kết quả audit trong repo. Tài liệu dành cho người có nền tảng kỹ thuật phần mềm, mới học sinh học. Mục tiêu là đọc được một dòng dữ liệu, tự giải thích cách tạo nhãn và hiểu vì sao cách chia tập ảnh hưởng kết luận.
 
+**Điểm vào cập nhật 03/11/2026:** các ví dụ loader/G2 và số đếm trong hướng dẫn dưới đây giữ thiết kế lịch sử ngày 21/10. Luồng đang chạy là [v3 full-PSI](../topics/degron-footprint/research/README.md), giữ 235 peptide / 122.412 ô saturation và 224.470 ô scanning sau QC theo [dataset-build.json](../topics/degron-footprint/research/kaggle-roadmap-2026-10-31/dataset-build.json). V3 không lọc ngưỡng PSI ở bước dựng pool và dùng group/split riêng; xem [DATASET.md](../topics/degron-footprint/research/kaggle-roadmap-2026-10-31/DATASET.md), không dùng số 91/176 peptide lịch sử để mô tả W hiện tại. Nguồn/giấy phép và nhật ký thao tác vẫn ở [sổ dữ liệu](../topics/degron-footprint/data/README.md).
+
 **Cách dùng:** đọc mục 1–5 để hiểu ý nghĩa; làm mục 6–8 để chạm dữ liệu; đọc mục 9–12 để hiểu đánh giá và tránh suy luận sai. Có thể chia thành hai buổi, mỗi buổi khoảng 2 giờ; thời lượng là gợi ý, không phải yêu cầu phải học xong trong một lần.
 
 ## 1. Những điểm được sửa so với bản hướng dẫn ban đầu

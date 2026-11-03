@@ -1,5 +1,7 @@
 # Kế hoạch giai đoạn tiếp theo: nghiên cứu, huấn luyện bằng notebook, và xây dựng hệ thống — 22/10/2026
 
+> **Chỉ dẫn hiện hành, 03/11/2026:** file này giữ kế hoạch và trạng thái ngày 22–23/10. Luồng nghiên cứu mới là [v3 full-PSI](../kaggle-roadmap-2026-10-31/README.md), [snapshot/chỉ mục](../README.md); phạm vi phần mềm hiện tại là [v0.2 ngày 29/10](../../system/README.md). Các đề xuất bên dưới không phải hàng đợi campaign local hiện nay.
+
 Nối tiếp [next-steps-plan](../next-steps-plan-2026-10-22/README.md) (§0 là trạng thái đã đo). Kế hoạch này **không** đổi trạng thái G2/G3, không sửa tiêu chí đã chốt của thí nghiệm nào, và không sửa slide. Mọi mục `[ĐỀ XUẤT]` cần Trọng duyệt trước khi chạy; chi phí là **ước lượng lập kế hoạch**, chưa benchmark.
 
 **Mốc thời gian dùng để lập lịch** `[CHƯA XÁC MINH]`: buổi gặp 02/10 là tuần 4, nên tuần 1 bắt đầu 14/09 và hôm nay (22/10) là tuần 6. Giả định học kỳ 15 tuần thì tuần 15 là 21–27/12/2026. Ngày nộp thật chưa có trong repo (`resources/course/CT553H.pdf` không có lịch; đề cương cũng ghi "sẽ bổ sung"). Nếu ngày thật khác, chỉ cần dịch §5.

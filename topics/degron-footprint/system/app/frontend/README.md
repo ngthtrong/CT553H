@@ -3,7 +3,7 @@
 > Scope update 29 Oct 2026: this file documents the **baseline implementation/historical checks**. The accepted first local release now includes projects/history, peptide/protein jobs, ClinVar/reference annotations and experimental import/comparison; those extensions are not implemented by this documentation change. See [current scope](../../README.md). The expanded OpenAPI design contains planned operations; old contract/type-check results apply to the baseline only. Public sharing and hosting examples below are legacy, outside current acceptance.
 
 
-React 19 + TypeScript + Vite single-page application. It realises `system/ui-design.md` against `system/openapi.yaml` and `system/api-spec.md`. Status on 22 Oct 2026: all pages built; unit, browser and real-backend tests pass as listed in §4.
+React 19 + TypeScript + Vite single-page baseline application, implementing the original single-tile screens and baseline contract. The current design/contract also contains planned v0.2 operations that this client does not yet implement. The 22 Oct tests in §4 are historical evidence. [Workspace UI v2](../../design/workspace-ui-v2/README.md) is the current separate review prototype; its projects/jobs/import flows have not been integrated into this React app.
 
 ## 1. Run
 
