@@ -1,0 +1,52 @@
+[
+  {
+    "name": "psi-worked-example",
+    "kind": "illustrative",
+    "source": "Teaching-only counts, not study data"
+  },
+  {
+    "name": "hif-measured",
+    "kind": "measured",
+    "source": "NC-18; historical selected example, not independent validation"
+  },
+  {
+    "name": "historical-learning-curve",
+    "kind": "measured",
+    "source": "NC-04; stored ensemble metrics"
+  },
+  {
+    "name": "r6-intervals",
+    "kind": "measured",
+    "source": "NC-14; family-adjusted where recorded; secondary descriptive"
+  },
+  {
+    "name": "fullpsi-mae",
+    "kind": "measured",
+    "source": "NC-16; selected recipes, no local data"
+  },
+  {
+    "name": "fullpsi-intervals",
+    "kind": "measured",
+    "source": "NC-16; 5,000 protein-group bootstrap draws"
+  },
+  {
+    "name": "psi-strata",
+    "kind": "measured",
+    "source": "NC-16; identical stratum cohorts between arms"
+  },
+  {
+    "name": "ensemble-learning-curve",
+    "kind": "measured",
+    "source": "NC-17; post-hoc; training subset union can exceed nominal fraction"
+  },
+  {
+    "name": "calibration",
+    "kind": "measured",
+    "source": "NC-08; historical restricted baseline, not full-PSI calibration"
+  },
+  {
+    "name": "workspace-fixture",
+    "kind": "synthetic-ui",
+    "source": "topics/degron-footprint/system/design/workspace-ui-v2/previews/result-light.png"
+  }
+]
