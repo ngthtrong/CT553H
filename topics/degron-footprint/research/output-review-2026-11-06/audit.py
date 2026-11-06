@@ -11,6 +11,8 @@ import hashlib
 import json
 from pathlib import Path
 import statistics
+from zipfile import ZipFile
+import zlib
 
 HERE = Path(__file__).resolve().parent
 TOPIC = next(p for p in HERE.parents if (p / 'data/README.md').exists())
@@ -37,6 +39,9 @@ def main():
     assert local['integrity']['status'] == 'pass'
     assert not local['integrity']['mismatches']
     assert local['data_identity'] == kaggle['data_identity']
+    fresh = read(HERE/'integrity-recheck.json')
+    assert fresh['integrity'] == local['integrity']
+    assert fresh['analysis_script_sha256'] == digest(R/'analyze-local-output.py')
     source_checks = []
     for name, expected in local['source_files'].items():
         path = R / name
@@ -57,6 +62,44 @@ def main():
                 'physical_bytes': sum(p.stat().st_size for p in files),
                 'extensions': dict(Counter(p.suffix or '[none]' for p in files)),
             }
+
+    output = R / 'output'
+    support = [p for parent in output.iterdir() if parent.is_dir()
+               for p in parent.iterdir() if p.is_file()]
+    inventory['support-metadata'] = {'physical_files':len(support),
+        'physical_bytes':sum(p.stat().st_size for p in support),
+        'extensions':dict(Counter(p.suffix or '[none]' for p in support))}
+    archive = output / 'official.zip'
+    inventory['transport-archive'] = {'physical_files':1,'physical_bytes':archive.stat().st_size,
+                                      'extensions':{'.zip':1}}
+    # Inspect the complete archive namespace, and CRC-check small scientific/
+    # state metadata against the expanded files. Do not extract or load weights.
+    with ZipFile(archive) as z:
+        members = [i for i in z.infolist() if not i.is_dir()]
+        names = {i.filename for i in members}
+        assert len(names) == len(members)
+        assert len({n.casefold() for n in names}) == len(names)
+        physical = {str(p.relative_to(output)).replace('\\','/') for p in output.rglob('*')
+                    if p.is_file() and p != archive}
+        assert names == physical, (sorted(names-physical)[:5],sorted(physical-names)[:5])
+        crc_checked = 0
+        crc_bytes = 0
+        for entry in members:
+            target = (output / entry.filename).resolve()
+            assert target.is_relative_to(output.resolve())
+            assert target.stat().st_size == entry.file_size, entry.filename
+            if entry.file_size <= 2**20:
+                assert zlib.crc32(target.read_bytes()) == entry.CRC, entry.filename
+                z.read(entry)  # ZipFile checks the archived payload CRC as well.
+                crc_checked += 1
+                crc_bytes += entry.file_size
+        archive_review = {'file':'output/official.zip',
+            'physical_bytes':archive.stat().st_size,'members':len(members),
+            'uncompressed_member_bytes':sum(i.file_size for i in members),
+            'all_paths_and_sizes_match_expanded_tree':True,
+            'small_member_crc_checked':crc_checked,'small_member_bytes_checked':crc_bytes,
+            'crc_threshold_bytes':2**20,
+            'limitation':'Large member payload CRCs not rechecked; no archive-wide corruption claim. The central-directory namespace and sizes match all expanded files. Archive is a duplicate transport representation, not extra scientific observations.'}
 
     histories = {}
     for path in sorted((R / 'output/local').glob('*/state.json')):
@@ -138,7 +181,13 @@ def main():
         'sources': {n: {'sha256': digest(R / n), 'bytes': (R / n).stat().st_size} for n in source_names},
         'data_identity': local['data_identity'],
         'source_hashes_rechecked': len(source_checks),
-        'inventory': inventory, 'local_history': histories, 'integrity': local['integrity'],
+        'inventory': inventory, 'transport_archive':archive_review,
+        'local_history': histories, 'integrity': local['integrity'],
+        'fresh_integrity_recheck':{'record_sha256':digest(HERE/'integrity-recheck.json'),
+                                  'generated_local':fresh['generated_local'],'status':'pass'},
+        'metadata_recovery': ({'files':120,'artifact_sha_matches':80,'worker_records_match_state':40,
+            'record_sha256':digest(HERE/'metadata-recovery.json')}
+            if (HERE/'metadata-recovery.json').exists() else None),
         'job_categories': dict(Counter(j['category'] for j in jobs)),
         'timing': timing_summary,
         'timing_limitation': 'Recorded worker attempt durations only; resumed jobs may omit prior attempts. Inherited jobs counted once. Neither GPU-active time nor elapsed campaign time.',
@@ -161,7 +210,8 @@ def main():
              '## Kiểm kê vật lý', '', '| Nhánh output | File | GiB |', '|---|---:|---:|']
     for name, v in inventory.items():
         lines.append(f"| `{name}` | {v['physical_files']:,} | {v['physical_bytes']/2**30:.3f} |")
-    lines += ['', 'File vật lý có thể chứa cache/checkpoint trùng nội dung; không cộng với số artifact đã kiểm hash thành số quan sát khoa học.', '',
+    lines += ['', f"[ĐO] `official.zip` có {len(members):,} member, {archive_review['uncompressed_member_bytes']:,} byte giải nén. Toàn bộ tên và size khớp cây output hiện có; {crc_checked:,} member ≤1 MiB đã kiểm CRC cả bản giải nén và payload ZIP. Không giải nén thêm, không kiểm lại CRC payload lớn; không khẳng định toàn ZIP không hỏng. Đây là bản đóng gói trùng dữ liệu, không phải campaign mới.", '',
+              'File vật lý có thể chứa cache/checkpoint trùng nội dung; không cộng với số artifact đã kiểm hash thành số quan sát khoa học.', '',
               '## Kết quả và giới hạn', '',
               '[ĐO] LoRA-B: MAE 0.363669, AUROC+ 0.855047; LoRA-D: 0.364996 / 0.853556. Cả hai tốt hơn frozen cùng runtime/arm; các CI điều chỉnh hậu kiểm cho bốn so sánh không cắt 0.', '',
               '[DIỄN GIẢI] B và D gần nhau ở trung bình nhưng khác theo WT PSI. Không chọn B chỉ từ hạng MAE; D tốt hơn ở PSI >5. Không thấy xu hướng tăng kích thước pLM luôn tốt hơn.', '',
@@ -182,6 +232,9 @@ def main():
               'Số chính xác, toàn bộ 88 cấu hình, seed, strata, CI, lựa chọn nested và nguồn hash: [results.json](results.json).', '',
               'Chi tiết nền: [Kaggle](../kaggle-roadmap-2026-10-31/output-analysis.md), [Kaggle diagnostics](../kaggle-roadmap-2026-10-31/output-analysis-details.md), [Local](../kaggle-roadmap-2026-10-31/local-output-analysis.md).', '',
               'Cần làm tiếp: final refit/export/calibrator/card theo kiến trúc, kiểm định nguồn ngoài/cấu trúc có dữ liệu hợp lệ, tích hợp và nghiệm thu phần mềm. Không tự thay model phục vụ từ leaderboard.', '']
+    lines += ['## Khôi phục metadata của bản giải nén', '',
+              '[ĐO] Phát hiện 120 JSON nhỏ bị toàn byte 0 trong bản giải nén. Đã lưu bản lỗi ngoài output và khôi phục từ ZIP: 80 artifact khớp SHA-256 trong state; 40 worker-result khớp toàn bộ nội dung job tương ứng trong state. Không sửa state/checkpoint/model và không huấn luyện lại. Bản ZIP là file nén lưu kết quả, không được tính như campaign thêm.', '',
+              '[Nhật ký trước/sau và bằng chứng](metadata-recovery.json), [đối chiếu trước khôi phục](archive-comparison.json), [tái kiểm toàn bộ artifact sau khôi phục](integrity-recheck.json). Tái kiểm mới đạt 4.278 artifact local và 2.986 Kaggle, không mismatch. Không suy đoán nguyên nhân các byte 0.', '']
     (HERE / 'README.md').write_text('\n'.join(lines), encoding='utf-8')
     print(json.dumps({'sources': len(source_checks), 'recipes': len(recipes), 'epochs': epoch_summary, 'timing': timing_summary}, indent=2))
 

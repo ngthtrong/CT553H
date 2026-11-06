@@ -1,7 +1,8 @@
 # Kiểm tra template luận văn — 21/10/2026
 
 > Hồ sơ lịch sử của template, không phải kết quả kiểm bản luận văn hiện tại. Lượt cập nhật nội dung
-> và PDF ngày 03/11/2026 được ghi riêng tại [current-state-validation-2026-11-03.md](current-state-validation-2026-11-03.md).
+> và PDF hiện hành ngày 06/11/2026 được ghi tại [current-state-validation-2026-11-06.md](current-state-validation-2026-11-06.md).
+> [Bản 03/11](current-state-validation-2026-11-03.md) giữ làm lịch sử.
 
 Template được dựng lại từ template báo cáo NCKH (kiểm ngày 09/10/2026) theo
 `guideline-thesis/` và ba luận văn mẫu trong `resources/reference-theses/`.

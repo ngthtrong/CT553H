@@ -1,0 +1,1089 @@
+{
+  "checked": 8431,
+  "mismatches": [
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-ankh_base-D-1-43-1/fit.json",
+      "bytes": 279,
+      "expanded_sha256": "74ca16b1138459ef2afb19324097332626ee7c897687c5adc5488f93bf0c11ff",
+      "archive_sha256": "dbcb047ebe66ad3647f83ccfdbb71e6cbda20613208401748da2cc4fd33e421f",
+      "expected_state_sha256": "dbcb047ebe66ad3647f83ccfdbb71e6cbda20613208401748da2cc4fd33e421f",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-ankh_base-D-1-43-2/fit.json",
+      "bytes": 279,
+      "expanded_sha256": "74ca16b1138459ef2afb19324097332626ee7c897687c5adc5488f93bf0c11ff",
+      "archive_sha256": "b9ae202816b85925bf872295101aec6415bbecfc3764d1252878bbbecc231b4c",
+      "expected_state_sha256": "b9ae202816b85925bf872295101aec6415bbecfc3764d1252878bbbecc231b4c",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-ankh_base-D-1-43-3/fit.json",
+      "bytes": 280,
+      "expanded_sha256": "1f6c9de2e555d5d589e1149fed58f9cbcc101739df97d4a4d694a13f1242c5b9",
+      "archive_sha256": "063ff6581488f30db009bec4e35d3c606915e3a17d9b5d5f2497826765f9a116",
+      "expected_state_sha256": "063ff6581488f30db009bec4e35d3c606915e3a17d9b5d5f2497826765f9a116",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-ankh_base-D-1-43-4/fit.json",
+      "bytes": 280,
+      "expanded_sha256": "1f6c9de2e555d5d589e1149fed58f9cbcc101739df97d4a4d694a13f1242c5b9",
+      "archive_sha256": "f52d6944c41e591ab055af773da29acde1a466a1b49569b6608df26fe0dacf3c",
+      "expected_state_sha256": "f52d6944c41e591ab055af773da29acde1a466a1b49569b6608df26fe0dacf3c",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-17-0/fit.json",
+      "bytes": 288,
+      "expanded_sha256": "2d5565fb483d8ea4525a7a9229677d1038ad34b6e22c8d5152e1d7f7b9817597",
+      "archive_sha256": "d528d64f8923b728a8dceef9488237f626b2fdcf5122c8768c0b97c96d820fbc",
+      "expected_state_sha256": "d528d64f8923b728a8dceef9488237f626b2fdcf5122c8768c0b97c96d820fbc",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-17-1/fit.json",
+      "bytes": 287,
+      "expanded_sha256": "7862a192a3fca21f2445390973e52950159102b3a7ab1cd7117e9b1424e9805f",
+      "archive_sha256": "01d09ed13ee14191767d7833d56d97cf70eb873d201d660b65e5c55d75d7b8d8",
+      "expected_state_sha256": "01d09ed13ee14191767d7833d56d97cf70eb873d201d660b65e5c55d75d7b8d8",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-17-2/fit.json",
+      "bytes": 287,
+      "expanded_sha256": "7862a192a3fca21f2445390973e52950159102b3a7ab1cd7117e9b1424e9805f",
+      "archive_sha256": "3cde1e87ed53108d4f2398bb0d78727d1a8edd3a7253fa1e4b72e56edfb1e4b3",
+      "expected_state_sha256": "3cde1e87ed53108d4f2398bb0d78727d1a8edd3a7253fa1e4b72e56edfb1e4b3",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-17-3/fit.json",
+      "bytes": 288,
+      "expanded_sha256": "2d5565fb483d8ea4525a7a9229677d1038ad34b6e22c8d5152e1d7f7b9817597",
+      "archive_sha256": "8deb4199b2335c75f6cb8f0e42385af9782952fc31d66049b8a95e0a0b1cb221",
+      "expected_state_sha256": "8deb4199b2335c75f6cb8f0e42385af9782952fc31d66049b8a95e0a0b1cb221",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-17-4/fit.json",
+      "bytes": 288,
+      "expanded_sha256": "2d5565fb483d8ea4525a7a9229677d1038ad34b6e22c8d5152e1d7f7b9817597",
+      "archive_sha256": "32a6bc54d0b17042ed2cb5004cd8a76ebfde5012eb00a91e081ac569a4d76c9b",
+      "expected_state_sha256": "32a6bc54d0b17042ed2cb5004cd8a76ebfde5012eb00a91e081ac569a4d76c9b",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-29-0/fit.json",
+      "bytes": 288,
+      "expanded_sha256": "2d5565fb483d8ea4525a7a9229677d1038ad34b6e22c8d5152e1d7f7b9817597",
+      "archive_sha256": "8a47b62a50fe2f187e47b6f8b16351e54350d752e824562670d5c752538e80bb",
+      "expected_state_sha256": "8a47b62a50fe2f187e47b6f8b16351e54350d752e824562670d5c752538e80bb",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-29-1/fit.json",
+      "bytes": 288,
+      "expanded_sha256": "2d5565fb483d8ea4525a7a9229677d1038ad34b6e22c8d5152e1d7f7b9817597",
+      "archive_sha256": "ccfa01567df3ccf9dc4fa8c20dea592ac6ef8a566f1d77260dddcecdbdcb1841",
+      "expected_state_sha256": "ccfa01567df3ccf9dc4fa8c20dea592ac6ef8a566f1d77260dddcecdbdcb1841",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-29-2/fit.json",
+      "bytes": 287,
+      "expanded_sha256": "7862a192a3fca21f2445390973e52950159102b3a7ab1cd7117e9b1424e9805f",
+      "archive_sha256": "3f9cfb1572bdb26cbc1d845e16b51f532269c6f1f76cb0248afb32494969265d",
+      "expected_state_sha256": "3f9cfb1572bdb26cbc1d845e16b51f532269c6f1f76cb0248afb32494969265d",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-29-3/fit.json",
+      "bytes": 288,
+      "expanded_sha256": "2d5565fb483d8ea4525a7a9229677d1038ad34b6e22c8d5152e1d7f7b9817597",
+      "archive_sha256": "8aeab0735f791052b8356b4585aa6221ccdb8683d6ecd08f4574224c3894baee",
+      "expected_state_sha256": "8aeab0735f791052b8356b4585aa6221ccdb8683d6ecd08f4574224c3894baee",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-29-4/fit.json",
+      "bytes": 284,
+      "expanded_sha256": "d72511e843bf5a2e44e8bd1da20c2626311d1d6679424f717807a1db731d62f5",
+      "archive_sha256": "668b2696d8a1dfdf11f1fd16326403aad108ea81ab2ed02b2afdbf0d843dde07",
+      "expected_state_sha256": "668b2696d8a1dfdf11f1fd16326403aad108ea81ab2ed02b2afdbf0d843dde07",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-43-0/fit.json",
+      "bytes": 287,
+      "expanded_sha256": "7862a192a3fca21f2445390973e52950159102b3a7ab1cd7117e9b1424e9805f",
+      "archive_sha256": "0f6418847787cf89316dae577001c1e95c8b7acd7b6b959cf1f21225be86db5b",
+      "expected_state_sha256": "0f6418847787cf89316dae577001c1e95c8b7acd7b6b959cf1f21225be86db5b",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-43-1/fit.json",
+      "bytes": 287,
+      "expanded_sha256": "7862a192a3fca21f2445390973e52950159102b3a7ab1cd7117e9b1424e9805f",
+      "archive_sha256": "37b8d0c44ee24d759143368ae244160aceced7e78acf8a8ad488531914153563",
+      "expected_state_sha256": "37b8d0c44ee24d759143368ae244160aceced7e78acf8a8ad488531914153563",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-43-2/fit.json",
+      "bytes": 288,
+      "expanded_sha256": "2d5565fb483d8ea4525a7a9229677d1038ad34b6e22c8d5152e1d7f7b9817597",
+      "archive_sha256": "c36a2d0e86c0ce1a8345db4f9f4bdc8d70a7faa4caade29dae5d159531463860",
+      "expected_state_sha256": "c36a2d0e86c0ce1a8345db4f9f4bdc8d70a7faa4caade29dae5d159531463860",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-43-3/fit.json",
+      "bytes": 285,
+      "expanded_sha256": "81ae22268bb8325cd16c804e6a9a8b404b785387269eb076fe6a2b869c7f257a",
+      "archive_sha256": "2f6462729f6f8176842a5cc4dd9d97b7aabb50a84309f260576e5b5716318362",
+      "expected_state_sha256": "2f6462729f6f8176842a5cc4dd9d97b7aabb50a84309f260576e5b5716318362",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-43-4/fit.json",
+      "bytes": 287,
+      "expanded_sha256": "7862a192a3fca21f2445390973e52950159102b3a7ab1cd7117e9b1424e9805f",
+      "archive_sha256": "7e1aaedfd7fc70d9a88715c8129e8abffd5bb8d2d4e7eae6e13f531919ffdc3b",
+      "expected_state_sha256": "7e1aaedfd7fc70d9a88715c8129e8abffd5bb8d2d4e7eae6e13f531919ffdc3b",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-17-0/fit.json",
+      "bytes": 289,
+      "expanded_sha256": "6559f403524ea6ef9bf2e1d0bb66d1af8152920fb002ec2c4ced993083124a88",
+      "archive_sha256": "5fec527026d3a420aa67f5e33609e3d6d644249919cd99ec023b5fecd43eba1e",
+      "expected_state_sha256": "5fec527026d3a420aa67f5e33609e3d6d644249919cd99ec023b5fecd43eba1e",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-17-1/fit.json",
+      "bytes": 290,
+      "expanded_sha256": "90558d1e3a0ecb9febbb4d7abe8e9281bef8ad0e2a42fee83d3d837eb74b7f3a",
+      "archive_sha256": "3dce43eabd4446e2c05bc5e0d670c52e9afd16953473641e7c307d86d66c12f1",
+      "expected_state_sha256": "3dce43eabd4446e2c05bc5e0d670c52e9afd16953473641e7c307d86d66c12f1",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-17-2/fit.json",
+      "bytes": 289,
+      "expanded_sha256": "6559f403524ea6ef9bf2e1d0bb66d1af8152920fb002ec2c4ced993083124a88",
+      "archive_sha256": "15126c3e8c225986f23bc35a288d638071d6abe93d20cb5572651f61e00fdda1",
+      "expected_state_sha256": "15126c3e8c225986f23bc35a288d638071d6abe93d20cb5572651f61e00fdda1",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-17-3/fit.json",
+      "bytes": 289,
+      "expanded_sha256": "6559f403524ea6ef9bf2e1d0bb66d1af8152920fb002ec2c4ced993083124a88",
+      "archive_sha256": "3533bbb664b0181bb69980b20b614d294482d7ee5938013d7f5a1a3d59eb5fa5",
+      "expected_state_sha256": "3533bbb664b0181bb69980b20b614d294482d7ee5938013d7f5a1a3d59eb5fa5",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-17-4/fit.json",
+      "bytes": 290,
+      "expanded_sha256": "90558d1e3a0ecb9febbb4d7abe8e9281bef8ad0e2a42fee83d3d837eb74b7f3a",
+      "archive_sha256": "1132767fdf6ba7eeb72b2331288a6f01bbad3804c891f8d387febef973628cef",
+      "expected_state_sha256": "1132767fdf6ba7eeb72b2331288a6f01bbad3804c891f8d387febef973628cef",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-29-0/fit.json",
+      "bytes": 289,
+      "expanded_sha256": "6559f403524ea6ef9bf2e1d0bb66d1af8152920fb002ec2c4ced993083124a88",
+      "archive_sha256": "e699d1f8f5b6c8e3ca67702e3aee9b93abf3285cb16794a7fb1a651c71cb301f",
+      "expected_state_sha256": "e699d1f8f5b6c8e3ca67702e3aee9b93abf3285cb16794a7fb1a651c71cb301f",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-29-1/fit.json",
+      "bytes": 288,
+      "expanded_sha256": "2d5565fb483d8ea4525a7a9229677d1038ad34b6e22c8d5152e1d7f7b9817597",
+      "archive_sha256": "a28db5cc3b4a0e0088cc449d2c27e9fbfcca6d1631eb159f16ecfc0fd9049413",
+      "expected_state_sha256": "a28db5cc3b4a0e0088cc449d2c27e9fbfcca6d1631eb159f16ecfc0fd9049413",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-29-1/worker-result.json",
+      "bytes": 919,
+      "expanded_sha256": "672e021f10489f8784eea6b3d11cda34d4785ee54af1171122d87182172a4a44",
+      "archive_sha256": "8ba00e767550435f9e268d110b48a0ef7efb9ae9b9d370f87f5f5088ee7f691a",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-29-2/fit.json",
+      "bytes": 289,
+      "expanded_sha256": "6559f403524ea6ef9bf2e1d0bb66d1af8152920fb002ec2c4ced993083124a88",
+      "archive_sha256": "d8c8b8546c4931812811ac413ac7eecb0ccfae89b489bb5c5d73b41c50d350b3",
+      "expected_state_sha256": "d8c8b8546c4931812811ac413ac7eecb0ccfae89b489bb5c5d73b41c50d350b3",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-29-2/worker-result.json",
+      "bytes": 920,
+      "expanded_sha256": "2211e3d7915507b94bf14efafa3a951cc9a82a3ea4ed0a6f4dc612f640af1ae9",
+      "archive_sha256": "4c3c2666c0f6e3ed06f95b972a3acf1960c82fe5465649148cfbdbafa9a8655e",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-29-3/fit.json",
+      "bytes": 290,
+      "expanded_sha256": "90558d1e3a0ecb9febbb4d7abe8e9281bef8ad0e2a42fee83d3d837eb74b7f3a",
+      "archive_sha256": "f211dcf5971ba7b6e2e1e10ec4f95bccea4e766144f747168bbd2b5722376437",
+      "expected_state_sha256": "f211dcf5971ba7b6e2e1e10ec4f95bccea4e766144f747168bbd2b5722376437",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-29-3/worker-result.json",
+      "bytes": 920,
+      "expanded_sha256": "2211e3d7915507b94bf14efafa3a951cc9a82a3ea4ed0a6f4dc612f640af1ae9",
+      "archive_sha256": "974c1fef60c703e4bc3cebc3d1364ba315c55f5d0c47dc48d9c516adca38d044",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-29-4/fit.json",
+      "bytes": 290,
+      "expanded_sha256": "90558d1e3a0ecb9febbb4d7abe8e9281bef8ad0e2a42fee83d3d837eb74b7f3a",
+      "archive_sha256": "8ba48aa4cad37b510890bd477e854b22d85d924003bc7298d173603934b94fe5",
+      "expected_state_sha256": "8ba48aa4cad37b510890bd477e854b22d85d924003bc7298d173603934b94fe5",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-29-4/worker-result.json",
+      "bytes": 920,
+      "expanded_sha256": "2211e3d7915507b94bf14efafa3a951cc9a82a3ea4ed0a6f4dc612f640af1ae9",
+      "archive_sha256": "29ee033446560bdb21f78cdac3e7f242e0078da17ecb24535a0827a082c9207f",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-43-0/fit.json",
+      "bytes": 290,
+      "expanded_sha256": "90558d1e3a0ecb9febbb4d7abe8e9281bef8ad0e2a42fee83d3d837eb74b7f3a",
+      "archive_sha256": "353f4050226c06e3ccd672d0d3d43394c2ff1594f5809c394479a69fc90b9b6a",
+      "expected_state_sha256": "353f4050226c06e3ccd672d0d3d43394c2ff1594f5809c394479a69fc90b9b6a",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-43-0/worker-result.json",
+      "bytes": 920,
+      "expanded_sha256": "2211e3d7915507b94bf14efafa3a951cc9a82a3ea4ed0a6f4dc612f640af1ae9",
+      "archive_sha256": "e4dc92efda48134aa719a44aeaad7a92948c92ec09ed589795cf6bd221eaab24",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-43-1/fit.json",
+      "bytes": 290,
+      "expanded_sha256": "90558d1e3a0ecb9febbb4d7abe8e9281bef8ad0e2a42fee83d3d837eb74b7f3a",
+      "archive_sha256": "20f74e5ab8f6b0d8fa27eeed1cbe5d73faae8ce17fd4f9571ca0fd8b82b75a0a",
+      "expected_state_sha256": "20f74e5ab8f6b0d8fa27eeed1cbe5d73faae8ce17fd4f9571ca0fd8b82b75a0a",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-43-1/worker-result.json",
+      "bytes": 918,
+      "expanded_sha256": "18ab23ec73d7d9205e40b75e9be69489a52d95bf246aad27da05c280d6516e74",
+      "archive_sha256": "de4439d5fca6c1931cdebfea431f3fa8301e28400c4afef70f905ff07feb2e06",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-43-2/fit.json",
+      "bytes": 289,
+      "expanded_sha256": "6559f403524ea6ef9bf2e1d0bb66d1af8152920fb002ec2c4ced993083124a88",
+      "archive_sha256": "f026a7925d42fcf131f46d93fa741fd1223eb1695db4f6a14002dc6e8668fc41",
+      "expected_state_sha256": "f026a7925d42fcf131f46d93fa741fd1223eb1695db4f6a14002dc6e8668fc41",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-43-2/worker-result.json",
+      "bytes": 920,
+      "expanded_sha256": "2211e3d7915507b94bf14efafa3a951cc9a82a3ea4ed0a6f4dc612f640af1ae9",
+      "archive_sha256": "781cbd56f84223134e84d89f13a5b620157ec7fc59985604d34cd66629806ca0",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-43-3/fit.json",
+      "bytes": 289,
+      "expanded_sha256": "6559f403524ea6ef9bf2e1d0bb66d1af8152920fb002ec2c4ced993083124a88",
+      "archive_sha256": "a14bfe31f06f343c45ff003372d2435369a20e288ef88140a7a8758a86962dad",
+      "expected_state_sha256": "a14bfe31f06f343c45ff003372d2435369a20e288ef88140a7a8758a86962dad",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-43-3/worker-result.json",
+      "bytes": 920,
+      "expanded_sha256": "2211e3d7915507b94bf14efafa3a951cc9a82a3ea4ed0a6f4dc612f640af1ae9",
+      "archive_sha256": "af2ed546caf016772e5b550fdadf5035d3710c1e97ada33688929f522cc63633",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-43-4/fit.json",
+      "bytes": 289,
+      "expanded_sha256": "6559f403524ea6ef9bf2e1d0bb66d1af8152920fb002ec2c4ced993083124a88",
+      "archive_sha256": "e33015f5c9d12259b130ef3e3fdb25fc6fdca37d2dda6c065ccf3abe587bafb0",
+      "expected_state_sha256": "e33015f5c9d12259b130ef3e3fdb25fc6fdca37d2dda6c065ccf3abe587bafb0",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-43-4/worker-result.json",
+      "bytes": 920,
+      "expanded_sha256": "2211e3d7915507b94bf14efafa3a951cc9a82a3ea4ed0a6f4dc612f640af1ae9",
+      "archive_sha256": "303ce16a3db1ef1043918bbc14728856fc9b0923c8d7f175bc0f4c9cb68b829e",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-17-0/fit.json",
+      "bytes": 287,
+      "expanded_sha256": "7862a192a3fca21f2445390973e52950159102b3a7ab1cd7117e9b1424e9805f",
+      "archive_sha256": "bcbc88a4991a9c93803236318773604a063f2063f26d4658d14e4a234ef6d475",
+      "expected_state_sha256": "bcbc88a4991a9c93803236318773604a063f2063f26d4658d14e4a234ef6d475",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-17-0/worker-result.json",
+      "bytes": 919,
+      "expanded_sha256": "672e021f10489f8784eea6b3d11cda34d4785ee54af1171122d87182172a4a44",
+      "archive_sha256": "fad683dda90adf538410e19ec050db54cfb725949f918a40f98793c21923c744",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-17-1/fit.json",
+      "bytes": 288,
+      "expanded_sha256": "2d5565fb483d8ea4525a7a9229677d1038ad34b6e22c8d5152e1d7f7b9817597",
+      "archive_sha256": "12f1b54fe1f9d62b10e43ed2c450043f2db2cf264e98dca636dbb41ce502a6e8",
+      "expected_state_sha256": "12f1b54fe1f9d62b10e43ed2c450043f2db2cf264e98dca636dbb41ce502a6e8",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-17-1/worker-result.json",
+      "bytes": 919,
+      "expanded_sha256": "672e021f10489f8784eea6b3d11cda34d4785ee54af1171122d87182172a4a44",
+      "archive_sha256": "206c4e32ce686c80582992303f22b74003d733ae2dda13336c6bb1cd4f84d2e0",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-17-2/fit.json",
+      "bytes": 288,
+      "expanded_sha256": "2d5565fb483d8ea4525a7a9229677d1038ad34b6e22c8d5152e1d7f7b9817597",
+      "archive_sha256": "61b0f234ae39d78b79bd81e6797c2afc277ce0f1525c77c14442c0dec5f8ff8d",
+      "expected_state_sha256": "61b0f234ae39d78b79bd81e6797c2afc277ce0f1525c77c14442c0dec5f8ff8d",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-17-2/worker-result.json",
+      "bytes": 919,
+      "expanded_sha256": "672e021f10489f8784eea6b3d11cda34d4785ee54af1171122d87182172a4a44",
+      "archive_sha256": "fc153ef519d4693cca0a4b183a73ae37b58950d58ec488a90446087df937c614",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-17-3/fit.json",
+      "bytes": 287,
+      "expanded_sha256": "7862a192a3fca21f2445390973e52950159102b3a7ab1cd7117e9b1424e9805f",
+      "archive_sha256": "8453887d56b6831b901605e0c9e585574b4aa6d0d23c65ade6754c546b5d976d",
+      "expected_state_sha256": "8453887d56b6831b901605e0c9e585574b4aa6d0d23c65ade6754c546b5d976d",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-17-3/worker-result.json",
+      "bytes": 918,
+      "expanded_sha256": "18ab23ec73d7d9205e40b75e9be69489a52d95bf246aad27da05c280d6516e74",
+      "archive_sha256": "c176eaf020bf589ee49dedf27f302103c086808d71b7c53ab9bbe432d6f92e23",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-17-4/fit.json",
+      "bytes": 287,
+      "expanded_sha256": "7862a192a3fca21f2445390973e52950159102b3a7ab1cd7117e9b1424e9805f",
+      "archive_sha256": "39915b8507900cdf096f0599b544f5db14b9490b708e3f6de4b9d8947287f1ec",
+      "expected_state_sha256": "39915b8507900cdf096f0599b544f5db14b9490b708e3f6de4b9d8947287f1ec",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-17-4/worker-result.json",
+      "bytes": 918,
+      "expanded_sha256": "18ab23ec73d7d9205e40b75e9be69489a52d95bf246aad27da05c280d6516e74",
+      "archive_sha256": "e81383cce8a8f180ce012d5fdcabff3242cbfc494f86efc0f3cc85ff4848a7b6",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-29-0/fit.json",
+      "bytes": 288,
+      "expanded_sha256": "2d5565fb483d8ea4525a7a9229677d1038ad34b6e22c8d5152e1d7f7b9817597",
+      "archive_sha256": "3c25e49c30d9169417608464c9b6c77da63d439ece0153409c070164ca61623b",
+      "expected_state_sha256": "3c25e49c30d9169417608464c9b6c77da63d439ece0153409c070164ca61623b",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-29-0/worker-result.json",
+      "bytes": 919,
+      "expanded_sha256": "672e021f10489f8784eea6b3d11cda34d4785ee54af1171122d87182172a4a44",
+      "archive_sha256": "f0dce8b2ea27f8d60eb60f59aa79f0bc85a11d5171dc941fc6e5268ef733828b",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-29-1/fit.json",
+      "bytes": 287,
+      "expanded_sha256": "7862a192a3fca21f2445390973e52950159102b3a7ab1cd7117e9b1424e9805f",
+      "archive_sha256": "224063bd015a0892f89ac161c821f8b844bcbe74e177165492bc5fe96624a07a",
+      "expected_state_sha256": "224063bd015a0892f89ac161c821f8b844bcbe74e177165492bc5fe96624a07a",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-29-1/worker-result.json",
+      "bytes": 919,
+      "expanded_sha256": "672e021f10489f8784eea6b3d11cda34d4785ee54af1171122d87182172a4a44",
+      "archive_sha256": "5fe611d3b9f00837e7ddaf0c914896a3993a847d13e4caffdbeee429c949b8dd",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-29-2/fit.json",
+      "bytes": 287,
+      "expanded_sha256": "7862a192a3fca21f2445390973e52950159102b3a7ab1cd7117e9b1424e9805f",
+      "archive_sha256": "f89bc295f60c705ef38598a12a38c987a17726f803a0e49ff390e1db333e2439",
+      "expected_state_sha256": "f89bc295f60c705ef38598a12a38c987a17726f803a0e49ff390e1db333e2439",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-29-2/worker-result.json",
+      "bytes": 919,
+      "expanded_sha256": "672e021f10489f8784eea6b3d11cda34d4785ee54af1171122d87182172a4a44",
+      "archive_sha256": "7465aa226f8ebcb0a731a2d7d6fbbf9f1ea3a8904ce1fe1724df4c38393838bb",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-29-3/fit.json",
+      "bytes": 283,
+      "expanded_sha256": "876eb94eda163a736242d2016646da450f404e198337e2dc1cdf57e6d3eedc15",
+      "archive_sha256": "b8ece059d7bbf2628d713d293a3157a70195eb54613b54063c298e03d4e11803",
+      "expected_state_sha256": "b8ece059d7bbf2628d713d293a3157a70195eb54613b54063c298e03d4e11803",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-29-3/worker-result.json",
+      "bytes": 919,
+      "expanded_sha256": "672e021f10489f8784eea6b3d11cda34d4785ee54af1171122d87182172a4a44",
+      "archive_sha256": "f28524e3c95931942c2a84e5d9a90ff61fd2657d51216928965e3cab16d18823",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-29-4/fit.json",
+      "bytes": 285,
+      "expanded_sha256": "81ae22268bb8325cd16c804e6a9a8b404b785387269eb076fe6a2b869c7f257a",
+      "archive_sha256": "f929ae4cf69007e9351b5a741bf94dcf9c03fa039710210f808c820761161974",
+      "expected_state_sha256": "f929ae4cf69007e9351b5a741bf94dcf9c03fa039710210f808c820761161974",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-29-4/worker-result.json",
+      "bytes": 917,
+      "expanded_sha256": "75b9334bd7d133a743647274da04d139df5c0e314fb20c91a5c45cc3704e5076",
+      "archive_sha256": "c4e8d8d1968f60140318c097b847b758f643924f7b9339d6eec530bbc6753e34",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-43-0/fit.json",
+      "bytes": 287,
+      "expanded_sha256": "7862a192a3fca21f2445390973e52950159102b3a7ab1cd7117e9b1424e9805f",
+      "archive_sha256": "d3e3dc717fc1ce0c4f8b59af35f5d84246106de31381cf2e753a7fa6cce7bd18",
+      "expected_state_sha256": "d3e3dc717fc1ce0c4f8b59af35f5d84246106de31381cf2e753a7fa6cce7bd18",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-43-0/worker-result.json",
+      "bytes": 919,
+      "expanded_sha256": "672e021f10489f8784eea6b3d11cda34d4785ee54af1171122d87182172a4a44",
+      "archive_sha256": "031b4140cb41fef916220a592202f25ff292ada5a1bd93a546189a21c635250d",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-43-1/fit.json",
+      "bytes": 287,
+      "expanded_sha256": "7862a192a3fca21f2445390973e52950159102b3a7ab1cd7117e9b1424e9805f",
+      "archive_sha256": "c7bb84a107367b9a4ba3af1cffb231465bd867323aa4099cf8a361d501814ed7",
+      "expected_state_sha256": "c7bb84a107367b9a4ba3af1cffb231465bd867323aa4099cf8a361d501814ed7",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-43-1/worker-result.json",
+      "bytes": 919,
+      "expanded_sha256": "672e021f10489f8784eea6b3d11cda34d4785ee54af1171122d87182172a4a44",
+      "archive_sha256": "5661ef021a15428bfaf34896241ad9e80cbeca720d22a78d14cbb4e317697f71",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-43-2/fit.json",
+      "bytes": 288,
+      "expanded_sha256": "2d5565fb483d8ea4525a7a9229677d1038ad34b6e22c8d5152e1d7f7b9817597",
+      "archive_sha256": "9b5c732fb19d914e36f47156173d90fd458ea9fd7809c03bd5fbf4df45b8cda3",
+      "expected_state_sha256": "9b5c732fb19d914e36f47156173d90fd458ea9fd7809c03bd5fbf4df45b8cda3",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-43-2/worker-result.json",
+      "bytes": 919,
+      "expanded_sha256": "672e021f10489f8784eea6b3d11cda34d4785ee54af1171122d87182172a4a44",
+      "archive_sha256": "4e9b68a6274022d87696c6bcfc6bfdf343812ec8f3820433b5c2cb8d81d02f0f",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-43-3/fit.json",
+      "bytes": 288,
+      "expanded_sha256": "2d5565fb483d8ea4525a7a9229677d1038ad34b6e22c8d5152e1d7f7b9817597",
+      "archive_sha256": "8b35f589a542373131ec98f99f50f464d50a94d96f29f86fe9c040d1ddbe16bf",
+      "expected_state_sha256": "8b35f589a542373131ec98f99f50f464d50a94d96f29f86fe9c040d1ddbe16bf",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-43-3/worker-result.json",
+      "bytes": 918,
+      "expanded_sha256": "18ab23ec73d7d9205e40b75e9be69489a52d95bf246aad27da05c280d6516e74",
+      "archive_sha256": "b9e4e8440ef311a4e10a4edc6a6bff786fb650f832b7d5084b73555f13008560",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-43-4/fit.json",
+      "bytes": 287,
+      "expanded_sha256": "7862a192a3fca21f2445390973e52950159102b3a7ab1cd7117e9b1424e9805f",
+      "archive_sha256": "4a5ce3ceaeb9e073d4f39a940b69dde541782ce550e31506a55d9eb207880717",
+      "expected_state_sha256": "4a5ce3ceaeb9e073d4f39a940b69dde541782ce550e31506a55d9eb207880717",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-43-4/worker-result.json",
+      "bytes": 919,
+      "expanded_sha256": "672e021f10489f8784eea6b3d11cda34d4785ee54af1171122d87182172a4a44",
+      "archive_sha256": "9aa44eb7c69e5433d415db4a4395de339c5ac2daa74808ddee67b342a33c48fb",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-17-0/fit.json",
+      "bytes": 290,
+      "expanded_sha256": "90558d1e3a0ecb9febbb4d7abe8e9281bef8ad0e2a42fee83d3d837eb74b7f3a",
+      "archive_sha256": "b897112792b738b8f923e100d612e64b7f9da54c9d73aaff041b18745d672331",
+      "expected_state_sha256": "b897112792b738b8f923e100d612e64b7f9da54c9d73aaff041b18745d672331",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-17-0/worker-result.json",
+      "bytes": 918,
+      "expanded_sha256": "18ab23ec73d7d9205e40b75e9be69489a52d95bf246aad27da05c280d6516e74",
+      "archive_sha256": "679b9668286f1334c2713fc16027f88f0032b95de3706359322863deb9753040",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-17-1/fit.json",
+      "bytes": 290,
+      "expanded_sha256": "90558d1e3a0ecb9febbb4d7abe8e9281bef8ad0e2a42fee83d3d837eb74b7f3a",
+      "archive_sha256": "c91db15ee3b37ca6ec6f0fe4f06d13a4db356bbf9195e52e4904fa502db86cc3",
+      "expected_state_sha256": "c91db15ee3b37ca6ec6f0fe4f06d13a4db356bbf9195e52e4904fa502db86cc3",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-17-1/worker-result.json",
+      "bytes": 918,
+      "expanded_sha256": "18ab23ec73d7d9205e40b75e9be69489a52d95bf246aad27da05c280d6516e74",
+      "archive_sha256": "3e3c5cf7179f67223bcd11366f9f4e591794397edf4f661818b16de938d9b7a7",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-17-2/fit.json",
+      "bytes": 289,
+      "expanded_sha256": "6559f403524ea6ef9bf2e1d0bb66d1af8152920fb002ec2c4ced993083124a88",
+      "archive_sha256": "7cf5c74a92eef2535a8f5d6a14895a467ac09809531faf2a28b380026c0d38e9",
+      "expected_state_sha256": "7cf5c74a92eef2535a8f5d6a14895a467ac09809531faf2a28b380026c0d38e9",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-17-2/worker-result.json",
+      "bytes": 920,
+      "expanded_sha256": "2211e3d7915507b94bf14efafa3a951cc9a82a3ea4ed0a6f4dc612f640af1ae9",
+      "archive_sha256": "ea6bff3b43c7e12da8f3e6b7a2164a731f820c036b7c6cb2f40e405e5cbeab30",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-17-3/fit.json",
+      "bytes": 289,
+      "expanded_sha256": "6559f403524ea6ef9bf2e1d0bb66d1af8152920fb002ec2c4ced993083124a88",
+      "archive_sha256": "c4fca8d18374a2b66b6ae5316928dd283f1502d80fb4fe289e71327fd4a70452",
+      "expected_state_sha256": "c4fca8d18374a2b66b6ae5316928dd283f1502d80fb4fe289e71327fd4a70452",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-17-3/worker-result.json",
+      "bytes": 917,
+      "expanded_sha256": "75b9334bd7d133a743647274da04d139df5c0e314fb20c91a5c45cc3704e5076",
+      "archive_sha256": "d8a16ae30a6791fedd6653a29fce310833494b3abcc6c25c367c57c088a42fbd",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-17-4/fit.json",
+      "bytes": 289,
+      "expanded_sha256": "6559f403524ea6ef9bf2e1d0bb66d1af8152920fb002ec2c4ced993083124a88",
+      "archive_sha256": "59c1ad97bdad57af8bba1cbfb92bb4aa222410a666654aeb3700f990883e2784",
+      "expected_state_sha256": "59c1ad97bdad57af8bba1cbfb92bb4aa222410a666654aeb3700f990883e2784",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-17-4/worker-result.json",
+      "bytes": 919,
+      "expanded_sha256": "672e021f10489f8784eea6b3d11cda34d4785ee54af1171122d87182172a4a44",
+      "archive_sha256": "c3b313ca9ade2b28b9a7edff3f6e0453fb0313d44cdea6ea35f2e6f5aae7aacf",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-29-0/fit.json",
+      "bytes": 289,
+      "expanded_sha256": "6559f403524ea6ef9bf2e1d0bb66d1af8152920fb002ec2c4ced993083124a88",
+      "archive_sha256": "441f3239fa1fba1c249853a21e463702aca128767b5b00735d9ef0d8c0d95886",
+      "expected_state_sha256": "441f3239fa1fba1c249853a21e463702aca128767b5b00735d9ef0d8c0d95886",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-29-0/worker-result.json",
+      "bytes": 920,
+      "expanded_sha256": "2211e3d7915507b94bf14efafa3a951cc9a82a3ea4ed0a6f4dc612f640af1ae9",
+      "archive_sha256": "2433231644e5e1710355af6e39d3b613008673e5bb8d679878927f284ce38c17",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-29-1/fit.json",
+      "bytes": 290,
+      "expanded_sha256": "90558d1e3a0ecb9febbb4d7abe8e9281bef8ad0e2a42fee83d3d837eb74b7f3a",
+      "archive_sha256": "b3c51ad8868547d59232e4b21291b3cf4afca42e6c4ad855059e75d40708a526",
+      "expected_state_sha256": "b3c51ad8868547d59232e4b21291b3cf4afca42e6c4ad855059e75d40708a526",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-29-1/worker-result.json",
+      "bytes": 920,
+      "expanded_sha256": "2211e3d7915507b94bf14efafa3a951cc9a82a3ea4ed0a6f4dc612f640af1ae9",
+      "archive_sha256": "f92f7384de321f0e1a6288f513473e819565e6807038170a1cbfd79fd763a7a9",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-29-2/fit.json",
+      "bytes": 288,
+      "expanded_sha256": "2d5565fb483d8ea4525a7a9229677d1038ad34b6e22c8d5152e1d7f7b9817597",
+      "archive_sha256": "91217c259a3c8b3500887898f3e7210c831ab726d51d9d6834e33459816378f8",
+      "expected_state_sha256": "91217c259a3c8b3500887898f3e7210c831ab726d51d9d6834e33459816378f8",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-29-2/worker-result.json",
+      "bytes": 917,
+      "expanded_sha256": "75b9334bd7d133a743647274da04d139df5c0e314fb20c91a5c45cc3704e5076",
+      "archive_sha256": "5197e0c953583b8ba9d252bfb616409c5e32c5f3eeb49da198d5e97edf7240d4",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-29-3/fit.json",
+      "bytes": 290,
+      "expanded_sha256": "90558d1e3a0ecb9febbb4d7abe8e9281bef8ad0e2a42fee83d3d837eb74b7f3a",
+      "archive_sha256": "29c11994720220208ff2c9710762491e0e0a23e231765d48033610642c62dc85",
+      "expected_state_sha256": "29c11994720220208ff2c9710762491e0e0a23e231765d48033610642c62dc85",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-29-3/worker-result.json",
+      "bytes": 920,
+      "expanded_sha256": "2211e3d7915507b94bf14efafa3a951cc9a82a3ea4ed0a6f4dc612f640af1ae9",
+      "archive_sha256": "a31940c67537b8f9757274a8b195010544543d15290ecb56d0ca2682ad42e211",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-29-4/fit.json",
+      "bytes": 290,
+      "expanded_sha256": "90558d1e3a0ecb9febbb4d7abe8e9281bef8ad0e2a42fee83d3d837eb74b7f3a",
+      "archive_sha256": "0c69b6009823ff9b3338fc259e0c0562fd1230657899956baf2f2626ca79fdf3",
+      "expected_state_sha256": "0c69b6009823ff9b3338fc259e0c0562fd1230657899956baf2f2626ca79fdf3",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-29-4/worker-result.json",
+      "bytes": 920,
+      "expanded_sha256": "2211e3d7915507b94bf14efafa3a951cc9a82a3ea4ed0a6f4dc612f640af1ae9",
+      "archive_sha256": "d44a5153215279f0b14463310d560a510506e69426a36ecf86efec9828f75bad",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-43-0/fit.json",
+      "bytes": 290,
+      "expanded_sha256": "90558d1e3a0ecb9febbb4d7abe8e9281bef8ad0e2a42fee83d3d837eb74b7f3a",
+      "archive_sha256": "47b39a5afc63d8ae1d54b03125355c3d87be41e641e301320b81c84367f6bb28",
+      "expected_state_sha256": "47b39a5afc63d8ae1d54b03125355c3d87be41e641e301320b81c84367f6bb28",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-43-0/worker-result.json",
+      "bytes": 919,
+      "expanded_sha256": "672e021f10489f8784eea6b3d11cda34d4785ee54af1171122d87182172a4a44",
+      "archive_sha256": "ca1ffe54f5ad8eb3ce63f64c008cc55dc89da7f155222f7e58a906863b183ccd",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-43-1/fit.json",
+      "bytes": 289,
+      "expanded_sha256": "6559f403524ea6ef9bf2e1d0bb66d1af8152920fb002ec2c4ced993083124a88",
+      "archive_sha256": "af5b0067d5e0d9c31fc1d3cd891891709cbf60b99cf2afce1da5ab9bac66e079",
+      "expected_state_sha256": "af5b0067d5e0d9c31fc1d3cd891891709cbf60b99cf2afce1da5ab9bac66e079",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-43-1/worker-result.json",
+      "bytes": 920,
+      "expanded_sha256": "2211e3d7915507b94bf14efafa3a951cc9a82a3ea4ed0a6f4dc612f640af1ae9",
+      "archive_sha256": "586c76747f340b87c05ff82ec124a26ed24c8e395636f7695e24d1e6f7018811",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-43-2/fit.json",
+      "bytes": 289,
+      "expanded_sha256": "6559f403524ea6ef9bf2e1d0bb66d1af8152920fb002ec2c4ced993083124a88",
+      "archive_sha256": "46abd7308117f26193faf933cbd7ae3813315e9d209dc4cca72a708089df7065",
+      "expected_state_sha256": "46abd7308117f26193faf933cbd7ae3813315e9d209dc4cca72a708089df7065",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-43-2/worker-result.json",
+      "bytes": 920,
+      "expanded_sha256": "2211e3d7915507b94bf14efafa3a951cc9a82a3ea4ed0a6f4dc612f640af1ae9",
+      "archive_sha256": "a42d65fe0c406fe31e3a3225a0457f35de9c8bd83e11ca3687ba832e060ee373",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-43-3/fit.json",
+      "bytes": 290,
+      "expanded_sha256": "90558d1e3a0ecb9febbb4d7abe8e9281bef8ad0e2a42fee83d3d837eb74b7f3a",
+      "archive_sha256": "8b12637b200d7417596341ca0af50c86926170b1c9b020f25db23d58dd90f8ab",
+      "expected_state_sha256": "8b12637b200d7417596341ca0af50c86926170b1c9b020f25db23d58dd90f8ab",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-43-3/worker-result.json",
+      "bytes": 920,
+      "expanded_sha256": "2211e3d7915507b94bf14efafa3a951cc9a82a3ea4ed0a6f4dc612f640af1ae9",
+      "archive_sha256": "50a69e89481da3e9f374840343749b16b9ed91e0aa601318eb00270aec2dce8e",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-43-4/fit.json",
+      "bytes": 290,
+      "expanded_sha256": "90558d1e3a0ecb9febbb4d7abe8e9281bef8ad0e2a42fee83d3d837eb74b7f3a",
+      "archive_sha256": "a5af0477d9f8f561a3dc0e88251422f85279bb9c404c169e154266d86b60145a",
+      "expected_state_sha256": "a5af0477d9f8f561a3dc0e88251422f85279bb9c404c169e154266d86b60145a",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-43-4/worker-result.json",
+      "bytes": 920,
+      "expanded_sha256": "2211e3d7915507b94bf14efafa3a951cc9a82a3ea4ed0a6f4dc612f640af1ae9",
+      "archive_sha256": "0ba45edd0be9709e2804c2716c6587ac63cfd2e6070c2b16bd44166a3d674623",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/tune-lora-B-17-2/calibration.json",
+      "bytes": 199,
+      "expanded_sha256": "4f74882d2c7f0195a206cd5fa55bc1cfbe217137390a8e80109f788525905ccf",
+      "archive_sha256": "8bc5a32e919b3b313714f28ece8966c3b773595a54c8c60116a4643175888923",
+      "expected_state_sha256": "8bc5a32e919b3b313714f28ece8966c3b773595a54c8c60116a4643175888923",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/tune-lora-B-17-2/fit.json",
+      "bytes": 3305,
+      "expanded_sha256": "84eeec4aab2e5169d18db2c259c2331464beb50931309d565fcadad0fa2b3a50",
+      "archive_sha256": "8cdb333186981963bc4835ae4b2fe4dd2a9f083d0a672dd7a97fe6fbe88f7d36",
+      "expected_state_sha256": "8cdb333186981963bc4835ae4b2fe4dd2a9f083d0a672dd7a97fe6fbe88f7d36",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/tune-lora-B-17-2/inner-validation-1.json",
+      "bytes": 199,
+      "expanded_sha256": "4f74882d2c7f0195a206cd5fa55bc1cfbe217137390a8e80109f788525905ccf",
+      "archive_sha256": "31739e7783ca17c5fd3ac207e96f66a4f740f54bfbe141d65efe05dd5165982a",
+      "expected_state_sha256": "31739e7783ca17c5fd3ac207e96f66a4f740f54bfbe141d65efe05dd5165982a",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/tune-lora-B-17-2/inner-validation-2.json",
+      "bytes": 199,
+      "expanded_sha256": "4f74882d2c7f0195a206cd5fa55bc1cfbe217137390a8e80109f788525905ccf",
+      "archive_sha256": "8bc5a32e919b3b313714f28ece8966c3b773595a54c8c60116a4643175888923",
+      "expected_state_sha256": "8bc5a32e919b3b313714f28ece8966c3b773595a54c8c60116a4643175888923",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/tune-lora-B-17-2/inner-validation-3.json",
+      "bytes": 199,
+      "expanded_sha256": "4f74882d2c7f0195a206cd5fa55bc1cfbe217137390a8e80109f788525905ccf",
+      "archive_sha256": "cc290099605d832a291e59285707b06c2dc03639cda360e0b3143489a841ef6e",
+      "expected_state_sha256": "cc290099605d832a291e59285707b06c2dc03639cda360e0b3143489a841ef6e",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/tune-lora-B-17-2/inner-validation-4.json",
+      "bytes": 199,
+      "expanded_sha256": "4f74882d2c7f0195a206cd5fa55bc1cfbe217137390a8e80109f788525905ccf",
+      "archive_sha256": "6adfe422efbe73cd9bfd171b80b0c683aebccbc971aaaf8e175a9386f12d566a",
+      "expected_state_sha256": "6adfe422efbe73cd9bfd171b80b0c683aebccbc971aaaf8e175a9386f12d566a",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/tune-lora-B-17-2/inner-validation-5.json",
+      "bytes": 199,
+      "expanded_sha256": "4f74882d2c7f0195a206cd5fa55bc1cfbe217137390a8e80109f788525905ccf",
+      "archive_sha256": "4d03698051e3672be7195d3a409967cd5af5994e777e7654cea3e2ace608bc6d",
+      "expected_state_sha256": "4d03698051e3672be7195d3a409967cd5af5994e777e7654cea3e2ace608bc6d",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/tune-lora-B-17-2/inner-validation-6.json",
+      "bytes": 199,
+      "expanded_sha256": "4f74882d2c7f0195a206cd5fa55bc1cfbe217137390a8e80109f788525905ccf",
+      "archive_sha256": "1eb086488faa3aa89a53581ecf4611d22f9e11407de81b493976ea04fb18c7e9",
+      "expected_state_sha256": "1eb086488faa3aa89a53581ecf4611d22f9e11407de81b493976ea04fb18c7e9",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/tune-lora-B-17-2/test.json",
+      "bytes": 199,
+      "expanded_sha256": "4f74882d2c7f0195a206cd5fa55bc1cfbe217137390a8e80109f788525905ccf",
+      "archive_sha256": "b3a7b8afb55efbd3e4b04e3b988ad8d6fc8cc2df0a50a26dbb8c8713daa60768",
+      "expected_state_sha256": "b3a7b8afb55efbd3e4b04e3b988ad8d6fc8cc2df0a50a26dbb8c8713daa60768",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/tune-lora-B-17-2/worker-result.json",
+      "bytes": 4108,
+      "expanded_sha256": "858a21cec2a3cf2b0f08988b89d523c66c0d69d33fbbb60b48eecb38bb12917d",
+      "archive_sha256": "e0f9465158ce7624e9f5e3103f17249c5a57eb8ac22efb30e284d6c926e887b4",
+      "expected_state_sha256": null,
+      "archive_matches_state": false,
+      "recovery_proof": "Worker-result JSON equals entire existing state job record"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/tune-lora-B-17-3/calibration.json",
+      "bytes": 199,
+      "expanded_sha256": "4f74882d2c7f0195a206cd5fa55bc1cfbe217137390a8e80109f788525905ccf",
+      "archive_sha256": "e2d4203a8df190556b2920a1ee4fdf25e2f330c329c574f9e5d560caf7161a23",
+      "expected_state_sha256": "e2d4203a8df190556b2920a1ee4fdf25e2f330c329c574f9e5d560caf7161a23",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/tune-lora-B-17-3/inner-validation-1.json",
+      "bytes": 199,
+      "expanded_sha256": "4f74882d2c7f0195a206cd5fa55bc1cfbe217137390a8e80109f788525905ccf",
+      "archive_sha256": "7206e3420ce29c9ec864e7d8dc7c51ff6b66898d7bcca7a26f024ce933abe14f",
+      "expected_state_sha256": "7206e3420ce29c9ec864e7d8dc7c51ff6b66898d7bcca7a26f024ce933abe14f",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/tune-lora-B-17-3/inner-validation-2.json",
+      "bytes": 199,
+      "expanded_sha256": "4f74882d2c7f0195a206cd5fa55bc1cfbe217137390a8e80109f788525905ccf",
+      "archive_sha256": "e2d4203a8df190556b2920a1ee4fdf25e2f330c329c574f9e5d560caf7161a23",
+      "expected_state_sha256": "e2d4203a8df190556b2920a1ee4fdf25e2f330c329c574f9e5d560caf7161a23",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/tune-lora-B-17-3/inner-validation-3.json",
+      "bytes": 199,
+      "expanded_sha256": "4f74882d2c7f0195a206cd5fa55bc1cfbe217137390a8e80109f788525905ccf",
+      "archive_sha256": "5429cbcbe5a8ebdb5106850e735de44011243fc7fb93a21a8bc4f3fd2be6fffe",
+      "expected_state_sha256": "5429cbcbe5a8ebdb5106850e735de44011243fc7fb93a21a8bc4f3fd2be6fffe",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/tune-lora-B-17-3/inner-validation-4.json",
+      "bytes": 199,
+      "expanded_sha256": "4f74882d2c7f0195a206cd5fa55bc1cfbe217137390a8e80109f788525905ccf",
+      "archive_sha256": "d9726aeecd1321fb5e7d03ff6eb67cacc97c373d98cfb9ae3cb5c735bd94d92d",
+      "expected_state_sha256": "d9726aeecd1321fb5e7d03ff6eb67cacc97c373d98cfb9ae3cb5c735bd94d92d",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/tune-lora-B-17-3/inner-validation-5.json",
+      "bytes": 199,
+      "expanded_sha256": "4f74882d2c7f0195a206cd5fa55bc1cfbe217137390a8e80109f788525905ccf",
+      "archive_sha256": "279bd1229dab00e4be5eca441caea3abbb1e3743e027060e6d4b839a6ddacf8b",
+      "expected_state_sha256": "279bd1229dab00e4be5eca441caea3abbb1e3743e027060e6d4b839a6ddacf8b",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    },
+    {
+      "path": "local/ef138c84579c842e/jobs/tune-lora-B-17-3/inner-validation-6.json",
+      "bytes": 199,
+      "expanded_sha256": "4f74882d2c7f0195a206cd5fa55bc1cfbe217137390a8e80109f788525905ccf",
+      "archive_sha256": "861a5af85fe84c20c1feabb49b7d14f3681aa1890b4bc5a786565288f937a61c",
+      "expected_state_sha256": "861a5af85fe84c20c1feabb49b7d14f3681aa1890b4bc5a786565288f937a61c",
+      "archive_matches_state": true,
+      "recovery_proof": "SHA256 equals existing state artifact hash"
+    }
+  ],
+  "recovered_utc": "2026-11-06T01:23:02.121316+00:00",
+  "action": "Restored only zero-filled JSON metadata from archive: 80 match existing state artifact SHA256, 40 worker-result JSON records equal existing state job records. State and trained checkpoint objects unchanged.",
+  "backup_root": "C:\\Users\\LENOVO\\AppData\\Local\\CT553H-report-tools\\metadata-before-restore-2026-11-06",
+  "restored_files": 120
+}

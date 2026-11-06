@@ -110,7 +110,9 @@ roles = {'code/302988f37d839f2f': 'Pinned executable snapshot',
          'local/ef138c84579c842e': 'Completed local successor',
          'local/weights': 'Nine-checkpoint local weight cache',
          'official/369cb2fe6a1e31e0': 'Kaggle reference campaign',
-         'weights/esm2_35m': 'Reference ESM2-35M weight cache'}
+         'weights/esm2_35m': 'Reference ESM2-35M weight cache',
+         'support-metadata': 'Top-level cache/session metadata',
+         'transport-archive': 'Duplicate transport archive'}
 table('tab-campaign-inventory', ['Output role', 'Physical files', 'GiB'],
       [[roles[k],v['physical_files'],f(v['physical_bytes']/2**30,3)] for k,v in D['inventory'].items()], 'Xrr')
 

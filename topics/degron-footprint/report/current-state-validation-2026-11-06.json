@@ -1,14 +1,25 @@
 {
-  "generated_utc": "2026-11-06T00:56:39.194285+00:00",
-  "evidence_sha256": "52240e5e0f78ee6e7b7702702fb8002c49bf419f075dd60b5a19753cfa0faaad",
+  "generated_utc": "2026-11-06T01:27:53.921699+00:00",
+  "evidence_sha256": "ad5ba4a4bbffac32e090ca490893b728d9c4239f35484f9b6c6db13c76e94872",
   "evidence_sources_rechecked": 76,
+  "fresh_integrity_recheck": {
+    "record_sha256": "3012c9f2ef6f872dc553edfce464a652a0c38644d31ac003a4a78ceeaef1392f",
+    "generated_local": "2026-11-06T09:24:21+08:00",
+    "status": "pass"
+  },
+  "metadata_recovery": {
+    "files": 120,
+    "artifact_sha_matches": 80,
+    "worker_records_match_state": 40,
+    "record_sha256": "0d943934ea8d9cec3f05cca2a76503140a4e37a01123ad6126d0a7901fe91b66"
+  },
   "complete_table_rows": 88,
   "pdfs": {
     "content": {
       "path": "build/content/content.pdf",
-      "sha256": "d62a5f1cd8d490539b9314dca3403a1d2e685ccd23efb52ca82cbe5171397b7f",
-      "bytes": 609113,
-      "pages": 102,
+      "sha256": "764ca3cb9dd162462b19df9dd387abbe45bac2153b05a9a6794ac4d637160276",
+      "bytes": 611568,
+      "pages": 103,
       "all_pages_A4": true,
       "fonts": {
         "GPFBOE+TimesNewRomanPSMT": {
@@ -71,9 +82,9 @@
     },
     "content-twoside": {
       "path": "build/content-twoside/content.pdf",
-      "sha256": "be3d262e4febae3b0ac861b7f443e5f2b607778b5f377870075238e38f11da69",
-      "bytes": 609474,
-      "pages": 102,
+      "sha256": "aa9ca98e47cbdf3f286bfe61c3abf7b7bfe97875fff7b8795cad803fb6859921",
+      "bytes": 611940,
+      "pages": 103,
       "all_pages_A4": true,
       "fonts": {
         "WVIPJK+TimesNewRomanPSMT": {
@@ -137,15 +148,15 @@
   },
   "new_figures": {
     "assets/ch4/fig-campaign-calibration-transfer.pdf": {
-      "sha256": "5b0c53d364dc2b35b3378a2a9e0feffe0eb4c7ecf22a969a477e1b1e26b6a684",
+      "sha256": "ec024fd8975cb911c5dd4a692c97e37dffc75838d514c934605e978a58c9747f",
       "bytes": 42058
     },
     "assets/ch4/fig-campaign-core.pdf": {
-      "sha256": "a595dae9237031ace6fb6300257fe22ea0ddad4948992535bdd5422fd874a616",
+      "sha256": "e295a948c083707de6ffcbd7b326ae3c1cd26c5b93549180f869cf3a2d2ed79c",
       "bytes": 39400
     },
     "assets/ch4/fig-campaign-family.pdf": {
-      "sha256": "bd0338c161fb23d40c3bcb568fc51ad0fea34c4290ba8b0281c5f1aee1722bba",
+      "sha256": "ad6ff2bfa2085722db003fc54cad5e5aa909c9dcad9c4135fb33cc74effe1de4",
       "bytes": 37281
     },
     "assets/diagrams/campaign-2026-11-06/campaign-lineage.pdf": {

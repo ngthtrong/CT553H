@@ -1,0 +1,22 @@
+{
+  "analysis_script_sha256": "9abefac2cd6076a4d77211e6a5807387a7b1b6da56cd3bebfad443cf2cc9c4f7",
+  "generated_local": "2026-11-06T09:24:21+08:00",
+  "integrity": {
+    "status": "pass",
+    "local_complete_jobs": 633,
+    "state_counts": {
+      "complete": 633,
+      "source_pending": 1,
+      "structure_pending": 1
+    },
+    "local_artifact_references": 4278,
+    "local_unique_artifacts": 4278,
+    "local_bytes_checked": 5774277284,
+    "inherited_source_state_unchanged": true,
+    "inherited_complete_jobs": 456,
+    "kaggle_complete_files_checked": 2986,
+    "kaggle_bytes_checked": 3065290891,
+    "mismatches": [],
+    "note": "Checks cover saved artifacts and recorded metadata, not a new homology or wet-lab audit."
+  }
+}

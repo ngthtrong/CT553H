@@ -30,6 +30,9 @@ def normal(text):
 
 def main():
     data = json.loads(EVIDENCE.read_text(encoding='utf-8'))
+    review = EVIDENCE.parent
+    assert sha(review/'integrity-recheck.json') == data['fresh_integrity_recheck']['record_sha256']
+    assert sha(review/'metadata-recovery.json') == data['metadata_recovery']['record_sha256']
     local_source = TOPIC / 'research/kaggle-roadmap-2026-10-31'
     for name, info in data['sources'].items():
         assert sha(local_source/name) == info['sha256'], name
@@ -111,6 +114,8 @@ def main():
     assert len(figures) == 5
     record = {'generated_utc':datetime.now(timezone.utc).isoformat(),
               'evidence_sha256':sha(EVIDENCE),'evidence_sources_rechecked':76,
+              'fresh_integrity_recheck':data['fresh_integrity_recheck'],
+              'metadata_recovery':data['metadata_recovery'],
               'complete_table_rows':88,'pdfs':pdfs,'new_figures':figures,
               'bibliography_backend':'BibTeX/IEEE',
               'build_tool':'scripts/build.py; XeTeX TeX Live 2026',

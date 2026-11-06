@@ -1,7 +1,7 @@
 {
-  "generated_utc": "2026-11-06T00:46:35.601979+00:00",
+  "generated_utc": "2026-11-06T01:25:28.600060+00:00",
   "analysis_kind": "read_only_inventory_and_evidence_export",
-  "audit_script_sha256": "c044fbebd0228db3bf9fc50ad50705494d0b363d0d38f01f6ffbd7965ed03723",
+  "audit_script_sha256": "9982a3090961783def562eeb9482edeb36b7c3b4dff395b2b27b4b32b48b2f09",
   "sources": {
     "local-output-analysis.json": {
       "sha256": "6cb3e78b9fbe2d2d2201d440427c1a60e8858a366f3b647b242c5002d2406d4b",
@@ -99,7 +99,33 @@
         ".safetensors": 1,
         ".txt": 1
       }
+    },
+    "support-metadata": {
+      "physical_files": 5,
+      "physical_bytes": 10730,
+      "extensions": {
+        ".json": 3,
+        ".lock": 2
+      }
+    },
+    "transport-archive": {
+      "physical_files": 1,
+      "physical_bytes": 18835159786,
+      "extensions": {
+        ".zip": 1
+      }
     }
+  },
+  "transport_archive": {
+    "file": "output/official.zip",
+    "physical_bytes": 18835159786,
+    "members": 8827,
+    "uncompressed_member_bytes": 24446764849,
+    "all_paths_and_sizes_match_expanded_tree": true,
+    "small_member_crc_checked": 8431,
+    "small_member_bytes_checked": 1974633347,
+    "crc_threshold_bytes": 1048576,
+    "limitation": "Large member payload CRCs not rechecked; no archive-wide corruption claim. The central-directory namespace and sizes match all expanded files. Archive is a duplicate transport representation, not extra scientific observations."
   },
   "local_history": {
     "e18d80b06ac90585": {
@@ -148,6 +174,17 @@
     "kaggle_bytes_checked": 3065290891,
     "mismatches": [],
     "note": "Checks cover saved artifacts and recorded metadata, not a new homology or wet-lab audit."
+  },
+  "fresh_integrity_recheck": {
+    "record_sha256": "3012c9f2ef6f872dc553edfce464a652a0c38644d31ac003a4a78ceeaef1392f",
+    "generated_local": "2026-11-06T09:24:21+08:00",
+    "status": "pass"
+  },
+  "metadata_recovery": {
+    "files": 120,
+    "artifact_sha_matches": 80,
+    "worker_records_match_state": 40,
+    "record_sha256": "0d943934ea8d9cec3f05cca2a76503140a4e37a01123ad6126d0a7901fe91b66"
   },
   "job_categories": {
     "other": 15,

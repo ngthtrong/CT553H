@@ -28,6 +28,7 @@ pre-training. These are distinct interventions and should not be pooled into one
 
 \input{assets/ch4/tab-campaign-all}
 
+\clearpage
 \section{Seed Stability and Inner Selection}
 \begin{table}[htbp]
   \centering
@@ -49,6 +50,7 @@ pre-training. These are distinct interventions and should not be pooled into one
   \input{assets/ch4/tab-campaign-nested}
 \end{table}
 
+\clearpage
 \section{Execution Cost and Output Inventory}
 \begin{table}[htbp]
   \centering
@@ -61,6 +63,12 @@ The cache contains pinned weights and executable source snapshots as well as met
 features, fitted models and recovery checkpoints. Physical file counts in Table~\ref{tab:campaign-inventory}
 can include duplicate content, partial files and superseded attempts. They must not be added to
 the checksum-verified artifact totals as though they were separate scientific observations.
+The transport archive contains the same expanded namespace and file sizes as the output tree;
+it packages Kaggle and local campaigns together with cached weights. It is an additional physical
+copy, not another experimental run. The archive review verifies small-member CRCs but does not
+recheck every large compressed payload.
+Zero-filled JSON metadata in the reviewed expanded copy were recovered from the transport backup,
+using saved artifact hashes or exact agreement with state records before a fresh integrity check.
 The historical timer-failure local run contributes no scientific OOF results. The interrupted local
 source remains required because the successor references its inherited artifacts.
 

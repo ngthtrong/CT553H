@@ -18,6 +18,10 @@
 | `local/weights` | 63 | 14.110 |
 | `official/369cb2fe6a1e31e0` | 2,990 | 2.859 |
 | `weights/esm2_35m` | 8 | 0.127 |
+| `support-metadata` | 5 | 0.000 |
+| `transport-archive` | 1 | 17.542 |
+
+[ĐO] `official.zip` có 8,827 member, 24,446,764,849 byte giải nén. Toàn bộ tên và size khớp cây output hiện có; 8,431 member ≤1 MiB đã kiểm CRC cả bản giải nén và payload ZIP. Không giải nén thêm, không kiểm lại CRC payload lớn; không khẳng định toàn ZIP không hỏng. Đây là bản đóng gói trùng dữ liệu, không phải campaign mới.
 
 File vật lý có thể chứa cache/checkpoint trùng nội dung; không cộng với số artifact đã kiểm hash thành số quan sát khoa học.
 
@@ -64,3 +68,9 @@ Số chính xác, toàn bộ 88 cấu hình, seed, strata, CI, lựa chọn nest
 Chi tiết nền: [Kaggle](../kaggle-roadmap-2026-10-31/output-analysis.md), [Kaggle diagnostics](../kaggle-roadmap-2026-10-31/output-analysis-details.md), [Local](../kaggle-roadmap-2026-10-31/local-output-analysis.md).
 
 Cần làm tiếp: final refit/export/calibrator/card theo kiến trúc, kiểm định nguồn ngoài/cấu trúc có dữ liệu hợp lệ, tích hợp và nghiệm thu phần mềm. Không tự thay model phục vụ từ leaderboard.
+
+## Khôi phục metadata của bản giải nén
+
+[ĐO] Phát hiện 120 JSON nhỏ bị toàn byte 0 trong bản giải nén. Đã lưu bản lỗi ngoài output và khôi phục từ ZIP: 80 artifact khớp SHA-256 trong state; 40 worker-result khớp toàn bộ nội dung job tương ứng trong state. Không sửa state/checkpoint/model và không huấn luyện lại. Bản ZIP là file nén lưu kết quả, không được tính như campaign thêm.
+
+[Nhật ký trước/sau và bằng chứng](metadata-recovery.json), [đối chiếu trước khôi phục](archive-comparison.json), [tái kiểm toàn bộ artifact sau khôi phục](integrity-recheck.json). Tái kiểm mới đạt 4.278 artifact local và 2.986 Kaggle, không mismatch. Không suy đoán nguyên nhân các byte 0.
