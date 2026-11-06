@@ -18,6 +18,14 @@ on Kaggle; the local ``frozen'' and ``LoRA'' entries use the matched neural head
 Section~\ref{sec:campaign-adaptation}. ``Rep1'' and ``mean12'' identify scanning-label pre-training
 targets. Nested-family rows evaluate inner selection, not a retrospective outer-score winner.
 
+For ridge controls, ``pair'' encodes WT/replacement identity in separate 20-category blocks;
+it is not an interaction model and has no positional context, despite the saved W5 suffix.
+``Composition'' adds whole-peptide amino acid frequencies, ``unordered'' adds local frequencies,
+and ``ordered'' adds position-specific context. ``Sat-quality'' changes training weights using
+replicate disagreement. ``Scan-rep1'' and ``scan-mean12'' add source-weighted scanning examples
+to ridge training with an explicit source indicator; the CNN-transfer rows instead use scanning
+pre-training. These are distinct interventions and should not be pooled into one transfer claim.
+
 \input{assets/ch4/tab-campaign-all}
 
 \section{Seed Stability and Inner Selection}

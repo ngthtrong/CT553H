@@ -167,12 +167,29 @@ replicate-1 labels and comes from a previously explored same-laboratory source. 
 do not demonstrate independent external validity, clinical utility or transfer of the LoRA gain.
 
 \subsubsection{Additional Controls and Practical Consequences}
-The complete Kaggle record also contains composition, unordered-context, pair-interaction,
+The complete Kaggle record also contains composition, unordered-context, substitution-only,
 learning-curve, quality-weighting and scanning-label controls (Table~\ref{tab:campaign-all}).
+The substitution-only ridge encodes WT and replacement identity as separate one-hot blocks;
+despite its saved ``pair'' name, it does not add interaction terms or W5 positions. In arm D it
+reaches MAE 0.4017 and AUROC 0.8092, compared with ordered W5 at 0.4078 and 0.8319.
+Composition gives 0.4075/0.8109 and unordered context 0.4060/0.8258. Thus explicit ordering
+improves positive ranking in these controls without minimising MAE. W3-B similarly has slightly
+lower MAE than W5-B (0.4331 versus 0.4336), while W5-B has higher positive AUROC
+(0.8312 versus 0.8280). Context benefit depends on the outcome being optimised.
+
+Training-coverage controls A/B/C/D give W5 MAEs 0.4711, 0.4336, 0.4177 and 0.4078 as the
+training threshold increases from 3 to 4 to 5 to the full range. These are full-range evaluations,
+so their values cannot be compared directly with the old restricted benchmark. Scanning augmentation
+of ridge gives MAE 0.4047 using replicate 1 and 0.4048 using the replicate mean, versus 0.4078
+without the extra source. The matched scanning CNNs likewise reach about 0.3872/0.3873.
+The observed point differences do not establish an advantage from averaging replicate labels.
+
 For W5-D, mean single-seed MAE decreases from 0.4413 at one-quarter training data to 0.4189 at
 one-half, 0.4107 at three-quarters and 0.4078 at full size. Ensemble MAEs are 0.4154, 0.4113,
 0.4083 and 0.4078. The large ensemble gain at small fractions must not be misread as a learning
-curve of one fitted model. The frozen ESM CNN-D improves MAE for 156 of 235 peptides, grouped
+curve of one fitted model. Fractional training subsets vary by seed, so their ensemble can have
+seen a union larger than the stated fraction. The frozen ESM CNN-D improves MAE for 156 of
+235 peptides, grouped
 into 150 of 221 protein groups, relative to W5-D; the advantage is not universal.
 
 The scanning pre-training comparison also examines the 20 substitution-pair types present
