@@ -1,0 +1,18 @@
+{
+  "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738",
+  "recipe": "esm2_35m-lora-D",
+  "model_ids": [],
+  "training_output": "D:\\thanhtrong\\CT553H\\topics\\degron-footprint\\research\\kaggle-roadmap-2026-10-31\\output\\local\\ef138c84579c842e\\jobs\\collect-core",
+  "input_oof_sha256": "1ddfb5eea915f3cdc2025be71162b2832c7d2c549a19170dcce58558d7c3173a",
+  "mode": "official",
+  "event_labels": [
+    "minus",
+    "neutral",
+    "plus"
+  ],
+  "multiclass_brier": 0.16589868154064022,
+  "oof_cells": 122412,
+  "note": "Outer-fold calibrator trained only on that fold inner-validation predictions. Missing classes get zero probability.",
+  "final_promotion_status": "calibrated_cv_only_use_architecture_specific_final_refit_before_serving",
+  "claim_boundary": "Reporter mutation effects; development plus previously explored same-lab transfer, not clinical validation."
+}

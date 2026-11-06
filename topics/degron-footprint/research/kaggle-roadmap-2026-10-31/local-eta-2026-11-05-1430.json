@@ -1,0 +1,57 @@
+{
+  "generated_local": "2026-11-05T14:30:36+08:00",
+  "campaign": "ef138c84579c842e",
+  "status": "estimate_not_guarantee",
+  "state_counts": {
+    "complete": 618,
+    "running": 1,
+    "pending": 16
+  },
+  "remaining_tune": {
+    "B": 5,
+    "D": 5
+  },
+  "active_job": "tune-lora-B-43-0",
+  "progress": {
+    "job": "tune-lora-B-43-0",
+    "message": "inner epoch=7/20 batch=5061/7294 loss=0.047852",
+    "updated_unix": 1793860227.7975984,
+    "epoch": 7,
+    "cursor": 40488,
+    "total_rows": 58351,
+    "loss": 0.04785230755805969
+  },
+  "active_current_best_epoch": 6,
+  "active_conditional_remaining_minutes": 69.06584062421481,
+  "observed_current_inner_epoch_seconds": 397.35,
+  "base_rate_report": "local-eta-2026-11-04-2015.json",
+  "observed_pause": {
+    "from_local": "2026-11-04T23:01:39+08:00",
+    "resume_local": "2026-11-05T11:36:47+08:00",
+    "hours": 12.585555555555556
+  },
+  "scenarios": [
+    {
+      "scenario": "fast_observed_min",
+      "lora_hours": 8.742397312223249,
+      "postprocessing_assumed_hours": 1,
+      "total_hours": 9.742397312223249,
+      "finish_local": "2026-11-06T00:15+08:00"
+    },
+    {
+      "scenario": "central_observed_mean",
+      "lora_hours": 12.61418978994198,
+      "postprocessing_assumed_hours": 1,
+      "total_hours": 13.61418978994198,
+      "finish_local": "2026-11-06T04:07+08:00"
+    },
+    {
+      "scenario": "slow_observed_max",
+      "lora_hours": 19.20039766260328,
+      "postprocessing_assumed_hours": 1,
+      "total_hours": 20.20039766260328,
+      "finish_local": "2026-11-06T10:42+08:00"
+    }
+  ],
+  "method": "Live active-epoch speed and progress; remaining LoRA per-arm rates/selected epochs from completed seed17/29 jobs. Conditional on current best epoch not improving. Source+successor epoch durations exclude inactive intervals. 1h postprocessing allowance is unmeasured. Continuous unchanged throughput; scenarios are not hard bounds."
+}

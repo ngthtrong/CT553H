@@ -1,0 +1,364 @@
+{
+  "generated_local": "2026-11-04T20:15:23+08:00",
+  "campaign": "ef138c84579c842e",
+  "status": "estimate_not_guarantee",
+  "state_counts": {
+    "complete": 608,
+    "running": 1,
+    "pending": 26
+  },
+  "remaining_tune": {
+    "frozen": {
+      "B": 5,
+      "D": 5
+    },
+    "lora": {
+      "B": 5,
+      "D": 5
+    }
+  },
+  "active_job": "tune-frozen-B-43-0",
+  "progress": {
+    "job": "tune-frozen-B-43-0",
+    "message": "inner epoch=4/20 batch=2694/7294 loss=0.334341",
+    "updated_unix": 1793794506.7778084,
+    "epoch": 4,
+    "cursor": 21552,
+    "total_rows": 58351,
+    "loss": 0.3343411087989807
+  },
+  "active_conditional_remaining_minutes": 10.465861889828284,
+  "observed": {
+    "frozen": {
+      "B": [
+        {
+          "job": "tune-frozen-B-17-0",
+          "selected_epoch": 1,
+          "inner_seconds_per_row": 0.003270161023126367,
+          "refit_seconds_per_row": 0.0025991458206223307
+        },
+        {
+          "job": "tune-frozen-B-17-1",
+          "selected_epoch": 2,
+          "inner_seconds_per_row": 0.00331300980472934,
+          "refit_seconds_per_row": 0.002635253991486619
+        },
+        {
+          "job": "tune-frozen-B-17-2",
+          "selected_epoch": 1,
+          "inner_seconds_per_row": 0.003371459881510907,
+          "refit_seconds_per_row": 0.002489362278776052
+        },
+        {
+          "job": "tune-frozen-B-17-3",
+          "selected_epoch": 2,
+          "inner_seconds_per_row": 0.003313756265505544,
+          "refit_seconds_per_row": 0.0025527486430233035
+        },
+        {
+          "job": "tune-frozen-B-17-4",
+          "selected_epoch": 2,
+          "inner_seconds_per_row": 0.0032734988620612944,
+          "refit_seconds_per_row": 0.0026050203877050625
+        },
+        {
+          "job": "tune-frozen-B-29-0",
+          "selected_epoch": 2,
+          "inner_seconds_per_row": 0.003477946875220179,
+          "refit_seconds_per_row": 0.002569995254559013
+        },
+        {
+          "job": "tune-frozen-B-29-1",
+          "selected_epoch": 1,
+          "inner_seconds_per_row": 0.003317374567334131,
+          "refit_seconds_per_row": 0.002805118771065247
+        },
+        {
+          "job": "tune-frozen-B-29-2",
+          "selected_epoch": 1,
+          "inner_seconds_per_row": 0.0034905548696960984,
+          "refit_seconds_per_row": 0.0026316502696696205
+        },
+        {
+          "job": "tune-frozen-B-29-3",
+          "selected_epoch": 1,
+          "inner_seconds_per_row": 0.0034948947992426253,
+          "refit_seconds_per_row": 0.0025384646777945555
+        },
+        {
+          "job": "tune-frozen-B-29-4",
+          "selected_epoch": 1,
+          "inner_seconds_per_row": 0.0033255066526785564,
+          "refit_seconds_per_row": 0.002653788320080196
+        }
+      ],
+      "D": [
+        {
+          "job": "tune-frozen-D-17-0",
+          "selected_epoch": 1,
+          "inner_seconds_per_row": 0.0031385199240986715,
+          "refit_seconds_per_row": 0.0026165981147364425
+        },
+        {
+          "job": "tune-frozen-D-17-1",
+          "selected_epoch": 1,
+          "inner_seconds_per_row": 0.003230896385904275,
+          "refit_seconds_per_row": 0.0028303417503295816
+        },
+        {
+          "job": "tune-frozen-D-17-2",
+          "selected_epoch": 1,
+          "inner_seconds_per_row": 0.003159537616262102,
+          "refit_seconds_per_row": 0.0026162553121935276
+        },
+        {
+          "job": "tune-frozen-D-17-3",
+          "selected_epoch": 2,
+          "inner_seconds_per_row": 0.003122531626524906,
+          "refit_seconds_per_row": 0.0025380373057206883
+        },
+        {
+          "job": "tune-frozen-D-17-4",
+          "selected_epoch": 1,
+          "inner_seconds_per_row": 0.0031426309638993254,
+          "refit_seconds_per_row": 0.0026939259017197013
+        },
+        {
+          "job": "tune-frozen-D-29-0",
+          "selected_epoch": 2,
+          "inner_seconds_per_row": 0.003180300500834725,
+          "refit_seconds_per_row": 0.002602750966736073
+        },
+        {
+          "job": "tune-frozen-D-29-1",
+          "selected_epoch": 3,
+          "inner_seconds_per_row": 0.0031092574213891786,
+          "refit_seconds_per_row": 0.002637663522969273
+        },
+        {
+          "job": "tune-frozen-D-29-2",
+          "selected_epoch": 1,
+          "inner_seconds_per_row": 0.0031955579838125613,
+          "refit_seconds_per_row": 0.002627492644655116
+        },
+        {
+          "job": "tune-frozen-D-29-3",
+          "selected_epoch": 1,
+          "inner_seconds_per_row": 0.0033179286645337127,
+          "refit_seconds_per_row": 0.002656216426386175
+        },
+        {
+          "job": "tune-frozen-D-29-4",
+          "selected_epoch": 2,
+          "inner_seconds_per_row": 0.0030934050062169528,
+          "refit_seconds_per_row": 0.0025790408888525795
+        }
+      ]
+    },
+    "lora": {
+      "B": [
+        {
+          "job": "tune-lora-B-17-0",
+          "selected_epoch": 2,
+          "inner_seconds_per_row": 0.0067258630972102575,
+          "refit_seconds_per_row": 0.006058572300183038
+        },
+        {
+          "job": "tune-lora-B-17-1",
+          "selected_epoch": 7,
+          "inner_seconds_per_row": 0.007856966301392435,
+          "refit_seconds_per_row": 0.006074847927381128
+        },
+        {
+          "job": "tune-lora-B-17-2",
+          "selected_epoch": 2,
+          "inner_seconds_per_row": 0.007165850484572446,
+          "refit_seconds_per_row": 0.006023524947827737
+        },
+        {
+          "job": "tune-lora-B-17-3",
+          "selected_epoch": 2,
+          "inner_seconds_per_row": 0.006884883465816077,
+          "refit_seconds_per_row": 0.005929886136391462
+        },
+        {
+          "job": "tune-lora-B-17-4",
+          "selected_epoch": 4,
+          "inner_seconds_per_row": 0.006795119697462311,
+          "refit_seconds_per_row": 0.006096668879285821
+        },
+        {
+          "job": "tune-lora-B-29-0",
+          "selected_epoch": 6,
+          "inner_seconds_per_row": 0.006974388783202987,
+          "refit_seconds_per_row": 0.0071439224459358686
+        },
+        {
+          "job": "tune-lora-B-29-1",
+          "selected_epoch": 1,
+          "inner_seconds_per_row": 0.007092485362145376,
+          "refit_seconds_per_row": 0.006266868982556968
+        },
+        {
+          "job": "tune-lora-B-29-2",
+          "selected_epoch": 6,
+          "inner_seconds_per_row": 0.007023388747019329,
+          "refit_seconds_per_row": 0.006152261701493346
+        },
+        {
+          "job": "tune-lora-B-29-3",
+          "selected_epoch": 2,
+          "inner_seconds_per_row": 0.0068446851055546706,
+          "refit_seconds_per_row": 0.006155028635949339
+        },
+        {
+          "job": "tune-lora-B-29-4",
+          "selected_epoch": 2,
+          "inner_seconds_per_row": 0.006828362558491948,
+          "refit_seconds_per_row": 0.0062314580257115375
+        }
+      ],
+      "D": [
+        {
+          "job": "tune-lora-D-17-0",
+          "selected_epoch": 2,
+          "inner_seconds_per_row": 0.006945604048070842,
+          "refit_seconds_per_row": 0.006058896536161571
+        },
+        {
+          "job": "tune-lora-D-17-1",
+          "selected_epoch": 2,
+          "inner_seconds_per_row": 0.006581386029503845,
+          "refit_seconds_per_row": 0.006064293682182335
+        },
+        {
+          "job": "tune-lora-D-17-2",
+          "selected_epoch": 1,
+          "inner_seconds_per_row": 0.006581735588574909,
+          "refit_seconds_per_row": 0.006084504740111148
+        },
+        {
+          "job": "tune-lora-D-17-3",
+          "selected_epoch": 2,
+          "inner_seconds_per_row": 0.006665078549129252,
+          "refit_seconds_per_row": 0.006110014017783143
+        },
+        {
+          "job": "tune-lora-D-17-4",
+          "selected_epoch": 3,
+          "inner_seconds_per_row": 0.007741603106191021,
+          "refit_seconds_per_row": 0.006039377476410277
+        },
+        {
+          "job": "tune-lora-D-29-0",
+          "selected_epoch": 4,
+          "inner_seconds_per_row": 0.006694490818030049,
+          "refit_seconds_per_row": 0.0061604422881642775
+        },
+        {
+          "job": "tune-lora-D-29-1",
+          "selected_epoch": 1,
+          "inner_seconds_per_row": 0.006822778608308941,
+          "refit_seconds_per_row": 0.006060237298448433
+        },
+        {
+          "job": "tune-lora-D-29-2",
+          "selected_epoch": 1,
+          "inner_seconds_per_row": 0.0067189306633800485,
+          "refit_seconds_per_row": 0.005946592023537104
+        },
+        {
+          "job": "tune-lora-D-29-3",
+          "selected_epoch": 2,
+          "inner_seconds_per_row": 0.006703005885373465,
+          "refit_seconds_per_row": 0.00612485035760695
+        },
+        {
+          "job": "tune-lora-D-29-4",
+          "selected_epoch": 2,
+          "inner_seconds_per_row": 0.006608181258713153,
+          "refit_seconds_per_row": 0.006266083901801397
+        }
+      ]
+    }
+  },
+  "rates": {
+    "frozen": {
+      "B": {
+        "inner_seconds_per_row": 0.0033214406100063438,
+        "refit_seconds_per_row": 0.0026020831041636966
+      },
+      "D": {
+        "inner_seconds_per_row": 0.003151084290080714,
+        "refit_seconds_per_row": 0.002622045379695779
+      }
+    },
+    "lora": {
+      "B": {
+        "inner_seconds_per_row": 0.006929636124509532,
+        "refit_seconds_per_row": 0.006124465290389583
+      },
+      "D": {
+        "inner_seconds_per_row": 0.006698748351701757,
+        "refit_seconds_per_row": 0.006074399211146742
+      }
+    }
+  },
+  "scenarios": [
+    {
+      "scenario": "fast_observed_min",
+      "assumed_selected_epochs": {
+        "frozen": {
+          "B": 1,
+          "D": 1
+        },
+        "lora": {
+          "B": 1,
+          "D": 1
+        }
+      },
+      "frozen_hours": 3.869909801284139,
+      "lora_hours": 8.311707169874936,
+      "postprocessing_assumed_hours": 1,
+      "total_hours": 13.181616971159073,
+      "finish_local": "2026-11-05T09:26+08:00"
+    },
+    {
+      "scenario": "central_observed_mean",
+      "assumed_selected_epochs": {
+        "frozen": {
+          "B": 1.4,
+          "D": 1.5
+        },
+        "lora": {
+          "B": 3.4,
+          "D": 2
+        }
+      },
+      "frozen_hours": 4.39408217069428,
+      "lora_hours": 12.754207070922961,
+      "postprocessing_assumed_hours": 1,
+      "total_hours": 18.14828924161724,
+      "finish_local": "2026-11-05T14:24+08:00"
+    },
+    {
+      "scenario": "slow_observed_max",
+      "assumed_selected_epochs": {
+        "frozen": {
+          "B": 2,
+          "D": 3
+        },
+        "lora": {
+          "B": 7,
+          "D": 4
+        }
+      },
+      "frozen_hours": 5.705655015455795,
+      "lora_hours": 20.1964760785782,
+      "postprocessing_assumed_hours": 1,
+      "total_hours": 26.902131094034,
+      "finish_local": "2026-11-05T23:09+08:00"
+    }
+  ],
+  "method": "Per-mode/per-arm selected epochs and median duration per training/refit row from completed seed17/29 jobs. Source+successor logs; exclude partial-resume epoch timings where possible. Active fold assumes its current best epoch remains best. Postprocessing is an unmeasured 1h allowance. Continuous unchanged GPU throughput; scenarios are not confidence bounds."
+}

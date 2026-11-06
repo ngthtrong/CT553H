@@ -1,0 +1,38 @@
+{
+  "job": "locked-transfer-w5",
+  "started_unix": 1793908216.1263177,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/locked-transfer-w5/ordered-w5-D/calibrated-oof.parquet",
+      "bytes": 14768466,
+      "sha256": "9bc011cf0902257815a2fdf9c4e81505d497b3548f3bf0f5b0db938da4b78899"
+    },
+    {
+      "path": "jobs/locked-transfer-w5/ordered-w5-D/final-calibrator.joblib",
+      "bytes": 927,
+      "sha256": "f9319eea675c081b394e59f570852a4b50d41ac6e2291270e2efd85c046b4d5e"
+    },
+    {
+      "path": "jobs/locked-transfer-w5/ordered-w5-D/final-model.joblib",
+      "bytes": 8334,
+      "sha256": "7b374f4fe9730c84c8aa3ab27331d3cb54aba548472f93577f2342e87e4a0de9"
+    },
+    {
+      "path": "jobs/locked-transfer-w5/ordered-w5-D/held-scanning.parquet",
+      "bytes": 4655066,
+      "sha256": "c39b74c7f0cefd354de13338be8a84d8092d261a0f5504b199ddb2fc5794e1d0"
+    },
+    {
+      "path": "jobs/locked-transfer-w5/ordered-w5-D/model-card.json",
+      "bytes": 4413,
+      "sha256": "182b50050f27840968bb1f708080477d95c6e800bc3270b660b6af49eb7fe731"
+    },
+    {
+      "path": "jobs/locked-transfer-w5/ordered-w5-D/selection-lock.json",
+      "bytes": 496,
+      "sha256": "2914ba67649a8c6087f924a351b4cd0e942d719522063a568382acb250bef082"
+    }
+  ],
+  "seconds": 4.177433252334595
+}

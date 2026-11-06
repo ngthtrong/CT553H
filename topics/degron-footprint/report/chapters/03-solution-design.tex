@@ -5,7 +5,7 @@ This chapter describes the target design confirmed on 29 October 2026. Baseline 
 exists, but the workspace, durable jobs and import extensions below are planned. A design element is
 not a completed implementation or a passing test. The design follows the requirements in
 Chapter~\ref{chap:problem}; existing implementation evidence is distinguished from planned work.
-As of 3 November 2026, the newer workspace UI is a separate interactive review prototype using
+As of 6 November 2026, the newer workspace UI is a separate interactive review prototype using
 synthetic fixtures and transient tab state. It has not been integrated with the baseline API or
 implemented durable projects/jobs. The current research findings are summarised in
 Section~\ref{sec:res-fullpsi}; they have not changed the serving model.
@@ -122,9 +122,11 @@ shared references and weights remain intact. Committed history has no automatic 
 \section{Method and Model Design}
 Input remains the reference peptide, position and replacement; target is $\Delta$PSI. The existing
 service baseline is the frozen ridge/Platt model from Section~\ref{sec:res-calibration}. This scope
-update does not choose a replacement model. Full-PSI CNN, pLM-family and LoRA candidates require
-completed evaluation and a compatible final refit, calibration and export before serving.
+update does not choose a replacement model. Full-PSI CNN, pLM-family and LoRA development
+evaluation is complete; a compatible final serving refit, calibration and export remain required.
 Raw effect and calibrated $P(\Delta\mathrm{PSI}\geq1)$ remain separate fields.
+
+\input{chapters/sections/campaign-methods}
 
 \paragraph{Domain integration.}
 The effect model's intrinsic-WT training threshold must not be applied directly to the GPS screen

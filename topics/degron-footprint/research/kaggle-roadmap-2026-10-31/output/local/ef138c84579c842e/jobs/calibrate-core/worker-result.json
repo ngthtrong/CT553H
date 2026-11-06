@@ -1,0 +1,88 @@
+{
+  "job": "calibrate-core",
+  "started_unix": 1793908208.929057,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/calibrate-core/esm2_35m-frozen-B/calibrated-oof.parquet",
+      "bytes": 15292563,
+      "sha256": "c4e98c2e466bf2d89fceb21f7da8283983804a32557d819612bd02a29fe50170"
+    },
+    {
+      "path": "jobs/calibrate-core/esm2_35m-frozen-B/final-calibrator.joblib",
+      "bytes": 927,
+      "sha256": "959683f59eb1c1bb16cabfb8b7a3d7fa6b40a1f07b4aa4ef1650409f9bd8b097"
+    },
+    {
+      "path": "jobs/calibrate-core/esm2_35m-frozen-B/model-card.json",
+      "bytes": 927,
+      "sha256": "d0a9e83f727c9f57a896c7176bad41aa30623b35b86597b662a2b51b5948a715"
+    },
+    {
+      "path": "jobs/calibrate-core/esm2_35m-frozen-B/selection-lock.json",
+      "bytes": 494,
+      "sha256": "1c4cf3b03d04aa0675b3ea336ae2b403d43a584c71c6bf78c602a6743d1bbf12"
+    },
+    {
+      "path": "jobs/calibrate-core/esm2_35m-frozen-D/calibrated-oof.parquet",
+      "bytes": 15292664,
+      "sha256": "b84ccb3c952472bea9cc98655029c3beb54a02741df6c95c532c7bf975140de5"
+    },
+    {
+      "path": "jobs/calibrate-core/esm2_35m-frozen-D/final-calibrator.joblib",
+      "bytes": 927,
+      "sha256": "239b11b4a9b60f666cd0e8a0fa0e0f11c96bd36c9e8451b3c9b1c5ac7eb582b5"
+    },
+    {
+      "path": "jobs/calibrate-core/esm2_35m-frozen-D/model-card.json",
+      "bytes": 927,
+      "sha256": "c49589ae75e39db6d8d014f08c3927c5c8b8ecfdd2a7ae2183fe5fc5362901af"
+    },
+    {
+      "path": "jobs/calibrate-core/esm2_35m-frozen-D/selection-lock.json",
+      "bytes": 494,
+      "sha256": "baea09a55bc7c86ae485492b7a43d4bfd0d661eb4c1de5aa9ac2aef0b4bdce7a"
+    },
+    {
+      "path": "jobs/calibrate-core/esm2_35m-lora-B/calibrated-oof.parquet",
+      "bytes": 15293192,
+      "sha256": "55fd232e75065abf495daaf417339c9b02824a1977807b6eb8b250bb849ff44c"
+    },
+    {
+      "path": "jobs/calibrate-core/esm2_35m-lora-B/final-calibrator.joblib",
+      "bytes": 927,
+      "sha256": "1daca1372efdcf76147454c7f0c4517e5416cd9e0d2f163dcb41e0a1a09bc89a"
+    },
+    {
+      "path": "jobs/calibrate-core/esm2_35m-lora-B/model-card.json",
+      "bytes": 926,
+      "sha256": "4c1f7426ff0ac66b187e965c653890296f529cb9a4adcc3d42f26b5cf70db204"
+    },
+    {
+      "path": "jobs/calibrate-core/esm2_35m-lora-B/selection-lock.json",
+      "bytes": 492,
+      "sha256": "5987be03400a2ddd48c33c8991996118d7853e89d8f1534145a1d9120f467117"
+    },
+    {
+      "path": "jobs/calibrate-core/esm2_35m-lora-D/calibrated-oof.parquet",
+      "bytes": 15293168,
+      "sha256": "ec30f415f67d5bc51ecc8904966bc4eaed73f14c7ca74ba698ec75be46367187"
+    },
+    {
+      "path": "jobs/calibrate-core/esm2_35m-lora-D/final-calibrator.joblib",
+      "bytes": 927,
+      "sha256": "4d03928742c22b4b605a5788f40e2f164af93462f37d259929323fe9e80d4404"
+    },
+    {
+      "path": "jobs/calibrate-core/esm2_35m-lora-D/model-card.json",
+      "bytes": 926,
+      "sha256": "3d5b5d39158cc7fb19aceb0679e36ce2ea05acbdd68d9fd1d41c77a0162babff"
+    },
+    {
+      "path": "jobs/calibrate-core/esm2_35m-lora-D/selection-lock.json",
+      "bytes": 492,
+      "sha256": "b4162020f9a1efdb1c763f64193f4589f3d59f1335649d6a9beb1c1776204bf2"
+    }
+  ],
+  "seconds": 4.168725252151489
+}

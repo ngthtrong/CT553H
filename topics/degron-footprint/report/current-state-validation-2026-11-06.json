@@ -1,0 +1,168 @@
+{
+  "generated_utc": "2026-11-06T00:56:39.194285+00:00",
+  "evidence_sha256": "52240e5e0f78ee6e7b7702702fb8002c49bf419f075dd60b5a19753cfa0faaad",
+  "evidence_sources_rechecked": 76,
+  "complete_table_rows": 88,
+  "pdfs": {
+    "content": {
+      "path": "build/content/content.pdf",
+      "sha256": "d62a5f1cd8d490539b9314dca3403a1d2e685ccd23efb52ca82cbe5171397b7f",
+      "bytes": 609113,
+      "pages": 102,
+      "all_pages_A4": true,
+      "fonts": {
+        "GPFBOE+TimesNewRomanPSMT": {
+          "type": "Type0",
+          "extension": "ttf",
+          "embedded_bytes": 85843
+        },
+        "SPQXRZ+TimesNewRomanPS-BoldMT": {
+          "type": "Type0",
+          "extension": "ttf",
+          "embedded_bytes": 60944
+        },
+        "QQOKFA+TimesNewRomanPS-BoldItalicMT": {
+          "type": "Type0",
+          "extension": "ttf",
+          "embedded_bytes": 44854
+        },
+        "FLRUZX+LatinModernMath-Regular-Identity-H": {
+          "type": "Type0",
+          "extension": "cid",
+          "embedded_bytes": 7304
+        },
+        "FEXPLF+TimesNewRomanPS-ItalicMT": {
+          "type": "Type0",
+          "extension": "ttf",
+          "embedded_bytes": 38779
+        },
+        "AAAAAA+TimesNewRomanPSMT": {
+          "type": "Type0",
+          "extension": "ttf",
+          "embedded_bytes": 60180
+        },
+        "XVRDES+LMMono12-Regular-Identity-H": {
+          "type": "Type0",
+          "extension": "cid",
+          "embedded_bytes": 4422
+        },
+        "BTHAZU+TimesNewRomanPSMT": {
+          "type": "Type0",
+          "extension": "ttf",
+          "embedded_bytes": 48036
+        },
+        "DFPAOX+TimesNewRomanPSMT": {
+          "type": "Type0",
+          "extension": "ttf",
+          "embedded_bytes": 50332
+        },
+        "ERSRNR+TimesNewRomanPSMT": {
+          "type": "Type0",
+          "extension": "ttf",
+          "embedded_bytes": 52560
+        }
+      },
+      "abstract_pages": {
+        "english": 7,
+        "vietnamese": 8
+      },
+      "pending_markers": 6,
+      "layout_and_reference_errors": 0
+    },
+    "content-twoside": {
+      "path": "build/content-twoside/content.pdf",
+      "sha256": "be3d262e4febae3b0ac861b7f443e5f2b607778b5f377870075238e38f11da69",
+      "bytes": 609474,
+      "pages": 102,
+      "all_pages_A4": true,
+      "fonts": {
+        "WVIPJK+TimesNewRomanPSMT": {
+          "type": "Type0",
+          "extension": "ttf",
+          "embedded_bytes": 85843
+        },
+        "RLPWMH+TimesNewRomanPS-BoldMT": {
+          "type": "Type0",
+          "extension": "ttf",
+          "embedded_bytes": 60944
+        },
+        "BEAWTU+TimesNewRomanPS-BoldItalicMT": {
+          "type": "Type0",
+          "extension": "ttf",
+          "embedded_bytes": 44854
+        },
+        "XVOFUF+LatinModernMath-Regular-Identity-H": {
+          "type": "Type0",
+          "extension": "cid",
+          "embedded_bytes": 7304
+        },
+        "GJQTCC+TimesNewRomanPS-ItalicMT": {
+          "type": "Type0",
+          "extension": "ttf",
+          "embedded_bytes": 38779
+        },
+        "AAAAAA+TimesNewRomanPSMT": {
+          "type": "Type0",
+          "extension": "ttf",
+          "embedded_bytes": 60180
+        },
+        "MDVIKE+LMMono12-Regular-Identity-H": {
+          "type": "Type0",
+          "extension": "cid",
+          "embedded_bytes": 4422
+        },
+        "BTHAZU+TimesNewRomanPSMT": {
+          "type": "Type0",
+          "extension": "ttf",
+          "embedded_bytes": 48036
+        },
+        "DFPAOX+TimesNewRomanPSMT": {
+          "type": "Type0",
+          "extension": "ttf",
+          "embedded_bytes": 50332
+        },
+        "ERSRNR+TimesNewRomanPSMT": {
+          "type": "Type0",
+          "extension": "ttf",
+          "embedded_bytes": 52560
+        }
+      },
+      "abstract_pages": {
+        "english": 7,
+        "vietnamese": 8
+      },
+      "pending_markers": 6,
+      "layout_and_reference_errors": 0
+    }
+  },
+  "new_figures": {
+    "assets/ch4/fig-campaign-calibration-transfer.pdf": {
+      "sha256": "5b0c53d364dc2b35b3378a2a9e0feffe0eb4c7ecf22a969a477e1b1e26b6a684",
+      "bytes": 42058
+    },
+    "assets/ch4/fig-campaign-core.pdf": {
+      "sha256": "a595dae9237031ace6fb6300257fe22ea0ddad4948992535bdd5422fd874a616",
+      "bytes": 39400
+    },
+    "assets/ch4/fig-campaign-family.pdf": {
+      "sha256": "bd0338c161fb23d40c3bcb568fc51ad0fea34c4290ba8b0281c5f1aee1722bba",
+      "bytes": 37281
+    },
+    "assets/diagrams/campaign-2026-11-06/campaign-lineage.pdf": {
+      "sha256": "a09e87e7e22ede11b99ccbe97077f35e3614970d7177a01035bea26443e2c8e1",
+      "bytes": 43703
+    },
+    "assets/diagrams/campaign-2026-11-06/nested-evaluation.pdf": {
+      "sha256": "2b9c7dc7622f2bbf21a8a4c1908f6a82931d5f5d6eaa024dd17ea329ca87aed4",
+      "bytes": 46204
+    }
+  },
+  "bibliography_backend": "BibTeX/IEEE",
+  "build_tool": "scripts/build.py; XeTeX TeX Live 2026",
+  "raster_review": "PyMuPDF 1.26.7; contact sheets and detail pages in ignored build/review-2026-11-06",
+  "limits": [
+    "No new training or software acceptance run.",
+    "Existing scientific metric helpers reused; not an independent metrics implementation.",
+    "Source 03 November validation retained unchanged."
+  ]
+}

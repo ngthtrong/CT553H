@@ -1,0 +1,3083 @@
+{
+  "job": "collect-family",
+  "started_unix": 1793908084.5265727,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/collect-family/ankh_base-context-B-oof.parquet",
+      "bytes": 5660564,
+      "sha256": "72b2a7f0fe234ab6279e2910f731b4b36fab3c86a61e246558d572b0515a50a9"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-B-results.json",
+      "bytes": 14404,
+      "sha256": "00def5fad76fe080de1adc7ae99c7de7fa1f6a26e95a1b85dcd2c941c50bab26"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-B-seed17-fold0-calibration.parquet",
+      "bytes": 418657,
+      "sha256": "6aa1622097b5165c3fde1d6771bc84a0a06b50c28c748c212c35b29a38f7db08"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-B-seed17-fold1-calibration.parquet",
+      "bytes": 425513,
+      "sha256": "815eb113a6d165ebd4526f621e206eb5f6aedd1e7c03f5b88bdab396b3c2e02e"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-B-seed17-fold2-calibration.parquet",
+      "bytes": 432657,
+      "sha256": "b14cc26f28a71799d85c658e0fa7d4ba4aa2e892c65ad2b1f805d75dfd7d8e73"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-B-seed17-fold3-calibration.parquet",
+      "bytes": 407998,
+      "sha256": "363d07e5ef03bb3a7815f33922bf12065ed25837415b92f1b5b2720e3b03d9f8"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-B-seed17-fold4-calibration.parquet",
+      "bytes": 416063,
+      "sha256": "4e392be76d8e9cd233054f8f8863b3aeed7a07e5d8c4ec3aaff6bbd6527af57e"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-B-seed29-fold0-calibration.parquet",
+      "bytes": 444831,
+      "sha256": "c91aceddfd65005905039bc6dbe0c914cef24c886833887f5d4b0d9c9599cfa3"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-B-seed29-fold1-calibration.parquet",
+      "bytes": 430968,
+      "sha256": "1760e5b1e9d5d4b8b10d08b5b1a53f056ff0e022167405f5ae5b1590d739f205"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-B-seed29-fold2-calibration.parquet",
+      "bytes": 435231,
+      "sha256": "d291fdbca4b6c56aaa145801fbf2d4c869b3e567bd7f289dbcc7638fa3017c0d"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-B-seed29-fold3-calibration.parquet",
+      "bytes": 493934,
+      "sha256": "ce6693670a6d6db4dfd93c1d21a0f3cf3bbbbc97038491ac6aa7e7aeb3933109"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-B-seed29-fold4-calibration.parquet",
+      "bytes": 415219,
+      "sha256": "a30159a878ad927f093b21ff65570900ddd863d4eada195c550bb2b13bd370af"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-B-seed43-fold0-calibration.parquet",
+      "bytes": 444926,
+      "sha256": "fd69c5012cd7f6968941239e2ed6ac5f3911dfa4668ead7ff5f9b095c77218c1"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-B-seed43-fold1-calibration.parquet",
+      "bytes": 415098,
+      "sha256": "d4eed340d193ff439f6a256978614d56e6648e0c3f1a63b3a7733ac2b2fc62b9"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-B-seed43-fold2-calibration.parquet",
+      "bytes": 480836,
+      "sha256": "fdfb0d7c3f979d320d3e5a2685d2968da773e7a635c0b6e33f65953de68cefdc"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-B-seed43-fold3-calibration.parquet",
+      "bytes": 436972,
+      "sha256": "76e9288232e29765d140b4ee7a9f1238e98a9c626d859d4a33152c55453a6e7b"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-B-seed43-fold4-calibration.parquet",
+      "bytes": 418975,
+      "sha256": "0649e3bf2cf31b7658254445a27a1bf3f6aa23a1610d63d5faa5d3e727865409"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-D-oof.parquet",
+      "bytes": 5661012,
+      "sha256": "4c50cbb2324bba1999d03f96a2e20bf3312bdced4972d0c9ab026715e7c14598"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-D-results.json",
+      "bytes": 14396,
+      "sha256": "fcc4814197a0e5aae996310bb6937988961364fc1737a6f0f5122ee7c11ed7ee"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-D-seed17-fold0-calibration.parquet",
+      "bytes": 418657,
+      "sha256": "5480978d0f810f88ba77becea4e6262ed69e9640ca171faae2026e3078c560d3"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-D-seed17-fold1-calibration.parquet",
+      "bytes": 425509,
+      "sha256": "d398fcccbba654a5bf6ca86c351cbf7fb62dd3008725d093d891cddf8ca7bc81"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-D-seed17-fold2-calibration.parquet",
+      "bytes": 432653,
+      "sha256": "cd9fb8fd852f23a97c6a8daf5f1bc7477df35b1a1e1a741a89c2521b795784e9"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-D-seed17-fold3-calibration.parquet",
+      "bytes": 407994,
+      "sha256": "d9e36065ff1ce5a4fadf846ed0ed0547aa104d0019f993434ae9b04cc7752cc2"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-D-seed17-fold4-calibration.parquet",
+      "bytes": 416067,
+      "sha256": "2a08be4db02bc338a7cf49a13f5d447923c089968ad3640e2dd19dbf5f2fe4d2"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-D-seed29-fold0-calibration.parquet",
+      "bytes": 444843,
+      "sha256": "1c74207f4e7c473889838c990d70f1c1297d99657758bc08a88c4c7314f113cc"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-D-seed29-fold1-calibration.parquet",
+      "bytes": 430968,
+      "sha256": "7379567decd6765a3f550eea195cdeb7e2ae24bb72dc6c6452faa76e587a4961"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-D-seed29-fold2-calibration.parquet",
+      "bytes": 435235,
+      "sha256": "0d086655a318b8f91c4bccadece137e882250f20d9a395fea2a1d437c1867769"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-D-seed29-fold3-calibration.parquet",
+      "bytes": 493934,
+      "sha256": "344e8aa537c078daa645c22b1cf40b1d58f9854d68989da8f0f110301c334a7b"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-D-seed29-fold4-calibration.parquet",
+      "bytes": 415215,
+      "sha256": "4507dca483f149a0bd9b577b2f46d604fde501e22ba2a6332acd04502fc5a335"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-D-seed43-fold0-calibration.parquet",
+      "bytes": 444938,
+      "sha256": "a664e8dcfab85cc4fbf500791ac3a7b5f6de77d2c82e1bc8b53048a53e0436be"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-D-seed43-fold1-calibration.parquet",
+      "bytes": 415110,
+      "sha256": "03040643f21ff488546e73bc3a8e405d6efc3a626a9be120aae1f5ada5b55667"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-D-seed43-fold2-calibration.parquet",
+      "bytes": 480836,
+      "sha256": "d47301304938fdf53ed272d9d89ae12c3c1a61c12f4630c93553726faa690059"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-D-seed43-fold3-calibration.parquet",
+      "bytes": 436988,
+      "sha256": "bef95781e4d49c9ab5d6113e677fb13b1798ef8152959f80da2e907e28458708"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-context-D-seed43-fold4-calibration.parquet",
+      "bytes": 418979,
+      "sha256": "98f2c89bbc597500936a4315dc87250c4cda174bfba25448508db75a70cb5d4f"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-B-oof.parquet",
+      "bytes": 5660095,
+      "sha256": "5dcb467d7d771f47546649a7ac0166c4d1697bbb020ca78f59a5385a7f452e2e"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-B-results.json",
+      "bytes": 14413,
+      "sha256": "50a37072fa58ffb5361a65a69d5ae6371a2680bbe1606bdd0518bf6fa20e27cc"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-B-seed17-fold0-calibration.parquet",
+      "bytes": 418641,
+      "sha256": "a6b7459b303f4200cc749267cc52eafa03c45213f25efa037389fa9ae2024347"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-B-seed17-fold1-calibration.parquet",
+      "bytes": 425489,
+      "sha256": "3a6d20cf755c680556ff3875488943c579b5b7be7168061ae11a240b3669468a"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-B-seed17-fold2-calibration.parquet",
+      "bytes": 432661,
+      "sha256": "f294705b4f0ce3554e488706f509458f5f123618368a95458132fd737b4dd8f3"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-B-seed17-fold3-calibration.parquet",
+      "bytes": 407990,
+      "sha256": "54c3153db14d5cab5a39b345db99695cdac1f04d1b2155821069a54496f2edf6"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-B-seed17-fold4-calibration.parquet",
+      "bytes": 416031,
+      "sha256": "ec5a0d33acf3a8a310f8a69640082f216534d29cf17e60b4b8e07645a35ac0d5"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-B-seed29-fold0-calibration.parquet",
+      "bytes": 444855,
+      "sha256": "8efa7d737f3b805fee2f111e51f21320ff8386d7941814235effec0a5ec23116"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-B-seed29-fold1-calibration.parquet",
+      "bytes": 430968,
+      "sha256": "1691fae485dd99f56958651dc7b83865ff12dac03713cb680222944f0e510050"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-B-seed29-fold2-calibration.parquet",
+      "bytes": 435227,
+      "sha256": "2f77137026b9471cff4bd07a52e06f96c135bbf6c66b998f8fa570fe7d38537c"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-B-seed29-fold3-calibration.parquet",
+      "bytes": 493942,
+      "sha256": "eac8a58ba268ae965ae8471652e8ab5853b4b48d39e00c40c43adf1e1a7efb91"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-B-seed29-fold4-calibration.parquet",
+      "bytes": 415223,
+      "sha256": "4bd899a9499b773e4f1b72137ffa2cefb8490f9e77720ab2cb71ef6644199546"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-B-seed43-fold0-calibration.parquet",
+      "bytes": 444914,
+      "sha256": "d580cd7174683f6a6fd983fc5d541036c0ca7dc5465814f1832f21350e692436"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-B-seed43-fold1-calibration.parquet",
+      "bytes": 415090,
+      "sha256": "3f2bf46b4a3f74752a1ed9a39793b9a7a104026a1709f3063104c260e829bdcb"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-B-seed43-fold2-calibration.parquet",
+      "bytes": 480820,
+      "sha256": "10af435808742ea39e8e227d342dc4a34c4ca7f7e3aa46b0c744c2a31668ddd9"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-B-seed43-fold3-calibration.parquet",
+      "bytes": 436964,
+      "sha256": "8265bc11bd7a1b0a5f541d872162264265453e463afe1c595dd8a773870ee783"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-B-seed43-fold4-calibration.parquet",
+      "bytes": 418955,
+      "sha256": "662131d1c977baceb8133dca076f6bfabcce0f407a498295dfa0a79296453433"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-D-oof.parquet",
+      "bytes": 5660369,
+      "sha256": "3e7e7ffe38e0c738b314bec94779c2fb7f0e1d295f594ec8987cb099e87bfaae"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-D-results.json",
+      "bytes": 14407,
+      "sha256": "bfaae6dcd9439eb72199604ad04651de5d15ef6780514d753177b28d716b6b06"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-D-seed17-fold0-calibration.parquet",
+      "bytes": 418657,
+      "sha256": "c50d65aa99ae3b6ab63261f4a74d65de90cd088e0443ab376bbb786ce9a44704"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-D-seed17-fold1-calibration.parquet",
+      "bytes": 425505,
+      "sha256": "dafed234edcd385f501e841eb95c2fd3d493bf73110a1fb909ff1ccb7a93d5e7"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-D-seed17-fold2-calibration.parquet",
+      "bytes": 432661,
+      "sha256": "723f41c1c74414d3396615860cc0c13541b1a8948627ac0adaa9f090b6d142cd"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-D-seed17-fold3-calibration.parquet",
+      "bytes": 407990,
+      "sha256": "1397a09bd63a35cb2c147f8c76183611c8cabfdc048bf7d1a6338b43508ae06c"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-D-seed17-fold4-calibration.parquet",
+      "bytes": 416047,
+      "sha256": "9d7cd99864208d4454f123ad642d426b1140262b2aef18ce2bbd66be2ab84117"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-D-seed29-fold0-calibration.parquet",
+      "bytes": 444851,
+      "sha256": "579cd49276aab33dd8f6b984cf2412cad7425e93b20ab54368b1f4716c413195"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-D-seed29-fold1-calibration.parquet",
+      "bytes": 430968,
+      "sha256": "bda4280e6f17448efad90fe050ec1ae691b187667d926b9db581a2446497c6bf"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-D-seed29-fold2-calibration.parquet",
+      "bytes": 435211,
+      "sha256": "72f1a4bc8c37b371c1d02939afae9c53ebb05f21baab08f8a1e89a8e89ba8357"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-D-seed29-fold3-calibration.parquet",
+      "bytes": 493918,
+      "sha256": "d788fab0106ee9b9a1d2a07959c23603f7127272f1de4d9438a87a0a4f5264d2"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-D-seed29-fold4-calibration.parquet",
+      "bytes": 415219,
+      "sha256": "25a1b7241320893d928811920d790cdd6ca518b4e55d8d45139c236a32bf834a"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-D-seed43-fold0-calibration.parquet",
+      "bytes": 444922,
+      "sha256": "ee0c2d7d5d3516fe9ea938a258f7b36953e44af5fd23c059c36c585365b3ab9a"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-D-seed43-fold1-calibration.parquet",
+      "bytes": 415090,
+      "sha256": "59d25de96971adb4c2646414c6e54f378f47247fad264b227d33414822fe8932"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-D-seed43-fold2-calibration.parquet",
+      "bytes": 480832,
+      "sha256": "d806c9671e49a181828543f27c9babbda7102dc0a7c6097f6e577e456bfb079f"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-D-seed43-fold3-calibration.parquet",
+      "bytes": 436992,
+      "sha256": "2e7154dafc2b3c5a3628df715770a0d850520875d27fcdb54b6eacf7306a1339"
+    },
+    {
+      "path": "jobs/collect-family/ankh_base-only-D-seed43-fold4-calibration.parquet",
+      "bytes": 418963,
+      "sha256": "cbe9dfc54fab05a592f13658e7b5925ae3f52c35e68006565fc51432496fbf1f"
+    },
+    {
+      "path": "jobs/collect-family/collection.json",
+      "bytes": 583994,
+      "sha256": "731a9a7d79a47bfb616f03fefc344c98422f1e022eedcbad2261d7910b693a35"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-B-oof.parquet",
+      "bytes": 5660637,
+      "sha256": "ffb2852c70cf77ce078424a73932c6502309ee94626ae7162e5f5bb743ddd401"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-B-results.json",
+      "bytes": 14409,
+      "sha256": "87bf8a32b91d87848f86d841c8598eec3a1eb34629502f767a79c892e33c926b"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-B-seed17-fold0-calibration.parquet",
+      "bytes": 418641,
+      "sha256": "3326e72585eb1c9a9b1508087dad8b4d3c7d96e63b5f103c1ca89857b163485b"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-B-seed17-fold1-calibration.parquet",
+      "bytes": 425501,
+      "sha256": "c3506667f68824c895cf72496b49fe73cd0ade0f8b91b6d82673bd326f0223c2"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-B-seed17-fold2-calibration.parquet",
+      "bytes": 432657,
+      "sha256": "2fc1bbca6353fb81eb43844e3a51e48e748902d1d3fa4a76ec180ee57f24b788"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-B-seed17-fold3-calibration.parquet",
+      "bytes": 407982,
+      "sha256": "c9d117900d8e0db9b50ba80a0d443523dc85b54928c86a6972246178c5dc9d38"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-B-seed17-fold4-calibration.parquet",
+      "bytes": 416051,
+      "sha256": "e2669136ccba284336dc491a16a12b2dc55bef2254055f78941de2bd1c17550c"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-B-seed29-fold0-calibration.parquet",
+      "bytes": 444843,
+      "sha256": "eba46cfe1cd44848061b87940087c44061effea1edff9e78626a4dbbab4d5a60"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-B-seed29-fold1-calibration.parquet",
+      "bytes": 430976,
+      "sha256": "c6a511441af2215f9562937b078f6da20c7504d4920d382552f83618af3ac91e"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-B-seed29-fold2-calibration.parquet",
+      "bytes": 435191,
+      "sha256": "e81161dd47d5f66465dacb0d8cab2e0323902f068ce7adba41124eab71b396a5"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-B-seed29-fold3-calibration.parquet",
+      "bytes": 493926,
+      "sha256": "7e12c793af2ad15ccb2c55b6edaeaad73d59fefe8ece77aa4ea6d54e7fd1fee7"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-B-seed29-fold4-calibration.parquet",
+      "bytes": 415215,
+      "sha256": "e8bd94be7b85c3d4dae1563630dd4accad5f815867259bfb72854ab6da9ceb90"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-B-seed43-fold0-calibration.parquet",
+      "bytes": 444922,
+      "sha256": "7735e1c26003e8820d6d3cbf5713427e7449cc8b3bfbd9f10916971f571acd1d"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-B-seed43-fold1-calibration.parquet",
+      "bytes": 415094,
+      "sha256": "5b0e4f4d070bf41d72a271fcdd5e5ff972f7881616fc2bffa2f2697939ac6312"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-B-seed43-fold2-calibration.parquet",
+      "bytes": 480828,
+      "sha256": "417d3d4fa4ddc2cb33d4cf60ea787c1c9f2c34457c009df1b0b0b771d42df825"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-B-seed43-fold3-calibration.parquet",
+      "bytes": 436980,
+      "sha256": "5b607a063f4e1cc79c0ec8c342687883ce3ae433d5dfa84fc3344f68e9eb65f6"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-B-seed43-fold4-calibration.parquet",
+      "bytes": 418975,
+      "sha256": "b92e238ac8372ecdd99df69bb8101a4bc1f761294b94e8fe474e62cdf0ee9243"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-D-oof.parquet",
+      "bytes": 5661237,
+      "sha256": "e7c841669359cbcbc33b644c62b17418b043fd7cc38790fe72656d2bd7b8d96f"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-D-results.json",
+      "bytes": 14415,
+      "sha256": "636860ec4039bae9a8ba490a4ae0b0ca006dfad972b4ab3c786ea12e032fb923"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-D-seed17-fold0-calibration.parquet",
+      "bytes": 418649,
+      "sha256": "3db74e8423bccfed9607367466722a6070d0f7691778c1a5923d09f05f0c3c48"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-D-seed17-fold1-calibration.parquet",
+      "bytes": 425493,
+      "sha256": "b335e7b6f4d0cba53863b11f9b742884f4e9f2fb35d4d54fa1cbddf0c834c581"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-D-seed17-fold2-calibration.parquet",
+      "bytes": 432665,
+      "sha256": "0b2bc6635fa471f4959b2a5dcde353daef764fbe1f67873c417820c8ea5c24a2"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-D-seed17-fold3-calibration.parquet",
+      "bytes": 407978,
+      "sha256": "ffe3cc07424de498ae942920e5f66032e9bfaf4e7e1bc7ade77f2008caf9e2e6"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-D-seed17-fold4-calibration.parquet",
+      "bytes": 416051,
+      "sha256": "a61ca1320b2b8b77870ee2a4f95092c996b62d81aab9ff1dd97342874c1f8a6e"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-D-seed29-fold0-calibration.parquet",
+      "bytes": 444855,
+      "sha256": "44c51f9e276e7160f4b12b5e5fa84c5f71754eea53805e5cf9fb2cd507aa5e5e"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-D-seed29-fold1-calibration.parquet",
+      "bytes": 430980,
+      "sha256": "7119000c836eb55c5410e162653273e7bcd3514befbed2cc8bcb2a0471dd5ca3"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-D-seed29-fold2-calibration.parquet",
+      "bytes": 435231,
+      "sha256": "f31b16751a6dc70ab2af2ba52394a17cf1b131788ff33763f37a71d75c121ea8"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-D-seed29-fold3-calibration.parquet",
+      "bytes": 493906,
+      "sha256": "9bccf76d5bb40b0d427d38ac1e02ea678632ef4741dab81508441585996cbf1e"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-D-seed29-fold4-calibration.parquet",
+      "bytes": 415207,
+      "sha256": "eb5db9a4f5b9bac13ddb3f7b20b569f9b2c22f1d513a071066fcacdc07fd94f2"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-D-seed43-fold0-calibration.parquet",
+      "bytes": 444938,
+      "sha256": "42ed4c7caa6579a997c32a7b6a2c33d393084927786d81d9a1f9ed58b552f323"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-D-seed43-fold1-calibration.parquet",
+      "bytes": 415102,
+      "sha256": "719928875aec1165d00ae9e35b3c866015276cadecdecdcafb0d6d6f735caa6f"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-D-seed43-fold2-calibration.parquet",
+      "bytes": 480844,
+      "sha256": "2300e8aa2feeaffbea4f8325e18bacb2ab54638030d9b7153bcab052d0e49554"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-D-seed43-fold3-calibration.parquet",
+      "bytes": 436976,
+      "sha256": "2cfc3a6c413a5384c67232aecf1144f63a4414cbf2bd116f172dbaa5f2d54440"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-context-D-seed43-fold4-calibration.parquet",
+      "bytes": 418979,
+      "sha256": "b9d0251e5fcc3d31f89a7a056a3ccaa7561e2efae33518bd1624b77a7e6bdad1"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-B-oof.parquet",
+      "bytes": 5660265,
+      "sha256": "f9d56be62fcaf79a16871abf8676c5017a9ebf689507b518219c4ca56c65646f"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-B-results.json",
+      "bytes": 14411,
+      "sha256": "22f236d745eab35ec68be7e224889886375ee0876c2eb9e34519852e6ae9ef11"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-B-seed17-fold0-calibration.parquet",
+      "bytes": 418645,
+      "sha256": "50481cd9bee1dddb96df0c80a38af756efac00b9e6f65ea21e1113812d32971f"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-B-seed17-fold1-calibration.parquet",
+      "bytes": 425505,
+      "sha256": "1fae27977b597c9c6085270afe6dbee05dfb0b6b052b0bf2e2dfa6da98b2d813"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-B-seed17-fold2-calibration.parquet",
+      "bytes": 432669,
+      "sha256": "ee2802225fc51f25d6f6f16f311d28f013279746701f9ccd2ac52e9ac93bc801"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-B-seed17-fold3-calibration.parquet",
+      "bytes": 407974,
+      "sha256": "60f6538c2e24f950d14cd8089a9544aa59fc75123f6eac991838d90eebe0162c"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-B-seed17-fold4-calibration.parquet",
+      "bytes": 416051,
+      "sha256": "2af19f2b63ddf84c8f05e569c5a8c1183d4b1d13a4df52902463f0871e31c244"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-B-seed29-fold0-calibration.parquet",
+      "bytes": 444851,
+      "sha256": "0866e9c640f1c5259357021934de36c3b0632870de7c6c155e09806ffcaa81b5"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-B-seed29-fold1-calibration.parquet",
+      "bytes": 430972,
+      "sha256": "39d3124dddf89c2419838eca6a63ef9be34ade9d70efd7fc73654ac66cfd313d"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-B-seed29-fold2-calibration.parquet",
+      "bytes": 435211,
+      "sha256": "5ec1485144806f61d2c4141e564f47d4aff50fab852768d5d4fdfbe2ef90ae7c"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-B-seed29-fold3-calibration.parquet",
+      "bytes": 493918,
+      "sha256": "8b9aeb8a97abed4fab63b332b8af97a26c18d516a2b0f804dfd0a623831d9274"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-B-seed29-fold4-calibration.parquet",
+      "bytes": 415191,
+      "sha256": "8f9d3e00f91b2902427b6aae091451a947d0a95bf879a3cf079463bf0b387ccb"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-B-seed43-fold0-calibration.parquet",
+      "bytes": 444918,
+      "sha256": "780e44c0be85aa1d6bf2436119b2e99c1d6f9317abe2085f15a194f6cde9eef3"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-B-seed43-fold1-calibration.parquet",
+      "bytes": 415094,
+      "sha256": "6f106a6c95d3543f07a3e1fb73827cd3e171e98b44e11803b79ea250aeb71d56"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-B-seed43-fold2-calibration.parquet",
+      "bytes": 480840,
+      "sha256": "6ffd6963e28e9d0e99a9390667e17cc7bd251d057db7abe85be66a36d0c5476e"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-B-seed43-fold3-calibration.parquet",
+      "bytes": 436976,
+      "sha256": "16a16981f9928f26b8e80a5a54e3cc793a879b2f2f477c6eba45add284024b0c"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-B-seed43-fold4-calibration.parquet",
+      "bytes": 418959,
+      "sha256": "e8913cb44833cc346e388d33ee10cd036121fe1230dc30cd21a818b342ada9ca"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-D-oof.parquet",
+      "bytes": 5660774,
+      "sha256": "c63704daa8a9d4f4a5050d86a69694436042b04d87a936b0beebf04c14057611"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-D-results.json",
+      "bytes": 14411,
+      "sha256": "c0faab8cca915fc88974f7b7f7dbdc39c81f6c1006c272e554985258e545f42c"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-D-seed17-fold0-calibration.parquet",
+      "bytes": 418661,
+      "sha256": "8e78cc4c8ff6eff22099e784e4940963fc7d42728ea4e8dc7509f96eca1ee4f5"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-D-seed17-fold1-calibration.parquet",
+      "bytes": 425505,
+      "sha256": "2d66e747dda557b6b20cb531fab03cdd251f7103a5954da74b7a571459fc1271"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-D-seed17-fold2-calibration.parquet",
+      "bytes": 432637,
+      "sha256": "275057326f6dc5083849d429463c178333271529bc6f9026d583cfdb0e86e9e6"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-D-seed17-fold3-calibration.parquet",
+      "bytes": 408002,
+      "sha256": "aaafafb7d189c2089f3aef6e344afef6ad3f9ea4853d8f1d9e9539327fdb8b7c"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-D-seed17-fold4-calibration.parquet",
+      "bytes": 416059,
+      "sha256": "93b964c1cb260c12214a4d823ac4ace5894169648c728e25e90a08dd00e8f9b9"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-D-seed29-fold0-calibration.parquet",
+      "bytes": 444859,
+      "sha256": "05955c3882921f007409a561b082bcee5c8f1f5e239c32e433749e2bbcd3c04c"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-D-seed29-fold1-calibration.parquet",
+      "bytes": 430976,
+      "sha256": "befa27195c205d5f4309b82f0017524edcaeb6697ab86e0eaf76e320481de488"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-D-seed29-fold2-calibration.parquet",
+      "bytes": 435211,
+      "sha256": "1f7138e4ce97c5989e6814f3eaf78a2612e75e8a45e297a899cf7ab568ae0299"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-D-seed29-fold3-calibration.parquet",
+      "bytes": 493942,
+      "sha256": "7abff92647e24c14a15d7fd839700260f8009373cec55ce204bef0dfe4218e2c"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-D-seed29-fold4-calibration.parquet",
+      "bytes": 415227,
+      "sha256": "103b158547bd7f427de07596cd21409388b79d37267836d14d2bf4782192f5dc"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-D-seed43-fold0-calibration.parquet",
+      "bytes": 444930,
+      "sha256": "7222680880862e1757623ebf63321c062d8b7314995a4f8ce3b7ee6c26748b3e"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-D-seed43-fold1-calibration.parquet",
+      "bytes": 415098,
+      "sha256": "4ae777784d0aefe30898783db85369aefcee5191183da340bb7e2bb8965f3109"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-D-seed43-fold2-calibration.parquet",
+      "bytes": 480836,
+      "sha256": "710a7bdf468c4e1d0e1cbc2a37cb5af24125774a78cf3696b488472e665206ff"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-D-seed43-fold3-calibration.parquet",
+      "bytes": 436980,
+      "sha256": "adf11b6db986dce14b5192810be3d5b244bef7a54025470febae656080425989"
+    },
+    {
+      "path": "jobs/collect-family/esm1b_650m-only-D-seed43-fold4-calibration.parquet",
+      "bytes": 418959,
+      "sha256": "147e2159827e3ce7cb16cb86a411b1d55fa08d35a05ba61c94fd4526440cd241"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-B-oof.parquet",
+      "bytes": 5660502,
+      "sha256": "24bd99e178964b9fb4f9533dda09f57aea6cbb6975d8a59a4e6cbfcddcd9ccae"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-B-results.json",
+      "bytes": 14404,
+      "sha256": "2ba6a067c5422f462f37e8a0ab1938955098411b94f91a15aa053d99e72c1db9"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-B-seed17-fold0-calibration.parquet",
+      "bytes": 418641,
+      "sha256": "3630b0176075407843a54ebbc4fb5664797aad5ae3d1e47f1cfd10e36cc6fad8"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-B-seed17-fold1-calibration.parquet",
+      "bytes": 425513,
+      "sha256": "cbef38c942669342f07587481ce7ae9414701f9e0943ff871d16801ecdd1f19e"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-B-seed17-fold2-calibration.parquet",
+      "bytes": 432661,
+      "sha256": "eaf3b28513e3cf365d938b08129d962230b1471ef81e330386f33f0f3a928c49"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-B-seed17-fold3-calibration.parquet",
+      "bytes": 407974,
+      "sha256": "217c23ac62ac202a110f1196bbd3aac6c47f8a2a63df5f4bfb2d88ddb81876fe"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-B-seed17-fold4-calibration.parquet",
+      "bytes": 416059,
+      "sha256": "36a8d90c452010b8ca382ad80a7274cfce9bd4819cb42d607b3610c12a784e7d"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-B-seed29-fold0-calibration.parquet",
+      "bytes": 444851,
+      "sha256": "ac4085ee7afafed1482fb07ef1da8ba722b7127207ba1efaca0873ce4704bf2a"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-B-seed29-fold1-calibration.parquet",
+      "bytes": 430960,
+      "sha256": "f410b14687195ccf8a5e71064bad7b65636eb26651b21852d0c47f8a3966cd03"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-B-seed29-fold2-calibration.parquet",
+      "bytes": 435227,
+      "sha256": "ad8a5f8aeec9c5361464007752ee9f503d7b1458880d7e8f7f26e5cfa13c5858"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-B-seed29-fold3-calibration.parquet",
+      "bytes": 493938,
+      "sha256": "b6c9fdffabe52dbaae5e8ce63d5779083cd802978a99fb055bb9bf9f3e4e8958"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-B-seed29-fold4-calibration.parquet",
+      "bytes": 415211,
+      "sha256": "caf3401e78cf5ae244e8863753d1394a76159a35f4262b6f89aa0029bd6f689f"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-B-seed43-fold0-calibration.parquet",
+      "bytes": 444926,
+      "sha256": "c27a46639a30cc996d8a3d07e6d5c5ae6b0017fa8dcc1e71210462d8796f79a0"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-B-seed43-fold1-calibration.parquet",
+      "bytes": 415094,
+      "sha256": "e3b19a42177df5beb98ec7273b810d7787c5f17a379d3b7983d45fc7de611c07"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-B-seed43-fold2-calibration.parquet",
+      "bytes": 480812,
+      "sha256": "c49ec48946703fce21981d06b6ae5eb7ba0c8784fba03408378ca9fca65a3a22"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-B-seed43-fold3-calibration.parquet",
+      "bytes": 436980,
+      "sha256": "2b1d770c48457cb82bbc87923708c99a3863851bd3dedd6886e194107939ec8c"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-B-seed43-fold4-calibration.parquet",
+      "bytes": 418963,
+      "sha256": "dc357af457ed9a0674271ca92aec8027444e1bf26bc98a7377d22027c2f4e40c"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-D-oof.parquet",
+      "bytes": 5661303,
+      "sha256": "42c478f00cc68de283619310ed0f11f1a3d7f2b1e130400a965dfb86130c4558"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-D-results.json",
+      "bytes": 14409,
+      "sha256": "af0ce1024d26ab488ce1b6c4462999c66713d34fb59d0da372e70064c464822f"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-D-seed17-fold0-calibration.parquet",
+      "bytes": 418641,
+      "sha256": "6da356736b7880794c1a72b20588aafbeaf8f52bdb4f0ea83254409959e0da29"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-D-seed17-fold1-calibration.parquet",
+      "bytes": 425493,
+      "sha256": "40d234e41515d31704c64a198307bd7cafbfb6c119631a9411807b98178c2789"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-D-seed17-fold2-calibration.parquet",
+      "bytes": 432653,
+      "sha256": "950b2b7e8bed5729ab57d8dc537007b01705e3b1cf8593894aa20d3409598dac"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-D-seed17-fold3-calibration.parquet",
+      "bytes": 407966,
+      "sha256": "8b5c69e8acb6a888594ef36ea2fa258bc5545d90d36179a46bcfd643e2c33536"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-D-seed17-fold4-calibration.parquet",
+      "bytes": 416039,
+      "sha256": "5a11ec54b249273c72caba904bc1141105b1296a36acd1c17683b57ac2ca0c0d"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-D-seed29-fold0-calibration.parquet",
+      "bytes": 444863,
+      "sha256": "02272e4958a7632f4cb6cd15e4815b30488f238154d432a2f3f73f2647ba3522"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-D-seed29-fold1-calibration.parquet",
+      "bytes": 430980,
+      "sha256": "3a84e49c689d68f32fce38e7e4d71e49c9eb22b1944b543968e0f8b17c745b80"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-D-seed29-fold2-calibration.parquet",
+      "bytes": 435223,
+      "sha256": "a1b03a1f4dc446023d64333e3b9569d7e1e31a4a5a4b19bf7713eb132a2b932c"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-D-seed29-fold3-calibration.parquet",
+      "bytes": 493942,
+      "sha256": "c687638b0aff6ac7f41ee90c70f2fd0a7a996858cdd42bc514c43e36eb119bd9"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-D-seed29-fold4-calibration.parquet",
+      "bytes": 415223,
+      "sha256": "50028c440b99e95c7373c2036ecf7cb3f3292c16e4fef3c07dd7c11b29944a42"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-D-seed43-fold0-calibration.parquet",
+      "bytes": 444930,
+      "sha256": "122133c3e176caefc04a7e673aa7914ac71450b8291aafcc4ccef05b0b5211db"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-D-seed43-fold1-calibration.parquet",
+      "bytes": 415098,
+      "sha256": "8a2f6c0ab79a93f4332d2df9e312f9cc69f55578488af2e0e7983ba6e94a3d41"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-D-seed43-fold2-calibration.parquet",
+      "bytes": 480824,
+      "sha256": "d92922c77308dc0bb202891fb276155fd1ab3368a0479dccd0863bfd37dbe4bf"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-D-seed43-fold3-calibration.parquet",
+      "bytes": 436992,
+      "sha256": "cb4a4ed5bbfd76b5c238dcb089b4d461a45d45c15f0f56ec8c95bf39fd115b76"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-context-D-seed43-fold4-calibration.parquet",
+      "bytes": 418975,
+      "sha256": "e8752d8ff73dffa84f885c4a1d29625e585e97453ee85e866a858c24b4b7371c"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-B-oof.parquet",
+      "bytes": 5662451,
+      "sha256": "897ddf4a926f762d57008ed67dcd03c6110da48e2b390a686a7a4b7177ea4187"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-B-results.json",
+      "bytes": 14416,
+      "sha256": "52850a7e28023f7120ed410a0928458028123c705acf6f43a47906a09e2f44af"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-B-seed17-fold0-calibration.parquet",
+      "bytes": 418637,
+      "sha256": "a598b10bc6d5c36cf4f3d5281fd16b80deaffa97d762cff3f1e8b021d8fcef27"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-B-seed17-fold1-calibration.parquet",
+      "bytes": 425517,
+      "sha256": "f6446714a76aa70905fa1a2266faaab42433f23dde418b42708309c7e0b380bc"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-B-seed17-fold2-calibration.parquet",
+      "bytes": 432657,
+      "sha256": "491b3b07ce71d1fdda63d6abd4ac68412f3da186aaa00d7aa02e79b9e43ae523"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-B-seed17-fold3-calibration.parquet",
+      "bytes": 407982,
+      "sha256": "9fc849bbb2dc65fa0e4b3dd2cd3721926ac32b8cb7efe7a7ecee464171f5b0b4"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-B-seed17-fold4-calibration.parquet",
+      "bytes": 416047,
+      "sha256": "9ac52893ae86f62071586e48eeab836e0d021198a8edecd0befad83796f98b09"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-B-seed29-fold0-calibration.parquet",
+      "bytes": 444859,
+      "sha256": "07436e92817bf19ce2a99a2653ec411452ce9dc1df3b3247be1c2cf7ecdb3944"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-B-seed29-fold1-calibration.parquet",
+      "bytes": 430968,
+      "sha256": "38c8834988b841f34161828adf98584e64f7c294b7be2af44088d88758e2a44c"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-B-seed29-fold2-calibration.parquet",
+      "bytes": 435219,
+      "sha256": "07d1c230c59386d340a7710e9bff40c06c80006288f72fdd416d7b87d7e1d584"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-B-seed29-fold3-calibration.parquet",
+      "bytes": 493942,
+      "sha256": "e661bb76e65987bbfd18ce37dedabfceb4f6f3e4f1b5a690d58884d6079fd994"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-B-seed29-fold4-calibration.parquet",
+      "bytes": 415219,
+      "sha256": "baa57d3a946b87b3fd20af3734d7f4d94aea4bd2a09ad399e36de04b57553eb9"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-B-seed43-fold0-calibration.parquet",
+      "bytes": 444910,
+      "sha256": "c971688eebf946d5d1e38ba70821e974b1a596e494f7ceb3ecd4afd1f93564da"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-B-seed43-fold1-calibration.parquet",
+      "bytes": 415074,
+      "sha256": "433c156acdb2ffff26d75249f3da1176d6fc78a02ab977072278fa8a6b7298ee"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-B-seed43-fold2-calibration.parquet",
+      "bytes": 480832,
+      "sha256": "6fa07b1072bbe337410ecf742d06d4dd5745a55b14d7712f8909c329c88120b5"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-B-seed43-fold3-calibration.parquet",
+      "bytes": 436972,
+      "sha256": "d6baffe713e82c54dd2a3fa64dce9200718648af9194484ff32b0615fe307808"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-B-seed43-fold4-calibration.parquet",
+      "bytes": 418955,
+      "sha256": "cf45aa2ad5642da27c5d280abee96c2922774c645034939efa0922fc6fb45c23"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-D-oof.parquet",
+      "bytes": 5660620,
+      "sha256": "db27a778fcada43c9d88ba597562b0a694694d6f1f3d0f2ccf463d296136de2b"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-D-results.json",
+      "bytes": 14412,
+      "sha256": "73639d7e2e762d7404d26cd72ccaa6e95d710290fe14b264626135079f7dc671"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-D-seed17-fold0-calibration.parquet",
+      "bytes": 418653,
+      "sha256": "8c8c286f01b4cc394ec61370f35e3423d9ac00075b1bf5a1ccf469e3f3391c79"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-D-seed17-fold1-calibration.parquet",
+      "bytes": 425501,
+      "sha256": "b9689fd0e4fdc2a65b6a99fd90f92dc27d096bd95eadf9c8b1a7716d82ee016c"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-D-seed17-fold2-calibration.parquet",
+      "bytes": 432669,
+      "sha256": "4650210acc3dc0736e676808e8f80e7fd39f15bc415fe7da4b3889f43d86baa2"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-D-seed17-fold3-calibration.parquet",
+      "bytes": 407974,
+      "sha256": "9e452789e8ccf0ffbaf661d941f6a6191f0c64791e20fddc962ca41f8039e7c4"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-D-seed17-fold4-calibration.parquet",
+      "bytes": 416063,
+      "sha256": "a4d6f40b5988baf4de38f71021f81851f449ff1c30c5e4c26a95308ad736d91d"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-D-seed29-fold0-calibration.parquet",
+      "bytes": 444843,
+      "sha256": "061fb549f592bcea16050c3f9ed88b993c2767975772534e5a7f4a2fa6698bd7"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-D-seed29-fold1-calibration.parquet",
+      "bytes": 430968,
+      "sha256": "a3006a98acbdabc9007fcc1ea89bc5123e0428b3856943e287a9350e4dbe938b"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-D-seed29-fold2-calibration.parquet",
+      "bytes": 435211,
+      "sha256": "b1bc9addd77d6b78333bbf38aca415bf6a4a4d7ca9365056fd5f7e60ab131b3f"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-D-seed29-fold3-calibration.parquet",
+      "bytes": 493922,
+      "sha256": "a17c98b222b3a6d27b952ff5b146d7f367d12ca1fcfef43902b258e8a718d0cc"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-D-seed29-fold4-calibration.parquet",
+      "bytes": 415211,
+      "sha256": "3651c73d1658f7a2786739bc0043de144428d0c7c30ca795e810546a74ac8262"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-D-seed43-fold0-calibration.parquet",
+      "bytes": 444914,
+      "sha256": "6d2e3d5274f9ac94d85db1400bda9a112c3223bf081db55631dcefdc40896242"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-D-seed43-fold1-calibration.parquet",
+      "bytes": 415102,
+      "sha256": "f20391fc832df0ffc6fd037c251c66cd16c8692e2b9d251536f8ca35d5d3a9f2"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-D-seed43-fold2-calibration.parquet",
+      "bytes": 480832,
+      "sha256": "b4badb4d85d675892df7aa80581402b9e3e949011b7e4908440d4df948168972"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-D-seed43-fold3-calibration.parquet",
+      "bytes": 436980,
+      "sha256": "ea60af4af633500454654c80500c6906d04636e3982dd95c3c3831043399061a"
+    },
+    {
+      "path": "jobs/collect-family/esm1v_650m_1-only-D-seed43-fold4-calibration.parquet",
+      "bytes": 418983,
+      "sha256": "3c092ad63c7971d55d96917ff8eaae1f9362de79cefe03f260f9ffae46e52195"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-B-oof.parquet",
+      "bytes": 5660720,
+      "sha256": "36a716ff1ef2d16029fe9e81d659b9c962c060801d5dc4989e86d2bbdeab64f5"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-B-results.json",
+      "bytes": 14402,
+      "sha256": "d31bfd25d2810dcba6c68b222c037e79736381966ce27b64055a9a65184ee1ea"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-B-seed17-fold0-calibration.parquet",
+      "bytes": 418665,
+      "sha256": "b060d7bae061a8cfc40c92f12f8dee7ee34ff2693f61b625d695898c0c8b9d7c"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-B-seed17-fold1-calibration.parquet",
+      "bytes": 425497,
+      "sha256": "251b81f1ec9ca49dfbcb9c5c4f92a777681ff3ffe48ea7de4dad795a34a453a4"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-B-seed17-fold2-calibration.parquet",
+      "bytes": 432653,
+      "sha256": "42ace0524ec6868522ff992726da3d0017f3579b2991cb9b4a6e49e235b16037"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-B-seed17-fold3-calibration.parquet",
+      "bytes": 407958,
+      "sha256": "9152ba62c18de12e572d2b790500b15bed290044108eab47e0d296f9a03ce15b"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-B-seed17-fold4-calibration.parquet",
+      "bytes": 416055,
+      "sha256": "55f608b48c402514065cf8ff765c549d053ae7edef3eef57e5c21e6dde3932f4"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-B-seed29-fold0-calibration.parquet",
+      "bytes": 444851,
+      "sha256": "cf660070570230a7c8ffbffe3e13fafd8b40ab8a69fe7c58c705c8bd8fbd9c11"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-B-seed29-fold1-calibration.parquet",
+      "bytes": 430964,
+      "sha256": "73d17db9cbbc12800782262d0a91860910d44ce287a09d6bad693c3b1c789a7b"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-B-seed29-fold2-calibration.parquet",
+      "bytes": 435231,
+      "sha256": "33129c704198b0ec697d09875a74b1ad55bed48558a3f7abdce3d990858aee47"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-B-seed29-fold3-calibration.parquet",
+      "bytes": 493934,
+      "sha256": "855de192683e7d3902474ac63f78e72234e84228077cbfde849efd305259030b"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-B-seed29-fold4-calibration.parquet",
+      "bytes": 415227,
+      "sha256": "77e49025666be88e676ebb56c5891c3253c38448c159080ae00fc5f3226821dd"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-B-seed43-fold0-calibration.parquet",
+      "bytes": 444926,
+      "sha256": "1365f1598450db8f02b7c685f67a85b0802ef58dc69ece7d8ebe16be5bc16333"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-B-seed43-fold1-calibration.parquet",
+      "bytes": 415110,
+      "sha256": "5226a2ee210dc50f20419cff32b311c26982d75b4c6cdce2aea1878743ad35b0"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-B-seed43-fold2-calibration.parquet",
+      "bytes": 480824,
+      "sha256": "0a3ca7102f9c02025e1c2dbbbce15243ffd9de442cd3099b14fe619ef3c23852"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-B-seed43-fold3-calibration.parquet",
+      "bytes": 436984,
+      "sha256": "e6f565e932cc42d6c8f2a94e2b4f5c8d3dd3668e2bc9d3674e38335ee0ed36ca"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-B-seed43-fold4-calibration.parquet",
+      "bytes": 418971,
+      "sha256": "e20c3c3653c87bb67b3b2babb1f84232411572340d7c59e5d474fbe84e890236"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-D-oof.parquet",
+      "bytes": 5661100,
+      "sha256": "a143974d644f19b2f7e78aacebb98d71a6e2a3de38321381faa34c1f1939ba2f"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-D-results.json",
+      "bytes": 14416,
+      "sha256": "8e705bc4dce74b0d161cfcc23e89bcaa49dad0704f6fc5fcadae6363cc0aa0a0"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-D-seed17-fold0-calibration.parquet",
+      "bytes": 418657,
+      "sha256": "81a077c0d9acdb1e64685b713035548871ca0fafb687a9c331b78b94d22facff"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-D-seed17-fold1-calibration.parquet",
+      "bytes": 425505,
+      "sha256": "3b1e872ebd0f6a71e109b4455d2e7ef4c44164c93a4577dc756d9b2b5a58556d"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-D-seed17-fold2-calibration.parquet",
+      "bytes": 432661,
+      "sha256": "f1774c8172cdd4807bfc13a40114277d295775991941dfe0b77cb61a46e14189"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-D-seed17-fold3-calibration.parquet",
+      "bytes": 407974,
+      "sha256": "7779c2435ee21ce2bfee430ea970fcb761822d8848e36f7a5c617dd504c86e20"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-D-seed17-fold4-calibration.parquet",
+      "bytes": 416059,
+      "sha256": "8ffbbd7787dd20d3e56d952b255f855a64e30be1026fb21f7ab39f473c235647"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-D-seed29-fold0-calibration.parquet",
+      "bytes": 444859,
+      "sha256": "cac928935335008ca3d6a28bf4e354fcb9f8b2efac38f587f4e711fc0324656d"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-D-seed29-fold1-calibration.parquet",
+      "bytes": 430980,
+      "sha256": "f65aea08525c0b9b4b061f188317eb81a894c9fc3c5a61c47518ea6a1d177103"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-D-seed29-fold2-calibration.parquet",
+      "bytes": 435211,
+      "sha256": "72d2a9aeb2c3c16fd717b51b0bc1d29acc683f57ab698f6dcaa77427ca80d2eb"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-D-seed29-fold3-calibration.parquet",
+      "bytes": 493930,
+      "sha256": "3255335fd7593811be3d5a9693448924a75ac5d723a7859d18cb3ee401812a16"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-D-seed29-fold4-calibration.parquet",
+      "bytes": 415211,
+      "sha256": "51039db3280716ba845f32694cc1877d41c4cb19915c49c628c5c5dbe0d4c1fe"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-D-seed43-fold0-calibration.parquet",
+      "bytes": 444926,
+      "sha256": "1be649e03145bc9bc43a9619b807e3f9eca3915abab6ddf7d3c6493602ee1a13"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-D-seed43-fold1-calibration.parquet",
+      "bytes": 415102,
+      "sha256": "1d06620438a69094e52d0d44b12fde69913973622366df0dc94853b673e514e6"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-D-seed43-fold2-calibration.parquet",
+      "bytes": 480824,
+      "sha256": "a3623021a7811aa298a1f64cb3b837f216cb67d4a582589ff57bfc835bf3da58"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-D-seed43-fold3-calibration.parquet",
+      "bytes": 436996,
+      "sha256": "fe03827eba46118d0f2bc1c523731b57f63de6b620ab953db618c4e390c8a542"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-context-D-seed43-fold4-calibration.parquet",
+      "bytes": 418967,
+      "sha256": "cb18196d3e62df1ef9d8955aa28550a644f27c80a2fb9fdcffc53fa5bf48af8c"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-B-oof.parquet",
+      "bytes": 5662312,
+      "sha256": "a63d0cc4b9faee34da475f46a7a53d1cce685da4679e9aa39acddbc29820f9c2"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-B-results.json",
+      "bytes": 14418,
+      "sha256": "05f4ff5e9d735581264ab579decd4efefb0311ece21d05c4d460fbd59bfd7412"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-B-seed17-fold0-calibration.parquet",
+      "bytes": 418641,
+      "sha256": "5997af8d123dfece8d139fc69c707bf26c090cb13400244b63c58313c3fc0c4e"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-B-seed17-fold1-calibration.parquet",
+      "bytes": 425493,
+      "sha256": "48defe607796a4ead08cfb5421b2f7b7f0e1ec2fe288b00f33533943a0800027"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-B-seed17-fold2-calibration.parquet",
+      "bytes": 432645,
+      "sha256": "d83b6ab800e2c7f06ea5979978fbd90c64bb108a628e7f07879c665ed742722f"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-B-seed17-fold3-calibration.parquet",
+      "bytes": 407998,
+      "sha256": "86e8414153c7fce9b2a345d681aae8518bde50278ae7689f8f1d1b922033fe81"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-B-seed17-fold4-calibration.parquet",
+      "bytes": 416051,
+      "sha256": "ae97a03eed1af76f8a328fb08b7c2edad787097a69019153ed139351828d60d9"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-B-seed29-fold0-calibration.parquet",
+      "bytes": 444851,
+      "sha256": "deb0eeff54c489707a91b54ce63f85f2d5d8b991e997febfcff09b5fd05cc98d"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-B-seed29-fold1-calibration.parquet",
+      "bytes": 430940,
+      "sha256": "34784d0edb55f9ab6fb7c754a6a1e0a2389c8009f7f1a7aceeaa5a3d68a4bd81"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-B-seed29-fold2-calibration.parquet",
+      "bytes": 435203,
+      "sha256": "f8c8ff3093c95ec210ef6e7b644f5535ca87944a1ffe179724cbd51287dc4f8a"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-B-seed29-fold3-calibration.parquet",
+      "bytes": 493922,
+      "sha256": "bf343ac9f1f0636844394495650f7beb5f2c89000de48aafedb16ffa828104c9"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-B-seed29-fold4-calibration.parquet",
+      "bytes": 415231,
+      "sha256": "750594a438b9bf0bacd308c395273bf725cad05beb215be76f76846d0bb678a6"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-B-seed43-fold0-calibration.parquet",
+      "bytes": 444922,
+      "sha256": "065aa1e4e06d087a5cf816bb88d6ce5a7bb0fa5070a8cbd2921267261c9b2297"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-B-seed43-fold1-calibration.parquet",
+      "bytes": 415090,
+      "sha256": "e014a9655b30e1053e435edc9d1f9ac1626f5c8ece3288db85c02bc818ccda8a"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-B-seed43-fold2-calibration.parquet",
+      "bytes": 480820,
+      "sha256": "bc5b85b3681264d610e733b9b0223f0a863ccc80b9b52a4fc30d6e0aadbcf5a5"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-B-seed43-fold3-calibration.parquet",
+      "bytes": 436964,
+      "sha256": "36b8e108214dc3a9e30cd52140704f5576d513435a5e05a0af5c09e9eec862d1"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-B-seed43-fold4-calibration.parquet",
+      "bytes": 418963,
+      "sha256": "508cfcf53c5d2cda7125c25b47c216a314004be093f55a95a4b0292bd30235a7"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-D-oof.parquet",
+      "bytes": 5660581,
+      "sha256": "69ca0480dc026a5870a03926e5e16bc64a136aecbf90edf91cfd70a148b271f4"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-D-results.json",
+      "bytes": 14409,
+      "sha256": "5b2c62faad589f9b97be354fc397836169bb82be4dc2f2526920c56ada42acd5"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-D-seed17-fold0-calibration.parquet",
+      "bytes": 418657,
+      "sha256": "7bd702e74fb77f540cbc1345d03e57a207dd68dea741b27f0c38689db46a5610"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-D-seed17-fold1-calibration.parquet",
+      "bytes": 425517,
+      "sha256": "0f610f3f4afe68976f86148be65fa9b0c09bbb9ffd92e3d3f84d73fdc09eeaf8"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-D-seed17-fold2-calibration.parquet",
+      "bytes": 432665,
+      "sha256": "fb0b21392889ea17f5446209f5052ac4896fb5f101225c5e76a8ae841e696361"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-D-seed17-fold3-calibration.parquet",
+      "bytes": 407978,
+      "sha256": "007fc51f89c93d32afc3d198436b41c6b9deade1061de93bf89be434e60b4102"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-D-seed17-fold4-calibration.parquet",
+      "bytes": 416063,
+      "sha256": "eab1fe7d655779df74ea8de79f465d142226be3dfc50145582b2a13305040abe"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-D-seed29-fold0-calibration.parquet",
+      "bytes": 444851,
+      "sha256": "3c83f851cece4f1a19f677c9d556b377b98b730fab5a0c0d08e858585daeccec"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-D-seed29-fold1-calibration.parquet",
+      "bytes": 430972,
+      "sha256": "fdb1e1acd5aaf7843fd6f90aad46132c63d12ac68e0f095529587c1ad3e23a0d"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-D-seed29-fold2-calibration.parquet",
+      "bytes": 435231,
+      "sha256": "6b3ed82d083ff5b9adbfeb7e86b84270ebc6f746793715a43e45671d5940c8a6"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-D-seed29-fold3-calibration.parquet",
+      "bytes": 493914,
+      "sha256": "34f3b5c30e9e5a37d345bd5c9967e9d130d423ffaca8e8a0a05747960049c46b"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-D-seed29-fold4-calibration.parquet",
+      "bytes": 415211,
+      "sha256": "7bcb68c579651badce1995d086f7696da8f3eed88ae882d85b3d2bffda878353"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-D-seed43-fold0-calibration.parquet",
+      "bytes": 444922,
+      "sha256": "53284145b470d8e8dbef5702fa2af81e885f0fcfdec3fb8d6978c8bd938783a8"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-D-seed43-fold1-calibration.parquet",
+      "bytes": 415102,
+      "sha256": "219404e6083a8d843055f3b0077e9763ebe7b4850b562cea035764f1854d5c60"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-D-seed43-fold2-calibration.parquet",
+      "bytes": 480836,
+      "sha256": "4d847a4d8888773e29b086b90dfcc216d547da81fda35d9eab9d9e021aebaf7c"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-D-seed43-fold3-calibration.parquet",
+      "bytes": 436976,
+      "sha256": "4bbf214d6a0e321cf949a68e31dc997c7f45e1b8aa1e96f1b750878b6609fbef"
+    },
+    {
+      "path": "jobs/collect-family/esm2_150m-only-D-seed43-fold4-calibration.parquet",
+      "bytes": 418983,
+      "sha256": "9e345f9c2009451e4e30c55cd57f96ff6f7d5ca2962827318e8a7e4b976a41b2"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-B-oof.parquet",
+      "bytes": 5660699,
+      "sha256": "4bf3e057cbf578e8a32588a64a619aee73d9c28ac3b5ec214a723804769bc6bb"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-B-results.json",
+      "bytes": 14399,
+      "sha256": "7f88f360d6bb43f5a65e895b5e751688c0c97ef6f76f0bbef61d7eca40bfb09c"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-B-seed17-fold0-calibration.parquet",
+      "bytes": 418661,
+      "sha256": "2ff3834196aba49138eb0ed67063fdc1b9699425e084f2e2a413fff0c7d714ff"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-B-seed17-fold1-calibration.parquet",
+      "bytes": 425501,
+      "sha256": "0edb7f1a07da09864c94e899959cfe3facf2c7cd20916ea93acc240e230c31ca"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-B-seed17-fold2-calibration.parquet",
+      "bytes": 432657,
+      "sha256": "07f4c306c57240e3fa39dfe5986d28baef36d23eb76e13aee21b615a4344c2b5"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-B-seed17-fold3-calibration.parquet",
+      "bytes": 407990,
+      "sha256": "dc75d3467db450fc0594f12b8e47423f44c744b34ac1ebb22bfb8deb8bd97a81"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-B-seed17-fold4-calibration.parquet",
+      "bytes": 416043,
+      "sha256": "a097357a3c8030c19fd3f79e989150c226f507e5dee3547933d069d81e708ea6"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-B-seed29-fold0-calibration.parquet",
+      "bytes": 444839,
+      "sha256": "99f9dcd7281e53e71dc6d696a5c7b62b5a8200e8e4abf0801884a9962124850c"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-B-seed29-fold1-calibration.parquet",
+      "bytes": 430956,
+      "sha256": "937a1426c70da0b8852a6d1626655f1554ba8aa86ac123acefb254435203f44a"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-B-seed29-fold2-calibration.parquet",
+      "bytes": 435207,
+      "sha256": "9905c43283d1081574a89cc710d027b77a7937e19aa24049cc3ef32e55a4ffa5"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-B-seed29-fold3-calibration.parquet",
+      "bytes": 493926,
+      "sha256": "dc21df8adc63352e52835828686a9bb3fddfca0300d66013e924b54d60af748d"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-B-seed29-fold4-calibration.parquet",
+      "bytes": 415215,
+      "sha256": "06011b2d8f991170afad9ac39e21ebd9ced2af4ccc4df45fd1f3455f81d6f037"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-B-seed43-fold0-calibration.parquet",
+      "bytes": 444938,
+      "sha256": "55686cba5d8fb26a5fedc4d021180c56aab8df0af62cf1dee9cc58aff364c1b0"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-B-seed43-fold1-calibration.parquet",
+      "bytes": 415110,
+      "sha256": "69edb004366a7d4e26329c0b10f3d28645ec33e5016e60a679d668580138b38d"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-B-seed43-fold2-calibration.parquet",
+      "bytes": 480836,
+      "sha256": "eba7dc021d07ad017091ff8468d35c20c0384e67bb89f512785a653b927d6f3d"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-B-seed43-fold3-calibration.parquet",
+      "bytes": 436964,
+      "sha256": "fa5d7613242796f85bdb2455d403d51b2ea8710df85dfadf9104a34e6f977a62"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-B-seed43-fold4-calibration.parquet",
+      "bytes": 418975,
+      "sha256": "81736ae1cd3cc8b139f75ec48ea0f463b2d087bc32ffadf008db6e1659b9e507"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-D-oof.parquet",
+      "bytes": 5661103,
+      "sha256": "78488fb41afc6bbbd7e8667cf7450009dc25620718a887ce5ef5ca954de21ff6"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-D-results.json",
+      "bytes": 14402,
+      "sha256": "0ba554a3f8fcc9fc702fb3cedf371106a06b20de1a49ff77f3bcb30ab5c55bd2"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-D-seed17-fold0-calibration.parquet",
+      "bytes": 418645,
+      "sha256": "d0d4c9aa95f377fda12e19d64fb8680df02acde3aac1e715c49c77183127a14b"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-D-seed17-fold1-calibration.parquet",
+      "bytes": 425513,
+      "sha256": "540f6c82293df80d7e554dc53f6ab854390e49763f753e6428a2378914e37fbf"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-D-seed17-fold2-calibration.parquet",
+      "bytes": 432653,
+      "sha256": "e374b041e8773722715a1f6c0e75737324cf4cc3e269213349ba2472bbac0c72"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-D-seed17-fold3-calibration.parquet",
+      "bytes": 407982,
+      "sha256": "4c826826f753da8bb0974941b4bab66ca8ea4e8abd164275463a6316079305e0"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-D-seed17-fold4-calibration.parquet",
+      "bytes": 416055,
+      "sha256": "8c69a9a0e666458eb2eb2187b609002b6bf81e8d2e568b133c7f23fd3815a9cd"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-D-seed29-fold0-calibration.parquet",
+      "bytes": 444847,
+      "sha256": "d01fc96279b34e72ad4645be53cb7aecdd42fc6470c5c3618fd0f362d693e2b7"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-D-seed29-fold1-calibration.parquet",
+      "bytes": 430964,
+      "sha256": "98275540b02b3c4ce5cd65e6ad49b90077aa4f80d96e3a1708e1aed738bfea67"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-D-seed29-fold2-calibration.parquet",
+      "bytes": 435235,
+      "sha256": "d7c61f36824ce29a2f6797a66ca4a51d820daac84a91ddf0e0e2efb3d3b6e1e3"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-D-seed29-fold3-calibration.parquet",
+      "bytes": 493910,
+      "sha256": "bacf24c1b67194edb3e0cda48718bb800066245ed8ccbd8baf55a0d8a60c310e"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-D-seed29-fold4-calibration.parquet",
+      "bytes": 415219,
+      "sha256": "602cee4499eae66c9b3e6a2e382511a460ff85d2c9407a9a79ec8d57a83bbaa5"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-D-seed43-fold0-calibration.parquet",
+      "bytes": 444926,
+      "sha256": "d8de37c6b3e5e488fb308841ade3186f76d0aab204907a2ebd31bd4cab4569db"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-D-seed43-fold1-calibration.parquet",
+      "bytes": 415098,
+      "sha256": "b4e9c661542797a34db0d48beb0e6205a9dac8b51cc9bfc373139c8a16c762d0"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-D-seed43-fold2-calibration.parquet",
+      "bytes": 480820,
+      "sha256": "10cd3fbd830a0d265c5fea0e05c9a091be32d15d745795def98bbfa11b96c8a6"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-D-seed43-fold3-calibration.parquet",
+      "bytes": 436980,
+      "sha256": "b07f59f512b3a81fb8a2b9a7fd7f25941b746f59730a241097d34009f730f02b"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-context-D-seed43-fold4-calibration.parquet",
+      "bytes": 418967,
+      "sha256": "bc0f48997d62dd6799096583793b299de93b5ced2a64213daf10a49b36b6ec83"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-B-oof.parquet",
+      "bytes": 5662199,
+      "sha256": "c94906001a0ae0ca832eb7c826f183b5e6ec0ca702055c7ad5b8da8afc86f60b"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-B-results.json",
+      "bytes": 14417,
+      "sha256": "64cff982f3fe444fde5203f53a3d89c5f4a3a83857593f059ae7f9ba07e0caa4"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-B-seed17-fold0-calibration.parquet",
+      "bytes": 418649,
+      "sha256": "03698c5e51b1dd5c5c7ff826079702a2c9286a201d57c640e0f3db5a5764817e"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-B-seed17-fold1-calibration.parquet",
+      "bytes": 425505,
+      "sha256": "06b60fb069280eb15936e1e0de57d4a204191c3956002b290a267af38bc93ec8"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-B-seed17-fold2-calibration.parquet",
+      "bytes": 432653,
+      "sha256": "ffaf2e6303e4644ba829022614a1967107871b30d7fc56ac01d180f54805fa87"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-B-seed17-fold3-calibration.parquet",
+      "bytes": 407990,
+      "sha256": "ad6bd46c6f424683699df178647f774a536e478e64ddccd87b2e8110750d4c84"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-B-seed17-fold4-calibration.parquet",
+      "bytes": 416051,
+      "sha256": "6a148d0a9d53a3e1956d2123c9d075e169572997a383b603cd9866d37be5d19b"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-B-seed29-fold0-calibration.parquet",
+      "bytes": 444835,
+      "sha256": "b1984672f08a0319b983779240e22220e651658d2994d2f8c7a75ec35890b146"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-B-seed29-fold1-calibration.parquet",
+      "bytes": 430960,
+      "sha256": "51004c145c31b0929e8086b18be86a6c9982f3165e2f5fe8fbd8f3abb3eb4ef1"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-B-seed29-fold2-calibration.parquet",
+      "bytes": 435211,
+      "sha256": "3b483ed079bc66ce6e19b18c4af9b79cb83fa1af34c87afd3d384c44065b18b6"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-B-seed29-fold3-calibration.parquet",
+      "bytes": 493926,
+      "sha256": "7566953d0284cdaf4c176fe7ab1ad9222df366c520aa569a223ce994f52f83f9"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-B-seed29-fold4-calibration.parquet",
+      "bytes": 415215,
+      "sha256": "b1242d13bfb5edda535be7c307ba46dfa357d2096a29a6c26a2ec82946ba7ea4"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-B-seed43-fold0-calibration.parquet",
+      "bytes": 444926,
+      "sha256": "a103d07eb9190063723465cee9e7fd4f2ca70908e7965931e4e73368b39ceb36"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-B-seed43-fold1-calibration.parquet",
+      "bytes": 415094,
+      "sha256": "ec1b9cb1ae59ad9e79916bdc447ea740ac86120b0de2bce8df77d372b3fbcd8d"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-B-seed43-fold2-calibration.parquet",
+      "bytes": 480828,
+      "sha256": "e143fc50e55c3b51d3ae36c79b280364819c0db552e6997c2808f943538dbf4e"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-B-seed43-fold3-calibration.parquet",
+      "bytes": 436980,
+      "sha256": "aa88f039a966c315fe20f3d6c32e0770672f3634bef2fa8782f59d7a67a10791"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-B-seed43-fold4-calibration.parquet",
+      "bytes": 418963,
+      "sha256": "02c12127d26ad9790a48a86bf84e9a7c6ea0e22336543731bfded49ab7de5b1b"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-D-oof.parquet",
+      "bytes": 5660247,
+      "sha256": "18dd19449c621d25b2ffd04dd01430e933435e610df2c213fba7eaab0539021b"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-D-results.json",
+      "bytes": 14407,
+      "sha256": "19d476f63c8099f1f60372b60550073c31a1ff17e3fa91abf20721a758ed4247"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-D-seed17-fold0-calibration.parquet",
+      "bytes": 418645,
+      "sha256": "dc7bdc2a6efbf6e357fe27efd87bfe5eb12005a905df146c25985d96caaa67cc"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-D-seed17-fold1-calibration.parquet",
+      "bytes": 425505,
+      "sha256": "fa40da3966d17c890b3ea97219b22963e39396ee40b8c070f6b58cb5c159a909"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-D-seed17-fold2-calibration.parquet",
+      "bytes": 432661,
+      "sha256": "3bf523e0243dd894ce6e04cbff8e0e800540595bf16d527c1ac75a4405bb59a8"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-D-seed17-fold3-calibration.parquet",
+      "bytes": 407986,
+      "sha256": "25b156c0f520fcdb710af81fd6a5b17e168a7075d4e1f7cebbfd183c1cabf08b"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-D-seed17-fold4-calibration.parquet",
+      "bytes": 416059,
+      "sha256": "89c47e0f26658f2be1666235b6c4072cbc5626a2a40eed02091e4831ccba61b0"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-D-seed29-fold0-calibration.parquet",
+      "bytes": 444843,
+      "sha256": "5d875fc703ebaf95d74b01490a67a76ee826f139ccf2e62f75fbd4cbb32c4c13"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-D-seed29-fold1-calibration.parquet",
+      "bytes": 430976,
+      "sha256": "d995ce9a37bca01fc602bcc7e5b59a9d5930709b32ca02a34143897bb16312a5"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-D-seed29-fold2-calibration.parquet",
+      "bytes": 435227,
+      "sha256": "d9f6a75d9f840faeb11eb83e52befe58f2d9d5deb46e202f8cb76330ad4e7360"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-D-seed29-fold3-calibration.parquet",
+      "bytes": 493922,
+      "sha256": "1fe6a7aa8c7befba434765c8f44b2e771d6d4037a85c00da9fe1d0ce6f450827"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-D-seed29-fold4-calibration.parquet",
+      "bytes": 415219,
+      "sha256": "92e5b2dedd51fa1ab38f9fbd7f492febe78aaf3192b19ff8e8aadd52f5a98595"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-D-seed43-fold0-calibration.parquet",
+      "bytes": 444922,
+      "sha256": "a05837290208915dca1d6be8cf592be961b02debc2ad1d167d2c15920f753f1a"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-D-seed43-fold1-calibration.parquet",
+      "bytes": 415106,
+      "sha256": "c46c805c228c67476599d3cd1986ac4ca73f50d6b093bfa4d936505f1b289b96"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-D-seed43-fold2-calibration.parquet",
+      "bytes": 480816,
+      "sha256": "f3378325d9968b575d2ee7d8b0c5dfbbe46f4755f113c001242b1e4a1a5d99b6"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-D-seed43-fold3-calibration.parquet",
+      "bytes": 436984,
+      "sha256": "25265777dee7b03f890568d7dd41fb0a110459f225f946ffb41d56d5114d1bfd"
+    },
+    {
+      "path": "jobs/collect-family/esm2_35m-only-D-seed43-fold4-calibration.parquet",
+      "bytes": 418971,
+      "sha256": "bc911a4195df61be660c131fab00bef74741f8b6fdc843d224f08a092c59da49"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-B-oof.parquet",
+      "bytes": 5660868,
+      "sha256": "f55307f2197809012cfea1e656f626988b4524e00eb293fabc67c7c6d579905c"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-B-results.json",
+      "bytes": 14400,
+      "sha256": "ee99c25eea378a4c6c7f21e5f7d683599fa938d65756072b58b122ec1b87cd40"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-B-seed17-fold0-calibration.parquet",
+      "bytes": 418665,
+      "sha256": "e0a77b589992b77d253ed2c7f75352e50f3b8c24608513db8ccf8edf92b4b233"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-B-seed17-fold1-calibration.parquet",
+      "bytes": 425477,
+      "sha256": "bc1124f89b346371947ebff66b6f5f08cf11173a133ed53dd4014623213bd6a0"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-B-seed17-fold2-calibration.parquet",
+      "bytes": 432641,
+      "sha256": "23153f2fd3d2dc36e8bd56dcda54d33b86b4c137ba3ff60106357f5b5ad75d08"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-B-seed17-fold3-calibration.parquet",
+      "bytes": 407990,
+      "sha256": "3c1c62d55359b2a848aa5144bf67169f72b49b52726caf2808455aca663c21d5"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-B-seed17-fold4-calibration.parquet",
+      "bytes": 416059,
+      "sha256": "e88274a6e7126c293259a1c436a44c6447b67d156d64254e445877a25d602604"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-B-seed29-fold0-calibration.parquet",
+      "bytes": 444851,
+      "sha256": "1f3e57f492d7bd4f09c38882f1e2b7e3f06b87c1616ddcc8fbd139bf397deb1a"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-B-seed29-fold1-calibration.parquet",
+      "bytes": 430944,
+      "sha256": "fc65ba763ee0bdecd883da1c56e9ddd5f25dd4b0d23ce1449c82c131acc7e4be"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-B-seed29-fold2-calibration.parquet",
+      "bytes": 435231,
+      "sha256": "72b4f465448298a0f74e419d79edb15415239a1b13416ff95f7df5df04873c81"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-B-seed29-fold3-calibration.parquet",
+      "bytes": 493938,
+      "sha256": "a6101b8725c01e38da7b890f5b2d835bc85bfc327cf9db084d7141d2e719ee71"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-B-seed29-fold4-calibration.parquet",
+      "bytes": 415199,
+      "sha256": "7b9f658af4a854f646d4c3b074e4717be6019a784fe67e716eecdf65500985bf"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-B-seed43-fold0-calibration.parquet",
+      "bytes": 444922,
+      "sha256": "1d998fb02245d705f63cefa982e2eccf77c8988bcbd2976415c58540471d6a79"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-B-seed43-fold1-calibration.parquet",
+      "bytes": 415102,
+      "sha256": "2fcde03f385c47101389039be437580a857d876b0c2f6954a35e9a0c4f81dec1"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-B-seed43-fold2-calibration.parquet",
+      "bytes": 480832,
+      "sha256": "ee10e926bdfb1b5563c74213e181a64a1f38ea00df20cd13fd873a7225e0a342"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-B-seed43-fold3-calibration.parquet",
+      "bytes": 436984,
+      "sha256": "1479d110525970ce58ffdbacba84ed3c6cec22709f43bc92f28f0a4a67444e75"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-B-seed43-fold4-calibration.parquet",
+      "bytes": 418971,
+      "sha256": "23ae6c3b51197c5ac65130533beb31e066fb05bcd53416ff6d3ec6cb44fdfe8f"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-D-oof.parquet",
+      "bytes": 5661120,
+      "sha256": "4a1f63edcb962d50d27fce6f5762df58a3b6890dbff2a89c1830a7991f186269"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-D-results.json",
+      "bytes": 14407,
+      "sha256": "2e3782601a9ebe1f7e2860b7e562f962c71915ba4a7949898887bb868cd937c6"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-D-seed17-fold0-calibration.parquet",
+      "bytes": 418657,
+      "sha256": "c55cb259282f04d706a44d602b47ca0ebb4b62d29ee8073121d2937f4ac795dc"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-D-seed17-fold1-calibration.parquet",
+      "bytes": 425509,
+      "sha256": "adae2c5e8670d710e31f788e22b6f44f8159d34fde349ebfe621c38dee671dc5"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-D-seed17-fold2-calibration.parquet",
+      "bytes": 432645,
+      "sha256": "78514c40726545e7a62c9088862e93025affcaa54fd4640e4fa5bb04fae35ccc"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-D-seed17-fold3-calibration.parquet",
+      "bytes": 407994,
+      "sha256": "5d7efef93e4ef0206ebaacc7e35ee63dbd77ec11d2c17802bed200d861294266"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-D-seed17-fold4-calibration.parquet",
+      "bytes": 416059,
+      "sha256": "a48fbb94a3c0d0fe92709ed8c1b351e70ca74076af40eb77bddd04fd1fe18e3f"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-D-seed29-fold0-calibration.parquet",
+      "bytes": 444851,
+      "sha256": "0218675f3caf7e70bd75bb0cc5206d0fbf20326783f6ab14fe6a4336cf5397d4"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-D-seed29-fold1-calibration.parquet",
+      "bytes": 430972,
+      "sha256": "df299f05b99026d93a6974dade02ea60b89c653886bf4e15c5bb793f791c62ec"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-D-seed29-fold2-calibration.parquet",
+      "bytes": 435211,
+      "sha256": "2298c4295426cb7b34f703b9b48fb1b184a5b8c995c2abe5608de42cfa943344"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-D-seed29-fold3-calibration.parquet",
+      "bytes": 493934,
+      "sha256": "52175ed2a861d1e3f3837686976750bcd7daea4a890d3518b3c19f1fc453d043"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-D-seed29-fold4-calibration.parquet",
+      "bytes": 415215,
+      "sha256": "4853b7df3bad5fea086f56df7916e5e8dadd5dc77fb64ecdcd6a714a31ce854c"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-D-seed43-fold0-calibration.parquet",
+      "bytes": 444922,
+      "sha256": "be9f4b3e6b7094259f391324cffc36d43d2f1bc0ae04201376fcd63ffa54044f"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-D-seed43-fold1-calibration.parquet",
+      "bytes": 415098,
+      "sha256": "d1bccc50349ebf86898723752542392ec01056080cff56709c234549f7477843"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-D-seed43-fold2-calibration.parquet",
+      "bytes": 480836,
+      "sha256": "7e2e85386756f4e0090ed498e1e7198699cf45a3cd6bbab914a461e5840441fd"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-D-seed43-fold3-calibration.parquet",
+      "bytes": 436988,
+      "sha256": "ba8a8f1d395de5625ca4ee33af2efc201e4a5d82f430678b158ec4a15db7d075"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-context-D-seed43-fold4-calibration.parquet",
+      "bytes": 418979,
+      "sha256": "00af10bc48fc1339037ecf4166ec1f35b5d5aea150fc595c587d531f2443e9c6"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-B-oof.parquet",
+      "bytes": 5662296,
+      "sha256": "7d81e8e07b77b8fee3f1c4eea6e0f5e272d717cf0c3b4b77ac6cf3db9772d748"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-B-results.json",
+      "bytes": 14405,
+      "sha256": "68a9e5312528b3cea391d86686ab4c6a73f7cce8db01050d755dedca77419ef0"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-B-seed17-fold0-calibration.parquet",
+      "bytes": 418645,
+      "sha256": "1d468e122b3b9efb863fca408c0f8cd83d522831e22a9fda965feb40a0bb3dd6"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-B-seed17-fold1-calibration.parquet",
+      "bytes": 425505,
+      "sha256": "bcd2fd2b2fdf640d6d0f2f0133a57af9cdc0c3831633fc1f0645fab930041efd"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-B-seed17-fold2-calibration.parquet",
+      "bytes": 432653,
+      "sha256": "54b12b793663769d446555e3e87141bbf77954e2d6a2058352cb887889d49eeb"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-B-seed17-fold3-calibration.parquet",
+      "bytes": 407978,
+      "sha256": "7a58c9bacfb43fce403b066a9223b82bb376485eeaded7ca6c9e460693bf3ee8"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-B-seed17-fold4-calibration.parquet",
+      "bytes": 416051,
+      "sha256": "259c98290cfeedec7466b9259daee15287b93b2cfc331e715ea0da0b197e6603"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-B-seed29-fold0-calibration.parquet",
+      "bytes": 444847,
+      "sha256": "9fd2546f2bf7febd0aff66d427df238589f6cee83f58aee6ca2f268195741cc4"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-B-seed29-fold1-calibration.parquet",
+      "bytes": 430960,
+      "sha256": "05279432b808f547183baa5a3f2dfb49661eb7702ba695e9c4088fc397d8beda"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-B-seed29-fold2-calibration.parquet",
+      "bytes": 435199,
+      "sha256": "3d74e33d4629fe68fe918b9ef1b042d141b5195e43eb12c9d568c0ee6708e9ea"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-B-seed29-fold3-calibration.parquet",
+      "bytes": 493922,
+      "sha256": "49933354abfed77d1e60212c64a9d084ee49918d8265416c24bf1a044acccc2f"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-B-seed29-fold4-calibration.parquet",
+      "bytes": 415211,
+      "sha256": "ae45aa15fbf8cfa707bb8deb59990f75cf8a1bfa4b9d47f9d14c09405d8e9063"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-B-seed43-fold0-calibration.parquet",
+      "bytes": 444930,
+      "sha256": "4e7f94e900b6b650266e15b7725f73d52ca13ae5cda5201a954a6d2b1f31fc8d"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-B-seed43-fold1-calibration.parquet",
+      "bytes": 415102,
+      "sha256": "f77fd55b074b42e39da08d7cddd7d5e4f4a20407b30ca640f548ce5f70cd97e5"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-B-seed43-fold2-calibration.parquet",
+      "bytes": 480820,
+      "sha256": "c3ab3a3cd2e6f8c187eb6bbb9b273a45b0c7562cc77e5dbcb3046a974c8b4975"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-B-seed43-fold3-calibration.parquet",
+      "bytes": 436968,
+      "sha256": "a08b74bd125297408e68481cc35af1940d6e9bb92b49b80d598cfc33819fd343"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-B-seed43-fold4-calibration.parquet",
+      "bytes": 418963,
+      "sha256": "644463c694504f19a695b52317ef6949ee3e35fe5aa4b09aa3be960f648f2018"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-D-oof.parquet",
+      "bytes": 5660605,
+      "sha256": "ef4743f447446983a8be64a50f1a4586da6866f28bc74f7e788e18eb9e1fa267"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-D-results.json",
+      "bytes": 14409,
+      "sha256": "4201e0824a2b5dee919cf8c9b7fb89ec4a094c3d711f6ac156e2ed312bcd4014"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-D-seed17-fold0-calibration.parquet",
+      "bytes": 418641,
+      "sha256": "f272d47825ab06f0fe3102c9e90d14e41e52512ec86fcfa93acfee35d14a336d"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-D-seed17-fold1-calibration.parquet",
+      "bytes": 425489,
+      "sha256": "fc3be514f554bb01a5f2c146151db6cd03dd3e7b1e30b4aa0475db9eaffc76bd"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-D-seed17-fold2-calibration.parquet",
+      "bytes": 432661,
+      "sha256": "c40640550352952d7cd69994c2baf43934e32a43030ab17ca12a7589d4342f6f"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-D-seed17-fold3-calibration.parquet",
+      "bytes": 407994,
+      "sha256": "5a5b2c210d45a874e0c7abf3e0e1be7730a4cb31ab90fef8b6b04590aca5658b"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-D-seed17-fold4-calibration.parquet",
+      "bytes": 416059,
+      "sha256": "985f6602cc3b0b4a1a8dc785889fef6fe1ffba15e2d91571148698bf93fcc620"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-D-seed29-fold0-calibration.parquet",
+      "bytes": 444851,
+      "sha256": "6ea6f5893f298b57e26ee2e1a993a67ed16bc2e1c743b28ae31a95b49ed4affb"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-D-seed29-fold1-calibration.parquet",
+      "bytes": 430972,
+      "sha256": "f91cdd42020d08e4184a1b554cc60ed65d570785eaa29435f8bedd97eae7ea06"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-D-seed29-fold2-calibration.parquet",
+      "bytes": 435207,
+      "sha256": "9c66bad1c966065bed915c62ce32e71698f735da139289d4627306bfcbe84985"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-D-seed29-fold3-calibration.parquet",
+      "bytes": 493926,
+      "sha256": "a5326ad90f439837f7dfc31c37a8117ed1d3f5c513c81301d5ddada2e567dba6"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-D-seed29-fold4-calibration.parquet",
+      "bytes": 415215,
+      "sha256": "dce16b5f9c211984ece5c38ef91bc118492fd0c7d455ba60b63d25b717276472"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-D-seed43-fold0-calibration.parquet",
+      "bytes": 444938,
+      "sha256": "cb1ba9cae0a7c94b0e57e0196bc233e68da92f13132860dead1ff27d0408d59d"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-D-seed43-fold1-calibration.parquet",
+      "bytes": 415098,
+      "sha256": "9730c0c02065d11ae012ad3ad12ac3f7817ced4d28b3a79f311eaacac86fb3e1"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-D-seed43-fold2-calibration.parquet",
+      "bytes": 480832,
+      "sha256": "c66dc5f759171bd18053a456a8eae9f3a52d2c09ab2b509eaff78b6627852626"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-D-seed43-fold3-calibration.parquet",
+      "bytes": 436976,
+      "sha256": "4169f6c353244f1b3235925fa6360d5d2b840244fc16f70b7e06715be08d6973"
+    },
+    {
+      "path": "jobs/collect-family/esm2_650m-only-D-seed43-fold4-calibration.parquet",
+      "bytes": 418967,
+      "sha256": "2ae090b852bf0360b504d8b83232dfc65ffab1aed86a08591f65b2f18086a5bb"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-B-oof.parquet",
+      "bytes": 5660662,
+      "sha256": "2c79f5a3274d1caa2e5f7a8f0d657fe2448589af0922b8a78b5ad9edf2d2aeaa"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-B-results.json",
+      "bytes": 14403,
+      "sha256": "3be5bd31ac2bbf197e141bf1cd2c7e3509b3865b7a646d0c5453c85982d068a8"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-B-seed17-fold0-calibration.parquet",
+      "bytes": 418649,
+      "sha256": "360378c0074b5501b994972f8df4110e43d15022ac7a2e1cbdcdc520c6aff90d"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-B-seed17-fold1-calibration.parquet",
+      "bytes": 425517,
+      "sha256": "c923dec9fa9ed695ea0a3e6477fdc5c406e8d3af78840410d746efa83451a83d"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-B-seed17-fold2-calibration.parquet",
+      "bytes": 432661,
+      "sha256": "7209c84744c17d0e21d6737bbf400739ffab01ef70fde172bc58290a7e991a2f"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-B-seed17-fold3-calibration.parquet",
+      "bytes": 407994,
+      "sha256": "962b30599c08a9f8ead4efbe0e1e0cf356628c1642f2ca1fdb22c5bc6051a5a1"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-B-seed17-fold4-calibration.parquet",
+      "bytes": 416047,
+      "sha256": "97e032d85d70b72c920f77306f5b2e2dff910159f4e80829dedc06e94825ea0d"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-B-seed29-fold0-calibration.parquet",
+      "bytes": 444831,
+      "sha256": "d13c8699c1ed7161b12106ae73bfd0822ea38064731bc3f2d4947b0a5e473de7"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-B-seed29-fold1-calibration.parquet",
+      "bytes": 430976,
+      "sha256": "b9e132e0de6a5b93ef92c3466ee3e1df6273b16999ebfe65ee3021975c120dfe"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-B-seed29-fold2-calibration.parquet",
+      "bytes": 435223,
+      "sha256": "b84dabfc0cd3dce01f55229f9f0ced97635e584573c3eb261a0f00635572536f"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-B-seed29-fold3-calibration.parquet",
+      "bytes": 493942,
+      "sha256": "e419b8074ac900f7bb27f80a47ad9ac8cfc5476ca9edb624665301d844b8a037"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-B-seed29-fold4-calibration.parquet",
+      "bytes": 415215,
+      "sha256": "60e9d714b242e536487f342c8c73a11d23695c2f6bc3261a9f5f5728d952a81e"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-B-seed43-fold0-calibration.parquet",
+      "bytes": 444934,
+      "sha256": "941e6e6bd47fd1ceb4c974cbf5438059a1144482a90168586b189259a8d062b1"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-B-seed43-fold1-calibration.parquet",
+      "bytes": 415094,
+      "sha256": "f707bb2bbab86d8076c3bac2080c2e435f8f000fa9fff22ecd8872c9d6209dc3"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-B-seed43-fold2-calibration.parquet",
+      "bytes": 480828,
+      "sha256": "cb8f5cdae031cd72c9bbebc8d224ccc9ab3d22fd1c7dfd63cfc76f3ca22acdd5"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-B-seed43-fold3-calibration.parquet",
+      "bytes": 436984,
+      "sha256": "2541e9534fdfa085bc59a06a149be929f280e816651d335fa64e780dc234a1ac"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-B-seed43-fold4-calibration.parquet",
+      "bytes": 418963,
+      "sha256": "d0926d7cd1d97df306afa9d1b9f578362eb66821c9b84cd11d1e8e057fc49906"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-D-oof.parquet",
+      "bytes": 5661142,
+      "sha256": "fddf5ab46134a43a307cc83fce29b46002fca4c16602d8273784d239b3eda40c"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-D-results.json",
+      "bytes": 14406,
+      "sha256": "647a182d9a3e346771b3cd4b596a92b324c2290c68b422532ad31d89c7746aae"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-D-seed17-fold0-calibration.parquet",
+      "bytes": 418653,
+      "sha256": "3aa4cafdf705f1af212de1706e04142fa2fef9d671257dc68bcac37447fd6a84"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-D-seed17-fold1-calibration.parquet",
+      "bytes": 425489,
+      "sha256": "67c85681837c78661fa5e540436110ba1eecce48bec0f346c88726e1a0831d9b"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-D-seed17-fold2-calibration.parquet",
+      "bytes": 432661,
+      "sha256": "e064a50f282149b4daa2dc42c67993c7d401ead92f3e625a53316d534510aaba"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-D-seed17-fold3-calibration.parquet",
+      "bytes": 407974,
+      "sha256": "c2420315ec01f54657c4d5cf55e3a85e3b212fc43606ba2e663c1c5b076dac5a"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-D-seed17-fold4-calibration.parquet",
+      "bytes": 416055,
+      "sha256": "bb388b8ba4bc51c61dbce9efd08acfb3c938014d3b216c2634bc971fd757ce8c"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-D-seed29-fold0-calibration.parquet",
+      "bytes": 444863,
+      "sha256": "4b26fb81517d5de5264af56733f5dde8434dea29b4102743c9403f20dde6f58a"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-D-seed29-fold1-calibration.parquet",
+      "bytes": 430964,
+      "sha256": "2131406b80b36d7fe26a5ebe7749010ff1fe0fda9a51f7bb89cf414968efbf2a"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-D-seed29-fold2-calibration.parquet",
+      "bytes": 435219,
+      "sha256": "5abc01cd007e1b904ce49b30222cb9fa4a3ccaba611e94b26e6e9377b8151eb7"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-D-seed29-fold3-calibration.parquet",
+      "bytes": 493938,
+      "sha256": "1a277b6c9001d2ebcb9ebc8d4676532f6b039c1e22fff2ad01ca3717c772978b"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-D-seed29-fold4-calibration.parquet",
+      "bytes": 415223,
+      "sha256": "e4dae8d452488c7d870211a5319598da390cd39e4b99014d46c013cae0491632"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-D-seed43-fold0-calibration.parquet",
+      "bytes": 444930,
+      "sha256": "9677c550c9f190d298518cd40069694cb8f4ca312c6da742212bac2d39b1f0d2"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-D-seed43-fold1-calibration.parquet",
+      "bytes": 415114,
+      "sha256": "af838076616680d31947151c6eb48d0f6a702347146dd180c6d09bf8d8a60b28"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-D-seed43-fold2-calibration.parquet",
+      "bytes": 480836,
+      "sha256": "567159cc1bf187edec4477e9dc7dd48763824c0e4f46bf260b8bfb88410fa9da"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-D-seed43-fold3-calibration.parquet",
+      "bytes": 436964,
+      "sha256": "9a0b066304d61da353a32dc759b9936fe3d256d1e491ab3bdf63c01ed31a0af5"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-context-D-seed43-fold4-calibration.parquet",
+      "bytes": 418971,
+      "sha256": "ff89830c43c2214cceb31215bfcd9b90fbec0ed907b5ad0f819605d64910f5d4"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-B-oof.parquet",
+      "bytes": 5660013,
+      "sha256": "3a79932adca5658d500a6ce021261d2a588ac21c4c2d473661a86121f1e08faf"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-B-results.json",
+      "bytes": 14404,
+      "sha256": "27d373a26e9bf79f68e2b0820dac18b8f66554a6d85c2ac45e39b47d7c803e2a"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-B-seed17-fold0-calibration.parquet",
+      "bytes": 418653,
+      "sha256": "96fd8645b498ea0c982c8df14c527812e317d50a3a33dbc6e39baa66dd891d61"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-B-seed17-fold1-calibration.parquet",
+      "bytes": 425505,
+      "sha256": "c48a9b6da45766844019934827684ca0f6f91fc7ccdcd8855cec2d048cfda721"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-B-seed17-fold2-calibration.parquet",
+      "bytes": 432657,
+      "sha256": "9b64fd528fc964e23b1c9a5021b167a06d3452fcbe11692e3564d21dacd13328"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-B-seed17-fold3-calibration.parquet",
+      "bytes": 407986,
+      "sha256": "34d7fb855a36c61aa5758965dc0139c2e28c77f1a48c03d17c631fe8087b1664"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-B-seed17-fold4-calibration.parquet",
+      "bytes": 416055,
+      "sha256": "f5df48764dd0f729acc9544b0833cc2cb9deece2fb9ab08f6f50a9164551c8ae"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-B-seed29-fold0-calibration.parquet",
+      "bytes": 444855,
+      "sha256": "4834e5aa2e021c48de1ebfff5d1a461cc926ec5a3e8899c5295801edfe4ad4ae"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-B-seed29-fold1-calibration.parquet",
+      "bytes": 430980,
+      "sha256": "89443e9213613d4ae25f464e144e2ad62172130b763e15e49b0ea44a79a3593c"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-B-seed29-fold2-calibration.parquet",
+      "bytes": 435223,
+      "sha256": "ab7b4d2a9db452b36a255c543fd706fd355dadeabe90d92e32b59261cb70b8cc"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-B-seed29-fold3-calibration.parquet",
+      "bytes": 493926,
+      "sha256": "9e78c1233aa94068196de9ce2a45cd33bfb0dad491e87635909bee7d00b6d53a"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-B-seed29-fold4-calibration.parquet",
+      "bytes": 415215,
+      "sha256": "cccf32a2ceba3765f3fcf7305ea8b76c9f809cf157605b8f07b75abf421ccda5"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-B-seed43-fold0-calibration.parquet",
+      "bytes": 444938,
+      "sha256": "3374d7ff89f9d65cb67c2723519e350162a5d0011883d8bef221ee25170f82db"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-B-seed43-fold1-calibration.parquet",
+      "bytes": 415102,
+      "sha256": "25658596ddca5e14d5f78b4a83158455591af8ff2740ef2595c874118c9d7e1f"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-B-seed43-fold2-calibration.parquet",
+      "bytes": 480808,
+      "sha256": "82e14fcddf452c6cced779031104f9b8b7273d98b51859849148fd14fc0ad453"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-B-seed43-fold3-calibration.parquet",
+      "bytes": 436988,
+      "sha256": "e6bf5398df54d459c24c7451ab22bb4f0263cc25a728cdec7571454377698ce5"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-B-seed43-fold4-calibration.parquet",
+      "bytes": 418951,
+      "sha256": "0509966c4d3e1af0ce8fdb89be20ca3d4764256f92a9945737ca3419c18a38e3"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-D-oof.parquet",
+      "bytes": 5660507,
+      "sha256": "9f03a6e56a6f1432127d9980e92e860321968afb243c7a8eb9a8826cd52cdc35"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-D-results.json",
+      "bytes": 14408,
+      "sha256": "7d53ef022628bfd3f64237991ad1c29f9211a44fcc1665bc219bc921ab3559a1"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-D-seed17-fold0-calibration.parquet",
+      "bytes": 418645,
+      "sha256": "95ca4ec3d027d8134eb44c214cfaa615d4356fb8a93689a5a465f95bd0ebaf3c"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-D-seed17-fold1-calibration.parquet",
+      "bytes": 425477,
+      "sha256": "3e824eb491e90b9de3064939a0a8a037be0509a993723f860ad09417b1408ff8"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-D-seed17-fold2-calibration.parquet",
+      "bytes": 432665,
+      "sha256": "1245eadf4b0b8edb7e300a335ae026ba4c4a7afb504e44b5453677aada5d5da5"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-D-seed17-fold3-calibration.parquet",
+      "bytes": 407986,
+      "sha256": "d2a1d8d575373e09d122bc464623fd7aa1f6e3c4e027877dfcf7b1b83bc11223"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-D-seed17-fold4-calibration.parquet",
+      "bytes": 416055,
+      "sha256": "aa4b10d31ac8562d0206e3088c7368eb2c453a38186446c0da69d67a33ece208"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-D-seed29-fold0-calibration.parquet",
+      "bytes": 444859,
+      "sha256": "00a9c276d2c77010c9fafe20b2adb449c7f9f2f3b5521c13ee5bb320cb0d8cfb"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-D-seed29-fold1-calibration.parquet",
+      "bytes": 430976,
+      "sha256": "b033ae08d6e530f4701b29f4184d461abba2a77dcf01b560ff52d3b0bf71df48"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-D-seed29-fold2-calibration.parquet",
+      "bytes": 435223,
+      "sha256": "20600819e101e392cb97aa6455c84d621ab8aedd049850c506d3986161fb3c5c"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-D-seed29-fold3-calibration.parquet",
+      "bytes": 493942,
+      "sha256": "1e8b8f5df67f7e817082d7bc73ea2542456f2a299f5fded4c7b5250c664d2d4c"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-D-seed29-fold4-calibration.parquet",
+      "bytes": 415223,
+      "sha256": "e7e55445ddc5be6769ccc3cf46031c28b1498780581cb8fbc85a3cef6a936672"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-D-seed43-fold0-calibration.parquet",
+      "bytes": 444922,
+      "sha256": "96603f376c1cd123f814acd30206ded778c231998438c2928d3fdef54a295f1a"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-D-seed43-fold1-calibration.parquet",
+      "bytes": 415090,
+      "sha256": "7680235c1dd6e1fe31da470fddcf15647b8f338cba7bd91de13507de31e751ec"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-D-seed43-fold2-calibration.parquet",
+      "bytes": 480828,
+      "sha256": "019513d52887816e5140c3c682e629a70c3c95ba2b905d0ea3bcf1cac23617dd"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-D-seed43-fold3-calibration.parquet",
+      "bytes": 436976,
+      "sha256": "acdb5faa7d90965ba2a250bd879d0bb235107525deb6193d7aa6ec11296a528e"
+    },
+    {
+      "path": "jobs/collect-family/esm2_8m-only-D-seed43-fold4-calibration.parquet",
+      "bytes": 418983,
+      "sha256": "6e05b89206368cd3d501522ee3c304ff99225797ef0b8caa224396e18efff375"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-B-oof.parquet",
+      "bytes": 5660796,
+      "sha256": "96cbf42cc65da3717953f89a27381a3dc96c8ed7e4a5b84657b037b13be8b536"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-B-results.json",
+      "bytes": 14408,
+      "sha256": "4a854e41a4add696954457f91a2b29cd4666a9ea492055ee789f71ae82c35fa7"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-B-seed17-fold0-calibration.parquet",
+      "bytes": 418661,
+      "sha256": "dbce54f52ef7935c5b4220eb5af481a8318ecbb9ada50fd90ed72f1eefa77480"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-B-seed17-fold1-calibration.parquet",
+      "bytes": 425509,
+      "sha256": "ff69175f86f8ef9c949da728c1195110cce2724f7071498e97ca14c9cb7bc10e"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-B-seed17-fold2-calibration.parquet",
+      "bytes": 432649,
+      "sha256": "82fc2338458fd243fc22f627563a0577d1d2afd04b64d4b6b571be5208a6b59f"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-B-seed17-fold3-calibration.parquet",
+      "bytes": 407990,
+      "sha256": "b745df7da04e644e84a3cad74fb6b981692fe1e26375ce67c8b9e7cb766891f2"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-B-seed17-fold4-calibration.parquet",
+      "bytes": 416039,
+      "sha256": "48a74cc6ceeefcc290cda852f3d7280e640915ec6c7510eda83245ef4bc71911"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-B-seed29-fold0-calibration.parquet",
+      "bytes": 444851,
+      "sha256": "498383c68a5701078ceb85740a1e056ef2dcf67ca248d5d88edf451d5fb4e138"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-B-seed29-fold1-calibration.parquet",
+      "bytes": 430968,
+      "sha256": "b8cb9acea2db394996a59b4bad991fd873f0ce3bbf6a7fabc26355dc51fe9d92"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-B-seed29-fold2-calibration.parquet",
+      "bytes": 435223,
+      "sha256": "cb47517bdf0b18e924dd5f30e23c93958afb57ff18f78ffe542d88ef8db0968b"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-B-seed29-fold3-calibration.parquet",
+      "bytes": 493922,
+      "sha256": "380ff8d2c490fd014fe4cf7f4ffad313b12fe85bab58d3f16ad27de282b1a2c1"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-B-seed29-fold4-calibration.parquet",
+      "bytes": 415207,
+      "sha256": "912d7b6cac3bc70141bbf282534885a843fbef9dd542a33cf1dad1bbdfed0c86"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-B-seed43-fold0-calibration.parquet",
+      "bytes": 444910,
+      "sha256": "51cd8c8f6657d84bc58b841b11eeb5de1b136217a2743f16067f2f2777242342"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-B-seed43-fold1-calibration.parquet",
+      "bytes": 415102,
+      "sha256": "05004546c5532e83d8c5c10ccf657b566e40c205da8256c5a5921ba85356b566"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-B-seed43-fold2-calibration.parquet",
+      "bytes": 480836,
+      "sha256": "02183cb65d916fd5978d885c15887cb0b3496134403569406a1cb8307005255b"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-B-seed43-fold3-calibration.parquet",
+      "bytes": 436980,
+      "sha256": "9e8fd28174f90780d1ec71b363ec1d33a2d80059c79ee457fd10ace7127514b6"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-B-seed43-fold4-calibration.parquet",
+      "bytes": 418983,
+      "sha256": "810c9cd82b4e0fd4e833e1bc99c31f76758b92e56ae0e0bc7feebfb29ec75555"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-D-oof.parquet",
+      "bytes": 5661040,
+      "sha256": "62fec3b0e24b7a8e71d2e2acd40f04b0b24fb6101f18b405c721e8c7d95ecbb4"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-D-results.json",
+      "bytes": 14402,
+      "sha256": "ce4a0787a8527c0b656319cafd217c2bea612d2067c8273fe0ea09151e795680"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-D-seed17-fold0-calibration.parquet",
+      "bytes": 418661,
+      "sha256": "e72bcc8a265835cdfcb44909c736fcb3a8d470944a79205a7584ef29ca2084ae"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-D-seed17-fold1-calibration.parquet",
+      "bytes": 425501,
+      "sha256": "9c3fe9d8597177b3433e3de88a544563ac134e0abfcca86eda096e93d2c78757"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-D-seed17-fold2-calibration.parquet",
+      "bytes": 432653,
+      "sha256": "7d9b4050507dc326b0cde48688443e5318e4286769363925a9a7b522de470666"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-D-seed17-fold3-calibration.parquet",
+      "bytes": 407982,
+      "sha256": "3224370b0811fbacac2afea8849a7d7ce45034feae33165b9854e5777fd7fd48"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-D-seed17-fold4-calibration.parquet",
+      "bytes": 416055,
+      "sha256": "fcd523c0961a30b7149c616b914b0ac1bb5a2aa64a1fa0615200d0d06c35df9a"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-D-seed29-fold0-calibration.parquet",
+      "bytes": 444843,
+      "sha256": "90831486b7fddeca677734001e25a8a5c56d20b12b2b774b220c5b73e1aa912f"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-D-seed29-fold1-calibration.parquet",
+      "bytes": 430952,
+      "sha256": "f408f19aaa4893d2fe64c68d2af890a819c59240ee490b03c03945fb0d0bda0f"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-D-seed29-fold2-calibration.parquet",
+      "bytes": 435219,
+      "sha256": "450784dd20c8c03617c27102051b026dad7f8922d73b637adb7ddde3ceb2da30"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-D-seed29-fold3-calibration.parquet",
+      "bytes": 493930,
+      "sha256": "83658b1aeac96d4a4cf885bd03165230d0e401d80a90d59d4a244dfbd88c5955"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-D-seed29-fold4-calibration.parquet",
+      "bytes": 415203,
+      "sha256": "029169f01d47f16b5a814000fb2cd61bd212fd0675b117637b8d73008d65c5ae"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-D-seed43-fold0-calibration.parquet",
+      "bytes": 444906,
+      "sha256": "895d5c98070aa58a51c656dd65da391f22326aeb62f066df971cd1325ccef518"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-D-seed43-fold1-calibration.parquet",
+      "bytes": 415102,
+      "sha256": "17c52b061d45c5876668ed152c09ec45115a1779812ed03796c5c5f8b754e71e"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-D-seed43-fold2-calibration.parquet",
+      "bytes": 480836,
+      "sha256": "b4b5414d15eba2eb7d123ed6a1c8d2fd00130f1fe7cbd931ead30c6cb72f102f"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-D-seed43-fold3-calibration.parquet",
+      "bytes": 436980,
+      "sha256": "f389b637dabcc616f47e14149367403f9bd4f3f71ee8d991b12665dbf6649390"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-context-D-seed43-fold4-calibration.parquet",
+      "bytes": 418971,
+      "sha256": "7e74d4c80bcd47af331c014b63c498bee79934af990fcb4f918619bedd46771c"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-B-oof.parquet",
+      "bytes": 5660140,
+      "sha256": "c92c11486f3eec16d707eef12a6dfa28a67cad48cd128bd282af3cee9e879129"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-B-results.json",
+      "bytes": 14410,
+      "sha256": "85878683f32a0cb224e9e678a413686fe6e36d230f1a5f5d868a11d34ac8503d"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-B-seed17-fold0-calibration.parquet",
+      "bytes": 418665,
+      "sha256": "34423beee7fc7e6233f1b45128e20534439c631af620c245476613564f411c78"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-B-seed17-fold1-calibration.parquet",
+      "bytes": 425505,
+      "sha256": "4480c4e569de9dbd205e4e9b93d384ad6a50a35260f91f0bd24c5975d61c48f4"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-B-seed17-fold2-calibration.parquet",
+      "bytes": 432661,
+      "sha256": "a8fd54ccf0e862a502ac126aa314486bf2f52a266f0bae88e808daaacb6ea882"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-B-seed17-fold3-calibration.parquet",
+      "bytes": 407982,
+      "sha256": "0d7ac057e9bca9c24eb325a75e58ed4c26ccdc3360417af5b6d608c08a70348a"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-B-seed17-fold4-calibration.parquet",
+      "bytes": 416055,
+      "sha256": "8650e7c8be17fb52306f944ccc90771b0a243562f6862d2dd8dd0fc7fe4fef97"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-B-seed29-fold0-calibration.parquet",
+      "bytes": 444839,
+      "sha256": "bf83f79eeb035f9d629c7ca8b1e0947333da29d3c6906de98b38e35a241ba167"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-B-seed29-fold1-calibration.parquet",
+      "bytes": 430972,
+      "sha256": "e94f9b01d8e70b4776a7dc39ebb7eee11dc11e882693bb62600da1e457f7bc29"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-B-seed29-fold2-calibration.parquet",
+      "bytes": 435215,
+      "sha256": "d9f605866a45c38628f6ebf989b671ff85760dac39495f3599e62176e9686107"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-B-seed29-fold3-calibration.parquet",
+      "bytes": 493938,
+      "sha256": "09a7bf47ee01791b6a4b591e8a2ac6c36f96819131b71a8e3ebef80fee4edc00"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-B-seed29-fold4-calibration.parquet",
+      "bytes": 415219,
+      "sha256": "f2f92890a64f454b4e240c9d341027ad1bca73a5deab32c307aafd240f49f137"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-B-seed43-fold0-calibration.parquet",
+      "bytes": 444902,
+      "sha256": "c3e578f4575ecd930e668bbec5d203c96af555754ee7dfd26a46a56c345419f6"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-B-seed43-fold1-calibration.parquet",
+      "bytes": 415098,
+      "sha256": "51ccca54e7468dce7eaca1db6329d4b9f8918b662bf56db96e89076fc95ee0c3"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-B-seed43-fold2-calibration.parquet",
+      "bytes": 480824,
+      "sha256": "133d3d17ab408fab1b1ffdb3106e750b1d2771f4244f5621ef52dda552d95486"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-B-seed43-fold3-calibration.parquet",
+      "bytes": 436968,
+      "sha256": "97f61be89bfc3ba27dd119b7910a8fe578189b43165aca501b9c0ba0c87eacf2"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-B-seed43-fold4-calibration.parquet",
+      "bytes": 418947,
+      "sha256": "28ff640edb4a3a916345bd66b48f31e8433e64ebc6be1fd1c77dbaa01e5ee725"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-D-oof.parquet",
+      "bytes": 5660821,
+      "sha256": "cd7739be4209f8055c00e77445b7f70642aafebb1cabdf7726dddf86ab1a7554"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-D-results.json",
+      "bytes": 14404,
+      "sha256": "97102504780e09fd2fc6dcaba32353216750750a876d5263bd5516459ad72266"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-D-seed17-fold0-calibration.parquet",
+      "bytes": 418653,
+      "sha256": "b572bcf0315d9e55f10deb96ae600f03e6f89e676b27c14e7956d81b27078704"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-D-seed17-fold1-calibration.parquet",
+      "bytes": 425505,
+      "sha256": "405f944e67b9c23d5059701768e3d80fbb277edf41d2e4078a815a700f4d9054"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-D-seed17-fold2-calibration.parquet",
+      "bytes": 432657,
+      "sha256": "2e02d3fb9878c0d2b2ead5a78f60edc7efa71359f1c7162a839c55b59008359f"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-D-seed17-fold3-calibration.parquet",
+      "bytes": 407998,
+      "sha256": "81dbedfae9de5a8a33ae31480c07e97ba664cba64ea35d30cf66f28c6220d979"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-D-seed17-fold4-calibration.parquet",
+      "bytes": 416055,
+      "sha256": "7c544acf3b438c2ce8d46214878a5896e2c6d657a7280eaef88db6e3e9b12a7e"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-D-seed29-fold0-calibration.parquet",
+      "bytes": 444859,
+      "sha256": "701f59e30af5834ec439ed0b34a513d9d0022c9c0d4206d179046b2c4a84eef9"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-D-seed29-fold1-calibration.parquet",
+      "bytes": 430972,
+      "sha256": "51361f48d93e9b6850f09d39ead2b8f18d431a144f213e4eb7e894c3d1d637d5"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-D-seed29-fold2-calibration.parquet",
+      "bytes": 435219,
+      "sha256": "fdb0bff359ccebac0450401a10e4bc328b5ef0f7096753e1fe1217803a8e33e0"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-D-seed29-fold3-calibration.parquet",
+      "bytes": 493934,
+      "sha256": "8f352284b31b63c511f14739fd962d41a4a930c51a27fb4301f766355b3d5749"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-D-seed29-fold4-calibration.parquet",
+      "bytes": 415219,
+      "sha256": "ad77b429b33035ec1982c8517dc5263b442ae7f7d818015256b8a470d2928485"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-D-seed43-fold0-calibration.parquet",
+      "bytes": 444918,
+      "sha256": "50f33fb9e3a8b650d67351d41bd13ae6f167d2c59d69c66e23011f6ea1970331"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-D-seed43-fold1-calibration.parquet",
+      "bytes": 415118,
+      "sha256": "345e0e01aacda13328450a5294a0104c243226be7f6ceb19faa1ad48b2f9d7f6"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-D-seed43-fold2-calibration.parquet",
+      "bytes": 480832,
+      "sha256": "a8e6c9ed619b59bb864e4cff13c71d3285ff753cf78760849fedbafe10bb0392"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-D-seed43-fold3-calibration.parquet",
+      "bytes": 436980,
+      "sha256": "045736d47b5b9cf675f92037dfd2e973f61d46b977ebfb050b88f72e23254452"
+    },
+    {
+      "path": "jobs/collect-family/esmc_300m-only-D-seed43-fold4-calibration.parquet",
+      "bytes": 418979,
+      "sha256": "d50ee679d772c7c6c92697fed87f1f092b239ecfd6e64fa10b917ff3aa77e2f9"
+    },
+    {
+      "path": "jobs/collect-family/nested-family-selection-oof.parquet",
+      "bytes": 5663338,
+      "sha256": "08510fb4ea3c9e727a547cf79e0202cf8c1c94a941023253709b7b59b2eb2bf8"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-B-oof.parquet",
+      "bytes": 5660901,
+      "sha256": "86b84ac55dbc81d9f66c0cfffbf36f121be00b6c6c9e80a2dfb3cd2f1d93359b"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-B-results.json",
+      "bytes": 14407,
+      "sha256": "92b585cf44ce3e38319a78079d05d94558236e156126353cec48264188527b20"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-B-seed17-fold0-calibration.parquet",
+      "bytes": 418641,
+      "sha256": "72c9ab980060284e2b7c15a3120615e154129141afbf1e23b5b06565bf28f8c8"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-B-seed17-fold1-calibration.parquet",
+      "bytes": 425481,
+      "sha256": "c576176fe8a143c39dcc6af98452006ea880841c49a53bd4202bb37f94f64598"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-B-seed17-fold2-calibration.parquet",
+      "bytes": 432657,
+      "sha256": "ab0d3d90297b35345a00b13ff8b3d56ed7cad2f270645601f9cbf7d1a93fd77b"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-B-seed17-fold3-calibration.parquet",
+      "bytes": 407998,
+      "sha256": "b25193b92652c60ce3a5292fa012e0811d488ef0de89b8ea7745a9894303beec"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-B-seed17-fold4-calibration.parquet",
+      "bytes": 416051,
+      "sha256": "955e475df7ff8c6d855208b20a7038edfcf55728031e9c6693d5d42410fe83bb"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-B-seed29-fold0-calibration.parquet",
+      "bytes": 444847,
+      "sha256": "dab44bdee0233b436aefbb3b56fae2e83382850690d25f11b473714dd3cde496"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-B-seed29-fold1-calibration.parquet",
+      "bytes": 430988,
+      "sha256": "cf0b64557e5b8f341bc63d7aaa9d9366ce5269b71909209890282a1bfb59fedd"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-B-seed29-fold2-calibration.parquet",
+      "bytes": 435223,
+      "sha256": "b7a0f4d82f7db4525b2572241ff11fb4d084e54c636b075492208f3144a53175"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-B-seed29-fold3-calibration.parquet",
+      "bytes": 493914,
+      "sha256": "1905a9bde56e1f137759ff6bdaddf879d80d483b302cb61b8ccde7e9bc9d2112"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-B-seed29-fold4-calibration.parquet",
+      "bytes": 415191,
+      "sha256": "aea93df7ddf135d33cb3ac70af2c201e04bcbc9590caa1d706fdb811a283c0c3"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-B-seed43-fold0-calibration.parquet",
+      "bytes": 444938,
+      "sha256": "f1ef52e249c74c72fb8945ddb5b3a03979a39057a52f3516cf86fae56e263abf"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-B-seed43-fold1-calibration.parquet",
+      "bytes": 415110,
+      "sha256": "5830e0cf8ad33e874d6d43abc282c343a357b89806b79c9ded1d269bc64ab1a8"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-B-seed43-fold2-calibration.parquet",
+      "bytes": 480836,
+      "sha256": "22726225528d71d9fbfe1cb3d055bdbf21df66d76fc20435d76baed75d8e7775"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-B-seed43-fold3-calibration.parquet",
+      "bytes": 436972,
+      "sha256": "8410cb3cdb50dd555b881e27471e8b15ef4609edb60424dd9dfcb511aee1f821"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-B-seed43-fold4-calibration.parquet",
+      "bytes": 418967,
+      "sha256": "079fc6a6893900760066201993cb1973993dacfca8a6c8adff8f5a74c3045034"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-D-oof.parquet",
+      "bytes": 5661245,
+      "sha256": "ebd94a59bc5e3755812c28f0a17daa4527e5dde4da21cd7bcee973cab579eb31"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-D-results.json",
+      "bytes": 14408,
+      "sha256": "1579de11407acb0ce6f794cc9597b66c7b454e2c12195bcb48ec9f8ced290970"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-D-seed17-fold0-calibration.parquet",
+      "bytes": 418661,
+      "sha256": "eda738dfbe485bbca6cce82dc912ae5f286e85cb0d61d09b5938506337346041"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-D-seed17-fold1-calibration.parquet",
+      "bytes": 425509,
+      "sha256": "06a2c5f77acc26c35c4885e24db89a16a83c3b5f5c4b386d3cd5f44e6c7d0ef1"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-D-seed17-fold2-calibration.parquet",
+      "bytes": 432661,
+      "sha256": "f0cb125d52ebd5f690c0c30c1bb7665e87c93a4c21f6082c78e305fd19ae7d09"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-D-seed17-fold3-calibration.parquet",
+      "bytes": 407986,
+      "sha256": "14c34fa34b58ad8194131a76a89acc6515fd31692822abc03ac2a08b2b1498d4"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-D-seed17-fold4-calibration.parquet",
+      "bytes": 416055,
+      "sha256": "32096b9eb686560d52e1832de351ab5fbebad1655fb9b1924325ebae38c37854"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-D-seed29-fold0-calibration.parquet",
+      "bytes": 444851,
+      "sha256": "02335787dfe49505017d381d59d11d289cbcb95bbe2e176fba612f39ffdf0858"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-D-seed29-fold1-calibration.parquet",
+      "bytes": 430972,
+      "sha256": "4aa42cea4a096fa89354460b50a7b344b3572414d6292414948c8e540f4f6829"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-D-seed29-fold2-calibration.parquet",
+      "bytes": 435215,
+      "sha256": "f6f34bea3cd376baa2333ba2b7aeeed8f621e1eb87492d0a6c198822fcc7a006"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-D-seed29-fold3-calibration.parquet",
+      "bytes": 493926,
+      "sha256": "f8917a17d9716d743e83a1ce4fcad7acf55d9ac40752d0dee9b0066665e7953c"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-D-seed29-fold4-calibration.parquet",
+      "bytes": 415223,
+      "sha256": "36fbd7554ee375b545ba85fd03989ea808f38ea1d55193b8bd7bf612f71ebae8"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-D-seed43-fold0-calibration.parquet",
+      "bytes": 444918,
+      "sha256": "1209c0b0a565e8bf3b957c1d32e0081f6e6cd98dd15f089a291bc60f07557f93"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-D-seed43-fold1-calibration.parquet",
+      "bytes": 415110,
+      "sha256": "525a64eb74671dbe3cf0f1ecc30f86b4544e4a2bcb307ef36bc4b37c458f0d94"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-D-seed43-fold2-calibration.parquet",
+      "bytes": 480832,
+      "sha256": "b9216a285e8dbbc68a5adf5b02dcb80063cc569e734eb8da8ecaad012948ae33"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-D-seed43-fold3-calibration.parquet",
+      "bytes": 436972,
+      "sha256": "d193748278d71ec967c5db77eb155406408a66db25d6288a9494b90b01eccbad"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-context-D-seed43-fold4-calibration.parquet",
+      "bytes": 418959,
+      "sha256": "4204dc91b3042ac462c95d080351867c101d19758423efe4585d3e6e62014bde"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-B-oof.parquet",
+      "bytes": 5662449,
+      "sha256": "6fda7b2c3d793d1168cb2723fd94ede889da15f727a2eaabb4e76b89e5bbcb0b"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-B-results.json",
+      "bytes": 14412,
+      "sha256": "61e076d6a8c65e1f3133976dc787b25815e93dea6b7b493f5d39a3c283f21a3c"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-B-seed17-fold0-calibration.parquet",
+      "bytes": 418665,
+      "sha256": "eca984611756bc8dcb796b37177597b7ae653928174468c685025ec98d4da4c8"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-B-seed17-fold1-calibration.parquet",
+      "bytes": 425497,
+      "sha256": "d7c038044a6cd78e290bc19caae6968eb3d14a74198fe5853abf1f0855e639f1"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-B-seed17-fold2-calibration.parquet",
+      "bytes": 432657,
+      "sha256": "bcaf2dffbfaf7930b471325e1d67d82d5042f243dddde6a32b34402b581d81b8"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-B-seed17-fold3-calibration.parquet",
+      "bytes": 407990,
+      "sha256": "55c083d0f3784bf95222ed41ddf08841dee07c7c95870b5095d6a2ee7cc01af5"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-B-seed17-fold4-calibration.parquet",
+      "bytes": 416063,
+      "sha256": "6d101d30c45bfb478dcc9016148ef86c6c55fdc2ca096529c0a5f6070a114f37"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-B-seed29-fold0-calibration.parquet",
+      "bytes": 444859,
+      "sha256": "1f32deccfdbd9c485b665e23c7f5bb825b34990433ac8a891f4a47b04e271c3e"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-B-seed29-fold1-calibration.parquet",
+      "bytes": 430964,
+      "sha256": "ce7e8f6ce7fd2f8e87eca9930e476d5407655a1a76a1146a4ef22fedd693261c"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-B-seed29-fold2-calibration.parquet",
+      "bytes": 435219,
+      "sha256": "63e45d31c475fe401cac6a7758c791638ffaf58b025c9de429b7612139158fdf"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-B-seed29-fold3-calibration.parquet",
+      "bytes": 493930,
+      "sha256": "b86ae22f4cb396eff619cb1867b15622788960ab4693cf340538d7d163b20670"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-B-seed29-fold4-calibration.parquet",
+      "bytes": 415219,
+      "sha256": "237e1f875d3fc133135c5ee35993c3999a0b9ef2ce0328cb90d7cf9d4f9c47ec"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-B-seed43-fold0-calibration.parquet",
+      "bytes": 444914,
+      "sha256": "536c085f561175658d1649014dd274a9d15d5e6f8de404a034f1dc8b99965ab7"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-B-seed43-fold1-calibration.parquet",
+      "bytes": 415102,
+      "sha256": "777d0f24ba998725c4f9207f0dd60c5b42dd0c3fcc03ae8f4353f9702689a628"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-B-seed43-fold2-calibration.parquet",
+      "bytes": 480828,
+      "sha256": "0f4762565e9449bb27fe5f98762f4d841d8ff5c6f9b0ff0584cb7825c5fc826f"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-B-seed43-fold3-calibration.parquet",
+      "bytes": 436984,
+      "sha256": "51ce8c792bc5ae7ff943c9663089097364b5815dc98e309656c62049be62b5ab"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-B-seed43-fold4-calibration.parquet",
+      "bytes": 418967,
+      "sha256": "ce28799fbf61f88d5092b372b46a5a0dd81b29a9f70871f05835c031835fed15"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-D-oof.parquet",
+      "bytes": 5660770,
+      "sha256": "bd5729c85c414d4d4e59de490a4b4b3e65478c925dfd5b4e9cd517a847499079"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-D-results.json",
+      "bytes": 14409,
+      "sha256": "80e795a8fba4f52e266d5279ce8751988ef8d7db2cc0eeb1eadd161a7c18bbd6"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-D-seed17-fold0-calibration.parquet",
+      "bytes": 418649,
+      "sha256": "d6079d8e1ec12a0eecda5f7218d7dca81988bbb3ff71c14db5c8ed813d68264a"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-D-seed17-fold1-calibration.parquet",
+      "bytes": 425497,
+      "sha256": "2a965786f834290421df2b4f9b0518d7fcd28034ef0b4973b1693f487cf5aa2f"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-D-seed17-fold2-calibration.parquet",
+      "bytes": 432649,
+      "sha256": "4ad4bce5baa8d8da8576a502ace9372da04d05c5d38d121f357d41e4dceb07e3"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-D-seed17-fold3-calibration.parquet",
+      "bytes": 407990,
+      "sha256": "5fed81dcde3d124ac555b66029ee6873f7f2038fe29001a539ed4a15c60bdd22"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-D-seed17-fold4-calibration.parquet",
+      "bytes": 416051,
+      "sha256": "c570b728016c2929c56f00df941b18b836eeca0be6152ce8762878dca8ba947e"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-D-seed29-fold0-calibration.parquet",
+      "bytes": 444847,
+      "sha256": "0e179df0cf4560b130e957e262ed866ab798bbadbdae53542d60a89df898d4f8"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-D-seed29-fold1-calibration.parquet",
+      "bytes": 430972,
+      "sha256": "5827d6b4bc16936542ac59f8578e4b90b970447927ff9de41b0e9a9b429bdb6b"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-D-seed29-fold2-calibration.parquet",
+      "bytes": 435231,
+      "sha256": "6814a80b7344c95e36e08b68d995ab9a22957e64d90e65b8d9f86b2c013be591"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-D-seed29-fold3-calibration.parquet",
+      "bytes": 493934,
+      "sha256": "65e47e6b97f6f8e621d4ae75f2b7e118d758608c416c961312b8becb3f13e34f"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-D-seed29-fold4-calibration.parquet",
+      "bytes": 415211,
+      "sha256": "96505ba217867e1eb78e477975db514dd530d43995da0d2709049eff855ab2e7"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-D-seed43-fold0-calibration.parquet",
+      "bytes": 444926,
+      "sha256": "9a3430a4355136850cbc0e4ed4d5526d947d121b0d942e1c39fefbd8d62bee7a"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-D-seed43-fold1-calibration.parquet",
+      "bytes": 415102,
+      "sha256": "01cd5adc562275bb91682db10bfc8478c725c1cdd99763b624cd50ce8f2ef7eb"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-D-seed43-fold2-calibration.parquet",
+      "bytes": 480840,
+      "sha256": "7964ce0f371716858a37aabc0de4753bc8926235f0571e82b2c97140d9d5a577"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-D-seed43-fold3-calibration.parquet",
+      "bytes": 436980,
+      "sha256": "1a07c5bf890c38463639abc7299cfcc4dce466b1dd09c3ff6db704c134be187a"
+    },
+    {
+      "path": "jobs/collect-family/prott5_encoder-only-D-seed43-fold4-calibration.parquet",
+      "bytes": 418959,
+      "sha256": "7eafae05d9e4cbd904c49603a6651df95e0ae854964421ae8fe11e1780b3bbca"
+    },
+    {
+      "path": "jobs/collect-family/summary.csv",
+      "bytes": 8255,
+      "sha256": "34da748894a0849acfce70e9c0e3bddcc78d9a65fa37b11028fc80a044fd75a7"
+    }
+  ],
+  "seconds": 100.50421404838562
+}

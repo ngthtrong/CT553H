@@ -1,0 +1,118 @@
+{
+  "job": "tune-frozen-D-29-0",
+  "started_unix": 1793735331.6911738,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/tune-frozen-D-29-0/calibration.json",
+      "bytes": 199,
+      "sha256": "588c164aa7c8d92ff19dfd173ec0eb529e9171a0eb683e1842b4617cd6c8d579"
+    },
+    {
+      "path": "jobs/tune-frozen-D-29-0/calibration.npy",
+      "bytes": 78620,
+      "sha256": "dc9552a8c3b7f6eee22d50ac1d967a163c156805b0fc5eca940c3589ebf252ae"
+    },
+    {
+      "path": "jobs/tune-frozen-D-29-0/calibration.parquet",
+      "bytes": 444863,
+      "sha256": "eb9d98b2023fb09bcb7306a681f4ffffcc3dc256bb4b470766d0c25146f0276a"
+    },
+    {
+      "path": "jobs/tune-frozen-D-29-0/fit.json",
+      "bytes": 374,
+      "sha256": "91fc02b8422c6c9a4e9248bdf34fabed095eb9a8a620f4c72fe60ea821aeba8f"
+    },
+    {
+      "path": "jobs/tune-frozen-D-29-0/inner-validation-1.json",
+      "bytes": 199,
+      "sha256": "8f4daff34bc1eb167ec9bc36e942b8ddb717536b4c1e12658a79e49dd49081e0"
+    },
+    {
+      "path": "jobs/tune-frozen-D-29-0/inner-validation-1.npy",
+      "bytes": 78620,
+      "sha256": "9925c6ae3a64ebc9da55908fd3d8a4c52699f691f23c2fa9877c070d22f3922f"
+    },
+    {
+      "path": "jobs/tune-frozen-D-29-0/inner-validation-2.json",
+      "bytes": 199,
+      "sha256": "588c164aa7c8d92ff19dfd173ec0eb529e9171a0eb683e1842b4617cd6c8d579"
+    },
+    {
+      "path": "jobs/tune-frozen-D-29-0/inner-validation-2.npy",
+      "bytes": 78620,
+      "sha256": "dc9552a8c3b7f6eee22d50ac1d967a163c156805b0fc5eca940c3589ebf252ae"
+    },
+    {
+      "path": "jobs/tune-frozen-D-29-0/inner-validation-3.json",
+      "bytes": 199,
+      "sha256": "614ab01d346c21e6d32c9d074358ddcd87625a3f5ee9f497cf8cba735f3f432a"
+    },
+    {
+      "path": "jobs/tune-frozen-D-29-0/inner-validation-3.npy",
+      "bytes": 78620,
+      "sha256": "d3399dce0107e61f783a2cfe232292f961055d4c6e507b3051e99d077795d1b0"
+    },
+    {
+      "path": "jobs/tune-frozen-D-29-0/inner-validation-4.json",
+      "bytes": 199,
+      "sha256": "b3e2ae04b9da781ddef93a9b65b143965861f75fa8a478c69c0300ae25f2da25"
+    },
+    {
+      "path": "jobs/tune-frozen-D-29-0/inner-validation-4.npy",
+      "bytes": 78620,
+      "sha256": "98c93b226946c7252ab83aa5690f5f7765e990d5ae86eacadde131ce2e4d88ae"
+    },
+    {
+      "path": "jobs/tune-frozen-D-29-0/inner-validation-5.json",
+      "bytes": 199,
+      "sha256": "eddf5e6900988e3d62af9f1ee2ac1c0121cb573fb5fb05de7682c01f637107b3"
+    },
+    {
+      "path": "jobs/tune-frozen-D-29-0/inner-validation-5.npy",
+      "bytes": 78620,
+      "sha256": "99f46c151ad688fa9ebbf68c1d54b13da8bd2b19bec30869ee8aceaa370e3ec3"
+    },
+    {
+      "path": "jobs/tune-frozen-D-29-0/inner-validation-6.json",
+      "bytes": 199,
+      "sha256": "6216e45c838404f85dca24708add8322b76d7d59ea4bc191d7a59c9f0d6cf79d"
+    },
+    {
+      "path": "jobs/tune-frozen-D-29-0/inner-validation-6.npy",
+      "bytes": 78620,
+      "sha256": "58edc29a5a1ace9f48c15e07ab0b1e8ec8ca8413e3c9087c982c2465fac6c233"
+    },
+    {
+      "path": "jobs/tune-frozen-D-29-0/inner.pt",
+      "bytes": 1066337,
+      "sha256": "3e1deb2166b7b0aaa4b890683e1d37bca62ddc7fd1a503ecbe7b21a376815a8a"
+    },
+    {
+      "path": "jobs/tune-frozen-D-29-0/model.pt",
+      "bytes": 264093,
+      "sha256": "d5a203619428eb058ab959f56b1f2186cd6febda963bd4d8b00d103c5ae42e23"
+    },
+    {
+      "path": "jobs/tune-frozen-D-29-0/oof.parquet",
+      "bytes": 569584,
+      "sha256": "0a44cfdce49bd2351ffafcc2d30d3a94c1fb5393da9aa27836d868b85ec93246"
+    },
+    {
+      "path": "jobs/tune-frozen-D-29-0/refit.pt",
+      "bytes": 1066337,
+      "sha256": "a92d716dbeee528469d81d7a0211233947f6729f5b3bc210823cbc21c5dfe0da"
+    },
+    {
+      "path": "jobs/tune-frozen-D-29-0/test.json",
+      "bytes": 199,
+      "sha256": "cd7cf5c27dc67f757570098010cf29ef99dfa6ce1d282c79b0bb358ff3ce578a"
+    },
+    {
+      "path": "jobs/tune-frozen-D-29-0/test.npy",
+      "bytes": 99804,
+      "sha256": "660763375c66786fbd1648478ca3df521ecd8489ede9e43a553e98f4b5b6d3b2"
+    }
+  ],
+  "seconds": 2105.7648208141327
+}

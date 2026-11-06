@@ -6,3 +6,9 @@ bộ template gốc.
 Đặt hình của luận văn vào `figures/`, sơ đồ vào `diagrams/`; hai thư mục đã
 được cấu hình trong `template/packages.tex`. Hình PDF/PNG/JPG dùng được
 trực tiếp với XeLaTeX. Xuất SVG hoặc draw.io sang PDF trước khi chèn.
+
+Tài sản bổ sung 06/11/2026:
+
+- [Campaign diagrams](diagrams/campaign-2026-11-06/README.md): 2 sơ đồ `.drawio` chỉnh sửa được, PDF vector có nhúng nguồn và PNG.
+- [Generator kết quả campaign](ch4/build_campaign_assets.py): 12 bảng, 3 đồ thị PDF/PNG và macro số từ JSON audit; không fit lại mô hình.
+- [Nguồn audit](../../research/output-review-2026-11-06/README.md) và [hồ sơ kiểm PDF](../current-state-validation-2026-11-06.md).

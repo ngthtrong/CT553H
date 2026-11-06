@@ -17,7 +17,8 @@ local acceptance evidence; no passing result for those additions is claimed here
 
 \section{Experimental Evaluation}\label{sec:experiments}
 This section preserves the initial restricted-PSI experiments and then reports the important
-follow-up findings available on 3 November 2026 (Section~\ref{sec:res-fullpsi}). The original
+follow-up findings and completed campaigns available on 6 November 2026
+(Section~\ref{sec:res-fullpsi}). The original
 91-peptide test and the full-PSI evaluation have different populations and primary metrics;
 their scores must not be read as a single improvement curve. All remain development evidence.
 
@@ -489,14 +490,15 @@ The following parts of the plan have no results in this version of the thesis; n
   \item \textbf{Merging external GPS labels and repeating the learning curve on the enlarged set.} Not run: the only audited
         source (Table~\ref{tab:koren}) did not pass its gate. Other candidate sources (for example Timms et al., Shimshon et al., Bekturova et al.\ and a recent preprint on disease mutations
         that disrupt degrons) have not been audited, and their terms of use have not been read.
-  \item \textbf{Independent validation.} All numbers are out-of-fold on a development benchmark. Testing on labels that did not take part in any
+  \item \textbf{Independent validation.} Development OOF and locked same-laboratory transfer are available. Testing on labels that did not take part in any
         design decision, including the C-terminal data of Table~\ref{tab:koren}, has not been done.
-        The current held-source route is locked to the prespecified W5 full-range recipe and has not
-        completed; it is not a test for selecting among all new pLMs. The source was explored historically,
+        The completed held-source route is locked to the prespecified W5 full-range recipe;
+        it is not a test for selecting among all new pLMs. The source was explored historically,
         so it is not a wholly untouched external assay.
-  \item \textbf{Completed fine-tuning and final artefacts.} The local LoRA comparison is incomplete.
-        Full-PSI calibration and locked-transfer results are not yet available; CNN, LoRA and family
-        candidates require a model-specific final refit/export before serving. Alternative tile-label
+  \item \textbf{Final serving artefacts and further transfer.} The matched local LoRA comparison,
+        CV calibration and locked W5 transfer are complete. CNN, LoRA and family candidates still
+        require a model-specific final refit, calibration lineage and export before serving. LoRA transfer
+        beyond development remains untested. Alternative tile-label
         pre-training or joint-training designs remain separate untested questions.
   \item \textbf{Comparison of the ranking with simple rules.} Only a random ranking was used as reference (Section~\ref{sec:res-calibration}).
   \item \textbf{Separating the region of $\mathrm{PSI}_{\mathrm{WT}}$ from the protein.} It needs pairs of peptides of the same protein on both sides

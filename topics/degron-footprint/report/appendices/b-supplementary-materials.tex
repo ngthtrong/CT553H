@@ -5,4 +5,61 @@
 \textbf{[PENDING: repository link and release; data are redistributed only where the terms of use allow.]}
 
 \section{Additional Tables and Figures}
-\textbf{[PENDING]}
+The following tables preserve the complete campaign record, including controls that do not improve
+the selected metrics. All W rows share the same 235 peptides, 221 groups and 122,412 cells. Each
+three-seed row averages predictions per cell before calculating metrics. The two Kaggle frozen-head
+tuning controls have only seed 17; their scores are not directly equivalent to three-seed ensembles.
+
+Training arms A, B and C restrict WT PSI to at most 3, 4 and 5, respectively; D uses the full range
+and E balances the full range by stratum and peptide. Validation/test remain full-range. In the family
+grid, ``only'' means pLM features with the common auxiliary features, and ``context'' additionally
+includes ordered W5 features. Pointwise, CNN and multi-window CNN entries use frozen ESM2 features
+on Kaggle; the local ``frozen'' and ``LoRA'' entries use the matched neural head described in
+Section~\ref{sec:campaign-adaptation}. ``Rep1'' and ``mean12'' identify scanning-label pre-training
+targets. Nested-family rows evaluate inner selection, not a retrospective outer-score winner.
+
+\input{assets/ch4/tab-campaign-all}
+
+\section{Seed Stability and Inner Selection}
+\begin{table}[htbp]
+  \centering
+  \caption{Single-seed and ensemble peptide-macro MAE for the matched local core experiment.}
+  \label{tab:campaign-seeds}
+  \input{assets/ch4/tab-campaign-seeds}
+\end{table}
+\begin{table}[htbp]
+  \centering
+  \caption{Inner-selected epoch counts over 15 outer fits per local core recipe.}
+  \label{tab:campaign-epochs}
+  \input{assets/ch4/tab-campaign-epochs}
+\end{table}
+\begin{table}[htbp]
+  \centering
+  \caption{Local frozen-family recipes chosen by the saved inner-MSE selector.
+  Frequencies across seed/fold pairs are not independent votes for a model family.}
+  \label{tab:campaign-nested}
+  \input{assets/ch4/tab-campaign-nested}
+\end{table}
+
+\section{Execution Cost and Output Inventory}
+\begin{table}[htbp]
+  \centering
+  \caption{Recorded durations of completed local job attempts, counting inherited work once.
+  Earlier attempts of paused/resumed jobs may be absent; these are not GPU-active or full elapsed times.}
+  \label{tab:campaign-timing}
+  \input{assets/ch4/tab-campaign-timing}
+\end{table}
+The cache contains pinned weights and executable source snapshots as well as metrics, OOF arrays,
+features, fitted models and recovery checkpoints. Physical file counts in Table~\ref{tab:campaign-inventory}
+can include duplicate content, partial files and superseded attempts. They must not be added to
+the checksum-verified artifact totals as though they were separate scientific observations.
+The historical timer-failure local run contributes no scientific OOF results. The interrupted local
+source remains required because the successor references its inherited artifacts.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Physical output inventory at review time. Weight caches and code snapshots are supporting
+  assets, not evaluation datasets.}
+  \label{tab:campaign-inventory}
+  \input{assets/ch4/tab-campaign-inventory}
+\end{table}

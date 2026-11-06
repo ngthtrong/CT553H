@@ -1,0 +1,13 @@
+{
+  "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738",
+  "recipe": "ordered-w5-D",
+  "model_ids": [],
+  "training_output": "D:\\thanhtrong\\CT553H\\topics\\degron-footprint\\research\\kaggle-roadmap-2026-10-31\\output\\official\\369cb2fe6a1e31e0\\tasks\\01-78cc356ba4f4",
+  "input_oof_sha256": "cab4af07afb373ea86ae4c20bbd9cfdeadcf0d9b2c68460668fa25682460cae3",
+  "mode": "official",
+  "event_labels": [
+    "minus",
+    "neutral",
+    "plus"
+  ]
+}

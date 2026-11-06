@@ -1,0 +1,14 @@
+{
+  "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738",
+  "platforms": [
+    "kaggle",
+    "local"
+  ],
+  "claim": "Development comparisons; frozen-LoRA main contrasts matched within local runtime.",
+  "pending": [
+    "External source",
+    "True structure mapping",
+    "Architecture-specific CNN/LoRA/family final promotion"
+  ],
+  "source_kaggle": "D:\\thanhtrong\\CT553H\\topics\\degron-footprint\\research\\kaggle-roadmap-2026-10-31\\output\\official\\369cb2fe6a1e31e0"
+}

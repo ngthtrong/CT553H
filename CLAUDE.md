@@ -2,19 +2,19 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-Đồng bộ với mã nguồn và bằng chứng trong repo ngày **03/11/2026**. Chỉ mục trạng thái: [README.md](README.md) và [research/README.md](topics/degron-footprint/research/README.md). `AGENTS.md` chỉ dẫn chiếu file này; duy trì quy tắc chung tại đây.
+Đồng bộ với mã nguồn và bằng chứng trong repo ngày **06/11/2026**. Chỉ mục trạng thái: [README.md](README.md) và [research/README.md](topics/degron-footprint/research/README.md). `AGENTS.md` chỉ dẫn chiếu file này; duy trì quy tắc chung tại đây.
 
 Repo luận văn tốt nghiệp CT553H (Kỹ thuật phần mềm, ĐH Cần Thơ) của Nguyễn Thanh Trọng, GVHD TS. Hồ Quang Thái. Đề tài duy nhất còn lại: **degron-footprint** — dự đoán footprint / hiệu ứng đột biến degron mức residue trên nhãn thực nghiệm (Zhang 2023, Voutsinos 2026, Larsen 2025, MaveDB, ClinVar). Tài liệu viết bằng tiếng Việt; tên file/thư mục chữ thường, tiếng Anh, nối gạch ngang.
 
 ## Bố cục
 
 - `topics/degron-footprint/` — toàn bộ nghiên cứu của đề tài.
-  - `research/<chủ-đề>[-YYYY-MM-DD]/` — mỗi thư mục là một thí nghiệm/audit tự chứa: `README.md` (kết quả, có nhãn bằng chứng), script `.py`, và kết quả nhỏ dạng `.json` do script ghi ra. Thí nghiệm lớn có thêm protocol, validation và manifest. Luồng hiện hành là **`kaggle-roadmap-2026-10-31/` (v3 full-PSI)**: `EXECUTION-PROTOCOL.md` cho lựa chọn thực thi; `local-plan.json` cho campaign Windows; `local-runner.md` cho chạy/resume; `RUN.md` cho Kaggle. Output Kaggle đã được nhập và phân tích trong `output-analysis*.{json,md}`; campaign local mở rộng development đang dở. `next-phase-plan-2026-10-22/`, notebook-kit v1/v2 và R0–R6 là hồ sơ lịch sử, không thay protocol v3. Không tự đóng G2/G3 hay đổi mô hình sản phẩm từ thứ hạng development.
+  - `research/<chủ-đề>[-YYYY-MM-DD]/` — mỗi thư mục là một thí nghiệm/audit tự chứa: `README.md` (kết quả, có nhãn bằng chứng), script `.py`, và kết quả nhỏ dạng `.json` do script ghi ra. Thí nghiệm lớn có thêm protocol, validation và manifest. Luồng hiện hành là **`kaggle-roadmap-2026-10-31/` (v3 full-PSI)**: `EXECUTION-PROTOCOL.md` cho lựa chọn thực thi; `local-plan.json` cho campaign Windows; `local-runner.md` cho chạy/resume; `RUN.md` cho Kaggle. Output Kaggle được phân tích trong `output-analysis*.{json,md}`; local đã kết thúc 633 job, phân tích tại `local-output-analysis.{json,md,png}`, còn nguồn ngoài/cấu trúc pending. `next-phase-plan-2026-10-22/`, notebook-kit v1/v2 và R0–R6 là hồ sơ lịch sử, không thay protocol v3. Không tự đóng G2/G3 hay đổi mô hình sản phẩm từ thứ hạng development.
   - `data/{raw,interim,processed}/` — dữ liệu thật và các gói tái tạo, **không lên git** trừ `data/README.md` và `SOURCE.md`. Con số ~2,3 GB trong sổ là mốc trước G2, không phải dung lượng hiện tại. `data/README.md` là sổ nguồn gốc: nguồn/phiên bản ghim/giấy phép/SHA-256, script nào tạo file nào, nhật ký xử lý. Khi tải, xử lý lại hay xoá file trong `data/` thì cập nhật sổ này trong cùng phiên.
   - `presentation/` — deck reveal.js (`deck-*/index.html`), nội dung trang Notion và `figures.py`/`visuals.py` sinh PNG. Không tự sửa khi chưa được yêu cầu.
   - `proposal/` — đề cương (`proposal.md` → pdf/docx bằng `build.py`).
   - `system/` — công cụ web: thiết kế v0.2 ngày 29/10 và `app/` baseline (FastAPI + React + ETL + test, mô hình `m3-ext4.0-platt-v1`). Projects/history, jobs peptide/protein, import/comparison và PostgreSQL local còn cần triển khai/kiểm chứng; cổng R3 chưa tích hợp đúng. `design/workspace-ui-v2/` là prototype review hiện hành ngày 01/11, fixture tổng hợp, bộ nhớ tab, chưa nối backend. CSDL và tệp sinh ra khi chạy (`app/.data/`, `.coverage`, `test-results/`) **không lên git**.
-  - `report/` — **bản làm việc** của luận văn, đã chuyển từ gốc repo vào đề tài. Luận văn viết tiếng Anh, kèm Tóm tắt tiếng Việt; còn các mục `[PENDING]`. Ngày 03/11 đã cập nhật chọn lọc kết quả v3, snapshot local và trạng thái phần mềm vào luận văn/đề cương; xem `report/current-state-validation-2026-11-03.md`. Không đồng nghĩa đã cập nhật toàn bộ nội dung hoặc nghiệm thu G2/G3.
+  - `report/` — **bản làm việc** của luận văn, đã chuyển từ gốc repo vào đề tài. Luận văn viết tiếng Anh, kèm Tóm tắt tiếng Việt; còn các mục `[PENDING]`. Ngày 06/11 đã cập nhật campaign hoàn tất vào phương pháp, đánh giá, tóm tắt, kết luận và phụ lục đủ 88 cấu hình OOF, kèm 2 sơ đồ/3 đồ thị; xem `report/current-state-validation-2026-11-06.md` và `research/output-review-2026-11-06/`. Hồ sơ 03/11 giữ làm lịch sử; đề cương không được cập nhật trong lượt 06/11. Không đồng nghĩa nghiệm thu G2/G3 hoặc đổi model phục vụ.
 - `resources/` — `people.md`, `dataset-guide.md`, `papers/analyzed-papers/`, PDF bài báo, luận văn tham khảo, đề cương học phần (repo private nên được chứa PDF). Nội dung `lectures/` và `project/` cũ đã gom vào đây.
 - `reportTemplate/` — **bản gốc sạch** của template LaTeX luận văn (Khoa Kỹ thuật phần mềm, ĐHCT), không điền nội dung vào đây (xem `reportTemplate/README.md`); `guideline-thesis/` trong đó là mẫu/hướng dẫn gốc của Khoa. Template NCKH cũ nằm ở commit `30c20ef`.
 
@@ -23,6 +23,8 @@ Repo luận văn tốt nghiệp CT553H (Kỹ thuật phần mềm, ĐH Cần Th�
 `main` là nhánh làm việc. Hồ sơ dọn repo ghi nhánh lưu trữ `backup-before-clean` (`archive/`, `journal/`, `surveys/`, `tools/`, `DECISIONS.md` và tài liệu đã thay thế); checkout hiện tại chỉ có nhánh local `main`. Chỉ dùng `git show backup-before-clean:<đường-dẫn>` khi ref lưu trữ thực sự có ở máy hoặc remote; không mặc định nhánh đó sẵn có.
 
 ## Chạy script nghiên cứu
+
+**Kết quả local hiện hành (06/11):** `ef138c84579c842e` đã kết thúc 633 job, còn nguồn ngoài/cấu trúc pending. Phân tích hoàn tất tại `research/kaggle-roadmap-2026-10-31/local-output-analysis.{json,md,png}`, tái tạo bằng `analyze-local-output.py` (chỉ đọc artifact/data, không load model). LoRA có đủ OOF ba seed và calibration CV; T hiện chỉ có W5-D. Cần final serving refit/export và đánh giá tiếp trước khi đổi model sản phẩm. Các câu mô tả campaign đang dở trong snapshot cũ chỉ áp dụng tại mốc của chúng.
 
 Campaign CUDA Windows dùng `.venv` ở gốc repo (Python 3.11.9, Torch 2.13.0+cu130); dependency ở `research/kaggle-roadmap-2026-10-31/requirements-local-cuda-reuse.txt`. Không cài đè Torch CPU hoặc requirements lịch sử vào môi trường đang chạy. Từ PowerShell ở gốc repo:
 

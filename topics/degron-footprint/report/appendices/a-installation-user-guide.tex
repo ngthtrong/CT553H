@@ -47,3 +47,35 @@ import CSV/TSV with assay/units/replicates and fix validation errors; explicitly
 observations; export scores and provenance; reopen history. Unsaved single-tile previews are transient;
 saved work persists until deletion. Deletion presents dependencies and requires confirmation.
 \textbf{[PENDING: screenshots and an executed local walkthrough after implementation.]}
+
+\section{Offline Research Campaign Workflow}\label{sec:research-local-guide}
+The research supervisor is separate from the application's API and job worker. It uses the pinned
+full-PSI data bundle, pretrained-weight caches and a CUDA environment. From PowerShell at the
+repository root, \nolinkurl{./status-local.cmd} inspects the campaign. To execute or resume permitted
+work, \nolinkurl{./run-local.cmd --hours 2} starts a visible session. Request a safe pause using
+\nolinkurl{./pause-local.cmd} or Ctrl+C in that session. Training commits recovery checkpoints
+approximately every 120 seconds; an abrupt window close can lose work since the last commit.
+These are operational commands, not commands executed during this thesis-update review.
+
+The graph first checks the runtime/data identity and imported reference outputs, then verifies
+tokenizer alignment and extracts frozen features for each cached checkpoint. It runs the family ridge
+grid and matched frozen/LoRA tuning, collects OOF predictions, fits CV calibrators, evaluates the
+locked W5-D transfer recipe and writes the final report. Complete jobs are skipped when resuming
+the same compatible campaign; previous source output must remain available for inherited artifacts.
+Changing code, data, protocol or relevant runtime properties can create a new identity and must not
+be bypassed by editing a manifest or copying arbitrary checkpoints.
+
+On 6 November the runnable graph has 633 completed jobs and two pending input-dependent
+extensions. A session that reports zero executed jobs and then ends has no eligible compute left;
+restarting it alone does not provide the missing reviewed external or structure inputs. No further
+training is needed to reproduce the present analysis from the saved artifacts. Cached model/data
+work can be read offline; acquiring new sources or absent model/dependency files is a preparation
+step that may require connectivity.
+
+For evidence regeneration, enter the research campaign directory and run
+\nolinkurl{python analyze-local-output.py}. This reads saved OOF artifacts, verifies provenance and
+recomputes analysis without loading trained checkpoint objects. From the repository root,
+\nolinkurl{python topics/degron-footprint/research/output-review-2026-11-06/audit.py}
+rechecks selected source hashes and exports the full evidence inventory. The report-asset generator
+then rebuilds tables and scientific figures from the exported JSON. Regeneration is an analysis task;
+it does not promote a candidate into the application.

@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" version="32.6.10">
+  <diagram id="nested-evaluation" name="nested-evaluation">
+    <mxGraphModel dx="680" dy="760" grid="1" gridSize="10" page="1" pageWidth="680" pageHeight="760" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="data" value="Development W&#10;235 peptides; 221 protein groups&#10;122,412 mutation cells" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=20;spacing=10;fillColor=#E8F2F8;strokeColor=#0072B2;strokeWidth=2;">
+          <mxGeometry as="geometry" x="20" y="20" width="640" height="90" />
+        </mxCell>
+        <mxCell id="train" value="Outer training groups&#10;Fit B: WT PSI ≤4; D: full&#10;Validation: full range" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=20;spacing=10;fillColor=#E8F2F8;strokeColor=#0072B2;strokeWidth=2;">
+          <mxGeometry as="geometry" x="20" y="160" width="290" height="110" />
+        </mxCell>
+        <mxCell id="test" value="Outer test groups&#10;Full range for both arms&#10;Untouched during selection" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=20;spacing=10;fillColor=#FFF1E6;strokeColor=#D55E00;strokeWidth=2;">
+          <mxGeometry as="geometry" x="370" y="160" width="290" height="110" />
+        </mxCell>
+        <mxCell id="select" value="Inner group split&#10;Select α / recipe / epoch&#10;using inner MSE only" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=20;spacing=10;fillColor=#E8F2F8;strokeColor=#0072B2;strokeWidth=2;">
+          <mxGeometry as="geometry" x="20" y="320" width="290" height="110" />
+        </mxCell>
+        <mxCell id="refit" value="Fresh refit on permitted&#10;outer training data&#10;Predict outer test" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=20;spacing=10;fillColor=#E7F5EF;strokeColor=#009E73;strokeWidth=2;">
+          <mxGeometry as="geometry" x="370" y="320" width="290" height="110" />
+        </mxCell>
+        <mxCell id="oof" value="OOF predictions from 5 outer folds&#10;Repeat inner split for seeds 17, 29, 43&#10;Average seed predictions per cell" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=20;spacing=10;fillColor=#E7F5EF;strokeColor=#009E73;strokeWidth=2;">
+          <mxGeometry as="geometry" x="20" y="480" width="640" height="90" />
+        </mxCell>
+        <mxCell id="review" value="Development estimates&#10;Peptide-macro metrics&#10;Protein-group bootstrap&#10;Inner-fitted calibration" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=20;spacing=10;fillColor=#E8F2F8;strokeColor=#0072B2;strokeWidth=2;">
+          <mxGeometry as="geometry" x="20" y="620" width="290" height="120" />
+        </mxCell>
+        <mxCell id="transfer" value="Separate locked transfer T&#10;Fixed W5-D, refit on W&#10;1,410 peptides; R/A/S only&#10;No LoRA evaluation on T" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=20;spacing=10;fillColor=#F3F4F5;strokeColor=#666666;strokeWidth=2;">
+          <mxGeometry as="geometry" x="370" y="620" width="290" height="120" />
+        </mxCell>
+        <mxCell id="flow-0" source="data" target="train" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=0;endArrow=block;endFill=1;strokeColor=#444444;strokeWidth=2;exitX=0.23;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="flow-1" source="data" target="test" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=0;endArrow=block;endFill=1;strokeColor=#444444;strokeWidth=2;exitX=0.77;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="flow-2" source="train" target="select" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=0;endArrow=block;endFill=1;strokeColor=#444444;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="flow-3" source="select" target="refit" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=0;endArrow=block;endFill=1;strokeColor=#444444;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="flow-4" source="test" target="refit" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=0;endArrow=block;endFill=1;strokeColor=#444444;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="flow-5" source="refit" target="oof" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=0;endArrow=block;endFill=1;strokeColor=#444444;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.77;entryY=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="flow-6" source="oof" target="review" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=0;endArrow=block;endFill=1;strokeColor=#444444;strokeWidth=2;exitX=0.23;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

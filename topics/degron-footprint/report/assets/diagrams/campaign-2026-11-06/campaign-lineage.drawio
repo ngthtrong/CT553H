@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" version="32.6.10">
+  <diagram id="campaign-lineage" name="campaign-lineage">
+    <mxGraphModel dx="720" dy="500" grid="1" gridSize="10" page="1" pageWidth="720" pageHeight="500" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="kaggle" value="Kaggle reference&#10;35 tasks complete&#10;1 tuning task interrupted" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=20;spacing=10;fillColor=#E8F2F8;strokeColor=#0072B2;strokeWidth=2;">
+          <mxGeometry as="geometry" x="20" y="20" width="310" height="120" />
+        </mxCell>
+        <mxCell id="old" value="Earlier local run&#10;456 complete jobs&#10;2 tokenizer exclusions" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=20;spacing=10;fillColor=#F3F4F5;strokeColor=#666666;strokeWidth=2;">
+          <mxGeometry as="geometry" x="390" y="20" width="310" height="120" />
+        </mxCell>
+        <mxCell id="repair" value="Repair + compatibility checks&#10;ProtT5 tokenizer; Ankh FP32&#10;Reuse 456 verified jobs" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=20;spacing=10;fillColor=#FFF1E6;strokeColor=#D55E00;strokeWidth=2;">
+          <mxGeometry as="geometry" x="390" y="190" width="310" height="120" />
+        </mxCell>
+        <mxCell id="complete" value="Completed local successor&#10;633 complete; 2 pending inputs&#10;9 pLMs; 60 tuning fits" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=20;spacing=10;fillColor=#E7F5EF;strokeColor=#009E73;strokeWidth=2;">
+          <mxGeometry as="geometry" x="20" y="190" width="310" height="120" />
+        </mxCell>
+        <mxCell id="review" value="Combined development review&#10;47 Kaggle + 41 local recipes&#10;Same W population; separate runtimes" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=20;spacing=10;fillColor=#E8F2F8;strokeColor=#0072B2;strokeWidth=2;">
+          <mxGeometry as="geometry" x="20" y="360" width="310" height="120" />
+        </mxCell>
+        <mxCell id="limits" value="Still required&#10;External / structure inputs&#10;Serving refit, export and acceptance" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=20;spacing=10;fillColor=#F3F4F5;strokeColor=#666666;strokeWidth=2;">
+          <mxGeometry as="geometry" x="390" y="360" width="310" height="120" />
+        </mxCell>
+        <mxCell id="flow-0" source="kaggle" target="old" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=0;endArrow=block;endFill=1;strokeColor=#444444;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="flow-1" source="old" target="repair" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=0;endArrow=block;endFill=1;strokeColor=#444444;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="flow-2" source="repair" target="complete" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=0;endArrow=block;endFill=1;strokeColor=#444444;strokeWidth=2;exitX=0;exitY=0.5;entryX=1;entryY=0.5;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="flow-3" source="complete" target="review" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=0;endArrow=block;endFill=1;strokeColor=#444444;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="flow-4" source="kaggle" target="review" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=0;endArrow=block;endFill=1;strokeColor=#444444;strokeWidth=2;exitX=0;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="0" y="80" />
+              <mxPoint x="0" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow-5" source="review" target="limits" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=0;endArrow=block;endFill=1;strokeColor=#444444;strokeWidth=2;exitX=1;exitY=0.5;entryX=0;entryY=0.5;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

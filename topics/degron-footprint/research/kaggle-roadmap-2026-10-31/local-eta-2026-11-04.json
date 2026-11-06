@@ -1,0 +1,153 @@
+{
+  "generated_local": "2026-11-04T00:32:24+08:00",
+  "campaign": "ef138c84579c842e",
+  "status": "estimate_not_guarantee",
+  "state_counts": {
+    "complete": 587,
+    "running": 1,
+    "pending": 47
+  },
+  "remaining_tune": {
+    "frozen": {
+      "B": 10,
+      "D": 10
+    },
+    "lora": {
+      "D": 11,
+      "B": 10
+    }
+  },
+  "active_job": "tune-lora-D-17-4",
+  "progress": {
+    "job": "tune-lora-D-17-4",
+    "message": "inner epoch=3/20 batch=4167/9948 loss=0.033208",
+    "updated_unix": 1793723535.689515,
+    "epoch": 3,
+    "cursor": 33336,
+    "total_rows": 79583,
+    "loss": 0.03320793807506561
+  },
+  "active_conditional_remaining_minutes": 34.589389743107425,
+  "observed_lora": {
+    "B": [
+      {
+        "job": "tune-lora-B-17-0",
+        "selected_epoch": 2,
+        "inner_seconds_per_row": 0.0067258630972102575,
+        "refit_seconds_per_row": 0.006058572300183039,
+        "logged_epoch_seconds": 3345.0000000000005
+      },
+      {
+        "job": "tune-lora-B-17-1",
+        "selected_epoch": 7,
+        "inner_seconds_per_row": 0.007817417813298179,
+        "refit_seconds_per_row": 0.006074847927381128,
+        "logged_epoch_seconds": 8289.099999999999
+      },
+      {
+        "job": "tune-lora-B-17-2",
+        "selected_epoch": 2,
+        "inner_seconds_per_row": 0.007063970411972193,
+        "refit_seconds_per_row": 0.006023524947827737,
+        "logged_epoch_seconds": 3425.6000000000004
+      },
+      {
+        "job": "tune-lora-B-17-3",
+        "selected_epoch": 2,
+        "inner_seconds_per_row": 0.006884883465816077,
+        "refit_seconds_per_row": 0.005872070086656056,
+        "logged_epoch_seconds": 3319.5
+      },
+      {
+        "job": "tune-lora-B-17-4",
+        "selected_epoch": 4,
+        "inner_seconds_per_row": 0.0067951196974623115,
+        "refit_seconds_per_row": 0.006096668879285821,
+        "logged_epoch_seconds": 4994.0
+      }
+    ],
+    "D": [
+      {
+        "job": "tune-lora-D-17-0",
+        "selected_epoch": 2,
+        "inner_seconds_per_row": 0.006945604048070841,
+        "refit_seconds_per_row": 0.006058896536161571,
+        "logged_epoch_seconds": 4489.5
+      },
+      {
+        "job": "tune-lora-D-17-1",
+        "selected_epoch": 2,
+        "inner_seconds_per_row": 0.006581386029503844,
+        "refit_seconds_per_row": 0.006064293682182334,
+        "logged_epoch_seconds": 4354.8
+      },
+      {
+        "job": "tune-lora-D-17-2",
+        "selected_epoch": 1,
+        "inner_seconds_per_row": 0.006581735588574909,
+        "refit_seconds_per_row": 0.006084504740111148,
+        "logged_epoch_seconds": 3206.1
+      },
+      {
+        "job": "tune-lora-D-17-3",
+        "selected_epoch": 2,
+        "inner_seconds_per_row": 0.006665078549129252,
+        "refit_seconds_per_row": 0.006110014017783143,
+        "logged_epoch_seconds": 4376.6
+      }
+    ]
+  },
+  "observed_frozen_mean_minutes": {
+    "B": 25.03716169436773,
+    "D": 28.574880663553873
+  },
+  "rates": {
+    "B": {
+      "inner_seconds_per_row": 0.006884883465816077,
+      "refit_seconds_per_row": 0.006058572300183039
+    },
+    "D": {
+      "inner_seconds_per_row": 0.006623407068852081,
+      "refit_seconds_per_row": 0.006074399211146741
+    }
+  },
+  "scenarios": [
+    {
+      "scenario": "fast_observed_min",
+      "assumed_selected_epochs": {
+        "B": 2,
+        "D": 1
+      },
+      "frozen_hours": 8.935340392986935,
+      "lora_hours": 19.396997783056783,
+      "postprocessing_assumed_hours": 1,
+      "total_hours": 29.33233817604372,
+      "finish_local": "2026-11-05T05:52+08:00"
+    },
+    {
+      "scenario": "central_observed_arm_mean",
+      "assumed_selected_epochs": {
+        "B": 3.4,
+        "D": 1.75
+      },
+      "frozen_hours": 8.935340392986935,
+      "lora_hours": 25.04553035138822,
+      "postprocessing_assumed_hours": 1,
+      "total_hours": 34.98087074437516,
+      "finish_local": "2026-11-05T11:31+08:00"
+    },
+    {
+      "scenario": "slow_observed_arm_max",
+      "assumed_selected_epochs": {
+        "B": 7,
+        "D": 2
+      },
+      "frozen_hours": 8.935340392986935,
+      "lora_hours": 34.37386416415428,
+      "postprocessing_assumed_hours": 1,
+      "total_hours": 44.30920455714121,
+      "finish_local": "2026-11-05T20:50+08:00"
+    }
+  ],
+  "method": "Per-arm empirical selected epochs and median seconds per train/refit row, reconstructed from source and successor logs, including phases before resume. Active fold assumes no later validation improvement. 1h postprocessing is unmeasured planning allowance. Continuous GPU throughput; scenarios are not a confidence interval or hard bounds."
+}

@@ -1,5 +1,7 @@
 # Chạy local nhiều phiên, terminal Windows
 
+**06/11/2026: campaign `ef138c84579c842e` đã kết thúc 633 job complete, còn hai trạng thái nguồn ngoài/cấu trúc pending.** Kết quả, kiểm artifact/OOF và giới hạn kết luận ở [local-output-analysis.md](local-output-analysis.md). Chạy lại cùng kế hoạch chỉ kiểm/bỏ qua công việc đã xong; hai nhánh pending cần đầu vào được review và triển khai riêng. Các snapshot tiến độ ngày 03/11 dưới đây giữ vai trò lịch sử. Giữ cả campaign nguồn và successor để đọc artifact kế thừa.
+
 Đối chiếu tiến độ 03/11/2026 tại [chỉ mục/snapshot nghiên cứu](../README.md). Hướng dẫn này mô tả cách vận hành; số job complete/blocked và job đang dở phải đọc từ campaign hiện tại, không suy từ các kiểm thử phần mềm ở cuối file.
 
 **Sửa tokenizer 03/11/2026:** ProtT5 cần `protobuf==6.33.5` để đọc/chuyển SentencePiece; Ankh dùng `tokenizer.json` gốc qua `PreTrainedTokenizerFast`, đầu vào tách residue. Ankh base có activation không hữu hạn ở FP16 trong lượt preflight sửa lỗi, nên chính sách đã khai báo là **encoder FP32**, lưu feature FP16; các model khác giữ precision trước đây. Cả hai đã đạt preflight CUDA, alignment 532 phép thay và batch 8; bằng chứng ở [tokenizer-repair-validation.json](tokenizer-repair-validation.json). Đây chưa phải metric benchmark.
@@ -57,7 +59,7 @@ Trong successor đã kiểm, job complete có `artifact_campaign` trong state: f
 **Lưu kết quả trên GitHub:** `.gitignore` ở gốc repo chỉ cho phép các bằng chứng nhỏ trong `output/local/`:
 
 - Mỗi campaign: `plan.json`, `queue.json`, `state.json`, `superseded.json`/`inheritance.json` nếu có; trạng thái lỗi/blocked, nguồn kế thừa và hash artifact được giữ để giải thích phạm vi kết quả.
-- JSON ngay dưới từng job theo danh sách tên trong `.gitignore`: metadata fit/preflight, revision lock, manifest feature, weights/import, `worker-result.json`, progress extraction, inner-validation/calibration/test, `*-results.json`, collection/comparisons và evidence/pending. Không mở mọi `*.json`; tokenizer/config hoặc dữ liệu JSON mới vẫn bị bỏ qua. `collect-*/summary.csv` và `report/benchmark.csv` được giữ khi các bước tổng hợp hoàn tất.
+- JSON ngay dưới từng job: metadata fit/preflight, revision lock, manifest feature, `worker-result.json`, kết quả đánh giá, collection/comparisons và evidence/pending. `collect-*/summary.csv` và `report/benchmark.csv` được giữ khi các bước tổng hợp hoàn tất.
 - Trong recipe của `calibrate-core` và `locked-transfer-w5`: `selection-lock.json`, `model-card.json`; weights dùng chung chỉ giữ `SOURCE.md` và `status.json` chứa revision/SHA.
 
 Weights, checkpoint (kể cả `.previous`/`.tmp`), feature NumPy, bảng OOF/calibration/held-scanning Parquet, download `.partial`, log, khóa, STOP, `latest.json`, `session.json` và progress cấp campaign vẫn ở local. Output Kaggle `output/official/` tiếp tục bị bỏ qua; các bản phân tích nhỏ `output-analysis*.json`/`.md` bên cạnh runner vẫn được Git theo dõi như trước. File mới ngoài danh sách cho phép mặc định bị bỏ qua. Không dùng `git add -f output/` vì sẽ vượt các quy tắc này.

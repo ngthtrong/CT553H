@@ -1,0 +1,56 @@
+{
+  "generated_local": "2026-11-04T22:00:01+08:00",
+  "campaign": "ef138c84579c842e",
+  "status": "estimate_not_guarantee",
+  "state_counts": {
+    "complete": 612,
+    "running": 1,
+    "pending": 22
+  },
+  "remaining_tune": {
+    "frozen": {
+      "B": 1,
+      "D": 5
+    },
+    "lora": {
+      "B": 5,
+      "D": 5
+    }
+  },
+  "active_job": "tune-frozen-B-43-4",
+  "progress": {
+    "job": "tune-frozen-B-43-4",
+    "message": "CHECKPOINT refit.pt epoch=1 row=26888/73819",
+    "updated_unix": 1793800795.3628078
+  },
+  "active_selected_epoch": 3,
+  "active_estimated_remaining_minutes": 9.938157435272073,
+  "base_rate_report": "local-eta-2026-11-04-2015.json",
+  "scenarios": [
+    {
+      "scenario": "fast_observed_min",
+      "frozen_hours": 2.4078653659217943,
+      "lora_hours": 8.311707169874936,
+      "postprocessing_assumed_hours": 1,
+      "total_hours": 11.71957253579673,
+      "finish_local": "2026-11-05T09:43+08:00"
+    },
+    {
+      "scenario": "central_observed_mean",
+      "frozen_hours": 2.7580748930193293,
+      "lora_hours": 12.754207070922961,
+      "postprocessing_assumed_hours": 1,
+      "total_hours": 16.51228196394229,
+      "finish_local": "2026-11-05T14:30+08:00"
+    },
+    {
+      "scenario": "slow_observed_max",
+      "frozen_hours": 3.808703474311934,
+      "lora_hours": 20.1964760785782,
+      "postprocessing_assumed_hours": 1,
+      "total_hours": 25.005179552890137,
+      "finish_local": "2026-11-05T23:00+08:00"
+    }
+  ],
+  "method": "Refresh remaining job list and live refit progress; reuse measured per-arm/per-mode rates and selected-epoch distributions from 20:15. No further LoRA or frozen-D jobs have completed since that snapshot. 1h postprocessing allowance is unmeasured. Continuous GPU throughput; scenarios are not confidence limits."
+}

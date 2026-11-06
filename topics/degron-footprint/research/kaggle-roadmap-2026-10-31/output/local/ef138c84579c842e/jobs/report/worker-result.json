@@ -1,0 +1,18 @@
+{
+  "job": "report",
+  "started_unix": 1793908223.339116,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/report/benchmark.csv",
+      "bytes": 34626,
+      "sha256": "67e2d2c2e4f5922d2a0b65d701a4e5d4a8994fdeb9e4c0119e53af5940ba4029"
+    },
+    {
+      "path": "jobs/report/evidence.json",
+      "bytes": 525,
+      "sha256": "39f9a7749b5c88e7f12eeeeaa9b4a0725469a62ffa9d149ae87ed4825b45b4fe"
+    }
+  ],
+  "seconds": 0.30821824073791504
+}

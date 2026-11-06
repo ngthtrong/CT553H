@@ -10,17 +10,20 @@ mô hình ở tập trong và khoảng tin cậy bootstrap theo nhóm.
 Bộ phát triển toàn dải PSI có \nVthreeNPeptides{} peptide, \nVthreeNCells{} ô đột biến và
 \nVthreeNGroups{} nhóm protein. Mở rộng train ridge từ PSI hoang dã không quá 4 sang toàn dải
 giảm MAE trung bình theo peptide từ \nVthreeRidgeB{} xuống \nVthreeRidgeD{} PSI.
-ESM2-35M đóng băng kết hợp CNN đạt MAE \nVthreeCnnD{}, so với \nVthreePointwiseD{} của
-đầu pointwise đối chứng. Tiền huấn luyện bằng nhãn scanning cải thiện CNN one-hot trong thiết kế
-đã thử; trọng số chất lượng làm ridge kém hơn. Thứ hạng MAE chưa xác lập kiến trúc thắng.
-Các thí nghiệm miền hạn chế trước đó cung cấp baseline ridge đã hiệu chuẩn và kiểm khớp giữa
-đường suy luận với runner nghiên cứu.
+ESM2-35M đóng băng kết hợp CNN đạt MAE \nVthreeCnnD{}. Nghiên cứu local hoàn tất so sánh
+chín checkpoint pLM đóng băng và 60 lượt fit frozen/LoRA có đối chứng. LoRA đạt MAE
+\nCampaignLoraB{} khi giới hạn train và \nCampaignLoraD{} khi train toàn dải, giảm tương ứng
+\nCampaignGainB\% và \nCampaignGainD\% so với frozen cùng điều kiện. Khoảng tin cậy theo nhóm
+ủng hộ cả hai mức giảm; phân tầng PSI cho thấy đánh đổi về độ bao phủ train. Tiền huấn luyện bằng
+nhãn scanning giúp CNN trong thiết kế đã thử; trọng số chất lượng không giúp ridge. Xác suất LoRA
+ngoài fold cải thiện Brier nhưng vẫn còn sai lệch hiệu chuẩn.
 
-Đến ngày 03/11/2026, đã có baseline React/FastAPI; lưu dự án, job peptide/protein và đối chiếu dữ
-liệu đo còn dở. Workspace mới là prototype duyệt giao diện dùng dữ liệu tổng hợp. Mở rộng pLM và
-LoRA local, hiệu chuẩn toàn dải và đánh giá nguồn giữ lại chưa xong; mô hình phục vụ chưa đổi.
-Các kết quả dự đoán là bằng chứng phát triển trong assay, chưa xác nhận độc lập ngoài nguồn,
-hiệu ứng trên protein nguyên vẹn, nhận diện E3 cụ thể hoặc ý nghĩa lâm sàng.
+Campaign local kết thúc với 633 job hoàn tất và hai mở rộng chờ đầu vào. Trên tập scanning giữ
+lại cùng phòng thí nghiệm, ridge W5 cố định đạt AUROC dương \nCampaignTAuc{}, nhưng lợi thế
+MAE so với dự đoán 0 chưa rõ; LoRA chưa được đánh giá trên tập này. Đến ngày 06/11/2026,
+đã có baseline React/FastAPI; lưu dự án, job peptide/protein và đối chiếu thực nghiệm còn dở.
+Mô hình phục vụ chưa đổi, cần refit và export tương thích trước khi thay thế. Kết quả vẫn là bằng
+chứng phát triển trong assay, chưa xác nhận độc lập ngoài nguồn, protein nguyên vẹn hay lâm sàng.
 
 \par\vspace{6bp}\noindent\textbf{Từ khóa:} degron, độ bền protein, dự đoán hiệu ứng đột biến, hệ ubiquitin--proteasome, học máy.
 \end{otherlanguage}

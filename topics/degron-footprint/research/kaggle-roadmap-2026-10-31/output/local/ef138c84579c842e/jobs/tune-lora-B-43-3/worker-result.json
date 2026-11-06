@@ -1,0 +1,118 @@
+{
+  "job": "tune-lora-B-43-3",
+  "started_unix": 1793876907.766977,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/tune-lora-B-43-3/calibration.json",
+      "bytes": 199,
+      "sha256": "c9372302575f7eaa131b7e383bc1d092d00d027f516307fdaa70812afc15fe81"
+    },
+    {
+      "path": "jobs/tune-lora-B-43-3/calibration.npy",
+      "bytes": 77156,
+      "sha256": "dbf94c7f94d6a5183d2b0050b0aeecb0cb5642a1bec8c07ebf98b305740e0241"
+    },
+    {
+      "path": "jobs/tune-lora-B-43-3/calibration.parquet",
+      "bytes": 436988,
+      "sha256": "cb441de543e01530eae443bbc33f5e9270045c86b18061c43086737c0dea41e0"
+    },
+    {
+      "path": "jobs/tune-lora-B-43-3/fit.json",
+      "bytes": 3306,
+      "sha256": "9feb803a29f6592a3c7acbc06bbe092d5fd1aeac7e395017805cfc94310405fd"
+    },
+    {
+      "path": "jobs/tune-lora-B-43-3/inner-validation-1.json",
+      "bytes": 199,
+      "sha256": "5646007a526e4180436f9c696f6d74b0c2edfc86913dc8a79b5599965a521062"
+    },
+    {
+      "path": "jobs/tune-lora-B-43-3/inner-validation-1.npy",
+      "bytes": 77156,
+      "sha256": "92428b3819f3a268c5cdbb8972a501b04af95461a859682c73c432a1fe90bb4b"
+    },
+    {
+      "path": "jobs/tune-lora-B-43-3/inner-validation-2.json",
+      "bytes": 199,
+      "sha256": "c9372302575f7eaa131b7e383bc1d092d00d027f516307fdaa70812afc15fe81"
+    },
+    {
+      "path": "jobs/tune-lora-B-43-3/inner-validation-2.npy",
+      "bytes": 77156,
+      "sha256": "dbf94c7f94d6a5183d2b0050b0aeecb0cb5642a1bec8c07ebf98b305740e0241"
+    },
+    {
+      "path": "jobs/tune-lora-B-43-3/inner-validation-3.json",
+      "bytes": 199,
+      "sha256": "55d3275f95a09e5b8b073733a24ee6d3455f2aa47129521a9bfcb534001c8391"
+    },
+    {
+      "path": "jobs/tune-lora-B-43-3/inner-validation-3.npy",
+      "bytes": 77156,
+      "sha256": "d0516baeddbe704dccd85f757cb7900f8dba2a4a5a16d90986e2ae32295f9a0c"
+    },
+    {
+      "path": "jobs/tune-lora-B-43-3/inner-validation-4.json",
+      "bytes": 199,
+      "sha256": "341dfdedff1cc40e05f42c64b2a8d8069bf875a17a3cda34c1cf3bf301d4c3aa"
+    },
+    {
+      "path": "jobs/tune-lora-B-43-3/inner-validation-4.npy",
+      "bytes": 77156,
+      "sha256": "c8b98f46f487bbec52e89e48c812a0cfd853db388595ac40657e91a02a80d4c4"
+    },
+    {
+      "path": "jobs/tune-lora-B-43-3/inner-validation-5.json",
+      "bytes": 199,
+      "sha256": "e41bfca8b78d31de9edd7545b15ac1ff8098e5ab2491451f0093d35ed4c327ca"
+    },
+    {
+      "path": "jobs/tune-lora-B-43-3/inner-validation-5.npy",
+      "bytes": 77156,
+      "sha256": "136411471fe244efc303826aa6b3dc334f87863003947bc7a5554dad0dc840a7"
+    },
+    {
+      "path": "jobs/tune-lora-B-43-3/inner-validation-6.json",
+      "bytes": 199,
+      "sha256": "c89f244faa8c1f7e0c9ba7a76ba4d64fb6e9816597e2d1304474930b0e9ddbbb"
+    },
+    {
+      "path": "jobs/tune-lora-B-43-3/inner-validation-6.npy",
+      "bytes": 77156,
+      "sha256": "04520c076e07b62942570be6b27bc789e759f455cfb338cb852044f42e58eb54"
+    },
+    {
+      "path": "jobs/tune-lora-B-43-3/inner.pt",
+      "bytes": 4087091,
+      "sha256": "3d6a154b901e17d91ce687062aaa7a24e673c02c2713ebef4052494072e5c925"
+    },
+    {
+      "path": "jobs/tune-lora-B-43-3/model.pt",
+      "bytes": 1016199,
+      "sha256": "89fdd0f9baa2b88cbd753a419defba0a298a14e306996f7207a36f58d62a93bb"
+    },
+    {
+      "path": "jobs/tune-lora-B-43-3/oof.parquet",
+      "bytes": 563937,
+      "sha256": "e92ee774dc9eeb24ff4441a5946f8b093f36071a4761b473796f04e462c39d09"
+    },
+    {
+      "path": "jobs/tune-lora-B-43-3/refit.pt",
+      "bytes": 4087091,
+      "sha256": "a5acb532dc7936c6ba1457ec43f9bcfad8142e2514199b13cc1ccea0b587349e"
+    },
+    {
+      "path": "jobs/tune-lora-B-43-3/test.json",
+      "bytes": 199,
+      "sha256": "71f6120a204eec7e6f1fc0017a1eaf98cd1e1e358e4bbf7fcd5b196f3daec280"
+    },
+    {
+      "path": "jobs/tune-lora-B-43-3/test.npy",
+      "bytes": 98844,
+      "sha256": "19dae4a2a0418e09743679247c9982dc1888a16578cbb760e15f8f6d5b3719d6"
+    }
+  ],
+  "seconds": 3493.012405395508
+}

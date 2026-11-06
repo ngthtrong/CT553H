@@ -1,0 +1,108 @@
+{
+  "job": "tune-frozen-B-43-0",
+  "started_unix": 1793793825.981376,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/tune-frozen-B-43-0/calibration.json",
+      "bytes": 199,
+      "sha256": "c9677382660e4643315c6b1562fed8236dc63785a26acd426177a81a10bdef2a"
+    },
+    {
+      "path": "jobs/tune-frozen-B-43-0/calibration.npy",
+      "bytes": 78684,
+      "sha256": "7248a18a2f22b46430174af0cc09a8ee751c2ce3625e8fb95c716909fcccbafa"
+    },
+    {
+      "path": "jobs/tune-frozen-B-43-0/calibration.parquet",
+      "bytes": 444946,
+      "sha256": "19bbddc5deb01a0464030c328ca335f2bd4060fbceda0efff8da90a09536f9be"
+    },
+    {
+      "path": "jobs/tune-frozen-B-43-0/fit.json",
+      "bytes": 373,
+      "sha256": "125d374b12ff7f69b00ffe722e95cce1a30b35abca41288f8372d74c9ba3c24d"
+    },
+    {
+      "path": "jobs/tune-frozen-B-43-0/inner-validation-1.json",
+      "bytes": 199,
+      "sha256": "c9677382660e4643315c6b1562fed8236dc63785a26acd426177a81a10bdef2a"
+    },
+    {
+      "path": "jobs/tune-frozen-B-43-0/inner-validation-1.npy",
+      "bytes": 78684,
+      "sha256": "7248a18a2f22b46430174af0cc09a8ee751c2ce3625e8fb95c716909fcccbafa"
+    },
+    {
+      "path": "jobs/tune-frozen-B-43-0/inner-validation-2.json",
+      "bytes": 199,
+      "sha256": "73b05f9e72086a64545afa3fccfa76b2f1fcec33a34f5f54105917146f7babfd"
+    },
+    {
+      "path": "jobs/tune-frozen-B-43-0/inner-validation-2.npy",
+      "bytes": 78684,
+      "sha256": "b46069f4a5b94345a1568347a362118570dd857bfd97e33a0b4e7acc62176640"
+    },
+    {
+      "path": "jobs/tune-frozen-B-43-0/inner-validation-3.json",
+      "bytes": 199,
+      "sha256": "aca5d27855f490cb93e1a8251e39edcfb954471d1ad7b2623d23c78efc457891"
+    },
+    {
+      "path": "jobs/tune-frozen-B-43-0/inner-validation-3.npy",
+      "bytes": 78684,
+      "sha256": "5e103f2442a9fb6148b3abf5a2044d282d4a49ec024e21cab42e3d6cebbbdbfb"
+    },
+    {
+      "path": "jobs/tune-frozen-B-43-0/inner-validation-4.json",
+      "bytes": 199,
+      "sha256": "8974ce47e1f8cd097a18fae05f30c12fc4d9c3602a27b7aa6773eae98930d1fd"
+    },
+    {
+      "path": "jobs/tune-frozen-B-43-0/inner-validation-4.npy",
+      "bytes": 78684,
+      "sha256": "e42d3edf7508789a1627ea377a739bceac096eda297f8215fbb166c2c230964d"
+    },
+    {
+      "path": "jobs/tune-frozen-B-43-0/inner-validation-5.json",
+      "bytes": 199,
+      "sha256": "8d121430268def19f762cee2da1656ac6628b07657238fda66621e830f0cd033"
+    },
+    {
+      "path": "jobs/tune-frozen-B-43-0/inner-validation-5.npy",
+      "bytes": 78684,
+      "sha256": "16869128e1ebe918210a1d1acfc92c6c6c74566c7a07f9c0dff22cae14d86578"
+    },
+    {
+      "path": "jobs/tune-frozen-B-43-0/inner.pt",
+      "bytes": 1066337,
+      "sha256": "66bde625179442f507e29b963c3cbe895cf768e5e65314623183e77598cce121"
+    },
+    {
+      "path": "jobs/tune-frozen-B-43-0/model.pt",
+      "bytes": 264093,
+      "sha256": "4767288d62d948b586c236037db680bf7f486ac99c7a286073b75bc493f80ea0"
+    },
+    {
+      "path": "jobs/tune-frozen-B-43-0/oof.parquet",
+      "bytes": 569592,
+      "sha256": "35a83e3b5f50aa9a646196aa4743f574d60335788e09782730c1140a5aa88d54"
+    },
+    {
+      "path": "jobs/tune-frozen-B-43-0/refit.pt",
+      "bytes": 1066401,
+      "sha256": "a3ce9518badd39952ae7c6e85c7784f101fc57c6a461753e3edb88e4db2d6f5a"
+    },
+    {
+      "path": "jobs/tune-frozen-B-43-0/test.json",
+      "bytes": 199,
+      "sha256": "c8ec85fdd23fc46d97047e40688683150f816cb6e42a2415c8e0cf7e4b7d02e9"
+    },
+    {
+      "path": "jobs/tune-frozen-B-43-0/test.npy",
+      "bytes": 99804,
+      "sha256": "5342e8a4efc3748f602098407397a2a08c2c134647f0a3db55880fa47d96cffe"
+    }
+  ],
+  "seconds": 1314.7619788646698
+}

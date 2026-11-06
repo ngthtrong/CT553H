@@ -1,4 +1,4 @@
-% Selective update, evidence snapshot: 3 November 2026.
+% Historical follow-ups plus completed campaign review: 6 November 2026.
 % Internal provenance is retained in assets/ch4/build_ch4_assets.py, not printed.
 \subsubsection{Follow-up on the Restricted Benchmark}
 Notebook replication reproduced the ridge and prototype-consistency results on Kaggle. A separate
@@ -88,22 +88,7 @@ unweighted control (Table~\ref{tab:v3-comparisons}). These results concern mutat
 transfer and a specific weighting recipe. They do not overturn the negative result for
 Voutsinos tile-label pre-training, which uses a different source endpoint and encoder.
 
-\paragraph{Local expansion in progress.}
-The saved local snapshot at 10:17 (UTC+8) on 3 November records \nVthreeLocalComplete{} of
-\nVthreeLocalTotal{} work units complete; work units are not independent models or datasets.
-Frozen-feature extraction and all \nVthreeLocalRidge{} ridge fits are complete for
-\nVthreeLocalModels{} pLM checkpoints, covering both training arms, context variants, three seeds
-and five folds. ProtT5 and Ankh are blocked at tokenizer preflight; their missing scores are
-execution exclusions, not evidence of poor prediction quality.
-
-The same-runtime ESM2-35M comparison has \nVthreeLocalFrozen{} frozen folds complete
-(both arms, seed 17) and \nVthreeLocalLora{} LoRA fold complete (restricted arm, seed 17, fold 0).
-LoRA \citep{hu2022lora} adapts low-rank attention parameters while retaining the pretrained backbone;
-the completed fold records actual adapter updates. One fold does not establish a predictive
-advantage. The next fold is marked as running in the saved state, which does not verify a live worker.
-Local and Kaggle outputs use separate runtime identities and are not pooled as independent evidence.
-Local OOF collection, complete paired LoRA--frozen comparison, calibration and locked transfer
-have not completed in this snapshot.
+\input{chapters/sections/campaign-results}
 
 \paragraph{Domain and software integration.}
 The earlier domain-gate study completed both tiers: OOF AUROC was \nRthreeLookupAuc{} using

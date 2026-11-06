@@ -1,5 +1,11 @@
 # Kiểm chứng v3 — 01/11/2026
 
+## Kiểm output local hoàn tất — 06/11/2026
+
+[analyze-local-output.py](analyze-local-output.py) ghi [local-output-analysis.json](local-output-analysis.json), [báo cáo](local-output-analysis.md) và hình tổng hợp. Đã kiểm size/SHA toàn bộ artifact của 633 job complete, giữ nguyên trạng thái nguồn kế thừa, đối chiếu đủ OOF ba seed và nhãn/fold với bundle; tái tính metric ensemble, phép so frozen–LoRA, Brier ba lớp và kết quả T. Kiểm lại artifact Kaggle làm nguồn tham chiếu; không coi hai platform là mẫu độc lập. Nguồn/hash và dung sai đối chiếu nằm trong JSON. Các helper metric được dùng lại từ runner, không gọi đây là một implementation metric độc lập.
+
+Campaign đã kết thúc, còn `source_pending`/`structure_pending`; LoRA chưa có locked T hoặc final serving export. Phần bên dưới giữ các mốc kiểm thử trước đây, không thay thế phân tích hoàn tất này.
+
 ## Trạng thái đối chiếu ngày 03/11/2026
 
 **Sửa tokenizer local sau khi dừng an toàn:** [validate-tokenizer-repair.py](validate-tokenizer-repair.py) và [tokenizer-repair-validation.json](tokenizer-repair-validation.json) ghi kiểm alignment 532 phép thay/model, token ID khớp artifact gốc, không token lạ, từ chối chiều dài sai; preflight CUDA và delta embedding batch 8 đạt cho ProtT5 FP16/Ankh FP32. FP16 của Ankh từng tạo hidden state không hữu hạn trong preflight, nên FP32 là cấu hình khai báo riêng, không phải fallback âm thầm sau OOM. Hai phép kiểm này không đánh giá hiệu năng ΔPSI.

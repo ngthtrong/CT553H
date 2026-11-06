@@ -11,17 +11,20 @@ protein-group-aware folds, inner model selection and group-bootstrap confidence 
 The full-PSI development set contains \nVthreeNPeptides{} peptides, \nVthreeNCells{} mutation cells
 and \nVthreeNGroups{} protein groups. Expanding ridge training from WT PSI at most 4 to the full
 range reduces peptide-macro mean absolute error from \nVthreeRidgeB{} to \nVthreeRidgeD{} PSI.
-Frozen ESM2-35M with a convolutional head reaches \nVthreeCnnD{} MAE; its matched pointwise
-control reaches \nVthreePointwiseD{}. Scanning-label pre-training improves a one-hot CNN under
-the tested design, whereas quality weighting worsens ridge. The lowest selected MAE does not
-establish an architecture winner. Earlier restricted-domain experiments also provide a calibrated
-ridge baseline and numerical agreement between its inference and research paths.
+Frozen ESM2-35M with a convolutional head reaches \nVthreeCnnD{} MAE. A completed local study
+compares nine frozen pLM checkpoints and 60 matched frozen/LoRA fits. LoRA reaches
+\nCampaignLoraB{} MAE with restricted training and \nCampaignLoraD{} with full-range training,
+improving on matched frozen controls by \nCampaignGainB\% and \nCampaignGainD\%.
+Protein-group intervals support both reductions, while performance by WT-PSI stratum shows a
+training-coverage trade-off. Scanning-label pre-training helps its tested CNN control; quality weighting
+does not help ridge. Out-of-fold LoRA probabilities improve Brier score but retain calibration errors.
 
-As of 3 November 2026, a React/FastAPI baseline exists, while persistent projects, batch/protein
-jobs and experimental-data comparison remain incomplete. The newer workspace is a synthetic-data
-review prototype. The local pLM and LoRA expansion, full-PSI calibration and locked held-source
-evaluation are unfinished; the serving model has not been replaced. All predictive findings are
-development evidence from the assay, with no claim of independent external validation, intact-protein
-effects, E3-specific recognition or clinical interpretation.
+The local campaign ends with 633 completed jobs and two pending input-dependent extensions.
+On a locked same-laboratory scanning set, the fixed W5 ridge model reaches positive AUROC
+\nCampaignTAuc{}, but its MAE advantage over predicting zero is unresolved; LoRA has not been
+evaluated on that set. As of 6 November 2026, a React/FastAPI baseline exists, while persistent
+projects, batch/protein jobs and experimental comparison remain incomplete. The serving model is
+unchanged and requires a compatible final refit/export before promotion. The results remain assay
+development evidence, without independent external, intact-protein or clinical validation.
 
 \par\vspace{6bp}\noindent\textbf{Keywords:} degron, protein stability, mutation effect prediction, ubiquitin--proteasome system, machine learning.

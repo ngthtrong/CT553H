@@ -96,13 +96,16 @@ API/schema checks and browser tests. Docker may package the same local component
 deployment is not required.
 
 \section{Main Contributions}
-As of 3 November 2026, the achieved contributions are:
+As of 6 November 2026, the achieved contributions are:
 \begin{enumerate}
   \item A traceable pipeline for experimental mutation-effect labels, technical quality control,
         sequence mapping and protein-group-aware evaluation, including a full-PSI development set.
   \item Evidence that broader training-label coverage and ordered context improve appropriate
         baselines, together with matched frozen-ESM pointwise/CNN comparisons. Negative findings
         on tile-label pre-training and quality weighting are retained with their scope.
+  \item A completed nine-checkpoint frozen-feature comparison and matched ESM2-35M LoRA
+        evaluation with group-bootstrap uncertainty, out-of-fold probability assessment and a locked
+        W5 transfer check that exposes regression and calibration limits.
   \item Calibrated restricted-domain baseline inference, numerical agreement with the research
         runner, and a local web/API baseline with source-aware result presentation.
 \end{enumerate}

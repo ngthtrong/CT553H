@@ -1,4 +1,8 @@
-# Chỉ mục sơ đồ của luận văn — vẽ bằng Figma (FigJam)
+# Chỉ mục sơ đồ của luận văn
+
+**Bổ sung 06/11/2026:** [2 sơ đồ campaign/nested evaluation bằng draw.io](campaign-2026-11-06/README.md), đã chèn Chương 3. Các mô tả FigJam dưới đây chỉ áp dụng bộ lịch sử 22/10.
+
+## Bộ Figma (FigJam) lịch sử — 22/10/2026
 
 Mọi sơ đồ dưới đây được dựng trong FigJam bằng Figma MCP, xuất PNG từ chính bảng FigJam rồi cắt gọn, đổi nền xám của canvas sang trắng. **8 sơ đồ sinh bằng `generate_diagram` (từ Mermaid); riêng sơ đồ use case (Fig 1.1) vẽ theo chuẩn UML bằng `use_figma`**, vì `generate_diagram` không hỗ trợ loại sơ đồ này. Không có sơ đồ nào vẽ tay hay bằng công cụ khác. Ngày dựng: 22/10/2026.
 

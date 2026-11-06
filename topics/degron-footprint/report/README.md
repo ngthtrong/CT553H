@@ -4,9 +4,13 @@ Bản luận văn đang viết của **Nguyễn Thanh Trọng** (B2305615), GVHD
 
 Bản làm việc được tạo từ [template sạch](../../../reportTemplate/README.md), đã điền metadata và nội dung đề tài. Các mục `[PENDING]` hoặc ô trong ngoặc vuông còn lại cần được hoàn thiện; không dùng thư mục template gốc để viết luận văn.
 
-**Cập nhật chọn lọc 03/11/2026:** đã bổ sung các kết quả quan trọng của [v3 full-PSI](../research/README.md), đối chứng R1/R2/R6, snapshot local 10:17 (UTC+8), đóng góp và giới hạn vào tóm tắt, phần mở đầu, Chương 4 và kết luận. Chương 2/3 được sửa ngắn để đồng bộ phương pháp và trạng thái tích hợp. Giữ nguyên số liệu benchmark lịch sử và phân biệt population/metrics. Baseline web/API và prototype [Workspace UI v2](../system/design/workspace-ui-v2/README.md) không đồng nghĩa đã nghiệm thu phạm vi phần mềm mở rộng; serving model chưa đổi. Các phần chưa có bằng chứng vẫn được ghi chưa hoàn tất.
+**Cập nhật 06/11/2026:** đã đưa kết quả campaign hoàn tất vào tóm tắt Anh/Việt, mở đầu, Chương 3–4, kết luận và phụ lục. Chương 3 có quy trình thực thi/phục hồi, nested evaluation, 9 pLM và frozen/LoRA; Chương 4 phân tích độ toàn vẹn, grid 36 ridge, 60 fit đối chứng, seed/ensemble, phân tầng PSI, hiệu chuẩn và locked transfer. Phụ lục có đủ **88 cấu hình OOF**, seed, epoch, chi phí và kiểm kê output, cùng hướng dẫn chạy/resume nghiên cứu. Thêm **2 sơ đồ chỉnh sửa được và 3 hình khoa học**. Giữ số liệu benchmark lịch sử, tách population/metrics và các runtime. Baseline web/API và prototype [Workspace UI v2](../system/design/workspace-ui-v2/README.md) chưa đồng nghĩa nghiệm thu phần mềm; serving model chưa đổi.
 
-Nguồn số và bảng mới được bổ sung vào generator tài sản; PDF một mặt/hai mặt được dựng lại và kiểm theo [current-state-validation-2026-11-03.md](current-state-validation-2026-11-03.md). Chỉ trình bày kết quả quan trọng, không chuyển toàn bộ log/thứ hạng development vào luận văn. Không in đường dẫn nội bộ để làm dẫn chứng.
+Nguồn: [audit toàn bộ output](../research/output-review-2026-11-06/README.md) và [JSON](../research/output-review-2026-11-06/results.json); bảng/hình được sinh bằng [build_campaign_assets.py](assets/ch4/build_campaign_assets.py), số lịch sử vẫn dùng generator cũ. Không in đường dẫn nội bộ làm dẫn chứng trong luận văn. Hồ sơ kiểm PDF: [current-state-validation-2026-11-06.md](current-state-validation-2026-11-06.md); bản 03/11 được giữ như lịch sử.
+
+- [PDF một mặt](build/content/content.pdf) · [PDF hai mặt](build/content-twoside/content.pdf).
+- [Sơ đồ campaign và nested evaluation](assets/diagrams/campaign-2026-11-06/README.md): nguồn `.drawio`, PDF vector và PNG xem trước.
+- LoRA-B/D có MAE 0.3637/0.3650 trên W. T chỉ đánh giá W5-D; chưa có lợi thế MAE rõ so với zero và chưa kiểm LoRA. Calibration CV chưa phải model phục vụ cuối.
 
 - [main.tex](main.tex): điểm vào LaTeX.
 - [config/metadata.tex](config/metadata.tex): thông tin bìa, sinh viên và GVHD.

@@ -1,0 +1,13 @@
+{
+  "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738",
+  "recipe": "esm2_35m-lora-B",
+  "model_ids": [],
+  "training_output": "D:\\thanhtrong\\CT553H\\topics\\degron-footprint\\research\\kaggle-roadmap-2026-10-31\\output\\local\\ef138c84579c842e\\jobs\\collect-core",
+  "input_oof_sha256": "1847a702ca14ae7618087882bc4757b26b03f64935a85dc6c390305788d1d74a",
+  "mode": "official",
+  "event_labels": [
+    "minus",
+    "neutral",
+    "plus"
+  ]
+}

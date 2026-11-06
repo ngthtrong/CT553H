@@ -1,0 +1,138 @@
+{
+  "job": "tune-lora-D-29-0",
+  "started_unix": 1793771432.58683,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/tune-lora-D-29-0/calibration.json",
+      "bytes": 199,
+      "sha256": "4bd8186994328e6a650f6477a6f51a2fa952a3436294a4b678c9946944e609bb"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/calibration.npy",
+      "bytes": 78620,
+      "sha256": "112cd1857e47907caae88ad40ff909b02973fa3d9347363bf0e7fe9d638be2fc"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/calibration.parquet",
+      "bytes": 444847,
+      "sha256": "00ebc23aa9402212735e7c8a03c68c433197f65b86585dcde032911ff217524e"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/fit.json",
+      "bytes": 3306,
+      "sha256": "2737efb44cf4f38971589315f410124605364d26002d56738d0d546259c1d7c3"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/inner-validation-1.json",
+      "bytes": 199,
+      "sha256": "c5ee9aef62a6f058add6cfae767c02e1f9d233e210a792458f89c68126ca1bd8"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/inner-validation-1.npy",
+      "bytes": 78620,
+      "sha256": "633d178910433ca1a471c8c81741a5cd2f0d085803176da1c53485b1ebfa4f43"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/inner-validation-2.json",
+      "bytes": 199,
+      "sha256": "8fcfc5b672973f6213e2c876ccf82cde6c3e02ca5800ae5ceb363de756200a62"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/inner-validation-2.npy",
+      "bytes": 78620,
+      "sha256": "34d4e7ae37b9d8fe6230ba96bc65b7cd19bbc815e147181be6a155a29b234480"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/inner-validation-3.json",
+      "bytes": 199,
+      "sha256": "f15eddc0c4b6264b25d74619ecfe6d236eab3e89d8575421ab1a072d7d757672"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/inner-validation-3.npy",
+      "bytes": 78620,
+      "sha256": "d7a4aedf2c3e380d57f9452568ee562dac4fd666761c5561149b4ecc82557652"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/inner-validation-4.json",
+      "bytes": 199,
+      "sha256": "4bd8186994328e6a650f6477a6f51a2fa952a3436294a4b678c9946944e609bb"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/inner-validation-4.npy",
+      "bytes": 78620,
+      "sha256": "112cd1857e47907caae88ad40ff909b02973fa3d9347363bf0e7fe9d638be2fc"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/inner-validation-5.json",
+      "bytes": 199,
+      "sha256": "9cf24a36c8264dd760fa224907ac2e6e3410ac2db84bfb2a72d25b9ac8247b54"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/inner-validation-5.npy",
+      "bytes": 78620,
+      "sha256": "8e173f2af9b6aa2a1d361ec5be16ef1fc0a85fa51dac459de7800e6505d95b61"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/inner-validation-6.json",
+      "bytes": 199,
+      "sha256": "cbb9d481b05e9c172670519c306aef5fcb6c050f069b23893b6c6f45eb4ff481"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/inner-validation-6.npy",
+      "bytes": 78620,
+      "sha256": "b40e37d07d29dd095f7b9a8795aa919f52ba404250840bed38a2301e3c0236df"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/inner-validation-7.json",
+      "bytes": 199,
+      "sha256": "89782c84590ba67d5561189a40f24c1620cd4b52233c668e9cc9326c5de5d35b"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/inner-validation-7.npy",
+      "bytes": 78620,
+      "sha256": "d2d5aa24af34d8e75b20e6c2b009171a8dc6a9a1657c57f6408c64db5a111f11"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/inner-validation-8.json",
+      "bytes": 199,
+      "sha256": "7b9d8adb8c70b945db6da6f064a6e60c86346adf38c90d2c423d14ac1ee50fbe"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/inner-validation-8.npy",
+      "bytes": 78620,
+      "sha256": "837b81a716ac47163ceec9dfa275ad30f3b68ad48c1315ed5ee16287643fc31a"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/inner.pt",
+      "bytes": 4087027,
+      "sha256": "2f5510c23d912506c94490f0b5a603e7bc6c8ff6536695ea6fbf758c2b651803"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/model.pt",
+      "bytes": 1016199,
+      "sha256": "47925b13aecd0a6fb57c2b6bd732c9414f68c8d20de0043b4dd6c3f6cf71ab5d"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/oof.parquet",
+      "bytes": 569590,
+      "sha256": "d3b4697add4f2df38200154d20d777f6849a6a7c1d1b11d29a71313b362909ba"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/refit.pt",
+      "bytes": 4087027,
+      "sha256": "6c2e7a45e4a9b348243dd6702114622c6bcb1d13ebc6efa57d02e62f15e31ed6"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/test.json",
+      "bytes": 199,
+      "sha256": "314373486fe6d9a98c43cf65b11b314db96b78d758cd3344c3521a54d31aa155"
+    },
+    {
+      "path": "jobs/tune-lora-D-29-0/test.npy",
+      "bytes": 99804,
+      "sha256": "ea9ac55ab9e2d9fae6a800b396bf0eed4e16033a5205111a213a6cfa6abf851f"
+    }
+  ],
+  "seconds": 6685.10385799408
+}

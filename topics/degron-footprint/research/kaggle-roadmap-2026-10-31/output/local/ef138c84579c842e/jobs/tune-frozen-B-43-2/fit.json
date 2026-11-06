@@ -1,0 +1,16 @@
+{
+  "recipe": "esm2_35m-frozen-B",
+  "seed": 43,
+  "fold": 2,
+  "arm": "B",
+  "mode": "frozen",
+  "selected_epoch": 1,
+  "validation_mse": 0.31039442977906895,
+  "changed_parameters": [
+    "head.0.weight",
+    "head.0.bias",
+    "head.3.weight",
+    "head.3.bias"
+  ],
+  "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738"
+}

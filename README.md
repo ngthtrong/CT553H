@@ -4,17 +4,17 @@ Kho nghiên cứu và báo cáo luận văn của **Nguyễn Thanh Trọng** (B2
 
 Đề tài **degron-footprint** tập trung dự đoán hiệu ứng đột biến ở từng vị trí amino acid trên nhãn thực nghiệm, kèm công cụ phân tích. Kết quả và giới hạn của từng thí nghiệm nằm trong README và tệp kết quả tương ứng.
 
-## Trạng thái ngày 03/11/2026
+## Trạng thái ngày 06/11/2026
 
 | Mảng | Hiện trạng và điểm vào |
 | --- | --- |
-| Nghiên cứu | **v3 full-PSI** đã có output Kaggle và [phân tích development](topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output-analysis.md); campaign CUDA Windows mở rộng pLM/frozen–LoRA còn dở. Xem [chỉ mục nghiên cứu và snapshot local](topics/degron-footprint/research/README.md). Chưa đóng G2/G3 hoặc chọn lại mô hình sản phẩm. |
+| Nghiên cứu | **v3 full-PSI** đã hoàn tất phần tính toán local: 633 job complete, nguồn ngoài/cấu trúc pending. [Phân tích local hoàn tất](topics/degron-footprint/research/kaggle-roadmap-2026-10-31/local-output-analysis.md) kiểm artifact, OOF, frozen–LoRA, hiệu chuẩn và T; [phân tích Kaggle](topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output-analysis.md) giữ mốc riêng. Chưa đóng G2/G3 hoặc chọn lại mô hình sản phẩm. |
 | Dữ liệu | Bundle v3 giữ saturation toàn dải PSI và scanning sau QC; nguồn, giấy phép, hash và nhật ký nằm trong [sổ dữ liệu](topics/degron-footprint/data/README.md), quy tắc dựng bundle ở [DATASET.md](topics/degron-footprint/research/kaggle-roadmap-2026-10-31/DATASET.md). Dữ liệu và artifact nặng nằm local. |
 | Ứng dụng | [Baseline FastAPI + React](topics/degron-footprint/system/app/README.md) có mã và kiểm thử lịch sử, dùng `m3-ext4.0-platt-v1`. [Phạm vi v0.2](topics/degron-footprint/system/README.md) gồm dự án/lịch sử, jobs peptide/protein, import/comparison; các phần mở rộng chưa được nghiệm thu. |
 | Giao diện | [Workspace UI v2](topics/degron-footprint/system/design/workspace-ui-v2/README.md) là prototype tương tác hiện hành; dữ liệu minh hoạ, lưu trong bộ nhớ tab, chưa nối backend. |
-| Luận văn / đề cương | [Luận văn](topics/degron-footprint/report/README.md) và [đề cương](topics/degron-footprint/proposal/README.md) cập nhật chọn lọc ngày 03/11: kết quả quan trọng v3, snapshot local và trạng thái phần mềm; PDF/DOCX được dựng lại. Còn các phần chưa hoàn tất và `[PENDING]`; cập nhật tài liệu không phải nghiệm thu G2/G3. |
+| Luận văn / đề cương | [Luận văn](topics/degron-footprint/report/README.md) cập nhật campaign hoàn tất ngày 06/11: phương pháp, 88 cấu hình OOF, LoRA/calibration/T, sơ đồ và phụ lục; [audit tổng hợp](topics/degron-footprint/research/output-review-2026-11-06/README.md). [Đề cương](topics/degron-footprint/proposal/README.md) giữ bản 03/11. Còn `[PENDING]`; cập nhật tài liệu không phải nghiệm thu G2/G3. |
 
-Trạng thái trên đối chiếu tài liệu, mã và metadata có sẵn; số test lịch sử không phải kết quả kiểm lại ngày 03/11. Snapshot campaign có mốc riêng vì tiến trình có thể tiếp tục chạy.
+Trạng thái nghiên cứu đã đối chiếu output hoàn tất ngày 06/11; số test phần mềm lịch sử không phải kết quả kiểm lại hôm nay. Các snapshot tiến độ cũ giữ mốc riêng trong chỉ mục nghiên cứu.
 
 ## Cấu trúc hiện tại
 

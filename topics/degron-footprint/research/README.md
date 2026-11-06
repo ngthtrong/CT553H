@@ -1,6 +1,14 @@
 # Nghiên cứu degron-footprint — chỉ mục hiện hành
 
-Đồng bộ ngày **03/11/2026**. Bài toán là hồi quy `ΔPSI = PSI(mutant) − PSI(WT)` cho thay thế amino acid đơn; các benchmark, phạm vi PSI và phép chia dữ liệu khác nhau phải được trình bày riêng. Kết quả development chưa đóng G2/G3 và chưa thay mô hình `m3-ext4.0-platt-v1` trong ứng dụng.
+Đồng bộ ngày **06/11/2026**. Bài toán là hồi quy `ΔPSI = PSI(mutant) − PSI(WT)` cho thay thế amino acid đơn; các benchmark, phạm vi PSI và phép chia dữ liệu khác nhau phải được trình bày riêng. Kết quả development chưa đóng G2/G3 và chưa thay mô hình `m3-ext4.0-platt-v1` trong ứng dụng.
+
+## Local đã hoàn tất — 06/11/2026
+
+[Rà soát toàn bộ output](output-review-2026-11-06/README.md) tổng hợp 88 cấu hình, kiểm kê vật lý, epoch/chi phí và nguồn hash; kết quả đã được đưa vào [luận văn](../report/README.md), kèm sơ đồ và phụ lục đầy đủ. Đây là phân tích chỉ đọc, không thêm lượt huấn luyện hay nghiệm thu phần mềm.
+
+Campaign `ef138c84579c842e` đã kết thúc **633 job complete**, còn `source_pending`/`structure_pending`. [Báo cáo phân tích](kaggle-roadmap-2026-10-31/local-output-analysis.md), [số liệu và nguồn SHA](kaggle-roadmap-2026-10-31/local-output-analysis.json), [mã tái tạo](kaggle-roadmap-2026-10-31/analyze-local-output.py) kiểm tính toàn vẹn, đủ OOF ba seed, nested selection, frozen–LoRA, hiệu chuẩn và T.
+
+LoRA đã có phép so development cùng runtime local; T hiện chỉ đánh giá W5-D. Các card frozen/LoRA còn ở mức calibration CV, chưa có model cuối để phục vụ. Snapshot tiến độ ngày 03/11 và dự báo ETA giữ làm lịch sử, không phải trạng thái hiện tại. Giữ output nguồn kế thừa, successor và output Kaggle để tái lập.
 
 ## Luồng đang thực hiện: v3 full-PSI
 
