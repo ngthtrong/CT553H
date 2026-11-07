@@ -64,7 +64,7 @@ Một điểm đáng lưu: trục của đề tài **không** rơi vào bẫy đ
 | Mô hình tốt nhất của họ | **0,555** |
 | Tập test mức tile | n = 2.521 |
 
-Chi tiết: [báo cáo 15/10](../../topics/degron-footprint/research/larsen-nuclear-and-risks-2026-10-15/README.md) mục 6 và [ghi chép 05](../../topics/degron-footprint/research/larsen-nuclear-and-risks-2026-10-15/notes/05-gap-close-prior-art.md).
+Chi tiết: [báo cáo 15/10](../../../research/larsen-nuclear-and-risks-2026-10-15/README.md) mục 6 và [ghi chép 05](../../../research/larsen-nuclear-and-risks-2026-10-15/notes/05-gap-close-prior-art.md).
 
 ---
 

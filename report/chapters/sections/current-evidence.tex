@@ -1,0 +1,113 @@
+% Historical follow-ups plus completed campaign review: 6 November 2026.
+% Internal provenance is retained in assets/ch4/build_ch4_assets.py, not printed.
+\subsubsection{Follow-up on the Restricted Benchmark}
+Notebook replication reproduced the ridge and prototype-consistency results on Kaggle. A separate
+Degformer run that excluded training rows touching the outer-test protein clusters completed all
+three seeds and five folds. Its ensemble AUROC was \nRoneAuc{}, compared with \nAucRidgeExt{} for
+the extended-training ridge. This is distinct from the earlier one-seed, saturation-only retraining:
+the clean-cluster comparison has now been performed, without establishing a transformer advantage.
+
+The frozen ESM2-650M/PCA ridge comparison reached \nRtwoAuc{}, but its paired interval against
+ridge included zero. In the subsequent representation and context study, ridge with an ordered
+$\pm5$ context reached \nRsixWfive{}, with an adjusted interval of \nRsixWfiveCI{} for the AUROC
+gain over $\pm3$. Frozen ESM2-35M with a multi-window CNN reached \nRsixMcnn{}, but the primary
+comparison with ridge had interval \nRsixPrimaryCI{} and did not meet its confirmation criterion.
+These findings motivated the matched pointwise/CNN control in the full-PSI study.
+
+% Historical R6 family G: research/r6-ladder-scan-2026-10-23/run-kaggle-20261023/results.json.
+The same restricted-benchmark study also found a gain from scanning-label fine-tuning of the
+one-hot mCNN over its own no-scanning control: AUROC difference $+0.01466$, adjusted interval
+$[0.00272,0.02759]$. This is a distinct positive transfer control, not evidence that the primary
+ESM2-mCNN comparison met its criterion. It must also be distinguished from the unsuccessful
+tile-label pre-training of Section~\ref{sec:res-pretrain}.
+
+\subsubsection{Full-PSI Development Evaluation}\label{sec:res-fullpsi}
+\paragraph{Population and protocol.}
+The full-PSI follow-up retains \nVthreeNPeptides{} saturation peptides, \nVthreeNCells{} mutation
+cells and \nVthreeNGroups{} protein groups after technical quality control, without removing
+peptides by their WT stability. The supporting scanning bundle contains \nVthreeNScanCells{} cells.
+The label remains the replicate-mean $\Delta$PSI from the Zhang reporter assay
+\citep{zhang2023,zhang2023data}; these are reprocessed public measurements, not new wet-lab data.
+Groups combine whole-proteome cov80 clusters, additional bidirectional cov50 similarity hits and
+exact-sequence unions. This is heuristic homology control, not a proof of biological independence.
+Scanning data are partitioned by group before fitting into development, held-source and
+saturation-overlap subsets; overlapping scanning groups do not supply transfer-training labels.
+
+Five outer folds and seeds 17, 29 and 43 share the evaluation cells. Training is either restricted
+to $\mathrm{PSI}_{\mathrm{WT}}\le4$, uses the full range, or uses the full range balanced first by
+WT-PSI stratum and then by peptide. Inner validation covers the full range in all three arms;
+therefore the restricted arm is not entirely unexposed to high-PSI labels during model selection.
+Scaling, PCA and hyperparameter selection remain inside the applicable training split. This protocol
+was designed after earlier results were known and is an extension for development, not an independent
+preregistration. It defines a new evaluation population rather than expanding the old 91-peptide test.
+
+\paragraph{Models and metrics.}
+Ridge with ordered $\pm5$ context remains the reference. Frozen ESM2 representations
+\citep{lin2023esm} are compared through pointwise, single-window and multi-window convolutional heads.
+For the matched ESM comparison, the crop, auxiliary inputs and projection are held common; the
+pointwise head does not mix positions, whereas the CNN does. This isolates positional mixing more
+closely than comparing different pLM pooling schemes. It does not make the parameter counts equal.
+Neural epochs are chosen by inner MSE before refitting on the permitted outer-training data.
+
+The primary measure is mean absolute error in PSI units, calculated within each peptide and then
+averaged across all \nVthreeNPeptides{} peptides. Positive-event AUROC uses
+$\Delta\mathrm{PSI}\ge1$ and requires at least three cells in each class; only
+\nVthreePlusEligible{} peptides qualify. High-PSI peptides can still inform regression when a positive
+event is physically unavailable. Each table entry averages the three seed predictions per cell
+before calculating metrics; it is not an average of seed-level metric values.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Selected full-PSI development results. MAE is lower-is-better; positive AUROC is higher-is-better.
+  All rows use the same evaluation population and three-seed prediction ensemble.}
+  \label{tab:v3-results}
+  \input{assets/ch4/tab-v3-results}
+\end{table}
+
+\paragraph{What the results establish.}
+Full-range training reduces W5 ridge MAE from \nVthreeRidgeB{} to \nVthreeRidgeD{}
+(\nVthreeRidgeGain\%), with the largest gains in the high-WT-PSI strata. Balancing lowers MAE
+further to \nVthreeRidgeE{}, but does not preserve positive-event ranking as well; it is not a
+uniform improvement. The adjusted intervals in Table~\ref{tab:v3-comparisons} support a reduction
+in MAE, but their upper endpoints do not establish the prespecified minimum reduction of 0.02 PSI
+throughout the intervals.
+
+Frozen ESM2-35M with a CNN reaches MAE \nVthreeCnnD{}. Relative to the matched pointwise head,
+the difference is \nVthreeCnnDelta{} with descriptive interval \nVthreeCnnCI{}.
+The balanced multi-window CNN has the lowest selected MAE, \nVthreeMcnnE{}, but its advantage
+over the full-range single-window CNN is only \nVthreeMcnnGap{} PSI. The ranking alone does not
+establish an architecture winner. Choosing the top 5\% of predicted positive substitutions within
+eligible peptides gives macro precision \nVthreeCnnTopFive\% for the ESM CNN; this is a ranking
+utility measure, not a calibrated probability or whole-dataset accuracy.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Paired full-PSI MAE differences; negative values favour the first method. The two ridge
+  range comparisons use 97.5\% intervals adjusted for two tests; the remaining intervals are
+  descriptive 95\% intervals. All use 5,000 protein-group bootstrap resamples.}
+  \label{tab:v3-comparisons}
+  \input{assets/ch4/tab-v3-comparisons}
+\end{table}
+
+Scanning pre-training improves the one-hot CNN from \nVthreeCnnScratch{} to
+\nVthreeCnnTransfer{} MAE under this design. Quality weighting worsens ridge relative to its
+unweighted control (Table~\ref{tab:v3-comparisons}). These results concern mutation-label scanning
+transfer and a specific weighting recipe. They do not overturn the negative result for
+Voutsinos tile-label pre-training, which uses a different source endpoint and encoder.
+
+\input{chapters/sections/campaign-results}
+
+\paragraph{Domain and software integration.}
+The earlier domain-gate study completed both tiers: OOF AUROC was \nRthreeLookupAuc{} using
+screen PSI and \nRthreeSequenceAuc{} using sequence-derived features. This estimates membership
+of the restricted baseline's training domain, not per-mutation prediction accuracy. Raw screen PSI
+and intrinsic WT PSI are different estimators, so applying the intrinsic threshold directly to
+screen PSI is invalid. The baseline service still requires the delivered gate adapter and its
+borderline state. A future full-PSI serving model would need its own domain and calibration policy.
+
+The local React/FastAPI baseline, reference ETL and recorded baseline tests exist. The newer
+workspace interface is an interactive design prototype with synthetic scores and tab-memory
+state; it does not establish backend inference or durable storage. Projects/history, peptide and
+protein jobs, experimental import/comparison and local PostgreSQL acceptance remain open.
+The serving model remains the calibrated restricted-PSI ridge baseline; none of the new research
+scores constitutes automatic model promotion or completion of the research and software gates.

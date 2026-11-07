@@ -1,20 +1,20 @@
-# Dữ liệu: nằm trong thư mục từng đề tài, KHÔNG BAO GIỜ đưa lên git.
-# Sinh lại bằng script trong code/ hoặc research/ của đề tài đó.
+# Dữ liệu: data/ hiện ở gốc repo; áp dụng cả cho data/ lồng bên trong.
+# Sinh lại bằng script trong research/. Không đưa dữ liệu nặng lên git.
 # Chặn NỘI DUNG mọi thư mục data/ (không chặn chính thư mục) để README.md nguồn gốc
 # dữ liệu bên trong vẫn lên git. SOURCE.md ở mọi độ sâu cũng lên git: nó giữ thông báo
 # giấy phép và xuất xứ của từng bộ dữ liệu tải về (ví dụ thông báo MIT của Larsen 2025).
 **/data/**
 !**/data/README.md
-!**/data/raw/
-!**/data/raw/*/
+!**/data/**/
 !**/data/**/SOURCE.md
+# Repo nguồn clone trong data/ ở local; không để Git nhận thành gitlink lồng nhau.
+**/data/**/repo/
 
 # Mô hình đã huấn luyện, kết quả nặng
-topics/*/models/
-archive/topics/*/models/
+**/models/
 *.pkl
 *.joblib
-*.pt                                                                            
+*.pt
 *.safetensors
 
 # Output Kaggle/local: mặc định chặn mọi file, chỉ mở metadata/báo cáo local.
@@ -23,54 +23,54 @@ archive/topics/*/models/
 # Kết quả Kaggle nhỏ được lưu ở output-analysis*.json/md cạnh runner.
 # Phải mở từng thư mục cha để Git xét các ngoại lệ bên dưới.
 # Không mở toàn bộ *.json/CSV trong output: weights/tokenizer và dữ liệu vẫn ở local.
-/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/**
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/
+/research/kaggle-roadmap-2026-10-31/output/**
+!/research/kaggle-roadmap-2026-10-31/output/local/
+!/research/kaggle-roadmap-2026-10-31/output/local/*/
 
 # Bằng chứng theo campaign: kế hoạch, DAG, trạng thái/hash và lý do thay thế.
 # latest/session/progress, khóa, STOP và log không được mở ngoại lệ.
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/plan.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/queue.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/state.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/superseded.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/inheritance.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/
+!/research/kaggle-roadmap-2026-10-31/output/local/*/plan.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/queue.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/state.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/superseded.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/inheritance.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/
 # Chỉ mở metadata/kết quả do runner ghi, không mở mọi *.json:
 # tokenizer.json/config.json hoặc mảng dự đoán JSON mới vẫn bị chặn.
 # progress cấp job được giữ để đối chiếu extraction; progress cấp campaign bị chặn.
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/fit.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/worker-result.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/preflight.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/*-lock.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/feature-manifest.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/weights.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/weights-build.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/import.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/progress.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/inner-validation-*.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/calibration.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/test.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/*-results.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/collection.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/comparisons.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/pending.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/evidence.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/collect-*/summary.csv
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/report/benchmark.csv
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/fit.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/worker-result.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/preflight.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/*-lock.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/feature-manifest.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/weights.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/weights-build.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/import.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/progress.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/inner-validation-*.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/calibration.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/test.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/*-results.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/collection.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/comparisons.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/pending.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/evidence.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/collect-*/summary.csv
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/report/benchmark.csv
 
 # Calibration và locked transfer ghi model-card/selection-lock trong thư mục recipe.
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/calibrate-core/*/
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/calibrate-core/*/model-card.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/calibrate-core/*/selection-lock.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/locked-transfer-w5/*/
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/locked-transfer-w5/*/model-card.json
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/locked-transfer-w5/*/selection-lock.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/calibrate-core/*/
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/calibrate-core/*/model-card.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/calibrate-core/*/selection-lock.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/locked-transfer-w5/*/
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/locked-transfer-w5/*/model-card.json
+!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/locked-transfer-w5/*/selection-lock.json
 
 # Nguồn/revision/SHA của weights dùng chung; không mở thư mục snapshot revision.
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/weights/*/
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/weights/*/SOURCE.md
-!/topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/weights/*/status.json
+!/research/kaggle-roadmap-2026-10-31/output/local/weights/*/
+!/research/kaggle-roadmap-2026-10-31/output/local/weights/*/SOURCE.md
+!/research/kaggle-roadmap-2026-10-31/output/local/weights/*/status.json
 
 # Python
 __pycache__/
@@ -85,7 +85,7 @@ target/
 build/
 # Cho phép .gitignore riêng của hai bản LaTeX chọn PDF cần giữ.
 !/reportTemplate/build/
-!/topics/degron-footprint/report/build/
+!/report/build/
 dist/
 
 # Bí mật
@@ -110,7 +110,7 @@ dist/
 *.snm
 *.vrb
 
-# Ứng dụng (topics/*/system/app): CSDL sinh ra khi chạy, độ phủ, kết quả kiểm thử. Không bao giờ đưa lên git
+# Ứng dụng (system/app): CSDL sinh ra khi chạy, độ phủ, kết quả kiểm thử. Không bao giờ đưa lên git
 # (dev.db 453 MB và idem.db 122 MB đã từng lọt vào một commit vì `.data/` có dấu chấm không khớp `**/data/**`).
 **/.data/
 **/.coverage

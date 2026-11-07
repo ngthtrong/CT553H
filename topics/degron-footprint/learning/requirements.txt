@@ -1,4 +1,0 @@
-# Install in a separate learning/document environment, never over the CUDA campaign environment.
-matplotlib>=3.9,<4
-Pillow>=11,<13
-PyMuPDF>=1.25,<2

@@ -84,7 +84,7 @@ Tác giả dùng cấu trúc (rASA, pLDDT) **chỉ để phân tích sau**, khô
 
 ## Nguồn trong repo
 
-- [voutsinos-2026-audit/](../../topics/degron-footprint/research/voutsinos-2026-audit/README.md) — ghi chú audit, script, JSON kết quả
+- [voutsinos-2026-audit/](../../../research/voutsinos-2026-audit/README.md) — ghi chú audit, script, JSON kết quả
 - NOTICE.md — giấy phép hình
 
 ---

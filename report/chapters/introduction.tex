@@ -1,0 +1,175 @@
+% Research progress snapshot, 6 November 2026; numerical sources remain in source comments.
+\addchap{PART 1. INTRODUCTION}\label{chap:introduction}
+\ThesisFlatNumbering
+
+\section{Problem Statement and Scientific Motivation}
+\subsection{From Proteins to Regulated Degradation}
+Proteins carry out catalysis, transport, signalling and structural functions in cells. Their usefulness
+depends on having the appropriate amount of functional protein in the appropriate place and at the
+appropriate time. \emph{Protein homeostasis}, or proteostasis, coordinates protein production, folding,
+localisation and removal; an imbalance can leave insufficient functional protein or allow damaged or
+unneeded protein to accumulate \citep{balch2008}. Degradation therefore contributes both to quality
+control and to regulation. The lifetime of a protein is one component of its abundance, alongside its
+rate of synthesis; abundance and degradation rate are related quantities with different meanings.
+
+The ubiquitin--proteasome system (UPS) provides one route for selective protein removal. A
+\emph{degron} is a degradation signal whose activity depends on recognition and molecular context.
+Such signals can involve N-terminal, C-terminal or internal sequence features; they are not a single
+universal motif \citep{varshavsky2019,koren2018}. Changes to an amino acid can alter a recognition
+motif or the accessibility of a signal. An exposed peptide sequence in a reporter and the same sequence
+buried in a folded protein can consequently behave differently. Proteome-scale peptide measurements
+indeed identify potent degrons in regions that are buried in the native structure \citep{voutsinos2026}.
+
+\subsection{Mutation Measurements and Their Limits}
+Experimental mutagenesis links sequence changes to measured phenotypes. Scanning mutagenesis tests
+selected replacements along a sequence, whereas saturation mutagenesis samples a broader set of
+replacements at each position. Early massively parallel sequence--function experiments showed that a
+few representative replacements can miss important amino-acid-specific behaviour \citep{fowler2010}.
+GPS profiling measures fluorescent fusion reporters in cells \citep{yen2008}; a later application to
+internal degrons combined peptide screening, mutagenesis and mechanistic follow-up
+\citep{zhang2023}. These approaches make mutation effects observable, but their output is tied to the
+assay, reporter and cellular condition used.
+
+The practical need is supported by experimental studies rather than by an assumed shortage of
+computing. For example, VAMP-seq quantified the abundance of 7,801 single-amino-acid variants of
+PTEN and TPMT, while also documenting proteins for which the assay was unsuitable
+\citep{matreyek2018}. Zhang et al.\ report that a short-peptide assay can miss conformational motifs,
+some modification-dependent signals and signals whose recognising factors are unavailable in the
+assayed cells \citep{zhang2023}. Thus, extensive measurements still leave gaps in sequence coverage
+and biological context. A computational model could help rank additional substitutions for follow-up.
+Whether that ranking saves experimental work must be tested prospectively. CT553H has measured
+neither a reduction in wet-lab cost nor an improvement in experimental yield.
+
+\subsection{The Specific Prediction Problem}
+This project predicts the change in the Protein Stability Index (PSI) of a peptide reporter after one
+amino acid substitution:
+\begin{equation}
+ f(s,i,a)\longrightarrow\widehat{\Delta\mathrm{PSI}},\qquad
+ \Delta\mathrm{PSI}=\mathrm{PSI}_{\mathrm{mutant}}-\mathrm{PSI}_{\mathrm{WT}},
+ \label{eq:intro-task}
+\end{equation}
+where $s$ is the wild-type (WT) peptide sequence, $i$ is the substituted position and $a$ is the new
+amino acid. In the Zhang assay, higher PSI means greater reporter stability. A positive effect therefore
+indicates reporter stabilisation and may be consistent with weakening a degradation signal; it does
+not identify the responsible E3 ligase or establish the mechanism. The task is continuous
+mutation-effect regression, with event ranking as a secondary analysis. It is distinct from identifying
+degron-containing peptides, predicting an absolute activity score, estimating folding free energy or
+measuring the half-life of a natural full-length protein.
+
+\section{Related Work and the Research Question}
+\subsection{What Existing Studies Establish}
+Experimental maps cover internal degrons \citep{zhang2023}, cytosolic peptides
+\citep{voutsinos2026} and transcription-factor peptides \citep{larsen2025}; the last source is cited here
+as the inspected 2025 preprint. PAP predicts peptide abundance with a convolutional model and uses
+mutant--WT score differences to investigate variant abundance effects, including selected experimental
+validation \citep{voutsinos2026}. MetaDegron predicts E3-targeted degrons using sequence and other
+features \citep{zheng2024}. DEGRONOPEDIA and DegronMD provide degron prediction and contextual
+annotation resources \citep{degronopedia,degronmd}. Degformer is an inspected software implementation
+of transformer-based peptide prediction, cited as a repository rather than as a verified peer-reviewed
+article \citep{degformer}. These works demonstrate that computational degron prediction and analysis
+of mutation effects already exist.
+
+Consequently, combining a protein language model (pLM) with a CNN is not, by itself, an established
+novel contribution. The narrower question in CT553H is how well continuous substitution effects can be
+predicted on a specified reporter endpoint when training-label coverage, sequence representation,
+head architecture and adaptation are compared under common protein-group-aware evaluation.
+Biological dependencies can otherwise make prediction estimates optimistic
+\citep{bernett2024}. This is a bounded empirical question on the available data, not a claim that prior
+work has never studied residue effects or controlled sequence similarity.
+
+\subsection{Research Questions Organising This Progress Report}
+The following questions connect the existing protocols and analyses. They organise the present
+report; they are not presented as an independent preregistration preceding all historical experiments.
+\begin{enumerate}
+  \item \textbf{RQ1---Training-label coverage:} Does expanding the WT-PSI range used for training improve
+        prediction on a common evaluation population, and which PSI strata benefit or deteriorate?
+  \item \textbf{RQ2---Representation and head:} Do ordered context and pLM representations improve
+        matched baselines, and does CNN or multi-scale CNN mixing add a reproducible advantage over
+        a pointwise control?
+  \item \textbf{RQ3---Transfer learning:} Under which tested conditions does scanning-mutation or
+        peptide-label pre-training improve saturation mutation-effect prediction?
+  \item \textbf{RQ4---Adaptation:} Does LoRA improve over its matched frozen-encoder control across
+        seeds and PSI strata, and what computational cost accompanies the gain? Full fine-tuning
+        requires its own completed evidence and is not inferred from LoRA.
+  \item \textbf{RQ5---Generalisation and reliability:} How stable are predictions across held-out protein
+        groups, where do large errors occur, and how do regression and probability calibration behave
+        on a held-source population?
+\end{enumerate}
+The remaining literature search on work in Vietnam is \emph{not yet completed}; no claim of national
+novelty is made. Independent external and biological validation remain open research needs.
+
+\section{Objectives}
+\subsection{General Objective}
+To evaluate methods for predicting reporter-based amino acid substitution effects in degron peptides,
+with explicit control of sequence relatedness and uncertainty, and to support traceable exploration
+through a local software tool.
+
+\subsection{Specific Objectives}
+\begin{enumerate}
+  \item Build an auditable pipeline for source provenance, sequence mapping, technical quality control
+        and endpoint-specific mutation labels.
+  \item Compare ridge, ordered-context, one-hot and pretrained-representation methods under common
+        evaluation conditions; retain historical reference experiments with their original scope.
+  \item Test coverage, transfer, head architecture and encoder adaptation using matched controls,
+        rather than presuming that greater model complexity improves prediction.
+  \item Report regression error, event ranking, PSI-stratum behaviour, seed variation and cluster-level
+        uncertainty, with clear distinctions between development and independent validation.
+  \item Develop a local React/FastAPI tool for peptide and tiled-protein exploration, source annotation,
+        experimental-data comparison, project history and traceable export; verify implementation
+        separately from scientific model validity.
+\end{enumerate}
+
+\section{Research Subject and Scope}
+The research subject is the relation between a single amino acid substitution and a measured change
+in peptide-reporter stability. A \emph{residue} denotes one amino acid at a sequence position; a
+mutation-effect \emph{footprint} is the map of effects over positions and substitutions, conditional on
+the assay and any stated effect threshold.
+\begin{itemize}
+  \item The main labels come from the human 28-residue peptide study of Zhang et al.\ \citep{zhang2023}.
+        The current full-PSI saturation development population contains \nVthreeNPeptides{} peptides
+        in \nVthreeNGroups{} protein groups. Historical restricted populations are reported separately;
+        the enlarged population is not an independent replication of them.
+  \item Sequence, substitution position and amino-acid identity are prediction inputs. Measured WT
+        PSI is used to construct labels and define training arms or analysis strata; it is not an input to
+        the current sequence-only model. Read count, fold and experimental disagreement are likewise
+        kept outside prediction features.
+  \item An $L\times20$ display organises predicted substitutions. WT self-substitution is a reference
+        entry, not an additional experimentally observed mutation. Missing observations remain missing.
+  \item The first software release targets peptide batches, 28-residue whole-protein tiling,
+        ClinVar/reference annotation, CSV/TSV comparison, persistent local projects and export.
+        These are partly implemented requirements. Scoring tiles across a protein does not establish
+        full-length protein effects; imported measurements do not automatically become training data.
+  \item The software scope is one local application. Public deployment and accounts are outside the
+        current acceptance scope. E3 identification, clinical pathogenicity and therapeutic benefit are
+        not model outputs. No new wet-lab experiments have been performed in this project.
+\end{itemize}
+
+\section{Research Process and Technologies}
+The work proceeds through literature and data audits, hypothesis-driven comparisons, interpretation
+of negative as well as positive findings, and prototype development. Python, NumPy, pandas,
+scikit-learn and PyTorch support modelling; MMseqs2 supports similarity analysis
+\citep{steinegger2017}. Git and \LaTeX{} preserve code and report history. The application design uses
+React/TypeScript, FastAPI and local PostgreSQL with a durable inference worker; SQLite supports
+isolated baseline development and tests. The implementation status of this design is reported
+separately in Chapters~\ref{chap:design} and~\ref{chap:evaluation}.
+
+\section{Contributions Achieved and Still Expected}
+As of 6 November 2026, the inspectable contributions are a source-traceable label/QC pipeline,
+protein-group-aware development evaluation, controlled comparisons of training coverage and
+representations, and completed local frozen/LoRA out-of-fold analyses. The report also preserves
+negative transfer and weighting findings, and a held-source W5 check that exposes regression and
+calibration limits. A restricted-domain baseline and local web/API implementation provide software
+evidence within their tested scope.
+
+These are progress contributions in data handling, evaluation and empirical understanding. A
+universally optimal architecture, an independent external advantage, a completed expanded software
+release and a measured wet-lab benefit remain unestablished. Final model selection and serving
+promotion require the additional evidence described in the evaluation and future-work sections.
+
+\section{Structure and Status of This Report}
+This is a research progress report built on the existing thesis draft. Chapter~1 specifies the problem
+and intended software behaviour; Chapter~2 explains the biology, measurements and computational
+concepts; Chapter~3 links research decisions to data and experimental methods; Chapter~4 reports
+results, uncertainty and current evidence limits. The concluding part gives provisional findings and
+next steps. Appendices retain reproducibility and software instructions. Uncompleted administrative,
+experimental and implementation items are not treated as final thesis results.

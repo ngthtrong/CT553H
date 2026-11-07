@@ -64,7 +64,7 @@ Claim còn sống **không phải** "ma trận 28×20 là thứ chưa ai làm", 
 
 > Ma trận 28 × 20 **đã từng được tạo** — bởi Degformer trên cùng nhãn, và bởi [Larsen 2025](larsen-2025.md) cho từng protein đơn lẻ — nhưng **chưa bao giờ dưới một split theo cụm protein, chưa bao giờ kèm trần nhãn đã đo, chưa bao giờ kèm bất định từng ô, và chưa bao giờ có điều kiện theo lớp phơi lộ.**
 
-Chi tiết: [báo cáo 15/10](../../topics/degron-footprint/research/larsen-nuclear-and-risks-2026-10-15/README.md) mục 6.1.
+Chi tiết: [báo cáo 15/10](../../../research/larsen-nuclear-and-risks-2026-10-15/README.md) mục 6.1.
 
 ---
 

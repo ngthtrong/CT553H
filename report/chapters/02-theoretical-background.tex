@@ -1,0 +1,298 @@
+% Scope: concepts directly needed for the inspected mutation-effect experiments.
+\chapter{THEORETICAL BACKGROUND}\label{chap:background}
+
+\section{Proteins and Their Regulation}
+\subsection{Amino Acids, Peptides and Protein Structure}
+An amino acid is a molecular building block with a side chain that gives it chemical properties such
+as charge or hydrophobicity. Amino acids linked by peptide bonds form a sequence, conventionally
+written from the N-terminus to the C-terminus. A \emph{residue} is an amino acid at a particular position
+in that sequence. A \emph{peptide} denotes a short chain or protein fragment; the experimental input
+in the main study is a 28-residue peptide. A full protein can contain hundreds of residues, fold into
+three-dimensional domains, bind partners and undergo chemical modifications. Its linear sequence
+and spatial structure therefore describe different aspects of the same molecule.
+
+A \emph{wild-type} (WT) sequence is the specified reference for a comparison; a \emph{mutant} differs
+from it. A missense DNA variant changes an encoded amino acid. Here, a single amino acid
+substitution is represented directly as $(s,i,a)$, without modelling nucleotide changes, expression or
+splicing. Insertions, deletions, truncations and combinations of substitutions have different input
+requirements and are outside the evaluated regression task.
+
+\subsection{Stability, Turnover, Degradation and Homeostasis}
+Proteostasis describes the coordinated maintenance of protein amount, conformation and location
+\citep{balch2008}. \emph{Degradation} is the breakdown of protein molecules. \emph{Turnover}
+describes their production and removal over time, and \emph{half-life} is a time required for half of an
+initial population to disappear under a stated model and condition. \emph{Abundance} is the amount
+present at an observation time; it depends on synthesis as well as removal. None of these quantities is
+identical to \emph{thermodynamic folding stability}, which describes the energetic preference of
+folded relative to unfolded states. A mutation can alter one of these properties without changing all
+of them in the same direction. In particular, the PSI label below is neither a folding free-energy
+change nor a half-life expressed in hours.
+
+\subsection{Selective Degradation and Degrons}
+In a canonical UPS pathway, E1 activates ubiquitin, E2 carries it and an E3 ligase helps determine
+substrate recognition and ubiquitin transfer. Appropriate ubiquitination can lead to substrate
+processing by the proteasome. Ubiquitin also has non-degradative roles, so ubiquitination alone is not
+proof of degradation. Degrons contribute specificity; N- and C-degrons depend on terminal context,
+while internal degrons occur within a sequence \citep{varshavsky2019,koren2018}. The UPS is one
+part of cellular degradation, alongside pathways such as lysosomal degradation.
+
+Degron activity depends on more than the presence of a short word in an amino acid string. A motif
+may be masked by folding or a binding partner, require a post-translational modification, or be inactive
+when its recognising machinery is absent. Molecular recognition, access to an appropriate
+ubiquitination site and proteasomal processing are distinct requirements. The schematic in
+Figure~\ref{fig:ups-concept} illustrates a possible route rather than a universal mechanism.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[node distance=6mm, every node/.style={font=\small,align=center},
+ box/.style={draw,rounded corners,text width=10.4cm,inner sep=5pt},
+ arr/.style={-{Latex},thick}]
+\node[box] (signal) {Protein with an accessible degradation signal};
+\node[box,below=of signal] (recognition) {Recognition in the relevant cellular context\\
+E3-mediated substrate selection; E1/E2/E3 ubiquitination machinery};
+\node[box,below=of recognition] (removal) {Suitable ubiquitin signal and proteasomal engagement\\
+Unfolding and degradation of the substrate};
+\draw[arr] (signal) -- (recognition);
+\draw[arr] (recognition) -- (removal);
+\end{tikzpicture}
+\caption{Original conceptual schematic of a canonical UPS route, informed by
+\citep{varshavsky2019,koren2018}. It is not an observed CT553H mechanism; individual signals can
+require additional conditions, and not all ubiquitination leads to this route.}
+\label{fig:ups-concept}
+\end{figure}
+
+\subsection{How a Substitution Can Change a Degradation Signal}
+A replacement can remove a favourable recognition residue, create a new recognition sequence,
+alter local chemistry or change how a region is exposed. These are alternative mechanisms, not
+mechanistic labels supplied by the current model. Degron annotations and experimentally investigated
+variant effects support the relevance of both sequence and structural context
+\citep{degronopedia,degronmd,voutsinos2026}. Conversely, a mutation can alter catalytic activity,
+localisation or binding without acting through a degron. A measured reporter effect therefore warrants
+a statement about that reporter endpoint, followed by a separately labelled biological interpretation.
+
+\section{Experimental Measurements and Mutation Labels}
+\subsection{GPS Profiling and the Meaning of PSI}
+Global Protein Stability profiling uses a fluorescent fusion and a reference fluorescent signal to
+compare reporter abundance in cells \citep{yen2008}. In the Zhang implementation, GFP is fused to a
+peptide and fluorescence relative to DsRed determines six sorting bins. Sequencing associates
+constructs with their distribution across these bins \citep{zhang2023}.
+
+% Source of exact reconstruction: research/full-data-audit/build_psi.py, build().
+For a construct $v$, let $c_{vb}$ be its read count in bin $b$, and let $C_b$ be the total count used to
+normalise that bin in the reconstruction. The inspected processing code uses
+\begin{equation}
+ n_{vb}=c_{vb}\frac{C_1}{C_b},\qquad
+ \mathrm{PSI}_v=\frac{\sum_{b=1}^{6}b\,n_{vb}}{\sum_{b=1}^{6}n_{vb}}.
+ \label{eq:psi-bins}
+\end{equation}
+PSI is defined only with sufficient nonzero read support. Its scale is 1--6: lower values correspond
+to less stable GFP--peptide reporters and higher values to more stable reporters under this assay.
+The normalisation population and handling of headers matter when reconstructing it from counts.
+It is a bin-based index, not a direct degradation-rate measurement. GFP maturation, fusion design,
+expression and cellular condition are part of the observation process. The model does not remove
+those factors merely by predicting the index accurately.
+
+\subsection{Scanning, Saturation and the Unit of Observation}
+Scanning assays test selected replacements along many peptides. Saturation assays seek many or
+all alternative amino acids at each position, trading breadth across peptides for depth within each
+peptide. A complete single-substitution design has $19L$ non-self replacements for length $L$;
+actual observation is limited by library construction, read coverage and quality control. Systematic
+sequence--function mapping therefore records both observed effects and missing variants
+\citep{fowler2010}.
+
+In this report a \emph{mutation cell} means one entry $(\text{peptide},i,a)$ in a mutation matrix; it is
+not one biological cell. Many mutation cells share a peptide, and several peptides can share a source
+protein or a homologous protein group. They share reference measurements and sequence context.
+Consequently, thousands of mutation cells do not provide thousands of independent protein-level
+replications. Experimental replicates and random-seed training repeats are also different: the former
+probe measurement variation, while the latter probe variation in the computational procedure.
+
+\subsection{Constructing and Interpreting the Effect}
+For each technically eligible mutation, the label is the mutant PSI minus a compatible WT reference.
+% Source: residue-task-derisk-2026-10-15/residue_data.py, build_saturation().
+In the inspected saturation processing, each of the two measurement halves has its own WT baseline,
+obtained as the median of at least ten measured entries encoding the WT amino acid. The final label
+averages the two within-half differences. Scanning uses the directly measured WT construct for its
+condition. An unrelated BAG6-WT condition is not substituted for these references.
+\begin{equation}
+ \Delta\mathrm{PSI}_{p,i,a}
+ =\frac{1}{2}\sum_{r\in\{A,B\}}
+       \bigl(\mathrm{PSI}_{p,i,a,r}-\mathrm{PSI}_{p,\mathrm{WT},r}\bigr).
+ \label{eq:delta-psi-halves}
+\end{equation}
+A positive effect means reporter stabilisation; a negative effect means destabilisation. Interpretation
+as loss or creation of a degron remains conditional on the experimental system. The WT reference is
+part of label construction, not an experimentally available feature required at prediction time.
+Figure~\ref{fig:mutation-observation} separates this measurement route from the prediction route.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[every node/.style={font=\small,align=center},
+ box/.style={draw,rounded corners,text width=5.1cm,inner sep=5pt}, arr/.style={-{Latex},thick}]
+\node[box] (input) at (0,0) {WT sequence, position, replacement};
+\node[box] (lab) at (6.5,0) {WT and mutant reporter measurements};
+\node[box] (prediction) at (0,-1.8) {Sequence model\\Predicted $\widehat{\Delta\mathrm{PSI}}$};
+\node[box] (label) at (6.5,-1.8) {Compatible reference subtraction\\Observed $\Delta\mathrm{PSI}$};
+\draw[arr] (input) -- (prediction);
+\draw[arr] (lab) -- (label);
+\draw[arr] (prediction) -- node[above,text width=1.2cm] {Error} (label);
+\end{tikzpicture}
+\caption{Original conceptual diagram of mutation-effect prediction and label construction. No
+hypothetical PSI values are presented as observations. Measured WT PSI belongs to the label route.}
+\label{fig:mutation-observation}
+\end{figure}
+
+\subsection{Quality Control, Noise and PSI-Based Selection}
+Read counts affect precision; low support, invalid coordinates or residues, missing WT references and
+unreliable replicate support can prevent a label from being usable. Disagreement between replicates
+can reflect technical noise or biological condition differences. Replicate averaging reduces some
+variation but does not establish that errors are independent or remove systematic biases. Abundance
+assays illustrate the need to retain replicate-level uncertainty and assay applicability limits
+\citep{matreyek2018}. The exact filters and their sample-count effects belong to the data methods,
+rather than to an assumed universal definition of a degron.
+
+WT-PSI thresholds select different populations. Because both mutant and reference PSI lie between
+1 and 6, an effect is bounded by $1-\mathrm{PSI}_{\mathrm{WT}}$ and
+$6-\mathrm{PSI}_{\mathrm{WT}}$. A high-PSI WT has less room for large positive changes; the event
+prevalence and regression target distribution can therefore differ between strata. Expanding the
+training range changes which examples the model learns from, not just the number of rows.
+In v3, WT PSI defines training arms and reporting strata; counts support QC, and disagreement is used
+only in a designated training-weight experiment. WT PSI, counts, groups and fold identifiers are not
+sequence-model inputs. Test predictions are not clipped using the measured WT PSI.
+
+\section{Representations and Learning Methods}
+\subsection{Supervised Regression and Simple Controls}
+Supervised regression learns a mapping from inputs to a continuous target using paired observations.
+A zero-effect predictor provides a necessary reference when many substitutions have small effects.
+One-hot encoding represents an amino acid by a vector with one nonzero entry among 20 categories;
+it does not assume a numerical order among amino acids. Peptide composition records counts or
+fractions and discards order. Ordered local windows preserve which residue occurs at each relative
+position, allowing a comparison between context and composition.
+
+Ridge regression adds an $L_2$ penalty to squared-error fitting \citep{hoerl1970}:
+\begin{equation}
+ \widehat{\beta}=\arg\min_{\beta}
+ \sum_j(y_j-x_j^\mathsf{T}\beta)^2+\lambda\|\beta\|_2^2.
+\end{equation}
+The penalty stabilises estimation with correlated features. Ridge is inexpensive and interpretable at
+the feature level, but its fitted response is linear in the chosen representation. Interactions require
+explicit features or a nonlinear model. Feature scaling and the penalty must be chosen without using
+outer-test observations.
+
+\subsection{Protein Language Models and Embeddings}
+A pLM learns sequence regularities from protein corpora. ESM-2 uses a transformer to learn contextual
+residue representations \citep{lin2023esm,vaswani2017}. An \emph{embedding} is a vector representation,
+not a directly measured biological property. A residue vector can depend on the rest of the input
+sequence. The current frozen-feature design combines the change in the substituted-site vector and
+the change in mean sequence vectors, optionally with ordered context. A trained head maps these
+features to $\Delta$PSI. Dimensionality reduction limits feature size; its parameters must be fitted on
+training data within each selection split.
+
+Pretraining can provide useful regularities when endpoint labels are limited, but usefulness must be
+measured against simple controls. Larger embeddings or checkpoints need not improve this endpoint.
+The labelled-train/test separation also does not certify that sequences or homologs were absent from
+the original pLM corpus. Sequence pretraining and supervised endpoint-label leakage require separate
+audits; neither is dismissed by a claim that the encoder is frozen.
+
+\subsection{Pointwise, CNN and Multi-Scale CNN Heads}
+A one-dimensional convolution applies a learned filter along sequence positions. A kernel of width
+$k$ mixes information across $k$ neighbouring positions; applying the same filter at each position
+shares parameters. The pointwise $k=1$ head is a control without additional neighbouring-position
+mixing at that layer. On contextual pLM embeddings, it can still use context already encoded by the
+pLM. A CNN with a wider kernel tests additional local mixing; parallel kernels of different widths form
+a multi-scale CNN (mCNN). These are inductive biases, not proof of a biological motif mechanism.
+
+In v3 the tested heads include $k=1$, $k=5$ and parallel $k=3,5,7$ branches, with shared centre and
+sequence-pair/composition inputs where specified. This tests the added role of mixing while keeping
+important inputs comparable. It does not make all heads identical in parameter count. Additional
+capacity can fit noise; early stopping, matched folds and paired uncertainty help assess whether the
+extra complexity has reproducible predictive value. PAP is a related CNN-based peptide-abundance
+predictor; a mutant--WT PAP difference is a reference score, not automatically a calibrated PSI effect
+\citep{voutsinos2026}.
+
+\subsection{Frozen Encoders, Fine-Tuning and LoRA}
+A frozen encoder retains its pretrained weights while the regression head is learned. Full fine-tuning
+updates the encoder as well. LoRA instead learns a low-rank update, schematically
+$W'=W+BA$, while holding the base matrix $W$ fixed \citep{hu2022lora}. This reduces the number of
+trainable adaptation parameters; it does not guarantee lower total runtime or greater accuracy for this
+dataset. The implemented comparison adds LoRA to attention query/value projections and learns a
+head, using a frozen-encoder control with the same data assignments and base revision. Observing
+changed adapter parameters establishes that adaptation occurred; completed held-out predictions are
+still required to establish its performance. LoRA evidence cannot stand in for an uncompleted
+full-fine-tuning experiment.
+
+\subsection{Transfer Learning and Endpoint Compatibility}
+Transfer learning uses information learned on a source task or population for a target task. Scanning
+mutation labels can train a mutation-effect representation with narrower amino-acid coverage;
+peptide-abundance pre-training supplies a different endpoint and typically a different head. The
+source must exclude prohibited overlap with target-test groups before training. Source similarity,
+assay differences and target-label coverage can make transfer helpful or harmful. Negative transfer
+is an empirical result to retain, not evidence that an implementation was necessarily defective.
+Binary motif annotations are not converted into continuous $\Delta$PSI labels.
+
+\section{Evaluation and Reliability}
+\subsection{Data Splitting, Leakage and Generalisation}
+Leakage occurs when information unavailable in the intended prediction setting influences training or
+selection, yielding misleading evaluation \citep{bernett2024}. Randomly splitting mutation cells can
+put nearly identical mutants and shared WT sequences on both sides. Protein-group-aware splitting
+keeps related source proteins together; MMseqs2 supports the sequence comparisons
+\citep{steinegger2017}. The historical cov80/cov50 definitions and v3 unions are described separately
+in the methods. A heuristic similarity threshold reduces specified overlap but does not prove complete
+biological independence, especially for short shared motifs or remote homology.
+
+Nested evaluation chooses hyperparameters, scalers, PCA and stopping epochs inside outer-training
+data, then evaluates on held-out outer groups. An out-of-fold (OOF) prediction is made by a fitted
+model that excluded the corresponding outer group. Overfitting can still occur through repeated
+human selection on the same development OOF results. A locked recipe evaluated on an untouched
+source provides different evidence from selecting a winner on development data; a source previously
+explored in historical work must be described accordingly.
+
+\subsection{Losses and Regression Metrics}
+The inspected regressors use squared-error objectives or inner-validation MSE for selection. Selection
+loss and reporting metric need not coincide. For the main full-PSI endpoint, peptide-macro MAE is
+\begin{equation}
+ \mathrm{MAE}_{\mathrm{macro}}=
+ \frac{1}{P}\sum_{p=1}^{P}\frac{1}{n_p}\sum_{j=1}^{n_p}
+       |y_{pj}-\widehat{y}_{pj}|.
+ \label{eq:macro-mae}
+\end{equation}
+This gives each eligible peptide equal weight, rather than giving a densely observed peptide more
+influence solely because it has more mutation cells. RMSE increases the influence of large errors;
+Spearman correlation measures rank association rather than error magnitude. Their aggregation and
+eligibility rules must be stated before comparing values.
+
+\subsection{Event Ranking and Probability Calibration}
+The v3 positive and negative events are $\Delta\mathrm{PSI}\geq1$ and
+$\Delta\mathrm{PSI}\leq-1$, respectively. AUROC measures ranking of event versus non-event scores;
+average precision and top-fraction precision depend additionally on event prevalence. Peptides
+without sufficient examples of both classes have undefined event-ranking metrics and remain
+eligible for regression. The old restricted benchmark uses its own eligibility and macro-AUROC rules.
+
+A regression score is not a probability. Calibration learns event probabilities using permitted
+validation predictions. The Brier score measures squared probability error, whereas expected
+calibration error (ECE) summarises discrepancies between predicted and observed frequencies within
+chosen bins. Bin choice and population composition affect ECE. Improved ranking, Brier score and ECE
+need not occur together, and development calibration does not guarantee calibration after a source
+shift. A calibrator must not see the outer-test outcomes it is later evaluated on.
+
+\subsection{Uncertainty, Seeds and Fair Comparisons}
+A paired comparison evaluates both methods on the same eligible observations. Bootstrap intervals
+approximate variation under resampling \citep{efron1979}; here the resampling unit is the protein
+group, preserving the dependence of its mutation cells. The interval addresses uncertainty under this
+sampling scheme, not unmeasured assay biases or all future cell types. Seeds measure computational
+variation and are reported alongside ensemble predictions. The metric of an averaged prediction is
+not generally equal to the average of seed-specific metrics.
+
+For a difference defined as MAE(method)--MAE(control), a negative value favours the method. A
+confidence interval crossing zero leaves the direction unresolved at the stated level; it does not
+prove equivalence. Multiplicity adjustment, when specified, applies to the declared comparison family,
+not every exploratory contrast. Practical relevance also requires effect size, stratum behaviour and
+cost. Comparisons across different endpoints, QC versions, folds or runtime campaigns are contextual
+unless those differences have been reconciled explicitly.
+
+\section{Research and Software Toolchains}
+Python, NumPy, pandas, scikit-learn and PyTorch implement the research pipeline. Pinned revisions,
+configuration, manifests and prediction artifacts support reconstruction. React/TypeScript, FastAPI,
+local persistence and an inference worker implement the application design. Software test success
+checks a stated behaviour; it does not supply biological validation, independent model generalisation
+or proof of wet-lab utility.

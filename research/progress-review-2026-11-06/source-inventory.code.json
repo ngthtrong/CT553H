@@ -1,0 +1,43 @@
+{
+  "generated_local": "2026-11-06T13:03:18.599050+08:00",
+  "campaign": "ef138c84579c842e",
+  "pinned_code_sha256": "b401f4659d9d0dc308607ac4f9823b81f6ff7d6e1b786cee429a32431268f768",
+  "current_raw_code_sha256": "8adbd31726ffdb0cc78e08433e3a18b8e4e5f41637a52a6f121bab13b636dace",
+  "pinned_code_hash_reproduced": true,
+  "matching_newline_assignments": 1,
+  "per_file_newline_reconstruction": {
+    "degron_v3/__init__.py": "CRLF",
+    "degron_v3/common.py": "CRLF",
+    "degron_v3/data.py": "CRLF",
+    "degron_v3/features.py": "CRLF",
+    "degron_v3/finetune.py": "CRLF",
+    "degron_v3/learning.py": "CRLF",
+    "degron_v3/local_campaign.py": "LF",
+    "degron_v3/local_control.py": "LF",
+    "degron_v3/local_jobs.py": "LF",
+    "degron_v3/local_training.py": "LF",
+    "degron_v3/metrics.py": "CRLF",
+    "degron_v3/neural.py": "CRLF",
+    "degron_v3/pipeline.py": "CRLF",
+    "degron_v3/plm.py": "CRLF",
+    "degron_v3/stages.py": "CRLF",
+    "local-runner.py": "LF"
+  },
+  "individual_files": {
+    "EXECUTION-PROTOCOL.md": {
+      "actual_sha256": "9d2376bd115bf5934c4ebfc82031dcc30dc012eb94997959e6cd0f59c4f00f9c",
+      "pinned_sha256": "1a8ea21acf522a3d717122a1314f8c581cf7e467c9ec729d6cca2c25938418e9",
+      "reconstruction": "CRLF",
+      "pinned_hash_reproduced": true
+    },
+    "model-registry.json": {
+      "actual_sha256": "c28efc88dd4a8922d9559271a8a103986235506aa57486e87b7211320cbf279b",
+      "pinned_sha256": "e3a4e5e8a273023ac8cee963edd70af82ed78dbce1afed2ba79d0c37661d23cb",
+      "reconstruction": "CRLF",
+      "pinned_hash_reproduced": true
+    }
+  },
+  "meaning": "Same current source text reproduces the pinned runtime code/protocol/registry byte hashes using original newline conventions; original sources were not modified.",
+  "limit": "This checks saved source identity, not the ability to resume the original Windows CUDA runtime on Linux.",
+  "script_sha256": "e35c61fc55a2408734792f23be0b3c62b8afcd6914f095e447a422abd892d30b"
+}

@@ -1,0 +1,73 @@
+% PART 3. CONCLUSION (Phần kết luận) - mục đánh số 1., 2., 1.1.
+\addchap{PART 3. CONCLUSION}\label{chap:conclusion}
+\ThesisFlatNumbering
+
+\section{Provisional Findings at the Progress Cutoff}
+\subsection{Knowledge and Skills}
+The work has produced a traceable computational workflow from experimental read counts to mutation
+labels, protein-group splits and model comparisons. The initial restricted-PSI studies established
+ridge as a strong baseline and showed that extending training-label coverage can help even when a
+learning curve within the original distribution is nearly flat. Negative findings on interaction
+designs and tile-label pre-training were retained rather than replaced by unsupported architecture claims.
+
+The full-PSI extension evaluates \nVthreeNPeptides{} peptides in \nVthreeNGroups{} protein groups.
+Full-range W5 ridge training reduces macro MAE from \nVthreeRidgeB{} to \nVthreeRidgeD{} PSI.
+Matched frozen-ESM controls provide development evidence for positional mixing: the CNN reaches
+\nVthreeCnnD{}, compared with \nVthreePointwiseD{} for pointwise prediction. Scanning-label
+pre-training helps its one-hot CNN control, whereas quality weighting does not help ridge.
+These are conclusions about specified populations and training recipes, not a universal model ranking.
+
+The completed local expansion adds all nine planned pLM checkpoints, 540 frozen-feature ridge fits
+and 60 matched ESM2-35M frozen/LoRA fits. LoRA reduces MAE from \nCampaignFrozenB{} to
+\nCampaignLoraB{} in arm B and from \nCampaignFrozenD{} to \nCampaignLoraD{} in arm D;
+the adjusted paired intervals support both improvements. Larger frozen encoders do not consistently
+improve performance, and the nested family selector reaches \nCampaignNested{} MAE. B and D
+remain close overall while differing across WT-PSI strata. These results support a specified adaptation
+recipe and a comparison procedure rather than a universal family ranking.
+
+Out-of-fold three-class calibration is complete for the four matched core recipes. LoRA improves
+Brier score, but positive-event ECE and high-probability reliability still expose errors. The locked
+W5-D transfer evaluation is also complete: positive AUROC is \nCampaignTAuc{}, whereas the MAE
+difference from predicting zero is \nCampaignTDelta{} with interval \nCampaignTCI{}.
+The contrast between ranking and regression limits the transfer claim.
+
+\subsection{Program and Practical Application Potential}
+The calibrated restricted-domain ridge baseline has an inference path numerically consistent with
+the research runner. A local React/FastAPI implementation supplies single-peptide results, reference
+lookup, annotations and traceable exports. Its intended use is to shortlist substitutions for
+experimental follow-up, with visible model, source and domain evidence.
+The newer workspace UI demonstrates the intended interactions with synthetic fixtures; it is not
+an integrated persistent application. Projects/history, durable peptide/protein jobs, experimental
+import/comparison, PostgreSQL integration and their local acceptance remain unfinished as of
+6 November 2026. The serving model has not been replaced by a development leaderboard result.
+
+\section{Limitations and Challenges}
+Predictive evidence comes from public reporter-assay sources that have informed several design
+decisions, including a locked transfer subset from a previously explored source. Protein-group
+splitting reduces detectable overlap but does not establish
+complete biological independence; thousands of mutation cells do not create thousands of independent
+peptides. The original 91-peptide evaluation and the full-PSI task have different populations and
+metrics. Most follow-up comparisons are exploratory, and the seeds share an outer partition.
+
+The executable local graph is complete; reviewed external-source and structure inputs remain pending.
+The locked transfer set covers R/A/S substitutions with replicate-1 labels in the same laboratory.
+High-WT-PSI regression and positive-probability shift show that favourable development ranking does
+not establish robust transfer. LoRA has not been evaluated on T. Runtime, precision and feature
+choices also differ across model families. CV calibrators are not final serving artifacts; model-specific
+final refit, lineage cards and export remain unfinished. Earlier baseline calibration and its domain
+gate cannot be assumed valid for a new serving model.
+The gate is not yet integrated correctly into the baseline application. No new wet-lab validation,
+E3-specific recognition, intact-protein prediction or clinical inference has been established.
+
+\section{Priorities for the Next Research Phase}
+Preserve the completed OOF record, paired uncertainty and unsuccessful controls. Investigate the
+high-PSI transfer errors and probability shift with an explicitly designed new evaluation, rather than
+using the already inspected T set to choose among pLMs. New external and structure extensions require
+reviewed inputs and overlap/rights audits. Any model selected for inference needs an architecture-specific
+final refit, calibration, domain policy, model card and export; the benefit of the three-seed ensemble
+must be retained or re-evaluated if the serving configuration changes.
+
+Complete the agreed local software workflows and check numerical consistency, correct domain
+handling, coordinate/assay alignment, saved-work recovery and measured resource use. Update the
+remaining installation and acceptance material from executed evidence. Further data sources or
+biological tests require endpoint, homology and source-rights audits before any broader claim.

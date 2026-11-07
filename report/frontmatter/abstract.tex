@@ -1,0 +1,31 @@
+% Abstract (English, một trang): bối cảnh, mục tiêu, phương pháp, kết quả chính,
+% giới hạn. Không dùng hình, bảng hay trích dẫn.
+\FrontChapter{ABSTRACT}
+
+A single amino acid substitution can alter the activity of a degron, a sequence element involved in
+selective protein degradation. This research progress report, dated 6 November 2026, examines
+substitution effects as changes in the Protein Stability Index ($\Delta$PSI) measured by a peptide
+reporter assay and the development of a local analysis tool.
+The computational work reconstructs labels, controls sequence overlap and evaluates models with
+protein-group-aware folds, inner model selection and group-bootstrap confidence intervals.
+
+The full-PSI development set contains \nVthreeNPeptides{} peptides, \nVthreeNCells{} mutation cells
+and \nVthreeNGroups{} protein groups. Expanding ridge training from WT PSI at most 4 to the full
+range reduces peptide-macro mean absolute error from \nVthreeRidgeB{} to \nVthreeRidgeD{} PSI.
+Frozen ESM2-35M with a convolutional head reaches \nVthreeCnnD{} MAE. A completed local study
+compares nine frozen pLM checkpoints and 60 matched frozen/LoRA fits. LoRA reaches
+\nCampaignLoraB{} MAE with restricted training and \nCampaignLoraD{} with full-range training,
+improving on matched frozen controls by \nCampaignGainB\% and \nCampaignGainD\%.
+Protein-group intervals support both reductions, while performance by WT-PSI stratum shows a
+training-coverage trade-off. Scanning-label pre-training helps its tested CNN control; quality weighting
+does not help ridge. Out-of-fold LoRA probabilities improve Brier score but retain calibration errors.
+
+The local campaign ends with 633 completed jobs and two pending input-dependent extensions.
+On a locked same-laboratory scanning set, the fixed W5 ridge model reaches positive AUROC
+\nCampaignTAuc{}, but its MAE advantage over predicting zero is unresolved; LoRA has not been
+evaluated on that set. As of 6 November 2026, a React/FastAPI baseline exists, while persistent
+projects, batch/protein jobs and experimental comparison remain incomplete. The serving model is
+unchanged and requires a compatible final refit/export before promotion. The results remain assay
+development evidence, without independent external, intact-protein or clinical validation.
+
+\par\vspace{6bp}\noindent\textbf{Keywords:} degron, protein stability, mutation effect prediction, ubiquitin--proteasome system, machine learning.

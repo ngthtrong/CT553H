@@ -1,0 +1,220 @@
+% All numbers and tables: research/output-review-2026-11-06/results.json.
+% The generator records its source hash in assets/ch4/campaign-numbers.tex.
+\subsubsection{Campaign Completion and Integrity}\label{sec:campaign-results}
+The completed snapshot on 6 November contains \nCampaignComplete{} complete jobs out of
+\nCampaignTotal{} planned units. The two remaining states await reviewed external-source and
+structure inputs; they are not failed training jobs. All nine pLM preflights and feature extractions,
+540 ridge fits, 30 frozen-head fits, 30 LoRA fits, OOF collection, core calibration, locked W5-D
+transfer and reporting have completed. ProtT5 and Ankh now have results in every planned family cell.
+
+The read-only review verifies sizes and SHA-256 hashes for 4,278 local artifact references
+(5.77~GB) and 2,986 completed Kaggle artifacts (3.07~GB), with no recorded mismatch. It also
+checks the 76 pinned analysis sources: 75 match the current bytes and one exactly reproduces its
+Windows-pinned hash after line-ending reconstruction. It confirms that the inherited source state
+remains unchanged. Fit metadata declares adapter changes in all 30 completed LoRA fits; the present
+review does not reload model tensors. Inventory counts distinguish
+physical caches/checkpoints from scientific observations (Appendix~\ref{app:supplementary}).
+Hash agreement establishes artifact identity; it does not independently verify biological labels.
+
+There are 41 local OOF recipes and 47 Kaggle recipes, listed completely in
+Table~\ref{tab:campaign-all}. Each local recipe contains 367,236 rows: three predictions for each
+of the same 122,412 cells. Cell keys, labels, groups and outer folds agree with the pinned bundle;
+predictions are finite and there are no duplicate seed/cell keys. The current review independently
+recalculates MAE for all 41 local recipes, full metrics for the four matched core recipes, core
+probability Brier scores and locked-transfer metrics from saved predictions. It also verifies all
+32 files in the pinned dataset manifest and the 15 seed-specific inner split-role sets. The Kaggle
+metrics remain the recorded analysis, with its artifact identities rechecked. The 88 rows are correlated
+development estimates, including controls and
+learning-curve variants, not 88 independently trained model families or validation cohorts.
+The interrupted Kaggle tuning control has only one seed and is explicitly marked in the appendix.
+
+\subsubsection{Nine-Checkpoint Frozen-Feature Comparison}\label{sec:family-results}
+Table~\ref{tab:campaign-family} reports the full local family grid in MAE. The four columns share
+the same evaluation population; B/D change permitted training coverage, while W5 changes explicit
+ordered context. These are frozen-feature ridge models, distinct from the matched neural-head
+experiment below. Figure~\ref{fig:campaign-family} shows that model size does not give a monotonic
+improvement. In arm D, additional W5 context lowers point MAE for only three of nine checkpoints:
+ESM-C, ProtT5 and Ankh. No simultaneous family-wide significance claim is made from these ranks.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Local frozen-feature ridge MAE for all nine checkpoints. ``Only'' includes the common
+  auxiliary inputs; W5 adds ordered sequence context. All entries use three-seed OOF ensembles.}
+  \label{tab:campaign-family}
+  \input{assets/ch4/tab-campaign-family}
+\end{table}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{assets/ch4/fig-campaign-family.pdf}
+  \caption{Frozen pLM ridge results under full-range training. Points joined on the same row compare
+  explicit context for one checkpoint; the connectors are not confidence intervals.}
+  \label{fig:campaign-family}
+\end{figure}
+
+Nested selection among the 36 candidates reaches MAE \nCampaignNested{} and positive AUROC
+0.8409. Its 15 saved seed/fold choices exactly match the minimum saved inner MSE. ESM2-8M is
+selected five times and Ankh three times; several other checkpoints are selected once or twice
+(Table~\ref{tab:campaign-nested}). This evaluates a selection procedure, rather than retrospectively
+reporting the best outer-OOF family score. Its exploratory MAE difference from the Kaggle W5-D
+reference is $-0.01335$, with descriptive group-bootstrap interval $[-0.01719,-0.00967]$.
+The cross-runtime comparison does not isolate the causal contribution of pretraining or model size.
+
+\subsubsection{Completed Matched Frozen--LoRA Evaluation}\label{sec:lora-results}
+The same-runtime controls now permit a complete adaptation comparison (Table~\ref{tab:campaign-core}).
+LoRA-B reaches MAE \nCampaignLoraB{} and positive AUROC \nCampaignLoraAucB{}; LoRA-D reaches
+\nCampaignLoraD{} and \nCampaignLoraAucD{}, respectively. Relative to their own frozen controls,
+the MAE reductions are \nCampaignGainB\% and \nCampaignGainD\%. All four matched contrasts
+retain the favourable direction throughout the adjusted intervals in Table~\ref{tab:campaign-paired}.
+This supports adapting this backbone under the specified development protocol; it does not establish
+that LoRA will improve every pLM, assay or final deployed model.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Matched local ESM2-35M results. MAE uses all 235 peptides; positive AUROC/AP use
+  184 eligible peptides and negative AUROC uses 110. Higher ranking metrics are better.}
+  \label{tab:campaign-core}
+  \input{assets/ch4/tab-campaign-core}
+\end{table}
+\begin{table}[htbp]
+  \centering
+  \caption{Paired local contrasts: LoRA minus its frozen control. Confidence intervals use 5,000
+  protein-group resamples; 98.75\% intervals adjust a post-hoc family of four comparisons.
+  Negative MAE differences and positive AUROC differences favour LoRA.}
+  \label{tab:campaign-paired}
+  \input{assets/ch4/tab-campaign-paired}
+\end{table}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{assets/ch4/fig-campaign-core.pdf}
+  \caption{Matched adaptation evidence. (a) Ensemble MAE and individual seed results;
+  (b) paired MAE differences with multiplicity-adjusted group-bootstrap intervals.
+  The seeds share the outer folds and are not independent cohorts.}
+  \label{fig:campaign-core}
+\end{figure}
+
+Seed-level MAE differs materially from the ensemble (Table~\ref{tab:campaign-seeds}). For LoRA-B,
+single-seed MAEs are about 0.378--0.379, while averaging their predictions gives 0.3637. Consequently,
+the ensemble result cannot be assigned to a single checkpoint. All seeds improve on their matched
+frozen controls, but shared outer folds prevent treating the seed results as independent replications.
+Selected epochs are short: frozen B/D have median 1, LoRA-B median 3 and LoRA-D median 2
+(Table~\ref{tab:campaign-epochs}). They are chosen by inner validation, not by outer performance.
+
+Arm choice remains a trade-off. LoRA-D minus LoRA-B MAE is $+0.00133$, with descriptive 95\%
+interval $[-0.00295,0.00554]$. The near tie does not establish that restricted training is generally
+preferable. Table~\ref{tab:campaign-strata} shows that D improves the PSI $>5$ stratum while B is
+better at PSI $\le3$. The highest stratum has no eligible positive-event AUROC peptides, because
+its event range is constrained; it still contributes to regression. Stratum intervals are exploratory.
+
+\begin{table}[htbp]
+  \centering
+  \caption{LoRA peptide-macro MAE by WT-PSI stratum. The final column is the paired D-minus-B
+  difference with a descriptive 95\% protein-group interval; $n$ counts peptides.}
+  \label{tab:campaign-strata}
+  \input{assets/ch4/tab-campaign-strata}
+\end{table}
+
+LoRA-B also has lower MAE than the Kaggle frozen-ESM CNN-D by 0.02069 PSI, with descriptive
+interval $[-0.02659,-0.01489]$. This is useful for prioritising candidates, but head architecture,
+runtime and adaptation all differ. The matched local contrasts provide the more specific evidence
+for adapter training. Kaggle and local ESM2-35M ridge controls are numerically close but are kept
+separate, rather than relabelled as additional independent seeds.
+
+\input{chapters/sections/residual-diagnostics}
+
+\subsubsection{Probability Calibration and Locked Transfer}\label{sec:campaign-calibration-transfer}
+Table~\ref{tab:campaign-calibration} distinguishes probabilistic quality from ranking. Both LoRA
+arms lower multiclass Brier score relative to their frozen controls and the inner-prior baseline.
+The peptide-macro LoRA-minus-frozen Brier differences are $-0.01572$ for B and $-0.01349$ for D,
+with descriptive 95\% group intervals $[-0.01986,-0.01152]$ and $[-0.01736,-0.00970]$.
+However, positive-event ECE increases. Reliability curves in Figure~\ref{fig:campaign-calibration}
+show overconfidence in high-probability bins, which contain fewer cells. A lower Brier score does
+not establish uniformly better calibration. The model cards currently mark these as CV-only
+calibrators and leave the final serving-model identifier list empty; model-specific lineage and
+final refitting remain necessary before inference integration.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Out-of-fold three-class probability evaluation. Brier is the unnormalised sum across
+  three classes; lower values are better. The prior uses inner-validation class frequencies.
+  ECE refers only to the positive event and uses ten equal-width bins.}
+  \label{tab:campaign-calibration}
+  \input{assets/ch4/tab-campaign-calibration}
+\end{table}
+
+The locked transfer set contains 39,234 R/A/S substitutions across 1,410 peptides and 730 protein
+groups, with no recorded group overlap with W or scanning development data. Only the fixed W5-D
+recipe is evaluated. It obtains MAE \nCampaignTMaE{}, compared with \nCampaignTZero{} for
+predicting zero. The paired difference is \nCampaignTDelta{} with 95\% interval
+\nCampaignTCI{}, so the average regression advantage is not resolved. Positive AUROC is
+\nCampaignTAuc{} on 338 eligible peptides and AP is 0.6011; negative AUROC is only 0.5176 on
+85 eligible peptides. Regression, positive ranking and negative ranking therefore have different
+transfer behaviour.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Locked W5-D transfer by WT PSI. $n$ counts peptides and $n_{+}$ counts peptides
+  eligible for positive-event AUROC. The zero predictor provides a regression reference.}
+  \label{tab:campaign-transfer}
+  \input{assets/ch4/tab-campaign-transfer}
+\end{table}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{assets/ch4/fig-campaign-calibration-transfer.pdf}
+  \caption{Probability and transfer limitations. (a) Development OOF positive-event reliability,
+  with the diagonal indicating agreement; (b) locked W5-D transfer MAE by WT PSI.
+  T uses a different population and does not evaluate LoRA.}
+  \label{fig:campaign-calibration}
+\end{figure}
+
+The transfer failure is concentrated in high-WT-PSI peptides: above 5, W5-D MAE is 0.4428 versus
+0.3470 for zero (Table~\ref{tab:campaign-transfer}). Across T, the observed positive-cell rate is
+0.0512, below mean predicted probability 0.0895. Although the three-class Brier score of 0.1291
+beats the development-prior baseline of 0.1348, positive probabilities shift upward relative to
+the observed rate. T contains only R, A and S replacements (25,479, 9,278 and 4,477 cells), uses
+replicate-1 labels and comes from a previously explored same-laboratory source. These results
+do not demonstrate independent external validity, clinical utility or transfer of the LoRA gain.
+
+\subsubsection{Additional Controls and Practical Consequences}
+The complete Kaggle record also contains composition, unordered-context, substitution-only,
+learning-curve, quality-weighting and scanning-label controls (Table~\ref{tab:campaign-all}).
+The substitution-only ridge encodes WT and replacement identity as separate one-hot blocks;
+despite its saved ``pair'' name, it does not add interaction terms or W5 positions. In arm D it
+reaches MAE 0.4017 and AUROC 0.8092, compared with ordered W5 at 0.4078 and 0.8319.
+Composition gives 0.4075/0.8109 and unordered context 0.4060/0.8258. Thus explicit ordering
+improves positive ranking in these controls without minimising MAE. W3-B similarly has slightly
+lower MAE than W5-B (0.4331 versus 0.4336), while W5-B has higher positive AUROC
+(0.8312 versus 0.8280). Context benefit depends on the outcome being optimised.
+
+Training-coverage controls A/B/C/D give W5 MAEs 0.4711, 0.4336, 0.4177 and 0.4078 as the
+training threshold increases from 3 to 4 to 5 to the full range. These are full-range evaluations,
+so their values cannot be compared directly with the old restricted benchmark. Scanning augmentation
+of ridge gives MAE 0.4047 using replicate 1 and 0.4048 using the replicate mean, versus 0.4078
+without the extra source. The matched scanning CNNs likewise reach about 0.3872/0.3873.
+The observed point differences do not establish an advantage from averaging replicate labels.
+
+For W5-D, mean single-seed MAE decreases from 0.4413 at one-quarter training data to 0.4189 at
+one-half, 0.4107 at three-quarters and 0.4078 at full size. Ensemble MAEs are 0.4154, 0.4113,
+0.4083 and 0.4078. The large ensemble gain at small fractions must not be misread as a learning
+curve of one fitted model. Fractional training subsets vary by seed, so their ensemble can have
+seen a union larger than the stated fraction. The frozen ESM CNN-D improves MAE for 156 of
+235 peptides, grouped
+into 150 of 221 protein groups, relative to W5-D; the advantage is not universal.
+
+The scanning pre-training comparison also examines the 20 substitution-pair types present
+in scanning and the other 360 types. Improvements are observed outside the 20 scanned pair types,
+but the subsets remain part of the same development population. This is evidence about the tested
+representation and label-transfer procedure, not a newly independent transfer cohort. These controls
+and the negative weighting result remain in the full appendix rather than being removed from the
+record after a stronger model appears.
+
+Recorded completed-attempt durations total about 14.1 hours for frozen tuning and 36.0 hours for
+LoRA tuning, versus about 1.4 hours for the 540 ridge fits (Table~\ref{tab:campaign-timing}).
+Paused/resumed jobs may omit earlier attempt time, so these totals are not exact GPU-active time
+or the wall-clock duration of the campaign. They still identify adaptation as the main recorded
+computational cost. The transfer inference timer is for prediction only and does not include fitting,
+feature preparation, downloads or service startup.
+
+The executable research graph is finished. The next research tasks are reviewed external/structure
+inputs, independent transfer checks and a compatible final serving refit, calibrator, lineage card and
+export. The application tasks remain separate. A report marked complete is neither release acceptance
+nor automatic promotion of the lowest development MAE.

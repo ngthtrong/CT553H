@@ -1,0 +1,94 @@
+% Retrospective synthesis; numerical sources and detailed chronology are kept in
+% research/progress-review-2026-11-06/{experiment-history,data-method-audit}.md.
+% Historical JSON: G2, learning-curve P0/P1, R0/R1/R2/R3/R6, scan-sat-merge, P3.
+\section{Research Progress and Data Evolution}
+\label{sec:research-progress}
+The investigation has changed its experimental focus as evidence accumulated. Coverage and
+stratification address RQ1; representation and head controls address RQ2; source transfer addresses
+RQ3; matched adaptation addresses RQ4; and grouped evaluation, errors, calibration and transfer
+boundaries address RQ5. This section
+reconstructs that reasoning from recorded protocols and results; it does not retrospectively assign
+preregistered status to exploratory questions. Historical development experiments and the current
+full-PSI campaign remain distinct. The main milestones are summarised in
+Table~\ref{tab:research-progress-history}; Chapter~\ref{chap:evaluation} reports their numerical results.
+
+\begin{table}[htbp]
+\centering
+\caption{Research progression: the question resolved and the decision it motivated}
+\label{tab:research-progress-history}
+\small
+\begin{tabularx}{\textwidth}{|P{2.0cm}|X|X|}
+\hline
+\textbf{Stage} & \textbf{Question and recorded finding} & \textbf{Next decision and boundary} \\ \hline
+Data audit, 12--15 Oct. & Reconstructed bin-based PSI and distinguished scanning from saturation mutation labels. & Use direct mutation $\Delta$PSI labels and assay-specific WT references; peptide activity is a separate endpoint. \\ \hline
+G2 and extensions, 18--19 Oct. & Ridge was a strong saturation baseline; additional nonlinear candidates did not establish an architectural advantage. & Audit training exposure and label availability before adding capacity. The overlapping public checkpoint is unsuitable as clean generalisation evidence. \\ \hline
+P0/P1, 22 Oct. & Adding WT-PSI $(3,4]$ training peptides improved prediction on the original low-PSI test population. & Expand training coverage, while testing whether improvement persists outside the original population. Label scarcity remains an explanation to test. \\ \hline
+P3 and scan transfer, 22--23 Oct. & Transfer depended on the source target and learner; peptide-score pretraining did not reliably improve mutation prediction. & Keep source/replicate and training recipe explicit; do not pool endpoints merely because both concern degradation. \\ \hline
+R0--R3, 22 Oct. & Reproduction and inference parity passed; cleaned Degformer and frozen ESM--Ridge did not establish superiority; the domain gate required assay-scale mapping. & Preserve a reproducible baseline, add matched head controls, and distinguish domain confidence from effect accuracy. \\ \hline
+R6, 23 Oct. & Ordered W5 context improved Ridge; the primary ESM--mCNN contrast was inconclusive. A secondary one-hot mCNN scanning-pretraining contrast was positive. & Separate primary and secondary claims; test representation, head and training range on common full-range folds. \\ \hline
+Full-PSI v3, 31 Oct.--6 Nov. & Wide evaluation, pointwise/CNN controls, nine frozen pLM recipes and matched frozen--LoRA evaluation were completed where inputs were available. & Interpret development evidence by stratum and metric; final serving export, external validation and structure inputs remain unfinished. \\ \hline
+\end{tabularx}
+\end{table}
+
+\subsection{From Peptide Activity to Direct Mutation Labels}
+The initial data audits established why peptide-level degron scores cannot substitute for mutation
+effects. A peptide may receive one activity score, whereas \mbox{saturation} mutagenesis measures many
+substitutions at each position. Scanning provides more peptide contexts but only a restricted set of
+replacement amino acids. Its substitutions are drawn from R, A and S, rather than all 19 alternatives.
+Consequently, sequence context can be informative in scanning cross-validation while transfer to
+the saturation substitution distribution remains difficult. This motivated direct training on
+saturation labels and separate reporting of the two experimental populations.
+
+The WT reference is part of the endpoint definition. Saturation labels subtract the median of
+valid synonymous observations in each half before averaging the two half-specific effects.
+Scanning subtracts the measured WT construct of the same replicate. The separate BAG6-WT
+condition cannot replace either reference. Nor is the approximately 0.9-PSI offset observed between
+the peptidome screen and intrinsic WT measurements an offset between scanning and saturation
+mutation labels. These distinctions prevent a change of measurement scale from being mistaken
+for biological transfer failure.
+
+\subsection{Why the Study Expanded Training Coverage}
+G2 evaluated 91 peptides and 47,847 cells at WT PSI at most 3. The P0 experiment retained those
+outer-test cells and added up to 85 peptides, or 44,490 cells, from WT PSI in $(3,4]$ to permitted
+training groups. Ridge macro AUROC increased from 0.8082 to 0.8208, with a paired group-bootstrap
+95\% interval for the difference of $[0.0061,0.0190]$. This supports that particular expansion on the
+original test population. It does not establish performance on the added peptides as test examples.
+
+The associated P1 learning-curve hypothesis was model-dependent. For Ridge, the 100\% versus
+50\% contrast had a 95\% interval containing zero and the curve was not monotone; the corresponding
+neural learner did support a label-quantity effect. Therefore, the earlier interpretation that label
+scarcity alone explained unsuccessful architectures is too strong. Training distribution, noise,
+regularisation and representation remain plausible contributors. The full-PSI design subsequently
+changed both validation and evaluation coverage to measure performance across the full range.
+
+The wide dataset retains 235 technically valid saturation peptides and 122,412 cells. Its 221 groups
+result from the full-proteome mapping and additional homology/sequence unions. Historical counts
+of 227 legacy groups or 222 full-proteome groups preceded this union procedure; they do not
+describe extra mutation observations. Likewise, the full-range folds are not the original G2 folds,
+so an AUROC change between the two populations cannot isolate architectural improvement.
+
+\subsection{Why Matched Representation and Head Controls Were Needed}
+R2 added PCA-reduced frozen ESM2-650M features to Ridge and obtained a small, inconclusive
+gain. R6 then compared sequence representations and convolutional heads. Its primary
+ESM2-35M mCNN--Ridge difference was $+0.0097$, with a 95\% interval of
+$[-0.0025,0.0233]$; it did not meet its confirmation criterion. Ordered W5 context did improve
+Ridge within its adjusted comparison family. Separately, scanning pretraining improved the
+one-hot mCNN over its scratch control by $0.0147$ AUROC, with the adjusted interval
+$[0.0027,0.0276]$. That secondary transfer result neither rescues the primary contrast nor
+establishes an advantage over W5 Ridge.
+
+The ESM mCNN--single-window CNN difference was only $0.0041$, with a 95\% interval of
+$[-0.0005,0.0087]$. The evidence thus motivated a matched pointwise head and broader
+evaluation rather than a claim that multiple convolutional scales were necessary. Historical Ridge
+and neural fits also used different final refit policies; the current campaign explicitly refits outer
+models after inner selection. Recipe, runtime and final fitting policy must accompany any comparison.
+
+\subsection{What the Current Progress Does and Does Not Establish}
+The current campaign addresses the new full-range questions using fixed grouped folds, inner
+selection and explicit training arms. It provides development evidence on frozen representations,
+convolutional heads and a matched LoRA adaptation. It contains no controlled full-fine-tuning arm.
+The completed transfer evaluation concerns W5-D alone on a restricted scanning population from
+the same source laboratory. Calibration, predictive ranking, regression accuracy and biological
+utility remain different outcomes. Neither completion of the runnable graph nor favourable OOF
+metrics constitutes final model selection, independent external validation, or a demonstrated
+reduction in wet-laboratory cost.

@@ -83,8 +83,8 @@ Trục **"dự đoán đặc hiệu E3"** — tức dự đoán E3 nào nhận r
 
 ## Nguồn trong repo
 
-- [e3-labels-audit/](../../topics/degron-footprint/research/e3-labels-audit/README.md) — 7 script đếm + JSON kết quả
-- [composition-context-audit.md](../../topics/degron-footprint/research/composition-context-audit.md) — audit thành phần, cận, chia cụm
+- [e3-labels-audit/](../../../research/e3-labels-audit/README.md) — 7 script đếm + JSON kết quả
+- [composition-context-audit.md](../../../research/composition-context-audit.md) — audit thành phần, cận, chia cụm
 
 ---
 

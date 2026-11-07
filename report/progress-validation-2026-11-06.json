@@ -1,0 +1,174 @@
+{
+  "generated_utc": "2026-11-06T05:13:42.716600+00:00",
+  "checked_local_audit_sha256": "2ea1d4235a4123bdcd0411f788f1356be6fe99b835105d1743700cf2670195a5",
+  "code_inventory_sha256": "f4d701b35398656f91381aa628f5626943a5ab42c40a91ff1884b98422da7734",
+  "review_local_links_checked": 100,
+  "broken_review_local_links": [],
+  "all_campaign_rows_matched_to_JSON": 88,
+  "bibliography_unique_entries": 22,
+  "pdfs": {
+    "content": {
+      "sha256": "5baab0d6adc0dc1fd6c29ad7727a514471812cd3d525b7b088a627eb34da6186",
+      "pages": 121,
+      "bytes": 723452,
+      "all_pages_A4": true,
+      "fonts": {
+        "JUYOOR+TimesNewRomanPSMT": {
+          "extension": "ttf",
+          "type": "Type0"
+        },
+        "BLSMYB+TimesNewRomanPS-BoldMT": {
+          "extension": "ttf",
+          "type": "Type0"
+        },
+        "WKINXR+TimesNewRomanPS-BoldItalicMT": {
+          "extension": "ttf",
+          "type": "Type0"
+        },
+        "IKRZIP+LatinModernMath-Regular-Identity-H": {
+          "extension": "cid",
+          "type": "Type0"
+        },
+        "RHUOVS+LMSans10-Bold-Identity-H": {
+          "extension": "cid",
+          "type": "Type0"
+        },
+        "OHFNKY+TimesNewRomanPS-ItalicMT": {
+          "extension": "ttf",
+          "type": "Type0"
+        },
+        "LVVCIU+LMSans9-Regular-Identity-H": {
+          "extension": "cid",
+          "type": "Type0"
+        },
+        "AAAAAA+TimesNewRomanPSMT": {
+          "extension": "ttf",
+          "type": "Type0"
+        },
+        "ZQWGML+LMMono12-Regular-Identity-H": {
+          "extension": "cid",
+          "type": "Type0"
+        },
+        "BTHAZU+TimesNewRomanPSMT": {
+          "extension": "ttf",
+          "type": "Type0"
+        },
+        "DFPAOX+TimesNewRomanPSMT": {
+          "extension": "ttf",
+          "type": "Type0"
+        },
+        "DMOWTR+TimesNewRomanPSMT": {
+          "extension": "ttf",
+          "type": "Type0"
+        },
+        "ERSRNR+TimesNewRomanPSMT": {
+          "extension": "ttf",
+          "type": "Type0"
+        }
+      },
+      "abstract_pages": {
+        "english": 7,
+        "vietnamese": 8
+      },
+      "pending_markers": 5,
+      "detail_pages": [
+        9,
+        10,
+        20,
+        24,
+        52,
+        65,
+        90,
+        92,
+        96,
+        106
+      ],
+      "internal_link_destinations_valid": true
+    },
+    "content-twoside": {
+      "sha256": "0aad936ebf83671a5f75ffbe7ee4d07e7604fbf87e31a7bd9de1e07aaaeb2b40",
+      "pages": 121,
+      "bytes": 724039,
+      "all_pages_A4": true,
+      "fonts": {
+        "NMSWPH+TimesNewRomanPSMT": {
+          "extension": "ttf",
+          "type": "Type0"
+        },
+        "RBWCZT+TimesNewRomanPS-BoldMT": {
+          "extension": "ttf",
+          "type": "Type0"
+        },
+        "YQOJIT+TimesNewRomanPS-BoldItalicMT": {
+          "extension": "ttf",
+          "type": "Type0"
+        },
+        "NZCOGF+LatinModernMath-Regular-Identity-H": {
+          "extension": "cid",
+          "type": "Type0"
+        },
+        "PRCXTA+LMSans10-Bold-Identity-H": {
+          "extension": "cid",
+          "type": "Type0"
+        },
+        "GGRENC+TimesNewRomanPS-ItalicMT": {
+          "extension": "ttf",
+          "type": "Type0"
+        },
+        "OKDHKX+LMSans9-Regular-Identity-H": {
+          "extension": "cid",
+          "type": "Type0"
+        },
+        "AAAAAA+TimesNewRomanPSMT": {
+          "extension": "ttf",
+          "type": "Type0"
+        },
+        "OJBLQN+LMMono12-Regular-Identity-H": {
+          "extension": "cid",
+          "type": "Type0"
+        },
+        "BTHAZU+TimesNewRomanPSMT": {
+          "extension": "ttf",
+          "type": "Type0"
+        },
+        "DFPAOX+TimesNewRomanPSMT": {
+          "extension": "ttf",
+          "type": "Type0"
+        },
+        "DMOWTR+TimesNewRomanPSMT": {
+          "extension": "ttf",
+          "type": "Type0"
+        },
+        "ERSRNR+TimesNewRomanPSMT": {
+          "extension": "ttf",
+          "type": "Type0"
+        }
+      },
+      "abstract_pages": {
+        "english": 7,
+        "vietnamese": 8
+      },
+      "pending_markers": 5,
+      "detail_pages": [
+        9,
+        10,
+        20,
+        24,
+        52,
+        65,
+        90,
+        92,
+        96,
+        106
+      ],
+      "internal_link_destinations_valid": true
+    }
+  },
+  "rendered_review_directory": "build/review-progress-2026-11-06",
+  "bibliography_backend": "biblatex/IEEE + Biber",
+  "limits": [
+    "Rendered images require human visual inspection in addition to this automated check.",
+    "No new training or biological validation; independent metric checks use saved predictions.",
+    "Historical PDF validation records retain their original scope and hashes."
+  ]
+}

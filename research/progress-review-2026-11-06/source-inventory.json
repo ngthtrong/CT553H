@@ -1,0 +1,2661 @@
+{
+  "generated_local": "2026-11-06T13:03:12.619036+08:00",
+  "files": {
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/local-output-analysis.json": {
+      "bytes": 253813,
+      "sha256": "1295e5d8aed2eef57604b5f94a6e501cbd7d04e395a2a531d7ccca320e35cc3f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/state.json": {
+      "bytes": 1139039,
+      "sha256": "e03c1c258de8df6fad2b8e2dee341a810579f131ac5edd40ba7263d088cfe2cb"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/plan.json": {
+      "bytes": 2547,
+      "sha256": "9e1cfc8c299abe5f286d178492da99788e274a203193b256ca9c99ccf5b9f50b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/queue.json": {
+      "bytes": 157874,
+      "sha256": "bb10af0d06ac281bca11f59a466a4b321b2afd6cda945bb552c63b7cfaf899f4"
+    },
+    "topics/degron-footprint/data/processed/v3-fullpsi/DATA_MANIFEST.json": {
+      "bytes": 9176,
+      "sha256": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/official/369cb2fe6a1e31e0/pipeline-manifest.json": {
+      "bytes": 687878,
+      "sha256": "0948005d569a5285805399c3ece38238a23b7f1b989a889efcef93fc93f074d0"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/inheritance.json": {
+      "bytes": 2311,
+      "sha256": "2a6d9282cdaa9fefc2c59ce2eb0a5210f1d0e9d3b8e1ccfe107d9aa504d9d0ea"
+    },
+    "topics/degron-footprint/data/processed/v3-fullpsi/tables/saturation-cells.parquet": {
+      "bytes": 9762802,
+      "sha256": "cb8c9de32dd71d0524c3bfe362ad89afb0b8ef4d7ce5736d1f1ed4a0c1e8aded"
+    },
+    "topics/degron-footprint/data/processed/v3-fullpsi/splits/wide-outer.parquet": {
+      "bytes": 6860,
+      "sha256": "94c77695fe5331054f71ffbd9116fd596e6983adb1928e5b1149bd3716e15a54"
+    },
+    "topics/degron-footprint/data/processed/v3-fullpsi/splits/inner-seed17.parquet": {
+      "bytes": 30538,
+      "sha256": "80046d5f1fc3a032c4d7ba0a5d5adbf1cf76e6160b5da47fd6111d7752ca3e24"
+    },
+    "topics/degron-footprint/data/processed/v3-fullpsi/splits/inner-seed29.parquet": {
+      "bytes": 30576,
+      "sha256": "82ceb8c51faefcaabeb2933b1f1898079bf004acbdd96f2516f1674e3d950676"
+    },
+    "topics/degron-footprint/data/processed/v3-fullpsi/splits/inner-seed43.parquet": {
+      "bytes": 30603,
+      "sha256": "85e8271d740c745f70d265d3d153f45e497dc6f697abf971929693f1b247c746"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/collection.json": {
+      "bytes": 583994,
+      "sha256": "731a9a7d79a47bfb616f03fefc344c98422f1e022eedcbad2261d7910b693a35"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esm2_8m-only-B-oof.parquet": {
+      "bytes": 5660013,
+      "sha256": "3a79932adca5658d500a6ce021261d2a588ac21c4c2d473661a86121f1e08faf"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esm2_8m-context-B-oof.parquet": {
+      "bytes": 5660662,
+      "sha256": "2c79f5a3274d1caa2e5f7a8f0d657fe2448589af0922b8a78b5ad9edf2d2aeaa"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esm2_8m-only-D-oof.parquet": {
+      "bytes": 5660507,
+      "sha256": "9f03a6e56a6f1432127d9980e92e860321968afb243c7a8eb9a8826cd52cdc35"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esm2_8m-context-D-oof.parquet": {
+      "bytes": 5661142,
+      "sha256": "fddf5ab46134a43a307cc83fce29b46002fca4c16602d8273784d239b3eda40c"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esm2_35m-only-B-oof.parquet": {
+      "bytes": 5662199,
+      "sha256": "c94906001a0ae0ca832eb7c826f183b5e6ec0ca702055c7ad5b8da8afc86f60b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esm2_35m-context-B-oof.parquet": {
+      "bytes": 5660699,
+      "sha256": "4bf3e057cbf578e8a32588a64a619aee73d9c28ac3b5ec214a723804769bc6bb"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esm2_35m-only-D-oof.parquet": {
+      "bytes": 5660247,
+      "sha256": "18dd19449c621d25b2ffd04dd01430e933435e610df2c213fba7eaab0539021b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esm2_35m-context-D-oof.parquet": {
+      "bytes": 5661103,
+      "sha256": "78488fb41afc6bbbd7e8667cf7450009dc25620718a887ce5ef5ca954de21ff6"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esm2_150m-only-B-oof.parquet": {
+      "bytes": 5662312,
+      "sha256": "a63d0cc4b9faee34da475f46a7a53d1cce685da4679e9aa39acddbc29820f9c2"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esm2_150m-context-B-oof.parquet": {
+      "bytes": 5660720,
+      "sha256": "36a716ff1ef2d16029fe9e81d659b9c962c060801d5dc4989e86d2bbdeab64f5"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esm2_150m-only-D-oof.parquet": {
+      "bytes": 5660581,
+      "sha256": "69ca0480dc026a5870a03926e5e16bc64a136aecbf90edf91cfd70a148b271f4"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esm2_150m-context-D-oof.parquet": {
+      "bytes": 5661100,
+      "sha256": "a143974d644f19b2f7e78aacebb98d71a6e2a3de38321381faa34c1f1939ba2f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esm2_650m-only-B-oof.parquet": {
+      "bytes": 5662296,
+      "sha256": "7d81e8e07b77b8fee3f1c4eea6e0f5e272d717cf0c3b4b77ac6cf3db9772d748"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esm2_650m-context-B-oof.parquet": {
+      "bytes": 5660868,
+      "sha256": "f55307f2197809012cfea1e656f626988b4524e00eb293fabc67c7c6d579905c"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esm2_650m-only-D-oof.parquet": {
+      "bytes": 5660605,
+      "sha256": "ef4743f447446983a8be64a50f1a4586da6866f28bc74f7e788e18eb9e1fa267"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esm2_650m-context-D-oof.parquet": {
+      "bytes": 5661120,
+      "sha256": "4a1f63edcb962d50d27fce6f5762df58a3b6890dbff2a89c1830a7991f186269"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esm1b_650m-only-B-oof.parquet": {
+      "bytes": 5660265,
+      "sha256": "f9d56be62fcaf79a16871abf8676c5017a9ebf689507b518219c4ca56c65646f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esm1b_650m-context-B-oof.parquet": {
+      "bytes": 5660637,
+      "sha256": "ffb2852c70cf77ce078424a73932c6502309ee94626ae7162e5f5bb743ddd401"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esm1b_650m-only-D-oof.parquet": {
+      "bytes": 5660774,
+      "sha256": "c63704daa8a9d4f4a5050d86a69694436042b04d87a936b0beebf04c14057611"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esm1b_650m-context-D-oof.parquet": {
+      "bytes": 5661237,
+      "sha256": "e7c841669359cbcbc33b644c62b17418b043fd7cc38790fe72656d2bd7b8d96f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esm1v_650m_1-only-B-oof.parquet": {
+      "bytes": 5662451,
+      "sha256": "897ddf4a926f762d57008ed67dcd03c6110da48e2b390a686a7a4b7177ea4187"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esm1v_650m_1-context-B-oof.parquet": {
+      "bytes": 5660502,
+      "sha256": "24bd99e178964b9fb4f9533dda09f57aea6cbb6975d8a59a4e6cbfcddcd9ccae"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esm1v_650m_1-only-D-oof.parquet": {
+      "bytes": 5660620,
+      "sha256": "db27a778fcada43c9d88ba597562b0a694694d6f1f3d0f2ccf463d296136de2b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esm1v_650m_1-context-D-oof.parquet": {
+      "bytes": 5661303,
+      "sha256": "42c478f00cc68de283619310ed0f11f1a3d7f2b1e130400a965dfb86130c4558"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esmc_300m-only-B-oof.parquet": {
+      "bytes": 5660140,
+      "sha256": "c92c11486f3eec16d707eef12a6dfa28a67cad48cd128bd282af3cee9e879129"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esmc_300m-context-B-oof.parquet": {
+      "bytes": 5660796,
+      "sha256": "96cbf42cc65da3717953f89a27381a3dc96c8ed7e4a5b84657b037b13be8b536"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esmc_300m-only-D-oof.parquet": {
+      "bytes": 5660821,
+      "sha256": "cd7739be4209f8055c00e77445b7f70642aafebb1cabdf7726dddf86ab1a7554"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/esmc_300m-context-D-oof.parquet": {
+      "bytes": 5661040,
+      "sha256": "62fec3b0e24b7a8e71d2e2acd40f04b0b24fb6101f18b405c721e8c7d95ecbb4"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/prott5_encoder-only-B-oof.parquet": {
+      "bytes": 5662449,
+      "sha256": "6fda7b2c3d793d1168cb2723fd94ede889da15f727a2eaabb4e76b89e5bbcb0b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/prott5_encoder-context-B-oof.parquet": {
+      "bytes": 5660901,
+      "sha256": "86b84ac55dbc81d9f66c0cfffbf36f121be00b6c6c9e80a2dfb3cd2f1d93359b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/prott5_encoder-only-D-oof.parquet": {
+      "bytes": 5660770,
+      "sha256": "bd5729c85c414d4d4e59de490a4b4b3e65478c925dfd5b4e9cd517a847499079"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/prott5_encoder-context-D-oof.parquet": {
+      "bytes": 5661245,
+      "sha256": "ebd94a59bc5e3755812c28f0a17daa4527e5dde4da21cd7bcee973cab579eb31"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/ankh_base-only-B-oof.parquet": {
+      "bytes": 5660095,
+      "sha256": "5dcb467d7d771f47546649a7ac0166c4d1697bbb020ca78f59a5385a7f452e2e"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/ankh_base-context-B-oof.parquet": {
+      "bytes": 5660564,
+      "sha256": "72b2a7f0fe234ab6279e2910f731b4b36fab3c86a61e246558d572b0515a50a9"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/ankh_base-only-D-oof.parquet": {
+      "bytes": 5660369,
+      "sha256": "3e7e7ffe38e0c738b314bec94779c2fb7f0e1d295f594ec8987cb099e87bfaae"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/ankh_base-context-D-oof.parquet": {
+      "bytes": 5661012,
+      "sha256": "4c50cbb2324bba1999d03f96a2e20bf3312bdced4972d0c9ab026715e7c14598"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-family/nested-family-selection-oof.parquet": {
+      "bytes": 5663338,
+      "sha256": "08510fb4ea3c9e727a547cf79e0202cf8c1c94a941023253709b7b59b2eb2bf8"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-core/collection.json": {
+      "bytes": 64683,
+      "sha256": "f83aecdbcba72a9be126fb2cedef8affc1c2a5ddee5400d14707996ff7e41549"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-core/esm2_35m-frozen-B-oof.parquet": {
+      "bytes": 5661334,
+      "sha256": "2b3a050becdccb149d64f114b32c53b3b11bc7bbb1a0307bf002bad128601432"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-core/esm2_35m-frozen-D-oof.parquet": {
+      "bytes": 5661598,
+      "sha256": "f02306d1948cc132125f7732c488fcee603cdca1c1dc455eadb352058c46687a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-core/esm2_35m-lora-B-oof.parquet": {
+      "bytes": 5661724,
+      "sha256": "1847a702ca14ae7618087882bc4757b26b03f64935a85dc6c390305788d1d74a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/collect-core/esm2_35m-lora-D-oof.parquet": {
+      "bytes": 5661724,
+      "sha256": "1ddfb5eea915f3cdc2025be71162b2832c7d2c549a19170dcce58558d7c3173a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-0-17-0/fit.json": {
+      "bytes": 273,
+      "sha256": "fcaf928d8f4ce47d3eee39d90eabb79443daa75edada7f99f7970b1806dbac4b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-1-17-0/fit.json": {
+      "bytes": 275,
+      "sha256": "cd215f80c234a74879a16dbbabc68643b8e7947c16a3caf9e7e895cf816898a9"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-0-17-0/fit.json": {
+      "bytes": 273,
+      "sha256": "bd6259e9045b7dc5ef1502b9ab057eac8e1bbac7771d26863cb2aa927233e1d3"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-1-17-0/fit.json": {
+      "bytes": 276,
+      "sha256": "666d73f732fdfc7b8dc8603cbcff9906edaa8d3c7bba8ef9cbe707ad554a4f11"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-0-17-0/fit.json": {
+      "bytes": 276,
+      "sha256": "642de09918c39161133b52af2aff6dde1839c59fd77806e5159c8af7886fc5d6"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-1-17-0/fit.json": {
+      "bytes": 278,
+      "sha256": "22e023304d51cfc7e6c56bb8b62ec0a96fef4ab40761616be60a8c2a65cd4563"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-0-17-0/fit.json": {
+      "bytes": 276,
+      "sha256": "077b2373eb31a2a2e69c68cb4ff0eaf820ee31a4a44f73bc1746d955c63f0dac"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-1-17-0/fit.json": {
+      "bytes": 277,
+      "sha256": "b5d11ca68fb78cabe6f885d62d42c244328c28f26d330a4cfe7d84def374e731"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-0-17-0/fit.json": {
+      "bytes": 278,
+      "sha256": "b7a66ce9041d57b353aa11bf6741c64af6e2037d744271db024efb827729e206"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-1-17-0/fit.json": {
+      "bytes": 279,
+      "sha256": "44cd9f21cbb92db8314478bbbe3cdf5de5d328ac45b2fd2f2d251b6dff8db7c6"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-0-17-0/fit.json": {
+      "bytes": 278,
+      "sha256": "c45857145f00f1d108e35be37bc5e8a1cc825b31d715e4e1ef81f5038d8e1ac2"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-1-17-0/fit.json": {
+      "bytes": 280,
+      "sha256": "91d815d8599f2aeecdf22eb8e2968a0766d4a40a3a595dd5135c3dde5a278144"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-0-17-0/fit.json": {
+      "bytes": 277,
+      "sha256": "22e6a182042def377e17ec8212976406add3d073e4ce438597cb2a13c87047ff"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-1-17-0/fit.json": {
+      "bytes": 280,
+      "sha256": "e4930a88bbef6c3b50a3d301b82f4b8f311e44188a51a6aea44349485ee17771"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-0-17-0/fit.json": {
+      "bytes": 277,
+      "sha256": "2833d1b925dd86b05d384005af257e6b7a1995334c7ad0de99359373a5e500e7"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-1-17-0/fit.json": {
+      "bytes": 280,
+      "sha256": "f996d04cf85bc8ced9be69b1e09f1f12c383ff7b02675dc8d7e7a0ec1dc5242d"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-0-17-0/fit.json": {
+      "bytes": 279,
+      "sha256": "c1d2902ac782c9f3a096603a7b552c1c7774ad642604751a1eed840d405ceb04"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-1-17-0/fit.json": {
+      "bytes": 281,
+      "sha256": "b21baf9e2adc89fcc6ef568c4a4d178fa2521619e4151d0b5b4411b60d9ccffe"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-0-17-0/fit.json": {
+      "bytes": 280,
+      "sha256": "2738baf3729d2bdffcec9921052856a2859febfad4fbacfa2219997e426b9854"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-1-17-0/fit.json": {
+      "bytes": 281,
+      "sha256": "46cd4f249f7f61a812007632ad8a2bb8454517784149aae635f6dde6910ffc69"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-0-17-0/fit.json": {
+      "bytes": 283,
+      "sha256": "fa3753c699cf95876c29ccc557b8cac38551898da82021b4a5bb539584607278"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-1-17-0/fit.json": {
+      "bytes": 286,
+      "sha256": "2cff77d6ccc20183dda52d34703c58ceba7812777202d2fb117dc7aef894d771"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-0-17-0/fit.json": {
+      "bytes": 283,
+      "sha256": "d2a633dfb86cad0252c26cb62b4e298dd3bf9999a9adb6689fbaf75633189f7f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-1-17-0/fit.json": {
+      "bytes": 285,
+      "sha256": "5fcdfeace5778d04293c4f0ce216136ff9fcdfaa22b34724fdf474a06d2953cd"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-0-17-0/fit.json": {
+      "bytes": 278,
+      "sha256": "f65e3971a2b0b66c00da71161144db4c94e0792e0ffe4bccae07525794dd2d29"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-1-17-0/fit.json": {
+      "bytes": 280,
+      "sha256": "5d4b4887b17b66ff4f1c2bf2d18cfffd5f12e6e7fd07395879284a9d2aa572ea"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-0-17-0/fit.json": {
+      "bytes": 278,
+      "sha256": "53ec31f7dec4043a29647860a38ea50b03a8ae89f3a5aea992feb33f5677f782"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-1-17-0/fit.json": {
+      "bytes": 280,
+      "sha256": "d40a99b18b389b49217f5264c46a07f4397dfc96cc2a48d95e1b0439fd6d2f82"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-17-0/fit.json": {
+      "bytes": 288,
+      "sha256": "d528d64f8923b728a8dceef9488237f626b2fdcf5122c8768c0b97c96d820fbc"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-17-0/fit.json": {
+      "bytes": 289,
+      "sha256": "5fec527026d3a420aa67f5e33609e3d6d644249919cd99ec023b5fecd43eba1e"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-17-0/fit.json": {
+      "bytes": 287,
+      "sha256": "bcbc88a4991a9c93803236318773604a063f2063f26d4658d14e4a234ef6d475"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-17-0/fit.json": {
+      "bytes": 290,
+      "sha256": "b897112792b738b8f923e100d612e64b7f9da54c9d73aaff041b18745d672331"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-0-17-0/fit.json": {
+      "bytes": 277,
+      "sha256": "2ab83ecad74c2565daec824ad688ed2674d43aa9343429e5a1647d683eec0549"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-1-17-0/fit.json": {
+      "bytes": 280,
+      "sha256": "597d192a9a7615b7c7e1d9611a4af0965d9dd5b731e665f105ad8b96446ba153"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-0-17-0/fit.json": {
+      "bytes": 278,
+      "sha256": "cfca4a1fc0056541b32627c31026e0df24fa91c64c10083a8fa25a476aded274"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-1-17-0/fit.json": {
+      "bytes": 280,
+      "sha256": "3742741c2d19883cc4536c9786959477794a6249148bccacabf0d22bc0dc5457"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-0-17-1/fit.json": {
+      "bytes": 272,
+      "sha256": "8cb457a44b31d17bb504d8778f0b1bf05eeb7e61a64e4cd3a27c797252b40e2d"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-1-17-1/fit.json": {
+      "bytes": 275,
+      "sha256": "293c282173fc799b3ce16613d96da239d20cfececc8176d89c34121a34a4d448"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-0-17-1/fit.json": {
+      "bytes": 274,
+      "sha256": "7ac95669594d3ab1b320707616aeb6be5b72379ce6ca29b0caeeb8fb02ac3be0"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-1-17-1/fit.json": {
+      "bytes": 276,
+      "sha256": "93e40810a1bf3cb0b6b0cdf9329698c1f1fbd57d8481762da2e1b99a7bdaf84c"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-0-17-1/fit.json": {
+      "bytes": 276,
+      "sha256": "3501990b35d3c68ede7777cdbfa2831e5304439f791ffe553b36fbc008be4958"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-1-17-1/fit.json": {
+      "bytes": 277,
+      "sha256": "a8aee8282d02834a9ff45f79a38943622e8d2d6eefe59d4118764b8175f5b362"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-0-17-1/fit.json": {
+      "bytes": 276,
+      "sha256": "543e36ac8128e9f881264ea8af205fdce8b5da0c4b4330907c6703dec420fa16"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-1-17-1/fit.json": {
+      "bytes": 278,
+      "sha256": "deb843f9061b5ae9c3ed2614cc02f7da22caa72b86243b1244a007636ce482c2"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-0-17-1/fit.json": {
+      "bytes": 277,
+      "sha256": "3404b7969c842071f4ceea143704235eef05049bbc7b99a48ec01ea0c72990e6"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-1-17-1/fit.json": {
+      "bytes": 280,
+      "sha256": "6652b4ed05ee254b124d8c900a53d71741474e81b3efd0b94949722e240b2939"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-0-17-1/fit.json": {
+      "bytes": 278,
+      "sha256": "895e7e7ad57def7a6019bcf1433ab1da8d9122dd82ca26f8a7f681e30cc8691f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-1-17-1/fit.json": {
+      "bytes": 280,
+      "sha256": "c612cb89b282a788689fa3a58630346f480941689d352c699ef0d0cdb82d5b79"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-0-17-1/fit.json": {
+      "bytes": 278,
+      "sha256": "fa36bf067362369d7becb3717862170455acbe032ea33a4b9679b104183f43c7"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-1-17-1/fit.json": {
+      "bytes": 280,
+      "sha256": "e5a0006ce57ab3f73f6fb85d69241dbfc3ea0452ef123ba4a74cc3f814ed3ecc"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-0-17-1/fit.json": {
+      "bytes": 278,
+      "sha256": "4fd66c9d801f7d69e1793726528cba41a240f097313e437c97be27294c6490d8"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-1-17-1/fit.json": {
+      "bytes": 278,
+      "sha256": "39e52f4e767f823ca3ad6bb61900d00418684ee55ef6d38153a2988633766d40"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-0-17-1/fit.json": {
+      "bytes": 280,
+      "sha256": "1083d5a4afb779b2c94f3940c4794b0d0144355bb25f919accbc7eab0781c896"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-1-17-1/fit.json": {
+      "bytes": 282,
+      "sha256": "f2e59510ac9cdb388e77305dcf89fccd97f517da5c05ea0ce64fadf1f1b05cdb"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-0-17-1/fit.json": {
+      "bytes": 280,
+      "sha256": "2ea1aae15ef808d73187d4780e408256ce2e0d4ebec42571803d054edb95496b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-1-17-1/fit.json": {
+      "bytes": 282,
+      "sha256": "5353ff7e284c4abf37004f2003ad31b0fbb1369e56f8ec17754bd71e5c68804e"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-0-17-1/fit.json": {
+      "bytes": 284,
+      "sha256": "d6489840c73f6216613de90b3eb5b85ae3ea4daab9e1ae63e7364b64acb58bd3"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-1-17-1/fit.json": {
+      "bytes": 286,
+      "sha256": "496a6f854d192f3b967723c02565e21b80266b80ac100991f9ae83ac9ae4f3a2"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-0-17-1/fit.json": {
+      "bytes": 284,
+      "sha256": "a56dc99f4c199be4351e1da2ea8a41b307233f6dc9c17c648a2f74855b046558"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-1-17-1/fit.json": {
+      "bytes": 286,
+      "sha256": "e66174d5e248cad01b013c8a9ff47ba62efed0149254e9fc91865eff8a6863a5"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-0-17-1/fit.json": {
+      "bytes": 277,
+      "sha256": "368b13d593e94462e09151540b3311faa2faf7291cc5fa573d36d762c69a070a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-1-17-1/fit.json": {
+      "bytes": 278,
+      "sha256": "6d3321754ee2998869a00af7605c1e8c06f1edc18f1960299d82969b28207a2b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-0-17-1/fit.json": {
+      "bytes": 277,
+      "sha256": "90afede95deb2e080ef9401613fdf2f151639774fff82d96f41e1bcc50ddaaca"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-1-17-1/fit.json": {
+      "bytes": 277,
+      "sha256": "0cec55cbb6800f6aa1b82c763ac802dac0476ca379b150f8524c2df30e4904dd"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-17-1/fit.json": {
+      "bytes": 287,
+      "sha256": "01d09ed13ee14191767d7833d56d97cf70eb873d201d660b65e5c55d75d7b8d8"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-17-1/fit.json": {
+      "bytes": 290,
+      "sha256": "3dce43eabd4446e2c05bc5e0d670c52e9afd16953473641e7c307d86d66c12f1"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-17-1/fit.json": {
+      "bytes": 288,
+      "sha256": "12f1b54fe1f9d62b10e43ed2c450043f2db2cf264e98dca636dbb41ce502a6e8"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-17-1/fit.json": {
+      "bytes": 290,
+      "sha256": "c91db15ee3b37ca6ec6f0fe4f06d13a4db356bbf9195e52e4904fa502db86cc3"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-0-17-1/fit.json": {
+      "bytes": 278,
+      "sha256": "e35fd0bc8c904446bd76065dc567e18047391edeb9f7d61de4a95c71ce0c3dde"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-1-17-1/fit.json": {
+      "bytes": 280,
+      "sha256": "4321e63e7a1b9221245384944f599211c91defd58aa5df48e05b31b954ebebd5"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-0-17-1/fit.json": {
+      "bytes": 277,
+      "sha256": "b599b91296de3f5dd7044853d193035f1cd6f5a6a54973c3c9c913bc0b874581"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-1-17-1/fit.json": {
+      "bytes": 280,
+      "sha256": "48b399223a9278bc49646e2bb5f7e8672049d7a13e637e2458fb130e599cbabc"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-0-17-2/fit.json": {
+      "bytes": 273,
+      "sha256": "c9377fdea31e1b1e91066544460cdc6ede57c67f5587afe3dc1c08c93eff5d5a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-1-17-2/fit.json": {
+      "bytes": 275,
+      "sha256": "53c154783a9177486c55364165cfbf1c49c38fd74ca6540b786fe48b04749548"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-0-17-2/fit.json": {
+      "bytes": 274,
+      "sha256": "498e192a60d3991905a89983f39bf32542e7df18ebccb1a8ed5956062375f4b7"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-1-17-2/fit.json": {
+      "bytes": 274,
+      "sha256": "696af5ee23d985e4f32360208dbde557596a0919ee8f1b8ae4cf6cd8dbaac953"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-0-17-2/fit.json": {
+      "bytes": 276,
+      "sha256": "0843bf98e78d904a1adf9fd266234a05744631ca5dc22a44e91402218cfb5032"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-1-17-2/fit.json": {
+      "bytes": 278,
+      "sha256": "6440bb718c3610a4f7cf6b2581b411fb093cdc0729da87be1e259a4a921311e8"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-0-17-2/fit.json": {
+      "bytes": 274,
+      "sha256": "8be40ace1c303a5eedb13ed5f754b022c33fa4a11e258ce6eb1495e2d4b48a0c"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-1-17-2/fit.json": {
+      "bytes": 277,
+      "sha256": "b5003ac10e8a12de5685df41b48ff06401f385163f9ff83f49e46d7a3f6d2951"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-0-17-2/fit.json": {
+      "bytes": 277,
+      "sha256": "ee6eda6886f694523954183cbf9eafcd889ceaad279e6aabf6bcf6e01b9e6a32"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-1-17-2/fit.json": {
+      "bytes": 279,
+      "sha256": "27a40c712470dc69ca7e7467f8c6c1ea9eb69e704b652a3b43012bcd088a2e33"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-0-17-2/fit.json": {
+      "bytes": 278,
+      "sha256": "3e0df1b7e9b3109ba7f9dc06007672d94358664179f558df8d5f0d63f09b25d6"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-1-17-2/fit.json": {
+      "bytes": 279,
+      "sha256": "06da4151d92dfad4f9a9873b848a7f95971ccd9a1d4631fd349a4cd244b901fd"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-0-17-2/fit.json": {
+      "bytes": 277,
+      "sha256": "afd39e99653f04f833d471cc6246c5f090740dc914f4da77f98634cc9f22db7b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-1-17-2/fit.json": {
+      "bytes": 280,
+      "sha256": "6c394d6c74da7e86a985c0df4ad012424c973cb77087f70474a6c452ebed833e"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-0-17-2/fit.json": {
+      "bytes": 277,
+      "sha256": "6d0bff98deba61f020295386718099135dbb8d460b5d00dae60703c56146ab46"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-1-17-2/fit.json": {
+      "bytes": 279,
+      "sha256": "4073998808bbb1f8e5c13a1bfc356e4f399e527c2cf1a4817e6551b428aa407e"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-0-17-2/fit.json": {
+      "bytes": 279,
+      "sha256": "ff5d8aab2102f384a0ffb1dbe426653e23104948d1cf3c2df016d7f5889fba30"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-1-17-2/fit.json": {
+      "bytes": 282,
+      "sha256": "023e42cd21140a9300ac66ddbab603ad7625c952ca11f7a502f294e0f6c80b91"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-0-17-2/fit.json": {
+      "bytes": 280,
+      "sha256": "4d13d1e05440a19f7c04db3dd108141703f0c02e738d560864bea79812865c54"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-1-17-2/fit.json": {
+      "bytes": 282,
+      "sha256": "b202a475377a17567df49566df16cbfdf54b1f9be9e029a5a1c3ea5baae9c8be"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-0-17-2/fit.json": {
+      "bytes": 284,
+      "sha256": "7dcb49928df4b24e7d0e16e5f57a3cea2e98b6d431572f33e72b04203ce0d5c0"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-1-17-2/fit.json": {
+      "bytes": 285,
+      "sha256": "2c904b8e44f26a969e172e6c95980f6331c527a1088edfcb6ffd23fb792b54fc"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-0-17-2/fit.json": {
+      "bytes": 283,
+      "sha256": "b25c73f0868fd31c99b16f80ab6f09eabb28d36965c204de96b87b2f4f4ab09b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-1-17-2/fit.json": {
+      "bytes": 285,
+      "sha256": "30f102947341d91dd4ed8c45c6d3b70afe8f21f4845a04b845d13b31b9b39073"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-0-17-2/fit.json": {
+      "bytes": 278,
+      "sha256": "98990dc38aab460b9eb222d3613ee8a3405debda6ca0a7033413b4f50694216d"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-1-17-2/fit.json": {
+      "bytes": 279,
+      "sha256": "b6543e65c142f9afb87bdac10833896e2d1304a286a164752ed9dcce2e11e977"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-0-17-2/fit.json": {
+      "bytes": 277,
+      "sha256": "c0d7cc8b6c59c0265250e0b25c106a1205ad36cc164611cb3727b3aea46f2e68"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-1-17-2/fit.json": {
+      "bytes": 279,
+      "sha256": "1bbd6f05d624a4284e5d823fd7f848d4355e59965897e2420c484e519dd7d989"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-17-2/fit.json": {
+      "bytes": 287,
+      "sha256": "3cde1e87ed53108d4f2398bb0d78727d1a8edd3a7253fa1e4b72e56edfb1e4b3"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-17-2/fit.json": {
+      "bytes": 289,
+      "sha256": "15126c3e8c225986f23bc35a288d638071d6abe93d20cb5572651f61e00fdda1"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-17-2/fit.json": {
+      "bytes": 288,
+      "sha256": "61b0f234ae39d78b79bd81e6797c2afc277ce0f1525c77c14442c0dec5f8ff8d"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-17-2/fit.json": {
+      "bytes": 289,
+      "sha256": "7cf5c74a92eef2535a8f5d6a14895a467ac09809531faf2a28b380026c0d38e9"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-0-17-2/fit.json": {
+      "bytes": 277,
+      "sha256": "ededc9028bc10a850e2c6166b70e481c9b0795af7a8f81d085e647296b63e52f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-1-17-2/fit.json": {
+      "bytes": 279,
+      "sha256": "e797b87c9391d368490a2db7ae8e7ed3c2cc9572b73c4c730212b2caf8103488"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-0-17-2/fit.json": {
+      "bytes": 278,
+      "sha256": "bd3e3d902e8608fb2b849e2780115a08a3133ad086787b1ca45a3c07300fdd0b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-1-17-2/fit.json": {
+      "bytes": 280,
+      "sha256": "42c1fe182eb964712ab5b5760827451bd6195c2c212c2dcd10e0fb8f911ae330"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-0-17-3/fit.json": {
+      "bytes": 273,
+      "sha256": "7104b9c0a87da4392467202376c33cf1a1cac62ad525b220809252c80504c699"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-1-17-3/fit.json": {
+      "bytes": 275,
+      "sha256": "6b5b755cb3c5b83254bc117845c9d99e2699faa3592cabbcc149e7a54de3225f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-0-17-3/fit.json": {
+      "bytes": 271,
+      "sha256": "40560511ba348b843747e0378e781df9a11c81437df094a48948531648706722"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-1-17-3/fit.json": {
+      "bytes": 276,
+      "sha256": "648c15b50cebe87e39c36caa746587a790109034fe8b172f7dd9a77ac240d301"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-0-17-3/fit.json": {
+      "bytes": 272,
+      "sha256": "0d27603eb885fbdfc570e6e04f12e43b4b7bdc1efd2e4e98b87a2b586ec25062"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-1-17-3/fit.json": {
+      "bytes": 277,
+      "sha256": "4b0d37c39a22741853d508ac1befa8b492ea3c3c03c77d9ebbaac39bb25c6b89"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-0-17-3/fit.json": {
+      "bytes": 275,
+      "sha256": "403814cbbeb299ba761e2f69b02444afdfe59db44c8257f1b5c9096c835b6aba"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-1-17-3/fit.json": {
+      "bytes": 277,
+      "sha256": "d5d52c52ed20190e01397b0602ad6a527c4e15440094b7d0df199fcd87bd4b39"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-0-17-3/fit.json": {
+      "bytes": 277,
+      "sha256": "5de392777cb8935371fc76ab68a45835fdb5cfca7a49845c39703ad1cac16e9f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-1-17-3/fit.json": {
+      "bytes": 280,
+      "sha256": "2ad9e555293b8288dcc89abf1e9344584ba061eebdf1ee5871d1dbeee3e0efc8"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-0-17-3/fit.json": {
+      "bytes": 275,
+      "sha256": "66a3fbd0860e4ad988beb0fefb720a60175735a9c2a5964674f0e1008fff98d3"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-1-17-3/fit.json": {
+      "bytes": 280,
+      "sha256": "adef8160064d41e6881bc16b57a53cdd3beaa2f6b04781d3bc7e176e229eb506"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-0-17-3/fit.json": {
+      "bytes": 274,
+      "sha256": "2c0a78c386e9709241a9d09a80810a5d2c9ecf2fdb12ba6743c2d58d4fef26b1"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-1-17-3/fit.json": {
+      "bytes": 279,
+      "sha256": "993fa7de464e820a2ab21eff1ffc2854006f735a146f567cd146b4153ceb92f0"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-0-17-3/fit.json": {
+      "bytes": 274,
+      "sha256": "30fe0652005b3ed3e589c2fa31aaed80e914c206e7503025109a5bf065fde204"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-1-17-3/fit.json": {
+      "bytes": 278,
+      "sha256": "38bbdb9d1a6bf1f28458e7a19a384c9d20f7eb6413d08af5d4c34a4a36279cf4"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-0-17-3/fit.json": {
+      "bytes": 279,
+      "sha256": "f76c255b0c53d227be3b10e1fbeb50b0e26aaf7459b5baa8f747847b1aeb822c"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-1-17-3/fit.json": {
+      "bytes": 282,
+      "sha256": "694c356f5c6cb077bf828ea06fc7f21c318240f9fd835a4f79553d60f8a8c64b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-0-17-3/fit.json": {
+      "bytes": 279,
+      "sha256": "349d7276cf28a44f1d48aa7e00a41e3f2a23207a27ea549217483951a3fa3e60"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-1-17-3/fit.json": {
+      "bytes": 280,
+      "sha256": "3fa15120ea2a8c4ef4b45bfe0be177b6b4f90150d366aa37101b28ea10f5305f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-0-17-3/fit.json": {
+      "bytes": 281,
+      "sha256": "fbf0e290255725d81cd3543799cb70f4c3308515c1eaf9e015c8aa2945222b42"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-1-17-3/fit.json": {
+      "bytes": 285,
+      "sha256": "66e6af5826d713ee3018fb7d204d683eee5763086944a73d927f1be4f8535110"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-0-17-3/fit.json": {
+      "bytes": 281,
+      "sha256": "78bb22bb934d32aa542575cbbbfacda8d98c933d6b76e3bee9f71403681258ea"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-1-17-3/fit.json": {
+      "bytes": 286,
+      "sha256": "75c7fe7c4ffe0f53fc82b81603ae943dd718fce31dd6f4c64eca21bb111bbc6e"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-0-17-3/fit.json": {
+      "bytes": 274,
+      "sha256": "d0aa2512fce4c6119dfc6d20e9b80368fc7400b12f65dfa9ae78fdf3372bcadd"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-1-17-3/fit.json": {
+      "bytes": 279,
+      "sha256": "1f4ae66b2b6d8f6102afe0eba2d82213c7029a68ab2267228b738162856f169d"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-0-17-3/fit.json": {
+      "bytes": 274,
+      "sha256": "f468322ac351a868f849b401b35e447957c1f34ca50887352d3f37a0fc7e7cd5"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-1-17-3/fit.json": {
+      "bytes": 280,
+      "sha256": "4d35a64ed5016149600f29939549815f8a187da616917b167f303cb620d52907"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-17-3/fit.json": {
+      "bytes": 288,
+      "sha256": "8deb4199b2335c75f6cb8f0e42385af9782952fc31d66049b8a95e0a0b1cb221"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-17-3/fit.json": {
+      "bytes": 289,
+      "sha256": "3533bbb664b0181bb69980b20b614d294482d7ee5938013d7f5a1a3d59eb5fa5"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-17-3/fit.json": {
+      "bytes": 287,
+      "sha256": "8453887d56b6831b901605e0c9e585574b4aa6d0d23c65ade6754c546b5d976d"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-17-3/fit.json": {
+      "bytes": 289,
+      "sha256": "c4fca8d18374a2b66b6ae5316928dd283f1502d80fb4fe289e71327fd4a70452"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-0-17-3/fit.json": {
+      "bytes": 275,
+      "sha256": "d961899341fe7b4c5506328c6918d0f5d2b74527265a7e785c1086d8c3e32912"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-1-17-3/fit.json": {
+      "bytes": 279,
+      "sha256": "228ed00da91c18817cd0175fc36ceab99af28b4d351adf7fc9a147c2c37fd5eb"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-0-17-3/fit.json": {
+      "bytes": 274,
+      "sha256": "20787d5fcff8ea042898c96c8856c87d6d6e608e3e90c2d774a47d5f265ef0f5"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-1-17-3/fit.json": {
+      "bytes": 277,
+      "sha256": "6d8062487fca232dfb2fc18327c2269ecfe268e57e0952341c7b400ff0f63b4e"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-0-17-4/fit.json": {
+      "bytes": 273,
+      "sha256": "e051924fa584436a439048a6c74b2b57fc3cd667239dd48bb382073ae520db06"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-1-17-4/fit.json": {
+      "bytes": 275,
+      "sha256": "fcc6950002b9eba772018bb5717e49917d404f9a102bbd7bb240c8565a9b507d"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-0-17-4/fit.json": {
+      "bytes": 273,
+      "sha256": "1cc7a8c19a68779ea71d6591e5869e2af4b0c1db4e7e9a96242784f91adf4123"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-1-17-4/fit.json": {
+      "bytes": 276,
+      "sha256": "3f87b60540f355dc09431f371a6889b335081a26a89728ebf0e1282e3e791f58"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-0-17-4/fit.json": {
+      "bytes": 276,
+      "sha256": "869f771de3e8f1f6855c145ff1e4f44d3d6ff0dbdb10d1b5d98b249eea19189e"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-1-17-4/fit.json": {
+      "bytes": 277,
+      "sha256": "451fb38ec13ee4cd694f8338020c3048c5607131837e724d7f024a5f3e869b72"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-0-17-4/fit.json": {
+      "bytes": 273,
+      "sha256": "1a76a635070369241eb7e3e9c2413ce3dadaef41bbdbc585b048de96e7124499"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-1-17-4/fit.json": {
+      "bytes": 277,
+      "sha256": "e94b2d932e3cae796a92340d68a0afc4731fbef5f098e3e4bbfacbc0eb9c405e"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-0-17-4/fit.json": {
+      "bytes": 278,
+      "sha256": "38fa19242af2500fc46d76731a5296a632872ffbdaa9f76f1fa13ad64f24bfd6"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-1-17-4/fit.json": {
+      "bytes": 279,
+      "sha256": "44761663af0c924b9e226758fbf8533e70a225d705e2a055a954a535b48c2f8d"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-0-17-4/fit.json": {
+      "bytes": 277,
+      "sha256": "0c41b72bd5905da93e5bd66e98a860577b3838277c52da79f376051d631049fa"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-1-17-4/fit.json": {
+      "bytes": 280,
+      "sha256": "7d92b3e08f6cc532071b70b742e815c7b7c91be9139744922f6be5c831d11552"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-0-17-4/fit.json": {
+      "bytes": 277,
+      "sha256": "5c49c5ff02d1c7ff6de42dd9d58f640594625ad519794c13ddf9a54a4c5f989f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-1-17-4/fit.json": {
+      "bytes": 280,
+      "sha256": "7d16289ab6eeaa9d49ccdf1429a34028a78a258ced05ddbc68d7563f55b56b18"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-0-17-4/fit.json": {
+      "bytes": 278,
+      "sha256": "05eb1558fdf7b0ca65406cf1ad990fca6db598de63fc5bb92ef75c5fd528df61"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-1-17-4/fit.json": {
+      "bytes": 279,
+      "sha256": "e51cdaef15e971db45b808a23f7bc9827647831002fc365e67ae24c0d6db8d65"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-0-17-4/fit.json": {
+      "bytes": 279,
+      "sha256": "c5aeee4b68ed2e1a3addcef5a2288fb0fd47de84a9b72fcddba3e1dbbd034ca6"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-1-17-4/fit.json": {
+      "bytes": 282,
+      "sha256": "092b87acf8e13c5ca402542f1a74b1b1cd6fee962dfe2a1d879b0d85904e9627"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-0-17-4/fit.json": {
+      "bytes": 279,
+      "sha256": "210669bf50d512f861a90e42c242c8b42c3d0850d749ba5edd5777c56dbb92e9"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-1-17-4/fit.json": {
+      "bytes": 282,
+      "sha256": "ca0e41e3a47097a0be0ecca1becde6af5ee2491e44c4807b4595e000623363ad"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-0-17-4/fit.json": {
+      "bytes": 283,
+      "sha256": "01bce66956184455181e0239dbe2cf85c79674c7630196d7153e940681dae0c5"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-1-17-4/fit.json": {
+      "bytes": 286,
+      "sha256": "5e1a055af088abdd3e73c37caceed5a7b3c1398099f7c81758d8ea5426518360"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-0-17-4/fit.json": {
+      "bytes": 283,
+      "sha256": "2ed0edf679156c5251d002683deeac44018e9b83de65848495643c93357a9ee4"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-1-17-4/fit.json": {
+      "bytes": 286,
+      "sha256": "1a5e1203c027220c9d91bec6b21dc41caaa06e240ab7c1fd7aff41027af870d5"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-0-17-4/fit.json": {
+      "bytes": 278,
+      "sha256": "b05466b28bead68e794a04be8cb8546cb046932cb24daf31accff425f1266368"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-1-17-4/fit.json": {
+      "bytes": 278,
+      "sha256": "6ac120fae79d97e296ea2af3e7d4aa000caefb5c6e0896bf66e87ba5c1b4d47e"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-0-17-4/fit.json": {
+      "bytes": 277,
+      "sha256": "3d5a59a732881f0dabe3eded68911e1758e932b054a804128c65af6ad83b125c"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-1-17-4/fit.json": {
+      "bytes": 279,
+      "sha256": "f6cb35b5ccefed96c07057800943e5d68b6d600ccd6ad302c4e3f55f586af59a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-17-4/fit.json": {
+      "bytes": 288,
+      "sha256": "32a6bc54d0b17042ed2cb5004cd8a76ebfde5012eb00a91e081ac569a4d76c9b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-17-4/fit.json": {
+      "bytes": 290,
+      "sha256": "1132767fdf6ba7eeb72b2331288a6f01bbad3804c891f8d387febef973628cef"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-17-4/fit.json": {
+      "bytes": 287,
+      "sha256": "39915b8507900cdf096f0599b544f5db14b9490b708e3f6de4b9d8947287f1ec"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-17-4/fit.json": {
+      "bytes": 289,
+      "sha256": "59c1ad97bdad57af8bba1cbfb92bb4aa222410a666654aeb3700f990883e2784"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-0-17-4/fit.json": {
+      "bytes": 278,
+      "sha256": "211db708c3c21392a1ce91a9dd701936221efde4d565318eb372789277bd96c7"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-1-17-4/fit.json": {
+      "bytes": 279,
+      "sha256": "1e8cca4c928c1db7849b7e805804360186a16dccd3be1b0a54e58f1afd09c9fd"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-0-17-4/fit.json": {
+      "bytes": 278,
+      "sha256": "b402489987f8d94803aca817a80efccd19d42f6e4079115263e50b278f5d287f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-1-17-4/fit.json": {
+      "bytes": 279,
+      "sha256": "b42bcdc5395a33ee05168106e0bc7de3873147b655acdcd0908b1dd83b8344f4"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-0-29-0/fit.json": {
+      "bytes": 273,
+      "sha256": "5e69e4fc659444f17fc7de3e14a78868d029cb3e2922c721f8c1061d5820adb4"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-1-29-0/fit.json": {
+      "bytes": 275,
+      "sha256": "c04d93439ea163428aaf7d20a4e8606d3a5e8a9c411483bb2a2c1aa667df37c6"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-0-29-0/fit.json": {
+      "bytes": 273,
+      "sha256": "33b5c9678f75e114a1f996c99bd926c7ff47889260402e060e0303fb0e7d8814"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-1-29-0/fit.json": {
+      "bytes": 276,
+      "sha256": "bf02b02afdc1025e8db0928f5cea67b341e05564986df0432d9ad4e39faca1fe"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-0-29-0/fit.json": {
+      "bytes": 276,
+      "sha256": "6386e00043f0af8d9775d3c329fb7456e0565dc445028df06aac47aa48634add"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-1-29-0/fit.json": {
+      "bytes": 277,
+      "sha256": "841c93a8bb75f4b94e650195406d09443f2ff8cf815ded4323e2c5a4351de39b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-0-29-0/fit.json": {
+      "bytes": 276,
+      "sha256": "4e94d4974d38269c511444bc4515a8a1c657dc1585aadbf514b7a5bb4f002555"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-1-29-0/fit.json": {
+      "bytes": 278,
+      "sha256": "64ac3442aecee67fbb7f0977988ce844b1d0e04bb223e120159a945c07cb1d57"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-0-29-0/fit.json": {
+      "bytes": 277,
+      "sha256": "d46da43f5511dd6e279d6713b92d593456f9ebf22289219467a8e28478f9c2c0"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-1-29-0/fit.json": {
+      "bytes": 279,
+      "sha256": "44fbefa4d01605315beb248fc14968c9aebef34b5e4b0eb4e9fc849d1112ab22"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-0-29-0/fit.json": {
+      "bytes": 277,
+      "sha256": "4bd558dd14c18e2da15f4b21928a6dd86b3a7566440d1bce9adbfbcfe64a3275"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-1-29-0/fit.json": {
+      "bytes": 280,
+      "sha256": "64028d980d5e4ba10c5e9cbac540934f56956038fbc11392293a5d09d0113724"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-0-29-0/fit.json": {
+      "bytes": 274,
+      "sha256": "77c59fb212c362bbb6d1c67b2ef532432b7d7fd00f178b10f564670f77466f9c"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-1-29-0/fit.json": {
+      "bytes": 279,
+      "sha256": "b3ea9efec19a69dbd0dbc0b9732ca8262e1ff296833399787f2a752938c39acf"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-0-29-0/fit.json": {
+      "bytes": 277,
+      "sha256": "33851b4f526a630d28edb2cb9ae31db32c44193132dedd7c47dc83a35d6db78a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-1-29-0/fit.json": {
+      "bytes": 280,
+      "sha256": "8835a34d10d0b844d677f763261f0688e3893f3022312f29aa9b5c7d868302da"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-0-29-0/fit.json": {
+      "bytes": 280,
+      "sha256": "781851b2dcf3d9b374dae396ccfd18e1cfa585269967036958091b0050e8a262"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-1-29-0/fit.json": {
+      "bytes": 281,
+      "sha256": "8f5dd590b63e10cfcbd0254396a991a600725f44341aa09246a8ea2625b15b2a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-0-29-0/fit.json": {
+      "bytes": 280,
+      "sha256": "6254fbbefa674bf052aff52336689cb719968f04cb8cd875ecee2595e0236dc5"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-1-29-0/fit.json": {
+      "bytes": 282,
+      "sha256": "97b7ab1792ce19a0094aca14f75623004063184e57a5af6001ad4210ce3ce024"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-0-29-0/fit.json": {
+      "bytes": 283,
+      "sha256": "48469d6a4b160afb21433210be08c498355a0d8aca7e197e0773edc886f15596"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-1-29-0/fit.json": {
+      "bytes": 285,
+      "sha256": "6d23c9bf43a560865fd11cd784d32b4da91cee02e392919ff00ba4852b9ea512"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-0-29-0/fit.json": {
+      "bytes": 283,
+      "sha256": "fa6f5178c00c04a6636c43a2b648e70388b524f142f33904718d7551ca50033b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-1-29-0/fit.json": {
+      "bytes": 285,
+      "sha256": "6e1cf25e4ab4095c7f70ecb0fb24b28b9c85ee5dd43951efc6279e6f82bae892"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-0-29-0/fit.json": {
+      "bytes": 278,
+      "sha256": "99a798d0b41d272c4f5aceb58f6beaeba6928b9b135b7195727cff03a25f6a00"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-1-29-0/fit.json": {
+      "bytes": 279,
+      "sha256": "f9345a94915bc53e0707f4c9bd3b2a337bacd31c20893e76cde2c11ab6d115a5"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-0-29-0/fit.json": {
+      "bytes": 278,
+      "sha256": "f478160cbfd1cc54edc790eaf9210698f75023275a9c0324a251a78d65ed0d25"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-1-29-0/fit.json": {
+      "bytes": 279,
+      "sha256": "02c7470f295779167409f7e3c9688e1144ebc57f8525faade3fd6c6f35bd2ec0"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-29-0/fit.json": {
+      "bytes": 288,
+      "sha256": "8a47b62a50fe2f187e47b6f8b16351e54350d752e824562670d5c752538e80bb"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-29-0/fit.json": {
+      "bytes": 289,
+      "sha256": "e699d1f8f5b6c8e3ca67702e3aee9b93abf3285cb16794a7fb1a651c71cb301f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-29-0/fit.json": {
+      "bytes": 288,
+      "sha256": "3c25e49c30d9169417608464c9b6c77da63d439ece0153409c070164ca61623b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-29-0/fit.json": {
+      "bytes": 289,
+      "sha256": "441f3239fa1fba1c249853a21e463702aca128767b5b00735d9ef0d8c0d95886"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-0-29-0/fit.json": {
+      "bytes": 278,
+      "sha256": "ad829c9dd4806eb74f6130f0915efa61f6eb843e7205ac9c2e6bbc5219aba2af"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-1-29-0/fit.json": {
+      "bytes": 279,
+      "sha256": "b67939d5c400f6b56a13bd55ed5db32b3e20138f2c919c2a7cd8c8a76ae0efa0"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-0-29-0/fit.json": {
+      "bytes": 278,
+      "sha256": "6c2ace7d8325d87fe3523579a979cb0725ae6e36d197e09b80844db3d113b381"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-1-29-0/fit.json": {
+      "bytes": 279,
+      "sha256": "adb9da1e0be05092e1a66a0c61a9e70b0ec7d969aa72fa85b2950aef7f22cc7d"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-0-29-1/fit.json": {
+      "bytes": 274,
+      "sha256": "e6d584f02e341b13ccb997cb522e81d9645f6eb94000da7a4fc9b5b66b4be566"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-1-29-1/fit.json": {
+      "bytes": 276,
+      "sha256": "34ef0a1c1c792c6e39847c4ab202e72bfd663763561847d2d7e3a49fa0585ebd"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-0-29-1/fit.json": {
+      "bytes": 273,
+      "sha256": "ba51391804b76750f4a22c45f01d8b419e376cfea8ad1def1210cf31f2e5a37f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-1-29-1/fit.json": {
+      "bytes": 276,
+      "sha256": "29a4a1933de880eeaf7cd48e01c84adc8004717fc861414d37cf6e4df08e1861"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-0-29-1/fit.json": {
+      "bytes": 271,
+      "sha256": "1cbcc0240d96e138a519d931102f102f966870bd14c43ecf7d8208511cfd3026"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-1-29-1/fit.json": {
+      "bytes": 275,
+      "sha256": "e3c0d301970364fbfd73cb6d27022a33e0ff8e9e95edeef4d5721c4c3e5f5c72"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-0-29-1/fit.json": {
+      "bytes": 273,
+      "sha256": "b844e874de3ba0dbd18f30888d03cc656f6f5d81497d75bc1444c2e23a4c8142"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-1-29-1/fit.json": {
+      "bytes": 277,
+      "sha256": "437032f5aae35bda9e1b2698acf1b286a783bc60a2b052e7e7f91ef29058e27e"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-0-29-1/fit.json": {
+      "bytes": 275,
+      "sha256": "1f2edaf59e630889f6a61ff284f2c6f6abc10509d563a69883b0ccfabe6599e7"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-1-29-1/fit.json": {
+      "bytes": 280,
+      "sha256": "c0173174373e56a270b3e4b00a9b4018cee06ceec9956121baba68db3b609b78"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-0-29-1/fit.json": {
+      "bytes": 274,
+      "sha256": "06f8d1e4fd5fbd5ed2c41670b0354a8a6db7e12a438da14a9b841c694f351f91"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-1-29-1/fit.json": {
+      "bytes": 280,
+      "sha256": "4fee04a55ba83d833a8c5778c6c389097e8920ef86a362a132fd78ca904a3b0f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-0-29-1/fit.json": {
+      "bytes": 277,
+      "sha256": "e1e51af8521474bb336e3a10c5b32d154e594028fcfae403534961f3ff4ebe91"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-1-29-1/fit.json": {
+      "bytes": 279,
+      "sha256": "30205cfb5ca3dd809cfbf589b02cb3f991669ff29e63eae4c3ae87f7db3df102"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-0-29-1/fit.json": {
+      "bytes": 277,
+      "sha256": "d34dcd62486b6c28cd6d74be8f2f8410df57b404b4467938e19505875d1af927"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-1-29-1/fit.json": {
+      "bytes": 280,
+      "sha256": "f085f04912b9b2d8b25c17a50a167e4b3e1ac05fcdd6c85c1b60d1f198ca687a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-0-29-1/fit.json": {
+      "bytes": 278,
+      "sha256": "1341aaffc1d8185ff643ccc1328f8ce80550e3ba93bc51533ee25242ca0a59a5"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-1-29-1/fit.json": {
+      "bytes": 282,
+      "sha256": "a2a3e9b8a35fd363409f47672d980c9b199246536f36695447a43a91ddbdfbe5"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-0-29-1/fit.json": {
+      "bytes": 279,
+      "sha256": "9e5712621108c41efec58c93bfa3bdc2568d9f3d785895c997adabcc6f607f12"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-1-29-1/fit.json": {
+      "bytes": 281,
+      "sha256": "10a1fc25dc9a8859c931028e9c386b964488258a4701e2f374936a8f52435f84"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-0-29-1/fit.json": {
+      "bytes": 284,
+      "sha256": "bdec0751de74c2043208797e45c3428996d2042e0dce10c3504f210590da7b6e"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-1-29-1/fit.json": {
+      "bytes": 286,
+      "sha256": "f3c75ba2d8406c022a07fc3b2ff78722924ef9213447b594d2e8f563ddfbba3d"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-0-29-1/fit.json": {
+      "bytes": 283,
+      "sha256": "bccb8b9e5f2aaf5e76e8f5d2dbf3c6b68c6ae488b81d2011917aea269ca6f181"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-1-29-1/fit.json": {
+      "bytes": 286,
+      "sha256": "d7c340fbcdd24759f5e5dfae1ac8f315b543062a5d4dda29cf3bba2bb61ab334"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-0-29-1/fit.json": {
+      "bytes": 278,
+      "sha256": "e6fb5632c02dfb75c432ec3dcb07150ee8f75e7ec15e93c6dc011396a1f22bfe"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-1-29-1/fit.json": {
+      "bytes": 279,
+      "sha256": "370a471c44b35d3227003c43d682cc1a5d8dbbe70e9ac7256bce550f80f98d1e"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-0-29-1/fit.json": {
+      "bytes": 278,
+      "sha256": "392c90fb4808a4a8bace3552f23e2b2bc21db38b6452b997e1c83d0804063311"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-1-29-1/fit.json": {
+      "bytes": 280,
+      "sha256": "2f1312b842d9c9da94f2f5b0e40639fb0f08569787582d8534a86c5ed3caa580"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-29-1/fit.json": {
+      "bytes": 288,
+      "sha256": "ccfa01567df3ccf9dc4fa8c20dea592ac6ef8a566f1d77260dddcecdbdcb1841"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-29-1/fit.json": {
+      "bytes": 288,
+      "sha256": "a28db5cc3b4a0e0088cc449d2c27e9fbfcca6d1631eb159f16ecfc0fd9049413"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-29-1/fit.json": {
+      "bytes": 287,
+      "sha256": "224063bd015a0892f89ac161c821f8b844bcbe74e177165492bc5fe96624a07a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-29-1/fit.json": {
+      "bytes": 290,
+      "sha256": "b3c51ad8868547d59232e4b21291b3cf4afca42e6c4ad855059e75d40708a526"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-0-29-1/fit.json": {
+      "bytes": 276,
+      "sha256": "51a5c2acebc4f54835232693e9c4ca99061a6b1945cae45cafff3aa24e6b7986"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-1-29-1/fit.json": {
+      "bytes": 279,
+      "sha256": "09a4abc3b720cfbba2ae4d32c9a4d641c01cc88c553a67eae862497bb91a8c53"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-0-29-1/fit.json": {
+      "bytes": 276,
+      "sha256": "368bfc708349017170a14e49614ecda8ca83b40d0f5a6c621ad6bccc702da8af"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-1-29-1/fit.json": {
+      "bytes": 279,
+      "sha256": "b54efff5e2adedc4488f26daa62ab481ff42ce261313677a7de79f7ffd840e99"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-0-29-2/fit.json": {
+      "bytes": 274,
+      "sha256": "3bbd7924d1b43d46bfa0b6e5a7cb920ead0cec2976a24d0a6c67f858a2c64d7f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-1-29-2/fit.json": {
+      "bytes": 276,
+      "sha256": "c8f96b2ae3172ad2e87bf0831ace5c591d6fe8975d24adc148bcb57807eb9004"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-0-29-2/fit.json": {
+      "bytes": 274,
+      "sha256": "197ffa0f9991d77c81191a5bf938bdec050824234fe706442a2c3e1b41a9c6f0"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-1-29-2/fit.json": {
+      "bytes": 275,
+      "sha256": "0ae01004797c8ac15f943089ade3d13750391bc6a2588f434357194023fbd0f3"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-0-29-2/fit.json": {
+      "bytes": 275,
+      "sha256": "53cb1df6de16d0ad052ba8c006d837c81c69911ece1165dd351da3e236f08d8f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-1-29-2/fit.json": {
+      "bytes": 278,
+      "sha256": "f17878f02c9074307cdf1d5733ba3aceddd96734c7593405cefa3cbfa5e31ce3"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-0-29-2/fit.json": {
+      "bytes": 274,
+      "sha256": "dc9f3b710a594e4cba78df44d4d6c86c824568fb626be1a51f6e5f8080de3d0c"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-1-29-2/fit.json": {
+      "bytes": 277,
+      "sha256": "e33dd0326524b62eb8a8b071a547fc2781f9e8aefaa5babe4af2b80406547b0d"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-0-29-2/fit.json": {
+      "bytes": 277,
+      "sha256": "c45ef66a19f784e9e4c444ed00f45f599e7a0b36f2e952e43cc887a70167c22d"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-1-29-2/fit.json": {
+      "bytes": 280,
+      "sha256": "dc9469df8e179412351bd2aa26b45a6b41e8c2e56eb9c86e1529801c00571d59"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-0-29-2/fit.json": {
+      "bytes": 277,
+      "sha256": "9a4e12e126127198f8970d6b81f3586f27352eb06b554d7a6b1193f3fdae0bc0"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-1-29-2/fit.json": {
+      "bytes": 279,
+      "sha256": "e5f64561b9ebb4704b5777b9e76992d06c74a47383b99b9efb1b5c9e0aca9dc4"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-0-29-2/fit.json": {
+      "bytes": 277,
+      "sha256": "fe564c199e9343a1a597942047fdbf988c3980497067004d403837007ce9aef5"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-1-29-2/fit.json": {
+      "bytes": 279,
+      "sha256": "a9bd5b3e10a34a1110d2609b5fa4422dac74254ecfffb0eb689f4d719634d1fc"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-0-29-2/fit.json": {
+      "bytes": 277,
+      "sha256": "669361fc8b9622f4b53f32eb8596d5069d7fd084c2e4a59585a63f3b21a7b086"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-1-29-2/fit.json": {
+      "bytes": 279,
+      "sha256": "62fa95c190323cb1e68b5f2433aeec3366c2b1b15b434391652b59c80b0d6ac0"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-0-29-2/fit.json": {
+      "bytes": 280,
+      "sha256": "55f384a544e2500d8d419b0fc80102e0f4f58dca475da63d63ee5a9c4b900792"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-1-29-2/fit.json": {
+      "bytes": 282,
+      "sha256": "71994411276dbc8a6d90da1126eb26b77a1729ae07dbc8c97ddb9ebf48b229f1"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-0-29-2/fit.json": {
+      "bytes": 280,
+      "sha256": "19231529bc862b68abcc7fc4f502a3c7c0249792fab5c72cd391c8e89b4ca26f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-1-29-2/fit.json": {
+      "bytes": 282,
+      "sha256": "337edbb824f5bb59ed1be6413ef63179916107567133932bf550e8d18d188205"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-0-29-2/fit.json": {
+      "bytes": 284,
+      "sha256": "313698580a454a79eacc6ed2c45396ef49a8c308f6338c4ab98df90e721579d1"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-1-29-2/fit.json": {
+      "bytes": 285,
+      "sha256": "03636541a5d11d9d6cf2b308bac4635e7ea36c5905b21ddc5eba003f01897cf8"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-0-29-2/fit.json": {
+      "bytes": 280,
+      "sha256": "6c6c6eb913de4d61a429f39018731cb89e43a55605e41857b8dfe8963ee57921"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-1-29-2/fit.json": {
+      "bytes": 285,
+      "sha256": "45d8f5c357757b793a25d6e49975af0ef72509d381d658b9ae3d6798993a892d"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-0-29-2/fit.json": {
+      "bytes": 277,
+      "sha256": "9b287c85078f81484c1bfdb7d5af9f25110c84519f96071fa794065eb7e089c0"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-1-29-2/fit.json": {
+      "bytes": 280,
+      "sha256": "9656db224b95737b0f744c5b523751a0402c71b3badcc5093e90c9c0bee64516"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-0-29-2/fit.json": {
+      "bytes": 278,
+      "sha256": "1f3621d1acf075fd897cc0690b88c76b4d334afc4f671443b423192e78c0de49"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-1-29-2/fit.json": {
+      "bytes": 279,
+      "sha256": "26889157e761ebe0722c15ab7018741d25e5fdf1c9bc60b90a9209eb98c06a15"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-29-2/fit.json": {
+      "bytes": 287,
+      "sha256": "3f9cfb1572bdb26cbc1d845e16b51f532269c6f1f76cb0248afb32494969265d"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-29-2/fit.json": {
+      "bytes": 289,
+      "sha256": "d8c8b8546c4931812811ac413ac7eecb0ccfae89b489bb5c5d73b41c50d350b3"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-29-2/fit.json": {
+      "bytes": 287,
+      "sha256": "f89bc295f60c705ef38598a12a38c987a17726f803a0e49ff390e1db333e2439"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-29-2/fit.json": {
+      "bytes": 288,
+      "sha256": "91217c259a3c8b3500887898f3e7210c831ab726d51d9d6834e33459816378f8"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-0-29-2/fit.json": {
+      "bytes": 275,
+      "sha256": "05a9bbe7ca945fb882cce34b7adcd49d488e4cc2b504b5e4d9a8fe955a20d2da"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-1-29-2/fit.json": {
+      "bytes": 279,
+      "sha256": "9b3665b872ef48896cc67cc00bb9a778b15308ba717570bc58b970f7cc3ff17c"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-0-29-2/fit.json": {
+      "bytes": 274,
+      "sha256": "c76f18891ae76502fde3c2b43cab8eaea274d1e830fcbde346b488a79e8a82f1"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-1-29-2/fit.json": {
+      "bytes": 280,
+      "sha256": "e50ce8c1992680fc6a11234c52dc87606860e164d03067b9315a3cb19e56db54"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-0-29-3/fit.json": {
+      "bytes": 273,
+      "sha256": "184e8d166f65305ee9d61be7b227ee871b5610c83d64a785f4c2a07c3ca56b70"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-1-29-3/fit.json": {
+      "bytes": 275,
+      "sha256": "be03c320580521239d1aa36392fa9fe76387c2229799aa25e40308b56e4f2c03"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-0-29-3/fit.json": {
+      "bytes": 273,
+      "sha256": "15d74607bc6c61c556d9c52c38ac69de9cc747fec4a487c52ab92274b9277f89"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-1-29-3/fit.json": {
+      "bytes": 275,
+      "sha256": "d9ab78d603b746ca01b2d96cec459cb33b715d43041761322656e51486594682"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-0-29-3/fit.json": {
+      "bytes": 275,
+      "sha256": "b176ebfacaccf44a79bb8fc0499395fe2972773dbdac97b8d1d5399964764739"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-1-29-3/fit.json": {
+      "bytes": 276,
+      "sha256": "68442a2fba50ffdea32e18cc987dfe3da49b8cdbe99d8ae8c1f8ce07ca13ee08"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-0-29-3/fit.json": {
+      "bytes": 276,
+      "sha256": "6a74d833ae54196a3ee3e47f94fbcf399faafa4df7a8d380dc17fb34e79fb3cd"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-1-29-3/fit.json": {
+      "bytes": 277,
+      "sha256": "9cd4dab58d4cd5e6168c9b3b199f5c9c024f827e0888a0a25779b0f9324ccc8e"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-0-29-3/fit.json": {
+      "bytes": 278,
+      "sha256": "3799034a95a48c68d4dea8d0d58720979005eb62ee70652b12017629ccd84955"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-1-29-3/fit.json": {
+      "bytes": 279,
+      "sha256": "6407607a3c2f7a8c25b88e40e6553cd2d825449c11c5ff498397054320a94c1c"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-0-29-3/fit.json": {
+      "bytes": 278,
+      "sha256": "dc6911bd214b6c6741fe0e4e96c835a8490201929e8153bf7a177e96cb5c3528"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-1-29-3/fit.json": {
+      "bytes": 279,
+      "sha256": "c28397b7c10a072475647091fa2309df319b64dc9038b88cb3ce1dbc78ce12bf"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-0-29-3/fit.json": {
+      "bytes": 278,
+      "sha256": "0f7732ead3bb9a138b8e5b4cc558206d697b626b3649479511a6ea495a24e21f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-1-29-3/fit.json": {
+      "bytes": 279,
+      "sha256": "cb656fc0441a25fdffe97a622a166b65b0ea1689b8732b2a5e44748fc3ef1529"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-0-29-3/fit.json": {
+      "bytes": 278,
+      "sha256": "9b08f37aa3ead12eefd9a2e421a85588b64e28403fef112c6a19319ef77ffb41"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-1-29-3/fit.json": {
+      "bytes": 280,
+      "sha256": "6e7fa985627ea82bbd75d777c47e5c3c95748192159592df280f7724cc03bcac"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-0-29-3/fit.json": {
+      "bytes": 280,
+      "sha256": "ae801aa55d9a49216deef28ab17684ebc7c5f6c0a06022009d5374b495f6a444"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-1-29-3/fit.json": {
+      "bytes": 281,
+      "sha256": "e65dded17078218ff2c2b4a1e1c0e28ca56bdeab7b730f6d603594a1ab9cab81"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-0-29-3/fit.json": {
+      "bytes": 280,
+      "sha256": "5b4188e563edf11812baec509db1c60e4a27f0e54202e11b447e19749006e39b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-1-29-3/fit.json": {
+      "bytes": 281,
+      "sha256": "cc2f190eaaa8a911b5d7115d529f93674e2943f5e32db48658f974b692f463a9"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-0-29-3/fit.json": {
+      "bytes": 284,
+      "sha256": "023fbb3b2bb88fefa11c0ebd5d34fdeb22dd46f4b25043efd34a67df38255f17"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-1-29-3/fit.json": {
+      "bytes": 285,
+      "sha256": "ff48ed297ac9edfa3bbee0b9d6abc4d7504ac7fdeb846bdb5a83bb756fdf7463"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-0-29-3/fit.json": {
+      "bytes": 280,
+      "sha256": "948c31efcff1bf3bad8e47cb405114b6463c5b67b09e2d68f8dcb75baa4272ae"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-1-29-3/fit.json": {
+      "bytes": 286,
+      "sha256": "f5c324e0a0abd7c6b55692710aa30ea189289f1b007b6a78a76bcb1ea92943bd"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-0-29-3/fit.json": {
+      "bytes": 277,
+      "sha256": "505d3afe9b00393b411f513eeba7f28415fbc7401e70dfc53e974c5a40f54c62"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-1-29-3/fit.json": {
+      "bytes": 280,
+      "sha256": "7ab749ad18e40a00338f47b8b2d014b15bef06d877f2e6e9a63c762ce56c25ec"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-0-29-3/fit.json": {
+      "bytes": 278,
+      "sha256": "8013c144b77a12b8f1b2097da8a2270691d13926e1b3c2dd74c98a93ec33660d"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-1-29-3/fit.json": {
+      "bytes": 279,
+      "sha256": "97a110254ebb7b4408813b4bd088dedcdaf160c1f4bfe86d41f3abd5651feb47"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-29-3/fit.json": {
+      "bytes": 288,
+      "sha256": "8aeab0735f791052b8356b4585aa6221ccdb8683d6ecd08f4574224c3894baee"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-29-3/fit.json": {
+      "bytes": 290,
+      "sha256": "f211dcf5971ba7b6e2e1e10ec4f95bccea4e766144f747168bbd2b5722376437"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-29-3/fit.json": {
+      "bytes": 283,
+      "sha256": "b8ece059d7bbf2628d713d293a3157a70195eb54613b54063c298e03d4e11803"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-29-3/fit.json": {
+      "bytes": 290,
+      "sha256": "29c11994720220208ff2c9710762491e0e0a23e231765d48033610642c62dc85"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-0-29-3/fit.json": {
+      "bytes": 277,
+      "sha256": "25a0d3f43ba7260f80bf1a8dd5ebc8019667adf02f50e48003eda936def3791b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-1-29-3/fit.json": {
+      "bytes": 279,
+      "sha256": "9785f007b4ff6fd910c5133e93b4ccd505321d3383096e555ab3ead602a53852"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-0-29-3/fit.json": {
+      "bytes": 278,
+      "sha256": "88fdb7c56d821f135e98a0b71c9b149cbb64f5b0bda552424113dc553f977d7b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-1-29-3/fit.json": {
+      "bytes": 280,
+      "sha256": "7f1a928758938fdc009a699770f7a6d8bd15a64eefe392e7dc5c259562d8211e"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-0-29-4/fit.json": {
+      "bytes": 273,
+      "sha256": "41a5f6974696d27f7daf2186c8a7e72cf937d9cf7ad472d93c090fbe2b1d872d"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-1-29-4/fit.json": {
+      "bytes": 275,
+      "sha256": "d7a1be15c6d524bcb41be5cd0a93f0e2f3f04cd61a3b45e9432bf1a2f524bcfb"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-0-29-4/fit.json": {
+      "bytes": 274,
+      "sha256": "b5a0d945de211b72b7ad86a1ecaaa9ae8908b662967f24c56597f1902e498a93"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-1-29-4/fit.json": {
+      "bytes": 276,
+      "sha256": "8f67af1cdad60691e2ee98372532f7136055fcdd9c3b0571a64b8b04fbadca01"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-0-29-4/fit.json": {
+      "bytes": 276,
+      "sha256": "dd3f2fa8f76924153d2d5f966be7f33edc031084e5edd71f613fa1c66add733e"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-1-29-4/fit.json": {
+      "bytes": 277,
+      "sha256": "a44f33e993b36e92358e2b9dd43f826dd12ae2dc9f7b854bc04cbc62280e2cc7"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-0-29-4/fit.json": {
+      "bytes": 275,
+      "sha256": "ad45d3229f3edbfa0905f0c427be684c563eaf31b04fdd6d15ba716e6c51b2ed"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-1-29-4/fit.json": {
+      "bytes": 278,
+      "sha256": "08023a7f7b8b95f058ffa74bf14c99cc4071642e043a2b3bc1dd6a56bdfc72ba"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-0-29-4/fit.json": {
+      "bytes": 278,
+      "sha256": "eaaa7bf8adb82305688575cfb3820488b7506ac379b55dff20bd15e9b21c1243"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-1-29-4/fit.json": {
+      "bytes": 279,
+      "sha256": "189e6571611366ab13fe9e17f36cb1f41271815c19c43f3d226e02ddab99b1b9"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-0-29-4/fit.json": {
+      "bytes": 276,
+      "sha256": "d74f9ac53934fae81d5506a0ed5f0ebdcba1cea875e83150a5ba7da8436d6a58"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-1-29-4/fit.json": {
+      "bytes": 278,
+      "sha256": "a1cbf41ed3692d82d108ec19cb74e8052ef20df5a087f63541046d433935cb0e"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-0-29-4/fit.json": {
+      "bytes": 278,
+      "sha256": "7cec5024d5680e1fd047d31f703a47e90c8acf06c2abf3045ddbe5b503ad714a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-1-29-4/fit.json": {
+      "bytes": 279,
+      "sha256": "2b2806168fc10278d8c06e2cf39296fdb6d1fc7ed1ed0500e1287d1c8519799c"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-0-29-4/fit.json": {
+      "bytes": 276,
+      "sha256": "369ac342dee1acebc00c2507c66c45b4b8aefd1c3babce3428d997a6e0b05662"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-1-29-4/fit.json": {
+      "bytes": 280,
+      "sha256": "c65bf6ad625e38ea966d78231d65f551151732ad0c1c67f84bf5484cd5c7e107"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-0-29-4/fit.json": {
+      "bytes": 280,
+      "sha256": "e26a76e0926be2c11b521d13e11349a0b695184623882eb5653b7eb1e1a6d32f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-1-29-4/fit.json": {
+      "bytes": 281,
+      "sha256": "b34277421f8a7874834416e156ca1108cc4e1c5875418b629f205772d139c6bc"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-0-29-4/fit.json": {
+      "bytes": 280,
+      "sha256": "db32c758120589a81bfee9acbf06f4c6733ad49f1f5f11a8b701377654902ea4"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-1-29-4/fit.json": {
+      "bytes": 281,
+      "sha256": "0c8596b860748b27c914638021700faec23a515045c5f1a45f575399a5c3f157"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-0-29-4/fit.json": {
+      "bytes": 283,
+      "sha256": "ea23186c2488214149d72ae4ad7d8a65c340dd7b73ec6c492217008b68546133"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-1-29-4/fit.json": {
+      "bytes": 286,
+      "sha256": "430cc438b4ac9dea8f021a23363375ad4652244507c08e0e5fc3300364bae54f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-0-29-4/fit.json": {
+      "bytes": 284,
+      "sha256": "29efa3ac35b1bc5486260fe1714b4b54cabf13576524c46f3ffe43ff01c3094f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-1-29-4/fit.json": {
+      "bytes": 285,
+      "sha256": "0c97be6189cca497d776de454b42d6bf9d9b7b4853211fd054e324a3eec99980"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-0-29-4/fit.json": {
+      "bytes": 277,
+      "sha256": "694a8b572c0b492b818b2f086b1aac8531a9c4874c2d08635981b5a058f629d1"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-1-29-4/fit.json": {
+      "bytes": 279,
+      "sha256": "b72760722434f09504a49068173562b2ce269c73214024955f326f93d471afaa"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-0-29-4/fit.json": {
+      "bytes": 277,
+      "sha256": "562a9e80ac7ea14d60edf5a71a459a5897c65ae3292545dd73c4bf2455822546"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-1-29-4/fit.json": {
+      "bytes": 279,
+      "sha256": "f3848e071b0d07b36026c3178a14b8a20264cb5d5dfead43974f52c1717887d5"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-29-4/fit.json": {
+      "bytes": 284,
+      "sha256": "668b2696d8a1dfdf11f1fd16326403aad108ea81ab2ed02b2afdbf0d843dde07"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-29-4/fit.json": {
+      "bytes": 290,
+      "sha256": "8ba48aa4cad37b510890bd477e854b22d85d924003bc7298d173603934b94fe5"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-29-4/fit.json": {
+      "bytes": 285,
+      "sha256": "f929ae4cf69007e9351b5a741bf94dcf9c03fa039710210f808c820761161974"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-29-4/fit.json": {
+      "bytes": 290,
+      "sha256": "0c69b6009823ff9b3338fc259e0c0562fd1230657899956baf2f2626ca79fdf3"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-0-29-4/fit.json": {
+      "bytes": 278,
+      "sha256": "fc8733849bd4239049aabf8263ada598b66ced2261ba8eb17b66e8e574217746"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-1-29-4/fit.json": {
+      "bytes": 280,
+      "sha256": "0e66f00df294f82299bddea23038e728a6d721dc4cd5fbe8c16bfb5f6ff36672"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-0-29-4/fit.json": {
+      "bytes": 277,
+      "sha256": "a7307f37b1689be2829352c8ff773ee8a0289f084b83e729948d40e359839092"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-1-29-4/fit.json": {
+      "bytes": 278,
+      "sha256": "8ebbcfe55083ac31116427470feb402aede486b831dbeed24be0feb541b17475"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-0-43-0/fit.json": {
+      "bytes": 273,
+      "sha256": "ee6e55c70dca33bc677c3e14c6767fe80a8247b6c0a8c4f6345409521dafa661"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-1-43-0/fit.json": {
+      "bytes": 276,
+      "sha256": "1abaff81bd9ff9bcd5b0abf46110679cd07bcfc39e68f7d1182be925ce01ea7a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-0-43-0/fit.json": {
+      "bytes": 273,
+      "sha256": "6592b6ff96bf2ab19e9c09486b2cd743eb58eeb4ca1d8f854e8bac1184785d45"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-1-43-0/fit.json": {
+      "bytes": 275,
+      "sha256": "d1ced55a499ff0399b1cff5d06de678351c6ca45383df47c3eede9fab2ce8845"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-0-43-0/fit.json": {
+      "bytes": 275,
+      "sha256": "43103c5b3a4101ef5bfb58ef2a6b0fd942450897fcc8d9bb3a2f952881b31a69"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-1-43-0/fit.json": {
+      "bytes": 278,
+      "sha256": "c60e11465c0267bcdaadafaa5ba75f41da6ff3a624cfd3bf00e6d88add7e9a6f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-0-43-0/fit.json": {
+      "bytes": 276,
+      "sha256": "710c4b4f8f502bbad248dc4ded6df04c371d5b9ab6a3e6b50ee30029e4c01a6a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-1-43-0/fit.json": {
+      "bytes": 278,
+      "sha256": "bc41e9e9c05463abbc3f5e27e4700f2434ae951db35999fcfcf1cf631b1a1b7b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-0-43-0/fit.json": {
+      "bytes": 277,
+      "sha256": "8646c6dc68a01d52b25d38c0236fb3503f5d498703b70417da2cc4522be97bd5"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-1-43-0/fit.json": {
+      "bytes": 279,
+      "sha256": "831a67b59fa64ab4a00dcd6fc5381222924725fbdb6db4906cdc265133ab9275"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-0-43-0/fit.json": {
+      "bytes": 277,
+      "sha256": "5434e5fc1d41a69b2ed73daa20dfab8830e5e9d816bb725b2ce821697df5dd83"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-1-43-0/fit.json": {
+      "bytes": 280,
+      "sha256": "2040605102a75968ea66e4e82d037e38dd44802bef6151e74074d0f118c96fca"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-0-43-0/fit.json": {
+      "bytes": 278,
+      "sha256": "2c51028732c87eedf239bc6464a87d647a9e6b472d7cb2ac658bcfae716de369"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-1-43-0/fit.json": {
+      "bytes": 279,
+      "sha256": "e50d3932324721c96c63a79d8ac10628256c0f57584e50508e993f14178660f6"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-0-43-0/fit.json": {
+      "bytes": 275,
+      "sha256": "4c631e3834e2a08a3b60fd383c2176ce78f32a2192051584f387687829575cb0"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-1-43-0/fit.json": {
+      "bytes": 279,
+      "sha256": "95b0e03e3ab1e10249658879db8613a0d16ebd7dead3e4869e6c543c7fb85dc3"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-0-43-0/fit.json": {
+      "bytes": 277,
+      "sha256": "d85ef1f82f0de0575f26f8d3380a9e7f49b5c489603973ebb7e4201cc7a6b60a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-1-43-0/fit.json": {
+      "bytes": 282,
+      "sha256": "5e14ec5d4377076d17dcc8e6d48b1e13e9cd88441caeb1d8fe2824b545e069c6"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-0-43-0/fit.json": {
+      "bytes": 276,
+      "sha256": "eadbb1e9d1cfe18873e4ad9056c95624b7f91c973cf2d2254446e240ea9443c6"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-1-43-0/fit.json": {
+      "bytes": 282,
+      "sha256": "7f4ad0474028f8c9b885cf47634ccae27284e769b3ac322a7375f80add1724b8"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-0-43-0/fit.json": {
+      "bytes": 284,
+      "sha256": "9b9d1d10e9e2ca92b54e57a995c32aa4ded7ccd93dab10879e5232f0d83c9b57"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-1-43-0/fit.json": {
+      "bytes": 285,
+      "sha256": "b50fa13250c6696885b68a09fbdb6b9226881e1d9f9dfbf7db2028b49331325a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-0-43-0/fit.json": {
+      "bytes": 283,
+      "sha256": "493e36cb18467e1b8e91fd482240ace0971c561c1e574e513f6f05f0ba2f807f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-1-43-0/fit.json": {
+      "bytes": 285,
+      "sha256": "cc59842549e4fcf8d49fe4fc6116dd79ba3952c218d769ef162d0c82542f4757"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-0-43-0/fit.json": {
+      "bytes": 274,
+      "sha256": "01418978fd640f2aee044eecdde7fa8f2a24170c7aff3b83d5668153eb080318"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-1-43-0/fit.json": {
+      "bytes": 278,
+      "sha256": "253285f715aa9c2fbb2bd7675cba4a89f6198eccc99f88413a9d11a33cdffd89"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-0-43-0/fit.json": {
+      "bytes": 274,
+      "sha256": "f9abddafbd505839869eac5ceb0ded29d1dbeedd3363a494e9756e5a76a25c98"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-1-43-0/fit.json": {
+      "bytes": 280,
+      "sha256": "e9e245893c5192a211c72d27aa9a1d2e5a25e4e453385119afbb8467bef66809"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-43-0/fit.json": {
+      "bytes": 287,
+      "sha256": "0f6418847787cf89316dae577001c1e95c8b7acd7b6b959cf1f21225be86db5b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-43-0/fit.json": {
+      "bytes": 290,
+      "sha256": "353f4050226c06e3ccd672d0d3d43394c2ff1594f5809c394479a69fc90b9b6a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-43-0/fit.json": {
+      "bytes": 287,
+      "sha256": "d3e3dc717fc1ce0c4f8b59af35f5d84246106de31381cf2e753a7fa6cce7bd18"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-43-0/fit.json": {
+      "bytes": 290,
+      "sha256": "47b39a5afc63d8ae1d54b03125355c3d87be41e641e301320b81c84367f6bb28"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-0-43-0/fit.json": {
+      "bytes": 278,
+      "sha256": "a234154071353b42cad4683fe68c74745c24db42abd30c1a5bfbb92c6ca80527"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-1-43-0/fit.json": {
+      "bytes": 280,
+      "sha256": "ccf59777778673c74fe2ad8846c0bc6241f28c7cc9314f4e429b865a9cc86944"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-0-43-0/fit.json": {
+      "bytes": 277,
+      "sha256": "3ae2d67951f104c08352591e6ea5211c8e582784e73bc6f73138acf585677d5c"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-1-43-0/fit.json": {
+      "bytes": 279,
+      "sha256": "c1df19bd6597e3d83f826c98035a29567c30bcf818e5528c9415569396816e6a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-0-43-1/fit.json": {
+      "bytes": 274,
+      "sha256": "8a6c3fa26e73dd25506b5071722a63c8cb1eb9c8a3fad9ab4dc84d4aaa9d00f3"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-1-43-1/fit.json": {
+      "bytes": 275,
+      "sha256": "ed592fdd34f4718c4c4e152a0b695b5f3c4e95c833afdf3f98726bc518d9c921"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-0-43-1/fit.json": {
+      "bytes": 274,
+      "sha256": "eeb610e968181e23c9d78a7385b2a803d92f86543cccdc2869c8763a3f4c2d50"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-1-43-1/fit.json": {
+      "bytes": 275,
+      "sha256": "1a174375d50bb68ef55547e025953d777bf08d55f90c15d7dd1f61c8271fa56e"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-0-43-1/fit.json": {
+      "bytes": 275,
+      "sha256": "5340b76cff5a0f2797a16ae3140244afb9b440a2d804f09be76b1dbdd1d4680d"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-1-43-1/fit.json": {
+      "bytes": 278,
+      "sha256": "d3f01647b60024f8a104f90ed4b11c9f017a286bc8082ff83d53a66d1d976c1a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-0-43-1/fit.json": {
+      "bytes": 276,
+      "sha256": "b3e1dccffd67f1c13afa75ae478da6d65759dc1a6594c7c0e3f6edb2d9c144c0"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-1-43-1/fit.json": {
+      "bytes": 277,
+      "sha256": "a56b4752664b8ac98ff1a8a83bc978f6c44ae5f88927753f83965988bcb7ebd3"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-0-43-1/fit.json": {
+      "bytes": 277,
+      "sha256": "f7ecbb8ea2c82adf929cb56ff5a8cca4f1160c17821627a00bcbd78431dc7c14"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-1-43-1/fit.json": {
+      "bytes": 279,
+      "sha256": "cc636765b56080d5eac9a700b551b03ad01fc943c2634d81f75eab3268c3290a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-0-43-1/fit.json": {
+      "bytes": 278,
+      "sha256": "b56a8319cdd309df2d5dc5346fe9770c3f19535904377d37810ec51a743d94b7"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-1-43-1/fit.json": {
+      "bytes": 279,
+      "sha256": "4bb043cbda6b561778bc69747f7caebcb7afb65c95c6ad3db2fdfb0062b320f5"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-0-43-1/fit.json": {
+      "bytes": 278,
+      "sha256": "4724892794bcf96a86f754da905e0217e06219c21ea87fe0dba1e6dbf4a24af1"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-1-43-1/fit.json": {
+      "bytes": 279,
+      "sha256": "f8aab6c38a1f9fa6d1261397e53624d7453b4c7547a331ccdeac5411441e03ae"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-0-43-1/fit.json": {
+      "bytes": 277,
+      "sha256": "a3e00aa0aa917b960f7a7cd3151842f68332f37e1f818692370d9c77f5e26211"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-1-43-1/fit.json": {
+      "bytes": 279,
+      "sha256": "7d6c6060a96bb73e7ce5e87ac23d4a21be4fbe0af83ed5fd7473df7b053d2803"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-0-43-1/fit.json": {
+      "bytes": 280,
+      "sha256": "4981a1868890682a392bd403d401189119c072640731ef0623a290a381c95123"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-1-43-1/fit.json": {
+      "bytes": 282,
+      "sha256": "194b9abdc776887cd623288c0988346fcedb94b2009d04edf088a1e8a9c33dee"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-0-43-1/fit.json": {
+      "bytes": 280,
+      "sha256": "db66bd029f40c41dc4dc7382ac976da72a535864508e90587bb577ed16caec02"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-1-43-1/fit.json": {
+      "bytes": 282,
+      "sha256": "09f4a26c0375b3430fd5772a6c3d1cf6a916da8606bd945d855986aab40517ab"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-0-43-1/fit.json": {
+      "bytes": 284,
+      "sha256": "c7a96861f964807317366ee03c6e16a251537d2ad0a9b2eb7be4a91ac1d78bb8"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-1-43-1/fit.json": {
+      "bytes": 286,
+      "sha256": "1f553b96ea3806f2e90b1926eb75be8bfa521bfe7ee788e80ace93c913003b71"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-0-43-1/fit.json": {
+      "bytes": 283,
+      "sha256": "7425e79bb9adbe081508a6723398cd0c2ac3f5f924aff2a574bdcf87691a8b75"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-1-43-1/fit.json": {
+      "bytes": 285,
+      "sha256": "674c21bc89b02fc42865f1a235a67708fa01243cf6c10d14658894af4563feb0"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-0-43-1/fit.json": {
+      "bytes": 278,
+      "sha256": "d14a3c5a004e3f8f804bc65e4f180c366ecd844513e61543c27bef70378a2352"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-1-43-1/fit.json": {
+      "bytes": 280,
+      "sha256": "bdbe38c45fadc355eb19214593d003cf3faa6331327f7ff126fd9d5ee9ec16d2"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-0-43-1/fit.json": {
+      "bytes": 278,
+      "sha256": "7d30e646e376d0265a61b28fc3bf58f0d249939435a9903c83fc73f4142667ca"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-1-43-1/fit.json": {
+      "bytes": 279,
+      "sha256": "7dc3bb04732d9654474b4cee83729cf8b085979ed0b2d2d474fb5e9c8f2c98b3"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-43-1/fit.json": {
+      "bytes": 287,
+      "sha256": "37b8d0c44ee24d759143368ae244160aceced7e78acf8a8ad488531914153563"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-43-1/fit.json": {
+      "bytes": 290,
+      "sha256": "20f74e5ab8f6b0d8fa27eeed1cbe5d73faae8ce17fd4f9571ca0fd8b82b75a0a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-43-1/fit.json": {
+      "bytes": 287,
+      "sha256": "c7bb84a107367b9a4ba3af1cffb231465bd867323aa4099cf8a361d501814ed7"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-43-1/fit.json": {
+      "bytes": 289,
+      "sha256": "af5b0067d5e0d9c31fc1d3cd891891709cbf60b99cf2afce1da5ab9bac66e079"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-0-43-1/fit.json": {
+      "bytes": 278,
+      "sha256": "c487d4c06ff4ac8e500554dc8b585ae741efb5af939cd27aefa5b3d16cd1e419"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-1-43-1/fit.json": {
+      "bytes": 279,
+      "sha256": "a3013ccf203d26c214f2bdfc33aedab345e376dd3abe9d7ae2e763a32c529273"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-0-43-1/fit.json": {
+      "bytes": 277,
+      "sha256": "242c6381c1116b8a1ded7495aec5aee731a6721ddaf59947ad5a2acfe74057c1"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-1-43-1/fit.json": {
+      "bytes": 279,
+      "sha256": "dbcb047ebe66ad3647f83ccfdbb71e6cbda20613208401748da2cc4fd33e421f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-0-43-2/fit.json": {
+      "bytes": 270,
+      "sha256": "9975cb91cd56aaf823fc9d106b81f917dfd2436964459bde941f2734e8fcbede"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-1-43-2/fit.json": {
+      "bytes": 275,
+      "sha256": "9eade64a753d208a35bff66a0050e681e356a0b2c799322e53dfa33f557b94dc"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-0-43-2/fit.json": {
+      "bytes": 271,
+      "sha256": "5bb150e5eeffd51998b1321ca8d7ad10128e9a84b635b4ba45bf5f536016170f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-1-43-2/fit.json": {
+      "bytes": 275,
+      "sha256": "875d452bc24ea7a0c3bf11826f15710e640e6467c1ea409b24386e91e73ec972"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-0-43-2/fit.json": {
+      "bytes": 275,
+      "sha256": "cfb1d5bd900a8c87082930e03191ec6663de1ebe60be2a41f3aab3af9f4235c2"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-1-43-2/fit.json": {
+      "bytes": 278,
+      "sha256": "bee4b0c548a2c9a9310d384260542d9a3e1c46e27bea20d5cbea3e2efb22ef8f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-0-43-2/fit.json": {
+      "bytes": 275,
+      "sha256": "2e2c1f28e4137b82980c05c22cac4ddcb8d56940eb47ec4af4e23992cd75b016"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-1-43-2/fit.json": {
+      "bytes": 276,
+      "sha256": "0c84d91a546218adfa447356f5f45e3d2efd37e74d8ed382d2b4b19171d4efd7"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-0-43-2/fit.json": {
+      "bytes": 278,
+      "sha256": "01d554c8addb6cc872f7419db70e664978fd16fee2c49fad7487478ed95c68b2"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-1-43-2/fit.json": {
+      "bytes": 280,
+      "sha256": "0c8d8c5076260a29432c2c7101690f1ce18c3ecc6b0d7c58d5a97901adc06c97"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-0-43-2/fit.json": {
+      "bytes": 277,
+      "sha256": "4fc4c82135be4cd967642884ec10111ab824a2ed7aea3f68538499a98531b0f9"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-1-43-2/fit.json": {
+      "bytes": 280,
+      "sha256": "44341f6bde0d9c71305967037a6a62f7bf0a617e01bfc185b7d5a0cdc065f855"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-0-43-2/fit.json": {
+      "bytes": 277,
+      "sha256": "b7592eea76d2df77303ebc9044780101ae5920ba9772a967c11f500b5831f73d"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-1-43-2/fit.json": {
+      "bytes": 280,
+      "sha256": "a4e2c59972a7b6449e59f1063355a10c510a3ecaf113540d22f8398d07c0af4b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-0-43-2/fit.json": {
+      "bytes": 278,
+      "sha256": "164540f9e8c86a95865189ed1294992681f4d608a9c1f1b635f2360575f5c0d6"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-1-43-2/fit.json": {
+      "bytes": 279,
+      "sha256": "2990482890f96ad927d6576a9a86f4e75d7bb55dc451fc558299ae8cb481c167"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-0-43-2/fit.json": {
+      "bytes": 279,
+      "sha256": "6745b408634eaecae7eda1dc8d69bea8c61f0ecef03171db6f7ac7ea4ec2ee35"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-1-43-2/fit.json": {
+      "bytes": 282,
+      "sha256": "5751cf8783780f4c196d5a369df967d8857a6471fa89e4ed0e18ad13f7e398c7"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-0-43-2/fit.json": {
+      "bytes": 279,
+      "sha256": "d5fd6418cb3a94117b7752698eb63bf34d06346c179ad04f7887a75ab410c250"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-1-43-2/fit.json": {
+      "bytes": 281,
+      "sha256": "6a54a6777ba274a952dafe93c2a4ce8da80fab978661e24bb191ab447168fbc4"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-0-43-2/fit.json": {
+      "bytes": 283,
+      "sha256": "af6027f09ecaa34b5ee8f191a16817d681a63a1255230a28e0cdb57935995d6a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-1-43-2/fit.json": {
+      "bytes": 285,
+      "sha256": "714427ac02e8429eb9a429ce9569d96de4b1c755bff41b05f4bc00ee07e2b225"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-0-43-2/fit.json": {
+      "bytes": 282,
+      "sha256": "71c820cf5a70a19f34d02ee35e196fb4a342ca03248c2466da508ad25c88cd7c"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-1-43-2/fit.json": {
+      "bytes": 286,
+      "sha256": "31c94fe878be81a5b7ea520a73025d36f794a34c170916c820697b497698436b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-0-43-2/fit.json": {
+      "bytes": 276,
+      "sha256": "ad393583d7454aa5341e54f61aa3c1a6c7776cc41c78fde52f75407a111ee1dc"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-1-43-2/fit.json": {
+      "bytes": 280,
+      "sha256": "65cb987bec6d5931fc5ba727282c5dab6592742ce291d5d761abf6fb68c7a491"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-0-43-2/fit.json": {
+      "bytes": 274,
+      "sha256": "31d2501a341a6d1fd6b4c06ace7b9322e3db88c3a55b72683cefcf6e297bd3f2"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-1-43-2/fit.json": {
+      "bytes": 278,
+      "sha256": "310f640ac6c49f07450af0faac64f9727c33dc6b5567494979eea33368cb10a2"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-43-2/fit.json": {
+      "bytes": 288,
+      "sha256": "c36a2d0e86c0ce1a8345db4f9f4bdc8d70a7faa4caade29dae5d159531463860"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-43-2/fit.json": {
+      "bytes": 289,
+      "sha256": "f026a7925d42fcf131f46d93fa741fd1223eb1695db4f6a14002dc6e8668fc41"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-43-2/fit.json": {
+      "bytes": 288,
+      "sha256": "9b5c732fb19d914e36f47156173d90fd458ea9fd7809c03bd5fbf4df45b8cda3"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-43-2/fit.json": {
+      "bytes": 289,
+      "sha256": "46abd7308117f26193faf933cbd7ae3813315e9d209dc4cca72a708089df7065"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-0-43-2/fit.json": {
+      "bytes": 278,
+      "sha256": "508f72c7975b034930d5a4d69afcf9d87f877f11a1efd86b078f707c2a1f3549"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-1-43-2/fit.json": {
+      "bytes": 279,
+      "sha256": "5d6bb435836ad5f41499bceaf49c73dfc3a25b7a6dfc74aa14495c5991820436"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-0-43-2/fit.json": {
+      "bytes": 278,
+      "sha256": "52921e861bb0212f4f414b201ad0ae2fd841fbea26f3d2eeec0218d23c4bc2b6"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-1-43-2/fit.json": {
+      "bytes": 279,
+      "sha256": "b9ae202816b85925bf872295101aec6415bbecfc3764d1252878bbbecc231b4c"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-0-43-3/fit.json": {
+      "bytes": 273,
+      "sha256": "165fa16edaa29d1023d95ff6ea2e4f48be804a639aa94936da37870dc2b48e15"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-1-43-3/fit.json": {
+      "bytes": 275,
+      "sha256": "d94922d1ebc276dc5d8933e08f25cbe6b5bdea0cd320a363f95ecf3a0f4e270a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-0-43-3/fit.json": {
+      "bytes": 274,
+      "sha256": "6facac1099bbdeeda4656053548a5ef77dd2680e43e90981ad692a90e75655a4"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-1-43-3/fit.json": {
+      "bytes": 276,
+      "sha256": "b7a5fdac43192254656de0bc75eb0f2e515205ae32d45c6afb49c41fac09d0fc"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-0-43-3/fit.json": {
+      "bytes": 275,
+      "sha256": "cfdfd34d23a651a081254901ecd77f2e3e041ace84a8dc2b5a6916b31570f8ee"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-1-43-3/fit.json": {
+      "bytes": 277,
+      "sha256": "1d7cd91bfee53bf6d7ca8c139fb1d3b998d21a1dbe515d566863db1a1fddafcb"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-0-43-3/fit.json": {
+      "bytes": 276,
+      "sha256": "1441dea9695523f2751393d2d1480c82fce96cc5acc7dbfea327eb7dbc723d79"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-1-43-3/fit.json": {
+      "bytes": 278,
+      "sha256": "71832e5ef1cd1666231584dce8b792cb75c201486c67c892a447178f5d300b67"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-0-43-3/fit.json": {
+      "bytes": 277,
+      "sha256": "796b31949c7a58d6f624e9a61d31d2d6899dc2e205b1723300f1a2f86ad8bec0"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-1-43-3/fit.json": {
+      "bytes": 279,
+      "sha256": "05b0c8233b75e5f14681b33ee2d59a110be0ab8a7493494df838f58cc6304f03"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-0-43-3/fit.json": {
+      "bytes": 278,
+      "sha256": "66f4981543e0183fde37a33c77f6eaa0934c9136ac7fd35a67fe6f8f8ec8d985"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-1-43-3/fit.json": {
+      "bytes": 279,
+      "sha256": "b048a0e7501b133b04c0d187c7c4745194745c6a6f27353995a5612e8e8efb75"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-0-43-3/fit.json": {
+      "bytes": 277,
+      "sha256": "ffb3d6a726a84e61e3c775095e3144e20d98776b7f4acc7324100fefe8bb4754"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-1-43-3/fit.json": {
+      "bytes": 279,
+      "sha256": "1059effe0a043a2f818421e4ef84154e8194fa7b2234e2168016d529e6c804e3"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-0-43-3/fit.json": {
+      "bytes": 278,
+      "sha256": "21fe227a89b3b65d725c1829b0df6f6fb3eeebc5d2dcb5feb7630b0428e957a3"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-1-43-3/fit.json": {
+      "bytes": 280,
+      "sha256": "2018a89151b9d22febdfa78a72b24b1c583e9a9ae373b958a57af7f8fae7c19f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-0-43-3/fit.json": {
+      "bytes": 277,
+      "sha256": "cfe2e8294cd57e702a34106e7cd5e2309fc8d1cd18c99497d45586d040d9c10c"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-1-43-3/fit.json": {
+      "bytes": 281,
+      "sha256": "16917ddcc601df3a94e747fcdc5ba0e474f17ca9cb1ad2ae62cba5d260874319"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-0-43-3/fit.json": {
+      "bytes": 279,
+      "sha256": "0b8b4e3cc72f887b8dfa4d121ce5804ad02668af1f0052949941169f6c754125"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-1-43-3/fit.json": {
+      "bytes": 282,
+      "sha256": "703ce12805d93c1dfc705d4b4e3a9666cf97ba15530401ee0a3e3286dd8006e9"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-0-43-3/fit.json": {
+      "bytes": 283,
+      "sha256": "6d384990e440c51dc2177dba2888e90067b40c47af4ceaa98cde20961c2a455e"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-1-43-3/fit.json": {
+      "bytes": 286,
+      "sha256": "9b9eaaca4dd907ce6315819f9a28fcdc14be2cbdb5068132d2b7c9af04180ccc"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-0-43-3/fit.json": {
+      "bytes": 283,
+      "sha256": "7fb30a56bfc2d96b593279f5d77374a1a4c9181b8a90b5a536bcc29e91e1da51"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-1-43-3/fit.json": {
+      "bytes": 285,
+      "sha256": "983e8cc1cf5a3d6b5fbc71cb56ecb0fe8464ef941e83c1df2e7c8a4229c4b53e"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-0-43-3/fit.json": {
+      "bytes": 277,
+      "sha256": "165b44828207e3d99a25d509331836f772e5ea206423328e09e614196d7388f7"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-1-43-3/fit.json": {
+      "bytes": 280,
+      "sha256": "b4cfb113f6ce9c73692e71d10426eb4646dc0acf1aecfc10fdaab2053d90da61"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-0-43-3/fit.json": {
+      "bytes": 277,
+      "sha256": "9a839d9262b15c3c169186482d19c1c68c7263a96323cad63735d1d84e9dd9fd"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-1-43-3/fit.json": {
+      "bytes": 280,
+      "sha256": "b5a751d9687109f9d5be866aae5461aa3f788e949be5d33d996b978dec847b92"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-43-3/fit.json": {
+      "bytes": 285,
+      "sha256": "2f6462729f6f8176842a5cc4dd9d97b7aabb50a84309f260576e5b5716318362"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-43-3/fit.json": {
+      "bytes": 289,
+      "sha256": "a14bfe31f06f343c45ff003372d2435369a20e288ef88140a7a8758a86962dad"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-43-3/fit.json": {
+      "bytes": 288,
+      "sha256": "8b35f589a542373131ec98f99f50f464d50a94d96f29f86fe9c040d1ddbe16bf"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-43-3/fit.json": {
+      "bytes": 290,
+      "sha256": "8b12637b200d7417596341ca0af50c86926170b1c9b020f25db23d58dd90f8ab"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-0-43-3/fit.json": {
+      "bytes": 278,
+      "sha256": "068e2e8ebab217a24e8f4f00fdc0bc273cecb411ae0be7729fa1cbd59016d007"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-1-43-3/fit.json": {
+      "bytes": 280,
+      "sha256": "a7bfe65a28b6a88cde1ea85ad03e37ebb72d6eada7f636da5f8684d53471c539"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-0-43-3/fit.json": {
+      "bytes": 277,
+      "sha256": "f3d9722a822430c2d7b17147e0241cbc68dccfe0c077c00799c84690a66af8be"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-1-43-3/fit.json": {
+      "bytes": 280,
+      "sha256": "063ff6581488f30db009bec4e35d3c606915e3a17d9b5d5f2497826765f9a116"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-0-43-4/fit.json": {
+      "bytes": 274,
+      "sha256": "33415d8689729599ec41bb3baf4d2daacaab3fc8b864d60de184f87eeb17b167"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-B-1-43-4/fit.json": {
+      "bytes": 275,
+      "sha256": "7675aa45cc74d4bc0dd542d7ab77fe5c3e84a68f29c866df596a44b21e28a228"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-0-43-4/fit.json": {
+      "bytes": 274,
+      "sha256": "ccb7de342109b76840cb7f23d203871ac90b088b45317496ad14a222ffef4edf"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_8m-D-1-43-4/fit.json": {
+      "bytes": 276,
+      "sha256": "b0e475bb5792765127ccc126f59d7e65511af89377af701d56e8cf5ebc6b2f2a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-0-43-4/fit.json": {
+      "bytes": 275,
+      "sha256": "fd7dcde9fa9ab1c8eb37446a72801d880ba083c0bc51a400f63cee1981ab8c22"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-B-1-43-4/fit.json": {
+      "bytes": 278,
+      "sha256": "7f8e6b5defa75c6b7bb38e47470d98af9ed3d2dfb757f5a54e40dc3c35721085"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-0-43-4/fit.json": {
+      "bytes": 273,
+      "sha256": "4b3d63fb6ddb154a57aa18ce9808aeeff0f7c3c6062e19c21296187db2091f19"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_35m-D-1-43-4/fit.json": {
+      "bytes": 278,
+      "sha256": "e87c7c95087a501cc6b323a6e237044da9adc4ef8d5a3e379fb1b20de33b8b7d"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-0-43-4/fit.json": {
+      "bytes": 278,
+      "sha256": "976749095722a089cc211573a53643b554795f87b9883b3f63c85b9c4f9350c9"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-B-1-43-4/fit.json": {
+      "bytes": 279,
+      "sha256": "e729ae87aac1b4ef54f738c6c98cc7887c77c2c382cc232b2ace1abf9f440f5a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-0-43-4/fit.json": {
+      "bytes": 277,
+      "sha256": "8145d7f382bc560620d53d8b877d315bd4699b4f4c5a6e291f6c97ed8cbc78b7"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_150m-D-1-43-4/fit.json": {
+      "bytes": 280,
+      "sha256": "b199d0fe9e49d534bf657fc5ce031b01457dcfe598559966bde873633ba186e8"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-0-43-4/fit.json": {
+      "bytes": 278,
+      "sha256": "705a7e19cd833c28a17c25d2d9db6eebc8f98f0422211a6a2c58c73afdfd5307"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-B-1-43-4/fit.json": {
+      "bytes": 279,
+      "sha256": "69a693645ece0360228214f3754b7fc22d2790a11e45da360be054ca0e5f30af"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-0-43-4/fit.json": {
+      "bytes": 275,
+      "sha256": "2a288a0893c0c4dc8abb214b6ea4d5202f10d15c4ea319952d38f92bb5a20876"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm2_650m-D-1-43-4/fit.json": {
+      "bytes": 279,
+      "sha256": "eec644800c5b7a52610dac4358fecb2d3ecda9b6c5d95f17f88b3b2c6dad0d47"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-0-43-4/fit.json": {
+      "bytes": 276,
+      "sha256": "4ad057b51a419b84c33b1315bff543ccd5af1196fd432d9fca8904e900166b6a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-B-1-43-4/fit.json": {
+      "bytes": 282,
+      "sha256": "1bdfc904e493b8b7060959fac1ca9eb3add8e07c273fb4fe5729d141faa1a9ae"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-0-43-4/fit.json": {
+      "bytes": 277,
+      "sha256": "1e15c8cc99b6a5c6a26827dc29120d6074fab7e94db1a095ecde50e177d8f8b1"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1b_650m-D-1-43-4/fit.json": {
+      "bytes": 281,
+      "sha256": "dddd558c0c0299140f7c94eabdc65a339bdd26016ab689a0a5de0759da6504d0"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-0-43-4/fit.json": {
+      "bytes": 280,
+      "sha256": "80af0ecc3eb4983f57bfb2cf4b64526ac8cf7e73acf7a29c2346d92d2a5aa250"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-B-1-43-4/fit.json": {
+      "bytes": 286,
+      "sha256": "676eb1b0b404d96fc266f66000bfa5089ef286471bd786a4842cd2f50b020129"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-0-43-4/fit.json": {
+      "bytes": 281,
+      "sha256": "7b7d45bd6e178348e2644726deed7b98549d5988e1a0d356864f59f8a32cbcbf"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esm1v_650m_1-D-1-43-4/fit.json": {
+      "bytes": 285,
+      "sha256": "a91a34c2043c7fd7c51a663bce455d6bfb88fa9c22d7d36036a7f5c6c52d6686"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-0-43-4/fit.json": {
+      "bytes": 274,
+      "sha256": "a888e1a41e62767f8063f8a8cc50169f921c2d69bdcfba3c9e93b4a3e9072940"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-B-1-43-4/fit.json": {
+      "bytes": 279,
+      "sha256": "42718905e09e49014fa4acdcdf5ca76209475bc1e2ecd16c47d75edc09b37475"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-0-43-4/fit.json": {
+      "bytes": 274,
+      "sha256": "6ea90ca8af80a4543c2546c2537245c78afff69d1a4342d0e35bb2489f24dc49"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/ridge-esmc_300m-D-1-43-4/fit.json": {
+      "bytes": 279,
+      "sha256": "ff4ab7bc9041882d6d6caefe18fd79e24153a1b6b620b54e9516de5323427006"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-0-43-4/fit.json": {
+      "bytes": 287,
+      "sha256": "7e1aaedfd7fc70d9a88715c8129e8abffd5bb8d2d4e7eae6e13f531919ffdc3b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-B-1-43-4/fit.json": {
+      "bytes": 289,
+      "sha256": "e33015f5c9d12259b130ef3e3fdb25fc6fdca37d2dda6c065ccf3abe587bafb0"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-0-43-4/fit.json": {
+      "bytes": 287,
+      "sha256": "4a5ce3ceaeb9e073d4f39a940b69dde541782ce550e31506a55d9eb207880717"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-prott5_encoder-D-1-43-4/fit.json": {
+      "bytes": 290,
+      "sha256": "a5af0477d9f8f561a3dc0e88251422f85279bb9c404c169e154266d86b60145a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-0-43-4/fit.json": {
+      "bytes": 278,
+      "sha256": "15cecea26a254841970a6b7376a2b1576d39762d725ad9c4d6ddfe6078aa1723"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-B-1-43-4/fit.json": {
+      "bytes": 279,
+      "sha256": "ba915926a4318f836fad9b3245d02a3476565342c5b6c75d1cc5ed291c103c65"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-0-43-4/fit.json": {
+      "bytes": 275,
+      "sha256": "02c2d8185072fe48f4b95c7e07159cec2d45d7eb7d093a4fabf601814fb9e7bb"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/ridge-ankh_base-D-1-43-4/fit.json": {
+      "bytes": 280,
+      "sha256": "f52d6944c41e591ab055af773da29acde1a466a1b49569b6608df26fe0dacf3c"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-B-17-0/fit.json": {
+      "bytes": 374,
+      "sha256": "76ebd86c502564fbd8241404bd9f18d562c29d7d07691d1730e1fb2ebbac32b6"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-B-17-1/fit.json": {
+      "bytes": 373,
+      "sha256": "f9bb73ace6c55fbac8a1a62018142ca6c04c490f2d838a09aa24ec0d5f91dc2c"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-B-17-2/fit.json": {
+      "bytes": 374,
+      "sha256": "2fb9066890c49cdcb605f0f56155058cbff86cdef29bcd206a32f62be8f80937"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-B-17-3/fit.json": {
+      "bytes": 374,
+      "sha256": "6a4861069f3bc2c1e64d82f1a1788558570533573c886cd4215a3cf4fd710fc5"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-B-17-4/fit.json": {
+      "bytes": 373,
+      "sha256": "381a59aadd91e29c6f7293468f002a43e6255d0356738087c2d6e43b20e532c7"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-0/fit.json": {
+      "bytes": 373,
+      "sha256": "6c7b924040b6c56e6f57f5109f9990b196fbff545d329faa211f1ed887c7bfcf"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-1/fit.json": {
+      "bytes": 373,
+      "sha256": "17e844aacb3470acacbfb27bf40b6ca7e62a376ecfb3add5fc8e3d2dca86a7d0"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-2/fit.json": {
+      "bytes": 374,
+      "sha256": "1f8446a965e2b8a29dbad0b9e23503da0b9051c3dd913005e9c47ea0cec876ce"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-3/fit.json": {
+      "bytes": 374,
+      "sha256": "d844d25194152aa2307496d0c268ca17ae75ad8b3e5a773f894c4acad9bad8bc"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-4/fit.json": {
+      "bytes": 374,
+      "sha256": "ae22194e4cf6cbf4ba94b3ca849708ed16231103b311601fc11ba339fa5d57ff"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-lora-B-17-0/fit.json": {
+      "bytes": 3305,
+      "sha256": "e171caf0ddec34b8e4c65571ff956297ec572ad904009fa0e060b910b6580dc6"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-lora-B-17-1/fit.json": {
+      "bytes": 3306,
+      "sha256": "75455ef186d51a2ed773d275fb48ce254be3bd9da2f2115c97fffbd68cd5e793"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-B-17-2/fit.json": {
+      "bytes": 3305,
+      "sha256": "8cdb333186981963bc4835ae4b2fe4dd2a9f083d0a672dd7a97fe6fbe88f7d36"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-B-17-3/fit.json": {
+      "bytes": 3305,
+      "sha256": "aae6226c94de90359303a3b45f7f9c96767b1d8f1a755f08e0e085b12bd15472"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-B-17-4/fit.json": {
+      "bytes": 3306,
+      "sha256": "3a8c4cee7c939d88aef0bad4ff75868ebe251c944f00024fc2baa3fdc611cbcd"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-0/fit.json": {
+      "bytes": 3305,
+      "sha256": "852bcd7c3991ab39811db73d8a34bcb5e5388036d436c192d6789d99a62eb948"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-1/fit.json": {
+      "bytes": 3306,
+      "sha256": "cff6973f9ef8ea82fe6d8127996375b1435ba14927d0d7c748071b18f35d6a2f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-2/fit.json": {
+      "bytes": 3306,
+      "sha256": "4c666656b5c0e1b286ab1856a7bd14957efaa29b6d806967672a3c4177ed8d2d"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-3/fit.json": {
+      "bytes": 3305,
+      "sha256": "c89a8f42730dff8f80d9cd87bee7de8b7843d2038f9bf976dbdd33a10c7d6017"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-4/fit.json": {
+      "bytes": 3305,
+      "sha256": "d3def2c063ece12c0b640954ca36ef4bc1b9f0439eabb2651d3a0ad1ebf6c770"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-B-29-0/fit.json": {
+      "bytes": 374,
+      "sha256": "79088dabc6f6045c6223e451e34d0588febf166d8afc455e3a6b9b9b2610cb07"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-B-29-1/fit.json": {
+      "bytes": 373,
+      "sha256": "13ac3927c54c3b4002a85a725bef8746c263055ae5fef68dbf7479a2cbcddda0"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-B-29-2/fit.json": {
+      "bytes": 372,
+      "sha256": "2b63c463cf6c7a6446647ec030c48daa0f671e8222d8e84d37d723a2713f1a29"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-B-29-3/fit.json": {
+      "bytes": 373,
+      "sha256": "33c8820559d8911a71352b72a2f025cca6241433048cf239e6b1caa70890463b"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-B-29-4/fit.json": {
+      "bytes": 374,
+      "sha256": "fc127718db2118bfb569bf605ad3b48274b4605ddfe382275acb6d104bc88e5d"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-0/fit.json": {
+      "bytes": 374,
+      "sha256": "91fc02b8422c6c9a4e9248bdf34fabed095eb9a8a620f4c72fe60ea821aeba8f"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-1/fit.json": {
+      "bytes": 373,
+      "sha256": "225fbe56379f64ffb0d58d102e9e28fd1e8cdd71a31d25116d7d4379dccaada4"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-2/fit.json": {
+      "bytes": 373,
+      "sha256": "038ddbec436b26d58003558b93fe1c3267e46b8a548d270a95ed75ec9252da8e"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-3/fit.json": {
+      "bytes": 373,
+      "sha256": "003151810744666ae19cac80086f257a9bd349c6e2fcba4323aa5e99ef4e8091"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-4/fit.json": {
+      "bytes": 373,
+      "sha256": "c82a4ad0e8de6bc1dfdf8077911fd856fa3f1cec308d9cd93f0bdc405880a6ff"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-B-29-0/fit.json": {
+      "bytes": 3305,
+      "sha256": "d25246a8407466c0a6f1743602e4dc08fba69d1ba013b92b07282cee6f44923e"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-B-29-1/fit.json": {
+      "bytes": 3305,
+      "sha256": "b424e99d23dd3a0ec9e135b8d3a99e4fdbd8b19f8822fff7c762f19ebba5c81a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-B-29-2/fit.json": {
+      "bytes": 3306,
+      "sha256": "7921625fcde9abf0439ba71e603119f5e9c103ce899b22dc9865b29383aacf36"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-B-29-3/fit.json": {
+      "bytes": 3305,
+      "sha256": "822d1e9979dc776313cb04fc0610f34fad1928265669315da9e6f636384bc572"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-B-29-4/fit.json": {
+      "bytes": 3305,
+      "sha256": "778c596006123da5c6ddd047b14d2b78ee3b69b9e8fd3c2a306e6a592d961e76"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-0/fit.json": {
+      "bytes": 3306,
+      "sha256": "2737efb44cf4f38971589315f410124605364d26002d56738d0d546259c1d7c3"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-1/fit.json": {
+      "bytes": 3305,
+      "sha256": "28a29ddd6fa1bb7432636a4ca8c6e191bd3200bd53c077d66a99955a156a715c"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-2/fit.json": {
+      "bytes": 3306,
+      "sha256": "38c9da39881361cff5ed9efaab7d038d89f06e0704fb30c57a8d91c6be7c621c"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-3/fit.json": {
+      "bytes": 3305,
+      "sha256": "b40320620fa20345268247b76c47650203bccbcb5671c614afbebec091fccb9e"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-4/fit.json": {
+      "bytes": 3304,
+      "sha256": "4b51f3537349717e2f2db388d17be0fa0c8901674312080ae2b03db9e4c9c739"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-B-43-0/fit.json": {
+      "bytes": 373,
+      "sha256": "125d374b12ff7f69b00ffe722e95cce1a30b35abca41288f8372d74c9ba3c24d"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-B-43-1/fit.json": {
+      "bytes": 373,
+      "sha256": "bbad71fc02b0ebbaffba28496c2d55635175409e5a08696576b2e2f031058c45"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-B-43-2/fit.json": {
+      "bytes": 374,
+      "sha256": "81ba16334a32bd7bd35ce16d6c748f65d8b20da3e9aed775d710554b1e941333"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-B-43-3/fit.json": {
+      "bytes": 374,
+      "sha256": "fd3185aec5bcb6c94c374c9d9a7670ba7c86464ff8ce1ac8fd279cc799c4bac2"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-B-43-4/fit.json": {
+      "bytes": 374,
+      "sha256": "0f09d1798f7d3f41f30e45d5fde21620db5fe4dd680dab18e8c74051084524f9"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-0/fit.json": {
+      "bytes": 373,
+      "sha256": "a27e62e047b04723695e9cf57f84815fab8ff9dabe4fb682b2dd239daa16b572"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-1/fit.json": {
+      "bytes": 373,
+      "sha256": "f6bee39775f642a9074ed4055627bb98c527d576d879d1356620d6cfba96a10e"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-2/fit.json": {
+      "bytes": 373,
+      "sha256": "4a22384939da63e90871db3e0a250fea91660a15661fdd5861bb40cbf2e24387"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-3/fit.json": {
+      "bytes": 374,
+      "sha256": "83ee686c137536ed0d89ce92440d7c75122fb6fe70724efbd1e4cbf848f03d86"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-4/fit.json": {
+      "bytes": 373,
+      "sha256": "8d8ab73021516058a9050754916deb04ccb10c2c4e94d18ca20bee9e9505a8c2"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-B-43-0/fit.json": {
+      "bytes": 3305,
+      "sha256": "aa17945457bb730b60fa7f796009bccc7b535d01d8a1467b9aeccf950f5e30fe"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-B-43-1/fit.json": {
+      "bytes": 3306,
+      "sha256": "87ed0544f1508b08919a1e29c320e0c703f9a36cd74725ede8397a323e7fcd27"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-B-43-2/fit.json": {
+      "bytes": 3305,
+      "sha256": "eb226ed33212bb576af67ea78e61f99818d8e95762098ca706beaac6ec8258ec"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-B-43-3/fit.json": {
+      "bytes": 3306,
+      "sha256": "9feb803a29f6592a3c7acbc06bbe092d5fd1aeac7e395017805cfc94310405fd"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-B-43-4/fit.json": {
+      "bytes": 3305,
+      "sha256": "c93d959bf46e6aae4464b7caa2c43a8c17c4eedf9dce4abf4f7f06fc224da076"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-0/fit.json": {
+      "bytes": 3305,
+      "sha256": "b06fbcaa57f38ca36964821d59d34d62e374caf362db5acb4e7211c11167ae4c"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-1/fit.json": {
+      "bytes": 3305,
+      "sha256": "7d219dbfcf062578d968d68cbf643565284b3c5902f5301868fedb8bd1c6903a"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-2/fit.json": {
+      "bytes": 3305,
+      "sha256": "d0ebe41368d7d9c7ea5f8eab8fb8ebd68fc47fdd22447cdaa43dd894ac345891"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-3/fit.json": {
+      "bytes": 3306,
+      "sha256": "a4e8dde8be284d4a4122adacc67a2c503eca9d1b5681effdd4eec14db4158c43"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-4/fit.json": {
+      "bytes": 3305,
+      "sha256": "4d36c5fbf9e3f5223c60577fad700c8135d432b6e428f288e8a15622af2011f4"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/calibrate-core/esm2_35m-frozen-B/calibrated-oof.parquet": {
+      "bytes": 15292563,
+      "sha256": "c4e98c2e466bf2d89fceb21f7da8283983804a32557d819612bd02a29fe50170"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/calibrate-core/esm2_35m-frozen-D/calibrated-oof.parquet": {
+      "bytes": 15292664,
+      "sha256": "b84ccb3c952472bea9cc98655029c3beb54a02741df6c95c532c7bf975140de5"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/calibrate-core/esm2_35m-lora-B/calibrated-oof.parquet": {
+      "bytes": 15293192,
+      "sha256": "55fd232e75065abf495daaf417339c9b02824a1977807b6eb8b250bb849ff44c"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/calibrate-core/esm2_35m-lora-D/calibrated-oof.parquet": {
+      "bytes": 15293168,
+      "sha256": "ec30f415f67d5bc51ecc8904966bc4eaed73f14c7ca74ba698ec75be46367187"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/locked-transfer-w5/ordered-w5-D/held-scanning.parquet": {
+      "bytes": 4655066,
+      "sha256": "c39b74c7f0cefd354de13338be8a84d8092d261a0f5504b199ddb2fc5794e1d0"
+    },
+    "topics/degron-footprint/data/processed/v3-fullpsi/tables/scanning-cells.parquet": {
+      "bytes": 11614868,
+      "sha256": "5eaa8f20df1c8220448334ad5b9db6a99954a5a7d3211ed3d8c01539f764bbce"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/state.json": {
+      "bytes": 523152,
+      "sha256": "1e4fcdeab4772a8b0fae96b25587909ceacf69f168d4c2051f4ecaa596bb7c54"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e18d80b06ac90585/state.json": {
+      "bytes": 9641,
+      "sha256": "8833e8574235544ca1b33e82fced4677d481e4beb1343411e7763cf8392bf6cd"
+    },
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/session.json": {
+      "bytes": 94,
+      "sha256": "ae909bc8f61ba026b240a6031b4c7ce3feb9d737d9496af575b9ce2b88bcae96"
+    }
+  }
+}

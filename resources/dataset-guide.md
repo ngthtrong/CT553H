@@ -2,7 +2,7 @@
 
 Đối chiếu ngày **21/10/2026** với file dữ liệu đang có, code nạp dữ liệu và kết quả audit trong repo. Tài liệu dành cho người có nền tảng kỹ thuật phần mềm, mới học sinh học. Mục tiêu là đọc được một dòng dữ liệu, tự giải thích cách tạo nhãn và hiểu vì sao cách chia tập ảnh hưởng kết luận.
 
-**Điểm vào cập nhật 03/11/2026:** các ví dụ loader/G2 và số đếm trong hướng dẫn dưới đây giữ thiết kế lịch sử ngày 21/10. Luồng đang chạy là [v3 full-PSI](../topics/degron-footprint/research/README.md), giữ 235 peptide / 122.412 ô saturation và 224.470 ô scanning sau QC theo [dataset-build.json](../topics/degron-footprint/research/kaggle-roadmap-2026-10-31/dataset-build.json). V3 không lọc ngưỡng PSI ở bước dựng pool và dùng group/split riêng; xem [DATASET.md](../topics/degron-footprint/research/kaggle-roadmap-2026-10-31/DATASET.md), không dùng số 91/176 peptide lịch sử để mô tả W hiện tại. Nguồn/giấy phép và nhật ký thao tác vẫn ở [sổ dữ liệu](../topics/degron-footprint/data/README.md).
+**Điểm vào cập nhật 03/11/2026:** các ví dụ loader/G2 và số đếm trong hướng dẫn dưới đây giữ thiết kế lịch sử ngày 21/10. Luồng đang chạy là [v3 full-PSI](../research/README.md), giữ 235 peptide / 122.412 ô saturation và 224.470 ô scanning sau QC theo [dataset-build.json](../research/kaggle-roadmap-2026-10-31/dataset-build.json). V3 không lọc ngưỡng PSI ở bước dựng pool và dùng group/split riêng; xem [DATASET.md](../research/kaggle-roadmap-2026-10-31/DATASET.md), không dùng số 91/176 peptide lịch sử để mô tả W hiện tại. Nguồn/giấy phép và nhật ký thao tác vẫn ở [sổ dữ liệu](../data/README.md).
 
 **Cách dùng:** đọc mục 1–5 để hiểu ý nghĩa; làm mục 6–8 để chạm dữ liệu; đọc mục 9–12 để hiểu đánh giá và tránh suy luận sai. Có thể chia thành hai buổi, mỗi buổi khoảng 2 giờ; thời lượng là gợi ý, không phải yêu cầu phải học xong trong một lần.
 
@@ -19,7 +19,7 @@
 | Các liên kết bài học cũ                          | Bài 2 đang đảo chiều PSI/ΔPSI và mô tả vai trò dữ liệu cũ. Không dùng bảng chiều điểm trong bài đó để diễn giải Zhang.                                                    |
 | “Kiểm tra ngoài” bằng MaveDB/ClinVar              | Đây là nguồn cho đối chiếu hoặc ứng dụng có điều kiện; có file không đồng nghĩa đã có tập test độc lập, cùng endpoint, không rò rỉ.                                                                    |
 
-Nguồn quyết định kỹ thuật của hướng dẫn: [residue_data.py](../topics/degron-footprint/research/residue-task-derisk-2026-10-15/residue_data.py), [derisk.py](../topics/degron-footprint/research/residue-task-derisk-2026-10-15/derisk.py), [runner G2](../topics/degron-footprint/research/g2-saturation-2026-10-18/run.py). Hướng dẫn này không sửa các tài liệu lịch sử được dẫn.
+Nguồn quyết định kỹ thuật của hướng dẫn: [residue_data.py](../research/residue-task-derisk-2026-10-15/residue_data.py), [derisk.py](../research/residue-task-derisk-2026-10-15/derisk.py), [runner G2](../research/g2-saturation-2026-10-18/run.py). Hướng dẫn này không sửa các tài liệu lịch sử được dẫn.
 
 ## 2. Trước hết: một mẫu dữ liệu là cái gì?
 
@@ -58,7 +58,7 @@ Nếu peptide thúc đẩy reporter bị phân hủy, tín hiệu GFP tương đ
 
 Sau phân loại tế bào và giải trình tự, mỗi construct có số read ở từng bin. Tổng số read giữa các bin có thể khác nhau. Nếu lấy trung bình trực tiếp từ count thô, bin được đọc sâu hơn có thể chi phối điểm.
 
-Pipeline trong [build_psi.py](../topics/degron-footprint/research/full-data-audit/build_psi.py) dùng:
+Pipeline trong [build_psi.py](../research/full-data-audit/build_psi.py) dùng:
 
 ```text
 T_i      = tổng read của bin i trên các id được xét
@@ -94,7 +94,7 @@ Footprint là cách mô tả các vị trí nhạy đột biến theo một quy 
 
 ## 4. Bản đồ nguồn dữ liệu và vai trò
 
-Sổ nguồn gốc nằm ở [data/README.md](../topics/degron-footprint/data/README.md): nguồn tải, snapshot, giấy phép, SHA-256, file trung gian và nhật ký. Hãy xem đây là danh mục provenance; code loader cho biết chính xác tập nào được đưa vào phép đo hiện hành.
+Sổ nguồn gốc nằm ở [data/README.md](../data/README.md): nguồn tải, snapshot, giấy phép, SHA-256, file trung gian và nhật ký. Hãy xem đây là danh mục provenance; code loader cho biết chính xác tập nào được đưa vào phép đo hiện hành.
 
 | Nguồn                      | Đơn vị nhãn                                                 | Quy mô trong hồ sơ repo                                              | Vai trò và giới hạn                                                                           |
 | --------------------------- | --------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
@@ -108,14 +108,14 @@ Sổ nguồn gốc nằm ở [data/README.md](../topics/degron-footprint/data/RE
 | MetaDegron                  | Nhãn degron/motif từ nguồn curate và tập mẫu đối chứng | Audit mới ghi 302 dòng curate / 240 accession                         | Đối chiếu motif/E3, không phải tập ΔPSI bão hòa                                          |
 | UniProt, MMseqs2, AlphaFold | Trình tự, cụm, cấu trúc dự đoán                         | Snapshot trình tự, cụm cov80/cov50; 8 cấu trúc AlphaFold đã tải | Dữ liệu hỗ trợ; không tự cung cấp nhãn hiệu ứng đột biến                             |
 
-Các quy mô ngoài Zhang ở bảng này là **đọc lại audit đã lưu**, không phải tải lại hoặc tái đếm toàn bộ nguồn trong lần viết hướng dẫn. Xem [nhật ký nguồn](../topics/degron-footprint/data/README.md#5-nhật-ký-xử-lý) và [audit MetaDegron](../topics/degron-footprint/research/metadegron-analysis-2026-10-21/README.md).
+Các quy mô ngoài Zhang ở bảng này là **đọc lại audit đã lưu**, không phải tải lại hoặc tái đếm toàn bộ nguồn trong lần viết hướng dẫn. Xem [nhật ký nguồn](../data/README.md#5-nhật-ký-xử-lý) và [audit MetaDegron](../research/metadegron-analysis-2026-10-21/README.md).
 
 Trong ngữ cảnh học đa mức, “nhãn yếu mức đoạn” chỉ là nhãn không xác định từng vị trí/thay thế; không có nghĩa phép đo toàn đoạn kém chất lượng.
 
 ### Cấu trúc thư mục
 
 ```text
-topics/degron-footprint/
+
   data/raw/         nguồn tải, snapshot và hồ sơ nguồn
   data/interim/     file giải nén, trình tự/cụm và nguyên liệu trung gian
   data/processed/   bảng PSI, cache đặc trưng, dự đoán đã xử lý
@@ -182,7 +182,7 @@ Loader quét hiện tại:
 
 **[ĐO lại]** Kết quả: **2.994 peptide / 2.474 accession / 1.985 cụm cov80 / 83.446 ô**. Không bắt buộc mỗi peptide phải có vị trí dương.
 
-Con số **2.624 footprint** thuộc phép đếm lịch sử trong [count_footprints.py](../topics/degron-footprint/research/e3-labels-audit/count_footprints.py), đọc CSV và thêm điều kiện có ít nhất một vị trí ΔPSI ≥1. Số **2.402 khu trú** thêm điều kiện số vị trí dương ≤6. Các tập có logic lọc và kiểm trình tự khác nhau; không trừ 2.624 khỏi 2.994 rồi gọi phần còn lại là số peptide không có footprint.
+Con số **2.624 footprint** thuộc phép đếm lịch sử trong [count_footprints.py](../research/e3-labels-audit/count_footprints.py), đọc CSV và thêm điều kiện có ít nhất một vị trí ΔPSI ≥1. Số **2.402 khu trú** thêm điều kiện số vị trí dương ≤6. Các tập có logic lọc và kiểm trình tự khác nhau; không trừ 2.624 khỏi 2.994 rồi gọi phần còn lại là số peptide không có footprint.
 
 Quy tắc thay thế quét thường gặp là `AGVLISTCDE → R`, `MWFP → S`, `YNQKRH → A`. Sổ dữ liệu ghi ngoại lệ, nên đọc amino acid thực tế từ trình tự construct; đừng sinh lại mutant bằng quy tắc một cách mù quáng.
 
@@ -227,8 +227,8 @@ Chạy từ gốc repo. Các lệnh dưới đọc dữ liệu hiện có, khôn
 ### 7.1 Mở bảng và xem schema
 
 ```bash
-head -5 topics/degron-footprint/data/processed/psi-sat_a.tsv
-wc -l topics/degron-footprint/data/processed/psi-*.tsv
+head -5 data/processed/psi-sat_a.tsv
+wc -l data/processed/psi-*.tsv
 ```
 
 ### 7.2 Dựng đầy đủ nhãn và ma trận 28×20
@@ -314,7 +314,7 @@ Mỗi hàng là một vị trí; mỗi cột là amino acid thay vào. Màu phí
 ```bash
 .venv/bin/python -I - <<'PY'
 import numpy as np
-path = 'topics/degron-footprint/data/processed/g2-saturation-input.npz'
+path = 'data/processed/g2-saturation-input.npz'
 with np.load(path, allow_pickle=False) as d:
     for k in d.files:
         print(k, d[k].shape, d[k].dtype)
@@ -356,7 +356,7 @@ One-hot là vector có một phần tử bằng 1 đại diện ký tự tương
 
 Nếu chia ngẫu nhiên theo ô, train có thể chứa gần như toàn bộ một peptide và test chỉ chứa vài mutant còn lại của chính peptide đó. Câu hỏi lúc ấy khác với “mô hình có tổng quát hóa sang nhóm protein chưa thấy không?”.
 
-G2 dùng accession → cụm MMseqs2 **id30/cov80** → 5 outer fold. Cụm này được dựng theo ngưỡng identity 30% và coverage của quy trình ghim; file [protein-id30-cov80_cluster.tsv](../topics/degron-footprint/data/interim/protein-id30-cov80_cluster.tsv) gồm đại diện và thành viên. Cụm không tự bảo đảm loại mọi quan hệ sinh học hoặc mọi overlap với tập tiền huấn luyện.
+G2 dùng accession → cụm MMseqs2 **id30/cov80** → 5 outer fold. Cụm này được dựng theo ngưỡng identity 30% và coverage của quy trình ghim; file [protein-id30-cov80_cluster.tsv](../data/interim/protein-id30-cov80_cluster.tsv) gồm đại diện và thành viên. Cụm không tự bảo đảm loại mọi quan hệ sinh học hoặc mọi overlap với tập tiền huấn luyện.
 
 ```text
 protein → cụm protein → outer train/test
@@ -376,10 +376,10 @@ Các số sau là đọc từ audit đã lưu, chưa chạy lại toàn bộ ph�
 
 | Số liệu                                         | Quần thể/điều kiện                                                       | Nguồn                                                                                                                                                                                          |
 | ------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Pearson PSI A/B = 0,9544                          | 110.544 id có `sum ≥100` ở cả hai nửa                                  | [saturation-audit.json](../topics/degron-footprint/research/full-data-audit/saturation-audit.json)                                                                                            |
-| Pearson ΔPSI A/B = 0,8335                        | 122.412 ô thay thế chung thuộc 235 peptide dựng ma trận, theo audit đó | [saturation-matrix.json](../topics/degron-footprint/research/full-data-audit/saturation-matrix.json)                                                                                          |
+| Pearson PSI A/B = 0,9544                          | 110.544 id có `sum ≥100` ở cả hai nửa                                  | [saturation-audit.json](../research/full-data-audit/saturation-audit.json)                                                                                            |
+| Pearson ΔPSI A/B = 0,8335                        | 122.412 ô thay thế chung thuộc 235 peptide dựng ma trận, theo audit đó | [saturation-matrix.json](../research/full-data-audit/saturation-matrix.json)                                                                                          |
 | Nhiễu khoảng 16,7% phương sai ΔPSI quan sát | Ước lượng cho một nửa trên tập của audit ma trận                    | Cùng file trên                                                                                                                                                                                |
-| AUROC A chấm nhãn B = 0,9519                    | Macro theo peptide, tập bão hòa 91 peptide của pipeline derisk            | [ceiling.json](../topics/degron-footprint/research/residue-task-derisk-2026-10-15/ceiling.json), [code tính](../topics/degron-footprint/research/residue-task-derisk-2026-10-15/derisk.py) |
+| AUROC A chấm nhãn B = 0,9519                    | Macro theo peptide, tập bão hòa 91 peptide của pipeline derisk            | [ceiling.json](../research/residue-task-derisk-2026-10-15/ceiling.json), [code tính](../research/residue-task-derisk-2026-10-15/derisk.py) |
 
 Không lấy tương quan PSI trên toàn bộ construct thay cho tương quan ΔPSI; phép trừ WT đưa thêm độ bất định vào nhãn.
 
@@ -393,13 +393,13 @@ Trong `derisk.py`, phép tính 0,9519 là dùng ΔPSI_A làm score và `ΔPSI_B 
 
 1. **Đọc sai chiều PSI.** Với Zhang, thấp là kém bền. Bài 2 cũ hiện ghi ngược; ưu tiên code và bảng định nghĩa trong hướng dẫn này.
 2. **Dùng nhầm `psi-wt.tsv`.** Đó là nền BAG6 WT. WT của quét là `_mut0` cùng điều kiện; WT của bão hòa là mốc nội tại riêng A/B.
-3. **Lỗi header từ tác giả.** Ba id `A0A0B4J1Y8_IGLV9-49_1_mut{10,17,24}` bị ảnh hưởng. Bảng dựng lại đã sửa. [psi-build.json](../topics/degron-footprint/research/full-data-audit/psi-build.json) lưu so 261.865 giá trị, sai khác lớn nhất khoảng 5×10⁻⁷, với quy tắc xử lý lỗi được ghi rõ.
+3. **Lỗi header từ tác giả.** Ba id `A0A0B4J1Y8_IGLV9-49_1_mut{10,17,24}` bị ảnh hưởng. Bảng dựng lại đã sửa. [psi-build.json](../research/full-data-audit/psi-build.json) lưu so 261.865 giá trị, sai khác lớn nhất khoảng 5×10⁻⁷, với quy tắc xử lý lỗi được ghi rõ.
 4. **Gộp mọi con số thành một cỡ mẫu.** Id thiết kế, dòng có read, dòng đủ độ sâu, ô có ΔPSI và ô vào G2 là các tầng khác nhau.
 5. **Điền thiếu bằng 0.** Một mutant không đo được không phải mutant đã chứng minh không ảnh hưởng.
 6. **Gọi một vị trí âm từ một thay thế quét.** Một thay thế không đạt ngưỡng không đại diện cho cả 19 thay thế khác.
 7. **Chỉ đánh giá peptide đã có footprint.** Đó là quần thể đã chọn có tín hiệu; chỉ số không mô tả mọi peptide hoặc toàn proteome.
-8. **Bỏ qua overlap của baseline tiền huấn luyện.** Checkpoint Degformer công bố có WT của 91/91 peptide và 42.163/47.847 mutant trùng exact sequence với training data. Điểm 0,9248 không phải clean holdout. Nguồn: [results.json](../topics/degron-footprint/research/g2-saturation-2026-10-18/results.json).
-9. **Dùng kết quả cũ thay trạng thái hiện hành.** G2-extension có Degformer huấn luyện lại cùng nhãn dưới cov80, AUROC khoảng 0,7500 nhưng chỉ một seed; đó khác với checkpoint công bố và chưa là đối chứng tiền huấn luyện sạch cụm đầy đủ. Xem [e3-degformer-arch.json](../topics/degron-footprint/research/g2-extension-2026-10-18/e3-degformer-arch.json).
+8. **Bỏ qua overlap của baseline tiền huấn luyện.** Checkpoint Degformer công bố có WT của 91/91 peptide và 42.163/47.847 mutant trùng exact sequence với training data. Điểm 0,9248 không phải clean holdout. Nguồn: [results.json](../research/g2-saturation-2026-10-18/results.json).
+9. **Dùng kết quả cũ thay trạng thái hiện hành.** G2-extension có Degformer huấn luyện lại cùng nhãn dưới cov80, AUROC khoảng 0,7500 nhưng chỉ một seed; đó khác với checkpoint công bố và chưa là đối chứng tiền huấn luyện sạch cụm đầy đủ. Xem [e3-degformer-arch.json](../research/g2-extension-2026-10-18/e3-degformer-arch.json).
 10. **Đồng nhất endpoint khác nguồn.** Điểm tile, độ dồi dào protein, nhãn degron curate và pathogenicity không tự cùng nghĩa với ΔPSI reporter.
 
 Trạng thái nghiên cứu mới nhất được ghi trong khối ngày 21/10 của topic-decision.md. Các README lịch sử còn liên kết tới `DECISIONS.md`/`log.md` đã xóa; không cần khôi phục chúng để học dữ liệu. Vượt mốc baseline bằng ridge không đồng nghĩa đã chứng minh kiến trúc mới hoặc hoàn tất G2.
@@ -417,8 +417,8 @@ Trạng thái nghiên cứu mới nhất được ghi trong khối ngày 21/10 c
 
 1. Chạy mục 8, giải thích `idx`, `groups`, `rowg`, `wt`.
 2. Đọc mục 9–10, mô tả vì sao không chia ngẫu nhiên theo ô và vì sao 0,9519 không phải cận tuyệt đối.
-3. Mở [protocol G2](../topics/degron-footprint/research/g2-saturation-2026-10-18/PROTOCOL.md), rồi [runner](../topics/degron-footprint/research/g2-saturation-2026-10-18/run.py).
-4. Đọc [README G2](../topics/degron-footprint/research/g2-saturation-2026-10-18/README.md) cùng phần cập nhật hiện hành ở `topic-decision.md`; phân biệt kết quả phát triển và kết luận nghiên cứu.
+3. Mở [protocol G2](../research/g2-saturation-2026-10-18/PROTOCOL.md), rồi [runner](../research/g2-saturation-2026-10-18/run.py).
+4. Đọc [README G2](../research/g2-saturation-2026-10-18/README.md) cùng phần cập nhật hiện hành ở `topic-decision.md`; phân biệt kết quả phát triển và kết luận nghiên cứu.
 
 **Câu tự kiểm, chưa phải đánh giá mức thành thạo:**
 
@@ -432,7 +432,7 @@ Trạng thái nghiên cứu mới nhất được ghi trong khối ngày 21/10 c
 
 ### Khi muốn dựng lại toàn bộ pipeline
 
-[data/README.md mục 6](../topics/degron-footprint/data/README.md#6-dựng-lại-từ-đầu) có lệnh tải và tái dựng. Đây là thao tác **có ghi file**, khác với các bước đọc ở trên. `build_psi.py --condition all --validate` ghi lại bảng PSI và báo cáo; `g2-saturation-2026-10-18/audit.py` ghi lại `audit.json`. Khi thực hiện phải theo quy định sổ nguồn gốc trong `CLAUDE.md`, bảo toàn snapshot và ghi nhật ký xử lý. Học đọc dữ liệu chưa cần chạy lại các bước này.
+[data/README.md mục 6](../data/README.md#6-dựng-lại-từ-đầu) có lệnh tải và tái dựng. Đây là thao tác **có ghi file**, khác với các bước đọc ở trên. `build_psi.py --condition all --validate` ghi lại bảng PSI và báo cáo; `g2-saturation-2026-10-18/audit.py` ghi lại `audit.json`. Khi thực hiện phải theo quy định sổ nguồn gốc trong `CLAUDE.md`, bảo toàn snapshot và ghi nhật ký xử lý. Học đọc dữ liệu chưa cần chạy lại các bước này.
 
 ## 13. Phạm vi kiểm chứng của tài liệu
 
