@@ -1,0 +1,25 @@
+{
+  "status": "pass",
+  "scorer_checks": {
+    "exact_enumeration_random_n1_to_6_all_h_k": "pass",
+    "zero_all_hits_small_n_full_tie_btr_row_order": "pass",
+    "reject_missing_seed_duplicate_id_cohort_nonfinite": "pass",
+    "unequal_cluster_sizes_preserve_peptide_estimand": "pass"
+  },
+  "input_audit_status": "pass",
+  "exact_equal_budget_all_policies": true,
+  "all_seeds_reported": true,
+  "ensemble_per_peptide_rows": 14100,
+  "all_seed_per_peptide_rows": 47940,
+  "no_hit_exclusions_from_precision": false,
+  "legacy_stable_tie_matches_helper": true,
+  "changed_ties_disclosed": true,
+  "random_2000_trials_match_analytic_within_6_mc_standard_errors": true,
+  "config_unchanged": true,
+  "git_before": {
+    "commit": "1dd827a4059f334ee105a6941a5f57b3793cfbb8",
+    "status": " M CLAUDE.md\n M README.md\n M research/README.md\n M research/kaggle-roadmap-2026-10-31/README.md\n M tmp.md\n?? .agents/skills/academic-research-suite/\n?? presentation/templateCTU/\n?? research/g2-acceptance-2026-11-07/\n?? research/oof-prioritization-2026-11-07/\n?? research/wet-lab-evidence-plan-2026-11-07/\n?? resources/papers/degron/nihms-1667687.pdf\n",
+    "tracked_diff_sha256": "e425b6a5e10a2dc4f32a65ab9a9f0b3d1ba2f58ffc7c57f7e65121e4b2aead21"
+  },
+  "verification_scope": "Input integrity, numerical scorer checks and internal output consistency; no new training or wet lab."
+}

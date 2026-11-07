@@ -1,4 +1,4 @@
-% Research progress snapshot, 6 November 2026; numerical sources remain in source comments.
+% Research progress snapshot, 7 November 2026; numerical sources remain in source comments.
 \addchap{PART 1. INTRODUCTION}\label{chap:introduction}
 \ThesisFlatNumbering
 
@@ -37,8 +37,9 @@ PTEN and TPMT, while also documenting proteins for which the assay was unsuitabl
 some modification-dependent signals and signals whose recognising factors are unavailable in the
 assayed cells \citep{zhang2023}. Thus, extensive measurements still leave gaps in sequence coverage
 and biological context. A computational model could help rank additional substitutions for follow-up.
-Whether that ranking saves experimental work must be tested prospectively. CT553H has measured
-neither a reduction in wet-lab cost nor an improvement in experimental yield.
+The equal-budget OOF replay in Section~\ref{sec:res-prioritization} quantifies how well stored
+scores recover measured hits. Actual laboratory savings require prospective testing: CT553H has
+measured neither a reduction in wet-lab cost nor an improvement in prospective experimental yield.
 
 \subsection{The Specific Prediction Problem}
 This project predicts the change in the Protein Stability Index (PSI) of a peptide reporter after one
@@ -154,9 +155,10 @@ isolated baseline development and tests. The implementation status of this desig
 separately in Chapters~\ref{chap:design} and~\ref{chap:evaluation}.
 
 \section{Contributions Achieved and Still Expected}
-As of 6 November 2026, the inspectable contributions are a source-traceable label/QC pipeline,
+As of 7 November 2026, the inspectable contributions are a source-traceable label/QC pipeline,
 protein-group-aware development evaluation, controlled comparisons of training coverage and
-representations, and completed local frozen/LoRA out-of-fold analyses. The report also preserves
+representations, completed local frozen/LoRA out-of-fold analyses, and a direct equal-budget
+retrospective comparison of mutation prioritisation. The report also preserves
 negative transfer and weighting findings, and a held-source W5 check that exposes regression and
 calibration limits. A restricted-domain baseline and local web/API implementation provide software
 evidence within their tested scope.

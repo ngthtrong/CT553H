@@ -88,6 +88,9 @@
   \DeclareTOCStyleEntry[indent=6em,dynnumwidth]{tocline}{subsubsection}%
   \DeclareTOCStyleEntry[indent=0pt,dynnumwidth,entrynumberformat=\ThesisFigureNumber]{tocline}{figure}%
   \DeclareTOCStyleEntry[indent=0pt,dynnumwidth,entrynumberformat=\ThesisTableNumber]{tocline}{table}%
+  % Roman front-matter numbers (e.g. xviii) need more than the default box.
+  \DeclareTOCStyleEntries[pagenumberwidth=3em,rightindent=3.5em]{tocline}%
+    {chapter,section,subsection,subsubsection,figure,table}%
 }
 
 % Running header/footer follow the faculty template: thesis title in the header,

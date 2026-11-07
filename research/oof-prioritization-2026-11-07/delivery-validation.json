@@ -1,0 +1,11 @@
+{
+  "status": "pass",
+  "artifact_files_checked": 24,
+  "local_links_checked": 32,
+  "config_lock_unchanged": true,
+  "tie_sensitivity_full_coverage": 192,
+  "figure_visually_inspected": true,
+  "figure_byte_identical_to_inspected_initial_version": true,
+  "git_diff_check": "pass",
+  "note": "Final delivery checks; numerical/source verification is separate in independent-validation.json."
+}

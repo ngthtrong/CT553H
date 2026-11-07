@@ -1,0 +1,1120 @@
+{
+  "status": "pass",
+  "scope": "formatting_and_reference_consistency_only",
+  "created_at": "2026-11-07T21:02:23.196503+08:00",
+  "baseline": {
+    "pages": 130,
+    "sha256": "f8ec5347fd5284252ca28c7bb485ed552a678390b5eca9b9e708da6ca16102b8",
+    "bytes": 786214,
+    "figure_pdf_pages": [
+      42,
+      44,
+      51,
+      58,
+      59,
+      73,
+      78,
+      91,
+      93,
+      94,
+      97,
+      102
+    ],
+    "figure_tail_measurements": [
+      {
+        "pdf_page": 42,
+        "tail_pt": 4.5
+      },
+      {
+        "pdf_page": 44,
+        "tail_pt": -1.68
+      },
+      {
+        "pdf_page": 51,
+        "tail_pt": -2.94
+      },
+      {
+        "pdf_page": 58,
+        "tail_pt": 329.33
+      },
+      {
+        "pdf_page": 59,
+        "tail_pt": -2.55
+      },
+      {
+        "pdf_page": 73,
+        "tail_pt": -2.94
+      },
+      {
+        "pdf_page": 78,
+        "tail_pt": 292.13
+      },
+      {
+        "pdf_page": 91,
+        "tail_pt": -2.94
+      },
+      {
+        "pdf_page": 93,
+        "tail_pt": 13.62
+      },
+      {
+        "pdf_page": 94,
+        "tail_pt": 2.98
+      },
+      {
+        "pdf_page": 97,
+        "tail_pt": 241.81
+      },
+      {
+        "pdf_page": 102,
+        "tail_pt": 221.51
+      }
+    ],
+    "figure_pages_with_tail_over_one_third": [
+      58,
+      78,
+      97
+    ],
+    "annotations_checked": 540,
+    "annotation_issues": []
+  },
+  "pdfs": {
+    "content": {
+      "pages": 121,
+      "sha256": "7c3581207e67240586eb3a75e1ffa745313adafdc7320e20cf1acd745fd2fd8e",
+      "bytes": 775235,
+      "figure_pdf_pages": [
+        38,
+        40,
+        47,
+        54,
+        55,
+        68,
+        72,
+        85,
+        86,
+        88,
+        91,
+        95
+      ],
+      "figure_tail_measurements": [
+        {
+          "pdf_page": 38,
+          "tail_pt": 8.5
+        },
+        {
+          "pdf_page": 40,
+          "tail_pt": 2.32
+        },
+        {
+          "pdf_page": 47,
+          "tail_pt": -1.97
+        },
+        {
+          "pdf_page": 54,
+          "tail_pt": 11.73
+        },
+        {
+          "pdf_page": 55,
+          "tail_pt": 4.99
+        },
+        {
+          "pdf_page": 68,
+          "tail_pt": 14.23
+        },
+        {
+          "pdf_page": 72,
+          "tail_pt": -2.94
+        },
+        {
+          "pdf_page": 85,
+          "tail_pt": -0.91
+        },
+        {
+          "pdf_page": 86,
+          "tail_pt": 69.0
+        },
+        {
+          "pdf_page": 88,
+          "tail_pt": 10.61
+        },
+        {
+          "pdf_page": 91,
+          "tail_pt": 9.96
+        },
+        {
+          "pdf_page": 95,
+          "tail_pt": 19.36
+        }
+      ],
+      "figure_pages_with_tail_over_one_third": [],
+      "annotations_checked": 461,
+      "annotation_issues": [],
+      "floats": {
+        "figure": [
+          [
+            "fig:ups-concept",
+            "2.1",
+            "18",
+            "Original conceptual schematic of a canonical UPS route"
+          ],
+          [
+            "fig:mutation-observation",
+            "2.2",
+            "20",
+            "Original conceptual diagram of mutation-effect prediction and label construction"
+          ],
+          [
+            "fig:local-architecture",
+            "3.1",
+            "27",
+            "Planned components of the single local application"
+          ],
+          [
+            "fig:campaign-lineage",
+            "3.2",
+            "34",
+            "Campaign lineage and evidence roles at completion on 6 November 2026"
+          ],
+          [
+            "fig:campaign-nested",
+            "3.3",
+            "35",
+            "Group-aware selection and evaluation"
+          ],
+          [
+            "fig:curve",
+            "4.1",
+            "48",
+            "Macro AUROC against the mean number of training clusters"
+          ],
+          [
+            "fig:threshold",
+            "4.2",
+            "52",
+            "Gain in macro AUROC over the benchmark training set for each degron threshold"
+          ],
+          [
+            "fig:campaign-family",
+            "4.3",
+            "65",
+            "Frozen pLM ridge results under full-range training"
+          ],
+          [
+            "fig:campaign-core",
+            "4.4",
+            "66",
+            "Matched adaptation evidence"
+          ],
+          [
+            "fig:progress-residuals",
+            "4.5",
+            "68",
+            "Matched per-peptide OOF errors for the three-seed ensembles on W"
+          ],
+          [
+            "fig:campaign-calibration",
+            "4.6",
+            "71",
+            "Probability and transfer limitations"
+          ],
+          [
+            "fig:priority-budget",
+            "4.7",
+            "75",
+            "Positive-hit budget curves from the stored OOF replay"
+          ]
+        ],
+        "table": [
+          [
+            "tab:uc-predict",
+            "1.1",
+            "8",
+            "Predict the effect matrix"
+          ],
+          [
+            "tab:uc-rank",
+            "1.2",
+            "9",
+            "Rank substitutions"
+          ],
+          [
+            "tab:uc-export",
+            "1.3",
+            "9",
+            "Export results with provenance"
+          ],
+          [
+            "tab:uc-tile",
+            "1.4",
+            "10",
+            "Select a protein and tiles"
+          ],
+          [
+            "tab:uc-measured",
+            "1.5",
+            "10",
+            "Compare with measured data"
+          ],
+          [
+            "tab:uc-clinvar",
+            "1.6",
+            "11",
+            "View ClinVar and reference annotations"
+          ],
+          [
+            "tab:uc-card",
+            "1.7",
+            "12",
+            "View model and data provenance"
+          ],
+          [
+            "tab:uc-batch",
+            "1.8",
+            "13",
+            "Analyse peptide batches or a whole protein"
+          ],
+          [
+            "tab:uc-import",
+            "1.9",
+            "13",
+            "Import experimental observations"
+          ],
+          [
+            "tab:uc-history",
+            "1.10",
+            "14",
+            "Manage projects and analysis history"
+          ],
+          [
+            "tab:sources",
+            "3.1",
+            "28",
+            "Data roles in research and the first local release"
+          ],
+          [
+            "tab:workspace-fields",
+            "3.2",
+            "29",
+            "Key workspace fields and invariants"
+          ],
+          [
+            "tab:research-progress-history",
+            "3.3",
+            "30",
+            "Research progression: the question resolved and the decision it motivated"
+          ],
+          [
+            "tab:funnel",
+            "4.1",
+            "42",
+            "Fate of the raw saturation peptides under the label filters"
+          ],
+          [
+            "tab:g2",
+            "4.2",
+            "45",
+            "Macro AUROC on the 91 peptides of the saturation benchmark"
+          ],
+          [
+            "tab:g2paired",
+            "4.3",
+            "45",
+            "Paired AUROC differences between models"
+          ],
+          [
+            "tab:g2seeds",
+            "4.4",
+            "45",
+            "Per-seed AUROC of the three main models"
+          ],
+          [
+            "tab:e2",
+            "4.5",
+            "47",
+            "Interaction designs against ridge M3"
+          ],
+          [
+            "tab:curve",
+            "4.6",
+            "47",
+            "Learning curve (P1) and relaxed degron threshold 4.0 (P0)"
+          ],
+          [
+            "tab:verdict",
+            "4.7",
+            "49",
+            "Pre-registered verdicts of P1 and P0"
+          ],
+          [
+            "tab:newgroup",
+            "4.8",
+            "49",
+            "Cells of the benchmark peptides and of the 85 peptides added by relaxing the threshold"
+          ],
+          [
+            "tab:partb",
+            "4.9",
+            "50",
+            "Gain over the benchmark training set when a fraction of the new clusters is added"
+          ],
+          [
+            "tab:partbverdict",
+            "4.10",
+            "51",
+            "Pre-registered verdicts on the new clusters"
+          ],
+          [
+            "tab:partc",
+            "4.11",
+            "51",
+            "Added data and gains for each degron threshold (cov80, positive cut $\\Delta \\mathrm{PSI}\\ge 1$)"
+          ],
+          [
+            "tab:partcrobust",
+            "4.12",
+            "52",
+            "Robustness of the gain at threshold 4.0 (ridge M3)"
+          ],
+          [
+            "tab:recluster",
+            "4.13",
+            "53",
+            "Gain of the relaxed threshold 4.0 (ridge M3) under different protein partitions"
+          ],
+          [
+            "tab:p3auroc",
+            "4.14",
+            "55",
+            "Macro AUROC with and without pre-training on tile labels"
+          ],
+          [
+            "tab:p3verdict",
+            "4.15",
+            "55",
+            "Pre-registered comparisons for pre-training"
+          ],
+          [
+            "tab:calmetrics",
+            "4.16",
+            "56",
+            "Probability quality on the outer-test cells"
+          ],
+          [
+            "tab:calverdict",
+            "4.17",
+            "57",
+            "Pre-registered comparisons of the Brier score"
+          ],
+          [
+            "tab:calutility",
+            "4.18",
+            "58",
+            "Ranking utility"
+          ],
+          [
+            "tab:koren",
+            "4.19",
+            "58",
+            "Gate fixed in advance for merging the labels of Koren et al.\\ (Table S4) into training"
+          ],
+          [
+            "tab:metadegron",
+            "4.20",
+            "60",
+            "Audit of the MetaDegron data and overlap with the data of this thesis"
+          ],
+          [
+            "tab:v3-results",
+            "4.21",
+            "62",
+            "Selected full-PSI development results"
+          ],
+          [
+            "tab:v3-comparisons",
+            "4.22",
+            "63",
+            "Paired full-PSI MAE differences"
+          ],
+          [
+            "tab:campaign-family",
+            "4.23",
+            "64",
+            "Local frozen-feature ridge MAE for all nine checkpoints"
+          ],
+          [
+            "tab:campaign-core",
+            "4.24",
+            "66",
+            "Matched local ESM2-35M results"
+          ],
+          [
+            "tab:campaign-paired",
+            "4.25",
+            "66",
+            "Paired local contrasts: LoRA minus its frozen control"
+          ],
+          [
+            "tab:campaign-strata",
+            "4.26",
+            "67",
+            "LoRA peptide-macro MAE by WT-PSI stratum"
+          ],
+          [
+            "tab:progress-effect-errors",
+            "4.27",
+            "68",
+            "OOF MAE conditional on the measured effect class ($\\Delta =\\Delta $PSI)"
+          ],
+          [
+            "tab:progress-largest-errors",
+            "4.28",
+            "69",
+            "Three largest absolute cell errors for LoRA-B on W, selected after inspection"
+          ],
+          [
+            "tab:campaign-calibration",
+            "4.29",
+            "70",
+            "Out-of-fold three-class probability evaluation"
+          ],
+          [
+            "tab:campaign-transfer",
+            "4.30",
+            "70",
+            "Locked W5-D transfer by WT PSI"
+          ],
+          [
+            "tab:priority-main",
+            "4.31",
+            "73",
+            "Equal-budget replay on W"
+          ],
+          [
+            "tab:priority-contrasts",
+            "4.32",
+            "74",
+            "Primary positive Precision@10 differences, in percentage points"
+          ],
+          [
+            "tab:priority-recall-budget",
+            "4.33",
+            "74",
+            "Mean selections to reach a known positive-hit recall, on 198 peptides with hits"
+          ],
+          [
+            "tab:priority-strata",
+            "4.34",
+            "75",
+            "Positive Precision@10 by WT-PSI stratum, in percent"
+          ],
+          [
+            "tab:question-assessment",
+            "4.35",
+            "76",
+            "Research questions, current evidence and boundaries"
+          ],
+          [
+            "tab:local-acceptance",
+            "4.36",
+            "84",
+            "Planned first-release local acceptance scenarios"
+          ],
+          [
+            "tab:verify",
+            "4.37",
+            "85",
+            "Executed test cases: agreement of the prototype with the research runner"
+          ],
+          [
+            "tab:campaign-all",
+            "B.1",
+            "96",
+            "All saved OOF configurations. $s$ is the number of seeds; MAE and event ranking are peptide-macro. Only rows with $s=3$ are three-seed ensembles"
+          ],
+          [
+            "tab:campaign-seeds",
+            "B.2",
+            "99",
+            "Single-seed and ensemble peptide-macro MAE for the matched local core experiment"
+          ],
+          [
+            "tab:campaign-epochs",
+            "B.3",
+            "99",
+            "Inner-selected epoch counts over 15 outer fits per local core recipe"
+          ],
+          [
+            "tab:campaign-nested",
+            "B.4",
+            "99",
+            "Local frozen-family recipes chosen by the saved inner-MSE selector"
+          ],
+          [
+            "tab:priority-seeds",
+            "B.5",
+            "100",
+            "Positive Precision@10 in percent for each seed and the three-seed ensemble"
+          ],
+          [
+            "tab:priority-budgets",
+            "B.6",
+            "100",
+            "Positive peptide-macro precision in percent across the six fixed analysis budgets"
+          ],
+          [
+            "tab:campaign-timing",
+            "B.7",
+            "100",
+            "Recorded durations of completed local job attempts, counting inherited work once"
+          ],
+          [
+            "tab:campaign-inventory",
+            "B.8",
+            "101",
+            "Physical output inventory at review time"
+          ]
+        ]
+      }
+    },
+    "content-twoside": {
+      "pages": 121,
+      "sha256": "ace7c37ee370537c7b24b066d2240dadafa7fe5f5bf5efc035cd188ac10312fb",
+      "bytes": 775225,
+      "figure_pdf_pages": [
+        38,
+        40,
+        47,
+        54,
+        55,
+        68,
+        72,
+        85,
+        86,
+        88,
+        91,
+        95
+      ],
+      "figure_tail_measurements": [
+        {
+          "pdf_page": 38,
+          "tail_pt": 8.5
+        },
+        {
+          "pdf_page": 40,
+          "tail_pt": 2.32
+        },
+        {
+          "pdf_page": 47,
+          "tail_pt": -1.97
+        },
+        {
+          "pdf_page": 54,
+          "tail_pt": 11.73
+        },
+        {
+          "pdf_page": 55,
+          "tail_pt": 4.99
+        },
+        {
+          "pdf_page": 68,
+          "tail_pt": 14.23
+        },
+        {
+          "pdf_page": 72,
+          "tail_pt": -2.94
+        },
+        {
+          "pdf_page": 85,
+          "tail_pt": -0.91
+        },
+        {
+          "pdf_page": 86,
+          "tail_pt": 69.0
+        },
+        {
+          "pdf_page": 88,
+          "tail_pt": 10.61
+        },
+        {
+          "pdf_page": 91,
+          "tail_pt": 9.96
+        },
+        {
+          "pdf_page": 95,
+          "tail_pt": 19.36
+        }
+      ],
+      "figure_pages_with_tail_over_one_third": [],
+      "annotations_checked": 461,
+      "annotation_issues": [],
+      "floats": {
+        "figure": [
+          [
+            "fig:ups-concept",
+            "2.1",
+            "18",
+            "Original conceptual schematic of a canonical UPS route"
+          ],
+          [
+            "fig:mutation-observation",
+            "2.2",
+            "20",
+            "Original conceptual diagram of mutation-effect prediction and label construction"
+          ],
+          [
+            "fig:local-architecture",
+            "3.1",
+            "27",
+            "Planned components of the single local application"
+          ],
+          [
+            "fig:campaign-lineage",
+            "3.2",
+            "34",
+            "Campaign lineage and evidence roles at completion on 6 November 2026"
+          ],
+          [
+            "fig:campaign-nested",
+            "3.3",
+            "35",
+            "Group-aware selection and evaluation"
+          ],
+          [
+            "fig:curve",
+            "4.1",
+            "48",
+            "Macro AUROC against the mean number of training clusters"
+          ],
+          [
+            "fig:threshold",
+            "4.2",
+            "52",
+            "Gain in macro AUROC over the benchmark training set for each degron threshold"
+          ],
+          [
+            "fig:campaign-family",
+            "4.3",
+            "65",
+            "Frozen pLM ridge results under full-range training"
+          ],
+          [
+            "fig:campaign-core",
+            "4.4",
+            "66",
+            "Matched adaptation evidence"
+          ],
+          [
+            "fig:progress-residuals",
+            "4.5",
+            "68",
+            "Matched per-peptide OOF errors for the three-seed ensembles on W"
+          ],
+          [
+            "fig:campaign-calibration",
+            "4.6",
+            "71",
+            "Probability and transfer limitations"
+          ],
+          [
+            "fig:priority-budget",
+            "4.7",
+            "75",
+            "Positive-hit budget curves from the stored OOF replay"
+          ]
+        ],
+        "table": [
+          [
+            "tab:uc-predict",
+            "1.1",
+            "8",
+            "Predict the effect matrix"
+          ],
+          [
+            "tab:uc-rank",
+            "1.2",
+            "9",
+            "Rank substitutions"
+          ],
+          [
+            "tab:uc-export",
+            "1.3",
+            "9",
+            "Export results with provenance"
+          ],
+          [
+            "tab:uc-tile",
+            "1.4",
+            "10",
+            "Select a protein and tiles"
+          ],
+          [
+            "tab:uc-measured",
+            "1.5",
+            "10",
+            "Compare with measured data"
+          ],
+          [
+            "tab:uc-clinvar",
+            "1.6",
+            "11",
+            "View ClinVar and reference annotations"
+          ],
+          [
+            "tab:uc-card",
+            "1.7",
+            "12",
+            "View model and data provenance"
+          ],
+          [
+            "tab:uc-batch",
+            "1.8",
+            "13",
+            "Analyse peptide batches or a whole protein"
+          ],
+          [
+            "tab:uc-import",
+            "1.9",
+            "13",
+            "Import experimental observations"
+          ],
+          [
+            "tab:uc-history",
+            "1.10",
+            "14",
+            "Manage projects and analysis history"
+          ],
+          [
+            "tab:sources",
+            "3.1",
+            "28",
+            "Data roles in research and the first local release"
+          ],
+          [
+            "tab:workspace-fields",
+            "3.2",
+            "29",
+            "Key workspace fields and invariants"
+          ],
+          [
+            "tab:research-progress-history",
+            "3.3",
+            "30",
+            "Research progression: the question resolved and the decision it motivated"
+          ],
+          [
+            "tab:funnel",
+            "4.1",
+            "42",
+            "Fate of the raw saturation peptides under the label filters"
+          ],
+          [
+            "tab:g2",
+            "4.2",
+            "45",
+            "Macro AUROC on the 91 peptides of the saturation benchmark"
+          ],
+          [
+            "tab:g2paired",
+            "4.3",
+            "45",
+            "Paired AUROC differences between models"
+          ],
+          [
+            "tab:g2seeds",
+            "4.4",
+            "45",
+            "Per-seed AUROC of the three main models"
+          ],
+          [
+            "tab:e2",
+            "4.5",
+            "47",
+            "Interaction designs against ridge M3"
+          ],
+          [
+            "tab:curve",
+            "4.6",
+            "47",
+            "Learning curve (P1) and relaxed degron threshold 4.0 (P0)"
+          ],
+          [
+            "tab:verdict",
+            "4.7",
+            "49",
+            "Pre-registered verdicts of P1 and P0"
+          ],
+          [
+            "tab:newgroup",
+            "4.8",
+            "49",
+            "Cells of the benchmark peptides and of the 85 peptides added by relaxing the threshold"
+          ],
+          [
+            "tab:partb",
+            "4.9",
+            "50",
+            "Gain over the benchmark training set when a fraction of the new clusters is added"
+          ],
+          [
+            "tab:partbverdict",
+            "4.10",
+            "51",
+            "Pre-registered verdicts on the new clusters"
+          ],
+          [
+            "tab:partc",
+            "4.11",
+            "51",
+            "Added data and gains for each degron threshold (cov80, positive cut $\\Delta \\mathrm{PSI}\\ge 1$)"
+          ],
+          [
+            "tab:partcrobust",
+            "4.12",
+            "52",
+            "Robustness of the gain at threshold 4.0 (ridge M3)"
+          ],
+          [
+            "tab:recluster",
+            "4.13",
+            "53",
+            "Gain of the relaxed threshold 4.0 (ridge M3) under different protein partitions"
+          ],
+          [
+            "tab:p3auroc",
+            "4.14",
+            "55",
+            "Macro AUROC with and without pre-training on tile labels"
+          ],
+          [
+            "tab:p3verdict",
+            "4.15",
+            "55",
+            "Pre-registered comparisons for pre-training"
+          ],
+          [
+            "tab:calmetrics",
+            "4.16",
+            "56",
+            "Probability quality on the outer-test cells"
+          ],
+          [
+            "tab:calverdict",
+            "4.17",
+            "57",
+            "Pre-registered comparisons of the Brier score"
+          ],
+          [
+            "tab:calutility",
+            "4.18",
+            "58",
+            "Ranking utility"
+          ],
+          [
+            "tab:koren",
+            "4.19",
+            "58",
+            "Gate fixed in advance for merging the labels of Koren et al.\\ (Table S4) into training"
+          ],
+          [
+            "tab:metadegron",
+            "4.20",
+            "60",
+            "Audit of the MetaDegron data and overlap with the data of this thesis"
+          ],
+          [
+            "tab:v3-results",
+            "4.21",
+            "62",
+            "Selected full-PSI development results"
+          ],
+          [
+            "tab:v3-comparisons",
+            "4.22",
+            "63",
+            "Paired full-PSI MAE differences"
+          ],
+          [
+            "tab:campaign-family",
+            "4.23",
+            "64",
+            "Local frozen-feature ridge MAE for all nine checkpoints"
+          ],
+          [
+            "tab:campaign-core",
+            "4.24",
+            "66",
+            "Matched local ESM2-35M results"
+          ],
+          [
+            "tab:campaign-paired",
+            "4.25",
+            "66",
+            "Paired local contrasts: LoRA minus its frozen control"
+          ],
+          [
+            "tab:campaign-strata",
+            "4.26",
+            "67",
+            "LoRA peptide-macro MAE by WT-PSI stratum"
+          ],
+          [
+            "tab:progress-effect-errors",
+            "4.27",
+            "68",
+            "OOF MAE conditional on the measured effect class ($\\Delta =\\Delta $PSI)"
+          ],
+          [
+            "tab:progress-largest-errors",
+            "4.28",
+            "69",
+            "Three largest absolute cell errors for LoRA-B on W, selected after inspection"
+          ],
+          [
+            "tab:campaign-calibration",
+            "4.29",
+            "70",
+            "Out-of-fold three-class probability evaluation"
+          ],
+          [
+            "tab:campaign-transfer",
+            "4.30",
+            "70",
+            "Locked W5-D transfer by WT PSI"
+          ],
+          [
+            "tab:priority-main",
+            "4.31",
+            "73",
+            "Equal-budget replay on W"
+          ],
+          [
+            "tab:priority-contrasts",
+            "4.32",
+            "74",
+            "Primary positive Precision@10 differences, in percentage points"
+          ],
+          [
+            "tab:priority-recall-budget",
+            "4.33",
+            "74",
+            "Mean selections to reach a known positive-hit recall, on 198 peptides with hits"
+          ],
+          [
+            "tab:priority-strata",
+            "4.34",
+            "75",
+            "Positive Precision@10 by WT-PSI stratum, in percent"
+          ],
+          [
+            "tab:question-assessment",
+            "4.35",
+            "76",
+            "Research questions, current evidence and boundaries"
+          ],
+          [
+            "tab:local-acceptance",
+            "4.36",
+            "84",
+            "Planned first-release local acceptance scenarios"
+          ],
+          [
+            "tab:verify",
+            "4.37",
+            "85",
+            "Executed test cases: agreement of the prototype with the research runner"
+          ],
+          [
+            "tab:campaign-all",
+            "B.1",
+            "96",
+            "All saved OOF configurations. $s$ is the number of seeds; MAE and event ranking are peptide-macro. Only rows with $s=3$ are three-seed ensembles"
+          ],
+          [
+            "tab:campaign-seeds",
+            "B.2",
+            "99",
+            "Single-seed and ensemble peptide-macro MAE for the matched local core experiment"
+          ],
+          [
+            "tab:campaign-epochs",
+            "B.3",
+            "99",
+            "Inner-selected epoch counts over 15 outer fits per local core recipe"
+          ],
+          [
+            "tab:campaign-nested",
+            "B.4",
+            "99",
+            "Local frozen-family recipes chosen by the saved inner-MSE selector"
+          ],
+          [
+            "tab:priority-seeds",
+            "B.5",
+            "100",
+            "Positive Precision@10 in percent for each seed and the three-seed ensemble"
+          ],
+          [
+            "tab:priority-budgets",
+            "B.6",
+            "100",
+            "Positive peptide-macro precision in percent across the six fixed analysis budgets"
+          ],
+          [
+            "tab:campaign-timing",
+            "B.7",
+            "100",
+            "Recorded durations of completed local job attempts, counting inherited work once"
+          ],
+          [
+            "tab:campaign-inventory",
+            "B.8",
+            "101",
+            "Physical output inventory at review time"
+          ]
+        ]
+      }
+    }
+  },
+  "page_reduction": 9,
+  "preserved_asset_files": 205,
+  "raster_difference_pages_between_variants": [],
+  "fault_injection_checks": [
+    {
+      "fault": "number",
+      "detected": "content: nonsequential figure number 2.9"
+    },
+    {
+      "fault": "title",
+      "detected": "content: list/label mismatch for fig:ups-concept"
+    },
+    {
+      "fault": "destination",
+      "detected": "content: wrong PDF destination for fig:ups-concept"
+    },
+    {
+      "fault": "prose-reference",
+      "detected": "content: unreferenced figures ['fig:ups-concept']; unknown figure references []"
+    }
+  ],
+  "visual_review": {
+    "overview": "all 121 pages; close review of all 12 figure pages, lists, continued tables and appendix transitions",
+    "variants": [
+      "content",
+      "content-twoside"
+    ],
+    "render_directory": "build/review-layout-2026-11-07",
+    "page_renders_per_variant": 51
+  },
+  "commands": [
+    "make -C report all",
+    "make -C report smoke",
+    "make -C report check",
+    "git diff --check"
+  ],
+  "limits": [
+    "Whitespace measurements use body-text extents; visual review is required.",
+    "Formal front matter and intentional chapter/end-of-document whitespace are retained.",
+    "This is not scientific acceptance or completion of pending thesis content."
+  ]
+}

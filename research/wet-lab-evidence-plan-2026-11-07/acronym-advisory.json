@@ -1,0 +1,412 @@
+{
+  "checker": "ars-acronym-check/1.0",
+  "input": "research/wet-lab-evidence-plan-2026-11-07/findings.md",
+  "input_sha256": "6531fcd40fa05b2dee6ee535cf3e83caa946b0f99f7d1eccfb502bd5df082f00",
+  "status": "partial",
+  "allowlist": {
+    "default": 29,
+    "user": []
+  },
+  "coverage": {
+    "body": "checked",
+    "abstract_en": "not_in_input",
+    "abstract_zh": "not_in_input"
+  },
+  "scope_lines": {
+    "body": [
+      [
+        2,
+        6
+      ],
+      [
+        8,
+        22
+      ],
+      [
+        24,
+        52
+      ],
+      [
+        54,
+        54
+      ],
+      [
+        56,
+        67
+      ],
+      [
+        69,
+        79
+      ],
+      [
+        81,
+        89
+      ],
+      [
+        91,
+        102
+      ],
+      [
+        104,
+        116
+      ],
+      [
+        118,
+        118
+      ],
+      [
+        120,
+        132
+      ],
+      [
+        134,
+        144
+      ],
+      [
+        146,
+        152
+      ],
+      [
+        154,
+        184
+      ],
+      [
+        186,
+        213
+      ],
+      [
+        215,
+        228
+      ]
+    ]
+  },
+  "unread_sections": [],
+  "coverage_limits": [
+    {
+      "scope": "body",
+      "line": 48,
+      "acronym": "CHX",
+      "reason": "unconfirmed_definition"
+    },
+    {
+      "scope": "body",
+      "line": 48,
+      "acronym": "OOF",
+      "reason": "unconfirmed_definition"
+    }
+  ],
+  "findings": [
+    {
+      "scope": "body",
+      "line": 4,
+      "rule": "undefined",
+      "acronym": "README",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 11,
+      "rule": "undefined",
+      "acronym": "CT553H",
+      "expansion": null,
+      "occurrences": 12
+    },
+    {
+      "scope": "body",
+      "line": 15,
+      "rule": "undefined",
+      "acronym": "SAMPLE",
+      "expansion": null,
+      "occurrences": 2
+    },
+    {
+      "scope": "body",
+      "line": 16,
+      "rule": "undefined",
+      "acronym": "ALDE",
+      "expansion": null,
+      "occurrences": 3
+    },
+    {
+      "scope": "body",
+      "line": 25,
+      "rule": "undefined",
+      "acronym": "RQ",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 43,
+      "rule": "defined_after_use",
+      "acronym": "WT",
+      "expansion": "wild type",
+      "occurrences": 3
+    },
+    {
+      "scope": "body",
+      "line": 45,
+      "rule": "undefined",
+      "acronym": "DI",
+      "expansion": null,
+      "occurrences": 2
+    },
+    {
+      "scope": "body",
+      "line": 45,
+      "rule": "undefined",
+      "acronym": "GI",
+      "expansion": null,
+      "occurrences": 2
+    },
+    {
+      "scope": "body",
+      "line": 45,
+      "rule": "undefined",
+      "acronym": "NG",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 45,
+      "rule": "undefined",
+      "acronym": "PH",
+      "expansion": null,
+      "occurrences": 2
+    },
+    {
+      "scope": "body",
+      "line": 49,
+      "rule": "undefined",
+      "acronym": "CBX6",
+      "expansion": null,
+      "occurrences": 3
+    },
+    {
+      "scope": "body",
+      "line": 50,
+      "rule": "undefined",
+      "acronym": "GPS",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 50,
+      "rule": "undefined",
+      "acronym": "HiBiT",
+      "expansion": null,
+      "occurrences": 2
+    },
+    {
+      "scope": "body",
+      "line": 50,
+      "rule": "undefined",
+      "acronym": "PAP",
+      "expansion": null,
+      "occurrences": 2
+    },
+    {
+      "scope": "body",
+      "line": 50,
+      "rule": "undefined",
+      "acronym": "PNPO",
+      "expansion": null,
+      "occurrences": 2
+    },
+    {
+      "scope": "body",
+      "line": 50,
+      "rule": "undefined",
+      "acronym": "PTEN",
+      "expansion": null,
+      "occurrences": 2
+    },
+    {
+      "scope": "body",
+      "line": 66,
+      "rule": "undefined",
+      "acronym": "STAR",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 70,
+      "rule": "undefined",
+      "acronym": "FBXL15",
+      "expansion": null,
+      "occurrences": 3
+    },
+    {
+      "scope": "body",
+      "line": 76,
+      "rule": "undefined",
+      "acronym": "SDE2",
+      "expansion": null,
+      "occurrences": 2
+    },
+    {
+      "scope": "body",
+      "line": 82,
+      "rule": "undefined",
+      "acronym": "SPOP",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 88,
+      "rule": "undefined",
+      "acronym": "IP",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 93,
+      "rule": "undefined",
+      "acronym": "D33V",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 93,
+      "rule": "undefined",
+      "acronym": "LAP3",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 100,
+      "rule": "undefined",
+      "acronym": "FACS",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 105,
+      "rule": "undefined",
+      "acronym": "KLHL15",
+      "expansion": null,
+      "occurrences": 2
+    },
+    {
+      "scope": "body",
+      "line": 106,
+      "rule": "undefined",
+      "acronym": "ZNF511",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 114,
+      "rule": "undefined",
+      "acronym": "S5D",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 126,
+      "rule": "undefined",
+      "acronym": "USD",
+      "expansion": null,
+      "occurrences": 3
+    },
+    {
+      "scope": "body",
+      "line": 129,
+      "rule": "undefined",
+      "acronym": "GH1",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 142,
+      "rule": "undefined",
+      "acronym": "PSI",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 149,
+      "rule": "undefined",
+      "acronym": "AAV",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 169,
+      "rule": "undefined",
+      "acronym": "CH",
+      "expansion": null,
+      "occurrences": 2
+    },
+    {
+      "scope": "body",
+      "line": 169,
+      "rule": "undefined",
+      "acronym": "TH",
+      "expansion": null,
+      "occurrences": 2
+    },
+    {
+      "scope": "body",
+      "line": 169,
+      "rule": "undefined",
+      "acronym": "THI",
+      "expansion": null,
+      "occurrences": 2
+    },
+    {
+      "scope": "body",
+      "line": 169,
+      "rule": "undefined",
+      "acronym": "XU",
+      "expansion": null,
+      "occurrences": 2
+    },
+    {
+      "scope": "body",
+      "line": 192,
+      "rule": "undefined",
+      "acronym": "S4G",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 193,
+      "rule": "undefined",
+      "acronym": "ACS",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 205,
+      "rule": "undefined",
+      "acronym": "API",
+      "expansion": null,
+      "occurrences": 1
+    },
+    {
+      "scope": "body",
+      "line": 208,
+      "rule": "undefined",
+      "acronym": "AI",
+      "expansion": null,
+      "occurrences": 1
+    }
+  ]
+}

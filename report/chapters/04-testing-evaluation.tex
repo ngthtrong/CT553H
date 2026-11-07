@@ -17,8 +17,8 @@ local acceptance evidence; no passing result for those additions is claimed here
 
 \section{Experimental Evaluation}\label{sec:experiments}
 This section preserves the initial restricted-PSI experiments and then reports the important
-follow-up findings and completed campaigns available on 6 November 2026
-(Section~\ref{sec:res-fullpsi}). The original
+follow-up findings and completed campaigns, including the 7 November 2026 equal-budget replay
+(Sections~\ref{sec:res-fullpsi} and~\ref{sec:res-prioritization}). The original
 91-peptide test and the full-PSI evaluation have different populations and primary metrics;
 their scores must not be read as a single improvement curve. All remain development evidence.
 
@@ -100,6 +100,8 @@ variance of retraining. For these initial G2 contrasts, no multiplicity correcti
 interval is a development-stage indication. Later sections identify their own adjusted comparison
 families, including R6, the two full-PSI range contrasts and the four matched local LoRA contrasts.
 The full-PSI follow-up instead uses peptide-macro MAE as its primary metric.
+The later equal-budget replay has its own primary endpoint, positive Precision@10; its two
+97.5\% adjusted contrasts form a separate family (Section~\ref{sec:priority-methods}).
 
 Probabilities are assessed with the Brier score (the mean squared difference between the predicted
 probability and the 0/1 label over the cells), the Brier skill score against a constant forecast of the base rate,
@@ -122,7 +124,7 @@ $\Delta$PAP residual (\nAucGateNoPap{}) does not change this picture: both varia
 
 \begin{table}[htbp]
   \centering
-  \caption{Macro AUROC on the \nNPep{} peptides of the saturation benchmark. The last column keeps only the cells
+  \caption[Macro AUROC on the \nNPep{} peptides of the saturation benchmark]{Macro AUROC on the \nNPep{} peptides of the saturation benchmark. The last column keeps only the cells
   whose exact sequence is not in the training data of the published Degformer.}\label{tab:g2}
   \input{assets/ch4/tab-g2}
 \end{table}
@@ -171,7 +173,7 @@ $\Delta$PAP, but so is plain ridge.
 
 \begin{table}[htbp]
   \centering
-  \caption{Interaction designs against ridge M3. ``Criterion met'' applies the pre-registered rule above; for the
+  \caption[Interaction designs against ridge M3]{Interaction designs against ridge M3. ``Criterion met'' applies the pre-registered rule above; for the
   sigmoid gate and the one-seed Degformer architecture the rule is applied descriptively.}\label{tab:e2}
   \input{assets/ch4/tab-e2}
 \end{table}
@@ -195,13 +197,13 @@ were fixed in advance: ridge M3 and the gated network without $\Delta$PAP.
 \begin{figure}[htbp]
   \centering
   \input{assets/ch4/fig-learning-curve}
-  \caption{Macro AUROC against the mean number of training clusters (nested cluster subsets of 25, 50, 75 and 100\%
+  \caption[Macro AUROC against the mean number of training clusters]{Macro AUROC against the mean number of training clusters (nested cluster subsets of 25, 50, 75 and 100\%
   of the outer-training data; the dashed segment is the relaxed-threshold training set).}\label{fig:curve}
 \end{figure}
 
 \begin{table}[htbp]
   \centering
-  \caption{Learning curve (P1) and relaxed degron threshold 4.0 (P0). Ranges are over 5 folds and 3 seeds.}\label{tab:curve}
+  \caption[Learning curve (P1) and relaxed degron threshold 4.0 (P0)]{Learning curve (P1) and relaxed degron threshold 4.0 (P0). Ranges are over 5 folds and 3 seeds.}\label{tab:curve}
   \input{assets/ch4/tab-curve}
 \end{table}
 
@@ -235,7 +237,7 @@ not establish 3.0 as a universal biological boundary.
 
 \begin{table}[htbp]
   \centering
-  \caption{Cells of the benchmark peptides and of the 85 peptides added by relaxing the threshold}\label{tab:newgroup}
+  \caption[Cells of the benchmark peptides and of the 85 peptides added by relaxing the threshold]{Cells of the benchmark peptides and of the 85 peptides added by relaxing the threshold}\label{tab:newgroup}
   \input{assets/ch4/tab-newgroup}
 \end{table}
 
@@ -250,7 +252,7 @@ clusters (about 42 clusters) with the marginal gain of 36 old-region clusters me
 
 \begin{table}[htbp]
   \centering
-  \caption{Gain over the benchmark training set when a fraction of the new clusters is added}\label{tab:partb}
+  \caption[Gain over the benchmark training set when a fraction of the new clusters is added]{Gain over the benchmark training set when a fraction of the new clusters is added}\label{tab:partb}
   \input{assets/ch4/tab-partb}
 \end{table}
 
@@ -266,7 +268,7 @@ poor operational choice. This remark does not overturn the verdict.
 
 \begin{table}[htbp]
   \centering
-  \caption{Pre-registered verdicts on the new clusters. The reference marginal gain of old-region clusters is \nBaseMarginal.}\label{tab:partbverdict}
+  \caption[Pre-registered verdicts on the new clusters]{Pre-registered verdicts on the new clusters. The reference marginal gain of old-region clusters is \nBaseMarginal.}\label{tab:partbverdict}
   \input{assets/ch4/tab-partb-verdict}
 \end{table}
 
@@ -290,14 +292,14 @@ which is consistent with peptides that are not degrons starting to dilute the tr
 
 \begin{table}[htbp]
   \centering
-  \caption{Added data and gains for each degron threshold (cov80, positive cut $\Delta\mathrm{PSI}\ge1$)}\label{tab:partc}
+  \caption[Added data and gains for each degron threshold (cov80, positive cut $\Delta\mathrm{PSI}\ge1$)]{Added data and gains for each degron threshold (cov80, positive cut $\Delta\mathrm{PSI}\ge1$)}\label{tab:partc}
   \input{assets/ch4/tab-partc}
 \end{table}
 
 \begin{figure}[htbp]
   \centering
   \input{assets/ch4/fig-threshold}
-  \caption{Gain in macro AUROC over the benchmark training set for each degron threshold, with 95\% cluster-bootstrap
+  \caption[Gain in macro AUROC over the benchmark training set for each degron threshold]{Gain in macro AUROC over the benchmark training set for each degron threshold, with 95\% cluster-bootstrap
   intervals (horizontal offsets only separate the two models).}\label{fig:threshold}
 \end{figure}
 
@@ -327,7 +329,7 @@ share a group with a test peptide) has a bootstrap interval of the gain above ze
 
 \begin{table}[htbp]
   \centering
-  \caption{Gain of the relaxed threshold 4.0 (ridge M3) under different protein partitions. ``Groups'' are the groups of the
+  \caption[Gain of the relaxed threshold 4.0 (ridge M3) under different protein partitions]{Gain of the relaxed threshold 4.0 (ridge M3) under different protein partitions. ``Groups'' are the groups of the
   91 benchmark peptides and of all 176 peptides; ``Shared'' is the number of added peptides that fall in a group of a
   benchmark peptide; ``Excl.'' is the mean percentage of the added cells that are removed from training because their
   group contains a test peptide.}\label{tab:recluster}
@@ -373,7 +375,7 @@ difference in every seed'': (A) \emph{pre} against \emph{rand}, and (B) \emph{pr
 
 \begin{table}[htbp]
   \centering
-  \caption{Pre-registered comparisons for pre-training. The main configuration is the relaxed threshold 4.0; the threshold 3.0 is
+  \caption[Pre-registered comparisons for pre-training]{Pre-registered comparisons for pre-training. The main configuration is the relaxed threshold 4.0; the threshold 3.0 is
   reported with the same criteria and was not used to choose the configuration.}\label{tab:p3verdict}
   \input{assets/ch4/tab-p3-verdict}
 \end{table}
@@ -405,7 +407,7 @@ interval of the enrichment at 10\% is above 1. The raw scores of the three seeds
 
 \begin{table}[htbp]
   \centering
-  \caption{Probability quality on the outer-test cells (observed fraction of positive cells: \nCalObs). ECE: expected calibration
+  \caption[Probability quality on the outer-test cells]{Probability quality on the outer-test cells (observed fraction of positive cells: \nCalObs). ECE: expected calibration
   error over ten equal-mass bins; $\hat p$: predicted probability.}\label{tab:calmetrics}
   \input{assets/ch4/tab-cal-metrics}
 \end{table}
@@ -433,14 +435,16 @@ probabilities it must be kept in mind.
 
 \begin{table}[htbp]
   \centering
-  \caption{Ranking utility: the substitutions of each peptide (532 per 28-residue peptide) are ordered by the raw score. A random ranking has
+  \caption[Ranking utility]{Ranking utility: the substitutions of each peptide (532 per 28-residue peptide) are ordered by the raw score. A random ranking has
   enrichment 1.}\label{tab:calutility}
   \input{assets/ch4/tab-cal-utility}
 \end{table}
 
 For prioritising substitutions (Table~\ref{tab:calutility}), choosing the top 10\% of each peptide (about \nKTen{} substitutions) gives a precision of \nPrecTen{} and
-a recall of \nRecTen{}, an enrichment of \nEnrTen{} (\nEnrTenCI{}); the criterion is met. The only reference is a random ranking: it is not known
-how much better the model is than a simple rule, for example one based on the hydrophobicity of the substituted residue. Moreover, the final model is fitted on
+a recall of \nRecTen{}, an enrichment of \nEnrTen{} (\nEnrTenCI{}); the criterion is met.
+For this earlier restricted-benchmark analysis, the only reference is random ranking.
+Section~\ref{sec:res-prioritization} adds a separate full-PSI, fixed-budget comparison with Ridge W5-D;
+a hand-designed rule such as residue hydrophobicity remains untested. Moreover, the final model is fitted on
 all of the pool whereas the calibrator is learned from scores of models fitted on four fifths of it (a known limitation of cross-fitting), and all of this is
 still a development benchmark. The word ``calibrated'' here means that the Brier score is better than that of the raw score with an interval above zero; it does
 not mean perfect calibration.
@@ -452,7 +456,7 @@ repository, so the tables are used internally only and are not redistributed her
 
 \begin{table}[htbp]
   \centering
-  \caption{Gate fixed in advance for merging the labels of Koren et al.\ (Table S4) into training}\label{tab:koren}
+  \caption[Gate fixed in advance for merging the labels of Koren et al.\ (Table S4) into training]{Gate fixed in advance for merging the labels of Koren et al.\ (Table S4) into training}\label{tab:koren}
   \input{assets/ch4/tab-koren}
 \end{table}
 
@@ -484,11 +488,13 @@ head-to-head competitor on residue-level effect prediction; binary motif labels 
 
 \begin{table}[htbp]
   \centering
-  \caption{Audit of the MetaDegron data and overlap with the data of this thesis}\label{tab:metadegron}
+  \caption[Audit of the MetaDegron data and overlap with the data of this thesis]{Audit of the MetaDegron data and overlap with the data of this thesis}\label{tab:metadegron}
   \input{assets/ch4/tab-metadegron}
 \end{table}
 
 \input{chapters/sections/current-evidence}
+
+\input{chapters/sections/prioritization-results}
 
 \input{chapters/sections/question-assessment}
 
@@ -508,7 +514,10 @@ The following parts of the plan have no results in this version of the thesis; n
         require a model-specific final refit, calibration lineage and export before serving. LoRA transfer
         beyond development remains untested. Alternative tile-label
         pre-training or joint-training designs remain separate untested questions.
-  \item \textbf{Comparison of the ranking with simple rules.} Only a random ranking was used as reference (Section~\ref{sec:res-calibration}).
+  \item \textbf{Further ranking-utility validation.} The same-budget retrospective comparison with
+        Ridge W5-D and random is complete (Section~\ref{sec:res-prioritization}). A hand-designed
+        hydrophobicity rule, a new independent candidate pool and prospective assay/resource
+        comparisons remain untested. The earlier restricted-benchmark result used random alone.
   \item \textbf{Separating the region of $\mathrm{PSI}_{\mathrm{WT}}$ from the protein.} It needs pairs of peptides of the same protein on both sides
         of the threshold, which the present data may not contain (Section~\ref{sec:res-partb}).
   \item \textbf{Expanded local software acceptance and tests with users.} Baseline web/API code exists,
@@ -561,7 +570,9 @@ makes no claim of external validation of the probabilities or of the ranking.
         absolute scores change with the partition.
   \item The Platt calibrator is fitted on a pool that includes the added peptides, and its probabilities are about 13\% too low for the
         benchmark peptides; the criterion ``better than the raw score'' is a low bar, because the raw score is worse than the base rate.
-  \item The pre-training result concerns one design and one encoder; the ranking is compared only with a random ranking.
+  \item The historical tile-label pre-training result concerns one design and one encoder.
+        The earlier restricted-domain utility analysis uses random alone; the later full-PSI replay
+        adds W5-D under the same budget but remains retrospective development evidence.
 \end{itemize}
 
 \subsection{Reproducibility of the Reported Results}
@@ -645,7 +656,7 @@ Table~\ref{tab:local-acceptance} defines the additional scenarios. All are pendi
 the system SRS and test plan. No public-host deployment is required.
 \begin{table}[htbp]
   \centering
-  \caption{Planned first-release local acceptance scenarios; no execution result claimed}
+  \caption[Planned first-release local acceptance scenarios]{Planned first-release local acceptance scenarios; no execution result claimed}
   \label{tab:local-acceptance}
   \small
   \begin{tabularx}{\textwidth}{|P{3.4cm}|X|}
@@ -666,7 +677,7 @@ for them here. Expanded first-release cases are specified in Table~\ref{tab:loca
 
 \begin{table}[htbp]
   \centering
-  \caption{Executed test cases: agreement of the prototype with the research runner. The tolerance is $10^{-9}$.}\label{tab:verify}
+  \caption[Executed test cases: agreement of the prototype with the research runner]{Executed test cases: agreement of the prototype with the research runner. The tolerance is $10^{-9}$.}\label{tab:verify}
   \input{assets/ch4/tab-verify}
 \end{table}
 

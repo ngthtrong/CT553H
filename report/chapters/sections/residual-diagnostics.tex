@@ -12,7 +12,7 @@ groups and worsens \nProgressBGrpWorse{}; D improves \nProgressDGrpBetter{} and 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{assets/ch4/fig-progress-residuals.pdf}
-  \caption{Matched per-peptide OOF errors for the three-seed ensembles on W. Each point is one
+  \caption[Matched per-peptide OOF errors for the three-seed ensembles on W]{Matched per-peptide OOF errors for the three-seed ensembles on W. Each point is one
   peptide; points below the dashed equality line favour LoRA. Both panels use common scales.
   The spread is observed heterogeneity, not a confidence interval.}
   \label{fig:progress-residuals}
@@ -28,9 +28,10 @@ has MAE 0.9035 versus 0.8486 for frozen-B. It remains a failure case despite the
 
 \begin{table}[htbp]
   \centering
-  \caption{OOF MAE conditional on the measured effect class ($\Delta=\Delta$PSI).
+  \caption[OOF MAE conditional on the measured effect class ($\Delta=\Delta$PSI)]{OOF MAE conditional on the measured effect class ($\Delta=\Delta$PSI).
   Each metric averages errors within each eligible peptide, then over peptides in that class.
-  Support counts differ from ranking eligibility, which requires at least three cells of each class.}
+  Support counts differ from AUROC/average-precision eligibility, which requires at least three
+  cells of each class; the fixed-budget precision replay retains all peptides.}
   \label{tab:progress-effect-errors}
   \input{assets/ch4/tab-progress-effect-errors}
 \end{table}
@@ -46,7 +47,7 @@ different weighting from the peptide-macro absolute errors in the table.
 
 \begin{table}[htbp]
   \centering
-  \caption{Three largest absolute cell errors for LoRA-B on W, selected after inspection.
+  \caption[Three largest absolute cell errors for LoRA-B on W, selected after inspection]{Three largest absolute cell errors for LoRA-B on W, selected after inspection.
   Positions are within the measured peptide; measured and predicted values are $\Delta$PSI.
   These illustrate failures and are not clinical or mechanistic case validations.}
   \label{tab:progress-largest-errors}

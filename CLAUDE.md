@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-Đồng bộ với mã nguồn và bằng chứng trong repo ngày **06/11/2026**. Chỉ mục trạng thái: [README.md](README.md) và [research/README.md](research/README.md). `AGENTS.md` chỉ dẫn chiếu file này; duy trì quy tắc chung tại đây.
+Đồng bộ với mã nguồn và bằng chứng trong repo ngày **07/11/2026**. Chỉ mục trạng thái: [README.md](README.md) và [research/README.md](research/README.md). `AGENTS.md` chỉ dẫn chiếu file này; duy trì quy tắc chung tại đây.
 
 Repo luận văn tốt nghiệp CT553H (Kỹ thuật phần mềm, ĐH Cần Thơ) của Nguyễn Thanh Trọng, GVHD TS. Hồ Quang Thái. Đề tài duy nhất còn lại: **degron-footprint** — dự đoán footprint / hiệu ứng đột biến degron mức residue trên nhãn thực nghiệm (Zhang 2023, Voutsinos 2026, Larsen 2025, MaveDB, ClinVar). Tài liệu viết bằng tiếng Việt; tên file/thư mục chữ thường, tiếng Anh, nối gạch ngang.
 
@@ -21,6 +21,25 @@ Repo luận văn tốt nghiệp CT553H (Kỹ thuật phần mềm, ĐH Cần Th�
 ## Nhánh git
 
 `main` là nhánh làm việc. Hồ sơ dọn repo ghi nhánh lưu trữ `backup-before-clean` (`archive/`, `journal/`, `surveys/`, `tools/`, `DECISIONS.md` và tài liệu đã thay thế). Kiểm ngày 06/11: local còn có `backup-before-clean`, `clean`, `report`; `git ls-remote --heads origin` trả về `main` và `report`. Remote-tracking refs khác có thể đã cũ. Kiểm ref thực có trước khi dùng `git show backup-before-clean:<đường-dẫn>`; không mặc định branch remote còn tồn tại.
+
+## Rà nghiệm thu G2 và kế hoạch bằng chứng ứng dụng — 07/11/2026
+
+[Hồ sơ G2](research/g2-acceptance-2026-11-07/README.md) ghi rõ đã có cải thiện
+định lượng development, đặc biệt matched LoRA–frozen B/D, và đủ hồ sơ để rà
+nghiệm thu; chưa ghi nhận quyết định đóng G2 của Trọng/GVHD. Phạm vi v3 cho phép
+đóng góp benchmark/phương pháp/đánh giá/phần mềm, không bắt buộc kiến trúc mới.
+Không chuyển nguyên tiêu chí gate/PAP lịch sử hoặc ngưỡng Q1 D−B/E−B thành
+threshold LoRA chung; không tự thêm wet lab/nguồn ngoài/export vào mọi điều kiện
+ghi nhận đóng góp development. Giữ đúng giới hạn từng claim và trạng thái gốc
+`development_not_gate_closure`; chỉ ghi đóng G2 khi có quyết định tương ứng.
+
+[Tra cứu bằng chứng wet lab/nguồn lực](research/wet-lab-evidence-plan-2026-11-07/findings.md)
+theo academic-research-suite đã có kết quả ngày 07/11: 39 query, tám nghiên cứu
+trong ma trận (năm gần degron, ba lân cận), có access gaps và giới hạn bao phủ.
+Có tiền lệ validation sinh học; chưa xác nhận hiệu quả kinh tế của CT553H.
+Giữ thời gian thực/dự báo, ngân sách run/số tiền tiết kiệm và simulation/wet lab
+riêng. Bằng chứng công trình khác không tự xác nhận lợi ích CT553H hoặc đóng
+G2/G3; model phục vụ vẫn theo quy trình riêng. Không có train/wet lab mới.
 
 ## Chạy script nghiên cứu
 
@@ -72,3 +91,11 @@ make -C reportTemplate content BIBLIOGRAPHY=bibtex   # ép natbib/BibTeX thay v�
 ```
 
 Luôn build qua Make/`scripts/build.py` (tự lặp đến khi tham chiếu ổn định); một lượt XeLaTeX trực tiếp không đủ. Build dừng khi có lỗi LaTeX, overfull box, thiếu ký tự, nhãn trùng hoặc tham chiếu chưa giải quyết. Metadata ở `config/metadata.tex`; nội dung ở `frontmatter/`, `chapters/`, `appendices/`; tên chương/phần/phụ lục viết hoa ngay trong nguồn.
+
+### Quy tắc bố cục và đánh số của `report/` — 07/11/2026
+
+- Rà soát PDF một mặt và hai mặt sau mỗi lần đổi bố cục. Kiểm cả trang chứa hình/bảng và trang liền trước, liền sau; khoảng trống lớn hơn khoảng một phần ba vùng nội dung phải được xem lại và ghi lý do nếu giữ. Trang bìa, biểu mẫu ký/nhận xét và khoảng trống cuối chương có chủ đích được đánh giá theo chức năng, không ép lấp đầy.
+- Ưu tiên đặt hình/bảng gần lần dẫn đầu tiên bằng float linh hoạt `[htbp]`; điều chỉnh kích thước trong giới hạn đọc được, số float mỗi trang và tỷ lệ diện tích trước khi ép ngắt trang. Không dùng hàng loạt `[H]`, `\clearpage`, `\newpage`, khoảng cách âm, giảm cỡ chữ thân bài hoặc đổi lề để che lỗi bố cục. Không để tiêu đề đơn độc cuối trang; bảng nhiều trang dùng `longtable`, lặp đầu bảng và ghi tiếp bảng khi cần. Chặn float tại ranh giới có ý nghĩa nếu chúng trôi sang mục không liên quan.
+- Hình đánh số tự động theo chương, liên tục trong từng chương; bảng có bộ đếm riêng, phụ lục dùng A/B. Mỗi hình phải được dẫn trong nội dung bằng `Figure~\ref{fig:...}`, không gõ số hình bằng tay. `\label` duy nhất đặt ngay sau `\caption`; không chỉnh bộ đếm để chữa sai thứ tự.
+- Tên ngắn trong `\caption[Tên ngắn]{Chú thích đầy đủ}` phải giữ đúng tên/chủ đề mở đầu của chú thích, dùng cho danh mục; giữ giải thích, trích dẫn và giới hạn khoa học trong chú thích đầy đủ. Đối chiếu số, tên, trang và đích liên kết giữa danh mục, nhãn và PDF; ô số trang phải đủ rộng cho số La Mã. Chú thích hình ở dưới, chú thích bảng ở trên; căn lề, phông và khoảng cách nhất quán.
+- Trước khi bàn giao: chạy `make -C report all` và `make -C report check`, kiểm danh mục/nhãn/tham chiếu bằng `scripts/check_float_references.py`, rồi xem ảnh render tổng thể và các trang có vấn đề ở kích thước đọc được. Lưu phạm vi kiểm tra và hash PDF trong hồ sơ validation mới; không ghi đè biên bản cũ và không gọi build thành nghiệm thu nghiên cứu. Giữ nguyên số liệu, hình, bảng và giới hạn bằng chứng khi chỉ sửa định dạng.

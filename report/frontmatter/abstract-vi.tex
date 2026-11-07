@@ -2,7 +2,7 @@
 \FrontChapter{TÓM TẮT}
 \begin{otherlanguage}{vietnamese}
 Một phép thay thế amino acid có thể làm thay đổi hoạt tính degron, tín hiệu trình tự liên quan đến
-phân hủy protein có chọn lọc. Báo cáo tiến độ ngày 06/11/2026 khảo sát dự đoán hiệu ứng đột biến
+phân hủy protein có chọn lọc. Báo cáo tiến độ ngày 07/11/2026 khảo sát dự đoán hiệu ứng đột biến
 bằng độ thay đổi chỉ số ổn định protein ($\Delta$PSI) trong thí nghiệm reporter peptide và quá trình
 xây dựng công cụ phân tích local.
 Quy trình dựng lại nhãn, kiểm soát chồng lặp trình tự và đánh giá theo nhóm protein, với lựa chọn
@@ -11,20 +11,25 @@ mô hình ở tập trong và khoảng tin cậy bootstrap theo nhóm.
 Bộ phát triển toàn dải PSI có \nVthreeNPeptides{} peptide, \nVthreeNCells{} ô đột biến và
 \nVthreeNGroups{} nhóm protein. Mở rộng train ridge từ PSI hoang dã không quá 4 sang toàn dải
 giảm MAE trung bình theo peptide từ \nVthreeRidgeB{} xuống \nVthreeRidgeD{} PSI.
-ESM2-35M đóng băng kết hợp CNN đạt MAE \nVthreeCnnD{}. Nghiên cứu local hoàn tất so sánh
-chín checkpoint pLM đóng băng và 60 lượt fit frozen/LoRA có đối chứng. LoRA đạt MAE
+Nghiên cứu local hoàn tất so sánh chín mô hình ngôn ngữ protein đóng băng và 60 lượt fit
+có đối chứng thích nghi hạng thấp (LoRA). LoRA đạt MAE
 \nCampaignLoraB{} khi giới hạn train và \nCampaignLoraD{} khi train toàn dải, giảm tương ứng
 \nCampaignGainB\% và \nCampaignGainD\% so với frozen cùng điều kiện. Khoảng tin cậy theo nhóm
-ủng hộ cả hai mức giảm; phân tầng PSI cho thấy đánh đổi về độ bao phủ train. Tiền huấn luyện bằng
-nhãn scanning giúp CNN trong thiết kế đã thử; trọng số chất lượng không giúp ridge. Xác suất LoRA
-ngoài fold cải thiện Brier nhưng vẫn còn sai lệch hiệu chuẩn.
+ủng hộ cả hai mức giảm. Tiền huấn luyện bằng nhãn scanning giúp CNN trong thiết kế đã thử;
+trọng số chất lượng không giúp ridge. Hiệu chuẩn cải thiện Brier nhưng vẫn còn sai lệch.
 
-Campaign local kết thúc với 633 job hoàn tất và hai mở rộng chờ đầu vào. Trên tập scanning giữ
-lại cùng phòng thí nghiệm, ridge W5 cố định đạt AUROC dương \nCampaignTAuc{}, nhưng lợi thế
-MAE so với dự đoán 0 chưa rõ; LoRA chưa được đánh giá trên tập này. Đến ngày 06/11/2026,
-đã có baseline React/FastAPI; lưu dự án, job peptide/protein và đối chiếu thực nghiệm còn dở.
-Mô hình phục vụ chưa đổi, cần refit và export tương thích trước khi thay thế. Kết quả vẫn là bằng
-chứng phát triển trong assay, chưa xác nhận độc lập ngoài nguồn, protein nguyên vẹn hay lâm sàng.
+Đánh giá hồi cứu từ dự đoán ngoài fold chọn mười mutation mỗi peptide, cùng tổng ngân sách
+\nPrioritySelections{} lựa chọn. Precision@10 dương của LoRA-D là \nPriorityLoraPrecision\%,
+W5-D là \nPriorityWfivePrecision\% và random kỳ vọng \nPriorityRandomPrecision\%.
+LoRA-D thu hồi thêm \nPriorityExtraHits{} hit đã đo so với W5-D; chênh
+\nPriorityDeltaWfive{} điểm phần trăm có khoảng tin cậy hiệu chỉnh 97,5\%
+$\nPriorityWfiveCI{}$. Cả hai phép so chính đều ủng hộ LoRA-D trong replay này.
+
+Trên tập scanning giữ lại cùng phòng thí nghiệm, W5 đạt AUROC dương \nCampaignTAuc{}, nhưng
+lợi thế MAE so với dự đoán 0 chưa rõ; LoRA chưa được đánh giá ở đây. Baseline React/FastAPI
+đã có; các luồng lưu trữ mở rộng còn dở, mô hình phục vụ chưa đổi. Kết quả vẫn là bằng chứng
+development: số lựa chọn hồi cứu và 633 job hoàn tất chưa xác nhận năng suất wet lab mới,
+tiết kiệm chi phí, kiểm định độc lập ngoài nguồn, tác động trên protein nguyên vẹn hay lâm sàng.
 
 \par\vspace{6bp}\noindent\textbf{Từ khóa:} degron, độ bền protein, dự đoán hiệu ứng đột biến, hệ ubiquitin--proteasome, học máy.
 \end{otherlanguage}

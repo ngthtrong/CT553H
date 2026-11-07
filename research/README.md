@@ -1,8 +1,32 @@
 # Nghiên cứu degron-footprint — chỉ mục hiện hành
 
-Đồng bộ ngày **06/11/2026**. Bài toán là hồi quy `ΔPSI = PSI(mutant) − PSI(WT)` cho thay thế amino acid đơn; các benchmark, phạm vi PSI và phép chia dữ liệu khác nhau phải được trình bày riêng. Kết quả development chưa đóng G2/G3 và chưa thay mô hình `m3-ext4.0-platt-v1` trong ứng dụng.
+Đồng bộ ngày **07/11/2026**. Bài toán là hồi quy `ΔPSI = PSI(mutant) − PSI(WT)` cho thay thế amino acid đơn; các benchmark, phạm vi PSI và phép chia dữ liệu khác nhau phải được trình bày riêng. G2 đã có bằng chứng cải thiện định lượng trong development và hồ sơ để rà nghiệm thu; chưa ghi nhận quyết định đóng G2. G3 chưa nghiệm thu; mô hình `m3-ext4.0-platt-v1` trong ứng dụng chưa đổi.
 
 Các đường dẫn thao tác hiện dùng cấu trúc gốc repo từ ngày 07/11/2026. Manifest/hash và bản ghi kết quả đã lưu giữ nguyên mốc lịch sử; thay đổi đường dẫn hoặc mã nguồn có thể đổi fingerprint campaign. Không dùng việc di chuyển thư mục để ép resume artifact vào campaign mới.
+
+## Ưu tiên mutation với cùng ngân sách — 07/11/2026
+
+[Đánh giá hồi cứu OOF](oof-prioritization-2026-11-07/README.md) thực hiện kế hoạch
+`tmp.md` trên đủ W: 235 peptide, 221 nhóm, 122.412 mutation. Với 10 lựa chọn mỗi
+peptide, LoRA-D đạt Precision 53,62% (1.260 hit), W5-D 46,26% (1.087 hit), random
+kỳ vọng 9,78% (229,86 hit), cùng tổng 2.350 lựa chọn.
+[Hai contrast chính](oof-prioritization-2026-11-07/results.json) có CI Bonferroni
+97,5% trên 0; đã báo từng seed, hai hướng, ngân sách phụ, phân tầng và tie.
+Đây là bằng chứng ưu tiên hồi cứu trên development; chưa đo tiết kiệm giờ/tiền
+wet lab, chưa có prospective validation hoặc thay đổi quyết định G2/G3/serving.
+
+## Kế hoạch bằng chứng ứng dụng và rà nghiệm thu G2 — 07/11/2026
+
+[Tra cứu theo ARS](wet-lab-evidence-plan-2026-11-07/findings.md) đã có kết quả:
+tám nghiên cứu được kiểm trong phạm vi 39 query web, gồm năm gần degron và ba
+lân cận. Có tiền lệ wet lab; chưa xác nhận CT553H tiết kiệm thời gian/chi phí.
+[Kế hoạch/nhật ký](wet-lab-evidence-plan-2026-11-07/README.md) giữ access gaps,
+phân biệt số đo/ước lượng/simulation; không phải systematic review.
+
+[Hồ sơ G2](g2-acceptance-2026-11-07/README.md) và [bản trích JSON](g2-acceptance-2026-11-07/evidence.json)
+đối chiếu cải thiện LoRA–frozen, tiêu chí lịch sử/v3 và phần quyết định nghiệm
+thu còn chờ. Không bắt buộc kiến trúc mới hoặc tự thêm wet lab vào điều kiện
+ghi nhận đóng góp development; không thay bằng chứng ngoài nguồn hoặc G3.
 
 ## Báo cáo tiến độ và rà soát độc lập — 06/11/2026
 

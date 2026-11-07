@@ -1,0 +1,66 @@
+% Source: research/oof-prioritization-2026-11-07/{PROTOCOL.md,config.json,input-manifest.json}.
+\subsection{Equal-Budget Retrospective Prioritisation}\label{sec:priority-methods}
+The follow-up dated 7 November 2026 asks whether stored OOF scores identify more measured
+stabilising substitutions under the same selection budget. It reuses W without retraining,
+new inference or access to the held-source test T. The candidate pool contains every technically
+valid nonsynonymous mutation cell of each peptide, including peptides with no positive event.
+Each policy receives exactly the same candidate IDs and number of selections within that peptide.
+This decision concerns substitutions in an already chosen peptide, not selection across a proteome.
+
+LoRA-D is the primary policy; full-range Ridge W5-D and uniform random selection without
+replacement are the two primary references. Local Frozen-D and LoRA-B are secondary controls.
+The choice of D aligns the full-range training arms and was fixed before computing replay utility;
+it does not assert that D is preferable to B. Local LoRA versus Kaggle Ridge compares stored
+workflows with different heads and runtimes, whereas LoRA-D versus Frozen-D retains the matched
+adaptation control. The replay does not choose the best of all previously examined recipes.
+
+\paragraph{Scores, budgets and endpoints.}
+For each mutation, the three OOF predictions from seeds 17, 29 and 43 are averaged before ranking
+within its peptide. The primary budget is $k_p=\min(10,N_p)$, where $N_p$ is the candidate count.
+Secondary budgets are 5 and 20 selections, and the top 5\%, 10\% and 20\%, using
+$k_p=\max(1,\lceil qN_p\rceil)$ for a fraction $q$. Exact score ties are broken by a fixed SHA-256
+order of tie seed, peptide ID and cell ID, shared across methods; the main tie seed is 1729.
+One hundred fixed tie seeds assess sensitivity without selecting a favourable ordering.
+Neither measured effects nor WT PSI determine the ordering. WT PSI is used only for diagnostic strata.
+
+A positive hit has measured $\Delta\mathrm{PSI}\ge1$; the separate negative endpoint has
+$\Delta\mathrm{PSI}\le-1$ and reverses the prediction score. Let $H_p$ be the number of measured
+hits and $h_p(k)$ the number among the selected $k_p$ candidates. The peptide metrics are
+\begin{equation}
+  \begin{aligned}
+    \mathrm{Precision}_p(k)&=\frac{h_p(k)}{k_p},\qquad
+    \mathrm{Recall}_p(k)=\frac{h_p(k)}{H_p},\\
+    \mathrm{Enrichment}_p(k)&=\frac{h_p(k)/k_p}{H_p/N_p}.
+  \end{aligned}
+\end{equation}
+Precision is averaged over all peptides, including those with $H_p=0$. Recall and enrichment
+are undefined when $H_p=0$ and are averaged only over peptides with hits, with denominators
+reported separately. The AUROC requirement of three cells per class is not a selection rule for
+this replay. Budget-to-recall is the rank of hit $j=\lceil rH_p\rceil$, for $r=0.5$ or $0.8$.
+
+Uniform random selection has expected hits $k_pH_p/N_p$, precision $H_p/N_p$ and, for $H_p>0$,
+recall $k_p/N_p$. A random permutation reaches hit $j$ after an expected
+$j(N_p+1)/(H_p+1)$ selections. The primary reference uses these analytic expectations.
+Two thousand random permutations per peptide, from a fixed root seed 20261107 and stable
+peptide-specific streams, check the arithmetic and supply conditional allocation bands.
+The prefixes of each permutation are nested across budgets; these repetitions are not biological
+replicates. Known total hits are used only to score retrospective recall, not as a practical
+stopping rule for a new experiment.
+
+\paragraph{Uncertainty and evidence boundary.}
+The primary endpoint is peptide-macro positive Precision@10. Both LoRA-D-minus-reference
+differences use 5,000 paired protein-group bootstrap draws, seed 1729. Every sampled group carries
+all its peptides, retaining the peptide-macro estimand. The two primary contrasts have Bonferroni
+97.5\% intervals alongside descriptive 95\% intervals; other budgets, endpoints and controls are
+secondary. Support for both references requires both adjusted lower bounds to exceed zero.
+No minimum practically useful gain was specified by a wet-lab partner.
+
+Input checks verify saved hashes, exact cohort/seed alignment, canonical mutation metadata and
+stored group roles. Local fold predictions and epoch selection are checked against saved evidence;
+this does not rerun training or independently reconstruct the unstored Ridge alpha search.
+An implementation amendment extended tie checks and descriptive stratum intervals after a first
+run; retained primary contrasts and ranking tables remained identical. The design was locked
+before this replay, but the development data and model family had already been examined.
+OOF and multiplicity adjustment therefore do not remove historical model-selection bias or
+include new-split, retraining or assay uncertainty. The resulting selection counts are retrospective
+evidence, not measured laboratory time, money or prospective experimental yield.

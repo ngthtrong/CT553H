@@ -1,0 +1,68 @@
+{
+  "schema": "ct553h-literature-artifacts/1",
+  "date": "2026-11-07",
+  "scope": "Bounded literature investigation; no new CT553H experimental results or formal G2 closure",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 18839,
+      "sha256": "7610b11003e03a5af418bea2df86d0f3a2f00091d301f90ac5c4056c591b3b22"
+    },
+    {
+      "path": "acronym-advisory.json",
+      "bytes": 7411,
+      "sha256": "81517f6e1d552561d06585420a98437e9deb3ada1baeac9a23bf1b76b6e56d9c"
+    },
+    {
+      "path": "evidence-matrix.csv",
+      "bytes": 12967,
+      "sha256": "5282f3e9218ec5d3112570c4d058a088bf7f5ecd3c0b570e18f63c9190b6177d"
+    },
+    {
+      "path": "findings.md",
+      "bytes": 17846,
+      "sha256": "6531fcd40fa05b2dee6ee535cf3e83caa946b0f99f7d1eccfb502bd5df082f00"
+    },
+    {
+      "path": "results.json",
+      "bytes": 21457,
+      "sha256": "dca24fde4a656ab86a5caf05603351df0d4a0d9ef64b5f0e1f601383dd2960d5"
+    },
+    {
+      "path": "search-log.csv",
+      "bytes": 87519,
+      "sha256": "a78f4f4ce002e36bdbecaa2951b1b102cef0ebeffa6ca964da587e4dba8f864d"
+    },
+    {
+      "path": "search-receipts.json",
+      "bytes": 117545,
+      "sha256": "436a7c8d39c0aadc684e78c5497d78fe3b24236385fd0fa6911091f83c1b6dc8"
+    },
+    {
+      "path": "validation.md",
+      "bytes": 8936,
+      "sha256": "8bf898d76311d5fe8ea205dd6421500b259a7f00590f211a70697152fba7e54f"
+    }
+  ],
+  "checks": {
+    "study_rows": 8,
+    "direct_degron_studies": 5,
+    "adjacent_studies": 3,
+    "candidate_gaps_or_exclusions": 4,
+    "search_queries_main_session": 39,
+    "search_actions_main_session": 95,
+    "batches": 19,
+    "local_links_checked": 159,
+    "json_csv_consistency": "pass",
+    "arithmetic": "pass",
+    "whitespace": "pass",
+    "acronym_check": "advisory; Vietnamese body partial, abstracts not in input"
+  },
+  "limitations": [
+    "Not exhaustive database coverage",
+    "Source supplementary files not fully audited",
+    "Zhang PDF structural preflight unavailable: pypdf missing; section anchors only",
+    "Two workers failed by usage limit; accepted evidence checked by main session"
+  ],
+  "self_hash": "Manifest excludes itself to avoid circular hashing"
+}

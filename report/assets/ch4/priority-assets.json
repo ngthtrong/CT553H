@@ -1,0 +1,73 @@
+{
+  "source_directory": "research/oof-prioritization-2026-11-07",
+  "sources": {
+    "results.json": {
+      "bytes": 489566,
+      "sha256": "4016cb5686f3520956cdc49268e2ea5363e678a6f1ce8555cec53e19a6938b87"
+    },
+    "summary.csv": {
+      "bytes": 57371,
+      "sha256": "bedb489900534d79c05665bca26095a1eb3700e2d129185ce451b6a64b89ffd6"
+    },
+    "strata.csv": {
+      "bytes": 61098,
+      "sha256": "837049df0edded9c63c6441c08da60698689878d1ea6b0e352e1a0ef2e5c6d74"
+    },
+    "budget-curves.csv": {
+      "bytes": 25839,
+      "sha256": "98175ceee490fa8c82ef872eea7c82222f9bdd4b4b9c3eef03a1f159eae49f96"
+    },
+    "random-reference.csv": {
+      "bytes": 8296,
+      "sha256": "41ad752afde70a71426aa85af67dbb43ef1a44253ad464b45d366497da443d84"
+    },
+    "independent-validation.json": {
+      "bytes": 9357,
+      "sha256": "85a8e83441cc6f53642856189246ced49278b8cadc37588f9825c3391b153ec5"
+    },
+    "config.json": {
+      "bytes": 2834,
+      "sha256": "d80ee2dc52f8694c3143a02ae93c48844f7cc24cad24e9fad643e5d4fa2c3564"
+    }
+  },
+  "generated": {
+    "tab-priority-main.tex": {
+      "bytes": 613,
+      "sha256": "05914a1dd035f54373832287f69fb9d32767e7820b4fce6154d93342a11c9849"
+    },
+    "tab-priority-contrasts.tex": {
+      "bytes": 514,
+      "sha256": "6a53c97cc5072cd6c7bc5cd51c827ce71b5b3b54263d8d18fc13f52dba8c6e16"
+    },
+    "tab-priority-recall-budget.tex": {
+      "bytes": 474,
+      "sha256": "5bb3f46be2fb637972389096ebf830685d59836524219fde1964b34ca919b553"
+    },
+    "tab-priority-strata.tex": {
+      "bytes": 532,
+      "sha256": "e393ff893b020b1d199d107546a0c7ea4878410c736155da5f1c77cffce78337"
+    },
+    "tab-priority-seeds.tex": {
+      "bytes": 557,
+      "sha256": "c957cc697b9375da5371db6769735a9503ba0c657b92950b209e62a2f47c4f78"
+    },
+    "tab-priority-budgets.tex": {
+      "bytes": 752,
+      "sha256": "7b6c9bf66b109c444970aa92a828d04946e46cc09c575807f7473ef0ed90f5b4"
+    },
+    "priority-numbers.tex": {
+      "bytes": 990,
+      "sha256": "b421b5786049d155d94c91aeeb6c077a0f14adc0eafae0d259fca4dceb7dd520"
+    },
+    "fig-priority-budget.pdf": {
+      "bytes": 38101,
+      "sha256": "5fda2da2f009d3c58ae5d5602a053dffa98edf0b1b4df59d867af8691b62bf38"
+    },
+    "fig-priority-budget.png": {
+      "bytes": 189624,
+      "sha256": "879f86f4d6ebd1c10a486b2472af9eb050c5157d7f5c4a1d61749fce47f2d8e2"
+    }
+  },
+  "generator_sha256": "71a9ca0d073d26247956bb1a2f6f5216c3b481ac4596b6343dee65260795c5f5",
+  "scope": "Render existing verified retrospective metrics; no training, inference or bootstrap rerun."
+}

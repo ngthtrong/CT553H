@@ -18,12 +18,19 @@
 \setlength{\parskip}{0pt}
 \emergencystretch=2em
 % Keep figure/table separation consistent, including pages containing only floats.
-\setlength{\textfloatsep}{14bp plus 2bp minus 2bp}
-\setlength{\floatsep}{14bp plus 2bp minus 2bp}
-\setlength{\intextsep}{14bp plus 2bp minus 2bp}
+% Do not stretch inter-paragraph/heading glue to fill short pages in twoside mode.
+\raggedbottom
+\setlength{\textfloatsep}{12bp plus 2bp minus 2bp}
+\setlength{\floatsep}{12bp plus 2bp minus 2bp}
+\setlength{\intextsep}{12bp plus 2bp minus 2bp}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{5}
 \renewcommand{\topfraction}{0.9}
 \renewcommand{\bottomfraction}{0.8}
-\renewcommand{\textfraction}{0.1}
+\renewcommand{\textfraction}{0.07}
+% A half-empty float page is worse than keeping a figure beside its discussion.
+\renewcommand{\floatpagefraction}{0.8}
 \makeatletter
 \setlength{\@fptop}{0pt}
 \setlength{\@fpsep}{18bp}

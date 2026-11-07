@@ -1,0 +1,34 @@
+{
+  "status": "pass",
+  "checked_at": "2026-11-07T17:13:14.191587+08:00",
+  "initial_run": "local/initial-run",
+  "primary_contrasts_exact": true,
+  "primary_summary_exact": true,
+  "unchanged_artifacts": {
+    "per-peptide.csv": {
+      "byte_identical": true,
+      "sha256": "6e6399ea467c0b1d98f02d420fe10107199971e0f210cd3d14cfbd222cb38d17"
+    },
+    "summary.csv": {
+      "byte_identical": true,
+      "sha256": "bedb489900534d79c05665bca26095a1eb3700e2d129185ce451b6a64b89ffd6"
+    },
+    "budget-curves.csv": {
+      "byte_identical": true,
+      "sha256": "98175ceee490fa8c82ef872eea7c82222f9bdd4b4b9c3eef03a1f159eae49f96"
+    },
+    "random-reference.csv": {
+      "byte_identical": true,
+      "sha256": "41ad752afde70a71426aa85af67dbb43ef1a44253ad464b45d366497da443d84"
+    },
+    "ranking-examples.csv": {
+      "byte_identical": true,
+      "sha256": "27fee0fe0bcb47eb0418849f7cfc5f8777decd79ed15d69e3b0803b31f383a3c"
+    },
+    "budget-curves.png": {
+      "byte_identical": true,
+      "sha256": "6eb7449fb2bf8d659e5c71b710e8a7ae1b9291e533a90354b59d2f0d6a382649"
+    }
+  },
+  "change_scope": "100-tie-seed sensitivity extended to six budgets; descriptive strata CI95 added. Locked config/rankings/primary statistics unchanged."
+}

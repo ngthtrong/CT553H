@@ -4,6 +4,18 @@ Bản luận văn đang viết của **Nguyễn Thanh Trọng** (B2305615), GVHD
 
 Bản làm việc được tạo từ [template sạch](../reportTemplate/README.md), đã điền metadata và nội dung đề tài. Các mục `[PENDING]` hoặc ô trong ngoặc vuông còn lại cần được hoàn thiện; không dùng thư mục template gốc để viết luận văn.
 
+**Cập nhật kết quả ưu tiên mutation — 07/11/2026:** đã đưa [phép so OOF cùng
+ngân sách](../research/oof-prioritization-2026-11-07/README.md) vào phương pháp
+Chương 3, kết quả Chương 4, hai tóm tắt, trạng thái, đánh giá RQ và kết luận.
+Với 2.350 lựa chọn (10/peptide), Precision@10 dương là 53,62% cho LoRA-D,
+46,26% cho W5-D và 9,78% random kỳ vọng. LoRA-D có thêm 173 hit so W5;
+CI97,5% hiệu chỉnh của chênh precision là [3,36; 11,39] điểm phần trăm.
+Sáu bảng và đồ thị mới giữ recall/budget-to-recall, chiều âm, seed, PSI và
+ngân sách phụ. Đây là bằng chứng hồi cứu development, chưa đo giờ/tiền wet lab
+hoặc nghiệm thu G2/G3/serving. Benchmark 91 peptide/top tỷ lệ lịch sử giữ riêng.
+Generator: [build_prioritization_assets.py](assets/ch4/build_prioritization_assets.py);
+kiểm PDF: [prioritization-validation-2026-11-07.md](prioritization-validation-2026-11-07.md).
+
 **Báo cáo tiến độ — rà soát tiếp ngày 06/11/2026:** bản hiện tại kế thừa báo cáo có sẵn, viết lại mở đầu từ protein/proteostasis đến bài toán ΔPSI, mở rộng cơ sở lý thuyết và hai sơ đồ khái niệm, thêm lịch sử quyết định/dữ liệu, bảng đánh giá năm câu hỏi nghiên cứu và phân tích sai số trực tiếp OOF. Bibliography được đối chiếu 22 mục và sửa các thông tin tác giả/DOI. Giữ đầy đủ kết quả âm và bảng 88 cấu hình cũ, tách các protocol và bằng chứng development/transfer. Không tuyên bố hoàn tất luận văn, G2/G3 hay nghiệm thu phần mềm.
 
 - [Hồ sơ rà soát tiến độ](../research/progress-review-2026-11-06/README.md): lịch sử thí nghiệm, bảng so sánh, tài liệu khoa học và [bằng chứng còn thiếu](../research/progress-review-2026-11-06/missing-evidence.md).
@@ -38,6 +50,16 @@ Kết quả build/kiểm tra của lần cập nhật: [scope-validation-2026-10
 Không cập nhật đề cương hoặc template gốc trong lần này.
 
 Các hướng dẫn định dạng bên dưới kế thừa từ template.
+
+## Quy tắc bố cục và đánh số
+
+Quy tắc hiện hành được duy trì tại
+[CLAUDE.md — Quy tắc bố cục và đánh số của report](../CLAUDE.md#quy-tắc-bố-cục-và-đánh-số-của-report--07112026).
+Áp dụng quy tắc này cùng các thông số định dạng của Khoa ở dưới.
+`make check` kiểm thêm thứ tự, tên, trang và đích tham chiếu hình/bảng;
+việc rà khoảng trắng và khả năng đọc vẫn cần xem PDF đã render, gồm cả
+trang trước/sau hình và bảng. Hồ sơ lần chỉnh bố cục ngày 07/11/2026:
+[layout-validation-2026-11-07.md](layout-validation-2026-11-07.md).
 
 ## Quy tắc trình bày dẫn chứng
 

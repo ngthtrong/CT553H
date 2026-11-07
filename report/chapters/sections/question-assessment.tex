@@ -9,6 +9,7 @@ that the entire historical sequence was planned before its first experiment.
   \caption{Research questions, current evidence and boundaries}\label{tab:question-assessment}\\
   \toprule RQ & What is supported & What remains open \\
   \midrule\endfirsthead
+  \caption[]{Research questions, current evidence and boundaries (continued)}\\
   \toprule RQ & What is supported & What remains open \\
   \midrule\endhead
   RQ1 & Expanding training coverage helps ridge under both the restricted-test follow-up and the
@@ -27,7 +28,8 @@ that the entire historical sequence was planned before its first experiment.
   computation cost. Full fine-tuning is not evaluated in this campaign; cost-normalised benefit,
   deployment latency and independent replication remain unmeasured. \\[4pt]
   RQ5 & Group-aware OOF evaluation, seed/fold diagnostics and calibration quantify development
-  behaviour. Locked W5-D transfer has useful positive ranking but unresolved mean MAE gain. &
+  behaviour. The equal-budget replay supports LoRA-D positive Precision@10 over W5-D and random
+  on W. Locked W5-D transfer has useful positive ranking but unresolved mean MAE gain. &
   High-PSI transfer and probability shift persist. No LoRA result on T, prospective wet-lab utility,
   intact-protein validation or independent external confirmation is available. \\
   \bottomrule
@@ -37,7 +39,8 @@ that the entire historical sequence was planned before its first experiment.
 The verified contributions are a traceable label/QC and grouped-evaluation workflow, compatible
 baseline and adaptation comparisons, retained unsuccessful controls, and an explicit account of
 uncertainty and transfer limits. These are methodological and empirical contributions within the
-studied reporter assay. They are not evidence that combining a pLM with convolution or adapters is
+studied reporter assay. The direct ranking comparison adds evidence about the number of measured
+hits recovered under a fixed retrospective budget. These results are not evidence that combining a pLM with convolution or adapters is
 itself a new architecture. The software contribution is a working baseline and an expanded design;
 implementation and acceptance of the expanded workflows remain separate milestones.
 
@@ -50,4 +53,5 @@ WT-PSI strata and probability reliability together. A favourable ranking score a
 to claim accurate effect sizes or calibrated probabilities. Further capacity or transfer experiments
 should specify matched controls and computational budgets. Final serving refit and export should
 preserve the chosen ensemble and calibration policy, or re-evaluate them when changed. These are
-proposed steps; no new training or validation experiment was executed to update this report.
+proposed steps. The equal-budget OOF replay is newly computed; this report update runs no new
+model training or wet-lab experiment.

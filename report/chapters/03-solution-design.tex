@@ -40,7 +40,7 @@ reference downloads and training are preparation activities outside the runtime 
     \draw[flow] (worker.south) |- (files.west);
     \draw[flow] (api.east) -- ++(0.6,0) |- (files.east);
   \end{tikzpicture}
-  \caption{Planned components of the single local application; arrows denote data interactions.}
+  \caption[Planned components of the single local application]{Planned components of the single local application; arrows denote data interactions.}
   \label{fig:local-architecture}
 \end{figure}
 
@@ -129,6 +129,8 @@ evaluation is complete; a compatible final serving refit, calibration and export
 Raw effect and calibrated $P(\Delta\mathrm{PSI}\geq1)$ remain separate fields.
 
 \input{chapters/sections/campaign-methods}
+
+\input{chapters/sections/prioritization-methods}
 
 \paragraph{Domain integration.}
 The effect model's intrinsic-WT training threshold must not be applied directly to the GPS screen

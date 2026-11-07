@@ -38,7 +38,7 @@ ESM-C, ProtT5 and Ankh. No simultaneous family-wide significance claim is made f
 
 \begin{table}[htbp]
   \centering
-  \caption{Local frozen-feature ridge MAE for all nine checkpoints. ``Only'' includes the common
+  \caption[Local frozen-feature ridge MAE for all nine checkpoints]{Local frozen-feature ridge MAE for all nine checkpoints. ``Only'' includes the common
   auxiliary inputs; W5 adds ordered sequence context. All entries use three-seed OOF ensembles.}
   \label{tab:campaign-family}
   \input{assets/ch4/tab-campaign-family}
@@ -46,7 +46,7 @@ ESM-C, ProtT5 and Ankh. No simultaneous family-wide significance claim is made f
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{assets/ch4/fig-campaign-family.pdf}
-  \caption{Frozen pLM ridge results under full-range training. Points joined on the same row compare
+  \caption[Frozen pLM ridge results under full-range training]{Frozen pLM ridge results under full-range training. Points joined on the same row compare
   explicit context for one checkpoint; the connectors are not confidence intervals.}
   \label{fig:campaign-family}
 \end{figure}
@@ -65,19 +65,20 @@ LoRA-B reaches MAE \nCampaignLoraB{} and positive AUROC \nCampaignLoraAucB{}; Lo
 \nCampaignLoraD{} and \nCampaignLoraAucD{}, respectively. Relative to their own frozen controls,
 the MAE reductions are \nCampaignGainB\% and \nCampaignGainD\%. All four matched contrasts
 retain the favourable direction throughout the adjusted intervals in Table~\ref{tab:campaign-paired}.
+Figure~\ref{fig:campaign-core} summarises the matched adaptation results.
 This supports adapting this backbone under the specified development protocol; it does not establish
 that LoRA will improve every pLM, assay or final deployed model.
 
 \begin{table}[htbp]
   \centering
-  \caption{Matched local ESM2-35M results. MAE uses all 235 peptides; positive AUROC/AP use
+  \caption[Matched local ESM2-35M results]{Matched local ESM2-35M results. MAE uses all 235 peptides; positive AUROC/AP use
   184 eligible peptides and negative AUROC uses 110. Higher ranking metrics are better.}
   \label{tab:campaign-core}
   \input{assets/ch4/tab-campaign-core}
 \end{table}
 \begin{table}[htbp]
   \centering
-  \caption{Paired local contrasts: LoRA minus its frozen control. Confidence intervals use 5,000
+  \caption[Paired local contrasts: LoRA minus its frozen control]{Paired local contrasts: LoRA minus its frozen control. Confidence intervals use 5,000
   protein-group resamples; 98.75\% intervals adjust a post-hoc family of four comparisons.
   Negative MAE differences and positive AUROC differences favour LoRA.}
   \label{tab:campaign-paired}
@@ -86,7 +87,7 @@ that LoRA will improve every pLM, assay or final deployed model.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{assets/ch4/fig-campaign-core.pdf}
-  \caption{Matched adaptation evidence. (a) Ensemble MAE and individual seed results;
+  \caption[Matched adaptation evidence]{Matched adaptation evidence. (a) Ensemble MAE and individual seed results;
   (b) paired MAE differences with multiplicity-adjusted group-bootstrap intervals.
   The seeds share the outer folds and are not independent cohorts.}
   \label{fig:campaign-core}
@@ -107,7 +108,7 @@ its event range is constrained; it still contributes to regression. Stratum inte
 
 \begin{table}[htbp]
   \centering
-  \caption{LoRA peptide-macro MAE by WT-PSI stratum. The final column is the paired D-minus-B
+  \caption[LoRA peptide-macro MAE by WT-PSI stratum]{LoRA peptide-macro MAE by WT-PSI stratum. The final column is the paired D-minus-B
   difference with a descriptive 95\% protein-group interval; $n$ counts peptides.}
   \label{tab:campaign-strata}
   \input{assets/ch4/tab-campaign-strata}
@@ -134,7 +135,7 @@ final refitting remain necessary before inference integration.
 
 \begin{table}[htbp]
   \centering
-  \caption{Out-of-fold three-class probability evaluation. Brier is the unnormalised sum across
+  \caption[Out-of-fold three-class probability evaluation]{Out-of-fold three-class probability evaluation. Brier is the unnormalised sum across
   three classes; lower values are better. The prior uses inner-validation class frequencies.
   ECE refers only to the positive event and uses ten equal-width bins.}
   \label{tab:campaign-calibration}
@@ -152,7 +153,7 @@ transfer behaviour.
 
 \begin{table}[htbp]
   \centering
-  \caption{Locked W5-D transfer by WT PSI. $n$ counts peptides and $n_{+}$ counts peptides
+  \caption[Locked W5-D transfer by WT PSI]{Locked W5-D transfer by WT PSI. $n$ counts peptides and $n_{+}$ counts peptides
   eligible for positive-event AUROC. The zero predictor provides a regression reference.}
   \label{tab:campaign-transfer}
   \input{assets/ch4/tab-campaign-transfer}
@@ -160,7 +161,7 @@ transfer behaviour.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{assets/ch4/fig-campaign-calibration-transfer.pdf}
-  \caption{Probability and transfer limitations. (a) Development OOF positive-event reliability,
+  \caption[Probability and transfer limitations]{Probability and transfer limitations. (a) Development OOF positive-event reliability,
   with the diagonal indicating agreement; (b) locked W5-D transfer MAE by WT PSI.
   T uses a different population and does not evaluate LoRA.}
   \label{fig:campaign-calibration}

@@ -1,0 +1,282 @@
+{
+  "status": "pass",
+  "generated_local": "2026-11-07T17:12:33+08:00",
+  "verification": "Separate implementation; no evaluate.py or audit_inputs.py import; same stored data and shared research context.",
+  "cohort": {
+    "cells": 122412,
+    "peptides": 235,
+    "groups": 221
+  },
+  "source_integrity": {
+    "source_files": 779,
+    "source_bytes": 109392159,
+    "all_recorded_source_hashes_unchanged": true
+  },
+  "per_peptide": {
+    "rows_recomputed": 14100,
+    "all_ensemble_budgets_and_directions_match": true,
+    "all_metric_nulls_and_reasons_match": true,
+    "equal_budget_each_peptide": true
+  },
+  "primary_summary_recomputed": {
+    "frozen-D": {
+      "peptides": 235,
+      "groups": 221,
+      "cells": 122412,
+      "budget_total": 2350,
+      "selected_min": 10,
+      "selected_max": 10,
+      "hits_total": 1124.0,
+      "no_hit_peptides": 37,
+      "cutoff_tie_peptides": 0,
+      "precision": 0.47829787234042553,
+      "precision_eligible_peptides": 235,
+      "precision_eligible_groups": 221,
+      "hits": 4.782978723404256,
+      "hits_eligible_peptides": 235,
+      "hits_eligible_groups": 221,
+      "recall": 0.13705992145900497,
+      "recall_eligible_peptides": 198,
+      "recall_eligible_groups": 190,
+      "enrichment": 7.14357929292244,
+      "enrichment_eligible_peptides": 198,
+      "enrichment_eligible_groups": 190,
+      "btr50": 81.66666666666667,
+      "btr50_eligible_peptides": 198,
+      "btr50_eligible_groups": 190,
+      "btr80": 181.17171717171718,
+      "btr80_eligible_peptides": 198,
+      "btr80_eligible_groups": 190,
+      "btr50_fraction": 0.15573169531490633,
+      "btr50_fraction_eligible_peptides": 198,
+      "btr50_fraction_eligible_groups": 190,
+      "btr80_fraction": 0.3455211110260496,
+      "btr80_fraction_eligible_peptides": 198,
+      "btr80_fraction_eligible_groups": 190
+    },
+    "lora-B": {
+      "peptides": 235,
+      "groups": 221,
+      "cells": 122412,
+      "budget_total": 2350,
+      "selected_min": 10,
+      "selected_max": 10,
+      "hits_total": 1268.0,
+      "no_hit_peptides": 37,
+      "cutoff_tie_peptides": 0,
+      "precision": 0.5395744680851065,
+      "precision_eligible_peptides": 235,
+      "precision_eligible_groups": 221,
+      "hits": 5.395744680851064,
+      "hits_eligible_peptides": 235,
+      "hits_eligible_groups": 221,
+      "recall": 0.15556517675700682,
+      "recall_eligible_peptides": 198,
+      "recall_eligible_groups": 190,
+      "enrichment": 8.107018598656403,
+      "enrichment_eligible_peptides": 198,
+      "enrichment_eligible_groups": 190,
+      "btr50": 69.6969696969697,
+      "btr50_eligible_peptides": 198,
+      "btr50_eligible_groups": 190,
+      "btr80": 152.97979797979798,
+      "btr80_eligible_peptides": 198,
+      "btr80_eligible_groups": 190,
+      "btr50_fraction": 0.13288075806790217,
+      "btr50_fraction_eligible_peptides": 198,
+      "btr50_fraction_eligible_groups": 190,
+      "btr80_fraction": 0.29180054345099327,
+      "btr80_fraction_eligible_peptides": 198,
+      "btr80_fraction_eligible_groups": 190
+    },
+    "lora-D": {
+      "peptides": 235,
+      "groups": 221,
+      "cells": 122412,
+      "budget_total": 2350,
+      "selected_min": 10,
+      "selected_max": 10,
+      "hits_total": 1260.0,
+      "no_hit_peptides": 37,
+      "cutoff_tie_peptides": 0,
+      "precision": 0.5361702127659574,
+      "precision_eligible_peptides": 235,
+      "precision_eligible_groups": 221,
+      "hits": 5.361702127659575,
+      "hits_eligible_peptides": 235,
+      "hits_eligible_groups": 221,
+      "recall": 0.16622774098829823,
+      "recall_eligible_peptides": 198,
+      "recall_eligible_groups": 190,
+      "enrichment": 8.65599585969158,
+      "enrichment_eligible_peptides": 198,
+      "enrichment_eligible_groups": 190,
+      "btr50": 71.31818181818181,
+      "btr50_eligible_peptides": 198,
+      "btr50_eligible_groups": 190,
+      "btr80": 154.36363636363637,
+      "btr80_eligible_peptides": 198,
+      "btr80_eligible_groups": 190,
+      "btr50_fraction": 0.13580548295031566,
+      "btr50_fraction_eligible_peptides": 198,
+      "btr50_fraction_eligible_groups": 190,
+      "btr80_fraction": 0.29472078093855525,
+      "btr80_fraction_eligible_peptides": 198,
+      "btr80_fraction_eligible_groups": 190
+    },
+    "random": {
+      "peptides": 235,
+      "groups": 221,
+      "cells": 122412,
+      "budget_total": 2350,
+      "selected_min": 10,
+      "selected_max": 10,
+      "hits_total": 229.85705848319532,
+      "no_hit_peptides": 37,
+      "cutoff_tie_peptides": 0,
+      "precision": 0.09781151424816824,
+      "precision_eligible_peptides": 235,
+      "precision_eligible_groups": 221,
+      "hits": 0.9781151424816822,
+      "hits_eligible_peptides": 235,
+      "hits_eligible_groups": 221,
+      "recall": 0.019254946232443757,
+      "recall_eligible_peptides": 198,
+      "recall_eligible_groups": 190,
+      "enrichment": 1.0,
+      "enrichment_eligible_peptides": 198,
+      "enrichment_eligible_groups": 190,
+      "btr50": 255.50872207232734,
+      "btr50_eligible_peptides": 198,
+      "btr50_eligible_groups": 190,
+      "btr80": 404.4833343777921,
+      "btr80_eligible_peptides": 198,
+      "btr80_eligible_groups": 190,
+      "btr50_fraction": 0.4878689018025993,
+      "btr50_fraction_eligible_peptides": 198,
+      "btr50_fraction_eligible_groups": 190,
+      "btr80_fraction": 0.7722519500626835,
+      "btr80_fraction_eligible_peptides": 198,
+      "btr80_fraction_eligible_groups": 190
+    },
+    "ridge-w5-D": {
+      "peptides": 235,
+      "groups": 221,
+      "cells": 122412,
+      "budget_total": 2350,
+      "selected_min": 10,
+      "selected_max": 10,
+      "hits_total": 1087.0,
+      "no_hit_peptides": 37,
+      "cutoff_tie_peptides": 0,
+      "precision": 0.4625531914893617,
+      "precision_eligible_peptides": 235,
+      "precision_eligible_groups": 221,
+      "hits": 4.625531914893617,
+      "hits_eligible_peptides": 235,
+      "hits_eligible_groups": 221,
+      "recall": 0.13409339600582623,
+      "recall_eligible_peptides": 198,
+      "recall_eligible_groups": 190,
+      "enrichment": 6.966688572303353,
+      "enrichment_eligible_peptides": 198,
+      "enrichment_eligible_groups": 190,
+      "btr50": 81.98989898989899,
+      "btr50_eligible_peptides": 198,
+      "btr50_eligible_groups": 190,
+      "btr80": 170.53030303030303,
+      "btr80_eligible_peptides": 198,
+      "btr80_eligible_groups": 190,
+      "btr50_fraction": 0.15656173145058136,
+      "btr50_fraction_eligible_peptides": 198,
+      "btr50_fraction_eligible_groups": 190,
+      "btr80_fraction": 0.325226493830365,
+      "btr80_fraction_eligible_peptides": 198,
+      "btr80_fraction_eligible_groups": 190
+    }
+  },
+  "primary_contrasts_recomputed": [
+    {
+      "baseline": "ridge-w5-D",
+      "delta": 0.07361702127659576,
+      "ci95": [
+        0.038766106828193835,
+        0.10877289589612797
+      ],
+      "ci_adjusted": [
+        0.03360793671548118,
+        0.1139129653450363
+      ],
+      "delta_percentage_points": 7.361702127659576,
+      "delta_total_hits": 173.0,
+      "groups": 221,
+      "peptides": 235,
+      "replicates": 5000,
+      "bootstrap_seed": 1729,
+      "multiplicity": 2,
+      "adjusted_level": 0.975
+    },
+    {
+      "baseline": "random",
+      "delta": 0.43835869851778925,
+      "ci95": [
+        0.391563127192239,
+        0.4824351166173393
+      ],
+      "ci_adjusted": [
+        0.3863504190332405,
+        0.48834110711607837
+      ],
+      "delta_percentage_points": 43.835869851778924,
+      "delta_total_hits": 1030.1429415168047,
+      "groups": 221,
+      "peptides": 235,
+      "replicates": 5000,
+      "bootstrap_seed": 1729,
+      "multiplicity": 2,
+      "adjusted_level": 0.975
+    }
+  ],
+  "examples": {
+    "ranking_examples_checked": 320,
+    "example_selection_uses_metadata_only": true
+  },
+  "outputs_checked": {
+    "results.json": {
+      "sha256": "4016cb5686f3520956cdc49268e2ea5363e678a6f1ce8555cec53e19a6938b87",
+      "bytes": 489566
+    },
+    "summary.csv": {
+      "sha256": "bedb489900534d79c05665bca26095a1eb3700e2d129185ce451b6a64b89ffd6",
+      "bytes": 57371
+    },
+    "per-peptide.csv": {
+      "sha256": "6e6399ea467c0b1d98f02d420fe10107199971e0f210cd3d14cfbd222cb38d17",
+      "bytes": 2488141
+    },
+    "ranking-examples.csv": {
+      "sha256": "27fee0fe0bcb47eb0418849f7cfc5f8777decd79ed15d69e3b0803b31f383a3c",
+      "bytes": 44683
+    },
+    "input-manifest.json": {
+      "sha256": "d6f8e6eb498eb429a18804ab2847600c619715815ce17f94b46070db8e983953",
+      "bytes": 264971
+    },
+    "config.json": {
+      "sha256": "d80ee2dc52f8694c3143a02ae93c48844f7cc24cad24e9fad643e5d4fa2c3564",
+      "bytes": 2834
+    },
+    "evaluate.py": {
+      "sha256": "338a321d4e1581aa3805e67676e698d0958bd72b4ca5eca46f7f9088bf0d4af4",
+      "bytes": 29972
+    },
+    "validate_outputs.py": {
+      "sha256": "6f60bb664f05f9df98e77073319c4d9a99046840b55fe75fee915e182307c74c",
+      "bytes": 17972
+    }
+  },
+  "scope_limits": [
+    "Recomputes deterministic retrospective arithmetic only; not a rerun of model training, a new split, or wet-lab validation.",
+    "All ensemble policies, both directions, six budgets, null denominators and ranking examples checked; per-seed ranking summaries and stochastic tie/MC bands are covered by the main scorer's checks, not independently rerun here."
+  ]
+}

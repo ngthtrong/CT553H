@@ -9,6 +9,7 @@ content-twoside:
 	$(PYTHON) scripts/build.py content --twoside --bibliography $(BIBLIOGRAPHY)
 check:
 	$(PYTHON) scripts/check_template.py
+	$(PYTHON) scripts/check_float_references.py
 doctor:
 	$(PYTHON) scripts/doctor.py
 clean:

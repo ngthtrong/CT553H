@@ -55,7 +55,7 @@ Unfolding and degradation of the substrate};
 \draw[arr] (signal) -- (recognition);
 \draw[arr] (recognition) -- (removal);
 \end{tikzpicture}
-\caption{Original conceptual schematic of a canonical UPS route, informed by
+\caption[Original conceptual schematic of a canonical UPS route]{Original conceptual schematic of a canonical UPS route, informed by
 \citep{varshavsky2019,koren2018}. It is not an observed CT553H mechanism; individual signals can
 require additional conditions, and not all ubiquitination leads to this route.}
 \label{fig:ups-concept}
@@ -137,7 +137,7 @@ Figure~\ref{fig:mutation-observation} separates this measurement route from the 
 \draw[arr] (lab) -- (label);
 \draw[arr] (prediction) -- node[above,text width=1.2cm] {Error} (label);
 \end{tikzpicture}
-\caption{Original conceptual diagram of mutation-effect prediction and label construction. No
+\caption[Original conceptual diagram of mutation-effect prediction and label construction]{Original conceptual diagram of mutation-effect prediction and label construction. No
 hypothetical PSI values are presented as observations. Measured WT PSI belongs to the label route.}
 \label{fig:mutation-observation}
 \end{figure}
@@ -265,8 +265,10 @@ eligibility rules must be stated before comparing values.
 The v3 positive and negative events are $\Delta\mathrm{PSI}\geq1$ and
 $\Delta\mathrm{PSI}\leq-1$, respectively. AUROC measures ranking of event versus non-event scores;
 average precision and top-fraction precision depend additionally on event prevalence. Peptides
-without sufficient examples of both classes have undefined event-ranking metrics and remain
-eligible for regression. The old restricted benchmark uses its own eligibility and macro-AUROC rules.
+without sufficient examples of both classes are excluded from the reported AUROC and average-precision
+summaries but remain eligible for regression. Fixed-budget precision remains defined for peptides
+without hits; recall and enrichment require at least one hit. These denominators are distinct
+(Section~\ref{sec:priority-methods}). The old restricted benchmark keeps its own macro-AUROC rules.
 
 A regression score is not a probability. Calibration learns event probabilities using permitted
 validation predictions. The Brier score measures squared probability error, whereas expected

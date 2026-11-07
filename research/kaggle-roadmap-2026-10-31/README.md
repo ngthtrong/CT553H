@@ -1,5 +1,11 @@
 # Kaggle v3 — full-PSI, khảo sát pLM và huấn luyện model mới
 
+**Rà nghiệm thu 07/11:** [hồ sơ G2 hiện hành](../g2-acceptance-2026-11-07/README.md)
+ghi nhận bằng chứng LoRA cải thiện trong development và phần quyết định còn
+chờ; chưa ghi nhận đóng G2. [Tra cứu bằng chứng wet lab/nguồn lực](../wet-lab-evidence-plan-2026-11-07/findings.md)
+đã ghi tiền lệ bên ngoài và giới hạn claim CT553H; không có thí nghiệm mới.
+Các snapshot và kết quả bên dưới giữ mốc riêng.
+
 **Rà soát và đưa vào luận văn 06/11:** [audit toàn bộ output](../output-review-2026-11-06/README.md), [JSON 88 cấu hình](../output-review-2026-11-06/results.json), [luận văn và PDF](../../report/README.md). Bản audit chỉ đọc, bổ sung kiểm kê vật lý, epoch/chi phí và nguồn hash; không tạo một lượt huấn luyện mới.
 
 **Cập nhật 06/11/2026:** local `ef138c84579c842e` đã hoàn tất **633 job**, còn nguồn ngoài/cấu trúc pending. [Phân tích local hoàn tất](local-output-analysis.md), [JSON bằng chứng](local-output-analysis.json) và [biểu đồ](local-output-analysis.png) kiểm artifact, đủ OOF ba seed, pLM/Ridge, frozen–LoRA, calibration CV và locked T W5-D. Chưa đóng G2/G3 hoặc thay model sản phẩm. Các mục ngày 03/11 bên dưới là snapshot lịch sử, không còn là trạng thái chạy hiện tại.

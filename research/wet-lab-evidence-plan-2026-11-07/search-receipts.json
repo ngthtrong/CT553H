@@ -1,0 +1,2798 @@
+{
+  "schema": "ct553h-browsing-receipts/1",
+  "search_date": "2026-11-07",
+  "date_basis": "Asia/Taipei client context; individual tool calls recorded by date, not reconstructed timestamps",
+  "coverage": "Batched web search surfaced pages, not an exhaustive database export; shared result list per query batch",
+  "events": [
+    {
+      "event_id": "R01",
+      "date": "2026-11-07",
+      "actor": "root",
+      "args": {
+        "search_query": [
+          {
+            "q": "\"10.1016/j.molcel.2023.08.022\" degron validation"
+          },
+          {
+            "q": "\"10.1126/sciadv.adz3483\" PNPO D33V validation"
+          },
+          {
+            "q": "degron prediction experimental validation cost saving time experiments"
+          }
+        ],
+        "response_length": "long"
+      },
+      "result_items": [
+        {
+          "title": "Elucidation of E3 ubiquitin ligase specificity through proteome-wide internal degron mapping",
+          "url": "https://www.timmslab.com/media/papers/2023_Mol_Cell_Elucidation_of_E3_ubiquitin_ligase_specificity_through_proteome-wide_internal_degron_mapping_naf6vNE.pdf",
+          "ref": "turn0search12"
+        },
+        {
+          "title": "Elucidation of E3 ubiquitin ligase specificity through proteome-wide internal degron mapping",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/37977122/",
+          "ref": "turn0search0"
+        },
+        {
+          "title": "Elucidation of E3 ubiquitin ligase specificity through proteome-wide internal degron mapping",
+          "url": "https://openalex.org/W4386926240",
+          "ref": "turn0search1"
+        },
+        {
+          "title": "Elucidation of E3 ubiquitin ligase specificity through proteome-wide internal degron mapping",
+          "url": "https://cir.nii.ac.jp/crid/1360869864174203776",
+          "ref": "turn0search2"
+        },
+        {
+          "title": "DEGRONOPEDIA: a web server for proteome-wide inspection of degrons",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11223883/",
+          "ref": "turn0search3"
+        },
+        {
+          "title": "Degron models: a toolbox for rapid in vivo depletion of essential proteins regulating mRNA metabolism",
+          "url": "https://www.nature.com/articles/s42003-026-09828-z",
+          "ref": "turn0search4"
+        },
+        {
+          "title": "Elucidation of E3 ubiquitin ligase specificity through proteome-wide internal degron mapping",
+          "url": "https://www.researchgate.net/publication/374090186_Elucidation_of_E3_ubiquitin_ligase_specificity_through_proteome-wide_internal_degron_mapping",
+          "ref": "turn0search5"
+        },
+        {
+          "title": "Systematic profiling of conditional degron tag technologies for target validation studies",
+          "url": "https://www.nature.com/articles/s41467-022-33246-4.pdf",
+          "ref": "turn0search13"
+        },
+        {
+          "title": "Dipeptidyl peptidases and E3 ligases of N-degron pathways cooperate to regulate protein stability",
+          "url": "https://ouci.dntb.gov.ua/en/works/7XkxA8M9/",
+          "ref": "turn0search6"
+        },
+        {
+          "title": "Degron tagging for rapid protein degradation in mice",
+          "url": "https://www.pure.ed.ac.uk/ws/portalfiles/portal/435991423/dmm050613.pdf",
+          "ref": "turn0search14"
+        },
+        {
+          "title": "A near-complete map of human cytosolic degrons and their relevance for disease",
+          "url": "https://diva-portal.org/smash/get/diva2%3A2036961/FULLTEXT01.pdf",
+          "ref": "turn0search15"
+        },
+        {
+          "title": "Systematic Characterization of Mutations Altering Protein Degradation in Human Cancers",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9245451/",
+          "ref": "turn0search7"
+        },
+        {
+          "title": "iGEM 2026 Waseda-Tokyo",
+          "url": "https://2026.igem.wiki/waseda-tokyo/results/",
+          "ref": "turn0search8"
+        },
+        {
+          "title": "Systematic prediction of degrons and E3 ubiquitin ligase binding via deep learning",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9281121/",
+          "ref": "turn0search9"
+        },
+        {
+          "title": "Hypothesis",
+          "url": "https://api.hypothes.is/search?q=tag%3ARRID%3AAB_1196615",
+          "ref": "turn0search10"
+        },
+        {
+          "title": "Role of Post-Translational Modifications in Colorectal Cancer Metastasis",
+          "url": "https://ouci.dntb.gov.ua/en/works/9GAqN804/",
+          "ref": "turn0search11"
+        }
+      ],
+      "tool_result_chars": 31048,
+      "has_access_error": false
+    },
+    {
+      "event_id": "R02",
+      "date": "2026-11-07",
+      "actor": "root",
+      "args": {
+        "open": [
+          {
+            "ref_id": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10594193/"
+          },
+          {
+            "ref_id": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12880521/"
+          },
+          {
+            "ref_id": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10688572/"
+          }
+        ],
+        "response_length": "long"
+      },
+      "result_items": [
+        {
+          "title": "Checking your browser - reCAPTCHA",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10594193/",
+          "ref": "turn2view0"
+        },
+        {
+          "title": "A near-complete map of human cytosolic degrons and their relevance for disease - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12880521/",
+          "ref": "turn2view1"
+        },
+        {
+          "title": "Checking your browser - reCAPTCHA",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10688572/",
+          "ref": "turn2view2"
+        }
+      ],
+      "tool_result_chars": 30813,
+      "has_access_error": true
+    },
+    {
+      "event_id": "R03",
+      "date": "2026-11-07",
+      "actor": "root",
+      "args": {
+        "find": [
+          {
+            "ref_id": "turn2view1",
+            "pattern": "PNPO"
+          },
+          {
+            "ref_id": "turn2view1",
+            "pattern": "cost"
+          },
+          {
+            "ref_id": "turn2view1",
+            "pattern": "Competing"
+          },
+          {
+            "ref_id": "turn2view1",
+            "pattern": "time"
+          },
+          {
+            "ref_id": "turn2view1",
+            "pattern": "Limitations"
+          }
+        ],
+        "open": [
+          {
+            "ref_id": "https://pubmed.ncbi.nlm.nih.gov/37738965/"
+          },
+          {
+            "ref_id": "https://pubmed.ncbi.nlm.nih.gov/37977122/"
+          },
+          {
+            "ref_id": "https://www.timmslab.com/media/papers/2023_Mol_Cell_Elucidation_of_E3_ubiquitin_ligase_specificity_through_proteome-wide_internal_degron_mapping_naf6vNE.pdf"
+          }
+        ],
+        "response_length": "long"
+      },
+      "result_items": [
+        {
+          "title": "Elucidation of E3 ubiquitin ligase specificity through proteome-wide internal degron mapping - PubMed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/37738965/",
+          "ref": "turn7view0"
+        },
+        {
+          "title": "Elucidation of E3 ubiquitin ligase specificity through proteome-wide internal degron mapping - PubMed",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/37977122/",
+          "ref": "turn7view1"
+        },
+        {
+          "title": "A near-complete map of human cytosolic degrons and their relevance for disease - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12880521/",
+          "ref": "turn7view3"
+        },
+        {
+          "title": "A near-complete map of human cytosolic degrons and their relevance for disease - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12880521/",
+          "ref": "turn7view4"
+        },
+        {
+          "title": "A near-complete map of human cytosolic degrons and their relevance for disease - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12880521/",
+          "ref": "turn7view5"
+        },
+        {
+          "title": "A near-complete map of human cytosolic degrons and their relevance for disease - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12880521/",
+          "ref": "turn7view6"
+        },
+        {
+          "title": "A near-complete map of human cytosolic degrons and their relevance for disease - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12880521/",
+          "ref": "turn7view7"
+        }
+      ],
+      "tool_result_chars": 28351,
+      "has_access_error": true
+    },
+    {
+      "event_id": "R04",
+      "date": "2026-11-07",
+      "actor": "root",
+      "args": {
+        "open": [
+          {
+            "ref_id": "turn2view1",
+            "lineno": 280
+          },
+          {
+            "ref_id": "turn7view0",
+            "lineno": 180
+          },
+          {
+            "ref_id": "turn7view1",
+            "lineno": 170
+          },
+          {
+            "ref_id": "https://europepmc.org/articles/PMC10594193"
+          },
+          {
+            "ref_id": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10594193/?pdf=render"
+          }
+        ],
+        "response_length": "long"
+      },
+      "result_items": [
+        {
+          "title": "A near-complete map of human cytosolic degrons and their relevance for disease - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12880521/",
+          "ref": "turn11view0"
+        },
+        {
+          "title": "pubmed.ncbi.nlm.nih.gov",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/37738965/",
+          "ref": "turn11view1"
+        },
+        {
+          "title": "pubmed.ncbi.nlm.nih.gov",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/37977122/",
+          "ref": "turn11view2"
+        }
+      ],
+      "tool_result_chars": 34033,
+      "has_access_error": true
+    },
+    {
+      "event_id": "R05",
+      "date": "2026-11-07",
+      "actor": "root",
+      "args": {
+        "open": [
+          {
+            "ref_id": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9245451/"
+          },
+          {
+            "ref_id": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11223883/"
+          },
+          {
+            "ref_id": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9281121/"
+          }
+        ],
+        "response_length": "long"
+      },
+      "result_items": [
+        {
+          "title": "Systematic Characterization of Mutations Altering Protein Degradation in Human Cancers - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9245451/",
+          "ref": "turn24view0"
+        },
+        {
+          "title": "DEGRONOPEDIA: a web server for proteome-wide inspection of degrons - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11223883/",
+          "ref": "turn24view1"
+        },
+        {
+          "title": "Systematic prediction of degrons and E3 ubiquitin ligase binding via deep learning - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9281121/",
+          "ref": "turn24view2"
+        }
+      ],
+      "tool_result_chars": 25601,
+      "has_access_error": false
+    },
+    {
+      "event_id": "R06",
+      "date": "2026-11-07",
+      "actor": "root",
+      "args": {
+        "find": [
+          {
+            "ref_id": "turn24view0",
+            "pattern": "8 out of 12"
+          },
+          {
+            "ref_id": "turn24view0",
+            "pattern": "Ten novel"
+          },
+          {
+            "ref_id": "turn24view0",
+            "pattern": "DECLARATION"
+          },
+          {
+            "ref_id": "turn24view1",
+            "pattern": "Example application: validating"
+          },
+          {
+            "ref_id": "turn24view1",
+            "pattern": "Conflict"
+          },
+          {
+            "ref_id": "turn24view2",
+            "pattern": "CBX6"
+          },
+          {
+            "ref_id": "turn24view2",
+            "pattern": "Competing interests"
+          }
+        ],
+        "response_length": "long"
+      },
+      "result_items": [
+        {
+          "title": "Systematic Characterization of Mutations Altering Protein Degradation in Human Cancers - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9245451/",
+          "ref": "turn25view0"
+        },
+        {
+          "title": "Systematic Characterization of Mutations Altering Protein Degradation in Human Cancers - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9245451/",
+          "ref": "turn25view1"
+        },
+        {
+          "title": "Systematic Characterization of Mutations Altering Protein Degradation in Human Cancers - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9245451/",
+          "ref": "turn25view2"
+        },
+        {
+          "title": "DEGRONOPEDIA: a web server for proteome-wide inspection of degrons - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11223883/",
+          "ref": "turn25view3"
+        },
+        {
+          "title": "DEGRONOPEDIA: a web server for proteome-wide inspection of degrons - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11223883/",
+          "ref": "turn25view4"
+        },
+        {
+          "title": "Systematic prediction of degrons and E3 ubiquitin ligase binding via deep learning - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9281121/",
+          "ref": "turn25view5"
+        },
+        {
+          "title": "Systematic prediction of degrons and E3 ubiquitin ligase binding via deep learning - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9281121/",
+          "ref": "turn25view6"
+        }
+      ],
+      "tool_result_chars": 28916,
+      "has_access_error": false
+    },
+    {
+      "event_id": "R07",
+      "date": "2026-11-07",
+      "actor": "root",
+      "args": {
+        "search_query": [
+          {
+            "q": "degron prediction \"cost\" \"experimental validation\""
+          },
+          {
+            "q": "\"degron\" \"machine learning\" \"time saving\""
+          },
+          {
+            "q": "SAMPLE self driving laboratory protein engineering thermostability 2024 months weeks"
+          },
+          {
+            "q": "\"10.1371/journal.pcbi.1012639\""
+          }
+        ],
+        "response_length": "long"
+      },
+      "result_items": [
+        {
+          "title": "Benchmarking uncertainty quantification for protein engineering",
+          "url": "https://journals.plos.org/ploscompbiol/article/citation?id=10.1371%2Fjournal.pcbi.1012639",
+          "ref": "turn26search0"
+        },
+        {
+          "title": "PLOS COMPUTATIONAL BIOLOGY",
+          "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371%2Fjournal.pcbi.1012639&type=printable",
+          "ref": "turn26search12"
+        },
+        {
+          "title": "Self-Driving Laboratories to Autonomously Navigate the Protein Fitness Landscape",
+          "url": "https://asset.library.wisc.edu/1711.dl/KEHX4JVKJ2L5Y8J/R/file-a4d76.pdf",
+          "ref": "turn26search13"
+        },
+        {
+          "title": "ARTICLE IN PRESS",
+          "url": "https://www.nature.com/articles/s41540-026-00683-6_reference.pdf",
+          "ref": "turn26search14"
+        },
+        {
+          "title": "Artificial intelligence–powered biofoundries for protein engineering and metabolic engineering",
+          "url": "https://www.sciencedirect.com/science/article/pii/S0958166925001247",
+          "ref": "turn26search1"
+        },
+        {
+          "title": "- Demonstrated quaternary alloy strategy to mitigate lattice mismatch and increase efficiency of InGaN LED materials",
+          "url": "https://www.kevinpgreenman.com/files/Greenman_Kevin_CV.pdf",
+          "ref": "turn26search15"
+        },
+        {
+          "title": "Construction of the Thermostable D-Allulose 3-Epimerase from Arthrobacter globiformis M30 by Protein Engineering Method",
+          "url": "https://www.jstage.jst.go.jp/article/jag/71/4/71_jag.JAG-2024_0003/_html/-char/en",
+          "ref": "turn26search2"
+        },
+        {
+          "title": "A general temperature-guided language model to design proteins of enhanced stability and activity",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11601203/",
+          "ref": "turn26search3"
+        },
+        {
+          "title": "Self-driving laboratories to autonomously navigate the protein fitness landscape",
+          "url": "https://scispace.com/papers/self-driving-laboratories-to-autonomously-navigate-the-32zqfvp07j",
+          "ref": "turn26search4"
+        },
+        {
+          "title": "|  |  |  |",
+          "url": "https://arca.umag.cl/bitstreams/2412472b-db4d-43ee-9cc1-63e5cdc03093/download",
+          "ref": "turn26search16"
+        },
+        {
+          "title": "Combining AI, simulation, and experiment to map protein folding",
+          "url": "https://ouci.dntb.gov.ua/en/works/9ZPbJrKY/",
+          "ref": "turn26search5"
+        },
+        {
+          "title": "January 2025 | PLOS Computational Biology",
+          "url": "https://journals.plos.org/ploscompbiol/issue?id=10.1371%2Fissue.pcbi.v21.i01",
+          "ref": "turn26search6"
+        },
+        {
+          "title": "Adaptyv Bio — Protein Engineering Platform",
+          "url": "https://www.adaptyvbio.com/services/thermostability",
+          "ref": "turn26search7"
+        },
+        {
+          "title": "PLOS Computational Biology",
+          "url": "https://bishtref.com/journals/9/plos-computational-biology",
+          "ref": "turn26search8"
+        },
+        {
+          "title": "Protein Engineering Insights",
+          "url": "https://proteineng.com/posts/engineering-protein-thermostability-aidriven-methods-practical-applications-and-future-directions-for-biomedical-research",
+          "ref": "turn26search9"
+        },
+        {
+          "title": "Protein Engineering Insights",
+          "url": "https://www.proteineng.com/posts/selfdriving-science-how-autonomous-platforms-like-sample-are-revolutionizing-protein-engineering",
+          "ref": "turn26search10"
+        },
+        {
+          "title": "degron-related - Bioinformatics Tool | BioinformaticsHome",
+          "url": "https://bioinformaticshome.com/db/tool/degron-related/",
+          "ref": "turn26search11"
+        }
+      ],
+      "tool_result_chars": 33687,
+      "has_access_error": false
+    },
+    {
+      "event_id": "R08",
+      "date": "2026-11-07",
+      "actor": "root",
+      "args": {
+        "search_query": [
+          {
+            "q": "\"Self-driving laboratories to autonomously navigate the protein fitness landscape\" nature"
+          },
+          {
+            "q": "\"degron\" \"prediction\" \"experiments\" \"cost-effective\""
+          },
+          {
+            "q": "\"degron prediction\" \"failed\" \"validation\""
+          },
+          {
+            "q": "\"10.1016/j.molcel.2023.10.021\" correction BAG6"
+          }
+        ],
+        "open": [
+          {
+            "ref_id": "https://journals.plos.org/ploscompbiol/article?id=10.1371%2Fjournal.pcbi.1012639"
+          }
+        ],
+        "response_length": "long"
+      },
+      "result_items": [
+        {
+          "title": "Self-driving laboratories to autonomously navigate the protein fitness landscape",
+          "url": "https://www.nature.com/articles/s44286-023-00002-4",
+          "ref": "turn27search0"
+        },
+        {
+          "title": "Elucidation of E3 ubiquitin ligase specificity through proteome-wide internal degron mapping",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/37977122/",
+          "ref": "turn27search1"
+        },
+        {
+          "title": "Spiez CONVERGENCE",
+          "url": "https://www.spiezlab.admin.ch/dam/en/sd-web/SmmMK5KGL8Ph/LaborSpiezConvergence2024_en.pdf",
+          "ref": "turn27search12"
+        },
+        {
+          "title": "The past, present and future of self-driving laboratories",
+          "url": "https://www.nature.com/articles/s41570-026-00847-2",
+          "ref": "turn27search2"
+        },
+        {
+          "title": "Self-Driving Laboratories to Autonomously Navigate the Protein Fitness Landscape",
+          "url": "https://asset.library.wisc.edu/1711.dl/KEHX4JVKJ2L5Y8J/R/file-a4d76.pdf",
+          "ref": "turn27search13"
+        },
+        {
+          "title": "Self-driving Laboratories to Autonomously Navigate the Protein Fitness Landscape",
+          "url": "https://books.google.com/books/about/Self_driving_Laboratories_to_Autonomousl.html?id=yJ300AEACAAJ",
+          "ref": "turn27search3"
+        },
+        {
+          "title": "Systematic prediction of degrons and E3 ubiquitin ligase binding via deep learning",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9281121/",
+          "ref": "turn27search4"
+        },
+        {
+          "title": "Work 2: Autonomous lab for exploring protein fitness landscape",
+          "url": "https://ai4s.lab.westlake.edu.cn/assets/file/courseware/2025/11_AI%20%2B%20Life%20Sciences.pdf",
+          "ref": "turn27search14"
+        },
+        {
+          "title": "Rank-guided learning accelerates automated enzyme engineering",
+          "url": "https://www.nature.com/articles/s41467-026-76264-2",
+          "ref": "turn27search5"
+        },
+        {
+          "title": "BIBLIOGRAPHY 87",
+          "url": "https://publica-rest.fraunhofer.de/server/api/core/bitstreams/cf63cf82-fc00-48d4-a5c8-456552d7952d/content",
+          "ref": "turn27search15"
+        },
+        {
+          "title": "General Submissions (Table of Contents)",
+          "url": "https://www.proceedings.com/content/073/073811webtoc.pdf",
+          "ref": "turn27search16"
+        },
+        {
+          "title": "Harnessing Nature's Algorithm: From Test Tubes to Autonomous In Vivo Evolution",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13383600/",
+          "ref": "turn27search6"
+        },
+        {
+          "title": "A generalized platform for artificial intelligence-powered autonomous enzyme engineering",
+          "url": "https://www.nature.com/articles/s41467-025-61209-y",
+          "ref": "turn27search7"
+        },
+        {
+          "title": "Active learning-assisted directed evolution",
+          "url": "https://www.nature.com/articles/s41467-025-55987-8",
+          "ref": "turn27search8"
+        },
+        {
+          "title": "Single Amino Acid Disease Mutations Act as Genetic Glues to Drive Neo-substrate Degradation",
+          "url": "https://www.biorxiv.org/content/10.64898/2026.09.17.752235v1.full",
+          "ref": "turn27search9"
+        },
+        {
+          "title": "Artificial intelligence–powered biofoundries for protein engineering and metabolic engineering",
+          "url": "https://www.sciencedirect.com/science/article/pii/S0958166925001247",
+          "ref": "turn27search10"
+        },
+        {
+          "title": "The automated lab of tomorrow",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11046582/",
+          "ref": "turn27search11"
+        }
+      ],
+      "tool_result_chars": 40003,
+      "has_access_error": false
+    },
+    {
+      "event_id": "R09",
+      "date": "2026-11-07",
+      "actor": "root",
+      "args": {
+        "open": [
+          {
+            "ref_id": "https://www.nature.com/articles/s44286-023-00002-4"
+          },
+          {
+            "ref_id": "https://www.nature.com/articles/s41467-025-55987-8"
+          },
+          {
+            "ref_id": "https://journals.plos.org/ploscompbiol/article?id=10.1371%2Fjournal.pcbi.1012639"
+          }
+        ],
+        "find": [
+          {
+            "ref_id": "turn24view0",
+            "pattern": "10 novel"
+          },
+          {
+            "ref_id": "turn24view0",
+            "pattern": "cost"
+          },
+          {
+            "ref_id": "turn24view1",
+            "pattern": "cost"
+          },
+          {
+            "ref_id": "turn24view2",
+            "pattern": "time-consuming"
+          }
+        ],
+        "response_length": "long"
+      },
+      "result_items": [
+        {
+          "title": "Benchmarking uncertainty quantification for protein engineering | PLOS Computational Biology",
+          "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371%2Fjournal.pcbi.1012639",
+          "ref": "turn28view2"
+        },
+        {
+          "title": "Systematic Characterization of Mutations Altering Protein Degradation in Human Cancers - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9245451/",
+          "ref": "turn28view3"
+        },
+        {
+          "title": "Systematic Characterization of Mutations Altering Protein Degradation in Human Cancers - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9245451/",
+          "ref": "turn28view4"
+        },
+        {
+          "title": "DEGRONOPEDIA: a web server for proteome-wide inspection of degrons - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11223883/",
+          "ref": "turn28view5"
+        },
+        {
+          "title": "Systematic prediction of degrons and E3 ubiquitin ligase binding via deep learning - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9281121/",
+          "ref": "turn28view6"
+        }
+      ],
+      "tool_result_chars": 33266,
+      "has_access_error": true
+    },
+    {
+      "event_id": "R10",
+      "date": "2026-11-07",
+      "actor": "root",
+      "args": {
+        "search_query": [
+          {
+            "q": "\"Self-driving laboratories\" \"PMC\" \"Rapp\""
+          },
+          {
+            "q": "\"Active learning-assisted directed evolution\" PMC"
+          },
+          {
+            "q": "\"Self-driving laboratories\" \"two months\""
+          },
+          {
+            "q": "\"degron\" \"prospective validation\" \"machine learning\""
+          }
+        ],
+        "find": [
+          {
+            "ref_id": "turn28view2",
+            "pattern": "greedy"
+          },
+          {
+            "ref_id": "turn28view2",
+            "pattern": "Competing interests"
+          },
+          {
+            "ref_id": "turn28view2",
+            "pattern": "random sampling"
+          }
+        ],
+        "response_length": "long"
+      },
+      "result_items": [
+        {
+          "title": "Active learning-assisted directed evolution.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39821082/",
+          "ref": "turn29search0"
+        },
+        {
+          "title": "Active learning-assisted directed evolution",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11739421/",
+          "ref": "turn29search1"
+        },
+        {
+          "title": "Active learning-assisted directed evolution",
+          "url": "https://www.nature.com/articles/s41467-025-55987-8.pdf",
+          "ref": "turn29search12"
+        },
+        {
+          "title": "Efficient, Few-shot Directed Evolution with Energy Rank Alignment",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12889597/",
+          "ref": "turn29search2"
+        },
+        {
+          "title": "Self-Driving Laboratories for Chemistry and Materials Science",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11363023/",
+          "ref": "turn29search3"
+        },
+        {
+          "title": "Self-Driving Laboratories for Chemistry and Materials Science",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11363023/",
+          "ref": "turn29search4"
+        },
+        {
+          "title": "Autonomous ‘self-driving’ laboratories: a review of technology and policy implications",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12368842/",
+          "ref": "turn29search5"
+        },
+        {
+          "title": "WholeThesis_v5",
+          "url": "https://thesis.caltech.edu/18415/01/WholeThesis_v5.pdf",
+          "ref": "turn29search13"
+        },
+        {
+          "title": "Enhanced Sequence-Activity Mapping and Evolution of Artificial Metalloenzymes by Active Learning",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11273458/",
+          "ref": "turn29search6"
+        },
+        {
+          "title": "The automated lab of tomorrow",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11046582/",
+          "ref": "turn29search7"
+        },
+        {
+          "title": "Cluster learning-assisted directed evolution",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9267417/",
+          "ref": "turn29search8"
+        },
+        {
+          "title": "Optimization of regulatory DNA with active learning",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12553016/",
+          "ref": "turn29search9"
+        },
+        {
+          "title": "Why AI Experiments Still Depend on Physical Labs | Activated Thinker",
+          "url": "https://medium.com/activated-thinker/the-experiment-still-has-to-become-matter-3e2a5dfec79d",
+          "ref": "turn29search10"
+        },
+        {
+          "title": "Accelerating Science in a Multipolar World: Reflections from AI4X Conference | Julián Prieto Barrera, Ph.D. posted on the topic | LinkedIn",
+          "url": "https://www.linkedin.com/posts/jose-julian-prieto-barrera-48579a84_accelerating-science-in-a-multipolar-world-activity-7496632149358567424-4yu9",
+          "ref": "turn29search11"
+        },
+        {
+          "title": "Low-N Protein Activity Optimization with FolDE",
+          "url": "https://arxiv.org/abs/2510.24053",
+          "ref": "turn29academia14"
+        },
+        {
+          "title": "Benchmarking uncertainty quantification for protein engineering | PLOS Computational Biology",
+          "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371%2Fjournal.pcbi.1012639",
+          "ref": "turn29view0"
+        },
+        {
+          "title": "Benchmarking uncertainty quantification for protein engineering | PLOS Computational Biology",
+          "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371%2Fjournal.pcbi.1012639",
+          "ref": "turn29view1"
+        },
+        {
+          "title": "Benchmarking uncertainty quantification for protein engineering | PLOS Computational Biology",
+          "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371%2Fjournal.pcbi.1012639",
+          "ref": "turn29view2"
+        }
+      ],
+      "tool_result_chars": 36836,
+      "has_access_error": false
+    },
+    {
+      "event_id": "R11",
+      "date": "2026-11-07",
+      "actor": "root",
+      "args": {
+        "open": [
+          {
+            "ref_id": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11739421/"
+          }
+        ],
+        "search_query": [
+          {
+            "q": "\"s44286-023-00002-4\" PMC"
+          },
+          {
+            "q": "\"s44286-023-00002-4\" \"2 months\""
+          },
+          {
+            "q": "\"s44286-023-00002-4\" \"year\""
+          },
+          {
+            "q": "\"s44286-023-00002-4\" \"Competing interests\""
+          }
+        ],
+        "response_length": "long"
+      },
+      "result_items": [
+        {
+          "title": "Self-driving laboratories to autonomously navigate the protein fitness landscape",
+          "url": "https://www.nature.com/articles/s44286-023-00002-4",
+          "ref": "turn30search0"
+        },
+        {
+          "title": "nature chemical engineering",
+          "url": "https://static1.squarespace.com/static/66989691b854426c895ce7ca/t/692d5609718ec3222dfc2e0f/1764578825103/Rapp_2024.pdf",
+          "ref": "turn30search12"
+        },
+        {
+          "title": "Technology integration in intensive care medicine through clinical engineering and convergent biotechnology",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13403013/",
+          "ref": "turn30search1"
+        },
+        {
+          "title": "Self-driving laboratories to autonomously navigate the protein fitness landscape",
+          "url": "https://doi.org/10.1038/s44286-023-00002-4",
+          "ref": "turn30search2"
+        },
+        {
+          "title": "Reaching new heights in genetic code manipulation with high throughput screening",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11879460/pdf/nihms-2060477.pdf",
+          "ref": "turn30search13"
+        },
+        {
+          "title": "Autonomous platform engineers enhanced proteins | Research | Chemistry World",
+          "url": "https://www.chemistryworld.com/news/autonomous-platform-engineers-enhanced-proteins/4018841.article",
+          "ref": "turn30search3"
+        },
+        {
+          "title": "Democratizing self-driving labs: advances in low-cost 3D printing for laboratory automation",
+          "url": "https://www.sciencedirect.com/org/science/article/pii/S2635098X25000968",
+          "ref": "turn30search4"
+        },
+        {
+          "title": "自动驾驶实验室自主探索蛋白质适应性景观。 - Suppr | 超能文献",
+          "url": "https://suppr.wilddata.cn/browses/detail/pubmed/38468718",
+          "ref": "turn30search6"
+        },
+        {
+          "title": "Automated laboratory system uses robotic equipment directed by AI to reengineer enzymes",
+          "url": "https://phys.org/news/2024-01-automated-laboratory-robotic-equipment-ai.html",
+          "ref": "turn30search7"
+        },
+        {
+          "title": "경희대학교 환경관리시스템공학 연구실 EMSEL",
+          "url": "https://emsel.khu.ac.kr/index.php?bo_idx=1&hCode=BOARD&idx=1341&page=view&pg=2&sfl=&stx=",
+          "ref": "turn30search8"
+        },
+        {
+          "title": "Bennett Bremer - Ascidian Therapeutics | LinkedIn",
+          "url": "https://www.linkedin.com/in/bennett-bremer-5a1126211",
+          "ref": "turn30search9"
+        },
+        {
+          "title": "Pan, Yongqi, Xiao, Qinfan, Zhao, Fangyu, Li, Zhenhao, Liu, Jianyang, Ullah, Shafqat, Lim, Kang Hui, Huang, Tianyi, Yu, Zhiyuan, Li, Claudia, et al. (2025) Chat-microreactor: A large-language-model-based assistant for designing continuous flow systems. Chemical Engineering Science, 311. doi:10.1016/j.ces.2025.121567",
+          "url": "https://www.mindat.org/reference.php?id=18249811",
+          "ref": "turn30search10"
+        },
+        {
+          "title": "Philip A. Romero — Researcher Profile",
+          "url": "https://bishtref.com/authors/7491",
+          "ref": "turn30search11"
+        },
+        {
+          "title": "Active learning-assisted directed evolution - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11739421/",
+          "ref": "turn30view0"
+        }
+      ],
+      "tool_result_chars": 30167,
+      "has_access_error": false
+    },
+    {
+      "event_id": "R12",
+      "date": "2026-11-07",
+      "actor": "root",
+      "args": {
+        "open": [
+          {
+            "ref_id": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10926838/"
+          }
+        ],
+        "find": [
+          {
+            "ref_id": "turn30view0",
+            "pattern": "six 96-well"
+          },
+          {
+            "ref_id": "turn30view0",
+            "pattern": "Competing interests"
+          },
+          {
+            "ref_id": "turn30view0",
+            "pattern": "three rounds"
+          }
+        ],
+        "click": [
+          {
+            "ref_id": "turn2view1",
+            "id": 136
+          },
+          {
+            "ref_id": "turn24view0",
+            "id": 90
+          }
+        ],
+        "response_length": "long"
+      },
+      "result_items": [
+        {
+          "title": "Self-driving laboratories to autonomously navigate the protein fitness landscape - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10926838/",
+          "ref": "turn31view0"
+        },
+        {
+          "title": "Checking your browser - reCAPTCHA",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/12880521/bin/sciadv.adz3483_sm.pdf",
+          "ref": "turn31view1"
+        },
+        {
+          "title": "Systematic Characterization of Mutations Altering Protein Degradation in Human Cancers - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9245451/",
+          "ref": "turn31view2"
+        },
+        {
+          "title": "Checking your browser - reCAPTCHA",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11739421/",
+          "ref": "turn31view3"
+        },
+        {
+          "title": "Checking your browser - reCAPTCHA",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11739421/",
+          "ref": "turn31view4"
+        },
+        {
+          "title": "Checking your browser - reCAPTCHA",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11739421/",
+          "ref": "turn31view5"
+        }
+      ],
+      "tool_result_chars": 37464,
+      "has_access_error": true
+    },
+    {
+      "event_id": "R13",
+      "date": "2026-11-07",
+      "actor": "root",
+      "args": {
+        "search_query": [
+          {
+            "q": "(degron OR \"degron mutation\") (prediction OR \"machine learning\") \"experimental validation\" 2025 2026"
+          },
+          {
+            "q": "degron \"variant prioritization\" validation experiments"
+          },
+          {
+            "q": "degron \"experimental budget\" OR \"cost per hit\" OR \"experiments saved\""
+          },
+          {
+            "q": "degron prediction \"failed validation\" OR \"negative results\" OR \"selection bias\""
+          }
+        ],
+        "response_length": "long"
+      },
+      "result_items": [
+        {
+          "title": "AlphaGenome-enabled analysis of non-coding regulatory variants underlying expression with wet-lab validation. | Broad Institute",
+          "url": "https://www.broadinstitute.org/publications/broad1374276",
+          "ref": "turn32search0"
+        },
+        {
+          "title": "scEEMS Prediction - FunGen-xQTL Consortium",
+          "url": "https://statfungen.github.io/xqtl-protocol/ems_prediction.html",
+          "ref": "turn32search1"
+        },
+        {
+          "title": "Decoding polygenic diseases: Advances in noncoding variant prioritization and validation",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12176383/pdf/nihms-2087924.pdf",
+          "ref": "turn32search12"
+        },
+        {
+          "title": "npj | genomic medicine",
+          "url": "https://d-nb.info/1361760699/34",
+          "ref": "turn32search13"
+        },
+        {
+          "title": "PG-LLM: Benchmarking General-Purpose Language Models for Protein Variant Ranking",
+          "url": "https://www.proteingymllm.com/",
+          "ref": "turn32search2"
+        },
+        {
+          "title": "Population-scale drug target and variant prioritization with Varformer",
+          "url": "https://www.biorxiv.org/content/10.64898/2026.10.16.759653v1",
+          "ref": "turn32search3"
+        },
+        {
+          "title": "Accelerated identification of disease-causing variants with ultra-rapid nanopore genome sequencing",
+          "url": "https://doi.org/10.1038/s41587-022-01221-5",
+          "ref": "turn32search4"
+        },
+        {
+          "title": "PhD_Marcos_Diaz_Gay",
+          "url": "https://diposit.ub.edu/bitstreams/e85de603-734e-435e-9f47-ab85290f1c00/download",
+          "ref": "turn32search14"
+        },
+        {
+          "title": "An integrative ENCODE resource for cancer genomics",
+          "url": "https://escholarship.org/content/qt97c2c0nw/qt97c2c0nw_noSplash_b17dcbc028713a3f0d8958f12809a474.pdf",
+          "ref": "turn32search15"
+        },
+        {
+          "title": "GREEN-DB: a framework for the annotation and prioritization of non-coding regulatory variants from whole-genome sequencing data",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8934622/",
+          "ref": "turn32search5"
+        },
+        {
+          "title": "Decoding polygenic diseases: advances in noncoding variant prioritization and validation",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38719704/",
+          "ref": "turn32search6"
+        },
+        {
+          "title": "GitHub - ZuchnerLab/VariantPrioritizationBenchmark: Open and freely redistributable dataset and leaderboard for the medical genetics task of variant prioritization · GitHub",
+          "url": "https://github.com/ZuchnerLab/VariantPrioritizationBenchmark",
+          "ref": "turn32search7"
+        },
+        {
+          "title": "A Practical Guide To Filtering and Prioritizing Genetic Variants",
+          "url": "https://www.tandfonline.com/doi/10.2144/000114492",
+          "ref": "turn32search8"
+        },
+        {
+          "title": "Haoyang's paper on regulatory variant prioritization is published in Bioinformatics",
+          "url": "https://cgs.csail.mit.edu/research/gerv/",
+          "ref": "turn32search9"
+        },
+        {
+          "title": "Semantic prioritization of novel causative genomic variants",
+          "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371%2Fjournal.pcbi.1005500",
+          "ref": "turn32search10"
+        },
+        {
+          "title": "VARPRISM: incorporating variant prioritization in tests of de novo mutation association",
+          "url": "https://springerlink.fh-diploma.de/article/10.1186/s13073-016-0341-9",
+          "ref": "turn32search11"
+        },
+        {
+          "title": "Stanford uses AI to cut DNA sequencing down to 5 hours.",
+          "url": "https://www.reddit.com/r/ehlersdanlos/comments/sxynbt",
+          "ref": "turn32reddit16"
+        },
+        {
+          "title": "RareCollab -- An Agentic System Diagnosing Mendelian Disorders with Integrated Phenotypic and Molecular Evidence",
+          "url": "https://arxiv.org/abs/2602.04058",
+          "ref": "turn32academia17"
+        },
+        {
+          "title": "DeepBD: A Grounded Agentic Workflow for Variant Prioritization and Diagnosis of Genetic Birth Defects",
+          "url": "https://arxiv.org/abs/2606.24779",
+          "ref": "turn32academia18"
+        }
+      ],
+      "tool_result_chars": 37811,
+      "has_access_error": false
+    },
+    {
+      "event_id": "R14",
+      "date": "2026-11-07",
+      "actor": "root",
+      "args": {
+        "search_query": [
+          {
+            "q": "\"degron\" \"prediction\" \"validation\" \"cost\""
+          },
+          {
+            "q": "\"degron\" \"prediction\" \"screening\" \"time\" \"savings\""
+          },
+          {
+            "q": "\"degron\" \"prioritization\" \"experimental\""
+          },
+          {
+            "q": "\"degron\" \"prediction\" \"2026\" \"experimental validation\""
+          }
+        ],
+        "response_length": "long"
+      },
+      "result_items": [
+        {
+          "title": "MorPhiC consortium: Towards functional characterization of all human genes",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12088665/pdf/nihms-2075647.pdf",
+          "ref": "turn33search12"
+        },
+        {
+          "title": "Mechanisms of substrate processing during ER-associated degradation",
+          "url": "https://ora.ox.ac.uk/objects/uuid%3Ac00528e8-ae60-42a2-8a22-f38ca8cc1a1b/files/sgm80hw776",
+          "ref": "turn33search13"
+        },
+        {
+          "title": "of Human Degrons",
+          "url": "https://doi.org/10.1021/acscentsci.3c01544",
+          "ref": "turn33search0"
+        },
+        {
+          "title": "Exploring Novel E3 Ligases and Neosubstrates for Molecular Glue Degraders and Therapeutic Applications in Cancer",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13220090/",
+          "ref": "turn33search1"
+        },
+        {
+          "title": "PROTACs in targeted protein degradation: Advances in development and AI-enhanced drug discovery",
+          "url": "https://doi.org/10.1016/j.ejmcr.2026.100332",
+          "ref": "turn33search2"
+        },
+        {
+          "title": "Disease-guided targeted protein degradation and clearance: matching strategies to pathological protein states",
+          "url": "https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2026.1967704/full",
+          "ref": "turn33search3"
+        },
+        {
+          "title": "Deep learning–driven decoding of ubiquitination: from regulatory mechanisms to targeted protein degradation",
+          "url": "https://springerlink.fh-diploma.de/article/10.1186/s13062-026-00848-7",
+          "ref": "turn33search4"
+        },
+        {
+          "title": "AI Tries to Predict Hersh Bhargava’s PhD Defense",
+          "url": "https://aman.holdings/experiments/hersh-defense/",
+          "ref": "turn33search5"
+        },
+        {
+          "title": "Unmeasured human transcription factor ChIP-seq data shape functional genomics and demand strategic prioritization",
+          "url": "https://watermark02.silverchair.com/elaf016.pdf",
+          "ref": "turn33search14"
+        },
+        {
+          "title": "Deep learning–driven decoding of ubiquitination: from regulatory mechanisms to targeted protein degradation",
+          "url": "https://link.springer.com/article/10.1186/s13062-026-00848-7",
+          "ref": "turn33search6"
+        },
+        {
+          "title": "Directed mutational scanning reveals a balance between acidic and hydrophobic residues in strong human activation domai…",
+          "url": "https://ouci.dntb.gov.ua/en/works/4vDK66a9/",
+          "ref": "turn33search7"
+        },
+        {
+          "title": "Society for Laboratory Automation and Screening: SLAS2026 Scientific Podium Presentations",
+          "url": "https://slas.elevate.commpartners.com/products/slas2026-scientific-podium-presentations?in_package=237914&packages%5B%5D=237914&ref_id=237914&sort_by=package_order",
+          "ref": "turn33search8"
+        },
+        {
+          "title": "Elucidation of E3 ubiquitin ligase specificity through proteome-wide internal degron mapping",
+          "url": "https://www.researchgate.net/publication/374090186_Elucidation_of_E3_ubiquitin_ligase_specificity_through_proteome-wide_internal_degron_mapping",
+          "ref": "turn33search9"
+        },
+        {
+          "title": "Exploring Novel E3 Ligases and Neosubstrates for Molecular Glue Degraders and Therapeutic Applications in Cancer",
+          "url": "https://file.techscience.com/files/onlinefirst/2026/3.19/TSP_OR_73660/TSP_OR_73660.pdf",
+          "ref": "turn33search15"
+        },
+        {
+          "title": "ProteinQC Hub",
+          "url": "https://www.proteinqc.com/posts/harnessing-protein-quality-control-from-mechanistic-insights-to-clinical-degradation-therapies",
+          "ref": "turn33search10"
+        },
+        {
+          "title": "Advances and opportunities for computational interrogation of plant proteins",
+          "url": "https://onlinelibrary.wiley.com/doi/10.1111/tpj.70899",
+          "ref": "turn33search11"
+        },
+        {
+          "title": "MetaDegron: multimodal feature-integrated protein language model for predicting E3 ligase targeted degrons",
+          "url": "https://watermark02.silverchair.com/bbae519.pdf",
+          "ref": "turn33search16"
+        },
+        {
+          "title": "Hypoxic and Fe‐Responses are Regulated by the ERFVII Factors and the PCO Branch of the N‐Degron Pathway According to Iron Availability",
+          "url": "https://www.iris.santannapisa.it/retrieve/02a58df3-c400-4bcb-8092-911c5d11a2ab/2026%20Plant%20Cell%20%20%20Environment%20-%202026%20-%20Telara%20-%20Hypoxic%20and%20Fe%E2%80%90Responses%20are%20Regulated%20by%20the%20ERFVII%20Factors%20and%20the%20PCO%20Branch.pdf",
+          "ref": "turn33search17"
+        }
+      ],
+      "tool_result_chars": 33957,
+      "has_access_error": false
+    },
+    {
+      "event_id": "R15",
+      "date": "2026-11-07",
+      "actor": "root",
+      "args": {
+        "search_query": [
+          {
+            "q": "\"Design of Cytotoxic T Cell Epitopes by Machine Learning of Human Degrons\""
+          },
+          {
+            "q": "\"Design of Cytotoxic T Cell Epitopes\" \"validation\" \"30\""
+          },
+          {
+            "q": "\"degron\" \"cost per hit\""
+          },
+          {
+            "q": "\"degron\" \"experiments saved\""
+          }
+        ],
+        "open": [
+          {
+            "ref_id": "https://www.biorxiv.org/content/10.64898/2026.09.17.752235v1.full"
+          }
+        ],
+        "response_length": "long"
+      },
+      "result_items": [
+        {
+          "title": "Design of Cytotoxic T Cell Epitopes by Machine Learning of Human Degrons",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11046456/",
+          "ref": "turn34search0"
+        },
+        {
+          "title": "Design of Cytotoxic T Cell Epitopes by Machine Learning of Human Degrons.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38680558/",
+          "ref": "turn34search1"
+        },
+        {
+          "title": "Design of Cytotoxic T Cell Epitopes by Machine Learning of Human Degrons",
+          "url": "https://openalex.org/W4392505444",
+          "ref": "turn34search2"
+        },
+        {
+          "title": "To Whom It May Concern:",
+          "url": "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1556557/download-documents?artifactId=mWF6w9RvSewo7ookXH9iQ4p8HDR0rNwm0DtUI-PoLe8p-rD1B7CVlik",
+          "ref": "turn34search12"
+        },
+        {
+          "title": "Curriculum Vitae",
+          "url": "https://pentelutelabmit.com/wp-content/uploads/2026/06/Pentelute-CV-05-25-2026-short.pdf",
+          "ref": "turn34search13"
+        },
+        {
+          "title": "CV_Truex_WEB_2024.1",
+          "url": "https://sc.edu/study/colleges_schools/chemistry_and_biochemistry/docs/faculty_docs/truex_nicholas/truex_cv_2024.pdf",
+          "ref": "turn34search14"
+        },
+        {
+          "title": "Epitope Prediction Assays Combined with Validation Assays Strongly Narrows down Putative Cytotoxic T Lymphocyte Epitopes",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4494349/",
+          "ref": "turn34search3"
+        },
+        {
+          "title": "Publications | Broad Institute",
+          "url": "https://www.broadinstitute.org/publications?f%5Bkeyword%5D=2421&page=569&sp=S7000003188599706",
+          "ref": "turn34search4"
+        },
+        {
+          "title": "Large-scale validation of methods for cytotoxic T-lymphocyte epitope prediction",
+          "url": "https://springerlink.fh-diploma.de/article/10.1186/1471-2105-8-424",
+          "ref": "turn34search5"
+        },
+        {
+          "title": "Large-scale validation of methods for cytotoxic T-lymphocyte epitope prediction",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2194739/",
+          "ref": "turn34search6"
+        },
+        {
+          "title": "Experimental Study of Potential CD8+ Trivalent Synthetic Peptides for Liver Cancer Vaccine Development Using Sprague Dawley Rat Models.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/35686237/",
+          "ref": "turn34search7"
+        },
+        {
+          "title": "Rational Design of a Multiepitope Vaccine Encoding T-Lymphocyte Epitopes for Treatment of Chronic Hepatitis B Virus Infections",
+          "url": "https://journals.asm.org/doi/full/10.1128/jvi.01505-07",
+          "ref": "turn34search8"
+        },
+        {
+          "title": "A protocol for computational design of mRNA vaccines with high functionality and specificity",
+          "url": "https://link.springer.com/article/10.1186/s13062-026-00846-9",
+          "ref": "turn34search9"
+        },
+        {
+          "title": "Identification of Cytotoxic T Lymphocyte Epitopes on",
+          "url": "https://journals.plos.org/plosone/article/file?id=10.1371%2Fjournal.pone.0084443&type=printable",
+          "ref": "turn34search15"
+        },
+        {
+          "title": "In silico identification of highly conserved cytotoxic T-lymphocyte (CTL) epitopes from Streptococcus pyogenes exoenzymes for epitope-based vaccine development",
+          "url": "https://bmrat.org/index.php/BMRAT/article/view/1051",
+          "ref": "turn34search10"
+        },
+        {
+          "title": "AI-driven epitope prediction: a systematic review, comparative analysis, and practical guide for vaccine development",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12398602/",
+          "ref": "turn34search11"
+        },
+        {
+          "title": "Design of a multi-epitope vaccine against Haemophilus parasuis based on pan-genome and immunoinformatics approaches",
+          "url": "https://public-pages-files-2025.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2022.1053198/pdf",
+          "ref": "turn34search16"
+        },
+        {
+          "title": "AI-driven epitope prediction: a systematic review, comparative analysis, and practical guide for vaccine development",
+          "url": "https://d-nb.info/1382363451/34",
+          "ref": "turn34search17"
+        }
+      ],
+      "tool_result_chars": 31298,
+      "has_access_error": true
+    },
+    {
+      "event_id": "R16",
+      "date": "2026-11-07",
+      "actor": "root",
+      "args": {
+        "open": [
+          {
+            "ref_id": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11046456/"
+          }
+        ],
+        "find": [
+          {
+            "ref_id": "turn31view0",
+            "pattern": "US$5,200"
+          },
+          {
+            "ref_id": "turn31view0",
+            "pattern": "Competing interests"
+          },
+          {
+            "ref_id": "turn31view0",
+            "pattern": "twenty"
+          },
+          {
+            "ref_id": "turn24view0",
+            "pattern": "Supplementary Materials"
+          }
+        ],
+        "response_length": "long"
+      },
+      "result_items": [
+        {
+          "title": "Checking your browser - reCAPTCHA",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11046456/",
+          "ref": "turn35view0"
+        },
+        {
+          "title": "Self-driving laboratories to autonomously navigate the protein fitness landscape - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10926838/",
+          "ref": "turn35view1"
+        },
+        {
+          "title": "Self-driving laboratories to autonomously navigate the protein fitness landscape - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10926838/",
+          "ref": "turn35view2"
+        },
+        {
+          "title": "Self-driving laboratories to autonomously navigate the protein fitness landscape - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10926838/",
+          "ref": "turn35view3"
+        },
+        {
+          "title": "Systematic Characterization of Mutations Altering Protein Degradation in Human Cancers - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9245451/",
+          "ref": "turn35view4"
+        }
+      ],
+      "tool_result_chars": 28952,
+      "has_access_error": true
+    },
+    {
+      "event_id": "R17",
+      "date": "2026-11-07",
+      "actor": "root",
+      "args": {
+        "click": [
+          {
+            "ref_id": "turn24view0",
+            "id": 196
+          },
+          {
+            "ref_id": "turn24view1",
+            "id": 52
+          }
+        ],
+        "search_query": [
+          {
+            "q": "site:pmc.ncbi.nlm.nih.gov/articles/PMC11046456 \"random\" \"10\""
+          },
+          {
+            "q": "site:pmc.ncbi.nlm.nih.gov/articles/PMC11046456 \"Competing\""
+          },
+          {
+            "q": "site:pmc.ncbi.nlm.nih.gov/articles/PMC11739421 \"six 96-well\" \"93\""
+          },
+          {
+            "q": "\"degron prediction\" \"cost\" \"validation\" \"time\""
+          }
+        ],
+        "response_length": "long"
+      },
+      "result_items": [
+        {
+          "title": "The qua",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10549960/pdf/CD006857.pdf",
+          "ref": "turn36search12"
+        },
+        {
+          "title": "Epidemiologic Reviews",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10362939/pdf/mxac010.pdf",
+          "ref": "turn36search13"
+        },
+        {
+          "title": "A simple high-throughput approach identifies actionable drug sensitivities in patient-derived tumor organoids",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/6389967/",
+          "ref": "turn36search0"
+        },
+        {
+          "title": "TOPIC IN REVIEW",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1071653/pdf/wjm17600045.pdf",
+          "ref": "turn36search14"
+        },
+        {
+          "title": "BMJ Open — Page 22 of 31",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/10124307/bin/bmjopen-2022-067984.draft_revisions.pdf",
+          "ref": "turn36search15"
+        },
+        {
+          "title": "BMJ Open — Page 22 of 30",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/10668261/bin/bmjopen-2023-072275.draft_revisions.pdf",
+          "ref": "turn36search16"
+        },
+        {
+          "title": "Neurogenic locus notch homolog protein 1 (NOTCH 1) SNP informatics coupled with intrinsically disordered regions and post-translational modifications reveals the complex structural crosstalk of Lung Adenocarcinoma (LUAD)",
+          "url": "https://www.frontiersin.org/journals/bioinformatics/articles/10.3389/fbinf.2025.1641521/full",
+          "ref": "turn36search1"
+        },
+        {
+          "title": "(Continued)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9809923/pdf/CD014906.pdf",
+          "ref": "turn36search17"
+        },
+        {
+          "title": "in Small-Molecule Drug Discovery",
+          "url": "https://pubs.acs.org/doi/10.1021/acs.analchem.5c04083",
+          "ref": "turn36search2"
+        },
+        {
+          "title": "An Overview of Cell-Based Assay Platforms for the Solute Carrier Family of Transporters",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8383457/",
+          "ref": "turn36search3"
+        },
+        {
+          "title": "CUPID-seq enables highly multiplexed amplicon sequencing via combinatorial in-line dual indexing",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13228431/",
+          "ref": "turn36search4"
+        },
+        {
+          "title": "Thyrotroph embryonic factor is downregulated in bladder cancer and suppresses proliferation and tumorigenesis via the AKT/FOXOs signalling pathway",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6496933/",
+          "ref": "turn36search5"
+        },
+        {
+          "title": "High Throughput Fluorometric Technique for Assessment of Macrophage Phagocytosis and Actin Polymerization",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4354378/",
+          "ref": "turn36search6"
+        },
+        {
+          "title": "Study protocol for a randomized, double-blind, placebo-controlled clinical trial of desidustat oral tablet in sickle cell disease: a phase IIa proof-of-concept evaluation",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13330192/",
+          "ref": "turn36search7"
+        },
+        {
+          "title": "Construction, Verification and Experimental Use of Two Epitope-Tagged Collections of Budding Yeast Strains",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2448600/",
+          "ref": "turn36search8"
+        },
+        {
+          "title": "Efficient gene-driven germ-line point mutagenesis of C57BL/6J mice",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1325271/",
+          "ref": "turn36search9"
+        },
+        {
+          "title": "Fluorescent Marinoquinoline Derivative as Inhibitors of Plasmodium falciparum: SAR Analysis, Mode of Action and In Vivo Studies",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12557366/",
+          "ref": "turn36search10"
+        },
+        {
+          "title": "Prion 2022 Conference abstracts: pushing the boundaries",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9467582/",
+          "ref": "turn36search11"
+        },
+        {
+          "title": "Checking your browser - reCAPTCHA",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/9245451/bin/NIHMS1667687-supplement-5.xlsx",
+          "ref": "turn36view0"
+        },
+        {
+          "title": "DEGRONOPEDIA: a web server for proteome-wide inspection of degrons - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11223883/",
+          "ref": "turn36view1"
+        }
+      ],
+      "tool_result_chars": 32904,
+      "has_access_error": true
+    },
+    {
+      "event_id": "R18",
+      "date": "2026-11-07",
+      "actor": "root",
+      "args": {
+        "open": [
+          {
+            "ref_id": "https://pubs.acs.org/doi/10.1021/acscentsci.3c01544"
+          },
+          {
+            "ref_id": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11741572/"
+          }
+        ],
+        "search_query": [
+          {
+            "q": "\"Active learning-assisted directed evolution\" \"six\" \"plates\""
+          },
+          {
+            "q": "\"Design of Cytotoxic T Cell Epitopes\" \"randomly\""
+          },
+          {
+            "q": "\"Design of Cytotoxic T Cell Epitopes\" \"conflict\""
+          },
+          {
+            "q": "\"degron\" \"prediction\" \"time savings\" \"cost savings\""
+          }
+        ],
+        "response_length": "long"
+      },
+      "result_items": [
+        {
+          "title": "Active learning-assisted directed evolution",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11739421/",
+          "ref": "turn37search0"
+        },
+        {
+          "title": "Active learning-assisted directed evolution",
+          "url": "https://www.nature.com/articles/s41467-025-55987-8.pdf",
+          "ref": "turn37search12"
+        },
+        {
+          "title": "Design of Cytotoxic T Cell Epitopes by Machine Learning of Human Degrons",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10473641/",
+          "ref": "turn37search1"
+        },
+        {
+          "title": "Design of Cytotoxic T Cell Epitopes by Machine Learning of Human Degrons",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11046456/",
+          "ref": "turn37search2"
+        },
+        {
+          "title": "Active learning-assisted directed evolution",
+          "url": "https://doi.org/10.1038/s41467-025-55987-8",
+          "ref": "turn37search3"
+        },
+        {
+          "title": "Template for Electronic Submission to ACS Journals",
+          "url": "https://www.osti.gov/servlets/purl/1853986",
+          "ref": "turn37search13"
+        },
+        {
+          "title": "Identification of Cytotoxic T Lymphocyte Epitopes on",
+          "url": "https://journals.plos.org/plosone/article/file?id=10.1371%2Fjournal.pone.0084443&type=printable",
+          "ref": "turn37search14"
+        },
+        {
+          "title": "The immunogenicity of a novel cytotoxic T lymphocyte epitope from tumor antigen PL2L60 could be enhanced by 4-chlorophenylalanine substitution at position 1",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11029738/",
+          "ref": "turn37search4"
+        },
+        {
+          "title": "Cell-Free Protein Synthesis as a Method to Rapidly Screen Machine Learning-Generated Protease Variants",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12090339/",
+          "ref": "turn37search5"
+        },
+        {
+          "title": "AI Aided Design of Epitope-Based Vaccine for the Induction of Cellular Immune Responses Against SARS-CoV-2",
+          "url": "https://public-pages-files-2025.frontiersin.org/journals/genetics/articles/10.3389/fgene.2021.602196/pdf",
+          "ref": "turn37search15"
+        },
+        {
+          "title": "Immunoinformatic Design and Evaluation of a Multi-Epitope mRNA Vaccine RP14914P Targeting Latent Tuberculosis Infection",
+          "url": "https://www.mdpi.com/2076-0817/15/3/297",
+          "ref": "turn37search6"
+        },
+        {
+          "title": "Recent progress on MHC-I epitope prediction in tumor immunotherapy",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8263640/",
+          "ref": "turn37search7"
+        },
+        {
+          "title": "Identification of vaccine targets in pathogens and design of a vaccine using computational approaches",
+          "url": "https://www.nature.com/articles/s41598-021-96863-x",
+          "ref": "turn37search8"
+        },
+        {
+          "title": "Discovery of CD8+ T cell epitopes in",
+          "url": "https://dash.harvard.edu/bitstreams/15ff6183-9ccd-473a-b692-accccfb3c8dc/download",
+          "ref": "turn37search16"
+        },
+        {
+          "title": "OMB No. 0990-0115",
+          "url": "https://citeseerx.ist.psu.edu/document?doi=847516584f69261635ecf4161bf810679bc7f239&repid=rep1&type=pdf",
+          "ref": "turn37search17"
+        },
+        {
+          "title": "Rank-guided learning accelerates automated enzyme engineering",
+          "url": "https://www.nature.com/articles/s41467-026-76264-2",
+          "ref": "turn37search9"
+        },
+        {
+          "title": "Enhanced Sequence-Activity Mapping and Evolution of Artificial Metalloenzymes by Active Learning",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11273458/",
+          "ref": "turn37search10"
+        },
+        {
+          "title": "Graph‐based optimization of epitope coverage for vaccine antigen design",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5763320/",
+          "ref": "turn37search11"
+        },
+        {
+          "title": "Checking your browser - reCAPTCHA",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11741572/",
+          "ref": "turn37view1"
+        }
+      ],
+      "tool_result_chars": 34643,
+      "has_access_error": true
+    },
+    {
+      "event_id": "R19",
+      "date": "2026-11-07",
+      "actor": "root",
+      "args": {
+        "open": [
+          {
+            "ref_id": "turn24view2",
+            "lineno": 34
+          },
+          {
+            "ref_id": "turn30view0",
+            "lineno": 34
+          }
+        ],
+        "response_length": "long"
+      },
+      "result_items": [
+        {
+          "title": "Systematic prediction of degrons and E3 ubiquitin ligase binding via deep learning - PMC",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9281121/",
+          "ref": "turn38view0"
+        },
+        {
+          "title": "Checking your browser - reCAPTCHA",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11739421/",
+          "ref": "turn38view1"
+        }
+      ],
+      "tool_result_chars": 33205,
+      "has_access_error": true
+    }
+  ],
+  "reference_map": {
+    "turn0search12": {
+      "title": "Elucidation of E3 ubiquitin ligase specificity through proteome-wide internal degron mapping",
+      "url": "https://www.timmslab.com/media/papers/2023_Mol_Cell_Elucidation_of_E3_ubiquitin_ligase_specificity_through_proteome-wide_internal_degron_mapping_naf6vNE.pdf",
+      "ref": "turn0search12"
+    },
+    "turn0search0": {
+      "title": "Elucidation of E3 ubiquitin ligase specificity through proteome-wide internal degron mapping",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37977122/",
+      "ref": "turn0search0"
+    },
+    "turn0search1": {
+      "title": "Elucidation of E3 ubiquitin ligase specificity through proteome-wide internal degron mapping",
+      "url": "https://openalex.org/W4386926240",
+      "ref": "turn0search1"
+    },
+    "turn0search2": {
+      "title": "Elucidation of E3 ubiquitin ligase specificity through proteome-wide internal degron mapping",
+      "url": "https://cir.nii.ac.jp/crid/1360869864174203776",
+      "ref": "turn0search2"
+    },
+    "turn0search3": {
+      "title": "DEGRONOPEDIA: a web server for proteome-wide inspection of degrons",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11223883/",
+      "ref": "turn0search3"
+    },
+    "turn0search4": {
+      "title": "Degron models: a toolbox for rapid in vivo depletion of essential proteins regulating mRNA metabolism",
+      "url": "https://www.nature.com/articles/s42003-026-09828-z",
+      "ref": "turn0search4"
+    },
+    "turn0search5": {
+      "title": "Elucidation of E3 ubiquitin ligase specificity through proteome-wide internal degron mapping",
+      "url": "https://www.researchgate.net/publication/374090186_Elucidation_of_E3_ubiquitin_ligase_specificity_through_proteome-wide_internal_degron_mapping",
+      "ref": "turn0search5"
+    },
+    "turn0search13": {
+      "title": "Systematic profiling of conditional degron tag technologies for target validation studies",
+      "url": "https://www.nature.com/articles/s41467-022-33246-4.pdf",
+      "ref": "turn0search13"
+    },
+    "turn0search6": {
+      "title": "Dipeptidyl peptidases and E3 ligases of N-degron pathways cooperate to regulate protein stability",
+      "url": "https://ouci.dntb.gov.ua/en/works/7XkxA8M9/",
+      "ref": "turn0search6"
+    },
+    "turn0search14": {
+      "title": "Degron tagging for rapid protein degradation in mice",
+      "url": "https://www.pure.ed.ac.uk/ws/portalfiles/portal/435991423/dmm050613.pdf",
+      "ref": "turn0search14"
+    },
+    "turn0search15": {
+      "title": "A near-complete map of human cytosolic degrons and their relevance for disease",
+      "url": "https://diva-portal.org/smash/get/diva2%3A2036961/FULLTEXT01.pdf",
+      "ref": "turn0search15"
+    },
+    "turn0search7": {
+      "title": "Systematic Characterization of Mutations Altering Protein Degradation in Human Cancers",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9245451/",
+      "ref": "turn0search7"
+    },
+    "turn0search8": {
+      "title": "iGEM 2026 Waseda-Tokyo",
+      "url": "https://2026.igem.wiki/waseda-tokyo/results/",
+      "ref": "turn0search8"
+    },
+    "turn0search9": {
+      "title": "Systematic prediction of degrons and E3 ubiquitin ligase binding via deep learning",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9281121/",
+      "ref": "turn0search9"
+    },
+    "turn0search10": {
+      "title": "Hypothesis",
+      "url": "https://api.hypothes.is/search?q=tag%3ARRID%3AAB_1196615",
+      "ref": "turn0search10"
+    },
+    "turn0search11": {
+      "title": "Role of Post-Translational Modifications in Colorectal Cancer Metastasis",
+      "url": "https://ouci.dntb.gov.ua/en/works/9GAqN804/",
+      "ref": "turn0search11"
+    },
+    "turn2view0": {
+      "title": "Checking your browser - reCAPTCHA",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10594193/",
+      "ref": "turn2view0"
+    },
+    "turn2view1": {
+      "title": "A near-complete map of human cytosolic degrons and their relevance for disease - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12880521/",
+      "ref": "turn2view1"
+    },
+    "turn2view2": {
+      "title": "Checking your browser - reCAPTCHA",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10688572/",
+      "ref": "turn2view2"
+    },
+    "turn7view0": {
+      "title": "Elucidation of E3 ubiquitin ligase specificity through proteome-wide internal degron mapping - PubMed",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37738965/",
+      "ref": "turn7view0"
+    },
+    "turn7view1": {
+      "title": "Elucidation of E3 ubiquitin ligase specificity through proteome-wide internal degron mapping - PubMed",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37977122/",
+      "ref": "turn7view1"
+    },
+    "turn7view3": {
+      "title": "A near-complete map of human cytosolic degrons and their relevance for disease - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12880521/",
+      "ref": "turn7view3"
+    },
+    "turn7view4": {
+      "title": "A near-complete map of human cytosolic degrons and their relevance for disease - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12880521/",
+      "ref": "turn7view4"
+    },
+    "turn7view5": {
+      "title": "A near-complete map of human cytosolic degrons and their relevance for disease - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12880521/",
+      "ref": "turn7view5"
+    },
+    "turn7view6": {
+      "title": "A near-complete map of human cytosolic degrons and their relevance for disease - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12880521/",
+      "ref": "turn7view6"
+    },
+    "turn7view7": {
+      "title": "A near-complete map of human cytosolic degrons and their relevance for disease - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12880521/",
+      "ref": "turn7view7"
+    },
+    "turn11view0": {
+      "title": "A near-complete map of human cytosolic degrons and their relevance for disease - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12880521/",
+      "ref": "turn11view0"
+    },
+    "turn11view1": {
+      "title": "pubmed.ncbi.nlm.nih.gov",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37738965/",
+      "ref": "turn11view1"
+    },
+    "turn11view2": {
+      "title": "pubmed.ncbi.nlm.nih.gov",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37977122/",
+      "ref": "turn11view2"
+    },
+    "turn24view0": {
+      "title": "Systematic Characterization of Mutations Altering Protein Degradation in Human Cancers - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9245451/",
+      "ref": "turn24view0"
+    },
+    "turn24view1": {
+      "title": "DEGRONOPEDIA: a web server for proteome-wide inspection of degrons - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11223883/",
+      "ref": "turn24view1"
+    },
+    "turn24view2": {
+      "title": "Systematic prediction of degrons and E3 ubiquitin ligase binding via deep learning - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9281121/",
+      "ref": "turn24view2"
+    },
+    "turn25view0": {
+      "title": "Systematic Characterization of Mutations Altering Protein Degradation in Human Cancers - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9245451/",
+      "ref": "turn25view0"
+    },
+    "turn25view1": {
+      "title": "Systematic Characterization of Mutations Altering Protein Degradation in Human Cancers - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9245451/",
+      "ref": "turn25view1"
+    },
+    "turn25view2": {
+      "title": "Systematic Characterization of Mutations Altering Protein Degradation in Human Cancers - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9245451/",
+      "ref": "turn25view2"
+    },
+    "turn25view3": {
+      "title": "DEGRONOPEDIA: a web server for proteome-wide inspection of degrons - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11223883/",
+      "ref": "turn25view3"
+    },
+    "turn25view4": {
+      "title": "DEGRONOPEDIA: a web server for proteome-wide inspection of degrons - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11223883/",
+      "ref": "turn25view4"
+    },
+    "turn25view5": {
+      "title": "Systematic prediction of degrons and E3 ubiquitin ligase binding via deep learning - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9281121/",
+      "ref": "turn25view5"
+    },
+    "turn25view6": {
+      "title": "Systematic prediction of degrons and E3 ubiquitin ligase binding via deep learning - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9281121/",
+      "ref": "turn25view6"
+    },
+    "turn26search0": {
+      "title": "Benchmarking uncertainty quantification for protein engineering",
+      "url": "https://journals.plos.org/ploscompbiol/article/citation?id=10.1371%2Fjournal.pcbi.1012639",
+      "ref": "turn26search0"
+    },
+    "turn26search12": {
+      "title": "PLOS COMPUTATIONAL BIOLOGY",
+      "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371%2Fjournal.pcbi.1012639&type=printable",
+      "ref": "turn26search12"
+    },
+    "turn26search13": {
+      "title": "Self-Driving Laboratories to Autonomously Navigate the Protein Fitness Landscape",
+      "url": "https://asset.library.wisc.edu/1711.dl/KEHX4JVKJ2L5Y8J/R/file-a4d76.pdf",
+      "ref": "turn26search13"
+    },
+    "turn26search14": {
+      "title": "ARTICLE IN PRESS",
+      "url": "https://www.nature.com/articles/s41540-026-00683-6_reference.pdf",
+      "ref": "turn26search14"
+    },
+    "turn26search1": {
+      "title": "Artificial intelligence–powered biofoundries for protein engineering and metabolic engineering",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0958166925001247",
+      "ref": "turn26search1"
+    },
+    "turn26search15": {
+      "title": "- Demonstrated quaternary alloy strategy to mitigate lattice mismatch and increase efficiency of InGaN LED materials",
+      "url": "https://www.kevinpgreenman.com/files/Greenman_Kevin_CV.pdf",
+      "ref": "turn26search15"
+    },
+    "turn26search2": {
+      "title": "Construction of the Thermostable D-Allulose 3-Epimerase from Arthrobacter globiformis M30 by Protein Engineering Method",
+      "url": "https://www.jstage.jst.go.jp/article/jag/71/4/71_jag.JAG-2024_0003/_html/-char/en",
+      "ref": "turn26search2"
+    },
+    "turn26search3": {
+      "title": "A general temperature-guided language model to design proteins of enhanced stability and activity",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11601203/",
+      "ref": "turn26search3"
+    },
+    "turn26search4": {
+      "title": "Self-driving laboratories to autonomously navigate the protein fitness landscape",
+      "url": "https://scispace.com/papers/self-driving-laboratories-to-autonomously-navigate-the-32zqfvp07j",
+      "ref": "turn26search4"
+    },
+    "turn26search16": {
+      "title": "|  |  |  |",
+      "url": "https://arca.umag.cl/bitstreams/2412472b-db4d-43ee-9cc1-63e5cdc03093/download",
+      "ref": "turn26search16"
+    },
+    "turn26search5": {
+      "title": "Combining AI, simulation, and experiment to map protein folding",
+      "url": "https://ouci.dntb.gov.ua/en/works/9ZPbJrKY/",
+      "ref": "turn26search5"
+    },
+    "turn26search6": {
+      "title": "January 2025 | PLOS Computational Biology",
+      "url": "https://journals.plos.org/ploscompbiol/issue?id=10.1371%2Fissue.pcbi.v21.i01",
+      "ref": "turn26search6"
+    },
+    "turn26search7": {
+      "title": "Adaptyv Bio — Protein Engineering Platform",
+      "url": "https://www.adaptyvbio.com/services/thermostability",
+      "ref": "turn26search7"
+    },
+    "turn26search8": {
+      "title": "PLOS Computational Biology",
+      "url": "https://bishtref.com/journals/9/plos-computational-biology",
+      "ref": "turn26search8"
+    },
+    "turn26search9": {
+      "title": "Protein Engineering Insights",
+      "url": "https://proteineng.com/posts/engineering-protein-thermostability-aidriven-methods-practical-applications-and-future-directions-for-biomedical-research",
+      "ref": "turn26search9"
+    },
+    "turn26search10": {
+      "title": "Protein Engineering Insights",
+      "url": "https://www.proteineng.com/posts/selfdriving-science-how-autonomous-platforms-like-sample-are-revolutionizing-protein-engineering",
+      "ref": "turn26search10"
+    },
+    "turn26search11": {
+      "title": "degron-related - Bioinformatics Tool | BioinformaticsHome",
+      "url": "https://bioinformaticshome.com/db/tool/degron-related/",
+      "ref": "turn26search11"
+    },
+    "turn27search0": {
+      "title": "Self-driving laboratories to autonomously navigate the protein fitness landscape",
+      "url": "https://www.nature.com/articles/s44286-023-00002-4",
+      "ref": "turn27search0"
+    },
+    "turn27search1": {
+      "title": "Elucidation of E3 ubiquitin ligase specificity through proteome-wide internal degron mapping",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37977122/",
+      "ref": "turn27search1"
+    },
+    "turn27search12": {
+      "title": "Spiez CONVERGENCE",
+      "url": "https://www.spiezlab.admin.ch/dam/en/sd-web/SmmMK5KGL8Ph/LaborSpiezConvergence2024_en.pdf",
+      "ref": "turn27search12"
+    },
+    "turn27search2": {
+      "title": "The past, present and future of self-driving laboratories",
+      "url": "https://www.nature.com/articles/s41570-026-00847-2",
+      "ref": "turn27search2"
+    },
+    "turn27search13": {
+      "title": "Self-Driving Laboratories to Autonomously Navigate the Protein Fitness Landscape",
+      "url": "https://asset.library.wisc.edu/1711.dl/KEHX4JVKJ2L5Y8J/R/file-a4d76.pdf",
+      "ref": "turn27search13"
+    },
+    "turn27search3": {
+      "title": "Self-driving Laboratories to Autonomously Navigate the Protein Fitness Landscape",
+      "url": "https://books.google.com/books/about/Self_driving_Laboratories_to_Autonomousl.html?id=yJ300AEACAAJ",
+      "ref": "turn27search3"
+    },
+    "turn27search4": {
+      "title": "Systematic prediction of degrons and E3 ubiquitin ligase binding via deep learning",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9281121/",
+      "ref": "turn27search4"
+    },
+    "turn27search14": {
+      "title": "Work 2: Autonomous lab for exploring protein fitness landscape",
+      "url": "https://ai4s.lab.westlake.edu.cn/assets/file/courseware/2025/11_AI%20%2B%20Life%20Sciences.pdf",
+      "ref": "turn27search14"
+    },
+    "turn27search5": {
+      "title": "Rank-guided learning accelerates automated enzyme engineering",
+      "url": "https://www.nature.com/articles/s41467-026-76264-2",
+      "ref": "turn27search5"
+    },
+    "turn27search15": {
+      "title": "BIBLIOGRAPHY 87",
+      "url": "https://publica-rest.fraunhofer.de/server/api/core/bitstreams/cf63cf82-fc00-48d4-a5c8-456552d7952d/content",
+      "ref": "turn27search15"
+    },
+    "turn27search16": {
+      "title": "General Submissions (Table of Contents)",
+      "url": "https://www.proceedings.com/content/073/073811webtoc.pdf",
+      "ref": "turn27search16"
+    },
+    "turn27search6": {
+      "title": "Harnessing Nature's Algorithm: From Test Tubes to Autonomous In Vivo Evolution",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13383600/",
+      "ref": "turn27search6"
+    },
+    "turn27search7": {
+      "title": "A generalized platform for artificial intelligence-powered autonomous enzyme engineering",
+      "url": "https://www.nature.com/articles/s41467-025-61209-y",
+      "ref": "turn27search7"
+    },
+    "turn27search8": {
+      "title": "Active learning-assisted directed evolution",
+      "url": "https://www.nature.com/articles/s41467-025-55987-8",
+      "ref": "turn27search8"
+    },
+    "turn27search9": {
+      "title": "Single Amino Acid Disease Mutations Act as Genetic Glues to Drive Neo-substrate Degradation",
+      "url": "https://www.biorxiv.org/content/10.64898/2026.09.17.752235v1.full",
+      "ref": "turn27search9"
+    },
+    "turn27search10": {
+      "title": "Artificial intelligence–powered biofoundries for protein engineering and metabolic engineering",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0958166925001247",
+      "ref": "turn27search10"
+    },
+    "turn27search11": {
+      "title": "The automated lab of tomorrow",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11046582/",
+      "ref": "turn27search11"
+    },
+    "turn28view2": {
+      "title": "Benchmarking uncertainty quantification for protein engineering | PLOS Computational Biology",
+      "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371%2Fjournal.pcbi.1012639",
+      "ref": "turn28view2"
+    },
+    "turn28view3": {
+      "title": "Systematic Characterization of Mutations Altering Protein Degradation in Human Cancers - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9245451/",
+      "ref": "turn28view3"
+    },
+    "turn28view4": {
+      "title": "Systematic Characterization of Mutations Altering Protein Degradation in Human Cancers - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9245451/",
+      "ref": "turn28view4"
+    },
+    "turn28view5": {
+      "title": "DEGRONOPEDIA: a web server for proteome-wide inspection of degrons - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11223883/",
+      "ref": "turn28view5"
+    },
+    "turn28view6": {
+      "title": "Systematic prediction of degrons and E3 ubiquitin ligase binding via deep learning - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9281121/",
+      "ref": "turn28view6"
+    },
+    "turn29search0": {
+      "title": "Active learning-assisted directed evolution.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39821082/",
+      "ref": "turn29search0"
+    },
+    "turn29search1": {
+      "title": "Active learning-assisted directed evolution",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11739421/",
+      "ref": "turn29search1"
+    },
+    "turn29search12": {
+      "title": "Active learning-assisted directed evolution",
+      "url": "https://www.nature.com/articles/s41467-025-55987-8.pdf",
+      "ref": "turn29search12"
+    },
+    "turn29search2": {
+      "title": "Efficient, Few-shot Directed Evolution with Energy Rank Alignment",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12889597/",
+      "ref": "turn29search2"
+    },
+    "turn29search3": {
+      "title": "Self-Driving Laboratories for Chemistry and Materials Science",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11363023/",
+      "ref": "turn29search3"
+    },
+    "turn29search4": {
+      "title": "Self-Driving Laboratories for Chemistry and Materials Science",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11363023/",
+      "ref": "turn29search4"
+    },
+    "turn29search5": {
+      "title": "Autonomous ‘self-driving’ laboratories: a review of technology and policy implications",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12368842/",
+      "ref": "turn29search5"
+    },
+    "turn29search13": {
+      "title": "WholeThesis_v5",
+      "url": "https://thesis.caltech.edu/18415/01/WholeThesis_v5.pdf",
+      "ref": "turn29search13"
+    },
+    "turn29search6": {
+      "title": "Enhanced Sequence-Activity Mapping and Evolution of Artificial Metalloenzymes by Active Learning",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11273458/",
+      "ref": "turn29search6"
+    },
+    "turn29search7": {
+      "title": "The automated lab of tomorrow",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11046582/",
+      "ref": "turn29search7"
+    },
+    "turn29search8": {
+      "title": "Cluster learning-assisted directed evolution",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9267417/",
+      "ref": "turn29search8"
+    },
+    "turn29search9": {
+      "title": "Optimization of regulatory DNA with active learning",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12553016/",
+      "ref": "turn29search9"
+    },
+    "turn29search10": {
+      "title": "Why AI Experiments Still Depend on Physical Labs | Activated Thinker",
+      "url": "https://medium.com/activated-thinker/the-experiment-still-has-to-become-matter-3e2a5dfec79d",
+      "ref": "turn29search10"
+    },
+    "turn29search11": {
+      "title": "Accelerating Science in a Multipolar World: Reflections from AI4X Conference | Julián Prieto Barrera, Ph.D. posted on the topic | LinkedIn",
+      "url": "https://www.linkedin.com/posts/jose-julian-prieto-barrera-48579a84_accelerating-science-in-a-multipolar-world-activity-7496632149358567424-4yu9",
+      "ref": "turn29search11"
+    },
+    "turn29academia14": {
+      "title": "Low-N Protein Activity Optimization with FolDE",
+      "url": "https://arxiv.org/abs/2510.24053",
+      "ref": "turn29academia14"
+    },
+    "turn29view0": {
+      "title": "Benchmarking uncertainty quantification for protein engineering | PLOS Computational Biology",
+      "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371%2Fjournal.pcbi.1012639",
+      "ref": "turn29view0"
+    },
+    "turn29view1": {
+      "title": "Benchmarking uncertainty quantification for protein engineering | PLOS Computational Biology",
+      "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371%2Fjournal.pcbi.1012639",
+      "ref": "turn29view1"
+    },
+    "turn29view2": {
+      "title": "Benchmarking uncertainty quantification for protein engineering | PLOS Computational Biology",
+      "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371%2Fjournal.pcbi.1012639",
+      "ref": "turn29view2"
+    },
+    "turn30search0": {
+      "title": "Self-driving laboratories to autonomously navigate the protein fitness landscape",
+      "url": "https://www.nature.com/articles/s44286-023-00002-4",
+      "ref": "turn30search0"
+    },
+    "turn30search12": {
+      "title": "nature chemical engineering",
+      "url": "https://static1.squarespace.com/static/66989691b854426c895ce7ca/t/692d5609718ec3222dfc2e0f/1764578825103/Rapp_2024.pdf",
+      "ref": "turn30search12"
+    },
+    "turn30search1": {
+      "title": "Technology integration in intensive care medicine through clinical engineering and convergent biotechnology",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13403013/",
+      "ref": "turn30search1"
+    },
+    "turn30search2": {
+      "title": "Self-driving laboratories to autonomously navigate the protein fitness landscape",
+      "url": "https://doi.org/10.1038/s44286-023-00002-4",
+      "ref": "turn30search2"
+    },
+    "turn30search13": {
+      "title": "Reaching new heights in genetic code manipulation with high throughput screening",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11879460/pdf/nihms-2060477.pdf",
+      "ref": "turn30search13"
+    },
+    "turn30search3": {
+      "title": "Autonomous platform engineers enhanced proteins | Research | Chemistry World",
+      "url": "https://www.chemistryworld.com/news/autonomous-platform-engineers-enhanced-proteins/4018841.article",
+      "ref": "turn30search3"
+    },
+    "turn30search4": {
+      "title": "Democratizing self-driving labs: advances in low-cost 3D printing for laboratory automation",
+      "url": "https://www.sciencedirect.com/org/science/article/pii/S2635098X25000968",
+      "ref": "turn30search4"
+    },
+    "turn30search6": {
+      "title": "自动驾驶实验室自主探索蛋白质适应性景观。 - Suppr | 超能文献",
+      "url": "https://suppr.wilddata.cn/browses/detail/pubmed/38468718",
+      "ref": "turn30search6"
+    },
+    "turn30search7": {
+      "title": "Automated laboratory system uses robotic equipment directed by AI to reengineer enzymes",
+      "url": "https://phys.org/news/2024-01-automated-laboratory-robotic-equipment-ai.html",
+      "ref": "turn30search7"
+    },
+    "turn30search8": {
+      "title": "경희대학교 환경관리시스템공학 연구실 EMSEL",
+      "url": "https://emsel.khu.ac.kr/index.php?bo_idx=1&hCode=BOARD&idx=1341&page=view&pg=2&sfl=&stx=",
+      "ref": "turn30search8"
+    },
+    "turn30search9": {
+      "title": "Bennett Bremer - Ascidian Therapeutics | LinkedIn",
+      "url": "https://www.linkedin.com/in/bennett-bremer-5a1126211",
+      "ref": "turn30search9"
+    },
+    "turn30search10": {
+      "title": "Pan, Yongqi, Xiao, Qinfan, Zhao, Fangyu, Li, Zhenhao, Liu, Jianyang, Ullah, Shafqat, Lim, Kang Hui, Huang, Tianyi, Yu, Zhiyuan, Li, Claudia, et al. (2025) Chat-microreactor: A large-language-model-based assistant for designing continuous flow systems. Chemical Engineering Science, 311. doi:10.1016/j.ces.2025.121567",
+      "url": "https://www.mindat.org/reference.php?id=18249811",
+      "ref": "turn30search10"
+    },
+    "turn30search11": {
+      "title": "Philip A. Romero — Researcher Profile",
+      "url": "https://bishtref.com/authors/7491",
+      "ref": "turn30search11"
+    },
+    "turn30view0": {
+      "title": "Active learning-assisted directed evolution - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11739421/",
+      "ref": "turn30view0"
+    },
+    "turn31view0": {
+      "title": "Self-driving laboratories to autonomously navigate the protein fitness landscape - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10926838/",
+      "ref": "turn31view0"
+    },
+    "turn31view1": {
+      "title": "Checking your browser - reCAPTCHA",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/12880521/bin/sciadv.adz3483_sm.pdf",
+      "ref": "turn31view1"
+    },
+    "turn31view2": {
+      "title": "Systematic Characterization of Mutations Altering Protein Degradation in Human Cancers - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9245451/",
+      "ref": "turn31view2"
+    },
+    "turn31view3": {
+      "title": "Checking your browser - reCAPTCHA",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11739421/",
+      "ref": "turn31view3"
+    },
+    "turn31view4": {
+      "title": "Checking your browser - reCAPTCHA",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11739421/",
+      "ref": "turn31view4"
+    },
+    "turn31view5": {
+      "title": "Checking your browser - reCAPTCHA",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11739421/",
+      "ref": "turn31view5"
+    },
+    "turn32search0": {
+      "title": "AlphaGenome-enabled analysis of non-coding regulatory variants underlying expression with wet-lab validation. | Broad Institute",
+      "url": "https://www.broadinstitute.org/publications/broad1374276",
+      "ref": "turn32search0"
+    },
+    "turn32search1": {
+      "title": "scEEMS Prediction - FunGen-xQTL Consortium",
+      "url": "https://statfungen.github.io/xqtl-protocol/ems_prediction.html",
+      "ref": "turn32search1"
+    },
+    "turn32search12": {
+      "title": "Decoding polygenic diseases: Advances in noncoding variant prioritization and validation",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12176383/pdf/nihms-2087924.pdf",
+      "ref": "turn32search12"
+    },
+    "turn32search13": {
+      "title": "npj | genomic medicine",
+      "url": "https://d-nb.info/1361760699/34",
+      "ref": "turn32search13"
+    },
+    "turn32search2": {
+      "title": "PG-LLM: Benchmarking General-Purpose Language Models for Protein Variant Ranking",
+      "url": "https://www.proteingymllm.com/",
+      "ref": "turn32search2"
+    },
+    "turn32search3": {
+      "title": "Population-scale drug target and variant prioritization with Varformer",
+      "url": "https://www.biorxiv.org/content/10.64898/2026.10.16.759653v1",
+      "ref": "turn32search3"
+    },
+    "turn32search4": {
+      "title": "Accelerated identification of disease-causing variants with ultra-rapid nanopore genome sequencing",
+      "url": "https://doi.org/10.1038/s41587-022-01221-5",
+      "ref": "turn32search4"
+    },
+    "turn32search14": {
+      "title": "PhD_Marcos_Diaz_Gay",
+      "url": "https://diposit.ub.edu/bitstreams/e85de603-734e-435e-9f47-ab85290f1c00/download",
+      "ref": "turn32search14"
+    },
+    "turn32search15": {
+      "title": "An integrative ENCODE resource for cancer genomics",
+      "url": "https://escholarship.org/content/qt97c2c0nw/qt97c2c0nw_noSplash_b17dcbc028713a3f0d8958f12809a474.pdf",
+      "ref": "turn32search15"
+    },
+    "turn32search5": {
+      "title": "GREEN-DB: a framework for the annotation and prioritization of non-coding regulatory variants from whole-genome sequencing data",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8934622/",
+      "ref": "turn32search5"
+    },
+    "turn32search6": {
+      "title": "Decoding polygenic diseases: advances in noncoding variant prioritization and validation",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38719704/",
+      "ref": "turn32search6"
+    },
+    "turn32search7": {
+      "title": "GitHub - ZuchnerLab/VariantPrioritizationBenchmark: Open and freely redistributable dataset and leaderboard for the medical genetics task of variant prioritization · GitHub",
+      "url": "https://github.com/ZuchnerLab/VariantPrioritizationBenchmark",
+      "ref": "turn32search7"
+    },
+    "turn32search8": {
+      "title": "A Practical Guide To Filtering and Prioritizing Genetic Variants",
+      "url": "https://www.tandfonline.com/doi/10.2144/000114492",
+      "ref": "turn32search8"
+    },
+    "turn32search9": {
+      "title": "Haoyang's paper on regulatory variant prioritization is published in Bioinformatics",
+      "url": "https://cgs.csail.mit.edu/research/gerv/",
+      "ref": "turn32search9"
+    },
+    "turn32search10": {
+      "title": "Semantic prioritization of novel causative genomic variants",
+      "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371%2Fjournal.pcbi.1005500",
+      "ref": "turn32search10"
+    },
+    "turn32search11": {
+      "title": "VARPRISM: incorporating variant prioritization in tests of de novo mutation association",
+      "url": "https://springerlink.fh-diploma.de/article/10.1186/s13073-016-0341-9",
+      "ref": "turn32search11"
+    },
+    "turn32reddit16": {
+      "title": "Stanford uses AI to cut DNA sequencing down to 5 hours.",
+      "url": "https://www.reddit.com/r/ehlersdanlos/comments/sxynbt",
+      "ref": "turn32reddit16"
+    },
+    "turn32academia17": {
+      "title": "RareCollab -- An Agentic System Diagnosing Mendelian Disorders with Integrated Phenotypic and Molecular Evidence",
+      "url": "https://arxiv.org/abs/2602.04058",
+      "ref": "turn32academia17"
+    },
+    "turn32academia18": {
+      "title": "DeepBD: A Grounded Agentic Workflow for Variant Prioritization and Diagnosis of Genetic Birth Defects",
+      "url": "https://arxiv.org/abs/2606.24779",
+      "ref": "turn32academia18"
+    },
+    "turn33search12": {
+      "title": "MorPhiC consortium: Towards functional characterization of all human genes",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12088665/pdf/nihms-2075647.pdf",
+      "ref": "turn33search12"
+    },
+    "turn33search13": {
+      "title": "Mechanisms of substrate processing during ER-associated degradation",
+      "url": "https://ora.ox.ac.uk/objects/uuid%3Ac00528e8-ae60-42a2-8a22-f38ca8cc1a1b/files/sgm80hw776",
+      "ref": "turn33search13"
+    },
+    "turn33search0": {
+      "title": "of Human Degrons",
+      "url": "https://doi.org/10.1021/acscentsci.3c01544",
+      "ref": "turn33search0"
+    },
+    "turn33search1": {
+      "title": "Exploring Novel E3 Ligases and Neosubstrates for Molecular Glue Degraders and Therapeutic Applications in Cancer",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13220090/",
+      "ref": "turn33search1"
+    },
+    "turn33search2": {
+      "title": "PROTACs in targeted protein degradation: Advances in development and AI-enhanced drug discovery",
+      "url": "https://doi.org/10.1016/j.ejmcr.2026.100332",
+      "ref": "turn33search2"
+    },
+    "turn33search3": {
+      "title": "Disease-guided targeted protein degradation and clearance: matching strategies to pathological protein states",
+      "url": "https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2026.1967704/full",
+      "ref": "turn33search3"
+    },
+    "turn33search4": {
+      "title": "Deep learning–driven decoding of ubiquitination: from regulatory mechanisms to targeted protein degradation",
+      "url": "https://springerlink.fh-diploma.de/article/10.1186/s13062-026-00848-7",
+      "ref": "turn33search4"
+    },
+    "turn33search5": {
+      "title": "AI Tries to Predict Hersh Bhargava’s PhD Defense",
+      "url": "https://aman.holdings/experiments/hersh-defense/",
+      "ref": "turn33search5"
+    },
+    "turn33search14": {
+      "title": "Unmeasured human transcription factor ChIP-seq data shape functional genomics and demand strategic prioritization",
+      "url": "https://watermark02.silverchair.com/elaf016.pdf",
+      "ref": "turn33search14"
+    },
+    "turn33search6": {
+      "title": "Deep learning–driven decoding of ubiquitination: from regulatory mechanisms to targeted protein degradation",
+      "url": "https://link.springer.com/article/10.1186/s13062-026-00848-7",
+      "ref": "turn33search6"
+    },
+    "turn33search7": {
+      "title": "Directed mutational scanning reveals a balance between acidic and hydrophobic residues in strong human activation domai…",
+      "url": "https://ouci.dntb.gov.ua/en/works/4vDK66a9/",
+      "ref": "turn33search7"
+    },
+    "turn33search8": {
+      "title": "Society for Laboratory Automation and Screening: SLAS2026 Scientific Podium Presentations",
+      "url": "https://slas.elevate.commpartners.com/products/slas2026-scientific-podium-presentations?in_package=237914&packages%5B%5D=237914&ref_id=237914&sort_by=package_order",
+      "ref": "turn33search8"
+    },
+    "turn33search9": {
+      "title": "Elucidation of E3 ubiquitin ligase specificity through proteome-wide internal degron mapping",
+      "url": "https://www.researchgate.net/publication/374090186_Elucidation_of_E3_ubiquitin_ligase_specificity_through_proteome-wide_internal_degron_mapping",
+      "ref": "turn33search9"
+    },
+    "turn33search15": {
+      "title": "Exploring Novel E3 Ligases and Neosubstrates for Molecular Glue Degraders and Therapeutic Applications in Cancer",
+      "url": "https://file.techscience.com/files/onlinefirst/2026/3.19/TSP_OR_73660/TSP_OR_73660.pdf",
+      "ref": "turn33search15"
+    },
+    "turn33search10": {
+      "title": "ProteinQC Hub",
+      "url": "https://www.proteinqc.com/posts/harnessing-protein-quality-control-from-mechanistic-insights-to-clinical-degradation-therapies",
+      "ref": "turn33search10"
+    },
+    "turn33search11": {
+      "title": "Advances and opportunities for computational interrogation of plant proteins",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1111/tpj.70899",
+      "ref": "turn33search11"
+    },
+    "turn33search16": {
+      "title": "MetaDegron: multimodal feature-integrated protein language model for predicting E3 ligase targeted degrons",
+      "url": "https://watermark02.silverchair.com/bbae519.pdf",
+      "ref": "turn33search16"
+    },
+    "turn33search17": {
+      "title": "Hypoxic and Fe‐Responses are Regulated by the ERFVII Factors and the PCO Branch of the N‐Degron Pathway According to Iron Availability",
+      "url": "https://www.iris.santannapisa.it/retrieve/02a58df3-c400-4bcb-8092-911c5d11a2ab/2026%20Plant%20Cell%20%20%20Environment%20-%202026%20-%20Telara%20-%20Hypoxic%20and%20Fe%E2%80%90Responses%20are%20Regulated%20by%20the%20ERFVII%20Factors%20and%20the%20PCO%20Branch.pdf",
+      "ref": "turn33search17"
+    },
+    "turn34search0": {
+      "title": "Design of Cytotoxic T Cell Epitopes by Machine Learning of Human Degrons",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11046456/",
+      "ref": "turn34search0"
+    },
+    "turn34search1": {
+      "title": "Design of Cytotoxic T Cell Epitopes by Machine Learning of Human Degrons.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38680558/",
+      "ref": "turn34search1"
+    },
+    "turn34search2": {
+      "title": "Design of Cytotoxic T Cell Epitopes by Machine Learning of Human Degrons",
+      "url": "https://openalex.org/W4392505444",
+      "ref": "turn34search2"
+    },
+    "turn34search12": {
+      "title": "To Whom It May Concern:",
+      "url": "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1556557/download-documents?artifactId=mWF6w9RvSewo7ookXH9iQ4p8HDR0rNwm0DtUI-PoLe8p-rD1B7CVlik",
+      "ref": "turn34search12"
+    },
+    "turn34search13": {
+      "title": "Curriculum Vitae",
+      "url": "https://pentelutelabmit.com/wp-content/uploads/2026/06/Pentelute-CV-05-25-2026-short.pdf",
+      "ref": "turn34search13"
+    },
+    "turn34search14": {
+      "title": "CV_Truex_WEB_2024.1",
+      "url": "https://sc.edu/study/colleges_schools/chemistry_and_biochemistry/docs/faculty_docs/truex_nicholas/truex_cv_2024.pdf",
+      "ref": "turn34search14"
+    },
+    "turn34search3": {
+      "title": "Epitope Prediction Assays Combined with Validation Assays Strongly Narrows down Putative Cytotoxic T Lymphocyte Epitopes",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4494349/",
+      "ref": "turn34search3"
+    },
+    "turn34search4": {
+      "title": "Publications | Broad Institute",
+      "url": "https://www.broadinstitute.org/publications?f%5Bkeyword%5D=2421&page=569&sp=S7000003188599706",
+      "ref": "turn34search4"
+    },
+    "turn34search5": {
+      "title": "Large-scale validation of methods for cytotoxic T-lymphocyte epitope prediction",
+      "url": "https://springerlink.fh-diploma.de/article/10.1186/1471-2105-8-424",
+      "ref": "turn34search5"
+    },
+    "turn34search6": {
+      "title": "Large-scale validation of methods for cytotoxic T-lymphocyte epitope prediction",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2194739/",
+      "ref": "turn34search6"
+    },
+    "turn34search7": {
+      "title": "Experimental Study of Potential CD8+ Trivalent Synthetic Peptides for Liver Cancer Vaccine Development Using Sprague Dawley Rat Models.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35686237/",
+      "ref": "turn34search7"
+    },
+    "turn34search8": {
+      "title": "Rational Design of a Multiepitope Vaccine Encoding T-Lymphocyte Epitopes for Treatment of Chronic Hepatitis B Virus Infections",
+      "url": "https://journals.asm.org/doi/full/10.1128/jvi.01505-07",
+      "ref": "turn34search8"
+    },
+    "turn34search9": {
+      "title": "A protocol for computational design of mRNA vaccines with high functionality and specificity",
+      "url": "https://link.springer.com/article/10.1186/s13062-026-00846-9",
+      "ref": "turn34search9"
+    },
+    "turn34search15": {
+      "title": "Identification of Cytotoxic T Lymphocyte Epitopes on",
+      "url": "https://journals.plos.org/plosone/article/file?id=10.1371%2Fjournal.pone.0084443&type=printable",
+      "ref": "turn34search15"
+    },
+    "turn34search10": {
+      "title": "In silico identification of highly conserved cytotoxic T-lymphocyte (CTL) epitopes from Streptococcus pyogenes exoenzymes for epitope-based vaccine development",
+      "url": "https://bmrat.org/index.php/BMRAT/article/view/1051",
+      "ref": "turn34search10"
+    },
+    "turn34search11": {
+      "title": "AI-driven epitope prediction: a systematic review, comparative analysis, and practical guide for vaccine development",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12398602/",
+      "ref": "turn34search11"
+    },
+    "turn34search16": {
+      "title": "Design of a multi-epitope vaccine against Haemophilus parasuis based on pan-genome and immunoinformatics approaches",
+      "url": "https://public-pages-files-2025.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2022.1053198/pdf",
+      "ref": "turn34search16"
+    },
+    "turn34search17": {
+      "title": "AI-driven epitope prediction: a systematic review, comparative analysis, and practical guide for vaccine development",
+      "url": "https://d-nb.info/1382363451/34",
+      "ref": "turn34search17"
+    },
+    "turn35view0": {
+      "title": "Checking your browser - reCAPTCHA",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11046456/",
+      "ref": "turn35view0"
+    },
+    "turn35view1": {
+      "title": "Self-driving laboratories to autonomously navigate the protein fitness landscape - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10926838/",
+      "ref": "turn35view1"
+    },
+    "turn35view2": {
+      "title": "Self-driving laboratories to autonomously navigate the protein fitness landscape - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10926838/",
+      "ref": "turn35view2"
+    },
+    "turn35view3": {
+      "title": "Self-driving laboratories to autonomously navigate the protein fitness landscape - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10926838/",
+      "ref": "turn35view3"
+    },
+    "turn35view4": {
+      "title": "Systematic Characterization of Mutations Altering Protein Degradation in Human Cancers - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9245451/",
+      "ref": "turn35view4"
+    },
+    "turn36search12": {
+      "title": "The qua",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10549960/pdf/CD006857.pdf",
+      "ref": "turn36search12"
+    },
+    "turn36search13": {
+      "title": "Epidemiologic Reviews",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10362939/pdf/mxac010.pdf",
+      "ref": "turn36search13"
+    },
+    "turn36search0": {
+      "title": "A simple high-throughput approach identifies actionable drug sensitivities in patient-derived tumor organoids",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/6389967/",
+      "ref": "turn36search0"
+    },
+    "turn36search14": {
+      "title": "TOPIC IN REVIEW",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1071653/pdf/wjm17600045.pdf",
+      "ref": "turn36search14"
+    },
+    "turn36search15": {
+      "title": "BMJ Open — Page 22 of 31",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/10124307/bin/bmjopen-2022-067984.draft_revisions.pdf",
+      "ref": "turn36search15"
+    },
+    "turn36search16": {
+      "title": "BMJ Open — Page 22 of 30",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/10668261/bin/bmjopen-2023-072275.draft_revisions.pdf",
+      "ref": "turn36search16"
+    },
+    "turn36search1": {
+      "title": "Neurogenic locus notch homolog protein 1 (NOTCH 1) SNP informatics coupled with intrinsically disordered regions and post-translational modifications reveals the complex structural crosstalk of Lung Adenocarcinoma (LUAD)",
+      "url": "https://www.frontiersin.org/journals/bioinformatics/articles/10.3389/fbinf.2025.1641521/full",
+      "ref": "turn36search1"
+    },
+    "turn36search17": {
+      "title": "(Continued)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9809923/pdf/CD014906.pdf",
+      "ref": "turn36search17"
+    },
+    "turn36search2": {
+      "title": "in Small-Molecule Drug Discovery",
+      "url": "https://pubs.acs.org/doi/10.1021/acs.analchem.5c04083",
+      "ref": "turn36search2"
+    },
+    "turn36search3": {
+      "title": "An Overview of Cell-Based Assay Platforms for the Solute Carrier Family of Transporters",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8383457/",
+      "ref": "turn36search3"
+    },
+    "turn36search4": {
+      "title": "CUPID-seq enables highly multiplexed amplicon sequencing via combinatorial in-line dual indexing",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13228431/",
+      "ref": "turn36search4"
+    },
+    "turn36search5": {
+      "title": "Thyrotroph embryonic factor is downregulated in bladder cancer and suppresses proliferation and tumorigenesis via the AKT/FOXOs signalling pathway",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6496933/",
+      "ref": "turn36search5"
+    },
+    "turn36search6": {
+      "title": "High Throughput Fluorometric Technique for Assessment of Macrophage Phagocytosis and Actin Polymerization",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4354378/",
+      "ref": "turn36search6"
+    },
+    "turn36search7": {
+      "title": "Study protocol for a randomized, double-blind, placebo-controlled clinical trial of desidustat oral tablet in sickle cell disease: a phase IIa proof-of-concept evaluation",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13330192/",
+      "ref": "turn36search7"
+    },
+    "turn36search8": {
+      "title": "Construction, Verification and Experimental Use of Two Epitope-Tagged Collections of Budding Yeast Strains",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2448600/",
+      "ref": "turn36search8"
+    },
+    "turn36search9": {
+      "title": "Efficient gene-driven germ-line point mutagenesis of C57BL/6J mice",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1325271/",
+      "ref": "turn36search9"
+    },
+    "turn36search10": {
+      "title": "Fluorescent Marinoquinoline Derivative as Inhibitors of Plasmodium falciparum: SAR Analysis, Mode of Action and In Vivo Studies",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12557366/",
+      "ref": "turn36search10"
+    },
+    "turn36search11": {
+      "title": "Prion 2022 Conference abstracts: pushing the boundaries",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9467582/",
+      "ref": "turn36search11"
+    },
+    "turn36view0": {
+      "title": "Checking your browser - reCAPTCHA",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/9245451/bin/NIHMS1667687-supplement-5.xlsx",
+      "ref": "turn36view0"
+    },
+    "turn36view1": {
+      "title": "DEGRONOPEDIA: a web server for proteome-wide inspection of degrons - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11223883/",
+      "ref": "turn36view1"
+    },
+    "turn37search0": {
+      "title": "Active learning-assisted directed evolution",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11739421/",
+      "ref": "turn37search0"
+    },
+    "turn37search12": {
+      "title": "Active learning-assisted directed evolution",
+      "url": "https://www.nature.com/articles/s41467-025-55987-8.pdf",
+      "ref": "turn37search12"
+    },
+    "turn37search1": {
+      "title": "Design of Cytotoxic T Cell Epitopes by Machine Learning of Human Degrons",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10473641/",
+      "ref": "turn37search1"
+    },
+    "turn37search2": {
+      "title": "Design of Cytotoxic T Cell Epitopes by Machine Learning of Human Degrons",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11046456/",
+      "ref": "turn37search2"
+    },
+    "turn37search3": {
+      "title": "Active learning-assisted directed evolution",
+      "url": "https://doi.org/10.1038/s41467-025-55987-8",
+      "ref": "turn37search3"
+    },
+    "turn37search13": {
+      "title": "Template for Electronic Submission to ACS Journals",
+      "url": "https://www.osti.gov/servlets/purl/1853986",
+      "ref": "turn37search13"
+    },
+    "turn37search14": {
+      "title": "Identification of Cytotoxic T Lymphocyte Epitopes on",
+      "url": "https://journals.plos.org/plosone/article/file?id=10.1371%2Fjournal.pone.0084443&type=printable",
+      "ref": "turn37search14"
+    },
+    "turn37search4": {
+      "title": "The immunogenicity of a novel cytotoxic T lymphocyte epitope from tumor antigen PL2L60 could be enhanced by 4-chlorophenylalanine substitution at position 1",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11029738/",
+      "ref": "turn37search4"
+    },
+    "turn37search5": {
+      "title": "Cell-Free Protein Synthesis as a Method to Rapidly Screen Machine Learning-Generated Protease Variants",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12090339/",
+      "ref": "turn37search5"
+    },
+    "turn37search15": {
+      "title": "AI Aided Design of Epitope-Based Vaccine for the Induction of Cellular Immune Responses Against SARS-CoV-2",
+      "url": "https://public-pages-files-2025.frontiersin.org/journals/genetics/articles/10.3389/fgene.2021.602196/pdf",
+      "ref": "turn37search15"
+    },
+    "turn37search6": {
+      "title": "Immunoinformatic Design and Evaluation of a Multi-Epitope mRNA Vaccine RP14914P Targeting Latent Tuberculosis Infection",
+      "url": "https://www.mdpi.com/2076-0817/15/3/297",
+      "ref": "turn37search6"
+    },
+    "turn37search7": {
+      "title": "Recent progress on MHC-I epitope prediction in tumor immunotherapy",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8263640/",
+      "ref": "turn37search7"
+    },
+    "turn37search8": {
+      "title": "Identification of vaccine targets in pathogens and design of a vaccine using computational approaches",
+      "url": "https://www.nature.com/articles/s41598-021-96863-x",
+      "ref": "turn37search8"
+    },
+    "turn37search16": {
+      "title": "Discovery of CD8+ T cell epitopes in",
+      "url": "https://dash.harvard.edu/bitstreams/15ff6183-9ccd-473a-b692-accccfb3c8dc/download",
+      "ref": "turn37search16"
+    },
+    "turn37search17": {
+      "title": "OMB No. 0990-0115",
+      "url": "https://citeseerx.ist.psu.edu/document?doi=847516584f69261635ecf4161bf810679bc7f239&repid=rep1&type=pdf",
+      "ref": "turn37search17"
+    },
+    "turn37search9": {
+      "title": "Rank-guided learning accelerates automated enzyme engineering",
+      "url": "https://www.nature.com/articles/s41467-026-76264-2",
+      "ref": "turn37search9"
+    },
+    "turn37search10": {
+      "title": "Enhanced Sequence-Activity Mapping and Evolution of Artificial Metalloenzymes by Active Learning",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11273458/",
+      "ref": "turn37search10"
+    },
+    "turn37search11": {
+      "title": "Graph‐based optimization of epitope coverage for vaccine antigen design",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5763320/",
+      "ref": "turn37search11"
+    },
+    "turn37view1": {
+      "title": "Checking your browser - reCAPTCHA",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11741572/",
+      "ref": "turn37view1"
+    },
+    "turn38view0": {
+      "title": "Systematic prediction of degrons and E3 ubiquitin ligase binding via deep learning - PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9281121/",
+      "ref": "turn38view0"
+    },
+    "turn38view1": {
+      "title": "Checking your browser - reCAPTCHA",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11739421/",
+      "ref": "turn38view1"
+    }
+  },
+  "local_pdf": {
+    "ref_slug": "zhang2023",
+    "url": "https://www.timmslab.com/media/papers/2023_Mol_Cell_Elucidation_of_E3_ubiquitin_ligase_specificity_through_proteome-wide_internal_degron_mapping_naf6vNE.pdf",
+    "bytes": 12552014,
+    "sha256": "851201eaea1f22648ebafac147b4b9435971af29022fd7d43d24ddc57f279d55",
+    "preflight": "UNAVAILABLE: pypdf not installed; no PDF page anchors used",
+    "text_extraction": "pdftotext -layout; results and limitations located by section/figure labels"
+  },
+  "url_sanitization": "Ephemeral access/tracking query parameters omitted; scholarly identifiers retained.",
+  "actor_coverage": "Main session receipts only; incomplete worker operations not reconstructed."
+}

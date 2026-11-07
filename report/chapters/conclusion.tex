@@ -31,6 +31,15 @@ W5-D transfer evaluation is also complete: positive AUROC is \nCampaignTAuc{}, w
 difference from predicting zero is \nCampaignTDelta{} with interval \nCampaignTCI{}.
 The contrast between ranking and regression limits the transfer claim.
 
+The same-budget retrospective replay directly tests mutation prioritisation on W. Selecting ten
+mutations per peptide recovers \nPriorityLoraHits{} positive hits with LoRA-D, versus
+\nPriorityWfiveHits{} with W5-D and random expectation \nPriorityRandomHits{}, under the same
+\nPrioritySelections{} selections. LoRA-D positive Precision@10 is \nPriorityLoraPrecision\%;
+its gain over W5-D is \nPriorityDeltaWfive{} percentage points, with adjusted 97.5\% interval
+$\nPriorityWfiveCI{}$. Both primary reference contrasts are supported within this replay.
+This adds an empirical prioritisation result beyond the MAE/AUROC comparisons, while retaining
+the limitations of a repeatedly examined development cohort.
+
 \subsection{Program and Practical Application Potential}
 The calibrated restricted-domain ridge baseline has an inference path numerically consistent with
 the research runner. A local React/FastAPI implementation supplies single-peptide results, reference
@@ -58,9 +67,15 @@ final refit, lineage cards and export remain unfinished. Earlier baseline calibr
 gate cannot be assumed valid for a new serving model.
 The gate is not yet integrated correctly into the baseline application. No new wet-lab validation,
 E3-specific recognition, intact-protein prediction or clinical inference has been established.
+The prioritisation budget counts mutation selections, not laboratory spending. Its budget-to-recall
+scores use total hit counts known only retrospectively; they do not measure hours, money or
+prospective experimental savings. A matched local LoRA--Frozen contrast and a cross-runtime
+LoRA--Ridge comparison also answer different questions.
 
 \section{Priorities for the Next Research Phase}
 Preserve the completed OOF record, paired uncertainty and unsuccessful controls. Investigate the
+prospective value of the fixed-budget shortlist against locked selection baselines, retaining failed
+predictions and measuring actual experimental resources. Investigate the
 high-PSI transfer errors and probability shift with an explicitly designed new evaluation, rather than
 using the already inspected T set to choose among pLMs. New external and structure extensions require
 reviewed inputs and overlap/rights audits. Any model selected for inference needs an architecture-specific

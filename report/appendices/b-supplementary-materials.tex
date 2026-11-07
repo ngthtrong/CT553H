@@ -28,33 +28,59 @@ pre-training. These are distinct interventions and should not be pooled into one
 
 \input{assets/ch4/tab-campaign-all}
 
-\clearpage
+\Needspace{11\baselineskip}
 \section{Seed Stability and Inner Selection}
 \begin{table}[htbp]
   \centering
-  \caption{Single-seed and ensemble peptide-macro MAE for the matched local core experiment.}
+  \caption[Single-seed and ensemble peptide-macro MAE for the matched local core experiment]{Single-seed and ensemble peptide-macro MAE for the matched local core experiment.}
   \label{tab:campaign-seeds}
   \input{assets/ch4/tab-campaign-seeds}
 \end{table}
 \begin{table}[htbp]
   \centering
-  \caption{Inner-selected epoch counts over 15 outer fits per local core recipe.}
+  \caption[Inner-selected epoch counts over 15 outer fits per local core recipe]{Inner-selected epoch counts over 15 outer fits per local core recipe.}
   \label{tab:campaign-epochs}
   \input{assets/ch4/tab-campaign-epochs}
 \end{table}
 \begin{table}[htbp]
   \centering
-  \caption{Local frozen-family recipes chosen by the saved inner-MSE selector.
+  \caption[Local frozen-family recipes chosen by the saved inner-MSE selector]{Local frozen-family recipes chosen by the saved inner-MSE selector.
   Frequencies across seed/fold pairs are not independent votes for a model family.}
   \label{tab:campaign-nested}
   \input{assets/ch4/tab-campaign-nested}
 \end{table}
 
-\clearpage
+\FloatBarrier
+\section{Retrospective Prioritisation Sensitivity}
+The following tables supplement Section~\ref{sec:res-prioritization}. Precision includes every
+W peptide, including those without a positive hit. Seeds share outer folds; the ensemble averages
+predictions before ranking. Neither a seed nor a budget is selected after inspecting utility.
+The 100 fixed tie seeds give unchanged results because no exact score tie crosses a tested
+cutoff. Checks retain all no-hit cases and independently reconstruct all 14,100 ensemble
+peptide--policy--endpoint--budget rows. They verify arithmetic and saved evidence, not new
+biological data or the complete historical model-selection process.
+
+\begin{table}[htbp]
+  \centering
+  \caption[Positive Precision@10 in percent for each seed and the three-seed ensemble]{Positive Precision@10 in percent for each seed and the three-seed ensemble.
+  Every row and column uses 2,350 selections on 235 peptides.}
+  \label{tab:priority-seeds}
+  \input{assets/ch4/tab-priority-seeds}
+\end{table}
+\begin{table}[htbp]
+  \centering
+  \caption[Positive peptide-macro precision in percent across the six fixed analysis budgets]{Positive peptide-macro precision in percent across the six fixed analysis budgets.
+  Total selections are equal across policies within each row. Fractional budgets use ceiling
+  rounding within each peptide and differ from a fixed ten-mutation budget.}
+  \label{tab:priority-budgets}
+  \input{assets/ch4/tab-priority-budgets}
+\end{table}
+\FloatBarrier
+\Needspace{11\baselineskip}
 \section{Execution Cost and Output Inventory}
 \begin{table}[htbp]
   \centering
-  \caption{Recorded durations of completed local job attempts, counting inherited work once.
+  \caption[Recorded durations of completed local job attempts, counting inherited work once]{Recorded durations of completed local job attempts, counting inherited work once.
   Earlier attempts of paused/resumed jobs may be absent; these are not GPU-active or full elapsed times.}
   \label{tab:campaign-timing}
   \input{assets/ch4/tab-campaign-timing}
@@ -74,7 +100,7 @@ source remains required because the successor references its inherited artifacts
 
 \begin{table}[htbp]
   \centering
-  \caption{Physical output inventory at review time. Weight caches and code snapshots are supporting
+  \caption[Physical output inventory at review time]{Physical output inventory at review time. Weight caches and code snapshots are supporting
   assets, not evaluation datasets.}
   \label{tab:campaign-inventory}
   \input{assets/ch4/tab-campaign-inventory}

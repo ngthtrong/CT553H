@@ -4,17 +4,18 @@ Kho nghiên cứu và báo cáo luận văn của **Nguyễn Thanh Trọng** (B2
 
 Đề tài **degron-footprint** tập trung dự đoán hiệu ứng đột biến ở từng vị trí amino acid trên nhãn thực nghiệm, kèm công cụ phân tích. Kết quả và giới hạn của từng thí nghiệm nằm trong README và tệp kết quả tương ứng.
 
-## Trạng thái ngày 06/11/2026
+## Trạng thái ngày 07/11/2026
 
 | Mảng | Hiện trạng và điểm vào |
 | --- | --- |
-| Nghiên cứu | **v3 full-PSI** đã hoàn tất phần tính toán local: 633 job complete, nguồn ngoài/cấu trúc pending. [Phân tích local hoàn tất](research/kaggle-roadmap-2026-10-31/local-output-analysis.md) kiểm artifact, OOF, frozen–LoRA, hiệu chuẩn và T; [phân tích Kaggle](research/kaggle-roadmap-2026-10-31/output-analysis.md) giữ mốc riêng. Chưa đóng G2/G3 hoặc chọn lại mô hình sản phẩm. |
+| Nghiên cứu / G2 | **v3 full-PSI** hoàn tất 633 job local, nguồn ngoài/cấu trúc pending. [Phân tích local](research/kaggle-roadmap-2026-10-31/local-output-analysis.md) có bằng chứng LoRA cải thiện so frozen. [Hồ sơ rà nghiệm thu G2](research/g2-acceptance-2026-11-07/README.md): đã có cải thiện định lượng trong development, đủ hồ sơ để rà nghiệm thu; chưa ghi nhận quyết định đóng G2. [Kaggle](research/kaggle-roadmap-2026-10-31/output-analysis.md) giữ mốc riêng; mô hình sản phẩm chưa đổi. |
+| Bằng chứng wet lab / nguồn lực | [Kết quả tra cứu theo ARS](research/wet-lab-evidence-plan-2026-11-07/findings.md): có tiền lệ validation sinh học từ nghiên cứu ngoài; số liệu nguồn lực lân cận gồm đo thực tế, ước lượng và simulation cần tách riêng. Chưa có kiểm chứng trực tiếp CT553H tiết kiệm wet lab. |
 | Dữ liệu | Bundle v3 giữ saturation toàn dải PSI và scanning sau QC; nguồn, giấy phép, hash và nhật ký nằm trong [sổ dữ liệu](data/README.md), quy tắc dựng bundle ở [DATASET.md](research/kaggle-roadmap-2026-10-31/DATASET.md). Dữ liệu và artifact nặng nằm local. |
 | Ứng dụng | [Baseline FastAPI + React](system/app/README.md) có mã và kiểm thử lịch sử, dùng `m3-ext4.0-platt-v1`. [Phạm vi v0.2](system/README.md) gồm dự án/lịch sử, jobs peptide/protein, import/comparison; các phần mở rộng chưa được nghiệm thu. |
 | Giao diện | [Workspace UI v2](system/design/workspace-ui-v2/README.md) là prototype tương tác hiện hành; dữ liệu minh hoạ, lưu trong bộ nhớ tab, chưa nối backend. |
 | Luận văn / đề cương | [Luận văn](report/README.md) cập nhật campaign hoàn tất ngày 06/11: phương pháp, 88 cấu hình OOF, LoRA/calibration/T, sơ đồ và phụ lục; [audit tổng hợp](research/output-review-2026-11-06/README.md). [Đề cương](proposal/README.md) giữ bản 03/11. Còn `[PENDING]`; cập nhật tài liệu không phải nghiệm thu G2/G3. |
 
-Trạng thái nghiên cứu đã đối chiếu output hoàn tất ngày 06/11; số test phần mềm lịch sử không phải kết quả kiểm lại hôm nay. Các snapshot tiến độ cũ giữ mốc riêng trong chỉ mục nghiên cứu.
+Trạng thái nghiệm thu được đối chiếu ngày 07/11 từ output/audit đã lưu ngày 06/11; không có lượt huấn luyện hoặc kiểm lại test phần mềm mới. G2 ghi nhận bằng chứng nghiên cứu riêng với nghiệm thu G3 và claim lợi ích wet lab. Các snapshot tiến độ cũ giữ mốc riêng trong chỉ mục nghiên cứu.
 
 ## Cấu trúc hiện tại
 

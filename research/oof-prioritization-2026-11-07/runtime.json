@@ -1,0 +1,21 @@
+{
+  "started_at": "2026-11-07T17:08:54.979397+08:00",
+  "finished_at": "2026-11-07T17:10:33.397309+08:00",
+  "wall_seconds": 101.68129706599939,
+  "cpu_seconds": 101.37899264699999,
+  "peak_process_rss_mib": 1081.66015625,
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "executable": "/home/ngthtrong/CT553H/.venv/bin/python",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "machine": "x86_64",
+  "versions": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "scipy": "1.18.1",
+    "pyarrow": "26.0.0",
+    "matplotlib": "3.11.2",
+    "sklearn": "1.9.1"
+  },
+  "command": ".venv/bin/python -I research/oof-prioritization-2026-11-07/evaluate.py",
+  "note": "Analysis process only; RAM is Linux ru_maxrss, not sampled machine total. Not wet-lab cost."
+}

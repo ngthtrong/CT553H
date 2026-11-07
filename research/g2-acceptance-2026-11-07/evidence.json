@@ -1,0 +1,536 @@
+{
+  "schema": "ct553h-g2-evidence-extract/1",
+  "review_date": "2026-11-07",
+  "scope": "Saved repository evidence; no new training, inference, bootstrap, full artifact rehash, web search or formal acceptance.",
+  "g2_status": {
+    "development_improvement": "supported_by_saved_matched_local_contrasts",
+    "acceptance_review": "evidence_available_for_review_under_current_contribution_scope",
+    "formal_gate_closure": "not_recorded_in_reviewed_documents",
+    "new_acceptance_threshold": null,
+    "changes_to_original_scientific_status": false,
+    "wet_lab_benefit_CT553H": "not_directly_demonstrated",
+    "final_serving_promotion": "not_completed"
+  },
+  "sources": [
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "bytes": 253813,
+      "sha256": "1295e5d8aed2eef57604b5f94a6e501cbd7d04e395a2a531d7ccca320e35cc3f"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/EXECUTION-PROTOCOL.md",
+      "bytes": 8988,
+      "sha256": "9d2376bd115bf5934c4ebfc82031dcc30dc012eb94997959e6cd0f59c4f00f9c"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/PROTOCOL.md",
+      "bytes": 12448,
+      "sha256": "64ac4c06963c3be5174137e081dd9d362842f654be4795f0737fff3979f90f92"
+    },
+    {
+      "path": "research/r1-degformer-clean-2026-10-22/README.md",
+      "bytes": 7398,
+      "sha256": "8ce6b2d359e7446e1a04c793273f4fe1fc06f18fcde7fdbe3a7e692868e92169"
+    },
+    {
+      "path": "research/r1-degformer-clean-2026-10-22/run-kaggle-20261022/results.json",
+      "bytes": 4455,
+      "sha256": "27fa02aad2243fabaf215059af2dd64208eabf21742d9031be9469f8673f0e09"
+    },
+    {
+      "path": "research/progress-review-2026-11-06/local-audit.md",
+      "bytes": 13323,
+      "sha256": "6486949fdef233b9d35cfcd021a9d3ee4db1ee7ed9b026e1bedc18c3456ecc1e"
+    }
+  ],
+  "extraction_method": "Read source JSON, copy values verbatim at RFC6901 pointers; hash listed small sources with SHA-256. No metric recomputation.",
+  "records": [
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/generated_local",
+      "value": "2026-11-06T08:10:38+08:00"
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/campaign",
+      "value": "ef138c84579c842e"
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/data_identity",
+      "value": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738"
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/scientific_status",
+      "value": "development_not_gate_closure"
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/integrity",
+      "value": {
+        "status": "pass",
+        "local_complete_jobs": 633,
+        "state_counts": {
+          "complete": 633,
+          "source_pending": 1,
+          "structure_pending": 1
+        },
+        "local_artifact_references": 4278,
+        "local_unique_artifacts": 4278,
+        "local_bytes_checked": 5774277284,
+        "inherited_source_state_unchanged": true,
+        "inherited_complete_jobs": 456,
+        "kaggle_complete_files_checked": 2986,
+        "kaggle_bytes_checked": 3065290891,
+        "mismatches": [],
+        "note": "Checks cover saved artifacts and recorded metadata, not a new homology or wet-lab audit."
+      }
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/benchmark_rows",
+      "value": {
+        "local": 41,
+        "kaggle": 47,
+        "total": 88
+      }
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-B/seeds",
+      "value": [
+        17,
+        29,
+        43
+      ]
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-B/ensemble/all/peptides",
+      "value": 235
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-B/ensemble/all/clusters",
+      "value": 221
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-B/ensemble/all/cells",
+      "value": 122412
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-B/ensemble/all/mae",
+      "value": 0.40338490434297675
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-B/ensemble/all/auroc_plus",
+      "value": 0.8262679275547594
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-B/ensemble/all/auroc_plus_eligible_peptides",
+      "value": 184
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-B/per_seed/17/mae",
+      "value": 0.4073025985353174
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-B/per_seed/17/auroc_plus",
+      "value": 0.8232355951691959
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-B/per_seed/29/mae",
+      "value": 0.40307645774780254
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-B/per_seed/29/auroc_plus",
+      "value": 0.8245649690922826
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-B/per_seed/43/mae",
+      "value": 0.4059340922639444
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-B/per_seed/43/auroc_plus",
+      "value": 0.8224096586964444
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-B/seeds",
+      "value": [
+        17,
+        29,
+        43
+      ]
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-B/ensemble/all/peptides",
+      "value": 235
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-B/ensemble/all/clusters",
+      "value": 221
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-B/ensemble/all/cells",
+      "value": 122412
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-B/ensemble/all/mae",
+      "value": 0.36366862693562296
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-B/ensemble/all/auroc_plus",
+      "value": 0.8550471496156705
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-B/ensemble/all/auroc_plus_eligible_peptides",
+      "value": 184
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-B/per_seed/17/mae",
+      "value": 0.37941359689967025
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-B/per_seed/17/auroc_plus",
+      "value": 0.8402141696341241
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-B/per_seed/29/mae",
+      "value": 0.37855806424506333
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-B/per_seed/29/auroc_plus",
+      "value": 0.8354572213103715
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-B/per_seed/43/mae",
+      "value": 0.37791930150624853
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-B/per_seed/43/auroc_plus",
+      "value": 0.8363071312403616
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/contrasts/local:esm2_35m-lora-B minus local:esm2_35m-frozen-B; mae",
+      "value": {
+        "a": "local:esm2_35m-lora-B",
+        "b": "local:esm2_35m-frozen-B",
+        "metric": "mae",
+        "stratum": null,
+        "role": "matched_local_contrast; adjusted CI is a conservative posthoc family of four",
+        "delta": -0.039716277407353874,
+        "ci95": [
+          -0.04703602540339848,
+          -0.032414649189790264
+        ],
+        "ci_adjusted": [
+          -0.04895857340226244,
+          -0.03062966295458949
+        ],
+        "multiplicity": 4,
+        "peptides": 235,
+        "clusters": 221,
+        "bootstrap": 5000
+      }
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/contrasts/local:esm2_35m-lora-B minus local:esm2_35m-frozen-B; auroc_plus",
+      "value": {
+        "a": "local:esm2_35m-lora-B",
+        "b": "local:esm2_35m-frozen-B",
+        "metric": "auroc_plus",
+        "stratum": null,
+        "role": "matched_local_contrast; adjusted CI is a conservative posthoc family of four",
+        "delta": 0.02877922206091115,
+        "ci95": [
+          0.020855601199984093,
+          0.036622638373574684
+        ],
+        "ci_adjusted": [
+          0.018797679542531403,
+          0.03889305153448449
+        ],
+        "multiplicity": 4,
+        "peptides": 184,
+        "clusters": 176,
+        "bootstrap": 5000
+      }
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-D/seeds",
+      "value": [
+        17,
+        29,
+        43
+      ]
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-D/ensemble/all/peptides",
+      "value": 235
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-D/ensemble/all/clusters",
+      "value": 221
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-D/ensemble/all/cells",
+      "value": 122412
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-D/ensemble/all/mae",
+      "value": 0.39038232698269826
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-D/ensemble/all/auroc_plus",
+      "value": 0.8246249045706311
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-D/ensemble/all/auroc_plus_eligible_peptides",
+      "value": 184
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-D/per_seed/17/mae",
+      "value": 0.3919859208115138
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-D/per_seed/17/auroc_plus",
+      "value": 0.8220094193715655
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-D/per_seed/29/mae",
+      "value": 0.3918153512584198
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-D/per_seed/29/auroc_plus",
+      "value": 0.8222681263075008
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-D/per_seed/43/mae",
+      "value": 0.39379301612253326
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-frozen-D/per_seed/43/auroc_plus",
+      "value": 0.821862417782116
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-D/seeds",
+      "value": [
+        17,
+        29,
+        43
+      ]
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-D/ensemble/all/peptides",
+      "value": 235
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-D/ensemble/all/clusters",
+      "value": 221
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-D/ensemble/all/cells",
+      "value": 122412
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-D/ensemble/all/mae",
+      "value": 0.3649961441170955
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-D/ensemble/all/auroc_plus",
+      "value": 0.8535556713670844
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-D/ensemble/all/auroc_plus_eligible_peptides",
+      "value": 184
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-D/per_seed/17/mae",
+      "value": 0.3793883114752926
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-D/per_seed/17/auroc_plus",
+      "value": 0.8381455910726625
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-D/per_seed/29/mae",
+      "value": 0.3777746788808615
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-D/per_seed/29/auroc_plus",
+      "value": 0.8384270271558185
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-D/per_seed/43/mae",
+      "value": 0.37876665272410887
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/local_recipes/esm2_35m-lora-D/per_seed/43/auroc_plus",
+      "value": 0.842228471052774
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/contrasts/local:esm2_35m-lora-D minus local:esm2_35m-frozen-D; mae",
+      "value": {
+        "a": "local:esm2_35m-lora-D",
+        "b": "local:esm2_35m-frozen-D",
+        "metric": "mae",
+        "stratum": null,
+        "role": "matched_local_contrast; adjusted CI is a conservative posthoc family of four",
+        "delta": -0.025386182865602746,
+        "ci95": [
+          -0.031809675874283724,
+          -0.019066780807779408
+        ],
+        "ci_adjusted": [
+          -0.03390316535517621,
+          -0.017476795956805718
+        ],
+        "multiplicity": 4,
+        "peptides": 235,
+        "clusters": 221,
+        "bootstrap": 5000
+      }
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/contrasts/local:esm2_35m-lora-D minus local:esm2_35m-frozen-D; auroc_plus",
+      "value": {
+        "a": "local:esm2_35m-lora-D",
+        "b": "local:esm2_35m-frozen-D",
+        "metric": "auroc_plus",
+        "stratum": null,
+        "role": "matched_local_contrast; adjusted CI is a conservative posthoc family of four",
+        "delta": 0.028930766796453455,
+        "ci95": [
+          0.021160854439719674,
+          0.036332623752983614
+        ],
+        "ci_adjusted": [
+          0.019176992191866214,
+          0.03868631172487345
+        ],
+        "multiplicity": 4,
+        "peptides": 184,
+        "clusters": 176,
+        "bootstrap": 5000
+      }
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/contrasts/local:esm2_35m-lora-D minus local:esm2_35m-lora-B; mae",
+      "value": {
+        "a": "local:esm2_35m-lora-D",
+        "b": "local:esm2_35m-lora-B",
+        "metric": "mae",
+        "stratum": null,
+        "role": "posthoc_development",
+        "delta": 0.0013275171814725894,
+        "ci95": [
+          -0.002946515341543614,
+          0.005536657684105817
+        ],
+        "ci_adjusted": [
+          -0.002946515341543614,
+          0.005536657684105817
+        ],
+        "multiplicity": 1,
+        "peptides": 235,
+        "clusters": 221,
+        "bootstrap": 5000
+      }
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/transfer/recipe",
+      "value": "ordered-w5-D"
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/transfer/model_minus_zero_mae",
+      "value": {
+        "delta": -0.0032556794422010336,
+        "ci95": [
+          -0.009249335259827421,
+          0.0027598021164009457
+        ],
+        "ci_adjusted": [
+          -0.009249335259827421,
+          0.0027598021164009457
+        ],
+        "multiplicity": 1,
+        "peptides": 1410,
+        "clusters": 730,
+        "bootstrap": 5000
+      }
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/transfer/lora_evaluated_on_T",
+      "value": false
+    },
+    {
+      "source": "research/kaggle-roadmap-2026-10-31/local-output-analysis.json",
+      "json_pointer": "/transfer/limitation",
+      "value": "Previously explored same-lab scanning, R/A/S substitutions, rep1 endpoint; not independent external or clinical validation."
+    }
+  ],
+  "checks_this_turn": [
+    "all copied values equal source pointers",
+    "listed small-source hashes checked",
+    "per-seed MAE and AUROC+ signs checked for B/D"
+  ],
+  "historical_audit_boundary": "integrity.value is a saved 2026-11-06 audit result, not a new artifact-integrity audit."
+}
