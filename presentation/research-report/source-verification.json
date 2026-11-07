@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-07",
+  "scope": "Targeted source verification for slide authoring; not a systematic review or full formal ARS manuscript citation audit.",
+  "live_primary_sources_read": [
+    {"id": "P1", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10594193/", "verified": "Title/authors/DOI; GPS six-bin assay; 28-AA constructs; scan and saturation design; reporter limitations"},
+    {"id": "P2", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12880521/", "verified": "Title/authors/DOI; 30-AA screen; model and missense-variant work; context limitations; CC BY-NC 4.0. No figure copied."},
+    {"id": "P3", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11491831/", "verified": "Title/first author Mengqiu Zheng/year/DOI; E3-targeted degron task differs from substitution regression"},
+    {"id": "P4", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11223883/", "verified": "Title/authors/year/DOI and annotation-tool scope"},
+    {"id": "P6", "url": "https://arxiv.org/abs/2106.09685", "verified": "Authors/title and frozen-base low-rank update; arXiv version is not a claim of a new 2026 publication"},
+    {"id": "P14", "url": "https://github.com/Alpine2048/Degformer", "verified": "Official software repository; no academic publication year inferred. Experimental commit remains 49ee52459967 from repository audit."},
+    {"id": "P15", "url": "https://data.mendeley.com/datasets/32h94v2yv2/2", "verified": "Version 2, date, contributors, DOI, sequencing/mutagenesis data scope and CC BY 4.0"},
+    {"id": "P5-support", "url": "https://github.com/facebookresearch/esm", "verified": "Official authors' ESM repository accessed; actual CT553H feature/architecture claims verified from local code and registry"}
+  ],
+  "live_access_gaps": [
+    {"id": "P5", "url": "https://doi.org/10.1126/science.ade2574", "status": "403; no claim of successful live full-text access"},
+    {"id": "P6-conference", "url": "https://openreview.net/forum?id=nZeVKeeFYf9", "status": "Browser verification page; used original arXiv and previously verified conference metadata"}
+  ],
+  "previously_audited_sources": {
+    "path": "research/progress-review-2026-11-06/literature-audit.md",
+    "bibliography": "report/bibliography/references.bib",
+    "ids": ["P5", "P7", "P8", "P9", "P10", "P11", "P12", "P13"],
+    "boundary": "Metadata and claim support from saved 06/11 dossier plus code/artifacts; not represented as all re-verified online in this authoring session. Larsen cited as bioRxiv v1 preprint."
+  },
+  "internal_evidence": "Sources and SHA-256 in evidence-map.json. Native table/chart values compared to source JSON by numerical-evidence.json. Audit of thousands of source artifacts was not rerun.",
+  "visual_provenance": "All diagrams and figures drawn as native editable PowerPoint objects; no external paper figure or synthetic scientific result inserted.",
+  "disclosure": "Codex assisted with source reading, authoring, mechanical comparison and rendered visual inspection. No new model training, independent biological confirmation or acceptance decision."
+}

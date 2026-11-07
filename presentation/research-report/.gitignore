@@ -1,0 +1,7 @@
+__pycache__/
+checks/slides/
+checks/review-*.jpg
+checks/lo-profile/
+checks/font-cache/
+checks/soffice-local
+checks/fontconfig.xml

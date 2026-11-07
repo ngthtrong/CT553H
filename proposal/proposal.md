@@ -1,8 +1,7 @@
 ---
 title: ĐỀ CƯƠNG LUẬN VĂN
 subtitle: |
-  DỰ ĐOÁN HIỆU ỨNG ĐỘT BIẾN DEGRON Ở MỨC RESIDUE
-  VÀ XÂY DỰNG CÔNG CỤ HỖ TRỢ PHÂN TÍCH
+  Dự đoán ảnh hưởng của đột biến amino acid đơn lên chỉ số PSI trong nghiên cứu degron và xây dựng công cụ phân tích
 lang: vi-VN
 ---
 

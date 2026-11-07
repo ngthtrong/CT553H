@@ -1,0 +1,60 @@
+{
+  "date": "2026-11-03",
+  "generated_utc": "2026-11-03T03:13:55.050162+00:00",
+  "format": "Letter, 1-inch margins, Times New Roman; geometry follows supplied sample",
+  "pages": 10,
+  "checks": [
+    "seven required sections in Word and PDF",
+    "student metadata",
+    "Letter page size",
+    "embedded fonts",
+    "no LaTeX overflow or missing glyphs",
+    "historical and full-PSI metrics match source JSON",
+    "dated local progress and unfinished software scope",
+    "no printed internal evidence paths"
+  ],
+  "current_claims_checked": [
+    "03/11/2026",
+    "235 peptide",
+    "122.412",
+    "224.470",
+    "221 nhóm",
+    "0,43358",
+    "0,40780",
+    "0,38435",
+    "0,38969",
+    "0,38385",
+    "0,39361",
+    "0,38723",
+    "0,8068",
+    "0,8286",
+    "0,03381",
+    "0,01829",
+    "0,01017",
+    "0,00090",
+    "184 peptide đủ điều kiện",
+    "455/635",
+    "420 Ridge fold"
+  ],
+  "evidence_sources": {
+    "topics/degron-footprint/research/g2-saturation-2026-10-18/results.json": "22aa9a42de6dec18568c332c9464bf9424b76602eed5dc7c1b84c7e7e30ce79d",
+    "topics/degron-footprint/research/r1-degformer-clean-2026-10-22/run-kaggle-20261022/results.json": "27fa02aad2243fabaf215059af2dd64208eabf21742d9031be9469f8673f0e09",
+    "topics/degron-footprint/research/r6-ladder-scan-2026-10-23/run-kaggle-20261023/results.json": "7c49b4c9822f74f1e52f6d511558006ef6f8c4742a83d5d4e6c2b2e51a418782",
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/dataset-build.json": "ac338d21d3f24f60c91bd00598dcb62508dbb19b2c3b3b5bb951176220913c20",
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output-analysis.json": "ecd7f61bb3fbf8083a382da975eb7bc7539613a415fa332debe89536843d5bc3",
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/plan.json": "c51c10eab9aaa487db21ac99253d599f05f575cfb59279cff3545da125c0588c",
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/queue.json": "2c56b6832b64a0478db3434262c5827e237a48897c2bc4a9651b61d6a41e3e3d",
+    "topics/degron-footprint/research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/state.json": "0847b3945108961254f09bcb1da65d25d89dae446f6c87c7b9c71c9b40b01a63"
+  },
+  "files": {
+    "reportTemplate/guideline-thesis/Đề cương LV Mau.pdf": "e95a9b88ba02623fb5757735bfce80edd0e413b89bf656131452c1bd0f047622",
+    "reportTemplate/guideline-thesis/Đề cương LV Mau (1).docx": "daf9d0ee9152fe20e3a0aea215ecf005a35f80ac2908f60f92f6d9f2187932bb",
+    "topics/degron-footprint/proposal/proposal.md": "859f478d5b02e2e7a9e6cbe9567df628bbdd71f4fbebea4bc582592d8842cdb8",
+    "topics/degron-footprint/proposal/proposal.pdf": "5de025a833f3798e2e6b500354c0a8149d204beeca3bfe25de58a0b94f49e578",
+    "topics/degron-footprint/proposal/proposal.docx": "1102d3aafac34d91ca740d716c33844ad8c9df3b6b160c1fa7db3da926d7bc99",
+    "topics/degron-footprint/proposal/references.bib": "1f44e7d318a55fa67d7d6ad3d74273f0526e9eaf5d8800dcd5c3af55525ddef3",
+    "topics/degron-footprint/proposal/header.tex": "a46c8690bb6ee66e35bdedf367362f311b161740786cb244940cb9115d8445af",
+    "topics/degron-footprint/proposal/layout.lua": "f30e14efeb740561018e11c5ad6b37ec8b07265b5f30940d873f64c54fce46ba",
+    "topics/degron-footprint/proposal/build.py": "219ff7b05e1686483ea6f7d8200e370a3e4733b6a96f15ddfdd1c741010b0f4e"
+  }
+}

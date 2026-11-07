@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "pages": 94,
+  "text_missing": [],
+  "outside_canvas": [],
+  "text_box_overlap": [],
+  "small_text_below_8_9pt": [],
+  "pptx_sha256": "8a40b78f37c8795afa43c69de7538b4b4bdc254404c0f23d5d5d03873c3502b7",
+  "pdf_sha256": "ee2974e00d863afdd95de89afddde6ff8c77265df2c24a891c2280a297de774a",
+  "scope": "Mechanical retention/geometry only. Text inside chart plots and visual semantics require actual image review. Matrix axis labels 9–10pt are intentional; content tables >=15pt, primary body >=18pt."
+}

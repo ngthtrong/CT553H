@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "checks": {
+    "english_title_on_cover": true,
+    "english_title_metadata": true,
+    "english_language_metadata": true,
+    "vietnamese_title_recorded": true,
+    "english_prose": true
+  },
+  "issues": [],
+  "title_en": "Sequence-Based Prediction of Single-Residue Mutation Effects on PSI in Degron Assays and Development of an Analysis Tool",
+  "title_vi": "Dự đoán ảnh hưởng của đột biến amino acid đơn lên chỉ số PSI trong nghiên cứu degron và xây dựng công cụ phân tích",
+  "language": "en-US",
+  "exceptions": "Author/supervisor proper names and the explicitly requested official Vietnamese title in metadata/cover Notes.",
+  "pptx_sha256": "8a40b78f37c8795afa43c69de7538b4b4bdc254404c0f23d5d5d03873c3502b7"
+}

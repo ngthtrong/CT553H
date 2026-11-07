@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "slides_before": 94,
+  "slides_after": 94,
+  "requested": [
+    "mutation",
+    "delta",
+    "lora-method"
+  ],
+  "changed": [],
+  "unselected_slide_XML_unchanged": true,
+  "scope": "Test on this task-generated official deck; verifies preservation of all unselected slide XML.",
+  "checker_followup": {
+    "requested": [
+      "nested"
+    ],
+    "changed": [],
+    "unselected_slide_XML_unchanged": true
+  }
+}

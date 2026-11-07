@@ -1,0 +1,96 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "deck_hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "slide_count",
+      "passed": true,
+      "detail": 94
+    },
+    {
+      "check": "canvas_16_by_9",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "canvas_bounds",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "check": "no_left_box_strips",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "check": "no_added_bottom_footnotes",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "check": "native_template_fonts",
+      "passed": true,
+      "detail": [
+        "K2D",
+        "Readex Pro"
+      ]
+    },
+    {
+      "check": "speaker_notes_present",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "check": "reference_ids_resolve",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "check": "reference_url_syntax",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "check": "input_hashes",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "check": "zip_integrity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "animated_gifs_embedded",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "check": "pdf_pages",
+      "passed": true,
+      "detail": 94
+    },
+    {
+      "check": "pdf_hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "pdf_font_families",
+      "passed": true,
+      "detail": [
+        "BAAAAA+K2D-Bold",
+        "CAAAAA+ReadexPro-Regular",
+        "DAAAAA+K2D-Regular",
+        "EAAAAA+DejaVuSans",
+        "FAAAAA+ReadexPro-Bold"
+      ]
+    }
+  ],
+  "deck_sha256": "8a40b78f37c8795afa43c69de7538b4b4bdc254404c0f23d5d5d03873c3502b7",
+  "scope": "Artifact checks only. Visual inspection and scientific review remain separate."
+}

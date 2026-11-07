@@ -2,7 +2,6 @@
 """Build editable Word and a stable, checked PDF from one Markdown source."""
 from pathlib import Path
 from zipfile import ZipFile, ZIP_DEFLATED
-from collections import Counter
 from datetime import datetime, timezone
 import hashlib
 import json
@@ -19,6 +18,7 @@ BUILD = HERE / 'build'
 NS = {'w': 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
 W = '{' + NS['w'] + '}'
 AS_OF = '2026-11-03'
+PROGRESS_SNAPSHOT = HERE / 'validation-snapshot-2026-11-03.json'
 RESEARCH = ROOT / 'research'
 LOCAL = 'kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/'
 EVIDENCE = [
@@ -27,7 +27,7 @@ EVIDENCE = [
     'r6-ladder-scan-2026-10-23/run-kaggle-20261023/results.json',
     'kaggle-roadmap-2026-10-31/dataset-build.json',
     'kaggle-roadmap-2026-10-31/output-analysis.json',
-    LOCAL + 'plan.json', LOCAL + 'queue.json', LOCAL + 'state.json',
+    LOCAL + 'plan.json', LOCAL + 'queue.json',
 ]
 
 def current_evidence_checks(text):
@@ -35,7 +35,7 @@ def current_evidence_checks(text):
     load = lambda name: json.loads((RESEARCH / name).read_text())
     data = load('kaggle-roadmap-2026-10-31/dataset-build.json')
     analysis = load('kaggle-roadmap-2026-10-31/output-analysis.json')
-    plan, queue, state = (load(LOCAL + name) for name in ['plan.json', 'queue.json', 'state.json'])
+    plan, queue = (load(LOCAL + name) for name in ['plan.json', 'queue.json'])
     assert plan['data_identity'] == analysis['data_identity']
     assert analysis['scientific_status'] == 'development_not_gate_closure'
     expected = ['03/11/2026', f"{data['saturation_peptides']} peptide",
@@ -58,9 +58,15 @@ def current_evidence_checks(text):
                           and v['metric'] == 'mae' and v['stratum'] is None)
         expected.extend(f'{abs(bound):.5f}'.replace('.', ',') for bound in comparison[interval])
     expected.append(f"{analysis['recipes']['ordered-w5-D']['ensemble']['all']['auroc_plus_eligible_peptides']} peptide đủ điều kiện")
-    count = Counter(j['status'] for j in state['jobs'].values())
-    complete = [j for j in queue if state['jobs'].get(j['id'], {}).get('status') == 'complete']
-    expected += [f"{count['complete']}/{len(queue)}", f"{sum(j['kind'] == 'ridge' for j in complete)} Ridge fold"]
+    # The text explicitly reports the 3 November snapshot, not today's mutable
+    # campaign state. Retain its original validation record as dated evidence.
+    # This replays saved checks; it does not reverify historical training jobs.
+    snapshot = json.loads(PROGRESS_SNAPSHOT.read_text())
+    assert snapshot['date'] == AS_OF
+    progress = [s for s in snapshot['current_claims_checked']
+                if re.fullmatch(r'\d+/\d+|\d+ Ridge fold', s)]
+    assert len(progress) == 2 and any(s.endswith('/' + str(len(queue))) for s in progress)
+    expected += progress
     for claim in expected:
         assert claim in text, f'Missing/source-mismatched current claim: {claim}'
     assert 'fixture tổng hợp' in text and 'chưa đổi serving model' in text
@@ -151,6 +157,11 @@ def validate():
     assert round(result['macro_auroc']['DeltaPAP'], 4) == .7693
     current_claims = current_evidence_checks(flat)
     current_evidence_checks(' '.join(word_text.split()))
+    source = (HERE/'proposal.md').read_text()
+    subtitle = re.search(r'(?m)^subtitle:\s*\|\s*\n((?:[ \t]+[^\n]*\n)+)', source)
+    assert subtitle, 'Missing proposal title metadata'
+    official_title = ' '.join(subtitle.group(1).split())
+    assert official_title in flat and official_title in ' '.join(word_text.split()), 'Official title missing from PDF/DOCX'
     fonts = run(['pdffonts', pdf])
     assert 'TimesNewRoman' in fonts
     # Every font row must be embedded (emb column follows encoding).
@@ -167,6 +178,13 @@ def validate():
                    'embedded fonts', 'no LaTeX overflow or missing glyphs', 'historical and full-PSI metrics match source JSON',
                    'dated local progress and unfinished software scope', 'no printed internal evidence paths'],
         'current_claims_checked': current_claims,
+        'official_title': official_title,
+        'local_progress_validation': {
+            'mode': 'dated_validation_record_replay_not_live_campaign_reverification',
+            'snapshot': PROGRESS_SNAPSHOT.name,
+            'sha256': hashlib.sha256(PROGRESS_SNAPSHOT.read_bytes()).hexdigest(),
+            'note': 'Only title metadata changed; the proposal retains its 3 November research snapshot.',
+        },
         'evidence_sources': {str((RESEARCH / name).relative_to(ROOT)): hashlib.sha256((RESEARCH / name).read_bytes()).hexdigest()
                              for name in EVIDENCE},
         'files': {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()

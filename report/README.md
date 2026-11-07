@@ -1,5 +1,15 @@
 # Luận văn degron-footprint
 
+**Đồng bộ tên đề tài — hoàn tất 08/11/2026:** bìa, biểu mẫu, metadata PDF và đầu trang
+đã dùng tên mới, thống nhất với slide và đề cương:
+
+- **Tiếng Anh:** Sequence-Based Prediction of Single-Residue Mutation Effects on PSI in Degron Assays and Development of an Analysis Tool
+- **Tiếng Việt:** Dự đoán ảnh hưởng của đột biến amino acid đơn lên chỉ số PSI trong nghiên cứu degron và xây dựng công cụ phân tích
+
+Tên tiếng Anh lấy từ `config/metadata.tex`; tên tiếng Việt lấy từ
+`../proposal/proposal.md`. Giữ nguyên nội dung và số liệu nghiên cứu.
+Hai bản PDF đều 121 trang; xem [hồ sơ kiểm tra đồng bộ tên](title-sync-validation-2026-11-08.md).
+
 Bản luận văn đang viết của **Nguyễn Thanh Trọng** (B2305615), GVHD **TS. Hồ Quang Thái**. Thư mục `report/` hiện nằm ở gốc repo, cạnh `research/`, `proposal/` và `system/`, sau khi chuyển khỏi `topics/degron-footprint/` ngày 07/11/2026.
 
 Bản làm việc được tạo từ [template sạch](../reportTemplate/README.md), đã điền metadata và nội dung đề tài. Các mục `[PENDING]` hoặc ô trong ngoặc vuông còn lại cần được hoàn thiện; không dùng thư mục template gốc để viết luận văn.

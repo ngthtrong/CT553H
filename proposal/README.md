@@ -1,6 +1,18 @@
 # Đề cương luận văn degron-footprint
 
-Bản dự thảo ngày **21/10/2026**, soạn theo mẫu tiếng Việt của học phần. Tên đề tài là đề xuất cho bản thảo này, chưa phải tên được GVHD phê duyệt.
+Bản dự thảo ngày **21/10/2026**, soạn theo mẫu tiếng Việt của học phần.
+
+**Đồng bộ tên đề tài — hoàn tất 08/11/2026:** tên chính xác theo yêu cầu của tác giả:
+
+- **Tiếng Việt:** Dự đoán ảnh hưởng của đột biến amino acid đơn lên chỉ số PSI trong nghiên cứu degron và xây dựng công cụ phân tích
+- **Tiếng Anh:** Sequence-Based Prediction of Single-Residue Mutation Effects on PSI in Degron Assays and Development of an Analysis Tool
+
+Đề cương dùng tên tiếng Việt trong `subtitle`; slide đọc trực tiếp metadata này
+và tên tiếng Anh từ luận văn. PDF/DOCX đã được dựng lại. Nội dung khoa học giữ
+snapshot 03/11/2026. Kiểm tiến độ lịch sử dùng lại
+[biên bản gốc 03/11](validation-snapshot-2026-11-03.json), thay vì so với
+`state.json` có thể thay đổi; đây là đối chiếu biên bản đã lưu, không kiểm lại
+job huấn luyện tại thời điểm lịch sử. Xem [hồ sơ đồng bộ tên](../report/title-sync-validation-2026-11-08.md).
 
 **Cập nhật chọn lọc 03/11/2026:** Markdown, PDF và DOCX đã phản ánh benchmark lịch sử, các kết quả quan trọng của v3 full-PSI, snapshot local 10:17 (UTC+8) và phạm vi ứng dụng local đã chốt. Đây là bản đề cương làm việc, chưa phải nghiệm thu G2/G3. Luồng nghiên cứu ở [research/README.md](../research/README.md); trạng thái triển khai ở [system/README.md](../system/README.md).
 

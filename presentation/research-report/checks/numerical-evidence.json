@@ -1,0 +1,91 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "kaggle_recipe_coverage",
+      "passed": true,
+      "detail": 47
+    },
+    {
+      "check": "kaggle_PPTX_values_and_seed_support",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "check": "local_recipe_coverage",
+      "passed": true,
+      "detail": 41
+    },
+    {
+      "check": "local_PPTX_values_and_seed_support",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "check": "88_distinct_runtime_recipe_rows",
+      "passed": true,
+      "detail": 88
+    },
+    {
+      "check": "summary_matches_primary_analysis_JSONs",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "check": "23_R6_native_rows",
+      "passed": true,
+      "detail": 23
+    },
+    {
+      "check": "R6_values",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "G2_gate_values",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "historical_scanning_columns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "priority_actual_chart_hits",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "real_R1A_example",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "unique_slide_keys",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no_duplicate_OPC_entries",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "native_editable_charts_present",
+      "passed": true,
+      "detail": 8
+    },
+    {
+      "check": "zero_citation_orphans",
+      "passed": true,
+      "detail": {
+        "cited": 44,
+        "referenced": 44,
+        "diff": []
+      }
+    }
+  ],
+  "scope": "Independent comparison of delivered PPTX numbers against saved source artifacts; not a re-run of training or full scientific validation.",
+  "pptx_sha256": "8a40b78f37c8795afa43c69de7538b4b4bdc254404c0f23d5d5d03873c3502b7"
+}
