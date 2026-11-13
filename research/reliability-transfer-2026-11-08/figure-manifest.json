@@ -1,0 +1,14 @@
+{
+  "generator_sha256": "3ef3ec8a90009dd11e4b61ca7a826688995f704b3d6c64b4d62f97f9f866889c",
+  "sources": {
+    "results.json": "380ff69acd683df4e0c4b71c3261accd89f6219f789092a03a8e0d9c2235a41e",
+    "threshold-sensitivity.csv": "acdea414068e5513237e6d7ba6672aa3f1f306b8ffd9e820f9c547330b185b90",
+    "reliability-bins.csv": "3a1d71b46016a7dfbe6c915267653eeec24e579a5f7854a59b89752fbcef0833",
+    "label-agreement.csv": "b79adf28320821843469a2d6e830778dc1adbd50e12f4bebb0b49b6c72a2f3cf"
+  },
+  "output": {
+    "path": "diagnostics.png",
+    "sha256": "65db9606aed403c2c0e15dc204c2bf0e7dd8669cce62a8dbd771c98c72fdff02"
+  },
+  "scope": "Rendered stored metrics; no fitting, inference or new statistical comparison."
+}

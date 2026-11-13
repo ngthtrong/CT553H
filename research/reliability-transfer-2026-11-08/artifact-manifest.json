@@ -1,0 +1,138 @@
+{
+  "files": {
+    ".gitignore": {
+      "bytes": 21,
+      "sha256": "7fe900632e902dce612cbd13a9bc389da711fdf2f341d9edc6fff158b76e8486"
+    },
+    "AMENDMENTS.md": {
+      "bytes": 1683,
+      "sha256": "65d23d4b3bd0a0fdecd8223b3517f43dfd91c6c51f612326b49ac55683f2b1a6"
+    },
+    "NEXT-EVALUATION.md": {
+      "bytes": 5163,
+      "sha256": "756d80b9e91d6629567362b99601c16e265556b9f30533ec40b1c8e4e6d7fa3b"
+    },
+    "PROTOCOL.md": {
+      "bytes": 8882,
+      "sha256": "f675d69ff4ee1cfee6b097762547c0c1da49df86d83ce10b49b9b93fea47c7c3"
+    },
+    "README.md": {
+      "bytes": 14614,
+      "sha256": "afc7c2ea072840f22cc0100724138b61ec36e822c6f1fbc5cb1938e2593c2ac1"
+    },
+    "analyze.py": {
+      "bytes": 37198,
+      "sha256": "e2704f2e9778465f5582b1040211317f1f6189bc137e9cb2f5adc9a89b073bfe"
+    },
+    "calibration.csv": {
+      "bytes": 6945,
+      "sha256": "d8dd588ea85b1af51f8079932bc1dd54a0569068fea2e8c92b2724bdfdec696d"
+    },
+    "check_delivery.py": {
+      "bytes": 4826,
+      "sha256": "935f82f193ed30fdbee6191a239f843d7e41bdd1907521a0874a2168c8f44034"
+    },
+    "config.json": {
+      "bytes": 1138,
+      "sha256": "b3c2f9b058cd5f15b650fd6c2d0937c8954cd1ff44254d18c608fde8e76fbf2e"
+    },
+    "delivery-validation.json": {
+      "bytes": 1023,
+      "sha256": "09ffa72d0b69f227544e33b19496a2038b06e52888b03a63490bdf1bddadac50"
+    },
+    "diagnostics.png": {
+      "bytes": 290083,
+      "sha256": "65db9606aed403c2c0e15dc204c2bf0e7dd8669cce62a8dbd771c98c72fdff02"
+    },
+    "disagreement-errors.csv": {
+      "bytes": 3198,
+      "sha256": "1e16a0885e923d9fff1506a14522577613838e9611e2f5f0e8e100451c23945a"
+    },
+    "figure-manifest.json": {
+      "bytes": 715,
+      "sha256": "d14a52201abd3706b761b4a7bb82ff8b647745420f5c733c7f6beeb0650ab450"
+    },
+    "input-manifest.json": {
+      "bytes": 248860,
+      "sha256": "81be69b16aa4a1948615a7747180282bafd6cd4b88b20e513c22ce0dad77b324"
+    },
+    "label-agreement.csv": {
+      "bytes": 2782,
+      "sha256": "b79adf28320821843469a2d6e830778dc1adbd50e12f4bebb0b49b6c72a2f3cf"
+    },
+    "per-peptide.csv": {
+      "bytes": 3219093,
+      "sha256": "384d8520c4d28504982bca708fdfa5b925bb7651453593ce9916cc0bee913ea3"
+    },
+    "performance.csv": {
+      "bytes": 48156,
+      "sha256": "1a014e0618b594c9fdb30a38cf458c63f9faa86b358b99d11c77fc52be4063fa"
+    },
+    "plot.py": {
+      "bytes": 5691,
+      "sha256": "3ef3ec8a90009dd11e4b61ca7a826688995f704b3d6c64b4d62f97f9f866889c"
+    },
+    "prediction-bounds.csv": {
+      "bytes": 1097,
+      "sha256": "1cad5b51f363df60a08a2dc8ef72762c7b442c66a226b8ed0117d1f07fe70be3"
+    },
+    "reliability-bins.csv": {
+      "bytes": 51846,
+      "sha256": "3a1d71b46016a7dfbe6c915267653eeec24e579a5f7854a59b89752fbcef0833"
+    },
+    "requirements-analysis.txt": {
+      "bytes": 175,
+      "sha256": "a164f2c313e06a6e0562e6e4089a55b5b6dc4c0dced13a13fb6dc5d21b70d26e"
+    },
+    "results.json": {
+      "bytes": 90698,
+      "sha256": "380ff69acd683df4e0c4b71c3261accd89f6219f789092a03a8e0d9c2235a41e"
+    },
+    "runtime.json": {
+      "bytes": 497,
+      "sha256": "338a782dde8de9395f64c6078814fa0854f6635fe8042bcd7a3ad5e14abc0622"
+    },
+    "seed-contrasts.csv": {
+      "bytes": 2635,
+      "sha256": "2727a0243134a17c0814b2a87058204763a6f640cbd87f8e18718320322864c1"
+    },
+    "similarity-contrasts.csv": {
+      "bytes": 807,
+      "sha256": "2479b6b87fbec2779598bdae13e9b9711b2c6cbbac6ab5ad9ef2daaad4b08ccb"
+    },
+    "similarity.csv": {
+      "bytes": 111930,
+      "sha256": "58ad8ac91521c0799b0bc339e139fdc96b44354a78edafe2fedb634e666cb371"
+    },
+    "threshold-contrasts.csv": {
+      "bytes": 15442,
+      "sha256": "6e76355257c79498c5c0be1e9559e2bd76550de925240b21c3b33bcecdb04e7b"
+    },
+    "threshold-sensitivity.csv": {
+      "bytes": 20871,
+      "sha256": "acdea414068e5513237e6d7ba6672aa3f1f306b8ffd9e820f9c547330b185b90"
+    },
+    "validate.py": {
+      "bytes": 16948,
+      "sha256": "fe5c21c71efce963191475cc947b726cc1949d42606ab0fb53edf3b6cf931e06"
+    },
+    "validation.json": {
+      "bytes": 3637,
+      "sha256": "1d8cdb320aa241ff89a7889e79c7207062ff00604fcc24c5243cf190a7cd6a52"
+    },
+    "visual-review.json": {
+      "bytes": 832,
+      "sha256": "2bd856c04369e50081c3f9a693d5e5305c3bffabcca3c32e6c036087288cf273"
+    },
+    "write_report.py": {
+      "bytes": 17261,
+      "sha256": "341499caf061a00668657b9bc94543a7859e79f194d0ca1e2a80957bf83deee8"
+    }
+  },
+  "excluded": [
+    "artifact-manifest.json (self)",
+    "local/",
+    "__pycache__/"
+  ],
+  "scope": "CPU diagnostic source, protocol and reviewable outputs; no upstream artifact copied or modified."
+}

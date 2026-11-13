@@ -1,8 +1,20 @@
 # Nghiên cứu degron-footprint — chỉ mục hiện hành
 
-Đồng bộ ngày **07/11/2026**. Bài toán là hồi quy `ΔPSI = PSI(mutant) − PSI(WT)` cho thay thế amino acid đơn; các benchmark, phạm vi PSI và phép chia dữ liệu khác nhau phải được trình bày riêng. G2 đã có bằng chứng cải thiện định lượng trong development và hồ sơ để rà nghiệm thu; chưa ghi nhận quyết định đóng G2. G3 chưa nghiệm thu; mô hình `m3-ext4.0-platt-v1` trong ứng dụng chưa đổi.
+Đồng bộ ngày **08/11/2026**. Bài toán là hồi quy `ΔPSI = PSI(mutant) − PSI(WT)` cho thay thế amino acid đơn; các benchmark, phạm vi PSI và phép chia dữ liệu khác nhau phải được trình bày riêng. G2 đã có bằng chứng cải thiện định lượng trong development và hồ sơ để rà nghiệm thu; chưa ghi nhận quyết định đóng G2. G3 chưa nghiệm thu; mô hình `m3-ext4.0-platt-v1` trong ứng dụng chưa đổi.
 
 Các đường dẫn thao tác hiện dùng cấu trúc gốc repo từ ngày 07/11/2026. Manifest/hash và bản ghi kết quả đã lưu giữ nguyên mốc lịch sử; thay đổi đường dẫn hoặc mã nguồn có thể đổi fingerprint campaign. Không dùng việc di chuyển thư mục để ép resume artifact vào campaign mới.
+
+## Độ tin cậy và giới hạn chuyển miền — đợt CPU 08/11/2026
+
+[Hồ sơ kiểm chứng](reliability-transfer-2026-11-08/README.md) đã phân tích OOF,
+replicate, ngưỡng hit, tương đồng peptide, calibration và T bằng CPU; không
+train/refit/inference hoặc GPU. Có code/config/protocol, input hash trước/sau,
+CSV/JSON, hình và validator tính trực tiếp từ nguồn.
+Lợi ích LoRA-D ưu tiên hit vẫn hiện khi yêu cầu cả hai nửa assay đồng thuận;
+W5 trên T chưa xác nhận lợi thế MAE so zero kể cả sensitivity target mean12.
+Các CI mới là mô tả hậu kiểm. LoRA trên T/nguồn độc lập vẫn chưa có kết quả;
+[thiết kế đánh giá tiếp](reliability-transfer-2026-11-08/NEXT-EVALUATION.md) chưa chạy.
+Không thay serving model, report hoặc quyết định G2/G3.
 
 ## Ưu tiên mutation với cùng ngân sách — 07/11/2026
 

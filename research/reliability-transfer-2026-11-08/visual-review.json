@@ -1,0 +1,15 @@
+{
+  "status": "pass",
+  "reviewed_at": "2026-11-08T02:12:21+08:00",
+  "figure": "diagnostics.png",
+  "figure_sha256": "65db9606aed403c2c0e15dc204c2bf0e7dd8669cce62a8dbd771c98c72fdff02",
+  "method": "Codex inspected the rendered local image with view_image in the authoring session.",
+  "scope": [
+    "Four panels, legends, axis labels, units and numerical labels are readable.",
+    "Panel A identifies the changed replicate target and uses paired difference confidence intervals.",
+    "Panel B keeps mean and consensus target labels distinct.",
+    "Panel C retains sparse bins and labels n=1 on W and n=12 on T.",
+    "Panel D marks absent positive events instead of assigning Jaccard zero."
+  ],
+  "limitations": "Single-session AI visual inspection; not human-read attestation, independent review or scientific validation."
+}

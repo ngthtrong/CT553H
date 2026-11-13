@@ -1,0 +1,9 @@
+    //     "allow": [
+    //       "Bash(awk '/<a id=\"d-036\"><\\\\/a>/{f=1} f{print} /<a id=\"d-035\"><\\\\/a>/{if\\(f\\)exit}' DECISIONS.md)",
+    //       "Bash(cd /home/ngthtrong/CT553H/topics/degron-footprint/presentation/deck-2026-10-16 && sed -n '/^.card {/,/^.chips/p' deck.css)",
+    //       "Bash(python3 -)"
+    //     ],
+    //     "additionalDirectories": [
+    //       "/home/ngthtrong/CT553H/topics/degron-footprint/presentation/deck-2026-10-16"
+    //     ]
+    //   }

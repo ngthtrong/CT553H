@@ -1,0 +1,18 @@
+{
+  "wall_seconds": 112.66615100100171,
+  "cpu_seconds": 111.42007791799999,
+  "peak_rss_mib": 957.375,
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "numpy": "2.5.3",
+  "pandas": "3.0.6",
+  "scipy": "1.18.1",
+  "sklearn": "1.9.1",
+  "configured_cpu_threads": 2,
+  "cuda_visible_devices": "",
+  "forbidden_model_runtimes_imported": [],
+  "training": false,
+  "inference": false,
+  "model_deserialization": false,
+  "gpu_execution": false
+}

@@ -1,0 +1,124 @@
+{
+  "status": "pass",
+  "checked_at": "2026-11-08T02:12:42.294855+08:00",
+  "validator_sha256": "fe5c21c71efce963191475cc947b726cc1949d42606ab0fb53edf3b6cf931e06",
+  "result_sha256": "380ff69acd683df4e0c4b71c3261accd89f6219f789092a03a8e0d9c2235a41e",
+  "checks": [
+    {
+      "name": "input_hashes_rechecked",
+      "files": 817
+    },
+    {
+      "name": "all_declared_output_shapes",
+      "files": 12
+    },
+    {
+      "name": "cpu_only_contract",
+      "imported_model_runtimes": []
+    },
+    {
+      "name": "meaningful_edge_cases",
+      "cases": [
+        "macro_grain",
+        "N_below_budget",
+        "event_boundaries",
+        "AUROC_eligibility",
+        "duplicate_rejection",
+        "tie_row_permutation",
+        "unequal_cluster_sizes",
+        "single_cluster",
+        "empty_population",
+        "exact_sequence_similarity",
+        "perfect_multiclass_probabilities",
+        "p0_p1_and_empty_bins"
+      ]
+    },
+    {
+      "name": "independent_raw_OOF_arithmetic",
+      "recipes": [
+        "esm2_35m-frozen-B",
+        "esm2_35m-frozen-D",
+        "esm2_35m-lora-B",
+        "esm2_35m-lora-D",
+        "ordered-w5-D"
+      ],
+      "calculations": [
+        "macro_MAE",
+        "exact_20_pair_subset_MAE",
+        "P10_mean_a_b_consensus",
+        "hits10"
+      ]
+    },
+    {
+      "name": "historical_results_reconciled",
+      "matched_MAE_CI_9875": 2,
+      "E5_point_difference": true
+    },
+    {
+      "name": "independent_consensus_paired_CI",
+      "replicates": 5000
+    },
+    {
+      "name": "independent_T_labels_MAE_zero_and_cluster_CI",
+      "bootstrap_replicates": 5000
+    },
+    {
+      "name": "independent_multiclass_calibration",
+      "W_recipes": 5,
+      "T": true,
+      "stored_cards_reconciled": 4
+    }
+  ],
+  "output_hashes": {
+    "similarity.csv": {
+      "bytes": 111930,
+      "sha256": "58ad8ac91521c0799b0bc339e139fdc96b44354a78edafe2fedb634e666cb371"
+    },
+    "performance.csv": {
+      "bytes": 48156,
+      "sha256": "1a014e0618b594c9fdb30a38cf458c63f9faa86b358b99d11c77fc52be4063fa"
+    },
+    "per-peptide.csv": {
+      "bytes": 3219093,
+      "sha256": "384d8520c4d28504982bca708fdfa5b925bb7651453593ce9916cc0bee913ea3"
+    },
+    "similarity-contrasts.csv": {
+      "bytes": 807,
+      "sha256": "2479b6b87fbec2779598bdae13e9b9711b2c6cbbac6ab5ad9ef2daaad4b08ccb"
+    },
+    "label-agreement.csv": {
+      "bytes": 2782,
+      "sha256": "b79adf28320821843469a2d6e830778dc1adbd50e12f4bebb0b49b6c72a2f3cf"
+    },
+    "threshold-sensitivity.csv": {
+      "bytes": 20871,
+      "sha256": "acdea414068e5513237e6d7ba6672aa3f1f306b8ffd9e820f9c547330b185b90"
+    },
+    "threshold-contrasts.csv": {
+      "bytes": 15442,
+      "sha256": "6e76355257c79498c5c0be1e9559e2bd76550de925240b21c3b33bcecdb04e7b"
+    },
+    "seed-contrasts.csv": {
+      "bytes": 2635,
+      "sha256": "2727a0243134a17c0814b2a87058204763a6f640cbd87f8e18718320322864c1"
+    },
+    "disagreement-errors.csv": {
+      "bytes": 3198,
+      "sha256": "1e16a0885e923d9fff1506a14522577613838e9611e2f5f0e8e100451c23945a"
+    },
+    "prediction-bounds.csv": {
+      "bytes": 1097,
+      "sha256": "1cad5b51f363df60a08a2dc8ef72762c7b442c66a226b8ed0117d1f07fe70be3"
+    },
+    "calibration.csv": {
+      "bytes": 6945,
+      "sha256": "d8dd588ea85b1af51f8079932bc1dd54a0569068fea2e8c92b2724bdfdec696d"
+    },
+    "reliability-bins.csv": {
+      "bytes": 51846,
+      "sha256": "3a1d71b46016a7dfbe6c915267653eeec24e579a5f7854a59b89752fbcef0833"
+    }
+  },
+  "scope": "Numerical and input-invariance validation, not independent training/external biological validation.",
+  "no_GPU_or_model_runtime": true
+}

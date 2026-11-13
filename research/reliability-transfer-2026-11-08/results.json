@@ -1,0 +1,3773 @@
+{
+  "experiment_id": "reliability-transfer-2026-11-08",
+  "generated_at": "2026-11-08T02:06:30.623588+08:00",
+  "scientific_status": "posthoc_diagnostics_not_external_validation_or_gate_closure",
+  "config_sha256": "b3c2f9b058cd5f15b650fd6c2d0937c8954cd1ff44254d18c608fde8e76fbf2e",
+  "protocol_sha256": "f675d69ff4ee1cfee6b097762547c0c1da49df86d83ce10b49b9b93fea47c7c3",
+  "analysis_sha256": "e2704f2e9778465f5582b1040211317f1f6189bc137e9cb2f5adc9a89b073bfe",
+  "input_manifest_sha256": "81be69b16aa4a1948615a7747180282bafd6cd4b88b20e513c22ce0dad77b324",
+  "W": {
+    "cells": 122412,
+    "peptides": 235,
+    "groups": 221
+  },
+  "T": {
+    "cells": 39234,
+    "peptides": 1410,
+    "groups": 730
+  },
+  "scan_pairs": [
+    "AR",
+    "CR",
+    "DR",
+    "ER",
+    "FS",
+    "GR",
+    "HA",
+    "IR",
+    "KA",
+    "LR",
+    "MS",
+    "NA",
+    "PS",
+    "QA",
+    "RA",
+    "SR",
+    "TR",
+    "VR",
+    "WS",
+    "YA"
+  ],
+  "replicate": {
+    "pearson_a_b": 0.8335180505239826,
+    "mean_absolute_disagreement": 0.27437761081724016,
+    "median_absolute_disagreement": 0.2063415150000001,
+    "support_min_a": 10.0,
+    "support_min_b": 10.0117467,
+    "support_unit": "normalized_count_sum"
+  },
+  "matched_and_utility_contrasts": [
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-full",
+      "axis": "all",
+      "value": "all",
+      "metric": "mae",
+      "inference": "original_family_replay",
+      "delta": -0.039716277425483115,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 4,
+      "replicates": 5000,
+      "ci95": [
+        -0.04703602539608744,
+        -0.032414649213965564
+      ],
+      "ci_adjusted": [
+        -0.0489585733602272,
+        -0.030629663002177353
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-full",
+      "axis": "all",
+      "value": "all",
+      "metric": "auroc_plus",
+      "inference": "original_family_replay",
+      "delta": 0.02877917295823313,
+      "peptides": 184,
+      "groups": 176,
+      "multiplicity": 4,
+      "replicates": 5000,
+      "ci95": [
+        0.02085559884714744,
+        0.03662253899973245
+      ],
+      "ci_adjusted": [
+        0.01879760404377288,
+        0.03889297766813155
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-full",
+      "axis": "all",
+      "value": "all",
+      "metric": "precision10_plus",
+      "inference": "descriptive_posthoc",
+      "delta": 0.06297872340425532,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.034322033898305085,
+        0.09301461275260398
+      ],
+      "ci_adjusted": [
+        0.034322033898305085,
+        0.09301461275260398
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-full",
+      "axis": "all",
+      "value": "all",
+      "metric": "precision10_minus",
+      "inference": "descriptive_posthoc",
+      "delta": 0.04042553191489362,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.0244723474765035,
+        0.05805185842886277
+      ],
+      "ci_adjusted": [
+        0.0244723474765035,
+        0.05805185842886277
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-full",
+      "axis": "psi_stratum",
+      "value": "gt3_le4",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.03054964179917533,
+      "peptides": 85,
+      "groups": 85,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.04136463516147219,
+        -0.019605786833485003
+      ],
+      "ci_adjusted": [
+        -0.04136463516147219,
+        -0.019605786833485003
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-full",
+      "axis": "psi_stratum",
+      "value": "gt4_le5",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.05440322810097622,
+      "peptides": 36,
+      "groups": 35,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.07313742395834728,
+        -0.03758599221687332
+      ],
+      "ci_adjusted": [
+        -0.07313742395834728,
+        -0.03758599221687332
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-full",
+      "axis": "psi_stratum",
+      "value": "gt5",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.11325166495368544,
+      "peptides": 23,
+      "groups": 23,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.1348429025194456,
+        -0.09150070362565278
+      ],
+      "ci_adjusted": [
+        -0.1348429025194456,
+        -0.09150070362565278
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-full",
+      "axis": "psi_stratum",
+      "value": "le3",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.02388243007130463,
+      "peptides": 91,
+      "groups": 89,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.03315055474146894,
+        -0.014787449645236277
+      ],
+      "ci_adjusted": [
+        -0.03315055474146894,
+        -0.014787449645236277
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-full",
+      "axis": "outer_fold",
+      "value": "0",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.034507797750284515,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.048226191719693313,
+        -0.020999044511628272
+      ],
+      "ci_adjusted": [
+        -0.048226191719693313,
+        -0.020999044511628272
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-full",
+      "axis": "outer_fold",
+      "value": "1",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.044226055327368334,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.06360572722920639,
+        -0.027728760273247312
+      ],
+      "ci_adjusted": [
+        -0.06360572722920639,
+        -0.027728760273247312
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-full",
+      "axis": "outer_fold",
+      "value": "2",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.03367642835743217,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.04976920307427833,
+        -0.018233943600649904
+      ],
+      "ci_adjusted": [
+        -0.04976920307427833,
+        -0.018233943600649904
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-full",
+      "axis": "outer_fold",
+      "value": "3",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.03818992468219596,
+      "peptides": 47,
+      "groups": 45,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.055013875754653684,
+        -0.021618728541139543
+      ],
+      "ci_adjusted": [
+        -0.055013875754653684,
+        -0.021618728541139543
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-full",
+      "axis": "outer_fold",
+      "value": "4",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.04798118101013461,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.06411913011298166,
+        -0.031957005872122385
+      ],
+      "ci_adjusted": [
+        -0.06411913011298166,
+        -0.031957005872122385
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-mutant-RAS",
+      "axis": "all",
+      "value": "all",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.03934924113881806,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.04657300174376468,
+        -0.03226505663879085
+      ],
+      "ci_adjusted": [
+        -0.04657300174376468,
+        -0.03226505663879085
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-mutant-RAS",
+      "axis": "all",
+      "value": "all",
+      "metric": "auroc_plus",
+      "inference": "descriptive_posthoc",
+      "delta": 0.028303654456964956,
+      "peptides": 160,
+      "groups": 156,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.0171196442764981,
+        0.03967032390628026
+      ],
+      "ci_adjusted": [
+        0.0171196442764981,
+        0.03967032390628026
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-mutant-RAS",
+      "axis": "all",
+      "value": "all",
+      "metric": "precision10_plus",
+      "inference": "descriptive_posthoc",
+      "delta": 0.057021276595744685,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.036203898050974515,
+        0.07782262282359292
+      ],
+      "ci_adjusted": [
+        0.036203898050974515,
+        0.07782262282359292
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-mutant-RAS",
+      "axis": "all",
+      "value": "all",
+      "metric": "precision10_minus",
+      "inference": "descriptive_posthoc",
+      "delta": 0.0012765957446808512,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.002608980444275679,
+        0.005416666666666667
+      ],
+      "ci_adjusted": [
+        -0.002608980444275679,
+        0.005416666666666667
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-mutant-RAS",
+      "axis": "psi_stratum",
+      "value": "gt3_le4",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.029452321453325266,
+      "peptides": 85,
+      "groups": 85,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.04059175875346754,
+        -0.018325744030770932
+      ],
+      "ci_adjusted": [
+        -0.04059175875346754,
+        -0.018325744030770932
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-mutant-RAS",
+      "axis": "psi_stratum",
+      "value": "gt4_le5",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.04290807953267704,
+      "peptides": 36,
+      "groups": 35,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.05752548371872128,
+        -0.02993804247528667
+      ],
+      "ci_adjusted": [
+        -0.05752548371872128,
+        -0.02993804247528667
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-mutant-RAS",
+      "axis": "psi_stratum",
+      "value": "gt5",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.1054394635389653,
+      "peptides": 23,
+      "groups": 23,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.1303835026432086,
+        -0.0824511397471633
+      ],
+      "ci_adjusted": [
+        -0.1303835026432086,
+        -0.0824511397471633
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-mutant-RAS",
+      "axis": "psi_stratum",
+      "value": "le3",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.030481602412274947,
+      "peptides": 91,
+      "groups": 89,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.04044926046861606,
+        -0.02068720444134245
+      ],
+      "ci_adjusted": [
+        -0.04044926046861606,
+        -0.02068720444134245
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-mutant-RAS",
+      "axis": "outer_fold",
+      "value": "0",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.03414412240945969,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.04741657568898297,
+        -0.02067750578656605
+      ],
+      "ci_adjusted": [
+        -0.04741657568898297,
+        -0.02067750578656605
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-mutant-RAS",
+      "axis": "outer_fold",
+      "value": "1",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.05181152544893439,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.07091607945516035,
+        -0.035167865022182644
+      ],
+      "ci_adjusted": [
+        -0.07091607945516035,
+        -0.035167865022182644
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-mutant-RAS",
+      "axis": "outer_fold",
+      "value": "2",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.033164781146083705,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.04858636364545366,
+        -0.01747187951344647
+      ],
+      "ci_adjusted": [
+        -0.04858636364545366,
+        -0.01747187951344647
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-mutant-RAS",
+      "axis": "outer_fold",
+      "value": "3",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.03557917781693167,
+      "peptides": 47,
+      "groups": 45,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.0509044594862801,
+        -0.020501350164010376
+      ],
+      "ci_adjusted": [
+        -0.0509044594862801,
+        -0.020501350164010376
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-mutant-RAS",
+      "axis": "outer_fold",
+      "value": "4",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.04204659887268083,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.05955339647926189,
+        -0.02577598861319117
+      ],
+      "ci_adjusted": [
+        -0.05955339647926189,
+        -0.02577598861319117
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-scanning-pairs",
+      "axis": "all",
+      "value": "all",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.04269940064240691,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.05164760052379236,
+        -0.03397983408436377
+      ],
+      "ci_adjusted": [
+        -0.05164760052379236,
+        -0.03397983408436377
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-scanning-pairs",
+      "axis": "all",
+      "value": "all",
+      "metric": "auroc_plus",
+      "inference": "descriptive_posthoc",
+      "delta": 0.03774892988824599,
+      "peptides": 114,
+      "groups": 111,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.020458587368201556,
+        0.054801935346401286
+      ],
+      "ci_adjusted": [
+        0.020458587368201556,
+        0.054801935346401286
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-scanning-pairs",
+      "axis": "all",
+      "value": "all",
+      "metric": "precision10_plus",
+      "inference": "descriptive_posthoc",
+      "delta": 0.004680851063829787,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.00260898044427568,
+        0.01217391304347826
+      ],
+      "ci_adjusted": [
+        -0.00260898044427568,
+        0.01217391304347826
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-scanning-pairs",
+      "axis": "all",
+      "value": "all",
+      "metric": "precision10_minus",
+      "inference": "descriptive_posthoc",
+      "delta": 0.0034042553191489366,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.00042913869630607836,
+        0.006550218340611353
+      ],
+      "ci_adjusted": [
+        0.00042913869630607836,
+        0.006550218340611353
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-scanning-pairs",
+      "axis": "psi_stratum",
+      "value": "gt3_le4",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.02942994785651762,
+      "peptides": 85,
+      "groups": 85,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.04280585913808137,
+        -0.01605480637868543
+      ],
+      "ci_adjusted": [
+        -0.04280585913808137,
+        -0.01605480637868543
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-scanning-pairs",
+      "axis": "psi_stratum",
+      "value": "gt4_le5",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.04925654648877977,
+      "peptides": 36,
+      "groups": 35,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.06748424920267346,
+        -0.031888435146996366
+      ],
+      "ci_adjusted": [
+        -0.06748424920267346,
+        -0.031888435146996366
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-scanning-pairs",
+      "axis": "psi_stratum",
+      "value": "gt5",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.12825734109385362,
+      "peptides": 23,
+      "groups": 23,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.1625076527514779,
+        -0.09627423075764373
+      ],
+      "ci_adjusted": [
+        -0.1625076527514779,
+        -0.09627423075764373
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-scanning-pairs",
+      "axis": "psi_stratum",
+      "value": "le3",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.030875374334141985,
+      "peptides": 91,
+      "groups": 89,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.041858513538037566,
+        -0.01999932499539874
+      ],
+      "ci_adjusted": [
+        -0.041858513538037566,
+        -0.01999932499539874
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-scanning-pairs",
+      "axis": "outer_fold",
+      "value": "0",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.03443836775851771,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.05075975852099928,
+        -0.017885873601121455
+      ],
+      "ci_adjusted": [
+        -0.05075975852099928,
+        -0.017885873601121455
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-scanning-pairs",
+      "axis": "outer_fold",
+      "value": "1",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.05350372890906657,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.07611601166957463,
+        -0.033488458062944614
+      ],
+      "ci_adjusted": [
+        -0.07611601166957463,
+        -0.033488458062944614
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-scanning-pairs",
+      "axis": "outer_fold",
+      "value": "2",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.035483006379878744,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.0530265039597204,
+        -0.01757903955885922
+      ],
+      "ci_adjusted": [
+        -0.0530265039597204,
+        -0.01757903955885922
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-scanning-pairs",
+      "axis": "outer_fold",
+      "value": "3",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.04735641413680521,
+      "peptides": 47,
+      "groups": 45,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.06833883189513386,
+        -0.026899701614023684
+      ],
+      "ci_adjusted": [
+        -0.06833883189513386,
+        -0.026899701614023684
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-B",
+      "b": "esm2_35m-frozen-B",
+      "cohort": "W-scanning-pairs",
+      "axis": "outer_fold",
+      "value": "4",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.042715486027766286,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.06293595692755748,
+        -0.024419849504264436
+      ],
+      "ci_adjusted": [
+        -0.06293595692755748,
+        -0.024419849504264436
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-full",
+      "axis": "all",
+      "value": "all",
+      "metric": "mae",
+      "inference": "original_family_replay",
+      "delta": -0.02538618282142546,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 4,
+      "replicates": 5000,
+      "ci95": [
+        -0.031809675799199535,
+        -0.019066780735157236
+      ],
+      "ci_adjusted": [
+        -0.03390316526186709,
+        -0.017476795948804566
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-full",
+      "axis": "all",
+      "value": "all",
+      "metric": "auroc_plus",
+      "inference": "original_family_replay",
+      "delta": 0.028930766796453455,
+      "peptides": 184,
+      "groups": 176,
+      "multiplicity": 4,
+      "replicates": 5000,
+      "ci95": [
+        0.021160854439719674,
+        0.03633262375298361
+      ],
+      "ci_adjusted": [
+        0.019176992191866214,
+        0.03868631172487345
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-full",
+      "axis": "all",
+      "value": "all",
+      "metric": "precision10_plus",
+      "inference": "descriptive_posthoc",
+      "delta": 0.057872340425531923,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.02757021604938272,
+        0.08898421297289565
+      ],
+      "ci_adjusted": [
+        0.02757021604938272,
+        0.08898421297289565
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-full",
+      "axis": "all",
+      "value": "all",
+      "metric": "precision10_minus",
+      "inference": "descriptive_posthoc",
+      "delta": 0.03829787234042553,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.022745338478739136,
+        0.05541252864782275
+      ],
+      "ci_adjusted": [
+        0.022745338478739136,
+        0.05541252864782275
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-full",
+      "axis": "psi_stratum",
+      "value": "gt3_le4",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.022356222665510996,
+      "peptides": 85,
+      "groups": 85,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.03224500091955479,
+        -0.012535777711028036
+      ],
+      "ci_adjusted": [
+        -0.03224500091955479,
+        -0.012535777711028036
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-full",
+      "axis": "psi_stratum",
+      "value": "gt4_le5",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.03166688414167312,
+      "peptides": 36,
+      "groups": 35,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.04545802095614964,
+        -0.018346735585671393
+      ],
+      "ci_adjusted": [
+        -0.04545802095614964,
+        -0.018346735585671393
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-full",
+      "axis": "psi_stratum",
+      "value": "gt5",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.06646081916884708,
+      "peptides": 23,
+      "groups": 23,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.08917329579978868,
+        -0.04104708149290212
+      ],
+      "ci_adjusted": [
+        -0.08917329579978868,
+        -0.04104708149290212
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-full",
+      "axis": "psi_stratum",
+      "value": "le3",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.015350190840470693,
+      "peptides": 91,
+      "groups": 89,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.02547281107339151,
+        -0.005114275255726564
+      ],
+      "ci_adjusted": [
+        -0.02547281107339151,
+        -0.005114275255726564
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-full",
+      "axis": "outer_fold",
+      "value": "0",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.020279749181601376,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.03415811757637875,
+        -0.0065555155194939865
+      ],
+      "ci_adjusted": [
+        -0.03415811757637875,
+        -0.0065555155194939865
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-full",
+      "axis": "outer_fold",
+      "value": "1",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.02406993304604953,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.03648487119740309,
+        -0.011865152366619471
+      ],
+      "ci_adjusted": [
+        -0.03648487119740309,
+        -0.011865152366619471
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-full",
+      "axis": "outer_fold",
+      "value": "2",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.02410670468307772,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.03757084132968174,
+        -0.011289684693623122
+      ],
+      "ci_adjusted": [
+        -0.03757084132968174,
+        -0.011289684693623122
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-full",
+      "axis": "outer_fold",
+      "value": "3",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.03146018692071824,
+      "peptides": 47,
+      "groups": 45,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.04860300924940511,
+        -0.014688329232236418
+      ],
+      "ci_adjusted": [
+        -0.04860300924940511,
+        -0.014688329232236418
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-full",
+      "axis": "outer_fold",
+      "value": "4",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.02701434027568045,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.040863990243729505,
+        -0.01369857362134279
+      ],
+      "ci_adjusted": [
+        -0.040863990243729505,
+        -0.01369857362134279
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "all",
+      "value": "all",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.026343774992230184,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.03277579824016018,
+        -0.020136571992520384
+      ],
+      "ci_adjusted": [
+        -0.03277579824016018,
+        -0.020136571992520384
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "all",
+      "value": "all",
+      "metric": "auroc_plus",
+      "inference": "descriptive_posthoc",
+      "delta": 0.024782926820888958,
+      "peptides": 160,
+      "groups": 156,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.012399117021827,
+        0.03625299461316743
+      ],
+      "ci_adjusted": [
+        0.012399117021827,
+        0.03625299461316743
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "all",
+      "value": "all",
+      "metric": "precision10_plus",
+      "inference": "descriptive_posthoc",
+      "delta": 0.06340425531914895,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.04391226380480646,
+        0.08318974572587655
+      ],
+      "ci_adjusted": [
+        0.04391226380480646,
+        0.08318974572587655
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "all",
+      "value": "all",
+      "metric": "precision10_minus",
+      "inference": "descriptive_posthoc",
+      "delta": -0.00042553191489361707,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.003862660944206008,
+        0.003004291845493562
+      ],
+      "ci_adjusted": [
+        -0.003862660944206008,
+        0.003004291845493562
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "psi_stratum",
+      "value": "gt3_le4",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.024633941513921433,
+      "peptides": 85,
+      "groups": 85,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.03437932216454759,
+        -0.014968705379485865
+      ],
+      "ci_adjusted": [
+        -0.03437932216454759,
+        -0.014968705379485865
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "psi_stratum",
+      "value": "gt4_le5",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.023152126763729537,
+      "peptides": 36,
+      "groups": 35,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.03426982752477211,
+        -0.012119264917352315
+      ],
+      "ci_adjusted": [
+        -0.03426982752477211,
+        -0.012119264917352315
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "psi_stratum",
+      "value": "gt5",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.05532733662186776,
+      "peptides": 23,
+      "groups": 23,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.07870108742253057,
+        -0.03073818575564337
+      ],
+      "ci_adjusted": [
+        -0.07870108742253057,
+        -0.03073818575564337
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "psi_stratum",
+      "value": "le3",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.021877986688940112,
+      "peptides": 91,
+      "groups": 89,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.032416145904717635,
+        -0.011217841411139597
+      ],
+      "ci_adjusted": [
+        -0.032416145904717635,
+        -0.011217841411139597
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "outer_fold",
+      "value": "0",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.023665604136638603,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.03862031115773795,
+        -0.006634150780628372
+      ],
+      "ci_adjusted": [
+        -0.03862031115773795,
+        -0.006634150780628372
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "outer_fold",
+      "value": "1",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.029810936064037327,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.04193978533884304,
+        -0.017957649220968465
+      ],
+      "ci_adjusted": [
+        -0.04193978533884304,
+        -0.017957649220968465
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "outer_fold",
+      "value": "2",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.0255429701009148,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.03913376131877941,
+        -0.01216275966254608
+      ],
+      "ci_adjusted": [
+        -0.03913376131877941,
+        -0.01216275966254608
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "outer_fold",
+      "value": "3",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.03056631989152338,
+      "peptides": 47,
+      "groups": 45,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.04392625683361842,
+        -0.017241808564401825
+      ],
+      "ci_adjusted": [
+        -0.04392625683361842,
+        -0.017241808564401825
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "outer_fold",
+      "value": "4",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.02213304476803683,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.037339346968331785,
+        -0.008092812095038947
+      ],
+      "ci_adjusted": [
+        -0.037339346968331785,
+        -0.008092812095038947
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "all",
+      "value": "all",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.027174420170611762,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.035077406871253825,
+        -0.01947718135718208
+      ],
+      "ci_adjusted": [
+        -0.035077406871253825,
+        -0.01947718135718208
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "all",
+      "value": "all",
+      "metric": "auroc_plus",
+      "inference": "descriptive_posthoc",
+      "delta": 0.030055770723605102,
+      "peptides": 114,
+      "groups": 111,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.014273856355834176,
+        0.04607598707139375
+      ],
+      "ci_adjusted": [
+        0.014273856355834176,
+        0.04607598707139375
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "all",
+      "value": "all",
+      "metric": "precision10_plus",
+      "inference": "descriptive_posthoc",
+      "delta": 0.005957446808510636,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.0008733624454148475,
+        0.013081033409421029
+      ],
+      "ci_adjusted": [
+        -0.0008733624454148475,
+        0.013081033409421029
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "all",
+      "value": "all",
+      "metric": "precision10_minus",
+      "inference": "descriptive_posthoc",
+      "delta": -0.0008510638297872339,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.004184539924756513,
+        0.0021369814020028586
+      ],
+      "ci_adjusted": [
+        -0.004184539924756513,
+        0.0021369814020028586
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "psi_stratum",
+      "value": "gt3_le4",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.023462308635535684,
+      "peptides": 85,
+      "groups": 85,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.03493945089801295,
+        -0.011898437788493421
+      ],
+      "ci_adjusted": [
+        -0.03493945089801295,
+        -0.011898437788493421
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "psi_stratum",
+      "value": "gt4_le5",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.03279282019400183,
+      "peptides": 36,
+      "groups": 35,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.04776056480423357,
+        -0.017691754982895536
+      ],
+      "ci_adjusted": [
+        -0.04776056480423357,
+        -0.017691754982895536
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "psi_stratum",
+      "value": "gt5",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.0630512226844164,
+      "peptides": 23,
+      "groups": 23,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.0969807627472962,
+        -0.026145377195337896
+      ],
+      "ci_adjusted": [
+        -0.0969807627472962,
+        -0.026145377195337896
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "psi_stratum",
+      "value": "le3",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.019351350080742718,
+      "peptides": 91,
+      "groups": 89,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.03130137566995676,
+        -0.007218830361264893
+      ],
+      "ci_adjusted": [
+        -0.03130137566995676,
+        -0.007218830361264893
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "outer_fold",
+      "value": "0",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.018668967055335068,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.03656562794079436,
+        0.0011989166026741887
+      ],
+      "ci_adjusted": [
+        -0.03656562794079436,
+        0.0011989166026741887
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "outer_fold",
+      "value": "1",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.028439240549723722,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.044370837264512616,
+        -0.011980116803216881
+      ],
+      "ci_adjusted": [
+        -0.044370837264512616,
+        -0.011980116803216881
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "outer_fold",
+      "value": "2",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.029685155414902423,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.0451718241475393,
+        -0.014792333412597803
+      ],
+      "ci_adjusted": [
+        -0.0451718241475393,
+        -0.014792333412597803
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "outer_fold",
+      "value": "3",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.0342477639132022,
+      "peptides": 47,
+      "groups": 45,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.0517859523267793,
+        -0.01674677728545442
+      ],
+      "ci_adjusted": [
+        -0.0517859523267793,
+        -0.01674677728545442
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "esm2_35m-frozen-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "outer_fold",
+      "value": "4",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.024830973919895395,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.04319617515460746,
+        -0.007420238028469711
+      ],
+      "ci_adjusted": [
+        -0.04319617515460746,
+        -0.007420238028469711
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-full",
+      "axis": "all",
+      "value": "all",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.04280648870876488,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.05130728480377832,
+        -0.034431483112013425
+      ],
+      "ci_adjusted": [
+        -0.05130728480377832,
+        -0.034431483112013425
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-full",
+      "axis": "all",
+      "value": "all",
+      "metric": "auroc_plus",
+      "inference": "descriptive_posthoc",
+      "delta": 0.02162297351493038,
+      "peptides": 184,
+      "groups": 176,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.010624237177099078,
+        0.033111736760734166
+      ],
+      "ci_adjusted": [
+        0.010624237177099078,
+        0.033111736760734166
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-full",
+      "axis": "all",
+      "value": "all",
+      "metric": "precision10_plus",
+      "inference": "descriptive_posthoc",
+      "delta": 0.07361702127659576,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.038766106828193835,
+        0.10877289589612796
+      ],
+      "ci_adjusted": [
+        0.038766106828193835,
+        0.10877289589612796
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-full",
+      "axis": "all",
+      "value": "all",
+      "metric": "precision10_minus",
+      "inference": "descriptive_posthoc",
+      "delta": 0.09659574468085107,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.07130298913043479,
+        0.12347891118543294
+      ],
+      "ci_adjusted": [
+        0.07130298913043479,
+        0.12347891118543294
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-full",
+      "axis": "psi_stratum",
+      "value": "gt3_le4",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.03994899263285042,
+      "peptides": 85,
+      "groups": 85,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.05252422074918748,
+        -0.027621658280084546
+      ],
+      "ci_adjusted": [
+        -0.05252422074918748,
+        -0.027621658280084546
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-full",
+      "axis": "psi_stratum",
+      "value": "gt4_le5",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.06061587925651854,
+      "peptides": 36,
+      "groups": 35,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.08653900441122236,
+        -0.036760950325875744
+      ],
+      "ci_adjusted": [
+        -0.08653900441122236,
+        -0.036760950325875744
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-full",
+      "axis": "psi_stratum",
+      "value": "gt5",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.11053167565964846,
+      "peptides": 23,
+      "groups": 23,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.13749393836789606,
+        -0.08287257429809404
+      ],
+      "ci_adjusted": [
+        -0.13749393836789606,
+        -0.08287257429809404
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-full",
+      "axis": "psi_stratum",
+      "value": "le3",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.021312750322647005,
+      "peptides": 91,
+      "groups": 89,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.032244313927999146,
+        -0.009487985902228843
+      ],
+      "ci_adjusted": [
+        -0.032244313927999146,
+        -0.009487985902228843
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-full",
+      "axis": "outer_fold",
+      "value": "0",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.031079209260600624,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.050998076483664445,
+        -0.011918161773698362
+      ],
+      "ci_adjusted": [
+        -0.050998076483664445,
+        -0.011918161773698362
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-full",
+      "axis": "outer_fold",
+      "value": "1",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.04239408437653966,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.06015672520684641,
+        -0.02662070693055772
+      ],
+      "ci_adjusted": [
+        -0.06015672520684641,
+        -0.02662070693055772
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-full",
+      "axis": "outer_fold",
+      "value": "2",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.042662111045431,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.06200888009125439,
+        -0.025067655981164328
+      ],
+      "ci_adjusted": [
+        -0.06200888009125439,
+        -0.025067655981164328
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-full",
+      "axis": "outer_fold",
+      "value": "3",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.0529820665348638,
+      "peptides": 47,
+      "groups": 45,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.0734707431394497,
+        -0.034031721429278156
+      ],
+      "ci_adjusted": [
+        -0.0734707431394497,
+        -0.034031721429278156
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-full",
+      "axis": "outer_fold",
+      "value": "4",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.044914972326389295,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.06464819683301934,
+        -0.026352454448177146
+      ],
+      "ci_adjusted": [
+        -0.06464819683301934,
+        -0.026352454448177146
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "all",
+      "value": "all",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.039136902746277666,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.04701140744400356,
+        -0.03137665378303002
+      ],
+      "ci_adjusted": [
+        -0.04701140744400356,
+        -0.03137665378303002
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "all",
+      "value": "all",
+      "metric": "auroc_plus",
+      "inference": "descriptive_posthoc",
+      "delta": 0.01863098163402641,
+      "peptides": 160,
+      "groups": 156,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.0026499210607510435,
+        0.03533030273146994
+      ],
+      "ci_adjusted": [
+        0.0026499210607510435,
+        0.03533030273146994
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "all",
+      "value": "all",
+      "metric": "precision10_plus",
+      "inference": "descriptive_posthoc",
+      "delta": 0.06978723404255319,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.0461522633744856,
+        0.0949377681266882
+      ],
+      "ci_adjusted": [
+        0.0461522633744856,
+        0.0949377681266882
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "all",
+      "value": "all",
+      "metric": "precision10_minus",
+      "inference": "descriptive_posthoc",
+      "delta": 0.006382978723404256,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.0016391769822683172,
+        0.01149058919803599
+      ],
+      "ci_adjusted": [
+        0.0016391769822683172,
+        0.01149058919803599
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "psi_stratum",
+      "value": "gt3_le4",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.03656467301440853,
+      "peptides": 85,
+      "groups": 85,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.04879174341550212,
+        -0.02394992895203687
+      ],
+      "ci_adjusted": [
+        -0.04879174341550212,
+        -0.02394992895203687
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "psi_stratum",
+      "value": "gt4_le5",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.046074058785739995,
+      "peptides": 36,
+      "groups": 35,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.06823897069476843,
+        -0.025754690316652694
+      ],
+      "ci_adjusted": [
+        -0.06823897069476843,
+        -0.025754690316652694
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "psi_stratum",
+      "value": "gt5",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.08514754230686526,
+      "peptides": 23,
+      "groups": 23,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.11178612484658375,
+        -0.059936701253943424
+      ],
+      "ci_adjusted": [
+        -0.11178612484658375,
+        -0.059936701253943424
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "psi_stratum",
+      "value": "le3",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.027166102745120692,
+      "peptides": 91,
+      "groups": 89,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.03786950906968788,
+        -0.01602545717192495
+      ],
+      "ci_adjusted": [
+        -0.03786950906968788,
+        -0.01602545717192495
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "outer_fold",
+      "value": "0",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.028419853609418795,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.046566216984242785,
+        -0.009920721290384273
+      ],
+      "ci_adjusted": [
+        -0.046566216984242785,
+        -0.009920721290384273
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "outer_fold",
+      "value": "1",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.04222055045671009,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.05768221201743974,
+        -0.028358357204598603
+      ],
+      "ci_adjusted": [
+        -0.05768221201743974,
+        -0.028358357204598603
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "outer_fold",
+      "value": "2",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.039161943471692814,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.05634412441554667,
+        -0.02284907354926167
+      ],
+      "ci_adjusted": [
+        -0.05634412441554667,
+        -0.02284907354926167
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "outer_fold",
+      "value": "3",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.050871576029910694,
+      "peptides": 47,
+      "groups": 45,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.07014038345725082,
+        -0.03322014331585907
+      ],
+      "ci_adjusted": [
+        -0.07014038345725082,
+        -0.03322014331585907
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-mutant-RAS",
+      "axis": "outer_fold",
+      "value": "4",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.03501059016365586,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.05383924482030794,
+        -0.017517199502251335
+      ],
+      "ci_adjusted": [
+        -0.05383924482030794,
+        -0.017517199502251335
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "all",
+      "value": "all",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.039816681878049515,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.048682055003751265,
+        -0.031458706159036426
+      ],
+      "ci_adjusted": [
+        -0.048682055003751265,
+        -0.031458706159036426
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "all",
+      "value": "all",
+      "metric": "auroc_plus",
+      "inference": "descriptive_posthoc",
+      "delta": 0.025429234169377705,
+      "peptides": 114,
+      "groups": 111,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.00280388549097124,
+        0.048585479992903954
+      ],
+      "ci_adjusted": [
+        0.00280388549097124,
+        0.048585479992903954
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "all",
+      "value": "all",
+      "metric": "precision10_plus",
+      "inference": "descriptive_posthoc",
+      "delta": 0.005531914893617019,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.0046610169491525435,
+        0.016309012875536478
+      ],
+      "ci_adjusted": [
+        -0.0046610169491525435,
+        0.016309012875536478
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "all",
+      "value": "all",
+      "metric": "precision10_minus",
+      "inference": "descriptive_posthoc",
+      "delta": 0.0029787234042553193,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.0,
+        0.006113537117903931
+      ],
+      "ci_adjusted": [
+        0.0,
+        0.006113537117903931
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "psi_stratum",
+      "value": "gt3_le4",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.03784738258531396,
+      "peptides": 85,
+      "groups": 85,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.05110829449106826,
+        -0.024497264874476354
+      ],
+      "ci_adjusted": [
+        -0.05110829449106826,
+        -0.024497264874476354
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "psi_stratum",
+      "value": "gt4_le5",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.05961080410278663,
+      "peptides": 36,
+      "groups": 35,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.08695540062133221,
+        -0.03480981464308145
+      ],
+      "ci_adjusted": [
+        -0.08695540062133221,
+        -0.03480981464308145
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "psi_stratum",
+      "value": "gt5",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.07952410690257737,
+      "peptides": 23,
+      "groups": 23,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.10817530814442644,
+        -0.04848872587864941
+      ],
+      "ci_adjusted": [
+        -0.10817530814442644,
+        -0.04848872587864941
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "psi_stratum",
+      "value": "le3",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.02378955291352033,
+      "peptides": 91,
+      "groups": 89,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.03610828367196645,
+        -0.011772531273061146
+      ],
+      "ci_adjusted": [
+        -0.03610828367196645,
+        -0.011772531273061146
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "outer_fold",
+      "value": "0",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.027310910615511545,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.04586150390710903,
+        -0.008839417222768192
+      ],
+      "ci_adjusted": [
+        -0.04586150390710903,
+        -0.008839417222768192
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "outer_fold",
+      "value": "1",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.037773907517342255,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.05530563130559385,
+        -0.020377215887669352
+      ],
+      "ci_adjusted": [
+        -0.05530563130559385,
+        -0.020377215887669352
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "outer_fold",
+      "value": "2",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.04143850979730675,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.060312754589243664,
+        -0.024199680511908815
+      ],
+      "ci_adjusted": [
+        -0.060312754589243664,
+        -0.024199680511908815
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "outer_fold",
+      "value": "3",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.05515613266364798,
+      "peptides": 47,
+      "groups": 45,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.07734620183994227,
+        -0.03450717956394474
+      ],
+      "ci_adjusted": [
+        -0.07734620183994227,
+        -0.03450717956394474
+      ],
+      "reason": null
+    },
+    {
+      "a": "esm2_35m-lora-D",
+      "b": "ordered-w5-D",
+      "cohort": "W-scanning-pairs",
+      "axis": "outer_fold",
+      "value": "4",
+      "metric": "mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.037403948796439025,
+      "peptides": 47,
+      "groups": 44,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.05944816985574015,
+        -0.017790865756616793
+      ],
+      "ci_adjusted": [
+        -0.05944816985574015,
+        -0.017790865756616793
+      ],
+      "reason": null
+    }
+  ],
+  "transfer_vs_zero": [
+    {
+      "cohort": "T-rep1-full",
+      "axis": "all",
+      "value": "all",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.0032556794422010336,
+      "peptides": 1410,
+      "groups": 730,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.009249335259827421,
+        0.0027598021164009457
+      ],
+      "ci_adjusted": [
+        -0.009249335259827421,
+        0.0027598021164009457
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "T-rep1-full",
+      "axis": "psi_stratum",
+      "value": "gt3_le4",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.024044823474679074,
+      "peptides": 323,
+      "groups": 253,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.03422119458279631,
+        -0.013555720820916523
+      ],
+      "ci_adjusted": [
+        -0.03422119458279631,
+        -0.013555720820916523
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "T-rep1-full",
+      "axis": "psi_stratum",
+      "value": "gt4_le5",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": 0.015571620225435102,
+      "peptides": 306,
+      "groups": 238,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.00422921683147728,
+        0.02736464316364421
+      ],
+      "ci_adjusted": [
+        0.00422921683147728,
+        0.02736464316364421
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "T-rep1-full",
+      "axis": "psi_stratum",
+      "value": "gt5",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": 0.09581907439598963,
+      "peptides": 257,
+      "groups": 204,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.08485271316529984,
+        0.10656541947065766
+      ],
+      "ci_adjusted": [
+        0.08485271316529984,
+        0.10656541947065766
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "T-rep1-full",
+      "axis": "psi_stratum",
+      "value": "le3",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.05002757240445533,
+      "peptides": 524,
+      "groups": 343,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.05802440291146707,
+        -0.04199770380647553
+      ],
+      "ci_adjusted": [
+        -0.05802440291146707,
+        -0.04199770380647553
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "T-intersection-rep1",
+      "axis": "all",
+      "value": "all",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.003246947441939012,
+      "peptides": 1407,
+      "groups": 730,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.00924851074396852,
+        0.00272149997110171
+      ],
+      "ci_adjusted": [
+        -0.00924851074396852,
+        0.00272149997110171
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "T-intersection-rep1",
+      "axis": "psi_stratum",
+      "value": "gt3_le4",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.02412335177821074,
+      "peptides": 323,
+      "groups": 253,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.03432925733488848,
+        -0.013598521262537284
+      ],
+      "ci_adjusted": [
+        -0.03432925733488848,
+        -0.013598521262537284
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "T-intersection-rep1",
+      "axis": "psi_stratum",
+      "value": "gt4_le5",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": 0.01622167048097879,
+      "peptides": 305,
+      "groups": 238,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.004659214248374999,
+        0.027989014081831864
+      ],
+      "ci_adjusted": [
+        0.004659214248374999,
+        0.027989014081831864
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "T-intersection-rep1",
+      "axis": "psi_stratum",
+      "value": "gt5",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": 0.09545061452985466,
+      "peptides": 256,
+      "groups": 203,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.08408392410329583,
+        0.1062934569424154
+      ],
+      "ci_adjusted": [
+        0.08408392410329583,
+        0.1062934569424154
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "T-intersection-rep1",
+      "axis": "psi_stratum",
+      "value": "le3",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.05001831595179244,
+      "peptides": 523,
+      "groups": 343,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.05801256419727109,
+        -0.04201558108662827
+      ],
+      "ci_adjusted": [
+        -0.05801256419727109,
+        -0.04201558108662827
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "T-intersection-rep2",
+      "axis": "all",
+      "value": "all",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.0012283348925925125,
+      "peptides": 1407,
+      "groups": 730,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.0074072648699457875,
+        0.004840931538549183
+      ],
+      "ci_adjusted": [
+        -0.0074072648699457875,
+        0.004840931538549183
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "T-intersection-rep2",
+      "axis": "psi_stratum",
+      "value": "gt3_le4",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.027263943755378568,
+      "peptides": 323,
+      "groups": 253,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.03834314318323509,
+        -0.01615261300368689
+      ],
+      "ci_adjusted": [
+        -0.03834314318323509,
+        -0.01615261300368689
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "T-intersection-rep2",
+      "axis": "psi_stratum",
+      "value": "gt4_le5",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": 0.029489839347451616,
+      "peptides": 305,
+      "groups": 238,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.017898435094081365,
+        0.042015836075691405
+      ],
+      "ci_adjusted": [
+        0.017898435094081365,
+        0.042015836075691405
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "T-intersection-rep2",
+      "axis": "psi_stratum",
+      "value": "gt5",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": 0.08370946393508916,
+      "peptides": 256,
+      "groups": 203,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.07073044583318817,
+        0.0959124009934987
+      ],
+      "ci_adjusted": [
+        0.07073044583318817,
+        0.0959124009934987
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "T-intersection-rep2",
+      "axis": "psi_stratum",
+      "value": "le3",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.04463869431978195,
+      "peptides": 523,
+      "groups": 343,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.0534633064155655,
+        -0.03604034554682721
+      ],
+      "ci_adjusted": [
+        -0.0534633064155655,
+        -0.03604034554682721
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "T-intersection-mean12",
+      "axis": "all",
+      "value": "all",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": 0.0005513319689225243,
+      "peptides": 1407,
+      "groups": 730,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.005491772205566047,
+        0.006620244690652279
+      ],
+      "ci_adjusted": [
+        -0.005491772205566047,
+        0.006620244690652279
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "T-intersection-mean12",
+      "axis": "psi_stratum",
+      "value": "gt3_le4",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.025993207327614825,
+      "peptides": 323,
+      "groups": 253,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.036003611423289915,
+        -0.015738581246928247
+      ],
+      "ci_adjusted": [
+        -0.036003611423289915,
+        -0.015738581246928247
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "T-intersection-mean12",
+      "axis": "psi_stratum",
+      "value": "gt4_le5",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": 0.025962849443131347,
+      "peptides": 305,
+      "groups": 238,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.014818294766264967,
+        0.03784324085909522
+      ],
+      "ci_adjusted": [
+        0.014818294766264967,
+        0.03784324085909522
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "T-intersection-mean12",
+      "axis": "psi_stratum",
+      "value": "gt5",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": 0.10283665570510114,
+      "peptides": 256,
+      "groups": 203,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.09159649986474837,
+        0.11338367559084911
+      ],
+      "ci_adjusted": [
+        0.09159649986474837,
+        0.11338367559084911
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "T-intersection-mean12",
+      "axis": "psi_stratum",
+      "value": "le3",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.04794134396475595,
+      "peptides": 523,
+      "groups": 343,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.055905348436418964,
+        -0.03994447191657559
+      ],
+      "ci_adjusted": [
+        -0.055905348436418964,
+        -0.03994447191657559
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "W-full",
+      "axis": "all",
+      "value": "all",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.029113354312527092,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.0385553030588637,
+        -0.018979480677897398
+      ],
+      "ci_adjusted": [
+        -0.0385553030588637,
+        -0.018979480677897398
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "W-full",
+      "axis": "psi_stratum",
+      "value": "gt3_le4",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.05224262649434224,
+      "peptides": 85,
+      "groups": 85,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.06315376224347292,
+        -0.04011321870139896
+      ],
+      "ci_adjusted": [
+        -0.06315376224347292,
+        -0.04011321870139896
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "W-full",
+      "axis": "psi_stratum",
+      "value": "gt4_le5",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.025761809612707232,
+      "peptides": 36,
+      "groups": 35,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.04408621966396737,
+        -0.007307550940451151
+      ],
+      "ci_adjusted": [
+        -0.04408621966396737,
+        -0.007307550940451151
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "W-full",
+      "axis": "psi_stratum",
+      "value": "gt5",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": 0.11509885471326287,
+      "peptides": 23,
+      "groups": 23,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.07956085014830062,
+        0.15045793445176153
+      ],
+      "ci_adjusted": [
+        0.07956085014830062,
+        0.15045793445176153
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "W-full",
+      "axis": "psi_stratum",
+      "value": "le3",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.04528421454694902,
+      "peptides": 91,
+      "groups": 89,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.05684044265170415,
+        -0.03338766417800312
+      ],
+      "ci_adjusted": [
+        -0.05684044265170415,
+        -0.03338766417800312
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "W-mutant-RAS",
+      "axis": "all",
+      "value": "all",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.025406370622492958,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.035693311213585065,
+        -0.014517242950005121
+      ],
+      "ci_adjusted": [
+        -0.035693311213585065,
+        -0.014517242950005121
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "W-mutant-RAS",
+      "axis": "psi_stratum",
+      "value": "gt3_le4",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.049349680425422315,
+      "peptides": 85,
+      "groups": 85,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.0607604132594749,
+        -0.0365549140605533
+      ],
+      "ci_adjusted": [
+        -0.0607604132594749,
+        -0.0365549140605533
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "W-mutant-RAS",
+      "axis": "psi_stratum",
+      "value": "gt4_le5",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.0145016872283977,
+      "peptides": 36,
+      "groups": 35,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.035911583415682506,
+        0.0068595226385164115
+      ],
+      "ci_adjusted": [
+        -0.035911583415682506,
+        0.0068595226385164115
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "W-mutant-RAS",
+      "axis": "psi_stratum",
+      "value": "gt5",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": 0.13295447439559194,
+      "peptides": 23,
+      "groups": 23,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.09657806991807343,
+        0.16832219982335303
+      ],
+      "ci_adjusted": [
+        0.09657806991807343,
+        0.16832219982335303
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "W-mutant-RAS",
+      "axis": "psi_stratum",
+      "value": "le3",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.04738094979122248,
+      "peptides": 91,
+      "groups": 89,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.0595711679399789,
+        -0.035228421279352974
+      ],
+      "ci_adjusted": [
+        -0.0595711679399789,
+        -0.035228421279352974
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "W-scanning-pairs",
+      "axis": "all",
+      "value": "all",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.019834222942889303,
+      "peptides": 235,
+      "groups": 221,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.030202836671678095,
+        -0.009257290307038599
+      ],
+      "ci_adjusted": [
+        -0.030202836671678095,
+        -0.009257290307038599
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "W-scanning-pairs",
+      "axis": "psi_stratum",
+      "value": "gt3_le4",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.04107096302054382,
+      "peptides": 85,
+      "groups": 85,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.0532122677747242,
+        -0.027983083144232285
+      ],
+      "ci_adjusted": [
+        -0.0532122677747242,
+        -0.027983083144232285
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "W-scanning-pairs",
+      "axis": "psi_stratum",
+      "value": "gt4_le5",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.005437685799124592,
+      "peptides": 36,
+      "groups": 35,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.02746338045515977,
+        0.01570282265620584
+      ],
+      "ci_adjusted": [
+        -0.02746338045515977,
+        0.01570282265620584
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "W-scanning-pairs",
+      "axis": "psi_stratum",
+      "value": "gt5",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": 0.13283995632408113,
+      "peptides": 23,
+      "groups": 23,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        0.09611642839149635,
+        0.16760986881628342
+      ],
+      "ci_adjusted": [
+        0.09611642839149635,
+        0.16760986881628342
+      ],
+      "reason": null
+    },
+    {
+      "cohort": "W-scanning-pairs",
+      "axis": "psi_stratum",
+      "value": "le3",
+      "metric": "W5_minus_zero_mae",
+      "inference": "descriptive_posthoc",
+      "delta": -0.04428102023646311,
+      "peptides": 91,
+      "groups": 89,
+      "multiplicity": 1,
+      "replicates": 5000,
+      "ci95": [
+        -0.056992559369573294,
+        -0.031856030271766714
+      ],
+      "ci_adjusted": [
+        -0.056992559369573294,
+        -0.031856030271766714
+      ],
+      "reason": null
+    }
+  ],
+  "T_replicate_intersection": {
+    "cells": 39112,
+    "peptides": 1407,
+    "groups": 730
+  },
+  "exact_sequence_audit": {
+    "unique_sequences": 351825,
+    "same_group_repeated_sequence_records": 3355,
+    "cross_group_exact_sequences": 0,
+    "scope": "WT and measured mutants across W and all scanning partitions"
+  },
+  "outputs": {
+    "similarity.csv": {
+      "rows": 1880,
+      "columns": [
+        "peptide_id",
+        "max_aligned_identity",
+        "nearest_peptide_id",
+        "max_query_5mer_coverage",
+        "reference_peptides",
+        "cohort",
+        "arm",
+        "outer_fold"
+      ]
+    },
+    "performance.csv": {
+      "rows": 185,
+      "columns": [
+        "recipe",
+        "prediction_set",
+        "cohort",
+        "axis",
+        "value",
+        "cells",
+        "peptides",
+        "groups",
+        "selections",
+        "mae",
+        "rmse",
+        "zero_mae",
+        "model_minus_zero_mae",
+        "precision10_plus",
+        "precision10_minus",
+        "prevalence_plus",
+        "prevalence_minus",
+        "auroc_plus",
+        "auroc_plus_eligible_peptides",
+        "ap_plus",
+        "ap_plus_eligible_peptides",
+        "auroc_minus",
+        "auroc_minus_eligible_peptides",
+        "ap_minus",
+        "ap_minus_eligible_peptides",
+        "hits10_plus",
+        "hits10_minus"
+      ]
+    },
+    "per-peptide.csv": {
+      "rows": 12681,
+      "columns": [
+        "peptide_id",
+        "group_id",
+        "cells",
+        "psi_stratum",
+        "outer_fold",
+        "mae",
+        "rmse",
+        "zero_mae",
+        "signed_error_micro_within_peptide",
+        "model_minus_zero_mae",
+        "precision10_plus",
+        "hits10_plus",
+        "prevalence_plus",
+        "budget10",
+        "auroc_plus",
+        "ap_plus",
+        "event_metric_null_reason_plus",
+        "precision10_minus",
+        "hits10_minus",
+        "prevalence_minus",
+        "auroc_minus",
+        "ap_minus",
+        "event_metric_null_reason_minus",
+        "recipe",
+        "prediction_set",
+        "cohort"
+      ]
+    },
+    "similarity-contrasts.csv": {
+      "rows": 4,
+      "columns": [
+        "arm",
+        "identity_bin",
+        "mean_identity",
+        "max_5mer_coverage",
+        "delta",
+        "peptides",
+        "groups",
+        "multiplicity",
+        "replicates",
+        "ci95",
+        "ci_adjusted",
+        "reason"
+      ]
+    },
+    "label-agreement.csv": {
+      "rows": 30,
+      "columns": [
+        "threshold",
+        "direction",
+        "psi_stratum",
+        "cells",
+        "peptides",
+        "prevalence_mean",
+        "event_xor_rate",
+        "event_jaccard",
+        "no_event_in_either_half",
+        "consensus_rate"
+      ]
+    },
+    "threshold-sensitivity.csv": {
+      "rows": 120,
+      "columns": [
+        "recipe",
+        "threshold",
+        "direction",
+        "target",
+        "prevalence_macro",
+        "selections",
+        "delta",
+        "peptides",
+        "groups",
+        "multiplicity",
+        "replicates",
+        "ci95",
+        "ci_adjusted",
+        "reason"
+      ]
+    },
+    "threshold-contrasts.csv": {
+      "rows": 72,
+      "columns": [
+        "threshold",
+        "direction",
+        "target",
+        "a",
+        "b",
+        "inference",
+        "delta",
+        "peptides",
+        "groups",
+        "multiplicity",
+        "replicates",
+        "ci95",
+        "ci_adjusted",
+        "reason"
+      ]
+    },
+    "seed-contrasts.csv": {
+      "rows": 18,
+      "columns": [
+        "seed",
+        "arm",
+        "metric",
+        "delta",
+        "peptides",
+        "groups",
+        "multiplicity",
+        "replicates",
+        "ci95",
+        "ci_adjusted",
+        "reason"
+      ]
+    },
+    "disagreement-errors.csv": {
+      "rows": 20,
+      "columns": [
+        "recipe",
+        "disagreement_bin",
+        "cells",
+        "delta",
+        "peptides",
+        "groups",
+        "multiplicity",
+        "replicates",
+        "ci95",
+        "ci_adjusted",
+        "reason"
+      ]
+    },
+    "prediction-bounds.csv": {
+      "rows": 25,
+      "columns": [
+        "recipe",
+        "psi_stratum",
+        "cells",
+        "prediction_outside_measured_WT_bounds_rate"
+      ]
+    },
+    "calibration.csv": {
+      "rows": 30,
+      "columns": [
+        "recipe",
+        "cohort",
+        "axis",
+        "value",
+        "cells",
+        "peptides",
+        "groups",
+        "brier_micro",
+        "brier_macro",
+        "log_loss_micro",
+        "observed_rate_minus",
+        "mean_probability_minus",
+        "probability_bias_minus",
+        "ece_minus",
+        "observed_rate_plus",
+        "mean_probability_plus",
+        "probability_bias_plus",
+        "ece_plus"
+      ]
+    },
+    "reliability-bins.csv": {
+      "rows": 600,
+      "columns": [
+        "recipe",
+        "cohort",
+        "axis",
+        "value",
+        "direction",
+        "bin",
+        "lower",
+        "upper",
+        "cells",
+        "peptides",
+        "groups",
+        "observed_rate",
+        "mean_probability",
+        "null_reason"
+      ]
+    }
+  },
+  "limitations": [
+    "Posthoc diagnostics on repeatedly examined development W and previously inspected held-source T.",
+    "No LoRA predictions on T; no independent external validation, retraining, model inference or GPU execution.",
+    "Similarity uses aligned 28-AA identity and query 5-mer coverage, not remote homology or pretrained-corpus audit.",
+    "Bootstrap conditions on stored predictions; training/model-selection/outer-partition uncertainty is not included.",
+    "New CI/strata/threshold diagnostics are descriptive and not globally multiplicity-adjusted.",
+    "Half a/b consensus is a changed target, not a probability interval or an independent biological replicate.",
+    "W subset masks do not match protein, assay, target replicate or full joint distribution to T.",
+    "T rep1 versus rep2/mean12 is a paired label sensitivity on intersection, not a new locked test.",
+    "Measured test WT PSI is used only for diagnostic strata/bounds; no clipping or new model input.",
+    "Input hashes verify bytes and saved assignments, not original training execution or checkpoint tensor correctness.",
+    "Normalized count support is not raw sequencing depth; replicate disagreement is not known measurement variance.",
+    "No G2/G3 acceptance, serving promotion, software performance or wet-lab resource benefit is established."
+  ],
+  "numerical_precision": [
+    {
+      "recipe": "esm2_35m-frozen-B",
+      "stored_dtype": "float32",
+      "ensemble_accumulation": "float64",
+      "max_abs_difference_from_native_groupby": 1.9868214939933182e-07
+    },
+    {
+      "recipe": "esm2_35m-frozen-D",
+      "stored_dtype": "float32",
+      "ensemble_accumulation": "float64",
+      "max_abs_difference_from_native_groupby": 1.5894571925301193e-07
+    },
+    {
+      "recipe": "esm2_35m-lora-B",
+      "stored_dtype": "float32",
+      "ensemble_accumulation": "float64",
+      "max_abs_difference_from_native_groupby": 2.384185791015625e-07
+    },
+    {
+      "recipe": "esm2_35m-lora-D",
+      "stored_dtype": "float32",
+      "ensemble_accumulation": "float64",
+      "max_abs_difference_from_native_groupby": 1.9868214939933182e-07
+    },
+    {
+      "recipe": "ordered-w5-D",
+      "stored_dtype": "float64",
+      "ensemble_accumulation": "float64",
+      "max_abs_difference_from_native_groupby": 0.0
+    }
+  ],
+  "pending": {
+    "lora_T": "not_evaluated_no_saved_predictions",
+    "independent_source": "reviewed_compatible_source_not_supplied",
+    "final_serving": "outside_this_diagnostic_run",
+    "G2_G3": "no_decision_changed"
+  }
+}
