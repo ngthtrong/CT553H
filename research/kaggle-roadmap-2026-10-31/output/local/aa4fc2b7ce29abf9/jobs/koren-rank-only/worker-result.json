@@ -1,0 +1,7 @@
+{
+  "job": "koren-rank-only",
+  "started_unix": 1794833952.9745011,
+  "status": "source_pending",
+  "reason": "Koren S4 missing; branch 1 remains incomplete. No synthetic padding/scaling.",
+  "seconds": 0.4827418327331543
+}

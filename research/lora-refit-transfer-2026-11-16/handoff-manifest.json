@@ -1,0 +1,232 @@
+{
+  "schema_version": 1,
+  "campaign": "aa4fc2b7ce29abf9",
+  "files": [
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/weights/esm2_35m/6fbf070e65b0b7291e7bbcd451118c216cff79d8/README.md",
+      "bytes": 1705,
+      "sha256": "462a2f24724e19c6be0efab926315c294a863c9a9770e2c8b3d859b2d81a07de",
+      "role": "inference",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/weights/esm2_35m/6fbf070e65b0b7291e7bbcd451118c216cff79d8/config.json",
+      "bytes": 778,
+      "sha256": "ae07364efa51e0fa1d81da3fe608f6d948abdbbb69785ba6e1df379a458e58ee",
+      "role": "inference",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/weights/esm2_35m/6fbf070e65b0b7291e7bbcd451118c216cff79d8/model.safetensors",
+      "bytes": 136008798,
+      "sha256": "e35647818e0e064351d4531ed480d225a002567b4b2b93ad3a9246d753150fc0",
+      "role": "inference",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/weights/esm2_35m/6fbf070e65b0b7291e7bbcd451118c216cff79d8/special_tokens_map.json",
+      "bytes": 125,
+      "sha256": "3aedcd4211c0d43aec4e607ff60a63255f3174ead795e997350f09a5f8cd9ee1",
+      "role": "inference",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/weights/esm2_35m/6fbf070e65b0b7291e7bbcd451118c216cff79d8/tokenizer_config.json",
+      "bytes": 95,
+      "sha256": "7e9161ecdb548ec45a41cbc6b24aa4476fdd418461f491c4207baa99419a29ad",
+      "role": "inference",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/weights/esm2_35m/6fbf070e65b0b7291e7bbcd451118c216cff79d8/vocab.txt",
+      "bytes": 93,
+      "sha256": "0b82cc0a7c7cf9e567b1e5892d793285b9fbae822c964ca48696f7db44598e03",
+      "role": "inference",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/weights/esm2_35m/status.json",
+      "bytes": 7315,
+      "sha256": "689b4620552c39c6a3b964a3c0328f0e3a11d02f20b8d67ee31010d797ea8710",
+      "role": "inference",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/refit-lora-D-17/model.pt",
+      "bytes": 1016583,
+      "sha256": "3a0027ecade741738e68c2145ab0332fb096cd52071559bbf722be60cf0a86fd",
+      "role": "inference",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/refit-lora-D-29/model.pt",
+      "bytes": 1016583,
+      "sha256": "40360237810617c9afecb5fb8baf096eeb20cf529d39aa43cf604ce9b4277be4",
+      "role": "inference",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/refit-lora-D-43/model.pt",
+      "bytes": 1016583,
+      "sha256": "86ed1a335f29fa4b1ae5e34f4994862f730bbc55c3b01b332cec1a3bd8f9c0cb",
+      "role": "inference",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/calibrate-final-lora-D/final-calibrator.joblib",
+      "bytes": 927,
+      "sha256": "4a982bb2e6ec2f64f1fd939173cf278e3c959a3df746e774cc09cf5078bc2a8c",
+      "role": "inference",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/refit-frozen-D-17/model.pt",
+      "bytes": 264477,
+      "sha256": "6fe8bb0626686b72551aa54c8eef29681501b18004ba2ce93cf555370926ffde",
+      "role": "inference",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/refit-frozen-D-29/model.pt",
+      "bytes": 264477,
+      "sha256": "21b8730422735ae087ced553dcb3490231bb433101a3327fc4634a301c49a581",
+      "role": "inference",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/refit-frozen-D-43/model.pt",
+      "bytes": 264477,
+      "sha256": "f948f909c3a639ca821f835e142203c4150354eec6f041a946eaab1c329e7bcf",
+      "role": "inference",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/calibrate-final-frozen-D/final-calibrator.joblib",
+      "bytes": 927,
+      "sha256": "a26b14410565720ff6ae917abc0567c4b842def2d79b96841e49144eb2865244",
+      "role": "inference",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/model-card-parity/seed17.npy",
+      "bytes": 256,
+      "sha256": "1066dcbf00e4b834d328f4b36a59caa89f639977e6f7d631c52074ecc377f598",
+      "role": "reanalysis_or_resume",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/model-card-parity/seed29.npy",
+      "bytes": 256,
+      "sha256": "e319340da80ed79ab82e959b6cb97a2d899d6a924c4486d1b927916a3880efb9",
+      "role": "reanalysis_or_resume",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/model-card-parity/seed43.npy",
+      "bytes": 256,
+      "sha256": "e89963cd93490cbfce40b9faf5d8568eade62a3c69295937517f6fa0b4fa16b5",
+      "role": "reanalysis_or_resume",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/refit-frozen-D-17/final-w.npy",
+      "bytes": 489776,
+      "sha256": "54a17f8ab3612a65f1bd534bb5fd4d9fc26549496ccd99d390ecd6bcd5ef493b",
+      "role": "reanalysis_or_resume",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/refit-frozen-D-29/final-w.npy",
+      "bytes": 489776,
+      "sha256": "6b66d9fd3c1d4c0f463482d1e441f9f17a2450d70ccfbb4e5c0d66f4f3b8a124",
+      "role": "reanalysis_or_resume",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/refit-frozen-D-43/final-w.npy",
+      "bytes": 489776,
+      "sha256": "ffaab828c36c9740869f0198ffc4234b676aa2c654db5331f2124fa9481cfe0f",
+      "role": "reanalysis_or_resume",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/refit-lora-D-17/final-w.npy",
+      "bytes": 489776,
+      "sha256": "d874329c6c65a920240c3918eaba8d1f35fc71e1a7437d5de0b88df33bf97a3c",
+      "role": "reanalysis_or_resume",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/refit-lora-D-29/final-w.npy",
+      "bytes": 489776,
+      "sha256": "f6dabaf85ff628cb97b2a21f260b4b5130dc9baccd280a20f35fca610a90d975",
+      "role": "reanalysis_or_resume",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/refit-lora-D-43/final-w.npy",
+      "bytes": 489776,
+      "sha256": "c1d4311d7ae89cb6f887142251896097081ffb4bf4b80a2c6f3e4dfff0bfb138",
+      "role": "reanalysis_or_resume",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/score-held-frozen-D-17/held.npy",
+      "bytes": 157064,
+      "sha256": "23f20ebf650338298d861473a3efe39c10045ba9b5341723eadf886098b12841",
+      "role": "reanalysis_or_resume",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/score-held-frozen-D-29/held.npy",
+      "bytes": 157064,
+      "sha256": "e8ee5535618f65ad9f941788fb6897a08b60d3150c36ee3b4796108f3b5e0af7",
+      "role": "reanalysis_or_resume",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/score-held-frozen-D-43/held.npy",
+      "bytes": 157064,
+      "sha256": "76106edbb8abc5d14b7e74c97cb973155f9ca1be8fd05bba2be251b0ae310d79",
+      "role": "reanalysis_or_resume",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/score-held-lora-D-17/held.npy",
+      "bytes": 157064,
+      "sha256": "94dedfa909eb4c6a7fd5d52317908b677ba5b67bc2551902096dd1e10d4d83d4",
+      "role": "reanalysis_or_resume",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/score-held-lora-D-29/held.npy",
+      "bytes": 157064,
+      "sha256": "0823b1a8b61ad94518960a9fe0e623b5796a5a955c0a0a65ccf8b86f1884dbb8",
+      "role": "reanalysis_or_resume",
+      "transport": "manual_copy_not_Git"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/score-held-lora-D-43/held.npy",
+      "bytes": 157064,
+      "sha256": "e23da62dd35a0c30af53025669bd03869c75c9ec7591e4408dd83f94473cbf06",
+      "role": "reanalysis_or_resume",
+      "transport": "manual_copy_not_Git"
+    }
+  ],
+  "summary": {
+    "campaign": "aa4fc2b7ce29abf9",
+    "status": "core_complete_branch1_incomplete",
+    "core_jobs_complete": 15,
+    "scientific_status": "development_not_gate_closure",
+    "koren": "source_pending",
+    "outstanding": [
+      "Koren S4 input and reviewed variable-length inference",
+      "Author/supervisor D-4 decision",
+      "Cross-runtime inference parity on primary machine",
+      "Full mechanism/similarity investigation if required"
+    ],
+    "G2_G3": "not_closed",
+    "serving": "unchanged"
+  },
+  "note": "Verify hashes after manual copy. Do not copy .git or .venv; Git clone alone cannot resume training."
+}

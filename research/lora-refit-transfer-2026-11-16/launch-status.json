@@ -1,0 +1,55 @@
+{
+  "campaign": "aa4fc2b7ce29abf9",
+  "status": "running",
+  "command": "run-local.cmd --hours 0",
+  "pause_validation": {
+    "status": "pass",
+    "epoch": 1,
+    "cursor": 6008,
+    "total_train_rows": 122412,
+    "checkpoint_bytes": 3071131,
+    "checkpoint_sha256": "53f4c7e51914d12af737ffb3722703bd103cc39c1d51840a1898937fcb67e786",
+    "supervisor_worker_locks_released": true
+  },
+  "scientific_status": "development_not_gate_closure",
+  "observed_unix": 1794826597.543862,
+  "progress": {
+    "job": "refit-lora-D-17",
+    "message": "predict 13600/122412",
+    "updated_unix": 1794826583.653806,
+    "rows": 13600,
+    "total_rows": 122412
+  },
+  "session": {
+    "pid": 20388,
+    "session": "20261116-185405",
+    "deadline_unix": 0,
+    "status": "running",
+    "profile": "all"
+  },
+  "resume_validation": {
+    "status": "pass",
+    "resumed_epoch": 1,
+    "resumed_cursor": 6008,
+    "observed_later_cursor": 23200,
+    "same_campaign_id": true,
+    "current_code_matches_plan": true
+  },
+  "source_plan_state_unchanged": true,
+  "heavy_artifacts": "ignored_local_only",
+  "pending_scope": [
+    "full similarity/mechanism analysis",
+    "D4 author/supervisor decision",
+    "primary-machine parity"
+  ],
+  "koren_restart_validation": {
+    "status": "pass",
+    "same_campaign": true,
+    "core_code_unchanged": true,
+    "resumed_epoch": 2,
+    "resumed_cursor": 109528,
+    "hours": 0,
+    "koren_phase": "queued_after_core",
+    "validation": "koren-validation.json"
+  }
+}

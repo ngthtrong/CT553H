@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "model_id": "esm2_35m-frozen-D-seed17-refit-aa4fc2b7ce29abf9",
+  "model": "esm2_35m",
+  "mode": "frozen",
+  "seed": 17,
+  "campaign": "aa4fc2b7ce29abf9",
+  "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738",
+  "base_revision": "6fbf070e65b0b7291e7bbcd451118c216cff79d8",
+  "epochs": 1,
+  "train_cell_ids_sha256": "96dc24afc983511d81413b2f5f4596d61da9ea1075ccaa2bef559d9af543ff4e",
+  "train_group_ids_sha256": "30d41f15433c84bca1ae38b0e8abd607f43e77bf747744dcebfad8aed4e36ad4",
+  "learned_state_sha256": "7b61790672168620e368c8de4a428d506062f5dcc65d03aa1049f06b3765c55d",
+  "train_cells": 122412,
+  "train_peptides": 235,
+  "train_groups": 221,
+  "validation_cells": 0,
+  "T_fit_cells": 0,
+  "epoch_policy": "per_seed_median_of_five_source_selected_epochs",
+  "changed_parameters": [
+    "head.0.weight",
+    "head.0.bias",
+    "head.3.weight",
+    "head.3.bias"
+  ]
+}

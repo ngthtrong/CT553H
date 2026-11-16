@@ -1,0 +1,25 @@
+{
+  "status": "pass",
+  "tests": [
+    {
+      "seed": 17,
+      "max_absolute_difference": 0.0,
+      "rows": 32
+    },
+    {
+      "seed": 29,
+      "max_absolute_difference": 0.0,
+      "rows": 32
+    },
+    {
+      "seed": 43,
+      "max_absolute_difference": 0.0,
+      "rows": 32
+    }
+  ],
+  "scope": "checkpoint reload, resumable predict vs finetune.infer on same runtime",
+  "atol": 1e-05,
+  "rtol": 1e-05,
+  "coordinate_contract": "1-based residue; WT/mutant amino acids; exact 28-aa inputs",
+  "cross_runtime_parity": "pending_on_primary_machine"
+}

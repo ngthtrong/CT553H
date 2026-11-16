@@ -1,0 +1,33 @@
+{
+  "job": "refit-lora-D-43",
+  "started_unix": 1794828777.9973588,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/refit-lora-D-43/final-w.json",
+      "bytes": 200,
+      "sha256": "84673281080b23ac274fd4466dbc92de0049bacb6c4c0c012aebecdac802a448"
+    },
+    {
+      "path": "jobs/refit-lora-D-43/final-w.npy",
+      "bytes": 489776,
+      "sha256": "c1d4311d7ae89cb6f887142251896097081ffb4bf4b80a2c6f3e4dfff0bfb138"
+    },
+    {
+      "path": "jobs/refit-lora-D-43/fit.json",
+      "bytes": 3886,
+      "sha256": "538936716afa5229b623b3112a7676f105d96f92e6b70dcd777512db5bb8a193"
+    },
+    {
+      "path": "jobs/refit-lora-D-43/model.pt",
+      "bytes": 1016583,
+      "sha256": "86ed1a335f29fa4b1ae5e34f4994862f730bbc55c3b01b332cec1a3bd8f9c0cb"
+    },
+    {
+      "path": "jobs/refit-lora-D-43/refit.pt",
+      "bytes": 4087091,
+      "sha256": "7ad6036eb667d6d6e8c742a63e72212c4a577e3d9f8d3522becbead45ff8e290"
+    }
+  ],
+  "seconds": 1869.211180448532
+}

@@ -1,0 +1,23 @@
+{
+  "job": "score-held-frozen-D-17",
+  "started_unix": 1794833591.8453488,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/score-held-frozen-D-17/held.json",
+      "bytes": 199,
+      "sha256": "d206ca0ca7377e70bcc91d002612ffaef5aa0ff2d927ad5f21e733a632aa1dd6"
+    },
+    {
+      "path": "jobs/score-held-frozen-D-17/held.npy",
+      "bytes": 157064,
+      "sha256": "23f20ebf650338298d861473a3efe39c10045ba9b5341723eadf886098b12841"
+    },
+    {
+      "path": "jobs/score-held-frozen-D-17/score.json",
+      "bytes": 489,
+      "sha256": "a465568bc2f9b602493618fc3421d0df93b3a195be037a9776632ec2c01c77fb"
+    }
+  ],
+  "seconds": 102.59855556488037
+}

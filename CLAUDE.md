@@ -43,6 +43,25 @@ G2/G3; model phục vụ vẫn theo quy trình riêng. Không có train/wet lab 
 
 ## Chạy script nghiên cứu
 
+**Bổ sung Koren cùng ngày 16/11:** S4 đã được cung cấp lại và khớp hash.
+`run-local.cmd` gọi launcher mỏng `session-entry.py`: chạy nguyên runner/core
+đã khoá, sau đó chấm Koren qua `score-koren.py` trong cùng terminal và cùng
+locks/STOP. Không sửa identity/state/queue/checkpoint core để ép thêm job;
+source_pending cũ giữ lịch sử, trạng thái bổ sung nằm ở koren-run-status.json.
+Xem KOREN-PROTOCOL.md và RUNBOOK của thư mục refit. Koren không nhập train,
+không tự đóng source_pending/G2/G3 hoặc quyết định D-4.
+
+**Refit 16/11/2026:** máy Windows/CUDA hiện tại chỉ làm nhánh 1 theo
+[plan.md](plan.md). Entry point `run-local.cmd` mặc định dùng
+`research/lora-refit-transfer-2026-11-16/refit-plan.json`, campaign mới riêng;
+xem [RUNBOOK.md](research/lora-refit-transfer-2026-11-16/RUNBOOK.md).
+`status-local.cmd`/`pause-local.cmd` nhận `--campaign <id>`; pause mặc định chờ
+checkpoint và thả OS locks. Giữ nguồn `ef138c84579c842e`/`e7097449883a51d8` chỉ
+đọc. Không sửa code/config/protocol/source lock/runtime trong lúc chạy.
+Koren và quyết định D-4 còn pending; xong core không tự là xong nhánh 1/G2/G3.
+Protocol refit không thay protocol v3 lịch sử. Artifact nặng vẫn local, kết
+quả nhỏ chọn lọc ở thư mục refit; không tự commit/push.
+
 **Kết quả local hiện hành (06/11):** `ef138c84579c842e` đã kết thúc 633 job, còn nguồn ngoài/cấu trúc pending. Phân tích hoàn tất tại `research/kaggle-roadmap-2026-10-31/local-output-analysis.{json,md,png}`, tái tạo bằng `analyze-local-output.py` (chỉ đọc artifact/data, không load model). LoRA có đủ OOF ba seed và calibration CV; T hiện chỉ có W5-D. Cần final serving refit/export và đánh giá tiếp trước khi đổi model sản phẩm. Các câu mô tả campaign đang dở trong snapshot cũ chỉ áp dụng tại mốc của chúng.
 
 Campaign CUDA Windows dùng `.venv` ở gốc repo (Python 3.11.9, Torch 2.13.0+cu130); dependency ở `research/kaggle-roadmap-2026-10-31/requirements-local-cuda-reuse.txt`. Không cài đè Torch CPU hoặc requirements lịch sử vào môi trường đang chạy. Từ PowerShell ở gốc repo:

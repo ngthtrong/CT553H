@@ -1,0 +1,1174 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-11-16T17:58:43.595733+08:00",
+  "scope": "planning inventory; no training, model inference or T-outcome analysis",
+  "root": "D:\\thanhtrong\\CT553H",
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "executable": "D:\\thanhtrong\\CT553H\\.venv\\Scripts\\python.exe",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "audit_script_sha256": "fc530e68460bf543db5389d6934eaf46332fbb6a52100e38684e465ebe973f79",
+  "packages": {
+    "torch": "2.13.0+cu130",
+    "transformers": "5.17.0",
+    "numpy": "2.1.3",
+    "pandas": "2.3.3",
+    "pyarrow": "23.0.1",
+    "scipy": "1.16.3",
+    "scikit-learn": "1.6.1",
+    "safetensors": "0.8.0",
+    "protobuf": "6.33.5",
+    "accelerate": "1.15.0",
+    "sentencepiece": "0.2.2",
+    "matplotlib": "3.11.2",
+    "peft": null,
+    "openpyxl": null
+  },
+  "cuda": {
+    "available": true,
+    "toolkit": "13.0",
+    "device": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "capability": [
+      12,
+      0
+    ],
+    "free_bytes": 7281311744,
+    "total_bytes": 8546484224
+  },
+  "gpu_probe": {
+    "returncode": 0,
+    "stdout": "NVIDIA GeForce RTX 5060 Laptop GPU, 8151 MiB, 7574 MiB, 582.05",
+    "stderr": ""
+  },
+  "disks": {
+    "C:/": {
+      "total": 428932591616,
+      "used": 363103092736,
+      "free": 65829498880
+    },
+    "D:\\": {
+      "total": 592124571648,
+      "used": 271290523648,
+      "free": 320834048000
+    }
+  },
+  "host": {
+    "returncode": 0,
+    "stdout": "{\r\n    \"cpu\":  {\r\n                \"Name\":  \"Intel(R) Core(TM) i9-14900HX\",\r\n                \"NumberOfCores\":  24,\r\n                \"NumberOfLogicalProcessors\":  32\r\n            },\r\n    \"python_processes\":  [\r\n                             {\r\n                                 \"ProcessId\":  7908,\r\n                                 \"Name\":  \"python.exe\",\r\n                                 \"CommandLine\":  \"\\\"D:\\\\thanhtrong\\\\CT553H\\\\.venv\\\\Scripts\\\\python.exe\\\" -I research/lora-refit-transfer-2026-11-16/audit-environment.py\"\r\n                             },\r\n                             {\r\n                                 \"ProcessId\":  20020,\r\n                                 \"Name\":  \"python.exe\",\r\n                                 \"CommandLine\":  \"\\\"C:\\\\Users\\\\LENOVO\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python311\\\\python.exe\\\" -I research/lora-refit-transfer-2026-11-16/audit-environment.py\"\r\n                             }\r\n                         ],\r\n    \"ram_bytes\":  34070192128\r\n}",
+    "stderr": ""
+  },
+  "git": {
+    "head": {
+      "returncode": 0,
+      "stdout": "f4640b526a778fc386273dca2d07275f9d40abec",
+      "stderr": ""
+    },
+    "branch": {
+      "returncode": 0,
+      "stdout": "run",
+      "stderr": ""
+    },
+    "status": {
+      "returncode": 0,
+      "stdout": "M plan.md\n?? research/lora-refit-transfer-2026-11-16/",
+      "stderr": ""
+    },
+    "objects": {
+      "returncode": 0,
+      "stdout": "count: 0\nsize: 0 bytes\nin-pack: 13201\npacks: 2\nsize-pack: 256.07 MiB\nprune-packable: 0\ngarbage: 6\nsize-garbage: 77.44 MiB",
+      "stderr": "warning: garbage found: .git/objects/pack/tmp_pack_29gshG\nwarning: garbage found: .git/objects/pack/tmp_pack_qhTYJ2\nwarning: garbage found: .git/objects/pack/tmp_pack_SLXQAD\nwarning: garbage found: .git/objects/pack/tmp_pack_XYLx3r\nwarning: garbage found: .git/objects/pack/tmp_pack_yLGFN7\nwarning: garbage found: .git/objects/pack/tmp_pack_zzxY0H"
+    },
+    "autocrlf": {
+      "returncode": 0,
+      "stdout": "true",
+      "stderr": ""
+    },
+    "connectivity": {
+      "returncode": 0,
+      "stdout": "dangling tree e389f8dc76dc085479f1132ecfa8700b0c711836\ndangling tree 5a8a86a79e98aa84654cd678b49c6ada46a9584a\ndangling tree 298d62412c5f62c151ac2677d9b8b1fb72577888\ndangling tree 0e9060fad76f00df47adac7fa8d7a03431b63ce9\ndangling tree e11197b6203274d9acce884776f1d2e4f151ae86\ndangling tree ca143423c2c840f898da474ecbb28eb4479f6cf9\ndangling tree 2e9933efbdd786f177cc72ddf11af34e5c1bad76\ndangling tree 691becca40d4f81c7b3b90abd094ac872bef1d13\ndangling tree 9c1b82c364b4ade0f2d48153d7bfe1f586391bd2\ndangling tree d29bf6b37fdf7727c8236dcb6bca1dd9178f43a7\ndangling tree 4a9ceaf2b07e094ce525e386c50477fe33cc3586\ndangling tree 1ca2354e3a47f20e8ee1ae7792241d87203f2bae\ndangling tree 61aa82aaf25e2ed8f2e8c60587f728223d38a824\ndangling tree f8aa96d5a4e5e88459f6f5edf347433b80947d67\ndangling tree 69af16c15a7e166b6f4950ea45f3c97ed26725df\ndangling tree c5b415212b331cd827286d4f6afc3224f0705ce7\ndangling tree f5b5ebaa3be1301164edecce8d8682a3b8ba0efb\ndangling tree 7dc273aa63ecc080721b44a786e837c3393231bc\ndangling tree 35c5c9d95fe99603cfe31c1b4cceb64e38d62a4b\ndangling tree 75c71b658e04274d52292bf2bf8a356819117a76\ndangling tree 2250e5223c9aa28cb1511b0d4d558de59d415c19\ndangling tree 8ed60aab6128151cc3ba7a4624e02d53ab1fd7ee\ndangling tree 185dc3217e063002d114ae991272055c7c6417e1\ndangling tree 2d5d7195b57032b55e2a4cc2eb51acbdf84b6b65\ndangling tree ebe19704c8b759b6fd6d594cf74772bb56506496\ndangling tree 05e2b5d9f9c8ac99a2f111b14bfd9321ab091aea\ndangling tree c46c96084ea8d7ecab489e998c91109d87aa39a0\ndangling tree 64ef3a7bbed36b71c843198d4a8269cb54a2cd02\ndangling tree 40774c3e0825cb7a0bdb4e69e65fbe24a9f7cbc1\ndangling tree 2bf9576cc2314e32c10cd81f680f78cade79bc4f\ndangling tree f87c420dbc4b5fbd5890a6d365d830b13e80d114\ndangling tree edff38c53c6c1c9c4a6852b351cc43a3c000cd0b\ndangling tree ef7fa5c5c1bea7162630972ce4dea698cb82ec21",
+      "stderr": ""
+    },
+    "tracked_inventory": {
+      "files": 6061,
+      "bytes": 283594729,
+      "largest": [
+        {
+          "path": "research/r6-ladder-scan-2026-10-23/r6-results.zip",
+          "bytes": 20016911,
+          "stage": "0"
+        },
+        {
+          "path": "resources/papers/degron/voutsinos-2025-biorxiv-complete-map-cytosolic-degrons-preprint.pdf",
+          "bytes": 17319758,
+          "stage": "0"
+        },
+        {
+          "path": "resources/reference-theses/b2205944-nguyen-duy-khanh-thesis.pdf",
+          "bytes": 14648286,
+          "stage": "0"
+        },
+        {
+          "path": "resources/papers/degron/tsuboyama-2023-nature-mega-scale-stability.pdf",
+          "bytes": 12453479,
+          "stage": "0"
+        },
+        {
+          "path": "resources/papers/degron/omniesi-2025-arxiv.pdf",
+          "bytes": 11510286,
+          "stage": "0"
+        },
+        {
+          "path": "resources/papers/ho-quang-thai/1-s2.0-S1746809425019184-main.pdf",
+          "bytes": 8991656,
+          "stage": "0"
+        },
+        {
+          "path": "resources/papers/degron/wang-2026-biorxiv-disease-mutations-genetic-glues.pdf",
+          "bytes": 8756229,
+          "stage": "0"
+        },
+        {
+          "path": "resources/papers/ho-quang-thai/1-s2.0-S0003269726000485-main.pdf",
+          "bytes": 8259003,
+          "stage": "0"
+        },
+        {
+          "path": "resources/papers/ho-quang-thai/1-s2.0-S1476927125002567-main.pdf",
+          "bytes": 7886909,
+          "stage": "0"
+        },
+        {
+          "path": "resources/reference-theses/B2203572_ThachThanhNhi_BB_ThesisReport_signed_261012_233457_1.pdf",
+          "bytes": 7508667,
+          "stage": "0"
+        },
+        {
+          "path": "resources/papers/ho-quang-thai/1-s2.0-S0010482521000536-main.pdf",
+          "bytes": 6876356,
+          "stage": "0"
+        },
+        {
+          "path": "resources/papers/degron/larsen-2025-biorxiv-degron-mapping-transcription-factors.pdf",
+          "bytes": 6706078,
+          "stage": "0"
+        },
+        {
+          "path": "resources/papers/yu-yen-ou/1-s2.0-S0006291X26013318-main.pdf",
+          "bytes": 6443772,
+          "stage": "0"
+        },
+        {
+          "path": "resources/papers/yu-yen-ou/ao4c10960.pdf",
+          "bytes": 5016356,
+          "stage": "0"
+        },
+        {
+          "path": "resources/reference-theses/b2203539-ho-quoc-bao-hybrid-cascade-plm-mscnn.pdf",
+          "bytes": 4500854,
+          "stage": "0"
+        }
+      ],
+      "over_10_mib": [
+        {
+          "path": "research/r6-ladder-scan-2026-10-23/r6-results.zip",
+          "bytes": 20016911,
+          "stage": "0"
+        },
+        {
+          "path": "resources/papers/degron/voutsinos-2025-biorxiv-complete-map-cytosolic-degrons-preprint.pdf",
+          "bytes": 17319758,
+          "stage": "0"
+        },
+        {
+          "path": "resources/reference-theses/b2205944-nguyen-duy-khanh-thesis.pdf",
+          "bytes": 14648286,
+          "stage": "0"
+        },
+        {
+          "path": "resources/papers/degron/tsuboyama-2023-nature-mega-scale-stability.pdf",
+          "bytes": 12453479,
+          "stage": "0"
+        },
+        {
+          "path": "resources/papers/degron/omniesi-2025-arxiv.pdf",
+          "bytes": 11510286,
+          "stage": "0"
+        }
+      ],
+      "model_tensor_files": []
+    },
+    "ignore_canaries": {
+      "returncode": 0,
+      "stdout": ".gitignore:32:!/research/kaggle-roadmap-2026-10-31/output/local/*/plan.json\tresearch/kaggle-roadmap-2026-10-31/output/local/0000000000000000/plan.json\n.gitignore:34:!/research/kaggle-roadmap-2026-10-31/output/local/*/state.json\tresearch/kaggle-roadmap-2026-10-31/output/local/0000000000000000/state.json\n.gitignore:26:/research/kaggle-roadmap-2026-10-31/output/**\tresearch/kaggle-roadmap-2026-10-31/output/local/0000000000000000/STOP\n.gitignore:26:/research/kaggle-roadmap-2026-10-31/output/**\tresearch/kaggle-roadmap-2026-10-31/output/local/0000000000000000/session.json\n.gitignore:26:/research/kaggle-roadmap-2026-10-31/output/**\tresearch/kaggle-roadmap-2026-10-31/output/local/0000000000000000/jobs/refit-lora-D-17/model.pt\n.gitignore:26:/research/kaggle-roadmap-2026-10-31/output/**\tresearch/kaggle-roadmap-2026-10-31/output/local/0000000000000000/jobs/refit-lora-D-17/refit.pt.previous\n.gitignore:26:/research/kaggle-roadmap-2026-10-31/output/**\tresearch/kaggle-roadmap-2026-10-31/output/local/0000000000000000/jobs/score-held-lora-D-17/held-scanning.parquet\n.gitignore:42:!/research/kaggle-roadmap-2026-10-31/output/local/*/jobs/*/fit.json\tresearch/kaggle-roadmap-2026-10-31/output/local/0000000000000000/jobs/refit-lora-D-17/fit.json\n.gitignore:26:/research/kaggle-roadmap-2026-10-31/output/**\tresearch/kaggle-roadmap-2026-10-31/output/local/0000000000000000/jobs/calibrate-final-lora-D/model-card.json\n.gitignore:26:/research/kaggle-roadmap-2026-10-31/output/**\tresearch/kaggle-roadmap-2026-10-31/output/local/0000000000000000/jobs/aggregate-refit/results.json",
+      "stderr": ""
+    }
+  },
+  "storage": [
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local",
+      "files": 5797,
+      "bytes": 21240321444
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/weights",
+      "files": 10,
+      "bytes": 136029765
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/official",
+      "files": 2990,
+      "bytes": 3070061248
+    },
+    {
+      "path": "data/processed/degron-data-v3-fullpsi",
+      "files": 33,
+      "bytes": 102983373
+    }
+  ],
+  "source_campaign": {
+    "id": "ef138c84579c842e",
+    "plan_sha256": "9e1cfc8c299abe5f286d178492da99788e274a203193b256ca9c99ccf5b9f50b",
+    "state_sha256": "e03c1c258de8df6fad2b8e2dee341a810579f131ac5edd40ba7263d088cfe2cb",
+    "counts": {
+      "complete": 633,
+      "source_pending": 1,
+      "structure_pending": 1
+    },
+    "original_data_path": "topics/degron-footprint/data/processed/degron-data-v3-fullpsi",
+    "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738"
+  },
+  "implementation": {
+    "current_sha256": "403438dd0496fc87693e8d76e28dfd8a3efce3fe246c5a25aa93e311087d2a51",
+    "source_sha256": "b401f4659d9d0dc308607ac4f9823b81f6ff7d6e1b786cee429a32431268f768",
+    "matches_source": false,
+    "hash_policy": "sha256 of concatenated sorted degron_v3/*.py raw bytes plus local-runner.py"
+  },
+  "path_checks": {
+    "configured_data": "data/processed/v3-fullpsi",
+    "configured_data_exists": false,
+    "actual_data": "data/processed/degron-data-v3-fullpsi",
+    "actual_data_exists": true,
+    "latest_value": {
+      "campaign": "D:\\thanhtrong\\CT553H\\topics\\degron-footprint\\research\\kaggle-roadmap-2026-10-31\\output\\local\\ef138c84579c842e",
+      "plan_id": "ef138c84579c842e5397d8ea87b690b4f1558aa70b41ecae7fff4fa5692c872a"
+    },
+    "latest_path_exists": false,
+    "original_paths_not_modified": true
+  },
+  "data": {
+    "manifest_sha256": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738",
+    "matches_source": true,
+    "checks": [
+      {
+        "path": "README.md",
+        "valid": true
+      },
+      {
+        "path": "build-audit/protein-hits.tsv",
+        "valid": true
+      },
+      {
+        "path": "build-audit/query-proteins.fasta",
+        "valid": true
+      },
+      {
+        "path": "build-audit/source-manifest.json",
+        "valid": true
+      },
+      {
+        "path": "historical/g2-reference.json",
+        "valid": true
+      },
+      {
+        "path": "historical/legacy-base.npz",
+        "valid": true
+      },
+      {
+        "path": "historical/legacy-ext4.npz",
+        "valid": true
+      },
+      {
+        "path": "historical/p0-reference.json",
+        "valid": true
+      },
+      {
+        "path": "historical/r6-reference.json",
+        "valid": true
+      },
+      {
+        "path": "references/clusters-cov50.tsv",
+        "valid": true
+      },
+      {
+        "path": "references/clusters-legacy-cov80.tsv",
+        "valid": true
+      },
+      {
+        "path": "references/clusters-proteome-cov80.tsv",
+        "valid": true
+      },
+      {
+        "path": "references/proteins.fasta.gz",
+        "valid": true
+      },
+      {
+        "path": "source-snapshots/psi-rep1.tsv.gz",
+        "valid": true
+      },
+      {
+        "path": "source-snapshots/psi-rep2.tsv.gz",
+        "valid": true
+      },
+      {
+        "path": "source-snapshots/psi-sat_a.tsv.gz",
+        "valid": true
+      },
+      {
+        "path": "source-snapshots/psi-sat_b.tsv.gz",
+        "valid": true
+      },
+      {
+        "path": "source-snapshots/scanning-sequence-map.tsv.gz",
+        "valid": true
+      },
+      {
+        "path": "splits/cross-split-audit.json",
+        "valid": true
+      },
+      {
+        "path": "splits/inner-seed17.parquet",
+        "valid": true
+      },
+      {
+        "path": "splits/inner-seed29.parquet",
+        "valid": true
+      },
+      {
+        "path": "splits/inner-seed43.parquet",
+        "valid": true
+      },
+      {
+        "path": "splits/legacy-outer.json",
+        "valid": true
+      },
+      {
+        "path": "splits/scanning-partitions.parquet",
+        "valid": true
+      },
+      {
+        "path": "splits/wide-outer.parquet",
+        "valid": true
+      },
+      {
+        "path": "tables/exclusion-log.parquet",
+        "valid": true
+      },
+      {
+        "path": "tables/observations.parquet",
+        "valid": true
+      },
+      {
+        "path": "tables/peptides.parquet",
+        "valid": true
+      },
+      {
+        "path": "tables/saturation-cells.parquet",
+        "valid": true
+      },
+      {
+        "path": "tables/scanning-cells.parquet",
+        "valid": true
+      },
+      {
+        "path": "tables/sequence-table.parquet",
+        "valid": true
+      },
+      {
+        "path": "tables/wt-references.parquet",
+        "valid": true
+      }
+    ],
+    "all_valid": true,
+    "W": {
+      "cells": 122412,
+      "peptides": 235,
+      "groups": 221
+    },
+    "scan_T_before_rep1_filter": {
+      "cells": 39380,
+      "peptides": 1414,
+      "groups": 733
+    }
+  },
+  "development_folds": {
+    "count": 30,
+    "records": [
+      {
+        "job": "tune-lora-D-17-0",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-0/fit.json",
+            "valid": true,
+            "sha256": "852bcd7c3991ab39811db73d8a34bcb5e5388036d436c192d6789d99a62eb948",
+            "bytes": 3305
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-0/oof.parquet",
+            "valid": true,
+            "sha256": "ebe3b14fb21da584d812a69e9ab4553d464d705080f34a9cade6b30384e678f4",
+            "bytes": 569578
+          }
+        ],
+        "selected_epoch": 2
+      },
+      {
+        "job": "tune-lora-D-17-1",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-1/fit.json",
+            "valid": true,
+            "sha256": "cff6973f9ef8ea82fe6d8127996375b1435ba14927d0d7c748071b18f35d6a2f",
+            "bytes": 3306
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-1/oof.parquet",
+            "valid": true,
+            "sha256": "4d256047f8f5c3a5cc3779934f6d68479ec2a66ae7bef43e317dd5baae87fd57",
+            "bytes": 544464
+          }
+        ],
+        "selected_epoch": 2
+      },
+      {
+        "job": "tune-lora-D-17-2",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-2/fit.json",
+            "valid": true,
+            "sha256": "4c666656b5c0e1b286ab1856a7bd14957efaa29b6d806967672a3c4177ed8d2d",
+            "bytes": 3306
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-2/oof.parquet",
+            "valid": true,
+            "sha256": "ebc5bd232ffca849b1e40a2dd2d7f1145961ba1caa14d19d816dded725667269",
+            "bytes": 559926
+          }
+        ],
+        "selected_epoch": 1
+      },
+      {
+        "job": "tune-lora-D-17-3",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-3/fit.json",
+            "valid": true,
+            "sha256": "c89a8f42730dff8f80d9cd87bee7de8b7843d2038f9bf976dbdd33a10c7d6017",
+            "bytes": 3305
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-3/oof.parquet",
+            "valid": true,
+            "sha256": "ad787329ab9ba2d31ee078646cdf92cecc8d8722116cd3e624f5aa1fed38db3b",
+            "bytes": 563925
+          }
+        ],
+        "selected_epoch": 2
+      },
+      {
+        "job": "tune-lora-D-17-4",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-4/fit.json",
+            "valid": true,
+            "sha256": "d3def2c063ece12c0b640954ca36ef4bc1b9f0439eabb2651d3a0ad1ebf6c770",
+            "bytes": 3305
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-4/oof.parquet",
+            "valid": true,
+            "sha256": "a4030804093e8407973d2f85aeaf64c2d95f7080b2d05ca2e8ec7d6eb9a2abe5",
+            "bytes": 559426
+          }
+        ],
+        "selected_epoch": 3
+      },
+      {
+        "job": "tune-lora-D-29-0",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-0/fit.json",
+            "valid": true,
+            "sha256": "2737efb44cf4f38971589315f410124605364d26002d56738d0d546259c1d7c3",
+            "bytes": 3306
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-0/oof.parquet",
+            "valid": true,
+            "sha256": "d3b4697add4f2df38200154d20d777f6849a6a7c1d1b11d29a71313b362909ba",
+            "bytes": 569590
+          }
+        ],
+        "selected_epoch": 4
+      },
+      {
+        "job": "tune-lora-D-29-1",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-1/fit.json",
+            "valid": true,
+            "sha256": "28a29ddd6fa1bb7432636a4ca8c6e191bd3200bd53c077d66a99955a156a715c",
+            "bytes": 3305
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-1/oof.parquet",
+            "valid": true,
+            "sha256": "9506be28287c9235d99fd80486b7a34bc29eee4b2d63a5fb80c785847c5e042d",
+            "bytes": 544456
+          }
+        ],
+        "selected_epoch": 1
+      },
+      {
+        "job": "tune-lora-D-29-2",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-2/fit.json",
+            "valid": true,
+            "sha256": "38c9da39881361cff5ed9efaab7d038d89f06e0704fb30c57a8d91c6be7c621c",
+            "bytes": 3306
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-2/oof.parquet",
+            "valid": true,
+            "sha256": "23633e36ca2444ce840f33ad4b30e7fb56f4357837332e46043f61b2dbd4b312",
+            "bytes": 559934
+          }
+        ],
+        "selected_epoch": 1
+      },
+      {
+        "job": "tune-lora-D-29-3",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-3/fit.json",
+            "valid": true,
+            "sha256": "b40320620fa20345268247b76c47650203bccbcb5671c614afbebec091fccb9e",
+            "bytes": 3305
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-3/oof.parquet",
+            "valid": true,
+            "sha256": "c07425f3324af8c9f72947761b5602a9f2da04913aecc40d174f1fc5c4eec0b8",
+            "bytes": 563933
+          }
+        ],
+        "selected_epoch": 2
+      },
+      {
+        "job": "tune-lora-D-29-4",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-4/fit.json",
+            "valid": true,
+            "sha256": "4b51f3537349717e2f2db388d17be0fa0c8901674312080ae2b03db9e4c9c739",
+            "bytes": 3304
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-4/oof.parquet",
+            "valid": true,
+            "sha256": "c5739d68cf82fd90d1a9fba23187eea5eca75b3e71ecd9b3e9f94498f0d1ce1f",
+            "bytes": 559418
+          }
+        ],
+        "selected_epoch": 2
+      },
+      {
+        "job": "tune-lora-D-43-0",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-0/fit.json",
+            "valid": true,
+            "sha256": "b06fbcaa57f38ca36964821d59d34d62e374caf362db5acb4e7211c11167ae4c",
+            "bytes": 3305
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-0/oof.parquet",
+            "valid": true,
+            "sha256": "57a5ac497878d56ada5b8d76b75e9a2131d04410ae0f312ce54c2ac180d06599",
+            "bytes": 569602
+          }
+        ],
+        "selected_epoch": 2
+      },
+      {
+        "job": "tune-lora-D-43-1",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-1/fit.json",
+            "valid": true,
+            "sha256": "7d219dbfcf062578d968d68cbf643565284b3c5902f5301868fedb8bd1c6903a",
+            "bytes": 3305
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-1/oof.parquet",
+            "valid": true,
+            "sha256": "60828311ff00ff83f2160e269fde947691f755c27a42244d47e5b451caaf9c9b",
+            "bytes": 544468
+          }
+        ],
+        "selected_epoch": 1
+      },
+      {
+        "job": "tune-lora-D-43-2",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-2/fit.json",
+            "valid": true,
+            "sha256": "d0ebe41368d7d9c7ea5f8eab8fb8ebd68fc47fdd22447cdaa43dd894ac345891",
+            "bytes": 3305
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-2/oof.parquet",
+            "valid": true,
+            "sha256": "faa9e3d6e34b415b39b78e3fc26ac096b192f0d8159ef41703815b8b58b7071e",
+            "bytes": 559950
+          }
+        ],
+        "selected_epoch": 3
+      },
+      {
+        "job": "tune-lora-D-43-3",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-3/fit.json",
+            "valid": true,
+            "sha256": "a4e8dde8be284d4a4122adacc67a2c503eca9d1b5681effdd4eec14db4158c43",
+            "bytes": 3306
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-3/oof.parquet",
+            "valid": true,
+            "sha256": "bdf3f3f5cab82f0210263a27a56350d0e9c75c5e8f7917de2130b36a9e9aa389",
+            "bytes": 563925
+          }
+        ],
+        "selected_epoch": 3
+      },
+      {
+        "job": "tune-lora-D-43-4",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-4/fit.json",
+            "valid": true,
+            "sha256": "4d36c5fbf9e3f5223c60577fad700c8135d432b6e428f288e8a15622af2011f4",
+            "bytes": 3305
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-4/oof.parquet",
+            "valid": true,
+            "sha256": "bdec69ce2c4677c89f252baa6e26dc562c3950df1bc631c2f89e1f610cbdc944",
+            "bytes": 559426
+          }
+        ],
+        "selected_epoch": 2
+      },
+      {
+        "job": "tune-frozen-D-17-0",
+        "origin": "e7097449883a51d8",
+        "recorded_origin_exists": false,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-0/fit.json",
+            "valid": true,
+            "sha256": "6c7b924040b6c56e6f57f5109f9990b196fbff545d329faa211f1ed887c7bfcf",
+            "bytes": 373
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-0/oof.parquet",
+            "valid": true,
+            "sha256": "6c7acde9b8d05df4b80e0494f49e9fc0afdad2c2b7eb8a9ae9859832d340f833",
+            "bytes": 569596
+          }
+        ],
+        "selected_epoch": 1
+      },
+      {
+        "job": "tune-frozen-D-17-1",
+        "origin": "e7097449883a51d8",
+        "recorded_origin_exists": false,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-1/fit.json",
+            "valid": true,
+            "sha256": "17e844aacb3470acacbfb27bf40b6ca7e62a376ecfb3add5fc8e3d2dca86a7d0",
+            "bytes": 373
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-1/oof.parquet",
+            "valid": true,
+            "sha256": "87c8ebe5f15fdafe8e5767a5d33dcdb0609f24e1fa0c44200bb525c70c6def3d",
+            "bytes": 544470
+          }
+        ],
+        "selected_epoch": 1
+      },
+      {
+        "job": "tune-frozen-D-17-2",
+        "origin": "e7097449883a51d8",
+        "recorded_origin_exists": false,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-2/fit.json",
+            "valid": true,
+            "sha256": "1f8446a965e2b8a29dbad0b9e23503da0b9051c3dd913005e9c47ea0cec876ce",
+            "bytes": 374
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-2/oof.parquet",
+            "valid": true,
+            "sha256": "59a80f3cfb96a79f0dce9984a48d6d2dd7cac51be910588665c6f62922dfc25a",
+            "bytes": 559916
+          }
+        ],
+        "selected_epoch": 1
+      },
+      {
+        "job": "tune-frozen-D-17-3",
+        "origin": "e7097449883a51d8",
+        "recorded_origin_exists": false,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-3/fit.json",
+            "valid": true,
+            "sha256": "d844d25194152aa2307496d0c268ca17ae75ad8b3e5a773f894c4acad9bad8bc",
+            "bytes": 374
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-3/oof.parquet",
+            "valid": true,
+            "sha256": "e751b717e711fa9be9e92208a52b3515658c3a24835816713eb735fa0f258731",
+            "bytes": 563951
+          }
+        ],
+        "selected_epoch": 2
+      },
+      {
+        "job": "tune-frozen-D-17-4",
+        "origin": "e7097449883a51d8",
+        "recorded_origin_exists": false,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-4/fit.json",
+            "valid": true,
+            "sha256": "ae22194e4cf6cbf4ba94b3ca849708ed16231103b311601fc11ba339fa5d57ff",
+            "bytes": 374
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-4/oof.parquet",
+            "valid": true,
+            "sha256": "c8a186f553148de14756b543429d84bed2775f82a2d9b84d67d9d0c418077ef5",
+            "bytes": 559396
+          }
+        ],
+        "selected_epoch": 1
+      },
+      {
+        "job": "tune-frozen-D-29-0",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-0/fit.json",
+            "valid": true,
+            "sha256": "91fc02b8422c6c9a4e9248bdf34fabed095eb9a8a620f4c72fe60ea821aeba8f",
+            "bytes": 374
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-0/oof.parquet",
+            "valid": true,
+            "sha256": "0a44cfdce49bd2351ffafcc2d30d3a94c1fb5393da9aa27836d868b85ec93246",
+            "bytes": 569584
+          }
+        ],
+        "selected_epoch": 2
+      },
+      {
+        "job": "tune-frozen-D-29-1",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-1/fit.json",
+            "valid": true,
+            "sha256": "225fbe56379f64ffb0d58d102e9e28fd1e8cdd71a31d25116d7d4379dccaada4",
+            "bytes": 373
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-1/oof.parquet",
+            "valid": true,
+            "sha256": "390ca9bcbf26cd332bc002457ae3a400f4c0542ee7cb6c441a4198bf7115265b",
+            "bytes": 544486
+          }
+        ],
+        "selected_epoch": 3
+      },
+      {
+        "job": "tune-frozen-D-29-2",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-2/fit.json",
+            "valid": true,
+            "sha256": "038ddbec436b26d58003558b93fe1c3267e46b8a548d270a95ed75ec9252da8e",
+            "bytes": 373
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-2/oof.parquet",
+            "valid": true,
+            "sha256": "bad2cd4e7f66e16af259126f0fce635d191b9cf6eac79baa38f66b7bff530f20",
+            "bytes": 559940
+          }
+        ],
+        "selected_epoch": 1
+      },
+      {
+        "job": "tune-frozen-D-29-3",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-3/fit.json",
+            "valid": true,
+            "sha256": "003151810744666ae19cac80086f257a9bd349c6e2fcba4323aa5e99ef4e8091",
+            "bytes": 373
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-3/oof.parquet",
+            "valid": true,
+            "sha256": "bfa677b5a6851e6f0035fb0640cc8fd0879cd9b1e44daf67ea5ac4c3846946c7",
+            "bytes": 563951
+          }
+        ],
+        "selected_epoch": 1
+      },
+      {
+        "job": "tune-frozen-D-29-4",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-4/fit.json",
+            "valid": true,
+            "sha256": "c82a4ad0e8de6bc1dfdf8077911fd856fa3f1cec308d9cd93f0bdc405880a6ff",
+            "bytes": 373
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-4/oof.parquet",
+            "valid": true,
+            "sha256": "08d139c8c742bf8dbbcdf74bc3f2a40fd3fee3bfe931a8261827c0a44e470dd8",
+            "bytes": 559424
+          }
+        ],
+        "selected_epoch": 2
+      },
+      {
+        "job": "tune-frozen-D-43-0",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-0/fit.json",
+            "valid": true,
+            "sha256": "a27e62e047b04723695e9cf57f84815fab8ff9dabe4fb682b2dd239daa16b572",
+            "bytes": 373
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-0/oof.parquet",
+            "valid": true,
+            "sha256": "9d22173ca41e6129061faaf1c60211e6d039bde95122ce357e0020520bf0816b",
+            "bytes": 569600
+          }
+        ],
+        "selected_epoch": 2
+      },
+      {
+        "job": "tune-frozen-D-43-1",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-1/fit.json",
+            "valid": true,
+            "sha256": "f6bee39775f642a9074ed4055627bb98c527d576d879d1356620d6cfba96a10e",
+            "bytes": 373
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-1/oof.parquet",
+            "valid": true,
+            "sha256": "b5a5ced4ba414de2239df62513dfb0f4b9dcb2534925d7c9e3e61c04d58e0cf4",
+            "bytes": 544490
+          }
+        ],
+        "selected_epoch": 3
+      },
+      {
+        "job": "tune-frozen-D-43-2",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-2/fit.json",
+            "valid": true,
+            "sha256": "4a22384939da63e90871db3e0a250fea91660a15661fdd5861bb40cbf2e24387",
+            "bytes": 373
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-2/oof.parquet",
+            "valid": true,
+            "sha256": "bd926bb4ed2f0ee8d30d161e5d2e192841e4c1c735a8c1798c5848ddf58643ce",
+            "bytes": 559932
+          }
+        ],
+        "selected_epoch": 1
+      },
+      {
+        "job": "tune-frozen-D-43-3",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-3/fit.json",
+            "valid": true,
+            "sha256": "83ee686c137536ed0d89ce92440d7c75122fb6fe70724efbd1e4cbf848f03d86",
+            "bytes": 374
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-3/oof.parquet",
+            "valid": true,
+            "sha256": "c4894cce173079f3dc521fe97a4ea62f0042e9119672f3387f1c373cd5791345",
+            "bytes": 563939
+          }
+        ],
+        "selected_epoch": 1
+      },
+      {
+        "job": "tune-frozen-D-43-4",
+        "origin": "ef138c84579c842e",
+        "recorded_origin_exists": true,
+        "status": "complete",
+        "files": [
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-4/fit.json",
+            "valid": true,
+            "sha256": "8d8ab73021516058a9050754916deb04ccb10c2c4e94d18ca20bee9e9505a8c2",
+            "bytes": 373
+          },
+          {
+            "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-4/oof.parquet",
+            "valid": true,
+            "sha256": "2272e56218ff1e747128a7e7d6e9d0d28bdc57dcfcfcb4c3fdc26dd961dca237",
+            "bytes": 559420
+          }
+        ],
+        "selected_epoch": 3
+      }
+    ],
+    "epoch_policy": [
+      {
+        "mode": "lora",
+        "seed": 17,
+        "selected_epochs": [
+          2,
+          2,
+          1,
+          2,
+          3
+        ],
+        "median": 2,
+        "oof_cells": 122412,
+        "unique_oof_cells": 122412,
+        "exact_W_coverage": true
+      },
+      {
+        "mode": "lora",
+        "seed": 29,
+        "selected_epochs": [
+          4,
+          1,
+          1,
+          2,
+          2
+        ],
+        "median": 2,
+        "oof_cells": 122412,
+        "unique_oof_cells": 122412,
+        "exact_W_coverage": true
+      },
+      {
+        "mode": "lora",
+        "seed": 43,
+        "selected_epochs": [
+          2,
+          1,
+          3,
+          3,
+          2
+        ],
+        "median": 2,
+        "oof_cells": 122412,
+        "unique_oof_cells": 122412,
+        "exact_W_coverage": true
+      },
+      {
+        "mode": "frozen",
+        "seed": 17,
+        "selected_epochs": [
+          1,
+          1,
+          1,
+          2,
+          1
+        ],
+        "median": 1,
+        "oof_cells": 122412,
+        "unique_oof_cells": 122412,
+        "exact_W_coverage": true
+      },
+      {
+        "mode": "frozen",
+        "seed": 29,
+        "selected_epochs": [
+          2,
+          3,
+          1,
+          1,
+          2
+        ],
+        "median": 2,
+        "oof_cells": 122412,
+        "unique_oof_cells": 122412,
+        "exact_W_coverage": true
+      },
+      {
+        "mode": "frozen",
+        "seed": 43,
+        "selected_epochs": [
+          2,
+          3,
+          1,
+          1,
+          3
+        ],
+        "median": 2,
+        "oof_cells": 122412,
+        "unique_oof_cells": 122412,
+        "exact_W_coverage": true
+      }
+    ]
+  },
+  "weights_35m": {
+    "status": "complete",
+    "revision": "6fbf070e65b0b7291e7bbcd451118c216cff79d8",
+    "snapshot": "research/kaggle-roadmap-2026-10-31/output/weights/esm2_35m/6fbf070e65b0b7291e7bbcd451118c216cff79d8",
+    "files": [
+      {
+        "path": "README.md",
+        "valid": true
+      },
+      {
+        "path": "config.json",
+        "valid": true
+      },
+      {
+        "path": "model.safetensors",
+        "valid": true
+      },
+      {
+        "path": "special_tokens_map.json",
+        "valid": true
+      },
+      {
+        "path": "tokenizer_config.json",
+        "valid": true
+      },
+      {
+        "path": "vocab.txt",
+        "valid": true
+      }
+    ]
+  },
+  "w5_baseline": {
+    "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/locked-transfer-w5/ordered-w5-D/held-scanning.parquet",
+    "valid": true
+  },
+  "koren": {
+    "data/raw/koren-2018/NIHMS967427-supplement-11.xlsx": false,
+    "data/interim/koren-2018-cells.tsv": false
+  },
+  "limitations": [
+    "CUDA availability/memory query only; no forward/backward or inference parity tested.",
+    "T counts here precede rep1 QC; primary rep1 count remains pinned by the evaluation protocol.",
+    "Only the requested 30 D-fold fit/OOF artifacts and W5 held predictions were hash-checked, not every historical artifact.",
+    "No source-path, Git history, campaign state, or data files were changed."
+  ]
+}

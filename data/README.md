@@ -1,5 +1,13 @@
 # Dữ liệu của đề tài `degron-footprint` — nguồn gốc và quá trình xử lý
 
+**Cập nhật 16/11/2026:** Trọng cung cấp lại S4 Koren; copy nguyên byte từ
+`raw/koren-2018-probe/NIHMS967427-supplement-11.xlsx` sang
+`raw/koren-2018/NIHMS967427-supplement-11.xlsx` (169738 byte, SHA khớp bảng mục 2).
+Không đổi dữ liệu train v3. QC/parser và inference bổ sung ghi tại
+[koren-validation.json](../research/lora-refit-transfer-2026-11-16/koren-validation.json);
+bảng chuẩn hoá/predictions bổ sung nằm ở `research/lora-refit-transfer-2026-11-16/local/`,
+không đưa bảng gốc/sequence lên Git. Source.md nội bộ ghi rõ phạm vi rank-only.
+
 > File này là **sổ nguồn gốc** của thư mục `data/`: mỗi file đến từ đâu, phiên bản nào, giấy phép gì, ai/script nào tạo ra, và đã xử lý qua những bước nào. Nội dung `data/` bị `.gitignore` chặn; **riêng file này được lên git** (ngoại lệ `!**/data/README.md`).
 >
 > Thao tác dữ liệu ghi nhận gần nhất: **02/11/2026** (khôi phục bundle v3 và kiểm checksum; nhật ký bên dưới). Đối chiếu tài liệu **03/11/2026**, không tải/xử lý lại dữ liệu. Trạng thái nghiên cứu/campaign nằm ở [research/README.md](../research/README.md), trạng thái tải weights ghi riêng theo snapshot. Dung lượng trước phiên G2 ≈ **2,3 GB** (`raw/` 1,2 GB · `interim/` 1,1 GB · `processed/` 123 MB), không phải kiểm kê dung lượng hiện tại.
@@ -58,6 +66,11 @@ Script đọc: [`research/koren-s4-audit-2026-10-22/audit.py`](../research/koren
 ## 3. Danh mục từng file
 
 ### 3.1 `raw/`
+
+**Koren S4 phục hồi tại Windows 16/11:**
+`koren-2018/NIHMS967427-supplement-11.xlsx`, 169738 byte; copy từ thư mục probe
+do Trọng cung cấp, SHA khớp mục 2. [SOURCE.md](raw/koren-2018/SOURCE.md) giữ
+provenance/quy tắc sử dụng nội bộ. Không đưa file gốc vào gói train v3.
 
 **Bổ sung MetaDegron 21/10:** `metadegron/repo/` là clone ghim, không chạy mã tải về; `paper.{xml,html}`, `supplementary-files.zip`, `supplementary/*.xlsx` là nguồn đọc. Các URL XLSX lẻ trả HTML challenge và bảng review 2017 trả trang ELTEnet được giữ như bằng chứng lỗi, **không coi là dữ liệu truy cập được**. `web-*.html`, ảnh demo và ELM/license/snapshot truy nguồn giữ dưới `raw/`, không lên git. Hai file lớn SeqVec/embedding có endpoint HTTP 200 nhưng fetch thử bị giới hạn dung lượng, **không giữ payload, không có SHA đầy đủ**.
 
@@ -237,6 +250,12 @@ Nằm trong `interim/zhang-scanning-unzip/.../Replicate 1 (BAG6 genotype unclear
 Mỗi file là **một bin của một điều kiện**. Tab-separated, **không có header**, hai cột: `id` và số read thô (số nguyên). Thứ tự bin theo số `S<k>`: với bộ quét Replicate 1 và bộ bão hòa nửa A là `S1..S6` = bin 1..6; Replicate 2 và nửa B là `S7..S12` = bin 1..6. Ánh xạ đầy đủ từ file sang điều kiện nằm trong `CONDITIONS` của `research/full-data-audit/build_psi.py`.
 
 ## 5. Nhật ký xử lý
+
+- **16/11/2026 — bổ sung lại Koren S4:** Copy nguyên file từ raw/koren-2018-probe
+  sang raw/koren-2018, giữ bản nguồn, SHA-256 c96973f2…fdbcbeb khớp bản 22/10.
+  QC 9 substrate/1827 dòng/1739 mutant tại research/lora-refit-transfer-2026-11-16/koren-validation.json.
+  Không sửa training data/manifest/splits, không retrain bằng Koren. Chuẩn hoá
+  và prediction bổ sung nếu sinh sẽ ở thư mục local của nghiên cứu refit.
 
 - **02/11/2026 — chuẩn bị chạy local CUDA:** Người dùng bổ sung các ZIP trong `processed/packages/`. Kiểm `degron-data-v3-fullpsi.zip` (**98.748.031 byte**, SHA-256 `f4a6542f3786de420108861975eae0c58534e5f60a529bce315de9d00bd872a8`) rồi giải nén nguyên trạng vào `processed/degron-data-v3-fullpsi/`; kiểm SHA-256 đủ 32 file theo `DATA_MANIFEST.json`. Manifest SHA-256 `b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738` khớp data identity của output Kaggle đã nhập. Không dựng lại nhãn/cụm/splits, không thay dữ liệu nguồn và không giải nén/chạy code ZIP. Kiểm môi trường/GPU cục bộ và báo cáo riêng ở `research/kaggle-roadmap-2026-10-31/`; chưa chạy tiếp các job official trong bước chuẩn bị này.
 

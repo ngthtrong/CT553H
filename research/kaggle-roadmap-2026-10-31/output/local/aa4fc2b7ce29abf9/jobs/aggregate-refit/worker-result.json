@@ -1,0 +1,78 @@
+{
+  "job": "aggregate-refit",
+  "started_unix": 1794833914.9997633,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/aggregate-refit/constant-W-mean-per-peptide.csv",
+      "bytes": 215487,
+      "sha256": "2a252570049dcb116920727b8e34d4a18eb70c3163f5f8c0d5df251c6f8fe425"
+    },
+    {
+      "path": "jobs/aggregate-refit/constant-W-mean-ranking.csv",
+      "bytes": 270860,
+      "sha256": "d5f7efbb6c62fa3f97f38acd7fb9eb11c21ce185bb5cd0c81f2f1535dfb77a75"
+    },
+    {
+      "path": "jobs/aggregate-refit/ensemble-held.parquet",
+      "bytes": 1039595,
+      "sha256": "3177f154dc0bf5f4e5d0100f0a995a570156aca9022b8fd95e1a8277c24b7ac6"
+    },
+    {
+      "path": "jobs/aggregate-refit/esm2_35m-frozen-D-per-peptide.csv",
+      "bytes": 272060,
+      "sha256": "72c4e9765557063b1a01d87ac198c54f077bb1540033e570408cf3f327116499"
+    },
+    {
+      "path": "jobs/aggregate-refit/esm2_35m-frozen-D-ranking.csv",
+      "bytes": 275054,
+      "sha256": "06aec7e56bd1b272d9239f084211ae0706be9af05dabaf201e6f50f08723063f"
+    },
+    {
+      "path": "jobs/aggregate-refit/esm2_35m-lora-D-per-peptide.csv",
+      "bytes": 272068,
+      "sha256": "874d77d2e6344cfce00ad4a01e5724ad02b1d436926504cfb183c32665a217bf"
+    },
+    {
+      "path": "jobs/aggregate-refit/esm2_35m-lora-D-ranking.csv",
+      "bytes": 273568,
+      "sha256": "7fd1e6ee9976e48bea8fcecc2976709b8018466565fc2d1d2542bc6e0c7c5a26"
+    },
+    {
+      "path": "jobs/aggregate-refit/esm2_35m-lora-D_minus_esm2_35m-frozen-D-ci.json",
+      "bytes": 275,
+      "sha256": "fb0ac36d36d0f1b47b8c5332ab2a008a4bb88780ccfa27bb1d7cb3f3a69c8d74"
+    },
+    {
+      "path": "jobs/aggregate-refit/esm2_35m-lora-D_minus_ordered-w5-D-ci.json",
+      "bytes": 275,
+      "sha256": "e4d255d74a77e8292fc26112c1965ab26ca40bd0f9b062fc883df51f7fb2a474"
+    },
+    {
+      "path": "jobs/aggregate-refit/ordered-w5-D-per-peptide.csv",
+      "bytes": 269862,
+      "sha256": "7068342e91ab90d271cb5dafbec971851b58bfa125dae4a66082351e81f5a3d7"
+    },
+    {
+      "path": "jobs/aggregate-refit/ordered-w5-D-ranking.csv",
+      "bytes": 275660,
+      "sha256": "0df8164b31f97faa0f0f0e86187e60557448f8dee1d6214beb00be8d217afff2"
+    },
+    {
+      "path": "jobs/aggregate-refit/results.json",
+      "bytes": 106585,
+      "sha256": "9a5b0036eb2b43b7574c7c567cead1dc2e253fe5405a081a658878878c104d5c"
+    },
+    {
+      "path": "jobs/aggregate-refit/zero-per-peptide.csv",
+      "bytes": 215434,
+      "sha256": "64564e9e4818ea5dbe9f0c038b80692dd6f80ee33d12043a4ce8e3953e368c21"
+    },
+    {
+      "path": "jobs/aggregate-refit/zero-ranking.csv",
+      "bytes": 270860,
+      "sha256": "d5f7efbb6c62fa3f97f38acd7fb9eb11c21ce185bb5cd0c81f2f1535dfb77a75"
+    }
+  ],
+  "seconds": 23.531455993652344
+}

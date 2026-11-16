@@ -1,0 +1,23 @@
+{
+  "job": "score-held-lora-D-43",
+  "started_unix": 1794833484.6205442,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/score-held-lora-D-43/held.json",
+      "bytes": 199,
+      "sha256": "96e07351020c38a04b282e6e1e3391ee982c8ef61ae54563264640e352cb1037"
+    },
+    {
+      "path": "jobs/score-held-lora-D-43/held.npy",
+      "bytes": 157064,
+      "sha256": "e23da62dd35a0c30af53025669bd03869c75c9ec7591e4408dd83f94473cbf06"
+    },
+    {
+      "path": "jobs/score-held-lora-D-43/score.json",
+      "bytes": 487,
+      "sha256": "0f47e221caa40bdaf9a3f638c2b0cc25c5f51d32aa4792d6228b3fa7d72d5eb9"
+    }
+  ],
+  "seconds": 104.15701246261597
+}

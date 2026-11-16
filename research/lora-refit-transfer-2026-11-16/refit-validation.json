@@ -1,0 +1,49 @@
+{
+  "status": "pass",
+  "scope": "software_only_W_fixture_not_benchmark",
+  "code_sha256": "d7e7b061dec7bf44d1397da542e739f09023248bf41f2a53ec8277315f46a0b5",
+  "tests": [
+    {
+      "test": "DAG_15_core_plus_5_completion_topological",
+      "status": "pass"
+    },
+    {
+      "test": "legacy_path_relocated_and_outside_selector_rejected",
+      "status": "pass"
+    },
+    {
+      "test": "paired_group_bootstrap_preserves_peptide_weights",
+      "status": "pass"
+    },
+    {
+      "test": "no_hit_and_missing_classes_have_explicit_nulls",
+      "status": "pass"
+    },
+    {
+      "test": "pause_wait_does_not_claim_success_while_worker_locked",
+      "status": "pass"
+    },
+    {
+      "test": "corrupt_checkpoint_fallback_and_identity_mismatch_rejection",
+      "status": "pass"
+    },
+    {
+      "test": "real_CUDA_fixed_epoch_refit_resume_frozen",
+      "status": "pass",
+      "max_parameter_difference": 0.0
+    },
+    {
+      "test": "real_CUDA_fixed_epoch_refit_resume_lora",
+      "status": "pass",
+      "max_parameter_difference": 0.0
+    },
+    {
+      "test": "real_CUDA_prediction_prefix_resume",
+      "status": "pass",
+      "rows": 32
+    }
+  ],
+  "cuda_device": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "temporary_artifacts": "research/lora-refit-transfer-2026-11-16/local/validation-21cedb25a69d44638d414b1bd9c5eb25",
+  "T_outcomes_read": false
+}

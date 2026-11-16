@@ -1,0 +1,661 @@
+{
+  "schema_version": 1,
+  "source_campaign": "ef138c84579c842e",
+  "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738",
+  "epochs": {
+    "lora": {
+      "17": 2,
+      "29": 2,
+      "43": 2
+    },
+    "frozen": {
+      "17": 1,
+      "29": 2,
+      "43": 2
+    }
+  },
+  "folds": [
+    {
+      "job": "tune-lora-D-17-0",
+      "mode": "lora",
+      "seed": 17,
+      "fold": 0,
+      "selected_epoch": 2,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-0/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-0/oof.parquet"
+    },
+    {
+      "job": "tune-lora-D-17-1",
+      "mode": "lora",
+      "seed": 17,
+      "fold": 1,
+      "selected_epoch": 2,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-1/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-1/oof.parquet"
+    },
+    {
+      "job": "tune-lora-D-17-2",
+      "mode": "lora",
+      "seed": 17,
+      "fold": 2,
+      "selected_epoch": 1,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-2/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-2/oof.parquet"
+    },
+    {
+      "job": "tune-lora-D-17-3",
+      "mode": "lora",
+      "seed": 17,
+      "fold": 3,
+      "selected_epoch": 2,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-3/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-3/oof.parquet"
+    },
+    {
+      "job": "tune-lora-D-17-4",
+      "mode": "lora",
+      "seed": 17,
+      "fold": 4,
+      "selected_epoch": 3,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-4/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-4/oof.parquet"
+    },
+    {
+      "job": "tune-lora-D-29-0",
+      "mode": "lora",
+      "seed": 29,
+      "fold": 0,
+      "selected_epoch": 4,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-0/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-0/oof.parquet"
+    },
+    {
+      "job": "tune-lora-D-29-1",
+      "mode": "lora",
+      "seed": 29,
+      "fold": 1,
+      "selected_epoch": 1,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-1/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-1/oof.parquet"
+    },
+    {
+      "job": "tune-lora-D-29-2",
+      "mode": "lora",
+      "seed": 29,
+      "fold": 2,
+      "selected_epoch": 1,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-2/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-2/oof.parquet"
+    },
+    {
+      "job": "tune-lora-D-29-3",
+      "mode": "lora",
+      "seed": 29,
+      "fold": 3,
+      "selected_epoch": 2,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-3/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-3/oof.parquet"
+    },
+    {
+      "job": "tune-lora-D-29-4",
+      "mode": "lora",
+      "seed": 29,
+      "fold": 4,
+      "selected_epoch": 2,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-4/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-4/oof.parquet"
+    },
+    {
+      "job": "tune-lora-D-43-0",
+      "mode": "lora",
+      "seed": 43,
+      "fold": 0,
+      "selected_epoch": 2,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-0/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-0/oof.parquet"
+    },
+    {
+      "job": "tune-lora-D-43-1",
+      "mode": "lora",
+      "seed": 43,
+      "fold": 1,
+      "selected_epoch": 1,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-1/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-1/oof.parquet"
+    },
+    {
+      "job": "tune-lora-D-43-2",
+      "mode": "lora",
+      "seed": 43,
+      "fold": 2,
+      "selected_epoch": 3,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-2/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-2/oof.parquet"
+    },
+    {
+      "job": "tune-lora-D-43-3",
+      "mode": "lora",
+      "seed": 43,
+      "fold": 3,
+      "selected_epoch": 3,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-3/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-3/oof.parquet"
+    },
+    {
+      "job": "tune-lora-D-43-4",
+      "mode": "lora",
+      "seed": 43,
+      "fold": 4,
+      "selected_epoch": 2,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-4/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-4/oof.parquet"
+    },
+    {
+      "job": "tune-frozen-D-17-0",
+      "mode": "frozen",
+      "seed": 17,
+      "fold": 0,
+      "selected_epoch": 1,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-0/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-0/oof.parquet"
+    },
+    {
+      "job": "tune-frozen-D-17-1",
+      "mode": "frozen",
+      "seed": 17,
+      "fold": 1,
+      "selected_epoch": 1,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-1/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-1/oof.parquet"
+    },
+    {
+      "job": "tune-frozen-D-17-2",
+      "mode": "frozen",
+      "seed": 17,
+      "fold": 2,
+      "selected_epoch": 1,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-2/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-2/oof.parquet"
+    },
+    {
+      "job": "tune-frozen-D-17-3",
+      "mode": "frozen",
+      "seed": 17,
+      "fold": 3,
+      "selected_epoch": 2,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-3/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-3/oof.parquet"
+    },
+    {
+      "job": "tune-frozen-D-17-4",
+      "mode": "frozen",
+      "seed": 17,
+      "fold": 4,
+      "selected_epoch": 1,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-4/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-4/oof.parquet"
+    },
+    {
+      "job": "tune-frozen-D-29-0",
+      "mode": "frozen",
+      "seed": 29,
+      "fold": 0,
+      "selected_epoch": 2,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-0/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-0/oof.parquet"
+    },
+    {
+      "job": "tune-frozen-D-29-1",
+      "mode": "frozen",
+      "seed": 29,
+      "fold": 1,
+      "selected_epoch": 3,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-1/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-1/oof.parquet"
+    },
+    {
+      "job": "tune-frozen-D-29-2",
+      "mode": "frozen",
+      "seed": 29,
+      "fold": 2,
+      "selected_epoch": 1,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-2/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-2/oof.parquet"
+    },
+    {
+      "job": "tune-frozen-D-29-3",
+      "mode": "frozen",
+      "seed": 29,
+      "fold": 3,
+      "selected_epoch": 1,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-3/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-3/oof.parquet"
+    },
+    {
+      "job": "tune-frozen-D-29-4",
+      "mode": "frozen",
+      "seed": 29,
+      "fold": 4,
+      "selected_epoch": 2,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-4/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-4/oof.parquet"
+    },
+    {
+      "job": "tune-frozen-D-43-0",
+      "mode": "frozen",
+      "seed": 43,
+      "fold": 0,
+      "selected_epoch": 2,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-0/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-0/oof.parquet"
+    },
+    {
+      "job": "tune-frozen-D-43-1",
+      "mode": "frozen",
+      "seed": 43,
+      "fold": 1,
+      "selected_epoch": 3,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-1/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-1/oof.parquet"
+    },
+    {
+      "job": "tune-frozen-D-43-2",
+      "mode": "frozen",
+      "seed": 43,
+      "fold": 2,
+      "selected_epoch": 1,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-2/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-2/oof.parquet"
+    },
+    {
+      "job": "tune-frozen-D-43-3",
+      "mode": "frozen",
+      "seed": 43,
+      "fold": 3,
+      "selected_epoch": 1,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-3/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-3/oof.parquet"
+    },
+    {
+      "job": "tune-frozen-D-43-4",
+      "mode": "frozen",
+      "seed": 43,
+      "fold": 4,
+      "selected_epoch": 3,
+      "fit": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-4/fit.json",
+      "oof": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-4/oof.parquet"
+    }
+  ],
+  "files": [
+    {
+      "path": "data/processed/degron-data-v3-fullpsi/DATA_MANIFEST.json",
+      "bytes": 9176,
+      "sha256": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-0/fit.json",
+      "bytes": 373,
+      "sha256": "6c7b924040b6c56e6f57f5109f9990b196fbff545d329faa211f1ed887c7bfcf"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-0/oof.parquet",
+      "bytes": 569596,
+      "sha256": "6c7acde9b8d05df4b80e0494f49e9fc0afdad2c2b7eb8a9ae9859832d340f833"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-1/fit.json",
+      "bytes": 373,
+      "sha256": "17e844aacb3470acacbfb27bf40b6ca7e62a376ecfb3add5fc8e3d2dca86a7d0"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-1/oof.parquet",
+      "bytes": 544470,
+      "sha256": "87c8ebe5f15fdafe8e5767a5d33dcdb0609f24e1fa0c44200bb525c70c6def3d"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-2/fit.json",
+      "bytes": 374,
+      "sha256": "1f8446a965e2b8a29dbad0b9e23503da0b9051c3dd913005e9c47ea0cec876ce"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-2/oof.parquet",
+      "bytes": 559916,
+      "sha256": "59a80f3cfb96a79f0dce9984a48d6d2dd7cac51be910588665c6f62922dfc25a"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-3/fit.json",
+      "bytes": 374,
+      "sha256": "d844d25194152aa2307496d0c268ca17ae75ad8b3e5a773f894c4acad9bad8bc"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-3/oof.parquet",
+      "bytes": 563951,
+      "sha256": "e751b717e711fa9be9e92208a52b3515658c3a24835816713eb735fa0f258731"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-4/fit.json",
+      "bytes": 374,
+      "sha256": "ae22194e4cf6cbf4ba94b3ca849708ed16231103b311601fc11ba339fa5d57ff"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/jobs/tune-frozen-D-17-4/oof.parquet",
+      "bytes": 559396,
+      "sha256": "c8a186f553148de14756b543429d84bed2775f82a2d9b84d67d9d0c418077ef5"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/plan.json",
+      "bytes": 2077,
+      "sha256": "176883d411ab43ebd1709dbc780f16e6622ed3ae867b128c9191c7fb91b016a2"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/e7097449883a51d8/state.json",
+      "bytes": 523152,
+      "sha256": "1e4fcdeab4772a8b0fae96b25587909ceacf69f168d4c2051f4ecaa596bb7c54"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/locked-transfer-w5/ordered-w5-D/held-scanning.parquet",
+      "bytes": 4655066,
+      "sha256": "c39b74c7f0cefd354de13338be8a84d8092d261a0f5504b199ddb2fc5794e1d0"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-0/fit.json",
+      "bytes": 374,
+      "sha256": "91fc02b8422c6c9a4e9248bdf34fabed095eb9a8a620f4c72fe60ea821aeba8f"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-0/oof.parquet",
+      "bytes": 569584,
+      "sha256": "0a44cfdce49bd2351ffafcc2d30d3a94c1fb5393da9aa27836d868b85ec93246"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-1/fit.json",
+      "bytes": 373,
+      "sha256": "225fbe56379f64ffb0d58d102e9e28fd1e8cdd71a31d25116d7d4379dccaada4"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-1/oof.parquet",
+      "bytes": 544486,
+      "sha256": "390ca9bcbf26cd332bc002457ae3a400f4c0542ee7cb6c441a4198bf7115265b"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-2/fit.json",
+      "bytes": 373,
+      "sha256": "038ddbec436b26d58003558b93fe1c3267e46b8a548d270a95ed75ec9252da8e"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-2/oof.parquet",
+      "bytes": 559940,
+      "sha256": "bad2cd4e7f66e16af259126f0fce635d191b9cf6eac79baa38f66b7bff530f20"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-3/fit.json",
+      "bytes": 373,
+      "sha256": "003151810744666ae19cac80086f257a9bd349c6e2fcba4323aa5e99ef4e8091"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-3/oof.parquet",
+      "bytes": 563951,
+      "sha256": "bfa677b5a6851e6f0035fb0640cc8fd0879cd9b1e44daf67ea5ac4c3846946c7"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-4/fit.json",
+      "bytes": 373,
+      "sha256": "c82a4ad0e8de6bc1dfdf8077911fd856fa3f1cec308d9cd93f0bdc405880a6ff"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-29-4/oof.parquet",
+      "bytes": 559424,
+      "sha256": "08d139c8c742bf8dbbcdf74bc3f2a40fd3fee3bfe931a8261827c0a44e470dd8"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-0/fit.json",
+      "bytes": 373,
+      "sha256": "a27e62e047b04723695e9cf57f84815fab8ff9dabe4fb682b2dd239daa16b572"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-0/oof.parquet",
+      "bytes": 569600,
+      "sha256": "9d22173ca41e6129061faaf1c60211e6d039bde95122ce357e0020520bf0816b"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-1/fit.json",
+      "bytes": 373,
+      "sha256": "f6bee39775f642a9074ed4055627bb98c527d576d879d1356620d6cfba96a10e"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-1/oof.parquet",
+      "bytes": 544490,
+      "sha256": "b5a5ced4ba414de2239df62513dfb0f4b9dcb2534925d7c9e3e61c04d58e0cf4"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-2/fit.json",
+      "bytes": 373,
+      "sha256": "4a22384939da63e90871db3e0a250fea91660a15661fdd5861bb40cbf2e24387"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-2/oof.parquet",
+      "bytes": 559932,
+      "sha256": "bd926bb4ed2f0ee8d30d161e5d2e192841e4c1c735a8c1798c5848ddf58643ce"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-3/fit.json",
+      "bytes": 374,
+      "sha256": "83ee686c137536ed0d89ce92440d7c75122fb6fe70724efbd1e4cbf848f03d86"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-3/oof.parquet",
+      "bytes": 563939,
+      "sha256": "c4894cce173079f3dc521fe97a4ea62f0042e9119672f3387f1c373cd5791345"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-4/fit.json",
+      "bytes": 373,
+      "sha256": "8d8ab73021516058a9050754916deb04ccb10c2c4e94d18ca20bee9e9505a8c2"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-frozen-D-43-4/oof.parquet",
+      "bytes": 559420,
+      "sha256": "2272e56218ff1e747128a7e7d6e9d0d28bdc57dcfcfcb4c3fdc26dd961dca237"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-0/fit.json",
+      "bytes": 3305,
+      "sha256": "852bcd7c3991ab39811db73d8a34bcb5e5388036d436c192d6789d99a62eb948"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-0/oof.parquet",
+      "bytes": 569578,
+      "sha256": "ebe3b14fb21da584d812a69e9ab4553d464d705080f34a9cade6b30384e678f4"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-1/fit.json",
+      "bytes": 3306,
+      "sha256": "cff6973f9ef8ea82fe6d8127996375b1435ba14927d0d7c748071b18f35d6a2f"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-1/oof.parquet",
+      "bytes": 544464,
+      "sha256": "4d256047f8f5c3a5cc3779934f6d68479ec2a66ae7bef43e317dd5baae87fd57"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-2/fit.json",
+      "bytes": 3306,
+      "sha256": "4c666656b5c0e1b286ab1856a7bd14957efaa29b6d806967672a3c4177ed8d2d"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-2/oof.parquet",
+      "bytes": 559926,
+      "sha256": "ebc5bd232ffca849b1e40a2dd2d7f1145961ba1caa14d19d816dded725667269"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-3/fit.json",
+      "bytes": 3305,
+      "sha256": "c89a8f42730dff8f80d9cd87bee7de8b7843d2038f9bf976dbdd33a10c7d6017"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-3/oof.parquet",
+      "bytes": 563925,
+      "sha256": "ad787329ab9ba2d31ee078646cdf92cecc8d8722116cd3e624f5aa1fed38db3b"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-4/fit.json",
+      "bytes": 3305,
+      "sha256": "d3def2c063ece12c0b640954ca36ef4bc1b9f0439eabb2651d3a0ad1ebf6c770"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-17-4/oof.parquet",
+      "bytes": 559426,
+      "sha256": "a4030804093e8407973d2f85aeaf64c2d95f7080b2d05ca2e8ec7d6eb9a2abe5"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-0/fit.json",
+      "bytes": 3306,
+      "sha256": "2737efb44cf4f38971589315f410124605364d26002d56738d0d546259c1d7c3"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-0/oof.parquet",
+      "bytes": 569590,
+      "sha256": "d3b4697add4f2df38200154d20d777f6849a6a7c1d1b11d29a71313b362909ba"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-1/fit.json",
+      "bytes": 3305,
+      "sha256": "28a29ddd6fa1bb7432636a4ca8c6e191bd3200bd53c077d66a99955a156a715c"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-1/oof.parquet",
+      "bytes": 544456,
+      "sha256": "9506be28287c9235d99fd80486b7a34bc29eee4b2d63a5fb80c785847c5e042d"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-2/fit.json",
+      "bytes": 3306,
+      "sha256": "38c9da39881361cff5ed9efaab7d038d89f06e0704fb30c57a8d91c6be7c621c"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-2/oof.parquet",
+      "bytes": 559934,
+      "sha256": "23633e36ca2444ce840f33ad4b30e7fb56f4357837332e46043f61b2dbd4b312"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-3/fit.json",
+      "bytes": 3305,
+      "sha256": "b40320620fa20345268247b76c47650203bccbcb5671c614afbebec091fccb9e"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-3/oof.parquet",
+      "bytes": 563933,
+      "sha256": "c07425f3324af8c9f72947761b5602a9f2da04913aecc40d174f1fc5c4eec0b8"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-4/fit.json",
+      "bytes": 3304,
+      "sha256": "4b51f3537349717e2f2db388d17be0fa0c8901674312080ae2b03db9e4c9c739"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-29-4/oof.parquet",
+      "bytes": 559418,
+      "sha256": "c5739d68cf82fd90d1a9fba23187eea5eca75b3e71ecd9b3e9f94498f0d1ce1f"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-0/fit.json",
+      "bytes": 3305,
+      "sha256": "b06fbcaa57f38ca36964821d59d34d62e374caf362db5acb4e7211c11167ae4c"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-0/oof.parquet",
+      "bytes": 569602,
+      "sha256": "57a5ac497878d56ada5b8d76b75e9a2131d04410ae0f312ce54c2ac180d06599"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-1/fit.json",
+      "bytes": 3305,
+      "sha256": "7d219dbfcf062578d968d68cbf643565284b3c5902f5301868fedb8bd1c6903a"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-1/oof.parquet",
+      "bytes": 544468,
+      "sha256": "60828311ff00ff83f2160e269fde947691f755c27a42244d47e5b451caaf9c9b"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-2/fit.json",
+      "bytes": 3305,
+      "sha256": "d0ebe41368d7d9c7ea5f8eab8fb8ebd68fc47fdd22447cdaa43dd894ac345891"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-2/oof.parquet",
+      "bytes": 559950,
+      "sha256": "faa9e3d6e34b415b39b78e3fc26ac096b192f0d8159ef41703815b8b58b7071e"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-3/fit.json",
+      "bytes": 3306,
+      "sha256": "a4e8dde8be284d4a4122adacc67a2c503eca9d1b5681effdd4eec14db4158c43"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-3/oof.parquet",
+      "bytes": 563925,
+      "sha256": "bdf3f3f5cab82f0210263a27a56350d0e9c75c5e8f7917de2130b36a9e9aa389"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-4/fit.json",
+      "bytes": 3305,
+      "sha256": "4d36c5fbf9e3f5223c60577fad700c8135d432b6e428f288e8a15622af2011f4"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/tune-lora-D-43-4/oof.parquet",
+      "bytes": 559426,
+      "sha256": "bdec69ce2c4677c89f252baa6e26dc562c3950df1bc631c2f89e1f610cbdc944"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/plan.json",
+      "bytes": 2547,
+      "sha256": "9e1cfc8c299abe5f286d178492da99788e274a203193b256ca9c99ccf5b9f50b"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/state.json",
+      "bytes": 1139039,
+      "sha256": "e03c1c258de8df6fad2b8e2dee341a810579f131ac5edd40ba7263d088cfe2cb"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/weights/esm2_35m/6fbf070e65b0b7291e7bbcd451118c216cff79d8/README.md",
+      "bytes": 1705,
+      "sha256": "462a2f24724e19c6be0efab926315c294a863c9a9770e2c8b3d859b2d81a07de"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/weights/esm2_35m/6fbf070e65b0b7291e7bbcd451118c216cff79d8/config.json",
+      "bytes": 778,
+      "sha256": "ae07364efa51e0fa1d81da3fe608f6d948abdbbb69785ba6e1df379a458e58ee"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/weights/esm2_35m/6fbf070e65b0b7291e7bbcd451118c216cff79d8/model.safetensors",
+      "bytes": 136008798,
+      "sha256": "e35647818e0e064351d4531ed480d225a002567b4b2b93ad3a9246d753150fc0"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/weights/esm2_35m/6fbf070e65b0b7291e7bbcd451118c216cff79d8/special_tokens_map.json",
+      "bytes": 125,
+      "sha256": "3aedcd4211c0d43aec4e607ff60a63255f3174ead795e997350f09a5f8cd9ee1"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/weights/esm2_35m/6fbf070e65b0b7291e7bbcd451118c216cff79d8/tokenizer_config.json",
+      "bytes": 95,
+      "sha256": "7e9161ecdb548ec45a41cbc6b24aa4476fdd418461f491c4207baa99419a29ad"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/weights/esm2_35m/6fbf070e65b0b7291e7bbcd451118c216cff79d8/vocab.txt",
+      "bytes": 93,
+      "sha256": "0b82cc0a7c7cf9e567b1e5892d793285b9fbae822c964ca48696f7db44598e03"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/weights/esm2_35m/status.json",
+      "bytes": 7315,
+      "sha256": "689b4620552c39c6a3b964a3c0328f0e3a11d02f20b8d67ee31010d797ea8710"
+    }
+  ],
+  "W_cell_ids_sha256": "96dc24afc983511d81413b2f5f4596d61da9ea1075ccaa2bef559d9af543ff4e",
+  "T_cell_ids_sha256": "7f86a2868710ab5cc80ab8764a4f258c8be9f2279f5680e5031c970588f1a6e6",
+  "w5_baseline": "research/kaggle-roadmap-2026-10-31/output/local/ef138c84579c842e/jobs/locked-transfer-w5/ordered-w5-D/held-scanning.parquet",
+  "source_revision": "f4640b526a778fc386273dca2d07275f9d40abec",
+  "policy": "Read-only source subset; path relocation via audited campaign IDs; no checkpoint inheritance"
+}

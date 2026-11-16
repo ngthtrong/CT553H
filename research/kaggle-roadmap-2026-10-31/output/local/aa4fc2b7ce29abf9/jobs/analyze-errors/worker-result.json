@@ -1,0 +1,18 @@
+{
+  "job": "analyze-errors",
+  "started_unix": 1794833949.2911918,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/analyze-errors/error-results.json",
+      "bytes": 8710,
+      "sha256": "475be8f38f48629aadca00741e89c2ca8a099487c1f33c767bac149eeb9d2b8f"
+    },
+    {
+      "path": "jobs/analyze-errors/error-strata.csv",
+      "bytes": 3055,
+      "sha256": "6bb97f0b3532716fa7df4293c3ff40994f53d439f317a5a9cbf3cfcf77ec87df"
+    }
+  ],
+  "seconds": 0.6634986400604248
+}

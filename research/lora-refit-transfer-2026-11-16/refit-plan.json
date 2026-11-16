@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "campaign_kind": "refit_transfer_v1",
+  "scope": "core_and_available_completion",
+  "data": "data/processed/degron-data-v3-fullpsi",
+  "data_identity": "b0376e05d690d991c95143d6122b5418e457318394da032928d0d1e53f914738",
+  "models": ["esm2_35m"],
+  "arms": ["D"],
+  "modes": ["lora", "frozen"],
+  "seeds": [17, 29, 43],
+  "expected_W": {"cells": 122412, "peptides": 235, "groups": 221},
+  "expected_T": {"cells": 39234, "peptides": 1410, "groups": 730},
+  "bootstrap": {"replicates": 5000, "seed": 1729, "multiplicity": 2},
+  "protocol": "research/lora-refit-transfer-2026-11-16/PROTOCOL.md",
+  "source_lock": "research/lora-refit-transfer-2026-11-16/source-lock.json",
+  "scientific_status": "development_not_gate_closure",
+  "koren": "pending_missing_input_and_unvalidated_variable_length_inference",
+  "D4": "author_supervisor_decision_pending"
+}

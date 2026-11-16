@@ -1,0 +1,418 @@
+{
+  "schema_version": 1,
+  "observed_unix": 1794850113.288248,
+  "status": "no_execution_failure_found",
+  "campaign": "aa4fc2b7ce29abf9",
+  "scope": "read_only_integrity_check_not_scientific_acceptance",
+  "core_counts": {
+    "complete": 19,
+    "source_pending": 1
+  },
+  "failed_jobs": [],
+  "core_file_checks": [
+    {
+      "path": "jobs/refit-lora-D-17/final-w.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-lora-D-17/final-w.npy",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-lora-D-17/fit.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-lora-D-17/model.pt",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-lora-D-17/refit.pt",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-lora-D-29/final-w.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-lora-D-29/final-w.npy",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-lora-D-29/fit.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-lora-D-29/model.pt",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-lora-D-29/refit.pt",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-lora-D-43/final-w.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-lora-D-43/final-w.npy",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-lora-D-43/fit.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-lora-D-43/model.pt",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-lora-D-43/refit.pt",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-frozen-D-17/final-w.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-frozen-D-17/final-w.npy",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-frozen-D-17/fit.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-frozen-D-17/model.pt",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-frozen-D-17/refit.pt",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-frozen-D-29/final-w.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-frozen-D-29/final-w.npy",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-frozen-D-29/fit.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-frozen-D-29/model.pt",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-frozen-D-29/refit.pt",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-frozen-D-43/final-w.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-frozen-D-43/final-w.npy",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-frozen-D-43/fit.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-frozen-D-43/model.pt",
+      "valid": true
+    },
+    {
+      "path": "jobs/refit-frozen-D-43/refit.pt",
+      "valid": true
+    },
+    {
+      "path": "jobs/calibrate-final-lora-D/calibration.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/calibrate-final-lora-D/final-calibrator.joblib",
+      "valid": true
+    },
+    {
+      "path": "jobs/calibrate-final-frozen-D/calibration.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/calibrate-final-frozen-D/final-calibrator.joblib",
+      "valid": true
+    },
+    {
+      "path": "jobs/score-held-lora-D-17/held.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/score-held-lora-D-17/held.npy",
+      "valid": true
+    },
+    {
+      "path": "jobs/score-held-lora-D-17/score.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/score-held-lora-D-29/held.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/score-held-lora-D-29/held.npy",
+      "valid": true
+    },
+    {
+      "path": "jobs/score-held-lora-D-29/score.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/score-held-lora-D-43/held.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/score-held-lora-D-43/held.npy",
+      "valid": true
+    },
+    {
+      "path": "jobs/score-held-lora-D-43/score.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/score-held-frozen-D-17/held.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/score-held-frozen-D-17/held.npy",
+      "valid": true
+    },
+    {
+      "path": "jobs/score-held-frozen-D-17/score.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/score-held-frozen-D-29/held.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/score-held-frozen-D-29/held.npy",
+      "valid": true
+    },
+    {
+      "path": "jobs/score-held-frozen-D-29/score.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/score-held-frozen-D-43/held.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/score-held-frozen-D-43/held.npy",
+      "valid": true
+    },
+    {
+      "path": "jobs/score-held-frozen-D-43/score.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/aggregate-refit/constant-W-mean-per-peptide.csv",
+      "valid": true
+    },
+    {
+      "path": "jobs/aggregate-refit/constant-W-mean-ranking.csv",
+      "valid": true
+    },
+    {
+      "path": "jobs/aggregate-refit/ensemble-held.parquet",
+      "valid": true
+    },
+    {
+      "path": "jobs/aggregate-refit/esm2_35m-frozen-D-per-peptide.csv",
+      "valid": true
+    },
+    {
+      "path": "jobs/aggregate-refit/esm2_35m-frozen-D-ranking.csv",
+      "valid": true
+    },
+    {
+      "path": "jobs/aggregate-refit/esm2_35m-lora-D-per-peptide.csv",
+      "valid": true
+    },
+    {
+      "path": "jobs/aggregate-refit/esm2_35m-lora-D-ranking.csv",
+      "valid": true
+    },
+    {
+      "path": "jobs/aggregate-refit/esm2_35m-lora-D_minus_esm2_35m-frozen-D-ci.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/aggregate-refit/esm2_35m-lora-D_minus_ordered-w5-D-ci.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/aggregate-refit/ordered-w5-D-per-peptide.csv",
+      "valid": true
+    },
+    {
+      "path": "jobs/aggregate-refit/ordered-w5-D-ranking.csv",
+      "valid": true
+    },
+    {
+      "path": "jobs/aggregate-refit/results.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/aggregate-refit/zero-per-peptide.csv",
+      "valid": true
+    },
+    {
+      "path": "jobs/aggregate-refit/zero-ranking.csv",
+      "valid": true
+    },
+    {
+      "path": "jobs/model-card-parity/model-card.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/model-card-parity/parity-results.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/model-card-parity/seed17.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/model-card-parity/seed17.npy",
+      "valid": true
+    },
+    {
+      "path": "jobs/model-card-parity/seed29.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/model-card-parity/seed29.npy",
+      "valid": true
+    },
+    {
+      "path": "jobs/model-card-parity/seed43.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/model-card-parity/seed43.npy",
+      "valid": true
+    },
+    {
+      "path": "jobs/analyze-errors/error-results.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/analyze-errors/error-strata.csv",
+      "valid": true
+    },
+    {
+      "path": "jobs/figure-export/figure-results.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/figure-export/mae-by-psi.png",
+      "valid": true
+    },
+    {
+      "path": "jobs/figure-export/primary-contrasts.png",
+      "valid": true
+    },
+    {
+      "path": "jobs/figure-export/score-shift.png",
+      "valid": true
+    },
+    {
+      "path": "jobs/finalize-branch1/acceptance-results.json",
+      "valid": true
+    },
+    {
+      "path": "jobs/finalize-branch1/handoff-manifest.json",
+      "valid": true
+    }
+  ],
+  "finalize_status": "complete",
+  "core_session": {
+    "pid": 20388,
+    "session": "20261116-185405",
+    "status": "idle",
+    "executed": 20
+  },
+  "koren_status": {
+    "status": "complete",
+    "source_campaign": "aa4fc2b7ce29abf9",
+    "identity": "c8384883ed0dcc02e2062b3e7eab0c03d3a63bf382b0165ff2442e5a7b4a32c0",
+    "finished_unix": 1794834002.7480886
+  },
+  "koren_arrays": [
+    {
+      "mode": "lora",
+      "seed": 17,
+      "rows": 1739,
+      "committed_rows": 1739,
+      "finite": true,
+      "prefix_hash_matches": true
+    },
+    {
+      "mode": "lora",
+      "seed": 29,
+      "rows": 1739,
+      "committed_rows": 1739,
+      "finite": true,
+      "prefix_hash_matches": true
+    },
+    {
+      "mode": "lora",
+      "seed": 43,
+      "rows": 1739,
+      "committed_rows": 1739,
+      "finite": true,
+      "prefix_hash_matches": true
+    },
+    {
+      "mode": "frozen",
+      "seed": 17,
+      "rows": 1739,
+      "committed_rows": 1739,
+      "finite": true,
+      "prefix_hash_matches": true
+    },
+    {
+      "mode": "frozen",
+      "seed": 29,
+      "rows": 1739,
+      "committed_rows": 1739,
+      "finite": true,
+      "prefix_hash_matches": true
+    },
+    {
+      "mode": "frozen",
+      "seed": 43,
+      "rows": 1739,
+      "committed_rows": 1739,
+      "finite": true,
+      "prefix_hash_matches": true
+    }
+  ],
+  "koren_denominator": {
+    "substrates": 9,
+    "mutants": 1739
+  },
+  "koren_export_matches_local": true,
+  "model_hashes_match": true,
+  "parity_28aa_max_absolute_difference": 0.0,
+  "explanation": {
+    "unexpected_lm_head": "Masked-LM head is absent from the encoder-only task; warning is expected.",
+    "session_ended": "Core supervisor finished, then launcher ran the Koren supplement.",
+    "source_pending": "Original frozen queue placeholder retained; supplemental Koren is complete.",
+    "scientific_status": "development_not_gate_closure; this check does not close G2/G3."
+  }
+}

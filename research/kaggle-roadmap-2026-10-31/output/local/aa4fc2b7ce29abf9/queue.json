@@ -1,0 +1,172 @@
+[
+  {
+    "id": "refit-lora-D-17",
+    "kind": "refit",
+    "mode": "lora",
+    "seed": 17,
+    "deps": []
+  },
+  {
+    "id": "refit-lora-D-29",
+    "kind": "refit",
+    "mode": "lora",
+    "seed": 29,
+    "deps": []
+  },
+  {
+    "id": "refit-lora-D-43",
+    "kind": "refit",
+    "mode": "lora",
+    "seed": 43,
+    "deps": []
+  },
+  {
+    "id": "refit-frozen-D-17",
+    "kind": "refit",
+    "mode": "frozen",
+    "seed": 17,
+    "deps": []
+  },
+  {
+    "id": "refit-frozen-D-29",
+    "kind": "refit",
+    "mode": "frozen",
+    "seed": 29,
+    "deps": []
+  },
+  {
+    "id": "refit-frozen-D-43",
+    "kind": "refit",
+    "mode": "frozen",
+    "seed": 43,
+    "deps": []
+  },
+  {
+    "id": "calibrate-final-lora-D",
+    "kind": "calibrate-final",
+    "mode": "lora",
+    "deps": []
+  },
+  {
+    "id": "calibrate-final-frozen-D",
+    "kind": "calibrate-final",
+    "mode": "frozen",
+    "deps": []
+  },
+  {
+    "id": "score-held-lora-D-17",
+    "kind": "score-held",
+    "mode": "lora",
+    "seed": 17,
+    "deps": [
+      "refit-lora-D-17"
+    ]
+  },
+  {
+    "id": "score-held-lora-D-29",
+    "kind": "score-held",
+    "mode": "lora",
+    "seed": 29,
+    "deps": [
+      "refit-lora-D-29"
+    ]
+  },
+  {
+    "id": "score-held-lora-D-43",
+    "kind": "score-held",
+    "mode": "lora",
+    "seed": 43,
+    "deps": [
+      "refit-lora-D-43"
+    ]
+  },
+  {
+    "id": "score-held-frozen-D-17",
+    "kind": "score-held",
+    "mode": "frozen",
+    "seed": 17,
+    "deps": [
+      "refit-frozen-D-17"
+    ]
+  },
+  {
+    "id": "score-held-frozen-D-29",
+    "kind": "score-held",
+    "mode": "frozen",
+    "seed": 29,
+    "deps": [
+      "refit-frozen-D-29"
+    ]
+  },
+  {
+    "id": "score-held-frozen-D-43",
+    "kind": "score-held",
+    "mode": "frozen",
+    "seed": 43,
+    "deps": [
+      "refit-frozen-D-43"
+    ]
+  },
+  {
+    "id": "aggregate-refit",
+    "kind": "aggregate-refit",
+    "deps": [
+      "refit-lora-D-17",
+      "refit-lora-D-29",
+      "refit-lora-D-43",
+      "refit-frozen-D-17",
+      "refit-frozen-D-29",
+      "refit-frozen-D-43",
+      "calibrate-final-lora-D",
+      "calibrate-final-frozen-D",
+      "score-held-lora-D-17",
+      "score-held-lora-D-29",
+      "score-held-lora-D-43",
+      "score-held-frozen-D-17",
+      "score-held-frozen-D-29",
+      "score-held-frozen-D-43"
+    ]
+  },
+  {
+    "id": "model-card-parity",
+    "kind": "model-card-parity",
+    "phase": "completion",
+    "deps": [
+      "aggregate-refit"
+    ]
+  },
+  {
+    "id": "analyze-errors",
+    "kind": "analyze-errors",
+    "phase": "completion",
+    "deps": [
+      "aggregate-refit"
+    ]
+  },
+  {
+    "id": "koren-rank-only",
+    "kind": "koren-rank-only",
+    "phase": "completion",
+    "deps": [
+      "aggregate-refit"
+    ]
+  },
+  {
+    "id": "figure-export",
+    "kind": "figure-export",
+    "phase": "completion",
+    "deps": [
+      "analyze-errors"
+    ]
+  },
+  {
+    "id": "finalize-branch1",
+    "kind": "finalize-branch1",
+    "phase": "completion",
+    "deps": [
+      "model-card-parity",
+      "analyze-errors",
+      "figure-export"
+    ]
+  }
+]
