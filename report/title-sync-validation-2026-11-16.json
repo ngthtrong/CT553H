@@ -1,0 +1,75 @@
+{
+  "record": "title-sync-validation-2026-11-16",
+  "date": "2026-11-16",
+  "timezone": "UTC+8",
+  "decision": {
+    "source": "author",
+    "option": "A without 'Local'",
+    "title_en_new": "Sequence-Based Prediction of Single-Residue Mutation Effects on PSI in Degron Reporter Assays and Development of an Analysis Tool",
+    "title_en_previous": "Sequence-Based Prediction of Single-Residue Mutation Effects on PSI in Degron Assays and Development of an Analysis Tool",
+    "title_vi": "Dự đoán ảnh hưởng của đột biến amino acid đơn lên chỉ số PSI trong nghiên cứu degron và xây dựng công cụ phân tích",
+    "title_vi_changed": false,
+    "title_vi_open_question": "Match the Vietnamese title to the new English scope ('assay reporter degron') requires author/advisor approval; registered wording kept verbatim."
+  },
+  "title_sources": {
+    "english": "report/config/metadata.tex:\\ThesisTitle",
+    "vietnamese": "report/config/metadata.tex:\\ThesisTitleVI",
+    "vietnamese_previous": "proposal/proposal.md:subtitle",
+    "reason": "proposal/ deleted from the working tree by the author (uncommitted; last committed state 788851c)"
+  },
+  "checks": [
+    {
+      "name": "make -C report all",
+      "passed": true,
+      "detail": "content and content-twoside built, references resolved"
+    },
+    {
+      "name": "make -C report check / check_template.py",
+      "passed": true,
+      "detail": "content 121 pages, content-twoside 121 pages, smoke 9 pages; A4; fonts embedded"
+    },
+    {
+      "name": "check_float_references.py",
+      "passed": true,
+      "detail": "12 figures, 58 tables; numbering, list titles/pages, PDF destinations and references agree in both variants"
+    },
+    {
+      "name": "manage.py project_titles()",
+      "passed": true,
+      "detail": "English and Vietnamese titles resolved from report metadata"
+    },
+    {
+      "name": "manage.py check",
+      "passed": false,
+      "detail": "deck not re-rendered: input_hashes stale for manage.py, report/config/metadata.tex, proposal/proposal.md; language_validation false (cover still carries the previous English title); text_layout and numerical_evidence (16 checks) still pass; LibreOffice unavailable at /tmp/isds-lo/root so the PDF export cannot be regenerated in this environment"
+    }
+  ],
+  "visual_review": [
+    "report/build/content/content.pdf page 1 (outer cover) rendered at 70 dpi and inspected: new title wraps to three balanced lines, no overflow"
+  ],
+  "page_counts": {
+    "content": 121,
+    "content_twoside": 121,
+    "smoke": 9,
+    "unchanged_from": "2026-11-08"
+  },
+  "sha256": {
+    "report/config/metadata.tex": "a881e9171a9b50a5404597a78b7657e6e25b5f597ac7df1fd10213761f144547",
+    "presentation/research-report/manage.py": "04f86c4e0806de27390f551aa7b56bb9381ac81cb7830c0317a3209c2154535d",
+    "report/build/content/content.pdf": "d33b3be7e4587293031059a87889c0060eb52b5f3dd5ec9b2e22e20aac560be5",
+    "report/build/content-twoside/content.pdf": "ec2c66c8442288cc2be59714ef7cbd0a2d147c155b84dbba3bdaea325f706499",
+    "README.md": "f2a1417d5f74c391f824f126d6fad63aa717e0e91cca79c9f76f8fcc1f52c2d6",
+    "report/README.md": "1e8a78b697894c4fb99caad9d2f23c66adc202e8fa8264894062b025670b14f0",
+    "report/title-sync-validation-2026-11-16.md": "36ec2b72c7b5574e9e8bd2bbe54439649312c078d139cb30d9d2f85b0dbbb6fa"
+  },
+  "not_done": [
+    "deck re-render and PDF export",
+    "Vietnamese title rewording",
+    "restoring or deleting proposal/",
+    "any training, inference, bootstrap or campaign interaction",
+    "serving-model change",
+    "G2/G3 decision",
+    "git commit or push"
+  ],
+  "scientific_status": "development_not_gate_closure"
+}

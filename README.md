@@ -13,7 +13,7 @@ Kho nghiên cứu và báo cáo luận văn của **Nguyễn Thanh Trọng** (B2
 | Dữ liệu | Bundle v3 giữ saturation toàn dải PSI và scanning sau QC; nguồn, giấy phép, hash và nhật ký nằm trong [sổ dữ liệu](data/README.md), quy tắc dựng bundle ở [DATASET.md](research/kaggle-roadmap-2026-10-31/DATASET.md). Dữ liệu và artifact nặng nằm local. |
 | Ứng dụng | [Baseline FastAPI + React](system/app/README.md) có mã và kiểm thử lịch sử, dùng `m3-ext4.0-platt-v1`. [Phạm vi v0.2](system/README.md) gồm dự án/lịch sử, jobs peptide/protein, import/comparison; các phần mở rộng chưa được nghiệm thu. |
 | Giao diện | [Workspace UI v2](system/design/workspace-ui-v2/README.md) là prototype tương tác hiện hành; dữ liệu minh hoạ, lưu trong bộ nhớ tab, chưa nối backend. |
-| Luận văn / đề cương | [Luận văn](report/README.md) cập nhật campaign hoàn tất ngày 06/11: phương pháp, 88 cấu hình OOF, LoRA/calibration/T, sơ đồ và phụ lục; [audit tổng hợp](research/output-review-2026-11-06/README.md). [Đề cương](proposal/README.md) giữ bản 03/11. Còn `[PENDING]`; cập nhật tài liệu không phải nghiệm thu G2/G3. |
+| Luận văn | [Luận văn](report/README.md) cập nhật campaign hoàn tất ngày 06/11: phương pháp, 88 cấu hình OOF, LoRA/calibration/T, sơ đồ và phụ lục; [audit tổng hợp](research/output-review-2026-11-06/README.md). Đề cương (`proposal/`) đã được tác giả xoá khỏi working tree ngày 16/11; bản 03/11 còn trong lịch sử git tại commit `788851c`. Còn `[PENDING]`; cập nhật tài liệu không phải nghiệm thu G2/G3. |
 
 Trạng thái nghiệm thu được đối chiếu ngày 07/11 từ output/audit đã lưu ngày 06/11; không có lượt huấn luyện hoặc kiểm lại test phần mềm mới. G2 ghi nhận bằng chứng nghiên cứu riêng với nghiệm thu G3 và claim lợi ích wet lab. Các snapshot tiến độ cũ giữ mốc riêng trong chỉ mục nghiên cứu.
 
@@ -24,7 +24,6 @@ Trạng thái nghiệm thu được đối chiếu ngày 07/11 từ output/audit
 | [research/](research/README.md) | Chỉ mục hiện hành, thí nghiệm, audit, script và kết quả nhỏ; v3 và bằng chứng lịch sử được dẫn riêng. |
 | [data/](data/README.md) | Nguồn gốc và hướng dẫn dữ liệu; dữ liệu thô/trung gian/đã xử lý không đưa lên Git. |
 | [report/](report/README.md) | Bản luận văn đang viết, nằm trực tiếp ở gốc repo. |
-| [proposal/](proposal/README.md) | Đề cương và hướng dẫn dựng PDF/DOCX. |
 | [system/](system/README.md) | Thiết kế và ứng dụng FastAPI + React. |
 | [presentation/](presentation) | Slide và tài liệu trình bày. |
 | [resources/](resources/) | [Thông tin người tham gia](resources/people.md), [đề cương học phần](resources/CT553H.pdf), [hướng dẫn dữ liệu](resources/dataset-guide.md), [luận văn tham khảo](resources/reference-theses/). |

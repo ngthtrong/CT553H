@@ -33,7 +33,7 @@ SKILL = PRES / 'templateCTU/ctu-slides'
 V3 = ROOT / 'research/kaggle-roadmap-2026-10-31'
 TAG = 'CT553H:'
 EN_TITLE_SOURCE = ROOT / 'report/config/metadata.tex'
-VI_TITLE_SOURCE = ROOT / 'proposal/proposal.md'
+VI_TITLE_SOURCE = ROOT / 'report/config/metadata.tex'
 
 def read(path):
     return json.loads(Path(path).read_text(encoding='utf-8'))
@@ -47,16 +47,11 @@ def sha(path):
 
 def project_titles():
     """Read the author-approved titles from their document metadata authorities."""
-    match=re.search(r'\\newcommand\{\\ThesisTitle\}\{([^}]+)\}',EN_TITLE_SOURCE.read_text())
+    match=re.search(r'\\newcommand\{\\ThesisTitle\}\{([^}]+)\}',EN_TITLE_SOURCE.read_text(encoding='utf-8'))
     if not match:raise ValueError('English thesis title is missing from report metadata.')
-    header=VI_TITLE_SOURCE.read_text().split('---',2)[1].splitlines()
-    start=next(i for i,line in enumerate(header) if line.startswith('subtitle:'))
-    lines=[]
-    for line in header[start+1:]:
-        if line and not line.startswith((' ','\t')):break
-        if line.strip():lines.append(line.strip())
-    if not lines:raise ValueError('Vietnamese thesis title is missing from proposal metadata.')
-    return match.group(1),' '.join(lines)
+    vietnamese=re.search(r'\\newcommand\{\\ThesisTitleVI\}\{([^}]+)\}',VI_TITLE_SOURCE.read_text(encoding='utf-8'))
+    if not vietnamese:raise ValueError('Vietnamese thesis title is missing from report metadata.')
+    return match.group(1),vietnamese.group(1)
 
 def engine():
     spec = importlib.util.spec_from_file_location('ctu_slides', SKILL / 'scripts/ctu_slides.py')

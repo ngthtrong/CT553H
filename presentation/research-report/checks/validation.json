@@ -1,5 +1,5 @@
 {
-  "passed": true,
+  "passed": false,
   "checks": [
     {
       "check": "deck_hash",
@@ -56,8 +56,12 @@
     },
     {
       "check": "input_hashes",
-      "passed": true,
-      "detail": []
+      "passed": false,
+      "detail": [
+        "/home/ngthtrong/CT553H/presentation/research-report/manage.py",
+        "/home/ngthtrong/CT553H/report/config/metadata.tex",
+        "/home/ngthtrong/CT553H/proposal/proposal.md"
+      ]
     },
     {
       "check": "zip_integrity",

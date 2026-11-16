@@ -6,9 +6,11 @@
 - **Tiếng Anh:** Sequence-Based Prediction of Single-Residue Mutation Effects on PSI in Degron Assays and Development of an Analysis Tool
 - **Tiếng Việt:** Dự đoán ảnh hưởng của đột biến amino acid đơn lên chỉ số PSI trong nghiên cứu degron và xây dựng công cụ phân tích
 
-Tên tiếng Anh lấy từ `config/metadata.tex`; tên tiếng Việt lấy từ
-`../proposal/proposal.md`. Giữ nguyên nội dung và số liệu nghiên cứu.
-Hai bản PDF đều 121 trang; xem [hồ sơ kiểm tra đồng bộ tên](title-sync-validation-2026-11-08.md).
+Tên tiếng Anh lấy từ `config/metadata.tex` (`\ThesisTitle`); tên tiếng Việt cũng
+lấy từ file này (`\ThesisTitleVI`) kể từ 16/11/2026, sau khi `proposal/` được tác
+giả xoá khỏi working tree. Giữ nguyên nội dung và số liệu nghiên cứu.
+Xem [hồ sơ đồng bộ tên 08/11](title-sync-validation-2026-11-08.md) và
+[hồ sơ đổi tên 16/11](title-sync-validation-2026-11-16.md).
 
 Bản luận văn đang viết của **Nguyễn Thanh Trọng** (B2305615), GVHD **TS. Hồ Quang Thái**. Thư mục `report/` hiện nằm ở gốc repo, cạnh `research/`, `proposal/` và `system/`, sau khi chuyển khỏi `topics/degron-footprint/` ngày 07/11/2026.
 
