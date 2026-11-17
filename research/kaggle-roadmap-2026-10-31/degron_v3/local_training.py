@@ -41,11 +41,11 @@ def predict(model, frame, path, control, batch=8):
             values[start:start+batch] = model(frame.iloc[start:start+batch]).detach().cpu().numpy()
             end = min(start+batch, len(frame))
             assert np.isfinite(values[start:end]).all()
+            control.log(f'predict {end}/{len(frame)}', rows=end, total_rows=len(frame))
             if end % 256 == 0 or end == len(frame) or control.stopping():
                 values.flush()
                 atomic_json(progress, dict(identity=identity, completed=end,
                     prefix_sha256=hashlib.sha256(values[:end].tobytes()).hexdigest()))
-            control.log(f'predict {end}/{len(frame)}', rows=end, total_rows=len(frame))
             control.check()
     return np.asarray(values).copy()
 

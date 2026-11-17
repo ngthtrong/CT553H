@@ -1,0 +1,86 @@
+{
+  "status": "pass",
+  "isolated_temporary_repository": true,
+  "workspace_index_and_objects_untouched": true,
+  "cases": [
+    {
+      "case": "small_results",
+      "expected_allowed": true,
+      "passed": true,
+      "staged_bytes": 12,
+      "reasons": []
+    },
+    {
+      "case": "tiny_checkpoint",
+      "expected_allowed": false,
+      "passed": true,
+      "staged_bytes": 12,
+      "reasons": [
+        "Model/checkpoint: research/lora-refit-transfer-2026-11-16/model.pt",
+        "Heavy experiment payload: research/lora-refit-transfer-2026-11-16/model.pt"
+      ]
+    },
+    {
+      "case": "checkpoint_previous",
+      "expected_allowed": false,
+      "passed": true,
+      "staged_bytes": 12,
+      "reasons": [
+        "Model/checkpoint: research/lora-refit-transfer-2026-11-16/model.pt.previous",
+        "Heavy experiment payload: research/lora-refit-transfer-2026-11-16/model.pt.previous"
+      ]
+    },
+    {
+      "case": "raw_data",
+      "expected_allowed": false,
+      "passed": true,
+      "staged_bytes": 12,
+      "reasons": [
+        "Data payload: data/raw/example.csv"
+      ]
+    },
+    {
+      "case": "source_metadata",
+      "expected_allowed": true,
+      "passed": true,
+      "staged_bytes": 24,
+      "reasons": []
+    },
+    {
+      "case": "single_large_blob",
+      "expected_allowed": false,
+      "passed": true,
+      "staged_bytes": 11534336,
+      "reasons": [
+        "File exceeds 10 MiB: large.txt"
+      ]
+    },
+    {
+      "case": "large_staged_set",
+      "expected_allowed": false,
+      "passed": true,
+      "staged_bytes": 28311552,
+      "reasons": [
+        "Staged set exceeds 25 MiB"
+      ]
+    },
+    {
+      "case": "forced_predictions",
+      "expected_allowed": false,
+      "passed": true,
+      "staged_bytes": 12,
+      "reasons": [
+        "Heavy experiment payload: research/kaggle-roadmap-2026-10-31/output/local/demo/jobs/score/held.parquet"
+      ]
+    },
+    {
+      "case": "stop_file",
+      "expected_allowed": false,
+      "passed": true,
+      "staged_bytes": 0,
+      "reasons": [
+        "Mutable campaign control file: research/kaggle-roadmap-2026-10-31/output/local/demo/STOP"
+      ]
+    }
+  ]
+}

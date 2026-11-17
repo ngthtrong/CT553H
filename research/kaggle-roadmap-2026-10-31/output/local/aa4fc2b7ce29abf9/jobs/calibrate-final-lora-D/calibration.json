@@ -1,0 +1,15 @@
+{
+  "recipe": "esm2_35m-lora-D",
+  "fit_population": "ensemble_OOF_W",
+  "train_cells": 122412,
+  "train_cell_ids_sha256": "96dc24afc983511d81413b2f5f4596d61da9ea1075ccaa2bef559d9af543ff4e",
+  "T_fit_cells": 0,
+  "ensemble_order": "mean_raw_three_seeds_then_calibrate",
+  "classes": [
+    0,
+    1,
+    2
+  ],
+  "prediction_sha256": "011fdfb4e1b9547f7ef9840aa5e56f8001806bf61d137ff8dc0aee600b2f4a83",
+  "warning": "Final refit score shift is evaluated, not fitted away with T."
+}

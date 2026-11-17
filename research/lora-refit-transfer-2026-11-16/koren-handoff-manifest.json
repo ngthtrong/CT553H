@@ -1,0 +1,44 @@
+{
+  "identity": "c8384883ed0dcc02e2062b3e7eab0c03d3a63bf382b0165ff2442e5a7b4a32c0",
+  "source_campaign": "aa4fc2b7ce29abf9",
+  "artifacts": [
+    {
+      "path": "research/lora-refit-transfer-2026-11-16/local/koren-c8384883ed0dcc02/frozen-17.npy",
+      "bytes": 7084,
+      "sha256": "a8d6e73a860785e288ef3dce00949f81d0eb0ddeb8f391a92f1399c098ec81ca",
+      "transport": "internal_manual_copy_not_Git"
+    },
+    {
+      "path": "research/lora-refit-transfer-2026-11-16/local/koren-c8384883ed0dcc02/frozen-29.npy",
+      "bytes": 7084,
+      "sha256": "d342cf477d79d35c50bef7dcb031bada9845d2bc076186542440723373323cbd",
+      "transport": "internal_manual_copy_not_Git"
+    },
+    {
+      "path": "research/lora-refit-transfer-2026-11-16/local/koren-c8384883ed0dcc02/frozen-43.npy",
+      "bytes": 7084,
+      "sha256": "6e766649a2b839f5514160a22243a3d66f20ead9937c2dcb85407eca7bdd0e06",
+      "transport": "internal_manual_copy_not_Git"
+    },
+    {
+      "path": "research/lora-refit-transfer-2026-11-16/local/koren-c8384883ed0dcc02/lora-17.npy",
+      "bytes": 7084,
+      "sha256": "fe98cacc8cfded0ed09248a3e226eeb60fc2e4d24ae0648cbdfc93b4035aaf34",
+      "transport": "internal_manual_copy_not_Git"
+    },
+    {
+      "path": "research/lora-refit-transfer-2026-11-16/local/koren-c8384883ed0dcc02/lora-29.npy",
+      "bytes": 7084,
+      "sha256": "27d32c15e1ec55f476d4be9e361a0bdad19ace2dd6526f93686a6dcb1f157ad2",
+      "transport": "internal_manual_copy_not_Git"
+    },
+    {
+      "path": "research/lora-refit-transfer-2026-11-16/local/koren-c8384883ed0dcc02/lora-43.npy",
+      "bytes": 7084,
+      "sha256": "83b07f2ad389bcb4d518bf8ba9d825a12cc440941b2b927f27ef1a9ff9137fbe",
+      "transport": "internal_manual_copy_not_Git"
+    }
+  ],
+  "raw_source_policy": "internal_only_not_Git",
+  "core_state_unchanged": true
+}

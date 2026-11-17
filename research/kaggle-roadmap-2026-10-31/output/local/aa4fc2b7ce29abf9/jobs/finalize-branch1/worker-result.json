@@ -1,0 +1,18 @@
+{
+  "job": "finalize-branch1",
+  "started_unix": 1794833960.606018,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/finalize-branch1/acceptance-results.json",
+      "bytes": 501,
+      "sha256": "0ea47e93f462eb4e9312958836283e5bab5c11eac97641b000f49f2f11fea00c"
+    },
+    {
+      "path": "jobs/finalize-branch1/handoff-manifest.json",
+      "bytes": 10314,
+      "sha256": "84861c3b4211bbcb8f20918db6a14545c6c5ecb4c042e1d6b8855ad2be50b169"
+    }
+  ],
+  "seconds": 0.6270103454589844
+}

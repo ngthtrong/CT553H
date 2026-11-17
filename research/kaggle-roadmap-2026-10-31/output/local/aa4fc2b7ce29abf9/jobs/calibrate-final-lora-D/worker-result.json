@@ -1,0 +1,18 @@
+{
+  "job": "calibrate-final-lora-D",
+  "started_unix": 1794833231.654821,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/calibrate-final-lora-D/calibration.json",
+      "bytes": 495,
+      "sha256": "f90781f54f5f9df2d1e468c40758a5ffe2b26be96953db22ce968556d26add5b"
+    },
+    {
+      "path": "jobs/calibrate-final-lora-D/final-calibrator.joblib",
+      "bytes": 927,
+      "sha256": "4a982bb2e6ec2f64f1fd939173cf278e3c959a3df746e774cc09cf5078bc2a8c"
+    }
+  ],
+  "seconds": 0.9143898487091064
+}

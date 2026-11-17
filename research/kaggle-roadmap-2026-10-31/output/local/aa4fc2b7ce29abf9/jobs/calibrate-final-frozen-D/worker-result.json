@@ -1,0 +1,18 @@
+{
+  "job": "calibrate-final-frozen-D",
+  "started_unix": 1794833235.5966163,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/calibrate-final-frozen-D/calibration.json",
+      "bytes": 497,
+      "sha256": "17bab6bb5ddfad538e4351023280d02fdfa141a71e378acfa2f9c693324b4bf0"
+    },
+    {
+      "path": "jobs/calibrate-final-frozen-D/final-calibrator.joblib",
+      "bytes": 927,
+      "sha256": "a26b14410565720ff6ae917abc0567c4b842def2d79b96841e49144eb2865244"
+    }
+  ],
+  "seconds": 0.9279296398162842
+}

@@ -1,0 +1,33 @@
+{
+  "job": "refit-frozen-D-17",
+  "started_unix": 1794830650.3441799,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/refit-frozen-D-17/final-w.json",
+      "bytes": 200,
+      "sha256": "e3a413fa73e73f191efc1188792584a1dfcdabe3da447edeb5dae5cbdc6cf0ee"
+    },
+    {
+      "path": "jobs/refit-frozen-D-17/final-w.npy",
+      "bytes": 489776,
+      "sha256": "54a17f8ab3612a65f1bd534bb5fd4d9fc26549496ccd99d390ecd6bcd5ef493b"
+    },
+    {
+      "path": "jobs/refit-frozen-D-17/fit.json",
+      "bytes": 954,
+      "sha256": "0fc8f8b8dcd53c8909daa6572f843e3a0df7f244f70c298edc639516d68ee0d8"
+    },
+    {
+      "path": "jobs/refit-frozen-D-17/model.pt",
+      "bytes": 264477,
+      "sha256": "6fe8bb0626686b72551aa54c8eef29681501b18004ba2ce93cf555370926ffde"
+    },
+    {
+      "path": "jobs/refit-frozen-D-17/refit.pt",
+      "bytes": 1066273,
+      "sha256": "2a468e94070ddf37c042ba27614eb2c3c5ca942e3ffa3e4cddf5375c2c9d4ed9"
+    }
+  ],
+  "seconds": 618.7975697517395
+}

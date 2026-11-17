@@ -1,0 +1,367 @@
+{
+  "status": "complete",
+  "identity": "c8384883ed0dcc02e2062b3e7eab0c03d3a63bf382b0165ff2442e5a7b4a32c0",
+  "source_campaign": "aa4fc2b7ce29abf9",
+  "scientific_status": "development_not_gate_closure",
+  "evaluation": "rank_only_adjacent_source_previously_audited",
+  "substrates": [
+    {
+      "substrate": "CHGA",
+      "mutants": 190,
+      "length": 23,
+      "lora": {
+        "ensemble_spearman": -0.1381560358137928,
+        "per_seed": {
+          "17": -0.15647933096265973,
+          "29": -0.12770582652092713,
+          "43": -0.09872237312303446
+        }
+      },
+      "frozen": {
+        "ensemble_spearman": -0.07612661671631085,
+        "per_seed": {
+          "17": -0.05982058112121491,
+          "29": -0.08828091170334214,
+          "43": -0.07959077449295142
+        }
+      }
+    },
+    {
+      "substrate": "Clone#8",
+      "mutants": 228,
+      "length": 12,
+      "lora": {
+        "ensemble_spearman": 0.06387614574400335,
+        "per_seed": {
+          "17": 0.1829413867084077,
+          "29": 0.015815899327411696,
+          "43": 0.0144186814110281
+        }
+      },
+      "frozen": {
+        "ensemble_spearman": -0.03914640110076473,
+        "per_seed": {
+          "17": 0.0033188987897865394,
+          "29": -0.06320183622783562,
+          "43": -0.06091566372407174
+        }
+      }
+    },
+    {
+      "substrate": "EMID1",
+      "mutants": 190,
+      "length": 23,
+      "lora": {
+        "ensemble_spearman": 0.1593818752815722,
+        "per_seed": {
+          "17": 0.20410275251829404,
+          "29": 0.02781036360534845,
+          "43": 0.16573283120541318
+        }
+      },
+      "frozen": {
+        "ensemble_spearman": 0.22465850490099595,
+        "per_seed": {
+          "17": 0.2554107782545369,
+          "29": 0.2173627786744348,
+          "43": 0.20196827146400034
+        }
+      }
+    },
+    {
+      "substrate": "EPHB2",
+      "mutants": 190,
+      "length": 23,
+      "lora": {
+        "ensemble_spearman": 0.12029812751774727,
+        "per_seed": {
+          "17": 0.20073307177192548,
+          "29": 0.07918312360307402,
+          "43": 0.027112283326116343
+        }
+      },
+      "frozen": {
+        "ensemble_spearman": 0.06702183031750406,
+        "per_seed": {
+          "17": 0.0992507446627039,
+          "29": 0.023544900646030435,
+          "43": 0.07293014385877435
+        }
+      }
+    },
+    {
+      "substrate": "MAGEA3",
+      "mutants": 181,
+      "length": 23,
+      "lora": {
+        "ensemble_spearman": 0.10067795924149514,
+        "per_seed": {
+          "17": 0.07442373464472911,
+          "29": 0.12393297310424382,
+          "43": 0.0915042600125473
+        }
+      },
+      "frozen": {
+        "ensemble_spearman": 0.022832048246412884,
+        "per_seed": {
+          "17": 0.08262198206949588,
+          "29": 0.00756278712079817,
+          "43": -0.0032359905288082075
+        }
+      }
+    },
+    {
+      "substrate": "MSRB2",
+      "mutants": 190,
+      "length": 23,
+      "lora": {
+        "ensemble_spearman": 0.37757307754552183,
+        "per_seed": {
+          "17": 0.3951423060268473,
+          "29": 0.3806330835815543,
+          "43": 0.29356550188735364
+        }
+      },
+      "frozen": {
+        "ensemble_spearman": 0.30722793020946787,
+        "per_seed": {
+          "17": 0.3156678782471012,
+          "29": 0.32673568738600434,
+          "43": 0.2836699077536774
+        }
+      }
+    },
+    {
+      "substrate": "PDGFC",
+      "mutants": 190,
+      "length": 23,
+      "lora": {
+        "ensemble_spearman": -0.13245242250477857,
+        "per_seed": {
+          "17": -0.09049062446692648,
+          "29": -0.07125755050803274,
+          "43": -0.162303664921466
+        }
+      },
+      "frozen": {
+        "ensemble_spearman": -0.24962843408696261,
+        "per_seed": {
+          "17": -0.1617000616725059,
+          "29": -0.29283068054079353,
+          "43": -0.2521618181579604
+        }
+      }
+    },
+    {
+      "substrate": "Peptide35",
+      "mutants": 190,
+      "length": 23,
+      "lora": {
+        "ensemble_spearman": -0.04050877630376116,
+        "per_seed": {
+          "17": 0.06571314849077318,
+          "29": -0.20547091988260355,
+          "43": 0.0497745235689573
+        }
+      },
+      "frozen": {
+        "ensemble_spearman": -0.12558534206371078,
+        "per_seed": {
+          "17": -0.11608515179746925,
+          "29": -0.1404689734808225,
+          "43": -0.12640064384346555
+        }
+      }
+    },
+    {
+      "substrate": "XP_211896.1",
+      "mutants": 190,
+      "length": 23,
+      "lora": {
+        "ensemble_spearman": 0.040848193782886545,
+        "per_seed": {
+          "17": 0.04523262781736191,
+          "29": -0.03383239949787208,
+          "43": 0.06631675173973328
+        }
+      },
+      "frozen": {
+        "ensemble_spearman": 0.06259190734252736,
+        "per_seed": {
+          "17": 0.08614293149977911,
+          "29": 0.04698570160129819,
+          "43": 0.050462106400381415
+        }
+      }
+    }
+  ],
+  "QC": [
+    {
+      "substrate": "Clone#8",
+      "rows": 238,
+      "identity_rows": 10,
+      "mutants": 228,
+      "length": 12,
+      "max_psi_error": 4.99844610146738e-12
+    },
+    {
+      "substrate": "EPHB2",
+      "rows": 200,
+      "identity_rows": 10,
+      "mutants": 190,
+      "length": 23,
+      "max_psi_error": 4.978240042419202e-12
+    },
+    {
+      "substrate": "PDGFC",
+      "rows": 200,
+      "identity_rows": 10,
+      "mutants": 190,
+      "length": 23,
+      "max_psi_error": 4.990674540295004e-12
+    },
+    {
+      "substrate": "EMID1",
+      "rows": 200,
+      "identity_rows": 10,
+      "mutants": 190,
+      "length": 23,
+      "max_psi_error": 4.993117030949179e-12
+    },
+    {
+      "substrate": "CHGA",
+      "rows": 199,
+      "identity_rows": 9,
+      "mutants": 190,
+      "length": 23,
+      "max_psi_error": 4.978462087024127e-12
+    },
+    {
+      "substrate": "XP_211896.1",
+      "rows": 200,
+      "identity_rows": 10,
+      "mutants": 190,
+      "length": 23,
+      "max_psi_error": 4.964029187704e-12
+    },
+    {
+      "substrate": "Peptide35",
+      "rows": 199,
+      "identity_rows": 9,
+      "mutants": 190,
+      "length": 23,
+      "max_psi_error": 4.992894986344254e-12
+    },
+    {
+      "substrate": "MAGEA3",
+      "rows": 191,
+      "identity_rows": 10,
+      "mutants": 181,
+      "length": 23,
+      "max_psi_error": 4.992894986344254e-12
+    },
+    {
+      "substrate": "MSRB2",
+      "rows": 200,
+      "identity_rows": 10,
+      "mutants": 190,
+      "length": 23,
+      "max_psi_error": 4.9960036108132044e-12
+    }
+  ],
+  "parity_28aa": [
+    {
+      "mode": "lora",
+      "seed": 17,
+      "max_abs_difference": 0.0
+    },
+    {
+      "mode": "lora",
+      "seed": 29,
+      "max_abs_difference": 0.0
+    },
+    {
+      "mode": "lora",
+      "seed": 43,
+      "max_abs_difference": 0.0
+    },
+    {
+      "mode": "frozen",
+      "seed": 17,
+      "max_abs_difference": 0.0
+    },
+    {
+      "mode": "frozen",
+      "seed": 29,
+      "max_abs_difference": 0.0
+    },
+    {
+      "mode": "frozen",
+      "seed": 43,
+      "max_abs_difference": 0.0
+    }
+  ],
+  "macro_spearman": {
+    "lora": 0.06128201605454375,
+    "frozen": 0.021538380783239903
+  },
+  "eligible_substrates": {
+    "lora": 9,
+    "frozen": 9
+  },
+  "denominator": {
+    "substrates": 9,
+    "mutants": 1739
+  },
+  "provenance": {
+    "schema_version": 1,
+    "source_campaign": "aa4fc2b7ce29abf9",
+    "source_plan_sha256": "ddc767e964cd9c6a4b38f31a3149937cb0fb59a0e58b01506243aad1aa7e6ad5",
+    "raw_sha256": "c96973f2b2781b35a822527fa875e38df82f75da9ac327668d1d10114fdbcbeb",
+    "script_sha256": "0bd34871b66d3d34c2dcc8feaccfdc37837a7936207dd4d1889aaf692a67422e",
+    "protocol_sha256": "6321198ea9f91083ba80ed9aaa9db35f2e43f7b8a17c71ffe5bdf9e591cf70f3",
+    "models": [
+      {
+        "mode": "lora",
+        "seed": 17,
+        "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/refit-lora-D-17/model.pt",
+        "sha256": "3a0027ecade741738e68c2145ab0332fb096cd52071559bbf722be60cf0a86fd"
+      },
+      {
+        "mode": "lora",
+        "seed": 29,
+        "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/refit-lora-D-29/model.pt",
+        "sha256": "40360237810617c9afecb5fb8baf096eeb20cf529d39aa43cf604ce9b4277be4"
+      },
+      {
+        "mode": "lora",
+        "seed": 43,
+        "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/refit-lora-D-43/model.pt",
+        "sha256": "86ed1a335f29fa4b1ae5e34f4994862f730bbc55c3b01b332cec1a3bd8f9c0cb"
+      },
+      {
+        "mode": "frozen",
+        "seed": 17,
+        "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/refit-frozen-D-17/model.pt",
+        "sha256": "6fe8bb0626686b72551aa54c8eef29681501b18004ba2ce93cf555370926ffde"
+      },
+      {
+        "mode": "frozen",
+        "seed": 29,
+        "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/refit-frozen-D-29/model.pt",
+        "sha256": "21b8730422735ae087ced553dcb3490231bb433101a3327fc4634a301c49a581"
+      },
+      {
+        "mode": "frozen",
+        "seed": 43,
+        "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/refit-frozen-D-43/model.pt",
+        "sha256": "f948f909c3a639ca821f835e142203c4150354eec6f041a946eaab1c329e7bcf"
+      }
+    ]
+  },
+  "limitations": [
+    "Length/construct extrapolation; not independent untouched validation.",
+    "No PSI rescaling, calibration, MAE comparison with Zhang, cell-level p-values or automatic gate closure.",
+    "Original core queue/source_pending history is unchanged; this is a supplemental evaluation."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "campaign": "aa4fc2b7ce29abf9",
+  "status": "core_complete_branch1_incomplete",
+  "core_jobs_complete": 15,
+  "scientific_status": "development_not_gate_closure",
+  "koren": "source_pending",
+  "outstanding": [
+    "Koren S4 input and reviewed variable-length inference",
+    "Author/supervisor D-4 decision",
+    "Cross-runtime inference parity on primary machine",
+    "Full mechanism/similarity investigation if required"
+  ],
+  "G2_G3": "not_closed",
+  "serving": "unchanged"
+}

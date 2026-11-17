@@ -1,0 +1,15 @@
+{
+  "status": "pass",
+  "scope": "synthetic_software_fixture_not_scientific_results",
+  "real_T_outcomes_read": false,
+  "tests": [
+    "OOF_ensemble_calibrator",
+    "aggregate_seed_ensemble_and_baselines",
+    "two_paired_group_contrasts",
+    "replicate_intersection",
+    "error_diagnostics",
+    "three_figure_exports"
+  ],
+  "synthetic_results_path": "research/lora-refit-transfer-2026-11-16/local/analysis-validation-7771ad65da0d48ba9e4695f60bdb954a",
+  "implementation_sha256": "d7a993c7fa017a67a0de7972023b6f422cc1efd94e43460ba6e5dc8e2509b02c"
+}

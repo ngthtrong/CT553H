@@ -1,0 +1,48 @@
+{
+  "job": "model-card-parity",
+  "started_unix": 1794833941.6165688,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/model-card-parity/model-card.json",
+      "bytes": 2905,
+      "sha256": "ea925afa4b961d8a09f06e145151bd8c4b8477fb5db40e6810f21979312ccd3d"
+    },
+    {
+      "path": "jobs/model-card-parity/parity-results.json",
+      "bytes": 585,
+      "sha256": "f9774f72e5f002689a745ac721ebb1603ea7c731c67710a67a0da3a64aae65c5"
+    },
+    {
+      "path": "jobs/model-card-parity/seed17.json",
+      "bytes": 196,
+      "sha256": "84b7f84cc563fcf2812d9041ae699d1a42250a8c816d18554ffea60ccbd6bf23"
+    },
+    {
+      "path": "jobs/model-card-parity/seed17.npy",
+      "bytes": 256,
+      "sha256": "1066dcbf00e4b834d328f4b36a59caa89f639977e6f7d631c52074ecc377f598"
+    },
+    {
+      "path": "jobs/model-card-parity/seed29.json",
+      "bytes": 196,
+      "sha256": "e1b7102075622cedee2f39de6f83b15835eaca400dcd4df031faf3b3ce66b72e"
+    },
+    {
+      "path": "jobs/model-card-parity/seed29.npy",
+      "bytes": 256,
+      "sha256": "e319340da80ed79ab82e959b6cb97a2d899d6a924c4486d1b927916a3880efb9"
+    },
+    {
+      "path": "jobs/model-card-parity/seed43.json",
+      "bytes": 196,
+      "sha256": "ecef3b0ebac3fb6b1cf25a1c316cc8f149fba3b8202296cc4b533b5845e1aa07"
+    },
+    {
+      "path": "jobs/model-card-parity/seed43.npy",
+      "bytes": 256,
+      "sha256": "e89963cd93490cbfce40b9faf5d8568eade62a3c69295937517f6fa0b4fa16b5"
+    }
+  ],
+  "seconds": 4.659619331359863
+}

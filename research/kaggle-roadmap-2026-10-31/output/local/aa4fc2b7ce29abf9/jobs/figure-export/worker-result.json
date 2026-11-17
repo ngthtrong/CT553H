@@ -1,0 +1,28 @@
+{
+  "job": "figure-export",
+  "started_unix": 1794833956.6441712,
+  "status": "complete",
+  "files": [
+    {
+      "path": "jobs/figure-export/figure-results.json",
+      "bytes": 197,
+      "sha256": "6dda495720f73b5bbb53bb54ef7a92d3d6351d3d080cba96a1f2a3113aca1709"
+    },
+    {
+      "path": "jobs/figure-export/mae-by-psi.png",
+      "bytes": 84120,
+      "sha256": "20143788f7ca2f695c4fca7dc322e2098fc5e1b5e65766dd8d9d40ae3bf9fb06"
+    },
+    {
+      "path": "jobs/figure-export/primary-contrasts.png",
+      "bytes": 34582,
+      "sha256": "953912786af5328b36d35da00cf3bb4d95e656e86e752f8a9624bab184bb13b2"
+    },
+    {
+      "path": "jobs/figure-export/score-shift.png",
+      "bytes": 75854,
+      "sha256": "f263c822ccb3e0ce2c6b296d869dea7c5791c686f88f0aa553040398afb44c06"
+    }
+  ],
+  "seconds": 0.9640605449676514
+}

@@ -5,7 +5,7 @@ import gc
 import hashlib
 import json
 import os
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 import queue
 import shutil
 import subprocess
@@ -53,6 +53,9 @@ def runtime_identity():
 
 
 def jobs(config):
+    if config.get('campaign_kind') == 'refit_transfer_v1':
+        from .local_refit import jobs as refit_jobs
+        return refit_jobs(config)
     items = [dict(id='import-kaggle', kind='import', deps=[])]
     for model in config['models']:
         items += [dict(id=f'weights-{model}',kind='weights',model=model,deps=[]),
@@ -82,6 +85,9 @@ def jobs(config):
 
 def initialize(config_path):
     config = json.loads(Path(config_path).read_text(encoding='utf8'))
+    if config.get('campaign_kind') == 'refit_transfer_v1':
+        from .local_refit import initialize as initialize_refit
+        return initialize_refit(config_path)
     assert config['models'] and 'esm2_35m' in config['models'] and set(config['models']) <= set(work.MODELS)
     assert config['arms']==['B','D'] and config['seeds']==[17,29,43]
     ds = Dataset(ROOT/config['data'])
@@ -120,10 +126,47 @@ def initialize(config_path):
     return campaign
 
 
+def resolve_campaign(value):
+    base = (HERE/'output/local').resolve()
+    raw = str(value)
+    name = PureWindowsPath(raw).name if '\\' in raw else Path(raw).name
+    if len(name) != 16 or any(c not in '0123456789abcdef' for c in name):
+        raise ValueError('Expected a 16-character campaign ID under output/local')
+    root = (base/name).resolve()
+    if root.parent != base or not (root/'plan.json').is_file():
+        raise FileNotFoundError(f'Campaign not found: {name}')
+    return root
+
+
 def latest():
     path=HERE/'output/local/latest.json'
     if not path.exists(): raise FileNotFoundError('No local campaign yet; run run-local.cmd first')
-    return Path(json.loads(path.read_text())['campaign'])
+    record = json.loads(path.read_text())
+    return resolve_campaign(record.get('campaign_id') or record['campaign'])
+
+
+def pause(campaign, wait=False, timeout=300):
+    campaign = Path(campaign)
+    (campaign/'STOP').touch(exist_ok=True)
+    print('Pause requested:', campaign, flush=True)
+    if not wait:
+        return 0
+    end = time.monotonic()+timeout
+    while True:
+        session = json.loads((campaign/'session.json').read_text()) if (campaign/'session.json').exists() else {}
+        state = json.loads((campaign/'state.json').read_text())
+        try:
+            with process_lock(campaign.parent/'session.lock'):
+                with process_lock(campaign.parent/'worker.lock'):
+                    # Locks, not stale running records, establish process completion.
+                    print('PAUSED / IDLE confirmed; supervisor and worker locks released.', flush=True)
+                    return 0
+        except RuntimeError:
+            pass
+        if time.monotonic() >= end:
+            print('Pause timeout: worker/session still owns a lock; do not close/copy checkpoints.', flush=True)
+            return 2
+        time.sleep(.5)
 
 
 def complete_valid(campaign, record):
@@ -262,6 +305,10 @@ def collect(ds,campaign,out,control,group):
 
 def dispatch(ds,job,campaign,out,control):
     kind=job['kind']
+    plan=json.loads((campaign/'plan.json').read_text())
+    if plan['config'].get('campaign_kind') == 'refit_transfer_v1':
+        from .local_refit import dispatch as dispatch_refit
+        return dispatch_refit(ds,job,campaign,out,control)
     if kind=='import':work.import_kaggle(ds,out,control)
     elif kind=='weights':work.weights(job['model'],campaign,out,control)
     elif kind=='probe':work.probe(job['model'],campaign,out,control)
@@ -335,6 +382,8 @@ def status(campaign):
     counts=Counter(state['jobs'].get(j['id'],{}).get('status','pending') for j in planned)
     print('Campaign:',campaign,'\nJobs:',dict(counts),'\nTotal:',len(planned),flush=True)
     if (campaign/'progress.json').exists():print('Last progress:',(campaign/'progress.json').read_text(),flush=True)
+    failed={name:r.get('reason') for name,r in state['jobs'].items() if r.get('status')=='failed'}
+    if failed:print('Failures:',json.dumps(failed,ensure_ascii=False),flush=True)
     return dict(counts)
 
 
@@ -344,6 +393,9 @@ def run(config,hours=2,profile='all',retry_failed=False,max_jobs=None):
         # An orphan worker must finish/pause before another supervisor can start GPU work.
         with process_lock(lock.with_name('worker.lock')):pass
         campaign=initialize(config);state=json.loads((campaign/'state.json').read_text());planned=json.loads((campaign/'queue.json').read_text())
+        refit = json.loads((campaign/'plan.json').read_text())['config'].get('campaign_kind') == 'refit_transfer_v1'
+        if refit and profile == 'models':
+            raise ValueError('Refit uses --profile all or core, not the legacy models profile')
         stop=campaign/'STOP'
         if stop.exists():stop.unlink()
         session=time.strftime('%Y%m%d-%H%M%S');logdir=campaign/'sessions';logdir.mkdir(exist_ok=True)
@@ -361,6 +413,7 @@ def run(config,hours=2,profile='all',retry_failed=False,max_jobs=None):
             log.write(f'SESSION {session} campaign={campaign} deadline={deadline} profile={profile}\n')
             for job in planned:
                 if control.stopping() or (max_jobs is not None and executed>=max_jobs):break
+                if refit and profile=='core' and job.get('phase')=='completion':continue
                 if profile=='models' and job['kind'] in ['tune','calibrate','transfer','report']:continue
                 if profile=='core' and (job['kind'] in ['ridge','extract'] or (job.get('model') and job['model']!='esm2_35m') or job['id']=='collect-family'):continue
                 record=state['jobs'].get(job['id'],{})
@@ -399,7 +452,7 @@ def run(config,hours=2,profile='all',retry_failed=False,max_jobs=None):
                 if result_path.exists() and json.loads(result_path.read_text()).get('started_unix',0)>=launched:record=json.loads(result_path.read_text())
                 else:record=dict(status='failed',reason=f'Worker exited {child.returncode} without a result')
                 state['jobs'][job['id']]=record;save();executed+=1
-                if record['status']=='paused':break
+                if record['status']=='paused' or (refit and record['status']=='failed'):break
         atomic_json(campaign/'session.json',dict(pid=os.getpid(),session=session,status='paused' if control.stopping() else 'idle',executed=executed))
         status(campaign)
         print('SESSION ENDED. Run run-local.cmd again to continue. This window remains open.',flush=True)

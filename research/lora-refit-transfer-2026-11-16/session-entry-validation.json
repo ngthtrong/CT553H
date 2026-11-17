@@ -1,0 +1,41 @@
+{
+  "status": "pass",
+  "scope": "launcher_handoff_no_training_or_inference",
+  "tests": [
+    {
+      "arguments": [
+        "run",
+        "--hours",
+        "0"
+      ],
+      "expected": "unlimited",
+      "status": "pass"
+    },
+    {
+      "arguments": [
+        "run",
+        "--hours=0"
+      ],
+      "expected": "unlimited",
+      "status": "pass"
+    },
+    {
+      "arguments": [
+        "run",
+        "--hours",
+        "2"
+      ],
+      "expected": "limited",
+      "status": "pass"
+    },
+    {
+      "arguments": [
+        "run",
+        "--hours",
+        "0"
+      ],
+      "expected": "no_supplement_when_core_paused",
+      "status": "pass"
+    }
+  ]
+}

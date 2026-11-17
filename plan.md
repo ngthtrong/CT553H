@@ -31,8 +31,10 @@ Mọi thay đổi phạm vi ghi vào mục [Nhật ký thay đổi](#9-nhật-k�
 **Đã quyết (16/11/2026):** tên EN tạm thời dùng `Degron Reporter Assays` (đã áp dụng);
 candidate nghiên cứu là **LoRA-D**; `proposal/` xoá có chủ đích, tên VI chuyển sang
 `\ThesisTitleVI` trong `report/config/metadata.tex`; nhánh 2 mở rộng thành **toàn bộ
-phạm vi v0.2**; toàn bộ tính toán chạy trên **một máy CUDA khác**, không phải môi
-trường WSL hiện tại.
+phạm vi v0.2**. Cập nhật theo chỉ đạo mới ngày 16/11: **môi trường Windows/CUDA
+hiện tại chỉ triển khai và hoàn thành nhánh 1**; Trọng tự copy artifact cần thiết
+sang máy sử dụng chính. GitHub giữ code, metadata và kết quả quan trọng có chọn
+lọc; không dùng Git để vận chuyển toàn bộ dữ liệu/checkpoint.
 
 ---
 
@@ -61,7 +63,15 @@ Tên đang nằm trong `report/config/metadata.tex` là bản 16/11, đuôi vẫ
 | Môi trường | Vai trò | Ghi chú |
 | --- | --- | --- |
 | **WSL hiện tại** | Soạn script, phân tích CPU, viết báo cáo, dựng app | Không có CUDA; Node 24.22.3 (nvm), Docker 29.8.1, Playwright 3 trình duyệt (16/11); LibreOffice đã mất |
-| **Máy CUDA khác** | Chạy toàn bộ refit/scoring GPU **và** các bước CPU của campaign | Đã có sẵn OOF/`results`/`status` giống repo ⇒ **không cần gói bàn giao** |
+| **Windows/CUDA hiện tại**, `D:\thanhtrong\CT553H` | Toàn bộ công việc nhánh 1: chuẩn bị code, refit/scoring GPU, phân tích CPU, parity, xuất kết quả | RTX 5060 Laptop 8 GB, Python 3.11.9, Torch 2.13.0+cu130; xem audit bên dưới |
+| **Máy sử dụng chính** do Trọng quản lý | Nhận code/kết quả từ GitHub và artifact được Trọng tự copy; triển khai nhánh 2–4 | Không copy `.venv` hoặc `.git`; model/data nặng dùng manifest SHA-256 riêng |
+
+**Kế hoạch triển khai chi tiết và bằng chứng kiểm máy:**
+[nhánh 1 trên Windows local](research/lora-refit-transfer-2026-11-16/README.md),
+[environment-audit.json](research/lora-refit-transfer-2026-11-16/environment-audit.json).
+Audit đã kiểm dữ liệu và artifact nguồn; **chưa** phải preflight CUDA forward/backward
+hoặc kết quả refit. Hiện còn đường dẫn cũ cần resolver, thiếu đầu vào Koren S4,
+và runner chưa hỗ trợ DAG refit mới.
 
 Nguyên tắc: mọi thứ chạy trên máy CUDA phải khởi động được bằng **một lệnh**, tự
 checkpoint, tạm dừng và chạy tiếp được, không cần tôi can thiệp.
@@ -73,43 +83,47 @@ Công việc mới nhận thư mục output riêng theo fingerprint của plan m
 
 ---
 
-## 4. Nhánh 1 — Thực nghiệm (script chạy trên máy CUDA khác)
+## 4. Nhánh 1 — Thực nghiệm trên Windows/CUDA hiện tại
 
 Tái dùng bộ máy campaign đã có (`degron_v3/local_campaign.py`, `local_jobs.py`,
 `local_control.py`, `local_training.py`): `STOP`-file để tạm dừng, checkpoint mỗi
 120 s khi train, `worker` chạy từng job theo deadline, `state.json` ghi tiến độ.
 **Không viết runner song song.**
 
-### 4.1 Viết script (tôi làm trên WSL)
+Kế hoạch chi tiết tách **15 job refit/transfer cốt lõi** và **5 job hoàn thiện
+nhánh 1**. Quyết định D-4 vẫn do Trọng/GVHD, không phải job tự động. Bản kế hoạch
+chi tiết hiện là đề xuất triển khai, chưa thay cho `PROTOCOL.md` khoá trước chấm T.
+
+### 4.1 Chuẩn bị script trên máy hiện tại
 
 | # | Việc | Tiêu chí nghiệm thu | Ước lượng | Trạng thái |
 | --- | --- | --- | --- | --- |
-| 1.1 | `research/lora-refit-transfer-2026-11-16/PROTOCOL.md` — khoá recipe, epoch nguồn, seed, endpoint, 2 contrast, CI97,5% Bonferroni, **trước khi nhìn T** | Có `protocol_sha256`; khớp `NEXT-EVALUATION.md` §2–§4 | 0,5 ngày | [ ] |
-| 1.2 | Job kind **`refit`** trong `degron_v3/local_jobs.py` — refit toàn W ở epoch cố định (LoRA-D median 2, frozen-D median 1), 3 seed | Đọc `selected_epoch` từ `fit.json` của campaign cũ; không chọn lại epoch bằng T | 1 ngày | [ ] |
+| 1.1 | `research/lora-refit-transfer-2026-11-16/PROTOCOL.md` — khoá recipe, epoch nguồn, seed, endpoint, 2 contrast, CI97,5% Bonferroni, trước prediction refit mới trên T đã từng được khảo sát | Có protocol_sha256; khớp NEXT-EVALUATION §2–§4, giữ lịch sử đã xem T | 0,5 ngày | [x] 16/11 — PROTOCOL.md, source-lock.json, preflight.json |
+| 1.2 | Job kind **`refit`** trong runner hiện có, code tách ở `degron_v3/local_refit.py` — refit toàn W, median riêng từng seed: LoRA-D **2/2/2**, frozen-D **1/2/2** cho 17/29/43 | Đọc selected_epoch từ 30 fit.json đã kiểm hash; không dùng median gộp hoặc T | 1 ngày | [x] 16/11 — source-lock.json, refit-validation.json; full-W đang chạy ở 1.11 |
 | 1.3 | Job kind **`score-held`** — chấm T (39.234 cell / 1.410 peptide / 730 nhóm) bằng model vừa refit | Assert 0 nhãn T trong mọi bước fit/selection; output finite đủ cohort × seed | 0,75 ngày | [ ] |
 | 1.4 | Job kind **`calibrate-final`** — calibrator học **chỉ** từ OOF W của đúng recipe | Công khai score shift giữa fold-fit và final refit | 0,5 ngày | [ ] |
-| 1.5 | `refit-plan.json` — plan mới sinh fingerprint riêng, liệt kê 6 refit + 6 score + 2 calibrate + 1 aggregate | `initialize()` tạo thư mục output mới, không đụng `ef138c84579c842e` | 0,5 ngày | [ ] |
-| 1.6 | `preflight.py` — kiểm máy đích: CUDA/torch/VRAM, hash data tables, có đủ `fit.json` + `oof.parquet` của 30 fold job, dung lượng trống | Thiếu bất kỳ thứ gì thì dừng với thông báo rõ, không chạy nửa vời | 0,5 ngày | [ ] |
-| 1.7 | Launcher: `run-refit.cmd` / `run-refit.sh`, `status-refit.*`, `pause-refit.*` | Chạy được cả Windows PowerShell lẫn Linux bash; `pause` tạo `STOP`, xác nhận `PAUSED` rồi mới thoát | 0,5 ngày | [ ] |
-| 1.8 | `RUNBOOK.md` — thứ tự chạy, ngân sách giờ, cách resume sau mất điện, cách đọc `status` | Trọng chạy được mà không hỏi lại | 0,25 ngày | [ ] |
-| 1.9 | Validator `validate-refit-plan.py` — kiểm invariants trên CPU trước khi giao | PASS trên WSL; smoke bằng ESM2-8M | 0,5 ngày | [ ] |
+| 1.5 | `refit-plan.json` — schema/DAG mới trong runner hiện có: 6 refit + 6 score + 2 calibrate + 1 aggregate; thêm 5 job parity/diagnostic/Koren/hình/finalize | Output mới theo fingerprint; source chỉ đọc, không inheritance checkpoint cũ | 0,5 ngày | [x] 16/11 — campaign aa4fc2b7ce29abf9, refit-validation.json |
+| 1.6 | `preflight.py` — kiểm CUDA forward/backward, VRAM, data hash, 30 cặp fit/OOF, weights 35M, baseline W5, resolver đường dẫn và dung lượng | Phân biệt core/toàn nhánh; Koren thiếu đầu vào được báo rõ | 0,5 ngày | [x] 16/11 — preflight.json, source-lock.json; scope branch1 vẫn bị chặn |
+| 1.7 | Tái dùng **run-local.cmd / status-local.cmd / pause-local.cmd**; CLI --config, --campaign, pause --wait | Một runner; pause đúng campaign, đợi checkpoint/OS locks, timeout không báo thành công | 0,5 ngày | [x] 16/11 — refit-validation.json và launch-status.json: pause/resume campaign thật |
+| 1.8 | RUNBOOK.md — chạy, ngân sách giờ, resume, status và copy artifact | Có lệnh Windows thực dùng được | 0,25 ngày | [x] 16/11 — research/lora-refit-transfer-2026-11-16/RUNBOOK.md |
+| 1.9 | validate-refit-plan.py — invariants CPU/ESM2-8M CUDA, cộng validator analysis/Git | Không outcome T trong smoke; tách output local, không gọi là benchmark | 0,5 ngày | [x] 16/11 — refit-validation.json, analysis-validation.json, git-safety-validation.json |
 
-### 4.2 Chạy trên máy CUDA (Trọng bấm, script tự lo phần còn lại)
+### 4.2 Chạy trên máy hiện tại (Trọng bấm, script tự lo phần còn lại)
 
 | # | Việc | Tiêu chí nghiệm thu | Ước lượng | Trạng thái |
 | --- | --- | --- | --- | --- |
-| 1.10 | `preflight` PASS trên máy đích | Báo cáo môi trường ghi vào `env.json` | 15 phút | [ ] |
-| 1.11 | Chạy refit + score + calibrate (tạm dừng/chạy tiếp tuỳ ý) | 15/15 job `complete`; `state.json` không có job `failed` chưa giải thích | **~4–6 h GPU** *(ước lượng từ `output-review-2026-11-06/results.json`: tune-lora median 4.398 s/fold ≈ 12 phút/epoch)* | [ ] |
+| 1.10 | preflight PASS trên máy hiện tại | preflight.json chứa runtime/CUDA tests và source lock đầy đủ | 15–30 phút | [x] 16/11 — preflight.json: ESM2-35M frozen/LoRA forward-backward finite |
+| 1.11 | Chạy refit + score + calibrate bằng script local hiện có | 15/15 core job complete; completion/Koren và D-4 có trạng thái riêng; không bỏ qua failed | Dự phòng 4–8 h chưa phải thời gian đo đầy đủ | [ ] Đang chạy 16/11 — aa4fc2b7ce29abf9, --hours 0; xem launch-status.json và status-local |
 
-### 4.3 Phân tích và viết (tôi, CPU, sau khi có output)
+### 4.3 Phân tích và hoàn thiện artifact nhánh 1 trên máy hiện tại
 
 | # | Việc | Tiêu chí nghiệm thu | Ước lượng | Trạng thái |
 | --- | --- | --- | --- | --- |
 | 1.12 | `analyze-refit.py` → `results.json`: paired group bootstrap 5.000×, CI97,5% cho family 2 contrast | Báo **cả** metric thuận và bất lợi kèm denominator; kết quả âm được giữ | 1,5 ngày | [ ] |
 | 1.13 | Model card cuối cho LoRA-D (hiện `model_ids` đang rỗng) + inference parity | Parity giữa 2 triển khai suy luận; lineage hash đủ | 0,75 ngày | [ ] |
-| 1.14 | Koren 2018 S4 — đánh giá **rank-only trong từng substrate** (9 substrate) | Không trộn thang 3-bin với 6-bin; gọi đúng là *nguồn lân cận*, **không** đóng `source_pending`; không đưa bảng gốc lên git (license NIHMS) | 1 ngày | [ ] |
+| 1.14 | Koren 2018 S4 — rank-only trong từng substrate; nguồn đã có đúng hash, parser chuẩn Python và adapter 12/23 aa đã kiểm CUDA | Chạy bổ sung sau core, giữ checkpoint/core identity; không padding/đổi thang, không đóng source_pending, không đưa bảng gốc lên Git | Tự nối sau core bằng launcher hiện hành | [ ] 16/11: koren-validation.json PASS; scoring thật đang chờ model refit, xem KOREN-PROTOCOL.md |
 | 1.15 | Phân rã cơ chế sai số ở PSI(WT) cao (T strata gt5: W5-D **tệ hơn** zero +0,0958) | Mỗi giả thuyết có phép kiểm riêng; được phép kết luận "chưa phân giải" | 1,5 ngày | [ ] |
-| 1.16 | 3–4 hình kết quả mới cho Chương 4 | `check_float_references.py` PASS | 1 ngày | [ ] |
+| 1.16 | Xuất 3–4 hình, bảng dữ liệu gọn, caption và dẫn nguồn JSON để máy chính đưa vào Chương 4 | Kiểm render, số liệu/hình khớp results.json; `check_float_references.py` thuộc bước tích hợp báo cáo tại nhánh 3 trên máy chính | 1 ngày | [ ] |
 | 1.17 | Biên bản quyết định phạm vi G2 (D-4) | Có chữ ký/ghi nhận của Trọng hoặc GVHD | 0,5 ngày | [ ] |
 
 **Bỏ khỏi phạm vi:** `structure_pending`/SaProt (chỉ có 8 cấu trúc AlphaFold, giả định
@@ -207,7 +221,7 @@ Nhánh 1 ‖ nhánh 2 chạy song song → cổng 🚦 (số liệu chốt **và
 | Rủi ro | Dự phòng |
 | --- | --- |
 | 8 tuần vượt deadline | Thứ tự cắt: 2.9 PostgreSQL → giữ SQLite + ghi `DEVIATIONS.md`; 2.7 → chỉ import, bỏ comparison; 2.12 → giữ npz, LoRA-D chỉ là candidate đã export; 2.5 → giới hạn số tile |
-| Máy CUDA khác dừng giữa chừng | Đã có `STOP`/checkpoint 120 s/resume; `RUNBOOK.md` hướng dẫn chạy tiếp; **không** sửa `state.json` bằng tay |
+| Máy CUDA hiện tại dừng giữa chừng | Tái dùng STOP/checkpoint 120 s/resume; bổ sung selector đúng campaign và xác nhận pause; không sửa state bằng tay |
 | Thêm code vào `degron_v3/` đổi fingerprint | Plan mới có thư mục output riêng; **không** resume `ef138c84579c842e` |
 | LoRA trên T **không** hơn zero/W5-D | Kết quả âm hợp lệ; đóng góp chuyển sang benchmark/phương pháp/phần mềm. **Không** đổi threshold hay model để cứu outcome |
 | `ui-ux-pro-max` đề xuất palette đè thang màu khoa học | Quy tắc hoà giải ở mục 5 |
@@ -226,3 +240,6 @@ Nhánh 1 ‖ nhánh 2 chạy song song → cổng 🚦 (số liệu chốt **và
 | 16/11/2026 | Thêm kế hoạch chi tiết nhánh 2 (`system/implementation-plan-2026-11-16.md`). Sửa tên bảng mục 2.3 cho khớp `db-design.md` §11. Tổng nhánh 2 tăng lên ≈ 35 ngày; timeline toàn bộ ≈ 9 tuần | Claude |
 | 16/11/2026 | WP0 xong: baseline đo lại tại `system/app/rebaseline-2026-11-16.json`. PostgreSQL 16 chạy bằng Docker thay `sudo apt` (G-2). Sửa shebang `.venv` của app còn trỏ đường dẫn `topics/degron-footprint/` cũ | Claude |
 | 16/11/2026 | Nhánh 2: xong WP0, WP2–WP8 (backend đủ 24 operation, job bền, import/so sánh, cổng R3, PostgreSQL) và WP1 (hệ thiết kế Fira Sans/Fira Code, shell sidebar). Còn WP9 (13 màn hình), WP10 (chờ nhánh 1), WP11, WP12. `dev.db` đã migrate `0003` và nạp lại nhãn R3; bản trước giữ ở `.data/backup/dev-2026-11-16.db` | Claude |
+| 16/11/2026 | Cập nhật theo môi trường thật: Windows/CUDA hiện tại chỉ làm nhánh 1; tái dùng run/status/pause-local, Git giữ kết quả nhẹ chọn lọc, Trọng copy artifact nặng. Audit phát hiện đường dẫn cũ, frozen-D epoch theo seed 1/2/2 và thiếu Koren; kế hoạch chi tiết ở research/lora-refit-transfer-2026-11-16/ | Trọng + Codex |
+| 16/11/2026 | Trọng yêu cầu triển khai và chạy nặng. Thêm refit_transfer_v1 vào runner hiện có, khoá protocol/source, CUDA/resume/analysis checks PASS; khởi chạy aa4fc2b7ce29abf9 không giới hạn giờ. Koren/diagnostic similarity đầy đủ/D-4 chưa hoàn tất | Trọng + Codex |
+| 16/11/2026 | Trọng cung cấp lại S4 đúng hash và yêu cầu pause/chạy lại không giới hạn. Giữ nguyên core/checkpoint aa4fc2b7ce29abf9; launcher nối phân tích Koren riêng sau core bằng cùng locks/STOP. Parser/QC và parity chiều dài PASS; source_pending trong queue cũ giữ lịch sử, scoring bổ sung có trạng thái riêng | Trọng + Codex |

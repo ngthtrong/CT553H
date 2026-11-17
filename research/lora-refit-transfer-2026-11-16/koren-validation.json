@@ -1,0 +1,110 @@
+{
+  "status": "pass",
+  "scope": "parser_QC_and_synthetic_8M_inference_not_S4_efficacy",
+  "source_sha256": "c96973f2b2781b35a822527fa875e38df82f75da9ac327668d1d10114fdbcbeb",
+  "source_bytes": 169738,
+  "substrates": 9,
+  "parsed_rows": 1827,
+  "mutants": 1739,
+  "QC": [
+    {
+      "substrate": "Clone#8",
+      "rows": 238,
+      "identity_rows": 10,
+      "mutants": 228,
+      "length": 12,
+      "max_psi_error": 4.99844610146738e-12
+    },
+    {
+      "substrate": "EPHB2",
+      "rows": 200,
+      "identity_rows": 10,
+      "mutants": 190,
+      "length": 23,
+      "max_psi_error": 4.978240042419202e-12
+    },
+    {
+      "substrate": "PDGFC",
+      "rows": 200,
+      "identity_rows": 10,
+      "mutants": 190,
+      "length": 23,
+      "max_psi_error": 4.990674540295004e-12
+    },
+    {
+      "substrate": "EMID1",
+      "rows": 200,
+      "identity_rows": 10,
+      "mutants": 190,
+      "length": 23,
+      "max_psi_error": 4.993117030949179e-12
+    },
+    {
+      "substrate": "CHGA",
+      "rows": 199,
+      "identity_rows": 9,
+      "mutants": 190,
+      "length": 23,
+      "max_psi_error": 4.978462087024127e-12
+    },
+    {
+      "substrate": "XP_211896.1",
+      "rows": 200,
+      "identity_rows": 10,
+      "mutants": 190,
+      "length": 23,
+      "max_psi_error": 4.964029187704e-12
+    },
+    {
+      "substrate": "Peptide35",
+      "rows": 199,
+      "identity_rows": 9,
+      "mutants": 190,
+      "length": 23,
+      "max_psi_error": 4.992894986344254e-12
+    },
+    {
+      "substrate": "MAGEA3",
+      "rows": 191,
+      "identity_rows": 10,
+      "mutants": 181,
+      "length": 23,
+      "max_psi_error": 4.992894986344254e-12
+    },
+    {
+      "substrate": "MSRB2",
+      "rows": 200,
+      "identity_rows": 10,
+      "mutants": 190,
+      "length": 23,
+      "max_psi_error": 4.9960036108132044e-12
+    }
+  ],
+  "inference": [
+    {
+      "mode": "lora",
+      "parity_28aa_max_abs": 0.0,
+      "variable_lengths": [
+        12,
+        23
+      ],
+      "residue_positions_checked": "first_and_last",
+      "prefix_resume_exact": true,
+      "finite": true
+    },
+    {
+      "mode": "frozen",
+      "parity_28aa_max_abs": 0.0,
+      "variable_lengths": [
+        12,
+        23
+      ],
+      "residue_positions_checked": "first_and_last",
+      "prefix_resume_exact": true,
+      "finite": true
+    }
+  ],
+  "core_code_unchanged": true,
+  "script_sha256": "0bd34871b66d3d34c2dcc8feaccfdc37837a7936207dd4d1889aaf692a67422e",
+  "protocol_sha256": "6321198ea9f91083ba80ed9aaa9db35f2e43f7b8a17c71ffe5bdf9e591cf70f3"
+}
