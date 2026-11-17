@@ -32,6 +32,7 @@ Whole-protein mode changes the number of inference tiles, not the model's 28-res
 | [api-spec.md](api-spec.md) | Validation, domain, batch, import, persistence and export behaviour |
 | [ui-design.md](ui-design.md) | Existing single-tile screens plus first-release workspace, job and import screens |
 | [test-plan.md](test-plan.md) | Local acceptance plan, including pending v0.2 cases |
+| [implementation-plan-2026-11-16.md](implementation-plan-2026-11-16.md) | Detailed v0.2 work breakdown (WP0–WP12) traced to UC/FR/test IDs; planning only, not acceptance |
 | [chapter-sync.md](chapter-sync.md) | Record of the scope changes applied to the thesis; remaining implementation work |
 | [app/](app/README.md) | Baseline implementation and its historical checks; planned v0.2 extensions remain open |
 | [design/](design/README.md) | Current Workspace UI v2 review prototype and earlier design research |

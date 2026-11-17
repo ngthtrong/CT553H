@@ -1,0 +1,47 @@
+{
+  "schema": "rebaseline/v1",
+  "date": "2026-11-16",
+  "purpose": "WP0 of system/implementation-plan-2026-11-16.md: measured state of the v0.1 baseline app before any branch-2 change. Every later change is compared against these counts.",
+  "status": "development_not_gate_closure",
+  "git_head": "f4640b526a778fc386273dca2d07275f9d40abec",
+  "environment": {
+    "os": "Ubuntu 24.04.4 LTS on WSL2 (kernel 6.18.33.2-microsoft-standard-WSL2)",
+    "cpu": "AMD Ryzen 5 5500U with Radeon Graphics, 12 logical CPUs",
+    "ram_gib": 7.4,
+    "python": "3.12.3 (system/app/.venv)",
+    "node": "24.22.3 (nvm)",
+    "npm": "11.19.1",
+    "playwright": "1.64.1 (chromium-1248, firefox-1555, webkit-2370 installed; all three launch)",
+    "vitest": "5.0.5",
+    "docker": "29.8.1 (Docker Desktop WSL integration)",
+    "postgres_image": "postgres:16-alpine sha256:81e77a4833487b8132fe4b00bedd39dc3f74b8641e387f19312a48f7de218c2e (pulled, not yet used)"
+  },
+  "backend": {
+    "pytest": {"command": "make test", "tests": 173, "passed": 173, "failed": 0, "errors": 0, "skipped": 0, "seconds": 117.5, "coverage_total_percent": 96, "coverage_statements": 1785, "coverage_missed": 66},
+    "lint": {"command": "make lint", "result": "pass", "detail": "ruff: All checks passed"},
+    "typecheck": {"command": "make typecheck", "result": "pass", "detail": "mypy: no issues found in 33 source files"},
+    "contract": {"command": "make contract", "result": "pass", "detail": "openapi.yaml valid"}
+  },
+  "frontend": {
+    "typecheck": {"command": "npm run typecheck", "result": "pass"},
+    "lint": {"command": "npm run lint", "result": "pass"},
+    "check_api": {
+      "command": "npm run check:api",
+      "result": "fail",
+      "detail": "src/api/schema.d.ts differs from openapi.yaml (1275 diff lines). Cause: openapi.yaml already contains the 24 v0.2 operations marked x-implementation-status: planned and the deprecated flag on /v1/runs*, while schema.d.ts was generated from the baseline-only spec. Expected design drift; fixed by WP3 (npm run gen:api), not before."
+    },
+    "vitest": {"command": "npm test", "files": 9, "tests": 131, "passed": 131, "failed": 0, "seconds": 51.6},
+    "build": {"command": "npm run build", "result": "pass", "bundle_js_kb": 380.35, "bundle_js_gzip_kb": 123.43, "bundle_css_kb": 8.26},
+    "e2e_mock": {"command": "npm run e2e", "tests": 12, "passed": 12, "failed": 0, "flaky": 0, "by_project": {"chromium-desktop": 11, "chromium-narrow": 1}, "seconds": 81.0},
+    "e2e_real": {"command": "make dev-api; E2E_REAL=1 npx playwright test", "tests": 11, "passed": 11, "failed": 0, "seconds": 31.9},
+    "npm_audit": {"total": 7, "moderate": 7, "high": 0, "critical": 0, "production_dependencies": 0, "packages": ["@typescript-eslint/eslint-plugin", "@typescript-eslint/parser", "@typescript-eslint/type-utils", "@typescript-eslint/typescript-estree", "@typescript-eslint/utils", "minimatch", "typescript-eslint"], "note": "devDependencies only (minimatch through typescript-eslint). npm audit fix --force not run: it changes pinned major versions."}
+  },
+  "data": {
+    "dev_db_backup": {"path": "system/app/.data/backup/dev-2026-11-16.db", "sha256": "f7d36dfccfbdc5f27f1cec8e4ba61cbe5add0d1a536c98c557128ae40ccf24ab", "bytes": 453160960, "mode": "read-only", "note": "Pristine copy taken before any test. Migrations of WP2 run on copies of this file, never on it."},
+    "dev_db_after_baseline": {"sha256": "83106bdc3b3dc113d4d03da021fa2b862b5ae7c0ddf2dfd674e40d83ff0e7e08", "bytes": 453230592, "note": "The real-backend e2e share-link test writes a shared run into .data/dev.db; that is the only change. The backup above is the reference."}
+  },
+  "environment_repairs": [
+    "system/app/.venv was created when the app lived under topics/degron-footprint/ (moved 07/11). 38 files in .venv/bin had shebangs/paths to the old location, so make typecheck/db-migrate/dev-api failed with 'required file not found'. Paths rewritten in place with sed; no package installed, upgraded or removed. .venv is not tracked by git."
+  ],
+  "known_red_before_change": ["frontend check:api (design drift, see above)"]
+}

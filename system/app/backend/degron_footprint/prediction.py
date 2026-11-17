@@ -3,17 +3,18 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from .constants import DOMAIN_PSI_MAX
 from .model import TilePrediction
 from .provenance import ModelInfo, build_provenance
 
 WARNING_TEXT = {
     'DOMAIN_UNKNOWN': 'The domain of this tile is unknown: it was not measured in the GPS screen and no gate model '
-                      'covers it. The model was trained only on tiles with wild-type PSI <= 4.0; scores for a '
-                      'stable tile are not meaningful.',
+                      'covers it. The model was trained only on tiles with intrinsic wild-type PSI <= 4.0; scores '
+                      'for a stable tile are not meaningful.',
+    'DOMAIN_BORDERLINE': 'The domain gate places this tile between its in-domain and out-of-domain cuts '
+                         '(0.5 <= P(in domain) < 0.8): the scores may not apply to it.',
     'DOMAIN_UNRELIABLE': 'The tile is in the GPS screen but its measurement is unreliable (too few reads or no PSI). '
                          'Whether it belongs to the training domain is uncertain.',
-    'OUT_OF_DOMAIN_OVERRIDDEN': 'The tile is outside the training domain (wild-type PSI above 4.0). '
+    'OUT_OF_DOMAIN_OVERRIDDEN': 'The domain gate places this tile outside the training domain (P(in domain) < 0.5). '
                                 'You asked for scores anyway; treat them as unsupported.',
     'PREDICTED_DOMAIN': 'The domain status comes from a gate model, not from a measurement.',
     'TRAINING_PEPTIDE': 'This tile is among the peptides the model was trained on; its scores are not an '
@@ -29,8 +30,11 @@ def domain_message(status: str, psi: float | None, reads: float | None, gate_mod
     if status == 'measured_in_domain':
         return 'Tile PSI measured in the GPS peptidome screen (replicate 1).'
     if status == 'measured_out_of_domain':
-        return (f'Tile PSI measured in the GPS peptidome screen (replicate 1) is {psi:.2f}, above the '
-                f'{DOMAIN_PSI_MAX} limit of the training domain.')
+        return (f'Screen PSI {psi:.2f} (GPS peptidome, replicate 1) maps to P(in domain) < 0.5 under gate '
+                f'{gate_model_id or "R3"}: outside the training domain.')
+    if status == 'measured_borderline':
+        return (f'Screen PSI {psi:.2f} (GPS peptidome, replicate 1) maps to 0.5 <= P(in domain) < 0.8 under gate '
+                f'{gate_model_id or "R3"}: borderline.')
     if status == 'measured_unreliable':
         return 'The tile is in the GPS peptidome screen, but too few reads or no PSI: the measurement is unreliable.'
     if status.startswith('predicted_'):
@@ -54,6 +58,8 @@ def warnings_for(status: str, overridden: bool, training_peptide: bool) -> list[
         codes.append('DOMAIN_UNKNOWN')
     if status == 'measured_unreliable':
         codes.append('DOMAIN_UNRELIABLE')
+    if status.endswith('_borderline'):
+        codes.append('DOMAIN_BORDERLINE')
     if status.startswith('predicted_'):
         codes.append('PREDICTED_DOMAIN')
     if overridden:

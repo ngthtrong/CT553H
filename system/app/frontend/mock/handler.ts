@@ -4,7 +4,9 @@
  * ALL NUMBERS HERE ARE SYNTHETIC FIXTURES for developing the interface. They are not model output.
  * The model id, evidence label and card say so on screen, so a mock result cannot pass for a real one.
  * The real service is the FastAPI backend; this file only lets the interface run and be tested without it.
+ * The workspace operations (projects, analyses, jobs, datasets, comparisons) live in ./workspace.ts.
  */
+import { handleWorkspace, resetWorkspace } from './workspace';
 
 export interface MockResponse {
   status: number;
@@ -291,6 +293,7 @@ const runs = new Map<string, StoredRun>();
 
 export function resetMock(): void {
   runs.clear();
+  resetWorkspace();
 }
 
 function randomToken(): string {
@@ -448,6 +451,17 @@ export function handle(method: string, rawUrl: string, headers: Record<string, s
     }
     return ok(stored.result);
   }
+
+  const ws = handleWorkspace(m, url, headers, bodyText, {
+    predict: (b) => runPredict(b),
+    ok,
+    err,
+    exportResult: (result, format) =>
+      format === 'csv' || format === 'json' ? fileResponse(makePredictionForExport(result), format) : err(400, 'INVALID_FORMAT', 'The format must be csv or json.', 'format'),
+    proteins: PROTEINS,
+    tileSequence,
+  });
+  if (ws) return ws;
 
   return err(404, 'INVALID_REQUEST', 'No such endpoint.');
 }

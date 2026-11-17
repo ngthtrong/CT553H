@@ -59,8 +59,12 @@ def test_etl05_real_report(real):
     assert r['tables']['protein']['inserted'] == 20431
     # inputs are pinned by SHA-256, so the counts are fixed; a change means the ETL or an input changed
     assert r['tables']['tile']['inserted'] == 482216
-    assert r['tiles_per_domain_status'] == {'measured_in_domain': 187550, 'measured_out_of_domain': 160230,
-                                            'measured_unreliable': 108005, 'unknown': 26397}
+    # R3 gate (16 Nov 2026): 347,780 reliable screen tiles = 25.35 % in / 8.73 % borderline / 65.93 % out, the
+    # share R3 reported (proteome-domain-share.json: 26 / 9 / 65 %); the 26,397 unscreened tiles go through tier 2
+    assert r['tiles_per_domain_status'] == {'measured_in_domain': 88147, 'measured_borderline': 30347,
+                                            'measured_out_of_domain': 229286, 'measured_unreliable': 108005,
+                                            'predicted_in_domain': 12707, 'predicted_borderline': 6604,
+                                            'predicted_out_of_domain': 7086}
     assert r['screen_rows'] == 475506 and r['screen_rows_unmatched'] == 19687
     assert r['screen_rows_unmatched_reasons']['beyond_last_window_by_1'] == 16266
     assert all(v >= 0 for v in r['tiles_per_domain_status'].values())

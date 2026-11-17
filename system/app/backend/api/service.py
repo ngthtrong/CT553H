@@ -158,6 +158,8 @@ class Predictor:
             psi = tile_row.psi_wt_measured if tile_row else None
             reads = tile_row.reads_measured if tile_row else None
             gate_id = tile_row.psi_wt_predicted_by if tile_row else None
+            if status.startswith('measured_') and status != 'measured_unreliable':
+                gate_id = self.gate.gate_model_id               # tier 1 of the serving gate labelled this tile
             training = tile_row is not None and repo.tile_is_training(s, tile_row.tile_id)
             extra_sources = [prot.source_id]
             input_kind = 'uniprot_tile'
@@ -173,8 +175,8 @@ class Predictor:
                 val = f' ({psi:.1f})' if psi is not None else ''
                 raise DomainError(
                     'OUT_OF_DOMAIN',
-                    f'The {what} wild-type PSI of this tile{val} is above the 4.0 limit of the training domain. '
-                    'Set override_domain to true to score it anyway.', 422)
+                    f'The domain gate places this tile outside the training domain: its {what} screen PSI{val} maps '
+                    'to P(in domain) < 0.5. Set override_domain to true to score it anyway.', 422)
             overridden = True
         if status.startswith('measured_'):
             extra_sources.append(SRC_ZHANG_GEO)

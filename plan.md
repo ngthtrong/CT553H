@@ -60,7 +60,7 @@ Tên đang nằm trong `report/config/metadata.tex` là bản 16/11, đuôi vẫ
 
 | Môi trường | Vai trò | Ghi chú |
 | --- | --- | --- |
-| **WSL hiện tại** | Soạn script, phân tích CPU, viết báo cáo, dựng app | Không có CUDA; `node` chưa có; LibreOffice đã mất |
+| **WSL hiện tại** | Soạn script, phân tích CPU, viết báo cáo, dựng app | Không có CUDA; Node 24.22.3 (nvm), Docker 29.8.1, Playwright 3 trình duyệt (16/11); LibreOffice đã mất |
 | **Máy CUDA khác** | Chạy toàn bộ refit/scoring GPU **và** các bước CPU của campaign | Đã có sẵn OOF/`results`/`status` giống repo ⇒ **không cần gói bàn giao** |
 
 Nguyên tắc: mọi thứ chạy trên máy CUDA phải khởi động được bằng **một lệnh**, tự
@@ -119,6 +119,8 @@ WT-3Di yếu) `[-]`; full fine-tuning (~40 h GPU) `[-]`; wet lab `[-]`.
 
 ## 5. Nhánh 2 — Ứng dụng v0.2 đầy đủ
 
+**Kế hoạch chi tiết:** [system/implementation-plan-2026-11-16.md](system/implementation-plan-2026-11-16.md) — 13 gói công việc WP0–WP12, truy vết UC → FR → test ID. Bảng dưới là mức tổng; đánh dấu ở cả hai nơi.
+
 Giao diện dựng bằng skill **`ui-ux-pro-max`** kết hợp token Workspace UI v2.
 
 > **Quy tắc hoà giải hai nguồn thiết kế:** thang màu khoa học là **bằng chứng**,
@@ -131,22 +133,22 @@ Không có bảng/router nào cho projects, jobs, import, comparison.
 
 | # | Việc | Tiêu chí nghiệm thu | Ước lượng | Trạng thái |
 | --- | --- | --- | --- | --- |
-| 2.1 | Node 24 trong WSL (`package.json` yêu cầu `>=24.22.1 <25`) | `npm run build` và `npm test` chạy xong, ghi số case thực tế | 0,5 ngày | [ ] |
-| 2.2 | Hệ thiết kế: chạy `ui-ux-pro-max` + token v2 3 lớp + AppShell + sáng/tối | 0 axe violation trên các view chính ở 360/768/1280 px | 2–3 ngày | [ ] |
-| 2.3 | Schema mới: `project`, `project_item`, `job`, `job_event`, `import_dataset`, `import_cell`, `comparison` + migration `0002…` | Migration up/down chạy sạch trên DB rỗng và trên `dev.db` hiện có | 1,5 ngày | [ ] |
-| 2.4 | Durable job runner: hàng đợi bền, tiến độ, huỷ, **phục hồi sau restart** + API | Kill tiến trình giữa chừng rồi khởi động lại → job tiếp tục, không mất/không nhân đôi | 2–3 ngày | [ ] |
+| 2.1 | Node 24 trong WSL (`package.json` yêu cầu `>=24.22.1 <25`) | `npm run build` và `npm test` chạy xong, ghi số case thực tế | 0,5 ngày | [x] 16/11 — `system/app/rebaseline-2026-11-16.json` |
+| 2.2 | Hệ thiết kế: chạy `ui-ux-pro-max` + token v2 3 lớp + AppShell + sáng/tối | 0 axe violation trên các view chính ở 360/768/1280 px | 2–3 ngày | [~] 16/11 — hệ thiết kế + shell + `/__styleguide` đạt (`system/app/frontend/e2e/design.spec.ts`); restyle từng màn hình ở 2.11 |
+| 2.3 | Schema mới theo `db-design.md` §11: `project`, `analysis_job`, `job_item`, `analysis_run`, `analysis_cell`, `import_dataset`, `import_observation`, `comparison` + migration `0002_workspace`, `0003_domain_borderline` | Migration up/down chạy sạch trên DB rỗng và trên `dev.db` hiện có | 1,5 ngày | [x] 16/11 — `system/app/tests/test_workspace_schema.py`, `system/app/DEVIATIONS.md` §8 (chạy trên bản sao `dev.db` và PG 16) |
+| 2.4 | Durable job runner: hàng đợi bền, tiến độ, huỷ, **phục hồi sau restart** + API | Kill tiến trình giữa chừng rồi khởi động lại → job tiếp tục, không mất/không nhân đôi | 2–3 ngày | [x] 16/11 — `system/app/tests/test_jobs.py::test_batch05_sigkill_worker_process_then_restart` |
 | 2.5 | Whole-protein flow: tiling step 23 toàn chuỗi → batch predict → footprint cấp protein | Toạ độ 1-based khớp `dev.db` (482.216 tile); không xếp hạng sinh học xuyên tile | 2 ngày | [ ] |
-| 2.6 | Projects & history: CRUD, gắn run vào dự án, lịch sử, snapshot | Khởi động lại app vẫn còn dữ liệu; snapshot tái hiện đúng kết quả cũ | 2 ngày | [ ] |
-| 2.7 | Import + comparison: nạp CSV thực nghiệm, map về tile/ô, đối chiếu dự đoán ↔ đo | **Import không bao giờ retrain**; ô không map được phải hiện rõ, không im lặng bỏ | 3 ngày | [ ] |
-| 2.8 | Export mở rộng: CSV/JSON/bundle provenance theo run và theo project | Bundle chứa model id, nguồn, phiên bản, nhãn development | 1,5 ngày | [ ] |
-| 2.9 | PostgreSQL 16 local + parity SQLite↔PG | Bộ test chạy xanh trên **cả hai** DB | 1,5 ngày | [ ] |
-| 2.10 | Cổng R3 đúng: `P = σ(10.187 − 3.275·x)`, tier-2 `P = σ(8.457 − 1.911·x̂)`, trạng thái `measured_borderline`/`predicted_borderline` | Golden test khớp `run_r3.py`; bỏ hẳn so sánh sai `psi <= 4.0` | 1,5 ngày | [ ] |
+| 2.6 | Projects & history: CRUD, gắn run vào dự án, lịch sử, snapshot | Khởi động lại app vẫn còn dữ liệu; snapshot tái hiện đúng kết quả cũ | 2 ngày | [x] 16/11 (backend) — `system/app/tests/test_workspace_api.py`; màn hình ở WP9 |
+| 2.7 | Import + comparison: nạp CSV thực nghiệm, map về tile/ô, đối chiếu dự đoán ↔ đo | **Import không bao giờ retrain**; ô không map được phải hiện rõ, không im lặng bỏ | 3 ngày | [x] 16/11 (backend) — `system/app/tests/test_import.py`; màn hình ở WP9 |
+| 2.8 | Export mở rộng: CSV/JSON/bundle provenance theo run và theo project | Bundle chứa model id, nguồn, phiên bản, nhãn development | 1,5 ngày | [x] 16/11 (backend) — `system/app/backend/api/exports.py`, test BATCH-06/HIST-02/IMP-04 |
+| 2.9 | PostgreSQL 16 local (Docker) + parity SQLite↔PG | Bộ test chạy xanh trên **cả hai** DB | 1,5 ngày | [x] 16/11 — SQLite 285 pass; PG 273 pass + 12 skip SQLite-only (`make test-pg`) |
+| 2.10 | Cổng R3 đúng: `P = σ(10.187 − 3.275·x)`, tier-2 `P = σ(8.457 − 1.911·x̂)`, trạng thái `measured_borderline`/`predicted_borderline` | Golden test khớp `run_r3.py`; bỏ hẳn so sánh sai `psi <= 4.0` | 1,5 ngày | [x] 16/11 — `system/app/tests/test_gate.py`, `system/app/DEVIATIONS.md` §7 (25,35/8,73/65,93%) |
 | 2.11 | View phân tích: ma trận 28×20, **footprint track 1D (mới)**, ranking, inspector, shortlist, panel ưu tiên top-k | 532 ô + 28 WT; track tái tính khớp ma trận trong 1e-9; panel ưu tiên có nhãn "hồi cứu, development" **trước** số | 3 ngày | [ ] |
 | 2.12 | Đổi model phục vụ sang LoRA-D *(phụ thuộc 1.13)* | Cần thêm `torch`+`transformers` vào backend (hiện chỉ có numpy) + đo lại latency + kích thước cài đặt; giữ npz làm mặc định bật/tắt bằng cấu hình | 2–4 ngày | [ ] |
 | 2.13 | Kiểm thử: pytest + vitest + Playwright cho flow mới, axe, đối chiếu `system/test-plan.md` | Ghi **số case thực tế**, không trích số lịch sử 22/10 | 3 ngày | [ ] |
 | 2.14 | Ảnh chụp + clip demo (cho `report/appendices/a-installation-user-guide.tex`) | Ảnh từ app thật với dữ liệu thật, không phải fixture | 0,5 ngày | [ ] |
 
-**Tổng ≈ 26–30 ngày làm việc.** Đây là đường găng của toàn bộ luận văn.
+**Tổng ≈ 35 ngày làm việc (≈ 7 tuần)** theo phân rã chi tiết — cao hơn ước lượng 26–30 ngày ban đầu vì thêm đo lại baseline (WP0), contract (WP3), PostgreSQL (WP8) và kiểm thử 3 trình duyệt × 4 breakpoint. Đây là đường găng của toàn bộ luận văn.
 
 ---
 
@@ -188,18 +190,19 @@ Không tạo deck `v2`/`final`/HTML song song.
 Nhánh 1 ‖ nhánh 2 chạy song song → cổng 🚦 (số liệu chốt **và** app đạt tiêu chí)
 → nhánh 3, rồi nhánh 4.
 
-| Tuần | Nhánh 1 | Máy CUDA | Nhánh 2 | Nhánh 3–4 |
+| Tuần | Nhánh 1 | Máy CUDA | Nhánh 2 (WP theo kế hoạch chi tiết) | Nhánh 3–4 |
 | --- | --- | --- | --- | --- |
-| T1 | 1.1–1.9 viết script | — | 2.1, 2.2 | — |
-| T2 | 1.12 phân tích | **1.10, 1.11 chạy** | 2.3, 2.4 | — |
-| T3 | 1.13, 1.14 | — | 2.5, 2.6 | khung chương |
-| T4 | 1.15, 1.16, 1.17 | — | 2.7, 2.8 | — |
-| T5 | — | — | 2.9, 2.10, 2.11 | — |
-| T6 | 🚦 | — | 2.12, 2.13, 2.14 🚦 | — |
-| T7 | — | — | sửa lỗi | 3.1–3.6 |
-| T8 | — | — | — | 3.7, 3.8, 4.2–4.5 |
+| T1 | 1.1–1.9 viết script | — | WP0, WP1, WP2 | — |
+| T2 | 1.12 phân tích | **1.10, 1.11 chạy** | WP3, WP4, bắt đầu WP5 | — |
+| T3 | 1.13, 1.14 | — | WP5, WP9.1–9.4 | khung chương |
+| T4 | 1.15, 1.16, 1.17 | — | WP6, WP9.5–9.6 | — |
+| T5 | 🚦 số liệu chốt | — | WP7, WP9.7–9.12 | — |
+| T6 | — | — | WP8, WP10 | — |
+| T7 | — | — | WP11, WP12 🚦 | — |
+| T8 | — | — | sửa lỗi | 3.1–3.6 |
+| T9 | — | — | — | 3.7, 3.8, 4.2–4.5 |
 
-**≈ 8 tuần.** Phụ thuộc D-2 (ngày bảo vệ) để biết có vừa hay không.
+**≈ 9 tuần.** Phụ thuộc D-2 (ngày bảo vệ) để biết có vừa hay không.
 
 | Rủi ro | Dự phòng |
 | --- | --- |
@@ -220,3 +223,6 @@ Nhánh 1 ‖ nhánh 2 chạy song song → cổng 🚦 (số liệu chốt **và
 | 16/11/2026 | Tạo biên bản. Tên EN đổi sang `Degron Reporter Assays`; tên VI chuyển sang `\ThesisTitleVI`; `proposal/` xác nhận xoá có chủ đích | Trọng + Claude |
 | 16/11/2026 | Nhánh 2 mở rộng từ "demo 4 tính năng" thành **toàn bộ phạm vi v0.2**; giao diện dùng skill `ui-ux-pro-max` | Trọng |
 | 16/11/2026 | Nhánh 1 chuyển từ Kaggle sang **máy CUDA local khác**, tái dùng bộ máy campaign có sẵn thay vì viết runner mới | Trọng |
+| 16/11/2026 | Thêm kế hoạch chi tiết nhánh 2 (`system/implementation-plan-2026-11-16.md`). Sửa tên bảng mục 2.3 cho khớp `db-design.md` §11. Tổng nhánh 2 tăng lên ≈ 35 ngày; timeline toàn bộ ≈ 9 tuần | Claude |
+| 16/11/2026 | WP0 xong: baseline đo lại tại `system/app/rebaseline-2026-11-16.json`. PostgreSQL 16 chạy bằng Docker thay `sudo apt` (G-2). Sửa shebang `.venv` của app còn trỏ đường dẫn `topics/degron-footprint/` cũ | Claude |
+| 16/11/2026 | Nhánh 2: xong WP0, WP2–WP8 (backend đủ 24 operation, job bền, import/so sánh, cổng R3, PostgreSQL) và WP1 (hệ thiết kế Fira Sans/Fira Code, shell sidebar). Còn WP9 (13 màn hình), WP10 (chờ nhánh 1), WP11, WP12. `dev.db` đã migrate `0003` và nạp lại nhãn R3; bản trước giữ ở `.data/backup/dev-2026-11-16.db` | Claude |

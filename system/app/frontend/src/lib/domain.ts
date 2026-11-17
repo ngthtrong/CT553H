@@ -13,8 +13,11 @@ export const STATUS: Record<DomainStatus, StatusPresentation> = {
   measured_in_domain: { label: 'In domain (measured)', pattern: 'solid', predicted: false, needsWarning: false },
   measured_out_of_domain: { label: 'Outside the domain (measured)', pattern: 'hatched', predicted: false, needsWarning: false },
   measured_unreliable: { label: 'Unreliable measurement', pattern: 'dotted', predicted: false, needsWarning: true },
+  // R3 gate: between the in/out cuts. Dotted like other uncertain states; the label tells them apart (W-2).
+  measured_borderline: { label: 'Borderline (measured)', pattern: 'dotted', predicted: false, needsWarning: true },
   predicted_in_domain: { label: 'In domain (predicted)', pattern: 'solid', predicted: true, needsWarning: true },
   predicted_out_of_domain: { label: 'Outside the domain (predicted)', pattern: 'hatched', predicted: true, needsWarning: true },
+  predicted_borderline: { label: 'Borderline (predicted)', pattern: 'dotted', predicted: true, needsWarning: true },
   unknown: { label: 'Domain unknown', pattern: 'empty', predicted: false, needsWarning: true },
 };
 
@@ -27,6 +30,16 @@ const FALLBACK_TEXT: Partial<Record<DomainStatus, { code: Warning['code']; messa
   measured_unreliable: {
     code: 'DOMAIN_UNRELIABLE',
     message: 'The measurement of this tile rests on too few reads; whether it is in the domain is uncertain.',
+  },
+  measured_borderline: {
+    code: 'DOMAIN_BORDERLINE',
+    message:
+      'This tile lies between the in-domain and out-of-domain cuts of the domain gate; the scores may not apply to it.',
+  },
+  predicted_borderline: {
+    code: 'DOMAIN_BORDERLINE',
+    message:
+      'The predicted domain status of this tile lies between the in-domain and out-of-domain cuts; the scores may not apply to it.',
   },
   predicted_in_domain: {
     code: 'PREDICTED_DOMAIN',

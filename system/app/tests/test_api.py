@@ -7,6 +7,7 @@ import json
 import logging
 import re
 from datetime import UTC, datetime, timedelta
+from pathlib import Path
 from urllib.parse import quote
 
 import pytest
@@ -15,7 +16,7 @@ from sqlalchemy import select, text
 from db.models import ModelVersion, PredictionCell, PredictionRun
 from db.session import make_engine
 
-from .conftest import mk_client
+from .conftest import db_contains, mk_client
 from .contract import check
 
 SEQ = 'DIMFLVDSSGSIGPENFSKMKTFMKNLV'
@@ -36,8 +37,10 @@ def test_api01_sequence(client):
     assert r.status_code == 200
     j = r.json()
     check('PredictionResult', j)
-    assert len(j['cells']) == 532 and j['domain']['status'] == 'unknown'
-    assert [w['code'] for w in j['warnings']] == ['DOMAIN_UNKNOWN']
+    # typed sequence: the R3 gate's tier 2 predicts its domain (x̂ ≈ 2.97 → P ≈ 0.94, in-domain)
+    assert len(j['cells']) == 532 and j['domain']['status'] == 'predicted_in_domain'
+    assert j['domain']['gate_model_id'] == 'gate-r3-v1'
+    assert [w['code'] for w in j['warnings']] == ['PREDICTED_DOMAIN']
     assert r.headers['cache-control'] == 'no-store' and r.headers['x-request-id']
     p = j['provenance']
     assert p['model_id'] == 'test-model-v1' and len(p['weights_sha256']) == 64
@@ -130,7 +133,7 @@ def test_api16_models(client, dbcopy, mini):
     assert predict(client, sequence=SEQ, model_id='test-model-v1').status_code == 200
     eng = make_engine(dbcopy)
     with eng.begin() as c:
-        row = dict(c.execute(select(ModelVersion)).mappings().one())
+        row = dict(c.execute(select(ModelVersion).where(ModelVersion.role == 'effect')).mappings().one())
         row.update(model_id='cand-v1', is_default=False, status='candidate', frozen_at=None)
         c.execute(ModelVersion.__table__.insert().values(**row))
     c2, _ = mk_client(mini, dbcopy)
@@ -152,17 +155,22 @@ def test_api17_body_limit(client):
 
 
 def test_api18_domain_statuses(client):
+    """R3 gate: tier 1 maps screen PSI (in ≤ 2.687, out ≥ 3.110); tier 2 labels the unscreened P12345 tile 5."""
     expect = {('P12345', 1): 'measured_in_domain', ('P12345', 3): 'measured_unreliable',
-              ('P12345', 4): 'measured_unreliable', ('P12345', 5): 'unknown', ('P22222', 1): 'measured_in_domain',
+              ('P12345', 4): 'measured_unreliable', ('P12345', 5): 'predicted_in_domain',
+              ('P22222', 1): 'measured_out_of_domain',                 # screen PSI 4.0: out under R3, in under the old 4.0 rule
               ('P22222', 3): 'measured_unreliable'}
     for (acc, n), st in expect.items():
-        j = predict(client, uniprot_id=acc, tile_index=n).json()
+        j = predict(client, uniprot_id=acc, tile_index=n, override_domain=st.endswith('out_of_domain')).json()
         assert j['domain']['status'] == st, (acc, n)
-        want = {'measured_unreliable': 'DOMAIN_UNRELIABLE', 'unknown': 'DOMAIN_UNKNOWN'}.get(st)
+        want = {'measured_unreliable': 'DOMAIN_UNRELIABLE', 'predicted_in_domain': 'PREDICTED_DOMAIN',
+                'measured_out_of_domain': 'OUT_OF_DOMAIN_OVERRIDDEN'}.get(st)
         assert (want in [w['code'] for w in j['warnings']]) == bool(want)
     tile1 = client.get('/v1/proteins/P12345/tiles').json()['tiles'][0]['sequence']
     j = predict(client, sequence=tile1).json()                # typed sequence equal to a stored tile is not looked up
-    assert j['domain']['status'] == 'unknown' and j['tile']['uniprot_id'] is None
+    assert j['tile']['uniprot_id'] is None
+    assert j['domain']['status'] == 'predicted_borderline'      # tier 2: x̂ ≈ 3.869, between 3.700 and 4.426
+    assert [w['code'] for w in j['warnings']] == ['DOMAIN_BORDERLINE', 'PREDICTED_DOMAIN']
 
 
 def test_api19_out_of_domain_refused_then_overridden(client):
@@ -213,7 +221,8 @@ def test_api21_tiles(client):
     check('TileList', j)
     assert [t['tile_index'] for t in j['tiles']] == [1, 2, 3, 4, 5] and j['protein']['n_tiles'] == 5
     assert [t['domain_status'] for t in j['tiles']] == [
-        'measured_in_domain', 'measured_out_of_domain', 'measured_unreliable', 'measured_unreliable', 'unknown']
+        'measured_in_domain', 'measured_out_of_domain', 'measured_unreliable', 'measured_unreliable',
+        'predicted_in_domain']
     assert client.get('/v1/proteins/O00001/tiles').json()['tiles'] == []
     assert client.get('/v1/proteins/P99999/tiles').status_code == 404
     assert client.get('/v1/proteins/xyz/tiles').status_code == 422
@@ -286,6 +295,7 @@ def test_api25_sources_hide_blocked(client):
 
 
 # ----------------------------------------------------------------------------- health, cors, limits
+@pytest.mark.sqlite_only                      # simulates a vanished database file
 def test_api26_health_variants(mini, mini_db, dbcopy, tmp_path):
     c, _ = mk_client(mini, mini_db['url'])
     j = c.get('/healthz').json()
@@ -311,7 +321,7 @@ def test_api26_health_variants(mini, mini_db, dbcopy, tmp_path):
     # database goes away after start: reference endpoints answer 503, a typed sequence still scores
     c5, app5 = mk_client(mini, dbcopy)
     app5.state.core.engine.dispose()
-    (tmp_path / 'copy.db').unlink()
+    Path(dbcopy.removeprefix('sqlite:///')).unlink()
     # sqlite keeps working on an unlinked file for open handles; force failure on the next connect instead
     app5.state.core.factory.kw['bind'] = make_engine(f'sqlite:///{tmp_path}/no/such/dir/y.db')
     assert c5.get('/v1/proteins/P12345/tiles').status_code == 503
@@ -386,7 +396,7 @@ def test_api30_csv_export(client):
                         r.headers['content-disposition'])
     lines = r.text.split('\n')
     assert lines[0].startswith('# model_id=') and any(x.startswith('# weights_sha256=') for x in lines)
-    assert 'domain_status=unknown' in r.text and 'warnings=DOMAIN_UNKNOWN' in r.text
+    assert 'domain_status=predicted_in_domain' in r.text and 'warnings=PREDICTED_DOMAIN' in r.text
     body = [x for x in lines if x and not x.startswith('#')]
     assert len(body) == 533 and body[0].split(',')[0] == 'peptide' and body[1].startswith('user_seq,0,1,D,A,')
     r2 = client.post('/v1/export', json={'uniprot_id': 'P12345', 'tile_index': 1, 'format': 'csv'})
@@ -435,7 +445,7 @@ def test_api40_create_run(mini, dbcopy):
         run = conn.execute(select(PredictionRun)).one()
         n = conn.execute(select(PredictionCell).where(PredictionCell.run_id == run.run_id)).fetchall()
     assert run.share_token_hash == hashlib.sha256(token.encode()).hexdigest() and len(n) == 532
-    assert token.encode() not in open(dbcopy.removeprefix('sqlite:///'), 'rb').read()      # SEC-04: hash only
+    assert not db_contains(dbcopy, token)                                                # SEC-04: hash only
 
 
 def test_api41_read_run_equals_original(mini, dbcopy):
@@ -547,9 +557,9 @@ def test_sec01_sequence_stored_only_for_explicit_share(mini, dbcopy):
     canary = 'WYFWYFWYFWYFWYFWYFWYFWYFWYFW'[:28]
     predict(c, sequence=canary)
     c.post('/v1/export', json={'sequence': canary, 'format': 'csv'})
-    assert canary.encode() not in open(dbcopy.removeprefix('sqlite:///'), 'rb').read()
+    assert not db_contains(dbcopy, canary)
     make_run(c, sequence=canary)
-    assert canary.encode() in open(dbcopy.removeprefix('sqlite:///'), 'rb').read()
+    assert db_contains(dbcopy, canary)
 
 
 FUZZ = ['', ' ', '\x00', '‮', '😀' * 28, 'A' * 10_000, "' OR 1=1 --", '../../etc/passwd', '%s%s%s', '{{7*7}}',

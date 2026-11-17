@@ -20,12 +20,16 @@ SECURITY_HEADERS = [
 ]
 API_CSP = (b'content-security-policy', b"default-src 'none'; frame-ancestors 'none'")
 PREDICT_ROUTES = {('POST', '/v1/predict'), ('POST', '/v1/export'), ('POST', '/v1/runs')}
+WORKSPACE_COMPUTE = {'analyses', 'jobs', 'datasets', 'comparisons'}
 
 
 def _bucket(method: str, path: str) -> str | None:
     if path == '/healthz' or method == 'OPTIONS':
         return None
     if (method, path) in PREDICT_ROUTES:
+        return 'predict'
+    # workspace writes that compute or parse: saving an analysis, submitting a job, previewing an import, comparing
+    if method == 'POST' and path.startswith('/v1/') and path.rsplit('/', 1)[-1] in WORKSPACE_COMPUTE:
         return 'predict'
     if path.startswith('/v1/'):
         return 'reference'

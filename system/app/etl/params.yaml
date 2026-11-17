@@ -1,7 +1,7 @@
 # Thresholds copied from the research code; the ETL does not recompute them.
 screen:
   read_min: 10.0            # research/residue-task-derisk-2026-10-15/residue_data.py READ_MIN
-  psi_max: 4.0              # relaxed degron threshold of the product model (P0)
+  # psi_max removed 16 Nov 2026: the screen PSI is mapped through the R3 gate, never compared with 4.0
 tile:
   length: 28
   step: 23
@@ -14,3 +14,7 @@ model:
   domain_description: "28-mer internal tiles, GPS assay (Zhang 2023), intrinsic PSI(WT) <= 4.0"
 clinvar:
   file_date: "2026-10-12"
+gate:
+  gate_model_id: gate-r3-v1
+  weights_file: gate-r3-v1.npz
+  frozen_at: "2026-10-22T00:00:00+00:00"

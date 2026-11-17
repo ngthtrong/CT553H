@@ -12,7 +12,7 @@ from db.session import make_engine
 from etl import load as etl
 
 from . import minidata
-from .conftest import APP
+from .conftest import APP, fresh_db_url
 
 
 def migrate(url):
@@ -25,7 +25,7 @@ def migrate(url):
 
 def fresh_tree(tmp_path, **kw):
     mini = minidata.build(tmp_path / 'tree', **kw)
-    url = f"sqlite:///{tmp_path / 'e.db'}"
+    url = fresh_db_url(tmp_path)
     migrate(url)
     return mini, url
 
@@ -40,8 +40,9 @@ def test_first_load_counts(mini_db):
     assert r['tables']['tile']['inserted'] == 5 + 4 + 0           # tiles of P12345, P22222, none for O00001
     assert r['training_peptides'] == 1 and r['training_tile_mismatches'] == 0
     assert r['training_cells'] == r['tables']['measured_cell']['inserted']
-    assert r['tiles_per_domain_status'] == {'measured_in_domain': 2, 'measured_out_of_domain': 2,
-                                            'measured_unreliable': 3, 'unknown': 1}
+    # R3 tier 1 (in ≤ 2.687 < borderline < 3.110 ≤ out) on screen PSI; tier 2 on the unscreened scorable tile
+    assert r['tiles_per_domain_status'] == {'measured_in_domain': 1, 'measured_out_of_domain': 3,
+                                            'measured_unreliable': 3, 'predicted_in_domain': 1}
     assert r['screen_rows'] == 10 and r['screen_rows_unmatched'] == 2
     assert r['screen_rows_unmatched_reasons'] == {'tile_index_beyond_last_window': 1, 'beyond_last_window_by_1': 1,
                                                   'accession_not_in_snapshot': 1}
@@ -56,8 +57,10 @@ def test_domain_statuses_in_database(mini_db):
     assert rows[('P12345', 2)].domain_status == 'measured_out_of_domain'
     assert rows[('P12345', 3)].domain_status == 'measured_unreliable'
     assert rows[('P12345', 4)].domain_status == 'measured_unreliable' and rows[('P12345', 4)].psi_wt_measured is None
-    assert rows[('P12345', 5)].domain_status == 'unknown' and rows[('P12345', 5)].screen_peptide_id is None
-    assert rows[('P22222', 1)].domain_status == 'measured_in_domain'          # PSI 4.0, reads 10: boundary is inside
+    assert rows[('P12345', 5)].domain_status == 'predicted_in_domain' and rows[('P12345', 5)].screen_peptide_id is None
+    assert rows[('P12345', 5)].psi_wt_predicted_by == 'gate-r3-v1'
+    assert rows[('P12345', 5)].psi_wt_predicted == pytest.approx(2.678680611946694, abs=1e-9)
+    assert rows[('P22222', 1)].domain_status == 'measured_out_of_domain'      # screen PSI 4.0 is not compared with 4.0
     assert rows[('P22222', 2)].domain_status == 'measured_out_of_domain'
     assert rows[('P22222', 3)].domain_status == 'measured_unreliable'
     assert rows[('P22222', 4)].scorable is False and rows[('P22222', 4)].domain_status == 'unknown'
@@ -199,7 +202,11 @@ def test_clinvar_scopes(tmp_path):
 
 def test_model_registered_with_hash_and_card(mini_db):
     with make_engine(mini_db['url']).connect() as c:
-        m = c.execute(select(ModelVersion)).one()
+        m = c.execute(select(ModelVersion).where(ModelVersion.role == 'effect')).one()
+        g = c.execute(select(ModelVersion).where(ModelVersion.role == 'gate')).one()
+    assert g.model_id == 'gate-r3-v1' and g.kind == 'r3-logistic-ridge' and g.status == 'frozen' and g.is_default
+    assert g.weights_sha256 == '13be4bf18fdd14e48e2e2384ce24fea3ca486a8f7dbc02a199fb8d39aa5a0509'
+    assert mini_db['report']['gate_weights_sha256'] == g.weights_sha256
     assert m.status == 'frozen' and m.is_default and m.role == 'effect'
     assert len(m.weights_sha256) == 64 and 'Model card' in m.card_markdown
     assert m.metrics['source_file'].endswith('results.json') and m.trained_on_sources == ['zhang2023-mendeley-v2']
@@ -221,13 +228,15 @@ def test_migration_matches_models_and_downgrades(tmp_path):
     from alembic.migration import MigrationContext
 
     from db.models import Base
-    url = f"sqlite:///{tmp_path / 'm.db'}"
+    url = fresh_db_url(tmp_path, 'm.db')
     cfg = Config(str(APP / 'backend/alembic.ini'))
     cfg.set_main_option('sqlalchemy.url', url)
     command.upgrade(cfg, 'head')
     with make_engine(url).connect() as conn:
         assert compare_metadata(MigrationContext.configure(conn), Base.metadata) == []
     command.downgrade(cfg, 'base')
-    with make_engine(url).connect() as conn:
-        tables = {r[0] for r in conn.exec_driver_sql("SELECT name FROM sqlite_master WHERE type = 'table'")}
+    from sqlalchemy import inspect
+    eng = make_engine(url)
+    tables = set(inspect(eng).get_table_names())
+    eng.dispose()
     assert tables <= {'alembic_version'}

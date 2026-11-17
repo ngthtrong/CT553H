@@ -22,7 +22,7 @@ def error_response(status: int, code: str, message: str, field: str | None = Non
 def install(app: FastAPI) -> None:
     @app.exception_handler(DomainError)
     async def _domain(_: Request, exc: DomainError):
-        return error_response(exc.status, exc.code, exc.message, exc.field)
+        return JSONResponse(exc.body(), status_code=exc.status)
 
     @app.exception_handler(RequestValidationError)
     async def _validation(_: Request, exc: RequestValidationError):

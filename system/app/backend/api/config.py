@@ -15,8 +15,20 @@ class Settings(BaseSettings):
 
     database_url: str = 'sqlite:///./degron.db'
     model_dir: Path = APP_DIR / 'models'
-    gate_weights: Path | None = None                     # gate-weights.npz from experiment R3 (not available yet)
-    gate_card: Path | None = None                        # gate-card.json
+    # Project-owned files (staged/committed imports). Copy together with the database for recovery (db-design §9).
+    workspace_dir: Path = APP_DIR.parent / '.data' / 'workspace'
+    # Workspace limits (proposed NFR-07 values; FR-36). JSON bodies of jobs/saves are larger than single predictions.
+    max_workspace_body_bytes: int = 256 * 1024
+    max_batch_peptides: int = 100
+    max_protein_residues: int = 10_000
+    max_import_bytes: int = 10 * 1024 * 1024
+    max_import_rows: int = 100_000
+    staged_import_hours: int = 24
+    job_lease_seconds: int = 60
+    worker_poll_seconds: float = 1.0
+    embedded_worker: bool = False                        # run the job worker inside the API process (single command)
+    gate_weights: Path | None = None                     # default: the file named in the gate card
+    gate_card: Path | None = None                        # default: <model_dir>/gate.json written by the ETL (R3 gate)
     allowed_origins: list[str] = Field(default_factory=lambda: ['http://localhost:5173'])
     rate_limit_predict: int = 60                         # per client and window, prediction endpoints
     rate_limit_reference: int = 120                      # per client and window, reference endpoints

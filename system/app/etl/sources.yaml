@@ -70,6 +70,19 @@ sources:
       - {role: model_weights, path: processed/calibration-p6-model.npz, sha256: 8bec0b04bdc7da698da98d91adea944dd43583f93bc67233600e6ae0075cd9c3}
       - {role: model_results, path: ../research/calibration-p6-2026-10-22/results.json, sha256: d4cf0c9893d26201a6895888237880394872997133b1864963a15514d0349f0c}
       - {role: curve_results, path: ../research/learning-curve-2026-10-22/results.json, sha256: 0ece460390ba9d28ed53eec8e38e3b3d9cf0ea94f7d64fa09e2472b2f6f55c43}
+  - source_id: own-gate-r3-v1
+    name: Frozen domain gate R3 (this thesis, r3-domain-gate-2026-10-22)
+    version: v1, run 2026-10-22 (Kaggle CPU)
+    citation: Nguyen Thanh Trong, internal report research/r3-domain-gate-2026-10-22
+    url: null
+    license_name: Own work
+    license_class: open
+    redistribution_ok: true
+    attribution_text: Domain gate gate-r3-v1, degron-footprint thesis project
+    retrieved_on: 2026-10-22
+    files:
+      - {role: gate_weights, path: ../research/r3-domain-gate-2026-10-22/run-kaggle-20261022/gate-weights.npz, sha256: 13be4bf18fdd14e48e2e2384ce24fea3ca486a8f7dbc02a199fb8d39aa5a0509}
+      - {role: gate_card, path: ../research/r3-domain-gate-2026-10-22/run-kaggle-20261022/gate-card.json, sha256: 7019c6058ea562c5487f84329d909902eabbdd2a8f12eda5d37a28721257bc72}
 
   # ---- registered so the register is complete; their files are never loaded (db-design.md §6) ----
   - source_id: koren2018-nihms967427

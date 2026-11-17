@@ -14,10 +14,14 @@ import gzip
 import hashlib
 import json
 import random
+import shutil
 from pathlib import Path
 
 import numpy as np
 import yaml
+
+REPO = next(p for p in Path(__file__).resolve().parents if (p / 'CLAUDE.md').exists())
+R3_DIR = REPO / 'research/r3-domain-gate-2026-10-22/run-kaggle-20261022'
 
 AAS = 'ACDEFGHIKLMNPQRSTVWY'
 
@@ -160,6 +164,12 @@ def build(root: Path, *, extra_sources: list[dict] | None = None) -> dict:
     write_model(model)
     write_clinvar(clin)
     write_results(calib, curve)
+    # the real frozen R3 gate (tracked in git): the ETL copies it and labels tiles with its tier-1 logistic
+    r3 = topic / 'research/r3-domain-gate-2026-10-22/run-kaggle-20261022'
+    r3.mkdir(parents=True, exist_ok=True)
+    gate_w, gate_c = r3 / 'gate-weights.npz', r3 / 'gate-card.json'
+    for f in (gate_w, gate_c):
+        shutil.copyfile(R3_DIR / f.name, f)
 
     def base(sid, redistrib=True, cls='open', **kw):
         return {'source_id': sid, 'name': sid, 'version': 'test', 'citation': 'test', 'url': None,
@@ -177,12 +187,19 @@ def build(root: Path, *, extra_sources: list[dict] | None = None) -> dict:
             {'role': 'model_weights', 'path': 'processed/model.npz', 'sha256': sha256(model)},
             {'role': 'model_results', 'path': '../research/calib/results.json', 'sha256': sha256(calib)},
             {'role': 'curve_results', 'path': '../research/curve/results.json', 'sha256': sha256(curve)}]),
+        base('own-gate-r3-v1', files=[
+            {'role': 'gate_weights', 'path': '../research/r3-domain-gate-2026-10-22/run-kaggle-20261022/gate-weights.npz',
+             'sha256': sha256(gate_w)},
+            {'role': 'gate_card', 'path': '../research/r3-domain-gate-2026-10-22/run-kaggle-20261022/gate-card.json',
+             'sha256': sha256(gate_c)}]),
         base('koren2018-nihms967427', redistrib=False, cls='internal_only', load=False),
         *(extra_sources or []),
     ]
     sources_path = root / 'sources.yaml'
     sources_path.write_text(yaml.safe_dump({'sources': sources}, sort_keys=False))
-    params = {'screen': {'read_min': 10.0, 'psi_max': 4.0}, 'tile': {'length': 28, 'step': 23},
+    params = {'screen': {'read_min': 10.0}, 'tile': {'length': 28, 'step': 23},
+              'gate': {'gate_model_id': 'gate-r3-v1', 'weights_file': 'gate-r3-v1.npz',
+                       'frozen_at': '2026-10-22T00:00:00+00:00'},
               'model': {'model_id': 'test-model-v1', 'weights_file': 'test-model-v1.npz',
                         'frozen_at': '2026-10-22T00:00:00+00:00', 'feature_spec': 'm3-180 (test)',
                         'event_definition': 'P(DeltaPSI >= 1.0)',

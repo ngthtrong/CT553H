@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import asyncio
 import logging
+import threading
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -17,7 +18,7 @@ from . import errors
 from .config import Settings
 from .core import build_core, load_contract
 from .middleware import CoreMiddleware
-from .routers import health, predict, reference, runs
+from .routers import datasets, health, jobs, predict, projects, reference, runs
 
 log = logging.getLogger('api')
 
@@ -40,6 +41,12 @@ def create_app(settings: Settings | None = None, engine: Engine | None = None) -
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
+        stop = threading.Event()
+        worker_thread = None
+        if settings.embedded_worker:                      # single-command local start; A-2 default is a process
+            from .worker import from_core
+            worker_thread = threading.Thread(target=from_core(core).run, args=(stop,), name='job-worker', daemon=True)
+            worker_thread.start()
         if settings.background_jobs:
             core.tasks = [
                 asyncio.create_task(_periodic(settings.purge_interval_seconds, core.purge_expired, 'purge')),
@@ -47,6 +54,9 @@ def create_app(settings: Settings | None = None, engine: Engine | None = None) -
                                               lambda: core.usage.flush(factory), 'usage flush')),
             ]
         yield
+        stop.set()
+        if worker_thread is not None:
+            worker_thread.join(timeout=10)
         for t in core.tasks:
             t.cancel()
         try:
@@ -68,11 +78,14 @@ def create_app(settings: Settings | None = None, engine: Engine | None = None) -
     app.include_router(predict.router)
     app.include_router(runs.router)
     app.include_router(reference.router)
+    app.include_router(projects.router)
+    app.include_router(jobs.router)
+    app.include_router(datasets.router)
     app.include_router(health.router)
     app.add_middleware(CoreMiddleware, core=core)
     app.add_middleware(GZipMiddleware, minimum_size=1000)
     app.add_middleware(
-        CORSMiddleware, allow_origins=settings.allowed_origins, allow_methods=['GET', 'POST', 'OPTIONS'],
+        CORSMiddleware, allow_origins=settings.allowed_origins, allow_methods=['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
         allow_headers=['Content-Type', 'X-Share-Token'],
         expose_headers=['X-Request-Id', 'Content-Disposition', 'Retry-After'], max_age=600)
     return app

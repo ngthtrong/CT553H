@@ -10,7 +10,7 @@ import schemathesis
 from hypothesis import HealthCheck, settings
 from schemathesis import checks as st_checks
 
-from .conftest import mk_client
+from .conftest import BACKEND, copy_db, mk_client, pg_drop
 from .contract import check, spec
 
 schema = schemathesis.openapi.from_dict(spec())
@@ -31,11 +31,12 @@ CHECKS = [st_checks.not_a_server_error, st_checks.status_code_conformance, error
 
 @pytest.fixture(scope='module')
 def contract_app(mini, mini_db, tmp_path_factory):
-    import shutil
-    path = tmp_path_factory.mktemp('c') / 'contract.db'
-    shutil.copy(mini_db['path'], path)
-    _, app = mk_client(mini, f'sqlite:///{path}')
-    return app
+    url = copy_db(mini_db, tmp_path_factory.mktemp('c'))
+    _, app = mk_client(mini, url, workspace_dir=tmp_path_factory.mktemp('ws'))
+    yield app
+    if BACKEND == 'postgresql':
+        app.state.core.engine.dispose()
+        pg_drop(url)
 
 
 @schema.parametrize()

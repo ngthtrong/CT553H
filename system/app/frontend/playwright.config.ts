@@ -10,7 +10,7 @@ const port = preview ? 4173 : 5173;
 export default defineConfig({
   testDir: './e2e',
   // Against the real backend only e2e/real.spec.ts runs: the other specs rely on mock fixtures such as tile 5 of A6NMZ7.
-  testMatch: real ? /real\.spec\.ts/ : /(flows|narrow)\.spec\.ts/,
+  testMatch: real ? /real\.spec\.ts/ : /(flows|narrow|design)\.spec\.ts/,
   timeout: 60_000,
   fullyParallel: false,
   workers: 1,

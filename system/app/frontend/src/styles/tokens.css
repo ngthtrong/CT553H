@@ -1,0 +1,146 @@
+/* Design tokens of Degron Workspace, three layers (implementation plan WP1.3; Workspace UI v2 structure):
+   1 primitives (raw values) → 2 purpose (what a colour is for, per theme) → 3 component (what a part uses).
+   Components use layers 2–3 only, never a primitive or a raw hex.
+
+   The scientific colour scales are NOT here and never follow a theme: inverted Viridis for calibrated probability,
+   PuOr for raw score, hatching for wild-type cells (src/lib/colors.ts). They are evidence, not decoration.
+
+   tests/contrast.test.ts reads the purpose blocks (resolving var() through the primitives) and checks text ≥ 4.5:1 and
+   UI parts ≥ 3:1 in both themes; keep one token per declaration. Decisions: system/design/ui-ux-pro-max-2026-11-16/README.md */
+
+/* ---- 1. primitives ------------------------------------------------------------------------------------------------- */
+:root {
+  --p-white: #ffffff;
+  --p-gray-25: #fafbfb;
+  --p-gray-50: #f5f7f7;
+  --p-gray-100: #edf0ef;
+  --p-gray-200: #dce3e0;
+  --p-gray-400: #77877f;
+  --p-gray-600: #53625b;
+  --p-gray-950: #192b23;
+  --p-green-50: #eaf4ee;
+  --p-green-600: #12634f;
+  --p-green-700: #0a4c3c;
+  --p-amber-50: #fff7e6;
+  --p-amber-600: #a16a00;
+  --p-amber-800: #6b4a09;
+  --p-red-50: #fff0ed;
+  --p-red-600: #b42318;
+  --p-red-800: #8f2f26;
+  --p-blue-50: #edf2fa;
+  --p-blue-800: #2f5686;
+  --p-night-950: #0f1814;
+  --p-night-900: #16221d;
+  --p-night-850: #1b2a24;
+  --p-night-700: #2b3b34;
+  --p-night-500: #73867d;
+  --p-night-300: #a6b5ae;
+  --p-night-100: #e4ece8;
+  --p-teal-300: #6cc9ab;
+  --p-teal-200: #9fe0c9;
+  --p-teal-900: #163329;
+  --p-ink-teal: #08140f;
+  --p-amber-night-bg: #3a2c08;
+  --p-amber-night-text: #ffe3a3;
+  --p-amber-night-line: #d9a53a;
+  --p-red-night-bg: #3d1414;
+  --p-red-night-text: #ffd0cc;
+  --p-red-night-line: #ff8a80;
+  --p-blue-night-bg: #142338;
+  --p-blue-night-text: #b3cdf2;
+  --p-slate-400: #9aa5b0;
+}
+
+/* ---- 2. purpose: light (also the default) ------------------------------------------------------------------------ */
+:root,
+html[data-theme='light'] {
+  color-scheme: light;
+  --bg: var(--p-gray-50);
+  --surface: var(--p-white);
+  --subtle: var(--p-gray-25);
+  --soft: var(--p-gray-100);
+  --text: var(--p-gray-950);
+  --muted: var(--p-gray-600);
+  --border: var(--p-gray-400);
+  --line: var(--p-gray-200);
+  --accent: var(--p-green-600);
+  --accent-hover: var(--p-green-700);
+  --accent-text: var(--p-white);
+  --accent-soft: var(--p-green-50);
+  --accent-ink: var(--p-green-700);
+  --warn-bg: var(--p-amber-50);
+  --warn-text: var(--p-amber-800);
+  --warn-border: var(--p-amber-600);
+  --danger-bg: var(--p-red-50);
+  --danger-text: var(--p-red-800);
+  --danger-border: var(--p-red-600);
+  --info-bg: var(--p-blue-50);
+  --info-text: var(--p-blue-800);
+  --focus: var(--p-green-600);
+  --tile-fill: var(--p-green-600);
+  --tile-fill-text: var(--p-white);
+  --tile-hatch: var(--p-gray-400);
+  --shadow: 0 8px 28px rgb(25 43 35 / 0.08);
+}
+
+/* ---- 2. purpose: dark ---------------------------------------------------------------------------------------------- */
+html[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: var(--p-night-950);
+  --surface: var(--p-night-900);
+  --subtle: var(--p-night-850);
+  --soft: var(--p-night-850);
+  --text: var(--p-night-100);
+  --muted: var(--p-night-300);
+  --border: var(--p-night-500);
+  --line: var(--p-night-700);
+  --accent: var(--p-teal-300);
+  --accent-hover: var(--p-teal-200);
+  --accent-text: var(--p-ink-teal);
+  --accent-soft: var(--p-teal-900);
+  --accent-ink: var(--p-teal-200);
+  --warn-bg: var(--p-amber-night-bg);
+  --warn-text: var(--p-amber-night-text);
+  --warn-border: var(--p-amber-night-line);
+  --danger-bg: var(--p-red-night-bg);
+  --danger-text: var(--p-red-night-text);
+  --danger-border: var(--p-red-night-line);
+  --info-bg: var(--p-blue-night-bg);
+  --info-text: var(--p-blue-night-text);
+  --focus: var(--p-teal-300);
+  --tile-fill: var(--p-teal-300);
+  --tile-fill-text: var(--p-ink-teal);
+  --tile-hatch: var(--p-slate-400);
+  --shadow: 0 8px 28px rgb(0 0 0 / 0.35);
+}
+
+/* ---- 3. component ---------------------------------------------------------------------------------------------- */
+:root {
+  /* Fira Sans for text, Fira Code for sequences, ids and numbers; self-hosted (@fontsource, OFL), never a CDN (NFR-09) */
+  --font-sans: 'Fira Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-mono: 'Fira Code', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  /* dense 4-px scale (skill density 8) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --duration: 150ms;
+  --duration-slow: 250ms;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --sidebar-width: 216px;
+  --header-height: 56px;
+  --target: 44px;
+  --button-bg: var(--accent);
+  --button-fg: var(--accent-text);
+  --button-bg-hover: var(--accent-hover);
+  --panel-bg: var(--surface);
+  --panel-border: var(--line);
+  --field-bg: var(--surface);
+  --field-border: var(--border);
+  --nav-active-bg: var(--accent-soft);
+  --nav-active-fg: var(--accent-ink);
+}

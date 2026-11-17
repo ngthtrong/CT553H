@@ -34,6 +34,7 @@ sys.path.insert(0, str(APP_DIR / 'backend'))
 from db.models import Base  # noqa: E402
 from db.session import make_engine  # noqa: E402
 from degron_footprint.features import feature_matrix  # noqa: E402
+from degron_footprint.gate_r3 import GATE_CARD, R3Gate, card_for  # noqa: E402
 from degron_footprint.model import sha256_file  # noqa: E402
 from degron_footprint.sources import BLOCKED_SOURCE_IDS  # noqa: E402
 from degron_footprint.validation import is_scorable, n_tiles  # noqa: E402
@@ -277,22 +278,24 @@ def read_screen(path: Path) -> dict[tuple[str, int], tuple[str, float | None, fl
     return out
 
 
-def tier1_status(psi: float | None, reads: float | None, read_min: float, psi_max: float) -> str:
+def tier1_status(psi: float | None, reads: float | None, read_min: float, gate: R3Gate) -> str:
+    """R3 tier 1: the screen PSI goes through the frozen logistic (DEVIATIONS.md §7). It is never compared with the
+    4.0 of the intrinsic PSI(WT) scale: the two scales differ by about 0.9 and that rule had specificity 0.20."""
     if psi is None or reads is None or reads < read_min:
         return 'measured_unreliable'
-    return 'measured_in_domain' if psi <= psi_max else 'measured_out_of_domain'
+    return gate.tier1_status(psi)
 
 
 def step_tiles(conn: Connection, seqs: dict[str, str], screen: dict, uniprot_source: str, params: dict,
-               report: Report) -> None:
+               report: Report, gate: R3Gate) -> None:
     L, step = params['tile']['length'], params['tile']['step']
-    rm, pm = params['screen']['read_min'], params['screen']['psi_max']
+    rm = params['screen']['read_min']
     matched: set[tuple[str, int]] = set()
     counts: Counter = Counter()
     sync_c: Counter = Counter()
     accs = sorted(seqs)
     cols = ['start_pos', 'end_pos', 'sequence', 'scorable', 'screen_peptide_id', 'psi_wt_measured',
-            'reads_measured', 'domain_status', 'source_id']
+            'reads_measured', 'psi_wt_predicted', 'psi_wt_predicted_by', 'domain_status', 'source_id']
     for i in range(0, len(accs), 1500):
         rows = []
         for acc in accs[i:i + 1500]:
@@ -306,15 +309,23 @@ def step_tiles(conn: Connection, seqs: dict[str, str], screen: dict, uniprot_sou
                 if pep is not None:
                     matched.add((acc, n))
                     if ok:
-                        status = tier1_status(psi, reads, rm, pm)
+                        status = tier1_status(psi, reads, rm, gate)
                     else:
                         counts['screen_matched_not_scorable'] += 1
-                counts[status] += 1 if ok else 0
                 rows.append({'uniprot_acc': acc, 'tile_index': n, 'start_pos': start, 'end_pos': start + L - 1,
                              'sequence': ts, 'scorable': ok, 'screen_peptide_id': pep,
                              'psi_wt_measured': psi if pep is not None else None,
                              'reads_measured': reads if pep is not None else None,
+                             'psi_wt_predicted': None, 'psi_wt_predicted_by': None,
                              'domain_status': status, 'source_id': uniprot_source})
+        # R3 tier 2 for scorable tiles the screen did not measure, once per chunk: stored so the tile picker and a
+        # prediction always show the same status (FR-09)
+        todo = [r for r in rows if r['scorable'] and r['domain_status'] == 'unknown'] if gate.usable_tier2 else []
+        for r, (st, x_hat) in zip(todo, gate.assess_many([r['sequence'] for r in todo]), strict=True):
+            r.update(domain_status=st, psi_wt_predicted=x_hat, psi_wt_predicted_by=gate.gate_model_id)
+        for r in rows:
+            if r['scorable']:
+                counts[r['domain_status']] += 1
         sync_c.update(sync(conn, T['tile'], ['uniprot_acc', 'tile_index'], rows, cols))
     report.add('tile', sync_c)
     unmatched = [k for k in screen if k not in matched]
@@ -549,6 +560,47 @@ or of unknown domain, is not covered. Probabilities are not probabilities of dis
     return metrics, calibration, card
 
 
+def step_gate(conn: Connection, paths: dict[str, Path], params: dict, model_dir: Path, report: Report) -> R3Gate:
+    """Copy the frozen R3 gate next to the effect model, write the application's own card for it (the R3 files are
+    not edited) and register it as the default `gate` model."""
+    g = params['gate']
+    model_dir.mkdir(parents=True, exist_ok=True)
+    target = model_dir / g['weights_file']
+    if not target.exists() or sha256_file(target) != sha256_file(paths['gate_weights']):
+        shutil.copyfile(paths['gate_weights'], target)
+    source_card = json.loads(paths['gate_card'].read_text(encoding='utf-8'))
+    card = card_for(target, g['gate_model_id'], source_card)
+    (model_dir / GATE_CARD).write_text(json.dumps(card, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+    gate = R3Gate(target, card)
+    cuts = gate.cuts()
+    frozen = datetime.fromisoformat(g['frozen_at'])
+    md = (f"# Domain gate {g['gate_model_id']}\n\nFrozen output of experiment R3 "
+          f"(research/r3-domain-gate-2026-10-22). Tier 1 maps the screen PSI x through "
+          f"P = σ({gate.m1[0]:.3f} {gate.m1[1]:+.3f}·x): in-domain for x ≤ {cuts['tier1']['in_at_or_below']:.3f}, "
+          f"out for x ≥ {cuts['tier1']['out_at_or_above']:.3f}, borderline between. Tier 2 predicts the screen PSI "
+          f"from 420 sequence counts and maps it through P = σ({gate.m2[0]:.3f} {gate.m2[1]:+.3f}·x̂) "
+          f"(cuts {cuts['tier2']['in_at_or_below']:.3f} / {cuts['tier2']['out_at_or_above']:.3f}).\n\n"
+          "**Limits.** The gate says how much a tile resembles the training domain; it says nothing about the "
+          "accuracy of ΔPSI scores there. Development OOF evaluation only (R3 AUROC tier 1 "
+          f"{source_card['tier1']['auroc_oof']:.3f}, tier 2 {source_card['tier2']['auroc_oof']:.3f}).\n")
+    row = {'model_id': g['gate_model_id'], 'role': 'gate', 'kind': card['kind'], 'status': 'frozen',
+           'is_default': True, 'tile_length': 28, 'feature_spec': '20 aa counts + 400 adjacent-pair counts',
+           'weights_path': g['weights_file'], 'weights_sha256': card['weights_sha256'],
+           'event_definition': 'P(intrinsic PSI(WT) <= 4.0)',
+           'domain_description': 'in-domain P >= 0.8, borderline 0.5 <= P < 0.8, out-of-domain P < 0.5',
+           'metrics': {'tier1': source_card['tier1'], 'tier2': source_card['tier2'], 'cuts': cuts},
+           'calibration': None, 'trained_on_sources': ['zhang2023-geo-gse240610', 'zhang2023-mendeley-v2'],
+           'evidence_label': 'development OOF benchmark, not external validation', 'card_markdown': md,
+           'created_at': frozen, 'frozen_at': frozen}
+    cols = ['role', 'kind', 'status', 'is_default', 'tile_length', 'feature_spec', 'weights_path', 'weights_sha256',
+            'event_definition', 'domain_description', 'metrics', 'calibration', 'trained_on_sources',
+            'evidence_label', 'card_markdown', 'frozen_at']
+    report.add('model_version', sync(conn, T['model_version'], ['model_id'], [row], cols))
+    report.notes['gate_weights_sha256'] = card['weights_sha256']
+    report.notes['gate_cuts'] = cuts
+    return gate
+
+
 def step_model(conn: Connection, paths: dict[str, Path], params: dict, model_dir: Path, report: Report) -> None:
     m = params['model']
     model_dir.mkdir(parents=True, exist_ok=True)
@@ -596,7 +648,8 @@ def run(db_url: str, data_dir_topic: Path | None = None, sources_path: Path | No
     status = 'failed'
     error: str | None = None
     try:
-        roles = ['protein_fasta', 'screen_psi', 'sat_labels', 'model_weights', 'model_results', 'curve_results']
+        roles = ['protein_fasta', 'screen_psi', 'sat_labels', 'model_weights', 'model_results', 'curve_results',
+                 'gate_weights', 'gate_card']
         if clinvar_scope != 'none':
             roles.append('clinvar_summary')
         gate_error: EtlError | None = None
@@ -611,13 +664,14 @@ def run(db_url: str, data_dir_topic: Path | None = None, sources_path: Path | No
             raise gate_error
         with engine.begin() as conn:
             step_model(conn, paths, params, model_dir, report)
+            gate_model = step_gate(conn, paths, params, model_dir, report)
             up_src, _ = file_of(sources, 'protein_fasta')
             geo_src, _ = file_of(sources, 'screen_psi')
             sat_src, _ = file_of(sources, 'sat_labels')
             seqs = step_protein(conn, paths['protein_fasta'], up_src['source_id'], _release(up_src), report)
             genes = {acc: g for acc, _, g, _ in read_fasta(paths['protein_fasta'])}
             screen = read_screen(paths['screen_psi'])
-            step_tiles(conn, seqs, screen, up_src['source_id'], params, report)
+            step_tiles(conn, seqs, screen, up_src['source_id'], params, report, gate_model)
             step_measured(conn, paths['sat_labels'], seqs, sat_src['source_id'], report)
             if clinvar_scope != 'none':
                 cv_src, _ = file_of(sources, 'clinvar_summary')

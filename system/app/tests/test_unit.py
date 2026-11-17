@@ -72,11 +72,19 @@ def test_ut05_tile_generator():
 
 
 @pytest.mark.parametrize('psi,reads,expected', [
-    (4.0, 10, 'measured_in_domain'), (4.0 + 1e-9, 10, 'measured_out_of_domain'),
+    (2.686975930164537, 10, 'measured_in_domain'),       # P = 0.8 exactly: in (P >= 0.8)
+    (2.6870, 10, 'measured_borderline'), (3.0, 10, 'measured_borderline'),
+    (3.1103, 10, 'measured_out_of_domain'),              # past the P = 0.5 cut
+    (4.0, 10, 'measured_out_of_domain'),                 # the old raw rule called this in-domain (specificity 0.20)
     (2.0, 9.999, 'measured_unreliable'), (2.0, 10.0, 'measured_in_domain'), (None, 100, 'measured_unreliable'),
     (float('nan'), 100, 'measured_unreliable'), (2.0, None, 'measured_unreliable')])
-def test_ut06_domain_status_boundaries(psi, reads, expected):
-    assert status_from_measurement(psi, reads) == expected
+def test_ut06_domain_status_boundaries(psi, reads, expected, r3_gate):
+    assert status_from_measurement(psi, reads, r3_gate) == expected
+
+
+def test_ut06_no_gate_never_falls_back_to_4(r3_gate):
+    assert status_from_measurement(2.0, 50) == 'unknown'
+    assert status_from_measurement(2.0, 5) == 'measured_unreliable'
 
 
 def test_ut07_normalisation():

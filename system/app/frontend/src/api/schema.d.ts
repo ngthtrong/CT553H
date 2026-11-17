@@ -182,6 +182,7 @@ export interface paths {
         put?: never;
         /**
          * Predict and store the result behind a share link (optional)
+         * @deprecated
          * @description The only operation that stores a user sequence. The plain `share_token` is returned
          *     once and never stored (only its SHA-256). Clients should put it in the URL fragment, not
          *     in the query string, so that it is not sent to servers or logged.
@@ -200,7 +201,10 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** Read a shared run */
+        /**
+         * Read a shared run
+         * @deprecated
+         */
         get: operations["getRun"];
         put?: never;
         post?: never;
@@ -217,7 +221,10 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** Download a shared run as CSV or JSON (UC-03) */
+        /**
+         * Download a shared run as CSV or JSON (UC-03)
+         * @deprecated
+         */
         get: operations["exportRun"];
         put?: never;
         post?: never;
@@ -244,6 +251,343 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/projects": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List local projects
+         * @description Implemented 16 Nov 2026 (branch 2). See api-spec.md.
+         */
+        get: operations["listProjects"];
+        put?: never;
+        /**
+         * Create a project
+         * @description Implemented 16 Nov 2026 (branch 2). See api-spec.md.
+         */
+        post: operations["createProject"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/projects/{project_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Read project
+         * @description Implemented 16 Nov 2026 (branch 2). See api-spec.md.
+         */
+        get: operations["getProject"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete project and owned work
+         * @description Implemented 16 Nov 2026 (branch 2). See api-spec.md.
+         */
+        delete: operations["deleteProject"];
+        options?: never;
+        head?: never;
+        /**
+         * Rename project
+         * @description Implemented 16 Nov 2026 (branch 2). See api-spec.md.
+         */
+        patch: operations["renameProject"];
+        trace?: never;
+    };
+    "/v1/projects/{project_id}/analyses": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Read saved history
+         * @description Implemented 16 Nov 2026 (branch 2). See api-spec.md.
+         */
+        get: operations["listAnalyses"];
+        put?: never;
+        /**
+         * Explicitly compute and save immutable analysis
+         * @description Implemented 16 Nov 2026 (branch 2). See api-spec.md.
+         */
+        post: operations["saveAnalysis"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/analyses/{analysis_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                analysis_id: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Reopen immutable analysis
+         * @description Implemented 16 Nov 2026 (branch 2). See api-spec.md.
+         */
+        get: operations["getAnalysis"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete analysis and dependent comparisons
+         * @description Implemented 16 Nov 2026 (branch 2). See api-spec.md.
+         */
+        delete: operations["deleteAnalysis"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/analyses/{analysis_id}/export": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                analysis_id: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Export saved analysis
+         * @description Implemented 16 Nov 2026 (branch 2). See api-spec.md.
+         */
+        get: operations["exportAnalysis"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/projects/{project_id}/jobs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: string;
+            };
+            cookie?: never;
+        };
+        /** Read persisted local records */
+        get: operations["listProjectJobs"];
+        put?: never;
+        /**
+         * Persist and submit peptide/protein job
+         * @description Implemented 16 Nov 2026 (branch 2). See api-spec.md.
+         */
+        post: operations["submitJob"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/jobs/{job_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                job_id: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Read progress, counts and coverage
+         * @description Implemented 16 Nov 2026 (branch 2). See api-spec.md.
+         */
+        get: operations["getJob"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/jobs/{job_id}/items": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                job_id: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Page through all job outcomes
+         * @description Implemented 16 Nov 2026 (branch 2). See api-spec.md.
+         */
+        get: operations["listJobItems"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/jobs/{job_id}/cancel": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                job_id: string;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Idempotently request cancellation
+         * @description Implemented 16 Nov 2026 (branch 2). See api-spec.md.
+         */
+        post: operations["cancelJob"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/jobs/{job_id}/export": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                job_id: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Export complete job and failures
+         * @description Implemented 16 Nov 2026 (branch 2). See api-spec.md.
+         */
+        get: operations["exportJob"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/projects/{project_id}/datasets": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * List staged/committed project datasets
+         * @description Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+         */
+        get: operations["listDatasets"];
+        put?: never;
+        /**
+         * Stage and validate CSV/TSV import
+         * @description Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+         */
+        post: operations["previewImport"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/datasets/{dataset_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                dataset_id: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Read dataset revision/validation report
+         * @description Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+         */
+        get: operations["getDataset"];
+        put?: never;
+        /**
+         * Explicitly commit a valid preview
+         * @description Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+         */
+        post: operations["commitDataset"];
+        /**
+         * Delete dataset and dependent comparisons
+         * @description Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+         */
+        delete: operations["deleteDataset"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/analyses/{analysis_id}/comparisons": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                analysis_id: string;
+            };
+            cookie?: never;
+        };
+        /** Read persisted local records (planned) */
+        get: operations["listComparisons"];
+        put?: never;
+        /**
+         * Compare one saved analysis and committed dataset
+         * @description Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+         */
+        post: operations["compareDataset"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/comparisons/{comparison_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                comparison_id: string;
+            };
+            cookie?: never;
+        };
+        /** Reopen stored comparison snapshot */
+        get: operations["getComparison"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -259,7 +603,7 @@ export interface components {
         /** @enum {string} */
         ExportFormat: "csv" | "json";
         /** @enum {string} */
-        DomainStatus: "measured_in_domain" | "measured_out_of_domain" | "measured_unreliable" | "predicted_in_domain" | "predicted_out_of_domain" | "unknown";
+        DomainStatus: "measured_in_domain" | "measured_out_of_domain" | "measured_unreliable" | "measured_borderline" | "predicted_in_domain" | "predicted_out_of_domain" | "predicted_borderline" | "unknown";
         /**
          * @description Exactly one of `sequence` or the pair `uniprot_id` + `tile_index`. This schema only states that rule;
          *     the property lists are in `PredictRequest`, `ExportRequest` and `RunRequest`, each of which is closed
@@ -317,7 +661,7 @@ export interface components {
         } & components["schemas"]["RequestTarget"];
         Warning: {
             /** @enum {string} */
-            code: "DOMAIN_UNKNOWN" | "DOMAIN_UNRELIABLE" | "OUT_OF_DOMAIN_OVERRIDDEN" | "PREDICTED_DOMAIN" | "TRAINING_PEPTIDE";
+            code: "DOMAIN_UNKNOWN" | "DOMAIN_UNRELIABLE" | "DOMAIN_BORDERLINE" | "OUT_OF_DOMAIN_OVERRIDDEN" | "PREDICTED_DOMAIN" | "TRAINING_PEPTIDE";
             message: string;
         };
         Cell: {
@@ -368,6 +712,10 @@ export interface components {
             psi_wt_measured?: number | null;
             reads_measured?: number | null;
             gate_model_id?: string | null;
+            /** @description Planned v0.2 frozen gate provenance. */
+            gate_weights_sha256?: string | null;
+            /** @description Planned v0.2 distinction between screen and intrinsic estimators. */
+            measurement_estimator?: string | null;
             message: string;
         };
         PredictionResult: {
@@ -423,7 +771,9 @@ export interface components {
             /** Format: date */
             last_evaluated?: string | null;
         };
+        /** @description Baseline payload; optional annotation_status is a planned v0.2 addition. */
         ClinvarOverlay: {
+            annotation_status?: components["schemas"]["AnnotationState"];
             tile: components["schemas"]["TileInfo"];
             variants: components["schemas"]["ClinvarVariant"][];
             /** Format: date */
@@ -497,11 +847,267 @@ export interface components {
         };
         Error: {
             /** @enum {string} */
-            code: "INVALID_REQUEST" | "INVALID_LENGTH" | "INVALID_CHARACTER" | "INVALID_FORMAT" | "UNKNOWN_ACCESSION" | "TILE_OUT_OF_RANGE" | "TILE_NOT_SCORABLE" | "OUT_OF_DOMAIN" | "MODEL_NOT_FOUND" | "RUN_NOT_FOUND" | "RUN_EXPIRED" | "TOKEN_REQUIRED" | "PAYLOAD_TOO_LARGE" | "RATE_LIMITED" | "SERVICE_UNAVAILABLE" | "INTERNAL_ERROR";
+            code: "INVALID_REQUEST" | "INVALID_LENGTH" | "INVALID_CHARACTER" | "INVALID_FORMAT" | "UNKNOWN_ACCESSION" | "TILE_OUT_OF_RANGE" | "TILE_NOT_SCORABLE" | "OUT_OF_DOMAIN" | "MODEL_NOT_FOUND" | "RUN_NOT_FOUND" | "RUN_EXPIRED" | "TOKEN_REQUIRED" | "PAYLOAD_TOO_LARGE" | "RATE_LIMITED" | "SERVICE_UNAVAILABLE" | "INTERNAL_ERROR" | "PROJECT_NOT_FOUND" | "ANALYSIS_NOT_FOUND" | "JOB_NOT_FOUND" | "DATASET_NOT_FOUND" | "CONFIRMATION_REQUIRED" | "IMPORT_INVALID" | "DATASET_NOT_COMMITTED" | "INCOMPATIBLE_ENDPOINT" | "JOB_STATE_CONFLICT" | "SNAPSHOT_UNAVAILABLE" | "COMPARISON_NOT_FOUND" | "IMPORT_EXPIRED";
             message: string;
+            /** @description Planned 409 CONFIRMATION_REQUIRED dependency counts; no deletion performed. */
+            dependencies?: {
+                [key: string]: number;
+            };
             /** @description Name of the offending request field, when there is one. */
             field?: string | null;
         };
+        ProjectWrite: {
+            name: string;
+            description?: string;
+        };
+        Project: {
+            /** Format: uuid */
+            project_id: string;
+            name: string;
+            description?: string;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            updated_at: string;
+            /** @description Owned records shown on the project card (screen Projects). */
+            counts: {
+                analyses: number;
+                jobs: number;
+                datasets: number;
+            };
+            /** @description A confirmed deletion could not remove the project files; repeat the deletion to finish it. */
+            deletion_pending?: boolean;
+        };
+        SaveAnalysisRequest: {
+            request: components["schemas"]["PredictRequest"];
+            /** Format: uuid */
+            parent_analysis_id?: string;
+        };
+        SavedAnalysis: {
+            /** Format: uuid */
+            analysis_id: string;
+            /** Format: uuid */
+            project_id: string;
+            /** Format: uuid */
+            parent_analysis_id?: string | null;
+            /** @description False when the parent analysis was deleted; the lineage id is kept, the parent is not recreated. */
+            parent_available?: boolean;
+            /** Format: date-time */
+            created_at: string;
+            result: components["schemas"]["PredictionResult"];
+            /** @description Versioned structured snapshot; required semantic fields are specified in api-spec.md. Never filled from mutable current sources when reopening history. */
+            snapshot: {
+                [key: string]: unknown;
+            };
+        };
+        BatchPeptide: {
+            input_id: string;
+            sequence: string;
+        };
+        /** @description Exactly one of uniprot_id or sequence; optional mapping must be verified. */
+        ProteinInput: {
+            input_id?: string;
+            uniprot_id?: components["schemas"]["UniprotId"];
+            sequence?: string;
+            reference_release?: string;
+        } & (unknown | unknown);
+        JobRequest: {
+            /** @enum {string} */
+            mode: "peptides" | "protein";
+            peptides?: components["schemas"]["BatchPeptide"][];
+            protein?: components["schemas"]["ProteinInput"];
+            model_id?: string;
+            calibrator?: components["schemas"]["RequestCalibrator"];
+            /** @default false */
+            override_domain: boolean;
+        } & ({
+            /** @constant */
+            mode?: "peptides";
+        } | {
+            /** @constant */
+            mode?: "protein";
+        });
+        Job: {
+            /** Format: uuid */
+            job_id: string;
+            /** Format: uuid */
+            project_id: string;
+            /** @enum {string} */
+            mode: "peptides" | "protein";
+            /** @enum {string} */
+            state: "pending" | "running" | "completed" | "partial" | "failed" | "cancelled";
+            total: number;
+            counts: {
+                [key: string]: number;
+            };
+            /** @description Versioned structured snapshot; required semantic fields are specified in api-spec.md. Never filled from mutable current sources when reopening history. */
+            coverage?: {
+                [key: string]: unknown;
+            };
+            /** @description Versioned structured snapshot; required semantic fields are specified in api-spec.md. Never filled from mutable current sources when reopening history. */
+            configuration_snapshot: {
+                [key: string]: unknown;
+            };
+            /** @description Cancellation was requested; items already finished are kept (FR-26). */
+            cancel_requested?: boolean;
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            updated_at: string;
+        };
+        JobItem: {
+            item_id: string;
+            input_id: string;
+            tile_index?: number;
+            start_pos?: number;
+            end_pos?: number;
+            /** @enum {string} */
+            state: "pending" | "running" | "succeeded" | "refused" | "failed" | "cancelled";
+            /** Format: uuid */
+            analysis_id?: string;
+            error?: components["schemas"]["Error"];
+            domain_status?: components["schemas"]["DomainStatus"];
+        };
+        ImportMetadata: {
+            name: string;
+            assay: string;
+            assay_version?: string;
+            endpoint: string;
+            units: string;
+            source: string;
+            reference_description: string;
+            /** @enum {string} */
+            compatibility: "zhang_gps_dpsi" | "other";
+            rights_note?: string;
+        };
+        ImportUpload: {
+            /** Format: binary */
+            file: string;
+            /** @description JSON-encoded ImportMetadata; CSV/TSV observations use the columns in api-spec.md §6. */
+            metadata: string;
+        };
+        ValidationIssue: {
+            row?: number;
+            /** @enum {string} */
+            severity: "error" | "warning";
+            code: string;
+            message: string;
+        };
+        Dataset: {
+            /** Format: uuid */
+            dataset_id: string;
+            /** Format: uuid */
+            project_id: string;
+            revision: number;
+            /** @enum {string} */
+            state: "staged" | "committed" | "expired";
+            sha256: string;
+            metadata: components["schemas"]["ImportMetadata"];
+            committable: boolean;
+            counts: {
+                [key: string]: number;
+            };
+            issues: components["schemas"]["ValidationIssue"][];
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            committed_at?: string;
+        };
+        CommitDataset: {
+            /** @constant */
+            action: "commit";
+            acknowledge_warnings: boolean;
+        };
+        ComparisonRequest: {
+            /** Format: uuid */
+            dataset_id: string;
+            replicate_id?: string;
+            /** @enum {string} */
+            aggregation?: "mean" | "median";
+        } & (unknown | unknown);
+        Comparison: {
+            /** Format: uuid */
+            comparison_id: string;
+            /** Format: uuid */
+            analysis_id: string;
+            /** Format: uuid */
+            dataset_id: string;
+            compatible: boolean;
+            matched: number;
+            counts: {
+                [key: string]: number;
+            };
+            mae: number | null;
+            spearman: number | null;
+            metric_unavailable_reason?: string | null;
+            rows: {
+                [key: string]: unknown;
+            }[];
+            /** @description Versioned structured snapshot; required semantic fields are specified in api-spec.md. Never filled from mutable current sources when reopening history. */
+            provenance: {
+                [key: string]: unknown;
+            };
+        };
+        ProjectPage: {
+            items: components["schemas"]["Project"][];
+            total: number;
+            offset: number;
+            limit: number;
+        };
+        /** @description One history row. The full result (532 cells) is read with getAnalysis. */
+        SavedAnalysisSummary: {
+            /** Format: uuid */
+            analysis_id: string;
+            /** Format: uuid */
+            project_id: string;
+            /** Format: uuid */
+            parent_analysis_id?: string | null;
+            /** Format: uuid */
+            job_id?: string | null;
+            /** Format: date-time */
+            created_at: string;
+            /** @enum {string} */
+            input_kind: "sequence" | "uniprot_tile";
+            tile: components["schemas"]["TileInfo"];
+            domain_status: components["schemas"]["DomainStatus"];
+            model_id: string;
+            warning_codes: string[];
+        };
+        SavedAnalysisPage: {
+            items: components["schemas"]["SavedAnalysisSummary"][];
+            total: number;
+            offset: number;
+            limit: number;
+        };
+        JobItemPage: {
+            items: components["schemas"]["JobItem"][];
+            total: number;
+            offset: number;
+            limit: number;
+        };
+        DatasetPage: {
+            items: components["schemas"]["Dataset"][];
+            total: number;
+            offset: number;
+            limit: number;
+        };
+        JobPage: {
+            items: components["schemas"]["Job"][];
+            total: number;
+            offset: number;
+            limit: number;
+        };
+        ComparisonPage: {
+            items: components["schemas"]["Comparison"][];
+            total: number;
+            offset: number;
+            limit: number;
+        };
+        /**
+         * @description Planned v0.2 distinction, not returned by the baseline.
+         * @enum {string}
+         */
+        AnnotationState: "available" | "no_match" | "mapping_unavailable" | "source_unavailable" | "mapping_conflict";
     };
     responses: {
         /** @description Error. The `code` is stable; the `message` is for humans. */
@@ -899,6 +1505,725 @@ export interface operations {
                     "application/json": components["schemas"]["Health"];
                 };
             };
+        };
+    };
+    listProjects: {
+        parameters: {
+            query?: {
+                offset?: number;
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Planned successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ProjectPage"];
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            409: components["responses"]["Error"];
+            413: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    createProject: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ProjectWrite"];
+            };
+        };
+        responses: {
+            /** @description Planned successful response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Project"];
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            409: components["responses"]["Error"];
+            413: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    getProject: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Planned successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Project"];
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            409: components["responses"]["Error"];
+            413: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    deleteProject: {
+        parameters: {
+            query?: {
+                /** @description False/absent returns 409 with dependency summary, without deleting. */
+                confirm?: boolean;
+            };
+            header?: never;
+            path: {
+                project_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted after explicit confirmation */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            409: components["responses"]["Error"];
+            413: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    renameProject: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ProjectWrite"];
+            };
+        };
+        responses: {
+            /** @description Planned successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Project"];
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            409: components["responses"]["Error"];
+            413: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    listAnalyses: {
+        parameters: {
+            query?: {
+                offset?: number;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                project_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Planned successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SavedAnalysisPage"];
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            409: components["responses"]["Error"];
+            413: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    saveAnalysis: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SaveAnalysisRequest"];
+            };
+        };
+        responses: {
+            /** @description Planned successful response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SavedAnalysis"];
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            409: components["responses"]["Error"];
+            413: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    getAnalysis: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                analysis_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Planned successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SavedAnalysis"];
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            409: components["responses"]["Error"];
+            413: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    deleteAnalysis: {
+        parameters: {
+            query?: {
+                /** @description False/absent returns 409 with dependency summary, without deleting. */
+                confirm?: boolean;
+            };
+            header?: never;
+            path: {
+                analysis_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted after explicit confirmation */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            409: components["responses"]["Error"];
+            413: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    exportAnalysis: {
+        parameters: {
+            query: {
+                comparison_id?: string;
+                format: components["schemas"]["ExportFormat"];
+            };
+            header?: never;
+            path: {
+                analysis_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Complete snapshot export with provenance and per-item manifest, not just the current page. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/csv": string;
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            409: components["responses"]["Error"];
+            413: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    listProjectJobs: {
+        parameters: {
+            query?: {
+                offset?: number;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                project_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Paginated immutable history */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["JobPage"];
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+        };
+    };
+    submitJob: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["JobRequest"];
+            };
+        };
+        responses: {
+            /** @description Planned successful response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Job"];
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            409: components["responses"]["Error"];
+            413: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    getJob: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                job_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Planned successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Job"];
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            409: components["responses"]["Error"];
+            413: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    listJobItems: {
+        parameters: {
+            query?: {
+                offset?: number;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                job_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Planned successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["JobItemPage"];
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            409: components["responses"]["Error"];
+            413: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    cancelJob: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                job_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Planned successful response */
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Job"];
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            409: components["responses"]["Error"];
+            413: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    exportJob: {
+        parameters: {
+            query: {
+                format: components["schemas"]["ExportFormat"];
+            };
+            header?: never;
+            path: {
+                job_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Complete snapshot export with provenance and per-item manifest, not just the current page. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/csv": string;
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            409: components["responses"]["Error"];
+            413: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    listDatasets: {
+        parameters: {
+            query?: {
+                offset?: number;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                project_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Planned successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DatasetPage"];
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            409: components["responses"]["Error"];
+            413: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    previewImport: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": components["schemas"]["ImportUpload"];
+            };
+        };
+        responses: {
+            /** @description Planned successful response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Dataset"];
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            409: components["responses"]["Error"];
+            413: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    getDataset: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                dataset_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Planned successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Dataset"];
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            409: components["responses"]["Error"];
+            413: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    commitDataset: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                dataset_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CommitDataset"];
+            };
+        };
+        responses: {
+            /** @description Planned successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Dataset"];
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            409: components["responses"]["Error"];
+            413: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    deleteDataset: {
+        parameters: {
+            query?: {
+                /** @description False/absent returns 409 with dependency summary, without deleting. */
+                confirm?: boolean;
+            };
+            header?: never;
+            path: {
+                dataset_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Deleted after explicit confirmation */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            409: components["responses"]["Error"];
+            413: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    listComparisons: {
+        parameters: {
+            query?: {
+                offset?: number;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                analysis_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Paginated immutable history */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ComparisonPage"];
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+        };
+    };
+    compareDataset: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                analysis_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ComparisonRequest"];
+            };
+        };
+        responses: {
+            /** @description Planned successful response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Comparison"];
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            409: components["responses"]["Error"];
+            413: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    getComparison: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                comparison_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Immutable saved comparison */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Comparison"];
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            422: components["responses"]["Error"];
         };
     };
 }

@@ -430,8 +430,8 @@ paths:
       - workspace
       operationId: listProjects
       summary: List local projects
-      x-implementation-status: planned
-      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      x-implementation-status: implemented
+      description: Implemented 16 Nov 2026 (branch 2). See api-spec.md.
       responses:
         '200':
           description: Planned successful response
@@ -439,6 +439,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProjectPage'
+        '400':
+          $ref: '#/components/responses/Error'
         '404':
           $ref: '#/components/responses/Error'
         '409':
@@ -468,8 +470,8 @@ paths:
       - workspace
       operationId: createProject
       summary: Create a project
-      x-implementation-status: planned
-      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      x-implementation-status: implemented
+      description: Implemented 16 Nov 2026 (branch 2). See api-spec.md.
       responses:
         '201':
           description: Planned successful response
@@ -477,6 +479,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Project'
+        '400':
+          $ref: '#/components/responses/Error'
         '404':
           $ref: '#/components/responses/Error'
         '409':
@@ -499,8 +503,8 @@ paths:
       - workspace
       operationId: getProject
       summary: Read project
-      x-implementation-status: planned
-      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      x-implementation-status: implemented
+      description: Implemented 16 Nov 2026 (branch 2). See api-spec.md.
       responses:
         '200':
           description: Planned successful response
@@ -508,6 +512,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Project'
+        '400':
+          $ref: '#/components/responses/Error'
         '404':
           $ref: '#/components/responses/Error'
         '409':
@@ -523,8 +529,8 @@ paths:
       - workspace
       operationId: renameProject
       summary: Rename project
-      x-implementation-status: planned
-      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      x-implementation-status: implemented
+      description: Implemented 16 Nov 2026 (branch 2). See api-spec.md.
       responses:
         '200':
           description: Planned successful response
@@ -532,6 +538,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Project'
+        '400':
+          $ref: '#/components/responses/Error'
         '404':
           $ref: '#/components/responses/Error'
         '409':
@@ -553,11 +561,13 @@ paths:
       - workspace
       operationId: deleteProject
       summary: Delete project and owned work
-      x-implementation-status: planned
-      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      x-implementation-status: implemented
+      description: Implemented 16 Nov 2026 (branch 2). See api-spec.md.
       responses:
         '204':
           description: Deleted after explicit confirmation
+        '400':
+          $ref: '#/components/responses/Error'
         '404':
           $ref: '#/components/responses/Error'
         '409':
@@ -589,8 +599,8 @@ paths:
       - workspace
       operationId: listAnalyses
       summary: Read saved history
-      x-implementation-status: planned
-      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      x-implementation-status: implemented
+      description: Implemented 16 Nov 2026 (branch 2). See api-spec.md.
       responses:
         '200':
           description: Planned successful response
@@ -598,6 +608,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SavedAnalysisPage'
+        '400':
+          $ref: '#/components/responses/Error'
         '404':
           $ref: '#/components/responses/Error'
         '409':
@@ -627,8 +639,8 @@ paths:
       - workspace
       operationId: saveAnalysis
       summary: Explicitly compute and save immutable analysis
-      x-implementation-status: planned
-      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      x-implementation-status: implemented
+      description: Implemented 16 Nov 2026 (branch 2). See api-spec.md.
       responses:
         '201':
           description: Planned successful response
@@ -636,6 +648,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SavedAnalysis'
+        '400':
+          $ref: '#/components/responses/Error'
         '404':
           $ref: '#/components/responses/Error'
         '409':
@@ -665,8 +679,8 @@ paths:
       - workspace
       operationId: getAnalysis
       summary: Reopen immutable analysis
-      x-implementation-status: planned
-      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      x-implementation-status: implemented
+      description: Implemented 16 Nov 2026 (branch 2). See api-spec.md.
       responses:
         '200':
           description: Planned successful response
@@ -674,6 +688,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SavedAnalysis'
+        '400':
+          $ref: '#/components/responses/Error'
         '404':
           $ref: '#/components/responses/Error'
         '409':
@@ -689,11 +705,13 @@ paths:
       - workspace
       operationId: deleteAnalysis
       summary: Delete analysis and dependent comparisons
-      x-implementation-status: planned
-      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      x-implementation-status: implemented
+      description: Implemented 16 Nov 2026 (branch 2). See api-spec.md.
       responses:
         '204':
           description: Deleted after explicit confirmation
+        '400':
+          $ref: '#/components/responses/Error'
         '404':
           $ref: '#/components/responses/Error'
         '409':
@@ -725,8 +743,8 @@ paths:
       - workspace
       operationId: exportAnalysis
       summary: Export saved analysis
-      x-implementation-status: planned
-      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      x-implementation-status: implemented
+      description: Implemented 16 Nov 2026 (branch 2). See api-spec.md.
       responses:
         '200':
           description: Complete snapshot export with provenance and per-item manifest, not just the current page.
@@ -740,6 +758,8 @@ paths:
                 additionalProperties: true
                 description: Versioned structured snapshot; required semantic fields are specified in api-spec.md.
                   Never filled from mutable current sources when reopening history.
+        '400':
+          $ref: '#/components/responses/Error'
         '404':
           $ref: '#/components/responses/Error'
         '409':
@@ -773,8 +793,8 @@ paths:
       tags:
       - workspace
       operationId: listProjectJobs
-      x-implementation-status: planned
-      summary: Read persisted local records (planned)
+      x-implementation-status: implemented
+      summary: Read persisted local records 
       parameters:
       - name: offset
         in: query
@@ -796,15 +816,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/JobPage'
+        '400':
+          $ref: '#/components/responses/Error'
         '404':
+          $ref: '#/components/responses/Error'
+        '422':
           $ref: '#/components/responses/Error'
     post:
       tags:
       - workspace
       operationId: submitJob
       summary: Persist and submit peptide/protein job
-      x-implementation-status: planned
-      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      x-implementation-status: implemented
+      description: Implemented 16 Nov 2026 (branch 2). See api-spec.md.
       responses:
         '202':
           description: Planned successful response
@@ -812,6 +836,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Job'
+        '400':
+          $ref: '#/components/responses/Error'
         '404':
           $ref: '#/components/responses/Error'
         '409':
@@ -841,8 +867,8 @@ paths:
       - workspace
       operationId: getJob
       summary: Read progress, counts and coverage
-      x-implementation-status: planned
-      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      x-implementation-status: implemented
+      description: Implemented 16 Nov 2026 (branch 2). See api-spec.md.
       responses:
         '200':
           description: Planned successful response
@@ -850,6 +876,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Job'
+        '400':
+          $ref: '#/components/responses/Error'
         '404':
           $ref: '#/components/responses/Error'
         '409':
@@ -873,8 +901,8 @@ paths:
       - workspace
       operationId: listJobItems
       summary: Page through all job outcomes
-      x-implementation-status: planned
-      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      x-implementation-status: implemented
+      description: Implemented 16 Nov 2026 (branch 2). See api-spec.md.
       responses:
         '200':
           description: Planned successful response
@@ -882,6 +910,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/JobItemPage'
+        '400':
+          $ref: '#/components/responses/Error'
         '404':
           $ref: '#/components/responses/Error'
         '409':
@@ -919,8 +949,8 @@ paths:
       - workspace
       operationId: cancelJob
       summary: Idempotently request cancellation
-      x-implementation-status: planned
-      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      x-implementation-status: implemented
+      description: Implemented 16 Nov 2026 (branch 2). See api-spec.md.
       responses:
         '202':
           description: Planned successful response
@@ -928,6 +958,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Job'
+        '400':
+          $ref: '#/components/responses/Error'
         '404':
           $ref: '#/components/responses/Error'
         '409':
@@ -951,8 +983,8 @@ paths:
       - workspace
       operationId: exportJob
       summary: Export complete job and failures
-      x-implementation-status: planned
-      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      x-implementation-status: implemented
+      description: Implemented 16 Nov 2026 (branch 2). See api-spec.md.
       responses:
         '200':
           description: Complete snapshot export with provenance and per-item manifest, not just the current page.
@@ -966,6 +998,8 @@ paths:
                 additionalProperties: true
                 description: Versioned structured snapshot; required semantic fields are specified in api-spec.md.
                   Never filled from mutable current sources when reopening history.
+        '400':
+          $ref: '#/components/responses/Error'
         '404':
           $ref: '#/components/responses/Error'
         '409':
@@ -995,8 +1029,8 @@ paths:
       - workspace
       operationId: listDatasets
       summary: List staged/committed project datasets
-      x-implementation-status: planned
-      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      x-implementation-status: implemented
+      description: Implemented 16 Nov 2026 (branch 2). See api-spec.md.
       responses:
         '200':
           description: Planned successful response
@@ -1004,6 +1038,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DatasetPage'
+        '400':
+          $ref: '#/components/responses/Error'
         '404':
           $ref: '#/components/responses/Error'
         '409':
@@ -1033,8 +1069,8 @@ paths:
       - workspace
       operationId: previewImport
       summary: Stage and validate CSV/TSV import
-      x-implementation-status: planned
-      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      x-implementation-status: implemented
+      description: Implemented 16 Nov 2026 (branch 2). See api-spec.md.
       responses:
         '201':
           description: Planned successful response
@@ -1042,6 +1078,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Dataset'
+        '400':
+          $ref: '#/components/responses/Error'
         '404':
           $ref: '#/components/responses/Error'
         '409':
@@ -1071,8 +1109,8 @@ paths:
       - workspace
       operationId: getDataset
       summary: Read dataset revision/validation report
-      x-implementation-status: planned
-      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      x-implementation-status: implemented
+      description: Implemented 16 Nov 2026 (branch 2). See api-spec.md.
       responses:
         '200':
           description: Planned successful response
@@ -1080,6 +1118,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Dataset'
+        '400':
+          $ref: '#/components/responses/Error'
         '404':
           $ref: '#/components/responses/Error'
         '409':
@@ -1095,8 +1135,8 @@ paths:
       - workspace
       operationId: commitDataset
       summary: Explicitly commit a valid preview
-      x-implementation-status: planned
-      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      x-implementation-status: implemented
+      description: Implemented 16 Nov 2026 (branch 2). See api-spec.md.
       responses:
         '200':
           description: Planned successful response
@@ -1104,6 +1144,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Dataset'
+        '400':
+          $ref: '#/components/responses/Error'
         '404':
           $ref: '#/components/responses/Error'
         '409':
@@ -1125,11 +1167,13 @@ paths:
       - workspace
       operationId: deleteDataset
       summary: Delete dataset and dependent comparisons
-      x-implementation-status: planned
-      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      x-implementation-status: implemented
+      description: Implemented 16 Nov 2026 (branch 2). See api-spec.md.
       responses:
         '204':
           description: Deleted after explicit confirmation
+        '400':
+          $ref: '#/components/responses/Error'
         '404':
           $ref: '#/components/responses/Error'
         '409':
@@ -1160,8 +1204,8 @@ paths:
       tags:
       - workspace
       operationId: listComparisons
-      x-implementation-status: planned
-      summary: Read persisted local records (planned)
+      x-implementation-status: implemented
+      summary: Read persisted local records 
       parameters:
       - name: offset
         in: query
@@ -1183,15 +1227,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ComparisonPage'
+        '400':
+          $ref: '#/components/responses/Error'
         '404':
+          $ref: '#/components/responses/Error'
+        '422':
           $ref: '#/components/responses/Error'
     post:
       tags:
       - workspace
       operationId: compareDataset
       summary: Compare one saved analysis and committed dataset
-      x-implementation-status: planned
-      description: Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+      x-implementation-status: implemented
+      description: Implemented 16 Nov 2026 (branch 2). See api-spec.md.
       responses:
         '201':
           description: Planned successful response
@@ -1199,6 +1247,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Comparison'
+        '400':
+          $ref: '#/components/responses/Error'
         '404':
           $ref: '#/components/responses/Error'
         '409':
@@ -1234,7 +1284,7 @@ paths:
       tags:
       - workspace
       operationId: getComparison
-      x-implementation-status: planned
+      x-implementation-status: implemented
       summary: Reopen stored comparison snapshot
       responses:
         '200':
@@ -1243,7 +1293,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Comparison'
+        '400':
+          $ref: '#/components/responses/Error'
         '404':
+          $ref: '#/components/responses/Error'
+        '422':
           $ref: '#/components/responses/Error'
 components:
   headers:
@@ -1313,9 +1367,10 @@ components:
         - measured_in_domain
         - measured_out_of_domain
         - measured_unreliable
+        - measured_borderline   # R3 gate tier 1, between the in/out cuts (app/DEVIATIONS.md §7, §8)
         - predicted_in_domain
         - predicted_out_of_domain
-        - borderline  # planned R3 integration; not returned by the baseline
+        - predicted_borderline  # R3 gate tier 2 (typed or unmeasured sequence)
         - unknown
     RequestTarget:
       description: |
@@ -1403,6 +1458,7 @@ components:
           enum:
             - DOMAIN_UNKNOWN
             - DOMAIN_UNRELIABLE
+            - DOMAIN_BORDERLINE
             - OUT_OF_DOMAIN_OVERRIDDEN
             - PREDICTED_DOMAIN
             - TRAINING_PEPTIDE
@@ -1686,6 +1742,8 @@ components:
             - INCOMPATIBLE_ENDPOINT
             - JOB_STATE_CONFLICT
             - SNAPSHOT_UNAVAILABLE
+            - COMPARISON_NOT_FOUND
+            - IMPORT_EXPIRED
         message: {type: string}
         dependencies:
           type: object
@@ -1724,11 +1782,24 @@ components:
         updated_at:
           type: string
           format: date-time
+        counts:
+          type: object
+          description: Owned records shown on the project card (screen Projects).
+          additionalProperties: false
+          properties:
+            analyses: {type: integer, minimum: 0}
+            jobs: {type: integer, minimum: 0}
+            datasets: {type: integer, minimum: 0}
+          required: [analyses, jobs, datasets]
+        deletion_pending:
+          type: boolean
+          description: A confirmed deletion could not remove the project files; repeat the deletion to finish it.
       required:
       - project_id
       - name
       - created_at
       - updated_at
+      - counts
     SaveAnalysisRequest:
       type: object
       additionalProperties: false
@@ -1755,6 +1826,9 @@ components:
           - string
           - 'null'
           format: uuid
+        parent_available:
+          type: boolean
+          description: False when the parent analysis was deleted; the lineage id is kept, the parent is not recreated.
         created_at:
           type: string
           format: date-time
@@ -1897,6 +1971,9 @@ components:
           additionalProperties: true
           description: Versioned structured snapshot; required semantic fields are specified in api-spec.md. Never filled
             from mutable current sources when reopening history.
+        cancel_requested:
+          type: boolean
+          description: Cancellation was requested; items already finished are kept (FR-26).
         created_at:
           type: string
           format: date-time
@@ -2188,6 +2265,22 @@ components:
       - total
       - offset
       - limit
+    SavedAnalysisSummary:
+      type: object
+      additionalProperties: false
+      description: One history row. The full result (532 cells) is read with getAnalysis.
+      properties:
+        analysis_id: {type: string, format: uuid}
+        project_id: {type: string, format: uuid}
+        parent_analysis_id: {type: [string, 'null'], format: uuid}
+        job_id: {type: [string, 'null'], format: uuid}
+        created_at: {type: string, format: date-time}
+        input_kind: {type: string, enum: [sequence, uniprot_tile]}
+        tile: {$ref: '#/components/schemas/TileInfo'}
+        domain_status: {$ref: '#/components/schemas/DomainStatus'}
+        model_id: {type: string}
+        warning_codes: {type: array, items: {type: string}}
+      required: [analysis_id, project_id, created_at, input_kind, tile, domain_status, model_id, warning_codes]
     SavedAnalysisPage:
       type: object
       additionalProperties: false
@@ -2195,7 +2288,7 @@ components:
         items:
           type: array
           items:
-            $ref: '#/components/schemas/SavedAnalysis'
+            $ref: '#/components/schemas/SavedAnalysisSummary'
         total:
           type: integer
           minimum: 0

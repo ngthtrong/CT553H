@@ -44,6 +44,21 @@ async def read_json_body(request: Request, limit: int) -> Any:
     return body
 
 
+async def read_raw_body(request: Request, limit: int) -> bytes:
+    """At most `limit` bytes of any content type (multipart uploads); never reads more than limit + 1 chunk."""
+    declared = request.headers.get('content-length')
+    if declared is not None and declared.isdigit() and int(declared) > limit:
+        raise DomainError('PAYLOAD_TOO_LARGE', f'The upload must not exceed {limit} bytes.', 413)
+    chunks: list[bytes] = []
+    total = 0
+    async for chunk in request.stream():
+        total += len(chunk)
+        if total > limit:
+            raise DomainError('PAYLOAD_TOO_LARGE', f'The upload must not exceed {limit} bytes.', 413)
+        chunks.append(chunk)
+    return b''.join(chunks)
+
+
 def parse_predict(body: dict, extra_fields: frozenset[str] = frozenset()) -> PredictRequest:
     """Steps 2 and 3 plus field typing. Sequence/accession/tile checks happen later (they need the database)."""
     for key in body:
