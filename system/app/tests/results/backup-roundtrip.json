@@ -1,0 +1,60 @@
+{
+  "date": "2026-11-18",
+  "plan": "plan-system 4.1 (OPS-01 Docker round trip; OPS-02/03 also in tests/test_backup.py)",
+  "host": "WSL2 Ubuntu 24.04, AMD Ryzen 5 5500U, Docker Engine in the same VM",
+  "tool": "ops/backup.py (make backup / make restore BACKUP=...)",
+  "live_backup": {
+    "source": "Docker project degron-footprint (read-only: pg_dump + tar of the workspace volume)",
+    "seconds": 13.22,
+    "bytes": {
+      "database.dump": 62584840,
+      "workspace.tar.gz": 98
+    },
+    "schema_revision": "0005",
+    "counts": {
+      "project": 5,
+      "analysis_run": 61,
+      "analysis_cell": 32452,
+      "analysis_job": 4,
+      "job_item": 58,
+      "import_dataset": 0,
+      "import_observation": 0,
+      "comparison": 0
+    },
+    "consistent": true
+  },
+  "restore_into_scratch": {
+    "target": "Docker project df-ops01 (separate volumes; the live database was never overwritten)",
+    "seconds": 20.8,
+    "counts_match": true,
+    "checksums_match_live": {
+      "analysis_run_results_md5": "4597fd01c941ddeac47daca1606e7f2a",
+      "analysis_cell_md5": "5281e6851dc34fc21d9a757baa3e3560",
+      "clinvar_variant_rows": 2338863
+    }
+  },
+  "full_round_trip": {
+    "steps": [
+      "restore live backup into df-ops01",
+      "add two files (300 kB random + text) to its workspace volume",
+      "backup df-ops01",
+      "docker compose down -v and docker volume rm (both scratch volumes gone)",
+      "fresh empty db",
+      "restore"
+    ],
+    "backup_seconds": 15.4,
+    "restore_seconds": 29.3,
+    "bytes": {
+      "database.dump": 62584824,
+      "workspace.tar.gz": 300434
+    },
+    "workspace_files_identical": true,
+    "db_checksum_identical": true
+  },
+  "ops03_docker": "restore without --yes and without a terminal: refused (exit 2) before any change",
+  "found_during_the_run": [
+    "docker compose down -v does not remove a volume created by docker run (no compose labels): the first deletion check was void and was repeated with docker volume rm",
+    "restore into an empty database printed nothing for the current state: now reports \"empty or unreadable\""
+  ],
+  "scratch_removed": true
+}

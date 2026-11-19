@@ -1,0 +1,25 @@
+% Sequence of a durable job (plan-report V-4, redrawn 18 Nov 2026 from the extracted original).
+% Same messages as before; source: system/app/backend/api/worker.py and api/service.py.
+\begin{tikzpicture}[fig]
+  \input{assets/figures/seq-style}
+  \def\cx{0} \def\ax{4.0} \def\wx{8.6} \def\dx{12.6}
+  \foreach \x/\n in {\cx/Client,\ax/API,\wx/Worker,\dx/Database} {
+    \node[seqhead] at (\x,0) {\n};
+    \draw[dotted, oiGrey] (\x,-0.4) -- (\x,-7.6);
+  }
+  \draw[seqmsg] (\cx,-1.0) -- node[seqlbl] {POST job (mode, input, limits)} (\ax,-1.0);
+  \draw[seqmsg] (\ax,-1.6) -- node[seqlbl] {insert job and items (\texttt{pending})} (\dx,-1.6);
+  \draw[seqret] (\ax,-2.2) -- node[seqlbl] {202 job id} (\cx,-2.2);
+  \draw[seqmsg] (\wx,-2.85) -- node[seqlbl] {claim one item (compare-and-set)} (\dx,-2.85);
+  \node[seqact, minimum height=1.0cm, anchor=north] at (\wx,-3.0) {};
+  \node[font=\scriptsize, align=left, anchor=west, fill=white, inner sep=1pt] at (\wx+0.25,-3.5)
+       {gate and score 532 cells,\\outside any transaction};
+  \draw[seqmsg] (\wx,-4.55) -- node[seqlbl] {re-check lease, write result once} (\dx,-4.55);
+  \draw[seqmsg] (\cx,-5.25) -- node[seqlbl] {GET progress} (\ax,-5.25);
+  \draw[seqret] (\ax,-5.55) -- node[font=\scriptsize, fill=white, inner sep=1.2pt, below=1pt] {counts per outcome} (\cx,-5.55);
+  \draw[seqmsg] (\cx,-6.6) -- node[seqlbl] {POST cancel (optional)} (\ax,-6.6);
+  \draw[seqmsg] (\ax,-7.15) -- node[seqlbl] {mark job cancelled; pending items stop} (\dx,-7.15);
+  \node[note, anchor=north west, text width=12.6cm, align=left] at (\cx,-7.7)
+       {A restart resumes from the queue rows: an expired lease is reclaimed and a completed item is
+        never scored twice.};
+\end{tikzpicture}

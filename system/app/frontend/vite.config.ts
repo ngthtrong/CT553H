@@ -22,7 +22,9 @@ export default defineConfig({
   },
   // `vite preview` serves the production build with the same policy as the nginx container.
   preview: { port: 4173, strictPort: true, headers: { 'Content-Security-Policy': CSP, 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer' } },
-  build: { sourcemap: false, target: 'es2022' },
+  // assetsInlineLimit 0: small font subsets would otherwise be inlined as data: URIs, which the CSP (default-src 'self',
+  // no font-src data:) blocks in the nginx container; as files under /assets they are 'self' (found 17 Nov 2026).
+  build: { sourcemap: false, target: 'es2022', assetsInlineLimit: 0 },
   test: {
     environment: 'jsdom',
     globals: true,

@@ -26,16 +26,6 @@ LoRA-B fold MAEs range from 0.3384 to 0.3862 and LoRA-D from 0.3431 to 0.3882, s
 average should not be interpreted as uniform performance. The worst LoRA-B peptide, CCDC17 tile~9,
 has MAE 0.9035 versus 0.8486 for frozen-B. It remains a failure case despite the average gain.
 
-\begin{table}[htbp]
-  \centering
-  \caption[OOF MAE conditional on the measured effect class ($\Delta=\Delta$PSI)]{OOF MAE conditional on the measured effect class ($\Delta=\Delta$PSI).
-  Each metric averages errors within each eligible peptide, then over peptides in that class.
-  Support counts differ from AUROC/average-precision eligibility, which requires at least three
-  cells of each class; the fixed-budget precision replay retains all peptides.}
-  \label{tab:progress-effect-errors}
-  \input{assets/ch4/tab-progress-effect-errors}
-\end{table}
-
 Table~\ref{tab:progress-effect-errors} shows substantially greater errors for large effects than
 for neutral cells. For $|\Delta\mathrm{PSI}|\ge1$, LoRA-B and D have MAE 0.8970 and 0.9084,
 respectively, versus 1.4127 for zero, over 13,630 cells, 232 peptides and 218 groups. The positive
@@ -44,15 +34,6 @@ class has 12,053 cells; the negative class has only 1,577. LoRA-B's cell-micro s
 The direction is consistent with underestimating effect magnitude, but does not isolate a biological
 mechanism or distinguish model shrinkage from measurement noise. These signed residuals have
 different weighting from the peptide-macro absolute errors in the table.
-
-\begin{table}[htbp]
-  \centering
-  \caption[Three largest absolute cell errors for LoRA-B on W, selected after inspection]{Three largest absolute cell errors for LoRA-B on W, selected after inspection.
-  Positions are within the measured peptide; measured and predicted values are $\Delta$PSI.
-  These illustrate failures and are not clinical or mechanistic case validations.}
-  \label{tab:progress-largest-errors}
-  \input{assets/ch4/tab-progress-largest-errors}
-\end{table}
 
 The difficult cases in Table~\ref{tab:progress-largest-errors} include sign reversals for strongly
 stabilising measured substitutions. Post-hoc tables by mutant amino acid and by WT--replacement

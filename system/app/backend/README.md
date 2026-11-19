@@ -54,18 +54,21 @@ contract itself, is at `/docs` in `dev-api`. A reload on code change is on.
 | `DF_OPENAPI_CONTRACT` | `../openapi.yaml` | The file served as the API description |
 | `DF_BACKGROUND_JOBS` | true | Hourly purge of expired runs, minute flush of usage counters |
 
-## Docker (not run on the machine where it was written)
+## Docker (run on 17 Nov 2026; see ../docker-validation-2026-11-17.md)
 
 ```bash
 cd system/app
-cp .env.example .env && $EDITOR .env           # at least POSTGRES_PASSWORD
-docker compose up -d --build                   # db, api, web (the web image comes from ./frontend)
-docker compose --profile tools run --rm etl    # once: fills the database from the research checkout (TOPIC_DIR)
+make docker-env                                # .env with a random POSTGRES_PASSWORD (once)
+docker compose up -d --build db
+make docker-etl                                # fills the database and the model volume from the checkout (TOPIC_DIR)
+make docker-up                                 # api, worker, web -> http://127.0.0.1:8080
 ```
 
-VPS: `docker compose --profile vps up -d` adds Caddy with automatic TLS for `SITE_ADDRESS`; set `DF_TRUST_PROXY=true`.
-Free host without a hosted PostgreSQL: run the API image with `DF_DATABASE_URL=sqlite:////data/degron.db` and a volume,
-loading it with `CLINVAR_SCOPE=degron-only`. Untested; see DEVIATIONS §5.
+`make docker-dev` adds the bind-mounted development setup (Vite :5173, API --reload :8000); `make docker-test` runs this
+suite in the dev image on the compose PostgreSQL. `WITH_LORA=1` builds the image with PyTorch for the optional LoRA-D
+model (`LORA.md`). VPS: `docker compose --profile vps up -d` adds Caddy with automatic TLS for `SITE_ADDRESS` (not
+exercised). Free host without a hosted PostgreSQL: run the API image with `DF_DATABASE_URL=sqlite:////data/degron.db`
+and a volume, loading it with `CLINVAR_SCOPE=degron-only`. Untested; see DEVIATIONS §5.
 
 ## ETL in one paragraph
 

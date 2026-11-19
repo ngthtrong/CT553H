@@ -1,0 +1,267 @@
+{
+  "schema_version": 1,
+  "protocol_sha256": "d74dc18d24bc25804f8bcf226647897ab40f3a13f896818818b201964ea7393e",
+  "campaign": "aa4fc2b7ce29abf9",
+  "scientific_status": "development_not_gate_closure",
+  "evaluation": "posthoc_diagnostic_on_previously_examined_held_source",
+  "hypothesis": "similarity_construct: lợi thế LoRA-D trên T đến từ đồng dạng trình tự với W",
+  "denominators": {
+    "peptides": 1410,
+    "clusters": 730,
+    "cells": 39234
+  },
+  "identity_reference": {
+    "peptides": 235,
+    "cohort": "W training peptides",
+    "metric": "max_aligned_identity, căn vị trí trên 28 aa",
+    "source": "research/reliability-transfer-2026-11-08/similarity.csv"
+  },
+  "parameters": {
+    "identity_bins": [
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.00000001
+    ],
+    "bootstrap_replicates": 5000,
+    "bootstrap_seed": 1729,
+    "cluster": "group_id",
+    "multiplicity": 4
+  },
+  "selfcheck": [
+    {
+      "contrast": "esm2_35m-lora-D_minus_esm2_35m-frozen-D",
+      "recomputed_delta": -0.04054776776860308,
+      "published_delta": -0.04054776776860308,
+      "absolute_difference": 0.0,
+      "ci95_max_absolute_difference": 6.938893903907228e-18
+    },
+    {
+      "contrast": "esm2_35m-lora-D_minus_ordered-w5-D",
+      "recomputed_delta": -0.05217578925156808,
+      "published_delta": -0.05217578925156808,
+      "absolute_difference": 0.0,
+      "ci95_max_absolute_difference": 1.3877787807814457e-17
+    }
+  ],
+  "contrasts": {
+    "esm2_35m-lora-D_minus_esm2_35m-frozen-D": {
+      "bins": {
+        "[0.0, 0.25)": {
+          "delta": -0.03991534825871508,
+          "ci95": [
+            -0.04447067148533226,
+            -0.03534980848514129
+          ],
+          "ci_adjusted": [
+            -0.04568255758382223,
+            -0.034181858997084626
+          ],
+          "multiplicity": 4,
+          "peptides": 1093,
+          "clusters": 627,
+          "bootstrap": 5000,
+          "mean_identity": 0.1999738596262095,
+          "min_identity": 0.142857142857,
+          "max_identity": 0.214285714286,
+          "max_5mer_coverage": 0.125
+        },
+        "[0.25, 0.5)": {
+          "delta": -0.04272831831846927,
+          "ci95": [
+            -0.05337879376865148,
+            -0.03240653949111985
+          ],
+          "ci_adjusted": [
+            -0.05643399623212372,
+            -0.029293491371810188
+          ],
+          "multiplicity": 4,
+          "peptides": 317,
+          "clusters": 239,
+          "bootstrap": 5000,
+          "mean_identity": 0.2595763857593123,
+          "min_identity": 0.25,
+          "max_identity": 0.357142857143,
+          "max_5mer_coverage": 0.0833333333333
+        }
+      },
+      "spearman_identity_vs_delta": {
+        "rho": 0.016351271192056822,
+        "pvalue": 0.5395549303159586,
+        "peptides": 1410,
+        "note": "Mô tả, theo peptide, không gom cụm; không phải kiểm định cơ chế."
+      }
+    },
+    "esm2_35m-lora-D_minus_ordered-w5-D": {
+      "bins": {
+        "[0.0, 0.25)": {
+          "delta": -0.0541865687074131,
+          "ci95": [
+            -0.059450455268233234,
+            -0.04881429409671426
+          ],
+          "ci_adjusted": [
+            -0.06087171361726003,
+            -0.04723146811662807
+          ],
+          "multiplicity": 4,
+          "peptides": 1093,
+          "clusters": 627,
+          "bootstrap": 5000,
+          "mean_identity": 0.1999738596262095,
+          "min_identity": 0.142857142857,
+          "max_identity": 0.214285714286,
+          "max_5mer_coverage": 0.125
+        },
+        "[0.25, 0.5)": {
+          "delta": -0.04524272317826016,
+          "ci95": [
+            -0.05611863879040785,
+            -0.0349012914946706
+          ],
+          "ci_adjusted": [
+            -0.05875213111221847,
+            -0.031813364530953424
+          ],
+          "multiplicity": 4,
+          "peptides": 317,
+          "clusters": 239,
+          "bootstrap": 5000,
+          "mean_identity": 0.2595763857593123,
+          "min_identity": 0.25,
+          "max_identity": 0.357142857143,
+          "max_5mer_coverage": 0.0833333333333
+        }
+      },
+      "spearman_identity_vs_delta": {
+        "rho": 0.05023000166424886,
+        "pvalue": 0.05934180449157128,
+        "peptides": 1410,
+        "note": "Mô tả, theo peptide, không gom cụm; không phải kiểm định cơ chế."
+      }
+    }
+  },
+  "verdicts": {
+    "esm2_35m-lora-D_minus_esm2_35m-frozen-D": {
+      "verdict": "H-S_does_not_explain_advantage",
+      "bottom_bin": "[0.0, 0.25)",
+      "populated_bins": [
+        "[0.0, 0.25)",
+        "[0.25, 0.5)"
+      ],
+      "bins_with_ci95_below_zero": [
+        "[0.0, 0.25)",
+        "[0.25, 0.5)"
+      ]
+    },
+    "esm2_35m-lora-D_minus_ordered-w5-D": {
+      "verdict": "H-S_does_not_explain_advantage",
+      "bottom_bin": "[0.0, 0.25)",
+      "populated_bins": [
+        "[0.0, 0.25)",
+        "[0.25, 0.5)"
+      ],
+      "bins_with_ci95_below_zero": [
+        "[0.0, 0.25)",
+        "[0.25, 0.5)"
+      ]
+    }
+  },
+  "strata_lora_minus_zero": {
+    "gt3_le4": {
+      "delta": -0.0653022588377629,
+      "ci95": [
+        -0.07591306919543012,
+        -0.054455481809757664
+      ],
+      "ci_adjusted": [
+        -0.07885505079760025,
+        -0.051683466252367534
+      ],
+      "multiplicity": 4,
+      "peptides": 323,
+      "clusters": 253,
+      "bootstrap": 5000
+    },
+    "gt4_le5": {
+      "delta": -0.025322692192749435,
+      "ci95": [
+        -0.03262470246161203,
+        -0.018022897938354734
+      ],
+      "ci_adjusted": [
+        -0.03481610928033793,
+        -0.016109997347571577
+      ],
+      "multiplicity": 4,
+      "peptides": 306,
+      "clusters": 238,
+      "bootstrap": 5000
+    },
+    "gt5": {
+      "delta": 0.015212805996608297,
+      "ci95": [
+        0.007041649764945223,
+        0.023800870199141174
+      ],
+      "ci_adjusted": [
+        0.005098614446138799,
+        0.025996274493610985
+      ],
+      "multiplicity": 4,
+      "peptides": 257,
+      "clusters": 204,
+      "bootstrap": 5000
+    },
+    "le3": {
+      "delta": -0.10157764996901532,
+      "ci95": [
+        -0.11076757838254662,
+        -0.09207704563456881
+      ],
+      "ci_adjusted": [
+        -0.11361565205225684,
+        -0.08948204107935549
+      ],
+      "multiplicity": 4,
+      "peptides": 524,
+      "clusters": 343,
+      "bootstrap": 5000
+    }
+  },
+  "inputs": [
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/aggregate-refit/esm2_35m-lora-D-per-peptide.csv",
+      "sha256": "874d77d2e6344cfce00ad4a01e5724ad02b1d436926504cfb183c32665a217bf"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/aggregate-refit/esm2_35m-frozen-D-per-peptide.csv",
+      "sha256": "72c4e9765557063b1a01d87ac198c54f077bb1540033e570408cf3f327116499"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/aggregate-refit/ordered-w5-D-per-peptide.csv",
+      "sha256": "7068342e91ab90d271cb5dafbec971851b58bfa125dae4a66082351e81f5a3d7"
+    },
+    {
+      "path": "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/aggregate-refit/zero-per-peptide.csv",
+      "sha256": "64564e9e4818ea5dbe9f0c038b80692dd6f80ee33d12043a4ce8e3953e368c21"
+    },
+    {
+      "path": "research/reliability-transfer-2026-11-08/similarity.csv",
+      "sha256": "58ad8ac91521c0799b0bc339e139fdc96b44354a78edafe2fedb634e666cb371"
+    },
+    {
+      "path": "research/reliability-transfer-2026-11-08/config.json",
+      "sha256": "b3c2f9b058cd5f15b650fd6c2d0937c8954cd1ff44254d18c608fde8e76fbf2e"
+    }
+  ],
+  "limitations": [
+    "max_aligned_identity là proxy cục bộ; không thay MMseqs2 hay audit remote homology.",
+    "Không bao gồm phơi nhiễm trình tự trong pretraining của ESM2.",
+    "Liên hệ thống kê, không phải cơ chế; không kết luận nhân quả.",
+    "T đã từng được khảo sát; phép kiểm này không nâng T thành nguồn độc lập.",
+    "Chẩn đoán thứ cấp; không đóng G2/G3 và không đổi mô hình phục vụ."
+  ]
+}

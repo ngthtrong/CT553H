@@ -8,12 +8,13 @@ To assess reproducibility and detectable overlap between training and test clust
 verification that the prototype validates input, keeps coordinates and score direction correct, and
 exports data consistently with the research runner.
 
-This chapter has two parts. Section~\ref{sec:experiments} reports the experimental evaluation of the
-research pipeline; these experiments have been run. Sections~\ref{sec:testplan} to~\ref{sec:testeval} follow
-the test-plan outline of the Faculty for the prototype tool. The numerical results retained here come
-from the recorded CLI verification artefacts. Baseline web/API code and historical local checks also
-exist, but the first-release extensions confirmed on 29 October 2026 require implementation and new
-local acceptance evidence; no passing result for those additions is claimed here.
+This chapter mirrors the two parts of Chapter~\ref{chap:design}. Part~A
+(Section~\ref{sec:experiments}) reports the experimental results of the research pipeline designed in
+Part~A of that chapter. Part~B (Sections~\ref{sec:testplan} to~\ref{sec:app-evaluation}) follows the
+test-plan outline of the Faculty for the software and ends with the executed acceptance of the first
+release on 17 November 2026.
+
+\addsec{Part A: Experimental Results}
 
 \section{Experimental Evaluation}\label{sec:experiments}
 This section preserves the initial restricted-PSI experiments and then reports the important
@@ -115,6 +116,30 @@ that have both classes; a random ranking has enrichment 1.
 All results below are on a \emph{development benchmark}: the same \nNPep{} peptides have been examined in
 several experiments, and the out-of-fold design is not an independent validation on unseen data.
 
+\paragraph{Reading guide by research question.} The subsections follow the order in which the
+evidence was produced, from the restricted benchmark to the full-PSI campaign, the locked refit and
+the prioritisation replay, because later designs depend on earlier results.
+Figure~\ref{fig:experiment-design} maps each question to its comparison; in brief, with measured values:
+\begin{itemize}
+  \item \textbf{RQ1, coverage.} Training ridge on the full WT-PSI range lowers macro MAE from
+        \nVthreeRidgeB{} to \nVthreeRidgeD{} (Section~\ref{sec:res-fullpsi}); for LoRA, arms B and D stay
+        close overall and differ by stratum (Section~\ref{sec:lora-results}).
+  \item \textbf{RQ2, representation and head.} A matched frozen-ESM CNN reaches MAE \nVthreeCnnD{}
+        against \nVthreePointwiseD{} for its pointwise control (Section~\ref{sec:res-fullpsi}); larger frozen
+        encoders do not consistently help (Section~\ref{sec:family-results}).
+  \item \textbf{RQ3, transfer learning.} Scanning-label pre-training helps the tested one-hot CNN; tile-score
+        pre-training does not help the gated model (Section~\ref{sec:res-fullpsi}, Appendix~\ref{sec:res-pretrain}).
+  \item \textbf{RQ4, adaptation.} LoRA lowers MAE from \nCampaignFrozenB{} to \nCampaignLoraB{} in arm B and
+        from \nCampaignFrozenD{} to \nCampaignLoraD{} in arm D (Section~\ref{sec:lora-results}); after the
+        refit, LoRA-D reaches \nTLoraMae{} on T against \nTFrozenMae{} (Section~\ref{sec:transfer-refit}).
+  \item \textbf{RQ5, generalisation and reliability.} Calibration lowers the Brier score but leaves errors
+        (Section~\ref{sec:campaign-calibration-transfer}); the replay favours LoRA-D at a fixed budget
+        (Section~\ref{sec:res-prioritization}); in the most stable stratum of T, predicting zero is better
+        than LoRA-D (Section~\ref{sec:transfer-refit}).
+\end{itemize}
+Table~\ref{tab:question-assessment} at the end of the results states, for each question, what is
+supported and what remains open.
+
 \subsubsection{Direct Learning on the Saturation Matrix}
 Table~\ref{tab:g2} lists the macro AUROC of each model. Ridge M3 reaches \nAucRidge{}, above the frozen
 $\Delta$PAP baseline (\nAucDPAP{}). The paired difference is \nDRidgeDPAP{} with a cluster-bootstrap interval
@@ -131,19 +156,17 @@ $\Delta$PAP residual (\nAucGateNoPap{}) does not change this picture: both varia
 
 \begin{table}[htbp]
   \centering
-  \caption{Paired AUROC differences between models}\label{tab:g2paired}
+  \caption[Paired AUROC differences and per-seed AUROC]{Paired AUROC differences and per-seed AUROC. (a) Paired differences between models
+  on the same peptides. (b) Per-seed AUROC of the three main models.}\label{tab:g2paired}
+  {\small\textit{(a) Paired differences}}\par\smallskip
   \input{assets/ch4/tab-g2-paired}
-\end{table}
-
-The result of the gate is not stable across seeds (Table~\ref{tab:g2seeds}). In seed 29 the gated network is
-\emph{below} the network without the gate (difference \nSeedFlipDelta{}, \nSeedFlipCI{}), whereas it is above in the other
-two seeds. The ensemble figure should therefore not be read as evidence that the gate helps.
-
-\begin{table}[htbp]
-  \centering
-  \caption{Per-seed AUROC of the three main models}\label{tab:g2seeds}
+  \par\medskip{\small\textit{(b) Per seed}}\par\smallskip
   \input{assets/ch4/tab-g2-seeds}
 \end{table}
+
+The result of the gate is not stable across seeds (Table~\ref{tab:g2paired}b). In seed 29 the gated network is
+\emph{below} the network without the gate (difference \nSeedFlipDelta{}, \nSeedFlipCI{}), whereas it is above in the other
+two seeds. The ensemble figure should therefore not be read as evidence that the gate helps.
 
 \subsubsection{Published Degformer Checkpoint and Retrained Architecture}\label{sec:res-degformer}
 The published Degformer checkpoint scores \nAucDegOfficial{}, but this is not a held-out result: \nOverlapCells{} of the
@@ -235,12 +258,6 @@ not establish 3.0 as a universal biological boundary.
   \input{assets/ch4/tab-curve-verdict}
 \end{table}
 
-\begin{table}[htbp]
-  \centering
-  \caption[Cells of the benchmark peptides and of the 85 peptides added by relaxing the threshold]{Cells of the benchmark peptides and of the 85 peptides added by relaxing the threshold}\label{tab:newgroup}
-  \input{assets/ch4/tab-newgroup}
-\end{table}
-
 \subsubsection{Number of Clusters or Coverage of the Distribution}\label{sec:res-partb}
 The two curves of the previous section seem to contradict each other: ridge is flat between 35 and 71
 clusters, yet it rises when 83 more clusters are added. One reading is that the two steps add different things:
@@ -252,25 +269,24 @@ clusters (about 42 clusters) with the marginal gain of 36 old-region clusters me
 
 \begin{table}[htbp]
   \centering
-  \caption[Gain over the benchmark training set when a fraction of the new clusters is added]{Gain over the benchmark training set when a fraction of the new clusters is added}\label{tab:partb}
+  \caption[Gain over the benchmark training set when a fraction of the new clusters is added]{Gain over the benchmark training set when a fraction of the new clusters is added.
+  (a) Gain per added fraction. (b) Pre-registered verdicts; the reference marginal gain of
+  old-region clusters is \nBaseMarginal.}\label{tab:partb}
+  {\small\textit{(a) Gain per added fraction}}\par\smallskip
   \input{assets/ch4/tab-partb}
+  \par\medskip{\small\textit{(b) Pre-registered verdicts}}\par\smallskip
+  \input{assets/ch4/tab-partb-verdict}
 \end{table}
 
 For ridge the gain at +50\% is \nBFiftyRidge{} (\nBFiftyRidgeCI{}), whose interval lies entirely above \nBaseMarginal{}:
 the main criterion supports coverage of the distribution. For the network the interval contains \nBaseMarginal{}, so the new
-clusters are useful but not shown to be better than old ones (Table~\ref{tab:partbverdict}). The secondary
+clusters are useful but not shown to be better than old ones (Table~\ref{tab:partb}b). The secondary
 criterion, the shape of the curve, gives the opposite answer: the gain at +25\% is \nBFracRidge\% of the total
 for ridge and \nBFracGate\% for the network, below the threshold of 60\% fixed for ``early saturation'', so the
 fixed rule says ``proportional to the number of clusters''. Because the two fixed criteria disagree, the
 question is \emph{not decided}. As a descriptive remark only, the successive increments of ridge are
 \nBStepsRidge, so roughly 90\% of the total gain is already reached at +50\%, and the threshold of 60\% at +25\% was a
 poor operational choice. This remark does not overturn the verdict.
-
-\begin{table}[htbp]
-  \centering
-  \caption[Pre-registered verdicts on the new clusters]{Pre-registered verdicts on the new clusters. The reference marginal gain of old-region clusters is \nBaseMarginal.}\label{tab:partbverdict}
-  \input{assets/ch4/tab-partb-verdict}
-\end{table}
 
 What can be stated is limited: clusters from the region $3.0<\mathrm{PSI}_{\mathrm{WT}}\le4.0$ have a marginal value at least equal
 to that of old-region clusters, and for ridge the evidence suggests it is higher. It cannot be said that the gain is
@@ -311,86 +327,14 @@ representative labels differ, which changes how clusters are assigned to the fiv
 instead of \nAucRidge). That row therefore tests a re-assignment of folds, not coarser clustering; clustering granularity is tested
 with genuinely different partitions in Section~\ref{sec:res-recluster}.
 
-\begin{table}[htbp]
-  \centering
-  \caption{Robustness of the gain at threshold 4.0 (ridge M3)}\label{tab:partcrobust}
-  \input{assets/ch4/tab-partc-robust}
-\end{table}
-
-\subsubsection{Sensitivity to the Clustering Granularity}\label{sec:res-recluster}
-Because cov50 does not change the partition on this peptide set, a grid of seven partitions of the 176 peptides
-(the \nNPep{} benchmark peptides and the 85 added ones) was fixed before running: grouping by UniProt accession
-(no clustering), the reference MMseqs2 setting (30\% identity, 80\% coverage) and five looser MMseqs2 settings. The P0
-comparison (ridge M3, relaxed threshold 4.0 against the benchmark training set, same cluster bootstrap) was repeated with the
-folds rebuilt from each partition. The reference level reproduces the earlier scores (\nAucRidge{} and \nAucRidgeExt) and the five
-folds of the earlier experiment. The criterion fixed in advance: the gain is ``robust to granularity'' if every
-partition that differs from the reference and is still informative (fewer than half of the added cells are lost because they
-share a group with a test peptide) has a bootstrap interval of the gain above zero and a positive gain in all three seeds.
-
-\begin{table}[htbp]
-  \centering
-  \caption[Gain of the relaxed threshold 4.0 (ridge M3) under different protein partitions]{Gain of the relaxed threshold 4.0 (ridge M3) under different protein partitions. ``Groups'' are the groups of the
-  91 benchmark peptides and of all 176 peptides; ``Shared'' is the number of added peptides that fall in a group of a
-  benchmark peptide; ``Excl.'' is the mean percentage of the added cells that are removed from training because their
-  group contains a test peptide.}\label{tab:recluster}
-  \input{assets/ch4/tab-recluster}
-\end{table}
-
-The seven levels give only \nRcNDistinct{} distinct partitions (Table~\ref{tab:recluster}): lowering the identity from 0.2 to 0.1
-at coverage 0.5, and from 0.1 to 0.0 at coverage 0.3, changes no group, and 30\% identity with coverage 0.5 reproduces the
-reference grouping (only the group labels, and hence the fold assignment, differ; the gain there is
-\nRcFiftyD{} \nRcFiftyCI{}, the same value as the cov50 row of Table~\ref{tab:partcrobust}). Three partitions differ from the
-reference and are informative: grouping by accession (\nRcAccD{}, \nRcAccCI{}), 20\% identity with coverage 0.5 (\nRcMidD{}, \nRcMidCI{}) and
-10\% identity with coverage 0.3 (\nRcCoarseD{}, \nRcCoarseCI{}). All intervals are above zero and the gain is positive in all
-three seeds, so under the fixed rule the gain is \emph{robust to granularity}. The point estimates are not monotone in the
-coarseness (the largest is for grouping by accession), the intervals overlap, and no test of their differences was
-planned; the absolute benchmark score also moves with the partition (\nAucRidge{} for the reference and \nRcFiftyBase{} for the same grouping with
-other folds), so absolute values must not be compared across rows.
-
-The test is weaker than its name suggests. The coarsest partition still has \nRcCoarseGroups{} groups for the 91 benchmark peptides; in
-it, \nRcCoarseShared{} added peptides share a group with a benchmark peptide and on average \nRcCoarseExcl\% of the added cells are removed
-from training, and one of the five test folds consists of a single group. Whether the gain would survive a still coarser
-split, for example by protein family, is not known.
-
-\subsubsection{Pre-Training on Tile Labels}\label{sec:res-pretrain}
-The experiment of Voutsinos et al.\ \citep{voutsinos2026} provides a degradation score for \nPtNTiles{} tiles of 30 residues,
-without substitutions. The question was whether initialising the gated network (without $\Delta$PAP) from a model
-pre-trained to predict these scores lets it learn $\Delta$PSI better under the same label budget. The design was fixed in
-advance. Pre-training treats each tile as 30 wild-type rows (the substituted-residue input is zero), predicts the tile
-as the mean over positions and regresses the sign-reversed, standardised degron score. Two branches then share the same
-architecture, the learning-rate grid ($2\times10^{-3}$ or $5\times10^{-4}$, chosen on the inner validation set) and the
-inner validation split, and differ only in whether the network starts from the pre-trained state (\emph{pre}) or from
-random initialisation (\emph{rand}). To prevent leakage, in each outer fold every gene that has a tile similar to a protein of
-an outer-test cluster (MMseqs2 at 30\% identity with an alignment of at least 50 residues, a shared 12-mer, or the same gene
-name) is removed entirely from the pre-training data \emph{before} any learning; this removed \nPtGenesExcl{} genes in the five folds.
-The gate on the reproduction of earlier scores was passed (ridge \nAucRidge{} and \nAucRidgeExt; the gated network within \nPtGateGap{}
-of the earlier values). Two comparisons were fixed, both with the rule ``bootstrap interval above zero and a positive
-difference in every seed'': (A) \emph{pre} against \emph{rand}, and (B) \emph{pre} against ridge M3.
-
-\begin{table}[htbp]
-  \centering
-  \caption{Macro AUROC with and without pre-training on tile labels}\label{tab:p3auroc}
-  \input{assets/ch4/tab-p3-auroc}
-\end{table}
-
-\begin{table}[htbp]
-  \centering
-  \caption[Pre-registered comparisons for pre-training]{Pre-registered comparisons for pre-training. The main configuration is the relaxed threshold 4.0; the threshold 3.0 is
-  reported with the same criteria and was not used to choose the configuration.}\label{tab:p3verdict}
-  \input{assets/ch4/tab-p3-verdict}
-\end{table}
-
-The result is negative (Tables~\ref{tab:p3auroc} and~\ref{tab:p3verdict}). In the main configuration the pre-trained network reaches
-\nPtExtPre{}, against \nPtExtRand{} for random initialisation: difference A is \nPtExtA{} \nPtExtACI{}, an interval that contains zero,
-so pre-training cannot be distinguished from random initialisation; difference B is \nPtExtB{} \nPtExtBCI{}, so the pre-trained network
-is below ridge. At threshold 3.0 both differences are clearly negative (A: \nPtBaseA{} \nPtBaseACI{}; B: \nPtBaseB{} \nPtBaseBCI{}).
-The difference is negative in all three seeds in every comparison. By the mapping fixed in advance, the conclusion is
-``insufficient evidence for a benefit of pre-training''. The pre-training task itself was learned (Pearson correlation
-\nPtPearson{} between prediction and score on held-out genes, range \nPtPearsonLo{}--\nPtPearsonHi{} over the fifteen runs), so learning this source endpoint does not by itself
-establish useful transfer to $\Delta$PSI. This result rejects only this design, in which the
-pre-training sees wild-type sequences only and the whole network is then fine-tuned; designs that pre-train with
-substitutions, freeze part of this tile-label encoder or train both tasks jointly were not tried.
-The later frozen-ESM and LoRA experiments use different pretrained representations and are reported separately.
+\subsubsection{Controls Reported in the Appendix}
+Three further studies belong to the record rather than to the argument, and are reported in
+Appendix~\ref{app:supplementary}: the sensitivity of the threshold benefit to the clustering
+granularity, which repeated the comparison under three genuinely different partitions; the
+pre-training of a gated network on tile-level abundance labels, which made the model worse; and a
+scope comparison with a curated motif resource, which overlaps this benchmark in only a few
+peptides. They are kept because a result that did not help is still evidence, but none of them
+changes a claim made here.
 
 \subsubsection{Calibration of the Scores and Ranking Utility}\label{sec:res-calibration}
 The score of ridge M3 is a predicted $\Delta$PSI, not a probability. To report the probability that a substitution is positive
@@ -408,17 +352,15 @@ interval of the enrichment at 10\% is above 1. The raw scores of the three seeds
 \begin{table}[htbp]
   \centering
   \caption[Probability quality on the outer-test cells]{Probability quality on the outer-test cells (observed fraction of positive cells: \nCalObs). ECE: expected calibration
-  error over ten equal-mass bins; $\hat p$: predicted probability.}\label{tab:calmetrics}
+  error over ten equal-mass bins; $\hat p$: predicted probability. (a) Metrics per mapping.
+  (b) Pre-registered comparisons of the Brier score.}\label{tab:calmetrics}
+  {\small\textit{(a) Metrics}}\par\smallskip
   \input{assets/ch4/tab-cal-metrics}
-\end{table}
-
-\begin{table}[htbp]
-  \centering
-  \caption{Pre-registered comparisons of the Brier score}\label{tab:calverdict}
+  \par\medskip{\small\textit{(b) Pre-registered comparisons}}\par\smallskip
   \input{assets/ch4/tab-cal-verdict}
 \end{table}
 
-Platt scaling meets the criterion (Tables~\ref{tab:calmetrics} and~\ref{tab:calverdict}): the Brier score falls from \nCalBrierRaw{} to \nCalBrierPlatt{},
+Platt scaling meets the criterion (Table~\ref{tab:calmetrics}): the Brier score falls from \nCalBrierRaw{} to \nCalBrierPlatt{},
 a difference of \nCalDelta{} \nCalDeltaCI{}, positive in each seed (\nCalSeeds{}); isotonic regression is practically identical
 (Platt $-$ isotonic: \nCalPlattIso{}, \nCalPlattIsoCI{}), so Platt scaling, with two parameters, is used. The skill over the base rate is
 \nCalSkillPlatt{}, with the interval of \nCalConstDelta{} \nCalConstCI{} above zero. The first criterion is a low bar: the raw score read as a
@@ -454,12 +396,6 @@ The saturation-mutagenesis tables of Koren et al.\ \citep{koren2018} use the sam
 The supplementary tables were downloaded manually, because the automatic download is blocked by the host. The article is not in the open-access subset of the
 repository, so the tables are used internally only and are not redistributed here. The gate fixed in advance required all of four conditions (Table~\ref{tab:koren}).
 
-\begin{table}[htbp]
-  \centering
-  \caption[Gate fixed in advance for merging the labels of Koren et al.\ (Table S4) into training]{Gate fixed in advance for merging the labels of Koren et al.\ (Table S4) into training}\label{tab:koren}
-  \input{assets/ch4/tab-koren}
-\end{table}
-
 The data themselves are sound: PSI is reproduced from the bin counts in all rows, an internal wild-type reference can be built for all substrates, and the
 direction of the effect of the last glycine agrees with the biology. The gate nevertheless fails on the number of new clusters. Table S4 holds \nKoCells{} substitution cells for \nKoNSubstrates{} substrates;
 the peptides are 23-residue C-terminal sequences with a stop codon in which only the last ten positions are mutated, a library different from the 28-residue internal peptides of the main
@@ -468,29 +404,15 @@ and the effects sit in the last one to three positions. Only \nKoMapped{} of the
 \nKoNewClusters{} new clusters, against the \nKoMinClusters{} required. As a diagnostic, not part of the gate, the agreement between Tables S3 and S4 on the \nKoNOverlap{} cells they share is low (Spearman \nKoSpearman{}), so S3
 is not used as a label source.
 
-By the consequence fixed in advance, these labels are \emph{not} merged into training, and the planned merging of external labels (P4) and the repeated learning curve on the enlarged set (P5) were
-therefore not run. The table remains a possible external test set for a C-terminal degron class; this was not done in the thesis and no number is reported for it.
-
-\subsubsection{Scope Comparison with MetaDegron}
-MetaDegron \citep{zheng2024} was audited as a possible competitor and label source. Its
-labels are binary motif-level annotations of curated degrons, not $\Delta$PSI; the audit therefore compares scope
-and data, not predictive scores on the GPS matrix, because MetaDegron-D could not be run on GPS peptides
-(Table~\ref{tab:metadegron}). Among the main findings, the curated positive set has only \nMdHuman{} human rows, and
-almost no region of it coincides with the GPS peptides used here (\nMdOvScan{} scanning peptides, \nMdOvSat{} saturation peptide
-and \nMdOvCrispr{} from the CRISPR screens). Only \nMdEThreeStrict{} E3 motif group keeps at least five samples after the strictest filter, so ``21 E3
-ligases'' is a list of motif-compatible assignments, not 21 independently labelled classes. The reported
-MetaDegron-X AUC of \nMdAuc{} was recomputed from the stored trees, but only on the authors' prepared tables, and \nMdInProps{} of the \nMdTestPos{}
-positive test coordinates are in the property table of the fitting data; it is not an independent result and not a
-GPS result. A simple composition logistic baseline on the same positives, split by protein cluster at cov80,
-gives AUROC between \nCompLo{} and \nCompHi{} (core composition) and between \nCtxLo{} and \nCtxHi{} (29-residue
-context), on a reconstructed population and not on the authors' own training set. The audit therefore suggests positioning MetaDegron as a complementary tool for motif and E3 information rather than a
-head-to-head competitor on residue-level effect prediction; binary motif labels are not converted into $\Delta$PSI.
-
 \begin{table}[htbp]
   \centering
-  \caption[Audit of the MetaDegron data and overlap with the data of this thesis]{Audit of the MetaDegron data and overlap with the data of this thesis}\label{tab:metadegron}
-  \input{assets/ch4/tab-metadegron}
+  \caption[Gate fixed in advance for merging the labels of Koren et al.\ (Table S4) into training]{Gate fixed in advance for merging the labels of Koren et al.\ (Table S4) into training}\label{tab:koren}
+  \input{assets/ch4/tab-koren}
 \end{table}
+
+
+By the consequence fixed in advance, these labels are \emph{not} merged into training, and the planned merging of external labels (P4) and the repeated learning curve on the enlarged set (P5) were
+therefore not run. The table remains a possible external test set for a C-terminal degron class; this was not done in the thesis and no number is reported for it.
 
 \input{chapters/sections/current-evidence}
 
@@ -520,9 +442,9 @@ The following parts of the plan have no results in this version of the thesis; n
         comparisons remain untested. The earlier restricted-benchmark result used random alone.
   \item \textbf{Separating the region of $\mathrm{PSI}_{\mathrm{WT}}$ from the protein.} It needs pairs of peptides of the same protein on both sides
         of the threshold, which the present data may not contain (Section~\ref{sec:res-partb}).
-  \item \textbf{Expanded local software acceptance and tests with users.} Baseline web/API code exists,
-        but project/history, batch/protein and import/comparison extensions and their acceptance remain
-        pending (Section~\ref{sec:testplan}); historical checks do not verify this expanded scope.
+  \item \textbf{Tests with users.} The expanded local release has been accepted
+        (Section~\ref{sec:app-evaluation}), but no study with researchers other than the author and
+        no manual keyboard and screen-reader pass has been carried out.
 \end{itemize}
 
 \subsection{Discussion}
@@ -597,22 +519,23 @@ presents the scientific methods, results and their interpretation.
 % Internal traceability (not printed): calibration-p6-2026-10-22/verify.json
 % Internal traceability (not printed): residue-task-derisk-2026-10-15/ceiling.json
 
+\addsec{Part B: Software Testing}
+
 \section{Software Testing Plan}\label{sec:testplan}
 \subsection{Functions Under Test}
 The target covers UC-01 to UC-10 of Chapter~\ref{chap:problem}. Functions include scoring, ranking
 and export; protein selection and ClinVar annotations; model and reference evidence; batch and
 protein jobs; experimental import and comparison; and persistent projects and history. The recorded CLI verification below
-covers numerical consistency for the original scoring and export path only. Baseline web/API code
-and historical test records exist, but these tests have not been rerun here and do not verify the new
-workflows. The expanded local acceptance scenarios are specified later in this chapter.
+covers numerical consistency for the original scoring and export path. The application suites,
+including the new workflows, were run for the first release and are reported in
+Section~\ref{sec:app-evaluation}; the expanded acceptance scenarios are listed later in this chapter.
 \subsection{Approach}
 The prototype is a thin layer over a research model, so the main risk is that it computes something different from what was
 evaluated in Section~\ref{sec:experiments}. The approach is therefore \emph{back-to-back testing}: the prototype path is compared with the
 training and evaluation path of the research runner on the \nVerCells{} cells of the 176 peptides. The 180 features are rebuilt in the
 prototype by an independent implementation (\nVerFeatures{} values are compared), so the comparison is not a code path checked against itself.
-Baseline input-validation tests exist in the application source. Their historical results are not
-new execution evidence in this chapter. New domain, job, import, annotation and history cases below
-remain pending implementation and execution.
+Input validation and the new domain, job, import, annotation and history cases were executed for
+the first release and are reported in Section~\ref{sec:app-evaluation}.
 \subsection{Criteria for Test Success or Failure}
 A check passes when the largest absolute difference between the two paths is below $10^{-9}$. The check of the exported file is asserted at
 $5\times10^{-9}$ in the code, because values are written with ten significant digits; the measured differences are below $10^{-9}$ for it as well.
@@ -624,13 +547,15 @@ The verification script stops at the first failed assertion and runs no later ch
 Restart: rebuild the frozen model artefact and run the verification procedure again from the beginning.
 \subsection{Test Deliverables}
 The verification procedure, its machine-readable execution report, the calibration results and
-Table~\ref{tab:verify} of this chapter form the recorded numerical-consistency evidence. The pending
-local acceptance work additionally requires dated functional, recovery and resource-use reports.
+Table~\ref{tab:verify} of this chapter form the recorded numerical-consistency evidence. The first
+release adds dated functional, recovery and resource-use reports from its acceptance run.
 
 \section{Test Management}
 \subsection{Test Activities}
-Executed: building the model and the caches, running the verification script (\nVerNChecks{} checks). Not executed for the expanded first-release scope: local integration, job/import/history tests,
-resource measurement and user evaluation. Historical baseline web/API checks are a separate record.
+Executed: building the model and the caches, running the verification script (\nVerNChecks{}
+checks), and for the first release the backend, contract, interface and browser suites, resource
+measurements, a clean installation and a forced restart (Section~\ref{sec:app-evaluation}). Not
+executed: evaluation with users other than the author.
 \subsection{Test Environment}
 Linux under WSL2 on one development computer, CPU only; Python 3.12.3 and NumPy 2.5.3. The verification needs about 1.2~GB of memory. The model file and the caches are generated by
 the scripts and are not stored in the repository.
@@ -640,8 +565,8 @@ One tester, the author of the thesis, who is also the developer; there is no ind
 \begin{itemize}
   \item Back-to-back tests show agreement with the research code, not that the science is right: an error shared by both paths (for example in the definition of the label) would not be found.
   \item The probabilities are about 13\% too low for peptides of the original benchmark domain (Section~\ref{sec:res-calibration}); ranking is not affected.
-  \item The historical CLI has only a printed domain warning. The baseline web gate still needs R3
-        integration; whole-protein processing must not hide unknown, borderline or out-of-domain tiles.
+  \item The historical CLI has only a printed domain warning. The application integrates the R3 gate;
+        whole-protein processing must still not hide unknown, borderline or out-of-domain tiles.
   \item User imports can mix endpoints or mis-map residues; validation and separate assay comparisons
         are required. Persistent jobs/history add crash recovery and file-cleanup risks.
   \item The model was evaluated only on a development benchmark; no result in this chapter supports a claim of external validity.
@@ -650,30 +575,33 @@ One tester, the author of the thesis, who is also the developer; there is no ind
 \section{Test Scenarios and Test Cases}
 \subsection{Test Scenarios}
 S1: score a tile given as a sequence. S2: score a tile of a protein given by its UniProt accession. S3: export the scores as CSV and read them back.
-S4: reject invalid input; the retained CLI verification report does not cover this scenario.
+S4: reject invalid input; the retained CLI verification report does not cover this scenario, which is tested in the application suite instead.
 \subsection{Expanded Local Acceptance Scenarios}
-Table~\ref{tab:local-acceptance} defines the additional scenarios. All are pending; test IDs map to
-the system SRS and test plan. No public-host deployment is required.
+Table~\ref{tab:local-acceptance} lists the additional scenarios of the first release and the
+suites in which they were executed during the acceptance run of Section~\ref{sec:app-evaluation}.
+Test IDs map to the system SRS and test plan. No public-host deployment is required.
 \begin{table}[htbp]
   \centering
-  \caption[Planned first-release local acceptance scenarios]{Planned first-release local acceptance scenarios; no execution result claimed}
+  \caption[First-release local acceptance scenarios]{First-release local acceptance scenarios and the suites that executed them on the
+  acceptance date. All listed suites passed (Table~\ref{tab:app-tests}).}
   \label{tab:local-acceptance}
   \small
-  \begin{tabularx}{\textwidth}{|P{3.4cm}|X|}
-    \hline \textbf{Case group} & \textbf{Expected evidence} \\ \hline
-    DOM-01, ANN-01 & Correct gate estimator/borderline handling; ClinVar and reference mapping, source states and attribution. \\ \hline
-    BATCH-01 to 06 & Bounds, single-tile equivalence, coverage/overlapping contexts, partial failures, cancellation, restart without duplicates and complete exports. \\ \hline
-    IMP-01 to 04 & CSV/TSV validation/commit, WT/replicate alignment, missing/conflicting data and hand-checked assay-compatible metrics. \\ \hline
-    HIST-01 to 03 & Explicit local persistence, immutable reopen/rerun after source changes, confirmed dependency/file deletion. \\ \hline
-    NF-07, DEP-01/02 & Recorded local resource use, clean local installation and restart of the same instance. \\ \hline
+  \begin{tabularx}{\textwidth}{|P{2.6cm}|X|P{3.2cm}|}
+    \hline \textbf{Case group} & \textbf{Expected evidence} & \textbf{Executed in} \\ \hline
+    DOM-01, ANN-01 & Correct gate estimator/borderline handling; ClinVar and reference mapping, source states and attribution. & gate golden tests; API overlay tests \\ \hline
+    BATCH-01 to 06 & Bounds, single-tile equivalence, coverage/overlapping contexts, partial failures, cancellation, restart without duplicates and complete exports. & job tests; restart measurement \\ \hline
+    IMP-01 to 04 & CSV/TSV validation/commit, WT/replicate alignment, missing/conflicting data and hand-checked assay-compatible metrics. & import tests \\ \hline
+    HIST-01 to 03 & Explicit local persistence, immutable reopen/rerun after source changes, confirmed dependency/file deletion. & workspace API and browser tests \\ \hline
+    NF-07, DEP-01/02 & Recorded local resource use, clean local installation and restart of the same instance. & Table~\ref{tab:app-nonfunctional} \\ \hline
   \end{tabularx}
 \end{table}
 
 \subsection{Test Cases}
 Table~\ref{tab:verify} lists the executed cases, which cover S1 to S3 through the comparison of the scores computed by the prototype with those of the research path. The cases of S4
 (length different from 28, a character outside the 20 amino acids, an unknown accession, a tile beyond the end of the protein, a tile with a non-standard residue, a missing model file) are specified
-by the CLI checks; application source contains baseline tests, but no new execution report is added
-for them here. Expanded first-release cases are specified in Table~\ref{tab:local-acceptance}.
+by the CLI checks and are exercised in the application by the input-validation, contract and fuzz
+tests of Section~\ref{sec:app-evaluation}. Expanded first-release cases are listed in
+Table~\ref{tab:local-acceptance}.
 
 \begin{table}[htbp]
   \centering
@@ -684,10 +612,111 @@ for them here. Expanded first-release cases are specified in Table~\ref{tab:loca
 \section{Test Evaluation}\label{sec:testeval}
 All \nVerNChecks{} executed cases passed; the largest absolute difference is \nVerMax{} (Table~\ref{tab:verify}). The prototype therefore reproduces the research model on \nVerCells{} cells,
 including the scores of the outer-test folds of all fifteen (seed, fold) pairs. This establishes consistency only. It does not show that the predictions are correct (Section~\ref{sec:experiments} addresses that, on a development
-benchmark), and it says nothing about input validation, the interface, the response time (the target of Chapter~\ref{chap:problem} has not been measured) or usability \textbf{[PENDING]}.
+benchmark), and on its own it says nothing about input validation, the interface, response time or
+usability. Those properties were measured separately, in the acceptance run reported next.
+
+\section{Software Acceptance of the First Release}\label{sec:app-evaluation}
+The application described in Chapter~\ref{chap:design} was accepted locally on 17 November 2026.
+Two records from that day are used: the acceptance run on the host, and a second run later the same
+day after the whole application had been moved into containers and the adapted model had been added
+as an optional serving model. Both ran on one machine: \nAppHost{}, with Python \nAppPython{}, Node
+\nAppNode{} and \nAppPostgres{} for the database suite. Figures measured on one
+developer machine are not a benchmark of the software on other hardware, and software acceptance
+does not alter any scientific status in this chapter.
+
+\subsection{Executed Test Suites}
+Table~\ref{tab:app-tests} lists what was run and what it reported. The backend suite has
+\nAppDockerTotal{} cases after the container changes. Inside the development container it passes
+\nAppDockerSqlitePassed{} cases on SQLite, with \nAppDockerSqliteSkipped{} skipped because the parity
+test of the adapted model needs PyTorch, and \nAppDockerPgPassed{} on PostgreSQL~16, where
+\nAppDockerPgSkipped{} SQLite-only cases are skipped; none fails. The earlier host run reported
+\nAppBackendTests{} cases with \nAppBackendCoverage\% line coverage. The parity tests of the adapted
+model pass \nAppLoraParityTests{} of \nAppLoraParityTests{} in an environment with PyTorch. The
+interface has \nAppDockerVitest{} unit cases, and the browser suite runs \nAppBrowserMock{}
+specifications against a mock interface, including automated WCAG~2.1~AA checks at four widths in
+both themes, plus \nAppDockerReal{} against the real backend in the production containers. The
+contract test constrains the interface surface: all \nAppOperations{} operations of the
+\nAppPaths{} documented paths are implemented (\nAppOpsBaseline{} from the baseline, \nAppOpsNew{}
+added in this release and \nAppOpsLegacy{} retained only for compatibility), none is left as merely
+planned, and property testing against the schema is part of that suite.
+
+One qualification belongs with that table. The real-backend browser run of \nAppDockerReal{} cases
+used the ridge model as default. When the adapted model was later made the default on the same
+installation, the run gave eleven passes and one case skipped on purpose: the response-time case was
+skipped so that its ridge measurement would not be overwritten by a much slower model. That rerun is
+recorded in the text of the container validation record, not in its machine-readable summary.
+
+\subsection{Input Validation, Interface and Response Time}
+Input validation is tested at three levels: unit tests for normalisation and the 28-residue rule,
+contract tests that reject malformed requests with coded errors, and fuzz tests over fields, query
+strings and workspace paths. Two findings came from that last group and were fixed: a very large
+pagination offset produced a server error, and the contract did not declare some of the error codes
+the service actually returns. Formula-looking text in exported CSV is neutralised so that a
+spreadsheet cannot execute an imported string.
+
+\begin{table}[htbp]
+  \centering
+  \caption[Executed test suites of the first release]{Executed test suites of the first release. Counts are the numbers reported by the runners
+  on the acceptance date, not historical figures. Rows marked container come from the second record
+  of that day, after the move to containers; coverage was measured only in the host run.}
+  \label{tab:app-tests}
+  \input{assets/ch4/tab-app-tests}
+\end{table}
 
 
-The first-release software acceptance remains pending. Existing CLI measurements cannot verify
-project persistence, experimental-data comparison, ClinVar mapping states, whole-protein coverage or
-job recovery. Local acceptance must report these cases and the actual computer/resource conditions;
-public deployment, Internet availability and hosted performance are outside the required scope.
+Interface behaviour is checked in three browsers at four viewport widths, with automated
+accessibility checks in both colour themes. These found real defects rather than confirming the
+design: horizontal overflow on the model page at the narrowest width, overflow caused by a hidden
+table behind the footprint track, and a dialog that placed initial focus on its close button. In
+total \nAppDefects{} defects were found during acceptance and fixed, which is the main argument that
+the suite is doing work.
+
+Response times are in Table~\ref{tab:app-nonfunctional}. With the ridge model on the host, a single
+tile is served in \nAppTilePfive{}~ms at the 95th percentile against a proposed target of 300~ms
+(\nAppRidgeContainerPfive{}~ms in the container), and the complete
+path from a click to a rendered heat map takes \nAppHeatmapPfive{}~ms against a proposed 1.5~s. The
+largest recorded workload, a protein of \nAppProteinLen{} residues giving \nAppProteinTiles{}
+windows, completes in \nAppProteinSeconds{}~s while the interface stays responsive, and peak memory
+across the API and the worker is \nAppPeakMemory{}~MB. The thresholds in the requirements are
+proposals rather than agreed service levels, so the table reports the measurement next to the
+proposal instead of declaring a pass. The adapted model is the exception that the table cannot
+hide: it needs \nAppLoraLatPfive{}~s per tile at the 95th percentile (median \nAppLoraLatMedian{}~s), its
+container image is \nAppImageLoraGb{}~GB against \nAppImageNpzMb{}~MB, and the API uses
+\nAppApiMemLora{}~MiB after loading it. It reproduces the research implementation exactly and agrees
+with the campaign runtime to within \nAppLoraParityCuda{}, so the obstacle is cost, not correctness.
+
+\begin{table}[htbp]
+  \centering
+  \caption[Measured non-functional properties]{Measured non-functional properties. The proposed column is the target stated in the
+  requirements, which is a planning figure rather than an agreed service level. Items marked
+  ``recorded'' had no numeric target.}
+  \label{tab:app-nonfunctional}
+  \input{assets/ch4/tab-app-nonfunctional}
+\end{table}
+
+\subsection{Recovery, Installation and Confinement}
+Two properties matter more than speed for this application. The first is recovery: with a
+whole-protein job in progress, both the API and the worker were terminated without warning, and
+after a restart taking \nAppRestartSeconds{}~s the job completed every window exactly once and
+previously saved analyses reopened unchanged. The second is installability: a clean installation into
+an empty directory, including the reference preparation step, took \nAppInstallSeconds{}~s and then
+served the use cases over the local interface. In the container configuration, loading the reference
+data with the full ClinVar subset took \nAppEtlSeconds{}~s.
+
+Confinement was checked rather than assumed. The service binds to the loopback interface only, and
+in the container configuration only the web server publishes a port. It sends the expected security
+headers, rejects cross-site write requests with status 403 and non-JSON bodies with 415, and the
+production page loads its fonts from its own origin, with no request to another host. Logging was checked with canary sequences: no biological sequence appears in the logs, URLs or
+error messages of a complete real-backend run, which is what the privacy requirement asks for.
+Dependency auditing reports no production findings.
+
+\subsection{What the Acceptance Does Not Cover}
+Three gaps are recorded. Automated accessibility checks are not a substitute for a manual keyboard
+and screen-reader pass, which a person still has to perform. All performance figures come from one
+developer machine, and the containers were run only under Docker Engine in WSL2, not under Docker
+Desktop on Windows or macOS or behind a public TLS proxy. Coverage was measured in the host run and
+not repeated in the containers. In addition, the delivered configuration keeps the calibrated ridge
+as default, for the reason given in Section~\ref{sec:transfer-refit}: the adapted model's serving
+latency is two orders of magnitude above the proposed target on this hardware. Making it the default
+on one installation is a local configuration, not a serving decision. Public deployment, Internet
+availability and hosted performance remain outside the required scope.

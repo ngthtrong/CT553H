@@ -67,6 +67,17 @@ def list_items(request: Request, job_id: str, offset: int = Query(0), limit: int
         return jobs.list_items(s, jid, offset, limit)
 
 
+@router.get('/v1/jobs/{job_id}/footprint')
+def job_footprint(request: Request, job_id: str, input_id: str | None = Query(None)):
+    """plan-system 2.1: per-tile footprint of a finished whole-protein job, in protein coordinates; with several
+    proteins (3.3) one protein at a time, chosen by input_id (default: the first scored one)."""
+    jid = ws.parse_id(job_id, 'job_id')
+    if input_id is not None and not 1 <= len(input_id) <= 200:
+        raise DomainError('INVALID_REQUEST', 'input_id must have 1 to 200 characters.', 422, 'input_id')
+    with _core(request).factory() as s:
+        return jobs.footprint(s, jobs.get_job(s, jid), input_id)
+
+
 @router.post('/v1/jobs/{job_id}/cancel', status_code=202)
 def cancel_job(request: Request, job_id: str):
     jid = ws.parse_id(job_id, 'job_id')

@@ -628,16 +628,101 @@ def step_model(conn: Connection, paths: dict[str, Path], params: dict, model_dir
     report.notes['model_weights_sha256'] = sha
 
 
+def lora_card(manifest: dict) -> str:
+    ev = manifest['evaluation']
+    c = ev['contrasts']
+    vs_frozen = c['esm2_35m-lora-D_minus_esm2_35m-frozen-D']
+    vs_w5 = c['esm2_35m-lora-D_minus_ordered-w5-D']
+    gt5 = ev['gt5_peptide_macro_mae']
+    return f"""# Model card: {manifest['model_id']}
+
+**What it predicts.** For each of the 532 single substitutions of a 28-residue tile, a raw DeltaPSI score and the
+calibrated probability of the event `DeltaPSI >= 1.0` in the GPS reporter assay of Zhang et al. 2023.
+
+**Model.** ESM-2 35M ({manifest['base']['repo']} at revision {manifest['base']['revision'][:12]}) with rank-8 LoRA
+adapters on the attention query/value projections and a small regression head, refitted on all of W
+({manifest['training']['cells']:,} cells, every wild-type PSI); mean of three seeds (17, 29, 43), then a three-class
+logistic calibrator fitted on ensemble out-of-fold predictions of W only (no held-out cells).
+
+**Evidence (development, not external validation).** {ev['evaluation']} on {ev['denominators']['peptides']:,}
+peptides / {ev['denominators']['groups']} groups: peptide macro MAE {ev['peptide_macro_mae']:.4f}. Paired difference
+in macro MAE against frozen-D {vs_frozen['delta']:+.4f} (adjusted CI {vs_frozen['ci_adjusted'][0]:+.4f} to
+{vs_frozen['ci_adjusted'][1]:+.4f}) and against W5-D ridge {vs_w5['delta']:+.4f} (adjusted CI
+{vs_w5['ci_adjusted'][0]:+.4f} to {vs_w5['ci_adjusted'][1]:+.4f}). In the stratum PSI(WT) > 5 the zero predictor is
+better (MAE {gt5['zero']:.4f} against {gt5['esm2_35m-lora-D']:.4f}). The held-out source had been examined before.
+
+**Limits.** {manifest['claim_boundary']} Status `{manifest['scientific_status']}`; serving promotion
+`{manifest['serving_promotion']}`. Scoring a tile on the CPU takes seconds (1,599 forward passes of a 35M network), not
+milliseconds. Probabilities are not probabilities of disease.
+"""
+
+
+def step_lora(conn: Connection, paths: dict[str, Path], params: dict, model_dir: Path, report: Report) -> None:
+    """Optional LoRA-D bundle: verify every file the manifest pins, copy it next to the npz model, register it as a
+    frozen, non-default effect model (plan 2.12). PyTorch is not needed here; the API checks it when it loads."""
+    cfg = params['lora']
+    src_manifest = paths['lora_manifest']
+    manifest = json.loads(src_manifest.read_text(encoding='utf-8'))
+    if manifest.get('kind') != 'torch_lora' or manifest.get('model_id') != cfg['model_id']:
+        raise EtlError('LoRA manifest does not describe the configured model')
+    src_bundle = src_manifest.parent / manifest['bundle_dir']
+    for rel, meta in sorted(manifest['files'].items()):
+        f = src_bundle / rel
+        if not f.is_file() or f.stat().st_size != meta['bytes'] or sha256_file(f) != meta['sha256']:
+            raise HashMismatch(f'LoRA bundle file differs from its manifest: {rel}')
+    model_dir.mkdir(parents=True, exist_ok=True)
+    dst_bundle = model_dir / manifest['bundle_dir']
+    for rel, meta in sorted(manifest['files'].items()):
+        d = dst_bundle / rel
+        if not d.is_file() or d.stat().st_size != meta['bytes'] or sha256_file(d) != meta['sha256']:
+            d.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(src_bundle / rel, d)
+    target = model_dir / cfg['manifest_file']
+    if not target.exists() or sha256_file(target) != sha256_file(src_manifest):
+        shutil.copyfile(src_manifest, target)
+    sha = sha256_file(target)
+    frozen = datetime.fromisoformat(cfg['frozen_at'])
+    ev = manifest['evaluation']
+    row = {
+        'model_id': cfg['model_id'], 'role': 'effect', 'kind': 'torch_lora', 'status': 'frozen', 'is_default': False,
+        'tile_length': 28, 'feature_spec': manifest['features'], 'weights_path': cfg['manifest_file'],
+        'weights_sha256': sha, 'event_definition': manifest['event_definition'],
+        'domain_description': cfg['domain_description'], 'metrics': ev,
+        'calibration': {'method': 'three-class multinomial logistic on the ensemble raw score (request value "platt")',
+                        'fit': manifest['calibrator']['fit'], 'train_cells': manifest['calibrator']['train_cells'],
+                        'T_fit_cells': manifest['calibrator']['T_fit_cells']},
+        'trained_on_sources': ['zhang2023-mendeley-v2', 'own-model-esm2-35m-lora-d-v1'],
+        'evidence_label': 'development benchmark (post-hoc transfer, previously examined held-out source), '
+                          'not external validation',
+        'card_markdown': lora_card(manifest), 'created_at': frozen, 'frozen_at': frozen}
+    cols = ['role', 'kind', 'status', 'is_default', 'tile_length', 'feature_spec', 'weights_path', 'weights_sha256',
+            'event_definition', 'domain_description', 'metrics', 'calibration', 'trained_on_sources',
+            'evidence_label', 'card_markdown', 'frozen_at']
+    report.add('model_version', sync(conn, T['model_version'], ['model_id'], [row], cols))
+    report.notes['lora_manifest_sha256'] = sha
+
+
+def lora_wanted(mode: str, sources: dict, topic: Path) -> bool:
+    if mode == 'no':
+        return False
+    if mode == 'yes':
+        return True
+    _, f = file_of(sources, 'lora_manifest')
+    return (topic / 'data' / f['path']).is_file()
+
+
 # ------------------------------------------------------------------ driver
 def run(db_url: str, data_dir_topic: Path | None = None, sources_path: Path | None = None,
         params_path: Path | None = None, clinvar_scope: str = 'in-tiles', model_dir: Path | None = None,
-        engine=None) -> dict:
+        engine=None, lora: str = 'auto') -> dict:
     topic = data_dir_topic or find_topic()
     sources, params = load_config(sources_path or HERE / 'sources.yaml', params_path or HERE / 'params.yaml')
     model_dir = model_dir or APP_DIR / 'backend' / 'models'
     engine = engine or make_engine(db_url)
     if clinvar_scope not in ('all', 'in-tiles', 'degron-only', 'none'):
         raise EtlError(f'unknown --clinvar-scope {clinvar_scope!r}')
+    if lora not in ('auto', 'yes', 'no'):
+        raise EtlError(f'unknown --lora {lora!r}')
     started = datetime.now(UTC)
     t0 = time.time()
     report = Report()
@@ -652,6 +737,10 @@ def run(db_url: str, data_dir_topic: Path | None = None, sources_path: Path | No
                  'gate_weights', 'gate_card']
         if clinvar_scope != 'none':
             roles.append('clinvar_summary')
+        with_lora = 'lora_manifest' in {f['role'] for src in sources.values() for f in src.get('files', [])} \
+            and lora_wanted(lora, sources, topic)
+        if with_lora:
+            roles.append('lora_manifest')
         gate_error: EtlError | None = None
         paths: dict[str, Path] = {}
         with engine.begin() as conn:        # own transaction: the evidence of a failed gate must be kept
@@ -665,6 +754,8 @@ def run(db_url: str, data_dir_topic: Path | None = None, sources_path: Path | No
         with engine.begin() as conn:
             step_model(conn, paths, params, model_dir, report)
             gate_model = step_gate(conn, paths, params, model_dir, report)
+            if with_lora:
+                step_lora(conn, paths, params, model_dir, report)
             up_src, _ = file_of(sources, 'protein_fasta')
             geo_src, _ = file_of(sources, 'screen_psi')
             sat_src, _ = file_of(sources, 'sat_labels')
@@ -684,7 +775,7 @@ def run(db_url: str, data_dir_topic: Path | None = None, sources_path: Path | No
         raise
     finally:
         out = {'tables': report.tables, **report.notes, 'seconds': round(time.time() - t0, 1),
-               'reference_rows_changed': report.changed(), 'clinvar_scope': clinvar_scope}
+               'reference_rows_changed': report.changed(), 'clinvar_scope': clinvar_scope, 'lora': lora}
         if error:
             out['error'] = error
         with engine.begin() as conn:
@@ -707,9 +798,11 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument('--params', type=Path)
     ap.add_argument('--model-dir', type=Path)
     ap.add_argument('--report', type=Path, help='also write the report as JSON to this file')
+    ap.add_argument('--lora', default='auto', choices=['auto', 'yes', 'no'],
+                    help='optional LoRA-D bundle: auto = load it when data/processed/lora-d-serving-v1 exists')
     a = ap.parse_args(argv)
     try:
-        rep = run(a.db, a.topic, a.sources, a.params, a.clinvar_scope, a.model_dir)
+        rep = run(a.db, a.topic, a.sources, a.params, a.clinvar_scope, a.model_dir, lora=a.lora)
     except EtlError as exc:
         print(f'ETL aborted: {exc}', file=sys.stderr)
         return 2

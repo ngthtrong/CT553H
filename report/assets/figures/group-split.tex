@@ -1,0 +1,73 @@
+% Original schematic of random versus protein-group-aware evaluation (plan-report 3.9).
+% Design from research/kaggle-roadmap-2026-10-31/EXECUTION-PROTOCOL.md (view W: five outer
+% folds over the saturation groups, inner validation of about 20% of the remaining groups,
+% seeds 17/29/43, cluster bootstrap). Group count from \nVthreeNGroups (generated).
+\begin{tikzpicture}[fig]
+  % ---------------- (a) random split by cell
+  \node[title, anchor=west] at (0,2.6) {(a) Random split by cell};
+  \foreach \g/\c in {0/oiBlue, 1/oiOrange, 2/oiGreen} {
+    \node[font=\scriptsize, anchor=east] at (0.95,2.05-0.55*\g) {\pgfmathtruncatemacro{\gn}{\g+1}group \gn};
+    \foreach \k in {0,...,7} {
+      \pgfmathtruncatemacro{\tst}{mod(\k*5+\g*3,4)==0 ? 1 : 0}
+      \pgfmathsetmacro{\cx}{1.05+0.25*\k}
+      \pgfmathsetmacro{\cy}{1.95-0.55*\g}
+      \ifnum\tst=1
+        \fill[\c!30] (\cx,\cy) rectangle ++(0.22,0.22);
+        \draw[oiVermillion, line width=0.8pt] (\cx,\cy) rectangle ++(0.22,0.22);
+      \else
+        \fill[\c!80] (\cx,\cy) rectangle ++(0.22,0.22);
+      \fi
+    }
+  }
+  \node[note, text width=4.3cm, align=left, anchor=north west] at (0,0.55)
+       {Outlined cells go to test. Test cells share peptides and close homologues with training
+        cells, so the score rewards memorising a protein.};
+
+  % ---------------- (b) group-aware outer folds
+  \node[title, anchor=west] at (4.85,2.6) {(b) Protein-group folds};
+  \foreach \f in {1,...,5} {
+    \pgfmathsetmacro{\y}{2.15-0.36*(\f-1)}
+    \node[font=\scriptsize, anchor=east] at (5.75,\y+0.11) {fold \f};
+    \foreach \k in {1,...,5} {
+      \ifnum\k=\f
+        \fill[oiVermillion!55] (5.6+0.62*\k,\y) rectangle ++(0.58,0.24);
+      \else
+        \fill[oiSky!45] (5.6+0.62*\k,\y) rectangle ++(0.58,0.24);
+      \fi
+    }
+    \pgfmathtruncatemacro{\vk}{\f==1 ? 2 : 1}
+    \fill[oiYellow!70] (5.6+0.62*\vk,\y) rectangle ++(0.24,0.24);
+  }
+  \node[note, text width=4.6cm, align=left, anchor=north west] at (4.85,0.3)
+       {\nVthreeNGroups{} groups (homology clusters) in five outer folds; a group is never split.
+        Red: outer test; blue: training; yellow: inner validation (about 20\,\% of the training
+        groups) for model selection.};
+
+  % ---------------- (c) uncertainty
+  \node[title, anchor=west] at (10.3,2.6) {(c) Uncertainty};
+  \node[block, text width=4.3cm, align=left, anchor=north west] (oof) at (10.3,2.25)
+       {out-of-fold predictions for every group, for seeds 17, 29 and 43};
+  \node[block, text width=4.3cm, align=left, below=4mm of oof] (boot)
+       {resample \emph{groups} with replacement and recompute the metric or paired difference};
+  \node[block, text width=4.3cm, align=left, below=4mm of boot, fill=oiYellow!20] (ci)
+       {confidence interval for the comparison};
+  \draw[flow] (oof) -- (boot);
+  \draw[flow] (boot) -- (ci);
+  % why groups, not cells, are resampled (plan-report V-1b)
+  \begin{scope}[shift={($(ci.south west)+(0.3,-0.75)$)}]
+    \foreach \g/\c/\x in {1/oiBlue/0, 2/oiOrange/0.72, 3/oiGreen/1.44} {
+      \draw[draw=\c, fill=\c!12] (\x,0) circle (0.29);
+      \foreach \dx/\dy in {-0.15/0.1,0.0/0.16,0.14/0.08,-0.1/-0.08,0.06/-0.04,0.17/-0.13,-0.02/-0.19,-0.19/-0.02}
+        \fill[\c] (\x+\dx,\dy) circle (0.03);
+      \node[font=\tiny] at (\x,-0.42) {G\g};
+    }
+    \draw[->, line width=0.8pt] (1.8,0) -- node[above, font=\tiny, align=center] {resample\\groups} (2.4,0);
+    \foreach \c/\x/\g in {oiOrange/2.68/2, oiBlue/3.18/1, oiOrange/3.68/2} {
+      \draw[draw=\c, fill=\c!12] (\x,0) circle (0.24);
+      \node[font=\tiny] at (\x,0) {G\g};
+    }
+    \node[font=\tiny, align=center] at (3.18,-0.45) {a bootstrap sample};
+    \node[font=\scriptsize, anchor=north west, text width=4.4cm, align=left] at (-0.4,-0.65)
+         {Cells of one protein move together; resampling single cells would make intervals too narrow.};
+  \end{scope}
+\end{tikzpicture}

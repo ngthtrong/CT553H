@@ -22,9 +22,9 @@ import uuid
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 
-from sqlalchemy import and_, or_, select, update
+from sqlalchemy import and_, func, or_, select, update
 from sqlalchemy.exc import IntegrityError
-from sqlalchemy.orm import Session, sessionmaker
+from sqlalchemy.orm import Session, aliased, sessionmaker
 
 from db.models import AnalysisJob, JobItem, Project
 from degron_footprint.errors import DomainError
@@ -55,6 +55,32 @@ class Worker:
         self.gate_model_id = gate_model_id
         self.gate_sha256 = gate_sha256
         self.owner = owner or f'{socket.gethostname()}:{os.getpid()}:{uuid.uuid4().hex[:8]}'
+        self._beat_at = 0.0
+        self._done_since_beat = 0
+
+    # ------------------------------------------------------------------ heartbeat (plan-system 4.2)
+    HEARTBEAT_SECONDS = 5.0
+
+    def heartbeat(self, *, force: bool = False, stopped: bool = False) -> None:
+        """Upsert this worker's row at most every HEARTBEAT_SECONDS; never fails the loop."""
+        mono = time.monotonic()
+        if not force and not stopped and mono - self._beat_at < self.HEARTBEAT_SECONDS:
+            return
+        try:
+            from db.models import WorkerHeartbeat
+            t = datetime.now(UTC)
+            with self.factory() as s, s.begin():
+                row = s.get(WorkerHeartbeat, self.owner)
+                if row is None:
+                    row = WorkerHeartbeat(owner=self.owner, started_at=t, last_seen_at=t, items_done=0)
+                    s.add(row)
+                row.last_seen_at = t
+                row.items_done = (row.items_done or 0) + self._done_since_beat
+                row.stopped_at = t if stopped else None
+            self._done_since_beat = 0
+            self._beat_at = mono
+        except Exception as exc:                        # pre-0007 database or a brief outage: keep working
+            log.warning('worker heartbeat not written: %s', type(exc).__name__)
 
     # ------------------------------------------------------------------ claim
     def claim(self, now: datetime | None = None) -> tuple[str, str] | None:
@@ -62,12 +88,19 @@ class Worker:
         reclaimable = or_(JobItem.state == 'pending',
                           and_(JobItem.state == 'running', JobItem.lease_expires_at < now))
         with self.factory() as s, s.begin():
+            # plan-system 4.5: at most job_max_running_items live items per job; higher priority, then oldest job first
+            live = aliased(JobItem)
+            running = (select(func.count()).select_from(live)
+                       .where(live.job_id == JobItem.job_id, live.state == 'running', live.lease_expires_at >= now)
+                       .correlate(JobItem).scalar_subquery())
             q = (select(JobItem.job_id, JobItem.item_id)
                  .join(AnalysisJob, AnalysisJob.job_id == JobItem.job_id)
                  .join(Project, Project.project_id == AnalysisJob.project_id)
                  .where(reclaimable, AnalysisJob.cancel_requested.is_(False),
-                        AnalysisJob.state.in_(('pending', 'running')), Project.deletion_state == 'active')
-                 .order_by(AnalysisJob.created_at, AnalysisJob.job_id, JobItem.ordinal).limit(1))
+                        AnalysisJob.state.in_(('pending', 'running')), Project.deletion_state == 'active',
+                        running < self.settings.job_max_running_items)
+                 .order_by(AnalysisJob.priority.desc(), AnalysisJob.created_at, AnalysisJob.job_id, JobItem.ordinal)
+                 .limit(1))
             if s.get_bind().dialect.name == 'postgresql':
                 q = q.with_for_update(skip_locked=True, of=JobItem)
             row = s.execute(q).first()
@@ -127,21 +160,29 @@ class Worker:
                 log.error('item crashed job=%s item=%s error=%s', job_id, item_id, type(exc).__name__)
                 error = DomainError('INTERNAL_ERROR', 'Unexpected error while scoring this item.', 500)
         try:
-            state = self._commit(job_id, item_id, scored, error)
+            state = self._commit(job_id, item_id, scored, error, started)
         except IntegrityError:                          # project deleted underneath us, or a duplicate result
             state = 'lost'
         ms = (time.perf_counter() - started) * 1000
         log.info('item done job=%s item=%s state=%s ms=%.1f', job_id, item_id, state, ms)
         return Processed(job_id, item_id, state, ms)
 
-    def _commit(self, job_id: str, item_id: str, scored, error: DomainError | None) -> str:
+    def _commit(self, job_id: str, item_id: str, scored, error: DomainError | None, started: float | None = None) -> str:
         with self.factory() as s, s.begin():
-            job = s.get(AnalysisJob, job_id, with_for_update=True)
-            item = s.get(JobItem, (job_id, item_id), with_for_update=True)
+            # Take the write lock first: a compare-and-set touch of the item we own. On SQLite this makes every read
+            # below see the latest committed state (a cancellation committed a moment ago is not missed); on
+            # PostgreSQL it locks the item row. Without it the job state could be written from a stale cancel flag.
+            t = ws.now()
+            owned = s.execute(update(JobItem).where(JobItem.job_id == job_id, JobItem.item_id == item_id,
+                                                    JobItem.state == 'running', JobItem.lease_owner == self.owner)
+                              .values(updated_at=t))
+            if owned.rowcount != 1:                     # type: ignore[attr-defined]
+                return 'lost'                           # lease expired and reclaimed, or rows deleted
+            job = s.get(AnalysisJob, job_id, with_for_update=True, populate_existing=True)
+            item = s.get(JobItem, (job_id, item_id), populate_existing=True)
             if job is None or item is None or item.state != 'running' or item.lease_owner != self.owner:
                 return 'lost'                           # lease expired and reclaimed, or rows deleted
             project = s.get(Project, job.project_id)
-            t = ws.now()
             if job.cancel_requested or project is None or project.deletion_state != 'active':
                 item.state = 'cancelled'
             elif error is not None:
@@ -158,6 +199,8 @@ class Worker:
             item.lease_owner = None
             item.lease_expires_at = None
             item.updated_at = t
+            if started is not None and item.state != 'cancelled':        # plan-system 1.7: ETA input
+                item.duration_ms = round((time.perf_counter() - started) * 1000, 1)
             s.flush()
             before = job.state
             counts = jobs.refresh_state(s, job, t)
@@ -171,7 +214,11 @@ class Worker:
     # ------------------------------------------------------------------ loop
     def run_once(self) -> Processed | None:
         claimed = self.claim()
-        return self.process(*claimed) if claimed else None
+        p = self.process(*claimed) if claimed else None
+        if p is not None and p.state not in ('lost',):
+            self._done_since_beat += 1
+        self.heartbeat()
+        return p
 
     def drain(self, limit: int = 100_000) -> list[Processed]:
         """Process until no claimable item is left (tests, and the CLI with --drain)."""
@@ -185,6 +232,7 @@ class Worker:
 
     def run(self, stop: threading.Event) -> None:
         log.info('worker started owner=%s lease=%ss', self.owner, self.settings.job_lease_seconds)
+        self.heartbeat(force=True)
         while not stop.is_set():
             try:
                 p = self.run_once()
@@ -193,6 +241,7 @@ class Worker:
                 p = None
             if p is None:
                 stop.wait(self.settings.worker_poll_seconds)
+        self.heartbeat(stopped=True)
         log.info('worker stopped owner=%s', self.owner)
 
 

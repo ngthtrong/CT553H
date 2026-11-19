@@ -51,13 +51,14 @@ LoRA-D minus W5-D requires 10.67 fewer selections on average for 50\% recall, wi
 These are replay selection differences. Total hit counts would be unknown in a new assay,
 and substitutions need not have equal experimental costs.
 
-\begin{table}[htbp]
-  \centering
-  \caption[Mean selections to reach a known positive-hit recall, on 198 peptides with hits]{Mean selections to reach a known positive-hit recall, on 198 peptides with hits.
-  Each peptide target is rounded upward. Random values are expected order-statistic ranks.}
-  \label{tab:priority-recall-budget}
-  \input{assets/ch4/tab-priority-recall-budget}
-\end{table}
+\paragraph{Other budgets, negative effects and WT-PSI strata.}
+LoRA-D positive precision is 54.89\% at five selections and 50.55\% at twenty, compared with
+47.91\% and 43.04\% for W5-D. Fractional budgets have different total selection counts and
+must not be read as fixed ten-mutation budgets (Table~\ref{tab:priority-budgets}).
+At the negative endpoint, LoRA-D precision is \nPriorityLoraNegativePrecision\%, with 329 hits,
+versus 4.34\% and 102 hits for W5-D; random has expected precision 1.33\% and 31.16 hits.
+The negative LoRA-D-minus-W5 difference is $+9.66$ percentage points, descriptive 95\% interval
+$[7.13,12.35]$. Positive and negative directions are reported separately.
 
 \begin{figure}[htbp]
   \centering
@@ -69,22 +70,6 @@ and substitutions need not have equal experimental costs.
   \label{fig:priority-budget}
 \end{figure}
 
-\paragraph{Other budgets, negative effects and WT-PSI strata.}
-LoRA-D positive precision is 54.89\% at five selections and 50.55\% at twenty, compared with
-47.91\% and 43.04\% for W5-D. Fractional budgets have different total selection counts and
-must not be read as fixed ten-mutation budgets (Table~\ref{tab:priority-budgets}).
-At the negative endpoint, LoRA-D precision is \nPriorityLoraNegativePrecision\%, with 329 hits,
-versus 4.34\% and 102 hits for W5-D; random has expected precision 1.33\% and 31.16 hits.
-The negative LoRA-D-minus-W5 difference is $+9.66$ percentage points, descriptive 95\% interval
-$[7.13,12.35]$. Positive and negative directions are reported separately.
-
-\begin{table}[htbp]
-  \centering
-  \caption[Positive Precision@10 by WT-PSI stratum, in percent]{Positive Precision@10 by WT-PSI stratum, in percent. Peptides without positive hits
-  remain in precision; zero-event strata do not supply recall or enrichment evidence.}
-  \label{tab:priority-strata}
-  \input{assets/ch4/tab-priority-strata}
-\end{table}
 
 The positive gain is not uniform: the $(4,5]$ stratum has point precisions 19.72\% and 19.44\%,
 whereas all 23 peptides above WT PSI 5 have no positive hit (Table~\ref{tab:priority-strata}).

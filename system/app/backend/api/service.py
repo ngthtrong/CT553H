@@ -3,7 +3,10 @@ from __future__ import annotations
 
 import logging
 import secrets
+import threading
+import time
 import uuid
+from collections import deque
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
@@ -13,6 +16,8 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session, sessionmaker
 
 from db.models import DataSource, ModelVersion, PredictionRun, Tile
+from degron_footprint import lora as _lora  # noqa: F401  (registers the optional torch_lora loader)
+from degron_footprint.cache import PredictionCache, cache_key
 from degron_footprint.domain import GateAdapter, NullGate, status_from_measurement
 from degron_footprint.errors import DomainError
 from degron_footprint.model import LOADERS, ModelAdapter, WeightsError
@@ -48,15 +53,20 @@ class Registry:
     default_id: str | None = None
     errors: dict[str, str] = field(default_factory=dict)       # model_id -> why it is not serving
     database_ok: bool = True
+    # Where the default came from (plan-system 4.3): 'registry' (is_default row), 'setting' (DF_DEFAULT_MODEL_ID) or
+    # 'fallback' (no usable flag: first serving model by id). None when nothing serves.
+    default_source: str | None = None
 
     @property
     def default(self) -> LoadedModel | None:
         return self.models.get(self.default_id) if self.default_id else None
 
 
-def load_registry(factory: sessionmaker[Session], model_dir: Path) -> Registry:
+def load_registry(factory: sessionmaker[Session], model_dir: Path, default_model_id: str | None = None) -> Registry:
     """Load every frozen effect model whose weights hash matches the registry. A mismatch does not abort the
-    process: the model is left out and /healthz reports 503 (NFR-06)."""
+    process: the model is left out and /healthz reports 503 (NFR-06). `default_model_id` (DF_DEFAULT_MODEL_ID) chooses
+    the model used when a request names none; if that model is not serving, the registry default stays and the reason
+    is kept in `errors`."""
     reg = Registry()
     try:
         with factory() as s:
@@ -74,6 +84,11 @@ def load_registry(factory: sessionmaker[Session], model_dir: Path) -> Registry:
                     reg.errors[row.model_id] = str(exc)
                     log.error('model %s not loaded: %s', row.model_id, exc)
                     continue
+                if row.kind == 'ridge_platt' and getattr(adapter, 'training_sequences', None) is None:
+                    # the npz model's training peptides are the flagged tiles of the reference DB (plan-system 1.5)
+                    adapter.training_sequences = repo.training_tile_sequences(s)   # type: ignore[attr-defined]
+                    if not adapter.training_sequences:                              # type: ignore[attr-defined]
+                        log.warning('model %s: no training tile flagged in the database', row.model_id)
                 src_ids = list(row.trained_on_sources or [])
                 sources = repo.get_sources(s, src_ids) if src_ids else []
                 info = ModelInfo(
@@ -84,12 +99,33 @@ def load_registry(factory: sessionmaker[Session], model_dir: Path) -> Registry:
                 reg.models[row.model_id] = LoadedModel(info, adapter, row.is_default)
                 if row.is_default:
                     reg.default_id = row.model_id
+                    reg.default_source = 'registry'
     except Exception as exc:                                                 # database down at start-up
         reg.database_ok = False
         log.error('registry not loaded: %s', type(exc).__name__)
+    if default_model_id:
+        if default_model_id in reg.models:
+            reg.default_id = default_model_id
+            reg.default_source = 'setting'
+        else:
+            reason = reg.errors.get(default_model_id, 'not registered as a frozen effect model')
+            reg.errors.setdefault(default_model_id, reason)
+            log.error('DF_DEFAULT_MODEL_ID=%s is not serving (%s); keeping the registry default', default_model_id, reason)
     if reg.default_id is None and reg.models and reg.database_ok:
         reg.default_id = sorted(reg.models)[0]
+        reg.default_source = 'fallback'
     return reg
+
+
+def log_default_model(reg: Registry) -> None:
+    """One start-up line naming the default model, where the choice came from and its weights hash (plan-system 4.3).
+    A change of default must match a serving decision record (system/serving-policy.md)."""
+    lm = reg.default
+    if lm is None:
+        log.error('default model: none serving (errors: %s)', ', '.join(sorted(reg.errors)) or '-')
+        return
+    log.info('default model: %s source=%s kind=%s weights_sha256=%s', lm.info.model_id, reg.default_source,
+             lm.info.kind, lm.info.weights_sha256)
 
 
 @dataclass
@@ -105,11 +141,43 @@ class Outcome:
     generated_at: datetime
 
 
+TIMING_SAMPLES = 20                     # moving window of measured model computations per model (plan-system 1.1)
+
+
 class Predictor:
-    def __init__(self, registry: Registry, gate: GateAdapter | None, factory: sessionmaker[Session]):
+    def __init__(self, registry: Registry, gate: GateAdapter | None, factory: sessionmaker[Session],
+                 cache: PredictionCache | None = None):
         self.registry = registry
         self.gate = gate or NullGate()
         self.factory = factory
+        self.cache = cache or PredictionCache('off')
+        self._timings: dict[str, deque[float]] = {}
+        self._timing_lock = threading.Lock()
+
+    # ------------------------------------------------------------------ timing (expected_tile_seconds)
+    def record_tile_seconds(self, model_id: str, seconds: float) -> None:
+        with self._timing_lock:
+            self._timings.setdefault(model_id, deque(maxlen=TIMING_SAMPLES)).append(seconds)
+
+    def expected_tile_seconds(self, model_id: str) -> float | None:
+        """Mean of the last measured model computations in this process; None before the first one. Only the model's
+        own scoring is timed (no database, no cache hit), so the value estimates the cost of one more tile."""
+        with self._timing_lock:
+            d = self._timings.get(model_id)
+            return round(sum(d) / len(d), 3) if d else None
+
+    def score_tile(self, lm: LoadedModel, seq: str, calibrator: str | None):
+        """The model's scores for one tile, from the prediction cache when the same sequence, model, weights,
+        calibrator and code version were scored before (plan-system 1.2). Only a real computation is timed."""
+        cal = calibrator or getattr(lm.adapter, 'default_calibrator', None) or 'platt'
+        key = cache_key(seq, lm.info.model_id, lm.info.weights_sha256, cal)
+        hit = self.cache.get(key)
+        if hit is not None:
+            return hit
+        t0 = time.perf_counter()
+        pred = lm.adapter.predict_tile(seq, calibrator)
+        self.record_tile_seconds(lm.info.model_id, time.perf_counter() - t0)
+        return self.cache.put(key, pred)
 
     # ------------------------------------------------------------------ model choice
     def pick_model(self, model_id: str | None) -> LoadedModel:
@@ -164,6 +232,9 @@ class Predictor:
             extra_sources = [prot.source_id]
             input_kind = 'uniprot_tile'
         lm = self.pick_model(req.model_id)
+        own_training = getattr(lm.adapter, 'training_sequences', None)
+        if own_training is not None:        # each model answers from its own training set, typed input too (npz: 176, LoRA-D: W)
+            training = seq in own_training
         if status == 'unknown':
             a = self.gate.assess(seq)
             if a is not None:
@@ -180,7 +251,8 @@ class Predictor:
             overridden = True
         if status.startswith('measured_'):
             extra_sources.append(SRC_ZHANG_GEO)
-        pred = lm.adapter.predict_tile(seq, req.calibrator)
+        check_calibrator(lm, req.calibrator)
+        pred = self.score_tile(lm, seq, req.calibrator)
         domain = build_domain(status, psi, reads, gate_id)
         warnings = warnings_for(status, overridden, training)
         now = datetime.now(UTC).replace(microsecond=0)
@@ -232,15 +304,35 @@ class Predictor:
             wt=[seq[c.position - 1] for c in cells], mut=[c.mut_aa for c in cells],
             score=np.array([c.score_raw for c in cells]), prob=np.array([c.prob_calibrated for c in cells]),
             rank=np.array([c.rank_in_tile for c in cells], dtype=np.int64),
-            top10=np.array([c.rank_in_tile <= 54 for c in cells]))
+            top10=np.array([c.rank_in_tile <= 54 for c in cells]),
+            **_seed_arrays(cells))
         domain = build_domain(run.domain_status, psi, reads, run.gate_model_id)
         warnings = [warning(c) for c in (run.warnings or [])]
         return build_result(lm.info, pred, tile, domain, warnings, repo.get_sources(s, extra) if extra else [],
                             repo.aware(run.created_at))
 
 
+def _seed_arrays(cells) -> dict:
+    """Seed spread of stored cells (migration 0005); absent when any cell has none (npz model, older rows)."""
+    import numpy as np
+    out = {}
+    for name, col in (('seed_sd', 'score_seed_sd'), ('seed_min', 'score_seed_min'), ('seed_max', 'score_seed_max')):
+        values = [getattr(c, col) for c in cells]
+        if values and all(v is not None for v in values):
+            out[name] = np.array(values, dtype=np.float64)
+    return out
+
+
+def check_calibrator(lm: LoadedModel, calibrator: str | None) -> None:
+    """A calibrator the chosen model does not have is a request error, not a server error (LoRA-D has no isotonic)."""
+    if calibrator is not None and calibrator not in lm.adapter.calibrators:
+        have = ', '.join(f'"{c}"' for c in lm.adapter.calibrators)
+        raise DomainError('INVALID_REQUEST', f'Model {lm.info.model_id} has no calibrator "{calibrator}" (available: '
+                          f'{have}).', 422, 'calibrator')
+
+
 def tile_status_for_tier1(psi: float | None, reads: float | None) -> str:
     return status_from_measurement(psi, reads)
 
 
-__all__ = ['Registry', 'LoadedModel', 'Predictor', 'Outcome', 'load_registry', 'DataSource']
+__all__ = ['Registry', 'LoadedModel', 'Predictor', 'Outcome', 'load_registry', 'log_default_model', 'DataSource']

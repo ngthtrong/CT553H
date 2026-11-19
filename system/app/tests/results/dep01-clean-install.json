@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-17",
+  "test": "DEP-01 clean local install",
+  "method": "git-tracked + new non-ignored files of system/ (340 files) copied to an empty directory; fresh venv from PyPI; npm ci; alembic upgrade head on an empty SQLite file; ETL --clinvar-scope degron-only reading the research data of this checkout; uvicorn with the embedded worker; main flows over HTTP",
+  "steps": [
+    "11:23:09 copy files=340 1s",
+    "11:23:44 pip install rc=0 35s",
+    "11:23:46 migrate rc=0 2s",
+    "11:25:34 etl(degron-only, data read from /home/ngthtrong/CT553H) rc=0 108s",
+    "11:25:54 npm ci rc=0 20s",
+    "11:26:04 frontend build rc=0 10s",
+    "11:26:06 health {\"status\":\"ok\",\"version\":\"0.1.0\",\"model_loaded\":true,\"default_model_id\":\"m3-ext4.0-platt-v1\",\"database\":\"ok\"}",
+    "11:26:07 total 179s"
+  ],
+  "health": {
+    "status": "ok",
+    "version": "0.1.0",
+    "model_loaded": true,
+    "default_model_id": "m3-ext4.0-platt-v1",
+    "database": "ok"
+  },
+  "smoke": {
+    "UC-01 predict": 200,
+    "UC-04 protein search": 200,
+    "UC-07 models": [
+      "m3-ext4.0-platt-v1",
+      "gate-r3-v1"
+    ],
+    "UC-10 save+reopen": true,
+    "UC-03 export csv": 200,
+    "UC-08 job": "partial",
+    "UC-09 import": "committed",
+    "UC-05 compare matched": 3,
+    "UC-06 annotation state (typed)": "mapping_unavailable"
+  },
+  "limits": [
+    "the research data directory (data/, not in git) is read from this checkout, as a clone needs the same files",
+    "PyPI/npm caches of this machine may have shortened the install",
+    "no Docker/PostgreSQL in this run"
+  ]
+}

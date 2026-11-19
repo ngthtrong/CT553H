@@ -1,0 +1,66 @@
+% Original schematic: saturation design, label construction and prediction (plan-report 3.5).
+% Label: residue-task-derisk-2026-10-15/residue_data.py, build_saturation(); eq:delta-psi-halves.
+% Physical bounds: research/kaggle-roadmap-2026-10-31/EXECUTION-PROTOCOL.md. No values are shown.
+\begin{tikzpicture}[fig]
+  % ---------------- (a) WT tile and one substitution
+  \node[title, anchor=west] at (-0.2,2.05) {(a) Single substitution};
+  \foreach \aa [count=\i] in {D,I,M,F,L,V,D,S} {
+    \node[residue] (w\i) at (0.45*\i,1.35) {\aa};
+  }
+  \node at (4.0,1.35) {$\cdots$};
+  \node[residue] (w28) at (4.5,1.35) {V};
+  \node[dim, above=0.5mm of w1] {1};
+  \node[dim, above=0.5mm of w5] {$i$};
+  \node[dim, above=0.5mm of w28] {28};
+  \node[font=\scriptsize, anchor=east] at (0.2,1.35) {WT};
+  \foreach \aa [count=\i] in {D,I,M,F} { \node[residue] (m\i) at (0.45*\i,0.45) {\aa}; }
+  \node[mutres] (m5) at (2.25,0.45) {P};
+  \foreach \aa [count=\i from 6] in {V,D,S} { \node[residue] (m\i) at (0.45*\i,0.45) {\aa}; }
+  \node at (4.0,0.45) {$\cdots$};
+  \node[residue] at (4.5,0.45) {V};
+  \node[font=\scriptsize, anchor=east] at (0.2,0.45) {mutant};
+  \draw[->, oiVermillion] (w5.south) -- (m5.north);
+  \node[note, anchor=north west, text width=4.5cm, align=left] at (-0.2,-0.05)
+       {A mutation cell is one $(p,i,a)$: peptide, position, replacement. A full design has
+        $19\times28=532$ cells per peptide; observed cells are fewer after QC.};
+
+  % ---------------- (b) saturation matrix
+  \node[title, anchor=west] at (5.15,2.05) {(b) Effect matrix};
+  \begin{scope}[shift={(5.6,-0.2)}]
+    \foreach \c in {0,...,9} \foreach \r in {0,...,6} {
+      \draw[oiGrey!60, fill=oiGrey!8] (0.3*\c,0.3*\r) rectangle ++(0.3,0.3);
+    }
+    \foreach \c/\r in {0/4,1/2,2/5,3/1,4/6,5/3,6/0,7/2,8/5,9/3} {
+      \draw[oiGrey!60, pattern=north east lines, pattern color=oiGrey] (0.3*\c,0.3*\r) rectangle ++(0.3,0.3);
+    }
+    \draw[oiVermillion, line width=1.1pt] (1.2,1.2) rectangle ++(0.3,0.3);
+    \node[dim] at (1.5,-0.22) {position $i$};
+    \node[dim, rotate=90] at (-0.25,1.05) {replacement $a$};
+  \end{scope}
+  \node[note, anchor=north west, text width=4.0cm, align=left] at (5.15,-0.75)
+       {Outlined: one cell $(p,i,a)$; hatched: the WT residue of each position. Schematic: 10 of 28 positions, 7 of 20 amino acids, no values.};
+
+  % ---------------- (c) two routes to the same quantity
+  \node[title, anchor=west] at (9.7,2.05) {(c) Label and prediction};
+  \node[block, font=\scriptsize, align=left, text width=4.6cm, anchor=north west, fill=oiSky!15] (lab) at (9.7,1.75)
+       {\textbf{Label route}: measured PSI of mutant and WT reference in each half $r\in\{A,B\}$;
+        $\Delta\mathrm{PSI}=\tfrac12\sum_r(\mathrm{PSI}_{\mathrm{mut},r}-\mathrm{PSI}_{\mathrm{WT},r})$};
+  \node[block, font=\scriptsize, align=left, text width=4.6cm, anchor=north, fill=oiOrange!15, below=5mm of lab] (pred)
+       {\textbf{Prediction route}: WT sequence, $i$, $a$ $\rightarrow$ model $\rightarrow$
+        $\widehat{\Delta\mathrm{PSI}}$; measured PSI is never an input};
+  \draw[<->] (lab.south) -- node[right, font=\scriptsize] {error and metrics} (pred.north);
+  % bounds of the label as a small PSI axis (plan-report V-1a)
+  \begin{scope}[shift={($(pred.south west)+(0.2,-1.25)$)}]
+    \def\u{0.7}
+    \draw[->, line width=0.7pt] (0,0) -- (5*\u+0.3,0) node[right, dim] {PSI};
+    \foreach \v in {1,...,6} { \draw (\u*\v-\u,-0.06) -- (\u*\v-\u,0.06); \node[dim, below] at (\u*\v-\u,-0.05) {\v}; }
+    \fill[oiBlue] (1.5*\u,0) circle (2pt);
+    \node[font=\scriptsize, text=oiBlue] at (1.5*\u,0.25) {$\mathrm{PSI}_{\mathrm{WT}}$};
+    \draw[->, oiVermillion, line width=1pt] (1.5*\u,0.55) -- (0,0.55);
+    \draw[->, oiGreen!60!black, line width=1pt] (1.5*\u,0.55) -- (5*\u,0.55);
+    \node[font=\scriptsize, text=oiVermillion, anchor=south west, inner sep=1pt] at (-0.1,0.6) {$1-\mathrm{PSI}_{\mathrm{WT}}$};
+    \node[font=\scriptsize, text=oiGreen!50!black, anchor=south east, inner sep=1pt] at (5*\u+0.1,0.6) {$6-\mathrm{PSI}_{\mathrm{WT}}$};
+    \node[font=\scriptsize, anchor=north west, text width=4.4cm, align=left] at (-0.2,-0.38)
+         {$\Delta$PSI moves a tile only within 1--6: down when destabilised, up when stabilised.};
+  \end{scope}
+\end{tikzpicture}

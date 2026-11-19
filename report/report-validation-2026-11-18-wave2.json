@@ -1,0 +1,61 @@
+{
+  "record": "report-validation-2026-11-18-wave2",
+  "date": "2026-11-18",
+  "plan": "plan-report.md",
+  "items_done": [
+    "4.5",
+    "7.2",
+    "7.4",
+    "7.7"
+  ],
+  "items_partial": {
+    "7.1": "reading guide by RQ; chronological order kept by design",
+    "7.3": "progress-report wording kept until submission version",
+    "7.6": "checked, final rewrite pending",
+    "8.1": "targeted fixes only"
+  },
+  "tables_moved_to_appendix_b": [
+    "tab:priority-recall-budget",
+    "tab:priority-strata",
+    "tab:newgroup",
+    "tab:partcrobust",
+    "tab:progress-effect-errors",
+    "tab:progress-largest-errors"
+  ],
+  "chapter4_tables": 29,
+  "checks": {
+    "make_all": true,
+    "make_check": true,
+    "pages": {
+      "content": 167,
+      "content_twoside": 167,
+      "smoke": 9
+    },
+    "float_references": {
+      "passed": true,
+      "figures": 41,
+      "tables": 64
+    },
+    "whitespace_flagged_pages": [
+      5,
+      6,
+      10,
+      17,
+      19,
+      22,
+      24,
+      31,
+      55,
+      86,
+      137,
+      141,
+      144,
+      167
+    ],
+    "whitespace_all_functional": true
+  },
+  "sha256": {
+    "report/build/content/content.pdf": "05bd4058340126c065617970e3ecfb669319e788562390d51f096c5d2ee22161",
+    "report/build/content-twoside/content.pdf": "1987f7c0a76078c74b2945a9a95deea2f46097887f450c108ceb46b78ee07010"
+  }
+}

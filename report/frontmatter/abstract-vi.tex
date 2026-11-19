@@ -2,9 +2,9 @@
 \FrontChapter{TÓM TẮT}
 \begin{otherlanguage}{vietnamese}
 Một phép thay thế amino acid có thể làm thay đổi hoạt tính degron, tín hiệu trình tự liên quan đến
-phân hủy protein có chọn lọc. Báo cáo tiến độ ngày 07/11/2026 khảo sát dự đoán hiệu ứng đột biến
+phân hủy protein có chọn lọc. Báo cáo với mốc bằng chứng 17/11/2026 khảo sát dự đoán hiệu ứng đột biến
 bằng độ thay đổi chỉ số ổn định protein ($\Delta$PSI) trong thí nghiệm reporter peptide và quá trình
-xây dựng công cụ phân tích local.
+xây dựng ứng dụng web.
 Quy trình dựng lại nhãn, kiểm soát chồng lặp trình tự và đánh giá theo nhóm protein, với lựa chọn
 mô hình ở tập trong và khoảng tin cậy bootstrap theo nhóm.
 
@@ -25,11 +25,14 @@ LoRA-D thu hồi thêm \nPriorityExtraHits{} hit đã đo so với W5-D; chênh
 \nPriorityDeltaWfive{} điểm phần trăm có khoảng tin cậy hiệu chỉnh 97,5\%
 $\nPriorityWfiveCI{}$. Cả hai phép so chính đều ủng hộ LoRA-D trong replay này.
 
-Trên tập scanning giữ lại cùng phòng thí nghiệm, W5 đạt AUROC dương \nCampaignTAuc{}, nhưng
-lợi thế MAE so với dự đoán 0 chưa rõ; LoRA chưa được đánh giá ở đây. Baseline React/FastAPI
-đã có; các luồng lưu trữ mở rộng còn dở, mô hình phục vụ chưa đổi. Kết quả vẫn là bằng chứng
-development: số lựa chọn hồi cứu và 633 job hoàn tất chưa xác nhận năng suất wet lab mới,
-tiết kiệm chi phí, kiểm định độc lập ngoài nguồn, tác động trên protein nguyên vẹn hay lâm sàng.
+LoRA-D cuối refit trên toàn tập phát triển, chấm một lần trên tập cùng phòng thí nghiệm đã từng
+khảo sát gồm \nTPeptides{} peptide, đạt MAE \nTLoraMae{}, so với \nTFrozenMae{} của frozen và
+\nTWfiveMae{} của W5-D; cả hai phép so định trước ủng hộ thích nghi, dù dự đoán 0 tốt hơn ở miền PSI
+hoang dã ổn định nhất. Tác giả đóng mục tiêu phạm vi development trên cơ sở này; GVHD chưa ghi nhận.
+Ứng dụng React/FastAPI local có dự án, job bền, nhập và so sánh dữ liệu được nghiệm thu cùng ngày,
+với LoRA-D là model phục vụ tuỳ chọn, khớp tuyệt đối nhưng chậm trên CPU. Kết quả vẫn là bằng chứng
+development, chưa phải kiểm định độc lập ngoài nguồn, protein nguyên vẹn hay lâm sàng, năng suất
+wet lab hay tiết kiệm chi phí.
 
 \par\vspace{6bp}\noindent\textbf{Từ khóa:} degron, độ bền protein, dự đoán hiệu ứng đột biến, hệ ubiquitin--proteasome, học máy.
 \end{otherlanguage}

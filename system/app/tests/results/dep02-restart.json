@@ -1,0 +1,43 @@
+{
+  "generated_at": "2026-11-17T03:21:53+00:00",
+  "host": {
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "cpu_model": "AMD Ryzen 5 5500U with Radeon Graphics",
+    "logical_cpus": 12,
+    "mem_total_mb": 7619,
+    "python": "3.12.3",
+    "load_average_1_5_15": [
+      1.43701171875,
+      1.55517578125,
+      1.4306640625
+    ],
+    "note": "WSL2 on the author laptop; other processes may share the CPU"
+  },
+  "lease_seconds": 8,
+  "at_kill": {
+    "item_states": {
+      "pending": 321,
+      "running": 1,
+      "succeeded": 60
+    },
+    "analyses_from_job": 60
+  },
+  "after_restart": {
+    "restart_seconds": 1.44,
+    "job_state": "completed",
+    "counts": {
+      "pending": 0,
+      "running": 0,
+      "succeeded": 382,
+      "refused": 0,
+      "failed": 0,
+      "cancelled": 0
+    },
+    "total": 382,
+    "analyses_from_job": 382,
+    "distinct_items_with_analysis": 382,
+    "saved_analysis_identical": true,
+    "history_total": 383
+  },
+  "passed": true
+}

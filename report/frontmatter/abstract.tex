@@ -3,9 +3,9 @@
 \FrontChapter{ABSTRACT}
 
 A single amino acid substitution can alter the activity of a degron, a sequence element involved in
-selective protein degradation. This research progress report, dated 7 November 2026, examines
+selective protein degradation. This report (evidence cutoff 17 November 2026) examines
 substitution effects as changes in the Protein Stability Index ($\Delta$PSI) measured by a peptide
-reporter assay and the development of a local analysis tool.
+reporter assay and the development of a web application.
 The computational work reconstructs labels, controls sequence overlap and evaluates models with
 protein-group-aware folds, inner model selection and group-bootstrap confidence intervals.
 
@@ -15,22 +15,23 @@ range reduces peptide-macro mean absolute error (MAE) from \nVthreeRidgeB{} to \
 A completed local study compares nine frozen protein language models and 60 matched fits with
 and without low-rank adaptation (LoRA). LoRA reaches \nCampaignLoraB{} MAE with restricted
 training and \nCampaignLoraD{} with full-range training; group intervals support both gains over
-matched frozen controls. Scanning-label pre-training helps its tested convolutional control,
-whereas quality weighting does not help ridge. Calibration improves Brier score but retains errors.
+matched frozen controls.
 
 A retrospective out-of-fold replay selects ten mutations per peptide under the same
 \nPrioritySelections{}-selection budget. Positive Precision@10 is \nPriorityLoraPrecision\% for
 LoRA-D, \nPriorityWfivePrecision\% for W5-D and \nPriorityRandomPrecision\% for random
 expectation. LoRA-D recovers \nPriorityExtraHits{} more measured hits than W5-D; its
 \nPriorityDeltaWfive{}-percentage-point gain has adjusted 97.5\% interval
-$\nPriorityWfiveCI{}$. Both primary reference contrasts favour LoRA-D within this replay.
+$\nPriorityWfiveCI{}$.
 
-On a locked same-laboratory scanning set, W5 reaches positive area under the receiver operating
-characteristic curve (AUROC) \nCampaignTAuc{}, but
-its MAE advantage over zero is unresolved; LoRA has not been tested there. A React/FastAPI
-baseline exists; expanded persistent workflows remain incomplete and the serving model is
-unchanged. Results remain development evidence: neither retrospective selection counts nor
-633 completed campaign jobs establish prospective wet-lab yield, laboratory cost savings,
-independent external, intact-protein or clinical validation.
+Final LoRA-D models refitted on the full development set and scored once on a previously
+examined same-laboratory set of \nTPeptides{} peptides reach MAE \nTLoraMae{}, against
+\nTFrozenMae{} for the frozen control and \nTWfiveMae{} for W5-D; both prespecified contrasts favour
+adaptation, although predicting zero is better in the most stable WT-PSI stratum. The author closed
+the development-scope goal on this basis; the supervisor has not yet recorded it. A local
+React/FastAPI application with projects, durable jobs, import and comparison was accepted on the same
+date, with LoRA-D as an optional serving model that is exact but slow on a processor. Results remain
+development evidence, not independent external, intact-protein or clinical validation, wet-lab yield
+or cost savings.
 
 \par\vspace{6bp}\noindent\textbf{Keywords:} degron, protein stability, mutation effect prediction, ubiquitin--proteasome system, machine learning.

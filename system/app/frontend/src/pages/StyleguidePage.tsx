@@ -34,7 +34,7 @@ export function StyleguidePage() {
       <div className="page-head">
         <div>
           <h1>Styleguide</h1>
-          <p>Primitives of Degron Workspace. Fira Sans for text, <span className="mono">Fira Code</span> for sequences.</p>
+          <p>Primitives of Degron Workspace. Roboto for text, <span className="mono">Roboto Mono</span> for sequences.</p>
         </div>
       </div>
       <section className="panel" aria-labelledby="sg-tokens">

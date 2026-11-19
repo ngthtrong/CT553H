@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { AMINO_ACIDS, TILE_LENGTH } from '../api/types';
 import type { Cell } from '../api/types';
 import { fmtProb, fmtScore } from '../lib/format';
+import { loadView, saveView } from '../lib/viewState';
 import { cellKey } from './Heatmap';
 
 export interface RankFilter {
@@ -22,6 +23,8 @@ interface Props {
   onFilter: (f: RankFilter) => void;
   selectedKey: string | null;
   onSelect: (c: Cell) => void;
+  /** plan-system 5.2: remember sort and pinned substitutions under this id (never a sequence); null = not remembered */
+  persistKey?: string | null;
 }
 
 const COLUMNS: { key: SortKey; label: (ev: string) => string; numeric: boolean }[] = [
@@ -48,8 +51,20 @@ function compare(a: Cell, b: Cell, key: SortKey): number {
  * All 532 substitutions, sortable and filterable (FR-07, FR-08). The table is not virtualised: 532 rows render
  * in one pass and keep native table semantics for screen readers (deviation from ui-design §3.3, see README).
  */
-export function RankTable({ cells, eventDefinition, filter, onFilter, selectedKey, onSelect }: Props) {
-  const [sort, setSort] = useState<Sort>({ key: 'rank', dir: 'asc' });
+export function RankTable({ cells, eventDefinition, filter, onFilter, selectedKey, onSelect, persistKey = null }: Props) {
+  const [sort, setSortState] = useState<Sort>(() => {
+    const s = loadView(persistKey).sort;
+    return s && COLUMNS.some((c) => c.key === s.key) ? (s as Sort) : { key: 'rank', dir: 'asc' };
+  });
+  const [pinned, setPinned] = useState<string[]>(() => loadView(persistKey).pinned ?? []);
+  const setSort = (f: (s: Sort) => Sort) => setSortState((s) => { const next = f(s); saveView(persistKey, { sort: next }); return next; });
+  const togglePin = (key: string) => setPinned((p) => {
+    const next = p.includes(key) ? p.filter((k) => k !== key) : [...p, key];
+    saveView(persistKey, { pinned: next });
+    return next;
+  });
+  const byKey = useMemo(() => new Map(cells.map((c) => [cellKey(c.position, c.mut_aa), c])), [cells]);
+  const pinnedCells = pinned.map((k) => byKey.get(k)).filter(Boolean) as Cell[];
   const selectedRow = useRef<HTMLTableRowElement | null>(null);
 
   const rows = useMemo(() => {
@@ -69,10 +84,23 @@ export function RankTable({ cells, eventDefinition, filter, onFilter, selectedKe
   return (
     <section aria-labelledby="rank-heading">
       <h2 id="rank-heading">Ranking ({cells.length} substitutions)</h2>
+      {pinnedCells.length > 0 && (
+        <div className="panel" data-testid="pinned-list">
+          <h3 style={{ marginTop: 0, fontSize: 'var(--text-md, 1rem)' }}>Pinned ({pinnedCells.length})</h3>
+          <ul className="reasons">
+            {pinnedCells.map((c) => (
+              <li key={cellKey(c.position, c.mut_aa)}>
+                <span className="mono">{c.wt_aa}{c.position}{c.mut_aa}</span> · rank {c.rank_in_tile} · raw {fmtScore(c.score_dpsi_raw)} · P {fmtProb(c.p_dpsi_ge_1_calibrated)}{' '}
+                <button type="button" className="link" onClick={() => togglePin(cellKey(c.position, c.mut_aa))}>Unpin</button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
       <div className="row">
         <label>
           Position{' '}
-          <select value={filter.position ?? ''} onChange={(e) => onFilter({ ...filter, position: e.target.value === '' ? null : Number(e.target.value) })}>
+          <select data-shortcut-search value={filter.position ?? ''} onChange={(e) => onFilter({ ...filter, position: e.target.value === '' ? null : Number(e.target.value) })}>
             <option value="">all</option>
             {Array.from({ length: TILE_LENGTH }, (_, i) => (
               <option key={i} value={i + 1}>{i + 1}</option>
@@ -113,6 +141,7 @@ export function RankTable({ cells, eventDefinition, filter, onFilter, selectedKe
                 </th>
               ))}
               <th scope="col">Top 10 %</th>
+              <th scope="col">Pin</th>
             </tr>
           </thead>
           <tbody>
@@ -137,6 +166,11 @@ export function RankTable({ cells, eventDefinition, filter, onFilter, selectedKe
                   <td className="num">{fmtScore(c.score_dpsi_raw)}</td>
                   <td className="num">{fmtProb(c.p_dpsi_ge_1_calibrated)}</td>
                   <td>{c.top10pct_in_tile ? 'yes' : 'no'}</td>
+                  <td>
+                    <button type="button" className="link" aria-pressed={pinned.includes(key)} onClick={(e) => { e.stopPropagation(); togglePin(key); }} aria-label={`Pin ${c.wt_aa}${c.position}${c.mut_aa}`}>
+                      {pinned.includes(key) ? '★' : '☆'}
+                    </button>
+                  </td>
                 </tr>
               );
             })}

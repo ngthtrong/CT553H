@@ -19,8 +19,9 @@ SECURITY_HEADERS = [
     (b'referrer-policy', b'no-referrer'),
 ]
 API_CSP = (b'content-security-policy', b"default-src 'none'; frame-ancestors 'none'")
+WRITE_METHODS = {'POST', 'PUT', 'PATCH', 'DELETE'}
 PREDICT_ROUTES = {('POST', '/v1/predict'), ('POST', '/v1/export'), ('POST', '/v1/runs')}
-WORKSPACE_COMPUTE = {'analyses', 'jobs', 'datasets', 'comparisons'}
+WORKSPACE_COMPUTE = {'analyses', 'jobs', 'datasets', 'comparisons', 'compare'}
 
 
 def _bucket(method: str, path: str) -> str | None:
@@ -49,6 +50,23 @@ class CoreMiddleware:
         client = scope.get('client')
         return client[0] if client else 'unknown'
 
+    def _cross_site_write(self, scope: Scope, method: str, path: str) -> bool:
+        """SEC-03 / CON-8: a local service must not accept writes that another web page sends through the user's
+        browser (CORS only stops the page from reading the answer). A write with an Origin that is neither allowed nor
+        this host, or that the browser marks as cross-site, is refused. Clients without these headers (curl, tests,
+        the worker) are unaffected."""
+        if method not in WRITE_METHODS or not path.startswith('/v1/'):
+            return False
+        headers = {k.decode('latin-1').lower(): v.decode('latin-1') for k, v in scope.get('headers', [])}
+        if headers.get('sec-fetch-site') == 'cross-site':
+            return True
+        origin = headers.get('origin')
+        if not origin:
+            return False
+        host = headers.get('host', '')
+        same = {f'http://{host}', f'https://{host}'}
+        return origin not in self.core.settings.allowed_origins and origin not in same
+
     async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
         if scope['type'] != 'http':
             await self.app(scope, receive, send)
@@ -65,11 +83,21 @@ class CoreMiddleware:
                 headers = list(message.get('headers', []))
                 headers.append((b'x-request-id', request_id.encode()))
                 headers.extend(SECURITY_HEADERS)
-                if api_path:
+                # a route may set its own, tighter-for-its-content policy (the HTML report, plan-system 3.5)
+                if api_path and not any(k.lower() == b'content-security-policy' for k, _ in headers):
                     headers.append(API_CSP)
                 message['headers'] = headers
             await send(message)
 
+        scope.setdefault('state', {})['client_ip'] = self._client(scope)      # admin page check (plan-system 4.2)
+        if self._cross_site_write(scope, method, path):
+            body = json.dumps({'code': 'INVALID_REQUEST', 'field': None,
+                               'message': 'Writes from another site are refused by this local service.'}).encode()
+            await send_wrapper({'type': 'http.response.start', 'status': 403, 'headers': [
+                (b'content-type', b'application/json'), (b'content-length', str(len(body)).encode())]})
+            await send_wrapper({'type': 'http.response.body', 'body': body})
+            self._record(scope, method, 403, started, request_id)
+            return
         bucket = _bucket(method, path)
         if bucket is not None:
             s = self.core.settings

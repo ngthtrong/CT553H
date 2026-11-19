@@ -100,6 +100,61 @@ UT-06's old direct screen-PSI threshold expectation is superseded by DOM-01. UT-
 | HIST-02 | FR-14, FR-22, FR-27, FR-32, NFR-10 | Save then restart browser/API/worker; reopen exact snapshots; update active model/ClinVar and confirm old run unchanged; rerun creates new linked entry |
 | HIST-03 | FR-33, NFR-10 | Dependency summary before delete, cancellation/dependent comparison and file cleanup, failed cleanup retry; reference/model data and other projects unaffected |
 
+### 6.1 System completion cases — plan-system.md wave 1 (added 18 Nov 2026)
+
+| ID | plan-system | Scenario and expected result | Where |
+|---|---|---|---|
+| MSEL-01 | 1.1 | `GET /v1/models` reports `serving`, `not_serving_reason`, `expected_tile_seconds` (null before a measurement, then the in-process mean; fallback: median of recent job items) | `tests/test_api.py::test_msel01_*`, `tests/test_jobs.py::test_batch08_*` |
+| MSEL-02 | 1.1 | Choosing a model on New analysis puts only its id in `?model=`, asks before a slow model (≈ N tiles × M s), and the provenance names it; "Run with another model" scores again as a new prediction | `frontend/tests/model-select.test.tsx`, `frontend/e2e/flows.spec.ts` (MSEL-02 mock) |
+| MSEL-03 | 1.1 | A model that does not serve (candidate, retired, missing weights) is listed with its reason and cannot be chosen | `tests/test_api.py::test_api16_models`, `frontend/tests/model-select.test.tsx` |
+| MSEL-04 | 1.1 | Real backend: one tile scored with both models from the UI without editing `.env`; the saved snapshot pins the chosen model | `frontend/e2e/real.spec.ts` (Docker, both defaults) |
+| CACHE-01 | 1.2 | A cache hit is bit-identical to a fresh computation (NFR-05); domain/warnings are recomputed, never cached | `tests/test_cache.py` |
+| CACHE-02 | 1.2 | Another sequence, model id, weights hash, calibrator or code version is a miss | `tests/test_cache.py` |
+| CACHE-03 | 1.2 | Cache statistics in the log are counts only: no sequence, no key | `tests/test_cache.py` |
+| CACHE-04 | 1.2 | Default mode is memory; nothing is written to disk unless `DF_PREDICTION_CACHE=disk` | `tests/test_cache.py` |
+| UNC-01 | 1.3 | Served `score_seed_sd` equals `np.std(ddof=0)` of the parity fixture's per-seed arrays exactly; min/max too | `tests/test_seed_spread.py` (realdata) |
+| UNC-02 | 1.3 | The npz model returns null spread and the UI offers no Seed spread view | `tests/test_seed_spread.py`, `frontend/tests/seed-spread.test.tsx` |
+| UNC-03 | 1.3 | The spread is in the API result, saved snapshot, `analysis_cell`, share-link rebuild and CSV export after the nine FR-12 columns | `tests/test_seed_spread.py` |
+| UNC-04 | 1.3 | axe in both themes on the Seed spread view; the limitation label precedes the numbers | `frontend/e2e/flows.spec.ts` |
+| BATCH-08 | 1.7 | `eta_seconds` = mean measured time of the last finished items × open items; null below 3 measured items and once terminal; refused items have no duration | `tests/test_jobs.py::test_batch08_*`, `frontend/tests/job-eta.test.tsx` |
+| BATCH-09 | 1.7 | The browser notification is opt-in (permission asked only on the user's tick), shown once at the terminal state, text without sequence or input id | `frontend/tests/job-eta.test.tsx` |
+| DOM-02 | 1.5 | A typed sequence equal to a training tile is warned `TRAINING_PEPTIDE` with each model, from that model's own training set | `tests/test_lora.py::test_training_peptide_warned_*`, `tests/test_api.py::test_api18_*` |
+| SUG-01 | 2.6 | Candidates are reproducible for the same inputs and ordered by number of reasons, then probability, rank, position | `tests/test_suggestions.py` |
+| SUG-02 | 2.6 | Every candidate has at least one reason with its number (models disagree \|ΔP\| ≥ 0.2; top 10 % with seed SD ≥ 75th percentile; ClinVar variant of the snapshot); label before the list; CSV export | `tests/test_suggestions.py`, `frontend/tests/candidates.test.tsx`, `frontend/e2e/workspace.spec.ts` (CMP mock + axe) |
+| SUG-03 | 2.6 | A tile scored outside the domain (override) gives no candidate unless `include_out_of_domain` | `tests/test_suggestions.py` |
+| BATCH-10 | 3.3 | Several proteins in one job: residue limit on the total (413), duplicate ids refused, an unresolvable protein is one refused item and the others are scored, manifest has the protein of every row, footprint per protein | `tests/test_jobs.py::test_batch10_*`, `frontend/tests/multi-protein.test.tsx` |
+| BATCH-11 | 4.5 | Small jobs are claimed first, at most 2 running items per job, 3 concurrent workers never process an item twice (one analysis per item, attempts 1), cancellation with several workers | `tests/test_jobs.py::test_batch11_*` |
+| CLI-01 | 3.4 | CLI output equals the API (< 1e-9) through `--api` and `--offline` | `tests/test_cli.py` |
+| CLI-02 | 3.4 | The CLI log (stderr) has counts and ids, never a sequence | `tests/test_cli.py` |
+| CLI-03 | 3.4 | `docs/notebooks/degron-footprint-client.ipynb` runs from start to end against a live app | `tests/test_cli.py` |
+| OPS-04 | 4.2 | Admin status follows the workers (heartbeat; stopped and silent workers are not alive) and the queue | `tests/test_admin.py` |
+| OPS-05 | 4.2 | Admin status has no sequence, input id or imported value | `tests/test_admin.py` |
+| OPS-06 | 4.2 | Clients outside `DF_ADMIN_ALLOWED_NETWORKS` get 403 `LOCAL_ONLY` | `tests/test_admin.py`, `frontend/tests/admin.test.tsx` |
+| UX-03 | 5.1 | Glossary popovers open/close with the keyboard, are described by their button, keep the focus | `frontend/tests/glossary.test.tsx`, `frontend/e2e/workspace.spec.ts` (UX-04 first visit) |
+| UX-04 | 5.1 | The 4-step guide shows on the first visit only, is skippable, remembered by one flag; axe | `frontend/tests/glossary.test.tsx`, `frontend/e2e/workspace.spec.ts` |
+| UX-10 | 5.4 | Presentation mode (Alt+Shift+P) keeps the domain banner, warnings and evidence label, hides secondary tables, enlarges the matrix; axe | `frontend/tests/presentation.test.tsx`, `frontend/e2e/flows.spec.ts` |
+| CMP-06 | 4.4 | The agreement series has one point per saved comparison in time order with n, MAE, Spearman equal to the stored comparison; a clearly worse point is flagged with the caveat | `tests/test_agreement.py`, `frontend/tests/agreement.test.tsx` |
+| CMP-07 | 4.4 | A flag triggers nothing: same default model, no new analysis or job, no action button | `tests/test_agreement.py`, `frontend/tests/agreement.test.tsx` |
+| UX-05 | 5.2 | Single-key shortcuts (v, t, /, ?) do nothing while typing, and can be turned off in the shortcut list (WCAG 2.1.4) | `frontend/tests/shortcuts.test.tsx` |
+| UX-06 | 5.2 | Ranking filter, sort and pins are remembered per saved analysis or reference tile; localStorage holds ids and options only, never a sequence; typed previews are not remembered | `frontend/tests/shortcuts.test.tsx` |
+| PERF-01/02 | 1.4 | One LoRA-D tile timed per configuration (batch, threads, merged LoRA) on the parity fixture; every configuration within 1e-5 of the fixture | `tests/measure_lora_speed.py` → `tests/results/lora-speed.json` |
+| CMP-01 | 2.2 | Spearman/Pearson of raw scores, Spearman of probabilities, mean absolute differences, top-10 % overlap and Jaccard equal numpy; disagreements sorted by \|ΔP\|, reproducible | `tests/test_model_compare.py` |
+| CMP-02 | 2.2 | Two analyses of different sequences, the same analysis twice, missing or extra fields are refused (422); unknown ids 404 | `tests/test_model_compare.py`, `frontend/tests/model-comparison.test.tsx` |
+| CMP-03 | 2.2 | Saved comparison reopens identically; CSV/JSON export carries both analyses' ids, weights hashes, calibrators and evidence labels; deleting an analysis lists and then removes its comparisons | `tests/test_model_compare.py`, `frontend/e2e/real.spec.ts` (CMP real), `frontend/e2e/workspace.spec.ts` (CMP mock + axe + 360 px) |
+| VIZ-01 | 2.1 | `GET /v1/jobs/{id}/footprint`: every per-position value equals the mean of the 19 saved cells of that tile (< 1e-9) | `tests/test_jobs.py::test_viz01_viz02_*`, `frontend/tests/protein-footprint.test.tsx` |
+| VIZ-02 | 2.1 | Overlapping windows stay separate: the 5 shared residues appear in both tiles with their own values; 409 for peptide or unfinished jobs; unscored tiles have no positions | `tests/test_jobs.py::test_viz*`, `frontend/tests/protein-footprint.test.tsx` (alternate lanes) |
+| VIZ-03 | 2.1 | Job page after a whole-protein job: limitation label before the chart, 17 tiles for PTEN, table links open a tile; axe light and dark | `frontend/e2e/workspace.spec.ts` |
+| VIZ-04 | 2.1 | 360 px: the footprint scrolls inside its box, no horizontal page scroll | `frontend/e2e/narrow.spec.ts` |
+| CMP-04 | 2.3 | Scatter points are exactly the matched pairs of the comparison table; each chart states n; Bland–Altman uses the sample SD; calibration bins against observed ΔPSI ≥ 1 | `frontend/tests/comparison-charts.test.tsx`, `frontend/e2e/workspace.spec.ts` (UC-09) |
+| CMP-05 | 2.3 | An endpoint not comparable with GPS ΔPSI draws no chart and no calibration, and says why | `frontend/tests/comparison-charts.test.tsx` |
+| RPT-01 | 3.5 | Report numbers (top 10 %, footprint) equal the stored snapshot; 560 matrix cells | `tests/test_report.py` |
+| RPT-02 | 3.5 | Evidence, domain, warnings and disclaimers come before any number; model hash and source attribution present | `tests/test_report.py` |
+| RPT-03 | 3.5 | No script, link, image, iframe, form or external URL; own CSP header and meta; text escaped; renders in the browser without CSP violations or other requests | `tests/test_report.py`, `frontend/e2e/real.spec.ts` (RPT real) |
+| OPS-01 | 4.1 | Backup → delete database and project files → restore gives the same rows, file hashes and content checksums | `tests/test_backup.py` (SQLite), `tests/results/backup-roundtrip.json` (Docker) |
+| OPS-02 | 4.1 | A changed byte, an edited or missing manifest, or another schema revision is refused before any change | `tests/test_backup.py` |
+| OPS-03 | 4.1 | Nothing is overwritten without typing "restore" (or `--yes`); without a terminal the restore is refused | `tests/test_backup.py`, `tests/results/backup-roundtrip.json` |
+| OPS-07 | 4.3 | Start-up logs one line `default model: <id> source=<registry|setting|fallback> kind=… weights_sha256=…`; `/healthz` reports the same | `tests/test_lora.py::test_start_up_logs_*`, `tests/test_api.py::test_api26_*` |
+
 ## 7. Non-functional and local acceptance cases
 
 | ID | Requirements | Expected outcome |

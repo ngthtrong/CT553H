@@ -1,14 +1,19 @@
 import { useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { RefreshCw } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../api/client';
 import { ApiError } from '../api/errors';
 import { isStoredTile } from '../api/types';
 import type { PredictionResult, TileRequest } from '../api/types';
 import { ErrorBanner } from '../components/ErrorBanner';
+import { useSlowModelConfirm } from '../components/ModelSelect';
 import { RefusalNotice } from '../components/RefusalNotice';
 import { ResultView } from '../components/ResultView';
+import { SaveAnalysisDialog } from '../components/SaveAnalysisDialog';
+import { Button } from '../components/ui';
 import { useDocumentTitle } from '../lib/hooks';
+import { effectModels, modelQuery, useModelParam, useModels } from '../lib/models';
 import { requestStore } from '../state/requestStore';
 
 export function ResultHeader({ result }: { result: PredictionResult | undefined; fallback?: string }) {
@@ -22,14 +27,39 @@ export function ResultHeader({ result }: { result: PredictionResult | undefined;
         <span className="seq" translate="no">{t.sequence}</span>
         <br />
         <span className="muted">
-          Model <code>{result.provenance.model_id}</code> · <Link to="/model">Model card</Link>
+          Model <code>{result.provenance.model_id}</code> · <Link to={`/model/${encodeURIComponent(result.provenance.model_id)}`}>Model card</Link>
         </span>
       </p>
     </>
   );
 }
 
-function Loader({ request, backTo }: { request: TileRequest; backTo: string }) {
+/**
+ * "Run with another model" (plan-system 1.1, A-5): scores the same input with another serving model as a new
+ * prediction. The current result is not changed; only the model id goes into the address.
+ */
+export function RerunWithModel({ current, onPick }: { current: string; onPick: (modelId: string) => void }) {
+  const models = useModels();
+  const others = effectModels(models.data?.items).filter((m) => m.serving && m.model_id !== current);
+  const [choice, setChoice] = useState('');
+  const picked = others.find((m) => m.model_id === choice) ?? others[0];
+  const slow = useSlowModelConfirm(picked);
+  if (others.length === 0) return null;
+  return (
+    <div className="row rerun-model" data-testid="rerun-model">
+      <label>
+        <span className="visually-hidden">Other model</span>
+        <select className="ui-select" value={picked?.model_id ?? ''} onChange={(e) => setChoice(e.target.value)} aria-label="Other model">
+          {others.map((m) => <option key={m.model_id} value={m.model_id}>{m.model_id}</option>)}
+        </select>
+      </label>
+      <Button icon={RefreshCw} onClick={() => picked && slow.run(1, () => onPick(picked.model_id))}>Run with another model</Button>
+      {slow.dialog}
+    </div>
+  );
+}
+
+function Loader({ request, backTo, onRerun }: { request: TileRequest; backTo: string; onRerun: (modelId: string) => void }) {
   const navigate = useNavigate();
   const [override, setOverride] = useState(false);
   const stored = isStoredTile(request);
@@ -79,7 +109,11 @@ function Loader({ request, backTo }: { request: TileRequest; backTo: string }) {
   return (
     <>
       <ResultHeader result={q.data} />
-      <ResultView result={q.data} request={effective} />
+      <ResultView
+        result={q.data}
+        request={effective}
+        actions={<><SaveAnalysisDialog request={effective} /><RerunWithModel current={q.data.provenance.model_id} onPick={onRerun} /></>}
+      />
     </>
   );
 }
@@ -87,6 +121,8 @@ function Loader({ request, backTo }: { request: TileRequest; backTo: string }) {
 /** `/result/uniprot/:acc/:n` — addressed by accession and index, so the URL carries no user input. */
 export function StoredResultPage() {
   const { acc = '', n = '' } = useParams();
+  const navigate = useNavigate();
+  const [modelId] = useModelParam();
   const index = Number(n);
   if (!Number.isInteger(index) || index < 1) {
     return (
@@ -96,12 +132,20 @@ export function StoredResultPage() {
       </>
     );
   }
-  return <Loader key={`${acc}/${index}`} request={{ uniprot_id: acc, tile_index: index }} backTo={`/protein/${acc}`} />;
+  const request: TileRequest = modelId ? { uniprot_id: acc, tile_index: index, model_id: modelId } : { uniprot_id: acc, tile_index: index };
+  return (
+    <Loader
+      key={`${acc}/${index}/${modelId ?? ''}`}
+      request={request}
+      backTo={`/protein/${acc}${modelQuery(modelId)}`}
+      onRerun={(m) => navigate(`/result/uniprot/${acc}/${index}${modelQuery(m)}`)}
+    />
+  );
 }
 
 /** `/result` — a typed sequence is read from memory; after a reload there is nothing to show by design. */
 export function TypedResultPage() {
-  const request = requestStore.get();
+  const [request, setRequest] = useState(() => requestStore.get());
   useDocumentTitle('Result');
   if (!request) {
     return (
@@ -114,5 +158,12 @@ export function TypedResultPage() {
       </>
     );
   }
-  return <Loader request={request} backTo="/" />;
+  return (
+    <Loader
+      key={request.model_id ?? ''}
+      request={request}
+      backTo="/"
+      onRerun={(m) => { const next = { ...request, model_id: m }; requestStore.set(next); setRequest(next); }}
+    />
+  );
 }

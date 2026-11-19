@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-18",
+  "scope": "plan-system.md wave 1, partial: 1.1, 1.2, 1.3, 1.5, 1.7, 4.3 (backend + policy)",
+  "scientific_status": "development_not_gate_closure",
+  "host": "WSL2 Ubuntu 24.04, AMD Ryzen 5 5500U (12 threads), 7.4 GiB RAM; Docker Engine in the same VM",
+  "code_state": "uncommitted working tree",
+  "images": {
+    "backend": "degron-footprint/backend:1 (WITH_LORA=1), rebuilt 2026-11-18",
+    "web": "degron-footprint/web, rebuilt 2026-11-18"
+  },
+  "migration": {
+    "head": "0005",
+    "docker_pg_backup_before": {
+      "path": "system/app/.data/backup/docker-pg-2026-11-18-pre0005.dump",
+      "sha256": "5fb47049f602c3841616bbec99bb4e25b0da448755872a88fb3902332a515e0a",
+      "table_data_entries": 20
+    },
+    "dev_db_backup_before": {
+      "path": "system/app/.data/backup/dev-2026-11-18-pre0005.db",
+      "sha256": "be7c5f88b7a7cb40cff76b2f856b2bfab3c30316cf45112ab327ce39a2e85268"
+    }
+  },
+  "results": {
+    "backend_container_postgresql": {
+      "command": "make docker-test",
+      "passed": 306,
+      "skipped": 14,
+      "failed": 0,
+      "log": ".data/docker-test-pg-2026-11-18.log"
+    },
+    "backend_container_sqlite": {
+      "command": "make docker-test DF_TEST_BACKEND=sqlite",
+      "passed": 320,
+      "skipped": 0,
+      "failed": 0,
+      "log": ".data/docker-test-sqlite-2026-11-18.log"
+    },
+    "backend_host_fast": {
+      "command": "make test-fast",
+      "passed": 305,
+      "skipped": 1,
+      "deselected": 14
+    },
+    "lint_typecheck_contract": {
+      "ruff": "pass",
+      "mypy": "pass (48 files)",
+      "openapi": "valid",
+      "tsc": "pass",
+      "eslint": "pass",
+      "check_api": "types up to date"
+    },
+    "vitest": {
+      "passed": 186,
+      "failed": 0,
+      "files": 14
+    },
+    "playwright_mock": {
+      "passed": 31,
+      "failed": 0,
+      "note": "chromium desktop/narrow + firefox/webkit matrix; includes MSEL-02 (mock) and UNC-04 x2"
+    },
+    "e2e_real_docker_lora_default": {
+      "passed": 12,
+      "skipped": 1,
+      "failed": 0,
+      "skipped_case": "NF-06 (skipped by design with a slow default)",
+      "log": ".data/e2e-real-lora-2026-11-18.log"
+    },
+    "e2e_real_docker_npz_default": {
+      "passed": 13,
+      "failed": 0,
+      "log": ".data/e2e-real-npz-2026-11-18.log",
+      "note": "first attempt: MSEL-04 hit the service's own rate limit (429) on GET /v1/models after NF-06; spec now waits for Retry-After; rerun 13/13"
+    }
+  },
+  "measurements": {
+    "cache_lora": {
+      "file": "tests/results/cache-lora.json",
+      "first_ms_min": 33144.1,
+      "cached_ms_max": 30.2,
+      "identical": true,
+      "target_lt_1000ms_met": true
+    },
+    "nf06_real_npz": {
+      "file": "tests/results/nf06-real.json",
+      "p50_ms": 220,
+      "p95_ms": 255,
+      "runs": 20,
+      "note": "rewritten by the npz e2e run of 18 Nov"
+    }
+  },
+  "fr22_old_snapshot": {
+    "analysis_id_prefix": "d3042938",
+    "saved": "2026-11-17",
+    "get_status": 200,
+    "csv_export_status": 200,
+    "has_seed_fields": false
+  },
+  "not_checked": [
+    "manual accessibility (4.6)",
+    "items 2.1, 2.3, 3.5, 4.1, 4.6 not started",
+    "serving decision for LoRA-D: draft serving-decision-2026-11-18.md awaits Trọng's confirmation; GVHD not recorded",
+    "latency on a reference machine (author laptop only)",
+    "multiple workers (ETA assumes one worker)"
+  ]
+}

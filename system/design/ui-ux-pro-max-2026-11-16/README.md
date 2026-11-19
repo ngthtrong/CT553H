@@ -22,7 +22,7 @@ primitive → purpose → component), primitive giao diện ở `frontend/src/co
 | Pattern Enterprise Gateway (Contact Sales, logo carousel) | Bỏ | Mẫu landing page, không phải app local |
 | Primary navy `#1E40AF`, secondary `#3B82F6` | Bỏ | Giữ teal của v2 (`#12634f` sáng / `#6cc9ab` tối) như `plan.md` §5 |
 | Accent hổ phách `#D97706` | Bỏ | Trùng tông cam của thang PuOr (raw score) |
-| Fira Code + Fira Sans qua Google Fonts | Nhận font, bỏ CDN | Trọng chọn Fira 16/11; tự host `@fontsource/fira-sans@5.3.0`, `@fontsource/fira-code@5.3.0` (OFL-1.1); NFR-09 |
+| Fira Code + Fira Sans qua Google Fonts | Nhận font, bỏ CDN — **đã thay bằng Roboto/Roboto Mono ngày 17/11** ([hồ sơ 17/11](../ui-ux-pro-max-2026-11-17/README.md)) | Trọng chọn Fira 16/11; tự host `@fontsource/fira-sans@5.3.0`, `@fontsource/fira-code@5.3.0` (OFL-1.1); NFR-09 |
 | Fira Code cho **tiêu đề** | Đổi | Tiêu đề dùng Fira Sans; Fira Code dành cho chuỗi, ID, số (tắt ligature để `--`/`>=` trong chuỗi không bị ghép) |
 | GSAP scroll reveal | Bỏ | Chỉ CSS transition 150–250 ms, tắt theo `prefers-reduced-motion` |
 | Icon SVG, không emoji | Nhận | `lucide-react@1.73.0` (ISC); icon trang trí `aria-hidden`, icon-only button bắt buộc có nhãn |

@@ -1,0 +1,108 @@
+{
+  "date": "2026-11-17T09:53:29+00:00",
+  "host": {
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "cpu_model": "AMD Ryzen 5 5500U with Radeon Graphics",
+    "logical_cpus": 12,
+    "mem_total_mb": 7619,
+    "load_average_1_5_15": [
+      0.6533203125,
+      1.79296875,
+      2.56640625
+    ],
+    "note": "WSL2 on the author laptop; Docker Engine in the same VM; other processes may share the CPU"
+  },
+  "base": "http://127.0.0.1:8080",
+  "protein": "A6NMZ7",
+  "tiles": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "health": {
+    "status": "ok",
+    "version": "0.1.0",
+    "model_loaded": true,
+    "default_model_id": "m3-ext4.0-platt-v1",
+    "database": "ok"
+  },
+  "m3-ext4.0-platt-v1": {
+    "kind": "ridge_platt",
+    "first_request_ms": 30.7,
+    "n": 10,
+    "p50_ms": 18.2,
+    "p95_ms": 20.2,
+    "mean_ms": 18.4,
+    "min_ms": 17.4,
+    "max_ms": 20.2
+  },
+  "esm2-35m-lora-d-aa4fc2b7": {
+    "kind": "torch_lora",
+    "first_request_ms": 41697.7,
+    "n": 10,
+    "p50_ms": 37674.8,
+    "p95_ms": 39148.9,
+    "mean_ms": 37726.6,
+    "min_ms": 36529.4,
+    "max_ms": 39148.9
+  },
+  "api_container_stats_after": {
+    "BlockIO": "514MB / 0B",
+    "CPUPerc": "0.16%",
+    "Container": "degron-footprint-api-1",
+    "ID": "ddd33479451c",
+    "MemPerc": "6.75%",
+    "MemUsage": "514.5MiB / 7.44GiB",
+    "Name": "degron-footprint-api-1",
+    "NetIO": "440kB / 572kB",
+    "PIDs": "15"
+  },
+  "api_container_lora_threads": "4",
+  "image": {
+    "name": "degron-footprint/backend:1",
+    "size_bytes": 1767655826
+  },
+  "threshold_proposed": {
+    "NFR-01_predict_p95_le_300ms": {
+      "m3-ext4.0-platt-v1": true,
+      "esm2-35m-lora-d-aa4fc2b7": false
+    }
+  },
+  "caveats": [
+    "one protein, sequential requests, warm caches; through nginx (web container) and the API",
+    "LoRA-D runs 3 seeds x (1 + 532) ESM-2 35M forward passes per tile on the CPU",
+    "not a benchmark of the model quality; development_not_gate_closure"
+  ],
+  "docker_api_parity_vs_research_fixture": {
+    "scope": "API in the WITH_LORA=1 container (python:3.12.12-slim, torch CPU wheel) through nginx vs the research-implementation fixture",
+    "tiles": {
+      "tile_typed": {
+        "max_abs_diff_score": 0.0,
+        "max_abs_diff_prob": 0.0,
+        "cells": 532,
+        "model_kind": "torch_lora",
+        "domain_status": "predicted_in_domain",
+        "warnings": [
+          "PREDICTED_DOMAIN"
+        ]
+      },
+      "tile_w": {
+        "max_abs_diff_score": 0.0,
+        "max_abs_diff_prob": 0.0,
+        "cells": 532,
+        "model_kind": "torch_lora",
+        "domain_status": "predicted_in_domain",
+        "warnings": [
+          "PREDICTED_DOMAIN"
+        ]
+      }
+    }
+  }
+}

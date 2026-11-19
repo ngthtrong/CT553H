@@ -156,6 +156,8 @@ Choose a project and explicitly save the current analysis. Show that input, outp
 |---|---|---|
 | Probability 0–1 (sequential) | Viridis, light (low) to dark (high) reversed so that high probability is darkest | Numeric value on focus/hover; legend with ticks |
 | Raw score (diverging, centre at 0) | ColorBrewer PuOr 11-class: `#7f3b08 #b35806 #e08214 #fdb863 #fee0b6 #f7f7f7 #d8daeb #b2abd2 #8073ac #542788 #2d004b` (orange = negative, purple = positive); blue–orange/purple family chosen for colour-vision deficiency | Sign shown in tooltip |
+| Difference between two models, B − A (diverging, centre 0) — added 18 Nov 2026, plan-system 2.2 | ColorBrewer BrBG via d3 `interpolateBrBG`, symmetric around 0 up to the largest \|ΔP\| of the tile: brown = model A higher, teal = model B higher, near-white = agreement. Distinct from PuOr and Viridis so a difference is never read as a score or a probability (`tests/model-comparison.test.tsx`) | Colour bar labelled "A higher / B higher"; values in the cell titles and in the table of largest disagreements |
+| Seed spread of an ensemble (sequential, 0 = none) — added 18 Nov 2026, plan-system 1.3 | Monochrome grey → blue, linear from `#eef1f5` (0) to `#1d3557` (largest SD of the tile); ends differ ≥ 4.5 : 1, dark end ≥ 3 : 1 on white (`tests/seed-spread.test.tsx`). Chosen so it cannot be read as a probability (Viridis) or a signed score (PuOr) | Label "Spread between the 3 training seeds … not a confidence interval and not a prediction error" before the numbers; SD and seed min–max in the cell text |
 | Domain status | Distinct fills targeted for colour-vision simulation (verification pending) | Pattern (solid / hatched / dotted / empty) and text |
 | Warning levels | Amber (notice), red (override) | Icon and the word "Warning"/"Override" |
 | ClinVar classes | Marker shapes per class | Shape and text in hover card |
@@ -252,6 +254,83 @@ Choose CSV/TSV, dataset name, assay/endpoint/units, source/reference and replica
 Saved-analysis view selects a committed dataset and replicate or explicit aggregation. Show prediction, measurement, residual and units only for comparable endpoints. Display matched/missing/unmatched counts, n and undefined-metric reasons. Different assays appear in separate labelled views. Training-reference observations carry the training caption; imported observations carry their dataset revision and no automatic independent-validation label.
 
 ClinVar and approved supplementary evidence are release-1 layers. Show classification, review/conflict state, accession/release/reference-residue mapping and snapshot date; retain source links, attribution and diagnostic disclaimer. Distinguish no matching variant, mapping unavailable, source unavailable and mapping conflict. Custom unmapped sequences do not acquire guessed annotations.
+
+### 12.4b Footprint track — UC-01 (added 16–17 Nov 2026, implementation plan 9.5b)
+
+A one-dimensional summary beside the 28×20 matrix, sharing its position axis (same row height and header offset): for
+each position the mean over its 19 substitutions in the scale currently shown (calibrated probability or raw ΔPSI),
+with the value printed. It is recomputed from the same 532 cells as the matrix (test: equal within 1e-9), never from
+another source, uses the neutral tile colour rather than a data scale, and has a hidden table for assistive
+technology. On narrow screens it wraps below the matrix. It is a reading aid, not a new prediction or a cross-tile
+ranking.
+
+### 12.4c System completion, wave 1 — 18 Nov 2026 (plan-system.md 1.1, 1.3, 1.7)
+
+- **Model selector** (`ModelSelect`): on New analysis for all three modes, an effect-model `<select>` whose empty value
+  is the service default; models that do not serve are listed disabled with their reason underneath. The choice is
+  kept in `?model=<id>` (an id only, validated against the contract pattern) and carried to the tile picker and the
+  result. Before a model whose measured time makes the work longer than 20 s, a dialog states "≈ N tiles × M s ≈ T"
+  and the user confirms or cancels (Escape cancels; nothing is sent). The result page has "Run with another model"
+  (a new prediction; the current one is not changed) and "Run again" on a saved analysis takes a model choice and
+  saves a new linked analysis (A-5). `/model/:id` shows any registered model's card; `/model` the default.
+- **Seed spread view**: a third matrix view, offered only when every cell carries `score_seed_sd/min/max` (LoRA-D).
+  Scale in §5. The heatmap, table view and footprint track show the SD; the cell text adds the seed min–max. Older
+  snapshots and the npz model show no such view.
+- **Job ETA and notification**: the Job page shows "Estimated time left ≈ T" from `eta_seconds` (or "estimated after 3
+  finished items"); the tab title carries the progress (`42% · Job 160/382`); an opt-in checkbox asks the browser for
+  notification permission only when ticked and shows one local notification at the terminal state (job number and
+  counts only).
+
+### 12.4d System completion, wave 1 continued — 18 Nov 2026 (plan-system.md 2.1, 2.3, 3.5)
+
+- **Protein footprint** (`ProteinFootprint`, Job page of a finished whole-protein job): the limitation "each tile is
+  scored independently … not a phenotype of the whole protein" first; then one coloured cell per residue per window
+  (mean of its 19 substitutions, probability scale of §5 or raw-score scale), windows alternating between two lanes so
+  the 5 shared residues are never merged; a band below shows each window's domain status by pattern; residues
+  without a full window are shaded; unscored windows are dashed boxes. The SVG scrolls inside its box; a table view
+  (also the accessible path) lists every window with its mean, highest position and a link to its matrix.
+- **Comparison charts** (`ComparisonCharts`, Comparison tab): after the "comparison only, not an independent
+  validation" banner, four small SVG charts with n — predicted against observed with the identity line, residual
+  histogram, Bland–Altman (bias, ± 1.96 SD), calibration by five probability bins against the observed share of
+  ΔPSI ≥ 1. Accent colour only (no data scale); drawn only for matched pairs of an endpoint comparable with GPS ΔPSI,
+  otherwise a banner says why.
+- **Report** link in the Export card of a saved analysis: opens the self-contained HTML report in a new tab; the
+  browser's print dialog makes the PDF.
+
+### 12.4e Model comparison — 18 Nov 2026 (plan-system 2.2)
+
+Tab **Other model** on a saved analysis: choose another serving model, confirm if it is slow; the same input is scored
+as a new analysis linked to this one and the comparison is stored, then `/model-comparisons/:id` opens. That screen
+puts "descriptive comparison; does not tell which model is right" first, then both models' provenance side by side,
+the agreement metrics (Spearman/Pearson of raw scores, Spearman of probabilities, mean |B − A|, top-10 % overlap with
+Jaccard), a scatter A against B (probability or raw) with the identity line, the 28 × 20 difference heatmap on the
+BrBG scale (§5) with hatched WT cells, the 20 largest disagreements, and CSV/JSON export with both provenances.
+
+### 12.4f Wave 2 screens — 18 Nov 2026 (plan-system 2.6, 3.3, 4.2, 5.1, 5.4)
+
+- **Candidates** tab of a saved analysis: label "retrospective priority list … not an experimentally validated design"
+  first, an optional "Compare with" (another analysis of the same tile from the saved model comparisons), a table in
+  priority order with the reasons in words, CSV export.
+- **Whole protein, several proteins**: several accessions (search again to add; remove per protein) or several FASTA
+  records; a preview table per protein (residues, windows, uncovered end, problem); the job page lists the coverage of
+  every protein and the protein footprint has a protein selector.
+- **Admin** (`/admin`, sidebar): models, workers and queue, cache, storage, last ETL; one action "Reload models and
+  check hashes"; a refusal from another computer is explained.
+- **Glossary and first visit**: a "Terms" row under the matrix heading with "?" buttons (popover, Escape closes,
+  `aria-describedby`); a 4-step guide above the content on the first visit, Skip/Done remembered by one flag.
+- **Presentation mode** (button in the sidebar, Alt+Shift+P): sidebar and secondary panels (actions, priority panel,
+  ranking, export, glossary row) hidden, text 118 %, matrix up to 1040 px wide; the domain banner, warnings, evidence
+  label, provenance and footer stay; a bar at the top says the mode is on and how to leave it.
+
+### 12.4g Wave 3 start — 18 Nov 2026 (plan-system 4.4, 5.2)
+
+- **Agreement over time** (project tab): caveat first ("comparison only … a worse agreement may come from another
+  assay … nothing is changed automatically"), MAE and Spearman trends numbered in time order with n per point, a ring
+  on a flagged point, the table of comparisons; no action button.
+- **Keyboard shortcuts** ("Keyboard shortcuts" in the sidebar or `?`): `/` search/filter field, `v` next matrix view,
+  `t` heatmap/table, arrows in the matrix, Alt+Shift+P presentation; a checkbox turns single-key shortcuts off.
+- **Pins**: ☆/★ per row of the ranking and a "Pinned" list above it; ranking filter, sort and pins are remembered per
+  saved analysis or reference tile (ids and options only).
 
 ### 12.5 Component/state additions
 

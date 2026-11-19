@@ -274,12 +274,15 @@ def test_batch06_export_covers_every_item(wc):
     header, body = rows[0], rows[1:]
     assert header[:9] == ['peptide', 'tile', 'position', 'wt_aa', 'mut_aa', 'score_dpsi_raw',
                           'p_dpsi_ge_1_calibrated', 'rank_in_tile', 'top10pct_in_tile']
-    assert header[9:] == ['project_id', 'job_id', 'item_id', 'input_id', 'uniprot_id', 'reference_release',
-                          'start_pos', 'end_pos', 'protein_position', 'status', 'error_code', 'domain_status']
+    # plan-system 1.3: the seed spread follows the nine FR-12 columns (empty for the npz model)
+    assert header[9:12] == ['score_seed_sd', 'score_seed_min', 'score_seed_max']
+    assert header[12:] == ['project_id', 'job_id', 'item_id', 'input_id', 'uniprot_id', 'reference_release',
+                           'start_pos', 'end_pos', 'protein_position', 'status', 'error_code', 'domain_status']
     assert len(body) == 532 + 1
-    assert body[0][12] == "'=cmd|calc"                                 # formula neutralised (SEC-02)
-    assert body[-1][11] == 'p0002'
-    assert body[-1][:9] == [''] * 9 and body[-1][-3:-1] == ['refused', 'INVALID_LENGTH']
+    assert body[0][9:12] == ['', '', '']
+    assert body[0][15] == "'=cmd|calc"                                 # formula neutralised (SEC-02)
+    assert body[-1][14] == 'p0002'
+    assert body[-1][:12] == [''] * 12 and body[-1][-3:-1] == ['refused', 'INVALID_LENGTH']
     payload = json.loads(c.get(f"/v1/jobs/{job['job_id']}/export?format=json").text)
     assert len(payload['manifest']) == 2 and len(payload['analyses']) == 1
     assert len(payload['analyses'][0]['result']['cells']) == 532
@@ -373,3 +376,304 @@ def test_two_workers_in_parallel_process_each_item_once(wc):
     final = c.get(f"/v1/jobs/{job['job_id']}").json()
     assert final['state'] == 'completed' and final['counts']['succeeded'] == 60
     assert n_runs(url) == 60
+
+
+@pytest.mark.slow
+def test_cancel_racing_a_live_worker_always_ends_cancelled(wc):
+    """Regression (17 Nov 2026, NF-07 run): a cancellation committed while the worker was finishing an item left the
+    job `partial`, because the worker read the cancel flag before taking the write lock. Repeated race, real thread."""
+    import threading
+    import time
+
+    c, app, _ = wc
+    pid = project(c)
+    for attempt in range(15):
+        job = submit(c, pid, mode='peptides', peptides=[{'input_id': f'p{i}', 'sequence': SEQ} for i in range(40)]).json()
+        stop = threading.Event()
+        w = worker(app, f'race-{attempt}')
+        w.settings.worker_poll_seconds = 0.01
+        t = threading.Thread(target=w.run, args=(stop,), daemon=True)
+        t.start()
+        while c.get(f"/v1/jobs/{job['job_id']}").json()['counts']['succeeded'] < 2 + attempt % 5:
+            time.sleep(0.002)
+        c.post(f"/v1/jobs/{job['job_id']}/cancel")
+        deadline = time.monotonic() + 20
+        while (state := c.get(f"/v1/jobs/{job['job_id']}").json())['state'] not in ('cancelled', 'partial', 'completed', 'failed'):
+            assert time.monotonic() < deadline
+            time.sleep(0.005)
+        stop.set()
+        t.join(timeout=5)
+        assert state['state'] == 'cancelled', (attempt, state['counts'])
+        assert state['counts']['succeeded'] + state['counts']['cancelled'] == 40
+
+
+@pytest.mark.slow
+def test_whole_protein_windows_match_the_reference_tiles(mini, tmp_path):
+    """plan.md 2.5: on a copy of the real dev.db, every window of a whole-protein job has the 1-based coordinates and
+    the sequence of the stored `tile` row with the same index (482,216 tiles from the ETL)."""
+    import shutil
+    import sqlite3
+    from pathlib import Path
+
+    from fastapi.testclient import TestClient
+
+    from api.config import Settings
+    from api.main import create_app
+
+    src = Path(__file__).resolve().parents[1] / '.data/dev.db'
+    if not src.exists():
+        pytest.skip('.data/dev.db not present')
+    db = tmp_path / 'dev.db'
+    shutil.copy(src, db)
+    from alembic import command
+
+    from tests.test_workspace_schema import alembic_cfg
+    command.upgrade(alembic_cfg(f'sqlite:///{db}'), 'head')       # the copy may be older than the code (0005: 18 Nov)
+    app = create_app(Settings(database_url=f'sqlite:///{db}', workspace_dir=tmp_path / 'ws', background_jobs=False,
+                              openapi_contract=None, rate_limit_predict=10**6, rate_limit_reference=10**6))
+    with TestClient(app) as c:
+        pid = c.post('/v1/projects', json={'name': 'tiles'}).json()['project_id']
+        con = sqlite3.connect(f'file:{db}?mode=ro', uri=True)
+        for acc in ('P60484', 'A6NMZ7', 'Q8NF91'):
+            job = c.post(f'/v1/projects/{pid}/jobs', json={'mode': 'protein', 'protein': {'uniprot_id': acc}}).json()
+            ref = {r[0]: r[1:] for r in con.execute(
+                'SELECT tile_index, start_pos, end_pos, sequence FROM tile WHERE uniprot_acc = ? ORDER BY tile_index', (acc,))}
+            items = c.get(f"/v1/jobs/{job['job_id']}/items?limit=200").json()
+            got = list(items['items'])
+            while len(got) < items['total']:
+                got += c.get(f"/v1/jobs/{job['job_id']}/items?offset={len(got)}&limit=200").json()['items']
+            assert job['total'] == len(ref), acc
+            for it in got:
+                start, end, seq = ref[it['tile_index']]
+                assert (it['start_pos'], it['end_pos']) == (start, end), (acc, it['tile_index'])
+            con2 = sqlite3.connect(f'file:{db}?mode=ro', uri=True)
+            stored = dict(con2.execute('SELECT tile_index, sequence FROM job_item WHERE job_id = ? AND sequence IS NOT NULL',
+                                       (job['job_id'],)).fetchall())
+            con2.close()
+            assert all(stored[i] == ref[i][2] for i in stored), acc
+        con.close()
+
+
+# --- BATCH-08 (plan-system 1.7): ETA from measured item times ----------------------------------------------------------
+
+def test_batch08_eta_from_measured_items_and_null_when_not_enough_or_finished(wc):
+    c, app, url = wc
+    pid = project(c)
+    peptides = [{'input_id': f'p{i}', 'sequence': s} for i, s in enumerate([SEQ, SEQ2] * 4)]
+    job = submit(c, pid, mode='peptides', peptides=peptides).json()
+    check('Job', job)
+    assert job['eta_seconds'] is None                                   # nothing measured yet
+    w = worker(app)
+    w.run_once()
+    w.run_once()
+    assert c.get(f"/v1/jobs/{job['job_id']}").json()['eta_seconds'] is None      # 2 < ETA_MIN_SAMPLES
+    w.run_once()
+    j = c.get(f"/v1/jobs/{job['job_id']}").json()
+    check('Job', j)
+    with make_engine(url).connect() as conn:
+        ms = conn.execute(select(JobItem.duration_ms).where(JobItem.job_id == job['job_id'],
+                                                            JobItem.duration_ms.is_not(None))).scalars().all()
+    assert len(ms) == 3 and all(x > 0 for x in ms)
+    open_ = j['counts']['pending'] + j['counts']['running']
+    assert open_ == 5 and j['eta_seconds'] == round(sum(ms) / 3 / 1000 * open_, 1)
+    w.drain()
+    done = c.get(f"/v1/jobs/{job['job_id']}").json()
+    assert done['state'] == 'completed' and done['eta_seconds'] is None
+    # the model list falls back to the median item time of recent jobs when this process has not scored yet
+    app.state.core.predictor._timings.clear()                           # as if the worker were another process
+    secs = next(m for m in c.get('/v1/models').json()['items'] if m['model_id'] == 'test-model-v1')
+    assert secs['expected_tile_seconds'] is not None and secs['expected_tile_seconds'] > 0
+
+
+def test_batch08_refused_items_have_no_duration(wc):
+    c, app, url = wc
+    pid = project(c)
+    job = submit(c, pid, mode='peptides', peptides=[{'input_id': 'bad', 'sequence': 'ACD'}]).json()
+    assert job['state'] == 'failed' and job['eta_seconds'] is None
+    with make_engine(url).connect() as conn:
+        assert conn.execute(select(JobItem.duration_ms).where(JobItem.job_id == job['job_id'])).scalar() is None
+
+
+# --- VIZ-01/02 (plan-system 2.1): protein footprint ---------------------------------------------------------------------
+
+def test_viz01_viz02_protein_footprint_per_tile_without_averaging_overlaps(wc):
+    c, app, _ = wc
+    pid = project(c)
+    prot = (SEQ + SEQ2) * 2 + 'ACDEFGHIK'                               # 121 residues: 5 windows (1–120), 121 uncovered
+    job = submit(c, pid, mode='protein', override_domain=True,
+                 protein={'input_id': 'typed-prot', 'sequence': prot}).json()
+    r = c.get(f"/v1/jobs/{job['job_id']}/footprint")
+    assert r.status_code == 409 and r.json()['code'] == 'JOB_STATE_CONFLICT'          # not finished yet
+    worker(app).drain()
+    r = c.get(f"/v1/jobs/{job['job_id']}/footprint")
+    assert r.status_code == 200, r.text
+    fp = r.json()
+    check('JobFootprint', fp)
+    assert fp['protein'] == {'input_id': 'typed-prot', 'uniprot_id': None, 'length': 121, 'tiles': 5}
+    assert fp['uncovered'] == [{'start': 121, 'end': 121}]
+    assert fp['label'].startswith('Each tile is scored independently')
+    assert [t['tile_index'] for t in fp['tiles']] == [1, 2, 3, 4, 5]
+    for t in fp['tiles']:
+        assert t['state'] == 'succeeded' and len(t['positions']) == 28
+        assert [p['protein_pos'] for p in t['positions']] == list(range(t['start_pos'], t['end_pos'] + 1))
+        # VIZ-01: equal to the recomputation from the saved cells of that tile
+        cells = c.get(f"/v1/analyses/{t['analysis_id']}").json()['result']['cells']
+        for p in t['positions']:
+            at = [x for x in cells if x['position'] == p['protein_pos'] - t['start_pos'] + 1]
+            assert len(at) == 19
+            assert abs(p['mean_prob'] - sum(x['p_dpsi_ge_1_calibrated'] for x in at) / 19) < 1e-9
+            assert abs(p['mean_raw'] - sum(x['score_dpsi_raw'] for x in at) / 19) < 1e-9
+    # VIZ-02: the 5 shared residues of consecutive windows appear in both tiles, each with its own value
+    t1, t2 = fp['tiles'][0], fp['tiles'][1]
+    shared = set(p['protein_pos'] for p in t1['positions']) & set(p['protein_pos'] for p in t2['positions'])
+    assert shared == {24, 25, 26, 27, 28}
+    v1 = {p['protein_pos']: p['mean_raw'] for p in t1['positions']}
+    v2 = {p['protein_pos']: p['mean_raw'] for p in t2['positions']}
+    assert any(v1[k] != v2[k] for k in shared)                       # context differs: no merged value
+    assert sum(len(t['positions']) for t in fp['tiles']) == 5 * 28
+
+
+def test_viz_footprint_refuses_peptide_jobs_and_keeps_unscored_tiles(wc):
+    c, app, _ = wc
+    pid = project(c)
+    pep = submit(c, pid, mode='peptides', peptides=[{'input_id': 'a', 'sequence': SEQ}]).json()
+    worker(app).drain()
+    r = c.get(f"/v1/jobs/{pep['job_id']}/footprint")
+    assert r.status_code == 409 and r.json()['code'] == 'JOB_STATE_CONFLICT'
+    assert c.get('/v1/jobs/00000000-0000-4000-8000-000000000000/footprint').status_code == 404
+    assert c.get('/v1/jobs/not-a-uuid/footprint').status_code == 422
+    prot = SEQ + 'X' * 23 + SEQ2                                       # window 2 has non-standard residues
+    job = submit(c, pid, mode='protein', override_domain=True, protein={'input_id': 'x', 'sequence': prot}).json()
+    worker(app).drain()
+    fp = c.get(f"/v1/jobs/{job['job_id']}/footprint").json()
+    check('JobFootprint', fp)
+    refused = [t for t in fp['tiles'] if t['state'] == 'refused']
+    assert refused and all(t['positions'] == [] and t['analysis_id'] is None and t['training_peptide'] is None
+                           for t in refused)
+
+
+# --- BATCH-10 (plan-system 3.3): several proteins in one job -----------------------------------------------------------
+
+def test_batch10_several_proteins_total_limit_and_isolated_failures(wc):
+    c, app, _ = wc
+    pid = project(c)
+    p1 = (SEQ + SEQ2) * 2                                                    # 112 residues: 4 windows
+    body = {'mode': 'protein', 'override_domain': True, 'proteins': [
+        {'input_id': 'first', 'sequence': p1},
+        {'uniprot_id': 'Q99999'},                                             # not loaded: refused, the others go on
+        {'input_id': 'third', 'sequence': 'ACDEFGHIKL'},                     # shorter than one tile: refused
+        {'uniprot_id': 'P12345'}]}
+    r = submit(c, pid, **body)
+    assert r.status_code == 202, r.text
+    job = r.json()
+    check('Job', job)
+    cov = job['coverage']
+    assert cov['version'] == 2 and [x['input_id'] for x in cov['proteins']] == ['first', 'Q99999', 'third', 'P12345']
+    assert [x.get('refused') for x in cov['proteins']] == [None, 'UNKNOWN_ACCESSION', 'INVALID_LENGTH', None]
+    worker(app).drain()
+    its = items(c, job['job_id'])
+    assert [i['item_id'] for i in its if i['input_id'] == 'first'] == ['p01t00001', 'p01t00002', 'p01t00003', 'p01t00004']
+    refused = {i['input_id']: i['error']['code'] for i in its if i['item_id'].endswith('t00000')}
+    assert refused == {'Q99999': 'UNKNOWN_ACCESSION', 'third': 'INVALID_LENGTH'}
+    done = c.get(f"/v1/jobs/{job['job_id']}").json()
+    assert done['state'] == 'partial'
+    assert done['counts']['succeeded'] == sum(1 for i in its if i['state'] == 'succeeded')
+    assert sum(1 for i in its if i['input_id'] == 'first' and i['state'] == 'succeeded') == 4
+    # manifest export carries the protein of every row (input_id column)
+    text = c.get(f"/v1/jobs/{job['job_id']}/export?format=csv").text
+    rows = list(csv.reader(io.StringIO('\n'.join(ln for ln in text.splitlines() if not ln.startswith('#')))))
+    col = rows[0].index('input_id')
+    assert {r[col] for r in rows[1:]} == {'first', 'Q99999', 'third', 'P12345'}
+    # footprint, one protein at a time
+    fp = c.get(f"/v1/jobs/{job['job_id']}/footprint").json()
+    check('JobFootprint', fp)
+    assert fp['proteins'] == ['first', 'P12345'] and fp['protein']['input_id'] == 'first' and len(fp['tiles']) == 4
+    fp2 = c.get(f"/v1/jobs/{job['job_id']}/footprint?input_id=P12345").json()
+    assert fp2['protein']['uniprot_id'] == 'P12345' and all(t['start_pos'] >= 1 for t in fp2['tiles'])
+    assert c.get(f"/v1/jobs/{job['job_id']}/footprint?input_id=Q99999").status_code == 422
+
+
+def test_batch10_limits_and_request_shape(wc):
+    c, app, _ = wc
+    pid = project(c)
+    big = 'A' * 6000
+    r = submit(c, pid, mode='protein', proteins=[{'input_id': 'a', 'sequence': big}, {'input_id': 'b', 'sequence': big}])
+    assert r.status_code == 413 and 'in total' in r.json()['message']
+    r = submit(c, pid, mode='protein', proteins=[{'input_id': 'a', 'sequence': SEQ}, {'input_id': 'a', 'sequence': SEQ2}])
+    assert r.status_code == 422 and 'used twice' in r.json()['message']
+    assert submit(c, pid, mode='protein', proteins=[]).status_code == 422
+    assert submit(c, pid, mode='protein', proteins=[{'input_id': 'x', 'sequence': SEQ}] * 21).status_code == 422
+    r = submit(c, pid, mode='protein', protein={'uniprot_id': 'P12345'}, proteins=[{'uniprot_id': 'P12345'}])
+    assert r.status_code == 422
+    r = submit(c, pid, mode='peptides', peptides=[{'input_id': 'a', 'sequence': SEQ}], proteins=[{'uniprot_id': 'P12345'}])
+    assert r.status_code == 422
+    assert submit(c, pid, mode='protein', proteins=[{'input_id': 'x'}]).status_code == 422
+
+
+# --- BATCH-11 (plan-system 4.5): several workers, priority, running limit per job -------------------------------------
+
+def _peptides(n, prefix='p'):
+    seqs = [SEQ, SEQ2]
+    return [{'input_id': f'{prefix}{i}', 'sequence': seqs[i % 2]} for i in range(n)]
+
+
+def test_batch11_priority_and_running_limit(wc):
+    c, app, url = wc
+    pid = project(c)
+    big = submit(c, pid, mode='peptides', peptides=_peptides(12, 'big')).json()
+    small = submit(c, pid, mode='peptides', peptides=_peptides(2, 'small')).json()
+    assert big['priority'] == 'normal' and small['priority'] == 'high'
+    w1, w2, w3, w4 = (worker(app, owner=f'w{i}') for i in range(4))
+    # the small job goes first although it was submitted later
+    assert w1.claim()[0] == small['job_id'] and w2.claim()[0] == small['job_id']
+    # then the big job, but never more than 2 of its items at once
+    assert w3.claim()[0] == big['job_id'] and w4.claim()[0] == big['job_id']
+    assert worker(app, owner='w5').claim() is None
+    # a user may raise a big job
+    hi = submit(c, pid, mode='peptides', peptides=_peptides(12, 'hi'), priority='high').json()
+    assert hi['priority'] == 'high'
+    assert submit(c, pid, mode='peptides', peptides=_peptides(1), priority='urgent').status_code == 422
+
+
+def test_batch11_three_workers_never_process_an_item_twice(wc):
+    import threading
+    c, app, url = wc
+    pid = project(c)
+    jobs_ = [submit(c, pid, mode='peptides', peptides=_peptides(8, f'j{k}-')).json() for k in range(3)]
+    workers = [worker(app, owner=f'thread-{i}') for i in range(3)]
+    errors: list[BaseException] = []
+
+    def run(w):
+        try:
+            w.drain()
+        except BaseException as exc:                                      # noqa: BLE001
+            errors.append(exc)
+    threads = [threading.Thread(target=run, args=(w,)) for w in workers]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join(120)
+    assert not errors
+    with make_engine(url).connect() as conn:
+        rows = conn.execute(select(JobItem.item_id, JobItem.state, JobItem.attempts)
+                            .where(JobItem.job_id.in_([j['job_id'] for j in jobs_]))).all()
+        runs = conn.execute(select(func.count()).select_from(AnalysisRun)
+                            .where(AnalysisRun.job_id.in_([j['job_id'] for j in jobs_]))).scalar()
+    assert len(rows) == 24 and all(r.state == 'succeeded' for r in rows)
+    assert runs == 24                                                     # one analysis per item, none twice
+    assert all(r.attempts == 1 for r in rows)
+
+
+def test_batch11_cancel_with_several_workers(wc):
+    c, app, url = wc
+    pid = project(c)
+    job = submit(c, pid, mode='peptides', peptides=_peptides(12)).json()
+    w1, w2 = worker(app, owner='a'), worker(app, owner='b')
+    claimed = [w1.claim(), w2.claim()]
+    assert all(x and x[0] == job['job_id'] for x in claimed)
+    c.post(f"/v1/jobs/{job['job_id']}/cancel")
+    for w, cl in zip((w1, w2), claimed, strict=True):
+        assert w.process(*cl).state == 'cancelled'
+    assert worker(app, owner='c').claim() is None
+    done = c.get(f"/v1/jobs/{job['job_id']}").json()
+    assert done['state'] == 'cancelled' and done['counts']['succeeded'] == 0

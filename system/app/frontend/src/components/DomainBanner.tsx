@@ -10,7 +10,7 @@ export function DomainBanner({ domain }: { domain: DomainInfo }) {
   const measured = domain.psi_wt_measured !== null && domain.psi_wt_measured !== undefined;
   return (
     <section className="banner" aria-labelledby="domain-heading" data-testid="domain-banner" data-status={domain.status}>
-      <h2 id="domain-heading" style={{ margin: 0, fontSize: '1.05rem' }}>
+      <h2 id="domain-heading" style={{ margin: 0, fontSize: 'var(--text-lg)' }}>
         <span aria-hidden="true">{GLYPH[s.pattern]} </span>
         Domain: {s.label}
         {measured && <> — measured tile PSI {fmtPsi(domain.psi_wt_measured)}</>}

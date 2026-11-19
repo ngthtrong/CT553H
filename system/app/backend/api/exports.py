@@ -16,7 +16,7 @@ from sqlalchemy.orm import Session
 
 from db.models import Comparison
 from degron_footprint.errors import DomainError
-from degron_footprint.export import COLUMNS, filename, to_csv
+from degron_footprint.export import COLUMNS, filename, seed_fields, to_csv
 from degron_footprint.provenance import utc_iso
 
 NO_STORE = {'Cache-Control': 'no-store'}
@@ -67,7 +67,7 @@ def _clinvar_comments(snapshot: dict) -> list[str]:
 
 def analysis_csv(data: dict, comparison: dict | None) -> str:
     result, snap = data['result'], data['snapshot']
-    base = to_csv(result)                                            # provenance comments + nine columns
+    base = to_csv(result)                                   # provenance comments + nine columns + seed spread
     head, _, table = base.partition(','.join(COLUMNS) + '\n')
     extra = [_comment('analysis_id', data['analysis_id']), _comment('project_id', data['project_id']),
              _comment('analysis_created_at', data['created_at']), *_clinvar_comments(snap)]
@@ -161,7 +161,7 @@ def job_csv(factory, job: dict):
                 ppos = item.start_pos + c['position'] - 1 if item.start_pos else ''
                 w.writerow([label, tile_no, c['position'], c['wt_aa'], c['mut_aa'], f"{c['score_dpsi_raw']:.10g}",
                             f"{c['p_dpsi_ge_1_calibrated']:.10g}", c['rank_in_tile'], int(c['top10pct_in_tile']),
-                            *meta, ppos, *tail])
+                            *seed_fields(c), *meta, ppos, *tail])
         yield buf.getvalue()
 
 

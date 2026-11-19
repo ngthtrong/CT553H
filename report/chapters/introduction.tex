@@ -1,4 +1,4 @@
-% Research progress snapshot, 7 November 2026; numerical sources remain in source comments.
+% Research progress snapshot, evidence cutoff 17 November 2026; numerical sources remain in source comments.
 \addchap{PART 1. INTRODUCTION}\label{chap:introduction}
 \ThesisFlatNumbering
 
@@ -138,7 +138,7 @@ the assay and any stated effect threshold.
         entry, not an additional experimentally observed mutation. Missing observations remain missing.
   \item The first software release targets peptide batches, 28-residue whole-protein tiling,
         ClinVar/reference annotation, CSV/TSV comparison, persistent local projects and export.
-        These are partly implemented requirements. Scoring tiles across a protein does not establish
+        These requirements were implemented and locally accepted on 17 November 2026. Scoring tiles across a protein does not establish
         full-length protein effects; imported measurements do not automatically become training data.
   \item The software scope is one local application. Public deployment and accounts are outside the
         current acceptance scope. E3 identification, clinical pathogenicity and therapeutic benefit are
@@ -155,23 +155,29 @@ isolated baseline development and tests. The implementation status of this desig
 separately in Chapters~\ref{chap:design} and~\ref{chap:evaluation}.
 
 \section{Contributions Achieved and Still Expected}
-As of 7 November 2026, the inspectable contributions are a source-traceable label/QC pipeline,
+As of 17 November 2026, the inspectable contributions are a source-traceable label/QC pipeline,
 protein-group-aware development evaluation, controlled comparisons of training coverage and
 representations, completed local frozen/LoRA out-of-fold analyses, and a direct equal-budget
-retrospective comparison of mutation prioritisation. The report also preserves
-negative transfer and weighting findings, and a held-source W5 check that exposes regression and
-calibration limits. A restricted-domain baseline and local web/API implementation provide software
-evidence within their tested scope.
+retrospective comparison of mutation prioritisation. Final LoRA-D and frozen-D models were refitted
+and scored once on a previously examined held-out source, where adaptation lowers the error against
+both prespecified references; the report also keeps the stratum in which it is worse than predicting
+zero. On that evidence the author closed the development-scope goal for method and evaluation, with
+ten recorded limitations; the supervisor has not yet recorded that decision. The report further
+preserves negative transfer and weighting findings. A local web application with projects, durable
+jobs, import and comparison, the two-tier domain gate and export with provenance was accepted on the
+same date and provides software evidence within its tested scope.
 
-These are progress contributions in data handling, evaluation and empirical understanding. A
-universally optimal architecture, an independent external advantage, a completed expanded software
-release and a measured wet-lab benefit remain unestablished. Final model selection and serving
-promotion require the additional evidence described in the evaluation and future-work sections.
+These are contributions in data handling, evaluation, empirical understanding and software. A
+universally optimal architecture, independent external validation, an intact-protein or clinical
+claim and a measured wet-lab benefit remain unestablished. The adapted model is installed as an
+optional serving model, but no serving decision has been recorded, and the remaining evidence needed
+for one is described in the evaluation and future-work sections.
 
 \section{Structure and Status of This Report}
 This is a research progress report built on the existing thesis draft. Chapter~1 specifies the problem
 and intended software behaviour; Chapter~2 explains the biology, measurements and computational
-concepts; Chapter~3 links research decisions to data and experimental methods; Chapter~4 reports
-results, uncertainty and current evidence limits. The concluding part gives provisional findings and
-next steps. Appendices retain reproducibility and software instructions. Uncompleted administrative,
-experimental and implementation items are not treated as final thesis results.
+concepts; Chapter~3 presents in Part~A the research method design (data, models, experiments
+and the locked refit) and in Part~B the design and implementation of the software; Chapter~4 reports
+the experimental results with their uncertainty and limits, and then the software testing. The concluding part gives provisional findings and
+next steps. Appendices retain reproducibility and software instructions. Uncompleted administrative and
+experimental items are not treated as final thesis results.

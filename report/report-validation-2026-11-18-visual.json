@@ -1,0 +1,65 @@
+{
+  "record": "report-validation-2026-11-18-visual",
+  "date": "2026-11-18",
+  "plan": "plan-report.md §8b",
+  "items_done": [
+    "V-1",
+    "V-2",
+    "V-3",
+    "V-4",
+    "V-5",
+    "V-6"
+  ],
+  "new_files": [
+    "report/assets/figures/logos.tex",
+    "report/assets/figures/seq-style.tex",
+    "report/assets/figures/nested-evaluation.tex",
+    "report/assets/figures/app-usecases.tex",
+    "report/assets/figures/app-architecture.tex",
+    "report/assets/figures/app-job-sequence.tex",
+    "report/assets/figures/app-job-states.tex",
+    "report/assets/figures/app-import-sequence.tex",
+    "report/assets/figures/app-cdm.tex",
+    "report/assets/ch4/contract-at-acceptance.json"
+  ],
+  "logos": {
+    "source": "Simple Icons 13.21.0",
+    "license": "CC0-1.0",
+    "count": 11
+  },
+  "checks": {
+    "make_all": true,
+    "make_check": true,
+    "pages": {
+      "content": 168,
+      "content_twoside": 168,
+      "smoke": 9
+    },
+    "float_references": {
+      "passed": true,
+      "figures": 41,
+      "tables": 64
+    },
+    "margin_overflow_pages_excluding_cover": 0,
+    "float_paragraph_splits": 0,
+    "whitespace_flagged_pages": [
+      5,
+      6,
+      10,
+      17,
+      19,
+      22,
+      24,
+      31,
+      55,
+      87,
+      142,
+      145,
+      168
+    ]
+  },
+  "sha256": {
+    "report/build/content/content.pdf": "ff979e80c04977f38b79c003867804d3f067481b155f9741a8f956d137a4bbda",
+    "report/build/content-twoside/content.pdf": "bf6cfbcc6f1b0a6e80110f260de8111241fe5c2264efb33ef31333609f35d1a3"
+  }
+}

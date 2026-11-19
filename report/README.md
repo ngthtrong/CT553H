@@ -1,10 +1,13 @@
 # Luận văn degron-footprint
 
-**Đồng bộ tên đề tài — hoàn tất 08/11/2026:** bìa, biểu mẫu, metadata PDF và đầu trang
-đã dùng tên mới, thống nhất với slide và đề cương:
+**Tên đề tài — tác giả chốt 17/11/2026 (D-1/D-3),** xem
+[title-sync-validation-2026-11-17.md](title-sync-validation-2026-11-17.md):
 
-- **Tiếng Anh:** Sequence-Based Prediction of Single-Residue Mutation Effects on PSI in Degron Assays and Development of an Analysis Tool
-- **Tiếng Việt:** Dự đoán ảnh hưởng của đột biến amino acid đơn lên chỉ số PSI trong nghiên cứu degron và xây dựng công cụ phân tích
+- **Tiếng Anh:** Predicting Single-Residue Mutation Effects on PSI in Degron Reporter Assays and Development of a Web Application
+- **Tiếng Việt:** Dự đoán ảnh hưởng của đột biến amino acid đơn lên chỉ số PSI trong assay reporter degron và xây dựng ứng dụng web
+
+Tên tiếng Việt khác bản đã đăng ký trong đề cương; cần GVHD ghi nhận. Slide chưa
+đồng bộ. Lịch sử tên: biên bản 08/11 và 16/11.
 
 Tên tiếng Anh lấy từ `config/metadata.tex` (`\ThesisTitle`); tên tiếng Việt cũng
 lấy từ file này (`\ThesisTitleVI`) kể từ 16/11/2026, sau khi `proposal/` được tác

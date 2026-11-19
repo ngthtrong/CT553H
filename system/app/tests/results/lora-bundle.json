@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "generated_by": "system/app/etl/export_lora.py",
+  "model_id": "esm2-35m-lora-d-aa4fc2b7",
+  "scientific_status": "development_not_gate_closure",
+  "serving_promotion": "not_authorized_by_research_execution",
+  "manifest": {
+    "path": "data/processed/lora-d-serving-v1/esm2-35m-lora-d-v1.json",
+    "sha256": "d6729faf0bc4fa781239fba2945362ae72273901afdde5d35138e2b35401303f",
+    "bytes": 7241
+  },
+  "bundle_bytes": 139125861,
+  "bundle_files": 12,
+  "calibrator_sklearn_vs_softmax_max_diff": 0.0,
+  "cross_runtime_parity": {
+    "scope": "research implementation, same 32 W rows: CUDA (Windows campaign parity job) vs CPU (this run)",
+    "tests": [
+      {
+        "seed": 17,
+        "rows": 32,
+        "max_absolute_difference": 3.039836883544922e-06,
+        "cuda_runtime": "Windows, RTX 5060 Laptop, Torch 2.13.0+cu130 (campaign parity job)"
+      },
+      {
+        "seed": 29,
+        "rows": 32,
+        "max_absolute_difference": 2.562999725341797e-06,
+        "cuda_runtime": "Windows, RTX 5060 Laptop, Torch 2.13.0+cu130 (campaign parity job)"
+      },
+      {
+        "seed": 43,
+        "rows": 32,
+        "max_absolute_difference": 2.5033950805664062e-06,
+        "cuda_runtime": "Windows, RTX 5060 Laptop, Torch 2.13.0+cu130 (campaign parity job)"
+      }
+    ],
+    "max_absolute_difference": 3.039836883544922e-06
+  },
+  "serving_parity": {
+    "scope": "research implementation (degron_v3, CPU) vs serving implementation (degron_footprint.lora, CPU) on two full tiles",
+    "tiles": {
+      "tile_w": {
+        "seconds_first_call_included": 34.217,
+        "max_abs_diff_per_seed_raw": 0.0,
+        "max_abs_diff_ensemble_score": 0.0,
+        "max_abs_diff_prob": 0.0,
+        "cells": 532
+      },
+      "tile_typed": {
+        "seconds_first_call_included": 32.977,
+        "max_abs_diff_per_seed_raw": 0.0,
+        "max_abs_diff_ensemble_score": 0.0,
+        "max_abs_diff_prob": 0.0,
+        "cells": 532
+      }
+    }
+  },
+  "runtime": {
+    "python": "3.12.3",
+    "torch": "2.13.0+cpu",
+    "transformers": "5.17.0",
+    "sklearn": "1.6.1",
+    "numpy": "2.5.4",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "threads": 6
+  },
+  "seconds": 239.7
+}

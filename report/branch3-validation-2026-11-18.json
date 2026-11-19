@@ -1,0 +1,91 @@
+{
+  "record": "branch3-validation-2026-11-18",
+  "date": "2026-11-18",
+  "scientific_status": "development_not_gate_closure",
+  "scope": "plan.md branch 3 remaining items (except D-2 metadata) and chapter 3/4 feature update A-D, appendix A screenshots",
+  "sources": {
+    "system/app/docker-validation-2026-11-17.json": "78ff9329972d4f0a7324558c27133a13175281da9c140eea881b7081e2a22e5f",
+    "system/app/acceptance-2026-11-17.json": "50df68bf2cb791afe00871b8e64de8255360c9827bf9472a737450232a38a682"
+  },
+  "generated": {
+    "report/assets/ch4/build_app_assets.py": "17e184464fc28f8bcaf955db243121e6650b5091a6cf141de27b647894e861fe",
+    "report/assets/ch4/app-numbers.tex": "b264685bfa386b48228f6946bbc3172974ced0f7eb7b7be88b522ffd8e1f0a89",
+    "report/assets/ch4/tab-app-tests.tex": "5ca0496d5b7b0786dfef9913f0e67b1f04f43499f69b4de16f1d139b418bcbf9"
+  },
+  "screenshots": {
+    "tool": "system/app/frontend/e2e/screenshots.spec.ts",
+    "database": "copy of system/app/.data/dev.db in session scratchpad (deleted after)",
+    "model": "m3-ext4.0-platt-v1",
+    "font": "Roboto",
+    "count": "14 screens x 2 themes",
+    "copied_to_report": 14
+  },
+  "tables_merged": [
+    [
+      "tab:g2paired",
+      "tab:g2seeds"
+    ],
+    [
+      "tab:calmetrics",
+      "tab:calverdict"
+    ],
+    [
+      "tab:partb",
+      "tab:partbverdict"
+    ],
+    [
+      "tab:campaign-core",
+      "tab:campaign-paired"
+    ]
+  ],
+  "checks": [
+    {
+      "name": "make -C report all",
+      "passed": true
+    },
+    {
+      "name": "make -C report check",
+      "passed": true,
+      "detail": "content 157, content-twoside 157, smoke 9 pages"
+    },
+    {
+      "name": "check_float_references.py",
+      "passed": true,
+      "detail": "28 figures, 63 tables, both variants"
+    },
+    {
+      "name": "abstract and tom tat one page each",
+      "passed": true
+    },
+    {
+      "name": "whitespace > 1/3 content area at 50 dpi",
+      "flagged_pages": [
+        5,
+        6,
+        10,
+        17,
+        19,
+        22,
+        30,
+        77,
+        130,
+        134,
+        137,
+        157
+      ],
+      "identical_in_both_variants": true,
+      "all_functional_endings": true
+    }
+  ],
+  "sha256": {
+    "report/build/content/content.pdf": "feee114949b5cf21a662070998b231189eae7637214150e7b9716dd52a7928f5",
+    "report/build/content-twoside/content.pdf": "ab251f62829eb577c07218d1755f039e60222604fb36fae58be2657171e5d385"
+  },
+  "open": [
+    "D-2 metadata (date, defense date, committee)",
+    "3.7 slide title sync (branch 4)",
+    "advisor acknowledgement of D-4 and Vietnamese title",
+    "manual A11Y pass",
+    "share-link sentence on the app Sources page"
+  ]
+}

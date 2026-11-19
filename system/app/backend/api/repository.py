@@ -82,6 +82,28 @@ def tile_is_training(s: Session, tile_id: int) -> bool:
         MeasuredCell.tile_id == tile_id, MeasuredCell.in_training_set.is_(True)).limit(1)).first() is not None
 
 
+def training_tile_sequences(s: Session) -> frozenset[str]:
+    """Sequences of the tiles the npz model was trained on (any measured cell flagged in_training_set: 176 peptides).
+    Used to warn TRAINING_PEPTIDE for typed input that repeats one of them (plan-system 1.5)."""
+    q = (select(Tile.sequence).join(MeasuredCell, MeasuredCell.tile_id == Tile.tile_id)
+         .where(MeasuredCell.in_training_set.is_(True)).distinct())
+    return frozenset(s.execute(q).scalars())
+
+
+def recent_item_seconds(s: Session, model_id: str, window: int = 20) -> float | None:
+    """Median worker time (s) of the last succeeded job items scored with this model, any process (plan-system 1.1).
+    Includes the item's database work, so it slightly overstates the model's own time."""
+    from db.models import AnalysisJob, JobItem
+    ms = sorted(x for x in s.scalars(select(JobItem.duration_ms).join(AnalysisJob, AnalysisJob.job_id == JobItem.job_id)
+                          .where(AnalysisJob.model_id == model_id, JobItem.state == 'succeeded',
+                                 JobItem.duration_ms.is_not(None))
+                          .order_by(JobItem.updated_at.desc()).limit(window)).all() if x is not None)
+    if not ms:
+        return None
+    mid = len(ms) // 2
+    return round((ms[mid] if len(ms) % 2 else (ms[mid - 1] + ms[mid]) / 2) / 1000, 3)
+
+
 def measured_cells(s: Session, tile_id: int) -> list[MeasuredCell]:
     return list(s.execute(select(MeasuredCell).where(MeasuredCell.tile_id == tile_id)
                           .order_by(MeasuredCell.position, MeasuredCell.mut_aa)).scalars())
@@ -122,7 +144,9 @@ def create_run(s: Session, *, run_id: str, input_kind: str, tile_id: int | None,
                         expires_at=expires_at))
     s.flush()
     s.add_all([PredictionCell(run_id=run_id, position=c['position'], mut_aa=c['mut_aa'], score_raw=c['score_dpsi_raw'],
-                              prob_calibrated=c['p_dpsi_ge_1_calibrated'], rank_in_tile=c['rank_in_tile'])
+                              prob_calibrated=c['p_dpsi_ge_1_calibrated'], rank_in_tile=c['rank_in_tile'],
+                              score_seed_sd=c.get('score_seed_sd'), score_seed_min=c.get('score_seed_min'),
+                              score_seed_max=c.get('score_seed_max'))
                for c in cells])
 
 

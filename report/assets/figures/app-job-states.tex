@@ -1,0 +1,36 @@
+% States of a job and of its items (plan-report V-4, redrawn 18 Nov 2026).
+% Same states and transitions as the extracted original, which follows the database CHECK
+% constraints and the worker (system/app/backend/db/models.py, api/worker.py).
+\begin{tikzpicture}[fig]
+  \tikzset{st/.style={draw, rounded corners=7pt, minimum height=0.66cm, minimum width=1.9cm, fill=white},
+           term/.style={st, fill=oiGrey!14, line width=0.9pt},
+           lbl/.style={font=\scriptsize, fill=white, inner sep=1.2pt}}
+  % ---------------- item level
+  \node[title, anchor=west] at (-0.3,1.75) {Item};
+  \node[st] (ip) at (0.8,0) {pending};
+  \node[st] (ir) at (4.2,0) {running};
+  \foreach \n/\t/\y in {is/succeeded/1.2, irf/refused/0.4, if/failed/-0.4, ic/cancelled/-1.2}
+    \node[term] (\n) at (9.6,\y) {\t};
+  \draw[flow] (ip) -- node[lbl, above=1pt] {claim} (ir);
+  \coordinate (ib) at (6.1,0);
+  \draw[line width=0.7pt] (ir.east) -- (ib);
+  \foreach \n/\l in {is/commit, irf/rule decision, if/error, ic/cancel}
+    \draw[flow] (ib) |- node[lbl, pos=0.7, above=1pt] {\l} (\n.west);
+  \draw[flow, dashed] (ir.north) .. controls +(0,1.1) and +(0,1.1) .. node[lbl, above=1pt] {lease expires: back to queue} (ip.north);
+
+  % ---------------- job level
+  \draw[dotted, oiGrey] (-0.4,-1.95) -- (10.9,-1.95);
+  \node[title, anchor=west] at (-0.3,-2.35) {Job};
+  \node[st] (jp) at (0.8,-4.1) {pending};
+  \node[st] (jr) at (4.2,-4.1) {running};
+  \foreach \n/\t/\y in {jc/completed/-2.9, jpa/partial/-3.7, jf/failed/-4.5, jx/cancelled/-5.3}
+    \node[term] (\n) at (9.6,\y) {\t};
+  \draw[flow] (jp) -- node[lbl, above=1pt] {first claim} (jr);
+  \coordinate (jb) at (6.1,-4.1);
+  \draw[line width=0.7pt] (jr.east) -- (jb);
+  \foreach \n/\l in {jc/all items succeeded, jpa/mixed outcomes, jf/no item succeeded, jx/cancel}
+    \draw[flow] (jb) |- node[lbl, pos=0.7, above=1pt] {\l} (\n.west);
+  \node[note, anchor=north west, text width=4.6cm, align=left] at (-0.3,-4.75)
+       {Shaded: terminal states. A job is complete only when every item succeeded; a refused item
+        (rule decision) is kept apart from a failure.};
+\end{tikzpicture}

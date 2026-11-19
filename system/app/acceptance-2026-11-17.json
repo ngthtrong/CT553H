@@ -1,0 +1,164 @@
+{
+  "schema": "acceptance/v1",
+  "date": "2026-11-17",
+  "scope": "Branch 2 (system/implementation-plan-2026-11-16.md): v0.2 local application",
+  "status": "development_not_gate_closure",
+  "git_head_uncommitted_changes": "9910996cb7e1edb2c5fbef734aa1e3424b2d8374",
+  "host": {
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "cpu_model": "AMD Ryzen 5 5500U with Radeon Graphics",
+    "logical_cpus": 12,
+    "mem_total_mb": 7619,
+    "python": "3.12.3",
+    "load_average_1_5_15": [
+      0.97705078125,
+      1.5634765625,
+      1.48828125
+    ],
+    "note": "WSL2 on the author laptop; other processes may share the CPU"
+  },
+  "versions": {
+    "python": "3.12.3",
+    "node": "24.22.3",
+    "playwright": "1.64.1",
+    "postgres_image": "postgres:16-alpine (16.16)"
+  },
+  "tests": {
+    "backend_sqlite": {
+      "command": "make test",
+      "passed": 292,
+      "failed": 0,
+      "skipped": 1,
+      "skipped_reason": "PostgreSQL migration test without DF_TEST_PG_URL",
+      "coverage_percent": 96,
+      "date": "2026-11-17"
+    },
+    "backend_postgresql": {
+      "command": "make test-pg",
+      "passed": 273,
+      "failed": 0,
+      "skipped": 12,
+      "date": "2026-11-16",
+      "note": "Run before migration 0004, the SEC-03 guard and the worker commit fix of 17 Nov; Docker was not available on 17 Nov. Rerun pending."
+    },
+    "contract": {
+      "command": "make contract + schemathesis (tests/test_contract.py)",
+      "result": "pass",
+      "operations_implemented": 24,
+      "operations_planned": 0
+    },
+    "frontend_vitest": {
+      "command": "npm test",
+      "files": 11,
+      "passed": 171,
+      "failed": 0
+    },
+    "frontend_typecheck_lint_check_api_build": "pass",
+    "e2e_mock": {
+      "command": "npm run e2e",
+      "passed": 28,
+      "failed": 0,
+      "includes": [
+        "flows",
+        "narrow 360 px",
+        "design (axe 2 themes × 4 widths)",
+        "workspace UC-01/03/05/08/09/10 + keyboard + axe",
+        "matrix Chromium/Firefox/WebKit × 360/768/1280/1440"
+      ]
+    },
+    "e2e_real_backend": {
+      "command": "E2E_REAL=1 npx playwright test (dev-api + embedded worker)",
+      "full_run": {
+        "passed": 14,
+        "failed": 0
+      },
+      "nf06_run_separately": {
+        "passed": 1
+      },
+      "includes": [
+        "baseline real flows",
+        "workspace on the real backend",
+        "matrix in Firefox/WebKit against the real API"
+      ]
+    }
+  },
+  "nonfunctional": {
+    "NF-01_single_tile_p95_ms": {
+      "typed": 9.48,
+      "uniprot": 11.95,
+      "proposed": 300,
+      "source": "tests/results/latency.json"
+    },
+    "NF-02_tile_list_1028aa_p95_ms": {
+      "value": 9.72,
+      "proposed": 200
+    },
+    "NF-03_api_rss_mb_after_load": {
+      "value": 111.9,
+      "proposed": 512
+    },
+    "NF-06_click_to_heatmap_real_p95_ms": {
+      "value": 628,
+      "proposed": 1500,
+      "source": "tests/results/nf06-real.json"
+    },
+    "NF-07": {
+      "source": "tests/results/workspace-performance.json",
+      "peptides_100_seconds": 4.94,
+      "protein": {
+        "uniprot_id": "Q8NF91",
+        "length": 8797,
+        "tiles": 382,
+        "total_seconds": 20.73,
+        "per_tile_ms": 54.3,
+        "export_csv_mb": 41.3,
+        "export_csv_seconds": 3.25,
+        "item_page_200_ms": 21.4
+      },
+      "cancel_seconds": 0.111,
+      "import_100k_preview_seconds": 5.01,
+      "db_growth_mb": 96.4,
+      "peak_rss_mb_api_and_worker": 437.1
+    }
+  },
+  "deployment": {
+    "DEP-01": {
+      "passed": true,
+      "total_seconds": 179,
+      "source": "tests/results/dep01-clean-install.json"
+    },
+    "DEP-02": {
+      "passed": true,
+      "restart_seconds": 1.44,
+      "source": "tests/results/dep02-restart.json"
+    }
+  },
+  "security": {
+    "SEC-01": "canary tests + API log of the real e2e run: 0 sequences",
+    "SEC-02": "fuzz/path/formula tests",
+    "SEC-03": "loopback bind, CSP/nosniff/referrer headers, cross-site writes 403, non-JSON bodies 415",
+    "SEC-05": {
+      "npm_production": 0,
+      "npm_dev_moderate": 7,
+      "pip_audit_runtime": 0,
+      "note": "the 7 moderate npm findings are dev-only (minimatch via typescript-eslint)"
+    }
+  },
+  "defects_found_and_fixed": [
+    "ClinVar date full scan (migration 0004): 324 → 54 ms per protein tile",
+    "worker commit race on SQLite (job partial instead of cancelled)",
+    "cross-site writes accepted (SEC-03)",
+    "model page horizontal scroll at 360 px",
+    "dialog focus started on the close button",
+    "overflow at 360 px from the footprint hidden table",
+    "offset overflow → HTTP 500 (schemathesis)",
+    "undeclared 400s in the contract (schemathesis)"
+  ],
+  "open": [
+    "A11Y-03 manual keyboard and screen-reader pass by a person (automated keyboard flows exist)",
+    "PostgreSQL suite rerun after the 17 Nov changes (needs Docker)",
+    "WP10 LoRA-D serving (waits for branch 1 item 1.13)",
+    "WP12 screenshots, demo script and install guide",
+    "NF-01…07 on the reference host (numbers here are for the WSL2 laptop)"
+  ]
+}

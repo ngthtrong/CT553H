@@ -11,7 +11,17 @@ from typing import Any
 from sqlalchemy import delete, func, insert, select, update
 from sqlalchemy.orm import Session
 
-from db.models import AnalysisCell, AnalysisJob, AnalysisRun, Comparison, ImportDataset, ImportObservation, JobItem, Project
+from db.models import (
+    AnalysisCell,
+    AnalysisJob,
+    AnalysisRun,
+    Comparison,
+    ImportDataset,
+    ImportObservation,
+    JobItem,
+    ModelComparison,
+    Project,
+)
 from degron_footprint.errors import DomainError
 from degron_footprint.provenance import utc_iso
 
@@ -112,6 +122,8 @@ def project_dependencies(s: Session, project_id: str) -> dict[str, int]:
                                      .where(ImportObservation.dataset_id.in_(ds_ids))) or 0)
     c['comparisons'] = int(s.scalar(select(func.count()).select_from(Comparison)
                                     .where(Comparison.project_id == project_id)) or 0)
+    c['model_comparisons'] = int(s.scalar(select(func.count()).select_from(ModelComparison)
+                                          .where(ModelComparison.project_id == project_id)) or 0)
     c['running_jobs'] = int(s.scalar(select(func.count()).select_from(AnalysisJob).where(
         AnalysisJob.project_id == project_id, AnalysisJob.state.in_(('pending', 'running')))) or 0)
     return c
@@ -157,7 +169,9 @@ def insert_analysis(s: Session, *, project_id: str, result: dict, provenance: di
     s.execute(insert(AnalysisCell), [
         {'analysis_id': run.analysis_id, 'position': c['position'], 'mut_aa': c['mut_aa'], 'wt_aa': c['wt_aa'],
          'score_raw': c['score_dpsi_raw'], 'prob_calibrated': c['p_dpsi_ge_1_calibrated'],
-         'rank_in_tile': c['rank_in_tile'], 'top10': c['top10pct_in_tile']} for c in result['cells']])
+         'rank_in_tile': c['rank_in_tile'], 'top10': c['top10pct_in_tile'],
+         'score_seed_sd': c.get('score_seed_sd'), 'score_seed_min': c.get('score_seed_min'),
+         'score_seed_max': c.get('score_seed_max')} for c in result['cells']])
     touch(s, project_id)
     return run
 
@@ -203,11 +217,15 @@ def list_analyses(s: Session, project_id: str, offset: int, limit: int) -> dict:
 
 def analysis_dependencies(s: Session, analysis_id: str) -> dict[str, int]:
     return {'comparisons': int(s.scalar(select(func.count()).select_from(Comparison)
-                                        .where(Comparison.analysis_id == analysis_id)) or 0)}
+                                        .where(Comparison.analysis_id == analysis_id)) or 0),
+            'model_comparisons': int(s.scalar(select(func.count()).select_from(ModelComparison).where(
+                (ModelComparison.analysis_a == analysis_id) | (ModelComparison.analysis_b == analysis_id))) or 0)}
 
 
 def delete_analysis(s: Session, run: AnalysisRun) -> None:
     s.execute(delete(Comparison).where(Comparison.analysis_id == run.analysis_id))
+    s.execute(delete(ModelComparison).where((ModelComparison.analysis_a == run.analysis_id)
+                                            | (ModelComparison.analysis_b == run.analysis_id)))
     s.execute(delete(AnalysisCell).where(AnalysisCell.analysis_id == run.analysis_id))
     project_id = run.project_id
     s.delete(run)

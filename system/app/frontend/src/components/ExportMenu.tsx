@@ -1,5 +1,5 @@
 import { useId, useState } from 'react';
-import { api } from '../api/client';
+import { api, workspace } from '../api/client';
 import { ApiError } from '../api/errors';
 import type { ExportFormat, Provenance, TileRequest } from '../api/types';
 import { exportFileName, saveBlob } from '../lib/download';
@@ -9,6 +9,8 @@ interface Props {
   /** The request that produced the result. Null on a shared page, which exports by run id. */
   request: TileRequest | null;
   shared?: { runId: string; token: string };
+  /** A saved analysis exports from its stored snapshot (api-spec §8). */
+  saved?: { analysisId: string };
   provenance: Provenance;
   /** Called with the underlying error, for example to log it without the input. */
   onError?: (e: unknown) => void;
@@ -20,7 +22,7 @@ interface Link {
 }
 
 /** CSV/JSON download (FR-12, FR-13) and the optional share link (FR-20). A failure never removes the result (FR-23). */
-export function ExportMenu({ request, shared, provenance, onError }: Props) {
+export function ExportMenu({ request, shared, saved, provenance, onError }: Props) {
   const id = useId();
   const [busy, setBusy] = useState<ExportFormat | 'share' | null>(null);
   const [message, setMessage] = useState<{ kind: 'ok' | 'error'; text: string } | null>(null);
@@ -33,7 +35,8 @@ export function ExportMenu({ request, shared, provenance, onError }: Props) {
     setMessage(null);
     try {
       let blob: Blob;
-      if (shared) blob = await api.exportRun(shared.runId, shared.token, format);
+      if (saved) blob = await workspace.exportAnalysis(saved.analysisId, format);
+      else if (shared) blob = await api.exportRun(shared.runId, shared.token, format);
       else if (request) blob = await api.exportStateless(request, format);
       else throw new ApiError({ status: 0, code: 'BAD_RESPONSE', message: 'There is nothing to export.' });
       const name = exportFileName(provenance.model_id, request, null, format);
@@ -69,14 +72,20 @@ export function ExportMenu({ request, shared, provenance, onError }: Props) {
       <div className="row">
         <button type="button" onClick={() => void download('csv')} disabled={busy !== null}>Export CSV</button>
         <button type="button" onClick={() => void download('json')} disabled={busy !== null}>Export JSON</button>
-        {request && !shared && (
+        {saved && (
+          <a className="button-link" href={workspace.reportUrl(saved.analysisId)} target="_blank" rel="noopener noreferrer" data-testid="report-link">
+            Report (HTML, print to PDF)<span className="visually-hidden"> (opens in a new tab)</span>
+          </a>
+        )}
+        {request && !shared && !saved && (
           <button type="button" className="link" aria-expanded={sharing} onClick={() => setSharing((v) => !v)}>
             Create share link…
           </button>
         )}
       </div>
       <p className="muted" style={{ margin: '0.25rem 0' }}>
-        Files contain the model version, data sources, domain status and the disclaimer. Nothing is stored on the server for an export.
+        Files contain the model version, data sources, domain status and the disclaimer.{' '}
+        {saved ? 'They are written from the saved snapshot, not recomputed.' : 'Nothing is stored on the server for an export.'}
       </p>
       {sharing && request && !shared && (
         <div className="card" role="group" aria-label="Share link options">

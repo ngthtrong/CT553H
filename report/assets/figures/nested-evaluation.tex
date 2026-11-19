@@ -1,0 +1,48 @@
+% Group-aware selection and evaluation (plan-report V-2, redrawn 18 Nov 2026 to replace
+% assets/diagrams/campaign-2026-11-06/nested-evaluation.pdf, which predates the LoRA-D refit).
+% Sources: EXECUTION-PROTOCOL.md (W, five outer folds, inner group split, seeds 17/29/43, arms B/D,
+% seed averaging, protein-group bootstrap), research/lora-refit-transfer-2026-11-16/PROTOCOL.md
+% (refit on all W, T scored once). Counts are generated macros.
+\begin{tikzpicture}[fig]
+  \tikzset{db/.style={cylinder, shape border rotate=90, aspect=0.22, draw, fill=oiSky!20,
+                      minimum width=2.6cm, minimum height=1.05cm, align=center, font=\scriptsize},
+           st/.style={block, text width=3.0cm, minimum height=0.85cm},
+           loop/.style={draw=oiBlue, dashed, rounded corners=6pt, inner sep=6pt},
+           looplbl/.style={font=\scriptsize\bfseries, text=oiBlue, fill=white, inner sep=1.5pt}}
+  % ---------------- data
+  \node[db] (w) at (0,0) {W: \nVthreeNPeptides{} peptides\\\nVthreeNGroups{} protein groups};
+  % ---------------- outer fold
+  \node[st, fill=oiVermillion!12] (otest) at (-1.85,-1.85) {outer test groups\\full PSI range, untouched};
+  \node[st, fill=oiSky!12] (otrain) at (1.85,-1.85) {outer training groups\\arm B: WT PSI $\le4$; arm D: full};
+  \draw[flow] (w.south) -- ++(0,-0.55) -| (otest.north);
+  \draw[flow] (w.south) -- ++(0,-0.55) -| (otrain.north);
+  % ---------------- inner selection
+  \node[st] (inner) at (1.85,-3.35) {inner group split; choose recipe and epochs by inner MSE};
+  \node[st] (refit) at (1.85,-4.75) {fresh fit on the permitted outer training data};
+  \draw[flow] (otrain) -- (inner);
+  \draw[flow] (inner) -- (refit);
+  \node[st, fill=oiYellow!25] (pred) at (-1.85,-4.75) {predict the outer test cells};
+  \draw[flow] (refit) -- (pred);
+  \draw[flow] (otest) -- (pred);
+  % loops
+  \node[loop, fit=(inner)(refit)] (innerloop) {};
+  \node[looplbl, anchor=north east] at ($(innerloop.south east)+(-0.1,0.02)$) {inner loop};
+  \node[loop, fit=(otest)(otrain)(inner)(refit)(pred), inner sep=12pt] (outer) {};
+  \node[looplbl, anchor=south west] at ($(outer.north west)+(0.15,-0.02)$) {repeated: 5 outer folds $\times$ seeds 17, 29, 43};
+
+  % ---------------- development estimates
+  \node[st, text width=3.4cm, fill=oiGreen!12] (oof) at (-1.85,-7.15) {OOF prediction for every cell; mean of the three seeds};
+  \node[st, text width=3.4cm, fill=oiGreen!12] (est) at (-1.85,-8.5) {peptide-macro metrics, protein-group bootstrap, OOF calibration};
+  \draw[flow] (pred) -- (oof);
+  \draw[flow] (oof) -- (est);
+
+  % ---------------- locked transfer to T
+  \node[db, fill=oiOrange!20] (t) at (6.1,0) {T: \nTPeptides{} peptides\\\nTGroups{} groups, held out};
+  \node[st, text width=3.3cm, fill=oiOrange!12] (w5) at (6.1,-2.3) {W5-D, fixed in advance; refit on all W; scored once};
+  \node[st, text width=3.3cm, fill=oiOrange!12] (lora) at (6.1,-4.2) {LoRA-D and frozen-D refit on all W after the protocol was locked; scored once (17 Nov)};
+  \draw[flow] (t) -- (w5);
+  \draw[flow] (w5) -- (lora);
+  \node[note, text width=3.3cm, align=left, anchor=north] at ($(lora.south)+(0,-0.1)$)
+       {T never enters selection or calibration; it was examined in earlier work, so it is not independent external validation.};
+  \draw[dashedflow, oiGrey] (w.east) -- node[above, font=\tiny, text=oiGrey] {no group overlap} (t.west);
+\end{tikzpicture}

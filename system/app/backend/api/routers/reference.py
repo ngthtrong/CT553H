@@ -114,14 +114,51 @@ def clinvar(uniprot_id: str, tile_index: str, core: Core = Depends(get_core), s:
     }
 
 
+def _is_default(core: Core, m) -> bool:
+    """For effect models, the one that answers requests naming no model (DF_DEFAULT_MODEL_ID may differ from the
+    registry row, plan 2.12); for the gate, the registry flag."""
+    if m.role == 'effect' and core.registry.default_id is not None:
+        return m.model_id == core.registry.default_id
+    return bool(m.is_default)
+
+
+def _serving(core: Core, m) -> tuple[bool, str | None]:
+    """Whether a request can use this model now, and why not (plan-system 1.1). Effect models serve when the registry
+    loaded them (hash checked); the gate serves when it is the gate loaded by this process."""
+    if m.role == 'gate':
+        if core.gate.gate_model_id == m.model_id:
+            return True, None
+        return False, 'not the domain gate loaded by this service'
+    if m.model_id in core.registry.models:
+        return True, None
+    if m.status != 'frozen':
+        return False, f'model status is {m.status}; only frozen models serve'
+    return False, core.registry.errors.get(m.model_id, 'not loaded by this service')
+
+
+def _expected_seconds(core: Core, s: Session, m) -> float | None:
+    """This process's measurement first; otherwise the median time of recent job items scored with the model (the
+    worker is another process), so a slow model is announced before the first tile after a restart."""
+    if m.role != 'effect':
+        return None
+    own = core.predictor.expected_tile_seconds(m.model_id)
+    return own if own is not None else repo.recent_item_seconds(s, m.model_id)
+
+
+def _summary(core: Core, s: Session, m) -> dict:
+    serving, reason = _serving(core, m)
+    return {'model_id': m.model_id, 'role': m.role, 'kind': m.kind, 'status': m.status,
+            'is_default': _is_default(core, m), 'serving': serving, 'not_serving_reason': reason,
+            'expected_tile_seconds': _expected_seconds(core, s, m)}
+
+
 @router.get('/v1/models', tags=['models'])
-def list_models(s: Session = Depends(get_session)):
-    return {'items': [{'model_id': m.model_id, 'role': m.role, 'kind': m.kind, 'status': m.status,
-                       'is_default': m.is_default} for m in repo.list_model_rows(s)]}
+def list_models(core: Core = Depends(get_core), s: Session = Depends(get_session)):
+    return {'items': [_summary(core, s, m) for m in repo.list_model_rows(s)]}
 
 
 @router.get('/v1/models/{model_id}', tags=['models'])
-def model_card(model_id: str, s: Session = Depends(get_session)):
+def model_card(model_id: str, core: Core = Depends(get_core), s: Session = Depends(get_session)):
     m = repo.get_model_row(s, model_id) if MODEL_ID_RE.fullmatch(model_id) else None
     if m is None:
         raise DomainError('MODEL_NOT_FOUND', 'No model has this id. See GET /v1/models.', 404)
@@ -129,7 +166,7 @@ def model_card(model_id: str, s: Session = Depends(get_session)):
     trained = [source_ref(x) for x in repo.get_sources(s, list(m.trained_on_sources or []))]
     metrics = dict(m.metrics or {})
     return {
-        'model_id': m.model_id, 'role': m.role, 'kind': m.kind, 'status': m.status, 'is_default': m.is_default,
+        **_summary(core, s, m),
         'weights_sha256': m.weights_sha256, 'event_definition': m.event_definition,
         'domain_description': m.domain_description, 'evidence_label': m.evidence_label,
         'metrics': metrics, 'metrics_source_file': str(metrics.get('source_file', '')),

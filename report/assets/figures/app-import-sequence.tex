@@ -1,0 +1,18 @@
+% Sequence of an import and a comparison (plan-report V-4, redrawn 18 Nov 2026 from the extracted
+% original; same messages). Source: system/app/backend/api/imports.py, comparisons.
+\begin{tikzpicture}[fig]
+  \input{assets/figures/seq-style}
+  \def\cx{0} \def\ax{4.6} \def\fx{8.9} \def\dx{12.8}
+  \foreach \x/\n in {\cx/Client,\ax/API,\fx/Workspace files,\dx/Database} {
+    \node[seqhead] at (\x,0) {\n};
+    \draw[dotted, oiGrey] (\x,-0.4) -- (\x,-5.85);
+  }
+  \draw[seqmsg] (\cx,-1.0) -- node[seqlbl] {upload CSV/TSV and assay metadata} (\ax,-1.0);
+  \draw[seqmsg] (\ax,-1.55) -- node[seqlbl] {store under a generated name} (\fx,-1.55);
+  \draw[seqmsg] (\ax,-2.1) -- node[seqlbl, pos=0.62] {staged revision and file hash} (\dx,-2.1);
+  \draw[seqret] (\ax,-3.0) -- node[seqlbl, align=center] {preview: matched, unmatched,\\conflicting and missing rows} (\cx,-3.0);
+  \draw[seqmsg] (\cx,-3.75) -- node[seqlbl] {explicit commit, warnings accepted} (\ax,-3.75);
+  \draw[seqmsg] (\ax,-4.3) -- node[seqlbl, pos=0.62] {state \texttt{committed}, immutable} (\dx,-4.3);
+  \draw[seqmsg] (\cx,-4.95) -- node[seqlbl] {compare a saved analysis with it} (\ax,-4.95);
+  \draw[seqmsg] (\ax,-5.5) -- node[seqlbl, pos=0.62] {aligned rows, residuals, counts} (\dx,-5.5);
+\end{tikzpicture}

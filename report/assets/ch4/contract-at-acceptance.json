@@ -1,0 +1,11 @@
+{
+  "purpose": "Counts of the API contract of the first release as accepted on 17 November 2026. The live system/openapi.yaml changes with plan-system work after that date, so Part B of the thesis reads these frozen counts instead (plan-report V-6 note, 18 Nov 2026).",
+  "contract": "system/openapi.yaml",
+  "sha256_at_generation": "ab4bcba9befe9434e30d6cd4d3df62c4cd805d4b012c6b0071828fd91bf6c653",
+  "sha256_source": "header of report/assets/ch4/app-numbers.tex generated on 18 Nov 2026 before the contract changed at 15:56 (+0800); that file state is not in git",
+  "git_head_contract_sha256": "c70323f07aec9d8c2e1cf87889be71b106c1bc067bcca6fcc210aa7f8d91ef8e",
+  "paths": 27,
+  "operations": 37,
+  "x_implementation_status": {"baseline": 10, "implemented": 24, "legacy": 3, "planned": 0},
+  "update_rule": "Replace only together with a new acceptance record (plan-report 6.5, after G-SYS)."
+}

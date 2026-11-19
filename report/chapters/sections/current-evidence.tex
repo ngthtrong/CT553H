@@ -97,7 +97,7 @@ Voutsinos tile-label pre-training, which uses a different source endpoint and en
 
 \input{chapters/sections/campaign-results}
 
-\paragraph{Domain and software integration.}
+\paragraph{Domain and software integration.}\label{sec:res-domain}
 The earlier domain-gate study completed both tiers: OOF AUROC was \nRthreeLookupAuc{} using
 screen PSI and \nRthreeSequenceAuc{} using sequence-derived features. This estimates membership
 of the restricted baseline's training domain, not per-mutation prediction accuracy. Raw screen PSI
@@ -105,9 +105,10 @@ and intrinsic WT PSI are different estimators, so applying the intrinsic thresho
 screen PSI is invalid. The baseline service still requires the delivered gate adapter and its
 borderline state. A future full-PSI serving model would need its own domain and calibration policy.
 
-The local React/FastAPI baseline, reference ETL and recorded baseline tests exist. The newer
-workspace interface is an interactive design prototype with synthetic scores and tab-memory
-state; it does not establish backend inference or durable storage. Projects/history, peptide and
-protein jobs, experimental import/comparison and local PostgreSQL acceptance remain open.
+The gate is integrated into the delivered application, including its borderline state, and governs
+every scored tile there (Chapter~\ref{chap:design}). The first release of that application was
+accepted locally on 17 November 2026, which covers projects and history, durable peptide and
+protein jobs, experimental import and comparison, and a run of the suite against local PostgreSQL;
+Section~\ref{sec:app-evaluation} reports the executed results and what remains open in them.
 The serving model remains the calibrated restricted-PSI ridge baseline; none of the new research
 scores constitutes automatic model promotion or completion of the research and software gates.

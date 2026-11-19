@@ -12,6 +12,13 @@ model:
   feature_spec: "m3-180: wt one-hot | mutant one-hot | tile composition | context -3..+3"
   event_definition: "P(DeltaPSI >= 1.0)"
   domain_description: "28-mer internal tiles, GPS assay (Zhang 2023), intrinsic PSI(WT) <= 4.0"
+# Optional LoRA-D model (plan 2.12, WP10). Registered as frozen but never as the default: choosing it as the default is
+# a serving decision (DF_DEFAULT_MODEL_ID), separate from the research results (development_not_gate_closure).
+lora:
+  model_id: esm2-35m-lora-d-aa4fc2b7
+  manifest_file: esm2-35m-lora-d-v1.json
+  frozen_at: "2026-11-16T20:59:00+00:00"
+  domain_description: "28-mer tiles, GPS assay (Zhang 2023); trained on saturation peptides of every wild-type PSI (arm D)"
 clinvar:
   file_date: "2026-10-12"
 gate:

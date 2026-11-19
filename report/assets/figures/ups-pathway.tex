@@ -1,0 +1,58 @@
+% Original schematic of the canonical ubiquitin--proteasome route (plan-report 3.2).
+% Knowledge sources: varshavsky2019, koren2018. Conceptual, not to scale.
+\begin{tikzpicture}[fig]
+  % --- activation and conjugation (top row)
+  \node[ubq] (ub0) at (0,0) {Ub};
+  \node[font=\scriptsize, below=1mm of ub0] {ubiquitin};
+  \node[enzyme, minimum width=11mm] (e1) at (2.0,0) {E1};
+  \node[note, above=1mm of e1] {activation\\(uses ATP)};
+  \node[enzyme, minimum width=11mm] (e2) at (4.1,0) {E2};
+  \node[ubq, scale=0.8] at ($(e2.north east)+(0.02,0.02)$) {Ub};
+  \node[note, above=3.5mm of e2] {conjugation};
+  \node[enzyme, minimum width=13mm, minimum height=8mm] (e3) at (7.0,0) {E3};
+  \node[note, above=1mm of e3] {ligation and\\substrate selection};
+  \draw[flow] (ub0) -- (e1);
+  \draw[flow] (e1) -- (e2);
+  \draw[flow] (e2) -- (e3);
+
+  % --- substrate with degron, recognised by E3
+  \node[protein, minimum width=20mm, minimum height=7mm] (sub) at (6.6,-1.6) {substrate};
+  \node[degron, anchor=west, minimum height=5mm] (deg) at ($(sub.east)+(0.05,0)$) {\scriptsize degron};
+  \draw[<->, oiVermillion, line width=0.7pt] (e3.south east) to[bend left=25]
+        node[right, font=\scriptsize, text=oiVermillion] {recognition} (deg.north);
+
+  % --- polyubiquitinated substrate
+  \node[protein, minimum width=20mm, minimum height=7mm] (sub2) at (6.6,-3.7) {substrate};
+  \node[degron, anchor=west, minimum height=5mm] (deg2) at ($(sub2.east)+(0.05,0)$) {\scriptsize degron};
+  \foreach \i in {0,...,3}
+    \node[ubq, scale=0.8] (c\i) at ($(sub2.north)+(-0.1+0.36*\i,0.45)$) {Ub};
+  \draw ($(sub2.north)+(-0.1,0)$) -- (c0);
+  \node[font=\scriptsize, anchor=west] at ($(c3.east)+(0.08,0)$) {poly-Ub chain};
+  \draw[flow] ($(sub.south)+(-0.55,0)$) -- node[left, font=\scriptsize, align=right]
+        {repeated Ub transfer\\to lysine residues} ($(sub2.north)+(-0.55,0)$);
+
+  % --- 26S proteasome
+  \begin{scope}[shift={(12.0,-3.7)}]
+    \foreach \y in {-0.45,-0.15,0.15,0.45}
+      \node[draw=oiPurple, fill=oiPurple!20, rounded corners=2pt, minimum width=13mm,
+            minimum height=2.6mm, inner sep=0pt] at (0,\y) {};
+    \node[draw=oiPurple, fill=oiPurple!45, rounded corners=3pt, minimum width=15mm,
+          minimum height=3mm, inner sep=0pt] (cap) at (0,0.8) {};
+    \node[font=\scriptsize] at (0,-0.85) {26S proteasome};
+    \coordinate (pin) at (-0.8,0.15);
+    \coordinate (pout) at (0.8,-0.15);
+  \end{scope}
+  \draw[flow] (deg2.east) -- node[above, font=\scriptsize] {unfolding,} node[below, font=\scriptsize] {entry} (pin);
+  \node[font=\scriptsize, align=left, anchor=west] (pep) at ($(pout)+(0.3,0)$) {short\\peptides};
+  \draw[flow] (pout) -- (pep.west);
+
+  % --- recycling of ubiquitin
+  \draw[dashedflow, oiOrange!80!black] (cap.north) -- ++(0,4.15) coordinate (r1)
+       -| node[pos=0.22, above, font=\scriptsize, text=oiOrange!80!black]
+          {ubiquitin removed at the proteasome and recycled} (ub0.north);
+
+  % --- caveat
+  \node[note, text width=3.9cm, anchor=north west, align=left] at (-0.2,-1.25)
+       {Conceptual route. Not every ubiquitin signal leads to degradation, and a degron can be
+        inactive when buried by folding, masked by a partner or lacking a required modification.};
+\end{tikzpicture}

@@ -5,6 +5,8 @@ export type ClientErrorCode = ApiErrorCode | 'NETWORK' | 'ABORTED' | 'BAD_RESPON
 
 export class ApiError extends Error {
   readonly status: number;
+  /** 409 CONFIRMATION_REQUIRED: what a deletion would remove (nothing was deleted). */
+  readonly dependencies: Record<string, number> | null;
   readonly code: ClientErrorCode;
   readonly field: string | null;
   readonly retryAfter: number | null;
@@ -17,6 +19,7 @@ export class ApiError extends Error {
     field?: string | null;
     retryAfter?: number | null;
     requestId?: string | null;
+    dependencies?: Record<string, number> | null;
   }) {
     super(init.message);
     this.name = 'ApiError';
@@ -25,6 +28,7 @@ export class ApiError extends Error {
     this.field = init.field ?? null;
     this.retryAfter = init.retryAfter ?? null;
     this.requestId = init.requestId ?? null;
+    this.dependencies = init.dependencies ?? null;
   }
 }
 

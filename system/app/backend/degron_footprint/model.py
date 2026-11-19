@@ -34,6 +34,11 @@ class TilePrediction:
     prob: np.ndarray             # calibrated P(DeltaPSI >= 1)
     rank: np.ndarray             # 1 = highest raw score
     top10: np.ndarray            # bool, rank <= ceil(10 % * 532)
+    # Ensembles only (plan-system 1.3): population SD (ddof = 0), min and max of the per-seed raw scores. None for a
+    # single model. Spread between training seeds, not a confidence interval and not a prediction error.
+    seed_sd: np.ndarray | None = None
+    seed_min: np.ndarray | None = None
+    seed_max: np.ndarray | None = None
 
 
 class ModelAdapter(Protocol):
@@ -72,6 +77,9 @@ class RidgePlattModel:
         self.calibrators = ('platt', 'iso')
         self.n_peptides = int(arrays['n_peptides'][0])
         self.n_cells = int(arrays['n_cells'][0])
+        # Tile sequences of the training peptides. The weights file does not carry them; the registry fills the set from
+        # the reference database (measured cells flagged in_training_set) so typed input is warned too (plan-system 1.5).
+        self.training_sequences: frozenset[str] | None = None
 
     @classmethod
     def from_file(cls, model_id: str, path: Path, expected_sha256: str | None) -> RidgePlattModel:

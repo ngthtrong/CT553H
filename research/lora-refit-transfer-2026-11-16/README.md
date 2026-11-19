@@ -476,17 +476,29 @@ copy đã được kiểm và Trọng quyết định dọn.
 
 Checklist đóng tính toán:
 
-- [ ] PROTOCOL/source lock/final plan có SHA và dấu thời gian trước scoring mới.
-- [ ] Core 15/15; tổng 20/20 job complete, không failed/unexplained skipped.
-- [ ] Prediction đủ cohort/seed, ensemble/calibration đúng policy; primary CI
-  family 2 và baselines/denominators/kết quả bất lợi đều được báo.
-- [ ] Model card không rỗng model IDs; inference parity từ bundle pass.
-- [ ] Koren rank-only đủ đầu vào/adapter/mapping, hoặc còn pending có ghi rõ
-  nhánh 1 chưa hoàn thành; không dùng nguồn lân cận để đóng source_pending.
-- [ ] Error analysis có phép kiểm từng giả thuyết; hình/caption tái tạo từ JSON.
+Checklist cập nhật 17/11/2026:
+
+- [x] PROTOCOL/source lock/final plan có SHA và dấu thời gian trước scoring mới.
+- [x] Core 15/15 complete, 0 failed. Tổng queue 19 complete + 1 `source_pending`:
+  placeholder `koren-rank-only` giữ nguyên làm lịch sử, phần Koren chạy bổ sung
+  riêng và đã complete (`koren-run-status.json`). Xem `completion-check-2026-11-17.json`.
+- [x] Prediction đủ cohort/seed, ensemble/calibration đúng policy; primary CI
+  family 2 và baselines/denominators/kết quả bất lợi đều được báo (`results.json`).
+- [x] Model card không rỗng model IDs; inference parity cùng runtime pass
+  (max diff 0,0). **Parity khác runtime trên máy chính vẫn chưa chạy.**
+- [x] Koren rank-only đủ đầu vào/adapter/mapping; QC 9 substrate / 1.739 mutant,
+  parity 28 aa 0,0. Không dùng nguồn lân cận để đóng `source_pending`; D-4 ngày
+  17/11 xếp Koren là **bằng chứng khảo sát**.
+- [x] Error analysis có phép kiểm từng giả thuyết: 3 giả thuyết ở
+  `error-results.json`, `similarity_construct` ở `similarity-results.json` và
+  [similarity-findings-2026-11-17.md](similarity-findings-2026-11-17.md).
+  Hình/caption tái tạo từ JSON (`figure-results.json` khớp hash `results.json`).
 - [ ] Git staged guard pass khi có staging thật; kết quả Git chọn lọc và manifest
   copy nặng được review; không có payload Koren hoặc tensor trong Git mới.
-- [ ] Trọng/GVHD ghi D-4 nếu muốn đánh dấu 1.17; không suy từ thắng/thua trên T.
+  *Chưa chạy: chưa commit/push gì trong lượt 17/11.*
+- [x] Trọng ghi D-4 ngày 17/11 (phương án A, đóng G2 phạm vi development):
+  [d4-decision-2026-11-17.md](../g2-acceptance-2026-11-07/d4-decision-2026-11-17.md).
+  Không suy từ thắng/thua trên T. **Ghi nhận của GVHD chưa có.**
 
 ## 10. Việc đã làm trong lượt lập kế hoạch này
 

@@ -1,0 +1,39 @@
+% Map from research questions to controlled comparisons and results (plan-report 4.4, redrawn as a
+% factor matrix for V-1 on 18 Nov 2026). Questions as in the Introduction (RQ1-RQ5); designs from
+% EXECUTION-PROTOCOL.md, research/lora-refit-transfer-2026-11-16/PROTOCOL.md and
+% SIMILARITY-PROTOCOL.md. A cell is "varied" when the comparison changes that factor and "fixed"
+% when it is held equal between the compared arms; blank means not part of that comparison.
+\begin{tikzpicture}[fig]
+  \def\cw{0.98} % column width of the factor matrix
+  \def\rh{0.92} % row height
+  % factor headers (rotated)
+  \foreach \f [count=\j] in {training range, representation, head, pre-training, adaptation, evaluated population}
+    \node[font=\scriptsize, rotate=40, anchor=south west, inner sep=1pt] at (2.55+\cw*\j-0.35,0.12) {\f};
+  \node[title, anchor=south west] at (-0.1,0.15) {Question};
+  \node[title, anchor=south west] at (9.4,0.15) {Comparison};
+  \node[title, anchor=south west] at (13.15,0.15) {Results};
+  % rows: question / six factor states (v = varied, f = fixed, - = n/a) / comparison / section
+  \foreach \q/\states/\cmp/\sec [count=\i] in {
+     {RQ1 coverage}/{v,f,f,f,f,f}/{arm B vs arm D on the same folds}/{\ref{sec:res-fullpsi}, \ref{sec:lora-results}},
+     {RQ2 representation, head}/{f,v,v,f,f,f}/{W5 context; nine pLMs; three heads}/{\ref{sec:res-fullpsi}, \ref{sec:family-results}},
+     {RQ3 transfer learning}/{f,f,f,v,f,f}/{with vs without scanning or tile pre-training}/{\ref{sec:res-fullpsi}},
+     {RQ4 adaptation}/{f,f,f,f,v,f}/{LoRA vs frozen ESM2-35M}/{\ref{sec:lora-results}},
+     {RQ5 generalisation}/{f,f,f,f,f,v}/{calibration and replay on W; transfer to T}/{\ref{sec:campaign-calibration-transfer}, \ref{sec:res-prioritization}, \ref{sec:transfer-refit}}} {
+    \pgfmathsetmacro{\y}{-\rh*\i+0.45}
+    \fill[oiGrey!7] (-0.15,\y-0.4) rectangle (15.2,\y+0.4);
+    \node[font=\scriptsize\bfseries, anchor=west, text width=2.5cm, align=left] at (-0.1,\y) {\q};
+    \foreach \st [count=\j] in \states {
+      \if v\st \pic at (2.55+\cw*\j,\y) {iconvaried};\fi
+      \if f\st \pic at (2.55+\cw*\j,\y) {iconfixed};\fi
+    }
+    \node[font=\scriptsize, anchor=west, text width=3.65cm, align=left] at (9.4,\y) {\cmp};
+    \node[font=\scriptsize, anchor=west, text width=1.95cm, align=left] at (13.15,\y) {Sec.~\sec};
+  }
+  % legend and note
+  \pic at (0.05,-5.2) {iconvaried}; \node[font=\scriptsize, anchor=west] at (0.25,-5.2) {varied by the comparison};
+  \pic at (4.0,-5.2) {iconfixed};   \node[font=\scriptsize, anchor=west] at (4.2,-5.2) {held fixed between the compared arms};
+  \node[note, text width=15.1cm, align=left, anchor=north west] at (-0.15,-5.45)
+       {Every comparison is paired on the same cells and summarised by resampling protein groups (5,000
+        resamples). Intervals for the four matched LoRA contrasts are Bonferroni-adjusted (98.75\,\%); the
+        two prespecified transfer contrasts use 97.5\,\%.};
+\end{tikzpicture}

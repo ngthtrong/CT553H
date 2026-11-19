@@ -36,6 +36,19 @@ describe('SEC-03 security headers of the web container', () => {
     expect(nginx).toMatch(/location \/v1\/ \{[^}]*proxy_pass http:\/\/api:8000/s);
     expect(nginx).toMatch(/location = \/healthz \{[^}]*proxy_pass http:\/\/api:8000/s);
     expect(nginx).toMatch(/client_max_body_size 8k;/);
+    // workspace JSON bodies (256 KiB) and the import upload (10 MiB + form overhead) get their own bounds
+    expect(nginx).toMatch(/location \/v1\/ \{[^}]*client_max_body_size 320k;/s);
+    expect(nginx).toMatch(/location ~ \^\/v1\/projects\/\[\^\/\]\+\/datasets\$ \{[^}]*client_max_body_size 11m;[^}]*proxy_pass http:\/\/api:8000/s);
+  });
+
+  it('keeps the port in Host (same-origin check of the API) and overwrites X-Forwarded-For', () => {
+    for (const loc of ['location /v1/ {', 'location = /healthz {']) {
+      const start = nginx.indexOf(loc);
+      const block = nginx.slice(start, nginx.indexOf('\n    }', start));
+      expect(block, loc).toContain('proxy_set_header Host $http_host;');
+    }
+    expect(nginx).not.toMatch(/proxy_add_x_forwarded_for/);
+    expect(nginx).toMatch(/proxy_set_header X-Forwarded-For \$remote_addr;/);
   });
 
   it('the Dockerfile runs as the unprivileged nginx image and does not copy node_modules or tests', () => {

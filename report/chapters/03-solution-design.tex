@@ -1,66 +1,310 @@
-% System design aligned with local first-release scope v0.2, 29 Oct 2026.
+% System design aligned with local first-release scope v0.2, 29 Oct 2026; restructured into
+% Part A (research method) and Part B (software) on 18 Nov 2026 (plan-report D-R1, option A).
 \chapter{SOLUTION DESIGN AND IMPLEMENTATION}\label{chap:design}
 
-This chapter describes the target design confirmed on 29 October 2026. Baseline API/frontend code
-exists, but the workspace, durable jobs and import extensions below are planned. A design element is
-not a completed implementation or a passing test. The design follows the requirements in
-Chapter~\ref{chap:problem}; existing implementation evidence is distinguished from planned work.
-As of 6 November 2026, the newer workspace UI is a separate interactive review prototype using
-synthetic fixtures and transient tab state. It has not been integrated with the baseline API or
-implemented durable projects/jobs. The current research findings are summarised in
-Section~\ref{sec:res-fullpsi}; they have not changed the serving model.
+This chapter has two parts. Part~A describes how the research was designed: how the data and labels
+evolved, how the models were built and compared, and how the final model was refitted and checked on
+a held-out source. Part~B describes the software as it is implemented, not as it was once planned:
+the scope was confirmed on 29 October 2026 and the first release was accepted locally on
+17 November 2026. Every structural figure and table in Part~B is derived from the source code: the
+data model is read from the object-relational mapping and cross-checked against the migrations, the
+interface surface is read from the contract the service is tested against, and the behaviour of jobs
+and imports is read from the worker and import modules. Where the implementation departs from the
+earlier design notes, the deviation is stated rather than hidden. Results of Part~A are reported in
+Chapter~\ref{chap:evaluation}.
+
+Two boundaries hold throughout. Software acceptance is not scientific acceptance: the served model
+remains a development result, and nothing in this chapter changes the status recorded in
+Chapter~\ref{chap:evaluation}. The application also does not become evidence about biology; it makes
+the evidence boundaries of the model visible to its user.
+
+\addsec{Part A: Research Method Design}
+
+\input{chapters/sections/research-progress}
+
+\section{Method and Model Design}\label{sec:method-design}
+Figure~\ref{fig:research-pipeline} gives the whole research pipeline in ten steps, from the public
+read counts to the model the application can serve. Steps 1--5 are the development work on the set W;
+steps 6--10 fix a protocol, refit the final models and score the held-out source T once. The input of
+every model is the reference peptide, the position and the replacement; the target is $\Delta$PSI, and
+measured PSI is never a predictor. Figure~\ref{fig:experiment-design} maps each research question to
+the comparison that answers it and to the section of Chapter~\ref{chap:evaluation} that reports it.
+
+\begin{figure}[htbp]
+  \centering
+  \input{assets/figures/research-pipeline}
+  \caption[The research pipeline from public reads to the served model]{The research pipeline from public reads to the served model. Steps 1--5 are development
+  on W with out-of-fold evaluation; step 6 fixes the transfer protocol before any LoRA prediction on
+  the held-out source T, which is scored once in step 8. Original schematic; the underlying protocols
+  are cited in the text.}
+  \label{fig:research-pipeline}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \input{assets/figures/experiment-design}
+  \caption[Research questions, controlled comparisons and where they are reported]{Research questions, controlled comparisons and where they are reported. Each row names
+  what is varied and what is held fixed, so that a difference can be attributed to that factor within
+  the tested design. Original schematic.}
+  \label{fig:experiment-design}
+\end{figure}
+
+\input{chapters/sections/campaign-methods}
+
+\subsection{The Adapted Model LoRA-D}\label{sec:lora-d-model}
+\textbf{Purpose.} Describe exactly the model that the matched comparison favours and that the application can serve.
+\textbf{Flow.} The model that the matched comparison favours, and that the application can serve, is LoRA-D:
+ESM2-35M with LoRA adapters, trained on the full PSI range (arm D). Figure~\ref{fig:lora-d-architecture}
+shows it end to end. The WT and the mutant tile pass through the same adapted encoder; their
+difference is reduced to the row of the mutated site and the mean row and joined with the 60
+auxiliary values; a small head gives one raw score per seed. The three seeds are averaged before a
+three-class calibrator turns the mean score into event probabilities. Every number in the figure is
+read from the training code and the model card.
+
+\begin{figure}[htbp]
+  \centering
+  \input{assets/figures/lora-d-architecture}
+  \caption[Architecture of the adapted model LoRA-D]{Architecture of the adapted model LoRA-D. Only the adapters and the head are learned;
+  each seed has its own copy of both. The raw score $\bar s$ is the predicted $\Delta$PSI, and the
+  calibrator is fitted only on out-of-fold predictions of W. Original schematic drawn from the
+  implementation and its model card.}
+  \label{fig:lora-d-architecture}
+\end{figure}
+
+\subsection{Final Refit and Locked Transfer Protocol}\label{sec:refit-protocol}
+\textbf{Purpose.} Build deployable models and test, once and under a fixed protocol, whether the adaptation gain carries over to the held-out source T.
+\textbf{Flow.} The development evaluation produces five outer-fold fits per seed, none of which is a deployable
+model, and its locked transfer check covers only the W5-D ridge. A separate campaign therefore refitted
+both matched recipes on all permitted W data and scored the held source once
+(Section~\ref{sec:transfer-refit}).
+
+\paragraph{What was fixed before the outcome was seen.}
+The analysis plan, the recipes, the endpoint, the two contrasts and the interval procedure were
+recorded before any prediction on T was produced; the recorded plan carries its own hash. The
+transfer set had been inspected in earlier work through the W5-D evaluation and the reliability
+diagnostics, so this is a post-hoc transfer evaluation on a previously examined held-out source and
+not independent external validation. This boundary is limitation L1 in
+Table~\ref{tab:transfer-limits} and is repeated with every transfer claim in
+Section~\ref{sec:transfer-refit}.
+
+\paragraph{Refit design.}
+Both recipes start again from the ESM2-35M backbone at revision \nTBaseRevision{}
+\citep{lin2023esm} with the head initialisation of the corresponding seed. The adapter keeps rank
+\nTAdapterRank{} and scaling \nTAdapterAlpha{} on the attention query and value projections
+\citep{hu2022lora}. The number of epochs is not re-tuned: for each recipe and seed it is the median
+of the five development folds of that same seed, which gives two epochs for each LoRA-D seed and
+one, two and two for the frozen-D seeds. Taking the median within a seed rather than pooling all
+fifteen folds keeps the refit tied to the configuration that was selected for that seed.
+
+Fitting uses the whole W population, with no validation split and no early stopping, so the final
+predictions on W are in sample and are reported only as a diagnostic (L7). The three-class
+calibrator is fitted on the ensemble out-of-fold predictions of W for the matching recipe only;
+the recorded fit population and a zero count of transfer cells in every fitting step are asserted
+by the runner rather than assumed. Scoring then averages the raw predictions of the three seeds and
+applies the calibrator once. The resulting \nTModelCount{} LoRA-D checkpoints, their calibrator and
+their lineage hashes are recorded in a model card, which closes the earlier gap where the serving
+identifier list was still empty.
+
+\textbf{Reported in} Section~\ref{sec:transfer-refit}. \textbf{Limits.} T was examined in earlier work
+(L1), and the in-sample refit predictions on W are a diagnostic only (L7).
+
+\input{chapters/sections/prioritization-methods}
+
+\subsection{From Research Model to Served Model}
+Two models are registered for serving. The calibrated ridge \nAppModelId{} from
+Section~\ref{sec:res-calibration} is the default of the delivered configuration. The adapted
+ESM2-35M model \nAppLoraId{} is the final refit of the LoRA-D recipe on the full development set,
+with its calibrator fitted on out-of-fold predictions (Section~\ref{sec:transfer-refit}); it is
+served by the same interface and is selected by configuration. Raw effect and calibrated
+$P(\Delta\mathrm{PSI}\geq1)$ remain separate fields for both models.
+
+
+\addsec{Part B: Software Design and Implementation}
+% Overall diagrams of Part B (use case overview, architecture, CDM/LDM/PDM, execution view) are
+% FROZEN until plan-system reaches its acceptance gate G-SYS (plan-report Q-6, item 5.6).
 
 \section{System Overview}
 \subsection{Product Context}
 The research pipeline prepares data, trains and evaluates models offline. One local web application
 loads a frozen model and reference snapshots; it supports researchers choosing substitutions for
-follow-up experiments. Runtime input and project observations stay on the local computer.
-\subsection{Functional Overview}
-The first release covers UC-01 to UC-10 of Chapter~\ref{chap:problem}: prediction, ranking, export,
-protein/tile lookup, experimental comparison, ClinVar/reference annotations, evidence pages,
-peptide/protein jobs, experimental import and persistent project history. There is one product
-configuration with local operation; public hosting and public sharing are excluded.
+follow-up experiments. Runtime input and project observations stay on the local computer. The user
+of the running system is a single trusted operator: there are no accounts, no roles and no sharing
+between users, which is a deliberate scope decision rather than an unimplemented feature.
 
-\section{System Architecture}
-\subsection{Architectural Components}
-Figure~\ref{fig:local-architecture} shows the target components. All application listeners use loopback;
-reference downloads and training are preparation activities outside the runtime workflow.
+\subsection{Functional Overview}
+The release covers UC-01 to UC-10 of Chapter~\ref{chap:problem}. Figure~\ref{fig:app-usecases}
+groups them by the question the user is asking, and Table~\ref{tab:app-functions} maps each delivered
+capability to its use cases and functional requirements (FR) of the software requirements
+specification. Implementation comprises \nAppTables{} database tables created by
+\nAppMigrations{} migrations, \nAppPaths{} API paths carrying \nAppOperations{} operations, and
+thirteen screens. There is one product configuration with local operation; public hosting and public
+sharing are excluded.
+
 \begin{figure}[htbp]
   \centering
-  \begin{tikzpicture}[box/.style={draw,rounded corners,align=center,text width=3.25cm,
-      minimum height=1.1cm,font=\small},flow/.style={-{Latex[length=2mm]}}]
-    \node[box] (ui) {Local browser\\React + TypeScript};
-    \node[box,right=0.7cm of ui] (api) {Local API\\FastAPI + inference};
-    \node[box,below=0.8cm of api] (db) {Local PostgreSQL\\Reference + workspace};
-    \node[box,left=0.7cm of db] (worker) {Local worker\\Shared inference package};
-    \node[box,below=0.8cm of db] (files) {Local files\\Imports + frozen artefacts};
-    \draw[flow] (ui) -- node[above,font=\footnotesize]{REST} (api);
-    \draw[flow] (api) -- (db);
-    \draw[flow] (worker) -- (db);
-    \draw[flow] (worker.south) |- (files.west);
-    \draw[flow] (api.east) -- ++(0.6,0) |- (files.east);
-  \end{tikzpicture}
-  \caption[Planned components of the single local application]{Planned components of the single local application; arrows denote data interactions.}
-  \label{fig:local-architecture}
+  \input{assets/figures/app-usecases}
+  \caption[Use cases of the local application]{Use cases of the local application, grouped by the user's question. A single actor
+  operates the workspace, so the diagram deliberately shows no roles or permissions. The three
+  black arrows mark where one use case supplies another: a prediction can be exported, a saved
+  analysis can be compared with measurements, and a comparison needs a committed imported dataset.}
+  \label{fig:app-usecases}
 \end{figure}
 
-The React client owns input, matrix/ranking interaction and project/job/import screens. FastAPI
-validates input, applies domain rules, serves reference annotations and stores snapshots. A local
-worker uses the same inference package for jobs; PostgreSQL stores job state and project-owned
-records. Generated local file paths hold committed imports and versioned artefacts. Reference ETL
-never writes user observations into research data.
+The capabilities fall into three groups. \emph{Mutation analysis} is the scientific core: it turns
+one 28-residue window into an effect matrix, decides through the domain gate whether the system may
+answer at all, and orders the substitutions for follow-up. \emph{Reference data and context} lets the
+user find the window in a protein and read the evidence around a score: measured training labels,
+ClinVar variants, the model card and the data sources. The \emph{workspace} is the extension added in
+scope v0.2: it keeps analyses in projects, runs work that does not fit one request as a durable job,
+admits the user's own measurements for comparison, and exports everything with its provenance.
+Section~\ref{sec:app-features} describes the five capabilities that carry the thesis in detail;
+engineering, deployment and quality properties are summarised in Section~\ref{sec:local-execution}
+and measured in Section~\ref{sec:app-evaluation}. Appendix~\ref{app:installation} shows a screen
+for each capability.
+
+{\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.05}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{2.7cm}>{\raggedright\arraybackslash}p{0.95cm}>{\raggedright\arraybackslash}p{1.45cm}>{\raggedright\arraybackslash}p{9.35cm}@{}}
+  \caption[Delivered capabilities by use case and requirement]{Delivered capabilities by use case and requirement. UC and FR numbers refer to the use
+  cases of Chapter~\ref{chap:problem} and the requirements specification of the application. The
+  retired public share-link requirement FR-20 is not listed: its legacy endpoints remain in the
+  contract but are not a feature of this release.}\label{tab:app-functions}\\
+  \toprule
+    Capability & UC & FR & What the user receives \\
+    \midrule
+  \endfirsthead
+  \caption[]{Delivered capabilities by use case and requirement (continued)}\\
+  \toprule
+    Capability & UC & FR & What the user receives \\
+    \midrule
+  \endhead
+  \multicolumn{4}{@{}l}{\textit{A. Mutation analysis (scientific core)}}\\*
+    Effect matrix of one tile & 01 & 01--06 & A typed 28-residue sequence or a UniProt protein with a tile index yields 532 substitutions,
+      each with a raw $\Delta$PSI score and a calibrated $P(\Delta\mathrm{PSI}\geq1)$, shown as a
+      $28\times20$ grid with hatched wild-type cells or as a table. \\
+    Domain gate and warnings & 01, 08 & 09--11 & Each tile is labelled measured, predicted, borderline, unreliable or unknown; an out-of-domain
+      tile is refused unless overridden, and the override is recorded. The domain banner and warnings
+      precede the numbers. \\
+    Ranking and shortlist & 02 & 07--08 & A sortable, filterable ranking within one tile, the top
+      tenth flagged, an explicit shortlist, and a top-$k$ panel labelled ``retrospective,
+      development'' ahead of its figures. \\
+    Footprint track & 01 & 06 & The per-position mean probability beside the matrix, equal to a
+      recomputation from the cells within $10^{-9}$. \\
+    \midrule
+    \multicolumn{4}{@{}l}{\textit{B. Reference data and context}}\\*
+    Protein search and tile map & 04 & 15--16 & Search by gene or accession; a tile map with the
+      domain status of every window and 1-based protein coordinates. \\
+    Measured and ClinVar layers & 05, 06 & 17, 18, 35 & Measured $\Delta$PSI overlaid and labelled
+      as training data rather than validation; ClinVar missense variants with source attribution and
+      the diagnostic disclaimer. \\
+    Model card and sources & 07 & 19, 21, 22 & Evidence, limitations and weight hashes of the
+      served model; sources with versions and licences, and the sources deliberately not used. \\
+    \midrule
+    \multicolumn{4}{@{}l}{\textit{C. Workspace (scope v0.2)}}\\*
+    Projects and history & 10 & 31--33 & Create, rename and delete projects, with a summary of
+      dependants before deletion; immutable analysis snapshots that reopen after a restart. \\
+    Durable jobs & 08 & 24--27 & A batch of up to 100 peptides, or one protein tiled with step~23;
+      a queue stored in the database with progress and cancellation that resumes after the process
+      is killed; model, calibrator and gate pinned at submission. \\
+    Import and comparison & 05, 09 & 28--30 & CSV/TSV import with a validation report before an
+      explicit commit; rows that do not map to a tile are reported, not dropped; residuals, MAE and
+      Spearman with $n$. Imports never retrain the model. \\
+    Export with provenance & 03 & 12--14, 34 & CSV, JSON and job manifests, each naming the model,
+      hashes, sources, versions and the development-evidence label. \\
+  \bottomrule
+\end{longtable}}
+
+Four limits apply to every capability in the table and are stated in the interface where the
+numbers appear. Every score is a development benchmark result: it is neither independent validation
+nor a probability of disease. A comparison with imported measurements is not independent validation
+either, because the user chooses what to import. The served model is selected by configuration, and
+which model is the default on a given installation is a deployment setting rather than a scientific
+decision (Section~\ref{sec:local-execution}). Finally, the retired share link is not presented as a
+feature.
+
+% FROZEN until plan-system G-SYS (plan-report 5.6): overall diagram/section, update once.
+\section{System Architecture}
+\subsection{Architectural Components}
+Figure~\ref{fig:app-architecture} shows the components that exist in the implementation and how
+they are deployed. All listeners bind to the loopback interface; reference preparation and model
+training are separate offline activities rather than runtime services.
+
+The React client owns input handling, the matrix and ranking interaction, and the project, job and
+import screens. The API validates input, applies the domain rules, serves reference annotations and
+stores snapshots. The worker executes queued items using the same inference package, so a batch
+result and an interactive result come from one implementation. The database holds reference data,
+job state and all project-owned records; uploaded import files live outside it under generated
+names. The reference ETL never writes user observations into the research data, and project imports
+never write into the reference tables.
+
+\begin{figure}[htbp]
+  \centering
+  \input{assets/figures/app-architecture}
+  \caption[Implemented components and their deployment]{Implemented components and their deployment. Only the web container publishes a port,
+  on the loopback address; the API, the worker and the database are reachable only inside the
+  container network. The worker shares the API image and the inference package but never serves
+  requests, and the two communicate only through queue rows, which is what allows either to be
+  restarted independently. Both load model and gate weights from the models volume; PyTorch is
+  present only when the image is built for LoRA-D. The ETL is a one-off step and the only component
+  that reads the research data. Drawn from the compose file and the code; technology logos are
+  from Simple Icons (CC0) and remain trademarks of their owners.}
+  \label{fig:app-architecture}
+\end{figure}
+
+
+Two implementation details matter for the rest of the chapter. First, the queue is a table rather
+than a message broker: a worker claims one item with a compare-and-set update that only succeeds
+while the item is pending or its lease has expired, so two workers cannot own the same item and an
+abandoned lease is recoverable. Second, scoring happens outside any database transaction, and the
+commit step re-checks lease ownership, cancellation and project deletion before writing; a unique
+constraint on the item identity makes a duplicate result impossible even if those checks race.
+Both choices were made to satisfy the restart requirement rather than for throughput.
 
 \subsection{Interaction Between Components}
-A single-tile preview is validated and scored without persistence. Explicit Save creates an immutable
-analysis in a selected project. Batch submission pins model, calibrator, gate and source versions,
-returns a job ID, then the worker claims items transactionally. The client polls progress and opens
-per-tile results. Expired worker leases are recovered after restart; completed items are not duplicated.
-Cancellation and project deletion prevent late writes.
+A single-tile preview is validated and scored without persistence, which keeps exploration cheap and
+makes saving an explicit act. Figure~\ref{fig:app-job-sequence} traces the durable path instead: the
+client submits a job, the API validates the input and pins the model, calibrator, gate and source
+versions, and returns a job identifier immediately. From then on the client only polls, and the
+worker advances the job one item at a time.
 
-An import first produces a validation preview. Only a valid, explicitly committed dataset becomes
-available for comparison. A comparison selects a saved analysis and dataset revision, checks assay
-and mutation alignment, and stores its own result/provenance. Reading history uses saved snapshots,
-not a new inference call or the latest ClinVar release.
+Figure~\ref{fig:app-job-states} shows the states this produces. The two levels are deliberately
+different: an item either succeeds, is refused by a rule such as the domain gate, fails, or is
+cancelled, whereas the job summarises its items. A job is complete only when every item succeeded;
+a mixture with at least one success is reported as partial rather than as success, and a job whose
+items all ended without a success is a failure. This is why a whole-protein scan over a protein with
+a few out-of-domain windows is correctly shown as partial instead of silently succeeding.
+
+\begin{figure}[htbp]
+  \centering
+  \input{assets/figures/app-job-sequence}
+  \caption[Sequence of a durable analysis job]{Sequence of a durable analysis job. The API never scores a batch itself, so a long job
+  cannot block interactive requests. The dashed arrows are responses. Scoring happens between the
+  claim and the commit, which is why a crash in the middle loses at most the item in progress.}
+  \label{fig:app-job-sequence}
+\end{figure}
+
+An import follows a different discipline, shown in Figure~\ref{fig:app-import-sequence}. The upload
+is first staged and validated, never applied: the preview reports schema problems, coordinate and
+wild-type disagreements, duplicates and missing values. Blocking errors prevent a commit, warnings
+have to be acknowledged, and only an explicit commit turns the staged upload into an immutable
+dataset revision identified by its file hash. A comparison then joins one saved analysis with one
+committed revision, checks that the endpoints are comparable before computing anything, and stores
+its own result with provenance. Nothing in this path retrains or modifies the model, and an imported
+measurement never becomes a reference source.
+
+\begin{figure}[htbp]
+  \centering
+  \input{assets/figures/app-job-states}
+  \caption[States of a job and of its items]{States of a job and of its items, as enforced by the database constraints. Shaded states
+  are terminal. The upward item transition is lease expiry, which returns an abandoned item to the
+  queue; it is the mechanism behind recovery after a restart. ``Refused'' records a rule decision,
+  such as an out-of-domain window, and is kept distinct from a failure.}
+  \label{fig:app-job-states}
+\end{figure}
+
+
+Reading history uses saved snapshots rather than a new inference call or the current ClinVar release,
+so reopening an old analysis shows what was computed then, not what the present configuration would
+produce.
 
 \subsection{Design Rationale}
 React supports the interactive matrix, filtered tables and long-running-task states. FastAPI keeps the
@@ -68,13 +312,37 @@ model computation in Python and provides an explicit REST contract. A local work
 execution from interactive requests without introducing a cloud service. Persistent projects require
 a database and snapshot lifecycle beyond the baseline transient preview. The trade-offs are local
 resource limits, file/database consistency and additional recovery/deletion tests. SQLite remains
-useful for isolated tests, while local PostgreSQL integration is an acceptance task. The OpenAPI
-contract marks new operations as planned; generating a schema does not implement them.
+useful for isolated tests, and the suite is run against both databases. The contract is part of the
+test suite rather than documentation: every operation it declares is implemented and exercised, so a
+schema entry cannot stand in for a feature.
 
+\begin{figure}[htbp]
+  \centering
+  \input{assets/figures/app-import-sequence}
+  \caption[Sequence of an import and a comparison]{Sequence of an import and a comparison. Blocking errors end the sequence at the preview, and a
+  staged upload that is never committed expires without becoming a dataset, so an incompatible or
+  malformed file cannot reach a comparison. Metrics are computed only on rows whose
+  endpoint and units are comparable, and the number of such rows is reported with every metric.}
+  \label{fig:app-import-sequence}
+\end{figure}
+
+
+% FROZEN until plan-system G-SYS (plan-report 5.6): overall diagram/section, update once.
 \section{Data Design}
 \subsection{Data Sources and Preprocessing}
 Reference snapshots have version/date, checksum and terms of use. Research-only sources and
 project-imported observations are kept distinct from served reference data (Table~\ref{tab:sources}).
+
+\subsection{Conceptual Data Model}
+Figure~\ref{fig:app-cdm} states what the system has to remember, independently of any table. Three
+areas appear, and the separation between them is a requirement rather than a convenience. Reference
+data describe the world as a pinned snapshot: sources, proteins, their tiles, the measured cells of
+the published assay, and the annotated variants. Workspace data describe what this user did: a
+project, the jobs submitted in it, the analyses those jobs produced and the cells of each analysis.
+Imported data describe measurements the user brought along, together with the comparisons that
+confront them with predictions. A model version is referenced by every job and analysis, and by each tile whose domain label
+comes from the gate model, because every stored score must name the artefact that produced it.
+
 \begin{table}[htbp]
   \centering
   \caption{Data roles in research and the first local release}\label{tab:sources}
@@ -91,85 +359,326 @@ project-imported observations are kept distinct from served reference data (Tabl
   \end{tabularx}
 \end{table}
 
-\subsection{Data Model}
-Reference entities are source, protein, tile, measured cell, ClinVar variant and model version.
-The planned workspace adds project, analysis job, job item, analysis run/cell, imported dataset/observation
-and comparison. Legacy expiring share tables are not reused as persistent project history.
+\subsection{Logical Data Model}
+The logical model fixes identity, ownership and the invariants that the implementation must not be
+able to break. Table~\ref{tab:app-ldm} lists them per entity group. Two decisions deserve emphasis.
+An analysis is immutable: rerunning never overwrites history but creates a new entry, which is what
+makes a saved result citable. Ownership is expressed as a cascade from the project, so deletion has
+one definition in one place instead of being reimplemented in each screen.
 
-\subsection{Data Dictionary}
+\subsection{Physical Data Model}
+Table~\ref{tab:app-pdm} is the implemented schema, read from the object-relational mapping of the
+service and cross-checked against the migrations: \nAppTables{} tables, of which eleven come from the
+initial migration and eight from the workspace migration, with two later migrations adding a
+borderline domain state and an index. The check is mechanical, so the table cannot drift from the
+code: the generator fails if a mapped table is missing from the migrations or the reverse.
+
+Three properties of that table carry design intent. The check constraints are where the state
+machines of Figure~\ref{fig:app-job-states} actually live, which is why an invalid state cannot be
+written even by a direct database client. The cascade column shows that every project-owned table
+deletes with its project while reference tables do not, so the deletion rule of the logical model is
+enforced by the schema rather than by application code. The indexes are not decorative: the one on
+the variant file date was added after a measurement showed that computing the current annotation
+release scanned the whole variant table on every annotated tile, which cost about
+$290$~ms per tile until the index reduced the per-tile cost of a whole-protein job from $324$ to
+$54$~ms.
+
+\begin{figure}[htbp]
+  \centering
+  \input{assets/figures/app-cdm}
+  \caption[Conceptual data model]{Conceptual data model. Shaded entities are pinned reference data, which the application reads
+  and never writes a measurement into; thick arrows are ownership, so deleting a project removes
+  what it owns and nothing else. The three areas correspond to three different kinds of trust:
+  published reference data, work this user performed, and measurements this user supplied. A
+  comparison is the only entity that deliberately joins a prediction with a measurement, and it
+  stores its own outcome so that the judgement is reproducible later.}
+  \label{fig:app-cdm}
+\end{figure}
+
+
+The implemented schema departs from the earlier design note in two recorded ways. Some surrogate
+keys and nullability choices differ, and the workspace tables carry additional operational columns,
+notably the worker lease fields that the durable queue needs and that a purely logical design did not
+anticipate. The deviations are kept in the project's deviation record so that the design note and the
+code can be compared rather than silently diverging. Legacy share-link tables from an earlier
+iteration remain in the schema but are not part of this release: the public-sharing requirement was
+retired, and those tables are not used as project history.
+
+\section{Implemented Features}\label{sec:app-features}
+This section describes the five capabilities that carry the thesis. Each is given with its purpose
+and user, the path an input takes through validation and processing, the tables and operations
+involved, the scientific constraint it has to respect, and the executed evidence that it works.
+Numbers quoted here are from the recorded acceptance run of 17 November 2026 on the host described
+in Section~\ref{sec:app-evaluation}.
+
 \begin{table}[htbp]
   \centering
-  \caption{Key workspace fields and invariants}\label{tab:workspace-fields}
-  \small
-  \begin{tabularx}{\textwidth}{|P{3.5cm}|X|}
-    \hline \textbf{Entity} & \textbf{Required information} \\ \hline
-    Project & UUID, name, description, creation/update time; one local workspace. \\ \hline
-    Job and item & Mode/input IDs, pinned configuration, states/counts, item errors, coverage and worker lease; unique completed result per item. \\ \hline
-    Analysis run/cell & Input and coordinate context; model/gate hashes; scores, rank, warnings, annotation/source snapshot and parent rerun ID. \\ \hline
-    Dataset/observation & File hash/revision, assay/endpoint/units/source, WT sequence, position, WT/replacement, value/missing reason and replicate. \\ \hline
-    Comparison & Run/dataset IDs, explicit replicate/aggregation, compatibility decision, alignment counts and metric/result snapshot. \\ \hline
-  \end{tabularx}
+  \caption[Logical model: identity, ownership and invariants]{Logical model: identity, ownership and invariants. ``Cascade'' means the rows are removed
+  with their owner; reference rows deliberately do not cascade from a project.}
+  \label{tab:app-ldm}
+  {\small\setlength{\tabcolsep}{4pt}
+  \begin{tabularx}{\textwidth}{lXl}
+    \toprule
+    Entity group & Identity and invariant & Cascade \\
+    \midrule
+    Reference & Source, protein accession, tile index within a protein, and the measured cell keyed by
+    tile, position and replacement. A tile is unique per accession and index. & from source \\
+    Model version & One identifier per frozen artefact, with at most one default per role enforced by
+    a unique index. Historical scores keep their original identifier. & none \\
+    Project & One identifier, a name, and a deletion state so that a deletion in progress cannot
+    accept new work. & --- \\
+    Job and item & A job is unique within its project; an item is identified by job and ordinal, holds
+    its own state, attempt count and worker lease. & from project \\
+    Analysis and cell & An analysis is unique per project and, when produced by a job, unique per job
+    item, which is what prevents a duplicate result. Cells are keyed by analysis, position and
+    replacement. & from project \\
+    Dataset and observation & A dataset revision is unique per project and name; an observation is
+    unique per dataset, sequence, position, replacement and replicate. & from project \\
+    Comparison & Identified on its own, references one analysis and one dataset of the same project,
+    and stores the compatibility decision with the aligned counts. & from project \\
+    \bottomrule
+  \end{tabularx}}
 \end{table}
 
-\subsection{Relationships Between Entities}
-A project owns jobs, runs and datasets. A job contains input items; each successful tile item produces
-one immutable run with 532 cells. Dataset observations retain unique mutation/replicate keys.
-A comparison joins one run and one committed dataset from the same project. Source/model artefacts
-are versioned independently; changing active reference data must not change an old analysis.
-Deletion shows dependencies, stops related work and removes owned files/results with retryable cleanup;
-shared references and weights remain intact. Committed history has no automatic 30-day expiry.
 
-\input{chapters/sections/research-progress}
+\subsection{The Effect Matrix and the Footprint Track}
+\textbf{Purpose and user.} A researcher holding one 28-residue window wants to see the effect of
+every single substitution at once, in order to decide where in the window the signal lies. This is
+UC-01 and it is the output of the model the thesis studies.
 
-\section{Method and Model Design}
-Input remains the reference peptide, position and replacement; target is $\Delta$PSI. The existing
-service baseline is the frozen ridge/Platt model from Section~\ref{sec:res-calibration}. This scope
-update does not choose a replacement model. Full-PSI CNN, pLM-family and LoRA development
-evaluation is complete; a compatible final serving refit, calibration and export remain required.
-Raw effect and calibrated $P(\Delta\mathrm{PSI}\geq1)$ remain separate fields.
+\textbf{Flow.} Input is either a typed sequence or a tile chosen from a reference protein. The API
+normalises case and surrounding whitespace, then requires exactly 28 standard amino acids; anything
+else is rejected with a field-specific coded error and no scores are produced for that item. A valid
+input is passed through the domain gate before scoring, and the resulting warnings are rendered
+before the numbers, not beside them. Scoring produces the $532$ non-wild-type substitutions of the
+window. The interface renders them as a $28\times20$ grid with the wild-type cell of each position
+masked, and beside it a one-dimensional footprint track that averages the nineteen substitutions at
+each position. Raw effect and calibrated probability stay separate fields throughout, labelled with
+the event they refer to.
+Figure~\ref{fig:app-predict-flow} shows the path of one request, including the two places where
+the system refuses to answer.
 
-\input{chapters/sections/campaign-methods}
+\begin{table}[htbp]
+  \centering
+  \caption[Implemented physical data model]{Implemented physical data model, read from the service code. ``Casc.'' counts foreign keys
+  that delete with their parent, ``Uq.'' unique constraints, ``Ck.'' check constraints and ``Idx.''
+  explicit indexes; ``Mig.'' is the migration that creates the table. ``FK'' counts foreign-key
+  constraints and ``Casc.'' how many of them delete with their parent.}
+  \label{tab:app-pdm}
+  \input{assets/ch4/tab-app-pdm}
+\end{table}
 
-\input{chapters/sections/prioritization-methods}
+\textbf{Tables and operations.} \texttt{POST /v1/predict} for a preview;
+\texttt{GET /v1/\allowbreak{}proteins/\allowbreak{}\{id\}/\allowbreak{}tiles} for the stored alternative. A saved result becomes an
+\texttt{analysis\_run} with $532$ \texttt{analysis\_cell} rows, pinned to a \texttt{model\_version}.
 
-\paragraph{Domain integration.}
-The effect model's intrinsic-WT training threshold must not be applied directly to the GPS screen
-estimator. The R3 research provides a two-tier gate with an intermediate borderline state; integrating
-its frozen rules and provenance into the baseline remains pending. Every tile has domain evidence;
-known out-of-domain scoring requires an explicit warned override. Whole-protein mode is a collection
-of peptide-context predictions, not a validated intact-protein model.
+\textbf{Scientific constraint.} The track is a presentation of the same cells, not a second model:
+it is required to equal a recomputation from the matrix to within $10^{-9}$, which the interface
+tests check. Colour alone never carries meaning; a reversed perceptual scale is used for
+probabilities and a diverging scale for raw effects, and the wild-type cells are hatched rather than
+merely left blank.
 
-\section{Functional Design}
-\subsection{Batch and Protein Processing}
-Peptide mode accepts a bounded list or multi-record FASTA of 28-residue inputs. Protein mode accepts
-one reference accession or one FASTA record. Tile $n$ starts at $(n-1)\cdot23+1$ and ends 27 residues
-later; only full windows are generated. Report uncovered intervals, invalid windows and domain
-refusals. Overlapping protein substitutions retain their tile contexts without averaging.
-Job states are pending, running, completed, partial, failed or cancelled; per-item states and counts
-explain partial results. Browser tables are paginated; exports include every outcome.
+\begin{figure}[htbp]
+  \centering
+  \input{assets/figures/app-predict-flow}
+  \caption[Request flow of the effect-matrix feature]{Request flow of the effect-matrix feature. Invalid input and out-of-domain tiles stop
+  before scoring; an explicit override lets an out-of-domain tile through and is recorded with the
+  result. The response places the domain banner and warnings before the matrix. Original diagram
+  drawn from the service code.}
+  \label{fig:app-predict-flow}
+\end{figure}
 
-\subsection{Import and Comparison}
-CSV/TSV rows contain peptide ID, WT sequence, 1-based position, WT/replacement, observed value and
-replicate. Optional accession/release/start coordinates are checked together. Metadata identify assay,
-endpoint, units, source and reference. Duplicate/conflicting mutation-replicate keys, nonfinite values
-and WT mismatches block commit. Empty observations retain a missing reason.
 
-Comparison requires exact mutation alignment and explicit replicate selection or aggregation.
-Comparable GPS $\Delta$PSI supports residuals (prediction minus observation), MAE and Spearman with
-sample counts; insufficient/constant pairs have no reported correlation. Different assay endpoints
-remain separate without pooled metrics. Imported observations do not automatically constitute
-independent validation or become training labels.
+\textbf{Evidence.} Figure~\ref{fig:app-matrix} is the screen in operation.
+Agreement with the research runner is checked to $10^{-9}$ (Table~\ref{tab:verify}), and the
+rendering is exercised at four viewport widths in three browsers.
 
-\subsection{Annotations and Project Screens}
-The first release shows ClinVar alongside approved UniProt/GPS context. Show classification,
-review/conflict state, source release and WT-coordinate agreement; distinguish no match from
-unavailable/ambiguous mapping. Attribution and diagnostic disclaimer travel with saved/exported
-annotations. Custom unmapped sequences have explicit annotation-unavailable states.
-The project workspace exposes history, jobs and datasets; users can reopen snapshots, create reruns
-as new entries and confirm deletions. New screens and API routes remain pending implementation.
+\subsection{Ranking, Shortlist and the Fixed-Budget Panel}
+\textbf{Purpose and user.} The same researcher has a budget of a few measurements and needs an
+ordered shortlist. This is UC-02, and it is the only feature of the application for which the thesis
+has a quantitative result about usefulness, namely the equal-budget replay of
+Section~\ref{sec:res-prioritization}. In that retrospective replay, choosing ten substitutions per peptide by LoRA-D
+gives positive Precision@10 of \nPriorityLoraPrecision\%, against \nPriorityWfivePrecision\% for W5-D and
+\nPriorityRandomPrecision\% for random choice; it is development evidence, not a prospective yield.
 
-\section{Local Execution View}
-One computer hosts the browser, API, worker, PostgreSQL and workspace files. Application listeners
-bind to loopback; the frontend origin is explicitly allowed. Docker may package the same components,
-but no remote host, public URL, TLS deployment or separate product edition is required.
-Appendix~\ref{app:installation} separates baseline startup from the pending first-release workflow.
+\textbf{Flow.} The ranking is computed within one tile from the stored cells, with sorting and
+filtering applied client-side over the saved analysis. The top tenth by within-tile rank is flagged.
+A shortlist is an explicit user selection that travels into the export. A separate panel shows the
+top five, ten and twenty substitutions of the tile.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.92\textwidth]{assets/screenshots/05-result-matrix.png}
+  \caption[The effect matrix as rendered by the application]{The effect matrix as rendered by the application. The domain banner and the warnings
+  appear above the numbers by design. Wild-type cells are masked, and the legend states the event
+  that the calibrated probability refers to. Captured from the running application with reference
+  data, not from a mock-up.}
+  \label{fig:app-matrix}
+\end{figure}
+
+
+\textbf{Tables and operations.} The ranking reads \texttt{analysis\_cell}; the shortlist and the
+panel add no rows of their own and appear in the exported tables.
+
+\textbf{Scientific constraint.} Ranking is meaningful only inside one tile. Batch and whole-protein
+views therefore preserve tile identity and never present a single ordering across tiles, because no
+evidence in the thesis supports cross-tile comparability. The priority panel also carries its
+evidence label, ``retrospective, development benchmark'', ahead of the numbers in the document
+order, so that a screen reader reaches the caveat before the figures.
+
+\textbf{Evidence.} The interface unit tests assert both the ordering and the position of that label
+relative to the numbers.
+
+\subsection{Durable Batch and Whole-Protein Jobs}
+\textbf{Purpose and user.} A researcher who wants to scan a complete protein, or a list of peptides,
+cannot wait on a single request. This is UC-08, and it is where most of the engineering went.
+
+\textbf{Flow.} The submission is previewed first: inputs are normalised, the number of windows is
+reported together with coverage gaps and the configured limits, and the user confirms that the work
+will be stored locally. A whole protein is tiled with a step of 23 residues, so window $n$ starts at
+$(n-1)\cdot 23+1$ and spans 28 residues; only complete windows are generated and uncovered terminal
+residues are reported rather than padded. Figure~\ref{fig:app-tiling} shows the rule on a real protein. The job pins the model, calibrator, gate and source
+versions at submission. The worker then proceeds item by item as in
+Figure~\ref{fig:app-job-sequence}, and the job state follows Figure~\ref{fig:app-job-states}.
+Cancellation is accepted at any time and results already computed are kept.
+
+\begin{figure}[htbp]
+  \centering
+  \input{assets/figures/app-tiling}
+  \caption[Tiling of a whole protein into 28-residue windows]{Tiling of a whole protein into 28-residue windows with step 23. Windows are drawn in two
+  rows only to show their 5-residue overlaps; terminal residues that do not fill a window are
+  reported, not padded. Original schematic of the implemented rule.}
+  \label{fig:app-tiling}
+\end{figure}
+
+\textbf{Tables and operations.} One path creates a job in a project and four read or control it:
+submission, status, item listing, cancellation and export, all under \texttt{/v1/jobs}. They operate
+on \texttt{analysis\_job} and \texttt{job\_item}.
+
+\textbf{Scientific constraint.} A whole-protein scan is a collection of peptide-context predictions,
+not a validated statement about the intact protein; overlapping windows keep their own context and
+are never averaged into one number per residue.
+
+\textbf{Evidence.} Figure~\ref{fig:app-job} shows progress with per-item outcomes. A protein of
+\nAppProteinLen{} residues yields \nAppProteinTiles{} windows and completes in
+\nAppProteinSeconds{}~s; one hundred peptides submitted together take \nAppPeptidesSeconds{}~s. The recovery requirement is tested by killing both processes while a job is in progress: after
+a restart of \nAppRestartSeconds{}~s the job completes all \nAppProteinTiles{} windows with no
+duplicated result.
+
+\subsection{The Two-Tier Domain Gate}
+\textbf{Purpose and user.} Any user can paste a sequence the model was never trained for. This
+feature decides whether the system answers at all, and it is the place where a research result
+directly governs software behaviour.
+
+\textbf{Flow.} The gate from Section~\ref{sec:res-domain} is applied to every tile before scoring.
+The first tier uses the screen stability of a known tile, the second predicts it from sequence when
+no measurement exists, and both map their input through a fixed logistic function to a probability of
+belonging to the training domain. Three states follow: inside, borderline, and outside. A tile
+labelled outside is refused by default; the user may override it explicitly, and that override is
+recorded with the result and travels into the export.
+
+\textbf{Tables and operations.} The decision and its identifiers are stored on \texttt{tile} and on
+each analysis, and the gate artefact is a \texttt{model\_version} row of its own, so a stored score
+always names the gate that admitted it.
+
+\textbf{Scientific constraint.} The intrinsic training threshold must not be compared with the
+screen estimator directly; the earlier naive comparison was removed from the implementation, and the
+frozen logistic rules are used instead. One consequence is deliberately visible to users: a minority
+of the model's own training tiles are labelled outside the domain by the screen-based tier. That is a
+property of the gate, which is accurate for the tiles it admits, and not a defect to be smoothed
+away.
+
+\textbf{Evidence.} Boundary fixtures cover the measured, predicted, borderline and override paths,
+and golden tests tie the implemented logistic constants to the research script.
+
+\subsection{Provenance, Export, and Imported Measurements}
+\textbf{Purpose and user.} A result that cannot be traced is not usable in a thesis or a laboratory
+notebook. This feature covers UC-03, UC-07 and UC-10, and it carries the narrower import and
+comparison workflow of UC-05 and UC-09.
+
+\textbf{Flow.} Saving is explicit and produces an immutable snapshot: inputs, model and calibrator
+identity with hashes, gate decision, source versions, warnings and timestamps. Reopening reads that
+snapshot; rerunning creates a new entry and never overwrites the old one. Export emits the analysis,
+the job manifest including refused and failed items, or the comparison, as CSV or JSON with the same
+provenance fields and the development-evidence label. Imports follow
+Figure~\ref{fig:app-import-sequence}: staged, validated, explicitly committed, then available for
+comparison against a saved analysis.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.92\textwidth]{assets/screenshots/06-job-progress.png}
+  \caption[A durable job in progress]{A durable job in progress. Counts are shown per outcome, so a refused window is visibly
+  distinct from a failure, and the job is reported as partial rather than successful when the gate
+  refuses part of the protein.}
+  \label{fig:app-job}
+\end{figure}
+
+
+\textbf{Tables and operations.} \texttt{GET} and \texttt{POST} on
+\texttt{/v1/projects}, \texttt{/v1/analyses}, \texttt{/v1/datasets} and \texttt{/v1/comparisons},
+with \texttt{/v1/models} and \texttt{/v1/sources} serving the evidence pages over
+\texttt{model\_version} and \texttt{data\_source}.
+
+\textbf{Scientific constraint.} Three rules are enforced rather than documented. An import never
+retrains or modifies the model. Comparison metrics are computed only on rows whose endpoint and
+units are comparable, with the number of such rows always reported, and incompatible endpoints are
+shown side by side without a pooled metric. Missing values stay missing instead of becoming zero.
+Finally, an imported measurement is not independent validation of the model, and the comparison
+screen says so where the metrics appear.
+
+\textbf{Evidence.} Figure~\ref{fig:app-model} shows the evidence page, which reads its content from
+the model registry rather than from prose, and Figure~\ref{fig:app-comparison} shows a comparison
+with its row counts. Export of a \nAppProteinTiles{}-window job manifest produces a \nAppExportMb{}~MB file in
+\nAppExportSeconds{}~s, and a preview of \nAppImportRows{} imported rows completes in \nAppImportSeconds{}~s.
+
+% FROZEN until plan-system G-SYS (plan-report 5.6): overall diagram/section, update once.
+\section{Local Execution View}\label{sec:local-execution}
+One computer hosts the browser, API, worker, database and workspace files. The release runs in two
+equivalent ways. On the host, the API and the worker are started as two processes, or as one process
+with the worker embedded. In containers, four long-running services come up together: the database,
+the API, the worker and the web server, with a fifth one-off container that loads the reference data
+from the research checkout read-only. A development profile adds hot reload. Only the web server
+publishes a port, and only on the loopback address; the API, worker and database are reachable only
+inside the container network. The same code supports PostgreSQL~16, the accepted local database,
+and SQLite for isolated development and tests.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.86\textwidth]{assets/screenshots/12-model.png}
+  \caption[The model and evidence page]{The model and evidence page. The served model, its calibrator, the domain gate and the
+  reference sources are listed with their versions; the evidence boundary is stated on the page that
+  users consult when they want to know what a score means.}
+  \label{fig:app-model}
+\end{figure}
+
+\textbf{Two serving models.} The ridge model needs only numerical libraries; the adapted model needs
+PyTorch and the protein language model, which are installed only when the container image is built
+with that option, so the default image stays small. Switching between the models is a configuration
+change and does not alter any stored analysis, because every snapshot names the model that produced
+it. The adapted model reproduces the research implementation exactly, but it is slow on a processor
+without acceleration: about \nAppLoraLatPfive{}~s per tile at the 95th percentile against
+\nAppRidgeContainerPfive{}~ms for the ridge model in the same container, so it does not meet the proposed
+300~ms target. The delivered configuration therefore keeps the ridge model as default. On the
+author's own installation the adapted model has been set as default by configuration; that is a
+local deployment choice, not a serving decision, and no decision record or supervisor approval
+exists for it.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.86\textwidth]{assets/screenshots/08-comparison.png}
+  \caption[Comparing predictions with imported measurements]{Comparing predictions with imported measurements. Matched, unmatched and conflicting row
+  counts are shown with the metrics, and the imported dataset keeps its own assay metadata so that an
+  incompatible endpoint cannot be pooled into a single score. The imported values in this
+  illustration were derived from the prediction itself, so the near-perfect agreement shown is an
+  artefact of the illustration and not a measurement.}
+  \label{fig:app-comparison}
+\end{figure}
+
+
+\textbf{Security and privacy.} Cross-site write requests are refused, requests must declare a JSON
+body, and the web server sends a strict content security policy with self-hosted fonts, so the page
+loads nothing from another host. Biological sequences are never sent off the computer and never
+appear in logs or URLs. The interface offers light and dark themes, adapts to widths from 360 to
+1440~pixels, and uses fixed scientific colour scales: a reversed Viridis scale for probabilities and
+PuOr for raw effects. Appendix~\ref{app:installation} gives the executed installation and startup
+procedure for both the host installation and the container configuration.

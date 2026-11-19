@@ -1,0 +1,56 @@
+% Original schematic of encoder adaptation strategies and of LoRA (plan-report 3.7).
+% Sources: hu2022lora. Values from the code and model card:
+% degron_v3/finetune.py LoRALinear/inject_lora (rank 8, alpha 16, scale alpha/r, B initialised
+% to zero, targets query and value), model-card.json adapter; ESM2-35M has 12 layers, d = 480.
+\begin{tikzpicture}[fig]
+  \newcommand{\stack}[5]{% x, title, encoder style, adapters?, node id
+    \node[title] at (#1,2.75) {#2};
+    \node[data, minimum width=2.2cm] (in#5) at (#1,2.2) {tile features};
+    \node[#3, minimum width=2.4cm, minimum height=1.55cm] (enc#5) at (#1,0.95) {};
+    \node[font=\scriptsize, align=center] at (#1,1.45) {ESM-2 encoder};
+    \node[layer, font=\tiny, minimum width=0.5cm] at (#1-0.7,0.75) {$W_q$};
+    \node[layer, font=\tiny, minimum width=0.5cm] at (#1-0.13,0.75) {$W_k$};
+    \node[layer, font=\tiny, minimum width=0.5cm] at (#1+0.44,0.75) {$W_v$};
+    \node[font=\tiny] at (#1,0.38) {attention, FFN $\times12$};
+    \ifnum#4=1
+      \node[trained, font=\tiny, inner sep=1pt] at (#1-0.7,1.08) {$BA$};
+      \node[trained, font=\tiny, inner sep=1pt] at (#1+0.44,1.08) {$BA$};
+    \fi
+    \node[trained, minimum width=2.2cm] (head#5) at (#1,-0.35) {regression head};
+    \node[font=\scriptsize] (out#5) at (#1,-0.95) {$\widehat{\Delta\mathrm{PSI}}$};
+    \draw[flow] (in#5) -- (enc#5);
+    \draw[flow] (enc#5) -- (head#5);
+    \draw[flow] (head#5) -- (out#5);
+  }
+  \stack{0}{(a) Frozen}{frozen}{0}{a}
+  \stack{2.85}{(b) Full tuning}{trained}{0}{b}
+  \stack{5.7}{(c) LoRA}{frozen}{1}{c}
+
+  % legend
+  \node[frozen, minimum width=4mm, minimum height=3mm] (lf) at (-1.0,-1.55) {};
+  \node[font=\scriptsize, anchor=west] at (-0.75,-1.55) {fixed pretrained weights};
+  \node[trained, minimum width=4mm, minimum height=3mm] (lt) at (3.6,-1.55) {};
+  \node[font=\scriptsize, anchor=west] at (3.85,-1.55) {weights learned on $\Delta$PSI};
+
+  % ---------------- (d) LoRA detail
+  \node[title, anchor=west] at (7.40,2.75) {(d) One adapted projection};
+  \node[font=\scriptsize] (x) at (7.70,0.9) {$x$};
+  \node[frozen, minimum width=1.9cm, minimum height=8mm] (w) at (9.50,1.7) {$W$ ($480\times480$)};
+  \node[trained, minimum width=0.9cm, minimum height=5mm] (a) at (9.05,0.25) {$A$\\[-1pt]{\tiny $8\times480$}};
+  \node[trained, minimum width=0.9cm, minimum height=5mm] (b) at (10.25,0.25) {$B$\\[-1pt]{\tiny $480\times8$}};
+  \node[draw, circle, inner sep=1pt, font=\scriptsize] (plus) at (11.70,0.9) {$+$};
+  \node[font=\scriptsize] (h) at (12.40,0.9) {$h$};
+  \draw[flow] (x) |- (w.west);
+  \draw[flow] (x) |- (a.west);
+  \draw[flow] (a) -- (b);
+  \draw[flow] (w.east) -| (plus.north);
+  \draw[flow] (b.east) -| node[pos=0.75, right, dim] {$\times\,\alpha/r$} (plus.south);
+  \draw[flow] (plus) -- (h);
+  \node[font=\scriptsize, align=left, anchor=north west, text width=6.6cm] (eq) at (7.40,-0.4)
+       {$h = Wx + \tfrac{\alpha}{r}\,BAx$, with $r=\nTAdapterRank$, $\alpha=\nTAdapterAlpha$; $B$ starts at zero,
+        so training begins from the pretrained model. Applied to the query and value projections of
+        all 12 layers (24 adapters).};
+  \node[note, align=left, anchor=north west, text width=6.6cm] at ($(eq.south west)+(0,-0.02)$)
+       {LoRA lowers the number of learned weights; it does not by itself guarantee higher accuracy
+        or a faster model.};
+\end{tikzpicture}

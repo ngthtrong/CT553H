@@ -20,7 +20,7 @@ export function LayerToggles({ state, onChange, unavailableReason, clinvarAttrib
     <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
       <legend className="visually-hidden">Overlay layers</legend>
       <div className="row">
-        <span aria-hidden="true">Layers:</span>
+        <span className="matrix-toolbar__label" aria-hidden="true">Layers</span>
         <label>
           <input
             type="checkbox"

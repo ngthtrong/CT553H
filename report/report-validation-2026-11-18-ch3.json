@@ -1,0 +1,67 @@
+{
+  "record": "report-validation-2026-11-18-ch3",
+  "date": "2026-11-18",
+  "plan": "plan-report.md",
+  "items_done": [
+    "4.1",
+    "4.2",
+    "4.3",
+    "4.4",
+    "5.1",
+    "5.3",
+    "5.4",
+    "5.5",
+    "5.6"
+  ],
+  "items_partial": [
+    "4.5"
+  ],
+  "items_skipped": {
+    "5.2": "user request 18/11/2026; covered in text"
+  },
+  "figures_added": [
+    "research-pipeline",
+    "experiment-design",
+    "lora-d-architecture",
+    "app-predict-flow",
+    "app-tiling"
+  ],
+  "moved": {
+    "transfer-refit.tex paragraphs 'What was fixed' and 'Refit design'": "03-solution-design.tex sec:refit-protocol",
+    "campaign-methods.tex 'Research Campaign and Recovery Design' + environment paragraph": "appendix A, A.4.1"
+  },
+  "checks": {
+    "make_all": true,
+    "make_check": true,
+    "pages": {
+      "content": 164,
+      "content_twoside": 164,
+      "smoke": 9
+    },
+    "float_references": {
+      "passed": true,
+      "figures": 41,
+      "tables": 64
+    },
+    "whitespace_flagged_pages": [
+      5,
+      6,
+      10,
+      17,
+      19,
+      22,
+      30,
+      54,
+      136,
+      140,
+      143,
+      164
+    ],
+    "whitespace_all_functional": true
+  },
+  "sha256": {
+    "report/build/content/content.pdf": "148d21443e54ded8799165b1e38323b100aa1e35d1ecdb5fc48460d1f04be3e6",
+    "report/build/content-twoside/content.pdf": "880774ba72df0d4be618c2e3c48253bc8d4b6d6260bb5c42d6770603b3f6c7be",
+    "report/chapters/03-solution-design.tex": "60591ec38e648e260cf8fe66f439be7d2cb9fb985835818231c82fbc18549c7b"
+  }
+}

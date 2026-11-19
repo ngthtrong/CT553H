@@ -1,7 +1,8 @@
 import { useMemo, useRef, useState } from 'react';
 import { AMINO_ACIDS, N_CELLS, TILE_LENGTH } from '../api/types';
 import type { Cell, ClinvarVariant, MeasuredCell, TileInfo } from '../api/types';
-import { probabilityColor, rawScoreColor } from '../lib/colors';
+import { probabilityColor, rawScoreColor, spreadColor } from '../lib/colors';
+import { SPREAD_LABEL } from '../lib/spread';
 import { fmtProb, fmtScore } from '../lib/format';
 import type { ScaleMode } from './ScaleToggle';
 
@@ -89,13 +90,22 @@ export function Heatmap({ cells, tile, mode, eventDefinition, measured, clinvar,
     return m;
   }, [clinvar]);
   const limit = useMemo(() => Math.max(0, ...cells.map((c) => Math.abs(c.score_dpsi_raw))), [cells]);
+  const spreadLimit = useMemo(() => Math.max(0, ...cells.map((c) => c.score_seed_sd ?? 0)), [cells]);
 
   const [focus, setFocus] = useState<{ r: number; c: number }>({ r: 0, c: 0 });
   const [active, setActive] = useState<{ r: number; c: number } | null>(null);
   const refs = useRef(new Map<string, SVGRectElement>());
   const seq = tile.sequence;
 
-  const fill = (c: Cell) => (mode === 'prob' ? probabilityColor(c.p_dpsi_ge_1_calibrated) : rawScoreColor(c.score_dpsi_raw, limit));
+  const fill = (c: Cell) =>
+    mode === 'prob' ? probabilityColor(c.p_dpsi_ge_1_calibrated)
+    : mode === 'spread' ? spreadColor(c.score_seed_sd ?? 0, spreadLimit)
+    : rawScoreColor(c.score_dpsi_raw, limit);
+  /** "seed spread (not a confidence interval) SD …, seeds min … to max …" when the cell has it. */
+  const spreadText = (c: Cell) =>
+    typeof c.score_seed_sd === 'number' && typeof c.score_seed_min === 'number' && typeof c.score_seed_max === 'number'
+      ? `seed spread (not a confidence interval) SD ${fmtScore(c.score_seed_sd)}, seeds from ${fmtScore(c.score_seed_min)} to ${fmtScore(c.score_seed_max)}`
+      : null;
 
   function describe(r: number, col: number): string {
     const pos = r + 1;
@@ -105,6 +115,8 @@ export function Heatmap({ cells, tile, mode, eventDefinition, measured, clinvar,
     const c = byKey.get(cellKey(pos, aa));
     if (!c) return `position ${pos}, ${wt} to ${aa}, no value`;
     let s = `position ${pos}, ${wt} to ${aa}, probability ${eventDefinition} ${fmtProb(c.p_dpsi_ge_1_calibrated)}, raw score ${fmtScore(c.score_dpsi_raw)}, rank ${c.rank_in_tile} of ${N_CELLS}`;
+    const sp = spreadText(c);
+    if (sp) s += `, ${sp}`;
     const m = measuredBy.get(cellKey(pos, aa));
     if (m) s += `, measured ΔPSI ${m.delta_psi.toFixed(2)}`;
     const v = clinvarBy.get(cellKey(pos, aa));
@@ -158,7 +170,7 @@ export function Heatmap({ cells, tile, mode, eventDefinition, measured, clinvar,
   // Colour bar stops (probability or raw score), computed from the same functions as the cells.
   const stops = Array.from({ length: 11 }, (_, i) => {
     const t = i / 10;
-    return mode === 'prob' ? probabilityColor(t) : rawScoreColor((t * 2 - 1) * (limit || 1), limit);
+    return mode === 'prob' ? probabilityColor(t) : mode === 'spread' ? spreadColor(t * (spreadLimit || 1), spreadLimit) : rawScoreColor((t * 2 - 1) * (limit || 1), limit);
   });
 
   const detail = shown ? detailFor(shown.r, shown.c) : null;
@@ -166,13 +178,15 @@ export function Heatmap({ cells, tile, mode, eventDefinition, measured, clinvar,
     const pos = r + 1;
     const wt = seq.charAt(r);
     const aa = AMINO_ACIDS.charAt(col);
-    if (aa === wt) return { text: `Position ${pos}: wild type ${wt}. There is no substitution in this cell.`, variants: [] as ClinvarVariant[] };
+    if (aa === wt) return { text: `Position ${pos}: wild type ${wt}. There is no substitution in this cell.`, variants: [] as ClinvarVariant[], spread: null };
     const c = byKey.get(cellKey(pos, aa));
     const m = measuredBy.get(cellKey(pos, aa));
     const v = clinvarBy.get(cellKey(pos, aa)) ?? [];
-    if (!c) return { text: `Position ${pos}, ${wt} to ${aa}: no value.`, variants: v };
+    if (!c) return { text: `Position ${pos}, ${wt} to ${aa}: no value.`, variants: v, spread: null };
     return {
       text: `Position ${pos}, ${wt} → ${aa}. Probability ${eventDefinition}: ${fmtProb(c.p_dpsi_ge_1_calibrated)}. Raw score: ${fmtScore(c.score_dpsi_raw)} (${c.score_dpsi_raw < 0 ? 'negative' : 'positive'}). Rank ${c.rank_in_tile} of ${N_CELLS}${c.top10pct_in_tile ? ' (top 10 %)' : ''}.${m ? ` Measured ΔPSI: ${m.delta_psi.toFixed(2)}.` : ''}`,
+      spread: typeof c.score_seed_sd === 'number' && typeof c.score_seed_min === 'number' && typeof c.score_seed_max === 'number'
+        ? { sd: c.score_seed_sd, min: c.score_seed_min, max: c.score_seed_max } : null,
       variants: v,
     };
   }
@@ -186,20 +200,24 @@ export function Heatmap({ cells, tile, mode, eventDefinition, measured, clinvar,
             data-testid="colorbar"
             style={{ background: `linear-gradient(90deg, ${stops.join(', ')})` }}
             role="img"
-            aria-label={mode === 'prob' ? 'Colour bar from probability 0 (light) to 1 (dark)' : 'Colour bar of the raw score from negative (orange) through 0 to positive (purple)'}
+            aria-label={mode === 'prob' ? 'Colour bar from probability 0 (light) to 1 (dark)' : mode === 'spread' ? `Colour bar of the seed spread from 0 (light grey) to ${spreadLimit.toFixed(2)} (dark blue)` : 'Colour bar of the raw score from negative (orange) through 0 to positive (purple)'}
           />
           <div className="row muted" style={{ justifyContent: 'space-between', width: 260, gap: 0 }}>
             {mode === 'prob' ? (
               <><span>0</span><span>0.5</span><span>1</span></>
+            ) : mode === 'spread' ? (
+              <><span>0</span><span>{(spreadLimit / 2).toFixed(2)}</span><span>{spreadLimit.toFixed(2)}</span></>
             ) : (
               <><span>{(-limit).toFixed(2)}</span><span>0</span><span>{limit.toFixed(2)}</span></>
             )}
           </div>
         </div>
-        <p className="muted" style={{ margin: 0, flex: 1, minWidth: 220 }}>
+        <p className="muted" style={{ margin: 0, flex: 1, minWidth: 220 }} data-testid="scale-description">
           {mode === 'prob'
             ? `Probability that the substitution raises PSI by at least one bin (weakens the degron signal) in this assay: ${eventDefinition}. Darker is more likely.`
-            : 'Raw score: regression output of ΔPSI, not a probability. Orange is negative, purple is positive.'}
+            : mode === 'spread'
+              ? `${SPREAD_LABEL} Darker means the seeds disagree more.`
+              : 'Raw score: regression output of ΔPSI, not a probability. Orange is negative, purple is positive.'}
         </p>
       </div>
 
@@ -297,6 +315,12 @@ export function Heatmap({ cells, tile, mode, eventDefinition, measured, clinvar,
         {detail ? (
           <>
             <div>{detail.text}</div>
+            {detail.spread && (
+              <div data-testid="seed-spread-detail">
+                <span className="muted">{SPREAD_LABEL}</span>{' '}
+                Seeds range from {fmtScore(detail.spread.min)} to {fmtScore(detail.spread.max)} (SD {fmtScore(detail.spread.sd)}).
+              </div>
+            )}
             {measured && measured.length > 0 && (
               <div className="muted">Measured values are part of the training data of this model; they are not a validation.</div>
             )}

@@ -1,0 +1,49 @@
+% Original schematic of a protein language model and of the mutation features used here
+% (plan-report 3.6). Sources: lin2023esm, vaswani2017. Dimensions from the code:
+% research/kaggle-roadmap-2026-10-31/degron_v3/finetune.py, MutationRegressor.forward()
+% (ESM2-35M: 12 layers, d = 480; delta = mutant - WT; site row and mean over residues).
+\begin{tikzpicture}[fig]
+  % ---------------- (a) masked-language pretraining
+  \node[title, anchor=west] at (-0.1,2.45) {(a) Pretraining};
+  \foreach \aa [count=\i] in {M,K,T,{?},I,E,{?},L} {
+    \node[residue, fill=white] (p\i) at (0.45*\i,1.75) {\aa};
+  }
+  \node[residue, fill=oiYellow!40] at (p4) {?};
+  \node[residue, fill=oiYellow!40] at (p7) {?};
+  \node[layer, minimum width=3.6cm, minimum height=7mm, anchor=north] (enc0) at (2.03,1.3)
+       {transformer encoder\\(self-attention layers)};
+  \foreach \i in {1,...,8} \draw[->, oiGrey] (p\i.south) -- (p\i.south |- enc0.north);
+  \node[font=\scriptsize, anchor=north] (pr) at ($(enc0.south)+(0,-0.3)$) {predict the hidden residues};
+  \draw[->] (enc0.south) -- (pr.north);
+  \node[note, text width=4.0cm, align=left, anchor=north west] at (-0.1,-0.35)
+       {Trained on millions of natural sequences without assay labels; learns which residues
+        fit a sequence context.};
+
+  % ---------------- (b) embedding a tile
+  \node[title, anchor=west] at (4.6,2.45) {(b) Embedding a 28-residue tile};
+  \node[data, minimum width=2.1cm] (seq) at (5.6,1.75) {\scriptsize WT or mutant tile};
+  \node[frozen, minimum width=2.1cm, minimum height=7mm] (enc) at (5.6,0.75) {ESM-2 35M\\12 layers};
+  \draw[flow] (seq) -- (enc);
+  \begin{scope}[shift={(7.0,-0.35)}]
+    \foreach \r in {0,...,6} \draw[oiBlue, fill=oiSky!18] (0,0.3*\r) rectangle ++(2.4,0.3);
+    \draw[oiBlue, fill=oiSky!55] (0,0.9) rectangle ++(2.4,0.3);
+    \node[dim, anchor=east] at (-0.05,1.05) {$i$};
+    \draw[brace] (0,2.2) -- node[above=3pt, dim] {$d=480$ features} (2.4,2.2);
+  \end{scope}
+  \draw[flow] (enc.east) -- (6.95,0.7);
+  \node[note, text width=4.6cm, align=left, anchor=north west] at (4.6,-0.6)
+       {One row per residue (7 of 28 shown); each row depends on the whole tile.};
+
+  % ---------------- (c) mutation features
+  \node[title, anchor=west] at (11.0,2.45) {(c) Mutation features};
+  \node[tensor, text width=4.0cm, align=left, anchor=north west] (d) at (11.0,2.05)
+       {$\Delta = E(\text{mutant}) - E(\text{WT})$:\\a $28\times480$ difference};
+  \node[tensor, text width=4.0cm, align=left, anchor=north west] (site) at (11.0,1.05)
+       {site row $\Delta_i$ (480) and\\mean over residues $\bar\Delta$ (480)};
+  \node[block, text width=4.0cm, align=left, anchor=north west] (aux) at (11.0,0.05)
+       {+ WT and mutant amino acid and tile composition (60 values)};
+  \draw[flow] (d) -- (site);
+  \draw[flow] (site) -- (aux);
+  \node[note, text width=4.0cm, align=left, anchor=north west] at ($(aux.south west)+(0,-0.05)$)
+       {An embedding is a learned representation, not a measured property.};
+\end{tikzpicture}

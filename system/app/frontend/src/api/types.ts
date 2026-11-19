@@ -27,10 +27,10 @@ export type ApiErrorCode = S['Error']['code'];
 
 /** Exactly one of a typed sequence or a stored tile (UniProt accession + 1-based tile index). */
 export type TileRequest =
-  | { sequence: string; override_domain?: boolean }
-  | { uniprot_id: string; tile_index: number; override_domain?: boolean };
+  | { sequence: string; override_domain?: boolean; model_id?: string }
+  | { uniprot_id: string; tile_index: number; override_domain?: boolean; model_id?: string };
 
-export function isStoredTile(r: TileRequest): r is { uniprot_id: string; tile_index: number; override_domain?: boolean } {
+export function isStoredTile(r: TileRequest): r is { uniprot_id: string; tile_index: number; override_domain?: boolean; model_id?: string } {
   return 'uniprot_id' in r;
 }
 
@@ -38,3 +38,31 @@ export function isStoredTile(r: TileRequest): r is { uniprot_id: string; tile_in
 export const AMINO_ACIDS = 'ACDEFGHIKLMNPQRSTVWY';
 export const TILE_LENGTH = 28;
 export const N_CELLS = 532;
+
+// ---- workspace (v0.2) ----------------------------------------------------------------------------------------------
+export type Project = S['Project'];
+export type ProjectPage = S['ProjectPage'];
+export type SavedAnalysis = S['SavedAnalysis'];
+export type SavedAnalysisSummary = S['SavedAnalysisSummary'];
+export type SavedAnalysisPage = S['SavedAnalysisPage'];
+export type Job = S['Job'];
+export type JobPage = S['JobPage'];
+export type JobItem = S['JobItem'];
+export type JobItemPage = S['JobItemPage'];
+export type JobRequest = S['JobRequest'];
+export type JobFootprint = S['JobFootprint'];
+export type ModelComparison = S['ModelComparison'];
+export type Suggestions = S['Suggestions'];
+export type AdminStatus = S['AdminStatus'];
+export type AgreementSeries = S['AgreementSeries'];
+export type ModelComparisonCell = S['ModelComparisonCell'];
+export type ModelComparisonPage = S['ModelComparisonPage'];
+export type BatchPeptide = S['BatchPeptide'];
+export type Dataset = S['Dataset'];
+export type DatasetPage = S['DatasetPage'];
+export type ImportMetadata = S['ImportMetadata'];
+export type ValidationIssue = S['ValidationIssue'];
+export type Comparison = S['Comparison'];
+export type ComparisonPage = S['ComparisonPage'];
+export type ComparisonRequest = S['ComparisonRequest'];
+export type AnnotationState = S['AnnotationState'];

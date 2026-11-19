@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../api/client';
 import { ErrorBanner } from '../components/ErrorBanner';
@@ -68,10 +69,12 @@ export function SimpleMarkdown({ text }: { text: string }) {
   return <>{out}</>;
 }
 
+/** `/model` shows the default effect model; `/model/:id` any registered model (plan-system 1.1). */
 export function ModelCardPage() {
   useDocumentTitle('Model card');
-  const models = useQuery({ queryKey: ['models'], queryFn: ({ signal }) => api.listModels(signal), retry: false, staleTime: 300_000 });
-  const defaultId = models.data?.items.find((m) => m.is_default && m.role === 'effect')?.model_id ?? models.data?.items.find((m) => m.is_default)?.model_id;
+  const { id: routeId } = useParams();
+  const models = useQuery({ queryKey: ['models'], queryFn: ({ signal }) => api.listModels(signal), retry: false, staleTime: 30_000 });
+  const defaultId = routeId ?? models.data?.items.find((m) => m.is_default && m.role === 'effect')?.model_id ?? models.data?.items.find((m) => m.is_default)?.model_id;
   const card = useQuery({
     queryKey: ['model', defaultId],
     queryFn: ({ signal }) => api.getModel(defaultId!, signal),
@@ -93,6 +96,7 @@ export function ModelCardPage() {
       <p>
         Status: <strong>{m.status}</strong>
         {m.is_default ? ' (default)' : ''} · role: {m.role}
+        {m.serving ? ' · serving' : ` · not serving${m.not_serving_reason ? `: ${m.not_serving_reason}` : ''}`}
         {m.kind ? ` · kind: ${m.kind}` : ''}
         {m.frozen_at ? ` · frozen ${m.frozen_at}` : ''}
       </p>
@@ -110,20 +114,20 @@ export function ModelCardPage() {
       <h2>Performance</h2>
       <p className="muted">Values are read from the API; source file: <code>{m.metrics_source_file}</code>.</p>
       {metrics.length === 0 ? <p>No metrics are registered for this model.</p> : (
-        <table className="data" data-testid="metrics-table">
+        <div className="table-wrap" tabIndex={0} role="region" aria-label="Metrics of the model, scrollable"><table className="data" data-testid="metrics-table">
           <caption className="visually-hidden">Metrics of the model</caption>
           <thead><tr><th scope="col">Metric</th><th scope="col">Value</th></tr></thead>
           <tbody>{metrics.map((r) => <tr key={r.key}><th scope="row">{r.key}</th><td>{r.value}</td></tr>)}</tbody>
-        </table>
+        </table></div>
       )}
       {m.calibration && (
         <>
           <h2>Calibration</h2>
-          <table className="data">
+          <div className="table-wrap" tabIndex={0} role="region" aria-label="Calibration, scrollable"><table className="data">
             <caption className="visually-hidden">Calibration of the probability</caption>
             <thead><tr><th scope="col">Item</th><th scope="col">Value</th></tr></thead>
             <tbody>{flattenMetrics(m.calibration).map((r) => <tr key={r.key}><th scope="row">{r.key}</th><td>{r.value}</td></tr>)}</tbody>
-          </table>
+          </table></div>
         </>
       )}
 
@@ -148,15 +152,20 @@ export function ModelCardPage() {
       )}
 
       <h2>Registered models</h2>
-      <table className="data">
+      <div className="table-wrap" tabIndex={0} role="region" aria-label="Registered models, scrollable"><table className="data">
         <caption className="visually-hidden">Registered models and their status</caption>
-        <thead><tr><th scope="col">Model</th><th scope="col">Role</th><th scope="col">Kind</th><th scope="col">Status</th><th scope="col">Default</th></tr></thead>
+        <thead><tr><th scope="col">Model</th><th scope="col">Role</th><th scope="col">Kind</th><th scope="col">Status</th><th scope="col">Serving</th><th scope="col">Default</th></tr></thead>
         <tbody>
           {models.data.items.map((x) => (
-            <tr key={x.model_id}><th scope="row">{x.model_id}</th><td>{x.role}</td><td>{x.kind ?? ''}</td><td>{x.status}</td><td>{x.is_default ? 'yes' : 'no'}</td></tr>
+            <tr key={x.model_id}>
+              <th scope="row">{x.model_id === m.model_id ? x.model_id : <Link to={`/model/${encodeURIComponent(x.model_id)}`}>{x.model_id}</Link>}</th>
+              <td>{x.role}</td><td>{x.kind ?? ''}</td><td>{x.status}</td>
+              <td>{x.serving ? 'yes' : `no${x.not_serving_reason ? ` (${x.not_serving_reason})` : ''}`}</td>
+              <td>{x.is_default ? 'yes' : 'no'}</td>
+            </tr>
           ))}
         </tbody>
-      </table>
+      </table></div>
     </>
   );
 }

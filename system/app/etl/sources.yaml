@@ -84,6 +84,22 @@ sources:
       - {role: gate_weights, path: ../research/r3-domain-gate-2026-10-22/run-kaggle-20261022/gate-weights.npz, sha256: 13be4bf18fdd14e48e2e2384ce24fea3ca486a8f7dbc02a199fb8d39aa5a0509}
       - {role: gate_card, path: ../research/r3-domain-gate-2026-10-22/run-kaggle-20261022/gate-card.json, sha256: 7019c6058ea562c5487f84329d909902eabbdd2a8f12eda5d37a28721257bc72}
 
+  # Optional (plan 2.12): loaded only when the bundle exists (--lora auto) or is required (--lora yes). The manifest pins
+  # the SHA-256 of every other bundle file; etl/export_lora.py writes it from the branch-1 artifacts.
+  - source_id: own-model-esm2-35m-lora-d-v1
+    name: LoRA-D refit ensemble esm2-35m-lora-d-aa4fc2b7 (this thesis, lora-refit-transfer-2026-11-16)
+    version: v1, refit campaign aa4fc2b7ce29abf9 (2026-11-16); serving bundle exported 2026-11-17
+    citation: Nguyen Thanh Trong, internal report research/lora-refit-transfer-2026-11-16
+    url: null
+    license_name: Own work; base model ESM-2 35M (facebook/esm2_t12_35M_UR50D), MIT licence
+    license_class: open
+    redistribution_ok: true
+    attribution_text: Model esm2-35m-lora-d-aa4fc2b7, degron-footprint thesis project; ESM-2 (Lin et al. 2023, MIT)
+    retrieved_on: 2026-11-17
+    optional: true
+    files:
+      - {role: lora_manifest, path: processed/lora-d-serving-v1/esm2-35m-lora-d-v1.json, sha256: d6729faf0bc4fa781239fba2945362ae72273901afdde5d35138e2b35401303f}
+
   # ---- registered so the register is complete; their files are never loaded (db-design.md §6) ----
   - source_id: koren2018-nihms967427
     name: Koren et al. 2018, Cell, supplementary tables (NIHMS author manuscript)

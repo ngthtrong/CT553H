@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-18",
+  "plan": "plan-system 4.5 (BATCH-11 on real containers)",
+  "command": "docker compose up -d --scale worker=3",
+  "jobs": 3,
+  "items": 36,
+  "model": "m3-ext4.0-platt-v1",
+  "seconds_to_finish_all": 3.1,
+  "admin_alive_workers": 3,
+  "items_done_per_worker": [
+    15,
+    13,
+    8
+  ],
+  "attempts_all_1": true,
+  "analyses": 36,
+  "duplicates": 0,
+  "cleanup": "test project deleted (HTTP 204); scaled back to 1 worker",
+  "note": "items_done is written with the 5 s heartbeat; read 7 s after the jobs finished"
+}

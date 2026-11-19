@@ -24,7 +24,12 @@ class PredictRequest:
 
 
 async def read_json_body(request: Request, limit: int) -> Any:
-    """Step 1: at most `limit` bytes, valid JSON object. Never reads more than limit + 1 bytes."""
+    """Step 1: at most `limit` bytes, valid JSON object. Never reads more than limit + 1 bytes. The body must be
+    declared application/json: a text/plain or form post is what a cross-site page can send without a preflight
+    (SEC-03), so it is refused before it is read."""
+    ctype = request.headers.get('content-type', '').split(';', 1)[0].strip().lower()
+    if ctype != 'application/json':
+        raise DomainError('INVALID_REQUEST', 'Send the body as application/json.', 415)
     declared = request.headers.get('content-length')
     if declared is not None and declared.isdigit() and int(declared) > limit:
         raise DomainError('PAYLOAD_TOO_LARGE', f'The request body must not exceed {limit} bytes.', 413)

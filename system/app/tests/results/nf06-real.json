@@ -1,0 +1,10 @@
+{
+  "date": "2026-11-18T13:55:38.794Z",
+  "browser": "chromium-desktop",
+  "runs": 20,
+  "p50_ms": 200,
+  "p95_ms": 229,
+  "max_ms": 329,
+  "proposed_p95_ms": 1500,
+  "note": "Vite dev server proxy to uvicorn on loopback, WSL2 laptop; includes client routing and SVG paint"
+}

@@ -1,0 +1,101 @@
+# Development override: the same services, with the source bind-mounted so edits apply without rebuilding.
+#
+#   make docker-dev        ==  docker compose -f docker-compose.yml -f compose.dev.yml up -d --build
+#
+#   http://127.0.0.1:5173  Vite dev server with hot reload (proxies /v1 and /healthz to api:8000)
+#   http://127.0.0.1:8000  API with --reload and /docs enabled
+#   http://127.0.0.1:8080  the nginx build of the interface (rebuild `web` to see interface changes there)
+#   127.0.0.1:55433        PostgreSQL, for psql or `make test-pg PG_PORT=55433`
+#
+# The whole checkout is mounted at /repo (read-write only under system/app), so the API, the worker, the ETL and the
+# test suite find data/ and research/ exactly as on the host. Containers run as the host user (HOST_UID/HOST_GID, set by
+# the Makefile; bash's UID is read-only) so the files they write (coverage, test results, .data/) stay yours.
+name: degron-footprint
+
+x-dev-backend: &dev-backend
+  build:
+    context: ../
+    dockerfile: app/backend/Dockerfile
+    target: dev
+    args:
+      WITH_LORA: ${WITH_LORA:-0}
+  image: degron-footprint/backend-dev:${WITH_LORA:-0}
+  user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
+  group_add: ["0"]                 # the shared volumes are group 0 + setgid (backend/Dockerfile)
+  volumes:
+    - ${TOPIC_DIR:-../..}:/repo:ro
+    - ./:/repo/system/app
+    - models:/repo/system/app/backend/models
+    - workspace:/data/workspace
+  networks: [internal]
+
+services:
+  api:
+    <<: *dev-backend
+    environment:
+      DF_DATABASE_URL: postgresql+psycopg://degron:${POSTGRES_PASSWORD}@db:5432/degron
+      DF_ENABLE_DOCS: "1"
+      DF_ALLOWED_ORIGINS: '["http://localhost:5173","http://127.0.0.1:5173","http://localhost:8080","http://127.0.0.1:8080"]'
+      DF_TRUST_PROXY: "false"
+      DF_RATE_LIMIT_PREDICT: "600"
+      DF_RATE_LIMIT_REFERENCE: "1200"
+      DF_WORKSPACE_DIR: /data/workspace
+      DF_DEFAULT_MODEL_ID: ${DF_DEFAULT_MODEL_ID:-}
+      DF_LORA_THREADS: ${DF_LORA_THREADS:-4}
+    command: ["sh", "-c", "umask 0002 && alembic -c alembic.ini upgrade head && exec uvicorn api.main:create_app --factory --host 0.0.0.0 --port 8000 --no-access-log --reload --reload-dir /repo/system/app/backend"]
+    ports: ["127.0.0.1:8000:8000"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=4).status == 200 else 1)"]
+      interval: 10s
+      timeout: 5s
+      start_period: 30s
+      retries: 5
+
+  worker:
+    <<: *dev-backend
+    environment:
+      DF_DATABASE_URL: postgresql+psycopg://degron:${POSTGRES_PASSWORD}@db:5432/degron
+      DF_WORKSPACE_DIR: /data/workspace
+      DF_DEFAULT_MODEL_ID: ${DF_DEFAULT_MODEL_ID:-}
+      DF_LORA_THREADS: ${DF_LORA_THREADS:-4}
+    # no --reload for the worker: `docker compose restart worker` after changing job code
+
+  etl:
+    <<: *dev-backend
+    working_dir: /repo/system/app
+    command: ["sh", "-c", "umask 0002 && (cd backend && alembic -c alembic.ini upgrade head) && python -m etl.load --db \"$${DF_DATABASE_URL}\" --clinvar-scope \"$${CLINVAR_SCOPE}\" --report /repo/system/app/.data/etl-report-docker.json"]
+
+  # Backend test suite inside the dev image. On PostgreSQL (default) the suite creates and drops its own throw-away
+  # databases through the maintenance database `postgres` (tests/conftest.py); the application database is not touched.
+  #   make docker-test                          PostgreSQL 16 (compose `db`)
+  #   make docker-test DF_TEST_BACKEND=sqlite   SQLite, plus the realdata tests that read /repo/data
+  test:
+    <<: *dev-backend
+    profiles: ["tools"]
+    depends_on:
+      db: {condition: service_healthy}
+    working_dir: /repo/system/app
+    environment:
+      DF_TEST_BACKEND: ${DF_TEST_BACKEND:-postgresql}
+      DF_TEST_PG_URL: postgresql+psycopg://degron:${POSTGRES_PASSWORD}@db:5432/postgres
+    entrypoint: ["python", "-m", "pytest"]
+    command: []
+
+  web-dev:
+    build: {context: ./frontend, target: dev}
+    image: degron-footprint/web-dev
+    depends_on:
+      api: {condition: service_healthy}
+    environment:
+      API_TARGET: http://api:8000
+    volumes:
+      - ./frontend:/app
+      - web_node_modules:/app/node_modules
+    ports: ["127.0.0.1:5173:5173"]
+    networks: [internal]
+
+  db:
+    ports: ["127.0.0.1:55433:5432"]
+
+volumes:
+  web_node_modules:

@@ -1,0 +1,49 @@
+{
+  "record": "title-sync-validation-2026-11-17",
+  "date": "2026-11-17",
+  "decision": {
+    "source": "author",
+    "items": [
+      "D-1",
+      "D-3"
+    ],
+    "title_en_new": "Predicting Single-Residue Mutation Effects on PSI in Degron Reporter Assays and Development of a Web Application",
+    "title_en_previous": "Sequence-Based Prediction of Single-Residue Mutation Effects on PSI in Degron Reporter Assays and Development of an Analysis Tool",
+    "title_vi_new": "Dự đoán ảnh hưởng của đột biến amino acid đơn lên chỉ số PSI trong assay reporter degron và xây dựng ứng dụng web",
+    "title_vi_previous": "Dự đoán ảnh hưởng của đột biến amino acid đơn lên chỉ số PSI trong nghiên cứu degron và xây dựng công cụ phân tích",
+    "title_vi_differs_from_registered": true,
+    "advisor_acknowledged": false
+  },
+  "checks": [
+    {
+      "name": "make -C report all",
+      "passed": true
+    },
+    {
+      "name": "make -C report check",
+      "passed": true,
+      "detail": "content 148, content-twoside 148, smoke 9 pages"
+    },
+    {
+      "name": "check_float_references.py",
+      "passed": true,
+      "detail": "23 figures, 66 tables"
+    },
+    {
+      "name": "pdfinfo Title",
+      "passed": true
+    },
+    {
+      "name": "slide sync",
+      "passed": false,
+      "detail": "deck not rebuilt; deferred to branch 4"
+    }
+  ],
+  "sha256": {
+    "report/config/metadata.tex": "08d7b8c75fcf75c8b3e1ff5258f5b357cb55e4043a8ab8ca03806b2868c3e182",
+    "report/frontmatter/abstract.tex": "a9f84f6d004d9c3100cc0f1baccf2df573866eb2be46c18a68e52ff24fc2ac12",
+    "report/frontmatter/abstract-vi.tex": "3a697cde9a08ee3fcfce65efab4e6e41be277df5a3f62905e52391ae5f1edc97",
+    "report/build/content/content.pdf": "0930485bb35cb8a6fe056bf97ec671a25de6bbb1e7d4a3f67d19efbd5972285c",
+    "report/build/content-twoside/content.pdf": "69f7f422f1b2f3699c50cd39d1ef388bf2cfca82fe9672037ad32cd050d15bbf"
+  }
+}

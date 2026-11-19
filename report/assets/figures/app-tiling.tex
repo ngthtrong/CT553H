@@ -1,0 +1,30 @@
+% Original schematic of whole-protein tiling (plan-report 5.4).
+% Rule from the code (system/app/backend, whole-protein job; test_jobs.py
+% test_whole_protein_windows_match_the_reference_tiles): window n starts at (n-1)*23+1 and spans
+% 28 residues; only complete windows; uncovered terminal residues are reported, never padded.
+% Example P60484 (PTEN, 403 residues): 17 windows cover 1-396, 397-403 uncovered, as on the job
+% screen of the application. Deterministic arithmetic, no measured values.
+\begin{tikzpicture}[fig, x=0.0325cm]
+  % protein axis: 1 unit = one residue
+  \draw[line width=1.2pt, oiGrey] (1,0) -- (403,0);
+  \foreach \t in {1,100,200,300,403} { \draw (\t,-0.08) -- (\t,0.08); \node[dim, below] at (\t,-0.08) {\t}; }
+  \node[font=\scriptsize, anchor=east] at (-4,0) {protein};
+  % windows, alternating rows so that the 5-residue overlaps stay visible
+  \foreach \n in {1,...,17} {
+    \pgfmathtruncatemacro{\s}{(\n-1)*23+1}
+    \pgfmathtruncatemacro{\e}{\s+27}
+    \pgfmathsetmacro{\y}{mod(\n,2)==1 ? 0.45 : 0.8}
+    \draw[draw=oiBlue, fill=oiSky!35] (\s,\y) rectangle (\e,\y+0.25);
+  }
+  \node[font=\scriptsize, anchor=east] at (-4,0.62) {windows};
+  % uncovered tail
+  \draw[draw=oiVermillion, pattern=north east lines, pattern color=oiVermillion] (397,0.45) rectangle (403,0.7);
+  \draw[->, oiVermillion] (400,0.75) -- (400,1.25) node[above left=0pt and -6pt, font=\scriptsize, align=right] {397--403\\not covered};
+  % zoom on two windows
+  \draw[brace] (1,1.2) -- node[above=3pt, font=\scriptsize, anchor=south west, xshift=-14pt] {window 1: 1--28} (28,1.2);
+  \draw[brace] (24,1.75) -- node[above=3pt, font=\scriptsize, anchor=south west, xshift=-14pt] {window 2: 24--51} (51,1.75);
+  \node[note, text width=9.6cm, align=left, anchor=north west] at (1,-0.55)
+       {Window $n$ starts at $(n-1)\cdot23+1$ and spans 28 residues, so neighbours share 5 residues.
+        Example: PTEN (403 residues) gives 17 windows. Each window is scored in its own context;
+        overlapping scores are never averaged and ranks stay within a window.};
+\end{tikzpicture}

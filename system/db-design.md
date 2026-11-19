@@ -438,6 +438,33 @@ The database and workspace files must be copied together for local recovery. App
 
 Local sizing must include persistent projects, job snapshots, imports and annotations. Measure rows/bytes per representative job and report disk growth separately from reference tables. There is no free-hosting cap or hosted-database fallback acceptance target. The old transient-share estimate above does not size the new workspace.
 
+## 10b. Migration `0005` — 18 Nov 2026 (plan-system 1.3, 1.7)
+
+Nullable columns only; no constraint, no row change; SQLite adds them in place (`recreate='never'`); up/down tested on
+SQLite and PostgreSQL (`tests/test_workspace_schema.py::test_migration_0005_*`).
+
+| Table | Column | Meaning |
+|---|---|---|
+| `analysis_cell`, `prediction_cell` | `score_seed_sd`, `score_seed_min`, `score_seed_max` (float, NULL) | Population SD (ddof = 0), min and max of the per-seed raw scores of an ensemble (LoRA-D). NULL for the npz model and for rows written before 0005; snapshots stay readable (FR-22) |
+| `job_item` | `duration_ms` (float, NULL) | Worker wall time for the item (scoring + commit), input of the job ETA and of the `expected_tile_seconds` fallback. NULL for refused-at-submission, cancelled and pre-0005 items |
+
+## 10c. Migration `0006` — 18 Nov 2026 (plan-system 2.2)
+
+Table `model_comparison`: `comparison_id` (PK), `project_id` (FK project, cascade), `analysis_a`, `analysis_b` (each a
+composite FK `(project_id, analysis_id)` → `analysis_run`, cascade; `CHECK analysis_a <> analysis_b`),
+`sequence_sha256`, `metrics` (JSON), `disagreements` (JSON, ≤ 20 cells), `provenance` (JSON: both sides), `created_at`.
+Indexes on `(project_id, created_at, comparison_id)`, `analysis_a`, `analysis_b`. Immutable; the per-cell table is
+rebuilt from the two analyses. Deleting either analysis (after confirmation, listed in `dependencies`) or the project
+removes it. Up/down: `tests/test_workspace_schema.py::test_migration_0006_*`.
+
+## 10d. Migrations `0007`, `0008` — 18 Nov 2026 (plan-system 4.2, 4.5)
+
+* `0007` table `worker_heartbeat` (`owner` PK = host:pid:random, `started_at`, `last_seen_at`, `stopped_at`,
+  `items_done`): each worker upserts its row at most every 5 s and stamps `stopped_at` on a clean stop; the admin page
+  calls a worker alive when it reported within 30 s. Operational only.
+* `0008` column `analysis_job.priority` (int, default 0): 1 for jobs of at most 10 items or asked "high"; workers
+  claim by priority, then oldest job, and never more than `DF_JOB_MAX_RUNNING_ITEMS` (2) live items of one job.
+
 ## 11. Planned first-release workspace migration
 
 **Design only; no migration or database writes were made in the scope-update task.** Keep the existing reference schema and introduce project-owned tables rather than overloading the legacy share-token/expiry schema.

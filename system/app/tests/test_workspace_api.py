@@ -166,7 +166,8 @@ def test_hist02_export_from_snapshot(wc):
     saved = save(c, pid, uniprot_id='P12345', tile_index=1).json()
     csv_text = c.get(f"/v1/analyses/{saved['analysis_id']}/export?format=csv").text
     lines = [ln for ln in csv_text.splitlines() if not ln.startswith('#')]
-    assert lines[0] == 'peptide,tile,position,wt_aa,mut_aa,score_dpsi_raw,p_dpsi_ge_1_calibrated,rank_in_tile,top10pct_in_tile'
+    assert lines[0] == ('peptide,tile,position,wt_aa,mut_aa,score_dpsi_raw,p_dpsi_ge_1_calibrated,rank_in_tile,'
+                        'top10pct_in_tile,score_seed_sd,score_seed_min,score_seed_max')     # seed spread: plan-system 1.3
     assert len(lines) == 533
     assert f"# analysis_id={saved['analysis_id']}" in csv_text and '# clinvar_state=available' in csv_text
     assert SEQ not in c.get(f"/v1/analyses/{saved['analysis_id']}/export?format=csv").headers['content-disposition']
@@ -224,7 +225,7 @@ def test_hist03_analysis_delete_confirmation(wc):
     pid = new_project(c)
     a = save(c, pid, sequence=SEQ).json()['analysis_id']
     r = c.delete(f'/v1/analyses/{a}')
-    assert r.status_code == 409 and r.json()['dependencies'] == {'comparisons': 0}
+    assert r.status_code == 409 and r.json()['dependencies'] == {'comparisons': 0, 'model_comparisons': 0}
     assert c.delete(f'/v1/analyses/{a}?confirm=true').status_code == 204
     assert c.get(f'/v1/analyses/{a}').json()['code'] == 'ANALYSIS_NOT_FOUND'
 
@@ -233,3 +234,37 @@ def test_cors_allows_workspace_methods(wc):
     c, _, _ = wc
     r = c.options('/v1/projects/x', headers={'Origin': 'http://localhost:5173', 'Access-Control-Request-Method': 'DELETE'})
     assert 'DELETE' in r.headers.get('access-control-allow-methods', '')
+
+
+# --- SEC-03: writes from another site --------------------------------------------------------------------------------
+
+@pytest.mark.parametrize('headers', [{'Origin': 'https://evil.example'}, {'Sec-Fetch-Site': 'cross-site'}])
+def test_sec03_cross_site_writes_are_refused(wc, headers):
+    c, _, url = wc
+    r = c.post('/v1/projects', json={'name': 'x'}, headers=headers)
+    assert r.status_code == 403 and r.json()['code'] == 'INVALID_REQUEST'
+    pid = new_project(c)
+    assert c.delete(f'/v1/projects/{pid}?confirm=true', headers=headers).status_code == 403
+    r = c.post(f'/v1/projects/{pid}/datasets', files={'file': ('a.csv', b'x', 'text/csv')}, data={'metadata': '{}'},
+               headers=headers)
+    assert r.status_code == 403
+    with make_engine(url).connect() as conn:
+        assert conn.execute(select(func.count()).select_from(Project)).scalar() == 1
+    assert c.get('/v1/projects', headers=headers).status_code == 200            # reads are not affected
+
+
+def test_sec03_allowed_and_same_origin_writes_pass(wc):
+    c, _, _ = wc
+    assert c.post('/v1/projects', json={'name': 'a'}, headers={'Origin': 'http://localhost:5173'}).status_code == 201
+    assert c.post('/v1/projects', json={'name': 'b'}, headers={'Origin': 'http://testserver'}).status_code == 201
+    assert c.post('/v1/projects', json={'name': 'c'}, headers={'Sec-Fetch-Site': 'same-origin'}).status_code == 201
+
+
+@pytest.mark.parametrize('ctype', ['text/plain', 'application/x-www-form-urlencoded', None])
+def test_sec03_json_body_must_be_declared_json(wc, ctype):
+    """A text/plain or form body is what a page can send cross-site without a preflight."""
+    c, _, _ = wc
+    headers = {'content-type': ctype} if ctype else {}
+    r = c.post('/v1/projects', content=b'{"name": "x"}', headers=headers)
+    assert r.status_code == 415 and r.json()['code'] == 'INVALID_REQUEST'
+    assert c.post('/v1/predict', content=f'{{"sequence": "{SEQ}"}}'.encode(), headers=headers).status_code == 415

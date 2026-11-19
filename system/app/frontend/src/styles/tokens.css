@@ -116,9 +116,24 @@ html[data-theme='dark'] {
 
 /* ---- 3. component ---------------------------------------------------------------------------------------------- */
 :root {
-  /* Fira Sans for text, Fira Code for sequences, ids and numbers; self-hosted (@fontsource, OFL), never a CDN (NFR-09) */
-  --font-sans: 'Fira Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
-  --font-mono: 'Fira Code', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  /* Roboto for text, Roboto Mono for sequences, ids and hashes; variable weight axis, self-hosted (@fontsource-variable,
+     OFL-1.1), never a CDN (NFR-09). Changed from Fira Sans/Fira Code on 17 Nov 2026 (user request). */
+  --font-sans: 'Roboto Variable', 'Roboto', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  --font-mono: 'Roboto Mono Variable', 'Roboto Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  /* type scale (skill rule font-scale: 12 14 16 18 22 28) and weights (weight-hierarchy: 400 body, 500 labels, 600 headings) */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --leading-tight: 1.25;
+  --leading-body: 1.5;
+  --tracking-label: 0.01em;
   /* dense 4-px scale (skill density 8) */
   --space-1: 4px;
   --space-2: 8px;

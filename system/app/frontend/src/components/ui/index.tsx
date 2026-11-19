@@ -234,7 +234,12 @@ export function Dialog({ open, title, onClose, children, actions }: { open: bool
   useEffect(() => {
     const d = ref.current;
     if (!d) return;
-    if (open && !d.open) d.showModal?.();
+    if (open && !d.open) {
+      d.showModal?.();
+      // Native dialogs focus their first focusable element, which is the close button in the header; put keyboard
+      // users in the first field of the body instead (WCAG 2.4.3 focus order).
+      d.querySelector<HTMLElement>('.ui-dialog__body :is(input, select, textarea)')?.focus();
+    }
     if (!open && d.open) d.close?.();
   }, [open]);
   return (

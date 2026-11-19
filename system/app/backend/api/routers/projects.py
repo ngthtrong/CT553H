@@ -199,6 +199,26 @@ def delete_analysis(request: Request, analysis_id: str, confirm: bool = Query(Fa
     return Response(status_code=204)
 
 
+@router.get('/v1/analyses/{analysis_id}/report')
+def analysis_report(request: Request, analysis_id: str, format: str | None = Query(None), download: bool = Query(False)):
+    """plan-system 3.5: self-contained HTML report from the stored snapshot; PDF via the browser's print dialog."""
+    from fastapi.responses import HTMLResponse
+
+    from ..report import REPORT_CSP, build_report
+    aid = ws.parse_id(analysis_id, 'analysis_id')
+    if format is None:
+        raise DomainError('INVALID_REQUEST', 'The query parameter "format" (html) is required.', 422, 'format')
+    if format != 'html':
+        raise DomainError('INVALID_FORMAT', 'format must be "html"; print the page to get a PDF.', 400, 'format')
+    with _core(request).factory() as s:
+        data = ws.analysis_dict(s, ws.get_analysis(s, aid))
+    disposition = 'attachment' if download else 'inline'
+    name = f'degron-footprint_analysis-{aid[:8]}_report.html'
+    return HTMLResponse(build_report(data), headers={
+        'Content-Security-Policy': REPORT_CSP, 'Cache-Control': 'no-store',
+        'Content-Disposition': f'{disposition}; filename="{name}"'})
+
+
 @router.get('/v1/analyses/{analysis_id}/export')
 def export_analysis(request: Request, analysis_id: str, format: str | None = Query(None),
                     comparison_id: str | None = Query(None)):

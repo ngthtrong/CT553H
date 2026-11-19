@@ -3,9 +3,11 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../api/client';
 import { ErrorBanner } from '../components/ErrorBanner';
+import { useSlowModelConfirm } from '../components/ModelSelect';
 import { ProvenanceFooter } from '../components/ProvenanceFooter';
 import { DomainLegend, TileMap, tileDescription } from '../components/TileMap';
 import { useDocumentTitle } from '../lib/hooks';
+import { modelQuery, resolveModel, useModelParam, useModels } from '../lib/models';
 import { STATUS } from '../lib/domain';
 import { fmtPsi } from '../lib/format';
 import type { TileSummary } from '../api/types';
@@ -15,6 +17,9 @@ export function TilePickerPage() {
   const navigate = useNavigate();
   const [selected, setSelected] = useState<number | null>(null);
   const [list, setList] = useState(false);
+  const [modelId] = useModelParam();
+  const models = useModels();
+  const slow = useSlowModelConfirm(resolveModel(models.data?.items, modelId));
   useDocumentTitle(`Tiles of ${acc}`);
 
   const q = useQuery({
@@ -117,10 +122,11 @@ export function TilePickerPage() {
           type="button"
           className="primary"
           disabled={!tile}
-          onClick={() => tile && navigate(`/result/uniprot/${protein.uniprot_id}/${tile.tile_index}`)}
+          onClick={() => tile && slow.run(1, () => navigate(`/result/uniprot/${protein.uniprot_id}/${tile.tile_index}${modelQuery(modelId)}`))}
         >
           Predict this tile
         </button>
+        {slow.dialog}
       </section>
       <ProvenanceFooter provenance={provenance} />
     </>

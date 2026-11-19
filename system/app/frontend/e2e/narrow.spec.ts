@@ -17,3 +17,21 @@ test('NFR-12 360 px: no horizontal page scroll, table view first, touch targets 
   await page.getByRole('button', { name: 'Show the heatmap' }).click();
   await expect(page.getByTestId('heatmap')).toBeVisible();
 });
+
+test('VIZ-04 360 px: the protein footprint scrolls inside its box, the page never scrolls sideways', async ({ page }) => {
+  test.setTimeout(90_000);
+  await page.goto('/projects');
+  await page.getByRole('button', { name: 'New project' }).click();
+  await page.getByRole('dialog').getByLabel(/Name/).fill(`Narrow ${Date.now()}`);
+  await page.getByRole('dialog').getByRole('button', { name: 'Create project' }).click();
+  await expect(page).toHaveURL(/\/projects\/[0-9a-f-]{36}/);
+  const pid = page.url().split('/projects/')[1]!.split('?')[0]!;
+  await page.goto(`/new?mode=protein&project=${pid}`);
+  await page.getByRole('combobox', { name: 'Gene symbol or UniProt accession' }).fill('PTEN');
+  await page.getByRole('option', { name: /PTEN/ }).click();
+  await page.getByRole('checkbox', { name: /Score out-of-domain tiles anyway/ }).check();
+  await page.getByRole('button', { name: 'Submit protein job' }).click();
+  await expect(page.getByTestId('protein-footprint')).toBeVisible({ timeout: 60_000 });
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+  expect(overflow).toBeLessThanOrEqual(0);
+});

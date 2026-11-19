@@ -1,0 +1,569 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-11-17",
+  "scope": "read_only_review_of_research_application_and_report",
+  "scientific_status": "development_not_gate_closure",
+  "disclaimer": "Documentation review, not an independent numerical audit. No bootstrap recomputed, no OOF Parquet opened, no app test executed, no model loaded.",
+  "source_files": {
+    "research/lora-refit-transfer-2026-11-16/results.json": {
+      "sha256": "9a5b0036eb2b43b7574c7c567cead1dc2e253fe5405a081a658878878c104d5c",
+      "bytes": 106585
+    },
+    "research/lora-refit-transfer-2026-11-16/error-results.json": {
+      "sha256": "475be8f38f48629aadca00741e89c2ca8a099487c1f33c767bac149eeb9d2b8f",
+      "bytes": 8710
+    },
+    "research/lora-refit-transfer-2026-11-16/similarity-results.json": {
+      "sha256": "0c1bfca1abb5a67a880aade48fca996bfe0a529d883e499a81dbd5e2e3a471f9",
+      "bytes": 8153
+    },
+    "research/lora-refit-transfer-2026-11-16/koren-results.json": {
+      "sha256": "2938dcf5225bd55b6060169dde3a0b5978d72e2c7658e6b7fe728f391b715368",
+      "bytes": 10055
+    },
+    "research/lora-refit-transfer-2026-11-16/model-card.json": {
+      "sha256": "ea925afa4b961d8a09f06e145151bd8c4b8477fb5db40e6810f21979312ccd3d",
+      "bytes": 2905
+    },
+    "research/kaggle-roadmap-2026-10-31/local-output-analysis.json": {
+      "sha256": "1295e5d8aed2eef57604b5f94a6e501cbd7d04e395a2a531d7ccca320e35cc3f",
+      "bytes": 253813
+    },
+    "research/oof-prioritization-2026-11-07/results.json": {
+      "sha256": "4016cb5686f3520956cdc49268e2ea5363e678a6f1ce8555cec53e19a6938b87",
+      "bytes": 489566
+    },
+    "research/g2-acceptance-2026-11-07/d4-decision-2026-11-17.md": {
+      "sha256": "d79fd8cd4be420460cffb5c239c3a275309151cc62be6588aec301138bc88acc",
+      "bytes": 9558
+    },
+    "system/app/tests/results/lora-bundle.json": {
+      "sha256": "30046e291a5a59f883f4f96cd8fccc8a8cfeed77f1ddfb16da7518f99baa87ba",
+      "bytes": 2248
+    },
+    "system/app/acceptance-2026-11-17.json": {
+      "sha256": "50df68bf2cb791afe00871b8e64de8255360c9827bf9472a737450232a38a682",
+      "bytes": 5091
+    },
+    "system/app/tests/results/latency-lora.json": {
+      "sha256": "9fedb6797d7e08184e162c5ee0ef0f3dea3e179407986654d8ee7b3799681479",
+      "bytes": 2767
+    }
+  },
+  "research_dir_classification": {
+    "total": 36,
+    "main": 16,
+    "appendix": 16,
+    "historical": 4,
+    "counting_correction": "The first version of this file and of README.md reported 8/13/15. That was an addition error by Claude, not a change of classification; the per-directory table was never edited. Counted with grep on the table itself.",
+    "historical_four": [
+      "architecture-check",
+      "model-selection-pipeline-2026-10-24",
+      "next-steps-plan-2026-10-22",
+      "next-phase-plan-2026-10-22"
+    ],
+    "appendix_items_currently_in_the_main_chapter4_narrative": [
+      "pretrain-p3-2026-10-22",
+      "recluster-sensitivity-2026-10-22",
+      "r2-esm-features-2026-10-22",
+      "metadegron-analysis-2026-10-21"
+    ],
+    "note": "See README.md section A-6 for the per-directory table"
+  },
+  "report_float_inventory": {
+    "figures": 12,
+    "tables": 58,
+    "tables_chapter4": 37,
+    "pdf_pages": 121,
+    "source": "report/build/content/content.lof, content.lot, pdfinfo content.pdf",
+    "source_counts": {
+      "figure_env": 14,
+      "table_env": 45,
+      "longtable_env": 5
+    }
+  },
+  "pending_markers": {
+    "count": 5,
+    "locations": [
+      "report/frontmatter/acknowledgements.tex:7",
+      "report/appendices/a-installation-user-guide.tex:36",
+      "report/appendices/a-installation-user-guide.tex:49",
+      "report/appendices/b-supplementary-materials.tex:5",
+      "report/chapters/04-testing-evaluation.tex:687"
+    ],
+    "note": "plan.md:178 lists the same five. The chapter-4 line is prose containing the word, not a [PENDING: marker; verify before counting grep to zero."
+  },
+  "findings": [
+    {
+      "id": "F-1",
+      "status": "verified",
+      "kind": "documentation_inconsistency",
+      "claim": "plan.md item 2.12 is marked not started, but LoRA-D serving code exists untracked in system/app/",
+      "evidence": [
+        "plan.md:163",
+        "system/app/backend/LORA.md:1-9",
+        "git status --short in system/app shows ?? for backend/degron_footprint/lora.py, etl/export_lora.py, tests/test_lora.py, backend/LORA.md"
+      ]
+    },
+    {
+      "id": "F-2",
+      "status": "resolved_during_review",
+      "kind": "missing_evidence_file",
+      "claim": "backend/LORA.md cites tests/results/latency-lora.json for latency/RAM/image size; the file does not exist",
+      "evidence": [
+        "system/app/backend/LORA.md:67",
+        "ls system/app/tests/results/ returns 6 files, none named latency-lora.json"
+      ],
+      "resolution": "tests/results/latency-lora.json was produced at 18:01 local time on 2026-11-17; measurement timestamp inside the file is 2026-11-17T09:53:29+00:00"
+    },
+    {
+      "id": "F-3",
+      "status": "verified",
+      "kind": "documentation_inconsistency",
+      "claim": "Cross-runtime parity, recorded as not done in the D-4 record (L10) and plan, has in fact been measured on the application side",
+      "measured": {
+        "max_absolute_difference": 3.039836883544922e-06,
+        "atol": 1e-05,
+        "seeds": [
+          17,
+          29,
+          43
+        ],
+        "rows_per_seed": 32,
+        "runtimes": "CUDA Windows RTX 5060 Laptop Torch 2.13.0+cu130 vs CPU WSL"
+      },
+      "evidence": [
+        "system/app/tests/results/lora-bundle.json",
+        "research/g2-acceptance-2026-11-07/d4-decision-2026-11-17.md:111",
+        "research/g2-acceptance-2026-11-07/d4-decision-2026-11-17.md:144"
+      ]
+    },
+    {
+      "id": "F-4",
+      "status": "verified",
+      "kind": "negative_result_must_be_kept",
+      "claim": "In stratum PSI(WT) > 5 the zero baseline beats LoRA-D with the CI entirely above zero",
+      "measured": {
+        "stratum": "gt5",
+        "peptides": 257,
+        "clusters": 204,
+        "delta_mae_lora_minus_zero": 0.0152,
+        "ci95": [
+          0.007,
+          0.0238
+        ],
+        "ci_adjusted": [
+          0.0051,
+          0.026
+        ],
+        "mae_zero": 0.347,
+        "mae_lora_D": 0.3622,
+        "mae_frozen_D": 0.4436,
+        "mae_w5_D": 0.4428,
+        "signed_bias_w5_D": 0.3566961724917457,
+        "target_mean": -0.17585145792414666,
+        "prediction_mean_w5_D": 0.18084470927715302
+      },
+      "evidence": [
+        "research/lora-refit-transfer-2026-11-16/similarity-findings-2026-11-17.md:65-74",
+        "research/lora-refit-transfer-2026-11-16/results.json metrics.*.strata.gt5",
+        "research/lora-refit-transfer-2026-11-16/error-results.json:30-42"
+      ]
+    },
+    {
+      "id": "F-5",
+      "status": "verified",
+      "kind": "report_out_of_date",
+      "claim": "The report still states that LoRA has not been evaluated on T",
+      "evidence": [
+        "report/chapters/conclusion.tex:64",
+        "report/chapters/sections/question-assessment.tex:33",
+        "report/frontmatter/research-status.tex:21"
+      ]
+    },
+    {
+      "id": "F-6",
+      "status": "verified",
+      "kind": "confirmation",
+      "claim": "Five PENDING markers confirmed, matching plan.md item 3.1",
+      "evidence": [
+        "plan.md:178"
+      ]
+    },
+    {
+      "id": "F-7",
+      "status": "verified",
+      "kind": "layout_imbalance",
+      "claim": "12 figures against 58 tables, 37 of the tables in chapter 4",
+      "evidence": [
+        "report/build/content/content.lof",
+        "report/build/content/content.lot"
+      ]
+    },
+    {
+      "id": "F-8",
+      "status": "verified_plus_judgement",
+      "kind": "scope",
+      "claim": "36 research directories classify as 16 main, 16 appendix, 4 historical; the problem is composition, not count: chapter 4 presents four appendix-class experiments in the main narrative while the branch-1 results behind D-4 are absent",
+      "evidence": [
+        "README.md section A-6",
+        "report/chapters/04-testing-evaluation.tex:320-494"
+      ],
+      "correction": "An earlier version of this finding said \"only 8 of 36\"; that was an addition error, now fixed. The per-directory table was not changed."
+    },
+    {
+      "id": "F-9",
+      "status": "verified_plus_judgement",
+      "kind": "feature_value",
+      "claim": "UC-02 is the only use case with quantitative evidence of benefit; UC-05 and UC-09 have design but no demand evidence in the repository",
+      "evidence": [
+        "research/oof-prioritization-2026-11-07/results.json",
+        "system/srs.md:77",
+        "system/srs.md:89",
+        "system/srs.md:105"
+      ]
+    },
+    {
+      "id": "F-10",
+      "status": "verified_plus_judgement",
+      "kind": "user_definition",
+      "claim": "Of the four stakeholder groups in the SRS only one is a user of the prediction tool; the other entries are project roles",
+      "evidence": [
+        "system/srs.md:43"
+      ]
+    },
+    {
+      "id": "F-11",
+      "status": "verified",
+      "kind": "serving_latency_blocker",
+      "claim": "The LoRA-D model answers a single tile roughly three orders of magnitude slower than the served ridge model and misses the proposed NFR-01 target; the recorded threshold check says false",
+      "measured": {
+        "host": "WSL2, AMD Ryzen 5 5500U, 12 logical CPUs, 7619 MB RAM, Docker in the same VM; DF_LORA_THREADS=4",
+        "protein": "A6NMZ7",
+        "tiles": 10,
+        "requests": "sequential, warm caches, through nginx and the API",
+        "m3-ext4.0-platt-v1": {
+          "kind": "ridge_platt",
+          "p50_ms": 18.2,
+          "p95_ms": 20.2,
+          "first_request_ms": 30.7
+        },
+        "esm2-35m-lora-d-aa4fc2b7": {
+          "kind": "torch_lora",
+          "p50_ms": 37674.8,
+          "p95_ms": 39148.9,
+          "first_request_ms": 41697.7
+        },
+        "ratio_p95": 1937.6,
+        "nfr01_target_ms": 300,
+        "threshold_proposed_NFR-01_pass": {
+          "m3-ext4.0-platt-v1": true,
+          "esm2-35m-lora-d-aa4fc2b7": false
+        },
+        "why": "LoRA-D runs 3 seeds x (1 + 532) ESM-2 35M forward passes per tile on the CPU",
+        "api_container_mem_usage": "514.5MiB / 7.44GiB",
+        "backend_image_bytes": 1767655826
+      },
+      "evidence": [
+        "system/app/tests/results/latency-lora.json",
+        "system/srs.md:160"
+      ],
+      "consequence": "Supports recommendation D-D: keep m3-ext4.0-platt-v1 as the default and present LoRA-D as an exported, parity-checked candidate"
+    },
+    {
+      "id": "F-12",
+      "status": "verified",
+      "kind": "parity_evidence",
+      "claim": "The containerised API serving LoRA-D reproduces the research-implementation fixture exactly on two full tiles",
+      "measured": {
+        "tiles": 2,
+        "cells_per_tile": 532,
+        "max_abs_diff_score": 0.0,
+        "max_abs_diff_prob": 0.0,
+        "scope": "API in the WITH_LORA=1 container (python:3.12.12-slim, torch CPU wheel) through nginx vs the research-implementation fixture",
+        "domain_status": "predicted_in_domain"
+      },
+      "evidence": [
+        "system/app/tests/results/latency-lora.json docker_api_parity_vs_research_fixture"
+      ]
+    }
+  ],
+  "transfer_results_T": {
+    "denominators": {
+      "cells": 39234,
+      "peptides": 1410,
+      "groups": 730
+    },
+    "primary_endpoint": "peptide_macro_MAE_T_rep1",
+    "evaluation": "posthoc_transfer_on_previously_examined_held_source",
+    "mae": {
+      "esm2_35m-lora-D": 0.3469711074769199,
+      "esm2_35m-frozen-D": 0.387518875245523,
+      "ordered-w5-D": 0.3991468967284879,
+      "zero": 0.402402576170689,
+      "constant-W-mean": 0.4175193179551878
+    },
+    "contrasts": {
+      "lora_D_minus_frozen_D": {
+        "delta": -0.04054776776860308,
+        "ci_adjusted": [
+          -0.04553073772188204,
+          -0.03561145052801892
+        ]
+      },
+      "lora_D_minus_w5_D": {
+        "delta": -0.05217578925156808,
+        "ci_adjusted": [
+          -0.057681423673683375,
+          -0.0469167964930416
+        ]
+      }
+    },
+    "per_seed_mae_lora_D": {
+      "17": 0.36,
+      "29": 0.3644,
+      "43": 0.3537
+    },
+    "source": "research/lora-refit-transfer-2026-11-16/results.json"
+  },
+  "similarity_verdict": {
+    "verdict": "H-S_does_not_explain_advantage",
+    "bottom_identity_bin": {
+      "bin": "[0,0.25)",
+      "peptides": 1093,
+      "groups": 627,
+      "delta_mae_lora_minus_frozen": -0.0399,
+      "ci_adjusted": [
+        -0.0457,
+        -0.0342
+      ]
+    },
+    "spearman_identity_vs_delta": {
+      "lora_minus_frozen": 0.0164,
+      "lora_minus_w5": 0.0502
+    },
+    "source": "research/lora-refit-transfer-2026-11-16/similarity-results.json:146-160"
+  },
+  "koren_survey": {
+    "role": "survey_evidence_not_acceptance_condition",
+    "substrates": 9,
+    "mutants": 1739,
+    "macro_spearman": {
+      "lora": 0.06128201605454375,
+      "frozen": 0.021538380783239903
+    },
+    "negative_substrates_present": true,
+    "source": "research/lora-refit-transfer-2026-11-16/koren-results.json:304-318"
+  },
+  "d4_decision": {
+    "option": "A",
+    "scope": "close_G2_within_development",
+    "decided_by": "author",
+    "advisor_acknowledgement": "not_recorded",
+    "limitations": "L1..L10",
+    "does_not": [
+      "close_G3",
+      "change_serving_model",
+      "close_source_pending",
+      "modify_campaign_scientific_status"
+    ],
+    "source": "research/g2-acceptance-2026-11-07/d4-decision-2026-11-17.md"
+  },
+  "application_status": {
+    "tables": 19,
+    "migrations": [
+      "0001",
+      "0002",
+      "0003",
+      "0004"
+    ],
+    "contract_operations": 37,
+    "frontend_pages": 13,
+    "screenshots": "14 per theme, light and dark",
+    "serving_model": "m3-ext4.0-platt-v1",
+    "lora_model_registered_not_default": "esm2-35m-lora-d-aa4fc2b7",
+    "tests": {
+      "backend_sqlite_pass": 292,
+      "backend_pg_pass": 273,
+      "backend_pg_run_date": "2026-11-16",
+      "vitest": 171,
+      "e2e_mock": 28,
+      "e2e_real": 14,
+      "coverage_backend_percent": 96
+    },
+    "open_items": [
+      "rerun PostgreSQL suite after the 17 Nov changes",
+      "manual accessibility check",
+      "latency-lora.json missing",
+      "serving default decision"
+    ],
+    "source": [
+      "system/app/acceptance-2026-11-17.md",
+      "system/app/backend/db/models.py",
+      "system/openapi.yaml",
+      "system/app/etl/params.yaml"
+    ]
+  },
+  "gaps": [
+    {
+      "id": "G-1",
+      "item": "advisor acknowledgement of the D-4 record",
+      "needs_gpu": false,
+      "needed_for_thesis": true
+    },
+    {
+      "id": "G-2",
+      "item": "align plan.md and D-4 with the measured cross-runtime parity",
+      "needs_gpu": false,
+      "needed_for_thesis": true
+    },
+    {
+      "id": "G-3",
+      "item": "produce tests/results/latency-lora.json",
+      "needs_gpu": false,
+      "needed_for_thesis": true
+    },
+    {
+      "id": "G-4",
+      "item": "mechanism of the gt5 negative result",
+      "needs_gpu": false,
+      "needed_for_thesis": false
+    },
+    {
+      "id": "G-5",
+      "item": "source_pending external source",
+      "needs_gpu": true,
+      "needed_for_thesis": false
+    },
+    {
+      "id": "G-6",
+      "item": "structure_pending / SaProt",
+      "needs_gpu": true,
+      "needed_for_thesis": false
+    },
+    {
+      "id": "G-7",
+      "item": "full fine-tuning comparison",
+      "needs_gpu": true,
+      "needed_for_thesis": false
+    },
+    {
+      "id": "G-8",
+      "item": "wet lab or prospective validation",
+      "needs_gpu": false,
+      "needed_for_thesis": false
+    },
+    {
+      "id": "G-9",
+      "item": "LoRA rank / adapter placement ablation",
+      "needs_gpu": true,
+      "needed_for_thesis": false
+    },
+    {
+      "id": "G-10",
+      "item": "G3 research acceptance for a serving model",
+      "needs_gpu": true,
+      "needed_for_thesis": false
+    }
+  ],
+  "decisions_awaiting_author": [
+    "D-A",
+    "D-B",
+    "D-C",
+    "D-D",
+    "D-E",
+    "D-F",
+    "D-G",
+    "D-H"
+  ],
+  "provenance": {
+    "machine": "WSL2 Linux, read-only session",
+    "branch": "main",
+    "head": "9910996cb7e1edb2c5fbef734aa1e3424b2d8374",
+    "actions_not_taken": [
+      "no training",
+      "no inference",
+      "no model loading",
+      "no campaign start/stop/resume",
+      "no writes to research/**/output, state.json, manifests, checkpoints or data/",
+      "no edits to report/, presentation/, reportTemplate/, system/ or plan.md",
+      "no commit, no push"
+    ]
+  },
+  "addendum_1806": {
+    "note": "The application side changed while this review was being written. Facts below were re-read at 18:06 local time; the earlier body of README.md describes the 17:30 state and F-2 is superseded here.",
+    "bundle_re_export": {
+      "manifest_path": "data/processed/lora-d-serving-v1/esm2-35m-lora-d-v1.json",
+      "manifest_sha256_now": "d6729faf0bc4fa781239fba2945362ae72273901afdde5d35138e2b35401303f",
+      "manifest_bytes_now": 7241,
+      "manifest_sha256_seen_earlier_in_session": "bd8fd7e03d4b7940824436347c6839c9d2ed97914f8d87acd52b0b9fc37fa45a",
+      "pinned_in": "system/app/etl/sources.yaml:101",
+      "consistent": true,
+      "bundle_on_disk_bytes": 139125861,
+      "bundle_files": 12,
+      "bundle_du": "133M"
+    }
+  },
+  "refit_models_produced": {
+    "answer": "yes_six_final_models_plus_two_calibrators_and_one_exported_serving_bundle",
+    "campaign": "aa4fc2b7ce29abf9",
+    "recipes": {
+      "esm2_35m-lora-D": {
+        "seeds": [
+          17,
+          29,
+          43
+        ],
+        "epochs": 2
+      },
+      "esm2_35m-frozen-D": {
+        "seeds": [
+          17,
+          29,
+          43
+        ],
+        "epochs": {
+          "17": 1,
+          "29": 2,
+          "43": 2
+        }
+      }
+    },
+    "checkpoint_bytes_each": 1016583,
+    "lora_model_ids": [
+      "esm2_35m-lora-D-seed17-refit-aa4fc2b7ce29abf9",
+      "esm2_35m-lora-D-seed29-refit-aa4fc2b7ce29abf9",
+      "esm2_35m-lora-D-seed43-refit-aa4fc2b7ce29abf9"
+    ],
+    "checkpoint_sha256_verified_against_model_card": true,
+    "calibrators": [
+      "jobs/calibrate-final-lora-D/final-calibrator.joblib",
+      "jobs/calibrate-final-frozen-D/final-calibrator.joblib"
+    ],
+    "calibrator_fit_population": "ensemble OOF W only",
+    "ensemble_rule": "mean raw predictions of seeds 17, 29, 43, then calibrate",
+    "base": "facebook/esm2_t12_35M_UR50D @ 6fbf070e65b0b7291e7bbcd451118c216cff79d8, float32",
+    "adapter": {
+      "rank": 8,
+      "alpha": 16,
+      "targets": [
+        "query",
+        "value"
+      ]
+    },
+    "serving_bundle": "data/processed/lora-d-serving-v1/ (133 MB, 12 files), registered in the app as esm2-35m-lora-d-aa4fc2b7",
+    "is_the_serving_default": false,
+    "serving_promotion": "not_authorized_by_research_execution",
+    "G2_G3": "not_closed",
+    "source": [
+      "research/lora-refit-transfer-2026-11-16/model-card.json",
+      "research/kaggle-roadmap-2026-10-31/output/local/aa4fc2b7ce29abf9/jobs/",
+      "system/app/backend/LORA.md",
+      "system/app/etl/params.yaml:17-20"
+    ]
+  },
+  "decisions_resolved": {
+    "D-A": "approved by the author on 2026-11-17 (classification table)",
+    "D-B": "approved by the author on 2026-11-17 (features T-1..T-5)"
+  }
+}

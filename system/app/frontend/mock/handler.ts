@@ -16,6 +16,10 @@ export interface MockResponse {
 
 const AA = 'ACDEFGHIKLMNPQRSTVWY';
 const MODEL_ID = 'mock-m3-ext4.0-platt-v1';
+// A second serving effect model (slow, like LoRA-D) and one that does not serve (plan-system 1.1). Synthetic.
+export const MOCK_SLOW_MODEL_ID = 'mock-esm2-lora-d';
+const MOCK_RETIRED_MODEL_ID = 'mock-retired-v0';
+const MODEL_KIND: Record<string, string> = { [MODEL_ID]: 'ridge_platt', [MOCK_SLOW_MODEL_ID]: 'torch_lora' };
 const REAL_TILE = 'DIMFLVDSSGSIGPENFSKMKTFMKNLV'; // A6NMZ7 tile 28, UniProt 2026_03
 export const OUT_OF_DOMAIN_RUN_EXPIRED = '00000000-0000-4000-8000-000000000410';
 
@@ -90,10 +94,11 @@ const SOURCE_CLINVAR = {
 };
 const CLINVAR_DISCLAIMER = 'ClinVar data are not for diagnostic use; they are shown for research only.';
 
-function provenance(extra: { clinvar?: boolean } = {}) {
+function provenance(extra: { clinvar?: boolean; modelId?: string } = {}) {
+  const modelId = extra.modelId ?? MODEL_ID;
   return {
-    model_id: MODEL_ID,
-    model_kind: 'ridge_platt',
+    model_id: modelId,
+    model_kind: MODEL_KIND[modelId] ?? 'ridge_platt',
     weights_sha256: 'deadbeef'.repeat(8),
     feature_spec: 'm3-180: wt one-hot | mutant one-hot | tile composition | context -3..+3',
     event_definition: 'P(DeltaPSI >= 1.0)',
@@ -124,6 +129,9 @@ interface Cell {
   p_dpsi_ge_1_calibrated: number;
   rank_in_tile: number;
   top10pct_in_tile: boolean;
+  score_seed_sd: number | null;
+  score_seed_min: number | null;
+  score_seed_max: number | null;
 }
 
 const REAL_FIRST = [
@@ -132,20 +140,27 @@ const REAL_FIRST = [
   { mut: 'E', s: 0.1907540759, p: 0.06485567777 },
 ];
 
-function makeCells(seq: string, real: boolean): Cell[] {
+function makeCells(seq: string, real: boolean, seeds = false): Cell[] {
   const cells: Cell[] = [];
   for (let i = 0; i < 28; i += 1) {
     const wt = seq.charAt(i);
     for (const aa of AA) {
       if (aa === wt) continue;
       let s = (unit(`${seq}|${i}|${aa}`) - 0.45) * 2.4;
+      // the second (ensemble) mock model scores differently, deterministically, so the two can be compared (2.2, 2.6)
+      if (seeds) s = s * 0.75 + (unit(`${seq}|${i}|${aa}|m2`) - 0.5) * 1.2;
       let p = 1 / (1 + Math.exp(-(2.2 * s - 2.3)));
       const r = real && i === 0 ? REAL_FIRST.find((x) => x.mut === aa) : undefined;
       if (r) {
         s = r.s;
         p = r.p;
       }
-      cells.push({ position: i + 1, wt_aa: wt, mut_aa: aa, score_dpsi_raw: s, p_dpsi_ge_1_calibrated: p, rank_in_tile: 0, top10pct_in_tile: false });
+      // Synthetic seed spread for the ensemble mock model (plan-system 1.3); null like the real npz model otherwise.
+      const sd = seeds ? 0.02 + 0.3 * unit(`${seq}|${i}|${aa}|sd`) : null;
+      cells.push({
+        position: i + 1, wt_aa: wt, mut_aa: aa, score_dpsi_raw: s, p_dpsi_ge_1_calibrated: p, rank_in_tile: 0, top10pct_in_tile: false,
+        score_seed_sd: sd, score_seed_min: sd === null ? null : s - 1.2 * sd, score_seed_max: sd === null ? null : s + 1.2 * sd,
+      });
     }
   }
   const order = [...cells].sort((a, b) => b.score_dpsi_raw - a.score_dpsi_raw);
@@ -157,7 +172,7 @@ function makeCells(seq: string, real: boolean): Cell[] {
 }
 
 const WARN = {
-  DOMAIN_UNKNOWN: 'The domain of this tile is unknown. The model was trained only on tiles that behave as degrons (wild-type PSI <= 4.0) and cannot check this one.',
+  DOMAIN_UNKNOWN: 'The domain of this tile is unknown: it was not measured and no gate model covers it. The model was trained only on tiles with intrinsic wild-type PSI <= 4.0.',
   DOMAIN_UNRELIABLE: 'The measurement of this tile rests on too few reads; whether it is in the domain is uncertain.',
   PREDICTED_DOMAIN: 'The domain status of this tile was predicted by a gate model, not measured.',
   TRAINING_PEPTIDE: 'This tile is among the peptides the model was trained on; its scores are not an out-of-sample estimate.',
@@ -189,7 +204,7 @@ function runPredict(body: string, extraFields: string[] = []): Parsed {
   if (hasSeq === hasAcc || (hasAcc && !('uniprot_id' in req && 'tile_index' in req))) {
     return { ok: false, response: err(422, 'INVALID_REQUEST', 'Give either a sequence, or a UniProt accession together with a tile index.') };
   }
-  if ('model_id' in req && req.model_id !== MODEL_ID) {
+  if ('model_id' in req && req.model_id !== MODEL_ID && req.model_id !== MOCK_SLOW_MODEL_ID) {
     return { ok: false, response: err(404, 'MODEL_NOT_FOUND', 'No frozen effect model has this id.', 'model_id') };
   }
   const override = req.override_domain === true;
@@ -247,11 +262,11 @@ function runPredict(body: string, extraFields: string[] = []): Parsed {
     ok: true,
     request: req,
     result: {
-      provenance: provenance(),
+      provenance: provenance({ modelId: typeof req.model_id === 'string' ? req.model_id : MODEL_ID }),
       tile: tileInfo,
       domain: { status, psi_wt_measured: fx?.psi ?? null, reads_measured: fx?.reads ?? null, gate_model_id: status.startsWith('predicted') ? 'mock-gate-r3-candidate' : null, message },
       warnings,
-      cells: makeCells(seq, training),
+      cells: makeCells(seq, training, req.model_id === MOCK_SLOW_MODEL_ID),
     },
   };
 }
@@ -269,8 +284,11 @@ function csvOf(result: { provenance: ReturnType<typeof provenance>; tile: { unip
     `# data_sources=${p.data_sources.map((s) => s.source_id).join(',')}`,
     `# generated_at=${p.generated_at}`,
     '# disclaimer=Not a probability of disease; not for diagnostic use.',
-    'peptide,tile,position,wt_aa,mut_aa,score_dpsi_raw,p_dpsi_ge_1_calibrated,rank_in_tile,top10pct_in_tile',
-    ...result.cells.map((c) => `${peptide},${result.tile.tile_index ?? 0},${c.position},${c.wt_aa},${c.mut_aa},${c.score_dpsi_raw.toPrecision(10)},${c.p_dpsi_ge_1_calibrated.toPrecision(10)},${c.rank_in_tile},${c.top10pct_in_tile ? 1 : 0}`),
+    'peptide,tile,position,wt_aa,mut_aa,score_dpsi_raw,p_dpsi_ge_1_calibrated,rank_in_tile,top10pct_in_tile,score_seed_sd,score_seed_min,score_seed_max',
+    ...result.cells.map((c) => {
+      const seed = [c.score_seed_sd, c.score_seed_min, c.score_seed_max].map((v) => (v === null || v === undefined ? '' : v.toPrecision(10))).join(',');
+      return `${peptide},${result.tile.tile_index ?? 0},${c.position},${c.wt_aa},${c.mut_aa},${c.score_dpsi_raw.toPrecision(10)},${c.p_dpsi_ge_1_calibrated.toPrecision(10)},${c.rank_in_tile},${c.top10pct_in_tile ? 1 : 0},${seed}`;
+    }),
   ];
   return `${lines.join('\n')}\n`;
 }
@@ -308,6 +326,20 @@ export function handle(method: string, rawUrl: string, headers: Record<string, s
   const m = method.toUpperCase();
   const get = (name: string) => headers[name.toLowerCase()] ?? headers[name];
 
+  if ((path === '/v1/admin/status' && m === 'GET') || (path === '/v1/admin/registry/reload' && m === 'POST')) {
+    // plan-system 4.2, synthetic
+    return ok({
+      generated_at: new Date().toISOString(), version: 'mock', code_version: '0.1.0', schema_revision: '0007',
+      models: { default_model_id: MODEL_ID, default_source: 'registry', gate_model_id: 'mock-gate-r3-candidate',
+        loaded: [{ model_id: MODEL_ID, kind: 'ridge_platt', weights_sha256: 'deadbeef'.repeat(8), expected_tile_seconds: 0.02 }, { model_id: MOCK_SLOW_MODEL_ID, kind: 'torch_lora', weights_sha256: 'feedface'.repeat(8), expected_tile_seconds: 38 }],
+        not_loaded: [{ model_id: 'mock-retired-v0', reason: 'model status is retired; only frozen models serve' }] },
+      cache: { mode: 'memory', entries: 3, max_entries: 512, hits: 5, misses: 3, disk_hits: 0, disk_writes: 0, errors: 0 },
+      etl: { status: 'succeeded', started_at: '2026-11-17T10:00:00+00:00', finished_at: '2026-11-17T10:02:00+00:00', git_commit: 'mock', numbers: { proteins: 20420, tiles: 482216 } },
+      queue: { jobs_by_state: { completed: 2 }, items_pending: 0, items_running: 0, oldest_open_job_seconds: null },
+      workers: { alive: 1, alive_after_seconds: 30, recent: [{ owner: 'mock-host:1:abcd', alive: true, started_at: '2026-11-18T08:00:00+00:00', last_seen_at: '2026-11-18T09:00:00+00:00', stopped_at: null, items_done: 42 }] },
+      storage: { database_bytes: 522055680, workspace: { bytes: 300434, files: 2 } },
+    });
+  }
   if (path === '/healthz' && m === 'GET') return ok({ status: 'ok', version: 'mock', model_loaded: true, default_model_id: MODEL_ID, database: 'ok' });
 
   if (path === '/v1/predict' && m === 'POST') {
@@ -375,21 +407,26 @@ export function handle(method: string, rawUrl: string, headers: Record<string, s
   if (path === '/v1/models' && m === 'GET') {
     return ok({
       items: [
-        { model_id: MODEL_ID, role: 'effect', kind: 'ridge_platt', status: 'frozen', is_default: true },
-        { model_id: 'mock-gate-r3-candidate', role: 'gate', kind: 'ridge', status: 'candidate', is_default: false },
+        { model_id: MODEL_ID, role: 'effect', kind: 'ridge_platt', status: 'frozen', is_default: true, serving: true, not_serving_reason: null, expected_tile_seconds: 0.02 },
+        { model_id: MOCK_SLOW_MODEL_ID, role: 'effect', kind: 'torch_lora', status: 'frozen', is_default: false, serving: true, not_serving_reason: null, expected_tile_seconds: 38 },
+        { model_id: MOCK_RETIRED_MODEL_ID, role: 'effect', kind: 'ridge_platt', status: 'retired', is_default: false, serving: false, not_serving_reason: 'model status is retired; only frozen models serve', expected_tile_seconds: null },
+        { model_id: 'mock-gate-r3-candidate', role: 'gate', kind: 'ridge', status: 'candidate', is_default: false, serving: false, not_serving_reason: 'not the domain gate loaded by this service', expected_tile_seconds: null },
       ],
     });
   }
   const model = /^\/v1\/models\/([^/]+)$/.exec(path);
   if (model && m === 'GET') {
     const id = decodeURIComponent(model[1] ?? '');
-    if (id !== MODEL_ID) return err(404, 'MODEL_NOT_FOUND', 'No model has this id.');
+    if (id !== MODEL_ID && id !== MOCK_SLOW_MODEL_ID) return err(404, 'MODEL_NOT_FOUND', 'No model has this id.');
     return ok({
-      model_id: MODEL_ID,
+      model_id: id,
       role: 'effect',
-      kind: 'ridge_platt',
+      kind: MODEL_KIND[id],
       status: 'frozen',
-      is_default: true,
+      is_default: id === MODEL_ID,
+      serving: true,
+      not_serving_reason: null,
+      expected_tile_seconds: id === MODEL_ID ? 0.02 : 38,
       weights_sha256: 'deadbeef'.repeat(8),
       event_definition: 'P(DeltaPSI >= 1.0)',
       domain_description: '28-mer internal tiles, GPS assay (Zhang 2023), intrinsic PSI(WT) <= 4.0',

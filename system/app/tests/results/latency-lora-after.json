@@ -1,0 +1,71 @@
+{
+  "date": "2026-11-18T14:05:21+00:00",
+  "host": {
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "cpu_model": "AMD Ryzen 5 5500U with Radeon Graphics",
+    "logical_cpus": 12,
+    "mem_total_mb": 7619,
+    "load_average_1_5_15": [
+      1.96923828125,
+      3.60546875,
+      2.9462890625
+    ],
+    "note": "WSL2 on the author laptop; Docker Engine in the same VM; other processes may share the CPU"
+  },
+  "base": "http://127.0.0.1:8080",
+  "protein": "A6NMZ7",
+  "tiles": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "health": {
+    "status": "ok",
+    "version": "0.1.0",
+    "model_loaded": true,
+    "default_model_id": "esm2-35m-lora-d-aa4fc2b7",
+    "database": "ok",
+    "default_model_source": "setting",
+    "default_model_sha256": "d6729faf0bc4fa781239fba2945362ae72273901afdde5d35138e2b35401303f"
+  },
+  "esm2-35m-lora-d-aa4fc2b7": {
+    "kind": "torch_lora",
+    "first_request_ms": 30570.3,
+    "n": 10,
+    "p50_ms": 27930.3,
+    "p95_ms": 28087.8,
+    "mean_ms": 27818.8,
+    "min_ms": 27464.7,
+    "max_ms": 28087.8
+  },
+  "api_container_stats_after": {
+    "BlockIO": "0B / 0B",
+    "CPUPerc": "0.25%",
+    "Container": "degron-footprint-api-1",
+    "ID": "e1e65fce7bf7",
+    "MemPerc": "5.68%",
+    "MemUsage": "432.4MiB / 7.44GiB",
+    "Name": "degron-footprint-api-1",
+    "NetIO": "117kB / 443kB",
+    "PIDs": "20"
+  },
+  "api_container_lora_threads": "6",
+  "threshold_proposed": {
+    "NFR-01_predict_p95_le_300ms": {
+      "esm2-35m-lora-d-aa4fc2b7": false
+    }
+  },
+  "caveats": [
+    "one protein, sequential requests, warm network; through nginx (web container) and the API",
+    "each measured tile is requested once per model in a freshly started API process, so none is a prediction-cache hit (warm-up on another tile)",
+    "LoRA-D runs 3 seeds x (1 + 532) ESM-2 35M forward passes per tile on the CPU",
+    "not a benchmark of the model quality; development_not_gate_closure"
+  ]
+}

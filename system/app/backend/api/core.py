@@ -12,13 +12,14 @@ import yaml
 from sqlalchemy import Engine
 from sqlalchemy.orm import Session, sessionmaker
 
+from degron_footprint.cache import PredictionCache
 from degron_footprint.domain import GateAdapter, load_gate
 from degron_footprint.gate_r3 import GATE_CARD  # importing it also registers the R3 gate loader
 
 from . import repository as repo
 from .config import Settings
 from .ratelimit import RateLimiter
-from .service import Predictor, Registry, load_registry
+from .service import Predictor, Registry, load_registry, log_default_model
 from .usage import UsageCounter
 
 log = logging.getLogger('api.core')
@@ -37,8 +38,9 @@ class Core:
     tasks: list[asyncio.Task] = field(default_factory=list)
 
     def reload_registry(self) -> None:
-        self.registry = load_registry(self.factory, self.settings.model_dir)
+        self.registry = load_registry(self.factory, self.settings.model_dir, self.settings.default_model_id)
         self.predictor.registry = self.registry
+        log_default_model(self.registry)
 
     def purge_expired(self) -> int:
         """Legacy expired share runs, plus abandoned import previews (db-design §9: proposed 24 h)."""
@@ -56,10 +58,16 @@ class Core:
 
 
 def build_core(settings: Settings, engine: Engine, factory: sessionmaker[Session]) -> Core:
-    registry = load_registry(factory, settings.model_dir)
+    registry = load_registry(factory, settings.model_dir, settings.default_model_id)
+    log_default_model(registry)
     gate = load_gate(settings.gate_weights, settings.gate_card or settings.model_dir / GATE_CARD)
+    cache = PredictionCache(settings.prediction_cache, settings.prediction_cache_max_entries,
+                            (settings.prediction_cache_dir or settings.workspace_dir.parent / 'prediction-cache')
+                            if settings.prediction_cache == 'disk' else None)
+    if cache.mode == 'disk':
+        log.warning('prediction cache on disk at %s: tile sequences are kept on disk (INSTALL.md)', cache.directory)
     return Core(settings=settings, engine=engine, factory=factory, registry=registry, gate=gate,
-                predictor=Predictor(registry, gate, factory), limiter=RateLimiter(settings.rate_window_seconds))
+                predictor=Predictor(registry, gate, factory, cache), limiter=RateLimiter(settings.rate_window_seconds))
 
 
 def load_contract(path: Path | None) -> dict[str, Any] | None:

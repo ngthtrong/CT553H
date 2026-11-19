@@ -1,0 +1,44 @@
+% Original schematic of degron classes and of how a substitution shifts the reporter readout
+% (plan-report 3.3). Knowledge sources: varshavsky2019 (N-degrons), koren2018 (C-degrons),
+% zhang2023 (peptide tiles in GPS). Conceptual; directions follow the label convention of
+% Section 2 (positive Delta PSI = stabilised reporter).
+\begin{tikzpicture}[fig]
+  % ---------------- (a) classes along a protein
+  \node[title, anchor=west] at (0,2.6) {(a) Where degrons sit};
+  \node[protein, minimum width=5.6cm, minimum height=6mm] (prot) at (2.9,1.8) {};
+  \node[font=\scriptsize] at ($(prot.west)+(-0.25,0)$) {N};
+  \node[font=\scriptsize] at ($(prot.east)+(0.25,0)$) {C};
+  \node[degron, minimum width=7mm, minimum height=6mm, anchor=west] (nd) at (prot.west) {};
+  \node[degron, minimum width=9mm, minimum height=6mm] (id) at (3.0,1.8) {};
+  \node[degron, minimum width=7mm, minimum height=6mm, anchor=east] (cd) at (prot.east) {};
+  \node[font=\scriptsize, align=center, anchor=north] at ($(nd.south)+(0,-0.12)$) {N-degron\\(N-terminus)};
+  \node[font=\scriptsize, align=center, anchor=north] at ($(id.south)+(0,-0.12)$) {internal\\degron};
+  \node[font=\scriptsize, align=center, anchor=north] at ($(cd.south)+(0,-0.12)$) {C-degron\\(C-terminus)};
+  \node[note, text width=5.8cm, align=left, anchor=north west] at (0,0.55)
+       {N- and C-degrons depend on a free terminus; internal degrons work inside the chain. Each is
+        read by its own recognition machinery and can be masked by folding or partners.};
+
+  % ---------------- (b) reporter tile
+  \node[title, anchor=west] at (6.45,2.6) {(b) In the reporter};
+  \node[draw=oiGreen!70!black, fill=oiGreen!30, minimum width=11mm, minimum height=6mm] (gfp) at (7.1,1.8) {GFP};
+  \node[degron, minimum width=19mm, minimum height=6mm, right=0pt of gfp] (tile) {\scriptsize 28-residue tile};
+  \node[note, text width=3.3cm, align=left, anchor=north west] at (6.45,1.25)
+       {A tile is read out of its native protein, so terminal and structural context differ
+        from the intact protein.};
+
+  % ---------------- (c) direction of a substitution
+  \node[title, anchor=west] at (10.35,2.6) {(c) One substitution};
+  \draw[->] (10.5,0.15) -- (14.85,0.15);
+  \node[dim] at (10.5,-0.1) {1};
+  \node[dim] at (14.75,-0.1) {6};
+  \node[dim] at (12.7,-0.15) {PSI};
+  \node[font=\scriptsize, anchor=west] at (10.45,0.42) {unstable};
+  \node[font=\scriptsize, anchor=east] at (14.85,0.42) {stable};
+  \fill[oiBlue] (12.3,0.15) circle (1.6pt);
+  \node[font=\scriptsize, text=oiBlue, fill=white, inner sep=1pt] at (12.3,0.62) {WT};
+  \draw[densely dotted, oiGrey] (12.3,0.78) -- (12.3,2.1);
+  \draw[->, oiGreen!60!black, line width=0.9pt] (12.3,1.15) -- (14.3,1.15)
+       node[pos=0.5, above, font=\scriptsize, text=oiGreen!50!black] {weakened: $\Delta\mathrm{PSI}>0$};
+  \draw[->, oiVermillion, line width=0.9pt] (12.3,1.85) -- (10.6,1.85)
+       node[pos=0.5, above, font=\scriptsize, text=oiVermillion] {strengthened: $\Delta\mathrm{PSI}<0$};
+\end{tikzpicture}

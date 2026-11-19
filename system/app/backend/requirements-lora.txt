@@ -1,0 +1,7 @@
+# Optional LoRA-D serving (WP10, plan 2.12). The default install (requirements.txt) stays numpy-only; without these
+# packages the npz model keeps serving and the LoRA model is reported as not loaded in /v1/models and /healthz.
+# CPU wheels of PyTorch; versions match the research runtime (Torch 2.13.0, Transformers 5.17.0, safetensors 0.8.0).
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.13.0+cpu
+transformers==5.17.0
+safetensors==0.8.0

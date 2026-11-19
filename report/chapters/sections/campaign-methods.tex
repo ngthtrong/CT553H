@@ -1,27 +1,8 @@
 % Numerical provenance: research/output-review-2026-11-06/results.json and
 % kaggle-roadmap-2026-10-31/{local-plan.json,EXECUTION-PROTOCOL.md,degron_v3/}.
-\subsection{Research Campaign and Recovery Design}\label{sec:campaign-methods}
-The execution unit is a dependency-tracked job with pinned code, data, model revision, protocol and
-runtime identity. The Kaggle run supplies the reference experiments; the Windows successor expands
-the pLM family and completes a matched frozen--LoRA comparison. These runs use the same development
-population, but different software and GPU environments. They are retained as separate estimates.
-
-Figure~\ref{fig:campaign-lineage} shows how interrupted work is recovered. Completed outputs can be
-inherited only after compatibility and checksum checks. The tokenizer-repair successor reuses 456
-completed jobs from the earlier local campaign; it does not count those jobs twice. Paused training
-uses committed checkpoints, including optimiser and random-state information. A timer-failure run
-that produced no scientific OOF predictions is superseded. A final report job denotes completion of
-the runnable graph; missing reviewed external and structure inputs remain explicit pending states.
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=\textwidth]{assets/diagrams/campaign-2026-11-06/campaign-lineage.pdf}
-  \caption[Campaign lineage and evidence roles at completion on 6 November 2026]{Campaign lineage and evidence roles at completion on 6 November 2026.
-  Inheritance preserves compatible work; the combined review does not create independent datasets.}
-  \label{fig:campaign-lineage}
-\end{figure}
-
 \subsection{Nested Selection and Prediction Aggregation}
+\textbf{Purpose.} Obtain an out-of-fold prediction for every development cell, with all model choices made away from the cells being scored.
+\textbf{Flow.}
 The evaluation unit is a mutation cell, while splitting and uncertainty respect protein groups.
 The full-PSI development set W contains 235 peptides, 221 groups and 122,412 cells. Five fixed outer
 folds are shared across recipes. Seeds 17, 29 and 43 vary the inner group split and stochastic fitting;
@@ -37,13 +18,22 @@ Figure~\ref{fig:campaign-nested} distinguishes this selection from the locked tr
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=.88\textwidth]{assets/diagrams/campaign-2026-11-06/nested-evaluation.pdf}
-  \caption[Group-aware selection and evaluation]{Group-aware selection and evaluation. The three seed predictions are averaged per cell
-  before computing ensemble metrics. The separate transfer set T evaluates the fixed W5-D recipe.}
+  \input{assets/figures/nested-evaluation}
+  \caption[Group-aware selection and evaluation]{Group-aware selection and evaluation. Every model choice is made inside the outer
+  training groups; the three seed predictions are averaged per cell before ensemble metrics. The
+  held-out source T is scored only by recipes fixed beforehand: the W5-D ridge, and the LoRA-D and
+  frozen-D refits after the transfer protocol was locked. Original schematic drawn from the
+  execution and refit protocols; it replaces a diagram of 6 November that predated the refit.}
   \label{fig:campaign-nested}
 \end{figure}
 
+\textbf{Reported in} Sections~\ref{sec:res-fullpsi} and~\ref{sec:family-results}. \textbf{Limits.} The
+seeds share one outer partition, and repeated human inspection of the same OOF results can still bias
+later choices.
+
 \subsection{Frozen Features and Matched Adaptation}\label{sec:campaign-adaptation}
+\textbf{Purpose.} Answer RQ2 and RQ4: whether pLM representations help, and whether adapting the encoder beats a frozen encoder when everything else is held equal.
+\textbf{Flow.}
 The family experiment includes ESM2 at 8M, 35M, 150M and 650M parameters, ESM1b-650M,
 one ESM1v-650M checkpoint, ESM-C-300M, the ProtT5 encoder and Ankh-base. For each substitution,
 the mutant-minus-WT residue embedding at the mutation site is concatenated with its sequence mean.
@@ -70,15 +60,17 @@ and gradient clipping at 1. Inner selection permits at most 20 epochs with patie
 a fresh outer refit for the selected epoch count. The backbone remains in evaluation mode in both
 branches so that its dropout policy is matched. There are 30 outer fits per branch.
 
-The local environment is Python 3.11.9, PyTorch 2.13.0 with CUDA 13.0, Transformers 5.17.0 and
-an RTX 5060 Laptop GPU with approximately 8~GiB memory. Model/tokenizer weights are cached and
-revision-pinned. ProtT5 initially reached a misleading tokenizer fallback requesting \texttt{tiktoken};
-installing the missing Protobuf dependency restored its intended tokenizer. Ankh uses the original
-fast tokenizer with residue-level input and an FP32 encoder because FP16 hidden states were
-non-finite. ProtT5 uses FP16 encoding; stored family features use FP16. These execution choices are
-recorded parts of the recipes, so this is not a controlled comparison of pretraining alone.
+The execution environment, numerical precision and tokenizer choices are recorded with the
+campaign (Appendix~\ref{sec:research-local-guide}). They are part of each recipe, so the family
+comparison is not a controlled comparison of pretraining alone.
+
+\textbf{Reported in} Sections~\ref{sec:family-results} and~\ref{sec:lora-results}. \textbf{Limits.} Family
+members differ in tokenizer, precision and size, so the family comparison is not a controlled test of
+pretraining; full fine-tuning was implemented but not run.
 
 \subsection{Uncertainty, Calibration and Transfer Boundaries}
+\textbf{Purpose.} Turn point predictions into uncertainty statements, event probabilities and a first locked check on a different population.
+\textbf{Flow.}
 MAE is first averaged within a peptide and then across peptides. Positive-event metrics use
 $\Delta\mathrm{PSI}\ge1$; negative-event metrics use $\Delta\mathrm{PSI}\le-1$ and require at least
 three cells from each class within a peptide. Paired differences are bootstrapped over protein
@@ -98,4 +90,9 @@ For transfer, W5-D is fixed before inspecting T, refitted on all permitted W dat
 the locked scanning population with no recorded protein-group overlap with W or scanning development
 data. T has a different substitution/label distribution and comes from a previously explored source
 in the same laboratory. It does not provide a new independent external cohort. No LoRA model is
-selected or evaluated using T in the completed campaign.
+selected or evaluated using T in this development campaign; the later locked refit of
+Section~\ref{sec:refit-protocol} scores LoRA-D on T once.
+
+\textbf{Reported in} Sections~\ref{sec:campaign-calibration-transfer} and~\ref{sec:transfer-refit}.
+\textbf{Limits.} Bootstrap intervals describe resampling of groups within W, not new assays; T is a
+previously examined same-laboratory source.

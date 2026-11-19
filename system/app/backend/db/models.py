@@ -177,6 +177,8 @@ class ClinvarVariant(Base):
         CheckConstraint("clinsig IN ('pathogenic','likely_pathogenic','vus','likely_benign','benign',"
                         "'conflicting','other')", name='clinsig'),
         Index('clinvar_pos_idx', 'uniprot_acc', 'protein_pos'),
+        # migration 0004: max(clinvar_file_date) runs for every annotated tile; without it a 2.3 M-row scan (~290 ms)
+        Index('clinvar_file_date_idx', 'clinvar_file_date'),
     )
     variation_id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=False)
     uniprot_acc: Mapped[str] = mapped_column(ForeignKey('protein.uniprot_acc', ondelete='CASCADE'))
@@ -224,6 +226,10 @@ class PredictionCell(Base):
     score_raw: Mapped[float] = mapped_column(Float)
     prob_calibrated: Mapped[float] = mapped_column(Float)
     rank_in_tile: Mapped[int] = mapped_column(Integer)
+    # migration 0005 (plan-system 1.3): spread of the per-seed raw scores; NULL without seeds
+    score_seed_sd: Mapped[float | None] = mapped_column(Float)
+    score_seed_min: Mapped[float | None] = mapped_column(Float)
+    score_seed_max: Mapped[float | None] = mapped_column(Float)
 
 
 class UsageDaily(Base):
@@ -306,6 +312,8 @@ class AnalysisJob(Base):
     gate_model_id: Mapped[str | None] = mapped_column(ForeignKey('model_version.model_id'))
     gate_sha256: Mapped[str | None] = mapped_column(CHAR(64))
     cancel_requested: Mapped[bool] = mapped_column(Boolean, default=False, server_default=text('false'))
+    # migration 0008 (plan-system 4.5): workers claim higher priority first; 1 = small job, 0 = normal
+    priority: Mapped[int] = mapped_column(Integer, default=0, server_default=text('0'))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
@@ -344,6 +352,7 @@ class JobItem(Base):
     lease_expires_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     attempts: Mapped[int] = mapped_column(Integer, default=0, server_default=text('0'))
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    duration_ms: Mapped[float | None] = mapped_column(Float)      # migration 0005 (plan-system 1.7): worker wall time
 
 
 class AnalysisRun(Base):
@@ -402,6 +411,10 @@ class AnalysisCell(Base):
     prob_calibrated: Mapped[float] = mapped_column(Float)
     rank_in_tile: Mapped[int] = mapped_column(Integer)
     top10: Mapped[bool] = mapped_column(Boolean)
+    # migration 0005 (plan-system 1.3): spread of the per-seed raw scores; NULL without seeds and before 0005
+    score_seed_sd: Mapped[float | None] = mapped_column(Float)
+    score_seed_min: Mapped[float | None] = mapped_column(Float)
+    score_seed_max: Mapped[float | None] = mapped_column(Float)
 
 
 class ImportDataset(Base):
@@ -501,3 +514,38 @@ class Comparison(Base):
     rows: Mapped[list] = mapped_column(JSON)
     provenance: Mapped[dict] = mapped_column(JSON)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+
+
+class ModelComparison(Base):
+    """plan-system 2.2: descriptive comparison of two saved analyses of one tile (migration 0006). Immutable."""
+    __tablename__ = 'model_comparison'
+    __table_args__ = (
+        ForeignKeyConstraint(['project_id', 'analysis_a'], ['analysis_run.project_id', 'analysis_run.analysis_id'],
+                             name='fk_model_comparison_project_analysis_a', ondelete='CASCADE'),
+        ForeignKeyConstraint(['project_id', 'analysis_b'], ['analysis_run.project_id', 'analysis_run.analysis_id'],
+                             name='fk_model_comparison_project_analysis_b', ondelete='CASCADE'),
+        CheckConstraint('analysis_a <> analysis_b', name='distinct_analyses'),
+        Index('model_comparison_project_idx', 'project_id', 'created_at', 'comparison_id'),
+        Index('model_comparison_a_idx', 'analysis_a'),
+        Index('model_comparison_b_idx', 'analysis_b'),
+    )
+    comparison_id: Mapped[str] = mapped_column(Uuid, primary_key=True)
+    project_id: Mapped[str] = mapped_column(ForeignKey('project.project_id', ondelete='CASCADE'))
+    analysis_a: Mapped[str] = mapped_column(Uuid)
+    analysis_b: Mapped[str] = mapped_column(Uuid)
+    sequence_sha256: Mapped[str] = mapped_column(CHAR(64))
+    metrics: Mapped[dict] = mapped_column(JSON)
+    disagreements: Mapped[list] = mapped_column(JSON)
+    provenance: Mapped[dict] = mapped_column(JSON)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+
+
+class WorkerHeartbeat(Base):
+    """plan-system 4.2/4.5: liveness of job workers (migration 0007). Operational only."""
+    __tablename__ = 'worker_heartbeat'
+    __table_args__ = (CheckConstraint('items_done >= 0', name='items_nonneg'),)
+    owner: Mapped[str] = mapped_column(Text, primary_key=True)
+    started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    last_seen_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    stopped_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    items_done: Mapped[int] = mapped_column(Integer, default=0, server_default=text('0'))

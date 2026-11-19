@@ -14,7 +14,7 @@ for (const theme of ['light', 'dark'] as const) {
       await expect(page.getByRole('heading', { name: 'Styleguide' })).toBeVisible();
       await expect(page.locator('html')).toHaveAttribute('data-theme', theme);
       const font = await page.evaluate(() => getComputedStyle(document.body).fontFamily);
-      expect(font).toContain('Fira Sans');
+      expect(font).toContain('Roboto');
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
       expect(overflow, `horizontal scroll at ${width}`).toBeLessThanOrEqual(0);
       const res = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
@@ -45,6 +45,13 @@ test('WP1 the fonts are served by the application, not a CDN (NFR-09)', async ({
   });
   await page.goto('/__styleguide');
   await page.waitForLoadState('networkidle');
-  expect(await page.evaluate(() => document.fonts.check('16px "Fira Sans"'))).toBe(true);
+  // document.fonts.check() is also true for a family that is not declared at all, so require loaded faces of both families
+  const loaded = await page.evaluate(async () => {
+    await document.fonts.ready;
+    await Promise.all([document.fonts.load('16px "Roboto Variable"'), document.fonts.load('16px "Roboto Mono Variable"')]);
+    return [...document.fonts].filter((f) => f.status === 'loaded').map((f) => f.family.replace(/"/g, ''));
+  });
+  expect(loaded).toContain('Roboto Variable');
+  expect(loaded).toContain('Roboto Mono Variable');
   expect(external).toEqual([]);
 });

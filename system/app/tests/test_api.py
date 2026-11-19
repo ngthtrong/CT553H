@@ -138,8 +138,14 @@ def test_api16_models(client, dbcopy, mini):
         c.execute(ModelVersion.__table__.insert().values(**row))
     c2, _ = mk_client(mini, dbcopy)
     assert predict(c2, sequence=SEQ, model_id='cand-v1').status_code == 404       # candidate models never serve
-    ids = [m['model_id'] for m in c2.get('/v1/models').json()['items']]
+    items = c2.get('/v1/models').json()['items']
+    ids = [m['model_id'] for m in items]
     assert ids[0] == 'test-model-v1' and 'cand-v1' in ids
+    # MSEL-03 (plan-system 1.1): a model that does not serve is listed with the reason, never as choosable
+    cand = next(m for m in items if m['model_id'] == 'cand-v1')
+    check('ModelSummary', cand)
+    assert cand['serving'] is False and 'candidate' in cand['not_serving_reason']
+    assert cand['expected_tile_seconds'] is None
 
 
 def test_api17_body_limit(client):
@@ -170,7 +176,8 @@ def test_api18_domain_statuses(client):
     j = predict(client, sequence=tile1).json()                # typed sequence equal to a stored tile is not looked up
     assert j['tile']['uniprot_id'] is None
     assert j['domain']['status'] == 'predicted_borderline'      # tier 2: x̂ ≈ 3.869, between 3.700 and 4.426
-    assert [w['code'] for w in j['warnings']] == ['DOMAIN_BORDERLINE', 'PREDICTED_DOMAIN']
+    # plan-system 1.5: the typed copy of training tile 1 is warned TRAINING_PEPTIDE by sequence (before 18 Nov: not)
+    assert [w['code'] for w in j['warnings']] == ['DOMAIN_BORDERLINE', 'PREDICTED_DOMAIN', 'TRAINING_PEPTIDE']
 
 
 def test_api19_out_of_domain_refused_then_overridden(client):
@@ -302,11 +309,14 @@ def test_api26_health_variants(mini, mini_db, dbcopy, tmp_path):
     assert c.get('/healthz').status_code == 200
     check('Health', j)
     assert j == {'status': 'ok', 'version': j['version'], 'model_loaded': True,
-                 'default_model_id': 'test-model-v1', 'database': 'ok'}
+                 'default_model_id': 'test-model-v1', 'database': 'ok',
+                 'default_model_source': 'registry', 'default_model_sha256': j['default_model_sha256']}
+    assert re.fullmatch(r'[0-9a-f]{64}', j['default_model_sha256'])          # plan-system 4.3
     # weights missing
     c2, _ = mk_client(mini, mini_db['url'], model_dir=tmp_path / 'empty')
     r = c2.get('/healthz')
     assert r.status_code == 503 and r.json()['model_loaded'] is False and r.json()['status'] == 'degraded'
+    assert r.json()['default_model_source'] is None and r.json()['default_model_sha256'] is None
     assert predict(c2, sequence=SEQ).status_code == 503 and codes(predict(c2, sequence=SEQ))[0] == 'SERVICE_UNAVAILABLE'
     # hash mismatch: a different weights file under the registered name
     bad = tmp_path / 'tampered'
@@ -666,3 +676,22 @@ def test_background_jobs_purge_and_flush(mini, dbcopy):
         total = conn.execute(text("SELECT sum(n_requests) FROM usage_daily WHERE endpoint = 'POST /v1/predict'")).scalar()
     assert total == 2
     assert j['run_id']
+
+
+def test_msel01_models_report_serving_and_expected_tile_seconds(mini, dbcopy, tmp_path):
+    """plan-system 1.1: /v1/models says which models serve and, once measured, the mean seconds of one tile."""
+    c, app = mk_client(mini, dbcopy)
+    items = {m['model_id']: m for m in c.get('/v1/models').json()['items']}
+    for m in items.values():
+        check('ModelSummary', m)
+    eff, gate = items['test-model-v1'], next(m for m in items.values() if m['role'] == 'gate')
+    assert eff['serving'] is True and eff['not_serving_reason'] is None and eff['expected_tile_seconds'] is None
+    assert gate['expected_tile_seconds'] is None
+    assert predict(c, sequence=SEQ).status_code == 200
+    secs = c.get('/v1/models').json()['items'][0]['expected_tile_seconds']
+    assert isinstance(secs, float) and 0 <= secs < 5
+    assert c.get('/v1/models/test-model-v1').json()['expected_tile_seconds'] == secs
+    # weights missing: the effect model is listed as not serving with the registry's reason
+    c2, _ = mk_client(mini, dbcopy, model_dir=tmp_path / 'empty')
+    m2 = next(m for m in c2.get('/v1/models').json()['items'] if m['model_id'] == 'test-model-v1')
+    assert m2['serving'] is False and m2['not_serving_reason'] == 'weights file is missing'

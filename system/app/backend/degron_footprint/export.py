@@ -9,8 +9,15 @@ from datetime import UTC, datetime
 from .constants import DISCLAIMER_EXPORT
 from .provenance import utc_iso
 
-COLUMNS = ['peptide', 'tile', 'position', 'wt_aa', 'mut_aa', 'score_dpsi_raw',
-           'p_dpsi_ge_1_calibrated', 'rank_in_tile', 'top10pct_in_tile']
+BASE_COLUMNS = ['peptide', 'tile', 'position', 'wt_aa', 'mut_aa', 'score_dpsi_raw',
+                'p_dpsi_ge_1_calibrated', 'rank_in_tile', 'top10pct_in_tile']
+# plan-system 1.3: after the nine FR-12 columns, empty for models without seeds and for older snapshots
+SEED_COLUMNS = ['score_seed_sd', 'score_seed_min', 'score_seed_max']
+COLUMNS = BASE_COLUMNS + SEED_COLUMNS
+
+
+def seed_fields(c: dict) -> list[str]:
+    return ['' if c.get(k) is None else f'{c[k]:.10g}' for k in SEED_COLUMNS]
 
 
 def _clean(value: object) -> str:
@@ -54,7 +61,7 @@ def to_csv(result: dict) -> str:
     for c in result['cells']:
         w.writerow([label, tile_no, c['position'], c['wt_aa'], c['mut_aa'],
                     f"{c['score_dpsi_raw']:.10g}", f"{c['p_dpsi_ge_1_calibrated']:.10g}",
-                    c['rank_in_tile'], int(c['top10pct_in_tile'])])
+                    c['rank_in_tile'], int(c['top10pct_in_tile']), *seed_fields(c)])
     return out.getvalue()
 
 

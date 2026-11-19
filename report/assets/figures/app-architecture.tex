@@ -1,0 +1,89 @@
+% Detailed architecture and deployment of the application (plan-report V-3, redrawn 18 Nov 2026;
+% exception to the Q-6 freeze at the author's request). Read from system/app/docker-compose.yml
+% (services db, api, worker, web, etl in profile tools; volumes dbdata, models, workspace; network
+% internal; only web publishes 127.0.0.1:8080), backend/api (routers, worker), backend/degron_footprint
+% (model registry: ridge npz and optional torch_lora LoRA-D with WITH_LORA=1; calibrators; R3 gate),
+% frontend/package.json (React, TypeScript, Vite). The untested vps profile (Caddy) is not drawn.
+% Logos: Simple Icons (CC0), trademarks of their owners, used for identification (logos.tex).
+\begin{tikzpicture}[fig]
+  \tikzset{svc/.style={draw, rounded corners=3pt, fill=white, inner sep=0pt},
+           svctitle/.style={font=\footnotesize\bfseries, anchor=north west, inner sep=1pt},
+           svctext/.style={font=\scriptsize, align=left, anchor=north west, inner sep=1pt},
+           vol/.style={cylinder, shape border rotate=90, aspect=0.25, draw=oiGrey, fill=oiGrey!12,
+                       minimum width=2.2cm, minimum height=0.9cm, align=center, font=\scriptsize},
+           lbl/.style={font=\scriptsize, fill=white, inner sep=1.2pt},
+           sm/.style={scale=0.8}}
+  % ---------------- boundaries
+  \draw[oiGrey, rounded corners=8pt, line width=0.8pt] (-0.4,1.6) rectangle (15.05,-8.0);
+  \node[font=\scriptsize\bfseries, text=oiGrey, anchor=north west] at (-0.3,1.55) {one local computer};
+  \draw[oiBlue, dashed, rounded corners=8pt, line width=0.7pt] (3.05,1.15) rectangle (14.9,-7.85);
+  \pic[scale=0.9] at (3.55,0.82) {logo-docker};
+  \node[font=\scriptsize\bfseries, text=oiBlue, anchor=west] at (3.85,0.82) {Docker Compose, network \texttt{internal}};
+
+  % ---------------- browser
+  \node[svc, minimum width=2.6cm, minimum height=3.0cm] (browser) at (1.2,-1.3) {};
+  \node[svctitle] at ($(browser.north west)+(0.1,-0.1)$) {Browser};
+  \node[svctext, text width=2.35cm] at ($(browser.north west)+(0.1,-0.55)$)
+       {interface: React and TypeScript, bundled by Vite};
+  \foreach \l [count=\k] in {react,typescript,vite} \pic[sm] at ($(browser.south west)+(-0.15+0.6*\k,0.38)$) {logo-\l};
+
+  % ---------------- web
+  \node[svc, minimum width=2.5cm, minimum height=3.0cm] (web) at (4.9,-1.3) {};
+  \node[svctitle] at ($(web.north west)+(0.1,-0.1)$) {web};
+  \node[svctext, text width=2.25cm] at ($(web.north west)+(0.1,-0.55)$)
+       {nginx (non-root): built interface, CSP headers; proxies \texttt{/v1} and \texttt{/healthz}};
+  \pic[sm] at ($(web.south east)+(-0.42,0.38)$) {logo-nginx};
+  \draw[<->, line width=0.8pt] (browser.east) -- node[lbl, above=3pt] {HTTP} (web.west);
+  \node[font=\tiny, text=oiBlue, fill=white, inner sep=1pt, rotate=90] at (3.05,-2.3) {only port: 127.0.0.1:8080};
+
+  % ---------------- api
+  \node[svc, minimum width=4.7cm, minimum height=3.4cm] (api) at (8.95,-1.3) {};
+  \node[svctitle] at ($(api.north west)+(0.1,-0.1)$) {api};
+  \pic[sm] at ($(api.north east)+(-0.98,-0.33)$) {logo-fastapi};
+  \pic[sm] at ($(api.north east)+(-0.38,-0.33)$) {logo-python};
+  \node[block, anchor=north west, text width=1.95cm, align=left, fill=oiSky!12] (routers) at ($(api.north west)+(0.12,-0.7)$)
+       {routers: predict, proteins, projects, jobs, datasets, comparisons, exports, models};
+  \node[block, anchor=north west, text width=2.1cm, align=left, fill=oiOrange!12] (infer) at ($(api.north west)+(2.55,-0.7)$)
+       {inference: model registry (ridge, LoRA-D), calibrators, R3 gate};
+  \pic[sm] at ($(infer.south west)+(0.35,-0.32)$) {logo-numpy};
+  \pic[sm] at ($(infer.south west)+(0.95,-0.32)$) {logo-pytorch};
+  \node[font=\tiny, anchor=west, align=left] at ($(infer.south west)+(1.22,-0.32)$) {for\\LoRA-D};
+  \draw[->] (routers) -- (infer);
+  \draw[<->, line width=0.8pt] (web.east) -- node[lbl, above=3pt] {proxy} (api.west);
+
+  % ---------------- worker
+  \node[svc, minimum width=4.7cm, minimum height=1.55cm] (worker) at (8.95,-4.3) {};
+  \node[svctitle] at ($(worker.north west)+(0.1,-0.1)$) {worker};
+  \node[svctext, text width=3.6cm] at ($(worker.north west)+(0.1,-0.45)$)
+       {same image as api; claims items by lease, writes each result once};
+  \pic[sm] at ($(worker.south east)+(-0.4,0.35)$) {logo-python};
+  \draw[dashed, oiGrey] (api.south) -- node[lbl, right=2pt, font=\tiny] {no direct call} (worker.north);
+
+  % ---------------- database
+  \node[cylinder, shape border rotate=90, aspect=0.18, draw=oiBlue, fill=oiSky!20, minimum width=2.5cm,
+        minimum height=3.2cm, align=center, font=\scriptsize] (db) at (13.55,-2.6)
+       {\textbf{db}\\[2pt]PostgreSQL 16\\[2pt]reference,\\workspace,\\import tables\\[2pt]SQLite:\\tests, dev};
+  \pic[sm] at ($(db.north)+(-0.35,0.4)$) {logo-postgresql};
+  \pic[sm] at ($(db.north)+(0.35,0.4)$) {logo-sqlite};
+  \draw[<->, line width=0.8pt] (api.east) -- node[lbl, above=3pt] {SQL} (api.east -| db.west);
+  \draw[<->, line width=0.8pt] (worker.east) -- node[lbl, above=3pt] {queue} (worker.east -| db.west);
+
+  % ---------------- volumes
+  \node[vol] (vmodels) at (7.75,-6.35) {models\\weights, gate};
+  \node[vol] (vwork) at (10.1,-6.35) {workspace\\uploaded files};
+  \node[vol] (vdb) at (13.55,-5.75) {dbdata};
+  \draw (db.south) -- (vdb.north);
+  \draw[->] ($(worker.south west)+(1.05,0)$) -- (vmodels.north);
+  \draw[->] ($(api.west)+(0,-1.1)$) -- ++(-0.25,0) |- (vmodels.west);
+  \draw[->] ($(api.east)+(0,-1.2)$) -- ++(0.35,0) |- node[lbl, pos=0.4, right=1pt, font=\tiny] {imports} (vwork.east);
+
+  % ---------------- ETL and research checkout
+  \node[svc, minimum width=2.5cm, minimum height=1.6cm, dashed] (etl) at (4.9,-5.35) {};
+  \node[svctitle] at ($(etl.north west)+(0.1,-0.1)$) {etl \textnormal{(one-off)}};
+  \node[svctext, text width=2.25cm] at ($(etl.north west)+(0.1,-0.5)$) {loads reference data, copies verified weights};
+  \draw[->] ($(etl.south)+(-0.4,0)$) |- node[lbl, pos=0.75, below=1pt, font=\tiny] {weights} (vmodels.south);
+  \draw[->] ($(etl.south)+(0.4,0)$) -- ++(0,-1.2) -| node[lbl, pos=0.25, below=1pt, font=\tiny] {reference rows} ($(db.east)+(0,-1.05)$);
+  \node[draw, fill=oiYellow!20, rounded corners=2pt, align=center, font=\scriptsize, text width=2.4cm] (topic) at (1.2,-5.35)
+       {research checkout: \texttt{data/}, models, R3 gate (hash-checked)};
+  \draw[->] (topic) -- node[lbl, above=2pt, font=\tiny] {read-only} (etl);
+\end{tikzpicture}

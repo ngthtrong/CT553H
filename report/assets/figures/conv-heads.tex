@@ -1,0 +1,53 @@
+% Original schematic of the convolutional heads on frozen features (plan-report 3.8).
+% From the code: degron_v3/neural.py ConvHead (kernels pointwise (1,), cnn (5,), mcnn (3,5,7);
+% 96 filters per kernel; per-position input = one-hot 20 + centre flag 1 + GELU projection of
+% the pLM delta to 32 when a pLM is used; per kernel: global max and centre value; then the
+% 60 pair/composition values, dropout 0.3, 64 hidden units, one output) and
+% degron_v3/features.py crop_inputs (window of +/-7 residues around the mutated position).
+\begin{tikzpicture}[fig]
+  % ---------------- (a) input window
+  \node[title, anchor=west] at (0,2.75) {(a) Input window};
+  \foreach \i in {0,...,14} {
+    \pgfmathsetmacro{\x}{0.2+0.26*\i}
+    \ifnum\i=7
+      \node[residue, minimum size=2.6mm, fill=oiVermillion!35, draw=oiVermillion] (r\i) at (\x,2.05) {};
+    \else
+      \node[residue, minimum size=2.6mm] (r\i) at (\x,2.05) {};
+    \fi
+  }
+  \node[dim, above=0.3mm of r0] {$i{-}7$};
+  \node[dim, above=0.3mm of r7] {$i$};
+  \node[dim, above=0.3mm of r14] {$i{+}7$};
+  \node[block, text width=3.7cm, align=left, anchor=north west] (feat) at (0,1.6)
+       {per position:\\amino acid one-hot (20)\\centre flag (1)\\with a pLM: embedding difference projected to 32 values};
+
+  % ---------------- (b) three heads
+  \node[title, anchor=west] at (4.75,2.75) {(b) Heads compared};
+  \foreach \lab/\y/\n in {{pointwise: $k=1$}/2.05/h1, {CNN: $k=5$}/1.15/h2, {mCNN: $k=3,5,7$ in parallel}/0.25/h3} {
+    \node[trained, anchor=west, text width=3.5cm, align=left] (\n) at (5.1,\y) {\lab};
+  }
+  \coordinate (bus) at (4.75,1.15);
+  \draw (feat.east |- bus) -- (bus);
+  \foreach \n in {h1,h2,h3} \draw[flow] (bus) |- (\n.west);
+  \node[note, text width=4.2cm, align=left, anchor=north west] at (4.75,-0.25)
+       {1-D convolutions, 96 filters per kernel width. A wider kernel mixes neighbouring positions;
+        $k=1$ is the control without extra mixing at this layer.};
+
+  % ---------------- (c) pooling and regression
+  \node[title, anchor=west] at (9.45,2.75) {(c) Pooling and output};
+  \node[block, text width=2.75cm, align=left, anchor=north west] (pool) at (9.45,2.35)
+       {per kernel: maximum over positions and value at the centre};
+  \node[block, text width=2.75cm, align=left, anchor=north west] (aux) at (9.45,0.85)
+       {+ WT and mutant amino acid and tile composition (60)};
+  \node[trained, text width=1.25cm, align=center, minimum height=2.1cm] (mlp) at (13.35,1.2) {dropout,\\64 units,\\ReLU};
+  \node[font=\scriptsize] (y) at (14.7,1.2) {$\widehat{\Delta\mathrm{PSI}}$};
+  \coordinate (bus2) at (9.1,1.15);
+  \foreach \n in {h1,h2,h3} \draw (\n.east) -| (bus2);
+  \draw[flow] (bus2) |- (pool.west);
+  \draw[flow] (pool.east) -- (mlp.west |- pool.east);
+  \draw[flow] (aux.east) -- (mlp.west |- aux.east);
+  \draw[flow] (mlp) -- (y);
+  \node[note, text width=5.3cm, align=left, anchor=north west] at ($(aux.south west)+(0,-0.05)$)
+       {Modelling choices tested against each other on matched folds, not a claim that a degron
+        is a fixed-width motif.};
+\end{tikzpicture}

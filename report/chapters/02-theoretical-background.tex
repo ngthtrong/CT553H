@@ -10,6 +10,15 @@ in that sequence. A \emph{peptide} denotes a short chain or protein fragment; th
 in the main study is a 28-residue peptide. A full protein can contain hundreds of residues, fold into
 three-dimensional domains, bind partners and undergo chemical modifications. Its linear sequence
 and spatial structure therefore describe different aspects of the same molecule.
+Figure~\ref{fig:amino-acids} lists the twenty standard amino acids with the one-letter codes used in
+this thesis and shows the peptide bond that links residues into a chain.
+
+\begin{figure}[htbp]
+  \centering
+  \input{assets/figures/amino-acids}
+  \caption[The standard amino acids and the peptide bond]{The standard amino acids and the peptide bond. (a) Grouping by side-chain property, one common convention; histidine is only partly charged at neutral pH. (b) Two residues joined by a peptide bond; $R_1$ and $R_2$ are side chains. Original schematic, informed by standard biochemistry.}
+  \label{fig:amino-acids}
+\end{figure}
 
 A \emph{wild-type} (WT) sequence is the specified reference for a comparison; a \emph{mutant} differs
 from it. A missense DNA variant changes an encoded amino acid. Here, a single amino acid
@@ -40,26 +49,7 @@ Degron activity depends on more than the presence of a short word in an amino ac
 may be masked by folding or a binding partner, require a post-translational modification, or be inactive
 when its recognising machinery is absent. Molecular recognition, access to an appropriate
 ubiquitination site and proteasomal processing are distinct requirements. The schematic in
-Figure~\ref{fig:ups-concept} illustrates a possible route rather than a universal mechanism.
-
-\begin{figure}[htbp]
-\centering
-\begin{tikzpicture}[node distance=6mm, every node/.style={font=\small,align=center},
- box/.style={draw,rounded corners,text width=10.4cm,inner sep=5pt},
- arr/.style={-{Latex},thick}]
-\node[box] (signal) {Protein with an accessible degradation signal};
-\node[box,below=of signal] (recognition) {Recognition in the relevant cellular context\\
-E3-mediated substrate selection; E1/E2/E3 ubiquitination machinery};
-\node[box,below=of recognition] (removal) {Suitable ubiquitin signal and proteasomal engagement\\
-Unfolding and degradation of the substrate};
-\draw[arr] (signal) -- (recognition);
-\draw[arr] (recognition) -- (removal);
-\end{tikzpicture}
-\caption[Original conceptual schematic of a canonical UPS route]{Original conceptual schematic of a canonical UPS route, informed by
-\citep{varshavsky2019,koren2018}. It is not an observed CT553H mechanism; individual signals can
-require additional conditions, and not all ubiquitination leads to this route.}
-\label{fig:ups-concept}
-\end{figure}
+Figure~\ref{fig:ups-concept} illustrates this route; it is a possible route rather than a universal mechanism.
 
 \subsection{How a Substitution Can Change a Degradation Signal}
 A replacement can remove a favourable recognition residue, create a new recognition sequence,
@@ -69,13 +59,43 @@ variant effects support the relevance of both sequence and structural context
 \citep{degronopedia,degronmd,voutsinos2026}. Conversely, a mutation can alter catalytic activity,
 localisation or binding without acting through a degron. A measured reporter effect therefore warrants
 a statement about that reporter endpoint, followed by a separately labelled biological interpretation.
+Figure~\ref{fig:degron-types} places the three degron classes on a protein, shows how a tile is tested
+out of its native context, and fixes the sign convention used for the label.
+
+\begin{figure}[htbp]
+  \centering
+  \input{assets/figures/ups-pathway}
+  \caption[The canonical ubiquitin--proteasome route]{The canonical ubiquitin--proteasome route. E1 activates ubiquitin (Ub), E2 carries it, and an
+  E3 ligase recognises a degron on the substrate and transfers ubiquitin to it; repeated transfer
+  builds a poly-ubiquitin chain that the 26S proteasome engages, removing the ubiquitin for reuse and
+  degrading the substrate into short peptides. Original conceptual schematic, informed by
+  \citep{varshavsky2019,koren2018}; it is not an observed CT553H mechanism, and individual signals can
+  require additional conditions.}
+  \label{fig:ups-concept}
+\end{figure}
+
+
+\begin{figure}[htbp]
+  \centering
+  \input{assets/figures/degron-types}
+  \caption[Degron classes and the direction of a substitution effect]{Degron classes and the direction of a substitution effect. (a) N-, C- and internal degrons. (b) In the reporter a 28-residue tile is fused to GFP and read outside its native protein. (c) A substitution that weakens a degron raises PSI ($\Delta\mathrm{PSI}>0$); one that strengthens or creates a degron lowers it. Original schematic, informed by \citep{varshavsky2019,koren2018,zhang2023}.}
+  \label{fig:degron-types}
+\end{figure}
 
 \section{Experimental Measurements and Mutation Labels}
 \subsection{GPS Profiling and the Meaning of PSI}
 Global Protein Stability profiling uses a fluorescent fusion and a reference fluorescent signal to
 compare reporter abundance in cells \citep{yen2008}. In the Zhang implementation, GFP is fused to a
 peptide and fluorescence relative to DsRed determines six sorting bins. Sequencing associates
-constructs with their distribution across these bins \citep{zhang2023}.
+constructs with their distribution across these bins \citep{zhang2023}. Figure~\ref{fig:gps-assay}
+follows one construct from the reporter to its PSI value.
+
+\begin{figure}[htbp]
+  \centering
+  \input{assets/figures/gps-assay}
+  \caption[Global Protein Stability profiling and the PSI readout]{Global Protein Stability profiling and the PSI readout. (a) The reporter: DsRed as a reference signal and a GFP--peptide fusion. (b) A stable fusion keeps a high GFP/DsRed ratio, an unstable one a low ratio. (c) Cells are sorted into six bins by that ratio; the distribution drawn is illustrative. (d) Reads per bin give the bin-weighted index of Equation~\ref{eq:psi-bins}. Original schematic, informed by \citep{yen2008,zhang2023}.}
+  \label{fig:gps-assay}
+\end{figure}
 
 % Source of exact reconstruction: research/full-data-audit/build_psi.py, build().
 For a construct $v$, let $c_{vb}$ be its read count in bin $b$, and let $C_b$ be the total count used to
@@ -126,20 +146,14 @@ part of label construction, not an experimentally available feature required at 
 Figure~\ref{fig:mutation-observation} separates this measurement route from the prediction route.
 
 \begin{figure}[htbp]
-\centering
-\begin{tikzpicture}[every node/.style={font=\small,align=center},
- box/.style={draw,rounded corners,text width=5.1cm,inner sep=5pt}, arr/.style={-{Latex},thick}]
-\node[box] (input) at (0,0) {WT sequence, position, replacement};
-\node[box] (lab) at (6.5,0) {WT and mutant reporter measurements};
-\node[box] (prediction) at (0,-1.8) {Sequence model\\Predicted $\widehat{\Delta\mathrm{PSI}}$};
-\node[box] (label) at (6.5,-1.8) {Compatible reference subtraction\\Observed $\Delta\mathrm{PSI}$};
-\draw[arr] (input) -- (prediction);
-\draw[arr] (lab) -- (label);
-\draw[arr] (prediction) -- node[above,text width=1.2cm] {Error} (label);
-\end{tikzpicture}
-\caption[Original conceptual diagram of mutation-effect prediction and label construction]{Original conceptual diagram of mutation-effect prediction and label construction. No
-hypothetical PSI values are presented as observations. Measured WT PSI belongs to the label route.}
-\label{fig:mutation-observation}
+  \centering
+  \input{assets/figures/mutation-label}
+  \caption[Saturation design, label construction and prediction]{Saturation design, label construction and prediction. (a) One mutation cell $(p,i,a)$.
+  (b) The effect matrix of one peptide, with the WT residue of each position hatched. (c) The label is
+  built from measured PSI values (Equation~\ref{eq:delta-psi-halves}); the model sees only the
+  sequence, the position and the replacement. No hypothetical PSI values are presented as
+  observations. Original schematic.}
+  \label{fig:mutation-observation}
 \end{figure}
 
 \subsection{Quality Control, Noise and PSI-Based Selection}
@@ -159,6 +173,34 @@ training range changes which examples the model learns from, not just the number
 In v3, WT PSI defines training arms and reporting strata; counts support QC, and disagreement is used
 only in a designated training-weight experiment. WT PSI, counts, groups and fold identifiers are not
 sequence-model inputs. Test predictions are not clipped using the measured WT PSI.
+
+Table~\ref{tab:bio-terms} collects the biological and assay terms in the sense in which this thesis
+uses them.
+
+\begin{table}[htbp]
+  \centering
+  \caption[Biological and assay terms as used in this thesis]{Biological and assay terms as used in this thesis. Definitions are restricted to the
+  meaning needed here and are not general textbook definitions.}
+  \label{tab:bio-terms}
+  {\small\setlength{\tabcolsep}{4pt}
+  \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.0cm}X@{}}
+    \toprule
+    Term & Meaning in this thesis \\
+    \midrule
+    Degron & A sequence element that marks a protein for selective degradation; here, a signal that lowers reporter PSI \\
+    E3 ligase & The enzyme that recognises a degron and transfers ubiquitin to the substrate \\
+    GPS & Global Protein Stability profiling: a fluorescent reporter assay that sorts cells by the GFP/DsRed ratio \\
+    PSI & Protein Stability Index, a bin-weighted index from 1 (unstable) to 6 (stable) of one reporter construct \\
+    $\Delta$PSI & PSI of a mutant minus a compatible WT reference; positive means a stabilised reporter \\
+    Tile & A 28-residue peptide fused to the reporter; also the unit the application scores \\
+    WT, mutant & The reference tile and a tile that differs from it at one position \\
+    Mutation cell & One (peptide, position, replacement) entry of an effect matrix, not a biological cell \\
+    Saturation, scanning & Designs that test all replacements at every position of few peptides, or selected replacements across many peptides \\
+    Protein group & A set of source proteins joined by sequence similarity, kept together when splitting data \\
+    Held-source set (T) & Scanning data from the same laboratory kept apart from development and scored once; previously explored, so not independent external validation \\
+    \bottomrule
+  \end{tabularx}}
+\end{table}
 
 \section{Representations and Learning Methods}
 \subsection{Supervised Regression and Simple Controls}
@@ -186,7 +228,15 @@ not a directly measured biological property. A residue vector can depend on the 
 sequence. The current frozen-feature design combines the change in the substituted-site vector and
 the change in mean sequence vectors, optionally with ordered context. A trained head maps these
 features to $\Delta$PSI. Dimensionality reduction limits feature size; its parameters must be fitted on
-training data within each selection split.
+training data within each selection split. Figure~\ref{fig:plm-embedding} shows how these features
+are derived from a tile.
+
+\begin{figure}[htbp]
+  \centering
+  \input{assets/figures/plm-embedding}
+  \caption[A protein language model and the mutation features]{A protein language model and the mutation features. (a) Masked-residue pretraining on unlabelled sequences. (b) ESM-2 35M turns a 28-residue tile into one 480-value vector per residue. (c) The difference between mutant and WT embeddings is summarised by the row of the mutated site and the mean row, and joined with amino acid and composition features. Original schematic, informed by \citep{lin2023esm,vaswani2017} and the implemented feature code.}
+  \label{fig:plm-embedding}
+\end{figure}
 
 Pretraining can provide useful regularities when endpoint labels are limited, but usefulness must be
 measured against simple controls. Larger embeddings or checkpoints need not improve this endpoint.
@@ -208,7 +258,7 @@ important inputs comparable. It does not make all heads identical in parameter c
 capacity can fit noise; early stopping, matched folds and paired uncertainty help assess whether the
 extra complexity has reproducible predictive value. PAP is a related CNN-based peptide-abundance
 predictor; a mutant--WT PAP difference is a reference score, not automatically a calibrated PSI effect
-\citep{voutsinos2026}.
+\citep{voutsinos2026}. Figure~\ref{fig:conv-heads} shows the three heads as implemented.
 
 \subsection{Frozen Encoders, Fine-Tuning and LoRA}
 A frozen encoder retains its pretrained weights while the regression head is learned. Full fine-tuning
@@ -219,7 +269,23 @@ dataset. The implemented comparison adds LoRA to attention query/value projectio
 head, using a frozen-encoder control with the same data assignments and base revision. Observing
 changed adapter parameters establishes that adaptation occurred; completed held-out predictions are
 still required to establish its performance. LoRA evidence cannot stand in for an uncompleted
-full-fine-tuning experiment.
+full-fine-tuning experiment. Figure~\ref{fig:adaptation-lora} contrasts the three options and shows
+one adapted projection.
+
+\begin{figure}[htbp]
+  \centering
+  \input{assets/figures/conv-heads}
+  \caption[Convolutional heads compared on the same inputs]{Convolutional heads compared on the same inputs. (a) A window of $\pm7$ residues around the mutated position, with per-position features. (b) Pointwise, single-width and multi-scale convolutions. (c) Pooling and a small regression network. Original schematic, informed by the implemented head code.}
+  \label{fig:conv-heads}
+\end{figure}
+
+
+\begin{figure}[htbp]
+  \centering
+  \input{assets/figures/adaptation-lora}
+  \caption[Adapting a pretrained encoder: frozen, full tuning and LoRA]{Adapting a pretrained encoder: frozen, full tuning and LoRA. (a)--(c) Which weights are learned in each option. (d) A LoRA adapter adds a scaled low-rank update $BA$ to a fixed projection $W$; rank and scaling are those of the implemented model. Original schematic, informed by \citep{hu2022lora} and the implemented adapter code.}
+  \label{fig:adaptation-lora}
+\end{figure}
 
 \subsection{Transfer Learning and Endpoint Compatibility}
 Transfer learning uses information learned on a source task or population for a target task. Scanning
@@ -239,6 +305,14 @@ keeps related source proteins together; MMseqs2 supports the sequence comparison
 \citep{steinegger2017}. The historical cov80/cov50 definitions and v3 unions are described separately
 in the methods. A heuristic similarity threshold reduces specified overlap but does not prove complete
 biological independence, especially for short shared motifs or remote homology.
+Figure~\ref{fig:group-split} contrasts a random split by cell with the protein-group design used here.
+
+\begin{figure}[htbp]
+  \centering
+  \input{assets/figures/group-split}
+  \caption[Random versus protein-group-aware evaluation]{Random versus protein-group-aware evaluation. (a) A random split by cell leaks peptides and homologues into the test set. (b) Five outer folds over protein groups, with an inner validation set for model selection. (c) Intervals come from resampling groups, not cells. Original schematic, informed by \citep{bernett2024,steinegger2017,efron1979} and the execution protocol.}
+  \label{fig:group-split}
+\end{figure}
 
 Nested evaluation chooses hyperparameters, scalers, PCA and stopping epochs inside outer-training
 data, then evaluates on held-out outer groups. An out-of-fold (OOF) prediction is made by a fitted
@@ -276,6 +350,16 @@ calibration error (ECE) summarises discrepancies between predicted and observed 
 chosen bins. Bin choice and population composition affect ECE. Improved ranking, Brier score and ECE
 need not occur together, and development calibration does not guarantee calibration after a source
 shift. A calibrator must not see the outer-test outcomes it is later evaluated on.
+Figure~\ref{fig:calibration-concept} summarises these ideas.
+
+\begin{figure}[htbp]
+  \centering
+  \input{assets/figures/calibration-concept}
+  \caption[Probability calibration and how it is scored]{Probability calibration and how it is scored. (a) A reliability diagram with schematic curves, not measured data. (b) Platt scaling maps a raw score to an event probability with parameters fitted on out-of-fold predictions. (c) Brier score, ECE and AUROC answer different questions. Original schematic, informed by \citep{platt1999}.}
+  \label{fig:calibration-concept}
+\end{figure}
+
+
 
 \subsection{Uncertainty, Seeds and Fair Comparisons}
 A paired comparison evaluates both methods on the same eligible observations. Bootstrap intervals

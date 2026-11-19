@@ -64,24 +64,22 @@ The same-runtime controls now permit a complete adaptation comparison (Table~\re
 LoRA-B reaches MAE \nCampaignLoraB{} and positive AUROC \nCampaignLoraAucB{}; LoRA-D reaches
 \nCampaignLoraD{} and \nCampaignLoraAucD{}, respectively. Relative to their own frozen controls,
 the MAE reductions are \nCampaignGainB\% and \nCampaignGainD\%. All four matched contrasts
-retain the favourable direction throughout the adjusted intervals in Table~\ref{tab:campaign-paired}.
+retain the favourable direction throughout the adjusted intervals in Table~\ref{tab:campaign-core}b.
 Figure~\ref{fig:campaign-core} summarises the matched adaptation results.
 This supports adapting this backbone under the specified development protocol; it does not establish
 that LoRA will improve every pLM, assay or final deployed model.
 
 \begin{table}[htbp]
   \centering
-  \caption[Matched local ESM2-35M results]{Matched local ESM2-35M results. MAE uses all 235 peptides; positive AUROC/AP use
-  184 eligible peptides and negative AUROC uses 110. Higher ranking metrics are better.}
+  \caption[Matched local ESM2-35M results and paired contrasts]{Matched local ESM2-35M results and paired contrasts. (a) MAE uses all 235 peptides;
+  positive AUROC/AP use 184 eligible peptides and negative AUROC uses 110. Higher ranking metrics are
+  better. (b) LoRA minus its frozen control; confidence intervals use 5,000 protein-group resamples,
+  and 98.75\% intervals adjust a post-hoc family of four comparisons. Negative MAE differences and
+  positive AUROC differences favour LoRA.}
   \label{tab:campaign-core}
+  {\small\textit{(a) Results}}\par\smallskip
   \input{assets/ch4/tab-campaign-core}
-\end{table}
-\begin{table}[htbp]
-  \centering
-  \caption[Paired local contrasts: LoRA minus its frozen control]{Paired local contrasts: LoRA minus its frozen control. Confidence intervals use 5,000
-  protein-group resamples; 98.75\% intervals adjust a post-hoc family of four comparisons.
-  Negative MAE differences and positive AUROC differences favour LoRA.}
-  \label{tab:campaign-paired}
+  \par\medskip{\small\textit{(b) Paired contrasts, LoRA minus frozen}}\par\smallskip
   \input{assets/ch4/tab-campaign-paired}
 \end{table}
 \begin{figure}[htbp]
@@ -129,9 +127,19 @@ The peptide-macro LoRA-minus-frozen Brier differences are $-0.01572$ for B and $
 with descriptive 95\% group intervals $[-0.01986,-0.01152]$ and $[-0.01736,-0.00970]$.
 However, positive-event ECE increases. Reliability curves in Figure~\ref{fig:campaign-calibration}
 show overconfidence in high-probability bins, which contain fewer cells. A lower Brier score does
-not establish uniformly better calibration. The model cards currently mark these as CV-only
-calibrators and leave the final serving-model identifier list empty; model-specific lineage and
-final refitting remain necessary before inference integration.
+not establish uniformly better calibration. At this stage the model cards marked these as
+cross-validation calibrators and left the final serving-model identifier list empty, so no model
+here was ready for inference integration; Section~\ref{sec:transfer-refit} reports the refit and
+lineage record that closed that gap.
+
+The locked transfer set contains 39,234 R/A/S substitutions across 1,410 peptides and 730 protein
+groups, with no recorded group overlap with W or scanning development data. Only the fixed W5-D
+recipe is evaluated. It obtains MAE \nCampaignTMaE{}, compared with \nCampaignTZero{} for
+predicting zero. The paired difference is \nCampaignTDelta{} with 95\% interval
+\nCampaignTCI{}, so the average regression advantage is not resolved. Positive AUROC is
+\nCampaignTAuc{} on 338 eligible peptides and AP is 0.6011; negative AUROC is only 0.5176 on
+85 eligible peptides. Regression, positive ranking and negative ranking therefore have different
+transfer behaviour.
 
 \begin{table}[htbp]
   \centering
@@ -142,14 +150,6 @@ final refitting remain necessary before inference integration.
   \input{assets/ch4/tab-campaign-calibration}
 \end{table}
 
-The locked transfer set contains 39,234 R/A/S substitutions across 1,410 peptides and 730 protein
-groups, with no recorded group overlap with W or scanning development data. Only the fixed W5-D
-recipe is evaluated. It obtains MAE \nCampaignTMaE{}, compared with \nCampaignTZero{} for
-predicting zero. The paired difference is \nCampaignTDelta{} with 95\% interval
-\nCampaignTCI{}, so the average regression advantage is not resolved. Positive AUROC is
-\nCampaignTAuc{} on 338 eligible peptides and AP is 0.6011; negative AUROC is only 0.5176 on
-85 eligible peptides. Regression, positive ranking and negative ranking therefore have different
-transfer behaviour.
 
 \begin{table}[htbp]
   \centering
@@ -163,7 +163,8 @@ transfer behaviour.
   \includegraphics[width=\textwidth]{assets/ch4/fig-campaign-calibration-transfer.pdf}
   \caption[Probability and transfer limitations]{Probability and transfer limitations. (a) Development OOF positive-event reliability,
   with the diagonal indicating agreement; (b) locked W5-D transfer MAE by WT PSI.
-  T uses a different population and does not evaluate LoRA.}
+  T uses a different population; the adapted model is evaluated separately in
+  Figure~\ref{fig:transfer-strata}.}
   \label{fig:campaign-calibration}
 \end{figure}
 
@@ -173,7 +174,11 @@ The transfer failure is concentrated in high-WT-PSI peptides: above 5, W5-D MAE 
 beats the development-prior baseline of 0.1348, positive probabilities shift upward relative to
 the observed rate. T contains only R, A and S replacements (25,479, 9,278 and 4,477 cells), uses
 replicate-1 labels and comes from a previously explored same-laboratory source. These results
-do not demonstrate independent external validity, clinical utility or transfer of the LoRA gain.
+do not demonstrate independent external validity or clinical utility. They also say nothing about
+the adapted model, which was not part of this locked evaluation; Section~\ref{sec:transfer-refit}
+reports the separate refit that scored it on the same cohort.
+
+\input{chapters/sections/transfer-refit}
 
 \subsubsection{Additional Controls and Practical Consequences}
 The complete Kaggle record also contains composition, unordered-context, substitution-only,
@@ -215,7 +220,9 @@ or the wall-clock duration of the campaign. They still identify adaptation as th
 computational cost. The transfer inference timer is for prediction only and does not include fitting,
 feature preparation, downloads or service startup.
 
-The executable research graph is finished. The next research tasks are reviewed external/structure
-inputs, independent transfer checks and a compatible final serving refit, calibrator, lineage card and
-export. The application tasks remain separate. A report marked complete is neither release acceptance
-nor automatic promotion of the lowest development MAE.
+The executable research graph is finished. Of the tasks it left open, the compatible final refit,
+its calibrator and its lineage record were completed in the campaign of
+Section~\ref{sec:transfer-refit}. Reviewed external-source and structure inputs, and a validation
+cohort that has never been inspected, remain open. The application tasks remain separate.
+A report marked complete is neither release acceptance nor automatic promotion of the lowest
+development MAE.

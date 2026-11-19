@@ -1,0 +1,709 @@
+{
+  "schema_version": 1,
+  "generated_by": "report/assets/ch4/dump_app_schema.py",
+  "orm_source": "system/app/backend/db/models.py",
+  "orm_sha256": "f638353287451a9a70e10b839c055be7c61244cce2f313558db8615a8410c347",
+  "migrations": [
+    {
+      "file": "0001_initial_schema.py",
+      "sha256": "91db8c28ae5fc8a6d7b800ec7d3d4104e19d50cfe3f0d0a09a9ce43ad779e2c1",
+      "creates": [
+        "clinvar_variant",
+        "data_source",
+        "etl_input",
+        "etl_run",
+        "measured_cell",
+        "model_version",
+        "prediction_cell",
+        "prediction_run",
+        "protein",
+        "tile",
+        "usage_daily"
+      ],
+      "indexes": [
+        "clinvar_pos_idx",
+        "model_default_idx",
+        "prediction_run_expiry_idx",
+        "protein_gene_idx",
+        "tile_domain_idx",
+        "tile_screen_idx"
+      ]
+    },
+    {
+      "file": "0002_workspace.py",
+      "sha256": "3268963a6e3bb5f3584372acff4e264795e0a64a938f209ffae2060e23f5896b",
+      "creates": [
+        "analysis_cell",
+        "analysis_job",
+        "analysis_run",
+        "comparison",
+        "import_dataset",
+        "import_observation",
+        "job_item",
+        "project"
+      ],
+      "indexes": [
+        "analysis_job_project_idx",
+        "analysis_job_state_idx",
+        "analysis_run_project_idx",
+        "comparison_analysis_idx",
+        "comparison_dataset_idx",
+        "import_dataset_project_idx",
+        "job_item_lease_idx",
+        "job_item_state_idx",
+        "project_updated_idx"
+      ]
+    },
+    {
+      "file": "0003_domain_borderline.py",
+      "sha256": "beb4427c61d76c49cccd098741802832947aba1449e89fd2391ac164b7ba5df7",
+      "creates": [],
+      "indexes": []
+    },
+    {
+      "file": "0004_clinvar_file_date_index.py",
+      "sha256": "bc90590af316f6b767d16f41682896f48f85ca6a31e756ef493889f852d240af",
+      "creates": [],
+      "indexes": [
+        "clinvar_file_date_idx"
+      ]
+    }
+  ],
+  "table_count": 19,
+  "tables": [
+    {
+      "name": "data_source",
+      "columns": 12,
+      "primary_key": [
+        "source_id"
+      ],
+      "foreign_keys": [],
+      "unique": [],
+      "checks": 2,
+      "indexes": [],
+      "created_in": "0001_initial_schema.py"
+    },
+    {
+      "name": "etl_run",
+      "columns": 6,
+      "primary_key": [
+        "etl_run_id"
+      ],
+      "foreign_keys": [],
+      "unique": [],
+      "checks": 1,
+      "indexes": [],
+      "created_in": "0001_initial_schema.py"
+    },
+    {
+      "name": "model_version",
+      "columns": 18,
+      "primary_key": [
+        "model_id"
+      ],
+      "foreign_keys": [],
+      "unique": [],
+      "checks": 4,
+      "indexes": [
+        {
+          "name": "model_default_idx",
+          "columns": [
+            "role"
+          ],
+          "unique": true
+        }
+      ],
+      "created_in": "0001_initial_schema.py"
+    },
+    {
+      "name": "project",
+      "columns": 6,
+      "primary_key": [
+        "project_id"
+      ],
+      "foreign_keys": [],
+      "unique": [],
+      "checks": 2,
+      "indexes": [
+        {
+          "name": "project_updated_idx",
+          "columns": [
+            "updated_at",
+            "project_id"
+          ],
+          "unique": false
+        }
+      ],
+      "created_in": "0002_workspace.py"
+    },
+    {
+      "name": "usage_daily",
+      "columns": 5,
+      "primary_key": [
+        "day",
+        "endpoint",
+        "model_id"
+      ],
+      "foreign_keys": [],
+      "unique": [],
+      "checks": 0,
+      "indexes": [],
+      "created_in": "0001_initial_schema.py"
+    },
+    {
+      "name": "analysis_job",
+      "columns": 18,
+      "primary_key": [
+        "job_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": [
+            "gate_model_id"
+          ],
+          "target": "model_version.model_id",
+          "ondelete": null
+        },
+        {
+          "column": [
+            "project_id"
+          ],
+          "target": "project.project_id",
+          "ondelete": "CASCADE"
+        },
+        {
+          "column": [
+            "model_id"
+          ],
+          "target": "model_version.model_id",
+          "ondelete": null
+        }
+      ],
+      "unique": [
+        [
+          "job_id",
+          "project_id"
+        ]
+      ],
+      "checks": 3,
+      "indexes": [
+        {
+          "name": "analysis_job_project_idx",
+          "columns": [
+            "project_id",
+            "created_at",
+            "job_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "analysis_job_state_idx",
+          "columns": [
+            "state",
+            "created_at"
+          ],
+          "unique": false
+        }
+      ],
+      "created_in": "0002_workspace.py"
+    },
+    {
+      "name": "etl_input",
+      "columns": 5,
+      "primary_key": [
+        "etl_run_id",
+        "source_id",
+        "file_path"
+      ],
+      "foreign_keys": [
+        {
+          "column": [
+            "etl_run_id"
+          ],
+          "target": "etl_run.etl_run_id",
+          "ondelete": "CASCADE"
+        },
+        {
+          "column": [
+            "source_id"
+          ],
+          "target": "data_source.source_id",
+          "ondelete": null
+        }
+      ],
+      "unique": [],
+      "checks": 0,
+      "indexes": [],
+      "created_in": "0001_initial_schema.py"
+    },
+    {
+      "name": "import_dataset",
+      "columns": 21,
+      "primary_key": [
+        "dataset_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": [
+            "project_id"
+          ],
+          "target": "project.project_id",
+          "ondelete": "CASCADE"
+        }
+      ],
+      "unique": [
+        [
+          "name",
+          "project_id",
+          "revision"
+        ],
+        [
+          "dataset_id",
+          "project_id"
+        ]
+      ],
+      "checks": 6,
+      "indexes": [
+        {
+          "name": "import_dataset_project_idx",
+          "columns": [
+            "project_id",
+            "state"
+          ],
+          "unique": false
+        }
+      ],
+      "created_in": "0002_workspace.py"
+    },
+    {
+      "name": "protein",
+      "columns": 7,
+      "primary_key": [
+        "uniprot_acc"
+      ],
+      "foreign_keys": [
+        {
+          "column": [
+            "source_id"
+          ],
+          "target": "data_source.source_id",
+          "ondelete": null
+        }
+      ],
+      "unique": [],
+      "checks": 2,
+      "indexes": [
+        {
+          "name": "protein_gene_idx",
+          "columns": [
+            "gene_symbol"
+          ],
+          "unique": false
+        }
+      ],
+      "created_in": "0001_initial_schema.py"
+    },
+    {
+      "name": "clinvar_variant",
+      "columns": 10,
+      "primary_key": [
+        "variation_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": [
+            "uniprot_acc"
+          ],
+          "target": "protein.uniprot_acc",
+          "ondelete": "CASCADE"
+        },
+        {
+          "column": [
+            "source_id"
+          ],
+          "target": "data_source.source_id",
+          "ondelete": null
+        }
+      ],
+      "unique": [],
+      "checks": 3,
+      "indexes": [
+        {
+          "name": "clinvar_pos_idx",
+          "columns": [
+            "uniprot_acc",
+            "protein_pos"
+          ],
+          "unique": false
+        },
+        {
+          "name": "clinvar_file_date_idx",
+          "columns": [
+            "clinvar_file_date"
+          ],
+          "unique": false
+        }
+      ],
+      "created_in": "0001_initial_schema.py"
+    },
+    {
+      "name": "import_observation",
+      "columns": 14,
+      "primary_key": [
+        "observation_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": [
+            "dataset_id"
+          ],
+          "target": "import_dataset.dataset_id",
+          "ondelete": "CASCADE"
+        }
+      ],
+      "unique": [
+        [
+          "dataset_id",
+          "mut_aa",
+          "position",
+          "replicate_id",
+          "wt_sequence"
+        ]
+      ],
+      "checks": 9,
+      "indexes": [],
+      "created_in": "0002_workspace.py"
+    },
+    {
+      "name": "job_item",
+      "columns": 17,
+      "primary_key": [
+        "job_id",
+        "item_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": [
+            "job_id"
+          ],
+          "target": "analysis_job.job_id",
+          "ondelete": "CASCADE"
+        }
+      ],
+      "unique": [
+        [
+          "job_id",
+          "ordinal"
+        ]
+      ],
+      "checks": 6,
+      "indexes": [
+        {
+          "name": "job_item_lease_idx",
+          "columns": [
+            "lease_expires_at"
+          ],
+          "unique": false
+        },
+        {
+          "name": "job_item_state_idx",
+          "columns": [
+            "job_id",
+            "state"
+          ],
+          "unique": false
+        }
+      ],
+      "created_in": "0002_workspace.py"
+    },
+    {
+      "name": "tile",
+      "columns": 14,
+      "primary_key": [
+        "tile_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": [
+            "uniprot_acc"
+          ],
+          "target": "protein.uniprot_acc",
+          "ondelete": "CASCADE"
+        },
+        {
+          "column": [
+            "source_id"
+          ],
+          "target": "data_source.source_id",
+          "ondelete": null
+        },
+        {
+          "column": [
+            "psi_wt_predicted_by"
+          ],
+          "target": "model_version.model_id",
+          "ondelete": null
+        }
+      ],
+      "unique": [
+        [
+          "tile_index",
+          "uniprot_acc"
+        ]
+      ],
+      "checks": 9,
+      "indexes": [
+        {
+          "name": "tile_domain_idx",
+          "columns": [
+            "uniprot_acc",
+            "domain_status"
+          ],
+          "unique": false
+        },
+        {
+          "name": "tile_screen_idx",
+          "columns": [
+            "screen_peptide_id"
+          ],
+          "unique": false
+        }
+      ],
+      "created_in": "0001_initial_schema.py"
+    },
+    {
+      "name": "analysis_run",
+      "columns": 16,
+      "primary_key": [
+        "analysis_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": [
+            "model_id"
+          ],
+          "target": "model_version.model_id",
+          "ondelete": null
+        },
+        {
+          "column": [
+            "item_id",
+            "job_id"
+          ],
+          "target": "job_item.job_id",
+          "ondelete": "CASCADE"
+        },
+        {
+          "column": [
+            "job_id",
+            "project_id"
+          ],
+          "target": "analysis_job.project_id",
+          "ondelete": "CASCADE"
+        },
+        {
+          "column": [
+            "project_id"
+          ],
+          "target": "project.project_id",
+          "ondelete": "CASCADE"
+        }
+      ],
+      "unique": [
+        [
+          "item_id",
+          "job_id"
+        ],
+        [
+          "analysis_id",
+          "project_id"
+        ]
+      ],
+      "checks": 5,
+      "indexes": [
+        {
+          "name": "analysis_run_project_idx",
+          "columns": [
+            "project_id",
+            "created_at",
+            "analysis_id"
+          ],
+          "unique": false
+        }
+      ],
+      "created_in": "0002_workspace.py"
+    },
+    {
+      "name": "measured_cell",
+      "columns": 6,
+      "primary_key": [
+        "tile_id",
+        "position",
+        "mut_aa"
+      ],
+      "foreign_keys": [
+        {
+          "column": [
+            "source_id"
+          ],
+          "target": "data_source.source_id",
+          "ondelete": null
+        },
+        {
+          "column": [
+            "tile_id"
+          ],
+          "target": "tile.tile_id",
+          "ondelete": "CASCADE"
+        }
+      ],
+      "unique": [],
+      "checks": 2,
+      "indexes": [],
+      "created_in": "0001_initial_schema.py"
+    },
+    {
+      "name": "prediction_run",
+      "columns": 11,
+      "primary_key": [
+        "run_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": [
+            "model_id"
+          ],
+          "target": "model_version.model_id",
+          "ondelete": null
+        },
+        {
+          "column": [
+            "gate_model_id"
+          ],
+          "target": "model_version.model_id",
+          "ondelete": null
+        },
+        {
+          "column": [
+            "tile_id"
+          ],
+          "target": "tile.tile_id",
+          "ondelete": null
+        }
+      ],
+      "unique": [
+        [
+          "share_token_hash"
+        ]
+      ],
+      "checks": 3,
+      "indexes": [
+        {
+          "name": "prediction_run_expiry_idx",
+          "columns": [
+            "expires_at"
+          ],
+          "unique": false
+        }
+      ],
+      "created_in": "0001_initial_schema.py"
+    },
+    {
+      "name": "analysis_cell",
+      "columns": 8,
+      "primary_key": [
+        "analysis_id",
+        "position",
+        "mut_aa"
+      ],
+      "foreign_keys": [
+        {
+          "column": [
+            "analysis_id"
+          ],
+          "target": "analysis_run.analysis_id",
+          "ondelete": "CASCADE"
+        }
+      ],
+      "unique": [],
+      "checks": 6,
+      "indexes": [],
+      "created_in": "0002_workspace.py"
+    },
+    {
+      "name": "comparison",
+      "columns": 15,
+      "primary_key": [
+        "comparison_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": [
+            "analysis_id",
+            "project_id"
+          ],
+          "target": "analysis_run.project_id",
+          "ondelete": "CASCADE"
+        },
+        {
+          "column": [
+            "dataset_id",
+            "project_id"
+          ],
+          "target": "import_dataset.project_id",
+          "ondelete": "CASCADE"
+        },
+        {
+          "column": [
+            "project_id"
+          ],
+          "target": "project.project_id",
+          "ondelete": "CASCADE"
+        }
+      ],
+      "unique": [],
+      "checks": 3,
+      "indexes": [
+        {
+          "name": "comparison_analysis_idx",
+          "columns": [
+            "analysis_id",
+            "created_at",
+            "comparison_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "comparison_dataset_idx",
+          "columns": [
+            "dataset_id"
+          ],
+          "unique": false
+        }
+      ],
+      "created_in": "0002_workspace.py"
+    },
+    {
+      "name": "prediction_cell",
+      "columns": 6,
+      "primary_key": [
+        "run_id",
+        "position",
+        "mut_aa"
+      ],
+      "foreign_keys": [
+        {
+          "column": [
+            "run_id"
+          ],
+          "target": "prediction_run.run_id",
+          "ondelete": "CASCADE"
+        }
+      ],
+      "unique": [],
+      "checks": 3,
+      "indexes": [],
+      "created_in": "0001_initial_schema.py"
+    }
+  ]
+}

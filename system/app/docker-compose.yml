@@ -1,6 +1,29 @@
-# One command starts everything:   docker compose up -d --build        (then: make etl-docker once)
-# NOT RUN on the machine where this file was written (Docker is not installed there); see backend/README.md §Docker.
+# Whole application in Docker: PostgreSQL 16, API, job worker and the web interface (nginx).
+#
+#   cp .env.example .env                       # set POSTGRES_PASSWORD (make docker-env does it with a random one)
+#   docker compose up -d --build               # db, api, worker, web  ->  http://127.0.0.1:8080
+#   docker compose --profile tools run --rm etl   # once: fills the database and the model volume from the checkout
+#
+# Development with hot reload (source bind-mounted, Vite on :5173): see compose.dev.yml and `make docker-dev`.
+# Every published port is bound to 127.0.0.1 (SEC-03); the API and the database are reachable only inside `internal`.
 name: degron-footprint
+
+x-backend-env: &backend-env
+  DF_DATABASE_URL: postgresql+psycopg://degron:${POSTGRES_PASSWORD}@db:5432/degron
+  DF_RATE_LIMIT_PREDICT: ${DF_RATE_LIMIT_PREDICT:-60}
+  DF_RATE_LIMIT_REFERENCE: ${DF_RATE_LIMIT_REFERENCE:-120}
+  # Which frozen effect model answers when a request names none: the npz model unless a serving decision says otherwise.
+  DF_DEFAULT_MODEL_ID: ${DF_DEFAULT_MODEL_ID:-}
+  DF_LORA_THREADS: ${DF_LORA_THREADS:-4}
+  DF_LORA_MERGE: ${DF_LORA_MERGE:-0}            # plan-system 1.4: 1 merges LoRA into the weights at load (<= 1e-5)
+  DF_LORA_BATCH: ${DF_LORA_BATCH:-}
+
+x-backend-build: &backend-build
+  context: ../
+  dockerfile: app/backend/Dockerfile
+  target: runtime
+  args:
+    WITH_LORA: ${WITH_LORA:-0}
 
 services:
   db:
@@ -9,7 +32,7 @@ services:
     environment:
       POSTGRES_DB: degron
       POSTGRES_USER: degron
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env (make docker-env)}
     volumes: [dbdata:/var/lib/postgresql/data]
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U degron -d degron"]
@@ -19,43 +42,72 @@ services:
     networks: [internal]
 
   api:
-    build: {context: ../, dockerfile: app/backend/Dockerfile}
+    build: *backend-build
+    image: degron-footprint/backend:${WITH_LORA:-0}
     restart: unless-stopped
     depends_on:
       db: {condition: service_healthy}
     environment:
-      DF_DATABASE_URL: postgresql+psycopg://degron:${POSTGRES_PASSWORD}@db:5432/degron
-      DF_ALLOWED_ORIGINS: ${DF_ALLOWED_ORIGINS:-["http://localhost:8080"]}
-      DF_RATE_LIMIT_PREDICT: ${DF_RATE_LIMIT_PREDICT:-60}
-      DF_RATE_LIMIT_REFERENCE: ${DF_RATE_LIMIT_REFERENCE:-120}
-      DF_TRUST_PROXY: ${DF_TRUST_PROXY:-false}        # true behind Caddy/nginx so the limiter sees the real client
-    volumes: [models:/srv/system/app/backend/models]
+      <<: *backend-env
+      # The browser reaches the API only through `web` (same origin); list here any other origin that may write.
+      DF_ALLOWED_ORIGINS: ${DF_ALLOWED_ORIGINS:-["http://localhost:8080","http://127.0.0.1:8080"]}
+      # `web` overwrites X-Forwarded-For with the client address and the API port is not published.
+      DF_TRUST_PROXY: ${DF_TRUST_PROXY:-true}
+      # Admin page (plan-system 4.2): the browser reaches the API through `web`, whose port is bound to 127.0.0.1; the
+      # address seen here is a Docker bridge address, so the private ranges are allowed besides loopback.
+      DF_ADMIN_ALLOWED_NETWORKS: ${DF_ADMIN_ALLOWED_NETWORKS:-["127.0.0.0/8","::1/128","172.16.0.0/12","192.168.0.0/16","10.0.0.0/8"]}
+    volumes:
+      - models:/srv/system/app/backend/models
+      - workspace:/data/workspace
     networks: [internal]
     expose: ["8000"]
 
-  # ETL: reads the research data (read-only) and fills the database and the model directory. Run on demand:
-  #   docker compose --profile tools run --rm etl            (add: --clinvar-scope degron-only for a small database)
+  # Job worker for peptide batches and whole-protein scans: a separate process (implementation plan A-2) with the same
+  # image, database and model volume. Durable queue in the database; a restart resumes the leased items (2.4).
+  worker:
+    image: degron-footprint/backend:${WITH_LORA:-0}
+    restart: unless-stopped
+    depends_on:
+      api: {condition: service_healthy}     # the API container runs the migrations first
+    environment: *backend-env
+    command: ["sh", "-c", "umask 0002 && exec python -m api.worker"]
+    stop_grace_period: 30s
+    healthcheck: {disable: true}
+    volumes:
+      - models:/srv/system/app/backend/models
+      - workspace:/data/workspace
+    networks: [internal]
+
+  # ETL: reads the research data (read-only) and fills the database and the model volume. Run on demand:
+  #   docker compose --profile tools run --rm etl
+  #   CLINVAR_SCOPE=degron-only docker compose --profile tools run --rm etl      (smaller and faster)
+  # After it, `docker compose restart api worker` so they load the models it registered.
   etl:
     profiles: ["tools"]
-    build: {context: ../, dockerfile: app/backend/Dockerfile}
+    image: degron-footprint/backend:${WITH_LORA:-0}
+    build: *backend-build
     depends_on:
       db: {condition: service_healthy}
     environment:
       DF_DATABASE_URL: postgresql+psycopg://degron:${POSTGRES_PASSWORD}@db:5432/degron
-    # TOPIC_DIR is the checkout root; the ETL never writes there
+      CLINVAR_SCOPE: ${CLINVAR_SCOPE:-in-tiles}
+    # TOPIC_DIR is the checkout root (it holds data/ and research/); the ETL never writes there
     volumes:
       - ${TOPIC_DIR:-../..}:/topic:ro
       - models:/srv/system/app/backend/models
     working_dir: /srv/system/app
-    command: ["sh", "-c", "(cd backend && alembic -c alembic.ini upgrade head) && python -m etl.load --db $${DF_DATABASE_URL} --topic /topic --clinvar-scope $${CLINVAR_SCOPE:-in-tiles}"]
+    command: ["sh", "-c", "umask 0002 && (cd backend && alembic -c alembic.ini upgrade head) && python -m etl.load --db \"$${DF_DATABASE_URL}\" --topic /topic --clinvar-scope \"$${CLINVAR_SCOPE}\""]
+    healthcheck: {disable: true}
     networks: [internal]
 
-  # Static frontend (Vite build served by nginx) that proxies /v1 and /healthz to `api`. Written by the frontend task.
+  # Static interface (Vite build served by nginx), which proxies /v1 and /healthz to `api`.
   web:
-    build: ./frontend
+    build: {context: ./frontend, target: runtime}
+    image: degron-footprint/web
     restart: unless-stopped
-    depends_on: [api]
-    ports: ["${WEB_PORT:-8080}:80"]
+    depends_on:
+      api: {condition: service_healthy}
+    ports: ["127.0.0.1:${WEB_PORT:-8080}:8080"]
     networks: [internal]
 
   # VPS only: automatic TLS in front of `web`.   docker compose --profile vps up -d
@@ -66,13 +118,14 @@ services:
     depends_on: [web]
     ports: ["80:80", "443:443"]
     environment: {SITE_ADDRESS: "${SITE_ADDRESS:?set SITE_ADDRESS to the domain name}"}
-    command: ["sh", "-c", "printf '%s {\\n  reverse_proxy web:80\\n}\\n' \"$$SITE_ADDRESS\" > /etc/caddy/Caddyfile && caddy run --config /etc/caddy/Caddyfile"]
+    command: ["sh", "-c", "printf '%s {\\n  reverse_proxy web:8080\\n}\\n' \"$$SITE_ADDRESS\" > /etc/caddy/Caddyfile && caddy run --config /etc/caddy/Caddyfile"]
     volumes: [caddydata:/data]
     networks: [internal]
 
 volumes:
   dbdata:
   models:
+  workspace:
   caddydata:
 
 networks:

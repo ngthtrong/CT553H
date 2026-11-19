@@ -1,0 +1,44 @@
+% Original conceptual figure: reliability diagram and Platt scaling (plan-report 3.10).
+% Curves are schematic shapes, not measured data; measured calibration is in Chapter 4.
+% Platt mapping as implemented for the served ridge model (Section on calibration).
+\begin{tikzpicture}[fig]
+  % ---------------- (a) reliability diagram (schematic)
+  \node[title, anchor=west] at (-0.6,3.35) {(a) Reliability (schematic)};
+  \draw[->] (0,0) -- (3.1,0);
+  \draw[->] (0,0) -- (0,3.1);
+  \foreach \t in {0,1} { \draw (3*\t,0) -- (3*\t,-0.06) node[below, dim] {\t};
+                        \draw (0,3*\t) -- (-0.06,3*\t) node[left, dim] {\t}; }
+  \node[dim] at (1.5,-0.45) {predicted probability};
+  \node[dim, rotate=90] at (-0.45,1.5) {observed frequency};
+  \draw[oiGrey, dashed] (0,0) -- (3,3);
+  \node[dim, rotate=45, anchor=south] at (2.35,2.35) {ideal};
+  \draw[oiVermillion, line width=1pt] plot[smooth, domain=0:1] (3*\x, {3*(\x^1.9)});
+  \node[font=\scriptsize, text=oiVermillion, anchor=west, align=left] at (1.75,0.55) {over-confident\\raw mapping};
+  \draw[oiBlue, line width=1pt] plot[smooth, domain=0:1] (3*\x, {3*(0.04+0.92*\x)});
+  \node[font=\scriptsize, text=oiBlue, anchor=west, align=left] at (0.15,2.75) {after calibration};
+
+  % ---------------- (b) Platt scaling
+  \node[title, anchor=west] at (4.3,3.35) {(b) Platt scaling};
+  \node[block, text width=4.3cm, align=left, anchor=north west] (raw) at (4.3,2.95)
+       {raw score $s$ of the regression model (predicted $\Delta$PSI)};
+  \node[block, text width=4.3cm, align=left, below=4mm of raw, fill=oiYellow!20] (pl)
+       {$P(\Delta\mathrm{PSI}\geq1)=\sigma(a+b\,s)$,\\with $\sigma(z)=1/(1+e^{-z})$};
+  \node[block, text width=4.3cm, align=left, below=4mm of pl] (fit)
+       {$a,b$ fitted on out-of-fold predictions only, never on test cells};
+  \node[note, text width=4.3cm, align=left, anchor=north west] at ($(fit.south west)+(0,-0.05)$)
+       {The served ridge uses this two-class form; LoRA-D uses a three-class version
+        ($\Delta\mathrm{PSI}\le-1$, between, $\ge1$) fitted in the same way.};
+  \draw[flow] (raw) -- (pl);
+  \draw[flow] (fit) -- (pl);
+
+  % ---------------- (c) how calibration is scored
+  \node[title, anchor=west] at (9.55,3.35) {(c) Scores used in Chapter 4};
+  \node[block, text width=4.9cm, align=left, anchor=north west] (br) at (9.55,2.95)
+       {\textbf{Brier score}: mean of $(p-y)^2$ over cells, $y\in\{0,1\}$ the observed event; lower is better};
+  \node[block, text width=4.9cm, align=left, below=3mm of br] (ece)
+       {\textbf{ECE}: average gap between predicted and observed frequency over ten equal-mass bins};
+  \node[block, text width=4.9cm, align=left, below=3mm of ece] (auc)
+       {\textbf{AUROC}: ranking only; a monotone recalibration leaves it unchanged};
+  \node[note, text width=4.9cm, align=left, anchor=north west] at ($(auc.south west)+(0,-0.05)$)
+       {A well-calibrated probability can still rank poorly, and the reverse.};
+\end{tikzpicture}

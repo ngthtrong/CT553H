@@ -1,0 +1,50 @@
+% Original overview of the research pipeline (plan-report 4.2).
+% Sources: research/kaggle-roadmap-2026-10-31/EXECUTION-PROTOCOL.md (W/T, arms, families),
+% research/lora-refit-transfer-2026-11-16/PROTOCOL.md (protocol locked before scoring T),
+% model-card.json, research/g2-acceptance-2026-11-07/d4-decision-2026-11-17.md (Koren as survey).
+% Counts are generated macros (numbers.tex, campaign-numbers.tex, transfer-numbers.tex).
+\begin{tikzpicture}[fig, node distance=4mm]
+  \tikzset{st/.style={block, text width=2.55cm, minimum height=1.45cm, align=left},
+           stn/.style={font=\scriptsize\bfseries, anchor=south west, inner sep=1pt}}
+  % ---------------- row 1: development
+  \node[st, fill=oiGrey!8] (src) at (0,0)
+       {Zhang 2023 GPS saturation and scanning reads; PAP reference \citep{voutsinos2026}};
+  \node[st, right=of src] (lab)
+       {PSI and $\Delta$PSI rebuilt from read counts; technical QC};
+  \node[st, right=of lab] (grp)
+       {protein groups by MMseqs2 similarity; W split into 5 outer folds};
+  \node[st, right=of grp, fill=oiSky!15] (dev)
+       {arms B/D; ridge W5, frozen pLM family, CNN heads, frozen vs LoRA ESM2-35M};
+  \node[st, right=of dev, fill=oiSky!15] (oof)
+       {nested OOF predictions, calibration, group bootstrap (Ch.~4A)};
+  \foreach \a/\b in {src/lab, lab/grp, grp/dev, dev/oof} \draw[flow] (\a) -- (\b);
+  \foreach \n/\t in {src/1 Sources, lab/2 Labels, grp/3 Splits, dev/4 Development, oof/5 Evaluation}
+    \node[stn] at (\n.north west) {\t};
+
+  % ---------------- row 2: locked transfer and delivery
+  \node[st, fill=oiYellow!25, below=17mm of oof] (lock)
+       {protocol, recipes, endpoint and contrasts fixed before any LoRA prediction on T};
+  \node[st, left=of lock, fill=oiOrange!15] (refit)
+       {final refit of LoRA-D and frozen-D on all of W; calibrator from OOF of W};
+  \node[st, left=of refit, fill=oiOrange!15] (score)
+       {held source T scored once: \nTPeptides{} peptides, \nTGroups{} groups};
+  \node[st, left=of score] (card)
+       {model card, lineage hashes and inference parity};
+  \node[st, left=of card, fill=oiGreen!12] (app)
+       {application: optional LoRA-D serving model (Part~B)};
+  \draw[flow] (oof) -- (lock);
+  \foreach \a/\b in {lock/refit, refit/score, score/card, card/app} \draw[flow] (\a) -- (\b);
+  \foreach \n/\t in {lock/6 Lock, refit/7 Refit, score/8 Transfer, card/9 Package, app/10 Deliver}
+    \node[stn] at (\n.north west) {\t};
+
+  % ---------------- icons above each block (plan-report V-1)
+  \foreach \n/\ic in {src/icondb, lab/iconbins, grp/iconclusters, dev/iconlayers, oof/iconci,
+                      lock/iconlock, refit/iconrefit, score/icontarget, card/iconcard, app/iconscreen}
+    \pic at ($(\n.north east)+(-0.38,0.3)$) {\ic};
+  % ---------------- side inputs
+  \node[note, anchor=north, fill=white, inner sep=1pt] (tnote) at ($(grp.south)+(0,-0.08)$)
+       {T: scanning groups kept apart};
+  \draw[dashedflow, oiGrey] (tnote.south) -- ($(score.north)+(0,0.3)$);
+  \node[note, text width=4.4cm, align=left, anchor=north west] at ($(app.south west)+(0,-0.12)$)
+       {Koren 2018 S4: external survey only, not an acceptance condition (D-4).};
+\end{tikzpicture}

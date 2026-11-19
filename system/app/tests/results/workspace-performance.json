@@ -1,0 +1,77 @@
+{
+  "generated_at": "2026-11-17T03:11:09+00:00",
+  "host": {
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "cpu_model": "AMD Ryzen 5 5500U with Radeon Graphics",
+    "logical_cpus": 12,
+    "mem_total_mb": 7619,
+    "python": "3.12.3",
+    "load_average_1_5_15": [
+      1.1845703125,
+      1.17626953125,
+      1.3115234375
+    ],
+    "note": "WSL2 on the author laptop; other processes may share the CPU"
+  },
+  "database": {
+    "source": ".data/dev.db (copy)",
+    "bytes_before": 522055680,
+    "bytes_after": 618459136,
+    "growth_mb": 96.4
+  },
+  "results": {
+    "peptides_100": {
+      "submit_seconds": 0.038,
+      "first_claim_seconds": 0.084,
+      "total_seconds": 4.94,
+      "per_item_ms": 49.4,
+      "state": "completed",
+      "counts": {
+        "pending": 0,
+        "running": 0,
+        "succeeded": 100,
+        "refused": 0,
+        "failed": 0,
+        "cancelled": 0
+      }
+    },
+    "protein": {
+      "uniprot_id": "Q8NF91",
+      "length": 8797,
+      "tiles": 382,
+      "submit_seconds": 0.056,
+      "first_claim_seconds": 0.023,
+      "total_seconds": 20.73,
+      "per_tile_ms": 54.3,
+      "state": "completed",
+      "counts": {
+        "pending": 0,
+        "running": 0,
+        "succeeded": 382,
+        "refused": 0,
+        "failed": 0,
+        "cancelled": 0
+      },
+      "export_csv_seconds": 3.25,
+      "export_csv_mb": 41.3,
+      "item_page_200_ms": 21.4,
+      "item_page_status": 200
+    },
+    "cancel": {
+      "seconds_to_cancelled": 0.111,
+      "state": "partial",
+      "kept_succeeded": 6,
+      "cancelled": 376
+    },
+    "import_100k": {
+      "file_mb": 4.61,
+      "rows": 100000,
+      "valid": 100000,
+      "preview_seconds": 5.01,
+      "commit_seconds": 0.022,
+      "committed": "committed"
+    }
+  },
+  "workspace_files_mb": 4.61,
+  "peak_rss_mb_api_worker_one_process": 437.1
+}

@@ -126,7 +126,7 @@ test('A11Y-02 keyboard only: UC-01 to UC-03 without a mouse', async ({ page }) =
 for (const theme of ['light', 'dark'] as const) {
   test(`A11Y-01 axe including colour contrast on every page, ${theme} theme`, async ({ page }) => {
     await page.addInitScript((t) => localStorage.setItem('df-theme', t), theme);
-    const pages = ['/', '/protein/A6NMZ7', '/result/uniprot/A6NMZ7/28', '/result/uniprot/A6NMZ7/7', '/result/uniprot/A6NMZ7/5', '/model', '/about'];
+    const pages = ['/', '/protein/A6NMZ7', '/result/uniprot/A6NMZ7/28', '/result/uniprot/A6NMZ7/7', '/result/uniprot/A6NMZ7/5', '/model', '/model/mock-esm2-lora-d', '/about', '/admin'];
     for (const route of pages) {
       await page.goto(route);
       await page.waitForLoadState('networkidle');
@@ -166,4 +166,57 @@ test('NF-06 (mock) time from clicking Predict to the painted heatmap', async ({ 
   console.log(`NF-06 mock-API render times (ms): ${ms.map((x) => x.toFixed(0)).join(', ')}`);
   // Reported, not asserted against NFR-03: this runs on the mock, on this machine, and is not the measurement of record.
   expect(Math.max(...ms)).toBeLessThan(5000);
+});
+
+test('MSEL-02 (mock) choose a slow model: confirmation dialog, then the provenance names the chosen model', async ({ page }) => {
+  await page.goto('/');
+  await page.getByLabel('Model', { exact: true }).selectOption('mock-esm2-lora-d');
+  await expect(page).toHaveURL(/\?model=mock-esm2-lora-d$/);
+  await page.getByLabel(/Tile sequence/).fill(SEQ);
+  await page.getByRole('button', { name: 'Predict' }).click();
+  const dialog = page.getByRole('dialog', { name: 'This model is slow' });
+  await expect(dialog).toBeVisible();
+  await expect(dialog.getByTestId('slow-model-estimate')).toContainText('≈ 1 tile × 38.0 s ≈ 38 s');
+  const res = await new AxeBuilder({ page }).include('dialog').withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
+  expect(res.violations.map((v) => v.id)).toEqual([]);
+  await page.keyboard.press('Escape');                                   // Escape cancels: nothing is sent
+  await expect(dialog).toBeHidden();
+  await expect(page).toHaveURL(/\/\?model=/);
+  await page.getByRole('button', { name: 'Predict' }).click();
+  await page.getByRole('button', { name: 'Start anyway' }).click();
+  await expect(page.getByTestId('heatmap')).toBeVisible();
+  await expect(page.getByText('mock-esm2-lora-d').first()).toBeVisible();
+  expect(page.url()).not.toContain(SEQ);
+});
+
+for (const theme of ['light', 'dark'] as const) {
+  test(`UNC-04 axe on the seed-spread view, ${theme} theme`, async ({ page }) => {
+    await page.addInitScript((t) => localStorage.setItem('df-theme', t), theme);
+    await page.goto('/result/uniprot/A6NMZ7/1?model=mock-esm2-lora-d');
+    await expect(page.getByTestId('heatmap')).toBeVisible();
+    await page.getByRole('radio', { name: 'Seed spread' }).check();
+    await expect(page.getByTestId('scale-description')).toContainText('not a confidence interval');
+    await page.getByTestId('heatmap').locator('[role="gridcell"]').nth(1).focus();
+    await expect(page.getByTestId('seed-spread-detail')).toBeVisible();
+    const res = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
+    expect(res.violations.map((v) => `${v.id}: ${v.nodes[0]?.target.join(' ')}`)).toEqual([]);
+  });
+}
+
+test('UX-10 presentation mode keeps the domain banner, warnings and evidence label; hides secondary tables; axe', async ({ page }) => {
+  await page.goto('/result/uniprot/A6NMZ7/28');
+  await expect(page.getByTestId('heatmap')).toBeVisible();
+  const before = await page.getByTestId('heatmap').boundingBox();
+  await page.keyboard.press('Alt+Shift+P');
+  await expect(page.getByTestId('presentation-bar')).toBeVisible();
+  for (const id of ['domain-banner', 'warning-list', 'evidence-label', 'heatmap', 'footprint-track']) await expect(page.getByTestId(id)).toBeVisible();
+  await expect(page.getByTestId('rank-table')).toBeHidden();
+  const after = await page.getByTestId('heatmap').boundingBox();
+  expect(after!.width).toBeGreaterThan(before!.width);
+  const res = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
+  expect(res.violations.map((v) => `${v.id}: ${v.nodes[0]?.target.join(' ')}`)).toEqual([]);
+  await page.reload();                                                   // remembered for the session
+  await expect(page.getByTestId('presentation-bar')).toBeVisible();
+  await page.getByRole('button', { name: /Exit/ }).click();
+  await expect(page.getByTestId('rank-table')).toBeVisible();
 });

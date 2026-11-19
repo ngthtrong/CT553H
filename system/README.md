@@ -68,15 +68,20 @@ The following are **historical records from the 22–23 Oct documents, not re-ex
 | Frontend | 131 vitest cases; Chromium mock/build/backend runs; single-tile UI and source/model pages |
 | Contract | Baseline 13-path contract was reconciled with the code; new planned paths are not part of those results |
 
-**Pending first-release implementation/verification:** projects/history, durable batch jobs, whole-protein web flow, experimental import/comparison, expanded exports and local PostgreSQL integration. Existing single-tile/ClinVar functionality must be rechecked under the new scope. Historical counts must not be presented as passing the new requirements.
+**Branch 2 implementation, 16–17 Nov 2026:** projects/history, durable peptide and whole-protein jobs with a separate
+worker, experimental import/comparison, expanded exports, the R3 gate, local PostgreSQL 16 and the 13 v0.2 screens are
+implemented; all 24 workspace operations are `implemented` in `openapi.yaml`. Measured results and open items:
+[app/acceptance-2026-11-17.md](app/acceptance-2026-11-17.md) (backend 292 pass / coverage 96 %, Vitest 171, e2e mock 28,
+e2e real backend 14, DEP-01/DEP-02 pass; PostgreSQL rerun, manual accessibility pass, LoRA-D serving and screenshots
+remain open). The historical counts above are kept as history only.
 
-**Scientific integration gap:** R3 showed that raw screen PSI and intrinsic PSI(WT) are different estimators. The baseline app still compares screen PSI directly with 4.0 and does not load the delivered gate model or represent `borderline`. Correct integration is required; merely changing a document is insufficient. Tile/reference mapping outside the training peptides and source terms remain data-quality checks, not hosting tasks.
+**R3 gate integrated (16 Nov 2026):** screen PSI goes through the frozen logistic (tier 1) and typed/unscreened sequences through tier 2, with `measured_borderline`/`predicted_borderline`; the 4.0 comparison is gone (app/DEVIATIONS.md §7). Status remains `development_not_gate_closure`. Tile/reference mapping outside the training peptides and source terms remain data-quality checks, not hosting tasks.
 
 ## 5. Local operation and acceptance
 
 There is one local application, not separate public/internal editions. Target components are the browser frontend, FastAPI, a local job worker using the same inference package, PostgreSQL and a local workspace file directory. Bind application listeners to `127.0.0.1`; allow only the configured loopback frontend origin. No third-party API receives user sequences.
 
-Docker Compose may package these same local components; it is not a second deployment target and is not required for public hosting. Existing VPS/Caddy configuration is legacy code outside this release's acceptance scope. Current development commands in [app/Makefile](app/Makefile) start only the baseline: they do not implement jobs or project persistence.
+Docker Compose packages these same local components; it is not a second deployment target and is not required for public hosting. Existing VPS/Caddy configuration is legacy code outside this release's acceptance scope. **17 Nov 2026:** every component runs in Docker (`db`, `api`, `worker`, `web`, `etl`; dev override with hot reload), ports bound to `127.0.0.1`; the optional LoRA-D model is a non-default frozen model (`WITH_LORA=1`). Record: [app/docker-validation-2026-11-17.md](app/docker-validation-2026-11-17.md); commands in [app/Makefile](app/Makefile) and [app/INSTALL.md](app/INSTALL.md) §0.
 
 Acceptance is a clean local installation and execution of UC-01…10, close/reopen recovery of saved work, numerical agreement, import/annotation correctness and measured local resource use. Record the actual OS, CPU, RAM, dataset sizes and dependency versions; the old VPS sizing is not a requirement. Performance and input-limit defaults in the SRS are proposed until measured locally.
 

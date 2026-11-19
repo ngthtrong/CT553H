@@ -1,0 +1,36 @@
+% Original flow of the effect-matrix feature (plan-report 5.1).
+% From the code: system/app/backend/api/requests.py (28 standard residues after normalising case
+% and surrounding whitespace, coded 422 errors), api/service.py (domain gate before scoring,
+% OUT_OF_DOMAIN 422 unless override_domain, warnings), degron_footprint/prediction.py (warning
+% codes), saved results as analysis_run + 532 analysis_cell rows; footprint = mean of the 19
+% substitutions per position, checked against the matrix to 1e-9 in the interface tests.
+\begin{tikzpicture}[fig, node distance=4.5mm]
+  \tikzset{s/.style={block, text width=2.2cm, minimum height=1.05cm, align=center},
+           xerr/.style={block, text width=2.2cm, align=center, draw=oiVermillion, fill=oiVermillion!10}}
+  \node[data, text width=2.1cm] (in) at (0,0) {typed 28-mer, or UniProt protein + tile index};
+  \node[s, right=of in] (val) {normalise case and whitespace; exactly 28 standard residues};
+  \node[decision, right=of val, font=\scriptsize] (gate) {domain\\gate};
+  \node[s, right=6mm of gate, fill=oiSky!15] (score) {model scores the 532 substitutions (raw $\Delta$PSI)};
+  \node[s, right=of score, fill=oiSky!15] (cal) {calibrator adds $P(\Delta\mathrm{PSI}\ge1)$};
+  \draw[flow] (in) -- (val);
+  \draw[flow] (val) -- (gate);
+  \draw[flow] (gate) -- node[above, dim] {not out} (score);
+  \draw[flow] (score) -- (cal);
+
+  \node[xerr, below=8mm of val] (err) {coded field error (422), no scores};
+  \draw[flow, oiVermillion] (val) -- node[right, dim] {invalid} (err);
+  \node[xerr, below=8mm of gate] (ref) {refused (422) unless the user overrides};
+  \draw[flow, oiVermillion] (gate) -- node[right, dim] {out} (ref);
+  \draw[dashedflow] (ref.east) -| node[pos=0.3, above, dim] {override, recorded} (score.south);
+
+  % response row
+  \node[s, below=24mm of cal, text width=3.0cm, fill=oiYellow!20] (warn) {1. domain banner and warnings (training peptide, predicted, borderline, override)};
+  \node[s, left=6mm of warn, text width=3.6cm] (view) {2. $28\times20$ matrix with WT hatched; footprint track (mean of 19 per position); within-tile ranking};
+  \node[s, left=6mm of view, text width=2.9cm, fill=oiGreen!12] (save) {3. optional save: immutable \texttt{analysis\_run} + 532 \texttt{analysis\_cell}};
+  \draw[flow] (cal) -- (warn);
+  \draw[flow] (warn) -- (view);
+  \draw[dashedflow] (view) -- (save);
+  \node[note, text width=6.2cm, align=left, anchor=north east] at ($(warn.south east)+(0,-0.12)$)
+       {Warnings precede the numbers in page order, so a screen reader reaches the caveat first.
+        An unsaved preview is not stored.};
+\end{tikzpicture}

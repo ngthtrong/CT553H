@@ -102,7 +102,7 @@ def dataset_row(pid, **kw) -> ImportDataset:
 def test_head_has_all_workspace_tables(mini_db):
     assert counts(mini_db['url'], WORKSPACE) == dict.fromkeys(WORKSPACE, 0)
     with make_engine(mini_db['url']).connect() as c:
-        assert c.execute(text('SELECT version_num FROM alembic_version')).scalar_one() == '0003'
+        assert c.execute(text('SELECT version_num FROM alembic_version')).scalar_one() == '0008'
 
 
 @pytest.mark.sqlite_only
@@ -347,3 +347,76 @@ def test_remove_project_dir_reports_failure_for_retry(tmp_path, monkeypatch):
     monkeypatch.undo()
     assert remove_project_dir(tmp_path, pid) is None
     assert not d.exists()
+
+
+def test_migration_0005_adds_nullable_columns_up_and_down(dbcopy):
+    """plan-system 1.3/1.7: seed-spread columns on both cell tables and job_item.duration_ms; down removes them and
+    keeps every row (runs on SQLite and PostgreSQL, R-5)."""
+    from sqlalchemy import inspect
+
+    def cols(table):
+        eng = make_engine(dbcopy)
+        try:
+            return {c['name'] for c in inspect(eng).get_columns(table)}
+        finally:
+            eng.dispose()
+
+    seed = {'score_seed_sd', 'score_seed_min', 'score_seed_max'}
+    assert seed <= cols('analysis_cell') and seed <= cols('prediction_cell') and 'duration_ms' in cols('job_item')
+    before = counts(dbcopy, REFERENCE)
+    command.downgrade(alembic_cfg(dbcopy), '0004')
+    assert not seed & cols('analysis_cell') and not seed & cols('prediction_cell')
+    assert 'duration_ms' not in cols('job_item')
+    assert counts(dbcopy, REFERENCE) == before
+    command.upgrade(alembic_cfg(dbcopy), 'head')
+    assert seed <= cols('analysis_cell') and 'duration_ms' in cols('job_item')
+    assert counts(dbcopy, REFERENCE) == before
+
+
+def test_migration_0006_model_comparison_up_and_down(dbcopy):
+    """plan-system 2.2: the model_comparison table; down removes it, reference rows untouched (R-5)."""
+    from sqlalchemy import inspect
+
+    def tables():
+        eng = make_engine(dbcopy)
+        try:
+            return set(inspect(eng).get_table_names())
+        finally:
+            eng.dispose()
+
+    assert 'model_comparison' in tables()
+    before = counts(dbcopy, REFERENCE)
+    command.downgrade(alembic_cfg(dbcopy), '0005')
+    assert 'model_comparison' not in tables() and counts(dbcopy, REFERENCE) == before
+    command.upgrade(alembic_cfg(dbcopy), 'head')
+    assert 'model_comparison' in tables()
+
+
+def test_migration_0007_worker_heartbeat_up_and_down(dbcopy):
+    """plan-system 4.2: worker_heartbeat; down removes it (R-5)."""
+    from sqlalchemy import inspect
+    eng = make_engine(dbcopy)
+    assert 'worker_heartbeat' in inspect(eng).get_table_names()
+    eng.dispose()
+    command.downgrade(alembic_cfg(dbcopy), '0006')
+    eng = make_engine(dbcopy)
+    assert 'worker_heartbeat' not in inspect(eng).get_table_names()
+    eng.dispose()
+    command.upgrade(alembic_cfg(dbcopy), 'head')
+
+
+def test_migration_0008_job_priority_up_and_down(dbcopy):
+    """plan-system 4.5: analysis_job.priority (default 0); down removes it (R-5)."""
+    from sqlalchemy import inspect
+
+    def cols():
+        eng = make_engine(dbcopy)
+        try:
+            return {c['name'] for c in inspect(eng).get_columns('analysis_job')}
+        finally:
+            eng.dispose()
+    assert 'priority' in cols()
+    command.downgrade(alembic_cfg(dbcopy), '0007')
+    assert 'priority' not in cols()
+    command.upgrade(alembic_cfg(dbcopy), 'head')
+    assert 'priority' in cols()

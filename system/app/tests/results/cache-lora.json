@@ -1,0 +1,67 @@
+{
+  "date": "2026-11-18T04:06:26+00:00",
+  "host": {
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "cpu_model": "AMD Ryzen 5 5500U with Radeon Graphics",
+    "logical_cpus": 12,
+    "mem_total_mb": 7619,
+    "load_average_1_5_15": [
+      2.7412109375,
+      3.57177734375,
+      2.66162109375
+    ],
+    "note": "WSL2 on the author laptop; Docker Engine in the same VM; other processes may share the CPU"
+  },
+  "base": "http://127.0.0.1:8080",
+  "model_id": "esm2-35m-lora-d-aa4fc2b7",
+  "protein": "A6NMZ7",
+  "target": "second open/export of the same tile < 1000 ms",
+  "tiles": [
+    {
+      "tile_index": 41,
+      "first_ms": 33144.1,
+      "second_predict_ms": 21.4,
+      "export_csv_ms": 18.0,
+      "export_json_ms": 23.1,
+      "cells_identical": true,
+      "seed_spread_present": true
+    },
+    {
+      "tile_index": 42,
+      "first_ms": 33553.7,
+      "second_predict_ms": 29.1,
+      "export_csv_ms": 28.0,
+      "export_json_ms": 30.2,
+      "cells_identical": true,
+      "seed_spread_present": true
+    },
+    {
+      "tile_index": 43,
+      "first_ms": 33562.3,
+      "second_predict_ms": 21.5,
+      "export_csv_ms": 17.5,
+      "export_json_ms": 22.2,
+      "cells_identical": true,
+      "seed_spread_present": true
+    }
+  ],
+  "health": {
+    "status": "ok",
+    "version": "0.1.0",
+    "model_loaded": true,
+    "default_model_id": "esm2-35m-lora-d-aa4fc2b7",
+    "database": "ok",
+    "default_model_source": "setting",
+    "default_model_sha256": "d6729faf0bc4fa781239fba2945362ae72273901afdde5d35138e2b35401303f"
+  },
+  "summary": {
+    "max_cached_ms": 30.2,
+    "min_first_ms": 33144.1,
+    "all_identical": true,
+    "target_met": true
+  },
+  "caveats": [
+    "one protein, sequential requests, same API process; the cache is per process (memory mode)",
+    "tiles chosen so that they were not scored before in this process; first_ms includes the model"
+  ]
+}

@@ -1,6 +1,7 @@
 import { AMINO_ACIDS } from '../api/types';
 import type { Cell, TileInfo } from '../api/types';
 import { fmtProb, fmtScore } from '../lib/format';
+import { SPREAD_LABEL } from '../lib/spread';
 import type { ScaleMode } from './ScaleToggle';
 import { cellKey } from './Heatmap';
 
@@ -11,7 +12,7 @@ export function MatrixTable({ cells, tile, mode, eventDefinition }: { cells: Cel
     <div className="table-wrap" tabIndex={0} role="region" aria-label="Effect matrix as a table, scrollable">
       <table className="data" data-testid="matrix-table">
         <caption className="visually-hidden">
-          {mode === 'prob' ? `Probability ${eventDefinition}` : 'Raw score'} for each substitution. Rows are positions, columns are the substituted amino acids.
+          {mode === 'prob' ? `Probability ${eventDefinition}` : mode === 'spread' ? `Seed spread. ${SPREAD_LABEL}` : 'Raw score'} for each substitution. Rows are positions, columns are the substituted amino acids.
         </caption>
         <thead>
           <tr>
@@ -29,7 +30,7 @@ export function MatrixTable({ cells, tile, mode, eventDefinition }: { cells: Cel
                 const c = by.get(cellKey(i + 1, a));
                 return (
                   <td key={a} className="num">
-                    {a === wt || !c ? 'wt' : mode === 'prob' ? fmtProb(c.p_dpsi_ge_1_calibrated) : fmtScore(c.score_dpsi_raw)}
+                    {a === wt || !c ? 'wt' : mode === 'prob' ? fmtProb(c.p_dpsi_ge_1_calibrated) : mode === 'spread' ? fmtScore(c.score_seed_sd ?? 0) : fmtScore(c.score_dpsi_raw)}
                   </td>
                 );
               })}

@@ -100,7 +100,7 @@ python3 .claude/skills/ui-ux-pro-max/scripts/search.py "rerender memo list" --st
 | Pattern **Enterprise Gateway** (Contact Sales, logo carousel, mega menu) | ❌ **Bỏ** | Mẫu landing page marketing, không phải ứng dụng local |
 | Primary navy `#1E40AF` | ⚠️ **Xét lại** | Phải kiểm không trùng vùng màu của Viridis đảo |
 | Accent hổ phách `#D97706` | ❌ **Bỏ** | **Trùng tông cam của thang PuOr** → nút UI có thể bị đọc thành "raw score dương". Giữ teal của v2 |
-| Font Fira Code + Fira Sans **qua Google Fonts CDN** | ✅ **Nhận font, bỏ CDN** | App loopback, NFR-09 cấm gửi gì ra bên thứ ba → tự host `woff2` (giấy phép OFL). **16/11: Trọng chọn Fira Sans/Fira Code** thay Roboto của v2 |
+| Font Fira Code + Fira Sans **qua Google Fonts CDN** | ✅ **Nhận font, bỏ CDN** | App loopback, NFR-09 cấm gửi gì ra bên thứ ba → tự host `woff2` (giấy phép OFL). **16/11: Trọng chọn Fira Sans/Fira Code** thay Roboto của v2. **17/11: đổi lại Roboto/Roboto Mono** theo yêu cầu, tự host `@fontsource-variable` ([hồ sơ](design/ui-ux-pro-max-2026-11-17/README.md)) |
 | GSAP scroll reveal | ❌ **Bỏ** | Thừa với công cụ phân tích; không thêm dependency; chỉ dùng CSS transition 150–250 ms + `prefers-reduced-motion` |
 | Icon SVG (Lucide/Heroicons), không emoji | ✅ **Nhận** | Thêm `lucide-react` (giấy phép ISC) — dependency mới, ghi vào DEVIATIONS |
 | Breakpoint 375/768/1024/1440 | ✅ **Gộp** với 360/768/1280 của v2 và NFR-12 → kiểm **360 / 768 / 1280 / 1440** | |
@@ -259,32 +259,42 @@ loading / empty / error / partial, đi được bằng bàn phím, có thông b�
 
 | # | Màn hình | Route | UC | Component chính | Ngày |
 | --- | --- | --- | --- | --- | --- |
-| [ ] 9.1 | Projects | `/projects` | 10 | `ProjectList`, thẻ project (tên, cập nhật, số analysis/job/dataset) | 0,5 |
-| [ ] 9.2 | Project workspace / history | `/projects/:id` | 10 | `ProjectWorkspace`, 3 tab History · Jobs · Datasets, `HistoryTable`, `DeleteConfirmation` | 1 |
-| [ ] 9.3 | New analysis (single / batch / protein) | `/new` | 01, 08 | `SequenceInput`, `BatchInput`, preview giới hạn + ước lượng công việc | 1 |
-| [ ] 9.4 | Protein tile picker | `/protein/:acc` | 04 | `ProteinSearch`, `TileMap`, `ProteinCoverage` | 0,5 |
-| [ ] 9.5 | Matrix / ranking / shortlist | `/result` | 01, 02 | `Heatmap` 28×20, `RankTable`, inspector cạnh (không modal), shortlist, top 10% | 1,5 |
-| [ ] 9.5b | **Footprint track 1D** dưới ma trận, dùng chung trục vị trí | trong `/result` | 01 | `FootprintTrack` **[bổ sung đề xuất]** — chưa có trong `ui-design.md`, cần bổ sung tài liệu | 0,5 |
-| [ ] 9.6 | Saved snapshot / rerun / export | `/analyses/:id` | 03, 10 | `SaveAnalysisDialog`, `ExportMenu`, nút "Run again" tạo bản ghi mới | 0,5 |
-| [ ] 9.7 | Comparison | tab trong result | 05 | `ComparisonPanel`: dự đoán · đo · residual · đơn vị · n · lý do metric không xác định | 1 |
-| [ ] 9.8 | ClinVar / annotations | tab trong result | 06 | `AnnotationStatus` 4 trạng thái tách biệt | 0,5 |
-| [ ] 9.9 | Job progress / cancel / manifest | `/jobs/:id` | 08, 03 | `JobProgress`, `JobItemTable` phân trang, mở ma trận từng tile theo yêu cầu | 1 |
-| [ ] 9.10 | Import / validation / commit | `/import` | 09 | `ImportWizard`, `ValidationReport`, câu *"comparison only; not used to retrain the model"* | 1 |
-| [ ] 9.11 | Dataset / deletion | `/datasets/:id` | 09, 10 | `DatasetList`, phân biệt rõ `staged` với `committed` | 0,5 |
-| [ ] 9.12 | Model & evidence · Data & sources | `/model`, `/sources` | 07 | Restyle `ModelCardPage`, `AboutPage` | 0,5 |
+| [x] 9.1 | Projects | `/projects` | 10 | `ProjectList`, thẻ project (tên, cập nhật, số analysis/job/dataset) | 0,5 |
+| [x] 9.2 | Project workspace / history | `/projects/:id` | 10 | `ProjectWorkspace`, 3 tab History · Jobs · Datasets, `HistoryTable`, `DeleteConfirmation` | 1 |
+| [x] 9.3 | New analysis (single / batch / protein) | `/new` | 01, 08 | `SequenceInput`, `BatchInput`, preview giới hạn + ước lượng công việc | 1 |
+| [x] 9.4 | Protein tile picker | `/protein/:acc` | 04 | `ProteinSearch`, `TileMap`, `ProteinCoverage` | 0,5 |
+| [x] 9.5 | Matrix / ranking / shortlist | `/result` | 01, 02 | `Heatmap` 28×20, `RankTable`, inspector cạnh (không modal), shortlist, top 10% | 1,5 |
+| [x] 9.5b | **Footprint track 1D** dưới ma trận, dùng chung trục vị trí | trong `/result` | 01 | `FootprintTrack` **[bổ sung đề xuất]** — chưa có trong `ui-design.md`, cần bổ sung tài liệu | 0,5 |
+| [x] 9.6 | Saved snapshot / rerun / export | `/analyses/:id` | 03, 10 | `SaveAnalysisDialog`, `ExportMenu`, nút "Run again" tạo bản ghi mới | 0,5 |
+| [x] 9.7 | Comparison | tab trong result | 05 | `ComparisonPanel`: dự đoán · đo · residual · đơn vị · n · lý do metric không xác định | 1 |
+| [x] 9.8 | ClinVar / annotations | tab trong result | 06 | `AnnotationStatus` 4 trạng thái tách biệt | 0,5 |
+| [x] 9.9 | Job progress / cancel / manifest | `/jobs/:id` | 08, 03 | `JobProgress`, `JobItemTable` phân trang, mở ma trận từng tile theo yêu cầu | 1 |
+| [x] 9.10 | Import / validation / commit | `/import` | 09 | `ImportWizard`, `ValidationReport`, câu *"comparison only; not used to retrain the model"* | 1 |
+| [x] 9.11 | Dataset / deletion | `/datasets/:id` | 09, 10 | `DatasetList`, phân biệt rõ `staged` với `committed` | 0,5 |
+| [x] 9.12 | Model & evidence · Data & sources | `/model`, `/sources` | 07 | Restyle `ModelCardPage`, `AboutPage` | 0,5 |
 
 **Tiêu chí:** mỗi màn hình có ít nhất một test Vitest + một luồng Playwright; 0 axe violation; không chuỗi sinh học nào lọt vào URL hay `localStorage`.
+
+**Kết quả 17/11:** đạt.
+- Trang mới: `ProjectsPage`, `ProjectPage`, `InputPage` (3 chế độ), `JobPage`, `AnalysisPage` (tab Ma trận · So sánh · Chú giải), `ImportPages` (`ImportPage`, `DatasetPage`).
+- Component mới: `BatchInput`, `ProteinCoverage`, `JobItemTable`, `SaveAnalysisDialog`, `ComparisonPanel`, `AnnotationStatus`, `DeleteConfirmation`, `FootprintTrack` (đã bổ sung vào `ui-design.md` §12.4b).
+- 9.4 Tile picker và 9.12 Model/Sources giữ component cũ, dùng token và shell mới.
+- Test: `frontend/tests/workspace-screens.test.tsx` 18 case (gồm footprint khớp ma trận < 1e-9); `e2e/workspace.spec.ts` 8 luồng (UC-01/03/05/08/09/10 + axe 2 theme); e2e backend thật 12/12, gồm luồng workspace với worker nhúng; log API không chứa chuỗi sinh học.
+- Tổng: Vitest 170/170, e2e mock 24/24.
+- Giới hạn: jsdom gửi `File` trong `FormData` thành rỗng, nên bước commit import chỉ kiểm ở trình duyệt thật.
 
 ### WP10 — Đổi model phục vụ sang LoRA-D · 3 ngày · BE · *phụ thuộc nhánh 1 mục 1.13*
 
 | Việc | Chi tiết |
 | --- | --- |
-| [ ] 10.1 Loại model mới `torch-lora` trong registry | FR-22: snapshot cũ vẫn gắn model gốc |
-| [ ] 10.2 Dependency tách riêng `requirements-lora.txt` (`torch` CPU, `transformers`) | Cài mặc định vẫn nhẹ; npz vẫn chạy khi không cài |
-| [ ] 10.3 Nạp lười (lazy load), kiểm hash trước khi phục vụ | NFR-06 → UT-09 |
-| [ ] 10.4 Parity với output refit của nhánh 1 | NFR-04 → RG-01 |
-| [ ] 10.5 **Đo** latency CPU cho 532 biến thể/tile, RAM, kích thước cài đặt | NFR-01 (300 ms p95 đề xuất) — **dự kiến khó đạt**; ghi số thật, không giấu |
-| [ ] 10.6 Cờ cấu hình chọn model mặc định; npz là mặc định cho đến khi có quyết định serving riêng | `development_not_gate_closure` |
+| [x] 10.1 Loại model mới `torch-lora` trong registry | FR-22: snapshot cũ vẫn gắn model gốc — 17/11: kind `torch_lora`, `degron_footprint/lora.py`; ETL đăng ký frozen, không mặc định |
+| [x] 10.2 Dependency tách riêng `requirements-lora.txt` (`torch` CPU, `transformers`) | Cài mặc định vẫn nhẹ; npz vẫn chạy khi không cài — 17/11: image Docker `WITH_LORA=0` 399 MB / `=1` 1,77 GB; thiếu torch → LoRA-D báo không nạp, healthz vẫn `ok` |
+| [x] 10.3 Nạp lười (lazy load), kiểm hash trước khi phục vụ | NFR-06 → UT-09 — kiểm SHA-256 mọi file bundle lúc khởi động, digest learned state từng seed lúc dựng mạng (request đầu) |
+| [x] 10.4 Parity với output refit của nhánh 1 | NFR-04 → RG-01 — `app/tests/results/lora-bundle.json`: CUDA→CPU 3,0e-6; serving↔research 0,0 trên 2 tile; API trong Docker 0,0 (`latency-lora.json`) |
+| [x] 10.5 **Đo** latency CPU cho 532 biến thể/tile, RAM, kích thước cài đặt | NFR-01 **không đạt**: p95 39,1 s/tile (Docker, 4 luồng), RAM container 514 MiB, image 1,77 GB — `app/tests/results/latency-lora.json` |
+| [x] 10.6 Cờ cấu hình chọn model mặc định; npz là mặc định cho đến khi có quyết định serving riêng | `DF_DEFAULT_MODEL_ID` (rỗng = npz); `/healthz`, `/v1/models` báo mặc định thực tế; `development_not_gate_closure` |
+
+**Kết quả WP10 (17/11):** [`app/backend/LORA.md`](app/backend/LORA.md), [`app/docker-validation-2026-11-17.md`](app/docker-validation-2026-11-17.md). Chưa có quyết định đổi model phục vụ; LoRA-D chỉ bật khi được chọn.
 
 **Tiêu chí:** cả hai model chạy được; chuyển qua lại bằng cấu hình; số đo latency/RAM được ghi.
 
@@ -292,27 +302,31 @@ loading / empty / error / partial, đi được bằng bàn phím, có thông b�
 
 | Việc | Test ID |
 | --- | --- |
-| [ ] 11.1 E2E từng UC-01…10, luồng chính và luồng lỗi | E2E-01…12 |
-| [ ] 11.2 Ma trận trình duyệt Chromium / Firefox / WebKit × 360 / 768 / 1280 / 1440 | NFR-12 |
-| [ ] 11.3 axe + **kiểm tay** bàn phím hoàn thành UC-01…10, tín hiệu không dựa màu | A11Y-01…04 |
-| [ ] 11.4 Hiệu năng có ghi cấu hình máy | NF-01…07 |
-| [ ] 11.5 Canary chuỗi/quan sát không xuất hiện trong log/URL | SEC-01 |
-| [ ] 11.6 Bind loopback, kiểm origin/content-type, header bảo mật | SEC-03 |
-| [ ] 11.7 `npm audit` + `pip-audit` | SEC-05 |
-| [ ] 11.8 Cài sạch từ clone mới theo hướng dẫn | DEP-01 |
-| [ ] 11.9 Dừng/khởi động lại, phục hồi | DEP-02 |
-| [ ] 11.10 Coverage backend (mục tiêu đề xuất ≥ 85%) | NFR-17 |
-| [ ] 11.11 Cập nhật `openapi.yaml`, `DEVIATIONS.md`, `system/README.md` §4, `ui-design.md` (footprint track) | |
-| [ ] 11.12 Biên bản `system/app/acceptance-<ngày>.{md,json}` | |
+| [x] 11.1 E2E từng UC-01…10, luồng chính và luồng lỗi | E2E-01…12 |
+| [x] 11.2 Ma trận trình duyệt Chromium / Firefox / WebKit × 360 / 768 / 1280 / 1440 | NFR-12 |
+| [~] 11.3 axe + **kiểm tay** bàn phím hoàn thành UC-01…10, tín hiệu không dựa màu | A11Y-01…04 — 17/11: axe + luồng bàn phím tự động xong; **kiểm tay do người** còn mở |
+| [x] 11.4 Hiệu năng có ghi cấu hình máy | NF-01…07 |
+| [x] 11.5 Canary chuỗi/quan sát không xuất hiện trong log/URL | SEC-01 |
+| [x] 11.6 Bind loopback, kiểm origin/content-type, header bảo mật | SEC-03 |
+| [x] 11.7 `npm audit` + `pip-audit` | SEC-05 |
+| [x] 11.8 Cài sạch từ clone mới theo hướng dẫn | DEP-01 |
+| [x] 11.9 Dừng/khởi động lại, phục hồi | DEP-02 |
+| [x] 11.10 Coverage backend (mục tiêu đề xuất ≥ 85%) | NFR-17 |
+| [x] 11.11 Cập nhật `openapi.yaml`, `DEVIATIONS.md`, `system/README.md` §4, `ui-design.md` (footprint track) | |
+| [x] 11.12 Biên bản `system/app/acceptance-<ngày>.{md,json}` | |
+
+**Kết quả WP11 (17/11):** biên bản [`app/acceptance-2026-11-17.md`](app/acceptance-2026-11-17.md) / `.json`. Sửa 8 lỗi phát hiện trong nghiệm thu (gồm index ClinVar `0004`, race worker/huỷ, chặn ghi cross-site 403/415). Còn mở: kiểm tay a11y, chạy lại PG sau thay đổi 17/11.
 
 ### WP12 — Ảnh chụp và hướng dẫn · 1 ngày
 
 | Việc | Chi tiết |
 | --- | --- |
-| [ ] 12.1 Ảnh chụp từ app thật, dữ liệu thật, cả hai theme | Cho `report/appendices/a-installation-user-guide.tex` (đang `[PENDING]` dòng 36, 49) |
-| [ ] 12.2 Kịch bản demo 3–5 phút + clip dự phòng | Cho slide và buổi bảo vệ |
-| [ ] 12.3 Hướng dẫn cài đặt/chạy local | Nguồn cho Phụ lục A |
+| [x] 12.1 Ảnh chụp từ app thật, dữ liệu thật, cả hai theme | Cho `report/appendices/a-installation-user-guide.tex` (đang `[PENDING]` dòng 36, 49) |
+| [x] 12.2 Kịch bản demo 3–5 phút ~~+ clip dự phòng~~ | Cho slide và buổi bảo vệ |
+| [x] 12.3 Hướng dẫn cài đặt/chạy local | Nguồn cho Phụ lục A |
 
+
+**Kết quả 17/11:** 14 ảnh × 2 theme từ app thật, dữ liệu thật (`app/docs/screenshots/`; ảnh so sánh dùng dataset minh hoạ có ghi chú); kịch bản [`app/DEMO.md`](app/DEMO.md) (clip dự phòng bỏ theo yêu cầu của Trọng 17/11); hướng dẫn cài [`app/INSTALL.md`](app/INSTALL.md) (nguồn cho Phụ lục A).
 ---
 
 ## 5. Ma trận truy vết UC → WP → test

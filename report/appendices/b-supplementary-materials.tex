@@ -2,7 +2,126 @@
 \chapter{SUPPLEMENTARY MATERIALS}\label{app:supplementary}
 
 \section{Source Code and Data Availability}
-\textbf{[PENDING: repository link and release; data are redistributed only where the terms of use allow.]}
+The research code, the application and this document are kept in one private version-controlled
+repository held by the author; access for examination is arranged through the supervisor. The
+repository contains the analysis scripts, the locked protocols, the generated result files and the
+asset generators that produce every number in this document, so each figure can be traced to the
+file it was read from.
+
+Large artefacts are deliberately not in version control: model checkpoints, cached representations,
+out-of-fold prediction files and the research data bundles. They are reproducible from the recorded
+protocols and runner configurations, and each is pinned by size and SHA-256 in the manifests that
+accompany the results. Primary data are not redistributed here; they are obtained from the original
+public sources cited in Chapter~\ref{chap:background}, under the terms those sources set. Sources
+whose terms do not permit redistribution are used only where those terms allow and are excluded from
+any packaged bundle.
+
+\section{Controls Moved from the Results Chapter}
+The three studies below were completed under criteria fixed in advance and are reported here in full.
+They are not part of the argument of Chapter~\ref{chap:evaluation}: two produced results that did not
+support the intervention they tested, and the third establishes only how little this benchmark
+overlaps a curated motif resource. Their numbers, denominators and intervals are unchanged from the
+original analysis.
+
+\section{Sensitivity to the Clustering Granularity}\label{sec:res-recluster}
+Because cov50 does not change the partition on this peptide set, a grid of seven partitions of the 176 peptides
+(the \nNPep{} benchmark peptides and the 85 added ones) was fixed before running: grouping by UniProt accession
+(no clustering), the reference MMseqs2 setting (30\% identity, 80\% coverage) and five looser MMseqs2 settings. The P0
+comparison (ridge M3, relaxed threshold 4.0 against the benchmark training set, same cluster bootstrap) was repeated with the
+folds rebuilt from each partition. The reference level reproduces the earlier scores (\nAucRidge{} and \nAucRidgeExt) and the five
+folds of the earlier experiment. The criterion fixed in advance: the gain is ``robust to granularity'' if every
+partition that differs from the reference and is still informative (fewer than half of the added cells are lost because they
+share a group with a test peptide) has a bootstrap interval of the gain above zero and a positive gain in all three seeds.
+
+\begin{table}[htbp]
+  \centering
+  \caption[Gain of the relaxed threshold 4.0 (ridge M3) under different protein partitions]{Gain of the relaxed threshold 4.0 (ridge M3) under different protein partitions. ``Groups'' are the groups of the
+  91 benchmark peptides and of all 176 peptides; ``Shared'' is the number of added peptides that fall in a group of a
+  benchmark peptide; ``Excl.'' is the mean percentage of the added cells that are removed from training because their
+  group contains a test peptide.}\label{tab:recluster}
+  \input{assets/ch4/tab-recluster}
+\end{table}
+
+The seven levels give only \nRcNDistinct{} distinct partitions (Table~\ref{tab:recluster}): lowering the identity from 0.2 to 0.1
+at coverage 0.5, and from 0.1 to 0.0 at coverage 0.3, changes no group, and 30\% identity with coverage 0.5 reproduces the
+reference grouping (only the group labels, and hence the fold assignment, differ; the gain there is
+\nRcFiftyD{} \nRcFiftyCI{}, the same value as the cov50 row of Table~\ref{tab:partcrobust}). Three partitions differ from the
+reference and are informative: grouping by accession (\nRcAccD{}, \nRcAccCI{}), 20\% identity with coverage 0.5 (\nRcMidD{}, \nRcMidCI{}) and
+10\% identity with coverage 0.3 (\nRcCoarseD{}, \nRcCoarseCI{}). All intervals are above zero and the gain is positive in all
+three seeds, so under the fixed rule the gain is \emph{robust to granularity}. The point estimates are not monotone in the
+coarseness (the largest is for grouping by accession), the intervals overlap, and no test of their differences was
+planned; the absolute benchmark score also moves with the partition (\nAucRidge{} for the reference and \nRcFiftyBase{} for the same grouping with
+other folds), so absolute values must not be compared across rows.
+
+The test is weaker than its name suggests. The coarsest partition still has \nRcCoarseGroups{} groups for the 91 benchmark peptides; in
+it, \nRcCoarseShared{} added peptides share a group with a benchmark peptide and on average \nRcCoarseExcl\% of the added cells are removed
+from training, and one of the five test folds consists of a single group. Whether the gain would survive a still coarser
+split, for example by protein family, is not known.
+
+
+\section{Pre-Training on Tile Labels}\label{sec:res-pretrain}
+The experiment of Voutsinos et al.\ \citep{voutsinos2026} provides a degradation score for \nPtNTiles{} tiles of 30 residues,
+without substitutions. The question was whether initialising the gated network (without $\Delta$PAP) from a model
+pre-trained to predict these scores lets it learn $\Delta$PSI better under the same label budget. The design was fixed in
+advance. Pre-training treats each tile as 30 wild-type rows (the substituted-residue input is zero), predicts the tile
+as the mean over positions and regresses the sign-reversed, standardised degron score. Two branches then share the same
+architecture, the learning-rate grid ($2\times10^{-3}$ or $5\times10^{-4}$, chosen on the inner validation set) and the
+inner validation split, and differ only in whether the network starts from the pre-trained state (\emph{pre}) or from
+random initialisation (\emph{rand}). To prevent leakage, in each outer fold every gene that has a tile similar to a protein of
+an outer-test cluster (MMseqs2 at 30\% identity with an alignment of at least 50 residues, a shared 12-mer, or the same gene
+name) is removed entirely from the pre-training data \emph{before} any learning; this removed \nPtGenesExcl{} genes in the five folds.
+The gate on the reproduction of earlier scores was passed (ridge \nAucRidge{} and \nAucRidgeExt; the gated network within \nPtGateGap{}
+of the earlier values). Two comparisons were fixed, both with the rule ``bootstrap interval above zero and a positive
+difference in every seed'': (A) \emph{pre} against \emph{rand}, and (B) \emph{pre} against ridge M3.
+
+The result is negative (Tables~\ref{tab:p3auroc} and~\ref{tab:p3verdict}). In the main configuration the pre-trained network reaches
+\nPtExtPre{}, against \nPtExtRand{} for random initialisation: difference A is \nPtExtA{} \nPtExtACI{}, an interval that contains zero,
+so pre-training cannot be distinguished from random initialisation; difference B is \nPtExtB{} \nPtExtBCI{}, so the pre-trained network
+is below ridge. At threshold 3.0 both differences are clearly negative (A: \nPtBaseA{} \nPtBaseACI{}; B: \nPtBaseB{} \nPtBaseBCI{}).
+The difference is negative in all three seeds in every comparison. By the mapping fixed in advance, the conclusion is
+``insufficient evidence for a benefit of pre-training''. The pre-training task itself was learned (Pearson correlation
+\nPtPearson{} between prediction and score on held-out genes, range \nPtPearsonLo{}--\nPtPearsonHi{} over the fifteen runs), so learning this source endpoint does not by itself
+establish useful transfer to $\Delta$PSI. This result rejects only this design, in which the
+pre-training sees wild-type sequences only and the whole network is then fine-tuned; designs that pre-train with
+substitutions, freeze part of this tile-label encoder or train both tasks jointly were not tried.
+The later frozen-ESM and LoRA experiments use different pretrained representations and are reported separately.
+
+\begin{table}[htbp]
+  \centering
+  \caption[Pre-registered comparisons for pre-training]{Pre-registered comparisons for pre-training. The main configuration is the relaxed threshold 4.0; the threshold 3.0 is
+  reported with the same criteria and was not used to choose the configuration.}\label{tab:p3verdict}
+  \input{assets/ch4/tab-p3-verdict}
+\end{table}
+
+
+\begin{table}[htbp]
+  \centering
+  \caption{Macro AUROC with and without pre-training on tile labels}\label{tab:p3auroc}
+  \input{assets/ch4/tab-p3-auroc}
+\end{table}
+
+
+
+\section{Scope Comparison with MetaDegron}
+MetaDegron \citep{zheng2024} was audited as a possible competitor and label source. Its
+labels are binary motif-level annotations of curated degrons, not $\Delta$PSI; the audit therefore compares scope
+and data, not predictive scores on the GPS matrix, because MetaDegron-D could not be run on GPS peptides
+(Table~\ref{tab:metadegron}). Among the main findings, the curated positive set has only \nMdHuman{} human rows, and
+almost no region of it coincides with the GPS peptides used here (\nMdOvScan{} scanning peptides, \nMdOvSat{} saturation peptide
+and \nMdOvCrispr{} from the CRISPR screens). Only \nMdEThreeStrict{} E3 motif group keeps at least five samples after the strictest filter, so ``21 E3
+ligases'' is a list of motif-compatible assignments, not 21 independently labelled classes. The reported
+MetaDegron-X AUC of \nMdAuc{} was recomputed from the stored trees, but only on the authors' prepared tables, and \nMdInProps{} of the \nMdTestPos{}
+positive test coordinates are in the property table of the fitting data; it is not an independent result and not a
+GPS result. A simple composition logistic baseline on the same positives, split by protein cluster at cov80,
+gives AUROC between \nCompLo{} and \nCompHi{} (core composition) and between \nCtxLo{} and \nCtxHi{} (29-residue
+context), on a reconstructed population and not on the authors' own training set. The audit therefore suggests positioning MetaDegron as a complementary tool for motif and E3 information rather than a
+head-to-head competitor on residue-level effect prediction; binary motif labels are not converted into $\Delta$PSI.
+
+\begin{table}[htbp]
+  \centering
+  \caption[Audit of the MetaDegron data and overlap with the data of this thesis]{Audit of the MetaDegron data and overlap with the data of this thesis}\label{tab:metadegron}
+  \input{assets/ch4/tab-metadegron}
+\end{table}
 
 \section{Additional Tables and Figures}
 The following tables preserve the complete campaign record, including controls that do not improve
@@ -29,6 +148,45 @@ pre-training. These are distinct interventions and should not be pooled into one
 \input{assets/ch4/tab-campaign-all}
 
 \Needspace{11\baselineskip}
+
+The following supporting tables were moved here from Chapter~\ref{chap:evaluation}; their numbers,
+denominators and intervals are unchanged: the newly added groups of the learning-curve study
+(Table~\ref{tab:newgroup}), the robustness of the threshold sensitivity (Table~\ref{tab:partcrobust}) and
+the residual breakdowns of Section~\ref{sec:residual-diagnostics} (Tables~\ref{tab:progress-effect-errors}
+and~\ref{tab:progress-largest-errors}).
+
+\begin{table}[htbp]
+  \centering
+  \caption[Cells of the benchmark peptides and of the 85 peptides added by relaxing the threshold]{Cells of the benchmark peptides and of the 85 peptides added by relaxing the threshold}\label{tab:newgroup}
+  \input{assets/ch4/tab-newgroup}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Robustness of the gain at threshold 4.0 (ridge M3)}\label{tab:partcrobust}
+  \input{assets/ch4/tab-partc-robust}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption[OOF MAE conditional on the measured effect class ($\Delta=\Delta$PSI)]{OOF MAE conditional on the measured effect class ($\Delta=\Delta$PSI).
+  Each metric averages errors within each eligible peptide, then over peptides in that class.
+  Support counts differ from AUROC/average-precision eligibility, which requires at least three
+  cells of each class; the fixed-budget precision replay retains all peptides.}
+  \label{tab:progress-effect-errors}
+  \input{assets/ch4/tab-progress-effect-errors}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption[Three largest absolute cell errors for LoRA-B on W, selected after inspection]{Three largest absolute cell errors for LoRA-B on W, selected after inspection.
+  Positions are within the measured peptide; measured and predicted values are $\Delta$PSI.
+  These illustrate failures and are not clinical or mechanistic case validations.}
+  \label{tab:progress-largest-errors}
+  \input{assets/ch4/tab-progress-largest-errors}
+\end{table}
+
+\FloatBarrier
 \section{Seed Stability and Inner Selection}
 \begin{table}[htbp]
   \centering
@@ -77,6 +235,27 @@ biological data or the complete historical model-selection process.
 \end{table}
 \FloatBarrier
 \Needspace{11\baselineskip}
+
+Tables~\ref{tab:priority-recall-budget} and~\ref{tab:priority-strata} were moved here from
+Section~\ref{sec:res-prioritization} to keep the results chapter readable; their numbers are unchanged.
+
+\begin{table}[htbp]
+  \centering
+  \caption[Mean selections to reach a known positive-hit recall, on 198 peptides with hits]{Mean selections to reach a known positive-hit recall, on 198 peptides with hits.
+  Each peptide target is rounded upward. Random values are expected order-statistic ranks.}
+  \label{tab:priority-recall-budget}
+  \input{assets/ch4/tab-priority-recall-budget}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption[Positive Precision@10 by WT-PSI stratum, in percent]{Positive Precision@10 by WT-PSI stratum, in percent. Peptides without positive hits
+  remain in precision; zero-event strata do not supply recall or enrichment evidence.}
+  \label{tab:priority-strata}
+  \input{assets/ch4/tab-priority-strata}
+\end{table}
+
+\FloatBarrier
 \section{Execution Cost and Output Inventory}
 \begin{table}[htbp]
   \centering

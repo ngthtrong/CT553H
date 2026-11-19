@@ -1,0 +1,55 @@
+% Original schematic of GPS profiling and the PSI readout (plan-report 3.4).
+% Knowledge sources: yen2008 (GPS design, reference fluorescent protein from the same
+% transcript), zhang2023 (GFP--peptide fusion, six sorting bins). The PSI formula is
+% eq:psi-bins, reconstructed in research/full-data-audit/build_psi.py, build().
+\begin{tikzpicture}[fig]
+  % ---------------- (a) reporter construct
+  \node[title, anchor=west] at (0,1.55) {(a) Reporter};
+  \node[draw=oiVermillion, fill=oiVermillion!30, minimum width=11mm, minimum height=5mm] (ds) at (0.6,0.5) {DsRed};
+  \node[draw, fill=white, minimum width=8mm, minimum height=5mm, right=0pt of ds] (ires) {\scriptsize IRES};
+  \node[draw=oiGreen!70!black, fill=oiGreen!30, minimum width=9mm, minimum height=5mm, right=0pt of ires] (gfp) {GFP};
+  \node[degron, minimum width=9mm, minimum height=5mm, right=0pt of gfp] (pep) {\scriptsize peptide};
+  \draw[brace] ($(pep.south east)+(0,-0.08)$) -- node[below=3pt, font=\scriptsize] {28-residue tile} ($(pep.south west)+(0,-0.08)$);
+  \node[note, text width=4.2cm, anchor=north west, align=left] at (0,-0.35)
+       {DsRed is a reference signal from the same transcript; GFP abundance depends on how
+        quickly the GFP--peptide fusion is degraded.};
+
+  % ---------------- (b) cells
+  \node[title, anchor=west] at (4.75,1.55) {(b) Cells};
+  \foreach \y/\g/\lab in {0.55/80/stable fusion, -0.55/15/unstable fusion}{
+    \node[draw, circle, minimum size=8mm, fill=oiGreen!\g!oiVermillion!30] at (5.3,\y) {};
+    \node[font=\scriptsize, anchor=west, align=left] at (5.8,\y) {\lab};
+  }
+  \node[font=\scriptsize, anchor=west] at (5.8,0.25) {high GFP/DsRed};
+  \node[font=\scriptsize, anchor=west] at (5.8,-0.85) {low GFP/DsRed};
+
+  % ---------------- (c) sorting into six bins
+  \node[title, anchor=west] at (8.0,1.55) {(c) FACS sorting};
+  \draw[->] (8.3,-0.9) -- (11.2,-0.9);
+  \draw[->] (8.3,-0.9) -- (8.3,0.95);
+  \node[font=\scriptsize, anchor=south] at (8.3,0.95) {cells};
+  \draw[oiBlue, line width=0.8pt, fill=oiSky!25] plot[smooth, domain=0:2.7]
+       (8.35+\x, {-0.9+1.5*exp(-((\x-0.9)^2)/0.15)+0.7*exp(-((\x-2.0)^2)/0.2)}) -- (11.05,-0.9) -- cycle;
+  \foreach \i in {1,...,6}{
+    \pgfmathsetmacro{\xl}{8.35+0.45*(\i-1)}
+    \draw[oiGrey, dashed] (\xl,-0.9) -- (\xl,0.85);
+    \node[font=\scriptsize] at (\xl+0.225,-1.12) {\i};
+  }
+  \draw[oiGrey, dashed] (11.05,-0.9) -- (11.05,0.85);
+  \node[font=\scriptsize, align=center] at (9.7,-1.55) {GFP/DsRed ratio $\rightarrow$ bin $b$};
+
+  % ---------------- (d) sequencing and PSI
+  \node[title, anchor=west] at (11.55,1.55) {(d) Sequencing};
+  \node[font=\scriptsize, align=left, anchor=north west] at (11.55,0.95)
+       {reads of construct $v$ per bin:\\$c_{v1},\dots,c_{v6}$};
+  \node[draw, fill=oiYellow!20, rounded corners=2pt, align=center, font=\scriptsize, anchor=north west,
+        text width=3.3cm] (psi) at (11.55,0.05)
+       {$\mathrm{PSI}_v=\dfrac{\sum_b b\,n_{vb}}{\sum_b n_{vb}}$\\[2pt] 1 (unstable) to 6 (stable)};
+  \node[note, anchor=north west, text width=3.4cm, align=left] at ($(psi.south west)+(0,-0.05)$)
+       {$n_{vb}$: reads normalised by bin depth (Eq.~\ref{eq:psi-bins})};
+
+  % ---------------- connecting arrows
+  \draw[flow] (4.35,0.5) -- (4.85,0.5);
+  \draw[flow] (7.55,0.0) -- (8.0,0.0);
+  \draw[flow] (11.15,0.0) -- (11.5,0.0);
+\end{tikzpicture}

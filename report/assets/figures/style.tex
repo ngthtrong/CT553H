@@ -1,0 +1,83 @@
+% Shared figure style for original schematics (plan-report.md, item 2.0).
+% Loaded by main.tex after template/packages.tex and by scripts/preview_figure.py.
+% Rules: vector only, Times New Roman inherited from the document, one colour-blind-safe
+% palette (Okabe--Ito), labels no smaller than \scriptsize at print size.
+\usetikzlibrary{shapes.geometric,shapes.misc,shapes.arrows,shapes.symbols,fit,backgrounds,
+  decorations.pathreplacing,decorations.pathmorphing,matrix,shadows,patterns}
+\usepackage{chemfig}
+
+% Okabe--Ito palette. Meaning is never carried by colour alone: every coloured node
+% also carries a text label or a distinct shape.
+\definecolor{oiOrange}{HTML}{E69F00}
+\definecolor{oiSky}{HTML}{56B4E9}
+\definecolor{oiGreen}{HTML}{009E73}
+\definecolor{oiYellow}{HTML}{F0E442}
+\definecolor{oiBlue}{HTML}{0072B2}
+\definecolor{oiVermillion}{HTML}{D55E00}
+\definecolor{oiPurple}{HTML}{CC79A7}
+\definecolor{oiGrey}{HTML}{6E6E6E}
+
+\tikzset{
+  fig/.style={font=\footnotesize, >={Latex[length=2.3mm,width=1.7mm]}, line width=0.6pt,
+    execute at begin picture={\def\baselinestretch{1}\footnotesize}},
+  % generic blocks
+  block/.style={draw, rounded corners=2pt, align=center, inner sep=3pt, fill=white, font=\scriptsize},
+  note/.style={font=\scriptsize\itshape, align=center, text=oiGrey},
+  title/.style={font=\footnotesize\bfseries, align=center},
+  flow/.style={->, line width=0.7pt},
+  dashedflow/.style={->, dashed, line width=0.6pt},
+  group/.style={draw=oiGrey, dashed, rounded corners=4pt, inner sep=5pt},
+  % biology
+  protein/.style={draw=oiBlue, fill=oiSky!25, rounded corners=6pt, align=center, inner sep=3pt},
+  enzyme/.style={draw=oiGreen!70!black, fill=oiGreen!18, ellipse, align=center, inner sep=1.5pt},
+  ubq/.style={draw=oiOrange!80!black, fill=oiOrange!45, circle, inner sep=0pt, minimum size=4mm,
+    font=\scriptsize\bfseries},
+  degron/.style={draw=oiVermillion, fill=oiVermillion!30, rounded corners=1pt, inner sep=1.5pt},
+  residue/.style={draw, minimum size=4.2mm, inner sep=0pt, font=\scriptsize\ttfamily},
+  mutres/.style={residue, fill=oiVermillion!35, draw=oiVermillion},
+  % data and models
+  data/.style={draw, fill=oiGrey!10, align=center, inner sep=3pt, tape, tape bend top=none, font=\scriptsize},
+  tensor/.style={draw=oiBlue, fill=oiSky!20, align=center, inner sep=2.5pt, font=\scriptsize},
+  layer/.style={draw, fill=oiGrey!12, align=center, inner sep=2.5pt, rounded corners=1pt, font=\scriptsize},
+  frozen/.style={layer, fill=oiGrey!25, pattern=north east lines, pattern color=oiGrey!45},
+  trained/.style={layer, fill=oiOrange!35, draw=oiOrange!80!black},
+  decision/.style={draw, diamond, aspect=1.8, align=center, inner sep=1pt, fill=oiYellow!25},
+  dim/.style={font=\scriptsize, text=oiGrey},
+  brace/.style={decorate, decoration={brace, amplitude=4pt}, line width=0.5pt},
+}
+\setchemfig{atom sep=1.6em, bond offset=1pt, double bond sep=2.5pt}
+
+% ---------------------------------------------------------------- icons (plan-report V-1)
+% Small pictograms drawn in TikZ; about 0.6 cm wide. Usage: \pic at (x,y) {icondb};
+\tikzset{
+  icondb/.pic={\draw[fill=oiSky!35, draw=oiBlue] (-0.25,0.18) arc[start angle=180,end angle=360,x radius=0.25,y radius=0.08]
+      -- (0.25,-0.18) arc[start angle=0,end angle=-180,x radius=0.25,y radius=0.08] -- cycle;
+    \draw[fill=oiSky!15, draw=oiBlue] (0,0.18) ellipse[x radius=0.25,y radius=0.08];
+    \draw[draw=oiBlue] (-0.25,0) arc[start angle=180,end angle=360,x radius=0.25,y radius=0.08];},
+  iconbins/.pic={\foreach \h [count=\i] in {0.10,0.22,0.34,0.26,0.14,0.07}
+      \draw[fill=oiGreen!45, draw=oiGreen!60!black] (-0.33+0.11*\i,-0.2) rectangle ++(0.09,\h);
+    \draw[draw=oiGrey] (-0.25,-0.2) -- (0.42,-0.2);},
+  iconclusters/.pic={\foreach \cx/\cy/\c in {-0.17/0.06/oiBlue, 0.15/0.12/oiOrange, 0.02/-0.14/oiGreen} {
+      \draw[draw=\c, fill=\c!15] (\cx,\cy) circle (0.12);
+      \foreach \dx/\dy in {-0.04/0.03, 0.04/-0.02, 0.0/0.05} \fill[\c] (\cx+\dx,\cy+\dy) circle (0.018);}},
+  iconlayers/.pic={\foreach \k in {0,1,2} \draw[fill=oiOrange!35, draw=oiOrange!80!black] (-0.25+0.06*\k,-0.2+0.11*\k) rectangle ++(0.38,0.09);},
+  iconci/.pic={\draw[draw=oiGrey] (-0.3,-0.2) -- (0.3,-0.2);
+    \foreach \x/\y/\e in {-0.18/0.02/0.1, 0.0/0.08/0.08, 0.18/-0.04/0.12} {
+      \draw[oiBlue, line width=0.6pt] (\x,\y-\e) -- (\x,\y+\e); \fill[oiBlue] (\x,\y) circle (0.03);}},
+  iconlock/.pic={\draw[line width=0.9pt, draw=oiGrey] (-0.09,0.02) -- (-0.09,0.12) arc[start angle=180,end angle=0,radius=0.09] -- (0.09,0.02);
+    \draw[fill=oiYellow!70!oiOrange, draw=oiOrange!80!black] (-0.16,-0.18) rectangle (0.16,0.04); \fill[oiGrey] (0,-0.07) circle (0.025);},
+  iconrefit/.pic={\draw[->, line width=0.9pt, draw=oiOrange!80!black] (0.17,0.08) arc[start angle=25,end angle=320,radius=0.18];
+    \node[font=\tiny\bfseries, text=oiOrange!80!black] at (0,0) {W};},
+  icontarget/.pic={\foreach \r/\c in {0.2/oiVermillion!25, 0.13/white, 0.06/oiVermillion} \draw[draw=oiVermillion, fill=\c] (0,0) circle (\r);},
+  iconcard/.pic={\draw[fill=white, draw=oiGrey] (-0.22,-0.2) rectangle (0.22,0.2);
+    \foreach \y in {0.1,0.02,-0.06} \draw[oiGrey] (-0.15,\y) -- (0.15,\y);
+    \node[font=\tiny\bfseries, text=oiBlue] at (0.08,-0.13) {\#};},
+  iconscreen/.pic={\draw[fill=oiGreen!15, draw=oiGreen!60!black] (-0.27,-0.12) rectangle (0.27,0.2);
+    \draw[draw=oiGreen!60!black] (-0.27,0.13) -- (0.27,0.13); \draw[draw=oiGreen!60!black] (-0.08,-0.2) -- (0.08,-0.2) (0,-0.2) -- (0,-0.12);
+    \foreach \i in {0,...,3} \fill[oiGreen!50!black!60] (-0.2+0.11*\i,-0.05) rectangle ++(0.08,0.13);},
+  iconvaried/.pic={\fill[oiOrange] (0,0) circle (0.15);
+    \draw[<->, white, line width=0.9pt, >={Latex[length=1.1mm,width=1.1mm]}] (-0.1,0) -- (0.1,0);},
+  iconfixed/.pic={\begin{scope}[scale=0.75]\draw[line width=0.8pt, draw=oiGrey!80!black] (-0.09,0.02) -- (-0.09,0.12) arc[start angle=180,end angle=0,radius=0.09] -- (0.09,0.02);
+    \draw[fill=oiGrey!30, draw=oiGrey!80!black] (-0.16,-0.18) rectangle (0.16,0.04);\end{scope}},
+}
+\input{assets/figures/logos}

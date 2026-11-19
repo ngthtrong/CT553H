@@ -69,11 +69,19 @@ def warnings_for(status: str, overridden: bool, training_peptide: bool) -> list[
     return [warning(c) for c in codes]
 
 
+def _optional(values, i: int) -> float | None:
+    return None if values is None else float(values[i])
+
+
 def cells_payload(pred: TilePrediction) -> list[dict]:
+    """Cell objects; the seed spread fields (plan-system 1.3) are null for a model without seeds."""
     return [
         {'position': int(p), 'wt_aa': w, 'mut_aa': m, 'score_dpsi_raw': float(s),
-         'p_dpsi_ge_1_calibrated': float(q), 'rank_in_tile': int(r), 'top10pct_in_tile': bool(t)}
-        for p, w, m, s, q, r, t in zip(pred.positions, pred.wt, pred.mut, pred.score, pred.prob, pred.rank, pred.top10, strict=False)
+         'p_dpsi_ge_1_calibrated': float(q), 'rank_in_tile': int(r), 'top10pct_in_tile': bool(t),
+         'score_seed_sd': _optional(pred.seed_sd, i), 'score_seed_min': _optional(pred.seed_min, i),
+         'score_seed_max': _optional(pred.seed_max, i)}
+        for i, (p, w, m, s, q, r, t) in enumerate(zip(pred.positions, pred.wt, pred.mut, pred.score, pred.prob,
+                                                      pred.rank, pred.top10, strict=False))
     ]
 
 

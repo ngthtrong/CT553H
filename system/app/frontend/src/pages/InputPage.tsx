@@ -1,10 +1,11 @@
 import { useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import { api } from '../api/client';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { PeptideBatchForm, WholeProteinForm } from '../components/BatchInput';
+import { ModelSelect, useSlowModelConfirm } from '../components/ModelSelect';
 import { ProteinSearch } from '../components/ProteinSearch';
 import { SequenceInput } from '../components/SequenceInput';
 import { useDocumentTitle } from '../lib/hooks';
+import { modelQuery, resolveModel, useModelParam, useModels } from '../lib/models';
 import { checkSequence } from '../lib/validate';
 import { requestStore } from '../state/requestStore';
 
@@ -19,8 +20,52 @@ function lastTab(): Tab {
   }
 }
 
+type Mode = 'single' | 'batch' | 'protein';
+const MODES: { id: Mode; label: string; hint: string }[] = [
+  { id: 'single', label: 'Single peptide', hint: 'One 28-residue tile; a quick preview, saved only on request.' },
+  { id: 'batch', label: 'Peptide batch', hint: 'Up to 100 peptides as a durable job in a project.' },
+  { id: 'protein', label: 'Whole protein', hint: 'Every full 28-residue window of one protein, as a job.' },
+];
+
+/** Screen 9.3, New analysis (UC-01, UC-08): single tile, peptide batch or whole protein. */
 export function InputPage() {
-  useDocumentTitle('Input');
+  useDocumentTitle('New analysis');
+  const [params, setParams] = useSearchParams();
+  const mode: Mode = params.get('mode') === 'batch' ? 'batch' : params.get('mode') === 'protein' ? 'protein' : 'single';
+  const project = params.get('project') ?? '';
+  const [modelId, setModelId] = useModelParam();
+  return (
+    <>
+      <h1>New analysis</h1>
+      <fieldset className="mode-picker">
+        <legend className="visually-hidden">Analysis type</legend>
+        {MODES.map((m) => (
+          <label key={m.id} className={`mode-option${mode === m.id ? ' is-active' : ''}`}>
+            <input
+              type="radio"
+              name="analysis-mode"
+              checked={mode === m.id}
+              onChange={() => {
+                const next = new URLSearchParams(params);
+                if (m.id === 'single') next.delete('mode');
+                else next.set('mode', m.id);
+                setParams(next, { replace: true });
+              }}
+            />
+            <strong>{m.label}</strong>
+            <span className="muted mode-option__hint">{m.hint}</span>
+          </label>
+        ))}
+      </fieldset>
+      <ModelSelect value={modelId} onChange={setModelId} />
+      {mode === 'single' && <SingleInput modelId={modelId} />}
+      {mode === 'batch' && <PeptideBatchForm initialProject={project} modelId={modelId} />}
+      {mode === 'protein' && <WholeProteinForm initialProject={project} modelId={modelId} />}
+    </>
+  );
+}
+
+function SingleInput({ modelId }: { modelId: string | undefined }) {
   const navigate = useNavigate();
   const [tab, setTabState] = useState<Tab>(lastTab);
   const [seq, setSeq] = useState('');
@@ -37,8 +82,9 @@ export function InputPage() {
     }
   }
 
-  const models = useQuery({ queryKey: ['models'], queryFn: ({ signal }) => api.listModels(signal), retry: false, staleTime: 300_000 });
-  const defaultModel = models.data?.items.find((m) => m.is_default && m.role === 'effect');
+  const models = useModels();
+  const model = resolveModel(models.data?.items, modelId);
+  const slow = useSlowModelConfirm(model);
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -48,16 +94,18 @@ export function InputPage() {
       inputRef.current?.focus();
       return;
     }
-    requestStore.set({ sequence: check.value });
-    navigate('/result');
+    slow.run(1, () => {
+      requestStore.set(modelId ? { sequence: check.value, model_id: modelId } : { sequence: check.value });
+      navigate('/result');
+    });
   }
 
   return (
     <>
-      <h1>Predict the effect of every substitution in a 28-residue degron tile</h1>
+      <h2>Predict the effect of every substitution in a 28-residue degron tile</h2>
       <p className="muted">
         Assay: GPS (Zhang et al. 2023).{' '}
-        {defaultModel ? <>Model <code>{defaultModel.model_id}</code>. </> : null}
+        {model ? <>Model <code>{model.model_id}</code>. </> : null}
         Development benchmark, not an external validation.
       </p>
 
@@ -76,8 +124,8 @@ export function InputPage() {
             <SequenceInput value={seq} onChange={(v) => { setSeq(v); setBlocked(false); }} forceShow={blocked} inputRef={inputRef} />
             <div className="banner warn" role="note">
               <span className="label">Warning</span>
-              The domain of a typed sequence is unknown. The model was trained only on tiles that behave as degrons (wild-type
-              PSI ≤ 4.0) and cannot check yours.
+              The domain of a typed sequence is predicted from its sequence by the R3 gate, not measured. The model was trained
+              only on tiles that behave as degrons (intrinsic wild-type PSI ≤ 4.0).
             </div>
             <p className="muted">
               Your sequence is sent only to get the prediction and is kept in this page&apos;s memory. It is not stored in the
@@ -91,10 +139,11 @@ export function InputPage() {
         </section>
       ) : (
         <section role="tabpanel" id="panel-protein" aria-labelledby="tab-protein" className="card">
-          <ProteinSearch onSelect={(p) => navigate(`/protein/${p.uniprot_id}`)} />
+          <ProteinSearch onSelect={(p) => navigate(`/protein/${p.uniprot_id}${modelQuery(modelId)}`)} />
           <p className="muted">Reviewed human proteins. You then choose one of the 28-residue tiles of the protein.</p>
         </section>
       )}
+      {slow.dialog}
     </>
   );
 }

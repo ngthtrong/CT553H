@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { BookOpenText, Database, FlaskConical, FolderKanban, Menu, X } from 'lucide-react';
+import { BookOpenText, Database, FlaskConical, FolderKanban, Gauge, Menu, Presentation, X } from 'lucide-react';
+import { PRESENTATION_SHORTCUT, usePresentation } from '../lib/presentation';
+import { Onboarding } from './Onboarding';
+import { ShortcutHelp } from './ShortcutHelp';
 import { useTheme, type ThemeMode } from '../lib/theme';
 
 function ThemeSwitch() {
@@ -23,6 +26,7 @@ const NAV = [
   { to: '/', label: 'New analysis', icon: FlaskConical, end: true },
   { to: '/model', label: 'Model & evidence', icon: BookOpenText, end: false },
   { to: '/sources', label: 'Data & sources', icon: Database, end: false },
+  { to: '/admin', label: 'Admin', icon: Gauge, end: false },
 ];
 
 export function AppShell({ children }: { children: ReactNode }) {
@@ -30,6 +34,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const main = useRef<HTMLElement>(null);
   const first = useRef(true);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [presenting, togglePresenting] = usePresentation();
 
   // After a route change, move focus to the main region so keyboard and screen-reader users start at the new page.
   useEffect(() => {
@@ -62,6 +67,10 @@ export function AppShell({ children }: { children: ReactNode }) {
           ))}
         </nav>
         <div className="shell__foot">
+          <button type="button" className="ui-button" aria-pressed={presenting} onClick={togglePresenting} aria-keyshortcuts={PRESENTATION_SHORTCUT} data-testid="presentation-toggle">
+            <Presentation size={18} aria-hidden="true" /> Presentation mode
+          </button>
+          <ShortcutHelp />
           <ThemeSwitch />
           <span>Runs on this computer; nothing is sent elsewhere.</span>
         </div>
@@ -82,7 +91,14 @@ export function AppShell({ children }: { children: ReactNode }) {
             {menuOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
           </button>
         </header>
+        {presenting && (
+          <div className="presentation-bar" role="status" data-testid="presentation-bar">
+            <span>Presentation mode: larger matrix, secondary tables hidden; warnings and limitations stay.</span>
+            <button type="button" onClick={togglePresenting} aria-keyshortcuts={PRESENTATION_SHORTCUT}>Exit ({PRESENTATION_SHORTCUT})</button>
+          </div>
+        )}
         <main id="main" ref={main} tabIndex={-1} className="shell__content">
+          {!presenting && <Onboarding />}
           {children}
         </main>
         <footer className="shell__footer">

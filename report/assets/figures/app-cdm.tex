@@ -1,0 +1,46 @@
+% Conceptual data model (plan-report V-4, redrawn 18 Nov 2026). Relationships follow the foreign
+% keys in report/assets/ch4/app-schema.json (dumped from the ORM): analysis_job and analysis_run
+% reference model_version; comparison references analysis_run and import_dataset. The earlier
+% drawing showed model_version -> project, which the schema does not contain.
+\begin{tikzpicture}[fig]
+  \tikzset{ent/.style={draw, rounded corners=2pt, minimum height=0.66cm, minimum width=2.6cm, align=center, fill=white},
+           refent/.style={ent, fill=oiGrey!12},
+           rel/.style={->, line width=0.6pt},
+           own/.style={->, line width=1.3pt},
+           lbl/.style={font=\scriptsize, fill=white, inner sep=1.2pt}}
+  \node[font=\scriptsize\itshape] at (0,0.75) {Reference};
+  \node[font=\scriptsize\itshape] at (5.4,0.75) {Workspace};
+  \node[font=\scriptsize\itshape] at (10.5,0.75) {Imported};
+  \foreach \n/\t/\y in {src/Source/0, prot/Protein/-1.3, tile/Tile/-2.6, mc/Measured cell/-3.9, cv/Variant/-5.2, mv/Model version/-6.5}
+    \node[refent] (\n) at (0,\y) {\t};
+  \node[ent, line width=1pt] (proj) at (5.4,-1.3) {\textbf{Project}};
+  \node[ent] (job)  at (5.4,-2.6) {Job $\rightarrow$ item};
+  \node[ent] (run)  at (5.4,-3.9) {Analysis};
+  \node[ent] (cell) at (5.4,-5.2) {Analysis cell};
+  \node[ent] (ds)   at (10.5,-1.3) {Imported dataset};
+  \node[ent] (obs)  at (10.5,-2.6) {Observation};
+  \node[ent] (cmp)  at (10.5,-3.9) {Comparison};
+  % reference chain
+  \draw[rel] (src) -- (prot);
+  \draw[rel] (prot) -- (tile);
+  \draw[rel] (tile) -- (mc);
+  \draw[rel] (prot.west) to[out=200, in=160] (cv.west);
+  % workspace ownership (thick)
+  \draw[own] (proj) -- node[lbl, right=3pt] {owns} (job);
+  \draw[own] (job)  -- node[lbl, right=3pt] {produces} (run);
+  \draw[own] (run)  -- node[lbl, right=3pt] {has 532} (cell);
+  \draw[own] (proj) -- node[lbl, above=2pt] {owns} (ds);
+  \draw[own] (ds)   -- node[lbl, right=3pt] {has} (obs);
+  % cross references
+  \draw[rel] ($(tile.east)+(0,0.12)$) -- node[lbl, above=2pt, sloped, pos=0.5] {scored as} (run.west);
+  \coordinate (mvj) at (1.75,-6.5);
+  \draw[line width=0.6pt] (mv.east) -- (mvj);
+  \draw[rel] (mvj) -| node[lbl, pos=0.3, below=2pt] {pinned by every job and analysis} ($(run.south)+(-0.8,0)$);
+  \draw[rel] (mvj) |- node[lbl, pos=0.25, left=3pt, font=\tiny] {gate that labelled the tile} ($(tile.east)+(0,-0.16)$);
+  \draw[rel] (run.east) -- node[lbl, above=2pt] {prediction} (cmp.west);
+  \draw[rel] (obs) -- node[lbl, right=3pt] {measurement} (cmp);
+  % legend
+  \draw[own] (7.7,-5.6) -- ++(0.7,0); \node[font=\scriptsize, anchor=west] at (8.5,-5.6) {ownership (deleted with owner)};
+  \draw[rel] (7.7,-6.1) -- ++(0.7,0); \node[font=\scriptsize, anchor=west] at (8.5,-6.1) {reference};
+  \node[refent, minimum width=0.7cm, minimum height=0.35cm] at (8.05,-6.6) {}; \node[font=\scriptsize, anchor=west] at (8.5,-6.6) {shared reference data};
+\end{tikzpicture}

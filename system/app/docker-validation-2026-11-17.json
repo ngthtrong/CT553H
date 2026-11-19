@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-17",
+  "scope": "Whole application in Docker (plan.md branch 2, user request 17 Nov 2026) and the optional LoRA-D model (plan 2.12, WP10)",
+  "scientific_status": "development_not_gate_closure",
+  "serving_promotion": "not_authorized_by_research_execution; npz model m3-ext4.0-platt-v1 stays the default",
+  "git_head_before_changes": "9910996",
+  "host": {
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64 (WSL2 Ubuntu 24.04)",
+    "cpu": "AMD Ryzen 5 5500U, 12 logical CPUs",
+    "mem_total_mb": 7619,
+    "docker_engine": "29.8.1",
+    "docker_compose": "5.5.1"
+  },
+  "files_sha256_prefix": {
+    "docker-compose.yml": "cf63d08cc1d872b2",
+    "compose.dev.yml": "8f80dbc042ecfd96",
+    "backend/Dockerfile": "3768a2f0f8cb67a2",
+    "frontend/Dockerfile": "4fe37e898e1bd8e6",
+    "frontend/nginx.conf": "1c199a147f465505"
+  },
+  "images_bytes": {
+    "degron-footprint/backend:0 (runtime, numpy only)": 399074559,
+    "degron-footprint/backend:1 (runtime, WITH_LORA=1)": 1767643843,
+    "degron-footprint/web (nginx-unprivileged)": 77079970,
+    "degron-footprint/backend-dev:0": 614444067,
+    "degron-footprint/web-dev": 704712856
+  },
+  "etl_in_docker": {
+    "command": "docker compose --profile tools run --rm etl",
+    "clinvar_scope": "in-tiles",
+    "seconds": 552.3,
+    "reference_rows_changed": 2933851,
+    "clinvar_loaded": 2338863,
+    "lora_manifest_sha256": "d6729faf0bc4fa781239fba2945362ae72273901afdde5d35138e2b35401303f",
+    "rerun_after_bundle_change": {
+      "clinvar_scope": "none",
+      "seconds": 15.7,
+      "reference_rows_changed": 2
+    },
+    "log": "system/app/.data/docker-etl.log (local, not in git)"
+  },
+  "stack_checks": {
+    "health_all_containers": "db, api, web healthy; worker running (no HTTP healthcheck by design)",
+    "published_ports": [
+      "127.0.0.1:8080 (web)",
+      "dev only: 127.0.0.1:5173, 127.0.0.1:8000, 127.0.0.1:55433"
+    ],
+    "lora_without_torch": "api log: 'model esm2-35m-lora-d-aa4fc2b7 not loaded: PyTorch/Transformers are not installed'; /healthz ok, default m3-ext4.0-platt-v1",
+    "security_headers_via_nginx": "CSP, X-Content-Type-Options, Referrer-Policy, X-Frame-Options present on /",
+    "cross_site_write": {
+      "Origin http://evil.example": 403,
+      "Origin http://127.0.0.1:8080": 201
+    },
+    "import_body_limits": {
+      "2.3 MB multipart reaches the API": "422 from the API (missing metadata field), not 413",
+      "12 MB": "413 from nginx"
+    },
+    "container_memory_idle_mib": {
+      "api": 84.6,
+      "worker": 61.0,
+      "web": 12.0,
+      "db": 74.9
+    }
+  },
+  "tests": {
+    "backend_postgresql_in_dev_container": {
+      "command": "make docker-test",
+      "passed": 290,
+      "skipped": 13,
+      "failed": 0,
+      "seconds": 182.9,
+      "log": "system/app/.data/docker-test-pg.log (local)"
+    },
+    "backend_sqlite_in_dev_container": {
+      "command": "make docker-test DF_TEST_BACKEND=sqlite",
+      "passed": 302,
+      "skipped": 1,
+      "failed": 0,
+      "seconds": 177.1,
+      "skipped_reason": "LoRA parity needs PyTorch (dev image built without WITH_LORA)"
+    },
+    "lora_tests_with_torch_host_venv": {
+      "command": ".venv-lora/bin/python -m pytest tests/test_lora.py",
+      "passed": 9,
+      "skipped": 0,
+      "failed": 0,
+      "note": "first rerun failed on a wrong test assumption (the e2e typed sequence is also a W peptide); assertion corrected, 9/9"
+    },
+    "frontend_vitest_host": {
+      "passed": 172,
+      "failed": 0,
+      "typecheck": "tsc --noEmit ok",
+      "eslint": "clean"
+    },
+    "e2e_real_backend": {
+      "prod_stack_web_8080": {
+        "command": "make docker-e2e",
+        "passed": 12,
+        "failed": 0,
+        "runs": 2
+      },
+      "dev_stack_vite_5173": {
+        "command": "make docker-e2e E2E_BASE_URL=http://127.0.0.1:5173",
+        "passed": 12,
+        "failed": 0,
+        "first_run": "1 failed (import: PermissionError on the shared workspace volume) -> fixed (group 0, setgid, umask 002), rerun 12/12"
+      }
+    },
+    "api_hot_reload_dev": "WatchFiles detected changes in 'api/__init__.py'. Reloading..."
+  },
+  "lora": {
+    "bundle_report": "system/app/tests/results/lora-bundle.json",
+    "latency_report": "system/app/tests/results/latency-lora.json",
+    "cross_runtime_parity_cuda_to_cpu_max_abs": 3.039836883544922e-06,
+    "serving_vs_research_max_abs": 0.0,
+    "docker_api_vs_research_fixture_max_abs": 0.0,
+    "latency_p50_p95_ms_per_tile": {
+      "esm2-35m-lora-d-aa4fc2b7": [
+        37674.8,
+        39148.9
+      ],
+      "m3-ext4.0-platt-v1": [
+        18.2,
+        20.2
+      ]
+    },
+    "nfr01_300ms_p95": {
+      "esm2-35m-lora-d-aa4fc2b7": false,
+      "m3-ext4.0-platt-v1": true
+    },
+    "api_container_memory_after_lora_mib": 514.5,
+    "default_switch": "DF_DEFAULT_MODEL_ID=esm2-35m-lora-d-aa4fc2b7 -> /healthz and /v1/models report LoRA-D as default; unset -> m3 again",
+    "calibrator_iso": "422 INVALID_REQUEST field calibrator",
+    "training_peptide_warning": "typed W tile: LoRA-D warns TRAINING_PEPTIDE (235 W tiles), npz model does not (typed input, previous rule)",
+    "parity_fixture_tiles": "both fixture tiles are W training peptides (tile_w = first W row; tile_typed = e2e sequence, also in W): implementation parity, not held-out accuracy"
+  },
+  "defects_found_and_fixed": [
+    "web published container port 80; nginx-unprivileged listens on 8080",
+    "nginx forwarded Host without the port: writes from :8080 would fail the API same-origin check",
+    "client_max_body_size 8k on every /v1/ path: saved analyses (256 KiB) and imports (10 MiB) refused",
+    "no worker service: jobs would never run in Docker",
+    "no volume for imported workspace files",
+    "Settings read system/app/.env (now the Compose file): DF_TRUST_PROXY/origins leaked into host processes and broke a SEC-03 test",
+    "dev containers could not write the shared volumes created by the runtime user",
+    "TRAINING_PEPTIDE used the npz model's 176 training peptides for every model"
+  ],
+  "not_verified": [
+    "manual keyboard/screen-reader accessibility check (A11Y, needs a person)",
+    "vps profile (Caddy/TLS)",
+    "Docker Desktop on Windows/macOS hosts; only Docker Engine inside WSL2",
+    "a decision to serve LoRA-D by default (separate from D-4, which was decided on 17 Nov 2026 as option A and keeps the serving model unchanged)"
+  ],
+  "evening_check_lora_default": {
+    "config": {
+      "WITH_LORA": "1",
+      "DF_DEFAULT_MODEL_ID": "esm2-35m-lora-d-aa4fc2b7",
+      "set_by": "Trọng, local .env",
+      "serving_decision_record": "none yet"
+    },
+    "predict_default_typed_seconds": 41.3,
+    "predict_default_parity_max_abs": 0.0,
+    "worker_job_2_peptides": {
+      "state": "completed",
+      "succeeded": 2,
+      "seconds": 73.7
+    },
+    "ui_scoring_wait_seconds": 33.9,
+    "e2e_real": {
+      "passed": 11,
+      "skipped": 1,
+      "failed": 0,
+      "skipped_reason": "NF-06 measures the npz default",
+      "first_run": "10 passed, 1 failed (test hard-coded the npz evidence label), fixed"
+    },
+    "csp_font_fix": {
+      "before_console_errors": 4,
+      "after_console_errors": 0,
+      "change": "vite build.assetsInlineLimit 0"
+    },
+    "ui_pass": "../design/ui-ux-pro-max-2026-11-17/README.md"
+  }
+}

@@ -154,6 +154,45 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/admin/status": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Local admin status — counts and states only (plan-system 4.2)
+         * @description Implemented 18 Nov 2026. Last ETL run, models loaded or not and why, workers (heartbeat) and queue, prediction
+         *     cache, database and workspace size, schema revision. Never a sequence, an input id or an imported value. Answers
+         *     only to clients in DF_ADMIN_ALLOWED_NETWORKS (loopback by default); others get 403 LOCAL_ONLY.
+         */
+        get: operations["getAdminStatus"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/admin/registry/reload": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Reload the model registry; every weights hash is checked again */
+        post: operations["reloadRegistry"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/sources": {
         parameters: {
             query?: never;
@@ -357,6 +396,162 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/analyses/compare": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Compare two saved analyses of the same tile, usually two models (plan-system 2.2)
+         * @description Implemented 18 Nov 2026. Descriptive only: it does not tell which model is right. Spearman/Pearson of the raw
+         *     scores, Spearman of the probabilities, mean absolute differences, overlap of the top 10 % (k = 54, Jaccard) and
+         *     the largest probability disagreements. 422 when the analyses score different sequences. With save=true both
+         *     analyses must be in one active project and the comparison is stored (201); otherwise nothing is stored (200).
+         */
+        post: operations["compareAnalyses"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/analyses/{analysis_id}/suggestions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                analysis_id: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Candidates to verify in one tile, each with its reasons (plan-system 2.6)
+         * @description Implemented 18 Nov 2026. Retrospective priority list, development benchmark; not an experimentally validated
+         *     design. Reasons: high_score_uncertain (top 10 % and seed spread ≥ 75th percentile of the tile; ensembles),
+         *     models_disagree (|ΔP| ≥ 0.2 against compare_with, another analysis of the same tile), clinvar_variant
+         *     (variant in the analysis snapshot). Ordered by number of reasons, higher probability, rank, position, mutant.
+         *     A tile scored outside the domain gives no candidate unless include_out_of_domain. Never updates a model.
+         */
+        get: operations["getAnalysisSuggestions"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/model-comparisons/{comparison_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                comparison_id: string;
+            };
+            cookie?: never;
+        };
+        /** A saved model comparison, with the per-cell table rebuilt from both analyses */
+        get: operations["getModelComparison"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/model-comparisons/{comparison_id}/export": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                comparison_id: string;
+            };
+            cookie?: never;
+        };
+        /** CSV or JSON of a saved model comparison with the provenance of both analyses */
+        get: operations["exportModelComparison"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/projects/{project_id}/agreement": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Agreement with imported measurements over time (plan-system 4.4)
+         * @description Implemented 18 Nov 2026. One point per saved comparison of the project, in time order, with n, MAE and Spearman
+         *     (compatible endpoints). A point with n >= 5 and at least 2 earlier comparable points is flagged when its MAE is
+         *     above 1.25 × their mean or its Spearman more than 0.2 below their mean. Flags are warnings only: no model is
+         *     changed or retrained.
+         */
+        get: operations["getProjectAgreement"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/projects/{project_id}/model-comparisons": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: string;
+            };
+            cookie?: never;
+        };
+        /** Saved model comparisons of a project, most recent first */
+        get: operations["listModelComparisons"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/analyses/{analysis_id}/report": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                analysis_id: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Self-contained HTML report of a saved analysis (plan-system 3.5)
+         * @description Implemented 18 Nov 2026. Built from the stored snapshot only: limitations, domain status and warnings first, then
+         *     the matrix and footprint (inline SVG), the top 10 % table, provenance and source attribution. No script and no
+         *     external resource; the response sets its own Content-Security-Policy (inline styles only). PDF: print the page
+         *     in the browser; there is no server-side PDF renderer.
+         */
+        get: operations["getAnalysisReport"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/analyses/{analysis_id}/export": {
         parameters: {
             query?: never;
@@ -446,6 +641,33 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/jobs/{job_id}/footprint": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                job_id: string;
+            };
+            cookie?: never;
+        };
+        /**
+         * Protein-level footprint of a finished whole-protein job (plan-system 2.1)
+         * @description Implemented 18 Nov 2026. For every window (tile) of a finished protein job, the mean over the 19 substitutions
+         *     of each of its 28 positions, in protein coordinates (1-based), for the calibrated probability and the raw
+         *     score — the same definition as the footprint track of one tile. Overlapping windows (step 23, 5 shared
+         *     residues) are returned separately and are **never averaged**; positions without a full window are listed in
+         *     `uncovered`. Each tile is scored independently in its own 28-residue context: this is not a phenotype of the
+         *     whole protein. 409 JOB_STATE_CONFLICT while the job is not finished or when it is a peptide job.
+         */
+        get: operations["getJobFootprint"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/jobs/{job_id}/cancel": {
         parameters: {
             query?: never;
@@ -501,13 +723,13 @@ export interface paths {
         };
         /**
          * List staged/committed project datasets
-         * @description Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+         * @description Implemented 16 Nov 2026 (branch 2). See api-spec.md.
          */
         get: operations["listDatasets"];
         put?: never;
         /**
          * Stage and validate CSV/TSV import
-         * @description Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+         * @description Implemented 16 Nov 2026 (branch 2). See api-spec.md.
          */
         post: operations["previewImport"];
         delete?: never;
@@ -527,18 +749,18 @@ export interface paths {
         };
         /**
          * Read dataset revision/validation report
-         * @description Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+         * @description Implemented 16 Nov 2026 (branch 2). See api-spec.md.
          */
         get: operations["getDataset"];
         put?: never;
         /**
          * Explicitly commit a valid preview
-         * @description Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+         * @description Implemented 16 Nov 2026 (branch 2). See api-spec.md.
          */
         post: operations["commitDataset"];
         /**
          * Delete dataset and dependent comparisons
-         * @description Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+         * @description Implemented 16 Nov 2026 (branch 2). See api-spec.md.
          */
         delete: operations["deleteDataset"];
         options?: never;
@@ -555,12 +777,12 @@ export interface paths {
             };
             cookie?: never;
         };
-        /** Read persisted local records (planned) */
+        /** Read persisted local records */
         get: operations["listComparisons"];
         put?: never;
         /**
          * Compare one saved analysis and committed dataset
-         * @description Design only; not implemented in the baseline. See api-spec.md and SRS UC-08…10.
+         * @description Implemented 16 Nov 2026 (branch 2). See api-spec.md.
          */
         post: operations["compareDataset"];
         delete?: never;
@@ -676,6 +898,16 @@ export interface components {
             /** @description 1 is the highest raw score within the tile. */
             rank_in_tile: number;
             top10pct_in_tile: boolean;
+            /**
+             * @description Ensemble models only (plan-system 1.3): population standard deviation (ddof = 0) of the per-seed raw scores
+             *     of this substitution. Spread between training seeds — not a confidence interval and not a prediction error.
+             *     Null for a model without seeds; absent in results saved before 18 Nov 2026.
+             */
+            score_seed_sd?: number | null;
+            /** @description Lowest per-seed raw score (ensembles only; see score_seed_sd) */
+            score_seed_min?: number | null;
+            /** @description Highest per-seed raw score (ensembles only; see score_seed_sd) */
+            score_seed_max?: number | null;
         };
         DataSourceRef: {
             source_id: string;
@@ -788,6 +1020,20 @@ export interface components {
             /** @enum {string} */
             status: "candidate" | "frozen" | "retired";
             is_default: boolean;
+            /**
+             * @description True when a request can use this model now (effect: loaded with a matching weights hash; gate: the gate
+             *     loaded by this service). Clients list models that do not serve but do not let the user choose them.
+             */
+            serving: boolean;
+            /** @description Why the model is not serving; null when it serves */
+            not_serving_reason: string | null;
+            /**
+             * @description Mean seconds of the model's own scoring of one tile over the last measured computations in the answering
+             *     process (no database time, no cache hits); before the first one, the median worker time of the last job
+             *     items scored with this model (includes their database work). Null when neither exists and for the gate. An
+             *     estimate for the user, not a guarantee.
+             */
+            expected_tile_seconds: number | null;
         };
         ModelCard: components["schemas"]["ModelSummary"] & {
             weights_sha256: string;
@@ -844,10 +1090,18 @@ export interface components {
             default_model_id?: string | null;
             /** @enum {string} */
             database: "ok" | "unavailable";
+            /**
+             * @description Where the default effect model came from: the registry flag, the DF_DEFAULT_MODEL_ID setting, or the first
+             *     serving model when neither applies. A default must match a serving decision record (system/serving-policy.md).
+             * @enum {string|null}
+             */
+            default_model_source?: "registry" | "setting" | "fallback" | null;
+            /** @description SHA-256 of the default model's registered weights file */
+            default_model_sha256?: string | null;
         };
         Error: {
             /** @enum {string} */
-            code: "INVALID_REQUEST" | "INVALID_LENGTH" | "INVALID_CHARACTER" | "INVALID_FORMAT" | "UNKNOWN_ACCESSION" | "TILE_OUT_OF_RANGE" | "TILE_NOT_SCORABLE" | "OUT_OF_DOMAIN" | "MODEL_NOT_FOUND" | "RUN_NOT_FOUND" | "RUN_EXPIRED" | "TOKEN_REQUIRED" | "PAYLOAD_TOO_LARGE" | "RATE_LIMITED" | "SERVICE_UNAVAILABLE" | "INTERNAL_ERROR" | "PROJECT_NOT_FOUND" | "ANALYSIS_NOT_FOUND" | "JOB_NOT_FOUND" | "DATASET_NOT_FOUND" | "CONFIRMATION_REQUIRED" | "IMPORT_INVALID" | "DATASET_NOT_COMMITTED" | "INCOMPATIBLE_ENDPOINT" | "JOB_STATE_CONFLICT" | "SNAPSHOT_UNAVAILABLE" | "COMPARISON_NOT_FOUND" | "IMPORT_EXPIRED";
+            code: "INVALID_REQUEST" | "INVALID_LENGTH" | "INVALID_CHARACTER" | "INVALID_FORMAT" | "UNKNOWN_ACCESSION" | "TILE_OUT_OF_RANGE" | "TILE_NOT_SCORABLE" | "OUT_OF_DOMAIN" | "MODEL_NOT_FOUND" | "RUN_NOT_FOUND" | "RUN_EXPIRED" | "TOKEN_REQUIRED" | "PAYLOAD_TOO_LARGE" | "RATE_LIMITED" | "SERVICE_UNAVAILABLE" | "INTERNAL_ERROR" | "PROJECT_NOT_FOUND" | "ANALYSIS_NOT_FOUND" | "JOB_NOT_FOUND" | "DATASET_NOT_FOUND" | "CONFIRMATION_REQUIRED" | "IMPORT_INVALID" | "DATASET_NOT_COMMITTED" | "INCOMPATIBLE_ENDPOINT" | "JOB_STATE_CONFLICT" | "SNAPSHOT_UNAVAILABLE" | "COMPARISON_NOT_FOUND" | "IMPORT_EXPIRED" | "LOCAL_ONLY";
             message: string;
             /** @description Planned 409 CONFIRMATION_REQUIRED dependency counts; no deletion performed. */
             dependencies?: {
@@ -916,17 +1170,29 @@ export interface components {
             mode: "peptides" | "protein";
             peptides?: components["schemas"]["BatchPeptide"][];
             protein?: components["schemas"]["ProteinInput"];
+            /**
+             * @description plan-system 3.3 (18 Nov 2026): several proteins (accessions and/or FASTA records) in one protein job. The
+             *     residue limit applies to their total; a protein that cannot be resolved becomes one refused item and does
+             *     not stop the others. Item ids are p<protein>t<tile>.
+             */
+            proteins?: components["schemas"]["ProteinInput"][];
             model_id?: string;
             calibrator?: components["schemas"]["RequestCalibrator"];
             /** @default false */
             override_domain: boolean;
+            /**
+             * @description plan-system 4.5. Jobs of at most 10 items are high priority automatically; "high" raises a larger job, never
+             *     lowers one. At most 2 items of one job run at the same time, so a long scan cannot take every worker.
+             * @enum {string}
+             */
+            priority?: "normal" | "high";
         } & ({
             /** @constant */
             mode?: "peptides";
-        } | {
+        } | ({
             /** @constant */
             mode?: "protein";
-        });
+        } & (unknown | unknown)));
         Job: {
             /** Format: uuid */
             job_id: string;
@@ -950,10 +1216,236 @@ export interface components {
             };
             /** @description Cancellation was requested; items already finished are kept (FR-26). */
             cancel_requested?: boolean;
+            /**
+             * @description plan-system 4.5 — workers claim items of high-priority jobs first (small jobs, or asked by the user)
+             * @enum {string}
+             */
+            priority?: "normal" | "high";
+            /**
+             * @description Estimated seconds until the open items (pending + running) are done (plan-system 1.7): mean worker time of
+             *     the job's last finished items (up to 20) × open items, for one worker. Null when fewer than 3 items have a
+             *     measured time, and when the job is finished. An estimate, not a guarantee.
+             */
+            eta_seconds: number | null;
             /** Format: date-time */
             created_at: string;
             /** Format: date-time */
             updated_at: string;
+        };
+        AgreementSeries: {
+            /** Format: uuid */
+            project_id: string;
+            caveat: string;
+            rules: {
+                [key: string]: unknown;
+            };
+            flagged: number;
+            points: {
+                /** Format: uuid */
+                comparison_id: string;
+                /** Format: uuid */
+                analysis_id: string;
+                /** Format: uuid */
+                dataset_id: string;
+                dataset_name?: string | null;
+                dataset_revision?: number | null;
+                model_id: string;
+                tile?: string;
+                /** Format: date-time */
+                created_at: string;
+                n: number;
+                compatible: boolean;
+                mae: number | null;
+                spearman: number | null;
+                flags: {
+                    /** @enum {string} */
+                    code: "mae_worse" | "spearman_worse";
+                    text: string;
+                }[];
+            }[];
+        };
+        AdminStatus: {
+            /** Format: date-time */
+            generated_at: string;
+            version: string;
+            code_version: string;
+            schema_revision: string | null;
+            models: {
+                [key: string]: unknown;
+            };
+            cache: {
+                [key: string]: unknown;
+            };
+            etl: {
+                [key: string]: unknown;
+            } | null;
+            queue: {
+                [key: string]: unknown;
+            };
+            workers: {
+                [key: string]: unknown;
+            };
+            storage: {
+                [key: string]: unknown;
+            };
+        };
+        Suggestions: {
+            /** Format: uuid */
+            analysis_id: string;
+            /** Format: uuid */
+            compared_with: string | null;
+            compared_model_id?: string;
+            /** @description Shown before the list */
+            label: string;
+            criteria: {
+                [key: string]: unknown;
+            };
+            domain_status: string;
+            model_id: string;
+            n_with_reason?: number;
+            excluded_reason: string | null;
+            candidates: {
+                position: number;
+                wt_aa: string;
+                mut_aa: string;
+                score_dpsi_raw: number;
+                prob: number;
+                prob_other: number | null;
+                rank_in_tile: number;
+                score_seed_sd: number | null;
+                reasons: {
+                    /** @enum {string} */
+                    code: "high_score_uncertain" | "models_disagree" | "clinvar_variant";
+                    value: number;
+                    text: string;
+                }[];
+            }[];
+        };
+        ModelComparisonCell: {
+            position: number;
+            wt_aa: string;
+            mut_aa: string;
+            raw_a: number;
+            raw_b: number;
+            prob_a: number;
+            prob_b: number;
+            rank_a: number;
+            rank_b: number;
+            diff_prob?: number;
+            diff_raw?: number;
+        };
+        ModelComparisonSide: {
+            /** Format: uuid */
+            analysis_id: string;
+            model_id: string;
+            model_kind?: string | null;
+            weights_sha256: string;
+            calibrator?: string | null;
+            evidence_label: string;
+            domain_status: string;
+            warning_codes: string[];
+            created_at?: string | null;
+        };
+        ModelComparison: {
+            /**
+             * Format: uuid
+             * @description null when not stored
+             */
+            comparison_id: string | null;
+            /** Format: uuid */
+            project_id: string;
+            /** @description Shown before the numbers (descriptive; does not say which model is right) */
+            label: string;
+            tile: components["schemas"]["TileInfo"];
+            sequence_sha256: string;
+            metrics: {
+                n_cells: number;
+                spearman_raw: number | null;
+                pearson_raw: number | null;
+                spearman_prob: number | null;
+                mean_abs_diff_raw: number | null;
+                mean_abs_diff_prob: number | null;
+                max_abs_diff_prob: number | null;
+                top_k: number;
+                top_k_overlap: number;
+                top_k_jaccard: number | null;
+            };
+            /** @description Up to 20 cells with the largest |prob_b − prob_a|, ties by position then mutant */
+            disagreements: components["schemas"]["ModelComparisonCell"][];
+            provenance: {
+                a: components["schemas"]["ModelComparisonSide"];
+                b: components["schemas"]["ModelComparisonSide"];
+            };
+            cells: components["schemas"]["ModelComparisonCell"][];
+            /** Format: date-time */
+            created_at: string | null;
+        };
+        ModelComparisonSummary: {
+            /** Format: uuid */
+            comparison_id: string;
+            /** Format: uuid */
+            project_id: string;
+            /** Format: uuid */
+            analysis_a: string;
+            /** Format: uuid */
+            analysis_b: string;
+            model_a: string;
+            model_b: string;
+            spearman_raw: number | null;
+            top_k_jaccard: number | null;
+            /** Format: date-time */
+            created_at: string;
+        };
+        ModelComparisonPage: {
+            items: components["schemas"]["ModelComparisonSummary"][];
+            total: number;
+            offset: number;
+            limit: number;
+        };
+        JobFootprint: {
+            /** @description input_ids of the scored proteins of the job (several since plan-system 3.3); this answer is for `protein.input_id` */
+            proteins?: (string | null)[];
+            /** Format: uuid */
+            job_id: string;
+            /** @enum {string} */
+            state: "completed" | "partial" | "failed" | "cancelled";
+            /** @description Limitation text clients show before the numbers (each tile scored on its own; not a protein phenotype). */
+            label: string;
+            protein: {
+                input_id: string;
+                uniprot_id: string | null;
+                length: number;
+                tiles: number;
+            };
+            uncovered: {
+                start: number;
+                end: number;
+            }[];
+            model: {
+                model_id: string;
+                weights_sha256: string;
+                calibrator: string;
+                event_definition: string;
+            };
+            tiles: {
+                item_id: string;
+                tile_index: number;
+                start_pos: number;
+                end_pos: number;
+                /** @enum {string} */
+                state: "pending" | "running" | "succeeded" | "refused" | "failed" | "cancelled";
+                domain_status: string | null;
+                /** Format: uuid */
+                analysis_id: string | null;
+                /** @description The scored tile carried the TRAINING_PEPTIDE warning; null when the tile was not scored. */
+                training_peptide: boolean | null;
+                /** @description 28 entries for a scored tile, empty otherwise. */
+                positions: {
+                    protein_pos: number;
+                    mean_prob: number;
+                    mean_raw: number;
+                }[];
+            }[];
         };
         JobItem: {
             item_id: string;
@@ -1161,8 +1653,10 @@ export interface operations {
                 };
             };
             400: components["responses"]["Error"];
+            403: components["responses"]["Error"];
             404: components["responses"]["Error"];
             413: components["responses"]["Error"];
+            415: components["responses"]["Error"];
             422: components["responses"]["Error"];
             429: components["responses"]["Error"];
             503: components["responses"]["Error"];
@@ -1192,8 +1686,10 @@ export interface operations {
                 };
             };
             400: components["responses"]["Error"];
+            403: components["responses"]["Error"];
             404: components["responses"]["Error"];
             413: components["responses"]["Error"];
+            415: components["responses"]["Error"];
             422: components["responses"]["Error"];
             429: components["responses"]["Error"];
         };
@@ -1365,6 +1861,50 @@ export interface operations {
             404: components["responses"]["Error"];
         };
     };
+    getAdminStatus: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Status */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AdminStatus"];
+                };
+            };
+            403: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    reloadRegistry: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Status after the reload */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AdminStatus"];
+                };
+            };
+            403: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
     listSources: {
         parameters: {
             query?: never;
@@ -1410,8 +1950,10 @@ export interface operations {
                 };
             };
             400: components["responses"]["Error"];
+            403: components["responses"]["Error"];
             404: components["responses"]["Error"];
             413: components["responses"]["Error"];
+            415: components["responses"]["Error"];
             422: components["responses"]["Error"];
             429: components["responses"]["Error"];
         };
@@ -1559,9 +2101,11 @@ export interface operations {
                 };
             };
             400: components["responses"]["Error"];
+            403: components["responses"]["Error"];
             404: components["responses"]["Error"];
             409: components["responses"]["Error"];
             413: components["responses"]["Error"];
+            415: components["responses"]["Error"];
             422: components["responses"]["Error"];
             503: components["responses"]["Error"];
         };
@@ -1616,6 +2160,7 @@ export interface operations {
                 content?: never;
             };
             400: components["responses"]["Error"];
+            403: components["responses"]["Error"];
             404: components["responses"]["Error"];
             409: components["responses"]["Error"];
             413: components["responses"]["Error"];
@@ -1648,9 +2193,11 @@ export interface operations {
                 };
             };
             400: components["responses"]["Error"];
+            403: components["responses"]["Error"];
             404: components["responses"]["Error"];
             409: components["responses"]["Error"];
             413: components["responses"]["Error"];
+            415: components["responses"]["Error"];
             422: components["responses"]["Error"];
             503: components["responses"]["Error"];
         };
@@ -1711,9 +2258,11 @@ export interface operations {
                 };
             };
             400: components["responses"]["Error"];
+            403: components["responses"]["Error"];
             404: components["responses"]["Error"];
             409: components["responses"]["Error"];
             413: components["responses"]["Error"];
+            415: components["responses"]["Error"];
             422: components["responses"]["Error"];
             503: components["responses"]["Error"];
         };
@@ -1768,9 +2317,233 @@ export interface operations {
                 content?: never;
             };
             400: components["responses"]["Error"];
+            403: components["responses"]["Error"];
             404: components["responses"]["Error"];
             409: components["responses"]["Error"];
             413: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    compareAnalyses: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: uuid */
+                    analysis_a: string;
+                    /** Format: uuid */
+                    analysis_b: string;
+                    /** @default false */
+                    save?: boolean;
+                };
+            };
+        };
+        responses: {
+            /** @description Computed, not stored */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ModelComparison"];
+                };
+            };
+            /** @description Computed and stored in the project */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ModelComparison"];
+                };
+            };
+            400: components["responses"]["Error"];
+            403: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            409: components["responses"]["Error"];
+            413: components["responses"]["Error"];
+            415: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    getAnalysisSuggestions: {
+        parameters: {
+            query?: {
+                compare_with?: string;
+                limit?: number;
+                include_out_of_domain?: boolean;
+                format?: "json" | "csv";
+            };
+            header?: never;
+            path: {
+                analysis_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Candidates (JSON) or a CSV file */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Suggestions"];
+                    "text/csv": string;
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    getModelComparison: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                comparison_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description The comparison */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ModelComparison"];
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    exportModelComparison: {
+        parameters: {
+            query: {
+                format: "csv" | "json";
+            };
+            header?: never;
+            path: {
+                comparison_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description File */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/csv": string;
+                    "application/json": components["schemas"]["ModelComparison"];
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    getProjectAgreement: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                project_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Series */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AgreementSeries"];
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    listModelComparisons: {
+        parameters: {
+            query?: {
+                offset?: number;
+                limit?: number;
+                /** @description Only comparisons that include this analysis */
+                analysis_id?: string;
+            };
+            header?: never;
+            path: {
+                project_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Page of summaries */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ModelComparisonPage"];
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
+    getAnalysisReport: {
+        parameters: {
+            query: {
+                format: "html";
+                /** @description true sends Content-Disposition attachment instead of inline */
+                download?: boolean;
+            };
+            header?: never;
+            path: {
+                analysis_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description HTML document */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/html": string;
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            409: components["responses"]["Error"];
             422: components["responses"]["Error"];
             503: components["responses"]["Error"];
         };
@@ -1862,9 +2635,11 @@ export interface operations {
                 };
             };
             400: components["responses"]["Error"];
+            403: components["responses"]["Error"];
             404: components["responses"]["Error"];
             409: components["responses"]["Error"];
             413: components["responses"]["Error"];
+            415: components["responses"]["Error"];
             422: components["responses"]["Error"];
             503: components["responses"]["Error"];
         };
@@ -1928,6 +2703,36 @@ export interface operations {
             503: components["responses"]["Error"];
         };
     };
+    getJobFootprint: {
+        parameters: {
+            query?: {
+                /** @description For a job with several proteins (plan-system 3.3), which protein; default the first scored one */
+                input_id?: string;
+            };
+            header?: never;
+            path: {
+                job_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description One entry per job item in tile order */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["JobFootprint"];
+                };
+            };
+            400: components["responses"]["Error"];
+            404: components["responses"]["Error"];
+            409: components["responses"]["Error"];
+            422: components["responses"]["Error"];
+            503: components["responses"]["Error"];
+        };
+    };
     cancelJob: {
         parameters: {
             query?: never;
@@ -1949,6 +2754,7 @@ export interface operations {
                 };
             };
             400: components["responses"]["Error"];
+            403: components["responses"]["Error"];
             404: components["responses"]["Error"];
             409: components["responses"]["Error"];
             413: components["responses"]["Error"];
@@ -2045,6 +2851,7 @@ export interface operations {
                 };
             };
             400: components["responses"]["Error"];
+            403: components["responses"]["Error"];
             404: components["responses"]["Error"];
             409: components["responses"]["Error"];
             413: components["responses"]["Error"];
@@ -2105,9 +2912,11 @@ export interface operations {
                 };
             };
             400: components["responses"]["Error"];
+            403: components["responses"]["Error"];
             404: components["responses"]["Error"];
             409: components["responses"]["Error"];
             413: components["responses"]["Error"];
+            415: components["responses"]["Error"];
             422: components["responses"]["Error"];
             503: components["responses"]["Error"];
         };
@@ -2134,6 +2943,7 @@ export interface operations {
                 content?: never;
             };
             400: components["responses"]["Error"];
+            403: components["responses"]["Error"];
             404: components["responses"]["Error"];
             409: components["responses"]["Error"];
             413: components["responses"]["Error"];
@@ -2194,9 +3004,11 @@ export interface operations {
                 };
             };
             400: components["responses"]["Error"];
+            403: components["responses"]["Error"];
             404: components["responses"]["Error"];
             409: components["responses"]["Error"];
             413: components["responses"]["Error"];
+            415: components["responses"]["Error"];
             422: components["responses"]["Error"];
             503: components["responses"]["Error"];
         };

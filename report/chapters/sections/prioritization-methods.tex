@@ -1,5 +1,7 @@
 % Source: research/oof-prioritization-2026-11-07/{PROTOCOL.md,config.json,input-manifest.json}.
 \subsection{Equal-Budget Retrospective Prioritisation}\label{sec:priority-methods}
+\textbf{Purpose.} Test whether the stored scores would have picked more measured stabilising substitutions than a reference under the same number of picks (RQ5, usefulness).
+
 The follow-up dated 7 November 2026 asks whether stored OOF scores identify more measured
 stabilising substitutions under the same selection budget. It reuses W without retraining,
 new inference or access to the held-source test T. The candidate pool contains every technically
@@ -64,3 +66,5 @@ before this replay, but the development data and model family had already been e
 OOF and multiplicity adjustment therefore do not remove historical model-selection bias or
 include new-split, retraining or assay uncertainty. The resulting selection counts are retrospective
 evidence, not measured laboratory time, money or prospective experimental yield.
+
+\textbf{Reported in} Section~\ref{sec:res-prioritization}.

@@ -7,7 +7,9 @@ SCOPE ?= in-tiles
 export DF_DATABASE_URL := $(DB)
 export PYTHONPATH := $(APP)backend
 
-.PHONY: help venv dev-api dev-worker pg-up pg-down test-pg db-migrate etl etl-docker seed-dev test test-fast lint typecheck contract latency up down clean-dev
+.PHONY: help venv dev-api dev-worker pg-up pg-down test-pg db-migrate etl etl-docker seed-dev test test-fast lint typecheck contract latency up down clean-dev \
+        docker-env docker-up docker-down docker-etl docker-logs docker-ps docker-dev docker-dev-down docker-test docker-e2e lora-bundle \
+        backup restore
 
 help:
 	@echo "venv        create .venv and install pinned requirements"
@@ -17,7 +19,15 @@ help:
 	@echo "dev-worker  local job worker for peptide/protein jobs (run next to dev-api; Ctrl-C stops it)"
 	@echo "test        full pytest suite with coverage;   test-fast: without slow/realdata tests"
 	@echo "lint        ruff;   typecheck: mypy;   contract: validate ../openapi.yaml"
-	@echo "up / down   docker compose (Docker is required; not available on every machine)"
+	@echo "docker-env  write .env with a random POSTGRES_PASSWORD (once)"
+	@echo "docker-up   whole app in Docker: db, api, worker, web -> http://127.0.0.1:8080 (WITH_LORA=1 adds PyTorch)"
+	@echo "docker-etl  fill the Docker database and model volume from the checkout (CLINVAR_SCOPE=in-tiles|degron-only)"
+	@echo "docker-dev  the same with bind-mounted source: Vite :5173, API --reload :8000, PostgreSQL :55433"
+	@echo "docker-test backend pytest inside the dev image on the compose PostgreSQL (DF_TEST_BACKEND=sqlite for SQLite)"
+	@echo "docker-e2e  Playwright real-backend specs against the Docker web container (E2E_BASE_URL)"
+	@echo "backup      one-command backup of the Docker stack: DB dump + project files + manifest (OUT=dir optional)"
+	@echo "restore     BACKUP=dir: check the manifest and schema, show what is overwritten, ask, then restore"
+	@echo "lora-bundle export the LoRA-D serving bundle from branch-1 artifacts into data/processed (needs .venv-lora)"
 	@echo "pg-up       local PostgreSQL 16 in Docker on 127.0.0.1:55432 (password in .data/pg-dev.env)"
 	@echo "test-pg     the backend suite on PostgreSQL (needs pg-up)"
 
@@ -55,10 +65,10 @@ test-fast:
 	cd $(APP) && $(PY) -m pytest -m "not slow and not realdata"
 
 lint:
-	cd $(APP) && $(APP).venv/bin/ruff check backend etl tests
+	cd $(APP) && $(APP).venv/bin/ruff check backend etl tests ops
 
 typecheck:
-	cd $(APP) && $(APP).venv/bin/mypy backend/degron_footprint backend/api backend/db etl --explicit-package-bases
+	cd $(APP) && $(APP).venv/bin/mypy backend/degron_footprint backend/api backend/db etl ops --explicit-package-bases
 
 contract:
 	$(PY) -c "import yaml,sys; from openapi_spec_validator import validate; validate(yaml.safe_load(open('$(APP)../openapi.yaml'))); print('openapi.yaml valid')"
@@ -66,14 +76,51 @@ contract:
 latency:
 	cd $(APP) && $(PY) tests/measure_latency.py
 
-up:
-	cd $(APP) && docker compose up -d --build
+# ---- Whole application in Docker (docker-compose.yml) and the development override (compose.dev.yml)
+DC     := cd $(APP) && docker compose
+DC_DEV := cd $(APP) && HOST_UID=$$(id -u) HOST_GID=$$(id -g) docker compose -f docker-compose.yml -f compose.dev.yml
 
-down:
-	cd $(APP) && docker compose down
+docker-env:
+	@if [ -f $(APP).env ]; then echo ".env exists; not overwritten"; else \
+	  (umask 077; python3 -c "import re,secrets,sys; s=open(sys.argv[1]).read(); \
+	  open(sys.argv[2],'w').write(re.sub(r'(?m)^POSTGRES_PASSWORD=.*$$', 'POSTGRES_PASSWORD='+secrets.token_urlsafe(24), s))" \
+	  $(APP).env.example $(APP).env); echo "wrote .env with a random POSTGRES_PASSWORD"; fi
 
-etl-docker:
-	cd $(APP) && docker compose --profile tools run --rm etl
+docker-up up: docker-env
+	$(DC) up -d --build --wait db api worker web
+	@$(DC) ps
+
+docker-down down:
+	$(DC) down
+
+docker-etl etl-docker: docker-env
+	$(DC) --profile tools run --rm etl
+	$(DC) restart api worker
+
+docker-logs:
+	$(DC) logs -f --tail=100
+
+docker-ps:
+	$(DC) ps
+
+docker-dev: docker-env
+	$(DC_DEV) up -d --build --wait db api worker web web-dev
+	@$(DC_DEV) ps
+
+docker-dev-down:
+	$(DC_DEV) down
+
+docker-test: docker-env
+	$(DC_DEV) --profile tools run --rm test $(PYTEST_ARGS)
+
+E2E_BASE_URL ?= http://127.0.0.1:8080
+docker-e2e:
+	cd $(APP)frontend && E2E_REAL=1 E2E_BASE_URL=$(E2E_BASE_URL) npx playwright test --project=chromium-desktop e2e/real.spec.ts
+
+# LoRA-D serving bundle (plan 2.12). Reads the branch-1 artifacts read-only; writes data/processed/lora-d-serving-v1/.
+LORA_PY ?= $(APP).venv-lora/bin/python
+lora-bundle:
+	$(LORA_PY) $(APP)etl/export_lora.py
 
 # ---- PostgreSQL 16 for development and the parity suite (WP8). Loopback only; the password stays in .data/.
 PG_ENV  := $(APP).data/pg-dev.env
@@ -95,3 +142,12 @@ pg-down:
 test-pg:
 	@. $(PG_ENV); cd $(APP) && DF_TEST_BACKEND=postgresql \
 	  DF_TEST_PG_URL="postgresql+psycopg://degron:$$POSTGRES_PASSWORD@127.0.0.1:$(PG_PORT)/degron" $(PY) -m pytest
+
+# ---- Backup and restore (plan-system 4.1). Docker stack by default; SQLITE=.data/dev.db for a host install.
+BACKUP_ARGS = $(if $(SQLITE),--sqlite $(SQLITE) --workspace $(or $(WORKSPACE),$(APP).data/workspace),)
+backup:
+	python3 $(APP)ops/backup.py backup $(BACKUP_ARGS) $(if $(OUT),--out $(OUT),)
+
+restore:
+	@test -n "$(BACKUP)" || (echo "usage: make restore BACKUP=<backup directory> [YES=1]"; exit 2)
+	python3 $(APP)ops/backup.py restore $(BACKUP) $(BACKUP_ARGS) $(if $(YES),--yes,)

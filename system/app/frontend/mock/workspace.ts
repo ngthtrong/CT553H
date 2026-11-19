@@ -73,6 +73,8 @@ const comparisons = new Map<string, Comparison>();
 export function resetWorkspace(): void {
   projects.clear();
   analyses.clear();
+  modelComparisons.clear();
+  comparisonTimes.clear();
   jobs.clear();
   datasets.clear();
   comparisons.clear();
@@ -125,6 +127,7 @@ function confirmRequired(url: URL, deps: WorkspaceDeps, dependencies: Record<str
 function deleteAnalysisCascade(id: string): void {
   analyses.delete(id);
   for (const [cid, c] of comparisons) if (c.analysis_id === id) comparisons.delete(cid);
+  for (const [mid, mc] of modelComparisons) if (mc.a === id || mc.b === id) modelComparisons.delete(mid);
 }
 
 function deleteDatasetCascade(id: string): void {
@@ -141,12 +144,29 @@ function newAnalysis(projectId: string, result: unknown, request: Record<string,
     parent_available: parent === null ? undefined : analyses.has(parent),
     created_at: now(),
     result: r,
+    // Same shape as the backend snapshot (api/snapshot.py): provenance + annotations frozen at save time.
     snapshot: {
       snapshot_version: 1,
-      request,
-      model_id: r.provenance.model_id,
-      domain_status: r.domain.status,
-      annotation_sources: r.provenance.data_sources,
+      request: {
+        input_kind: r.tile.uniprot_id ? 'uniprot_tile' : 'sequence',
+        sequence: r.tile.sequence,
+        uniprot_id: r.tile.uniprot_id,
+        tile_index: r.tile.tile_index,
+        model_id: request.model_id ?? null,
+        calibrator: request.calibrator ?? null,
+        override_domain: request.override_domain === true,
+      },
+      model: { model_id: r.provenance.model_id, weights_sha256: r.provenance.weights_sha256, calibrator: 'platt' },
+      gate: { gate_model_id: r.domain.gate_model_id ?? null },
+      domain: r.domain,
+      warning_codes: r.warnings.map((w) => w.code),
+      created_at: now(),
+      annotations: {
+        clinvar: r.tile.uniprot_id
+          ? { state: 'no_match', variants: [], clinvar_file_date: '2026-10-12', sources: [{ source_id: 'clinvar-mock', version: 'mock', attribution_text: 'ClinVar (synthetic mock).', disclaimer_text: 'Not for diagnostic use.' }] }
+          : { state: 'mapping_unavailable', variants: [], reason: 'Typed sequence: no verified UniProt mapping.' },
+        measured: r.tile.uniprot_id ? { state: 'no_match', cells: [] } : { state: 'mapping_unavailable', cells: [] },
+      },
     },
   };
   analyses.set(a.analysis_id, a);
@@ -171,6 +191,42 @@ function summary(a: SavedAnalysis): S['SavedAnalysisSummary'] {
 }
 
 // --- jobs -----------------------------------------------------------------------------------------------------------
+
+/** plan-system 2.1: per-tile means over the 19 substitutions, from the stored (synthetic) analyses; never averaged across tiles. */
+function jobFootprint(s: StoredJob, url: URL, deps: WorkspaceDeps): MockResponse {
+  type FpCov = { input_id: string; uniprot_id: string | null; protein_length: number; tiles: number; uncovered?: { start: number; end: number }[]; refused?: string };
+  const raw = s.job.coverage as (FpCov & { version?: number; proteins?: FpCov[] }) | undefined;
+  if (s.job.mode !== 'protein' || !raw) return deps.err(409, 'JOB_STATE_CONFLICT', 'A protein footprint exists only for whole-protein jobs.');
+  const usable = raw.version === 2 ? (raw.proteins ?? []).filter((c) => !c.refused) : [raw];
+  const want = url.searchParams.get('input_id');
+  const cov = want ? usable.find((c) => c.input_id === want) : usable[0];
+  if (!cov) return deps.err(422, 'INVALID_REQUEST', 'input_id is not a scored protein of this job.', 'input_id');
+  if (!['completed', 'partial', 'failed', 'cancelled'].includes(s.job.state)) return deps.err(409, 'JOB_STATE_CONFLICT', `The job is ${s.job.state}; the protein footprint is available when it has finished.`);
+  const tiles = s.items.filter((it) => raw.version !== 2 || (it.input_id === cov.input_id && it.tile_index)).map((it) => {
+    const a = it.analysis_id ? analyses.get(it.analysis_id) : undefined;
+    const start = it.start_pos ?? 1;
+    const positions = a
+      ? Array.from({ length: 28 }, (_, i) => {
+          const at = a.result.cells.filter((c) => c.position === i + 1);
+          return { protein_pos: start + i, mean_prob: at.reduce((t, c) => t + c.p_dpsi_ge_1_calibrated, 0) / at.length, mean_raw: at.reduce((t, c) => t + c.score_dpsi_raw, 0) / at.length };
+        })
+      : [];
+    return {
+      item_id: it.item_id, tile_index: it.tile_index ?? 0, start_pos: start, end_pos: it.end_pos ?? start + 27, state: it.state,
+      domain_status: it.domain_status ?? null, analysis_id: it.analysis_id ?? null,
+      training_peptide: a ? a.result.warnings.some((w) => w.code === 'TRAINING_PEPTIDE') : null, positions,
+    };
+  });
+  return deps.ok({
+    job_id: s.job.job_id, state: s.job.state,
+    label: 'Each tile is scored independently in its own 28-residue context; this is not a phenotype of the whole protein. Overlapping windows are shown separately and never averaged.',
+    proteins: usable.map((c) => c.input_id),
+    protein: { input_id: cov.input_id, uniprot_id: cov.uniprot_id, length: cov.protein_length, tiles: cov.tiles },
+    uncovered: cov.uncovered ?? [],
+    model: { model_id: String((s.job.configuration_snapshot as { model_id?: string }).model_id), weights_sha256: 'deadbeef'.repeat(8), calibrator: 'platt', event_definition: 'P(DeltaPSI >= 1.0)' },
+    tiles,
+  });
+}
 
 function itemFor(ordinal: number, inputId: string, request: Record<string, unknown>, extra: Partial<JobItem> = {}) {
   return { item_id: `item-${String(ordinal).padStart(5, '0')}`, input_id: inputId, state: 'pending' as JobItem['state'], request, ...extra };
@@ -201,40 +257,70 @@ function submitJob(projectId: string, body: string, deps: WorkspaceDeps): MockRe
     }
   } else if (mode === 'protein') {
     if ('peptides' in req) return deps.err(422, 'INVALID_REQUEST', 'A protein job takes one protein only.', 'peptides');
-    const prot = (req.protein ?? {}) as Record<string, unknown>;
-    const acc = typeof prot.uniprot_id === 'string' ? prot.uniprot_id : null;
-    const typed = typeof prot.sequence === 'string' ? prot.sequence.replace(/\s+/g, '').toUpperCase() : null;
-    if ((acc === null) === (typed === null)) return deps.err(422, 'INVALID_REQUEST', 'Give exactly one of uniprot_id or sequence.', 'protein');
-    let length: number;
-    let seqAt: (n: number) => string;
-    if (acc !== null) {
-      const p = deps.proteins.find((x) => x.uniprot_id === acc);
-      if (!p) return deps.err(404, 'UNKNOWN_ACCESSION', 'This accession is not in the loaded reference.', 'protein.uniprot_id');
-      length = p.length;
-      seqAt = (n) => deps.tileSequence(acc, n);
-    } else {
-      const s = typed ?? '';
-      if (s.length > MAX_PROTEIN) return deps.err(413, 'PAYLOAD_TOO_LARGE', `At most ${MAX_PROTEIN} residues.`, 'protein.sequence');
-      length = s.length;
-      seqAt = (n) => s.slice((n - 1) * 23, (n - 1) * 23 + 28);
-    }
-    if (length < 28) return deps.err(422, 'INVALID_LENGTH', 'The protein is shorter than one 28-residue tile.', 'protein');
-    const n = Math.floor((length - 28) / 23) + 1;
-    const lastEnd = (n - 1) * 23 + 28;
-    coverage = {
-      protein_length: length,
-      tiles: n,
-      step: 23,
-      tile_length: 28,
-      uncovered: lastEnd < length ? [{ start: lastEnd + 1, end: length }] : [],
+    if (('protein' in req) === ('proteins' in req)) return deps.err(422, 'INVALID_REQUEST', 'Give exactly one of "protein" or "proteins".', 'proteins');
+    type Cov = Record<string, unknown> & { unscorable_windows: { tile_index: number; start: number; end: number }[] };
+    // one protein → its items and coverage, or an error (code, message, status)
+    const one = (prot: Record<string, unknown>, ordinal0: number): { items: StoredJob['items']; cov: Cov } | { code: string; message: string; status: number; label: string } => {
+      const acc = typeof prot.uniprot_id === 'string' ? prot.uniprot_id : null;
+      const typed = typeof prot.sequence === 'string' ? prot.sequence.replace(/\s+/g, '').toUpperCase() : null;
+      const label = String(prot.input_id ?? acc ?? 'protein');
+      let length: number;
+      let seqAt: (n: number) => string;
+      if (acc !== null) {
+        const p = deps.proteins.find((x) => x.uniprot_id === acc);
+        if (!p) return { code: 'UNKNOWN_ACCESSION', message: 'This accession is not in the loaded reference.', status: 404, label };
+        length = p.length;
+        seqAt = (n) => deps.tileSequence(acc, n);
+      } else {
+        const t = typed ?? '';
+        length = t.length;
+        seqAt = (n) => t.slice((n - 1) * 23, (n - 1) * 23 + 28);
+      }
+      if (length < 28) return { code: 'INVALID_LENGTH', message: 'The protein is shorter than one 28-residue tile.', status: 422, label };
+      const n = Math.floor((length - 28) / 23) + 1;
+      const lastEnd = (n - 1) * 23 + 28;
+      const cov: Cov = { version: 1, input_id: label, uniprot_id: acc, reference_release: acc !== null ? '2026_03' : null, protein_length: length, tiles: n, step: 23, tile_length: 28,
+        uncovered: lastEnd < length ? [{ start: lastEnd + 1, end: length }] : [], unscorable_windows: [] };
+      const its: StoredJob['items'] = [];
+      for (let i = 1; i <= n; i += 1) {
+        const seq = seqAt(i);
+        const start = (i - 1) * 23 + 1;
+        const extra: Partial<JobItem> = { tile_index: i, start_pos: start, end_pos: start + 27 };
+        if (!AA.test(seq)) {
+          Object.assign(extra, { state: 'refused', error: { code: 'TILE_NOT_SCORABLE', message: 'The window contains a non-standard residue.' } });
+          cov.unscorable_windows.push({ tile_index: i, start, end: start + 27 });
+        }
+        its.push(itemFor(ordinal0 + i, label, acc !== null ? { uniprot_id: acc, tile_index: i } : { sequence: seq }, extra));
+      }
+      return { items: its, cov };
     };
-    for (let i = 1; i <= n; i += 1) {
-      const seq = seqAt(i);
-      const start = (i - 1) * 23 + 1;
-      const extra: Partial<JobItem> = { tile_index: i, start_pos: start, end_pos: start + 27 };
-      if (!AA.test(seq)) Object.assign(extra, { state: 'refused', error: { code: 'TILE_NOT_SCORABLE', message: 'The window contains a non-standard residue.' } });
-      const request = acc !== null ? { uniprot_id: acc, tile_index: i } : { sequence: seq };
-      items.push(itemFor(i, String(prot.input_id ?? acc ?? 'protein'), request, extra));
+    if ('proteins' in req) {
+      // plan-system 3.3: several proteins; a protein that cannot be resolved is one refused item
+      const list = Array.isArray(req.proteins) ? (req.proteins as Record<string, unknown>[]) : [];
+      if (list.length < 1 || list.length > 20) return deps.err(422, 'INVALID_REQUEST', '"proteins" must list 1 to 20 proteins.', 'proteins');
+      const covs: Record<string, unknown>[] = [];
+      let total = 0;
+      for (const prot of list) {
+        const r = one(prot, items.length);
+        if ('code' in r) {
+          items.push(itemFor(items.length + 1, r.label, {}, { state: 'refused', error: { code: r.code as NonNullable<JobItem['error']>['code'], message: r.message } }));
+          covs.push({ version: 1, input_id: r.label, uniprot_id: prot.uniprot_id ?? null, refused: r.code, protein_length: 0, tiles: 0, uncovered: [], unscorable_windows: [] });
+        } else {
+          items.push(...r.items);
+          covs.push(r.cov);
+          total += Number(r.cov.protein_length);
+        }
+      }
+      if (total > MAX_PROTEIN) return deps.err(413, 'PAYLOAD_TOO_LARGE', `At most ${MAX_PROTEIN} residues in total.`, 'proteins');
+      coverage = { version: 2, proteins: covs, protein_length: total, tiles: covs.reduce((a, c) => a + Number(c.tiles), 0) };
+    } else {
+      const prot = (req.protein ?? {}) as Record<string, unknown>;
+      if ((typeof prot.uniprot_id === 'string') === (typeof prot.sequence === 'string')) return deps.err(422, 'INVALID_REQUEST', 'Give exactly one of uniprot_id or sequence.', 'protein');
+      if (typeof prot.sequence === 'string' && prot.sequence.length > MAX_PROTEIN) return deps.err(413, 'PAYLOAD_TOO_LARGE', `At most ${MAX_PROTEIN} residues.`, 'protein.sequence');
+      const r = one(prot, 0);
+      if ('code' in r) return deps.err(r.status, r.code, r.message, r.code === 'UNKNOWN_ACCESSION' ? 'protein.uniprot_id' : 'protein');
+      items.push(...r.items);
+      coverage = r.cov;
     }
   } else {
     return deps.err(422, 'INVALID_REQUEST', 'mode must be peptides or protein.', 'mode');
@@ -248,8 +334,9 @@ function submitJob(projectId: string, body: string, deps: WorkspaceDeps): MockRe
     total: items.length,
     counts: {},
     cancel_requested: false,
+    eta_seconds: null,
     coverage,
-    configuration_snapshot: { model_id: 'mock-m3-ext4.0-platt-v1', calibrator: 'platt', override_domain: req.override_domain === true, gate: null },
+    configuration_snapshot: { model_id: typeof req.model_id === 'string' ? req.model_id : 'mock-m3-ext4.0-platt-v1', calibrator: 'platt', override_domain: req.override_domain === true, gate_model_id: null },
     created_at: t,
     updated_at: t,
   };
@@ -265,6 +352,9 @@ function recount(s: StoredJob): void {
   for (const it of s.items) counts[it.state] = (counts[it.state] ?? 0) + 1;
   s.job.counts = counts;
   const open = (counts.pending ?? 0) + (counts.running ?? 0);
+  // Synthetic ETA (plan-system 1.7): 2 s per open item once 3 items have finished, null otherwise.
+  const done = (counts.succeeded ?? 0) + (counts.failed ?? 0);
+  s.job.eta_seconds = open > 0 && done >= 3 ? open * 2 : null;
   if (open === 0) {
     const ok = counts.succeeded ?? 0;
     if (s.job.cancel_requested) s.job.state = 'cancelled';
@@ -491,7 +581,7 @@ function compare(a: SavedAnalysis, body: string, deps: WorkspaceDeps): MockRespo
     if (!vals) continue;
     const sorted = [...vals].sort((x, y) => x - y);
     const observed = agg === 'median' ? (sorted.length % 2 ? sorted[(sorted.length - 1) / 2]! : (sorted[sorted.length / 2 - 1]! + sorted[sorted.length / 2]!) / 2) : vals.reduce((s, t) => s + t, 0) / vals.length;
-    rows.push({ position: c.position, wt_aa: c.wt_aa, mut_aa: c.mut_aa, observed, n_replicates: vals.length, predicted_dpsi_raw: c.score_dpsi_raw, residual: compatible ? c.score_dpsi_raw - observed : null, units: ds.dataset.metadata.units });
+    rows.push({ position: c.position, wt_aa: c.wt_aa, mut_aa: c.mut_aa, observed, n_replicates: vals.length, predicted_dpsi_raw: compatible ? c.score_dpsi_raw : null, residual: compatible ? c.score_dpsi_raw - observed : null, units: ds.dataset.metadata.units });
     pred.push(c.score_dpsi_raw);
     obs.push(observed);
   }
@@ -515,7 +605,107 @@ function compare(a: SavedAnalysis, body: string, deps: WorkspaceDeps): MockRespo
     provenance: { dataset_revision: ds.dataset.revision, dataset_sha256: ds.dataset.sha256, replicate_id: rep, aggregation: agg, note: 'comparison only; not used to retrain the model' },
   };
   comparisons.set(cmp.comparison_id, cmp);
+  comparisonTimes.set(cmp.comparison_id, now());
   return deps.ok(cmp, {}, 201);
+}
+
+// --- model comparisons (plan-system 2.2; same formulas as backend/api/model_compare.py) -------------------------------
+
+interface StoredModelComparison { id: string; project_id: string; a: string; b: string; created_at: string }
+const modelComparisons = new Map<string, StoredModelComparison>();
+const comparisonTimes = new Map<string, string>();
+const MC_LABEL = 'Descriptive comparison of two models (or two runs) on the same tile; it does not tell which model is right. Development benchmark, not external validation.';
+
+function pearson(x: number[], y: number[]): number | null {
+  const n = x.length;
+  if (n < 3) return null;
+  const mx = x.reduce((a, b) => a + b, 0) / n;
+  const my = y.reduce((a, b) => a + b, 0) / n;
+  let sxy = 0, sxx = 0, syy = 0;
+  for (let i = 0; i < n; i += 1) { sxy += (x[i]! - mx) * (y[i]! - my); sxx += (x[i]! - mx) ** 2; syy += (y[i]! - my) ** 2; }
+  return sxx > 0 && syy > 0 ? sxy / Math.sqrt(sxx * syy) : null;
+}
+
+function buildModelComparison(a: SavedAnalysis, b: SavedAnalysis, stored?: StoredModelComparison) {
+  const key = (c: { position: number; mut_aa: string }) => `${String(c.position).padStart(2, '0')}${c.mut_aa}`;
+  const bb = new Map(b.result.cells.map((c) => [key(c), c]));
+  const cells = [...a.result.cells].sort((x, y) => key(x).localeCompare(key(y))).flatMap((ca) => {
+    const cb = bb.get(key(ca));
+    return cb ? [{ position: ca.position, wt_aa: ca.wt_aa, mut_aa: ca.mut_aa, raw_a: ca.score_dpsi_raw, raw_b: cb.score_dpsi_raw, prob_a: ca.p_dpsi_ge_1_calibrated, prob_b: cb.p_dpsi_ge_1_calibrated, rank_a: ca.rank_in_tile, rank_b: cb.rank_in_tile }] : [];
+  });
+  const ra = cells.map((c) => c.raw_a), rb = cells.map((c) => c.raw_b), pa = cells.map((c) => c.prob_a), pb = cells.map((c) => c.prob_b);
+  const topA = new Set(cells.filter((c) => c.rank_a <= 54).map(key));
+  const topB = new Set(cells.filter((c) => c.rank_b <= 54).map(key));
+  const inter = [...topA].filter((k) => topB.has(k)).length;
+  const union = new Set([...topA, ...topB]).size;
+  const absP = cells.map((c) => Math.abs(c.prob_b - c.prob_a));
+  const side = (x: SavedAnalysis) => ({ analysis_id: x.analysis_id, model_id: x.result.provenance.model_id, model_kind: x.result.provenance.model_kind ?? null, weights_sha256: x.result.provenance.weights_sha256, calibrator: 'platt', evidence_label: x.result.provenance.evidence_label, domain_status: x.result.domain.status, warning_codes: x.result.warnings.map((w) => w.code), created_at: x.created_at });
+  return {
+    comparison_id: stored?.id ?? null, project_id: a.project_id, label: MC_LABEL, tile: a.result.tile,
+    sequence_sha256: createHash('sha256').update(a.result.tile.sequence).digest('hex'),
+    metrics: {
+      n_cells: cells.length, spearman_raw: spearman(ra, rb), pearson_raw: pearson(ra, rb), spearman_prob: spearman(pa, pb),
+      mean_abs_diff_raw: ra.reduce((s, v, i) => s + Math.abs(v - rb[i]!), 0) / cells.length,
+      mean_abs_diff_prob: absP.reduce((s, v) => s + v, 0) / cells.length, max_abs_diff_prob: Math.max(...absP),
+      top_k: 54, top_k_overlap: inter, top_k_jaccard: union ? inter / union : null,
+    },
+    disagreements: [...cells].sort((x, y) => Math.abs(y.prob_b - y.prob_a) - Math.abs(x.prob_b - x.prob_a) || x.position - y.position || x.mut_aa.localeCompare(y.mut_aa))
+      .slice(0, 20).map((c) => ({ ...c, diff_prob: c.prob_b - c.prob_a, diff_raw: c.raw_b - c.raw_a })),
+    provenance: { a: side(a), b: side(b) }, cells, created_at: stored?.created_at ?? null,
+  };
+}
+
+const SUGGEST_LABEL = 'Retrospective priority list, development benchmark; not an experimentally validated design. It ranks substitutions of this tile only and is never used to update the model.';
+/** plan-system 2.6 on the mock: models_disagree and ClinVar reasons (synthetic data); same order rule as the backend. */
+function mockSuggestions(aid: string, url: URL, deps: WorkspaceDeps): MockResponse {
+  const a = analyses.get(aid);
+  if (!a) return deps.err(404, 'ANALYSIS_NOT_FOUND', 'No saved analysis with this id.');
+  const otherId = url.searchParams.get('compare_with');
+  const o = otherId ? analyses.get(otherId) : undefined;
+  if (otherId && (!o || o.result.tile.sequence !== a.result.tile.sequence)) return deps.err(422, 'INVALID_REQUEST', 'compare_with must be another analysis of the same tile sequence.', 'compare_with');
+  const ob = new Map((o?.result.cells ?? []).map((c) => [`${c.position}${c.mut_aa}`, c]));
+  const cv = ((a.snapshot as { annotations?: { clinvar?: { variants?: { position: number; alt_aa: string; clinsig: string }[] } } }).annotations?.clinvar?.variants) ?? [];
+  const rows = a.result.cells.flatMap((c) => {
+    const reasons: { code: string; value: number; text: string }[] = [];
+    const other = ob.get(`${c.position}${c.mut_aa}`);
+    if (other && Math.abs(other.p_dpsi_ge_1_calibrated - c.p_dpsi_ge_1_calibrated) >= 0.2) {
+      const d = other.p_dpsi_ge_1_calibrated - c.p_dpsi_ge_1_calibrated;
+      reasons.push({ code: 'models_disagree', value: d, text: `P differs by ${d >= 0 ? '+' : ''}${d.toFixed(3)} between the two analyses (threshold 0.2)` });
+    }
+    const v = cv.filter((x) => x.position === c.position && x.alt_aa === c.mut_aa);
+    if (v.length) reasons.push({ code: 'clinvar_variant', value: v.length, text: `ClinVar variant(s) at this residue: ${v.map((x) => x.clinsig).join(', ')} (not a diagnosis)` });
+    return reasons.length ? [{ position: c.position, wt_aa: c.wt_aa, mut_aa: c.mut_aa, score_dpsi_raw: c.score_dpsi_raw, prob: c.p_dpsi_ge_1_calibrated, prob_other: other?.p_dpsi_ge_1_calibrated ?? null, rank_in_tile: c.rank_in_tile, score_seed_sd: c.score_seed_sd ?? null, reasons }] : [];
+  }).sort((x, y) => y.reasons.length - x.reasons.length || Math.max(y.prob, y.prob_other ?? -1) - Math.max(x.prob, x.prob_other ?? -1) || x.rank_in_tile - y.rank_in_tile);
+  return deps.ok({ analysis_id: aid, compared_with: otherId, label: SUGGEST_LABEL, criteria: { top_k: 54, spread_quantile: 0.75, disagree_threshold: 0.2, spread_cut: null }, domain_status: a.result.domain.status, model_id: a.result.provenance.model_id, candidates: rows.slice(0, 30), excluded_reason: null, n_with_reason: rows.length });
+}
+
+function compareModels(body: string, deps: WorkspaceDeps): MockResponse {
+  const req = parseJson(body);
+  const a = analyses.get(String(req?.analysis_a ?? ''));
+  const b = analyses.get(String(req?.analysis_b ?? ''));
+  if (!a || !b) return deps.err(404, 'ANALYSIS_NOT_FOUND', 'No saved analysis with this id.');
+  if (a.analysis_id === b.analysis_id) return deps.err(422, 'INVALID_REQUEST', 'Choose two different analyses.', 'analysis_b');
+  if (a.result.tile.sequence !== b.result.tile.sequence) return deps.err(422, 'INVALID_REQUEST', 'The two analyses score different tile sequences; only analyses of the same 28-residue tile can be compared cell by cell.', 'analysis_b');
+  if (req?.save !== true) return deps.ok(buildModelComparison(a, b));
+  const stored = { id: randomUUID(), project_id: a.project_id, a: a.analysis_id, b: b.analysis_id, created_at: now() };
+  modelComparisons.set(stored.id, stored);
+  return deps.ok(buildModelComparison(a, b, stored), {}, 201);
+}
+
+function modelComparisonRoute(m: string, seg: string[], url: URL, deps: WorkspaceDeps): MockResponse | null {
+  const s = modelComparisons.get(seg[1] ?? '');
+  if (!s || m !== 'GET') return deps.err(404, 'COMPARISON_NOT_FOUND', 'No model comparison has this id.');
+  const a = analyses.get(s.a), b = analyses.get(s.b);
+  if (!a || !b) return deps.err(404, 'COMPARISON_NOT_FOUND', 'No model comparison has this id.');
+  const data = buildModelComparison(a, b, s);
+  if (seg[2] === 'export') {
+    const fmt = url.searchParams.get('format');
+    if (fmt === 'json') return deps.ok(data);
+    const lines = [`# model_comparison_id=${s.id}`, `# a_model_id=${data.provenance.a.model_id}`, `# b_model_id=${data.provenance.b.model_id}`, 'position,wt_aa,mut_aa,raw_a,raw_b,prob_a,prob_b,diff_prob,rank_a,rank_b',
+      ...data.cells.map((c) => [c.position, c.wt_aa, c.mut_aa, c.raw_a, c.raw_b, c.prob_a, c.prob_b, c.prob_b - c.prob_a, c.rank_a, c.rank_b].join(','))];
+    return { status: 200, headers: { 'Content-Type': 'text/csv; charset=utf-8' }, body: `${lines.join('\n')}\n` };
+  }
+  return deps.ok(data);
 }
 
 // --- dispatch -----------------------------------------------------------------------------------------------------
@@ -524,6 +714,10 @@ export function handleWorkspace(m: string, url: URL, headers: Record<string, str
   const path = url.pathname;
   const seg = path.split('/').slice(2); // ['projects', id, ...]
   const top = seg[0];
+  // plan-system 2.2: model comparisons (static path before the id check)
+  if (top === 'analyses' && seg[1] === 'compare' && m === 'POST') return compareModels(body, deps);
+  if (top === 'model-comparisons') return modelComparisonRoute(m, seg, url, deps);
+  if (top === 'analyses' && seg[2] === 'suggestions' && m === 'GET') return mockSuggestions(seg[1] ?? '', url, deps);
   if (!['projects', 'analyses', 'jobs', 'datasets', 'comparisons'].includes(top ?? '')) return null;
   const id = seg[1];
   if (id !== undefined && !UUID.test(id)) return deps.err(422, 'INVALID_REQUEST', 'The id is not a UUID.');
@@ -572,6 +766,31 @@ export function handleWorkspace(m: string, url: URL, headers: Record<string, str
       return null;
     }
     const byTime = <T extends { created_at: string }>(rows: T[], key: (r: T) => string) => rows.sort((a, b) => b.created_at.localeCompare(a.created_at) || key(a).localeCompare(key(b)));
+    if (sub === 'agreement' && m === 'GET') {
+      // plan-system 4.4 on the mock: same flag rule as the backend
+      const pts: Record<string, unknown>[] = [];
+      for (const c of comparisons.values()) {
+        const a = analyses.get(c.analysis_id);
+        if (!a || a.project_id !== id) continue;
+        const ref = pts.filter((q) => q.compatible && Number(q.n) >= 5);
+        const flags: { code: string; text: string }[] = [];
+        if (c.compatible && c.matched >= 5 && ref.length >= 2 && c.mae !== null) {
+          const mean = ref.reduce((s2, q) => s2 + Number(q.mae), 0) / ref.length;
+          if (c.mae > 1.25 * mean) flags.push({ code: 'mae_worse', text: `MAE ${c.mae.toFixed(3)} is above 1.25 × the mean of ${ref.length} earlier comparisons (${mean.toFixed(3)}).` });
+        }
+        pts.push({ comparison_id: c.comparison_id, analysis_id: c.analysis_id, dataset_id: c.dataset_id, dataset_name: datasets.get(c.dataset_id)?.dataset.metadata.name ?? null, dataset_revision: c.provenance.dataset_revision ?? null,
+          model_id: a.result.provenance.model_id, tile: a.result.tile.uniprot_id ? `${a.result.tile.uniprot_id} tile ${a.result.tile.tile_index}` : 'typed tile', created_at: comparisonTimes.get(c.comparison_id) ?? now(),
+          n: c.matched, compatible: c.compatible, mae: c.mae, spearman: c.spearman, flags });
+      }
+      return deps.ok({ project_id: id, caveat: 'A worse agreement may come from another assay, conditions, replicate handling or tiles; it does not by itself mean that the model is wrong. Nothing is changed automatically.', points: pts, rules: { min_n: 5, min_earlier: 2, mae_ratio: 1.25, spearman_drop: 0.2 }, flagged: pts.filter((p) => (p.flags as unknown[]).length).length });
+    }
+    if (sub === 'model-comparisons' && m === 'GET') {
+      const only = url.searchParams.get('analysis_id');
+      const rows = [...modelComparisons.values()].filter((x) => x.project_id === id && (!only || x.a === only || x.b === only))
+        .sort((x, y) => y.created_at.localeCompare(x.created_at))
+        .map((x) => { const d = buildModelComparison(analyses.get(x.a)!, analyses.get(x.b)!, x); return { comparison_id: x.id, project_id: x.project_id, analysis_a: x.a, analysis_b: x.b, model_a: d.provenance.a.model_id, model_b: d.provenance.b.model_id, spearman_raw: d.metrics.spearman_raw, top_k_jaccard: d.metrics.top_k_jaccard, created_at: x.created_at }; });
+      return page(rows, url, deps);
+    }
     if (sub === 'analyses') {
       if (m === 'GET') return page(byTime([...analyses.values()].filter((a) => a.project_id === id), (a) => a.analysis_id).map(summary), url, deps);
       if (m === 'POST') {
@@ -630,6 +849,7 @@ export function handleWorkspace(m: string, url: URL, headers: Record<string, str
       return deps.ok(s.job, {}, 202);
     }
     if (sub === 'export' && m === 'GET') return exportJob(s, url.searchParams.get('format') ?? '', deps);
+    if (sub === 'footprint' && m === 'GET') return jobFootprint(s, url, deps);
     return null;
   }
 

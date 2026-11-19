@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-18",
+  "round": 2,
+  "scope": "plan-system.md wave 1: 2.1, 2.3, 3.5, 4.1 (round 1: acceptance-system-2026-11-18.json)",
+  "scientific_status": "development_not_gate_closure",
+  "host": "WSL2 Ubuntu 24.04, AMD Ryzen 5 5500U (12 threads), 7.4 GiB RAM; Docker Engine in the same VM",
+  "code_state": "uncommitted working tree",
+  "migration_head": "0005 (no new migration in this round)",
+  "results": {
+    "backend_container_postgresql": {
+      "passed": 314,
+      "skipped": 18,
+      "failed": 0,
+      "log": ".data/docker-test-pg-2026-11-18b.log",
+      "note": "4 more skips than round 1: tests/test_backup.py is sqlite_only"
+    },
+    "backend_container_sqlite": {
+      "passed": 332,
+      "failed": 0,
+      "log": ".data/docker-test-sqlite-2026-11-18b.log"
+    },
+    "backend_host_fast": {
+      "passed": 317,
+      "skipped": 1,
+      "deselected": 14,
+      "note": "after the report CSP fix"
+    },
+    "static": {
+      "ruff": "pass (backend, etl, tests, ops)",
+      "mypy": "pass (50 files)",
+      "openapi": "valid",
+      "tsc": "pass",
+      "eslint": "pass",
+      "check_api": "types up to date"
+    },
+    "vitest": {
+      "passed": 194,
+      "failed": 0,
+      "files": 16
+    },
+    "playwright_mock": {
+      "passed": 34,
+      "failed": 0,
+      "note": "adds VIZ-03 x2 themes, VIZ-04 (360 px), UC-09 charts + axe"
+    },
+    "e2e_real_docker_lora_default": {
+      "passed": 13,
+      "skipped": 1,
+      "failed": 0,
+      "log": ".data/e2e-real-lora-2026-11-18b.log",
+      "first_attempt": "RPT real failed: Chromium warned that frame-ancestors is ignored in a <meta> CSP; meta policy now omits it (header keeps it); rerun passed"
+    },
+    "e2e_real_docker_npz_default": {
+      "passed": 14,
+      "failed": 0,
+      "log": ".data/e2e-real-npz-2026-11-18b.log"
+    }
+  },
+  "measurements": {
+    "backup_roundtrip": "tests/results/backup-roundtrip.json"
+  },
+  "items": {
+    "2.1": "VIZ-01..04 pass; GET /v1/jobs/{id}/footprint; 409 for unfinished or peptide jobs",
+    "2.3": "CMP-04/05 pass; charts only for matched pairs of a compatible endpoint; axe on the comparison result",
+    "3.5": "RPT-01..03 pass; report renders in Chromium with its own CSP, no other request, no CSP warning",
+    "4.1": "OPS-01..03 pass (SQLite); Docker round trip with both scratch volumes deleted: DB checksum and files identical; backup 15.4 s, restore 29.3 s, about 63 MB"
+  },
+  "not_checked": [
+    "manual accessibility (4.6)",
+    "4.3 serving decision awaits Trọng's confirmation of serving-decision-2026-11-18.md",
+    "report printed to PDF by hand in each browser (print CSS present, not inspected visually)",
+    "restore onto the live stack (deliberately done on a scratch Compose project only)"
+  ]
+}

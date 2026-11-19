@@ -4,12 +4,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { App } from './App';
 import { applyTheme } from './lib/theme';
-import '@fontsource/fira-sans/400.css';
-import '@fontsource/fira-sans/500.css';
-import '@fontsource/fira-sans/600.css';
-import '@fontsource/fira-sans/700.css';
-import '@fontsource/fira-code/400.css';
-import '@fontsource/fira-code/500.css';
+// Roboto and Roboto Mono, variable weight axis, self-hosted (OFL-1.1); never a font CDN (NFR-09).
+import '@fontsource-variable/roboto';
+import '@fontsource-variable/roboto-mono';
 import './styles/tokens.css';
 import './styles.css';
 import './styles/ui.css';

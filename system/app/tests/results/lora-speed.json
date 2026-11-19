@@ -1,0 +1,128 @@
+{
+  "date": "2026-11-18T13:15:36+00:00",
+  "host": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "cpu_count": 12,
+  "torch": "2.13.0+cpu",
+  "configs": [
+    {
+      "batch": 64,
+      "threads": 4,
+      "merge": false,
+      "build_s": 5.83,
+      "tile_s": [
+        33.72,
+        34.43
+      ],
+      "mean_tile_s": 34.08,
+      "max_abs_diff_vs_fixture": 0.0,
+      "parity_le_1e-5": true,
+      "breakdown_first_seed": {
+        "tokenize": 0.05,
+        "forward": 11.465,
+        "head": 0.002
+      }
+    },
+    {
+      "batch": 128,
+      "threads": 4,
+      "merge": false,
+      "build_s": 0.5,
+      "tile_s": [
+        33.84,
+        32.04
+      ],
+      "mean_tile_s": 32.94,
+      "max_abs_diff_vs_fixture": 0.0,
+      "parity_le_1e-5": true
+    },
+    {
+      "batch": 256,
+      "threads": 4,
+      "merge": false,
+      "build_s": 0.51,
+      "tile_s": [
+        33.77,
+        35.41
+      ],
+      "mean_tile_s": 34.59,
+      "max_abs_diff_vs_fixture": 0.0,
+      "parity_le_1e-5": true
+    },
+    {
+      "batch": 532,
+      "threads": 4,
+      "merge": false,
+      "build_s": 0.51,
+      "tile_s": [
+        35.55,
+        34.67
+      ],
+      "mean_tile_s": 35.11,
+      "max_abs_diff_vs_fixture": 0.0,
+      "parity_le_1e-5": true
+    },
+    {
+      "batch": 128,
+      "threads": 6,
+      "merge": false,
+      "build_s": 0.52,
+      "tile_s": [
+        28.56,
+        28.49
+      ],
+      "mean_tile_s": 28.53,
+      "max_abs_diff_vs_fixture": 0.0,
+      "parity_le_1e-5": true
+    },
+    {
+      "batch": 128,
+      "threads": 4,
+      "merge": true,
+      "build_s": 0.96,
+      "tile_s": [
+        32.3,
+        32.02
+      ],
+      "mean_tile_s": 32.16,
+      "max_abs_diff_vs_fixture": 5.0067901611328125e-06,
+      "parity_le_1e-5": true
+    },
+    {
+      "batch": 256,
+      "threads": 6,
+      "merge": true,
+      "build_s": 0.62,
+      "tile_s": [
+        28.87,
+        27.76
+      ],
+      "mean_tile_s": 28.31,
+      "max_abs_diff_vs_fixture": 5.0067901611328125e-06,
+      "parity_le_1e-5": true
+    }
+  ],
+  "summary": {
+    "baseline_mean_tile_s": 34.08,
+    "best": {
+      "batch": 256,
+      "threads": 6,
+      "merge": true,
+      "build_s": 0.62,
+      "tile_s": [
+        28.87,
+        27.76
+      ],
+      "mean_tile_s": 28.31,
+      "max_abs_diff_vs_fixture": 5.0067901611328125e-06,
+      "parity_le_1e-5": true
+    },
+    "speedup": 1.2,
+    "target_proposed_p95_le_15s_4threads": null,
+    "note": "mean of two tiles in this process (warm after the first); p95 over more tiles is measured in Docker by measure_latency_lora.py"
+  },
+  "caveats": [
+    "WSL2 laptop, other processes share the CPU; Vitest runs overlapped configurations 4-6 (batch 532 / 6 threads / merge), so their times may be slightly pessimistic",
+    "two tiles per configuration; not a p95",
+    "defaults unchanged after this measurement: DF_LORA_MERGE=0, DF_LORA_THREADS from .env (4)"
+  ]
+}

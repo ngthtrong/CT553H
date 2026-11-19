@@ -1,0 +1,11 @@
+# Ignore rules for the backend build context (`system/`). Only the files the Dockerfile copies are needed.
+**
+!openapi.yaml
+!app/backend/
+!app/etl/
+app/backend/models/
+app/backend/**/__pycache__/
+app/etl/**/__pycache__/
+app/backend/.venv*
+**/*.pyc
+**/*.db

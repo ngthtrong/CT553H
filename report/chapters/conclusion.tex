@@ -31,6 +31,18 @@ W5-D transfer evaluation is also complete: positive AUROC is \nCampaignTAuc{}, w
 difference from predicting zero is \nCampaignTDelta{} with interval \nCampaignTCI{}.
 The contrast between ranking and regression limits the transfer claim.
 
+A final refit then produced deployable models and scored the adapted recipe on the same held-out
+source (Section~\ref{sec:transfer-refit}). LoRA-D reaches MAE \nTLoraMae{} there, against
+\nTFrozenMae{} for its matched frozen control and \nTWfiveMae{} for the locked ridge; both
+prespecified contrasts, \nTDeltaFrozen{} with adjusted interval \nTDeltaFrozenCI{} and
+\nTDeltaWfive{} with \nTDeltaWfiveCI{}, favour adaptation throughout. Two results constrain that
+statement. In the most stable stratum the zero predictor is better than LoRA-D by \nTGtFiveDelta{}
+with adjusted interval \nTGtFiveCI{} entirely above zero, and the mechanism of that reversal is
+not resolved. A test fixed in advance also rejected the explanation that the gain comes from
+sequence similarity to the training peptides, within the narrow identity range the cohort offers.
+The cohort had been examined in earlier work, so this is post-hoc transfer rather than independent
+validation.
+
 The same-budget retrospective replay directly tests mutation prioritisation on W. Selecting ten
 mutations per peptide recovers \nPriorityLoraHits{} positive hits with LoRA-D, versus
 \nPriorityWfiveHits{} with W5-D and random expectation \nPriorityRandomHits{}, under the same
@@ -45,12 +57,21 @@ The calibrated restricted-domain ridge baseline has an inference path numericall
 the research runner. A local React/FastAPI implementation supplies single-peptide results, reference
 lookup, annotations and traceable exports. Its intended use is to shortlist substitutions for
 experimental follow-up, with visible model, source and domain evidence.
-The newer workspace UI demonstrates the intended interactions with synthetic fixtures; it is not
-an integrated persistent application. Projects/history, durable peptide/protein jobs, experimental
-import/comparison, PostgreSQL integration and their local acceptance remain unfinished as of
-6 November 2026. The serving model has not been replaced by a development leaderboard result.
+The first release of that application was accepted locally on 17 November 2026. It delivers
+projects and history, durable peptide and protein jobs, experimental import and comparison, and the
+two-tier domain gate, over \nAppTables{} tables and \nAppOperations{} interface operations, and it runs
+either on the host or as four local containers. The backend suite passes \nAppDockerPgPassed{} cases
+on PostgreSQL and \nAppDockerSqlitePassed{} on SQLite, with \nAppDockerVitest{} interface cases and
+\nAppDockerReal{} browser cases against the real service, and a job survives both processes being
+killed. The adapted LoRA-D model is installed as a second serving model with exact parity to the
+research code, but at \nAppLoraLatPfive{}~s per tile on a processor it misses the proposed latency
+target. Acceptance of the software is not acceptance of the science: the delivered default remains
+the calibrated ridge, the author's local switch to LoRA-D is a configuration without a serving
+decision record, and a manual accessibility pass remains outstanding.
 
 \section{Limitations and Challenges}
+The ten limitations recorded with the scope decision, L1 to L10 in Table~\ref{tab:transfer-limits},
+qualify every claim of this report; the paragraphs below summarise them together with the remaining ones.
 Predictive evidence comes from public reporter-assay sources that have informed several design
 decisions, including a locked transfer subset from a previously explored source. Protein-group
 splitting reduces detectable overlap but does not establish
@@ -61,11 +82,13 @@ metrics. Most follow-up comparisons are exploratory, and the seeds share an oute
 The executable local graph is complete; reviewed external-source and structure inputs remain pending.
 The locked transfer set covers R/A/S substitutions with replicate-1 labels in the same laboratory.
 High-WT-PSI regression and positive-probability shift show that favourable development ranking does
-not establish robust transfer. LoRA has not been evaluated on T. Runtime, precision and feature
-choices also differ across model families. CV calibrators are not final serving artifacts; model-specific
-final refit, lineage cards and export remain unfinished. Earlier baseline calibration and its domain
-gate cannot be assumed valid for a new serving model.
-The gate is not yet integrated correctly into the baseline application. No new wet-lab validation,
+not establish robust transfer, and the adapted model is worse than predicting no effect in the most
+stable stratum. Runtime, precision and feature choices also differ across model families. The final
+refit, its calibrator lineage and inference parity are now recorded, so the remaining obstacle to
+serving that model is cost rather than provenance: on the recorded local host it needs
+\nTLatLora{}~s per tile against \nTLatRidge{}~ms for the calibrated ridge. Earlier baseline
+calibration and its domain gate cannot be assumed valid for a new serving model.
+No new wet-lab validation,
 E3-specific recognition, intact-protein prediction or clinical inference has been established.
 The prioritisation budget counts mutation selections, not laboratory spending. Its budget-to-recall
 scores use total hit counts known only retrospectively; they do not measure hours, money or
@@ -78,11 +101,16 @@ prospective value of the fixed-budget shortlist against locked selection baselin
 predictions and measuring actual experimental resources. Investigate the
 high-PSI transfer errors and probability shift with an explicitly designed new evaluation, rather than
 using the already inspected T set to choose among pLMs. New external and structure extensions require
-reviewed inputs and overlap/rights audits. Any model selected for inference needs an architecture-specific
-final refit, calibration, domain policy, model card and export; the benefit of the three-seed ensemble
-must be retained or re-evaluated if the serving configuration changes.
+reviewed inputs and overlap/rights audits. A model promoted to inference needs its domain policy
+re-examined and its serving cost measured, since the refit, calibration, model card and export now
+exist for the adapted candidate; the benefit of the three-seed ensemble must be retained or
+re-evaluated if the serving configuration changes.
 
-Complete the agreed local software workflows and check numerical consistency, correct domain
-handling, coordinate/assay alignment, saved-work recovery and measured resource use. Update the
-remaining installation and acceptance material from executed evidence. Further data sources or
-biological tests require endpoint, homology and source-rights audits before any broader claim.
+On the software side, the next steps are those that make the adapted model usable: choosing the
+model in the interface, showing the spread between the three seeds, reducing the per-tile latency of
+LoRA-D without changing its numbers, and a protein-level footprint view. Several directions are
+deliberately outside the agreed scope and would each need a scope decision and their own evaluation:
+accounts and public deployment, statements about disease or a specific E3 ligase, automatic
+retraining on user data, multiple substitutions, a quantised model, and sources whose licences do not
+permit redistribution. Further data sources or biological tests require endpoint, homology and
+source-rights audits before any broader claim.

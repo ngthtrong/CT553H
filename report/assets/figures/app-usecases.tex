@@ -1,0 +1,33 @@
+% Use cases of the local application (plan-report V-4, redrawn 18 Nov 2026 as a UML use-case
+% diagram; same use cases and the same three dependencies as the extracted original).
+\begin{tikzpicture}[fig]
+  \tikzset{uc/.style={draw, ellipse, align=center, inner sep=1pt, minimum width=3.5cm,
+                      minimum height=0.95cm, font=\scriptsize, fill=white},
+           dep/.style={->, dashed, line width=0.6pt, oiBlue},
+           deplbl/.style={font=\tiny, text=oiBlue, fill=white, inner sep=1pt}}
+  % actor above the system boundary
+  \begin{scope}[shift={(6.15,1.55)}]
+    \draw[line width=0.8pt] (0,0.42) circle (0.15);
+    \draw[line width=0.8pt] (0,0.27) -- (0,-0.18) (-0.24,0.1) -- (0.24,0.1) (0,-0.18) -- (-0.17,-0.5) (0,-0.18) -- (0.17,-0.5);
+    \node[font=\scriptsize, anchor=west] at (0.3,0.1) {Local researcher};
+    \coordinate (actor) at (0,-0.55);
+  \end{scope}
+  \draw[oiGrey, rounded corners=6pt] (-0.35,0.45) rectangle (12.65,-6.15);
+  \node[font=\scriptsize\itshape, anchor=north, text=oiGrey] at (6.15,-6.2) {system boundary: Degron Footprint, one local installation};
+  \node[font=\scriptsize\itshape] at (1.75,0.0) {Choose substitutions to measure};
+  \node[font=\scriptsize\itshape] at (10.55,0.0) {Interpret and keep the evidence};
+  \foreach \n/\t/\y in {u1/{UC-01 Effect matrix\\for one window}/-0.75, u2/{UC-02 Rank and\\shortlist}/-1.85,
+                        u4/{UC-04 Protein and\\its tiles}/-3.15, u8/{UC-08 Batch or\\whole-protein job}/-4.25,
+                        u10/{UC-10 Projects and\\history}/-5.35}
+    \node[uc] (\n) at (1.75,\y) {\t};
+  \foreach \n/\t/\y in {u3/{UC-03 Export with\\provenance}/-0.75, u5/{UC-05 Compare with\\measurements}/-1.85,
+                        u9/{UC-09 Import\\observations}/-3.15, u6/{UC-06 ClinVar\\annotations}/-4.25,
+                        u7/{UC-07 Model and\\sources}/-5.35}
+    \node[uc] (\n) at (10.55,\y) {\t};
+  \foreach \n in {u1,u2,u4,u8,u10} \draw[oiGrey!80!black] (actor) -- (\n.east);
+  \foreach \n in {u3,u5,u9,u6,u7} \draw[oiGrey!80!black] (actor) -- (\n.west);
+  % dependencies (one use case supplies another)
+  \draw[dep] (u1.east) -- node[deplbl, pos=0.13, above=1pt] {\guillemotleft uses\guillemotright\ scores} (u3.west);
+  \draw[dep] (u2.east) -- node[deplbl, pos=0.83, below=1pt] {\guillemotleft uses\guillemotright\ analysis} (u5.west);
+  \draw[dep] (u9.north) -- node[deplbl, right=2pt] {\guillemotleft uses\guillemotright\ dataset} (u5.south);
+\end{tikzpicture}

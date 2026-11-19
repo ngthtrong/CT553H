@@ -1,0 +1,172 @@
+{
+  "schema": "report-validation/v1",
+  "date": "2026-11-17",
+  "scope": "Branch 3 items 3.1-3.5 and 3.8 complete; 3.6 partial; 3.7 blocked on the title decision",
+  "status": "development_not_gate_closure",
+  "disclaimer": "A clean build is not research acceptance and not software acceptance. No number in the report was recomputed here; every new number is read from a result file by a generator that records the source hash.",
+  "commands": {
+    "make -C report all": "exit 0",
+    "make -C report check": "PASS; one-sided and two-sided, 148 pages each, A4, fonts embedded",
+    "python report/scripts/check_float_references.py": "PASS; 23 figures, 66 tables, both variants agree"
+  },
+  "pdf": {
+    "one_sided": {
+      "path": "report/build/content/content.pdf",
+      "pages": 148,
+      "sha256": "960a32df520166a5969fad99b0580aedd0f6bf953b38f6f17ceeffb403f8cc95"
+    },
+    "two_sided": {
+      "path": "report/build/content-twoside/content.pdf",
+      "pages": 148,
+      "sha256": "2c12ce1492613e8f9596d52ae31d1cda2f710f3d6a1f094da5e097613b138806"
+    },
+    "smoke": {
+      "path": "report/build/smoke/smoke.pdf",
+      "pages": 9,
+      "sha256": "f82222c631ded47dc2889fabd28dcaa46a88e15858de8e5fae7538291b34ac06"
+    }
+  },
+  "floats": {
+    "before": {
+      "figures": 12,
+      "tables": 58
+    },
+    "after": {
+      "figures": 23,
+      "tables": 66
+    },
+    "tables_chapter4": {
+      "before": 44,
+      "after": 40
+    },
+    "tables_appendixB": {
+      "before": 8,
+      "after": 12
+    }
+  },
+  "whitespace_review": {
+    "method": "Each page of both PDFs rendered at 50 dpi in grayscale; inside the content block the largest run of empty rows and the trailing empty run were measured as a fraction of the block height. Threshold: one third.",
+    "pages_over_threshold": {
+      "one_sided": 12,
+      "two_sided": 12
+    },
+    "identical_in_both_variants": true,
+    "detail": [
+      [
+        5,
+        "internal",
+        0.55
+      ],
+      [
+        6,
+        "internal",
+        0.47
+      ],
+      [
+        10,
+        "internal",
+        0.88
+      ],
+      [
+        17,
+        "internal",
+        0.9
+      ],
+      [
+        21,
+        "internal",
+        0.34
+      ],
+      [
+        73,
+        "internal",
+        0.88
+      ],
+      [
+        113,
+        "internal",
+        0.42
+      ],
+      [
+        125,
+        "internal",
+        0.4
+      ],
+      [
+        129,
+        "internal",
+        0.72
+      ],
+      [
+        132,
+        "internal",
+        0.62
+      ],
+      [
+        136,
+        "internal",
+        0.74
+      ],
+      [
+        148,
+        "internal",
+        0.66
+      ]
+    ],
+    "reasons": {
+      "5": "acknowledgements, signature block",
+      "6": "commitment page, signature block",
+      "10": "end of the table of contents",
+      "17": "end of the list of tables",
+      "21": "end of a list",
+      "73": "end of chapter 3",
+      "113": "end of a multi-page table",
+      "125": "end of chapter 4",
+      "129": "end of the conclusion",
+      "132": "end of the references",
+      "136": "end of appendix A",
+      "148": "end of appendix B, last page"
+    },
+    "verdict": "All twelve are structural endings or signature forms, which the layout rules judge by function rather than filling. No float page or its neighbours were flagged."
+  },
+  "pages_rendered_and_inspected": [
+    27,
+    28,
+    29,
+    30,
+    32,
+    "printed numbers; the new use-case, architecture, job-sequence, job-state, import-sequence and conceptual-model diagrams were each viewed at readable size and redrawn until no overlap remained"
+  ],
+  "done": {
+    "3.1": "Five [PENDING] markers removed; grep over chapters, frontmatter and appendices returns none. Each was replaced with real content: the executed installation and container workflow, the executed walkthrough with pointers to the screenshots, and a source/data availability statement that invents no repository URL.",
+    "3.2": "New section \"Software Acceptance of the First Release\" in chapter 4, covering input validation, interface, response time, recovery, installation and confinement, plus a subsection on what the acceptance does not cover.",
+    "3.3": "New section \"Final Refit and Held-Source Transfer\" in chapter 4 with the transfer result, the stratum reversal kept as a negative result, the similarity test, the Koren survey, the scope decision and the L1-L10 limitation table. Conclusion, research-question assessment and the status page updated.",
+    "3.4": "Six diagrams built from code: use cases, components and deployment, job sequence, job and item states, import and comparison sequence, conceptual data model.",
+    "3.5": "Chapter 3 rewritten from the implementation, including the durable queue mechanism, import discipline, and the conceptual, logical and physical data models.",
+    "3.8": "All three commands pass on both variants; the diagram pages were inspected as rendered images."
+  },
+  "not_done": {
+    "3.6": "Partial. Figures rose from 12 to 23 and chapter 4 lost four tables to the appendix, but the document still carries 66 tables. No further merging of thin result tables was attempted, because the candidates come from different protocols and merging them would pool designs that the research record keeps separate.",
+    "3.7": "Blocked: the official title decision is still open.",
+    "other": [
+      "The PostgreSQL test suite still needs re-running after the 17 November changes (an application task).",
+      "A manual accessibility pass is still owed.",
+      "The supervisor has not yet acknowledged the D-4 record."
+    ]
+  },
+  "generators_added": {
+    "report/assets/ch4/build_transfer_assets.py": "6 tables, 2 figures, 50 macros from the branch-1 result files; refuses to run if the recorded scientific status or the serving-promotion field changes, and fails if the limitation identifiers in the decision record change",
+    "report/assets/ch4/build_app_assets.py": "4 tables and 30 macros from the schema snapshot, the API contract and the acceptance record",
+    "report/assets/ch4/dump_app_schema.py": "reads the service object-relational mapping and fails if it disagrees with the migrations; produced app-schema.json with 19 tables and 4 migrations"
+  },
+  "sources_hashed": {
+    "assets/ch4/transfer-numbers.tex": "356c2ba0af71df91ad7d31c36da7a2cdbc41de6bb7f9345ecb9020674310540e",
+    "assets/ch4/app-numbers.tex": "12de5ceb518b29b9add7a4913dc42460f08a970904e96e24188d6d63b41063a9",
+    "assets/ch4/app-schema.json": "c3c01db1ee6f30e96060ee372b02034234309329d6c9feb5873bdae13e6ee3d4",
+    "chapters/sections/transfer-refit.tex": "15936c1163509b8c63ae5d9f8f145c8bc986881d6aea3ecd95de1846d0af916a",
+    "chapters/03-solution-design.tex": "313487cae26e14b9fb8cc61344d7f311010ef626432470aee8bac434717e1298",
+    "chapters/04-testing-evaluation.tex": "650b88ee05bb2f0524d503dd897d61eff196a3ec7bbde702f133d9896a3bd22e"
+  },
+  "git_head": "9910996cb7e1edb2c5fbef734aa1e3424b2d8374",
+  "not_committed": true
+}

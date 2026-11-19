@@ -24,14 +24,19 @@ that the entire historical sequence was planned before its first experiment.
   representation and architecture. Their results cannot identify one universal transfer mechanism
   or establish transfer to an independent assay. \\[4pt]
   RQ4 & Matched LoRA reduces OOF MAE in both B and D with adjusted paired intervals supporting
-  the reductions. All three seeds improve over their matched controls. & LoRA has greater recorded
-  computation cost. Full fine-tuning is not evaluated in this campaign; cost-normalised benefit,
-  deployment latency and independent replication remain unmeasured. \\[4pt]
+  the reductions. All three seeds improve over their matched controls, and the refitted model keeps
+  the advantage on the held-out source. & LoRA has greater recorded computation cost and, measured
+  on the local host, a per-tile serving latency two orders of magnitude above the proposed target.
+  Full fine-tuning is not evaluated in this campaign, so cost-normalised benefit and independent
+  replication remain unmeasured. \\[4pt]
   RQ5 & Group-aware OOF evaluation, seed/fold diagnostics and calibration quantify development
   behaviour. The equal-budget replay supports LoRA-D positive Precision@10 over W5-D and random
-  on W. Locked W5-D transfer has useful positive ranking but unresolved mean MAE gain. &
-  High-PSI transfer and probability shift persist. No LoRA result on T, prospective wet-lab utility,
-  intact-protein validation or independent external confirmation is available. \\
+  on W. Locked W5-D transfer has useful positive ranking but unresolved mean MAE gain. The refit
+  extends both prespecified contrasts to the held-out source, and a pre-fixed test rejects sequence
+  similarity as the explanation. & High-PSI transfer and probability shift persist, and in the most
+  stable stratum the adapted model is worse than predicting no effect, with the mechanism
+  unresolved. The transfer cohort was examined earlier, so prospective wet-lab utility,
+  intact-protein validation and independent external confirmation remain unavailable. \\
   \bottomrule
 \end{longtable}
 
@@ -47,7 +52,8 @@ implementation and acceptance of the expanded workflows remain separate mileston
 \paragraph{Next experiments and decision criteria.}
 The highest scientific priority is a new validation design with a compatible endpoint, audited
 protein/sequence overlap and an explicit source history. Freeze the candidate recipe and analysis
-plan before inspecting its outcome; do not reuse the inspected T set to select among candidates.
+plan before inspecting its outcome, as was done for the refit campaign; do not reuse the inspected
+T set to select among candidates.
 Report peptide/group-macro regression, positive and negative ranking, large-effect residuals,
 WT-PSI strata and probability reliability together. A favourable ranking score alone is insufficient
 to claim accurate effect sizes or calibrated probabilities. Further capacity or transfer experiments

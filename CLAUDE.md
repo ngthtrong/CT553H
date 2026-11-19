@@ -58,7 +58,16 @@ xem [RUNBOOK.md](research/lora-refit-transfer-2026-11-16/RUNBOOK.md).
 `status-local.cmd`/`pause-local.cmd` nhận `--campaign <id>`; pause mặc định chờ
 checkpoint và thả OS locks. Giữ nguồn `ef138c84579c842e`/`e7097449883a51d8` chỉ
 đọc. Không sửa code/config/protocol/source lock/runtime trong lúc chạy.
-Koren và quyết định D-4 còn pending; xong core không tự là xong nhánh 1/G2/G3.
+**Cập nhật 17/11/2026:** nhánh 1 đã xong cả 17 mục. Koren đã chạy xong và được
+D-4 xếp là **bằng chứng khảo sát**, không phải điều kiện nghiệm thu. Trọng chốt
+**phương án A** — đóng G2 trong phạm vi development — tại
+[d4-decision-2026-11-17.md](research/g2-acceptance-2026-11-07/d4-decision-2026-11-17.md);
+GVHD chưa ghi nhận. Quyết định này **không** đóng G3, **không** đổi model phục
+vụ và **không** sửa `scientific_status` của campaign (vẫn
+`development_not_gate_closure`). Claim phải đi kèm giới hạn L1–L10 của biên bản.
+Phép kiểm similarity bổ sung ở `similarity-results.json`: đồng dạng với W không
+giải thích được lợi thế, nhưng ở strata gt5 LoRA-D **tệ hơn** baseline zero với
+CI hoàn toàn trên 0 — kết quả âm này phải giữ nguyên khi viết báo cáo.
 Protocol refit không thay protocol v3 lịch sử. Artifact nặng vẫn local, kết
 quả nhỏ chọn lọc ở thư mục refit; không tự commit/push.
 
